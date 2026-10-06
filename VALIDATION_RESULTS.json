@@ -1,0 +1,51 @@
+{
+  "baseline_date": "2026-10-05",
+  "scope": "Workspace starter; preparation environment, not the Director PC or a Docker runtime",
+  "node_verified": "24.21.0",
+  "pnpm_verified": "10.33.0",
+  "checks": [
+    {
+      "command": "pnpm install --frozen-lockfile",
+      "runtime": "Node 24.21.0 / pnpm 10.33.0",
+      "exit_code": 0,
+      "result": "passed; dependency-free starter root"
+    },
+    {
+      "command": "pnpm verify",
+      "runtime": "Node 24.21.0 / pnpm 10.33.0",
+      "exit_code": 0,
+      "result": "passed; static configuration, JSON and JavaScript syntax"
+    },
+    {
+      "command": "pnpm test:bootstrap",
+      "runtime": "Node 24.21.0 / pnpm 10.33.0",
+      "exit_code": 0,
+      "result": "passed; 1 live HTTP test and 4 credential generation/preservation tests"
+    },
+    {
+      "command": "node scripts/verify.mjs",
+      "runtime": "Node 24.19.0; final editor launch/configuration check",
+      "exit_code": 0,
+      "result": "passed"
+    },
+    {
+      "command": "node scripts/db-check.mjs",
+      "runtime": "Node 24.21.0, outside configured local container",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "result": "passed refusal guard; did not connect to a database"
+    }
+  ],
+  "not_run": [
+    "Docker Compose parser validation",
+    "Image pulls and Dev Container build/start",
+    "Authenticated PostgreSQL connection",
+    "Database persistence through recreation",
+    "Windows browser forwarding",
+    "App builds and TypeScript/lint/import-boundary tests",
+    "Real-device or gameplay/rules tests"
+  ],
+  "foundation_backlog_complete": false,
+  "external_services_provisioned": false,
+  "secrets_in_deliverable": false
+}

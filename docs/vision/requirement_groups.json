@@ -1,0 +1,332 @@
+[
+  {
+    "group_id": "R01",
+    "name": "Core Card & Rules Platform",
+    "owner": "RULE + CONTENT",
+    "milestone": "M0\u2013M5",
+    "acceptance_class": "rules/content",
+    "sections": "\u00a76",
+    "contract": "Complete declared catalog, identity mappings, versioned rules/errata/legality and certified effects/choices/visibility.",
+    "requirement_count": 26
+  },
+  {
+    "group_id": "R02",
+    "name": "Actual Match Engine",
+    "owner": "RULE + PLAY",
+    "milestone": "M1\u2013M3",
+    "acceptance_class": "match authority",
+    "sections": "\u00a77",
+    "contract": "All listed actions/endings, clocks, durable commands, synchronization and recovery; no unauthorized state.",
+    "requirement_count": 34
+  },
+  {
+    "group_id": "R03",
+    "name": "Deckbuilder",
+    "owner": "CLIENT + RULE",
+    "milestone": "M2\u2013M3",
+    "acceptance_class": "deck interaction",
+    "sections": "\u00a76/\u00a710/\u00a711",
+    "contract": "Editing, search, statistics, imports, sharing and printing selection round-trip; separate format and ownership validation.",
+    "requirement_count": 27
+  },
+  {
+    "group_id": "R04",
+    "name": "Sandbox / Lab Mode",
+    "owner": "AI + PLAY + CLIENT",
+    "milestone": "M2\u2013M5",
+    "acceptance_class": "Lab/sandbox",
+    "sections": "\u00a71/\u00a77/\u00a710/\u00a712",
+    "contract": "Ordinary unlocked Lab works and can earn eligible currency; manipulated experiments branch reproducibly and cannot affect economy/rank.",
+    "requirement_count": 29
+  },
+  {
+    "group_id": "R05",
+    "name": "Player Collection",
+    "owner": "ECON + CLIENT",
+    "milestone": "M2\u2013M3",
+    "acceptance_class": "collection integrity",
+    "sections": "\u00a78/\u00a79/\u00a711",
+    "contract": "Printing/finish holdings and history reconcile to ledger; completion/missing views have accurate denominators.",
+    "requirement_count": 18
+  },
+  {
+    "group_id": "R06",
+    "name": "Virtual Product System",
+    "owner": "ECON + CONTENT + CLIENT",
+    "milestone": "M2\u2013M5",
+    "acceptance_class": "product opening",
+    "sections": "\u00a79/\u00a711",
+    "contract": "Versioned products and documented slots; once-only committed grants with reveal/skip/bulk/resume and supported selected categories.",
+    "requirement_count": 18
+  },
+  {
+    "group_id": "R07",
+    "name": "Progression & Economy",
+    "owner": "ECON",
+    "milestone": "M2\u2013M5",
+    "acceptance_class": "progression/economy",
+    "sections": "\u00a79",
+    "contract": "XP/currency/inventory/cosmetic effects settle once; eligibility and selected acquisition model are tested and balanced.",
+    "requirement_count": 19
+  },
+  {
+    "group_id": "R08",
+    "name": "Player Profile",
+    "owner": "SOCIAL + CLIENT",
+    "milestone": "M3\u2013M4",
+    "acceptance_class": "profile/privacy",
+    "sections": "\u00a710/\u00a713",
+    "contract": "Privacy-aware identity, statistics, history, collection/tournament views, friends and blocking.",
+    "requirement_count": 17
+  },
+  {
+    "group_id": "R09",
+    "name": "Matchmaking",
+    "owner": "COMP + PLAY",
+    "milestone": "M2\u2013M4",
+    "acceptance_class": "admission/matching",
+    "sections": "\u00a77/\u00a710",
+    "contract": "All selected queues/invites/match structures admit legal pinned decks; pair/cancel/rematch and privacy races resolve safely.",
+    "requirement_count": 17
+  },
+  {
+    "group_id": "R10",
+    "name": "Ranked System",
+    "owner": "COMP",
+    "milestone": "M4",
+    "acceptance_class": "ranked integrity",
+    "sections": "\u00a710",
+    "contract": "Versioned ratings, seasons, leaderboards and rewards settle idempotently; abuse signals and history are reviewable.",
+    "requirement_count": 11
+  },
+  {
+    "group_id": "R11",
+    "name": "Limited Formats",
+    "owner": "COMP + ECON + RULE",
+    "milestone": "M4",
+    "acceptance_class": "limited formats",
+    "sections": "\u00a76/\u00a79/\u00a710",
+    "contract": "Correct pools, products, picks/autopicks and format validation, with logs/export/reconnect and event integration.",
+    "requirement_count": 13
+  },
+  {
+    "group_id": "R12",
+    "name": "AI Opponents",
+    "owner": "AI + RULE",
+    "milestone": "M3\u2013M5",
+    "acceptance_class": "fair bots",
+    "sections": "\u00a712",
+    "contract": "Complete legal games at each advertised strength; viewer-safe inputs, resource limits, reproducibility and measured quality.",
+    "requirement_count": 16
+  },
+  {
+    "group_id": "R13",
+    "name": "Tutorial & Learning System",
+    "owner": "CONTENT + CLIENT",
+    "milestone": "M2\u2013M5",
+    "acceptance_class": "learning",
+    "sections": "\u00a76/\u00a711/\u00a712",
+    "contract": "Every listed lesson/topic has cited, executable and regression-tested content with beginner usability evidence.",
+    "requirement_count": 19
+  },
+  {
+    "group_id": "R14",
+    "name": "Rules Assistant",
+    "owner": "AI + RULE",
+    "milestone": "M3\u2013M5",
+    "acceptance_class": "rules explanations",
+    "sections": "\u00a76/\u00a712",
+    "contract": "Version-correct reason codes, citations, interaction explanations and uncertainty labels use viewer-authorized context.",
+    "requirement_count": 11
+  },
+  {
+    "group_id": "R15",
+    "name": "Match History & Replay System",
+    "owner": "PLAY + CLIENT",
+    "milestone": "M2\u2013M4",
+    "acceptance_class": "history/replay",
+    "sections": "\u00a77/\u00a78/\u00a710",
+    "contract": "Deterministic role-safe replay, history/controls/export/annotations and provenance-aware sandbox branching.",
+    "requirement_count": 19
+  },
+  {
+    "group_id": "R16",
+    "name": "Post-Game Analytics",
+    "owner": "COMP + AI",
+    "milestone": "M3\u2013M5",
+    "acceptance_class": "analytics",
+    "sections": "\u00a710/\u00a712",
+    "contract": "Metrics recompute from immutable events; definitions, probability assumptions and privacy are documented.",
+    "requirement_count": 16
+  },
+  {
+    "group_id": "R17",
+    "name": "Spectator System",
+    "owner": "PLAY + COMP",
+    "milestone": "M3\u2013M4",
+    "acceptance_class": "spectator privacy",
+    "sections": "\u00a77/\u00a710",
+    "contract": "Authorized/delayed player, spectator, caster and judge views; delay survives reconnect and export.",
+    "requirement_count": 13
+  },
+  {
+    "group_id": "R18",
+    "name": "Tournament Platform",
+    "owner": "COMP + SOCIAL",
+    "milestone": "M4",
+    "acceptance_class": "tournament policy",
+    "sections": "\u00a76/\u00a710/\u00a713",
+    "contract": "Registration/deck locks/pairings/tiebreaks/cuts/timers and corrections follow tested versioned policy with scoped judges.",
+    "requirement_count": 20
+  },
+  {
+    "group_id": "R19",
+    "name": "Social Features",
+    "owner": "SOCIAL",
+    "milestone": "M3\u2013M5",
+    "acceptance_class": "community/safety",
+    "sections": "\u00a710/\u00a713",
+    "contract": "Consent-based friends/presence/challenges/sharing and selected chat/groups; blocks/reports enforced server-side.",
+    "requirement_count": 12
+  },
+  {
+    "group_id": "R20",
+    "name": "Card Encyclopedia",
+    "owner": "CONTENT + CLIENT",
+    "milestone": "M3",
+    "acceptance_class": "encyclopedia",
+    "sections": "\u00a76/\u00a710",
+    "contract": "Every declared identity/printing and sourced metadata/rulings/errata/relations with search, ownership and deck/Lab links.",
+    "requirement_count": 21
+  },
+  {
+    "group_id": "R21",
+    "name": "Metagame & Competitive Data",
+    "owner": "COMP + AI",
+    "milestone": "M4\u2013M5",
+    "acceptance_class": "metagame aggregates",
+    "sections": "\u00a710/\u00a712",
+    "contract": "Reproducible segmented metrics, taxonomy and uncertainty/sample/bias disclosure; no private match data exposure.",
+    "requirement_count": 15
+  },
+  {
+    "group_id": "R22",
+    "name": "Deck Discovery",
+    "owner": "CLIENT + COMP",
+    "milestone": "M3\u2013M5",
+    "acceptance_class": "deck discovery",
+    "sections": "\u00a79/\u00a710",
+    "contract": "Discover/copy/bookmark and missing-card acquisition flows; unrestricted Lab available independent of ownership.",
+    "requirement_count": 12
+  },
+  {
+    "group_id": "R23",
+    "name": "Achievements",
+    "owner": "ECON + CONTENT",
+    "milestone": "M3\u2013M5",
+    "acceptance_class": "achievements",
+    "sections": "\u00a79/\u00a710",
+    "contract": "Event-derived progress and rewards idempotent; hidden criteria and badges/titles controlled.",
+    "requirement_count": 11
+  },
+  {
+    "group_id": "R24",
+    "name": "Cosmetics",
+    "owner": "CLIENT + CONTENT",
+    "milestone": "M2\u2013M5",
+    "acceptance_class": "cosmetic presentation",
+    "sections": "\u00a79/\u00a711",
+    "contract": "Selected cosmetics earned/equipped/synced with provenance; clarity, accessibility and performance preserved.",
+    "requirement_count": 12
+  },
+  {
+    "group_id": "R25",
+    "name": "Accessibility & User Experience",
+    "owner": "CLIENT + QA",
+    "milestone": "All milestones",
+    "acceptance_class": "device/accessibility",
+    "sections": "\u00a711/\u00a714/\u00a715",
+    "contract": "Keyboard, semantic board, contrast/text/motion/audio/localization and actual desktop/tablet/phone acceptance evidence.",
+    "requirement_count": 16
+  },
+  {
+    "group_id": "R26",
+    "name": "Notifications",
+    "owner": "SOCIAL",
+    "milestone": "M3\u2013M5",
+    "acceptance_class": "notifications",
+    "sections": "\u00a710/\u00a713",
+    "contract": "Correct recipient, dedupe, preferences/quiet hours/deep links and rotation warnings with channel fallback.",
+    "requirement_count": 11
+  },
+  {
+    "group_id": "R27",
+    "name": "Content Management Backend",
+    "owner": "CONTENT + OPS",
+    "milestone": "M0\u2013M5",
+    "acceptance_class": "content operations",
+    "sections": "\u00a75/\u00a76/\u00a713/\u00a715",
+    "contract": "Permissioned staging/versioning/diff/review/activation/rollback of content, scripts, assets, formats and economy configurations.",
+    "requirement_count": 16
+  },
+  {
+    "group_id": "R28",
+    "name": "Card Implementation Testing",
+    "owner": "RULE + QA",
+    "milestone": "All milestones",
+    "acceptance_class": "certification tests",
+    "sections": "\u00a76/\u00a715",
+    "contract": "Meaningful per-card/interaction/keyword/regression and invariant/replay/fuzz suites for all admitted content.",
+    "requirement_count": 12
+  },
+  {
+    "group_id": "R29",
+    "name": "Game Integrity & Anti-Cheat",
+    "owner": "OPS + PLAY + COMP",
+    "milestone": "All milestones",
+    "acceptance_class": "integrity/security",
+    "sections": "\u00a77/\u00a713/\u00a715",
+    "contract": "Secure randomness, validated authority/visibility/clocks, abuse review and immutable investigation evidence.",
+    "requirement_count": 12
+  },
+  {
+    "group_id": "R30",
+    "name": "Accounts & Infrastructure",
+    "owner": "OPS + SOCIAL",
+    "milestone": "M0\u2013M6",
+    "acceptance_class": "accounts/operations",
+    "sections": "\u00a75/\u00a77/\u00a78/\u00a713/\u00a714",
+    "contract": "Verified recovery/guest/sync, load/versioning/backups/telemetry/maintenance and measured failure recovery.",
+    "requirement_count": 17
+  },
+  {
+    "group_id": "R31",
+    "name": "Moderation & Administration",
+    "owner": "SOCIAL + OPS",
+    "milestone": "M2\u2013M6",
+    "acceptance_class": "moderation/admin",
+    "sections": "\u00a713",
+    "contract": "Scoped cases/actions/appeals and audited grants/compensation/investigation; no unscoped privileged access.",
+    "requirement_count": 13
+  },
+  {
+    "group_id": "R32",
+    "name": "Developer / Debug Tools",
+    "owner": "RULE + PLAY",
+    "milestone": "M1\u2013M5",
+    "acceptance_class": "debug/scenarios",
+    "sections": "\u00a76/\u00a77/\u00a712",
+    "contract": "Deterministic authoring/RNG/state tools and reproducible regressions isolated from competitive and economy authority.",
+    "requirement_count": 14
+  },
+  {
+    "group_id": "R33",
+    "name": "Public API / Data Layer",
+    "owner": "ARC + OPS",
+    "milestone": "M6 optional",
+    "acceptance_class": "public ecosystem",
+    "sections": "\u00a710/\u00a713",
+    "contract": "If selected: versioned audience-specific schemas, auth/quotas/docs and signed retried safe webhooks.",
+    "requirement_count": 11
+  }
+]

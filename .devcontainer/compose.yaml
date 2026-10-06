@@ -1,0 +1,38 @@
+services:
+  workspace:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    user: node
+    init: true
+    working_dir: /workspaces/lorcana-online-tcg
+    command: ["sleep", "infinity"]
+    env_file: ../.env.local
+    environment:
+      PGHOST: postgres
+      PGPORT: "5432"
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspaces/lorcana-online-tcg
+        bind:
+          create_host_path: false
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:18@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722
+    env_file: ../.env.local
+    volumes:
+      - pg18_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+    shm_size: 128mb
+
+volumes:
+  pg18_data:

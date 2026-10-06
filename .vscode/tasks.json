@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Workspace: verify",
+      "type": "process",
+      "command": "pnpm",
+      "args": ["verify"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Workspace: database check",
+      "type": "process",
+      "command": "pnpm",
+      "args": ["db:check"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Workspace: browser connectivity check",
+      "type": "process",
+      "command": "pnpm",
+      "args": ["dev:smoke"],
+      "problemMatcher": []
+    }
+  ]
+}

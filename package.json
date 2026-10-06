@@ -1,0 +1,19 @@
+{
+  "name": "lorcana-online-tcg",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Reproducible workspace foundation for the Lorcana online game.",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0"
+  },
+  "scripts": {
+    "doctor": "node scripts/doctor.mjs",
+    "verify": "node scripts/verify.mjs",
+    "test:bootstrap": "node scripts/test-bootstrap.mjs",
+    "db:check": "node scripts/db-check.mjs",
+    "dev:smoke": "node scripts/serve-smoke.mjs"
+  }
+}
