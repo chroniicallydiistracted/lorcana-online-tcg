@@ -1,0 +1,225 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "run",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^RUN-[0-9]{8}-[0-9]{3}$"
+    },
+    "category": {
+      "enum": [
+        "static",
+        "container",
+        "simulated",
+        "headless_browser",
+        "manual_device",
+        "historical",
+        "production"
+      ]
+    },
+    "command": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "cwd": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "null"
+        ]
+      }
+    },
+    "source_commit": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_fingerprint": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "started_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "utc-timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "finished_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "utc-timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "utc-timestamp"
+    },
+    "time_precision": {
+      "enum": [
+        "exact",
+        "unknown",
+        "clock_discontinuous"
+      ]
+    },
+    "expected_exit_code": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "exit_code": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "signal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "result": {
+      "enum": [
+        "passed",
+        "failed",
+        "not_run",
+        "reported"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "log_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "log_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "redactions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failure_reason": {
+      "enum": [
+        null,
+        "output_limit",
+        "timeout",
+        "interrupted",
+        "source_changed",
+        "spawn_error",
+        "clock_changed"
+      ]
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reporter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verdict": {
+          "enum": [
+            "passed",
+            "failed",
+            "inconclusive"
+          ]
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "reporter",
+        "verdict",
+        "steps"
+      ]
+    },
+    "elapsed_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "clock_discontinuity": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "category",
+    "command",
+    "cwd",
+    "environment",
+    "source_commit",
+    "source_fingerprint",
+    "started_at",
+    "finished_at",
+    "recorded_at",
+    "time_precision",
+    "expected_exit_code",
+    "exit_code",
+    "signal",
+    "result",
+    "summary",
+    "log_path",
+    "log_sha256",
+    "redactions",
+    "failure_reason"
+  ]
+}

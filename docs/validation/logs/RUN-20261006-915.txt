@@ -1,0 +1,64 @@
+
+> lorcana-online-tcg@0.0.0 test:documentation /workspaces/lorcana-online-tcg
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (310.097465ms)
+✔ source changes during a command prevent a successful evidence claim (307.10959ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1809.34953ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.29854ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1980.640154ms)
+✔ new documentation governance exposes real validation and sync operations (0.756605ms)
+✔ source drift requires a covering change and review of impacted documentation (338.652047ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (89.173067ms)
+✔ change records reject unqualified timestamps and historical execution inventions (16.059353ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (78.727297ms)
+✔ documentation edits and newly added source files require recorded coverage (131.735113ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (16.477529ms)
+✔ committed finalized history cannot be changed or deleted (145.726998ms)
+✔ log tampering and exit status contradictions invalidate execution evidence (52.549324ms)
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history (81.451218ms)
+✔ removing old source-impact edges cannot erase required documentation reviews (83.355612ms)
+✖ committing a rewrite does not make sealed history valid (146.938737ms)
+✔ executed passing evidence needs a log and consistent execution/recording times (46.082459ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 17
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4651.345518
+
+✖ failing tests:
+
+test at tests/documentation/governance.test.mjs:129:1
+✖ committing a rewrite does not make sealed history valid (146.938737ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /restore|snapshot/i. Input:
+  
+  'Error: Sealed evidence/history modified; append a correction: docs/changes/CHG-20261006-001.json'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:138:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Sealed evidence/history modified; append a correction: docs/changes/CHG-20261006-001.json
+        at checkSealedRecords (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:174:100)
+        at load (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:144:3)
+        at Module.syncDocumentation (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:191:14)
+        at file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:138:34
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:138:12)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18),
+    expected: /restore|snapshot/i,
+    operator: 'throws',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Command failed with exit code 1.

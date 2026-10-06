@@ -1,0 +1,36 @@
+
+> lorcana-online-tcg@0.0.0 verify:clean /workspaces/lorcana-online-tcg
+> node scripts/validate-clean-checkout.mjs
+
+Scope: all 9 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +185
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 185, reused 185, downloaded 0, added 185, done
+
+devDependencies:
++ @eslint/js 10.0.1
++ ajv 8.20.0
++ eslint 10.12.0
++ parse5 8.0.0
++ postcss-value-parser 4.2.0
++ typescript 6.0.3
++ typescript-eslint 8.71.1
+
+Done in 979ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 verify:foundation /tmp/lorcana-clean-checkout-daMOKm
+> pnpm verify && pnpm typecheck && pnpm lint && pnpm test
+
+
+> lorcana-online-tcg@0.0.0 verify /tmp/lorcana-clean-checkout-daMOKm
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+Stale source fingerprint
+/usr/local/bin/node failed; check the preceding output.
+ ELIFECYCLE  Command failed with exit code 1.
+ ELIFECYCLE  Command failed with exit code 1.
+Clean checkout failed: pnpm verify:foundation
+ ELIFECYCLE  Command failed with exit code 1.

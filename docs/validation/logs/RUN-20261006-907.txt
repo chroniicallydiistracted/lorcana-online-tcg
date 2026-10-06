@@ -1,0 +1,20 @@
+
+> lorcana-online-tcg@0.0.0 test:e2e:smoke /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/web test:e2e
+
+
+> @lorcana/web@0.0.0 test:e2e /workspaces/lorcana-online-tcg/apps/web
+> playwright test
+
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 2 tests using 1 worker
+
+  ✓  1 tests/foundation.spec.ts:3:1 › real client reaches both services, mounts WebGL, resizes and releases repeated scenes (1.5s)
+  ✓  2 tests/foundation.spec.ts:34:1 › unavailable service and renderer disposal remain usable from keyboard (575ms)
+
+  2 passed (12.5s)

@@ -16,6 +16,7 @@ function inspect(folder) {
 try {
   inspect(root);
   run("python3", ["scripts/verify-config.py"], { cwd: root });
+  run(process.execPath, ["scripts/check-documentation.mjs"], { cwd: root });
   console.log("PASS JSON parsing and JavaScript syntax checks");
 } catch (error) {
   console.error(error.message);

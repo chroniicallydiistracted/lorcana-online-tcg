@@ -22,7 +22,7 @@ The generator creates owner-only `.env.local` and preserves existing values. `co
 
 In Windows VS Code use **Dev Containers: Reopen in Container**. After Dockerfile changes use **Rebuild Container**, preserving the named database volume. The workspace runs as `node`, with source at `/workspaces/lorcana-online-tcg`. It installs Node 24.21.0, pnpm 10.33.0, Git, Python/PyYAML, psql, ripgrep and Chromium test libraries. No extra host Node or undocumented manual tooling install is needed.
 
-The original post-create pipeline remains doctor → frozen install → configuration/syntax checks → bootstrap tests → authenticated database check. Its success proves workspace bootstrap, not full application or game acceptance. Run application checks separately:
+The original post-create pipeline remains doctor → frozen install → configuration/syntax/documentation checks → bootstrap tests → authenticated database check. Its success proves workspace bootstrap, not full application or game acceptance. Run application checks separately:
 
 ```bash
 pnpm run doctor
@@ -67,3 +67,13 @@ An initialized volume retains its original password. Do not regenerate it while 
 | Large bundle warning | Known synthetic renderer size; later performance work, not an installation failure |
 
 Keep all validation categories distinct. No CI, deployment, production security/image qualification or game/device acceptance is implied by these local steps.
+
+## Documentation and evidence operation
+
+Read [the universal workflow](../DEVELOPMENT_WORKFLOW.md) and [record format](../CHANGELOG_FORMAT.md) before editing. Capture checks inside the container with `pnpm evidence:run --id RUN-YYYYMMDD-NNN --category container -- pnpm verify:foundation`. Use `headless_browser` for browser automation; report actual Windows observation separately with device details. These write sanitized durable logs and exact source/timing/outcome records; inspect logs for unknown secret forms before committing.
+
+Update the active draft's files, documentation dispositions, feature/task IDs and evidence references; run `pnpm docs:sync --change CHG-YYYYMMDD-NNN` followed by `pnpm docs:check`. A drift failure requires a documented change and semantic review, not deletion of the snapshot or evidence. Finalized records are sealed; append corrections. CI remains a future BOOT-03 task.
+
+The live preview described during the prior session is no longer running at the 2026-10-06 audit intake. Start `pnpm dev` before the Director's still-pending Windows foundation smoke. Discover actual forwarded URLs and current listeners each session.
+
+`pnpm verify:clean` copies the audited project-owned source to a temporary directory, excluding credentials/Git/dependencies/build output, then performs a frozen install and complete foundation validation. It removes the temporary copy on exit and never connects to or recreates the existing database. Stop fixed-port development first. Capture it as container evidence; this is a source-only clean-checkout proof, not device or image qualification.

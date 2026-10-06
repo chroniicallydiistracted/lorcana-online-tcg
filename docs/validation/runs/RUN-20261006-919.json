@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-919",
+  "category": "historical",
+  "command": [
+    "independent-review-output-import",
+    "/tmp/lorcana-review-governance-21-failure.txt"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg",
+  "environment": {
+    "source": "Separate reviewer actual failed21-test attempt; exact execution times not captured"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": null,
+  "started_at": null,
+  "finished_at": null,
+  "recorded_at": "2026-10-06T19:23:35.292Z",
+  "time_precision": "unknown",
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "reported",
+  "failure_reason": null,
+  "summary": "Independent reviewer reported20pass/1fail, exit1: immediate /proc sampling race following SIGKILL. Preserved before bounded stopped-state assertion and three subsequent concurrent isolated passes. Parent commit shown; draft fingerprint not captured.",
+  "log_path": "docs/validation/logs/RUN-20261006-919.txt",
+  "log_sha256": "95ef5d12c53c50244b8efc0b6da019ebfd6d60324debe64283ab3a0086683cdd",
+  "redactions": 0
+}

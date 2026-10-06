@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261006-005",
+  "title": "Correct audited supervisor descendant cleanup",
+  "actor": "Codex developer / QA recorder",
+  "status": "finalized",
+  "recorded_at": "2026-10-06T20:14:01.130Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "task_ids": [
+    "BOOT-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-SUPERVISOR",
+    "F-DOCS",
+    "F-EVIDENCE"
+  ],
+  "changes": [
+    {
+      "kind": "fix",
+      "description": "Actual post-Git-checkout check found owned Vite orphan on5173: supervisor cleared process-group escalation when pnpm leader exited. Correct group cleanup and strengthen regression before final acceptance."
+    },
+    {
+      "kind": "test",
+      "description": "Actual original algorithm fails deterministic descendant regression; corrected helper passes both leader-exiting and already-exited cases; ownership released only after stopped-group proof."
+    },
+    {
+      "kind": "revision",
+      "description": "Supersede earlier successful suite checkpoints for current source; retain failed listener check and historical proof; demote verification while fresh checks run."
+    },
+    {
+      "kind": "test",
+      "description": "Final canonical Git checkout and clean source copy both passed frozen installation/build/type/lint and43 tests; four live Linux browser checks and actual listener cleanup passed; scope/archive/private-file checks passed."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0002-application-foundation.md",
+    "docs/adr/0003-documentation-evidence.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261006-005.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/plans/2026-10-06-documentation-governance.md",
+    "docs/validation/documentation-review.md",
+    "docs/validation/logs/RUN-20261006-035.txt",
+    "docs/validation/logs/RUN-20261006-036.txt",
+    "docs/validation/logs/RUN-20261006-037.txt",
+    "docs/validation/logs/RUN-20261006-038.txt",
+    "docs/validation/logs/RUN-20261006-039.txt",
+    "docs/validation/logs/RUN-20261006-040.txt",
+    "docs/validation/logs/RUN-20261006-041.txt",
+    "docs/validation/logs/RUN-20261006-042.txt",
+    "docs/validation/logs/RUN-20261006-043.txt",
+    "docs/validation/logs/RUN-20261006-044.txt",
+    "docs/validation/logs/RUN-20261006-045.txt",
+    "docs/validation/logs/RUN-20261006-046.txt",
+    "docs/validation/logs/RUN-20261006-047.txt",
+    "docs/validation/logs/RUN-20261006-048.txt",
+    "docs/validation/logs/RUN-20261006-920.txt",
+    "docs/validation/runs/RUN-20261006-035.json",
+    "docs/validation/runs/RUN-20261006-036.json",
+    "docs/validation/runs/RUN-20261006-037.json",
+    "docs/validation/runs/RUN-20261006-038.json",
+    "docs/validation/runs/RUN-20261006-039.json",
+    "docs/validation/runs/RUN-20261006-040.json",
+    "docs/validation/runs/RUN-20261006-041.json",
+    "docs/validation/runs/RUN-20261006-042.json",
+    "docs/validation/runs/RUN-20261006-043.json",
+    "docs/validation/runs/RUN-20261006-044.json",
+    "docs/validation/runs/RUN-20261006-045.json",
+    "docs/validation/runs/RUN-20261006-046.json",
+    "docs/validation/runs/RUN-20261006-047.json",
+    "docs/validation/runs/RUN-20261006-048.json",
+    "docs/validation/runs/RUN-20261006-920.json",
+    "docs/vision/initial_backlog.csv",
+    "scripts/dev.mjs",
+    "scripts/process-groups.mjs",
+    "tests/foundation/process-groups.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/validation/documentation-review.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "apps/api/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "apps/worker/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "updated",
+      "reason": "Actual code/cleanup failure reviewed; updated ownership, superseded evidence and pending current-source acceptance where relevant."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "packages/presentation/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    },
+    {
+      "path": "packages/service-runtime/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review prior closure against audited supervisor cleanup correction; update current-source claims and lifecycle ownership where affected."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-033.json",
+      "outcome": "failed",
+      "scope": "Finalized documentation passed but actual5173 listener remained; /proc identified owned Vite orphan in deleted canonical Git-checkout cwd."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-034.json",
+      "outcome": "passed",
+      "scope": "Original scope/archive and final known-secret/private-file preservation passed at pre-cleanup source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-035.json",
+      "outcome": "failed",
+      "scope": "Initial regression could not load the not-yet-created helper."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-036.json",
+      "outcome": "failed",
+      "scope": "Actual original supervisor algorithm left ignoring-SIGTERM descendant executable after leader exit."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-037.json",
+      "outcome": "passed",
+      "scope": "Corrected helper stopped actual descendant; intermediate source checkpoint."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-038.json",
+      "outcome": "passed",
+      "scope": "Identity-checked owned orphan group stopped; actual5173/3001/3002 free."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-039.json",
+      "outcome": "passed",
+      "scope": "Both actual descendant cases passed before final shared supervisor promise wiring."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-920.json",
+      "outcome": "historical",
+      "scope": "Independent helper2-test and real-supervisor port-free synthetic integration passed; unknown UTC execution times, parent commit only, no important findings."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-040.json",
+      "outcome": "passed",
+      "scope": "Corrected-source frozen clean install, builds/types/lint and43 tests:21 foundation including two descendants,22 governance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-041.json",
+      "outcome": "passed",
+      "scope": "Corrected-source seven pinned toolchain/Linux/private environment checks."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-042.json",
+      "outcome": "passed",
+      "scope": "Corrected-source authenticated read-only PostgreSQL18 bootstrap connectivity; no persistence recreation proof."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-043.json",
+      "outcome": "passed",
+      "scope": "Corrected-source four live Linux Chromium/SwiftShader browser checks; actual Windows remains pending."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-044.json",
+      "outcome": "passed",
+      "scope": "Actual foundation5173/3001/3002 free after full clean suite and live browser automation."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-045.json",
+      "outcome": "passed",
+      "scope": "Final corrected canonical Git checkout frozen install and complete43-test suite; executable fingerprint exactly matches final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-046.json",
+      "outcome": "passed",
+      "scope": "Final staged source/document formatting passed; raw logs remain original bytes and are digest-validated."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-047.json",
+      "outcome": "passed",
+      "scope": "Original requirements/checklist/register/archive preserved, private file ignored/600, final known-secret scan passed without printing values."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-048.json",
+      "outcome": "passed",
+      "scope": "Exact former failing check now passes: finalized documentation consistency and actual no5173/3001/3002 listeners after corrected canonical checkout and live browser checks."
+    }
+  ],
+  "limitations": [
+    "Windows foundation observation is pending.",
+    "Documentation gates support semantic review; local unsigned records cannot prevent deliberate Git history replacement."
+  ],
+  "next_actions": [
+    "Actual Director Windows foundation observation remains pending; run pnpm dev before observation.",
+    "Continue Director-scoped BOOT-02/03/05 and RULE/UX work with standardized documentation/proof workflow."
+  ]
+}

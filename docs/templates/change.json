@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "CHG-YYYYMMDD-NNN",
+  "title": "<specific change>",
+  "actor": "<developer or agent role>",
+  "status": "draft",
+  "recorded_at": "<actual UTC ISO timestamp>",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": null,
+  "task_ids": [],
+  "requirement_ids": [],
+  "feature_ids": [],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "<actual behavior and purpose>"
+    },
+    {
+      "kind": "test",
+      "description": "<meaningful checks actually executed; references below>"
+    }
+  ],
+  "files": [],
+  "documentation_reviews": [
+    {
+      "path": "<repository-relative documentation path>",
+      "disposition": "updated",
+      "reason": "<actual source behavior/status comparison>"
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-YYYYMMDD-NNN.json",
+      "outcome": "passed",
+      "scope": "<actual execution and precise limits>"
+    }
+  ],
+  "limitations": [
+    "<actual limits>"
+  ],
+  "next_actions": [
+    "<next action>"
+  ]
+}

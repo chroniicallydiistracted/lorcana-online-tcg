@@ -1,3 +1,7 @@
-# match-service
+# apps/match-service
 
-Independent match-service foundation on 3002. Typed health/readiness diagnostics and bounded lifecycle only. Authoritative matches, private engine state and transport remain later tasks. Built execution: `pnpm --filter @lorcana/match-service start` after `pnpm build`.
+Separate local Fastify process on 3002 with foundation health/readiness only. No match commands, game state, admission or matchmaking implemented.
+
+Current behavior and callable contracts: [F-HTTP](../../docs/FEATURES.md). Exact manifests/types and source define the interface; [BOOT-01 evidence](../../docs/validation/boot-01.md) records validation and limits. This is infrastructure foundation. Full game/device/production acceptance remains pending.
+
+Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for changes, documentation impact review and timestamped test evidence. Runtime/build/test dependencies belong to this workspace; root tasks follow the dependency graph.

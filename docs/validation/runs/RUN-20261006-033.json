@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-033",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {readFileSync} from 'node:fs'; import {checkDocumentation} from './scripts/documentation-lib.mjs';\nconsole.log('PASS finalized documentation',JSON.stringify(checkDocumentation()));\nconst ports=new Set([5173,3001,3002]);\nfor(const file of ['/proc/net/tcp','/proc/net/tcp6'])for(const row of readFileSync(file,'utf8').trim().split('\\n').slice(1)){\n const parts=row.trim().split(/\\s+/);\n if(parts[3]==='0A'&&ports.has(parseInt(parts[1].split(':')[1],16)))throw new Error('Owned foundation port remains listening');\n}\nconsole.log('PASS no foundation listener on5173/3001/3002 after automation; actual Windows observation still pending');\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "5ba0007984598a4d0f63a63dcef110d43fc8e8e718c0ff823fb03bf375f69361",
+  "started_at": "2026-10-06T19:58:00.888Z",
+  "finished_at": "2026-10-06T19:58:01.747Z",
+  "recorded_at": "2026-10-06T19:58:01.747Z",
+  "time_precision": "exact",
+  "elapsed_ms": 860,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Final finalized documentation consistency and actual private-network foundation listener cleanup",
+  "log_path": "docs/validation/logs/RUN-20261006-033.txt",
+  "log_sha256": "ffe932608f301afc99f529059cb031ce1b09e2315774a8e063d3d84634a3659d",
+  "redactions": 0
+}

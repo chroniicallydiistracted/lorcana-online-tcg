@@ -1,0 +1,22 @@
+
+> lorcana-online-tcg@0.0.0 test:documentation /workspaces/lorcana-online-tcg
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (291.08849ms)
+✔ source changes during a command prevent a successful evidence claim (290.893242ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1778.233805ms)
+✔ new documentation governance exposes real validation and sync operations (0.550686ms)
+✔ source drift requires a covering change and review of impacted documentation (259.540339ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (71.683827ms)
+✔ change records reject unqualified timestamps and historical execution inventions (13.768824ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (57.981631ms)
+✔ documentation edits and newly added source files require recorded coverage (82.701096ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (16.978542ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2595.284176

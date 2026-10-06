@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "features": [
+    {
+      "id": "F-WORKSPACE",
+      "name": "Reproducible local workspace",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Pinned container, private credential preservation and real baseline checks; BOOT-02 remains pending.",
+      "sources": [
+        ".devcontainer/**",
+        "toolchain.json",
+        "scripts/doctor.mjs",
+        "scripts/verify.mjs",
+        "scripts/post-create.mjs",
+        "scripts/init-local-env.py",
+        "scripts/verify-config.py",
+        "scripts/db-check.mjs",
+        "scripts/test-bootstrap.mjs",
+        "tests/env_test.py",
+        "scripts/validate-clean-checkout.mjs"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01",
+        "BOOT-02"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json",
+        "docs/validation/runs/RUN-20261006-041.json",
+        "docs/validation/runs/RUN-20261006-042.json"
+      ]
+    },
+    {
+      "id": "F-CONNECTIVITY",
+      "name": "Bootstrap connectivity diagnostic",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Independent diagnostic HTTP only.",
+      "sources": [
+        "scripts/serve-smoke.mjs",
+        "tests/smoke.test.mjs"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json"
+      ]
+    },
+    {
+      "id": "F-CONTRACTS",
+      "name": "Public foundation schemas",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Typed health/readiness and strict readiness parser.",
+      "sources": [
+        "packages/contracts/**"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json"
+      ]
+    },
+    {
+      "id": "F-HTTP",
+      "name": "Separate API and match diagnostics",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Local Fastify HTTP liveness/readiness; no gameplay or database.",
+      "sources": [
+        "apps/api/**",
+        "apps/match-service/**",
+        "packages/service-runtime/src/index.ts",
+        "packages/service-runtime/tests/service.test.mjs"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json"
+      ]
+    },
+    {
+      "id": "F-LIFECYCLE",
+      "name": "Cancellable server lifecycle",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Signal-first cancellable startup and bounded graceful cleanup.",
+      "sources": [
+        "packages/service-runtime/**"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json"
+      ]
+    },
+    {
+      "id": "F-WORKER",
+      "name": "Idle worker foundation",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Executable idle worker without ingress or jobs.",
+      "sources": [
+        "apps/worker/**"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json"
+      ]
+    },
+    {
+      "id": "F-WEB",
+      "name": "Semantic foundation client",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "React diagnostic controls and local status/proxies, not final art direction.",
+      "sources": [
+        "apps/web/**",
+        "packages/design-system/**"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json",
+        "docs/validation/runs/RUN-20261006-043.json"
+      ]
+    },
+    {
+      "id": "F-RENDERER",
+      "name": "Synthetic Babylon lifecycle",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Synthetic scene resize/dispose; simulation/software WebGL evidence only.",
+      "sources": [
+        "packages/presentation/**"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json",
+        "docs/validation/runs/RUN-20261006-043.json"
+      ]
+    },
+    {
+      "id": "F-BOUNDARIES",
+      "name": "Browser/public ownership enforcement",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Resolved dependency/module/HTML/CSS/asset boundaries with negative proofs.",
+      "sources": [
+        "scripts/check-boundaries.mjs",
+        "scripts/browser-boundary-plugin.mjs",
+        "tests/foundation/boundaries.test.mjs",
+        "tests/foundation/browser-bundle.test.mjs",
+        "apps/web/vite.config.ts"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json"
+      ]
+    },
+    {
+      "id": "F-SUPERVISOR",
+      "name": "Local development supervision",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Retained group ownership, idempotent cleanup, live descendant verification, sanitized source processes and fail-fast stack.",
+      "sources": [
+        "scripts/dev.mjs",
+        "tests/foundation/processes.test.mjs",
+        "scripts/process-groups.mjs",
+        "tests/foundation/process-groups.test.mjs"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json",
+        "docs/validation/runs/RUN-20261006-044.json"
+      ]
+    },
+    {
+      "id": "F-DOCS",
+      "name": "Universal documentation governance",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Classified impact map, file/callable snapshots, changelog and evidence consistency.",
+      "sources": [
+        "scripts/documentation-lib.mjs",
+        "scripts/check-documentation.mjs",
+        "scripts/function-inventory.py",
+        "tests/documentation/governance.test.mjs",
+        "docs/schemas/**"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "DOC-01"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json"
+      ]
+    },
+    {
+      "id": "F-EVIDENCE",
+      "name": "Timestamped execution evidence",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Actual result/timestamps, source/log identity, failure/signal and supported secret redaction.",
+      "sources": [
+        "scripts/evidence-lib.mjs",
+        "scripts/record-evidence.mjs",
+        "tests/documentation/evidence.test.mjs",
+        "docs/schemas/run.schema.json"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "DOC-02"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-040.json"
+      ]
+    },
+    {
+      "id": "F-RESERVED",
+      "name": "Future shared domains and infrastructure",
+      "implementation": "reserved",
+      "verification": "pending",
+      "description": "Explicit reservation; no game, authentication, economy, database/engine or deployment implementation.",
+      "sources": [
+        "packages/domain/**",
+        "packages/db/**",
+        "packages/engine-adapter/**",
+        "packages/rules-data/**",
+        "packages/testkit/**",
+        "vendor/tcg-engines/**",
+        "infra/**"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "README.md"
+      ],
+      "task_ids": [
+        "BOOT-02",
+        "BOOT-03",
+        "BOOT-05",
+        "RULE-01",
+        "RULE-02",
+        "UX-01",
+        "UX-02"
+      ],
+      "requirement_ids": [],
+      "evidence": []
+    }
+  ]
+}

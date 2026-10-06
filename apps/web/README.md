@@ -1,3 +1,7 @@
-# web
+# apps/web
 
-React/Vite foundation client. Semantic diagnostic controls and a lazy synthetic Babylon scene; this is infrastructure evidence, not final game presentation. `pnpm dev` at the repository root supervises the entire stack on 5173/3001/3002. See the root README for checks.
+Semantic React/Vite diagnostic client, service readiness and opt-in synthetic rendering on 5173. Uses CSS Modules and React Aria; same-origin local proxies reach API 3001/match 3002. Renderer controls remain usable on initialization failure.
+
+Current behavior and callable contracts: [F-WEB](../../docs/FEATURES.md). Exact manifests/types and source define the interface; [BOOT-01 evidence](../../docs/validation/boot-01.md) records validation and limits. This is infrastructure foundation. Full game/device/production acceptance remains pending.
+
+Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for changes, documentation impact review and timestamped test evidence. Runtime/build/test dependencies belong to this workspace; root tasks follow the dependency graph.

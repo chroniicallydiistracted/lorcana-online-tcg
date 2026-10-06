@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261006-001",
+  "title": "Retrospective bootstrap publication",
+  "actor": "Codex developer / architect / QA; Director historical evidence labeled separately",
+  "status": "finalized",
+  "recorded_at": "2026-10-06T18:57:12.487Z",
+  "occurred_at": "2026-10-06T04:23:34Z",
+  "event_time_basis": "git_commit",
+  "source_commit": "335da7edffea40294b8dcf60ae256524432c350b",
+  "task_ids": [
+    "BOOT-01",
+    "BOOT-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-WORKSPACE",
+    "F-CONNECTIVITY",
+    "F-RESERVED"
+  ],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "Pinned Dev Container/PostgreSQL, non-root user, private credential generator, root/bootstrap checks, editor tooling and reserved workspace ownership."
+    },
+    {
+      "kind": "documentation",
+      "description": "Full vision/checklist/registers, setup/qualification and archive provenance introduced."
+    },
+    {
+      "kind": "test",
+      "description": "Archive preparation and Director-supplied PC bootstrap/connectivity results retained as historical reports; exact test times unknown."
+    },
+    {
+      "kind": "function",
+      "description": "Bootstrap/configuration/credential/HTTP callable implementations retained in Git; current callable inventory is observed later, not creation-time evidence."
+    }
+  ],
+  "files": [
+    ".devcontainer/Dockerfile",
+    ".devcontainer/compose.yaml",
+    ".devcontainer/devcontainer.json",
+    ".dockerignore",
+    ".editorconfig",
+    ".env.example",
+    ".gitattributes",
+    ".gitignore",
+    ".node-version",
+    ".vscode/extensions.json",
+    ".vscode/launch.json",
+    ".vscode/settings.json",
+    ".vscode/tasks.json",
+    "AGENTS.md",
+    "README.md",
+    "SHA256SUMS.txt",
+    "VALIDATION_RESULTS.json",
+    "apps/api/README.md",
+    "apps/match-service/README.md",
+    "apps/web/README.md",
+    "apps/worker/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0001-local-development-environment.md",
+    "docs/runbooks/workspace-setup.md",
+    "docs/vision/Development_Blueprint_2026-10-05.md",
+    "docs/vision/README.md",
+    "docs/vision/additional_scope.csv",
+    "docs/vision/container-manifests.json",
+    "docs/vision/decision_register.csv",
+    "docs/vision/dependencies.json",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/original_action_items.md",
+    "docs/vision/requirement_groups.json",
+    "docs/vision/requirements.csv",
+    "docs/vision/rules_certification_template.csv",
+    "docs/vision/source_register.json",
+    "infra/README.md",
+    "package.json",
+    "packages/contracts/README.md",
+    "packages/db/README.md",
+    "packages/design-system/README.md",
+    "packages/domain/README.md",
+    "packages/engine-adapter/README.md",
+    "packages/presentation/README.md",
+    "packages/rules-data/README.md",
+    "packages/testkit/README.md",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "scripts/db-check.mjs",
+    "scripts/doctor.mjs",
+    "scripts/init-local-env.py",
+    "scripts/post-create.mjs",
+    "scripts/process.mjs",
+    "scripts/serve-smoke.mjs",
+    "scripts/test-bootstrap.mjs",
+    "scripts/verify-config.py",
+    "scripts/verify.mjs",
+    "tests/env_test.py",
+    "tests/smoke.test.mjs",
+    "toolchain.json",
+    "vendor/tcg-engines/README.md"
+  ],
+  "documentation_reviews": [],
+  "verification": [
+    {
+      "evidence": "VALIDATION_RESULTS.json",
+      "outcome": "historical",
+      "scope": "Original archive preparation; not current checkout validation"
+    },
+    {
+      "evidence": "docs/WORKSPACE_QUALIFICATION.md",
+      "outcome": "historical",
+      "scope": "Director PC setup and old plain Windows connectivity"
+    }
+  ],
+  "limitations": [
+    "Retrospective import; event time is Git commit time, not test time.",
+    "BOOT-01 application and BOOT-02 role/persistence acceptance were incomplete."
+  ],
+  "next_actions": [
+    "Use current source and handoff over the bootstrap snapshot."
+  ]
+}

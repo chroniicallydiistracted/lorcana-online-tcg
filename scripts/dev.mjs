@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 import { watch } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { terminateGroups } from './process-groups.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 if (process.env.APP_ENV !== 'local') throw new Error('Run pnpm dev inside the local Dev Container');
@@ -9,6 +10,7 @@ if (process.env.APP_ENV !== 'local') throw new Error('Run pnpm dev inside the lo
 const env = { PATH: process.env.PATH, HOME: process.env.HOME, APP_ENV: 'local', NODE_ENV: 'development' };
 const children = new Set();
 const servers = new Set();
+const terminating = new Map();
 const watchers = [];
 let stopping = false;
 let restarting = false;
@@ -18,18 +20,22 @@ const done = new Promise(resolve => { finish = resolve; });
 function launch(command, args) {
   const child = spawn(command, args, { cwd: root, env, stdio: 'inherit', detached: true });
   children.add(child);
-  child.on('exit', () => { children.delete(child); servers.delete(child); });
+  // Retain group ownership until descendants are confirmed stopped, including failed leaders.
+  child.on('exit', () => { servers.delete(child); });
   return child;
 }
 async function terminate(running) {
-  const exits = running.map(child => once(child, 'exit'));
-  for (const child of running) { try { process.kill(-child.pid, 'SIGTERM'); } catch { /* Already exited. */ } }
-  const timeout = setTimeout(() => {
-    for (const child of running) { try { process.kill(-child.pid, 'SIGKILL'); } catch { /* Already exited. */ } }
-  }, 12000);
-  timeout.unref();
-  await Promise.all(exits);
-  clearTimeout(timeout);
+  const pending = [];
+  for (const child of running) {
+    if (!children.has(child)) continue;
+    if (!terminating.has(child)) terminating.set(child, terminateGroups([child]).then(() => {
+      children.delete(child);
+      servers.delete(child);
+      terminating.delete(child);
+    }));
+    pending.push(terminating.get(child));
+  }
+  await Promise.all(pending);
 }
 async function stop(code = 0) {
   if (stopping) return;
@@ -64,6 +70,7 @@ process.once('SIGINT', () => { void stop(); });
 process.once('SIGTERM', () => { void stop(); });
 const build = launch('pnpm', ['build']);
 const [code] = await once(build, 'exit');
+await terminate([build]);
 if (code !== 0 || stopping) await stop(code ?? 1);
 else {
   startServers();

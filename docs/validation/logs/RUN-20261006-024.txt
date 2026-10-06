@@ -1,0 +1,309 @@
+
+> lorcana-online-tcg@0.0.0 verify:clean /workspaces/lorcana-online-tcg
+> node scripts/validate-clean-checkout.mjs
+
+Scope: all 9 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +185
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 185, reused 185, downloaded 0, added 185, done
+
+devDependencies:
++ @eslint/js 10.0.1
++ ajv 8.20.0
++ eslint 10.12.0
++ parse5 8.0.0
++ postcss-value-parser 4.2.0
++ typescript 6.0.3
++ typescript-eslint 8.71.1
+
+Done in 925ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 verify:foundation /tmp/lorcana-clean-checkout-a6Nydn
+> pnpm verify && pnpm typecheck && pnpm lint && pnpm test
+
+
+> lorcana-online-tcg@0.0.0 verify /tmp/lorcana-clean-checkout-a6Nydn
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":227,"documents":147,"functions":288,"changes":4,"runs":41}
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn
+> pnpm -r --filter './packages/**' --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck
+
+Scope: 4 of 9 workspace projects
+
+> @lorcana/contracts@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/service-runtime@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/packages/service-runtime
+> tsc -p tsconfig.json
+
+Scope: 8 of 9 workspace projects
+
+> @lorcana/contracts@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/design-system@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn/packages/design-system
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/presentation@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn/packages/presentation
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/web@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/service-runtime@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn/packages/service-runtime
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/api@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn/apps/api
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-service@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn/apps/match-service
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/worker@0.0.0 typecheck /tmp/lorcana-clean-checkout-a6Nydn/apps/worker
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 lint /tmp/lorcana-clean-checkout-a6Nydn
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /tmp/lorcana-clean-checkout-a6Nydn
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+
+> lorcana-online-tcg@0.0.0 test /tmp/lorcana-clean-checkout-a6Nydn
+> pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test tests/foundation/*.test.mjs && pnpm test:documentation
+
+
+> lorcana-online-tcg@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn
+> pnpm boundaries && pnpm -r --workspace-concurrency=1 build
+
+
+> lorcana-online-tcg@0.0.0 boundaries /tmp/lorcana-clean-checkout-a6Nydn
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+Scope: 8 of 9 workspace projects
+
+> @lorcana/contracts@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/web@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/apps/web
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 2509 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           0.38 kB │ gzip:   0.28 kB
+dist/assets/index-Cs1RDOyn.css                            0.96 kB │ gzip:   0.54 kB
+dist/assets/postprocess.vertex-DJCmMhI8.js                0.46 kB │ gzip:   0.30 kB
+dist/assets/shaderStore-D-XQlhUT.js                       0.46 kB │ gzip:   0.17 kB
+dist/assets/rgbdDecode.fragment-Cdz2Tveq.js               0.52 kB │ gzip:   0.34 kB
+dist/assets/postprocess.vertex-CmVXXq2T.js                0.58 kB │ gzip:   0.35 kB
+dist/assets/rgbdDecode.fragment-DXl2fYur.js               0.66 kB │ gzip:   0.38 kB
+dist/assets/math.scalar.functions-lnL7TJ7T.js             0.76 kB │ gzip:   0.41 kB
+dist/assets/color.fragment-SH3AKoaS.js                    0.87 kB │ gzip:   0.42 kB
+dist/assets/mesh.vertexData.functions-CD4JOR2q.js         0.93 kB │ gzip:   0.48 kB
+dist/assets/color.fragment-DVaYbzXa.js                    0.98 kB │ gzip:   0.45 kB
+dist/assets/ddsTextureLoader-SUzNMfHU.js                  1.25 kB │ gzip:   0.62 kB
+dist/assets/color.vertex-UAuK67V9.js                      1.35 kB │ gzip:   0.61 kB
+dist/assets/color.vertex-BYaj1Jpp.js                      1.41 kB │ gzip:   0.61 kB
+dist/assets/logger-CuBYPcDK.js                            1.88 kB │ gzip:   0.82 kB
+dist/assets/logDepthDeclaration-BKcd_JEL.js               2.16 kB │ gzip:   0.85 kB
+dist/assets/fogFragment-WPqtYpyX.js                       2.20 kB │ gzip:   0.70 kB
+dist/assets/hdrTextureLoader-BQVwkxK1.js                  2.31 kB │ gzip:   1.13 kB
+dist/assets/fogFragment-NFgubt9V.js                       2.43 kB │ gzip:   0.76 kB
+dist/assets/iesTextureLoader-3O5bSkSd.js                  2.47 kB │ gzip:   1.07 kB
+dist/assets/logDepthDeclaration-CLGvI4QS.js               2.54 kB │ gzip:   0.84 kB
+dist/assets/tgaTextureLoader-CqhhocF6.js                  3.40 kB │ gzip:   1.35 kB
+dist/assets/cubemapToSphericalPolynomial-Cow80Y1q.js      3.65 kB │ gzip:   1.60 kB
+dist/assets/typeStore-CuqQeP4D.js                         4.87 kB │ gzip:   1.80 kB
+dist/assets/helperFunctions-BH8P-eyq.js                   6.48 kB │ gzip:   2.18 kB
+dist/assets/helperFunctions-gEnZbjN3.js                   6.81 kB │ gzip:   2.31 kB
+dist/assets/dds.pure-C7DU-AaQ.js                          6.93 kB │ gzip:   2.54 kB
+dist/assets/vertexColorMixing-HinktY3n.js                10.39 kB │ gzip:   2.14 kB
+dist/assets/vertexColorMixing-CBmtHj8r.js                11.72 kB │ gzip:   2.17 kB
+dist/assets/exrTextureLoader-CnTPH-Vr.js                 13.14 kB │ gzip:   4.81 kB
+dist/assets/ktxTextureLoader-dpLybHKK.js                 16.40 kB │ gzip:   4.78 kB
+dist/assets/guid-BN1U1Zos.js                             17.72 kB │ gzip:   6.15 kB
+dist/assets/default.vertex-CF_7OiRp.js                   19.62 kB │ gzip:   4.39 kB
+dist/assets/basisTextureLoader-D3RS-HxJ.js               27.22 kB │ gzip:   8.16 kB
+dist/assets/envTextureLoader-CJuZZyq6.js                 31.54 kB │ gzip:   8.87 kB
+dist/assets/default.vertex-uAWj3KN-.js                   38.03 kB │ gzip:   6.28 kB
+dist/assets/math.color.pure-DQiG_7Jy.js                  77.34 kB │ gzip:  18.33 kB
+dist/assets/default.fragment-DOpJD8Rt.js                110.44 kB │ gzip:  22.56 kB
+dist/assets/default.fragment-JYy_LTJ1.js                115.22 kB │ gzip:  22.38 kB
+dist/assets/index-B88SrFUm.js                           300.92 kB │ gzip:  94.04 kB
+dist/assets/src-D7bU7ogr.js                           1,084.54 kB │ gzip: 261.58 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 433ms
+
+> @lorcana/service-runtime@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/packages/service-runtime
+> tsc -p tsconfig.json
+
+
+> @lorcana/api@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/apps/api
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/worker@0.0.0 build /tmp/lorcana-clean-checkout-a6Nydn/apps/worker
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 test:bootstrap /tmp/lorcana-clean-checkout-a6Nydn
+> node scripts/test-bootstrap.mjs
+
+✔ browser connectivity contract serves readiness and rejects other routes/methods (25.980313ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.747927
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK
+Scope: 8 of 9 workspace projects
+
+> @lorcana/contracts@0.0.0 test /tmp/lorcana-clean-checkout-a6Nydn/packages/contracts
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+✔ public diagnostics reject private data and malformed service responses (2.276039ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 176.111141
+
+> @lorcana/presentation@0.0.0 test /tmp/lorcana-clean-checkout-a6Nydn/packages/presentation
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+BJS - [19:46:40]: Babylon.js v9.29.0 - Null engine
+BJS - [19:46:40]: Babylon.js v9.29.0 - Null engine
+BJS - [19:46:40]: Babylon.js v9.29.0 - Null engine
+✔ synthetic scene renders and releases meshes and engine through repeatable mount/dispose (403.042119ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 575.445004
+
+> @lorcana/service-runtime@0.0.0 test /tmp/lorcana-clean-checkout-a6Nydn/packages/service-runtime
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+✔ shutdown interrupts pending initialization and calls cleanup: async () =>  (53.15517ms)
+✔ shutdown interrupts pending initialization and calls cleanup: signal => {  (47.331198ms)
+✔ HTTP service serves scoped diagnostics, rejects unknown routes, and drains readiness (118.474179ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 339.294384
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1677.417275ms)
+✔ declaring a database dependency in a public contract package is rejected (210.188108ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (212.201423ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (218.510911ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (202.082886ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (825.379782ms)
+✔ built browser assets contain no server configuration or bootstrap credential (6.363097ms)
+✔ built application processes start, remain alive and stop on both signals without public worker ingress (1940.124036ms)
+✔ development supervisor rejects a busy service port and leaves the existing listener intact (8606.270418ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10587.38618
+
+> lorcana-online-tcg@0.0.0 test:documentation /tmp/lorcana-clean-checkout-a6Nydn
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (272.190574ms)
+✔ source changes during a command prevent a successful evidence claim (262.673835ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1751.75344ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.416245ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1965.515954ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.337582ms)
+✔ new documentation governance exposes real validation and sync operations (0.908238ms)
+✔ source drift requires a covering change and review of impacted documentation (298.831594ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (79.278193ms)
+✔ change records reject unqualified timestamps and historical execution inventions (14.828059ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (70.61121ms)
+✔ documentation edits and newly added source files require recorded coverage (105.065808ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (13.639226ms)
+✔ committed finalized history cannot be changed or deleted (116.525944ms)
+✔ log tampering and exit status contradictions invalidate execution evidence (177.751033ms)
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history (71.593988ms)
+✔ removing old source-impact edges cannot erase required documentation reviews (76.196587ms)
+✔ committing a rewrite does not make sealed history valid (139.151382ms)
+✔ executed passing evidence needs a log and consistent execution/recording times (50.88659ms)
+✔ isolated branches are not required to contain unrelated scope history (143.392798ms)
+✔ a misspelled documentation impact path cannot silently disable reviews (14.768702ms)
+✔ human device reports preserve verdict without inventing process exit or machine verification (175.573632ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4467.218994
+PASS clean source-only frozen install and complete foundation validation; no local credentials, Git state or database connection copied.

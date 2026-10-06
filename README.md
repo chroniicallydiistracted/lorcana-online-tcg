@@ -27,11 +27,13 @@ Open forwarded **5173** from VS Code's Ports panel. Expect **Application foundat
 | Command | Evidence |
 |---|---|
 | `pnpm run doctor` | Toolchain, Linux, local environment and owner-only credential checks |
-| `pnpm verify` / `pnpm test:bootstrap` | Preserved configuration/syntax checks, live connectivity and credential tests |
+| `pnpm verify` / `pnpm test:bootstrap` | Configuration/syntax plus documentation consistency; live connectivity and credential tests |
+| `pnpm docs:check` / `pnpm test:documentation` | Documentation/history/source/log consistency and negative proof regressions |
+| `pnpm verify:clean` | Source-only fresh frozen install and complete foundation validation without credentials or built artifacts |
 | `pnpm typecheck` | Shared declaration builds followed by strict checks across all apps/packages |
 | `pnpm lint` | ESLint and browser/public ownership checks |
 | `pnpm build` | Ordered shared-package declarations/ESM, web bundle and three executable server apps |
-| `pnpm test` | Builds, bootstrap, schema/service/scene tests, negative boundaries, bundle and real-process lifecycle checks |
+| `pnpm test` | Builds, bootstrap, schema/service/scene tests, negative boundaries, bundle, real-process lifecycle and documentation/evidence regression checks |
 | `pnpm test:e2e:smoke` | Linux Chromium, live services, software WebGL, resize/remount, keyboard controls and unavailable-service behavior |
 | `pnpm db:check` | Existing bootstrap administrator connection only |
 
@@ -58,3 +60,11 @@ Dependencies are exact pins in owning workspaces. The lockfile covers nine works
 See [workspace qualification](docs/WORKSPACE_QUALIFICATION.md) and [BOOT-01 validation](docs/validation/boot-01.md) for executed checks and their limits. The lazy synthetic renderer still triggers Vite's large-chunk warning; this is not performance qualification.
 
 BOOT-02 remains restricted database roles, migrations, isolated test DB and persistence through recreation. BOOT-03 remains CI/artifact checks; BOOT-05 remains protocol/release compatibility. RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).
+
+## Development continuity
+
+Every developer/agent follows [the universal workflow](docs/DEVELOPMENT_WORKFLOW.md) and [versioned changelog format](docs/CHANGELOG_FORMAT.md). Start at [the documentation index](docs/README.md) and [current handoff](docs/HANDOFF.md). Keep relevant docs and action status current at implementation/test checkpoints; record UTC timestamps, changed files/functions/features, review dispositions, results and limitations.
+
+Use `pnpm evidence:run --id RUN-YYYYMMDD-NNN --category container -- pnpm verify:foundation` to preserve actual output/source identity. Update the draft change record, then run `pnpm docs:sync --change CHG-YYYYMMDD-NNN` and `pnpm docs:check`. The consistency gate is part of `pnpm verify`; `pnpm test:documentation` exercises negative drift/proof cases. [CHANGELOG.md](CHANGELOG.md) and the file/callable snapshot are generated; committed final history is corrected by appending a new record.
+
+The [2026-10-06 audit](docs/audits/2026-10-06-project-audit.md) addresses the original assignment and repository-owned directory contents. Actual Windows foundation observation is still pending; the earlier plain connectivity page and Linux headless rendering do not satisfy that check.

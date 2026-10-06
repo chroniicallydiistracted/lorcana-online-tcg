@@ -1,4 +1,4 @@
-# BOOT-01 implementation contract
+# BOOT-01 implementation contract (historical plan)
 
 Director assignment: 5 October 2026, America/Phoenix. Baseline: main 335da7e; clean at takeover. Branch: codex/boot-01-foundation.
 
@@ -13,3 +13,7 @@ Implement the approved blueprint package ownership with four executable apps. Co
 7. Record ADR, pins/build-script review, qualification evidence and partial original-requirement mapping; commit reviewable work without merging main or deploying.
 
 BOOT-01 acceptance does not imply BOOT-02, BOOT-03, BOOT-05, rules, auth, complete renderer quality, gameplay or device acceptance. Synthetic geometry only; no source/card/art reuse at this milestone. Archive hashes remain original archive provenance.
+
+## Recorded outcome
+
+Technical foundation steps were implemented in reachable commit `8c94b274ebd6ad91223cdb6df085ca0597c107c9`; see [evidence](../validation/boot-01.md). The requested real Windows foundation smoke remains pending by the Director's 2026-10-06 update. This plan records the original assignment; use the current handoff and task register for present execution state.

@@ -1,0 +1,16 @@
+Independent read-only lifecycle review. Exact UTC start/end were not captured. Executed inside the existing Dev Container. No ports were bound. Shared source files were not modified.
+
+Command: node --test tests/foundation/process-groups.test.mjs
+✔ supervisor cleanup stops a descendant even when its leader exits first (148.431343ms)
+✔ cleanup retains the group of an already-exited leader (145.183014ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 336.732032
+
+Synthetic integration: temporary copy of current dev.mjs and process-groups.mjs, fake pnpm wrapper, and three harmless synthetic service entrypoints. Wrapper exits 1 after creating a SIGTERM-ignoring descendant. Actual helper default grace is retained. Assertions require supervisor exit 1, four reported owned PIDs, no executable owned descendants, and empty stderr.
+{"result":[1,null],"ownedPids":[44900,44901,44927,44899],"executableAfterExit":[],"elapsed_ms":12402}

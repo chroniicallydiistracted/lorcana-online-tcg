@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-019",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:clean"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "43eda8b93cef468df1d0c7ae7dee6b1fa02813b285d333f17b89e325d7a9b173",
+  "started_at": "2026-10-06T19:35:45.600Z",
+  "finished_at": "2026-10-06T19:35:49.019Z",
+  "recorded_at": "2026-10-06T19:35:49.019Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3418,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Completed clock-qualified source: fresh frozen installation, builds, strict types, lint and41 foundation/governance tests",
+  "log_path": "docs/validation/logs/RUN-20261006-019.txt",
+  "log_sha256": "d0a6d428ace09dc700f3020960017734423da82e9510f8a7abd18aafb473befd",
+  "redactions": 0
+}

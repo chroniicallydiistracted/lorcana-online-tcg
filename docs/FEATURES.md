@@ -1,0 +1,25 @@
+# Current feature and function register
+
+The machine register [features.json](features.json) maps each feature to source, owning documentation, task IDs, requirement prerequisites and evidence. [current-state.json](current-state.json) enumerates callable definitions/callbacks and source hashes with one explicit observation timestamp. Function implementation history is the timestamped changed-file record plus Git diff; earlier creation times are unknown unless a commit provides them. Inventory presence does not establish correctness.
+
+| Feature | Current callable behavior and ownership | Acceptance limit |
+|---|---|---|
+| F-WORKSPACE | `doctor`, configuration verifier and `init-local-env.py`: exact toolchain/Linux checks; owner-only credential generation preserves values; post-create uses frozen install and baseline checks | Local bootstrap administrator; no persistence/restricted-role proof |
+| F-CONNECTIVITY | `serve-smoke.mjs`: single independent HTTP diagnostic on 5173; bootstrap test uses a live connection | Old Windows connectivity evidence only |
+| F-CONTRACTS | `HealthSchema`, `ReadinessSchema`, `parseReadiness(unknown)`: public foundation service/status objects, extra properties rejected; malformed readiness throws | No match/protocol/economy/private state contract |
+| F-HTTP | `createHttpService(service)`: Fastify app/drain; liveness 200, readiness 200 or 503; `runHttpService(name,port)` listens with shared lifecycle; API 3001 and match 3002 | Local diagnostics only; no DB/rules/auth check |
+| F-LIFECYCLE | `requireLocalEnvironment()` rejects non-local mode; `serveUntilShutdown({start,stop})` registers signals, supplies AbortSignal, drains/closes, bounds shutdown at 10 seconds | Startup must cooperate with cancellation for late resources |
+| F-WORKER | Worker invokes shared lifecycle and remains idle until SIGINT/SIGTERM | No ingress, queue or job execution |
+| F-WEB | `App`, `ServiceStatus`, `RenderingCheck`: semantic service status, readiness parsing, lazy scene activation/error and cancellation cleanup; `ActionButton` uses React Aria | Diagnostic UI, no approved game art or full accessibility acceptance |
+| F-RENDERER | `mountSanityScene(canvas,options)` returns scene, frame count and idempotent dispose; owns engine/scene/frame loop/ResizeObserver; initialization failures dispose | Synthetic table+three shapes; NullEngine simulation and software WebGL only |
+| F-BOUNDARIES | Dependency/source/asset ownership checks plus Vite boundary plugin; CSS/HTML/module resolver inspection, filesystem restriction and bundle negative tests | Module/asset boundary; no whole-program secrecy or certified viewer projection |
+| F-SUPERVISOR | `dev.mjs` starts source processes, sanitizes children and watches source; `terminateGroups(children,{graceMs})` retains ownership through leader exit, waits for live Linux process-group members with a monotonic deadline, then escalates and verifies stopped descendants; shared promises make overlapping cleanup idempotent | Linux Dev Container; fixed local ports; preserve unrelated groups; throws if owned members survive bounded SIGKILL |
+| F-DOCS | Documentation schemas/map, `checkDocumentation`, `syncDocumentation`, `sourceFingerprint`, `functionInventory`, `renderChangelog`: drift/coverage/links/status/identity checks and generated views | Semantic accuracy needs explicit review; CI deferred |
+| F-EVIDENCE | `recordCommand({root,id,category,command,...})`, `redact`: exact run metadata, monotonic/wall-clock discontinuity detection, exclusive logs, failure/signal capture, bounded termination, supported redaction and source drift detection | Unknown secret forms need log review; hashes are identity proof |
+| F-RESERVED | domain, db, engine-adapter, rules-data, testkit, vendor and infrastructure reservation docs | No implementation; future BOOT/RULE/UX tasks own acceptance |
+
+Review the owning source for full signatures and comments; generated callable rows make line changes discoverable. Package READMEs link this register rather than duplicating evidence results. Tests are inventoried as callable code and linked through run logs. External APIs, new functions, removals and behavior changes must update the feature/map/change records and relevant package/architecture docs.
+
+BOOT-01 technical checks passed historically and are rechecked in the audit; actual Windows foundation observation remains pending by the Director's 2026-10-06 update. The full 548-item product scope, including 20 optional flags, stays planned/unverified. There are no implemented gameplay, auth, economy, persistence/migrations, CI, release protocol or qualified engine features.
+
+`terminateGroups` accepts detached ChildProcess entries, including already-exited leaders, whose PID is their owned group ID. It signals only those groups, waits up to 12 seconds for graceful stop, then verifies SIGKILL completion within one second. Zombie/dead members cannot execute; other errors or surviving members fail cleanup. The development supervisor shares concurrent cleanup promises and releases ownership only after this proof.

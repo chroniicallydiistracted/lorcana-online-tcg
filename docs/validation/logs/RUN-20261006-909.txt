@@ -1,0 +1,41 @@
+
+> lorcana-online-tcg@0.0.0 doctor /workspaces/lorcana-online-tcg
+> node scripts/doctor.mjs
+
+PASS Node 24.21.0
+PASS pnpm 10.33.0
+PASS Linux development environment
+PASS .env.local exists with owner-only access
+PASS Local environment loaded into container
+PASS Container database address
+PASS Generated database bootstrap configuration
+Workspace toolchain ready. Run pnpm db:check to verify authenticated database access.
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 test:bootstrap /workspaces/lorcana-online-tcg
+> node scripts/test-bootstrap.mjs
+
+✔ browser connectivity contract serves readiness and rejects other routes/methods (35.650584ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.491294
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK
+
+> lorcana-online-tcg@0.0.0 db:check /workspaces/lorcana-online-tcg
+> node scripts/db-check.mjs
+
+PASS authenticated PostgreSQL 18 connection to the local bootstrap database.

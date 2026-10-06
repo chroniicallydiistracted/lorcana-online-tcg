@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-029",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {mkdtempSync,rmSync} from 'node:fs';\nimport {tmpdir} from 'node:os';\nimport {join} from 'node:path';\nimport {spawnSync} from 'node:child_process';\nimport {sourceFingerprint} from './scripts/documentation-lib.mjs';\nconst temporary=mkdtempSync(join(tmpdir(),'lorcana-git-checkout-'));\ntry {\n const archive=spawnSync('git',['archive','6b5da83ae0b47cd9c741548a77d70bff7a39b1de'],{maxBuffer:16*1024*1024});\n if(archive.status!==0)throw new Error('Git archive failed');\n const unpack=spawnSync('tar',['-xf','-','-C',temporary],{input:archive.stdout});\n if(unpack.status!==0)throw new Error('Archive extraction failed');\n if(sourceFingerprint(temporary)!==sourceFingerprint(process.cwd()))throw new Error('Canonical Git source fingerprint differs');\n const environment={...process.env};\n for(const key of Object.keys(environment))if(/^(?:PG|POSTGRES|DATABASE_|BOOTSTRAP_)|SECRET|PASSWORD|TOKEN|PRIVATE_KEY/.test(key))delete environment[key];\n for(const args of [['install','--frozen-lockfile'],['verify:foundation']]) {\n  const result=spawnSync('pnpm',args,{cwd:temporary,env:environment,stdio:'inherit'});\n  if(result.status!==0)throw new Error('Canonical Git checkout check failed: '+args.join(' '));\n }\n console.log('PASS canonical Git checkout frozen install and full41-test foundation; source fingerprint equals final live source; no credentials/database copied');\n} finally {rmSync(temporary,{recursive:true,force:true});}\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "5ba0007984598a4d0f63a63dcef110d43fc8e8e718c0ff823fb03bf375f69361",
+  "started_at": "2026-10-06T19:54:44.785Z",
+  "finished_at": "2026-10-06T19:55:27.024Z",
+  "recorded_at": "2026-10-06T19:55:27.024Z",
+  "time_precision": "exact",
+  "elapsed_ms": 42228,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Canonical staged Git checkout frozen install and complete41-test foundation proof; exact executable fingerprint matches final source",
+  "log_path": "docs/validation/logs/RUN-20261006-029.txt",
+  "log_sha256": "80d888ad9b89445c621788ad0fd1745ed8e3ed21c5b35b53b6dec1bf9de3c4d9",
+  "redactions": 0
+}

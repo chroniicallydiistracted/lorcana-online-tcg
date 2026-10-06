@@ -14,7 +14,7 @@ Director handoff: 2026-10-05, America/Phoenix. Agent validation: 2026-10-06 UTC 
 
 These are historical Director observations, not agent-executed tests. Original archive preparation evidence remains in `VALIDATION_RESULTS.json` under its [provenance scope](ARCHIVE_PROVENANCE.md).
 
-## Fresh agent observations and checks
+## Foundation-session agent observations and checks (2026-10-06 UTC / 2026-10-05 Phoenix)
 
 | Check | Result and scope |
 |---|---|
@@ -38,3 +38,21 @@ Bare `pnpm doctor` is the package manager's built-in command; its zero exit does
 BOOT-02 remains incomplete: restricted roles, migrations, isolated test database, persistence through recreation and backup/restore proof. BOOT-03 CI/artifact/security/license scans and BOOT-05 protocol/release versioning remain pending. No gameplay, upstream engine/current-rules, hidden-state engine projection, auth, migration, real touch device, sustained GPU/load/accessibility or production tests were performed. The foundation's local import boundary and semantic keyboard proofs do not complete those product requirements.
 
 The OS apt layer remains repository-resolved, not an immutable qualified production image. New forwarding entries 3001/3002 are configuration evidence until the editor applies them; the web proxies require only the existing 5173 forward.
+
+## Documentation-audit session, 2026-10-06 Phoenix
+
+Intake was clean on `codex/boot-01-foundation` at reachable `8c94b274ebd6ad91223cdb6df085ca0597c107c9`; audit work uses `codex/documentation-governance`. The actual existing Compose project was discovered again; workspace and healthy postgres were reachable. The source bind mount, private environment and database volume were preserved. No foundation listener was active on5173/3001/3002 at intake.
+
+Before editing, project doctor, preserved verify, all five bootstrap tests and authenticated database check passed inside the existing Dev Container. [The dated audit](audits/2026-10-06-project-audit.md) and durable run records distinguish final fresh validation from imported prior-session logs. The previous clean proof is tied to reachable source through [a retained equivalence manifest](validation/boot-01-source-manifest.json).
+
+The Director reported Windows foundation verification was not performed; it remains pending. No actual Windows, phone/tablet, hardware-GPU, persistence recreation or production verification is added by this documentation work. New scope X06/X07 is governed by [the universal workflow](DEVELOPMENT_WORKFLOW.md).
+
+Clock-qualified pre-supervisor checkpoint: RUN-024 passed source-only frozen installation, builds/types/lint and 41 tests; RUN-025 passed doctor, RUN-026 read-only DB and RUN-027 four Linux browser checks. These are preserved pre-correction receipts, superseded by the final results below. All share the final executable-source fingerprint and consistent monotonic capture. RUN-029 additionally passed frozen installation and all 41 tests from canonical Git checkout bytes, confirming the documentation snapshot survives Git LF normalization. Local documentation gates and independent review support DOC-01/DOC-02; Windows and previously pending product/device/persistence/production gates remain pending.
+
+Clock qualification: original RUN-017 showed a reversed UTC interval and remains byte-for-byte in [the evidence archive](validation/archive/RUN-20261006-017-original.json), with historical quarantine RUN-018 and its log. Cause unconfirmed. Monotonic duration/discontinuity guards now reject passing timing proof on inconsistent clock samples. RUN-012…015 are successful pre-correction checkpoints; current receipts are RUN-024…027 in CHG-004. No Windows observation was performed.
+
+Final supervisor-corrected acceptance: RUN-040 passed frozen source-only installation, builds/types/lint and 43 tests (21 foundation, 22 governance); RUN-041 passed doctor; RUN-042 passed read-only DB; RUN-043 passed four Linux browser checks. RUN-044 confirms actual foundation listener cleanup. All match the corrected executable fingerprint. DOC-01/DOC-02 are implemented_verified; Windows and all previously pending product/device/persistence/production gates remain pending. Earlier RUN-024…029 are successful pre-correction checkpoints, not current-source acceptance.
+
+RUN-033 exposed an owned Vite orphan after the canonical checkout suite exited0. Failed baseline RUN-036 reproduced the original algorithm leaving an executable descendant. The supervisor now retains group ownership through leader exit, shares cleanup promises, verifies live descendants with monotonic bounds and escalates if needed. Both actual descendant cases and an independently reviewed port-free synthetic integration passed. The identity-checked orphan alone was stopped; no unrelated process/data was changed.
+
+Final canonical Git-checkout proof: RUN-045 passed frozen install, builds/types/lint and all 43 tests with the same corrected executable fingerprint as RUN-040…044. Staged source/document formatting passed (RUN-046), and original scope/archive/private-file/known-secret preservation passed (RUN-047). Actual post-canonical listener cleanup and finalized documentation are checked at closure in CHG-005. Windows remains pending.

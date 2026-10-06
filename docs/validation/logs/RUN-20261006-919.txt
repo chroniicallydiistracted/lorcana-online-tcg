@@ -1,0 +1,52 @@
+Independent read-only reviewer: preserved tool output from `docker exec -u node -w /workspaces/lorcana-online-tcg 3e5816dff0be pnpm test:documentation`.
+Individual test-duration annotations are omitted from this preserved transcript. Observed exit code: 1. Exact execution UTC timestamps were not captured; this preservation does not reconstruct them.
+
+> lorcana-online-tcg@0.0.0 test:documentation /workspaces/lorcana-online-tcg
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets
+✔ source changes during a command prevent a successful evidence claim
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed
+✔ known inherited secrets are redacted even when shorter than eight characters
+✖ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive
+✔ new documentation governance exposes real validation and sync operations
+✔ source drift requires a covering change and review of impacted documentation
+✔ unclassified and missing documents fail rather than disappear from the audit
+✔ change records reject unqualified timestamps and historical execution inventions
+✔ a newly changed source cannot be refreshed by replaying an old finalized record
+✔ documentation edits and newly added source files require recorded coverage
+✔ claimed passing evidence requires a real run and unchanged log digest
+✔ committed finalized history cannot be changed or deleted
+✔ log tampering and exit status contradictions invalidate execution evidence
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history
+✔ removing old source-impact edges cannot erase required documentation reviews
+✔ committing a rewrite does not make sealed history valid
+✔ executed passing evidence needs a log and consistent execution/recording times
+✔ isolated branches are not required to contain unrelated scope history
+✔ a misspelled documentation impact path cannot silently disable reviews
+✔ human device reports preserve verdict without inventing process exit or machine verification
+ℹ tests 21
+ℹ suites 0
+ℹ pass 20
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4688.946423
+
+✖ failing tests:
+
+test at tests/documentation/evidence.test.mjs:42:1
+✖ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive
+  AssertionError [ERR_ASSERTION]: Grandchild must be stopped
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/evidence.test.mjs:50:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Command failed with exit code 1.

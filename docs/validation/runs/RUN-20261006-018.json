@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-018",
+  "category": "historical",
+  "command": [
+    "clock-discontinuity-import",
+    "docs/validation/archive/RUN-20261006-017-original.json"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "d45c475d919205b594ca54c3194b358b3cece59c67f7542dcf549e90de2b8ce8",
+  "started_at": null,
+  "finished_at": null,
+  "recorded_at": "2026-10-06T19:34:33.761Z",
+  "time_precision": "unknown",
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "reported",
+  "failure_reason": null,
+  "summary": "Original RUN017 wall samples reversed: started19:29:26.801Z/end19:29:26.160Z on2026-10-06. Original bytes archived; actual process exit0/log retained, timing proof quarantined rather than accepted. Cause of wall-clock correction unconfirmed. Current validation must rerun with monotonic timing.",
+  "log_path": "docs/validation/logs/RUN-20261006-018.txt",
+  "log_sha256": "f09e0b19694781a0b7d3c449612af409f51e7487be03b06089508652782c2f71",
+  "redactions": 0
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-910",
+  "category": "historical",
+  "command": [
+    "retained-output-import",
+    "/tmp/lorcana-docs-red.log"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg",
+  "environment": {
+    "source": "2026-10-06 audit checkpoints, before exact evidence wrapper use; includes failed attempts"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": null,
+  "started_at": null,
+  "finished_at": null,
+  "recorded_at": "2026-10-06T19:07:54.413Z",
+  "time_precision": "unknown",
+  "expected_exit_code": 0,
+  "exit_code": null,
+  "signal": null,
+  "result": "reported",
+  "failure_reason": null,
+  "summary": "lorcana-docs-red: retained actual baseline/development/test/lint output; draft code changed between attempts, intake commit shown only as parent. Exact invocation/time/exit not reconstructed; final source has fresh captured proof.",
+  "log_path": "docs/validation/logs/RUN-20261006-910.txt",
+  "log_sha256": "ddbe00b4445468f851a2ead5cdc50730240399c4de8318aa611233304aa071b4",
+  "redactions": 0
+}

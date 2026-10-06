@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-020",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:clean"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "43eda8b93cef468df1d0c7ae7dee6b1fa02813b285d333f17b89e325d7a9b173",
+  "started_at": "2026-10-06T19:37:35.241Z",
+  "finished_at": "2026-10-06T19:38:18.055Z",
+  "recorded_at": "2026-10-06T19:38:18.055Z",
+  "time_precision": "exact",
+  "elapsed_ms": 42812,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Clock-qualified final source frozen install/build/type/lint with41 foundation/governance tests",
+  "log_path": "docs/validation/logs/RUN-20261006-020.txt",
+  "log_sha256": "23a916375a91a98fc68a4d1fe9a199f69a8a09955f35a4a50c72cdaa4df87873",
+  "redactions": 0
+}

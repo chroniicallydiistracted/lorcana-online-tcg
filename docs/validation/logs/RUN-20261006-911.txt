@@ -1,0 +1,28 @@
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (322.868843ms)
+✔ new documentation governance exposes real validation and sync operations (0.588743ms)
+✖ source drift requires a covering change and review of impacted documentation (199.100493ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (72.315351ms)
+✔ change records reject unqualified timestamps and historical execution inventions (15.356284ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (63.208396ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 613.920273
+
+✖ failing tests:
+
+test at tests/documentation/governance.test.mjs:29:1
+✖ source drift requires a covering change and review of impacted documentation (199.100493ms)
+  Error: Missing documentation review: docs/features.json
+      at Module.syncDocumentation (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:163:190)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:40:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)

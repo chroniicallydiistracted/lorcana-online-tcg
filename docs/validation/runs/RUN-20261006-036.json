@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-036",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/foundation/process-groups.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "17a24559354cc70e85881ba0182bc25646a1ac5d3099f64fe4b0971ad6b4a102",
+  "started_at": "2026-10-06T20:02:06.649Z",
+  "finished_at": "2026-10-06T20:02:06.765Z",
+  "recorded_at": "2026-10-06T20:02:06.765Z",
+  "time_precision": "exact",
+  "elapsed_ms": 116,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Deterministic actual descendant regression against existing supervisor termination algorithm; expected failure when leader exits first",
+  "log_path": "docs/validation/logs/RUN-20261006-036.txt",
+  "log_sha256": "e356f1fbf5f8052dd0e6c12b4cad78d925244dc513fdd8cb75f69af4e30ee704",
+  "redactions": 0
+}

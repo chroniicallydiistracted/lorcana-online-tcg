@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-034",
+  "category": "static",
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path\nimport json,subprocess,csv,io\nbase='8c94b274ebd6ad91223cdb6df085ca0597c107c9'\nfor p in ['docs/vision/requirements.csv','docs/vision/original_action_items.md','docs/vision/Development_Blueprint_2026-10-05.md','docs/vision/dependencies.json','docs/vision/source_register.json','docs/vision/rules_certification_template.csv','docs/vision/decision_register.csv','VALIDATION_RESULTS.json','SHA256SUMS.txt']:\n assert Path(p).read_bytes()==subprocess.check_output(['git','show',base+':'+p]),p+' changed unexpectedly'\nfor p in ['docs/vision/initial_backlog.csv','docs/vision/additional_scope.csv']:\n old=list(csv.reader(io.StringIO(subprocess.check_output(['git','show',base+':'+p]).decode())))\n new=list(csv.reader(Path(p).open()))\n assert new[:len(old)]==old and len(new)==len(old)+2,p+' prior rows changed'\nvalues=[]\nfor line in Path('.env.local').read_text().splitlines():\n if '=' in line and not line.startswith('#'):\n  key,val=line.split('=',1)\n  if any(k in key.upper() for k in ['SECRET','PASSWORD','TOKEN','KEY']):\n   val=val.strip().strip(chr(34)).strip(chr(39))\n   if val:values.append(val.encode())\nassert values,'No known secret values available for scan'\nstate=json.loads(Path('docs/current-state.json').read_text())\npaths=set(state['files'])\npaths.update(str(p) for parent in ['docs/changes','docs/validation/logs','docs/validation/runs','docs/validation/archive'] for p in Path(parent).rglob('*') if p.is_file())\npaths.update(['CHANGELOG.md','docs/current-state.json'])\nhits=[p for p in sorted(paths) if Path(p).is_file() and any(v in Path(p).read_bytes() for v in values)]\nassert not hits,'Secret values found in owned artifacts: '+', '.join(hits)\nassert Path('.env.local').stat().st_mode & 0o777 ==0o600\nr=subprocess.run(['git','diff','--check']);assert r.returncode==0\nr=subprocess.run(['git','check-ignore','--quiet','.env.local']);assert r.returncode==0\nprint('PASS original scope/register/archive preservation, owner-only ignored private file, whitespace and known-secret scan across '+str(len(paths))+' owned artifacts')\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "5ba0007984598a4d0f63a63dcef110d43fc8e8e718c0ff823fb03bf375f69361",
+  "started_at": "2026-10-06T19:58:23.996Z",
+  "finished_at": "2026-10-06T19:58:24.055Z",
+  "recorded_at": "2026-10-06T19:58:24.055Z",
+  "time_precision": "exact",
+  "elapsed_ms": 59,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final post-closure original scope/archive preservation and known-secret/private-file scan across all owned artifacts",
+  "log_path": "docs/validation/logs/RUN-20261006-034.txt",
+  "log_sha256": "54e1f019b124684d5f56e03ec4a44cffe673da15adc2efe956d385966935d9f6",
+  "redactions": 0
+}

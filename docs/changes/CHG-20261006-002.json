@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261006-002",
+  "title": "Retrospective BOOT-01 application foundation",
+  "actor": "Codex developer / architect / QA; Director historical evidence labeled separately",
+  "status": "finalized",
+  "recorded_at": "2026-10-06T18:57:12.487Z",
+  "occurred_at": "2026-10-06T06:46:03Z",
+  "event_time_basis": "git_commit",
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "task_ids": [
+    "BOOT-01"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-WORKSPACE",
+    "F-CONTRACTS",
+    "F-HTTP",
+    "F-LIFECYCLE",
+    "F-WORKER",
+    "F-WEB",
+    "F-RENDERER",
+    "F-BOUNDARIES",
+    "F-SUPERVISOR"
+  ],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "Four executable apps and contracts/presentation/design-system/server-only runtime; exact owning dependencies, strict types, builds and lint."
+    },
+    {
+      "kind": "function",
+      "description": "Foundation schema parsing, diagnostics, cancellable lifecycle, idle worker, synthetic scene and supervised development; public behavior cataloged in FEATURES.md."
+    },
+    {
+      "kind": "feature",
+      "description": "Semantic React diagnostics, opt-in Babylon geometry, private import/asset boundaries, local proxies and fixed port ownership."
+    },
+    {
+      "kind": "fix",
+      "description": "Resolver/HTML/CSS/image-set leakage, pending startup cancellation and sibling process failure regressions fixed with actual negative Vite/process proofs."
+    },
+    {
+      "kind": "test",
+      "description": "Historical clean frozen install/build/type/lint,19 bootstrap/package/process checks and4 Linux browser checks; earlier failed/fix outputs preserved."
+    },
+    {
+      "kind": "documentation",
+      "description": "Foundation ADR/runbook/qualification, package ownership and partial requirement prerequisites recorded."
+    }
+  ],
+  "files": [
+    ".devcontainer/Dockerfile",
+    ".devcontainer/devcontainer.json",
+    ".vscode/tasks.json",
+    "AGENTS.md",
+    "README.md",
+    "apps/api/README.md",
+    "apps/api/package.json",
+    "apps/api/src/main.ts",
+    "apps/api/tsconfig.json",
+    "apps/match-service/README.md",
+    "apps/match-service/package.json",
+    "apps/match-service/src/main.ts",
+    "apps/match-service/tsconfig.json",
+    "apps/web/README.md",
+    "apps/web/index.html",
+    "apps/web/package.json",
+    "apps/web/playwright.config.ts",
+    "apps/web/src/App.module.css",
+    "apps/web/src/App.tsx",
+    "apps/web/src/global.css",
+    "apps/web/src/main.tsx",
+    "apps/web/tests/foundation.spec.ts",
+    "apps/web/tsconfig.json",
+    "apps/web/vite.config.ts",
+    "apps/worker/README.md",
+    "apps/worker/package.json",
+    "apps/worker/src/main.ts",
+    "apps/worker/tsconfig.json",
+    "docs/ARCHIVE_PROVENANCE.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0001-local-development-environment.md",
+    "docs/adr/0002-application-foundation.md",
+    "docs/plans/boot-01-foundation.md",
+    "docs/runbooks/workspace-setup.md",
+    "docs/validation/boot-01.md",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "eslint.config.mjs",
+    "package.json",
+    "packages/contracts/README.md",
+    "packages/contracts/package.json",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/tests/health.test.mjs",
+    "packages/contracts/tsconfig.json",
+    "packages/design-system/README.md",
+    "packages/design-system/package.json",
+    "packages/design-system/src/index.tsx",
+    "packages/design-system/tsconfig.json",
+    "packages/presentation/README.md",
+    "packages/presentation/package.json",
+    "packages/presentation/src/index.ts",
+    "packages/presentation/tests/scene.test.mjs",
+    "packages/presentation/tsconfig.json",
+    "packages/service-runtime/README.md",
+    "packages/service-runtime/package.json",
+    "packages/service-runtime/src/index.ts",
+    "packages/service-runtime/src/lifecycle.ts",
+    "packages/service-runtime/tests/lifecycle.test.mjs",
+    "packages/service-runtime/tests/service.test.mjs",
+    "packages/service-runtime/tsconfig.json",
+    "pnpm-lock.yaml",
+    "scripts/browser-boundary-plugin.mjs",
+    "scripts/check-boundaries.mjs",
+    "scripts/dev.mjs",
+    "scripts/post-create.mjs",
+    "scripts/verify-config.py",
+    "scripts/verify.mjs",
+    "tests/foundation/boundaries.test.mjs",
+    "tests/foundation/browser-bundle.test.mjs",
+    "tests/foundation/processes.test.mjs",
+    "tsconfig.base.json"
+  ],
+  "documentation_reviews": [],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-901.json",
+      "outcome": "historical",
+      "scope": "Prior-session clean validation output; exact invocation/timing/exit metadata unknown"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-902.json",
+      "outcome": "historical",
+      "scope": "Prior-session final workspace output; exact invocation/timing/exit metadata unknown"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-903.json",
+      "outcome": "historical",
+      "scope": "Prior-session preserved checks output; exact invocation/timing/exit metadata unknown"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-904.json",
+      "outcome": "historical",
+      "scope": "Prior-session image build output; exact invocation/timing/exit metadata unknown"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-905.json",
+      "outcome": "historical",
+      "scope": "Prior-session earlier validation output; exact invocation/timing/exit metadata unknown"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-906.json",
+      "outcome": "historical",
+      "scope": "Prior-session fixes output; exact invocation/timing/exit metadata unknown"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-907.json",
+      "outcome": "historical",
+      "scope": "Prior-session browser output; exact invocation/timing/exit metadata unknown"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-908.json",
+      "outcome": "historical",
+      "scope": "Prior-session final fixes output; exact invocation/timing/exit metadata unknown"
+    }
+  ],
+  "limitations": [
+    "Retrospective event timestamp identifies the reachable commit; exact historical test times unknown.",
+    "Windows foundation smoke not performed; pending Director observation.",
+    "Synthetic software rendering and import boundaries do not accept device/GPU/gameplay/security/production requirements."
+  ],
+  "next_actions": [
+    "Complete pending Windows observation; preserve BOOT-02/03/05 and RULE/UX gates."
+  ]
+}

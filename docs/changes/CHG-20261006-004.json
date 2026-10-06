@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261006-004",
+  "title": "Clock-qualified evidence and final documentation review",
+  "actor": "Codex developer / QA recorder",
+  "status": "finalized",
+  "recorded_at": "2026-10-06T19:57:28.279Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "task_ids": [
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS",
+    "F-EVIDENCE"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Final separate reviewer passed22 governance tests and clock consistency probes; original scope preserved and no important remaining findings in this assigned correction."
+    },
+    {
+      "kind": "revision",
+      "description": "Record final review prose as a separate change after CHG-003 finalized snapshot; preserve strict replay rejection and failed static check rather than reopening completed history."
+    },
+    {
+      "kind": "documentation",
+      "description": "Update active handoff/audit/backlog/feature references and final review report to clock-qualified receipts; Windows remains pending."
+    },
+    {
+      "kind": "fix",
+      "description": "Real clock reversal detected by final evidence guard: preserve original RUN017 bytes, import reported quarantine RUN018, add monotonic elapsed/discontinuity capture and reject passing time proof on clock changes."
+    },
+    {
+      "kind": "test",
+      "description": "Synthetic backwards/forward clock-step regression supplements actual quarantined failure; final source validation must rerun."
+    },
+    {
+      "kind": "fix",
+      "description": "Independent clock consistency probe closed: writer and validator share monotonic/wall classification and reject elapsed/flag/sample contradictions; real anomalous raw evidence remains preserved."
+    },
+    {
+      "kind": "fix",
+      "description": "Current matching-source acceptance requires consistent paired monotonic metadata; omission is rejected. Linux /proc ESRCH after process reaping is handled as gone, preserving strict bounded cleanup."
+    },
+    {
+      "kind": "test",
+      "description": "Correct synthetic discontinuity fixture without weakening validation; use monotonic deadline for bounded descendant cleanup observation."
+    },
+    {
+      "kind": "revision",
+      "description": "Final preservation scan exposed inherited CRLF-only checkout differences in two planning CSV registers. Normalize to existing Git LF policy, preserve identical values/Git content and archive bytes; validate canonical Git checkout separately."
+    },
+    {
+      "kind": "documentation",
+      "description": "Retain emitted whitespace in raw evidence logs; standardize staged source/document formatting check excluding only captured logs, whose digest validation remains mandatory."
+    },
+    {
+      "kind": "test",
+      "description": "Canonical staged Git checkout independently passed frozen install/build/type/lint and all41 tests; exact executable fingerprint matches final live source. Final staged source/document formatting passed while retaining raw log bytes."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/CHANGELOG_FORMAT.md",
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0003-documentation-evidence.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261006-004.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-06-documentation-governance.md",
+    "docs/schemas/run.schema.json",
+    "docs/validation/archive/RUN-20261006-017-original.json",
+    "docs/validation/documentation-review.md",
+    "docs/validation/logs/RUN-20261006-016.txt",
+    "docs/validation/logs/RUN-20261006-017.txt",
+    "docs/validation/logs/RUN-20261006-018.txt",
+    "docs/validation/logs/RUN-20261006-019.txt",
+    "docs/validation/logs/RUN-20261006-020.txt",
+    "docs/validation/logs/RUN-20261006-021.txt",
+    "docs/validation/logs/RUN-20261006-022.txt",
+    "docs/validation/logs/RUN-20261006-023.txt",
+    "docs/validation/logs/RUN-20261006-024.txt",
+    "docs/validation/logs/RUN-20261006-025.txt",
+    "docs/validation/logs/RUN-20261006-026.txt",
+    "docs/validation/logs/RUN-20261006-027.txt",
+    "docs/validation/logs/RUN-20261006-028.txt",
+    "docs/validation/logs/RUN-20261006-029.txt",
+    "docs/validation/logs/RUN-20261006-030.txt",
+    "docs/validation/logs/RUN-20261006-031.txt",
+    "docs/validation/logs/RUN-20261006-032.txt",
+    "docs/validation/runs/RUN-20261006-016.json",
+    "docs/validation/runs/RUN-20261006-017.json",
+    "docs/validation/runs/RUN-20261006-018.json",
+    "docs/validation/runs/RUN-20261006-019.json",
+    "docs/validation/runs/RUN-20261006-020.json",
+    "docs/validation/runs/RUN-20261006-021.json",
+    "docs/validation/runs/RUN-20261006-022.json",
+    "docs/validation/runs/RUN-20261006-023.json",
+    "docs/validation/runs/RUN-20261006-024.json",
+    "docs/validation/runs/RUN-20261006-025.json",
+    "docs/validation/runs/RUN-20261006-026.json",
+    "docs/validation/runs/RUN-20261006-027.json",
+    "docs/validation/runs/RUN-20261006-028.json",
+    "docs/validation/runs/RUN-20261006-029.json",
+    "docs/validation/runs/RUN-20261006-030.json",
+    "docs/validation/runs/RUN-20261006-031.json",
+    "docs/validation/runs/RUN-20261006-032.json",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/rules_certification_template.csv",
+    "scripts/documentation-lib.mjs",
+    "scripts/evidence-lib.mjs",
+    "tests/documentation/evidence.test.mjs",
+    "tests/documentation/governance.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Final review/report closure and exact active change/result references; compared against existing code and preserved pending acceptance."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Final review/report closure and exact active change/result references; compared against existing code and preserved pending acceptance."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Final review/report closure and exact active change/result references; compared against existing code and preserved pending acceptance."
+    },
+    {
+      "path": "docs/validation/documentation-review.md",
+      "disposition": "updated",
+      "reason": "Final review/report closure and exact active change/result references; compared against existing code and preserved pending acceptance."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Final review/report closure and exact active change/result references; compared against existing code and preserved pending acceptance."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "apps/api/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "apps/worker/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "updated",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "updated",
+      "reason": "Require LF snapshot consistency and validation of canonical Git checkout bytes after inherited CRLF differences were observed."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "updated",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "updated",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "updated",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "packages/presentation/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "packages/service-runtime/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against clock qualification/source changes; behavior remains accurate or explicit monotonic/quarantine policy added."
+    },
+    {
+      "path": "docs/vision/rules_certification_template.csv",
+      "disposition": "historical_preserved",
+      "reason": "All template values and Git bytes preserved; inherited checkout CRLF normalized to existing LF policy."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-016.json",
+      "outcome": "failed",
+      "scope": "Actual final static check rejected unsynchronized post-finalization document edit; correction is this new follow-up entry."
+    },
+    {
+      "evidence": "docs/validation/documentation-review.md",
+      "outcome": "historical",
+      "scope": "Independent21-test/manual/branch/source probes and concurrent3-pass descendant check; no remaining important findings."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-018.json",
+      "outcome": "historical",
+      "scope": "Real reversed wall-clock sample quarantined; original record and actual exit0/log preserved without timestamp repair."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-019.json",
+      "outcome": "failed",
+      "scope": "Actual pre-correction clean static gate rejected incomplete documentation file coverage; corrected before final validation."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-020.json",
+      "outcome": "failed",
+      "scope": "Actual full suite reached governance and reported /proc ESRCH while killed process was reaped; corrected gone-state handling without masking surviving processes."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-021.json",
+      "outcome": "failed",
+      "scope": "Actual clean suite:21 of22 documentation tests passed. Synthetic clock fixture inconsistently paired its flag and samples; corrected fixture to exercise the intended passing-evidence rejection."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-024.json",
+      "outcome": "passed",
+      "scope": "Fresh source-only frozen install, ordered builds/types/lint and41 tests:19 foundation plus22 documentation governance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-025.json",
+      "outcome": "passed",
+      "scope": "Seven exact pinned toolchain/Linux/private environment checks."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-026.json",
+      "outcome": "passed",
+      "scope": "Authenticated read-only existing PostgreSQL18 bootstrap connectivity; no recreation/persistence acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-027.json",
+      "outcome": "passed",
+      "scope": "Four live Linux Chromium/SwiftShader browser checks; Windows observation remains pending."
+    },
+    {
+      "evidence": "docs/validation/documentation-review.md",
+      "outcome": "historical",
+      "scope": "Final separate read-only22-test/docs/clock-probe review; execution times unknown, report time explicit; no important remaining findings."
+    },
+    {
+      "evidence": "docs/audits/2026-10-06-project-audit.md",
+      "outcome": "historical",
+      "scope": "Ad hoc raw-byte preservation comparison initially failed on inherited CRLF-only checkout differences; normalized comparison confirms identical register values/Git content. Exact command times were not captured."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-028.json",
+      "outcome": "passed",
+      "scope": "Final current-document coverage/snapshots/links/history/evidence plus preserved configuration/syntax passed before LF-only documentation normalization."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-030.json",
+      "outcome": "passed",
+      "scope": "Original scope/archive preserved, private file600/ignored and known-secret scan passed; whitespace portion checked then-unstaged source diff only."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-031.json",
+      "outcome": "failed",
+      "scope": "Full staged formatting check flagged original emitted tool-log whitespace; retain bytes and check source/document formatting with log-only exclusion."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-029.json",
+      "outcome": "passed",
+      "scope": "Canonical Git checkout frozen installation and full41-test foundation; source fingerprint equals final live source, no credentials/database copied."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261006-032.json",
+      "outcome": "passed",
+      "scope": "Final staged source/document formatting passed, raw log directory excluded only from style checks; byte digests still validated."
+    }
+  ],
+  "limitations": [
+    "Windows foundation observation is pending.",
+    "Documentation gates support semantic review; local unsigned records cannot prevent deliberate Git history replacement."
+  ],
+  "next_actions": [
+    "Director actual Windows foundation observation remains pending; no current preview listener is left running.",
+    "Continue assigned foundation/product tasks with the standardized documentation/evidence workflow."
+  ]
+}

@@ -1,0 +1,122 @@
+✖ evidence capture preserves failure, timestamps and redacts inherited secrets (1.531766ms)
+✖ new documentation governance exposes real validation and sync operations (1.380976ms)
+✖ source drift requires a covering change and review of impacted documentation (6.73047ms)
+✖ unclassified and missing documents fail rather than disappear from the audit (1.217586ms)
+✖ change records reject unqualified timestamps and historical execution inventions (2.010599ms)
+✖ a newly changed source cannot be refreshed by replaying an old finalized record (1.386038ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 66.942029
+
+✖ failing tests:
+
+test at tests/documentation/evidence.test.mjs:8:1
+✖ evidence capture preserves failure, timestamps and redacts inherited secrets (1.531766ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/evidence.test.mjs:9:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/documentation/governance.test.mjs:25:1
+✖ new documentation governance exposes real validation and sync operations (1.380976ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:26:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/documentation/governance.test.mjs:29:1
+✖ source drift requires a covering change and review of impacted documentation (6.73047ms)
+  TypeError: governance.syncDocumentation is not a function
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:31:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/documentation/governance.test.mjs:46:1
+✖ unclassified and missing documents fail rather than disappear from the audit (1.217586ms)
+  TypeError: governance.syncDocumentation is not a function
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:48:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentation/governance.test.mjs:56:1
+✖ change records reject unqualified timestamps and historical execution inventions (2.010599ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /schema|timestamp/i. Input:
+  
+  'TypeError: governance.validateData is not a function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:58:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: governance.validateData is not a function
+        at file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:58:34
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:58:12)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19)
+        at Test.run (node:internal/test_runner/test:1467:12)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:974:7),
+    expected: /schema|timestamp/i,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/documentation/governance.test.mjs:62:1
+✖ a newly changed source cannot be refreshed by replaying an old finalized record (1.386038ms)
+  TypeError: governance.syncDocumentation is not a function
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:64:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

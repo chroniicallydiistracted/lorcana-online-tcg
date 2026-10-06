@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-012",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:clean"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "d45c475d919205b594ca54c3194b358b3cece59c67f7542dcf549e90de2b8ce8",
+  "started_at": "2026-10-06T19:22:09.440Z",
+  "finished_at": "2026-10-06T19:22:51.960Z",
+  "recorded_at": "2026-10-06T19:22:51.960Z",
+  "time_precision": "exact",
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final frozen clean source installation, builds, strict types, lint and40 bootstrap/package/process/governance tests",
+  "log_path": "docs/validation/logs/RUN-20261006-012.txt",
+  "log_sha256": "5bdc236f0100f0880c2c0ad72c1858d5b80654edfcd7368317a65d316e1aa4aa",
+  "redactions": 0
+}

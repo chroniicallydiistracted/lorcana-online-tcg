@@ -12,7 +12,7 @@ Application builds, strict type checks, lint and tests passed during implementat
 
 ## Clean snapshot proof
 
-**Passed, exit 0.** Git-index tree `daad2fa6ff53a58d4638138778b070d7f9c15293` was archived into a fresh Linux temporary directory with no node_modules, built artifacts, local credentials or Git state. Subsequent checkout changes only finish documentation/evidence; application, configuration, manifests, lockfile and tests are identical to this proof snapshot.
+**Passed, exit 0.** A temporary Git-index tree was archived into a fresh Linux temporary directory with no node_modules, built artifacts, local credentials or Git state. The historical tree is not reachable from normal Git history. [The retained source manifest](boot-01-source-manifest.json) proves that all tracked files except six documentation/register files were identical to reachable foundation commit `8c94b274ebd6ad91223cdb6df085ca0597c107c9`. Later governance changes have their own audit evidence; this proof certifies the foundation source at that commit.
 
 | Clean image command | Outcome |
 |---|---|
@@ -22,7 +22,7 @@ Application builds, strict type checks, lint and tests passed during implementat
 | `pnpm --filter @lorcana/web exec playwright install chromium` | Pinned Chromium/headless-shell revision 1243 and ffmpeg installed in the clean container |
 | `pnpm test:e2e:smoke` | Four tests passed in 13.2 seconds, including forbidden private-file HTTP 403 and simulated missing WebGL |
 
-The proof It runs inside a disposable container from the actually built committed Dev Container Dockerfile, with no published ports or database connection. It supplies supplementary clean-checkout evidence while the actual VS Code workspace remains available for the Windows preview.
+The proof ran inside a disposable container from the actually built committed Dev Container Dockerfile, with no published ports or database connection. It supplies supplementary clean-checkout evidence while the actual VS Code workspace was preserved for the Windows preview in that session.
 
 ## Boundary and lifecycle regressions
 
@@ -38,7 +38,7 @@ Babylon NullEngine tests use real scene objects but simulated rendering: four me
 
 Linux Playwright Chromium 153.0.8010.12 (pinned Playwright 1.63.0 / browser revision 1243) uses SwiftShader. The initial two real web/service checks passed after review fixes: both services ready, actual WebGL context, canvas resize, repeated start/stop, keyboard Enter and unavailable API status. All four final clean-snapshot browser checks passed and cover private filesystem serving and simulated WebGL failure. A separate capture of the live original workspace was visually inspected: both services ready and three neutral shapes rendered. No actual phone/tablet or hardware-GPU performance acceptance follows from viewport resizing or software rendering.
 
-Actual Windows foundation browser: pending Director observation. The connected Chrome tool identifies Linux Chrome 149 and cannot reach forwarded localhost. Windows Computer Use initialization fails with `sandboxCwd is not a local file URI: file:///home/andre/lorcana-online-tcg`. The live foundation has been left available on the existing forward 5173 for the Director's requested observation. Historical Director evidence separately proves the original connectivity page reached Windows; it does not establish the new React/renderer check.
+Actual Windows foundation browser: pending Director observation. The connected Chrome tool identifies Linux Chrome 149 and cannot reach forwarded localhost. Windows Computer Use initialization fails with `sandboxCwd is not a local file URI: file:///home/andre/lorcana-online-tcg`. A preview was left available on5173 in that session; the 2026-10-06 audit found no current foundation listeners. The Director confirmed that Windows verification was not performed. Start the foundation again for that pending observation. Historical Director evidence separately proves the original connectivity page reached Windows; it does not establish the new React/renderer check.
 
 ## Image and scope
 
@@ -52,4 +52,6 @@ The original 548 requirements retain all optional flags and product/device statu
 
 An independent reviewer inspected the foundation and reproduced the boundary/lifecycle failures before fixes. Final review reports no remaining critical or important findings; actual positive Vite build and negative module/HTML/JS/CSS/image-set builds, startup cancellation and sibling supervision passed. No review process touched the main checkout or opened its ports.
 
-Retained local logs are `/tmp/lorcana-boot01-clean-validation.log`, `/tmp/lorcana-boot01-final-workspace.log`, `/tmp/lorcana-boot01-preserved.log`, and `/tmp/lorcana-boot01-image-build.log`; these are local, transient supporting outputs, not committed archive artifacts. The committed command/result tables are the durable record. The proof container had no published ports or volumes belonging to the existing database and was removed after successful validation. The original workspace/postgres services remain running.
+Durable sanitized prior-session logs now live under [validation/logs](logs/) with [historical run records](runs/). RUN-20261006-901 through908 preserve clean validation, final workspace, preserved checks, image build, earlier validation/fix/browser attempts and final fixes. Exact execution times and invocation/exit metadata are not reconstructed; import timestamps and `reported` outcomes are labeled. The six-file equivalence comparison is recorded in [the source manifest](boot-01-source-manifest.json). Transient /tmp paths are provenance only. The original command/result tables describe the earlier session, not fresh audit runs.
+
+The disposable proof container was removed after successful historical validation. Current container/listener observations and fresh governance checks belong to [the dated project audit](../audits/2026-10-06-project-audit.md) and [handoff](../HANDOFF.md).

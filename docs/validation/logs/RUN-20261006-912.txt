@@ -1,0 +1,97 @@
+
+> lorcana-online-tcg@0.0.0 test:documentation /workspaces/lorcana-online-tcg
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (309.451127ms)
+✖ source changes during a command prevent a successful evidence claim (0.739138ms)
+✖ a timed-out child that ignores SIGTERM is terminated and recorded as failed (0.35861ms)
+✔ new documentation governance exposes real validation and sync operations (0.658618ms)
+✖ source drift requires a covering change and review of impacted documentation (67.206921ms)
+✖ unclassified and missing documents fail rather than disappear from the audit (32.271693ms)
+✔ change records reject unqualified timestamps and historical execution inventions (18.961837ms)
+✖ a newly changed source cannot be refreshed by replaying an old finalized record (24.88368ms)
+✖ documentation edits and newly added source files require recorded coverage (22.054565ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (22.03018ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 4
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 563.93449
+
+✖ failing tests:
+
+test at tests/documentation/evidence.test.mjs:23:1
+✖ source changes during a command prevent a successful evidence claim (0.739138ms)
+  ReferenceError: recordCommand is not defined
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/evidence.test.mjs:27:18)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/documentation/evidence.test.mjs:31:1
+✖ a timed-out child that ignores SIGTERM is terminated and recorded as failed (0.35861ms)
+  ReferenceError: recordCommand is not defined
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/evidence.test.mjs:34:18)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentation/governance.test.mjs:29:1
+✖ source drift requires a covering change and review of impacted documentation (67.206921ms)
+  Error: Unrecorded changed file: docs/schemas/change.schema.json
+      at Module.syncDocumentation (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:175:86)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:31:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/documentation/governance.test.mjs:46:1
+✖ unclassified and missing documents fail rather than disappear from the audit (32.271693ms)
+  Error: Unrecorded changed file: docs/schemas/change.schema.json
+      at Module.syncDocumentation (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:175:86)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:48:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentation/governance.test.mjs:62:1
+✖ a newly changed source cannot be refreshed by replaying an old finalized record (24.88368ms)
+  Error: Unrecorded changed file: docs/schemas/change.schema.json
+      at Module.syncDocumentation (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:175:86)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:64:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentation/governance.test.mjs:69:1
+✖ documentation edits and newly added source files require recorded coverage (22.054565ms)
+  Error: Unrecorded changed file: docs/schemas/change.schema.json
+      at Module.syncDocumentation (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:175:86)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:71:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+ ELIFECYCLE  Command failed with exit code 1.

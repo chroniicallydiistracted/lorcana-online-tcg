@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-044",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{readFileSync}from'node:fs';\nfor(const file of ['/proc/net/tcp','/proc/net/tcp6'])for(const row of readFileSync(file,'utf8').trim().split('\\n').slice(1)){const p=row.trim().split(/\\s+/),port=parseInt(p[1].split(':')[1],16);if(p[3]==='0A'&&[5173,3001,3002].includes(port))throw new Error('Foundation listener remains on'+port);}\nconsole.log('PASS actual5173/3001/3002 free after corrected full clean suite and live browser checks');\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "9d603fb84217ab92567ec38c6cac2435f67ddde36e4c86055c51282ccb9d010f",
+  "started_at": "2026-10-06T20:09:51.911Z",
+  "finished_at": "2026-10-06T20:09:51.950Z",
+  "recorded_at": "2026-10-06T20:09:51.950Z",
+  "time_precision": "exact",
+  "elapsed_ms": 39,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Actual corrected-source foundation listener cleanup after full clean suite and live Linux browser automation",
+  "log_path": "docs/validation/logs/RUN-20261006-044.txt",
+  "log_sha256": "1ee626c8902e27e8ca92ddd9ffcb6e574e98112b3151ce0f8609d794170146a2",
+  "redactions": 0
+}

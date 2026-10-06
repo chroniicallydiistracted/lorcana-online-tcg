@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-035",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/foundation/process-groups.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "d4570fedb388bd9f0ec8508173c4e7d78eacbb4299f16acf02350d6d99787bb2",
+  "started_at": "2026-10-06T20:01:40.912Z",
+  "finished_at": "2026-10-06T20:01:40.984Z",
+  "recorded_at": "2026-10-06T20:01:40.984Z",
+  "time_precision": "exact",
+  "elapsed_ms": 71,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "New real supervisor group regression before cleanup helper implementation; expected failing baseline",
+  "log_path": "docs/validation/logs/RUN-20261006-035.txt",
+  "log_sha256": "0845745d78dc9054b0e4edeb084dd4a8beda32d087cf5a067af851c2672cd6b7",
+  "redactions": 0
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-037",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/foundation/process-groups.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "8c94b274ebd6ad91223cdb6df085ca0597c107c9",
+  "source_fingerprint": "7aa4b65619419de09433c4e363776f746d226935ea8fe6efb880bab3731fa361",
+  "started_at": "2026-10-06T20:02:49.627Z",
+  "finished_at": "2026-10-06T20:02:49.849Z",
+  "recorded_at": "2026-10-06T20:02:49.849Z",
+  "time_precision": "exact",
+  "elapsed_ms": 222,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Actual deterministic leader-exits-first descendant regression after bounded supervisor group correction",
+  "log_path": "docs/validation/logs/RUN-20261006-037.txt",
+  "log_sha256": "a99e39dd971b6c39f03dda0ffd5eb995f234dd544481f50d6e7f7f48dc90fa31",
+  "redactions": 0
+}

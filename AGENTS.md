@@ -2,7 +2,7 @@
 
 ## Project authority
 
-Read `docs/vision/Development_Blueprint_2026-10-05.md`, `original_action_items.md`, `requirements.csv` and `initial_backlog.csv` before product work. The Project Director's current instructions take precedence over this baseline. Record substantive architectural changes in an ADR with the affected requirements and comparative evidence.
+Read `docs/vision/Development_Blueprint_2026-10-05.md`, `docs/vision/original_action_items.md`, `docs/vision/requirements.csv` and `docs/vision/initial_backlog.csv` before product work. The Project Director's current instructions take precedence over this baseline. Record substantive architectural changes in an ADR with the affected requirements and comparative evidence.
 
 The goal is a premium Lorcana game for Illumineers: desktop web first, touch/tablet alongside it, free to players, authored tabletop/card/packs presentation and accurate recoverable server-authoritative play. Use the original Inkspire project for selected knowledge and reuse, without inheriting its architecture or dashboard aesthetic by default.
 
@@ -38,3 +38,16 @@ Use separate branches/worktrees for concurrent scopes. Document dependencies and
 Run meaningful checks appropriate to a change. Distinguish static validation, simulated checks and actual container/device/production evidence. Record command outcomes and limitations; never infer runtime success from a configuration file or lockfile alone.
 
 Add CI during BOOT-03; do not treat its future commands or providers as already available. External spending, deployment and messages require authorization from the Director's task context.
+
+## Universal documentation and evidence standard
+
+Every developer/agent must read `docs/README.md`, `docs/DEVELOPMENT_WORKFLOW.md`, `docs/CHANGELOG_FORMAT.md` and `docs/HANDOFF.md` at intake. These repository-owned standards apply regardless of editor/provider or personal memory. Scope X06/DOC-01 and X07/DOC-02 require current documentation and uniform timestamped change history.
+
+- Review branch/HEAD/dirty files and actual execution access before edits. Use the current Director instructions and actual source over old snapshots.
+- Maintain a schema-versioned `docs/changes/CHG-YYYYMMDD-NNN.json` draft at meaningful checkpoints. Record every implementation, expansion, function/feature change, test/result, edit and revision; include full file coverage, feature/task/requirement IDs and explicit documentation review reasons.
+- Keep every relevant current document consistent with code/action status. Classify new documents and update source-impact edges in `docs/documentation-map.json`. Preserve labeled planning/history/archive intent; append corrections rather than rewriting executed evidence.
+- Use exact UTC ISO timestamps and distinguish recording/event/execution times. Unknown historical execution times stay null. Capture tests with `pnpm evidence:run` inside the container; preserve failures and review sanitized logs before committing.
+- Run `pnpm docs:sync --change CHG-YYYYMMDD-NNN` and `pnpm docs:check`. The latter is part of `pnpm verify`; do not bypass it to finalize work. Keep generated file/callable inventory, feature register, task status and changelog current. Tool checks support semantic review; they cannot prove prose truth or full correctness.
+- Before stopping/transferring work, update `docs/HANDOFF.md` using its template, including exact evidence categories/results, dirty work, owned listeners, limitations and next actions. Finalize only the completed scope with evidence. Do not infer real Windows/device/production acceptance.
+
+Committed non-draft changes and execution records/logs are append-only; use a new correction record. Keep `.env.local` and credentials out of records/logs. CI enforcement remains BOOT-03. Director authorization and scope take precedence over workflow conventions.
