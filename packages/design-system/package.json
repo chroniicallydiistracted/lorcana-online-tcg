@@ -1,0 +1,33 @@
+{
+  "name": "@lorcana/design-system",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "lorcana": {
+    "scope": "browser"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "react-aria-components": "1.21.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "@types/react-dom": "19.3.0"
+  },
+  "exports": {
+    ".": {
+      "lorcana-source": "./src/index.tsx",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "peerDependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}

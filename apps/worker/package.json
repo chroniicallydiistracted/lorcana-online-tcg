@@ -1,0 +1,21 @@
+{
+  "name": "@lorcana/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "lorcana": {
+    "scope": "server"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev": "node --conditions=lorcana-source --watch src/main.ts",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@lorcana/service-runtime": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.1"
+  }
+}

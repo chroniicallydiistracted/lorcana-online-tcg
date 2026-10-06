@@ -1,31 +1,31 @@
-task_id,owner,work_output,prerequisites,acceptance_evidence
-BOOT-01,ARC,"Create pnpm workspace, pinned toolchain, package boundaries, scripts and ADR baseline",Blueprint,"Clean checkout installs, builds minimal web/API/worker, type-checks and rejects forbidden imports"
-BOOT-02,OPS/QA,"Local PostgreSQL 18 container, scoped app roles, migrations and test DB",BOOT-01,Reproducible start/health/migrate; persistence through recreate; role restrictions tested
-BOOT-03,OPS/QA,"GitHub CI definition, frozen installs, artifact identity and secret/license scans",BOOT-01,Local pipeline and reviewed Actions definition; no deployment credentials needed
-BOOT-04,OPS/ARC,Staging provider definitions and complete spend worksheet,BOOT-01; Director budget before purchase,Reviewable projects/services/DNS/secret inventory with current line-item quotes
-BOOT-05,ARC,Protocol/release manifest schemas and compatibility policy,BOOT-01,"Valid/invalid fixture tests, version negotiation contract and browser/server import split"
-RULE-01,RULE/CONTENT,"Acquire current official source bytes; rules diff, set/printing and skipped-test inventory",Source register,"Counts with denominators, source hashes when available, missing documents flagged, release-status mapping"
-RULE-02,RULE,Vendor pinned minimal upstream closure with license and patch ledger,"BOOT-01, RULE-01",Reproduce upstream relevant tests; compile/run selected adapter under Node 24; no Bun-only production dependency
-RULE-03,RULE/QA,Secure RNG injection and deterministic outcome recording,RULE-02,No competitive `Math.random` fallback; replay equality and random-stream access tests
-RULE-04,RULE/QA,Representative current-rules scenario suite and per-card certification template,RULE-01/02,"Sourced expected results, negative cases, effect-bag/choices, new-keyword and invalid-state coverage"
-PLAY-01,PLAY,"Match schema, receipts/journal/outbox and CAS transition service","BOOT-02/05, RULE-02",Concurrent commands cannot double commit; durable receipt survives process death
-PLAY-02,PLAY/QA,Viewer projections and noninterference tests,PLAY-01,Opponent hand/deck identity absent from every transport/resource/log/export path
-PLAY-03,PLAY,"WebSocket handshake, versioned snapshots, reconnect and backpressure",PLAY-01/02,"Two real clients complete a game, reconnect on different host and resolve duplicate pending command"
-PLAY-04,PLAY/QA,"Clock policy, durable deadlines and timeout race handling",PLAY-01/03,Fake-clock and real process tests; no disconnect/time abuse or duplicate terminal result
-UX-01,CLIENT/Director,Three art-direction studies and interaction specification,Product contract,Same dense board/deckbuilder/pack shown in each; Director selects reference direction
-UX-02,CLIENT/QA,Reference-device/browser matrix and responsive semantic wireflows,UX-01,Desktop/tablet/phone core journeys; keyboard and touch alternatives; device floor proposal
-UX-03,CLIENT,"Tokens, unstyled primitives, Storybook and accessible card inspection","BOOT-01, UX-01/02",Focus/contrast/text/reduced-motion states; long strings; no dashboard theme dependency
-WEB-01,CLIENT,Babylon table lifecycle and quality tiers outside React render cycle,UX-03,"Dense board fixture, explicit WebGL path, measured frames and GPU-context restoration"
-WEB-02,CLIENT/PLAY,Intent/choice UI connected to authorized live match projection,"WEB-01, PLAY-03/04",Complete legal mouse/keyboard/touch match; stale/rejected action and readable effect explanation
-WEB-03,CLIENT/ECON,Authored pack presentation on synthetic committed opening receipts,UX-03,Reveal/skip/bulk/reduced motion/resume; presentation cannot change grants
-AUTH-01,SOCIAL/OPS,"Better Auth schema, verified sessions/recovery and local mail adapter",BOOT-02,Secure cookie/origin behavior; expired/reused tokens; tests without sending real emails
-AUTH-02,SOCIAL/ECON,Guest identity and idempotent verified upgrade/merge,AUTH-01,No cross-user linking or duplicate starter grant; recoverable interrupted merge
-DECK-01,CLIENT/RULE,"Deck revisions, filters/import/export and separate legality/ownership policy","RULE-01, AUTH-01",Full catalog query fixture; exact round-trip import; useful hard errors/warnings
-ECON-01,ECON/QA,Holdings and integer wallet ledger with idempotent grants,"BOOT-02, AUTH-01","Balance conservation, nonnegative holdings and concurrent grant/spend fixtures"
-ECON-02,ECON/CONTENT,Versioned products and transactional opening/receipts,ECON-01,"Same outcome after retry/reload, no double consume; distribution-source disclosure"
-ECON-03,ECON/PLAY,Eligible Lab/Collection reward settlement and sandbox exclusions,"ECON-01, PLAY-01",Finish/retry/correction races; ordinary Lab earns; manipulated sessions cannot
-COMP-01,COMP/PLAY,Queue admission and atomic cancel/pair/deck lock,"DECK-01, PLAY-03","One admission, correct environment/format, blocked/stale relationships and reconnect behavior"
-REPLAY-01,PLAY/CLIENT,Pinned deterministic history/replay with checkpoints and private sharing,"PLAY-01/02, WEB-02","Reconstructed state equality, scrub controls, privacy tests and sandbox branch provenance"
-CONTENT-01,CONTENT,Staged catalog/product/ruling editor and manifest activation,"RULE-01, AUTH-01","Permissioned diff/review, immutable revision, safe activation/rollback"
-QA-01,QA,Core full-loop browser suite and manual playtest script,Relevant M1/M2 work,Build → play → earn → open; account switch; assets/network failures; reported real-device results
-OPS-01,OPS/QA,"Instrumentation, staging fault/load fixture and restore runbook","BOOT-04, PLAY-01","Redacted traces, measured bottlenecks, commit-boundary kills and verified DB restore"
+task_id,owner,work_output,prerequisites,acceptance_evidence,implementation_status,evidence_links
+BOOT-01,ARC,"Create pnpm workspace, pinned toolchain, package boundaries, scripts and ADR baseline",Blueprint,"Clean checkout installs, builds minimal web/API/worker, type-checks and rejects forbidden imports",technical_acceptance_verified_windows_smoke_pending,docs/validation/boot-01.md; docs/adr/0002-application-foundation.md
+BOOT-02,OPS/QA,"Local PostgreSQL 18 container, scoped app roles, migrations and test DB",BOOT-01,Reproducible start/health/migrate; persistence through recreate; role restrictions tested,pending,
+BOOT-03,OPS/QA,"GitHub CI definition, frozen installs, artifact identity and secret/license scans",BOOT-01,Local pipeline and reviewed Actions definition; no deployment credentials needed,pending,
+BOOT-04,OPS/ARC,Staging provider definitions and complete spend worksheet,BOOT-01; Director budget before purchase,Reviewable projects/services/DNS/secret inventory with current line-item quotes,pending,
+BOOT-05,ARC,Protocol/release manifest schemas and compatibility policy,BOOT-01,"Valid/invalid fixture tests, version negotiation contract and browser/server import split",pending,
+RULE-01,RULE/CONTENT,"Acquire current official source bytes; rules diff, set/printing and skipped-test inventory",Source register,"Counts with denominators, source hashes when available, missing documents flagged, release-status mapping",pending,
+RULE-02,RULE,Vendor pinned minimal upstream closure with license and patch ledger,"BOOT-01, RULE-01",Reproduce upstream relevant tests; compile/run selected adapter under Node 24; no Bun-only production dependency,pending,
+RULE-03,RULE/QA,Secure RNG injection and deterministic outcome recording,RULE-02,No competitive `Math.random` fallback; replay equality and random-stream access tests,pending,
+RULE-04,RULE/QA,Representative current-rules scenario suite and per-card certification template,RULE-01/02,"Sourced expected results, negative cases, effect-bag/choices, new-keyword and invalid-state coverage",pending,
+PLAY-01,PLAY,"Match schema, receipts/journal/outbox and CAS transition service","BOOT-02/05, RULE-02",Concurrent commands cannot double commit; durable receipt survives process death,pending,
+PLAY-02,PLAY/QA,Viewer projections and noninterference tests,PLAY-01,Opponent hand/deck identity absent from every transport/resource/log/export path,pending,
+PLAY-03,PLAY,"WebSocket handshake, versioned snapshots, reconnect and backpressure",PLAY-01/02,"Two real clients complete a game, reconnect on different host and resolve duplicate pending command",pending,
+PLAY-04,PLAY/QA,"Clock policy, durable deadlines and timeout race handling",PLAY-01/03,Fake-clock and real process tests; no disconnect/time abuse or duplicate terminal result,pending,
+UX-01,CLIENT/Director,Three art-direction studies and interaction specification,Product contract,Same dense board/deckbuilder/pack shown in each; Director selects reference direction,pending,
+UX-02,CLIENT/QA,Reference-device/browser matrix and responsive semantic wireflows,UX-01,Desktop/tablet/phone core journeys; keyboard and touch alternatives; device floor proposal,pending,
+UX-03,CLIENT,"Tokens, unstyled primitives, Storybook and accessible card inspection","BOOT-01, UX-01/02",Focus/contrast/text/reduced-motion states; long strings; no dashboard theme dependency,pending,
+WEB-01,CLIENT,Babylon table lifecycle and quality tiers outside React render cycle,UX-03,"Dense board fixture, explicit WebGL path, measured frames and GPU-context restoration",pending,
+WEB-02,CLIENT/PLAY,Intent/choice UI connected to authorized live match projection,"WEB-01, PLAY-03/04",Complete legal mouse/keyboard/touch match; stale/rejected action and readable effect explanation,pending,
+WEB-03,CLIENT/ECON,Authored pack presentation on synthetic committed opening receipts,UX-03,Reveal/skip/bulk/reduced motion/resume; presentation cannot change grants,pending,
+AUTH-01,SOCIAL/OPS,"Better Auth schema, verified sessions/recovery and local mail adapter",BOOT-02,Secure cookie/origin behavior; expired/reused tokens; tests without sending real emails,pending,
+AUTH-02,SOCIAL/ECON,Guest identity and idempotent verified upgrade/merge,AUTH-01,No cross-user linking or duplicate starter grant; recoverable interrupted merge,pending,
+DECK-01,CLIENT/RULE,"Deck revisions, filters/import/export and separate legality/ownership policy","RULE-01, AUTH-01",Full catalog query fixture; exact round-trip import; useful hard errors/warnings,pending,
+ECON-01,ECON/QA,Holdings and integer wallet ledger with idempotent grants,"BOOT-02, AUTH-01","Balance conservation, nonnegative holdings and concurrent grant/spend fixtures",pending,
+ECON-02,ECON/CONTENT,Versioned products and transactional opening/receipts,ECON-01,"Same outcome after retry/reload, no double consume; distribution-source disclosure",pending,
+ECON-03,ECON/PLAY,Eligible Lab/Collection reward settlement and sandbox exclusions,"ECON-01, PLAY-01",Finish/retry/correction races; ordinary Lab earns; manipulated sessions cannot,pending,
+COMP-01,COMP/PLAY,Queue admission and atomic cancel/pair/deck lock,"DECK-01, PLAY-03","One admission, correct environment/format, blocked/stale relationships and reconnect behavior",pending,
+REPLAY-01,PLAY/CLIENT,Pinned deterministic history/replay with checkpoints and private sharing,"PLAY-01/02, WEB-02","Reconstructed state equality, scrub controls, privacy tests and sandbox branch provenance",pending,
+CONTENT-01,CONTENT,Staged catalog/product/ruling editor and manifest activation,"RULE-01, AUTH-01","Permissioned diff/review, immutable revision, safe activation/rollback",pending,
+QA-01,QA,Core full-loop browser suite and manual playtest script,Relevant M1/M2 work,Build → play → earn → open; account switch; assets/network failures; reported real-device results,pending,
+OPS-01,OPS/QA,"Instrumentation, staging fault/load fixture and restore runbook","BOOT-04, PLAY-01","Redacted traces, measured bottlenecks, commit-boundary kills and verified DB restore",pending,

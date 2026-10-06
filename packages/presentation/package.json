@@ -1,0 +1,25 @@
+{
+  "name": "@lorcana/presentation",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "lorcana": {
+    "scope": "browser"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --conditions=lorcana-source --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@babylonjs/core": "9.29.0"
+  },
+  "devDependencies": {},
+  "exports": {
+    ".": {
+      "lorcana-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  }
+}

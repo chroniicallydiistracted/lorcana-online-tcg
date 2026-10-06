@@ -1,5 +1,3 @@
-# apps/web
+# web
 
-React/Vite application, semantic navigation and Babylon presentation integration.
-
-Reserved directory: no application implementation or package manifest yet. Implement its scoped manifest and dependencies through the foundation backlog.
+React/Vite foundation client. Semantic diagnostic controls and a lazy synthetic Babylon scene; this is infrastructure evidence, not final game presentation. `pnpm dev` at the repository root supervises the entire stack on 5173/3001/3002. See the root README for checks.

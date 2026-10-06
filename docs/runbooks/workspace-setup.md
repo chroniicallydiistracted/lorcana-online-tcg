@@ -1,111 +1,69 @@
 # Workspace setup on Andre's PC
 
-## Evidence already supplied
+## Existing workspace and evidence
 
-- Source directory: `/home/andre/lorcana-online-tcg`.
-- WSL software 2.7.14.0; Ubuntu and docker-desktop both run in WSL2 mode.
-- Git 2.43.0; Docker Desktop 4.93.0; Engine 29.8.1; Compose 5.5.1.
-- Docker client and server respond from Ubuntu.
+The Director confirmed the initial Dev Container build, post-create pipeline, authenticated bootstrap database check and Windows connectivity diagnostic on 5 October 2026. Git main was published at `335da7e`; the repository was public at that observation. Repository visibility remains the Director's decision. Current application evidence and pending checks are in [workspace qualification](../WORKSPACE_QUALIFICATION.md) and [BOOT-01 validation](../validation/boot-01.md).
 
-These observations establish the host prerequisites. Container/image/network/database startup must still be tested.
+Use `/home/andre/lorcana-online-tcg` in Ubuntu WSL2, with Windows VS Code and Docker Desktop's Ubuntu integration. Explorer can reach `\\wsl.localhost\Ubuntu\home\andre\lorcana-online-tcg`. Do not extract the starter over this existing Git checkout, reinitialize Git, move source into `/mnt/c`, regenerate credentials or delete database volumes.
 
-## 1. Extract the starter
+## New checkout only
 
-Download `Lorcana_Workspace_Starter_2026-10-05.zip`. Its archive root contains `README.md`, `package.json`, `.devcontainer/` and the other repository files; it has no extra enclosing folder.
-
-Extract its contents directly into the empty target folder. Windows File Explorer can reach it at `\\wsl.localhost\Ubuntu\home\andre\lorcana-online-tcg`. Ensure `.devcontainer/devcontainer.json` is under that exact folder, not under a nested archive-name folder.
-
-Alternatively, if the download is in `C:\Users\andre\Downloads`, use Ubuntu:
+In Ubuntu, from the intended Linux source directory:
 
 ```bash
-python3 -m zipfile -e /mnt/c/Users/andre/Downloads/Lorcana_Workspace_Starter_2026-10-05.zip /home/andre/lorcana-online-tcg
-```
-
-Use this extraction only for the current empty directory. Once development files exist, review updates through Git rather than extracting a starter over them.
-
-## 2. Create local credentials and validate Compose
-
-In Ubuntu:
-
-```bash
-cd /home/andre/lorcana-online-tcg
 python3 scripts/init-local-env.py
 docker compose -f .devcontainer/compose.yaml config --quiet
 code .
 ```
 
-The generator creates `.env.local` with mode 0600 and a random password. A second run preserves it. It needs Python 3 on the Ubuntu host. If Python is unavailable, install the Ubuntu `python3` package and retry. Never copy `.env.example` unchanged as real credentials.
+The generator creates owner-only `.env.local` and preserves existing values. `config --quiet` validates configuration without printing secret-bearing interpolation. Never paste `.env.local`, a full Compose configuration or an environment dump.
 
-`config --quiet` checks Compose's schema/interpolation without displaying the secret-bearing resolved configuration. Do not paste `.env.local` or a full unredacted Compose configuration into chat.
+## Open or rebuild the container
 
-## 3. Open the Dev Container
+In Windows VS Code use **Dev Containers: Reopen in Container**. After Dockerfile changes use **Rebuild Container**, preserving the named database volume. The workspace runs as `node`, with source at `/workspaces/lorcana-online-tcg`. It installs Node 24.21.0, pnpm 10.33.0, Git, Python/PyYAML, psql, ripgrep and Chromium test libraries. No extra host Node or undocumented manual tooling install is needed.
 
-Install Microsoft's WSL and Dev Containers extensions in Windows VS Code if needed. The opened folder should initially show `WSL: Ubuntu`. Use **Ctrl+Shift+P → Dev Containers: Reopen in Container**.
-
-The image installs Node 24.21.0, pnpm 10.33.0, Git, Python/PyYAML and `psql`. Source is mounted into `/workspaces/lorcana-online-tcg`. VS Code changes the `node` user's UID/GID to match the WSL user; both the container and editor work as that user. No host Node/pnpm install is required.
-
-Post-create checks run sequentially: doctor, frozen install, configuration/syntax verification, bootstrap tests, then authenticated PostgreSQL connection. Their failure must be resolved before moving to application development. There are no production/cloud credentials in this setup.
-
-The PostgreSQL 18 volume mounts at `/var/lib/postgresql`. Compose waits for database health before starting the workspace. The `psql` client installed from Debian can query the newer server; it is not a version-18 backup client. Use version-matched backup tooling when backup/restore is implemented.
-
-## 4. Confirm the workspace
-
-In the Dev Container terminal:
+The original post-create pipeline remains doctor → frozen install → configuration/syntax checks → bootstrap tests → authenticated database check. Its success proves workspace bootstrap, not full application or game acceptance. Run application checks separately:
 
 ```bash
-pnpm doctor
-pnpm verify
-pnpm test:bootstrap
+pnpm run doctor
+pnpm install --frozen-lockfile
+pnpm verify:foundation
 pnpm db:check
-pnpm dev:smoke
+pnpm --filter @lorcana/web exec playwright install chromium
+pnpm test:e2e:smoke
+pnpm dev
 ```
 
-The first four commands must exit successfully. Open forwarded port 5173 from the **Ports** panel in the Windows browser. Expect `Lorcana workspace connection ready.` A readiness JSON response is available at `/healthz`.
+Bare `pnpm doctor` invokes pnpm's built-in doctor; use `pnpm run doctor` to run this repository's checks. The post-create script invokes the repository doctor directly and is unaffected. Playwright's pinned browser download uses the container user's cache; its Linux shared libraries are committed in the image.
 
-The page checks container-to-browser connectivity only. It does not test React/Babylon, GPU performance, game rules, authentication or any game flow. Stop it with Ctrl+C.
+## Browser and services
 
-## 5. Initialize version control
+VS Code forwards web **5173**, API **3001** and match **3002**. Open web from the Ports panel; normally the Windows URL is `http://localhost:5173`. Expect Application foundation and both services ready. Start rendering to display three neutral card shapes; stop/start and resize the window to check lifecycle. This is a foundation preview, not final game design or certified GPU performance.
 
-After the workspace passes, in the container terminal:
+The web server uses same-origin `/api` and `/match` proxies; no cross-origin permission is needed. API/match `/healthz` report process liveness; `/readyz` reports foundation readiness. They do not check a database or engine. Worker has no public ingress or job execution. Root development strips bootstrap database credentials from child environments, reloads server source and stops the stack on service failure. Ctrl+C stops owned processes. A busy port fails startup; do not kill unrelated listeners. Stop the specific old connectivity process if it still uses 5173.
 
-```bash
-git init -b main
-git status --short
-git check-ignore .env.local
-```
+`pnpm dev:smoke` remains the original independent connectivity server. Run it only with 5173 free. Its plain diagnostic does not verify React, Babylon, rules or auth. Browser automation also needs 5173/3001/3002 free; stop interactive development before running it. Linux software WebGL and actual Windows browser evidence are recorded separately.
 
-Confirm `.env.local` is ignored. Configure Git's commit identity if it is not already available. Stage and commit the intended source/configuration files once reviewed. No GitHub remote was created or selected by this starter. Add the Director's new private repository as the remote when it exists; keep the old Inkspire repository separate.
+## Container and database management
 
-## 6. Preserve and qualify local database state
+The workspace has no Docker CLI/socket. Discover the active Compose project through Docker Desktop, the Dev Containers log or selective host Docker labels. At BOOT-01 inspection it was `lorcana-online-tcg_devcontainer`; do not hardcode its container IDs for future sessions. Manage services from Ubuntu/Windows against that actual project, not an inferred alternate Compose project.
 
-Closing the Dev Container window stops these Compose services. Reopening restarts them. The named PostgreSQL volume remains. For manual management, select this workspace's actual Compose project in Docker Desktop. VS Code can supply a project name; a host Compose command with an inferred different name could target a different project. Obtain the actual project name from the Dev Containers log before using host management commands.
+PostgreSQL is reached at `postgres:5432` only on the private Compose network, with its volume at `/var/lib/postgresql` and no published host port. Closing/reopening the editor preserves that named volume; preservation has not yet been demonstrated through container recreation. BOOT-02 must implement restricted migration/application roles, migrations and an isolated test database, then prove persistence. `pnpm db:check` uses the existing bootstrap administrator only.
 
-Before marking BOOT-02 complete, create a synthetic persistence probe, stop/recreate the containers without deleting volumes, and confirm its stored value is unchanged. Also implement and verify restricted migration/app roles and an isolated test database. This starter only checks bootstrap administrator connectivity, not application least-privilege access or migrations.
-
-Do not regenerate the password while reusing an initialized database volume: the PostgreSQL image does not change an existing database password from a newly supplied environment value. Restore the matching local configuration or perform an intentional credential rotation.
+An initialized volume retains its original password. Do not regenerate it while reusing that volume. Debian's psql utility is not a version-matched PostgreSQL 18 backup client; backup/restore tooling remains future work.
 
 ## Diagnosis
 
-| Symptom | Next check |
+| Symptom | Check |
 |---|---|
-| “Reopen in Container” missing | Install Microsoft's Dev Containers extension; verify Windows VS Code opened the WSL folder |
-| `.env.local` missing | Run the generator in Ubuntu before reopening |
-| Permission denied on source/secrets | Confirm the WSL path, non-root `node` user and UID mapping; do not recursively chmod/chown the project as a shortcut |
-| Image/pnpm download fails | Inspect the specific registry/network error in the Dev Containers log; retain the recorded pins |
-| Compose schema fails | Capture the `config --quiet` error; do not dump secret-bearing resolved configuration |
-| Doctor sees a different Node/pnpm version | Confirm the terminal is in the Dev Container; rebuild after configuration changes |
-| Doctor rejects credential format/access | Check generated local config and mode 0600; do not paste the password |
-| Database connection fails | Check this workspace's PostgreSQL container in Docker Desktop; verify health and matching existing credentials |
-| Browser URL unavailable | Start `pnpm dev:smoke`; open the actual forwarded URL in the Ports panel |
-| Port 5173 already used | Stop the old connectivity process or choose an alternate local forwarding port in VS Code |
+| Container reopen missing | Windows VS Code WSL and Dev Containers extensions; correct WSL source folder |
+| Toolchain or environment doctor fails | Dev Container terminal, exact pins, owner-only local file; never print credentials |
+| Frozen install or peers fail | Specific registry/peer error, owning manifests and lockfile; preserve strict peers |
+| Headless Chromium lacks a library | Rebuild from committed Dockerfile; install the pinned browser cache inside that container |
+| Database connection fails | Actual project's postgres health and matching existing credentials |
+| Service port occupied | Stop the specific prior foundation/connectivity process; preserve unrelated listeners |
+| Windows page unavailable | Running `pnpm dev`, VS Code Ports panel's actual forwarded URL |
+| WebGL unavailable | Semantic stop control remains usable; record browser/GPU failure separately |
+| Large bundle warning | Known synthetic renderer size; later performance work, not an installation failure |
 
-The workspace container has no Docker CLI/socket. Use Docker Desktop or the Ubuntu host for container management, selecting the actual workspace project. Use `pnpm db:check` inside the container for the database check.
-
-## Reference documentation
-
-- [VS Code WSL](https://code.visualstudio.com/docs/remote/wsl)
-- [Dev Container creation and Compose integration](https://code.visualstudio.com/docs/devcontainers/create-dev-container)
-- [Non-root users and UID mapping](https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user)
-- [Docker Desktop WSL integration](https://docs.docker.com/desktop/features/wsl/)
-- [Compose service configuration](https://docs.docker.com/reference/compose-file/services/)
-- [pnpm 10 settings](https://pnpm.io/10.x/settings)
+Keep all validation categories distinct. No CI, deployment, production security/image qualification or game/device acceptance is implied by these local steps.

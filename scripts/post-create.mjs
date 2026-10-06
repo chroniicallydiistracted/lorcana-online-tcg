@@ -8,7 +8,7 @@ try {
   run("pnpm", ["verify"], { cwd: root });
   run("pnpm", ["test:bootstrap"], { cwd: root });
   run("pnpm", ["db:check"], { cwd: root });
-  console.log("Dev Container setup passed. Run pnpm dev:smoke and open the forwarded port 5173.");
+  console.log("Dev Container setup passed. Run pnpm dev and open the forwarded port 5173; verify:foundation checks the application packages.");
 } catch (error) {
   console.error(error.message);
   process.exitCode = 1;

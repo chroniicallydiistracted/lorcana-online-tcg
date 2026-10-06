@@ -19,3 +19,7 @@ The environment can be reconstructed from source and pins. Initial image downloa
 The editor's non-root user must match the WSL user's file ownership. Local source and the PostgreSQL named volume survive container recreation, but a named volume is not a backup. An existing volume retains its original database credentials. Native Windows browsers exercise the actual desktop GPU/browser path; automated Linux browser tests and real phone/tablet checks remain additional evidence.
 
 Docker Compose 5.5.1 is the observed local version; the blueprint's earlier “Compose v2” wording describes the modern plugin/specification baseline, not a requirement to downgrade this working installation. This specific configuration still needs a real Compose validation/start on the Director's machine.
+
+## Qualification update, 2026-10-05
+
+The Director subsequently supplied successful PC build/start, post-create and Windows connectivity evidence for the initial main commit. Fresh BOOT-01 inspection confirmed the running non-root workspace and authenticated PostgreSQL 18.6. ADR 0002 establishes the application packages and updated development image; qualification details distinguish historical, agent and pending device evidence. Database persistence through recreation remains unperformed.

@@ -8,15 +8,15 @@ The goal is a premium Lorcana game for Illumineers: desktop web first, touch/tab
 
 ## Current implementation boundary
 
-This is a bootstrap repository. Only the Dev Container, local database configuration, workspace checks and connectivity server exist. Do not mark BOOT-01/02 complete, describe the connectivity response as the game UI, or report any game-engine, auth, migration, device or production tests as passed.
+BOOT-01 implements executable React/Vite web, synthetic Babylon rendering, typed Fastify API/match diagnostics and an idle worker, with shared contracts, presentation, design-system and server-only service-runtime. See `docs/validation/boot-01.md` for acceptance evidence and limits. The diagnostic page is not the approved game UI.
 
-Actual app/package manifests, TypeScript, framework tooling and application code are the next foundation task. The planned package register is a baseline, not a root install list.
+Domain, db, engine-adapter, rules-data and testkit remain reserved. BOOT-02/03/05, gameplay, auth, migrations, real device/performance and production acceptance remain pending. The planned dependency register is a baseline, not a root install list.
 
 ## Working environment
 
 - Work inside the committed Dev Container. Match `toolchain.json` and the frozen lockfile.
-- Run `pnpm doctor`, `pnpm verify`, `pnpm test:bootstrap` and `pnpm db:check` for relevant workspace changes. Browser forwarding must also be checked on the Director's PC.
-- Use `pnpm dev:smoke` only to verify browser access.
+- Run `pnpm run doctor` (bare `pnpm doctor` selects the pnpm built-in), `pnpm verify`, `pnpm test:bootstrap` and `pnpm db:check` for relevant workspace changes. Browser forwarding must also be checked on the Director's PC.
+- Use `pnpm dev` for the real foundation and `pnpm verify:foundation` for application checks. `pnpm dev:smoke` is only a separate connectivity diagnostic.
 - Pin dependencies in the correct owning workspace. Review required dependency build scripts and update `allowBuilds` deliberately. Preserve strict peer checks.
 - Persist tooling changes in the Dockerfile/configuration; undocumented manual installs are not the baseline.
 - Keep source in the Linux filesystem. Do not move it into `/mnt/c` for development.

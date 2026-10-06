@@ -2,23 +2,43 @@
   "name": "Lorcana Online TCG",
   "dockerComposeFile": "compose.yaml",
   "service": "workspace",
-  "runServices": ["workspace", "postgres"],
+  "runServices": [
+    "workspace",
+    "postgres"
+  ],
   "workspaceFolder": "/workspaces/lorcana-online-tcg",
   "remoteUser": "node",
   "updateRemoteUserUID": true,
   "shutdownAction": "stopCompose",
   "overrideCommand": false,
-  "forwardPorts": [5173],
+  "forwardPorts": [
+    5173,
+    3001,
+    3002
+  ],
   "portsAttributes": {
     "5173": {
-      "label": "Workspace browser connectivity check",
+      "label": "Web application",
       "onAutoForward": "notify"
+    },
+    "3001": {
+      "label": "API diagnostics",
+      "onAutoForward": "silent"
+    },
+    "3002": {
+      "label": "Match service diagnostics",
+      "onAutoForward": "silent"
     }
   },
-  "postCreateCommand": ["node", "scripts/post-create.mjs"],
+  "postCreateCommand": [
+    "node",
+    "scripts/post-create.mjs"
+  ],
   "customizations": {
     "vscode": {
-      "extensions": ["EditorConfig.EditorConfig"],
+      "extensions": [
+        "EditorConfig.EditorConfig"
+      ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash"
       }

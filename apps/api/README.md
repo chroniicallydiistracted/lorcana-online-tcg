@@ -1,5 +1,3 @@
-# apps/api
+# api
 
-Fastify HTTP API, authentication, player domains and domain authorization.
-
-Reserved directory: no application implementation or package manifest yet. Implement its scoped manifest and dependencies through the foundation backlog.
+API foundation on 3001. Typed health/readiness diagnostics only; no authentication, game or database integration. Root development supervisor owns lifecycle and reload. Built execution: `pnpm --filter @lorcana/api start` inside the local Dev Container after `pnpm build`.

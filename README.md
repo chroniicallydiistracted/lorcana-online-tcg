@@ -1,70 +1,60 @@
-# Lorcana Online TCG — workspace foundation
+# Lorcana Online TCG
 
-This repository starts the desktop-first web game described in `docs/vision/Development_Blueprint_2026-10-05.md`. Smartphone and tablet support develop alongside it. The client, server and rules engine are not implemented by this workspace starter.
+The desktop web game follows the [development blueprint](docs/vision/Development_Blueprint_2026-10-05.md), with touch/tablet development alongside it. BOOT-01 implements the application foundation: a React/Vite client, a synthetic Babylon rendering check, typed Fastify diagnostics, an independent match-service process and an idle worker. This diagnostic page is infrastructure evidence; authored game presentation, gameplay, authentication and economic features are subsequent work.
 
-The starter supplies a pinned Linux development toolchain, local PostgreSQL, owner-only local credentials, workspace checks and a browser connectivity server. The browser response is a plain diagnostic message, not a product design proposal.
+## Run locally
 
-## Open this workspace
+Keep source in `/home/andre/lorcana-online-tcg` on WSL's Linux filesystem. Open it with Windows VS Code and **Dev Containers: Reopen in Container**. Preserve the existing `.env.local` and PostgreSQL volume. On a new checkout only, run `python3 scripts/init-local-env.py` in Ubuntu before opening the container. See the [setup runbook](docs/runbooks/workspace-setup.md).
 
-Use Windows 11, Ubuntu under WSL2, Docker Desktop's Ubuntu integration and VS Code installed on Windows with WSL and Dev Containers extensions. Keep the source in the Linux filesystem, here `/home/andre/lorcana-online-tcg`.
-
-After extracting this archive's contents directly into that folder, run these commands in Ubuntu:
+Inside the committed Dev Container:
 
 ```bash
-cd /home/andre/lorcana-online-tcg
-python3 scripts/init-local-env.py
-docker compose -f .devcontainer/compose.yaml config --quiet
-code .
-```
-
-In VS Code, use **Ctrl+Shift+P → Dev Containers: Reopen in Container**. Accept the workspace trust prompt for these reviewed project files. The initial build downloads the pinned images and installs the development tools. Wait for the post-create checks to finish; opening the editor alone does not mean setup passed.
-
-Inside the Dev Container terminal:
-
-```bash
-pnpm doctor
-pnpm verify
-pnpm test:bootstrap
+pnpm run doctor
+pnpm install --frozen-lockfile
+pnpm verify:foundation
 pnpm db:check
-pnpm dev:smoke
+pnpm dev
 ```
 
-Open forwarded port **5173** from VS Code's **Ports** panel. The page should show `Lorcana workspace connection ready.` Stop the connectivity server with **Ctrl+C**. If the local port is free and forwarded as 5173, the Windows browser URL is `http://localhost:5173`; the Ports panel supplies the actual URL if a different local port was chosen.
+Use `pnpm run doctor`: bare `pnpm doctor` selects pnpm's built-in command rather than this repository's doctor script. Keep Node 24.21.0 and pnpm 10.33.0; the pnpm update banner is informational.
 
-See `docs/runbooks/workspace-setup.md` for diagnosis, persistence checks and Git initialization. Node and pnpm are installed in the container; the Ubuntu host does not need an additional Node installation for this setup.
+Open forwarded **5173** from VS Code's Ports panel. Expect **Application foundation**, **API ready**, **Match service ready**, and a **Start rendering check** control displaying three synthetic card shapes. The local web server proxies `/api` and `/match` to ports **3001** and **3002**. The worker has no HTTP listener. Stop the stack with Ctrl+C. A failed service stops the supervised stack; server source changes restart the three server processes. Vite handles browser changes.
 
-## Installed versus planned
+`pnpm dev:smoke` remains the original connectivity diagnostic. Run it separately, after stopping the app on 5173; its plain response is not the game UI.
 
-| Item | Starter status |
+## Checks
+
+| Command | Evidence |
 |---|---|
-| Node / pnpm | Container pins 24.21.0 / 10.33.0 |
-| PostgreSQL | Official version-18 image pinned by digest; private Compose network |
-| Application packages | Directories reserved; no application dependencies installed yet |
-| TypeScript, React, Vite, Babylon, Fastify | Exact research versions recorded in `docs/vision/dependencies.json`; add in owning workspaces during BOOT-01 |
-| Game engine and real cards | Not vendored or activated; qualify through the engine adapter |
-| Auth, migrations, restricted app roles | Not implemented; tracked foundation work |
-| Tests | Bootstrap-only checks, not game/rules acceptance |
-| Cloud services, CI, deployment | Not provisioned or implemented |
+| `pnpm run doctor` | Toolchain, Linux, local environment and owner-only credential checks |
+| `pnpm verify` / `pnpm test:bootstrap` | Preserved configuration/syntax checks, live connectivity and credential tests |
+| `pnpm typecheck` | Shared declaration builds followed by strict checks across all apps/packages |
+| `pnpm lint` | ESLint and browser/public ownership checks |
+| `pnpm build` | Ordered shared-package declarations/ESM, web bundle and three executable server apps |
+| `pnpm test` | Builds, bootstrap, schema/service/scene tests, negative boundaries, bundle and real-process lifecycle checks |
+| `pnpm test:e2e:smoke` | Linux Chromium, live services, software WebGL, resize/remount, keyboard controls and unavailable-service behavior |
+| `pnpm db:check` | Existing bootstrap administrator connection only |
 
-The pnpm lockfile covers this starter's dependency-free root only. It is not the 61-package planning fixture's lockfile. Avoid installing every planned library at the root.
+For browser automation, install its pinned browser inside the container once with `pnpm --filter @lorcana/web exec playwright install chromium`. Shared Linux libraries are persisted in the Dockerfile. Browser caches are per container user. Tests own fixed ports 5173/3001/3002; stop `pnpm dev` first.
 
-## Source layout
+## Ownership
 
-- `apps/web`, `apps/api`, `apps/match-service`, `apps/worker`: future deployment applications.
-- `packages/contracts`, `engine-adapter`, `rules-data`, `domain`, `db`, `design-system`, `presentation`, `testkit`: planned responsibility boundaries.
-- `vendor/tcg-engines`: reserved for a qualified, pinned upstream closure.
-- `.devcontainer`: development image, Compose services and editor integration.
-- `scripts`, `tests`: executable workspace checks.
-- `docs/vision`: blueprint, original checklist, traceability and research baseline.
-- `docs/adr`, `docs/runbooks`, `infra`: architecture decisions and operations.
+| Workspace | Implemented responsibility |
+|---|---|
+| `apps/web` | Semantic React controls, CSS Modules, service status, lazy renderer |
+| `apps/api` / `apps/match-service` | Separate Fastify `/healthz` and `/readyz` diagnostic executables |
+| `apps/worker` | Local idle process with bounded signal shutdown; no job implementation |
+| `packages/contracts` | Public TypeBox health/readiness schema and validated response types |
+| `packages/design-system` | React Aria action control; full design system deferred |
+| `packages/presentation` | Synthetic Babylon scene and mount/resize/dispose ownership |
+| `packages/service-runtime` | Server-only diagnostics and cancellable startup/shutdown |
 
-Reserved app/package folders contain README files only; they become actual pnpm workspaces when their package manifests are implemented.
+`domain`, `db`, `engine-adapter`, `rules-data`, `testkit` and `vendor/tcg-engines` remain explicitly reserved. Private state and credentials have no browser exports. The browser guard checks declarations, imports/aliases/reexports, HTML/CSS and asset URLs; Vite enforces it again and restricts served filesystem roots. Development children receive a small environment without the bootstrap database administrator credentials.
 
-## Next development work
+Dependencies are exact pins in owning workspaces. The lockfile covers nine workspace projects, not every library in the anticipated [dependency register](docs/vision/dependencies.json). Strict peers and an empty build-script allowance remain enabled; see [ADR 0002](docs/adr/0002-application-foundation.md).
 
-1. Finish BOOT-01: correctly scoped TypeScript packages, minimal real web/API/worker builds, quality tools and enforced import boundaries.
-2. Finish BOOT-02: restricted application/migration roles, real migrations, test databases and verified storage persistence.
-3. BOOT-03/05: CI, release/protocol contracts and reproducible validation.
-4. Run RULE-01/02 and UX-01/02 alongside the foundation: authoritative rules inventory, engine qualification and authored visual direction.
+## Evidence and next foundations
 
-This archive prepares parts of BOOT-01/02; neither backlog item is complete. Record actual results in `docs/WORKSPACE_QUALIFICATION.md` before declaring the local workspace qualified.
+See [workspace qualification](docs/WORKSPACE_QUALIFICATION.md) and [BOOT-01 validation](docs/validation/boot-01.md) for executed checks and their limits. The lazy synthetic renderer still triggers Vite's large-chunk warning; this is not performance qualification.
+
+BOOT-02 remains restricted database roles, migrations, isolated test DB and persistence through recreation. BOOT-03 remains CI/artifact checks; BOOT-05 remains protocol/release compatibility. RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).

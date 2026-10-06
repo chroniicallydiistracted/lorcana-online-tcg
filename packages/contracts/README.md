@@ -1,5 +1,3 @@
-# packages/contracts
+# contracts
 
-Public transport schemas, IDs, protocol versions and reason codes. Never export private engine state.
-
-Reserved directory: no application implementation or package manifest yet. Implement its scoped manifest and dependencies through the foundation backlog.
+Public TypeBox foundation health/readiness contracts with strict runtime validation. Public dependencies only. Protocol/release negotiation and gameplay projections remain BOOT-05 and later work.

@@ -1,5 +1,3 @@
-# packages/design-system
+# design-system
 
-Authored design tokens, accessible unstyled React primitives and interaction states.
-
-Reserved directory: no application implementation or package manifest yet. Implement its scoped manifest and dependencies through the foundation backlog.
+Browser-owned React Aria action control. Authored tokens and CSS Modules live in the diagnostic client for now; full visual direction and reusable game components remain UX work.

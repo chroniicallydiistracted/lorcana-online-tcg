@@ -5,21 +5,54 @@
       "label": "Workspace: verify",
       "type": "process",
       "command": "pnpm",
-      "args": ["verify"],
+      "args": [
+        "verify"
+      ],
       "problemMatcher": []
     },
     {
       "label": "Workspace: database check",
       "type": "process",
       "command": "pnpm",
-      "args": ["db:check"],
+      "args": [
+        "db:check"
+      ],
       "problemMatcher": []
     },
     {
       "label": "Workspace: browser connectivity check",
       "type": "process",
       "command": "pnpm",
-      "args": ["dev:smoke"],
+      "args": [
+        "dev:smoke"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Application: develop",
+      "type": "process",
+      "command": "pnpm",
+      "args": [
+        "dev"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Application: verify foundation",
+      "type": "process",
+      "command": "pnpm",
+      "args": [
+        "verify:foundation"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Application: browser smoke",
+      "type": "process",
+      "command": "pnpm",
+      "args": [
+        "test:e2e:smoke"
+      ],
       "problemMatcher": []
     }
   ]

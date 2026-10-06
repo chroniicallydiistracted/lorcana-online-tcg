@@ -20,7 +20,7 @@ assert dev["workspaceFolder"] == "/workspaces/lorcana-online-tcg"
 assert dev["service"] == "workspace"
 assert (root / ".devcontainer" / dev["dockerComposeFile"]).is_file()
 assert dev["postCreateCommand"] == ["node", "scripts/post-create.mjs"]
-assert dev["forwardPorts"] == [5173]
+assert dev["forwardPorts"] == [5173, 3001, 3002]
 assert dev["shutdownAction"] == "stopCompose"
 
 services = compose["services"]
