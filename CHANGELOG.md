@@ -2,6 +2,37 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261007-003 — Publish and integrate completed foundation branches into main
+
+- Status: draft
+- Actor: Codex architect/developer/QA
+- Recorded (UTC): 2026-10-07T06:18:03.115Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: bf8659ace9d3ac51dbeb61a0032d69154b3a39c7
+- Tasks: BOOT-01, BOOT-02, BOOT-03, BOOT-05, DOC-01, DOC-02
+- Features: F-CI, F-DOCS, F-EVIDENCE
+- Requirements: none
+
+### Changes
+
+- **revision:** Director authorizes publication of all five committed foundation/governance branches and integration into main. Verify remote ancestry, current container checks/secrets, merged result and exact remote refs; preserve all commits/private data and pending BOOT-04/device/hosted gates.
+
+### Verification
+
+- **passed:** Fresh prepublication baseline, complete foundation94 and current/full-history known-secret gates inside existing Dev Container; executable fingerprint matches BOOT-05 final proof. ([evidence](docs/validation/runs/RUN-20261007-057.json))
+
+### Documentation and files
+
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Director now authorizes branch/main publication and merge; update active objective/source and leave BOOT-04/provider/device/production statuses distinct.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261007-003.json).
+
+### Limits and next actions
+
+- BOOT-04 provider definitions/spend worksheet remains pending. Windows/hardware and hosted checks are not inferred from local success.
+- Publication does not authorize provider spending, production deployment or visibility/branch-protection changes.
+- Verify fresh current foundation and secret/history gates; publish the five completed branches, fast-forward main with all ancestor commits, verify merged source and remote refs, record actual hosted results if execution starts.
+
 ## CHG-20261007-002 — BOOT-05 strict protocol, release identity and compatibility foundation
 
 - Status: finalized

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-057",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{spawnSync}from'node:child_process';import{sourceSecretScan}from'./scripts/ci/security.mjs';import{privateRedactionValues}from'./scripts/evidence-lib.mjs';for(const args of [['run','doctor'],['verify'],['test:bootstrap'],['db:check'],['verify:foundation']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0)throw Error('Prepublication check failed');}sourceSecretScan(process.cwd(),Object.values(privateRedactionValues(process.cwd())));console.log('PASS current baseline/full foundation94 and complete-history known-secret prepublication gates');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "bf8659ace9d3ac51dbeb61a0032d69154b3a39c7",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-07T06:13:19.916Z",
+  "finished_at": "2026-10-07T06:14:22.738Z",
+  "recorded_at": "2026-10-07T06:14:22.738Z",
+  "time_precision": "exact",
+  "elapsed_ms": 62459,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Fresh prepublication baseline, complete foundation94 and current/full-history known-secret gates inside existing Dev Container",
+  "log_path": "docs/validation/logs/RUN-20261007-057.txt",
+  "log_sha256": "a954a7a25f70e4b0b9aef25257a0aa2ccbf64673da84ca84ef58dc4be726ae5f",
+  "redactions": 0
+}
