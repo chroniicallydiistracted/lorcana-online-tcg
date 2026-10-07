@@ -1,0 +1,31 @@
+# Foundation CI and artifact operation
+
+BOOT-03 owns the checked Actions definition and the same local pipeline. Current execution evidence is in [BOOT-03 validation](../validation/boot-03.md); [ADR0005](../adr/0005-ci-artifact-qualification.md) records policies and limitations. No deployment credentials or production publishing are used.
+
+## Run from WSL/Linux host
+
+Preserve the existing Dev Container and private data. From `/home/andre/lorcana-online-tcg`, run:
+
+```bash
+python3 scripts/ci-local.py --evidence-id RUN-YYYYMMDD-NNN
+```
+
+Choose an unused current UTC run ID following [the record format](../CHANGELOG_FORMAT.md). Omit the flag for a throwaway local/Actions execution. The launcher needs host Docker/Compose, Python3 and Git, not host Node, pnpm or Docker inside the workspace. Use a non-root Linux account; application commands run in the committed image. It copies only tracked/non-ignored regular public files plus full Git ancestry. Existing private values are read only for safe current-source and complete Git-blob known-secret comparisons and never copied. Shallow sources are refused. Generated credentials and dependency/browser caches live in the temporary copy. A Dockerfile-only build context excludes repository data.
+
+The launcher creates `lorcana-ci-<UUID>`, with private PostgreSQL18 and a disposable volume. The distinct bootstrap target/marker guard protects the existing database. Frozen install precedes the recorder; the recorded pipeline itself repeats frozen installation, runs the foundation suite, provisions/migrates both managed targets, verifies all eight identities/five live checks and downloads/runs pinned Chromium. Checks own fixed ports inside the disposable private container; host ports are never published.
+
+On success, after cleanup, `.local/ci-results/<UUID>/artifacts` contains the verified result; the launcher prints its exact path. `host.json` records owned-resource cleanup. Passing or failed inner run/log receipts are copied exclusively to the normal evidence directories. A setup failure before recorder installation has no invented executed receipt; retain the host output and record an explicit reported failure/checkpoint. Review sanitized logs before committing.
+
+Ctrl+C/termination records cancellation and runs bounded cleanup of the UUID project; signals during cleanup cannot interrupt it or permit success publication. Unsuccessful stages/cleanup exit1 and do not publish a result. Cleanup checks all owned containers (including stopped ones), volumes/networks by Compose labels and removes the uniquely tagged image before publishing a result. It never calls down on the VS Code project. If the host/WSL/Docker itself crashes, inspect `docker ps -a` and label-filtered volumes/networks for the printed UUID before removing only that owned project. Do not remove global volumes or reset Docker. Host crash cleanup and real GitHub cancellation are external conditions, not proven by configuration.
+
+## Container helpers and artifacts
+
+`pnpm ci:verify` is the guarded disposable-container entry point; direct use in the existing Dev Container fails before provisioning. `pnpm ci:config` checks workflow/Compose policy; `pnpm test:ci` exercises negative scanner/manifest/stage and mocked launcher/config regressions. They are included in normal verify/test respectively. `pnpm ci:artifacts -- /absolute/path/to/artifacts` checks a copied/downloaded result's allowlist, files, hashes and secret patterns; hashes prove identity, not authenticity.
+
+Source and full Git history are checked for supported secret forms. Known generated secrets are checked again after provisioning and against the artifact reports/bundles. Dependency checks inspect the full installed Linux npm graph, emit CycloneDX SBOM and published notices, and query the registry audit API. Unknown licenses, missing graph/integrity, unavailable/malformed audit or high/critical advisories stop the pipeline. There is no silent offline success or vulnerability exception. License-file gaps/low or moderate findings remain visible; distribution legal review remains pending. OS packages/Chromium/uninstalled optional platforms are outside this npm SBOM/security scope.
+
+## GitHub workflow
+
+`.github/workflows/foundation.yml` checks PRs, main pushes and manual runs on ubuntu-24.04. Full SHA-pinned official Actions, contents:read, full ancestry and disabled checkout credential persistence are mandatory. The job runs this exact host launcher and uploads only `.local/ci-upload/artifacts/` on success, retained14 days. Publishing/merging the branch, actual hosted execution, required checks and branch protection remain separate Director/repository operations. Workflow files alone cannot prove them. No production deployment, release compatibility, asset provenance or real device acceptance is included.
+
+Project-owned callable boundaries are inventoried in [current-state.json](../current-state.json) with source/signature/hash/observation time and linked through F-CI in [FEATURES.md](../FEATURES.md). `scanSecrets` returns only path/rule findings; `sourceSecretScan` throws on current/history findings or shallow Git. `validateAudit` rejects malformed/status/severity contradictions; `dependencyReports` returns three report payloads from actual installed/frozen/registry metadata. `assertIsolation` rejects an ordinary workspace; `runStages` stops at the first thrown stage, and `pipeline` publishes only validated outputs. Artifact creation requires ignored output and complete workspaces/reports/identity; verification rejects incomplete/tampered/unsafe metadata or bytes. Host copying validates public paths/current and historical known values before cloning; cleanup is UUID-only, bounded and checks all labeled resources before image removal/result publication. Errors never include credential values.

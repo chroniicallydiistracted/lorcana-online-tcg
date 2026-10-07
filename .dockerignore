@@ -1,12 +1,4 @@
-.git
-node_modules
-.pnpm-store
-.env
-.env.*
-*.pem
-*.key
-.local
-coverage
-dist
-__pycache__
-*.pyc
+# The CI launcher builds from a Dockerfile-only context; also protect manual root builds.
+**
+!.devcontainer/
+!.devcontainer/Dockerfile

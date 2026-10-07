@@ -1,0 +1,19 @@
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":398,"documents":289,"functions":459,"changes":7,"runs":105}
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+/workspaces/lorcana-online-tcg/scripts/ci/pipeline.mjs
+  1:24  error  'writeFileSync' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (1 error, 0 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.

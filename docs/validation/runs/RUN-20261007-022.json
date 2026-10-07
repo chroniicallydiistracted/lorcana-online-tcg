@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-022",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/documentation/evidence.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "8aab0b999042f0aa243ab06379994939fe21778ca140e7e273956a8620c42d3a",
+  "started_at": "2026-10-07T02:25:55.739Z",
+  "finished_at": "2026-10-07T02:26:00.591Z",
+  "recorded_at": "2026-10-07T02:26:00.591Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4851,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-03 red generated managed-password durable-log redaction regression",
+  "log_path": "docs/validation/logs/RUN-20261007-022.txt",
+  "log_sha256": "885bf57c8deead6e015c3889ff14c6d7135502cf614146d4afbdb32cbb777b86",
+  "redactions": 0
+}

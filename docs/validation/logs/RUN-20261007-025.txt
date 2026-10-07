@@ -1,0 +1,78 @@
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":426,"documents":317,"functions":497,"changes":7,"runs":119}
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+
+> lorcana-online-tcg@0.0.0 test:ci /workspaces/lorcana-online-tcg
+> node --test tests/ci/*.test.mjs && python3 tests/ci/launcher.test.py
+
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.535073ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.39657ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (18.773993ms)
+✔ manifest traversal, duplicate and missing entries are rejected (10.182205ms)
+✔ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (12.172817ms)
+✔ documented artifact command accepts the pnpm argument separator (485.190989ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.419351ms)
+✔ a shallow repository cannot bypass full-history qualification (40.15229ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 797.371665
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.035s
+
+OK
+
+> lorcana-online-tcg@0.0.0 test:documentation /workspaces/lorcana-online-tcg
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (293.811536ms)
+✔ source changes during a command prevent a successful evidence claim (317.829605ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1770.861033ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.263057ms)
+✔ credentials generated during a child command are redacted before durable logs (269.918162ms)
+✔ unsafe generated credential configuration withholds all output and records a schema-valid failure (304.86043ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1954.287711ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.324275ms)
+✔ new documentation governance exposes real validation and sync operations (0.734717ms)
+✔ source drift requires a covering change and review of impacted documentation (331.491582ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (91.649778ms)
+✔ change records reject unqualified timestamps and historical execution inventions (17.549844ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (80.687093ms)
+✔ documentation edits and newly added source files require recorded coverage (120.599263ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (16.533204ms)
+✔ committed finalized history cannot be changed or deleted (130.362668ms)
+✔ log tampering and exit status contradictions invalidate execution evidence (182.350345ms)
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history (70.777441ms)
+✔ removing old source-impact edges cannot erase required documentation reviews (70.324891ms)
+✔ committing a rewrite does not make sealed history valid (137.139507ms)
+✔ executed passing evidence needs a log and consistent execution/recording times (50.561586ms)
+✔ isolated branches are not required to contain unrelated scope history (138.5073ms)
+✔ a misspelled documentation impact path cannot silently disable reviews (12.981681ms)
+✔ human device reports preserve verdict without inventing process exit or machine verification (177.704166ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5166.032984

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-031",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{spawnSync}from'node:child_process';import{mkdtempSync,rmSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';import{sourceFingerprint}from'./scripts/documentation-lib.mjs';const copy=mkdtempSync(join(tmpdir(),'lorcana-canonical-'));const env=Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:password|secret|token|credential|private_key)|^(?:PG|POSTGRES|DATABASE)/i.test(key)));try{const archive=spawnSync('git',['archive','b081524330b00fef9bb2945a8292a87cd6074962'],{maxBuffer:20000000});if(archive.status!==0)throw Error('Git archive failed');const tar=spawnSync('tar',['-xf','-','-C',copy],{input:archive.stdout});if(tar.status!==0)throw Error('Archive extraction failed');if(sourceFingerprint(copy)!==sourceFingerprint())throw Error('Canonical source differs');for(const args of [['install','--frozen-lockfile'],['verify:foundation']]){const result=spawnSync('pnpm',args,{cwd:copy,env,stdio:'inherit'});if(result.status!==0)throw Error('Canonical check failed');}console.log('PASS canonical staged Git frozen installation, complete foundation79 and exact executable fingerprint');}finally{rmSync(copy,{recursive:true,force:true});}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "a3190b81a2d2c0b78117f85e60a67328aca22cd34f69676f004fcf5feab18464",
+  "started_at": "2026-10-07T02:44:09.609Z",
+  "finished_at": "2026-10-07T02:44:57.103Z",
+  "recorded_at": "2026-10-07T02:44:57.103Z",
+  "time_precision": "exact",
+  "elapsed_ms": 47385,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Canonical staged Git bytes: fresh frozen installation, builds/types/lint and all79 foundation checks with identical final fingerprint",
+  "log_path": "docs/validation/logs/RUN-20261007-031.txt",
+  "log_sha256": "6aca8f286550c34c9dc4c34a0824762d8279ea5b2ed9eab3ab070182dda4fb9d",
+  "redactions": 0
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-019",
+  "category": "simulated",
+  "command": [
+    "python3",
+    "tests/ci/launcher.test.py"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "39a7cb5f86be9afc20b3eb46e4cc91427029334fb48065bbb672029245718bf5",
+  "started_at": "2026-10-07T02:23:52.203Z",
+  "finished_at": "2026-10-07T02:23:52.348Z",
+  "recorded_at": "2026-10-07T02:23:52.348Z",
+  "time_precision": "exact",
+  "elapsed_ms": 145,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-03 red original-credential history and cleanup cancellation review regressions",
+  "log_path": "docs/validation/logs/RUN-20261007-019.txt",
+  "log_sha256": "55fc7876955651b0ddb7df5112159ed49b0e6aff6410b57b69846720c8f7f6c2",
+  "redactions": 0
+}

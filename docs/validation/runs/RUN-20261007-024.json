@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-024",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/documentation/evidence.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "dfadd76d841a72e68ce4351ee35d558186482ae77676b01697a317261edce660",
+  "started_at": "2026-10-07T02:30:04.585Z",
+  "finished_at": "2026-10-07T02:30:09.720Z",
+  "recorded_at": "2026-10-07T02:30:09.720Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5135,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-03 red schema-valid fail-closed generated credential redaction contract",
+  "log_path": "docs/validation/logs/RUN-20261007-024.txt",
+  "log_sha256": "d883ac0970b03af7407ba5239390148016f5f0f15072e7e3c737d58135c3d221",
+  "redactions": 0
+}

@@ -1,0 +1,556 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261007-001",
+  "title": "BOOT-03 reproducible CI and build artifact qualification",
+  "actor": "Codex architect/developer/QA",
+  "status": "finalized",
+  "recorded_at": "2026-10-07T02:53:46.575Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "task_ids": [
+    "BOOT-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-CI",
+    "F-EVIDENCE",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "Implement an isolated local CI pipeline and matching reviewed SHA-pinned Actions definition, frozen graph/license/advisory/secret gates and hashed sanitized build artifacts."
+    },
+    {
+      "kind": "fix",
+      "description": "Correct all independently reproduced CI lifecycle/cancellation/stopped-resource/history/manifest/audit/CLI/log-redaction findings; reject shallow sources and nested unreviewed job permissions with failed red and green regressions."
+    },
+    {
+      "kind": "documentation",
+      "description": "Maintain CI operation/ADR/qualification/status/handoff, explicit scan/host/device limits and complete source impact map; preserve original requirements and append-only executed evidence."
+    },
+    {
+      "kind": "function",
+      "description": "Add guarded source/history scanning, frozen installed-graph reports, source/image/lock artifact identity and UUID resource lifecycle; extend evidence redaction to safely owned credentials before and after execution with fail-closed output withholding."
+    },
+    {
+      "kind": "test",
+      "description": "Final RUN028 passed twelve actual isolated pipeline stages,79 foundation regressions, eight restricted identities, five live PostgreSQL checks and four Linux software-WebGL browser checks; RUN029 verified90 artifact payload entries plus manifest,200 installed npm components, ten notice gaps and zero registry advisories."
+    },
+    {
+      "kind": "review",
+      "description": "Independent read-only review reproduced nine findings; all were corrected with retained red/green tests and fresh whole-source proof. No important finding is waived; review is reported with unknown historical execution times."
+    },
+    {
+      "kind": "revision",
+      "description": "RUN030 requalified disposable database recreation; RUN031 passed canonical Git frozen installation and79 tests. RUN032 retained an incorrect probe-volume expectation; corrected RUN033 proved actual cleanup, protected private/workspace state, original scope/provenance and staged formatting. Clock-discontinuous RUN026 remains failed without weakening timing safeguards."
+    }
+  ],
+  "files": [
+    ".dockerignore",
+    ".github/workflows/foundation.yml",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/CHANGELOG_FORMAT.md",
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0003-documentation-evidence.md",
+    "docs/adr/0005-ci-artifact-qualification.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261007-001.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-06-documentation-governance.md",
+    "docs/plans/2026-10-07-boot-03-ci.md",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/workspace-setup.md",
+    "docs/schemas/run.schema.json",
+    "docs/validation/boot-01.md",
+    "docs/validation/boot-02.md",
+    "docs/validation/boot-03.md",
+    "docs/validation/logs/RUN-20261007-006.txt",
+    "docs/validation/logs/RUN-20261007-007.txt",
+    "docs/validation/logs/RUN-20261007-008.txt",
+    "docs/validation/logs/RUN-20261007-009.txt",
+    "docs/validation/logs/RUN-20261007-010.txt",
+    "docs/validation/logs/RUN-20261007-011.txt",
+    "docs/validation/logs/RUN-20261007-012.txt",
+    "docs/validation/logs/RUN-20261007-013.txt",
+    "docs/validation/logs/RUN-20261007-014.txt",
+    "docs/validation/logs/RUN-20261007-015.txt",
+    "docs/validation/logs/RUN-20261007-016.txt",
+    "docs/validation/logs/RUN-20261007-017.txt",
+    "docs/validation/logs/RUN-20261007-018.txt",
+    "docs/validation/logs/RUN-20261007-019.txt",
+    "docs/validation/logs/RUN-20261007-020.txt",
+    "docs/validation/logs/RUN-20261007-021.txt",
+    "docs/validation/logs/RUN-20261007-022.txt",
+    "docs/validation/logs/RUN-20261007-023.txt",
+    "docs/validation/logs/RUN-20261007-024.txt",
+    "docs/validation/logs/RUN-20261007-025.txt",
+    "docs/validation/logs/RUN-20261007-026.txt",
+    "docs/validation/logs/RUN-20261007-027.txt",
+    "docs/validation/logs/RUN-20261007-028.txt",
+    "docs/validation/logs/RUN-20261007-029.txt",
+    "docs/validation/logs/RUN-20261007-030.txt",
+    "docs/validation/logs/RUN-20261007-031.txt",
+    "docs/validation/logs/RUN-20261007-032.txt",
+    "docs/validation/logs/RUN-20261007-033.txt",
+    "docs/validation/logs/RUN-20261007-034.txt",
+    "docs/validation/logs/RUN-20261007-901.txt",
+    "docs/validation/runs/RUN-20261007-006.json",
+    "docs/validation/runs/RUN-20261007-007.json",
+    "docs/validation/runs/RUN-20261007-008.json",
+    "docs/validation/runs/RUN-20261007-009.json",
+    "docs/validation/runs/RUN-20261007-010.json",
+    "docs/validation/runs/RUN-20261007-011.json",
+    "docs/validation/runs/RUN-20261007-012.json",
+    "docs/validation/runs/RUN-20261007-013.json",
+    "docs/validation/runs/RUN-20261007-014.json",
+    "docs/validation/runs/RUN-20261007-015.json",
+    "docs/validation/runs/RUN-20261007-016.json",
+    "docs/validation/runs/RUN-20261007-017.json",
+    "docs/validation/runs/RUN-20261007-018.json",
+    "docs/validation/runs/RUN-20261007-019.json",
+    "docs/validation/runs/RUN-20261007-020.json",
+    "docs/validation/runs/RUN-20261007-021.json",
+    "docs/validation/runs/RUN-20261007-022.json",
+    "docs/validation/runs/RUN-20261007-023.json",
+    "docs/validation/runs/RUN-20261007-024.json",
+    "docs/validation/runs/RUN-20261007-025.json",
+    "docs/validation/runs/RUN-20261007-026.json",
+    "docs/validation/runs/RUN-20261007-027.json",
+    "docs/validation/runs/RUN-20261007-028.json",
+    "docs/validation/runs/RUN-20261007-029.json",
+    "docs/validation/runs/RUN-20261007-030.json",
+    "docs/validation/runs/RUN-20261007-031.json",
+    "docs/validation/runs/RUN-20261007-032.json",
+    "docs/validation/runs/RUN-20261007-033.json",
+    "docs/validation/runs/RUN-20261007-034.json",
+    "docs/validation/runs/RUN-20261007-901.json",
+    "docs/vision/README.md",
+    "docs/vision/initial_backlog.csv",
+    "infra/README.md",
+    "infra/compose.ci.yaml",
+    "package.json",
+    "scripts/ci-local.py",
+    "scripts/ci/artifacts.mjs",
+    "scripts/ci/check-config.py",
+    "scripts/ci/pipeline.mjs",
+    "scripts/ci/policy.json",
+    "scripts/ci/security.mjs",
+    "scripts/evidence-lib.mjs",
+    "scripts/verify.mjs",
+    "tests/ci/gates.test.mjs",
+    "tests/ci/launcher.test.py",
+    "tests/documentation/evidence.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "apps/api/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "apps/worker/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "updated",
+      "reason": "Compared current CI implementation/operation with this document; updated its status, ownership, evidence or pipeline instructions and retained external/device/production gates."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "packages/db/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "packages/presentation/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    },
+    {
+      "path": "packages/service-runtime/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared CI source impact with this document: existing app/DB/protocol or record schema/template/game requirement/Director decision content remains unchanged; CI is documented in its owning runbook/ADR and does not accept those independent gates."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-006.json",
+      "outcome": "passed",
+      "scope": "BOOT-03 intake doctor; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-007.json",
+      "outcome": "passed",
+      "scope": "BOOT-03 intake preserved workspace checks; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-008.json",
+      "outcome": "passed",
+      "scope": "BOOT-03 intake original bootstrap checks; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-009.json",
+      "outcome": "passed",
+      "scope": "BOOT-03 intake authenticated bootstrap database; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-010.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red safety fixtures before implementation; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-011.json",
+      "outcome": "passed",
+      "scope": "BOOT-03 initial secret/license/artifact/target and mocked launcher workflow regressions; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-012.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 static/config/docs lint and safety fixtures checkpoint; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-013.json",
+      "outcome": "passed",
+      "scope": "BOOT-03 corrected lint and actual installed dependency/license/advisory/full-history secret adapters; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-014.json",
+      "outcome": "passed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-015.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red shallow-history and nested permission bypass regressions; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-016.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red job-level permission escalation regression; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-017.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red image lifecycle publication and setup-cleanup review regressions; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-018.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red artifact identity and metadata-secret review regressions; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-019.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red original-credential history and cleanup cancellation review regressions; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-020.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red stopped-container cleanup coverage and malformed advisory regressions; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-021.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red documented pnpm artifact argument-separator regression; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-022.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red generated managed-password durable-log redaction regression; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-023.json",
+      "outcome": "passed",
+      "scope": "BOOT-03 corrected CI and dynamic-log safety review regressions; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-024.json",
+      "outcome": "failed",
+      "scope": "BOOT-03 red schema-valid fail-closed generated credential redaction contract; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-901.json",
+      "outcome": "historical",
+      "scope": "Independent read-only BOOT-03 checkpoint review: nine reproduced findings and four full-history regressions; parent corrects with red/green and fresh final-source proof; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-025.json",
+      "outcome": "passed",
+      "scope": "BOOT-03 corrected docs/static/lint and full CI/evidence safety regression checkpoint; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-026.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-027.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; checkpoint identity and exact outcome retained; final acceptance needs matching source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-028.json",
+      "outcome": "passed",
+      "scope": "Final matching-source actual isolated twelve-stage frozen build/type/lint/import/docs/history foundation79, eight restricted identities, live DB5 and Linux Chromium4 pipeline; scans/dependency reports/artifacts passed."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-029.json",
+      "outcome": "passed",
+      "scope": "Final matching-source90 payload entries plus manifest verified;200 installed npm components, ten published notice gaps and zero registry advisories captured; unsigned source/image/lock identity passed."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-030.json",
+      "outcome": "passed",
+      "scope": "Final matching-source actual disposable PostgreSQL recreation/concurrent migration/role/transaction/logging and cleanup passed; existing workspace volume untouched."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-031.json",
+      "outcome": "passed",
+      "scope": "Final matching executable bytes from canonical staged Git tree: fresh frozen installation, builds/types/lint and complete79-test foundation suite passed."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-032.json",
+      "outcome": "failed",
+      "scope": "Failed read-only closure probe expected an incorrect volume suffix; no original data/environment mutated, original scope and staged known-secret checks passed before assertion."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-033.json",
+      "outcome": "passed",
+      "scope": "Corrected actual read-only closure passed owned resources/images/listeners cleanup, current/staged known-secret protection, private files and original scope/archive/lock/Dev Container/source/volume preservation and staged formatting."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-034.json",
+      "outcome": "passed",
+      "scope": "Finalized live and canonical Git-byte static/documentation checks, current/full Git-history secret checks and staged formatting passed with unchanged executable fingerprint; reused existing dependencies for canonical static check only."
+    }
+  ],
+  "limitations": [
+    "GitHub-hosted workflow execution/cancellation, required-check and branch-protection settings and Director Windows foundation observation remain pending.",
+    "Npm graph qualification excludes OS apt packages, downloaded Chromium and uninstalled optional platforms. Ten published license-file gaps remain explicit for legal redistribution review; hashes are unsigned identity, not authenticity or full security certification.",
+    "Artifacts identify the pre-commit dirty public source as foundation evidence; deployment/release promotion, BOOT-05 compatibility, asset/engine/rules qualification and real hardware GPU/touch/performance remain separate.",
+    "WSL crash and observed clock-step causes remain unconfirmed; failed/interrupted raw evidence is preserved and no missing result is inferred."
+  ],
+  "next_actions": [
+    "Continue BOOT-05 protocol/release contract schemas, valid/invalid fixtures, version negotiation and browser/server split following intake and the universal documentation/evidence workflow.",
+    "Record actual Director Windows observation separately; publish or run hosted CI and configure required checks only under appropriate Director authority.",
+    "Resolve distribution/image/asset qualification before release; BOOT-04 provider spending requires Director budget."
+  ]
+}

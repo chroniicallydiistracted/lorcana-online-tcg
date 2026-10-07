@@ -1,0 +1,29 @@
+..FF..F
+======================================================================
+FAIL: test_image_cleanup_failure_cannot_publish_or_print_pass (__main__.Safety.test_image_cleanup_failure_cannot_publish_or_print_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 65, in test_image_cleanup_failure_cannot_publish_or_print_pass
+    self.assertFalse((root / '.local/ci-results').exists())
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_image_is_removed_after_post_build_setup_failure (__main__.Safety.test_image_is_removed_after_post_build_setup_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 61, in test_image_is_removed_after_post_build_setup_failure
+    self.assertTrue(any(command[:3] == ['docker', 'image', 'rm'] for command in commands))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_workflow_guards_shallow_history_permissions_mutable_actions_and_failure_upload (__main__.Safety.test_workflow_guards_shallow_history_permissions_mutable_actions_and_failure_upload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 114, in test_workflow_guards_shallow_history_permissions_mutable_actions_and_failure_upload
+    with self.assertRaises(AssertionError):
+AssertionError: AssertionError not raised
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.013s
+
+FAILED (failures=3)

@@ -1,0 +1,48 @@
+..FFFF..F
+======================================================================
+FAIL: test_first_cancel_during_cleanup_cannot_publish (__main__.Safety.test_first_cancel_during_cleanup_cannot_publish)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 79, in test_first_cancel_during_cleanup_cannot_publish
+    root, _commands, output = self.main_fixture('cleanup_interrupt')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 65, in main_fixture
+    with self.assertRaises(KeyboardInterrupt if failure == 'cleanup_interrupt' else RuntimeError):
+AssertionError: KeyboardInterrupt not raised
+
+======================================================================
+FAIL: test_image_cleanup_failure_cannot_publish_or_print_pass (__main__.Safety.test_image_cleanup_failure_cannot_publish_or_print_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 75, in test_image_cleanup_failure_cannot_publish_or_print_pass
+    self.assertFalse((root / '.local/ci-results').exists())
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_image_is_removed_after_post_build_setup_failure (__main__.Safety.test_image_is_removed_after_post_build_setup_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 71, in test_image_is_removed_after_post_build_setup_failure
+    self.assertTrue(any(command[:3] == ['docker', 'image', 'rm'] for command in commands))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_known_original_credential_is_rejected_in_removed_history (__main__.Safety.test_known_original_credential_is_rejected_in_removed_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 102, in test_known_original_credential_is_rejected_in_removed_history
+    with self.assertRaisesRegex(RuntimeError, 'history'):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_workflow_guards_shallow_history_permissions_mutable_actions_and_failure_upload (__main__.Safety.test_workflow_guards_shallow_history_permissions_mutable_actions_and_failure_upload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/ci/launcher.test.py", line 151, in test_workflow_guards_shallow_history_permissions_mutable_actions_and_failure_upload
+    with self.assertRaises(AssertionError):
+AssertionError: AssertionError not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.051s
+
+FAILED (failures=5)

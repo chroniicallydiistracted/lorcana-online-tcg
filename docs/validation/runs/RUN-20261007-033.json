@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-033",
+  "category": "container",
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path\nimport csv\nimport importlib.util\nimport json\nimport os\nimport stat\nimport subprocess\n\nROOT = Path('/home/andre/lorcana-online-tcg')\nBASE = 'beae58ea0e7184e41f82e34088a6945270345ff9'\n\ndef capture(args):\n    result = subprocess.run(args, cwd=ROOT, capture_output=True, timeout=30)\n    if result.returncode:\n        raise RuntimeError('Inspection command failed; sensitive output withheld')\n    return result.stdout\n\nspec = importlib.util.spec_from_file_location('ci_launcher', ROOT / 'scripts/ci-local.py')\nlauncher = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(launcher)\nprivate_paths = [ROOT / '.env.local', ROOT / '.local/database.json']\nbefore = [p.read_bytes() for p in private_paths]\nfor p in private_paths:\n    assert not p.is_symlink() and stat.S_IMODE(p.stat().st_mode) == 0o600 and p.stat().st_uid == os.getuid()\n    capture(['git', 'check-ignore', '-q', str(p.relative_to(ROOT))])\nassert stat.S_IMODE((ROOT / '.local').stat().st_mode) == 0o700\nprivate_values = launcher.known_credentials(ROOT)\nassert len(private_values) == 9 and len(set(private_values)) == 9\nfor path in launcher.source_paths(ROOT):\n    content = (ROOT / path).read_bytes()\n    if any(value in content for value in private_values):\n        raise RuntimeError('Known credential detected in public file; value withheld')\nfor path in capture(['git', 'ls-files', '-z']).decode().split('\\0'):\n    content = capture(['git', 'show', ':' + path]) if path else b''\n    if path and any(value in content for value in private_values):\n        raise RuntimeError('Known credential detected in staged file; value withheld')\nprint('PASS owned mode600 ignored private files/parent700; nine distinct credentials absent from all current/staged public files and durable logs')\n\nfor path in ['pnpm-lock.yaml', 'toolchain.json', '.devcontainer/Dockerfile', '.devcontainer/compose.yaml', '.devcontainer/devcontainer.json', 'docs/vision/Development_Blueprint_2026-10-05.md', 'docs/vision/original_action_items.md', 'docs/vision/requirements.csv', 'docs/vision/additional_scope.csv', 'docs/vision/decision_register.csv', 'docs/vision/dependencies.json', 'docs/vision/source_register.json', 'docs/vision/rules_certification_template.csv', 'SHA256SUMS.txt', 'VALIDATION_RESULTS.json']:\n    assert (ROOT / path).read_bytes() == capture(['git', 'show', BASE + ':' + path]), 'Preserved baseline bytes changed: ' + path\nwith (ROOT / 'docs/vision/requirements.csv').open() as stream:\n    requirements = list(csv.DictReader(stream))\nassert len(requirements) == 548 and sum(row['source_optional'] == 'true' for row in requirements) == 20\nprint('PASS frozen lock/toolchain/Dev Container, all548 original requirements/20 optional flags, Director decisions/research/certification and original archive bytes match intake commit')\n\nproject = 'lorcana-online-tcg_devcontainer'\nworkspace_ids = capture(['docker', 'ps', '-q', '--filter', 'label=com.docker.compose.project=' + project, '--filter', 'label=com.docker.compose.service=workspace']).decode().split()\npostgres_ids = capture(['docker', 'ps', '-q', '--filter', 'label=com.docker.compose.project=' + project, '--filter', 'label=com.docker.compose.service=postgres']).decode().split()\nassert len(workspace_ids) == len(postgres_ids) == 1\nworkspace, postgres = workspace_ids[0], postgres_ids[0]\nassert workspace.startswith('3e5816dff0be') and postgres.startswith('1695ec6fc3eb')\nmounts = json.loads(capture(['docker', 'inspect', '--format', '{{json .Mounts}}', workspace]))\nassert any(m['Source'] == str(ROOT) and m['Destination'] == '/workspaces/lorcana-online-tcg' for m in mounts)\nassert not any('docker.sock' in m['Source'] for m in mounts)\nassert capture(['docker', 'inspect', '--format', '{{.State.Health.Status}}', postgres]).strip() == b'healthy'\nports = json.loads(capture(['docker', 'inspect', '--format', '{{json .NetworkSettings.Ports}}', postgres]))\nassert ports == {'5432/tcp': None}\npg_mounts = json.loads(capture(['docker', 'inspect', '--format', '{{json .Mounts}}', postgres]))\nassert any(m['Type'] == 'volume' and m['Destination'] == '/var/lib/postgresql' and m['Name'] == project + '_pg18_data' for m in pg_mounts)\nlistener_probe = \"const fs=require('node:fs');for(const path of ['/proc/net/tcp','/proc/net/tcp6']){for(const line of fs.readFileSync(path,'utf8').split('\\\\n').slice(1)){const fields=line.trim().split(/\\\\s+/);if(fields[3]==='0A'&&[5173,3001,3002].includes(parseInt(fields[1].split(':').at(-1),16)))throw Error('Foundation listener remains');}}console.log('PASS existing workspace listeners5173/3001/3002 absent');\"\nprint(capture(['docker', 'exec', '-u', 'node', workspace, 'node', '-e', listener_probe]).decode().strip())\nprint('PASS original workspace/source bind/private healthy PostgreSQL volume preserved; no database host port or Docker socket introduced')\n\nprojects = ['lorcana-ci-a8502d7e03f148e19bdc1b2a5e89c956', 'lorcana-ci-2b9f6f82494645b4aa4abf54e89b5fd8', 'lorcana-ci-447eb10690a04919970cfb6ae702aca4', 'lorcana-ci-81284ac550eb4df08c583b08cdf96eea', 'lorcana-proof-998225aca772']\nfor owned in projects:\n    label = 'label=com.docker.compose.project=' + owned\n    for args in [['docker', 'container', 'ls', '--all', '-q', '--filter', label], ['docker', 'volume', 'ls', '-q', '--filter', label], ['docker', 'network', 'ls', '-q', '--filter', label]]:\n        assert not capture(args).strip(), 'Owned disposable resource remains: ' + owned\n    if owned.startswith('lorcana-ci-'):\n        result = subprocess.run(['docker', 'image', 'inspect', owned + ':workspace'], capture_output=True, timeout=30)\n        assert result.returncode != 0, 'Owned CI image tag remains'\nprint('PASS all five owned projects have zero running/stopped containers, volumes/networks; all four CI image tags absent')\nassert before == [p.read_bytes() for p in private_paths], 'Closure altered private bytes'\ncapture(['git', 'diff', '--cached', '--check', '--', '.', ':(exclude)docs/validation/logs/**'])\nprint('PASS staged source/document formatting; private bytes unchanged during this read-only closure inspection')\n"
+  ],
+  "cwd": "/home/andre/lorcana-online-tcg",
+  "environment": {
+    "node": "24.21.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "pnpm": "10.33.0",
+    "executor": "Read-only WSL Python/Docker inspection and Dev Container listener probe",
+    "compose_project": "lorcana-online-tcg_devcontainer"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "a3190b81a2d2c0b78117f85e60a67328aca22cd34f69676f004fcf5feab18464",
+  "started_at": "2026-10-07T02:50:03.761Z",
+  "finished_at": "2026-10-07T02:50:08.955Z",
+  "recorded_at": "2026-10-07T02:50:08.955Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5195,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Read-only closure: actual owned resource/listener cleanup, private/current/staged secret protection, original scope/archive/lock and workspace/volume preservation, staged formatting",
+  "log_path": "docs/validation/logs/RUN-20261007-033.txt",
+  "log_sha256": "f2e841279622efc9808c31c2328da5c924b073cacd0cf9fdf79c0618a02985ed",
+  "redactions": 0
+}

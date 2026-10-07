@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-011",
+  "category": "simulated",
+  "command": [
+    "pnpm",
+    "test:ci"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "383c053e1bb3b3bd9c2dc36e816ff9ee1780deff57640b00e6ee2e35e0111814",
+  "started_at": "2026-10-07T02:13:35.274Z",
+  "finished_at": "2026-10-07T02:13:36.091Z",
+  "recorded_at": "2026-10-07T02:13:36.091Z",
+  "time_precision": "exact",
+  "elapsed_ms": 817,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "BOOT-03 initial secret/license/artifact/target and mocked launcher workflow regressions",
+  "log_path": "docs/validation/logs/RUN-20261007-011.txt",
+  "log_sha256": "a988686297d7ad6280009026f5816d3787271d372c1bfffb3347a7cb14bfa300",
+  "redactions": 0
+}

@@ -1,0 +1,40 @@
+
+> lorcana-online-tcg@0.0.0 test:ci /workspaces/lorcana-online-tcg
+> node --test tests/ci/*.test.mjs && python3 tests/ci/launcher.test.py
+
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.760067ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.473776ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (23.781729ms)
+✔ manifest traversal, duplicate and missing entries are rejected (11.878554ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.569552ms)
+✖ a shallow repository cannot bypass full-history qualification (58.798775ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 355.546914
+
+✖ failing tests:
+
+test at tests/ci/gates.test.mjs:54:1
+✖ a shallow repository cannot bypass full-history qualification (58.798775ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/ci/gates.test.mjs:61:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /full Git history|shallow/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Command failed with exit code 1.

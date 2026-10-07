@@ -1,0 +1,50 @@
+
+> lorcana-online-tcg@0.0.0 ci:verify /workspaces/lorcana-online-tcg
+> node scripts/ci/pipeline.mjs
+
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+CI stage: frozen-install
+Scope: all 10 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 412ms using pnpm v10.33.0
+
+   ╭─────────────────────────────────────────╮
+   │                                         │
+   │   Update available! 10.33.0 → 12.9.1.   │
+   │   Changelog: https://pnpm.io/v/12.9.1   │
+   │    To update, run: pnpm add -g pnpm     │
+   │                                         │
+   ╰─────────────────────────────────────────╯
+
+CI stage: doctor
+
+> lorcana-online-tcg@0.0.0 doctor /workspaces/lorcana-online-tcg
+> node scripts/doctor.mjs
+
+PASS Node 24.21.0
+PASS pnpm 10.33.0
+PASS Linux development environment
+PASS .env.local exists with owner-only access
+PASS Local environment loaded into container
+PASS Container database address
+PASS Generated database bootstrap configuration
+Workspace toolchain ready. Run pnpm db:check to verify authenticated database access.
+CI stage: foundation
+
+> lorcana-online-tcg@0.0.0 verify:foundation /workspaces/lorcana-online-tcg
+> pnpm verify && pnpm typecheck && pnpm lint && pnpm test
+
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+Stale source fingerprint
+/usr/local/bin/node failed; check the preceding output.
+ ELIFECYCLE  Command failed with exit code 1.
+ ELIFECYCLE  Command failed with exit code 1.
+CI stage failed: foundation
+ ELIFECYCLE  Command failed with exit code 1.

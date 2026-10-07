@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-010",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/ci/gates.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "0916b42ce5c295d05d10665a2cf69375fb654a456bb0e1ffd7c9419945e09696",
+  "started_at": "2026-10-07T02:09:07.551Z",
+  "finished_at": "2026-10-07T02:09:07.650Z",
+  "recorded_at": "2026-10-07T02:09:07.650Z",
+  "time_precision": "exact",
+  "elapsed_ms": 99,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-03 red safety fixtures before implementation",
+  "log_path": "docs/validation/logs/RUN-20261007-010.txt",
+  "log_sha256": "e587a723f47b52266d0f94d934313158179ce80507bbfe5e9dc84def8cf4311c",
+  "redactions": 0
+}

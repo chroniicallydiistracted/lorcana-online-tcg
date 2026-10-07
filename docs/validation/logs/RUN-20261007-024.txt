@@ -1,0 +1,27 @@
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (284.433524ms)
+✔ source changes during a command prevent a successful evidence claim (264.089356ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1764.678261ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.312524ms)
+✔ credentials generated during a child command are redacted before durable logs (286.951919ms)
+✖ unsafe generated credential configuration withholds all output and records a schema-valid failure (308.688212ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1950.129547ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.293996ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5088.395193
+
+✖ failing tests:
+
+test at tests/documentation/evidence.test.mjs:53:1
+✖ unsafe generated credential configuration withholds all output and records a schema-valid failure (308.688212ms)
+  Error: run schema: data/failure_reason must be equal to one of the allowed values
+      at validateData (file:///workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs:46:29)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/evidence.test.mjs:60:5)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

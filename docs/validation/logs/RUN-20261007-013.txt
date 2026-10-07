@@ -1,0 +1,11 @@
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+PASS npm components 200 license-file gaps 10 audit counts { info: 0, low: 0, moderate: 0, high: 0, critical: 0 }

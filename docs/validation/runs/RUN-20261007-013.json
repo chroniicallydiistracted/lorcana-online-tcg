@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-013",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{spawnSync}from\"node:child_process\";import{dependencyReports,sourceSecretScan}from\"./scripts/ci/security.mjs\";const r=spawnSync(\"pnpm\",[\"lint\"],{stdio:\"inherit\"});if(r.status!==0)process.exit(1);sourceSecretScan(process.cwd());const reports=dependencyReports(process.cwd());console.log(\"PASS npm components\",reports[\"sbom.cdx.json\"].components.length,\"license-file gaps\",reports[\"dependency-audit.json\"].license_file_gaps.length,\"audit counts\",reports[\"dependency-audit.json\"].response.metadata.vulnerabilities);"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "91c62f42a321b696c3ac8b2773ed52021674f5888ade94c7b5d096e181649c35",
+  "started_at": "2026-10-07T02:17:52.360Z",
+  "finished_at": "2026-10-07T02:17:58.883Z",
+  "recorded_at": "2026-10-07T02:17:58.883Z",
+  "time_precision": "exact",
+  "elapsed_ms": 6523,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "BOOT-03 corrected lint and actual installed dependency/license/advisory/full-history secret adapters",
+  "log_path": "docs/validation/logs/RUN-20261007-013.txt",
+  "log_sha256": "beee2e3825d3a78411d1a5ee834e844cc3e6f742550d6d5b0dbfb6ad5ece5690",
+  "redactions": 0
+}

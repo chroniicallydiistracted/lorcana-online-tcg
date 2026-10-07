@@ -1,0 +1,40 @@
+
+> lorcana-online-tcg@0.0.0 test:ci /workspaces/lorcana-online-tcg
+> node --test tests/ci/*.test.mjs && python3 tests/ci/launcher.test.py
+
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.389298ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.357892ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (20.407271ms)
+✔ manifest traversal, duplicate and missing entries are rejected (10.970414ms)
+✔ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (12.083325ms)
+✔ documented artifact command accepts the pnpm argument separator (473.407993ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.394769ms)
+✔ a shallow repository cannot bypass full-history qualification (42.515825ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 791.873437
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.036s
+
+OK
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (275.551292ms)
+✔ source changes during a command prevent a successful evidence claim (271.478402ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1755.625568ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.287529ms)
+✔ credentials generated during a child command are redacted before durable logs (285.431695ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1955.387778ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.261327ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4762.779678

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-029",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{verifyArtifacts}from\"./scripts/ci/artifacts.mjs\";import{readFileSync}from\"node:fs\";import{sourceFingerprint,sha256}from\"./scripts/documentation-lib.mjs\";const out=\".local/ci-results/lorcana-ci-81284ac550eb4df08c583b08cdf96eea/artifacts\";const m=verifyArtifacts(out);if(m.identity.source_fingerprint!==sourceFingerprint())throw Error(\"Source differs\");const b=JSON.parse(readFileSync(out+\"/sbom.cdx.json\")),a=JSON.parse(readFileSync(out+\"/dependency-audit.json\")),p=JSON.parse(readFileSync(out+\"/pipeline.json\"));if(p.result!==\"passed\"||p.stages.length!==12||p.stages.some(x=>x.result!==\"passed\"))throw Error(\"Incomplete pipeline\");console.log(\"PASS artifact files\",m.files.length,\"source\",m.identity.source_fingerprint,\"manifest SHA256\",sha256(readFileSync(out+\"/manifest.json\")));console.log(\"Installed components\",b.components.length,\"license-file gaps\",a.license_file_gaps.length,\"advisories\",a.response.metadata.vulnerabilities);console.log(\"PASS all twelve recorded stages; ignored generated artifacts exclude private files.\");"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "a3190b81a2d2c0b78117f85e60a67328aca22cd34f69676f004fcf5feab18464",
+  "started_at": "2026-10-07T02:40:55.980Z",
+  "finished_at": "2026-10-07T02:40:56.203Z",
+  "recorded_at": "2026-10-07T02:40:56.203Z",
+  "time_precision": "exact",
+  "elapsed_ms": 223,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "BOOT-03 final artifact identity, manifest/payload scans, installed SBOM and captured pipeline report inspection",
+  "log_path": "docs/validation/logs/RUN-20261007-029.txt",
+  "log_sha256": "de78f3f7debaf6783918355cdb3068f1d67b1a8281b264f741c1a7ce96de26d9",
+  "redactions": 0
+}

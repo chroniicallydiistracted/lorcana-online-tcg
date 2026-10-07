@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-020",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{spawnSync}from\"node:child_process\";let failed=false;for(const c of [[\"node\",\"--test\",\"tests/ci/gates.test.mjs\"],[\"python3\",\"tests/ci/launcher.test.py\"]]){const r=spawnSync(c[0],c.slice(1),{stdio:\"inherit\"});failed||=r.status!==0;}process.exit(failed?1:0);"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "e08f339f18e52971efad0e9f32ae6b256153d803d15bbeb57257ea127b5a1ef5",
+  "started_at": "2026-10-07T02:24:27.026Z",
+  "finished_at": "2026-10-07T02:24:27.637Z",
+  "recorded_at": "2026-10-07T02:24:27.637Z",
+  "time_precision": "exact",
+  "elapsed_ms": 611,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-03 red stopped-container cleanup coverage and malformed advisory regressions",
+  "log_path": "docs/validation/logs/RUN-20261007-020.txt",
+  "log_sha256": "98ae9398afda2169b5ff83d3e1aba2037f7f481674088b216b003a02369ef0f0",
+  "redactions": 0
+}

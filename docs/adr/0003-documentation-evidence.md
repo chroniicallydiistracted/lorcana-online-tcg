@@ -23,7 +23,7 @@ Negative tests exercise unrecorded source/doc edits, missing classifications, st
 
 ## Consequences
 
-Updates require documentation review and a draft change record at checkpoints; finalized evidence/history is append-only. Generated/history/evidence files are checked without self-referential hashes. Whole executable-source verification becomes stale after executable/config/test/schema edits. Prose-only edits require their own consistency and semantic review. Private credentials, dependencies, build/cache output and Git internals stay excluded. CI enforcement, signed attestations and broader security/device/product qualification remain future tasks. Windows foundation observation is pending.
+Updates require documentation review and a draft change record at checkpoints; finalized evidence/history is append-only. Generated/history/evidence files are checked without self-referential hashes. Whole executable-source verification becomes stale after executable/config/test/schema edits. Prose-only edits require their own consistency and semantic review. Private credentials, dependencies, build/cache output and Git internals stay excluded. BOOT-03 now implements CI execution of the same gates under local verification. Hosted required checks, signed attestations and broader security/device/product qualification remain future acceptance. Windows foundation observation is pending.
 
 ## Clock evidence qualification update
 

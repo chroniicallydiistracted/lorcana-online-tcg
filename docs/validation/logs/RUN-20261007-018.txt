@@ -1,0 +1,54 @@
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.376658ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.360305ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (21.084047ms)
+✔ manifest traversal, duplicate and missing entries are rejected (12.119247ms)
+✖ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (12.322192ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.430783ms)
+✖ a shallow repository cannot bypass full-history qualification (57.930705ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 5
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 339.41727
+
+✖ failing tests:
+
+test at tests/ci/gates.test.mjs:48:1
+✖ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (12.322192ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/ci/gates.test.mjs:51:106)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/ci/gates.test.mjs:61:1
+✖ a shallow repository cannot bypass full-history qualification (57.930705ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/ci/gates.test.mjs:68:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /full Git history|shallow/,
+    operator: 'throws',
+    diff: 'simple'
+  }

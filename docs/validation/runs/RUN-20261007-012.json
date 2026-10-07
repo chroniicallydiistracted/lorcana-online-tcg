@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-012",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{spawnSync}from\"node:child_process\";for(const args of [[\"verify\"],[\"lint\"],[\"test:ci\"]]){let r=spawnSync(\"pnpm\",args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "1776b0c13ade3e5ed0a3eb1c917e209a3b48fd56b66e57d65a3f3b9c6be42a11",
+  "started_at": "2026-10-07T02:17:05.171Z",
+  "finished_at": "2026-10-07T02:17:11.330Z",
+  "recorded_at": "2026-10-07T02:17:11.330Z",
+  "time_precision": "exact",
+  "elapsed_ms": 6159,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-03 static/config/docs lint and safety fixtures checkpoint",
+  "log_path": "docs/validation/logs/RUN-20261007-012.txt",
+  "log_sha256": "56822c2d9a45a739c57f7510d4f2d7e2e37ced6d7f0d9f5b1bfdf1d3ea4ca5f5",
+  "redactions": 0
+}

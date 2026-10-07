@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "allowed_licenses": [
+    "Apache-2.0",
+    "MIT",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "MPL-2.0",
+    "BlueOak-1.0.0",
+    "0BSD"
+  ],
+  "secret_fixture_exceptions": [
+    {
+      "path": "tests/database/persistence-proof.test.py",
+      "rule": "database_uri",
+      "sha256": "00fe6968f1164a57773759f48dcffb9078b9addb386a4f79ad7203666640a547",
+      "reason": "Exact synthetic redaction regression string, never an account or key. Any changed match fails."
+    },
+    {
+      "path": "tests/database/persistence-proof.test.py",
+      "rule": "private_key",
+      "sha256": "4a12c0ca47fc420442887d8aa67df61cce8b7609a4cb5fad90e641fd706622ee",
+      "reason": "Exact synthetic redaction regression string, never an account or key. Any changed match fails."
+    }
+  ]
+}

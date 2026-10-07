@@ -35,6 +35,8 @@ Open forwarded **5173** from VS Code's Ports panel. Expect **Application foundat
 | `pnpm build` | Ordered shared-package declarations/ESM, web bundle and three executable server apps |
 | `pnpm test` | Builds, bootstrap, schema/service/scene tests, negative boundaries, bundle, real-process lifecycle and documentation/evidence regression checks |
 | `pnpm test:e2e:smoke` | Linux Chromium, live services, software WebGL, resize/remount, keyboard controls and unavailable-service behavior |
+| `pnpm ci:config` / `pnpm test:ci` | Static workflow/Compose policy and negative scanner/artifact/launcher safety checks |
+| `pnpm ci:artifacts -- PATH` | Verify copied artifact scope, sizes, SHA256 and secret patterns |
 | `pnpm db:check` | Existing bootstrap administrator connection only |
 | `pnpm db:provision` | Explicit managed app local/test databases and eight restricted logins |
 | `pnpm db:migrate -- --target local` | Reviewed transactional migration; use test for the isolated test DB |
@@ -63,7 +65,7 @@ Dependencies are exact pins in owning workspaces. The lockfile covers nine works
 
 See [workspace qualification](docs/WORKSPACE_QUALIFICATION.md) and [BOOT-01 validation](docs/validation/boot-01.md) for executed checks and their limits. The lazy synthetic renderer still triggers Vite's large-chunk warning; this is not performance qualification.
 
-BOOT-02 local acceptance is verified; see [database operation](docs/runbooks/database.md) and [evidence](docs/validation/boot-02.md) for scoped roles, migrations, isolated test DB and disposable recreation proof. BOOT-03 remains CI/artifact checks; BOOT-05 remains protocol/release compatibility. RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).
+BOOT-02 local acceptance is verified; see [database operation](docs/runbooks/database.md) and [evidence](docs/validation/boot-02.md) for scoped roles, migrations, isolated test DB and disposable recreation proof. BOOT-03 local CI/artifact acceptance is verified; hosted workflow execution remains pending; see [CI operation](docs/runbooks/ci.md) and [evidence](docs/validation/boot-03.md). BOOT-05 remains protocol/release compatibility. RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).
 
 ## Development continuity
 
@@ -72,3 +74,5 @@ Every developer/agent follows [the universal workflow](docs/DEVELOPMENT_WORKFLOW
 Use `pnpm evidence:run --id RUN-YYYYMMDD-NNN --category container -- pnpm verify:foundation` to preserve actual output/source identity. Update the draft change record, then run `pnpm docs:sync --change CHG-YYYYMMDD-NNN` and `pnpm docs:check`. The consistency gate is part of `pnpm verify`; `pnpm test:documentation` exercises negative drift/proof cases. [CHANGELOG.md](CHANGELOG.md) and the file/callable snapshot are generated; committed final history is corrected by appending a new record.
 
 The [2026-10-06 audit](docs/audits/2026-10-06-project-audit.md) addresses the original assignment and repository-owned directory contents. Actual Windows foundation observation is still pending; the earlier plain connectivity page and Linux headless rendering do not satisfy that check.
+
+For the same pipeline used by Actions, run `python3 scripts/ci-local.py --evidence-id RUN-YYYYMMDD-NNN` on the WSL/Linux Docker host. It builds/runs a fresh non-root development image and private PostgreSQL project, preserves existing data and records sanitized identified artifacts after cleanup. See the CI runbook for flags, scan limitations and hosted acceptance.

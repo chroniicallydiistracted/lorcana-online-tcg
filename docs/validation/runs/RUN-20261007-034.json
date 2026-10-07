@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-034",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';\nimport {mkdtempSync,rmSync,symlinkSync} from 'node:fs';\nimport {tmpdir} from 'node:os';import {join} from 'node:path';\nimport {sourceFingerprint} from './scripts/documentation-lib.mjs';\nimport {privateRedactionValues} from './scripts/evidence-lib.mjs';\nimport {sourceSecretScan} from './scripts/ci/security.mjs';\nconst root=process.cwd(), expected='a3190b81a2d2c0b78117f85e60a67328aca22cd34f69676f004fcf5feab18464';\nif(sourceFingerprint(root)!==expected)throw Error('Final executable identity changed');\nfunction run(command,args,cwd=root){const result=spawnSync(command,args,{cwd,stdio:'inherit',env:Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:password|secret|token|credential|private_key)|^(?:PG|POSTGRES|DATABASE)/i.test(key)))});if(result.status!==0)throw Error('Final static verification failed');}\nrun('pnpm',['verify']);\nsourceSecretScan(root,Object.values(privateRedactionValues(root)));\nrun('git',['diff','--cached','--check','--','.',' :(exclude)docs/validation/logs/**'.trim()]);\nconst copy=mkdtempSync(join(tmpdir(),'lorcana-final-docs-'));\ntry{const archive=spawnSync('git',['archive','7528074aba20263e88dc7e3450c15cc482bd1365'],{maxBuffer:20000000});if(archive.status!==0)throw Error('Canonical archive unavailable');const extract=spawnSync('tar',['-xf','-','-C',copy],{input:archive.stdout});if(extract.status!==0)throw Error('Canonical extraction failed');symlinkSync(join(root,'node_modules'),join(copy,'node_modules'),'dir');if(sourceFingerprint(copy)!==expected)throw Error('Canonical executable identity changed');run('pnpm',['verify'],copy);console.log('PASS canonical final staged source/document static verification with existing dependencies; full-history sealing checked in original checkout');}finally{rmSync(copy,{recursive:true,force:true});}\nconsole.log('PASS finalized documentation/static/current and full-history secret/staged formatting/canonical byte checks; executable identity unchanged');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "a3190b81a2d2c0b78117f85e60a67328aca22cd34f69676f004fcf5feab18464",
+  "started_at": "2026-10-07T02:53:15.424Z",
+  "finished_at": "2026-10-07T02:53:23.526Z",
+  "recorded_at": "2026-10-07T02:53:23.526Z",
+  "time_precision": "exact",
+  "elapsed_ms": 8102,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Finalized BOOT-03 static/documentation/full-history secret/staged-format/canonical Git-byte proof; no new application or device acceptance",
+  "log_path": "docs/validation/logs/RUN-20261007-034.txt",
+  "log_sha256": "14f0e7926434865263b127f30d72013e3a1162863fd523e0021d48e2f67f5da8",
+  "redactions": 0
+}

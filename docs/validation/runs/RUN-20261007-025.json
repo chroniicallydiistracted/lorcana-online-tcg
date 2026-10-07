@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-025",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{spawnSync}from\"node:child_process\";for(const args of [[\"verify\"],[\"lint\"],[\"test:ci\"],[\"test:documentation\"]]){const r=spawnSync(\"pnpm\",args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "beae58ea0e7184e41f82e34088a6945270345ff9",
+  "source_fingerprint": "a3190b81a2d2c0b78117f85e60a67328aca22cd34f69676f004fcf5feab18464",
+  "started_at": "2026-10-07T02:31:16.940Z",
+  "finished_at": "2026-10-07T02:31:30.327Z",
+  "recorded_at": "2026-10-07T02:31:30.327Z",
+  "time_precision": "exact",
+  "elapsed_ms": 13387,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "BOOT-03 corrected docs/static/lint and full CI/evidence safety regression checkpoint",
+  "log_path": "docs/validation/logs/RUN-20261007-025.txt",
+  "log_sha256": "1e1e71f918c95c1577c63bb76a30c09273ea6b2bc6fca82fdbcf20cc39b359a0",
+  "redactions": 0
+}

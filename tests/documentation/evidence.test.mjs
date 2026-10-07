@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { validateData, repository } from '../../scripts/documentation-lib.mjs';
 let recorder;
 try { recorder=await import('../../scripts/evidence-lib.mjs'); } catch { recorder={}; }
 test('evidence capture preserves failure, timestamps and redacts inherited secrets',async()=>{
@@ -38,6 +39,26 @@ test('a timed-out child that ignores SIGTERM is terminated and recorded as faile
 test('known inherited secrets are redacted even when shorter than eight characters',()=>{
   const result=recorder.redact('pin123 appeared twice: pin123',{DOCS_TEST_SECRET:'pin123'});
   assert.equal(result.redactions,2);assert.ok(!result.text.includes('pin123'));
+});
+test('credentials generated during a child command are redacted before durable logs',async()=>{
+  const root=mkdtempSync(join(tmpdir(),'lorcana-generated-redaction-'));
+  try {
+    const script="const fs=require('node:fs'),crypto=require('node:crypto');fs.mkdirSync('.local',{mode:0o700});const passwords=Object.fromEntries(['local','test'].map(t=>[t,Object.fromEntries(['migrator','api','match','worker'].map(r=>[r,crypto.randomBytes(32).toString('base64url')]))]));fs.writeFileSync('.local/database.json',JSON.stringify({version:1,passwords}),{mode:0o600});for(const roles of Object.values(passwords))for(const value of Object.values(roles))console.log(value);";
+    const result=await recorder.recordCommand({root,id:'RUN-20261007-001',category:'simulated',command:[process.execPath,'-e',script]});
+    const log=readFileSync(join(root,result.log_path),'utf8'),data=JSON.parse(readFileSync(join(root,'.local/database.json')));
+    for(const roles of Object.values(data.passwords))for(const value of Object.values(roles))assert.ok(!log.includes(value));
+    assert.ok(result.redactions>=8);assert.equal(result.result,'passed');
+  }finally{rmSync(root,{recursive:true,force:true});}
+});
+test('unsafe generated credential configuration withholds all output and records a schema-valid failure',async()=>{
+  const root=mkdtempSync(join(tmpdir(),'lorcana-redaction-failclosed-'));
+  try {
+    const script="const fs=require('node:fs'),value=require('node:crypto').randomBytes(32).toString('base64url');fs.mkdirSync('.local',{mode:0o700});fs.writeFileSync('.local/database.json',JSON.stringify({version:1,passwords:{test:{api:value}}}),{mode:0o600});console.log(value);";
+    const result=await recorder.recordCommand({root,id:'RUN-20261007-002',category:'simulated',command:[process.execPath,'-e',script]});
+    assert.equal(result.result,'failed');assert.equal(result.failure_reason,'private_redaction_unavailable');
+    assert.match(readFileSync(join(root,result.log_path),'utf8'),/Output withheld/);
+    validateData(repository,'run',result);
+  }finally{rmSync(root,{recursive:true,force:true});}
 });
 test('a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive',async()=>{
   const root=mkdtempSync(join(tmpdir(),'lorcana-evidence-orphan-'));let pid;

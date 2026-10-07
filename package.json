@@ -20,7 +20,7 @@
     "typecheck": "pnpm -r --filter './packages/**' --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck",
     "lint": "eslint . && pnpm boundaries",
     "boundaries": "node scripts/check-boundaries.mjs",
-    "test": "pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling",
+    "test": "pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci",
     "test:e2e:smoke": "pnpm --filter @lorcana/web test:e2e",
     "verify:foundation": "pnpm verify && pnpm typecheck && pnpm lint && pnpm test",
     "docs:check": "node scripts/check-documentation.mjs",
@@ -32,7 +32,11 @@
     "db:migrate": "pnpm --filter @lorcana/db build && node packages/db/dist/cli.js migrate",
     "db:health": "pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health",
     "db:test": "pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration",
-    "test:database-tooling": "python3 tests/database/persistence-proof.test.py"
+    "test:database-tooling": "python3 tests/database/persistence-proof.test.py",
+    "ci:verify": "node scripts/ci/pipeline.mjs",
+    "ci:config": "python3 scripts/ci/check-config.py",
+    "ci:artifacts": "node scripts/ci/artifacts.mjs",
+    "test:ci": "node --test tests/ci/*.test.mjs && python3 tests/ci/launcher.test.py"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

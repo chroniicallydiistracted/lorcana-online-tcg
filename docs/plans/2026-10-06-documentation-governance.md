@@ -1,6 +1,6 @@
 # Documentation and evidence implementation plan
 
-Current continuation: BOOT-02 local acceptance is verified on `codex/boot-02-database`; [its validation record](../validation/boot-02.md) and ADR0004 supersede the earlier database-pending observations below. This document retains explicitly dated BOOT-01/governance evidence; Windows, full product/device, CI and production acceptance remain pending.
+Current continuation: BOOT-02 local acceptance is verified on `codex/boot-02-database`; [its validation record](../validation/boot-02.md) and ADR0004 supersede the earlier database-pending observations below. This document retains explicitly dated BOOT-01/governance evidence; BOOT-03 local CI/artifact acceptance is now verified in its [validation](../validation/boot-03.md); Windows, full product/device, hosted CI and production acceptance remain pending.
 
 Director scope: 2026-10-06, America/Phoenix. Baseline: 8c94b274ebd6ad91223cdb6df085ca0597c107c9. Execution: native implementation with independent review; authorized audit and reversible changes continue without an additional approval gate.
 

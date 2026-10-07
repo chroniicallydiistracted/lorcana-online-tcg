@@ -1,0 +1,31 @@
+# ADR0005: Shared isolated CI and foundation artifact qualification
+
+Recorded date: 2026-10-07 UTC / 2026-10-06 America/Phoenix. Status: accepted, local pipeline verified; hosted execution pending. Affected tasks: BOOT-03, DOC-01/02; no product requirement is accepted by this infrastructure.
+
+## Decision and boundaries
+
+Use one Linux/WSL Docker host launcher locally and in GitHub Actions. It builds the committed development Dockerfile using a Dockerfile-only context, copies public working-tree files with full Git ancestry, generates separate credentials and runs a fresh UUID Compose project. Application commands execute as the host's non-root numeric UID inside the image; HOME is disposable. PostgreSQL18 uses its recorded digest, private network and a uniquely owned volume. Existing VS Code containers, credentials and data are never a target.
+
+The container pipeline fails at the first unsuccessful stage: frozen install, doctor, foundation documentation/static/import/type/lint/unit checks, bootstrap connectivity, restricted local/test provisioning/migrations/identities/live tests and pinned Linux Chromium checks. A separate marker and bootstrap database name prevent ordinary workspace execution. Full-history documentation sealing and secret patterns run against actual Git ancestry; a shallow workflow is rejected by static policy.
+
+Actions run on ubuntu-24.04 with contents:read, full-history checkout without persisted credentials, PR/main-push/manual triggers, concurrency cancellation and a30-minute job timeout. Third-party actions use verified full revisions: checkout v7.0.1 `3d3c42e5aac5ba805825da76410c181273ba90b1`, upload-artifact v7.0.0 `bbbca2ddaa5d8feaa63e36b76fdaad77386f024f`. These identities were resolved from official GitHub tag APIs during this task; [checkout source](https://github.com/actions/checkout/tree/3d3c42e5aac5ba805825da76410c181273ba90b1), [upload source](https://github.com/actions/upload-artifact/tree/bbbca2ddaa5d8feaa63e36b76fdaad77386f024f), [GitHub security guidance](https://docs.github.com/en/actions/reference/security/secure-use).
+
+Security gates use project-owned adapters to pinned pnpm [license metadata](https://pnpm.io/cli/licenses) and [audit responses](https://pnpm.io/cli/audit), installed-package manifests and lockfile integrity. Unknown/unapproved SPDX IDs, omitted installed components, malformed/unavailable audit results and high/critical advisories fail closed. Low/moderate findings remain visible in the report. The allowed metadata IDs are MIT/ISC/0BSD/BSD2/BSD3/Apache2/BlueOak1/MPL2, recorded exactly in policy.json. This is qualification for local build use; redistribution obligations and missing published license files remain explicit distribution gates.
+
+The SBOM is CycloneDX1.6 JSON for the installed Linux npm build/test/runtime graph, with package URLs, license IDs and frozen SHA512 integrity. It deliberately excludes uninstalled optional platforms, OS apt packages and downloaded Chromium. Notices copy published root license/notice files; absent files are listed, never invented. Secret checks cover private file paths, known current credentials, private-key blocks, GitHub tokens, AWS key IDs and PostgreSQL password URIs. Two pre-existing synthetic recorder fixtures have exact path/rule/matched-byte hash exceptions. These do not exempt a whole test file or any changed credential.
+
+Success-only artifacts contain allowlisted workspace dist/manifests, frozen workspace metadata, SBOM, notices and pipeline/advisory reports. SHA256, sizes, source commit/fingerprint, lockfile hash and dirty-tree status identify them. Verification rejects extra/missing/traversing/private paths, symlinks and altered bytes. The host publishes a result directory only after all owned container/volume/network and image cleanup succeeds. Artifacts are foundation evidence, not a production image, signature, release compatibility contract or complete deployment package. BOOT-05 remains separate.
+
+## Alternatives and evidence
+
+- A floating setup-node/runner PostgreSQL configuration duplicates the local environment and weakens parity; the existing Dockerfile and digest-pinned database instead define both executions.
+- Running CI on the existing managed test database risks fixture overlap/data changes; generated UUID projects and private copies make repeated checks independent.
+- Source-only copies cannot enforce committed append-only history; full ancestry remains available in CI and is validated before artifact publication.
+- Broad secret ignores or optimistic advisory success hide changes/unavailable services; exact fixture hashes and schema/result policy fail closed.
+- Uploading the whole checkout or .local directory risks credential leakage. A checked allowlist assembles a separate artifacts directory.
+
+Negative safety fixtures and actual execution results are recorded in [BOOT-03 validation](../validation/boot-03.md). Metadata policies and hashes support review; they do not certify semantic documentation truth, legal asset rights, arbitrary secret forms or full dependency/OS security. Hosted Actions execution, runner cancellation, branch protection and required-check enforcement need later actual GitHub observation; local tests/configuration do not imply those settings exist.
+
+Review corrections: a read-only reviewer reproduced lifecycle/setup/image-publication/cancellation/stopped-resource gaps, original-known-value history gaps, manifest identity/secret gaps, audit outcome contradictions, CLI separator handling and dynamic credential log redaction. Exact failed red tests are retained; corrected CI18/evidence8 regressions and final whole79-test/local database/browser pipeline passed. Owned private redaction values are captured before/after the command; unsafe generated config withholds output and fails evidence. No reviewed finding is waived.
+
+Evidence schema v1 receives a backwards-compatible failure-reason enum addition, `private_redaction_unavailable`. Existing records remain valid/unchanged; no schema-version migration or rewriting is required. A malformed/unsafe private configuration created during a child command withholds the entire output and creates failed evidence with the exact original execution outcome. Regression validates the emitted record against the current schema.

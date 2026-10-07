@@ -66,13 +66,13 @@ An initialized volume retains its original password. Do not regenerate it while 
 | WebGL unavailable | Semantic stop control remains usable; record browser/GPU failure separately |
 | Large bundle warning | Known synthetic renderer size; later performance work, not an installation failure |
 
-Keep all validation categories distinct. No CI, deployment, production security/image qualification or game/device acceptance is implied by these local steps.
+Keep all validation categories distinct. Hosted CI, deployment, production security/image qualification and game/device acceptance are not implied by these local setup steps. The separate [CI runbook](ci.md) describes the disposable BOOT-03 pipeline.
 
 ## Documentation and evidence operation
 
 Read [the universal workflow](../DEVELOPMENT_WORKFLOW.md) and [record format](../CHANGELOG_FORMAT.md) before editing. Capture checks inside the container with `pnpm evidence:run --id RUN-YYYYMMDD-NNN --category container -- pnpm verify:foundation`. Use `headless_browser` for browser automation; report actual Windows observation separately with device details. These write sanitized durable logs and exact source/timing/outcome records; inspect logs for unknown secret forms before committing.
 
-Update the active draft's files, documentation dispositions, feature/task IDs and evidence references; run `pnpm docs:sync --change CHG-YYYYMMDD-NNN` followed by `pnpm docs:check`. A drift failure requires a documented change and semantic review, not deletion of the snapshot or evidence. Finalized records are sealed; append corrections. CI remains a future BOOT-03 task.
+Update the active draft's files, documentation dispositions, feature/task IDs and evidence references; run `pnpm docs:sync --change CHG-YYYYMMDD-NNN` followed by `pnpm docs:check`. A drift failure requires a documented change and semantic review, not deletion of the snapshot or evidence. Finalized records are sealed; append corrections. BOOT-03 adds the same gates to its isolated local/Actions pipeline; hosted observation remains a separate acceptance item.
 
 The live preview described during the prior session is no longer running at the 2026-10-06 audit intake. Start `pnpm dev` before the Director's still-pending Windows foundation smoke. Discover actual forwarded URLs and current listeners each session.
 

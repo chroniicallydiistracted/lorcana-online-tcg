@@ -1,0 +1,35 @@
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (288.3063ms)
+✔ source changes during a command prevent a successful evidence claim (286.470748ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1761.182817ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.36367ms)
+✖ credentials generated during a child command are redacted before durable logs (278.098515ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1955.44623ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.317415ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4808.766192
+
+✖ failing tests:
+
+test at tests/documentation/evidence.test.mjs:42:1
+✖ credentials generated during a child command are redacted before durable logs (278.098515ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!log.includes(value))
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/evidence.test.mjs:48:101)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

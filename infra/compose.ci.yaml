@@ -1,0 +1,37 @@
+# The host launcher owns this disposable UUID project; no existing volume/env is referenced.
+services:
+  postgres:
+    image: postgres:18@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722
+    env_file: ${LORCANA_CI_SOURCE:?Temporary public checkout required}/.env.local
+    volumes:
+      - ci_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 2s
+      timeout: 3s
+      retries: 40
+      start_period: 5s
+    shm_size: 128mb
+  runner:
+    image: ${LORCANA_CI_IMAGE:?Owned image required}
+    pull_policy: never
+    user: ${LORCANA_CI_UID:?Non-root host UID}:${LORCANA_CI_GID:?Host GID}
+    init: true
+    working_dir: /workspaces/lorcana-online-tcg
+    env_file: ${LORCANA_CI_SOURCE:?Temporary public checkout required}/.env.local
+    environment:
+      PGHOST: postgres
+      PGPORT: "5432"
+      LORCANA_CI_ISOLATED: "1"
+      HOME: /tmp/lorcana-ci-home
+    volumes:
+      - type: bind
+        source: ${LORCANA_CI_SOURCE:?Temporary public checkout required}
+        target: /workspaces/lorcana-online-tcg
+        bind:
+          create_host_path: false
+    depends_on:
+      postgres:
+        condition: service_healthy
+volumes:
+  ci_data:
