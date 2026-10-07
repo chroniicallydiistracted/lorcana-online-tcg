@@ -1,0 +1,281 @@
+{
+  "artifactVersion": 2,
+  "entries": 98,
+  "identity": {
+    "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+    "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+    "lock_sha256": "4cc15fc579a76704225d9152f222b4dd784489ec0bd6627eb59f2f3b4174a882",
+    "dirty": true,
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "project": "lorcana-ci-eb1974ab4fd0402695054e30a991490e",
+    "workspace_image_id": "sha256:3e81b89f7ca12439a71a0258f4a378a9cb7f820d224a0e0fb05bfd44e4cd461a",
+    "postgres_image": "postgres:18@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722"
+  },
+  "release": {
+    "schemaVersion": 1,
+    "purpose": "foundation",
+    "createdAt": "2026-10-07T04:29:53.223Z",
+    "source": {
+      "commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+      "fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+      "lockSha256": "4cc15fc579a76704225d9152f222b4dd784489ec0bd6627eb59f2f3b4174a882"
+    },
+    "protocol": {
+      "min": 1,
+      "max": 1
+    },
+    "components": {
+      "web": {
+        "status": "built",
+        "version": "build-346826dd6637e94c2afdd5cc1279d2ae8b7e7be1c59055eeeec2e43a2b489368",
+        "sha256": "346826dd6637e94c2afdd5cc1279d2ae8b7e7be1c59055eeeec2e43a2b489368"
+      },
+      "api": {
+        "status": "built",
+        "version": "build-0b5d0dbd970cbb8078a4f7d205ad187ec02ecabd5a098ed5d70b6d98768d96d8",
+        "sha256": "0b5d0dbd970cbb8078a4f7d205ad187ec02ecabd5a098ed5d70b6d98768d96d8"
+      },
+      "matchService": {
+        "status": "built",
+        "version": "build-0043943e03605cf52fe335e7427c03bef747f3b68d93dc03c23e9687feef3be8",
+        "sha256": "0043943e03605cf52fe335e7427c03bef747f3b68d93dc03c23e9687feef3be8"
+      },
+      "worker": {
+        "status": "built",
+        "version": "build-3ee204cb44bdd5cc9f94c2f1310ce55a075b07063afe3c6087837f11699abb53",
+        "sha256": "3ee204cb44bdd5cc9f94c2f1310ce55a075b07063afe3c6087837f11699abb53"
+      },
+      "databaseSchema": {
+        "status": "built",
+        "version": "schema-7b1735a2ca2d9d56a4fe3ea7d85bf878482886942781ef83084f744d3eb0f442",
+        "sha256": "7b1735a2ca2d9d56a4fe3ea7d85bf878482886942781ef83084f744d3eb0f442"
+      },
+      "engine": {
+        "status": "reserved"
+      },
+      "content": {
+        "status": "reserved"
+      },
+      "rules": {
+        "status": "reserved"
+      },
+      "products": {
+        "status": "reserved"
+      },
+      "rewards": {
+        "status": "reserved"
+      }
+    },
+    "releaseId": "foundation-047e01b78d07590dae714d3a5d0b18815c92697623d73c89827c857e1ba9c757"
+  },
+  "stages": {
+    "schema_version": 1,
+    "result": "passed",
+    "stages": [
+      {
+        "name": "frozen-install",
+        "command": [
+          "pnpm",
+          "install",
+          "--frozen-lockfile"
+        ],
+        "started_at": "2026-10-07T04:27:15.500Z",
+        "finished_at": "2026-10-07T04:27:18.693Z",
+        "elapsed_ms": 3193,
+        "result": "passed"
+      },
+      {
+        "name": "doctor",
+        "command": [
+          "pnpm",
+          "run",
+          "doctor"
+        ],
+        "started_at": "2026-10-07T04:27:18.693Z",
+        "finished_at": "2026-10-07T04:27:19.231Z",
+        "elapsed_ms": 538,
+        "result": "passed"
+      },
+      {
+        "name": "foundation",
+        "command": [
+          "pnpm",
+          "verify:foundation"
+        ],
+        "started_at": "2026-10-07T04:27:19.231Z",
+        "finished_at": "2026-10-07T04:28:12.920Z",
+        "elapsed_ms": 53415,
+        "result": "passed"
+      },
+      {
+        "name": "bootstrap-database",
+        "command": [
+          "pnpm",
+          "db:check"
+        ],
+        "started_at": "2026-10-07T04:28:12.920Z",
+        "finished_at": "2026-10-07T04:28:13.270Z",
+        "elapsed_ms": 350,
+        "result": "passed"
+      },
+      {
+        "name": "restricted-database",
+        "command": [
+          "pnpm",
+          "db:provision"
+        ],
+        "started_at": "2026-10-07T04:28:13.270Z",
+        "finished_at": "2026-10-07T04:28:15.224Z",
+        "elapsed_ms": 1954,
+        "result": "passed"
+      },
+      {
+        "name": "local-migration",
+        "command": [
+          "pnpm",
+          "db:migrate",
+          "--",
+          "--target",
+          "local"
+        ],
+        "started_at": "2026-10-07T04:28:15.224Z",
+        "finished_at": "2026-10-07T04:28:16.938Z",
+        "elapsed_ms": 1714,
+        "result": "passed"
+      },
+      {
+        "name": "test-migration",
+        "command": [
+          "pnpm",
+          "db:migrate",
+          "--",
+          "--target",
+          "test"
+        ],
+        "started_at": "2026-10-07T04:28:16.938Z",
+        "finished_at": "2026-10-07T04:28:18.611Z",
+        "elapsed_ms": 1673,
+        "result": "passed"
+      },
+      {
+        "name": "local-identities",
+        "command": [
+          "pnpm",
+          "db:health",
+          "--",
+          "--target",
+          "local"
+        ],
+        "started_at": "2026-10-07T04:28:18.611Z",
+        "finished_at": "2026-10-07T04:28:20.368Z",
+        "elapsed_ms": 1757,
+        "result": "passed"
+      },
+      {
+        "name": "test-identities",
+        "command": [
+          "pnpm",
+          "db:health",
+          "--",
+          "--target",
+          "test"
+        ],
+        "started_at": "2026-10-07T04:28:20.368Z",
+        "finished_at": "2026-10-07T04:28:21.942Z",
+        "elapsed_ms": 1574,
+        "result": "passed"
+      },
+      {
+        "name": "live-database",
+        "command": [
+          "pnpm",
+          "db:test"
+        ],
+        "started_at": "2026-10-07T04:28:21.942Z",
+        "finished_at": "2026-10-07T04:28:25.700Z",
+        "elapsed_ms": 3758,
+        "result": "passed"
+      },
+      {
+        "name": "pinned-chromium",
+        "command": [
+          "pnpm",
+          "--filter",
+          "@lorcana/web",
+          "exec",
+          "playwright",
+          "install",
+          "chromium"
+        ],
+        "started_at": "2026-10-07T04:28:25.700Z",
+        "finished_at": "2026-10-07T04:29:30.321Z",
+        "elapsed_ms": 64360,
+        "result": "passed"
+      },
+      {
+        "name": "browser",
+        "command": [
+          "pnpm",
+          "test:e2e:smoke"
+        ],
+        "started_at": "2026-10-07T04:29:30.321Z",
+        "finished_at": "2026-10-07T04:29:48.565Z",
+        "elapsed_ms": 18072,
+        "result": "passed"
+      }
+    ],
+    "source_scan": "passed",
+    "dependency_scans": "passed",
+    "limitations": [
+      "Local/headless foundation evidence only; no deployment or Windows/GPU qualification."
+    ]
+  },
+  "components": 200,
+  "audit": {
+    "recorded_at": "2026-10-07T04:29:53.182Z",
+    "command": [
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "result": "passed",
+    "blocking_severities": [
+      "high",
+      "critical"
+    ],
+    "response": {
+      "actions": [],
+      "advisories": {},
+      "muted": [],
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0
+        },
+        "dependencies": 235,
+        "devDependencies": 0,
+        "optionalDependencies": 0,
+        "totalDependencies": 235
+      }
+    },
+    "license_file_gaps": [
+      "@humanfs/types@0.15.0",
+      "@rolldown/binding-linux-x64-gnu@1.2.12",
+      "abstract-logging@2.0.1",
+      "client-only@0.0.1",
+      "drizzle-orm@0.45.3",
+      "esrecurse@4.3.0",
+      "imurmurhash@0.1.4",
+      "natural-compare@1.4.0",
+      "pg-types@2.2.0",
+      "pgpass@1.0.5"
+    ]
+  }
+}
+PASS archived complete executable/SQL release binding, outer identity and secret scope

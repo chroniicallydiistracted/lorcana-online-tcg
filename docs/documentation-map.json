@@ -27,7 +27,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -61,7 +64,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -173,7 +179,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -202,7 +211,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -260,7 +272,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -757,7 +772,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -796,7 +814,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -1013,7 +1034,10 @@
         "package.json",
         "scripts/verify.mjs",
         "pnpm-lock.yaml",
-        ".devcontainer/Dockerfile"
+        ".devcontainer/Dockerfile",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -1030,6 +1054,71 @@
         "scripts/verify.mjs",
         "pnpm-lock.yaml",
         ".devcontainer/Dockerfile"
+      ]
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
       ]
     }
   ]

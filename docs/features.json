@@ -32,7 +32,8 @@
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
         "docs/validation/runs/RUN-20261007-001.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -55,7 +56,8 @@
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -63,7 +65,7 @@
       "name": "Public foundation schemas",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Typed health/readiness and strict readiness parser.",
+      "description": "Typed health/readiness and closed own-data protocol/release schemas/parsers; browser-safe metadata only.",
       "sources": [
         "packages/contracts/**"
       ],
@@ -72,12 +74,14 @@
         "README.md"
       ],
       "task_ids": [
-        "BOOT-01"
+        "BOOT-01",
+        "BOOT-05"
       ],
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -85,24 +89,27 @@
       "name": "Separate API and match diagnostics",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Local Fastify HTTP liveness/readiness; no gameplay or database.",
+      "description": "Local Fastify liveness/readiness and strict bounded correlated application-version negotiation; no gameplay/auth/database integration.",
       "sources": [
         "apps/api/**",
         "apps/match-service/**",
         "packages/service-runtime/src/index.ts",
-        "packages/service-runtime/tests/service.test.mjs"
+        "packages/service-runtime/tests/service.test.mjs",
+        "packages/service-runtime/tests/protocol.test.mjs"
       ],
       "documents": [
         "docs/FEATURES.md",
         "README.md"
       ],
       "task_ids": [
-        "BOOT-01"
+        "BOOT-01",
+        "BOOT-05"
       ],
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -124,7 +131,8 @@
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -146,7 +154,8 @@
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -154,7 +163,7 @@
       "name": "Semantic foundation client",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "React diagnostic controls and local status/proxies, not final art direction.",
+      "description": "Semantic React foundation with readiness, fail-closed protocol compatibility and opt-in synthetic rendering; Windows/art/device acceptance separate.",
       "sources": [
         "apps/web/**",
         "packages/design-system/**"
@@ -164,13 +173,15 @@
         "README.md"
       ],
       "task_ids": [
-        "BOOT-01"
+        "BOOT-01",
+        "BOOT-05"
       ],
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
         "docs/validation/runs/RUN-20261007-002.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -193,7 +204,8 @@
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
         "docs/validation/runs/RUN-20261007-002.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -219,7 +231,8 @@
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -244,7 +257,8 @@
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -270,7 +284,8 @@
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -295,7 +310,8 @@
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261006-070.json",
-        "docs/validation/runs/RUN-20261007-028.json"
+        "docs/validation/runs/RUN-20261007-028.json",
+        "docs/validation/runs/RUN-20261007-051.json"
       ]
     },
     {
@@ -316,7 +332,6 @@
         "README.md"
       ],
       "task_ids": [
-        "BOOT-05",
         "RULE-01",
         "RULE-02",
         "UX-01",
@@ -352,7 +367,9 @@
         "docs/validation/runs/RUN-20261006-071.json",
         "docs/validation/runs/RUN-20261007-001.json",
         "docs/validation/runs/RUN-20261007-028.json",
-        "docs/validation/runs/RUN-20261007-030.json"
+        "docs/validation/runs/RUN-20261007-030.json",
+        "docs/validation/runs/RUN-20261007-051.json",
+        "docs/validation/runs/RUN-20261007-053.json"
       ]
     },
     {
@@ -367,19 +384,76 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "scripts/release-manifest.mjs"
       ],
       "documents": [
         "docs/runbooks/ci.md",
-        "docs/validation/boot-03.md"
+        "docs/validation/boot-03.md",
+        "docs/contracts/release.md"
       ],
       "task_ids": [
-        "BOOT-03"
+        "BOOT-03",
+        "BOOT-05"
       ],
       "requirement_ids": [],
       "evidence": [
         "docs/validation/runs/RUN-20261007-028.json",
-        "docs/validation/runs/RUN-20261007-029.json"
+        "docs/validation/runs/RUN-20261007-029.json",
+        "docs/validation/runs/RUN-20261007-051.json",
+        "docs/validation/runs/RUN-20261007-052.json"
+      ]
+    },
+    {
+      "id": "F-PROTOCOL",
+      "name": "Bounded public protocol and version negotiation",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Verified local closed revision-1 frames, bounded/correlated strict HTTP negotiation and semantic client status; gameplay/authenticated transport remains separate.",
+      "sources": [
+        "packages/contracts/src/protocol.ts",
+        "packages/service-runtime/**",
+        "apps/web/**"
+      ],
+      "documents": [
+        "docs/contracts/protocol.md",
+        "docs/validation/boot-05.md"
+      ],
+      "task_ids": [
+        "BOOT-05"
+      ],
+      "requirement_ids": [
+        "R30.015"
+      ],
+      "evidence": [
+        "docs/validation/runs/RUN-20261007-051.json"
+      ]
+    },
+    {
+      "id": "F-RELEASE",
+      "name": "Release artifact identity and immutable retained pins",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Verified release manifests bind app/shared executable/package/SQL identities; server-only immutable retained pins; no deployment or qualified game activation.",
+      "sources": [
+        "packages/contracts/src/release.ts",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**"
+      ],
+      "documents": [
+        "docs/contracts/release.md",
+        "docs/validation/boot-05.md"
+      ],
+      "task_ids": [
+        "BOOT-05"
+      ],
+      "requirement_ids": [
+        "R30.015"
+      ],
+      "evidence": [
+        "docs/validation/runs/RUN-20261007-051.json",
+        "docs/validation/runs/RUN-20261007-052.json"
       ]
     }
   ]

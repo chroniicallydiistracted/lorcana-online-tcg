@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-07T02:53:48.974Z",
+  "observed_at": "2026-10-07T04:38:45.386Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -28,7 +28,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -62,7 +65,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -174,7 +180,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -203,7 +212,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -261,7 +273,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -758,7 +773,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -797,7 +815,10 @@
         "tests/ci/**",
         "infra/compose.ci.yaml",
         ".github/**",
-        ".dockerignore"
+        ".dockerignore",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -1014,7 +1035,10 @@
         "package.json",
         "scripts/verify.mjs",
         "pnpm-lock.yaml",
-        ".devcontainer/Dockerfile"
+        ".devcontainer/Dockerfile",
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "scripts/release-manifest.mjs"
       ]
     },
     {
@@ -1032,6 +1056,71 @@
         "pnpm-lock.yaml",
         ".devcontainer/Dockerfile"
       ]
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/**",
+        "packages/service-runtime/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/**",
+        "tests/foundation/**",
+        "tests/ci/**"
+      ]
     }
   ],
   "change_ids": [
@@ -1041,7 +1130,8 @@
     "CHG-20261006-004",
     "CHG-20261006-005",
     "CHG-20261006-006",
-    "CHG-20261007-001"
+    "CHG-20261007-001",
+    "CHG-20261007-002"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -1050,9 +1140,10 @@
     "CHG-20261006-004": "finalized",
     "CHG-20261006-005": "finalized",
     "CHG-20261006-006": "finalized",
-    "CHG-20261007-001": "finalized"
+    "CHG-20261007-001": "finalized",
+    "CHG-20261007-002": "finalized"
   },
-  "source_fingerprint": "a3190b81a2d2c0b78117f85e60a67328aca22cd34f69676f004fcf5feab18464",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
   "files": {
     ".devcontainer/Dockerfile": "75ba6365bc4115283f817c57c54beddee7570dd3ce109897318501914ec8dd16",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -1068,27 +1159,27 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "4a485620f17bcbc7b890e4f469fd09cb1edaeda8675cbe816247d98df160fae5",
-    "README.md": "1744006989a3f84635f47848a5134beff8cbced8fe50cd9c23a75d3d1bfed3d0",
+    "AGENTS.md": "d2b989af4e45475b0bd8383f3757602386c9a6d44cfa68595dc810011f0b9657",
+    "README.md": "675b1a520ce082544d1006907446e772f6891d1bcaab7311a61805a62768a70e",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
-    "apps/api/README.md": "1444881df2f8582b93816a770d56a170a2c919eca296fcf5bcb1b46864989fa6",
+    "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
     "apps/api/package.json": "e59616d0612a193cca2ed185742c43020a9d3d9d151bfd0cd055ff0875d50ebf",
     "apps/api/src/main.ts": "585053572b46b58a98fb14f9f904a10d2da052bae624e869c80a3183ace58606",
     "apps/api/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
-    "apps/match-service/README.md": "b18ae9f56ff48bb204c1da6fb1ac296abf21d2c60db4b0bf5f6aecd934239242",
+    "apps/match-service/README.md": "dc570628d366edeb2849462e3e052cb0ac2138aae52275681056539c4937b2be",
     "apps/match-service/package.json": "3eddf1c48e21ef7651d17edae3220b5c65730043d01e13931d935bbc6df93144",
     "apps/match-service/src/main.ts": "d13333ddaeee69407963916bf3b80fb31578b73ef896b7ad468e7f469d30a1f4",
     "apps/match-service/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
-    "apps/web/README.md": "80a61237ace4325b1f6f965eab3388a23964913cc7ea14cc59709f22e10f57ae",
+    "apps/web/README.md": "28f9aa2ccea5ffb33a91e12e33f85db2b396cc6c7363d1f25eec03cadfb7bb53",
     "apps/web/index.html": "5f6d04e152072716c16a6ef1f4f45bb5e65eaeb61a800c66f8d8060181775e26",
     "apps/web/package.json": "85aa877623f31d688befbb9a87f4124c320414c7f3b7b75f09b1e83d68c82a89",
     "apps/web/playwright.config.ts": "c849213f64d77bfcfa7f9c4b73b1cac7374231ba7aae69fce228e6132e937a05",
     "apps/web/src/App.module.css": "f95280322831ceb374520f1b8738ba2e0205d54f5689aa4201326200e0aaafd0",
-    "apps/web/src/App.tsx": "42d80010a2d21e4e509dda7ddf80e5d1ec601691e94f5d7829b3f0eebbbf0346",
+    "apps/web/src/App.tsx": "de8f6250db0b17d7ba80f901e0d87e58e6e9458b8892ba9ad81ca55d3071ca81",
     "apps/web/src/global.css": "361a402e00bb9c8cdd9d07dd726f1e62ca42d5783eb916e6cbf3c86662570bca",
     "apps/web/src/main.tsx": "ac0c56429fa9d1dcc3c67a550804c80b2ba4034877cb4512de10142db5001d53",
-    "apps/web/tests/foundation.spec.ts": "64792b284100c8baebaa6f5d1bdc6ff638579c82a1b18446c790ee051d5a72e7",
+    "apps/web/tests/foundation.spec.ts": "5d86d60cf1f1d2bdd7dcf81ca2c54b0f5b92528e8fad3691ed76150894eaad81",
     "apps/web/tsconfig.json": "1d583dd89d039fcae55b76b6aceff31d89f4072723d9a750408683cb3e3f7ed7",
     "apps/web/vite.config.ts": "d5c77acfb3561c37d92c8b167318c532bc73ef3aaaeacda84b5af8e516d55991",
     "apps/worker/README.md": "6f32ef1b09cc7a9095cbb12afb0f6686b61af35308bea91a93470fe0e8aaf9ef",
@@ -1098,25 +1189,29 @@
     "docs/ARCHIVE_PROVENANCE.md": "e77e3909b03bae735287e3176fcab76c5418ee87cde40b972beb9631cb6bedda",
     "docs/CHANGELOG_FORMAT.md": "de3bb6f22723e31eca77673cb93661105484c9598325f87b4b1684677fdb0e44",
     "docs/DEVELOPMENT_WORKFLOW.md": "8a973d46fa7088645dbf2ac4dbc93519ef8b2433589a4bc8e1e0de77b5d4bc81",
-    "docs/FEATURES.md": "865856066427ac24de9127fff3391e83d04c88916e252e1926db8a1d1f980cd0",
-    "docs/HANDOFF.md": "b043c1228b79bfa62c54da9f59bdf3ab8dc349e43ce0e2a58385416e59d654a0",
-    "docs/README.md": "cf0ecabb1d240e58dbd49c089c7c2ba9326868b7b93d13c8e55b2a081d4d533f",
-    "docs/WORKSPACE_QUALIFICATION.md": "9a89cce8bb8ce616f8c44b74c0e718ec24350f6cc38d31151530b947e60d00f9",
+    "docs/FEATURES.md": "36b6232cfbab4bdf9023be364ddb7128a3144a4cfb9e78d469fbc3fbdde88b69",
+    "docs/HANDOFF.md": "45970e92ae3b25f4deb04cd76164202a491780003ddd8bbf4896c296ed314aa8",
+    "docs/README.md": "c71e3eb9c242dd7d7397ca5d2ddfb76464bbea754f70698151b2e914ba85c9f0",
+    "docs/WORKSPACE_QUALIFICATION.md": "970bb415d3c5966742e1e823afbbf4c1886aac9232e67ea9c2c72c6cdd64e502",
     "docs/adr/0001-local-development-environment.md": "c481ac004b256c4e2adbf2f02f9ea85b363fa6fc78aac7134a8e0f20270c8dc2",
-    "docs/adr/0002-application-foundation.md": "ff129c04ca3e0e5c1b5c21caa9f680ca5f9bbb110fc64231d7a0bbb080cbe3be",
+    "docs/adr/0002-application-foundation.md": "0984d0a0c33b762be91c64273b6c17ba1da66fa823c9957293a1dd8ea325fa1d",
     "docs/adr/0003-documentation-evidence.md": "71a56e217ba1fa49a3a9fd070996a65d9dd967f7ebc51ab4a7f25e73620c5385",
     "docs/adr/0004-restricted-local-database.md": "6eef66050e5e11c8b3c2dc77a35576be7d48110af7fe546f33fb7d69cc836a7d",
-    "docs/adr/0005-ci-artifact-qualification.md": "9249f5f3969fdfaea6588545e16cb68ee3d9f9af5f49321890f72d1f3788ed22",
-    "docs/audits/2026-10-06-project-audit.md": "e327ae6cd6c240c568e38410b94d5ed1bc68ca6d6088f225cb703a6eccb12115",
-    "docs/documentation-map.json": "1e86345e6cefd5d6b49984b46b2dde0efe7bebe81ec33c5e22ab2431d84a08a3",
-    "docs/features.json": "4ccc39e6b647888b86a133c281848e47bd980faa7a93e02717b3d1e4c3f0b5b8",
+    "docs/adr/0005-ci-artifact-qualification.md": "d593388f73aa8f4ad8f6a1d17d1a19c3a5a004a3835e4dd61fff8c2a52b919c1",
+    "docs/adr/0006-protocol-release-contracts.md": "2c519c89bf3fab52ccd92f3e76ca877d632acdb921cd7be599f46d704d6cf19f",
+    "docs/audits/2026-10-06-project-audit.md": "1eaf10034010857da842164bef7cc0a8c1bfa56971ec4ca63354da80620de18e",
+    "docs/contracts/protocol.md": "6482f9ef5e06dfed03aad9c2936027cada33771757f34504dbc491160423041d",
+    "docs/contracts/release.md": "cf4c29e57bb13afa747d947b4d1bf9d3ab4912550e536d97b20b1716d88a1133",
+    "docs/documentation-map.json": "1b2b0fc59bfc9a48dd280e4dba4841e8231879ce6709cc7219b789bacb73102c",
+    "docs/features.json": "add85a05a37ed0b8acff6920a9d631beb3cbd15fe210674d5099613170d49000",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "bddc6c6ef4055286cf40312d1df7ae5ac80fd4f02afbf7f858035de8b4de9b83",
-    "docs/plans/2026-10-07-boot-03-ci.md": "44e6ab14d86aa080b11503e55b9e29cc7ced2e713b8990a8e525ed10ec117fbb",
+    "docs/plans/2026-10-07-boot-03-ci.md": "d533afc905a764256c25d70ee262c8a54c47378bc8c21f481113c94d6f6519c0",
+    "docs/plans/2026-10-07-boot-05-contracts.md": "43d4f138342ef1f962d7b0ca0b413d05523bb58727340be81777d8820783302d",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
-    "docs/runbooks/ci.md": "8862861f3d0e0c8fe0ba750effcca1b986b039729450485d941065ca5f870d28",
+    "docs/runbooks/ci.md": "bbbc42eae3f42b93a02827bf94a9bdcfacbcd42b51cbc18e87f07f47c5a4c14b",
     "docs/runbooks/database.md": "71294a6c009d3a3df49960aebfef963483b1ee1a3c376fc51648d895128fc1ea",
-    "docs/runbooks/workspace-setup.md": "64056a1f34ac131608178cf453e3de3a9322b654d6a1f23644acc2375db50fba",
+    "docs/runbooks/workspace-setup.md": "591f2488f8b610aed7654dc7098c27ebed31275402296b24390097fe9c16e498",
     "docs/schemas/change.schema.json": "11a2de343d65b08be1efc45203d98f0a078cafafee2275b9972a482c32dfb2de",
     "docs/schemas/documentation-map.schema.json": "071c80437ab170e6a7b6c3ca7c75b37e600ef4a95b3c2a8ed930263adec54c6d",
     "docs/schemas/features.schema.json": "0c502bd344781cfe87c4a429049c8df59288c94d96d81b40e994a14cde36ba43",
@@ -1129,31 +1224,37 @@
     "docs/validation/archive/2026-10-06-wsl-interruption/RUN-20261006-072.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "docs/validation/archive/RUN-20261006-017-original.json": "30250d26ce512d9d37327b6c9f257a8b144143ab0dd3e22947fe8e5d5b02be2a",
     "docs/validation/boot-01-source-manifest.json": "b9780fcd1618e54aebffda71b3afce2502575bb1fb6e0ae37ef2f16397cb8082",
-    "docs/validation/boot-01.md": "0caa5bf106642ce9235341798fa3d81b09b90094b24c104ad389929212b1d0cb",
-    "docs/validation/boot-02.md": "fae12f7d166ebfdc2dd02d35aa61f6e3c6f4a51ed14cbf071a4e35d6f1c1c0c2",
-    "docs/validation/boot-03.md": "352c51e2d4c6dd364b3219f0d7eac26183a1fcd4aaa0a17fa66639d581b6cc36",
+    "docs/validation/boot-01.md": "074b30f2364a25e4f215fa4a9919b7923d0f766faf7a1cac470b136e5733507e",
+    "docs/validation/boot-02.md": "304085f2026e7ca7221c1091823a7df85fd1045a83d84907daf111f6b47f7a71",
+    "docs/validation/boot-03.md": "da8df4db51e6f36b2938b5492321046ddb62553720978d11b0c0e27f61161863",
+    "docs/validation/boot-05.md": "fcef0380aed43b01c08804d21a9f1a502696142e735375f7d222097f574824f5",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
-    "docs/vision/README.md": "55e3d97bd2f9cf08ee996d8a4ee7f8d52838a886a0af2edcf3364ba29d02ec1f",
+    "docs/vision/README.md": "95e8b45028b5f5a0883831e62fe68c22fc69af82f11a3bd4de182d8c85e9e733",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
     "docs/vision/decision_register.csv": "a8606564877bf273af77b0caa9fc857aef2a23ef4e7ca65c9b3765d0e5612e45",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "be9a00e3a0266a8dc3240b30458e6ac4cec8fe93a0920b9d3a4a4812b062642f",
+    "docs/vision/initial_backlog.csv": "146fe4378a53e030c3e1524cce905a13fc80f4bb4d7310eca0fa1e57a760bb5e",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
-    "docs/vision/requirements.csv": "2f2449e8c82ddc16e4b6d8ea5bbe5b44f53e7754be204613b15aeaddcbcacdc8",
+    "docs/vision/requirements.csv": "7317edf13599dae982832abc74008101b753bc3093f61b025f5526f00fb42c48",
     "docs/vision/rules_certification_template.csv": "5ff136b9900020eb10306e47c4df455b98bbe376ac4640a077c191c9063fc56b",
     "docs/vision/source_register.json": "32e54839404cbcdb809411eddddbd3ad5fc1c74da2060090b822a16e05250ea7",
     "eslint.config.mjs": "acfe87a19267453bf44a7b2933333e9062e8e0a692b2efa6983155bdb66f6418",
-    "infra/README.md": "f07e5bff90c82360baff4d561eb795c4a043747ef2c0fbe609fe8f492e25ab70",
+    "infra/README.md": "54a00e2beb24456a3cfe37a9fb7b3c286e8cf5735ed00bbffb5ef8d5d2320e6b",
     "infra/compose.ci.yaml": "cfc81e5cd72a717a2a5fe02d9649853a25ce5bc708bc8b33be66589b9728b208",
     "infra/compose.persistence.yaml": "21a987cefd5d5db3b19fb213a197f560b1bb3da9e111852ee9f619cec55e57f2",
     "package.json": "440ad48a31f0202d1c00949ea3e2e2f61036805668ea305e804a5f46f8a35d9b",
-    "packages/contracts/README.md": "b702819d274ec9b7e139313263c86777d606aad59cc23135a4b413209daaabc5",
+    "packages/contracts/README.md": "69b71915ebabbb6272a21e304c81b6db9737d484639ee252d2118bb978a803c7",
     "packages/contracts/package.json": "a2da6ae3bb628ece0f305657aee9017a659012feafd7bc1cd3c1b95933ad2889",
-    "packages/contracts/src/index.ts": "ef73590935ed82e977a3372f27f8d66c11cc768e4f3ddc7945a2c09c1c742a33",
+    "packages/contracts/src/index.ts": "612013cdf7bd705b7701f58f81f0ed8a7e8d1a4640d1e88b5aa542a53845901c",
+    "packages/contracts/src/protocol.ts": "425ff36a38e6ab40486ace2553037ed955c172c33ec32c66c3acdc34c8ac0e6f",
+    "packages/contracts/src/release.ts": "e6492e5c3b9bfbfdbc4dc973802a4975e867cf693854e6e86441edaeca466dd9",
+    "packages/contracts/tests/fixtures.mjs": "6bf41c966b7f429bd776e147fdf24773be388fbd7a19a5a7f92b8a2b1548949f",
     "packages/contracts/tests/health.test.mjs": "368871a9a7ac294d17527f9a0f7db281b67a946017f7a2063202c10ea2994b30",
+    "packages/contracts/tests/protocol.test.mjs": "5db2009dff631350092c8406f15da9b2600bcaa4bfb209a464e4d70d5ade93ca",
+    "packages/contracts/tests/release.test.mjs": "4a4cc24fd6ef0fe37d3aa2a1969d8b8eff9da55458f9d83e5f6e71d4c7e25f03",
     "packages/contracts/tsconfig.json": "1bd86ae5eb4bccac21a9d29caaa9dd80718bef7b447126708b40cbdaa8d0e769",
     "packages/db/README.md": "7d7e2df3c15e27ad4411121517d11cddbe9bd4db794daf4de514e6f0c0edf59e",
     "packages/db/migrations/0001-foundation-probes.sql": "6f8d66f0637aec7872bce8f9a1d7e9462d7f441d63d7bc034d136e4549dc45ce",
@@ -1182,11 +1283,14 @@
     "packages/presentation/tests/scene.test.mjs": "62844f35ef89891d64bc063034ec2b56654198ce0feb4f99fc0433332e9e1d8a",
     "packages/presentation/tsconfig.json": "8cc0484e9292c072e0dfe6599d022ec7f3394b144cd03e34e206c6cf80ddb944",
     "packages/rules-data/README.md": "817e92347a178e2f69814231906d4f1761652369e07a930cdb667d42dca2e8fa",
-    "packages/service-runtime/README.md": "1d039c6567b470a91779ba6cb1f6e6e7cd5352cea3472f4763bb9a8ff8a1da43",
-    "packages/service-runtime/package.json": "ab2338fa6776373b000cd073936449ff553f275950a337193516774f498c000b",
-    "packages/service-runtime/src/index.ts": "b529f3a0a9f62110d0425870e10f9a6544ca736f758b0a4fbcdfc4f89f660973",
+    "packages/service-runtime/README.md": "8fdbec9a772eb55f010eb8b0b191eaa1a2586e2059141d90e413d63076a4a2dd",
+    "packages/service-runtime/package.json": "9eedc801801a23139eb84aa57b9db6962eaebe5b8965ecd40547275794e13c99",
+    "packages/service-runtime/src/index.ts": "aad9960095eb39c9d14a1190026e857591d7d98010bf99f0dd25d434de5f21d9",
     "packages/service-runtime/src/lifecycle.ts": "72530c623a87ac4cf10a969482dd9583478bc9291838be904a188021ffe1e7bc",
+    "packages/service-runtime/src/release.ts": "060c34a3ce01c665515db996988f67b95d5c9ea180baa8fa48a593a1b7245df1",
     "packages/service-runtime/tests/lifecycle.test.mjs": "90d52eef863b858a074bea6213a5382bbc85d57421c911ec0a4fb3f58bc69467",
+    "packages/service-runtime/tests/protocol.test.mjs": "4c2db7fe6985503dbf4ded44b8344fca48bd0df1a4cb2b1e84e07a904b386d7d",
+    "packages/service-runtime/tests/release.test.mjs": "065466886f6f0c9aa05d83b67ed8511745135b41a857c52d1fe4d2019a94d3b2",
     "packages/service-runtime/tests/service.test.mjs": "bc3e4bfb8ec6a0bbfb4fc552c60b5dce0e1b3fc07e4b2d52a8f47b2b582f4565",
     "packages/service-runtime/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "packages/testkit/README.md": "59995194f19edfb1f488b74882df1c09918ab51a7166e6c197cd405929e55c8c",
@@ -1196,7 +1300,7 @@
     "scripts/check-boundaries.mjs": "7f93d3d38d6d0c25151fafcb4c5c77d92aa9e4aaba432cb25a913744c257020f",
     "scripts/check-documentation.mjs": "f5054a69f72c2e57112b3983f941020957c86a7ee82eb890e0a3d3434a97df99",
     "scripts/ci-local.py": "3a4bc360b36b70c708afaa20b2e6ea3b7dc5e34dc86253a77c41cf9973b4c858",
-    "scripts/ci/artifacts.mjs": "8c339b2bb253c05aa9ea2597f2aa7928e41f2f879fae0f3b0959f01e18bf8399",
+    "scripts/ci/artifacts.mjs": "4b839a172d21f2bc28ce65ae9e9c109e8810f52d80ce4a744a8d5a068f90d56d",
     "scripts/ci/check-config.py": "d5e40560338bc1e1f8a07dc8fbd76552ed8cb0d35dcbb0694fbd06a3a928eb6a",
     "scripts/ci/pipeline.mjs": "816e993d31b4623245e20d5a8c0732be15f063a469ca61118fe4d633b49f702f",
     "scripts/ci/policy.json": "d0e8a30e934ee44abe529dacf2e24ac506740823036ee041cb9349ee64358fec",
@@ -1213,19 +1317,20 @@
     "scripts/process-groups.mjs": "5efdfbd68c3523406385fb2d9b47a735af3caae58495adb43fc453d8dee328e7",
     "scripts/process.mjs": "1b6f6059ce3f2cd7e53a9fe352fdd99c99027a5b5232a2ef5e8f61a229f6bf69",
     "scripts/record-evidence.mjs": "b8062aeb7f73cd6c553cb942a2c5c6227ea80da27ed23a7b3a7e601b2e83f8a6",
+    "scripts/release-manifest.mjs": "2cc8e43ecb435c54b997a2ca3b707cca4c8986dacb12e1cea4dc570eb185a1f9",
     "scripts/serve-smoke.mjs": "c0f6c1dce1b70b1ca028a3c91b274e348633881ffd2dfaa3f4561b82dfbfe894",
     "scripts/test-bootstrap.mjs": "43b2756d1eb7295208d13f7de06869823923374a47344147db31e6c077bfeca9",
     "scripts/validate-clean-checkout.mjs": "37df31e9b89263a951cf87ea6a08576b29b40a699e99b5c754147bc2934d4edb",
     "scripts/verify-config.py": "3db68cd6dd3cc13bf2c03813135bc997c2c6b3f3240e1b8b607958c03bfebe72",
     "scripts/verify.mjs": "d1e2d646626d3ce7b96c8b7824a2d060c4be5cc487bde74c4d5ea0778aa08c39",
-    "tests/ci/gates.test.mjs": "32c54bb52f8b8354850d6f2e36426a8d48e28ab26283ecded8c4f65ff116dac8",
+    "tests/ci/gates.test.mjs": "eec5f881d37a86e6254f684bb4adeb9095ed7900b955f2800b783809a960d753",
     "tests/ci/launcher.test.py": "fff3c486ed15db9e6e46ada3121dfa98c7ddbaae43d1f62a593a1529c1988400",
     "tests/database/persistence-proof.test.py": "d854939765c1f221448273aa7566405597d10b4c275b2e679ebe05dfde1cf9c9",
     "tests/documentation/evidence.test.mjs": "f6a15cbc1c3d9f44c5cb1945b7b8a1d8d24663edeeb1277ca7b8d1cc72e63309",
     "tests/documentation/governance.test.mjs": "acd1e95b4653386bbacbcade6bd156a6f52e6c1ce4492766c6ee01c5f7d12a5b",
     "tests/env_test.py": "abd54711919f3934d5ceeaa45503c098058a1fc52897ebe35670f137588f9d9f",
-    "tests/foundation/boundaries.test.mjs": "8b3abd9fcb054214ce052f7169f87737e3931dc912d597151449b267a954e8da",
-    "tests/foundation/browser-bundle.test.mjs": "7fb27367086c146ca6423bf80e1ad0cbb60debaf9bde5f900771e09c96c3de15",
+    "tests/foundation/boundaries.test.mjs": "f00d9a616828c1b09edf549c751bab9e091c64c4e35f9cb65b8f7688f1c5f457",
+    "tests/foundation/browser-bundle.test.mjs": "eb22bbe976e2ebcd20858e0a0af29022ccc3875b31590bcadb4e3af4adcd8b07",
     "tests/foundation/process-groups.test.mjs": "2a8cd2b8f038d72474610a6b62b2507520fded1b7858f73837875885cd682262",
     "tests/foundation/processes.test.mjs": "85705a954dd920ebf3f9eef924a250d9a2b5232937a56886195622742632bfd4",
     "tests/smoke.test.mjs": "11e379f37ffaeff7ee3cba311e1d34bcc599459393f464fe67ef08b10e8e9700",
@@ -1237,7 +1342,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "ServiceStatus",
-      "line": 6,
+      "line": 7,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ path, name, expectedService }: { path: string; name: string; expectedService: 'api' | 'match-service' }",
@@ -1246,7 +1351,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 8,
+      "line": 9,
       "column": 13,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1255,7 +1360,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 11,
+      "line": 12,
       "column": 32,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1264,7 +1369,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 12,
+      "line": 13,
       "column": 58,
       "kind": "ArrowFunction",
       "signature": "response",
@@ -1273,7 +1378,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 15,
+      "line": 16,
       "column": 14,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1282,7 +1387,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 15,
+      "line": 16,
       "column": 70,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1291,7 +1396,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 16,
+      "line": 17,
       "column": 12,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1300,7 +1405,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "RenderingCheck",
-      "line": 20,
+      "line": 21,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "",
@@ -1309,7 +1414,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 23,
+      "line": 24,
       "column": 13,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1318,7 +1423,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 26,
+      "line": 27,
       "column": 47,
       "kind": "ArrowFunction",
       "signature": "{ mountSanityScene }",
@@ -1327,7 +1432,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 31,
+      "line": 32,
       "column": 14,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1336,7 +1441,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 32,
+      "line": 33,
       "column": 12,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1344,17 +1449,80 @@
     },
     {
       "file": "apps/web/src/App.tsx",
-      "name": "App",
-      "line": 40,
+      "name": "ProtocolStatus",
+      "line": 41,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "",
-      "sha256": "b74138f6b48d40de1b5742c3253d3d30e76c2ac094abe6b9314a3a14c74ccc1c"
+      "sha256": "b2453a4d4db7c4dffdac04c843230a2236ceac2e47a7479f26ad1babc6375131"
     },
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 55,
+      "line": 43,
+      "column": 13,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "f534311dcadbbb3629194ed8a4d4509fc4de79b2f06392ec97c8274e835fc439"
+    },
+    {
+      "file": "apps/web/src/App.tsx",
+      "name": "<callback>",
+      "line": 46,
+      "column": 32,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1470b8fe4e5582a3cc9f0ebb0327cac5a78fb75e35f6efb62ca0df9094af269e"
+    },
+    {
+      "file": "apps/web/src/App.tsx",
+      "name": "<callback>",
+      "line": 48,
+      "column": 175,
+      "kind": "ArrowFunction",
+      "signature": "response",
+      "sha256": "01acaf783c66b4c076c97a5bccf45a2fb8265b8a25015850cfb4797101584219"
+    },
+    {
+      "file": "apps/web/src/App.tsx",
+      "name": "<callback>",
+      "line": 51,
+      "column": 14,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8adfc5a6fd2f3ee1cdb090e93685b87d1c7eb168e27812836b285ae973a1dc55"
+    },
+    {
+      "file": "apps/web/src/App.tsx",
+      "name": "<callback>",
+      "line": 51,
+      "column": 70,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c3b96a7a5547286b09e73a8719294fef8e6d6745eeda48544d00d44b5c871c96"
+    },
+    {
+      "file": "apps/web/src/App.tsx",
+      "name": "<callback>",
+      "line": 52,
+      "column": 12,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "78616986dd65afa6cab23c4bba65800d8351225261cee324e1fa602967192e6c"
+    },
+    {
+      "file": "apps/web/src/App.tsx",
+      "name": "App",
+      "line": 56,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "e35467fad15f945696afb49dbe0a83a1227c16cc51cacc1c75aef6bf176caab0"
+    },
+    {
+      "file": "apps/web/src/App.tsx",
+      "name": "<callback>",
+      "line": 72,
       "column": 30,
       "kind": "ArrowFunction",
       "signature": "",
@@ -1363,7 +1531,7 @@
     {
       "file": "apps/web/src/App.tsx",
       "name": "<callback>",
-      "line": 55,
+      "line": 72,
       "column": 49,
       "kind": "ArrowFunction",
       "signature": "value",
@@ -1487,6 +1655,42 @@
       "sha256": "932642bcf3a96ac9e951ffb687d4bc2f1b0a0cec2f0f4b9f3bae0e1d8505af01"
     },
     {
+      "file": "apps/web/tests/foundation.spec.ts",
+      "name": "<callback>",
+      "line": 69,
+      "column": 80,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "66acd279bc1556e535876d35a9af750aaecee71bd4e3e4347fd9185c4393c581"
+    },
+    {
+      "file": "apps/web/tests/foundation.spec.ts",
+      "name": "<callback>",
+      "line": 74,
+      "column": 100,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "8719794fe355e1c7c9435b6a09f4204dc7ba6b69f3840d3758c533a1bcc7550e"
+    },
+    {
+      "file": "apps/web/tests/foundation.spec.ts",
+      "name": "<callback>",
+      "line": 75,
+      "column": 51,
+      "kind": "ArrowFunction",
+      "signature": "route",
+      "sha256": "005522fd68bb23bcc4da42b0aea0c911069b762dcdad22f6474c9b09cbe51f84"
+    },
+    {
+      "file": "apps/web/tests/foundation.spec.ts",
+      "name": "<callback>",
+      "line": 82,
+      "column": 51,
+      "kind": "ArrowFunction",
+      "signature": "route",
+      "sha256": "d145581caf01d67426723e81a6be6a2695f1c7aded376b010da4811831e0f5c3"
+    },
+    {
       "file": "apps/web/vite.config.ts",
       "name": "<callback>",
       "line": 13,
@@ -1534,11 +1738,119 @@
     {
       "file": "packages/contracts/src/index.ts",
       "name": "parseReadiness",
-      "line": 19,
+      "line": 21,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown",
       "sha256": "c6f18e4130681d600f4eea01004e3406770770a6f5f3928ef0303b8d7d9583fb"
+    },
+    {
+      "file": "packages/contracts/src/protocol.ts",
+      "name": "dataOnly",
+      "line": 14,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown, depth = 0, seen = new Set<object>()",
+      "sha256": "fe09ced11f47b6a7f5f28e118810e9dbbbfaea73447639fb228298f78ac1d315"
+    },
+    {
+      "file": "packages/contracts/src/protocol.ts",
+      "name": "readContract",
+      "line": 28,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "schema: T, value: unknown, label: string",
+      "sha256": "05943d5a7711cf93e2f99062a5b5490315c778902e14ce1e8108eb2742b4fa22"
+    },
+    {
+      "file": "packages/contracts/src/protocol.ts",
+      "name": "parseProtocolRange",
+      "line": 32,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown",
+      "sha256": "05eb3f780701723021436c6ac5c9a3e06599ba58a5f17fe73d5b157d112432f9"
+    },
+    {
+      "file": "packages/contracts/src/protocol.ts",
+      "name": "negotiateProtocol",
+      "line": 37,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "client: unknown, server: unknown",
+      "sha256": "e60a884871f1c43f77cc22cd3a8ddb394eab03d6c80e369907df5cd699f47374"
+    },
+    {
+      "file": "packages/contracts/src/protocol.ts",
+      "name": "parseHelloRequest",
+      "line": 51,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown",
+      "sha256": "cd1b4b32fc57dcc964ffae32ea813856ff2b211a1a79be213725ca5e5b4e71cb"
+    },
+    {
+      "file": "packages/contracts/src/protocol.ts",
+      "name": "parseHelloResponse",
+      "line": 56,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown, original: HelloRequest",
+      "sha256": "7381b7349e0c24ebb0a38c4669725c38de0ff0a7d407025d72b4a79dd1073ba4"
+    },
+    {
+      "file": "packages/contracts/src/protocol.ts",
+      "name": "decodeClientFrame",
+      "line": 71,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "raw: string",
+      "sha256": "988d8e4ae87eb8c547147b58c6fe21926a8c3acc6dc11e1b8f83e7fbaa19d451"
+    },
+    {
+      "file": "packages/contracts/src/protocol.ts",
+      "name": "parseServerFrame",
+      "line": 94,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown",
+      "sha256": "5ee58258acf79c6e67383a2c2a9a1eb9702b30e20931becdc60c02e1622ce725"
+    },
+    {
+      "file": "packages/contracts/src/release.ts",
+      "name": "parseReleaseManifest",
+      "line": 16,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown",
+      "sha256": "838f773071784f6b59fb9a2755ea9206bda4642a1c02db869db4c648cdbf4b98"
+    },
+    {
+      "file": "packages/contracts/src/release.ts",
+      "name": "<callback>",
+      "line": 21,
+      "column": 80,
+      "kind": "ArrowFunction",
+      "signature": "component",
+      "sha256": "891b780285913e61ea782d76ea7edc08f35e4d4b93d59cb2ae9a07b402c95b31"
+    },
+    {
+      "file": "packages/contracts/tests/fixtures.mjs",
+      "name": "releaseFixture",
+      "line": 5,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "purpose = 'foundation', releaseId = 'release-v1'",
+      "sha256": "143b402fc2da3b3f36103e5d03943968f19771a214e56116129c178db2ea3d0b"
+    },
+    {
+      "file": "packages/contracts/tests/fixtures.mjs",
+      "name": "<callback>",
+      "line": 7,
+      "column": 359,
+      "kind": "ArrowFunction",
+      "signature": "name",
+      "sha256": "6830630bcfc771ad005463cc42cc4130fa878a0ba7c72e701143aee4c5fdd301"
     },
     {
       "file": "packages/contracts/tests/health.test.mjs",
@@ -1557,6 +1869,168 @@
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "3e2c488e89bd78e5986ebd166c405b7115af3c6d23cc264ade4cc2c63ba0b504"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 6,
+      "column": 105,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "911fd33017c5ef92e540a5b3d817044cc629bf48cb541b6d2b0e121a5f753d79"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 10,
+      "column": 204,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "02500b23cf96ea6d0afc0e14e584d38f54c43b97693ab82551aaa72e0607a5a2"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 12,
+      "column": 112,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2a8e3738d2fefacd86992c11037d9842cd4f76d5e50d8ef42d67a403c958edd8"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 15,
+      "column": 256,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "10da65eb8e547c731ed6e0b1b768309fc7270b8ed2f27ccf249d319d67d277bb"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 18,
+      "column": 155,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c37558dba162de6fd5eacf6df776e217194b3938a264485c743695e850c0a20d"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 21,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "85b2a76a56bedffcef991d929fa1264ee47ada37ef12f4ae23fbae15681d86f8"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 23,
+      "column": 103,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "386c1565f8cb30c757a47eca91761dc846723de9a0a43554407f796a4d2b95c1"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 28,
+      "column": 295,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7f5c61b1ec2cd08a6eac8c0373e5232cc60143867f6a389fa8ff1e0f39a31202"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 30,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2fcc32240fb259b0a27dd6528b5d06da3f712644c769448c5e73021e50169620"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 30,
+      "column": 59,
+      "kind": "ArrowFunction",
+      "signature": "error",
+      "sha256": "c61a9ee38ec652f5d363b435e495301f05d888fef8422b06915f01b6ac149fd1"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 33,
+      "column": 87,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b8e9b4e3b66ad72ff8a68284085422beb7dd56f55478ee927a268a88a3d60cdd"
+    },
+    {
+      "file": "packages/contracts/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 41,
+      "column": 428,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "93cc85feb3e59479c12a6ce2940d1ba790219e86bcb0ede26315d0c3ebf50f51"
+    },
+    {
+      "file": "packages/contracts/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 6,
+      "column": 111,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8e4df0ad2405cb0ed460aff69787d24cc9a7c68c30ac068de7dd280d25f86774"
+    },
+    {
+      "file": "packages/contracts/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 14,
+      "column": 42,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8abbdc388d471b1dacdc193ffcd270ca6c39099e5240c2a287cd0bdc0457d191"
+    },
+    {
+      "file": "packages/contracts/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 17,
+      "column": 73,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "eba752689eabe6536f679482f9e817e7c41505299ebe98897961ba83ea38739b"
+    },
+    {
+      "file": "packages/contracts/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 19,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "bf91480fbf849fb076edda53eba72c08fdb20ea510666a0777ba6dd06ca100a4"
+    },
+    {
+      "file": "packages/contracts/tests/release.test.mjs",
+      "name": "get",
+      "line": 20,
+      "column": 103,
+      "kind": "MethodDeclaration",
+      "signature": "",
+      "sha256": "b0aee10823bae6002235777e19a7dfc05615a2ec7ddaebfbdc744521c90844a4"
+    },
+    {
+      "file": "packages/contracts/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 21,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "3d51bd188550d7a676ce21559608a08b9c29f675ee1655cff95ea6fe798b2c7c"
     },
     {
       "file": "packages/db/src/cli.ts",
@@ -2308,16 +2782,16 @@
     {
       "file": "packages/service-runtime/src/index.ts",
       "name": "createHttpService",
-      "line": 7,
+      "line": 10,
       "column": 1,
       "kind": "FunctionDeclaration",
-      "signature": "service: ServiceName",
-      "sha256": "11948883b9faa937e0b369f10505e467e4f2a0c8b9ac6ad9919613892be9fea9"
+      "signature": "service: ServiceName, options: { releaseId?: string; supportedProtocol?: ProtocolRange } = {}",
+      "sha256": "e613b97dd45195f628ae663dd7a2001acd265979b9a8dbeb83b103e790a68ee8"
     },
     {
       "file": "packages/service-runtime/src/index.ts",
       "name": "drain",
-      "line": 10,
+      "line": 16,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "",
@@ -2326,7 +2800,7 @@
     {
       "file": "packages/service-runtime/src/index.ts",
       "name": "<callback>",
-      "line": 11,
+      "line": 17,
       "column": 26,
       "kind": "ArrowFunction",
       "signature": "",
@@ -2335,7 +2809,7 @@
     {
       "file": "packages/service-runtime/src/index.ts",
       "name": "<callback>",
-      "line": 12,
+      "line": 18,
       "column": 27,
       "kind": "ArrowFunction",
       "signature": "",
@@ -2344,7 +2818,7 @@
     {
       "file": "packages/service-runtime/src/index.ts",
       "name": "<callback>",
-      "line": 13,
+      "line": 19,
       "column": 72,
       "kind": "ArrowFunction",
       "signature": "",
@@ -2353,7 +2827,7 @@
     {
       "file": "packages/service-runtime/src/index.ts",
       "name": "<callback>",
-      "line": 14,
+      "line": 20,
       "column": 96,
       "kind": "ArrowFunction",
       "signature": "_request, reply",
@@ -2361,8 +2835,26 @@
     },
     {
       "file": "packages/service-runtime/src/index.ts",
+      "name": "errorHandler",
+      "line": 25,
+      "column": 237,
+      "kind": "MethodDeclaration",
+      "signature": "error, _request, reply",
+      "sha256": "ca0d85ae82edff9c4072a7c33a58392308a3497eb402b7cf1af1b1ffd4821606"
+    },
+    {
+      "file": "packages/service-runtime/src/index.ts",
+      "name": "<callback>",
+      "line": 25,
+      "column": 365,
+      "kind": "ArrowFunction",
+      "signature": "request, reply",
+      "sha256": "384711482a0bb20d855f96bf95b19b826c365f22b2d2d43c5c263efe3316354b"
+    },
+    {
+      "file": "packages/service-runtime/src/index.ts",
       "name": "runHttpService",
-      "line": 20,
+      "line": 36,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "name: ServiceName, port: number",
@@ -2371,7 +2863,7 @@
     {
       "file": "packages/service-runtime/src/index.ts",
       "name": "<callback>",
-      "line": 24,
+      "line": 40,
       "column": 12,
       "kind": "ArrowFunction",
       "signature": "signal",
@@ -2380,7 +2872,7 @@
     {
       "file": "packages/service-runtime/src/index.ts",
       "name": "<callback>",
-      "line": 29,
+      "line": 45,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -2450,6 +2942,69 @@
       "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
     },
     {
+      "file": "packages/service-runtime/src/release.ts",
+      "name": "freeze",
+      "line": 6,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: T",
+      "sha256": "8b30c8cbe239179c0b3269ceb6eea34b61ac61980b966e9eaf7619bb4a0d218b"
+    },
+    {
+      "file": "packages/service-runtime/src/release.ts",
+      "name": "canonical",
+      "line": 10,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown",
+      "sha256": "8e9147b944acd9d001718a1d44cd89a25a87a43a0238e07bfa12e037c223cde2"
+    },
+    {
+      "file": "packages/service-runtime/src/release.ts",
+      "name": "<callback>",
+      "line": 12,
+      "column": 83,
+      "kind": "ArrowFunction",
+      "signature": "[a], [b]",
+      "sha256": "f349c49f82fe23c4d4d9cbef320da33a28651870ab64bfa76957754906349def"
+    },
+    {
+      "file": "packages/service-runtime/src/release.ts",
+      "name": "<callback>",
+      "line": 12,
+      "column": 121,
+      "kind": "ArrowFunction",
+      "signature": "[key, child]",
+      "sha256": "0402df1c4e388d160b0d721cb9922746560c65d837dda2836b2780c7978c1871"
+    },
+    {
+      "file": "packages/service-runtime/src/release.ts",
+      "name": "createReleaseRegistry",
+      "line": 17,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "manifests: readonly unknown[], activeReleaseId: string",
+      "sha256": "d5b912151ce1cfd778bee7d40ad0998bb5590211f1ef6bb27ce02b7f7ecc9560"
+    },
+    {
+      "file": "packages/service-runtime/src/release.ts",
+      "name": "resolvePinned",
+      "line": 25,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "releaseId: string",
+      "sha256": "431f1735b9be38557174a7f3ac806ff9931c3329b35ab46b650d926997818d51"
+    },
+    {
+      "file": "packages/service-runtime/src/release.ts",
+      "name": "assertRetainedPins",
+      "line": 33,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "previous: ReleaseRegistry, next: ReleaseRegistry, pinnedReleaseIds: readonly string[]",
+      "sha256": "338fecf30bd97f8f7f09e5e1caf1aadd88b1faf5b0a2c1bca5922b1d8c487d02"
+    },
+    {
       "file": "packages/service-runtime/tests/lifecycle.test.mjs",
       "name": "<callback>",
       "line": 9,
@@ -2484,6 +3039,141 @@
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "00d0d60cc7d0e3b72946f3be73cfffceed5cccb1bf7a28ebd0229cd08cc3731e"
+    },
+    {
+      "file": "packages/service-runtime/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 6,
+      "column": 94,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b3ee19a602b81182cdfda67fc4ec092107117328854f74da296f8fbf41391539"
+    },
+    {
+      "file": "packages/service-runtime/tests/protocol.test.mjs",
+      "name": "send",
+      "line": 11,
+      "column": 20,
+      "kind": "ArrowFunction",
+      "signature": "value",
+      "sha256": "ce742f7eed9c72c7156892414062ae9273af07fcf8d3a5bc2c81811a683e342e"
+    },
+    {
+      "file": "packages/service-runtime/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 28,
+      "column": 90,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "bf5d6315edb877e270152948094f0af69be16f174dcd7fa6b547a6c06edaa55e"
+    },
+    {
+      "file": "packages/service-runtime/tests/protocol.test.mjs",
+      "name": "<callback>",
+      "line": 29,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dca67d6c29d156d52a74b384d27ae7ef807c7e9597aba2419bd2630e9569b983"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 6,
+      "column": 111,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "a7c44061e9ce8e32365c7a0d32f3f8aff2f8b59142f00685ee7a2e8f853e4263"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 13,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c64e5dad596ef49a6372f94628447b5ebfa0ed411b8d1326a3110421a6e86bf0"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 14,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e6c46ca7b8172e2b4b82d76a552e6f4dc9773c46c150a62a643b6ea7adc0c50a"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 15,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "fabb1254171e8674c3184ed9bf5d6fdf1cf02dd3def1b200ee7a10c304247094"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 16,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "f098bb567c394930b82e2eba1d9ee0b00cebf59b35db3aaf6ac7f8d258f3e16e"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 18,
+      "column": 105,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c27632e24fbb738d113fe9978df2e80806e8dc91e161a947fa6a226f83b31189"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 23,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5dd302f83a9f6b6d2d0a3ca4335dc6dfde9c8416a213f49453fb08b18cab7b74"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 24,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "3a739392d8b5eb6e939c32dbed229eae3683d120735def072b2770fdd1f319bd"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 26,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "924741d62b1b2a923cdf393279ba54be4dbe85a5f8842ef143f4e6ce8fe2b56f"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 29,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "f12f6f240c2e2fa4ce48f0819e190260ea9b10b8075905863236dbcbaede3a8e"
+    },
+    {
+      "file": "packages/service-runtime/tests/release.test.mjs",
+      "name": "<callback>",
+      "line": 31,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7b9858d4cb51e3f9f26aba681fc54c83c62b9689f29746e957a162ac157e861e"
     },
     {
       "file": "packages/service-runtime/tests/service.test.mjs",
@@ -2795,7 +3485,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "validateIdentity",
-      "line": 10,
+      "line": 11,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "identity, toolchain, lockBytes",
@@ -2804,7 +3494,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "walk",
-      "line": 14,
+      "line": 15,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, prefix=''",
@@ -2813,16 +3503,16 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "allowed",
-      "line": 24,
+      "line": 25,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "path",
-      "sha256": "ee1b6a29e1d9f98b61ef2d5e8ff62f7ef94b2491c544d0c05c94d0e32005b56e"
+      "sha256": "1401e3b7a7b0a0a01851975755282962b19952cbee7c07bedf17aaaf2cd75e60"
     },
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 25,
+      "line": 26,
       "column": 94,
       "kind": "ArrowFunction",
       "signature": "part",
@@ -2831,7 +3521,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 26,
+      "line": 27,
       "column": 20,
       "kind": "ArrowFunction",
       "signature": "file",
@@ -2840,7 +3530,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 27,
+      "line": 29,
       "column": 26,
       "kind": "ArrowFunction",
       "signature": "workspace",
@@ -2849,16 +3539,16 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "createArtifacts",
-      "line": 29,
+      "line": 31,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, out, reports, identity, {knownSecrets=[]}={}",
-      "sha256": "3900812ba4a2d184aa98ff0748b4ae4004c18583011598d5c60b56519b9815f9"
+      "sha256": "488fd2492454a323507a8601076318269580fb44a1ec3cfd846d644c609dd763"
     },
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "copy",
-      "line": 34,
+      "line": 36,
       "column": 14,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2867,7 +3557,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 48,
+      "line": 52,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2876,7 +3566,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 49,
+      "line": 53,
       "column": 28,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2885,7 +3575,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 51,
+      "line": 55,
       "column": 105,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2894,16 +3584,16 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "verifyArtifacts",
-      "line": 55,
+      "line": 59,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "out, {knownSecrets=[]}={}",
-      "sha256": "bf4c2e51be270b873c8cb2f172fdc90573c0fd570017688ae2a727d20036deff"
+      "sha256": "25612c26ea1b6d49039cfd393ecdf94af998c3f9e7cc0b02637f2c1bfead1bac"
     },
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 64,
+      "line": 68,
       "column": 33,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2912,7 +3602,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 65,
+      "line": 69,
       "column": 45,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2921,7 +3611,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 70,
+      "line": 74,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2930,7 +3620,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 70,
+      "line": 74,
       "column": 61,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2939,7 +3629,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 70,
+      "line": 74,
       "column": 110,
       "kind": "ArrowFunction",
       "signature": "workspace",
@@ -2948,7 +3638,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 70,
+      "line": 74,
       "column": 181,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2957,7 +3647,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 72,
+      "line": 77,
       "column": 50,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -2966,7 +3656,7 @@
     {
       "file": "scripts/ci/artifacts.mjs",
       "name": "<callback>",
-      "line": 76,
+      "line": 81,
       "column": 47,
       "kind": "ArrowFunction",
       "signature": "arg",
@@ -4285,6 +4975,96 @@
       "sha256": "3820fc62d1efd2d3986f4f6c9faeab79340ee4cee575675324b0783a591db00a"
     },
     {
+      "file": "scripts/release-manifest.mjs",
+      "name": "digestTree",
+      "line": 6,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root",
+      "sha256": "30a33c7813cfb9c1a029940a016d30d1127b07c8f2fc7f28211d91626dc0dfb9"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "walk",
+      "line": 9,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "folder, prefix = ''",
+      "sha256": "4d0499fada44e057623c2e98e9ee059198f9549df465ca0c5daa979e39d06db4"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "digestClosure",
+      "line": 23,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root, owner, includeMigrations = false",
+      "sha256": "65bf0b4a077c334d74f4be3753f778be0c40435a23f8ecd5a347911b404a6ecf"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "<callback>",
+      "line": 24,
+      "column": 50,
+      "kind": "ArrowFunction",
+      "signature": "path",
+      "sha256": "ee7fd5330a5bfbf1e1d4453326a47697089d460dc063ad0a32b2050eeb5a68d1"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "visit",
+      "line": 32,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "name",
+      "sha256": "27cb4abb7867a820806cb8b235b4ab1c7440581c353fe0e10d238e1ffcac871f"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "<callback>",
+      "line": 46,
+      "column": 13,
+      "kind": "ArrowFunction",
+      "signature": "a, b",
+      "sha256": "2f5dcc65a5d0d75e29d8759d0c34c82df2d49475fc4227f6beeb771dc027446c"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "buildFoundationRelease",
+      "line": 49,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root, identity, createdAt = new Date().toISOString()",
+      "sha256": "4a238b9b5417096d8bfecd940fd74b7542ec195a073073cbbbd37fbd612eb0b9"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "verifyFoundationRelease",
+      "line": 61,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root, value, identity",
+      "sha256": "fdfafa6910a97df56b7e2559a6fb1d9a7cd9b6d904c145d7fb17dee27f3db4e0"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "same",
+      "line": 66,
+      "column": 5,
+      "kind": "FunctionDeclaration",
+      "signature": "a, b",
+      "sha256": "ab6e29c77d926c3cb1bc41c753773d0fc7a34656a85ee74e2aded1c1239f6ed6"
+    },
+    {
+      "file": "scripts/release-manifest.mjs",
+      "name": "<callback>",
+      "line": 69,
+      "column": 75,
+      "kind": "ArrowFunction",
+      "signature": "key",
+      "sha256": "e8e53d5df434cfb6fb52b5ff236b64399e3e280174716422313f64f1907de6f6"
+    },
+    {
       "file": "scripts/serve-smoke.mjs",
       "name": "createSmokeServer",
       "line": 4,
@@ -4435,7 +5215,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "t",
-      "sha256": "c33e1b146d35a58540ab6741fdab4846e8fd5453a2a7bdb5780ff03232ee5e1f"
+      "sha256": "ee8db03cc4e6dd36ad00f1ec02c6539c02dc1e9bf36bb59ac6c3bd9f6a7fd2b0"
     },
     {
       "file": "tests/ci/gates.test.mjs",
@@ -4458,7 +5238,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 39,
+      "line": 45,
       "column": 96,
       "kind": "ArrowFunction",
       "signature": "t",
@@ -4467,7 +5247,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 41,
+      "line": 47,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4476,7 +5256,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 42,
+      "line": 48,
       "column": 84,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4485,7 +5265,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 43,
+      "line": 49,
       "column": 136,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4494,7 +5274,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 44,
+      "line": 50,
       "column": 95,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4503,7 +5283,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 46,
+      "line": 52,
       "column": 72,
       "kind": "ArrowFunction",
       "signature": "t",
@@ -4512,7 +5292,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 50,
+      "line": 56,
       "column": 75,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4521,7 +5301,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 53,
+      "line": 59,
       "column": 102,
       "kind": "ArrowFunction",
       "signature": "t",
@@ -4530,7 +5310,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 56,
+      "line": 62,
       "column": 113,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4539,7 +5319,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 57,
+      "line": 63,
       "column": 126,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4548,7 +5328,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 58,
+      "line": 64,
       "column": 138,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4557,7 +5337,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 60,
+      "line": 66,
       "column": 73,
       "kind": "ArrowFunction",
       "signature": "t",
@@ -4566,7 +5346,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 65,
+      "line": 71,
       "column": 109,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4575,7 +5355,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 66,
+      "line": 72,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4584,7 +5364,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 67,
+      "line": 73,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4593,7 +5373,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 69,
+      "line": 75,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4602,7 +5382,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 69,
+      "line": 75,
       "column": 38,
       "kind": "ArrowFunction",
       "signature": "_command, name",
@@ -4611,7 +5391,52 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 71,
+      "line": 78,
+      "column": 88,
+      "kind": "ArrowFunction",
+      "signature": "t",
+      "sha256": "4c1b9522814cb8fdd5c7b13f45272398db43bbca67a587e34b6c9906dff76bb1"
+    },
+    {
+      "file": "tests/ci/gates.test.mjs",
+      "name": "<callback>",
+      "line": 86,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5cd5651ba48dc14c79b853339eafc814a4809190c8256b9024557259e0aaa6e7"
+    },
+    {
+      "file": "tests/ci/gates.test.mjs",
+      "name": "<callback>",
+      "line": 88,
+      "column": 110,
+      "kind": "ArrowFunction",
+      "signature": "t",
+      "sha256": "beb0cf3bc790dd3acad21282000879277d1ed04ecb5605bb112af2572311f61e"
+    },
+    {
+      "file": "tests/ci/gates.test.mjs",
+      "name": "<callback>",
+      "line": 97,
+      "column": 35,
+      "kind": "ArrowFunction",
+      "signature": "row",
+      "sha256": "04b3ace35f07033e547805e3207080e4c25f8f285fb46aa5779f084dd0c39f43"
+    },
+    {
+      "file": "tests/ci/gates.test.mjs",
+      "name": "<callback>",
+      "line": 99,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5cd5651ba48dc14c79b853339eafc814a4809190c8256b9024557259e0aaa6e7"
+    },
+    {
+      "file": "tests/ci/gates.test.mjs",
+      "name": "<callback>",
+      "line": 102,
       "column": 71,
       "kind": "ArrowFunction",
       "signature": "t",
@@ -4620,7 +5445,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 72,
+      "line": 103,
       "column": 64,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4629,7 +5454,7 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "git",
-      "line": 74,
+      "line": 105,
       "column": 13,
       "kind": "ArrowFunction",
       "signature": "args, cwd=root",
@@ -4638,11 +5463,38 @@
     {
       "file": "tests/ci/gates.test.mjs",
       "name": "<callback>",
-      "line": 78,
+      "line": 109,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "a46b5cbbee3ae0c437b9636de9b88b4d9702549f4f118cc5e77e895bee72a9b3"
+    },
+    {
+      "file": "tests/ci/gates.test.mjs",
+      "name": "<callback>",
+      "line": 112,
+      "column": 102,
+      "kind": "ArrowFunction",
+      "signature": "t",
+      "sha256": "e2c97d3f9a2f684db504e3abb7a93bdc03e0e4f70d76ab6643ee0cc063dfdd70"
+    },
+    {
+      "file": "tests/ci/gates.test.mjs",
+      "name": "<callback>",
+      "line": 119,
+      "column": 35,
+      "kind": "ArrowFunction",
+      "signature": "row",
+      "sha256": "921f55be4cc0f702beecd1a2c6a29b5f6e39d44452d077b0c7ddd05b6a19b47a"
+    },
+    {
+      "file": "tests/ci/gates.test.mjs",
+      "name": "<callback>",
+      "line": 120,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5cd5651ba48dc14c79b853339eafc814a4809190c8256b9024557259e0aaa6e7"
     },
     {
       "file": "tests/ci/launcher.test.py",
@@ -5488,6 +6340,24 @@
       "file": "tests/foundation/boundaries.test.mjs",
       "name": "<callback>",
       "line": 35,
+      "column": 99,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2652e56607ee5a880a5492a51876083cce276395c0f10f79e8a02734d7e95515"
+    },
+    {
+      "file": "tests/foundation/boundaries.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "db2206b3c8f81e91ab77eeb27f7ab22c1cdd379879f62f57454110f7298c66c0"
+    },
+    {
+      "file": "tests/foundation/boundaries.test.mjs",
+      "name": "<callback>",
+      "line": 40,
       "column": 82,
       "kind": "ArrowFunction",
       "signature": "",
@@ -5496,7 +6366,7 @@
     {
       "file": "tests/foundation/boundaries.test.mjs",
       "name": "<callback>",
-      "line": 52,
+      "line": 57,
       "column": 73,
       "kind": "ArrowFunction",
       "signature": "",
@@ -5505,7 +6375,7 @@
     {
       "file": "tests/foundation/boundaries.test.mjs",
       "name": "<callback>",
-      "line": 66,
+      "line": 71,
       "column": 78,
       "kind": "ArrowFunction",
       "signature": "",
@@ -5518,7 +6388,7 @@
       "column": 86,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "53e79fdb0dae0340001288d418d96c4e52b95c13dc6d7f4fab58891e1cd26e34"
+      "sha256": "69af01e1893b3cf48a847840dead504423588a987ff2e7dc74dedfa761f95f58"
     },
     {
       "file": "tests/foundation/browser-bundle.test.mjs",

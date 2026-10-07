@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-045",
+  "category": "container",
+  "command": [
+    "node",
+    "--conditions=lorcana-source",
+    "--test",
+    "tests/ci/gates.test.mjs",
+    "packages/service-runtime/tests/protocol.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "dc6a38bf262acd263eb0e003c8e6fe407ed18919740c6170d9b8332cc9d2f60a",
+  "started_at": "2026-10-07T04:18:21.267Z",
+  "finished_at": "2026-10-07T04:18:22.515Z",
+  "recorded_at": "2026-10-07T04:18:22.515Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1248,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Review regression red: transitive runtime and manifest binding, HTTP application conflict and unsupported codec advertisement",
+  "log_path": "docs/validation/logs/RUN-20261007-045.txt",
+  "log_sha256": "b7bf96eb9120320b363bec3d3a1b96742d166ed80a392b176a1fea8f30def8fb",
+  "redactions": 0
+}

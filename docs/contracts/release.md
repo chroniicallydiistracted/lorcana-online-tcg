@@ -1,0 +1,35 @@
+# Release identity and compatibility contract
+
+BOOT-05 implements public TypeBox metadata in `packages/contracts/src/release.ts`, server-only retained pins in `packages/service-runtime/src/release.ts` and build binding in `scripts/release-manifest.mjs`. [Validation](../validation/boot-05.md) records results. Schema validity and byte identity do not certify engine/rules/content, authenticity, migration safety or authorization to deploy.
+
+## Public manifest schemaVersion1
+
+Required closed fields: `schemaVersion:1`, `releaseId`, `purpose:foundation|game`, canonical UTC `createdAt` with exact milliseconds, `source`, `protocol` and `components`. IDs/revision ranges use [the protocol bounds](protocol.md). Digest strings are exactly64 lowercase hexadecimal characters. `source` requires Git `commit` (40 or64 lowercase hex), executable `fingerprint` and `lockSha256`. Invalid calendar dates and noncanonical UTC timestamps fail; creation time is metadata, not evidence of execution/approval.
+
+Components are exactly `web`, `api`, `matchService`, `worker`, `databaseSchema`, `engine`, `content`, `rules`, `products`, `rewards`. A built component is `{status:built,version,sha256}`; a reserved component is exactly `{status:reserved}`. The four apps and database schema always require built references. Other components may be reserved for foundation manifests; every component must be built for game-purpose manifests. Tests use synthetic game references solely to qualify parsing/retention, without asserting an implemented game bundle. No private paths/keys/RNG/engine state are permitted.
+
+`parseReleaseManifest(unknown)` rejects missing/unknown/nested private fields, bad hashes/dates/ranges and a game manifest with reserved work. It returns the validated data or throws a generic error. Built references still require independently reviewed source/certification/license/evidence before game admission. An immutable ref must never be overwritten under the same ID/version.
+
+## Binding already-built artifacts
+
+The CI artifact format is now `manifest.json` schema_version2. It includes `release-manifest.json` and actual `build/packages/db/migrations/NNNN-name.sql` files alongside all nine workspace dist/manifests, frozen metadata and existing reports. The v1 BOOT-03 reports remain historical and unchanged; the new verifier rejects v1 scope. Use the verifier at its original Git commit to inspect those older results. This is an artifact-format change, independent of documentation/run schema v1 and protocol revision1.
+
+`buildFoundationRelease(root,identity,createdAt?)` hashes the owning app package manifest and sorted dist tree plus the complete recursive runtime workspace dependency closure (dependencies, optional dependencies and peers). Each tree uses JSON rows `{path,bytes,sha256}`; the sorted closure hashes package metadata and these tree digests. Component versions are `build-<digest>`. Database-schema identity binds the database package/runtime closure and actual SQL migration tree as `schema-<digest>`. External installed dependencies are bound by the frozen lock identity; changing package exports or transitive workspace executable bytes invalidates the component. Empty/absent/unsafe/symlinked builds fail. Source/lock identity and protocol revision1 are bound; engine/content/rules/products/rewards are explicitly reserved. `releaseId` is `foundation-<SHA256>` over the complete ordered manifest fields excluding the ID, including build digests and creation time. Separate builds can have separate immutable release IDs even for the same source.
+
+Artifact creation generates this report internally from the copied build subtree, rather than accepting caller-supplied release metadata. `verifyFoundationRelease(buildRoot,value,identity)` rederives expected component versions/digests, source/lock, reserved statuses, protocol and release ID from archived app/SQL bytes using the recorded creation time. Field reordering is accepted; changed content fails even if an outer artifact-file hash was recomputed. `pnpm ci:artifacts -- PATH` enforces both outer file identity and this semantic binding. Hashes remain unsigned; signatures/attestation and production promotion are separate gates.
+
+These artifacts contain the actual migration files but remain foundation evidence, without provisioned production configuration or a deployment package. App versions/hash trees identify transpiled output, not a promise of identical future builds. Installed npm SBOM/security/license scope and explicit notice-file gaps remain governed by [CI operation](../runbooks/ci.md).
+
+## Server-only retained release ownership
+
+`createReleaseRegistry(manifests,activeReleaseId)` validates1–64 manifests, rejects duplicate IDs, defensively deep-copies/freezes them and resolves the requested active ID. It returns immutable `active` and `resolvePinned(id)`. An unavailable pin throws `Unavailable pinned release`; it never falls back to current active metadata. Mutating the caller's original input cannot alter registry references. Browser/public packages cannot import this registry or its server-only subpath.
+
+`assertRetainedPins(previous,next,pinnedReleaseIds)` compares canonical full manifest data for each unique pin, independent of JSON property order. Missing or changed pinned content fails. The caller supplies an authoritative durable pin set; this helper does not discover matches or execute a database transaction. Future activation must hold an appropriate transaction/lock or otherwise prove no concurrent admission escaped that set. Both declarations and actual private engine/content bundles must remain available until matches finish or migrate through a separately qualified process.
+
+## Promotion, compatibility and rollback policy
+
+Promote verified already-built bytes and their manifest/evidence; do not rebuild an unverified nominally identical commit. Admission pins release, protocol, engine, content, rules and policies together. Unknown/reserved/uncertified references cannot enter real play. Product/reward pins do not merge ownership, legality and queue policy or restore rewards to a manipulated Sandbox session.
+
+A new active release must retain every running-match pin, its qualified decoder and actual bundles. Incompatible clients receive explicit upgrade guidance; running matches cannot switch rules under a metadata edit. If retaining a pin would exceed the initial registry bound, stop activation and review capacity/retention instead of evicting active work.
+
+Rollback is allowed only after explicit proof that old code understands the current database schema, retained manifests/protocols and already-committed data. Additive schema changes, migration/replay checks and evidence determine compatibility; equality of a hash alone is not sufficient. Otherwise roll forward under a reviewed repair. Never overwrite live data with an old backup as a code rollback. Production migration/drain/backup/restore/load/release approval remain OPS/PLAY/Director gates; BOOT-05 has no deploy or activation command.

@@ -29,3 +29,7 @@ Negative safety fixtures and actual execution results are recorded in [BOOT-03 v
 Review corrections: a read-only reviewer reproduced lifecycle/setup/image-publication/cancellation/stopped-resource gaps, original-known-value history gaps, manifest identity/secret gaps, audit outcome contradictions, CLI separator handling and dynamic credential log redaction. Exact failed red tests are retained; corrected CI18/evidence8 regressions and final whole79-test/local database/browser pipeline passed. Owned private redaction values are captured before/after the command; unsafe generated config withholds output and fails evidence. No reviewed finding is waived.
 
 Evidence schema v1 receives a backwards-compatible failure-reason enum addition, `private_redaction_unavailable`. Existing records remain valid/unchanged; no schema-version migration or rewriting is required. A malformed/unsafe private configuration created during a child command withholds the entire output and creates failed evidence with the exact original execution outcome. Regression validates the emitted record against the current schema.
+
+## BOOT-05 continuation
+
+The preceding results/decisions are retained as dated task checkpoints. BOOT-05 now implements public protocol/negotiation and release artifact v2 binding/retained pins with final-source local evidence; [ADR0006](../adr/0006-protocol-release-contracts.md) and [BOOT-05 validation](../validation/boot-05.md) describe the current scope. This extension does not implement authenticated gameplay or production activation.

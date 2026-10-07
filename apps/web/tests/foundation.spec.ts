@@ -65,3 +65,21 @@ test('unavailable WebGL leaves a semantic stop control usable', async ({ page })
   await page.getByRole('button', { name: 'Stop rendering check' }).click();
   await expect(page.locator('canvas')).toHaveCount(0);
 });
+
+test('protocol compatibility reaches the actual local negotiation diagnostic', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByText('Protocol compatible', { exact: true })).toBeVisible();
+});
+
+test('protocol compatibility shows update and rejects malformed or uncorrelated server responses', async ({ page }) => {
+  await page.route('**/match/protocol/negotiate', async route => {
+    const request = route.request().postDataJSON() as { requestId: string };
+    await route.fulfill({ status: 409, contentType: 'application/json', body: JSON.stringify({ type: 'hello_result', outcome: 'unsupported_version', requestId: request.requestId, serverReleaseId: 'next-release', supportedProtocol: { min: 2, max: 2 }, action: 'upgrade_required' }) });
+  });
+  await page.goto('/');
+  await expect(page.getByText('Protocol update required', { exact: true })).toBeVisible();
+  await page.unroute('**/match/protocol/negotiate');
+  await page.route('**/match/protocol/negotiate', route => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ type: 'hello_result', outcome: 'accepted', requestId: 'unrelated', serverReleaseId: 'local-foundation', protocolVersion: 1 }) }));
+  await page.reload();
+  await expect(page.getByText('Protocol unavailable', { exact: true })).toBeVisible();
+});

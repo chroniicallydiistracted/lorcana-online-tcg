@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-052",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{readFileSync}from'node:fs';import{verifyArtifacts}from'./scripts/ci/artifacts.mjs';const root=process.argv[1];const manifest=verifyArtifacts(root);const release=JSON.parse(readFileSync(root+'/release-manifest.json'));const pipeline=JSON.parse(readFileSync(root+'/pipeline.json'));const sbom=JSON.parse(readFileSync(root+'/sbom.cdx.json'));const audit=JSON.parse(readFileSync(root+'/dependency-audit.json'));console.log(JSON.stringify({artifactVersion:manifest.schema_version,entries:manifest.files.length,identity:manifest.identity,release,stages:pipeline,components:sbom.components.length,audit},null,2));console.log('PASS archived complete executable/SQL release binding, outer identity and secret scope');",
+    "/workspaces/lorcana-online-tcg/.local/ci-results/lorcana-ci-eb1974ab4fd0402695054e30a991490e/artifacts"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-07T04:30:12.502Z",
+  "finished_at": "2026-10-07T04:30:12.888Z",
+  "recorded_at": "2026-10-07T04:30:12.888Z",
+  "time_precision": "exact",
+  "elapsed_ms": 386,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final copied artifact v2: source/image/lock, release executable/runtime/package/SQL binding, reports and secret verification",
+  "log_path": "docs/validation/logs/RUN-20261007-052.txt",
+  "log_sha256": "9a1d7c1f88d6de6ea280d839e9e74298099246034bbe4ddda740825a1d79b158",
+  "redactions": 0
+}

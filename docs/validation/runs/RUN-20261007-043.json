@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-043",
+  "category": "headless_browser",
+  "command": [
+    "pnpm",
+    "test:e2e:smoke"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "dea7fc5ff012a422a2a43996d2f85662b69bffeb2d664305fe066fd3e7bc38f4",
+  "started_at": "2026-10-07T04:07:30.718Z",
+  "finished_at": "2026-10-07T04:07:49.176Z",
+  "recorded_at": "2026-10-07T04:07:49.176Z",
+  "time_precision": "exact",
+  "elapsed_ms": 18458,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "BOOT-05 green actual local negotiation and compatibility/update/malformed client states with continued renderer/service browser checks",
+  "log_path": "docs/validation/logs/RUN-20261007-043.txt",
+  "log_sha256": "1fdd33751877cbe9ed534fcca50b03056eebd455999c5c9b994fafb8d4691d10",
+  "redactions": 0
+}

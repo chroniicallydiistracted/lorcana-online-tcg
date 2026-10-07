@@ -32,6 +32,11 @@ test('browser imports reject database/server sources, aliases, reexports, dynami
   }
 });
 
+test('browser source cannot import the server-only release registry through its package subpath', async () => {
+  const { checkSource } = await import('../../scripts/check-boundaries.mjs');
+  assert.throws(() => checkSource(join(process.cwd(),'apps/web/src/registry-probe.ts'), undefined, "import { createReleaseRegistry } from '@lorcana/service-runtime/release';"), /Forbidden browser import/);
+});
+
 test('declaring a database dependency in a public contract package is rejected', async () => {
   const root = await mkdtemp(join(tmpdir(), 'lorcana-boundary-'));
   try {

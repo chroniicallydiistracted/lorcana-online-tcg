@@ -38,7 +38,7 @@ Bare `pnpm doctor` invokes pnpm's built-in doctor; use `pnpm run doctor` to run 
 
 ## Browser and services
 
-VS Code forwards web **5173**, API **3001** and match **3002**. Open web from the Ports panel; normally the Windows URL is `http://localhost:5173`. Expect Application foundation and both services ready. Start rendering to display three neutral card shapes; stop/start and resize the window to check lifecycle. This is a foundation preview, not final game design or certified GPU performance.
+VS Code forwards web **5173**, API **3001** and match **3002**. Open web from the Ports panel; normally the Windows URL is `http://localhost:5173`. Expect Application foundation, both services ready and Protocol compatible. Start rendering to display three neutral card shapes; stop/start and resize the window to check lifecycle. This is a foundation preview, not final game design or certified GPU performance.
 
 The web server uses same-origin `/api` and `/match` proxies; no cross-origin permission is needed. API/match `/healthz` report process liveness; `/readyz` reports foundation readiness. They do not check a database or engine. Worker has no public ingress or job execution. Root development strips bootstrap database credentials from child environments, reloads server source and stops the stack on service failure. Ctrl+C stops owned processes. A busy port fails startup; do not kill unrelated listeners. Stop the specific old connectivity process if it still uses 5173.
 
@@ -77,3 +77,5 @@ Update the active draft's files, documentation dispositions, feature/task IDs an
 The live preview described during the prior session is no longer running at the 2026-10-06 audit intake. Start `pnpm dev` before the Director's still-pending Windows foundation smoke. Discover actual forwarded URLs and current listeners each session.
 
 `pnpm verify:clean` copies the audited project-owned source to a temporary directory, excluding credentials/Git/dependencies/build output, then performs a frozen install and complete foundation validation. It removes the temporary copy on exit and never connects to or recreates the existing database. Stop fixed-port development first. Capture it as container evidence; this is a source-only clean-checkout proof, not device or image qualification.
+
+BOOT-05 adds `POST /protocol/negotiate` on both diagnostic HTTP services. The web match proxy checks revision/correlation and displays update-required or unavailable responses. Read [protocol](../contracts/protocol.md) and [release policy](../contracts/release.md) before extending transport or runtime identity. CI-generated identities are separate from the local development label; no game/admission/database route is active.

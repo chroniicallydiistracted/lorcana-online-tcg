@@ -10,7 +10,7 @@ test('built browser assets contain no server configuration or bootstrap credenti
   if (files.length === 0) throw new Error('No built client assets');
   for (const file of files) {
     const bytes = readFileSync(join(directory, file), 'utf8');
-    if (/POSTGRES_PASSWORD|DATABASE_URL|AUTH_SECRET|server_version_num|@lorcana\/service-runtime/.test(bytes)) throw new Error('Forbidden server configuration in browser output');
+    if (/POSTGRES_PASSWORD|DATABASE_URL|AUTH_SECRET|server_version_num|@lorcana\/service-runtime|createReleaseRegistry|assertRetainedPins/.test(bytes)) throw new Error('Forbidden server configuration in browser output');
     if (secrets.some(secret=>bytes.includes(secret))) throw new Error('Private database credential present in browser output');
   }
 });

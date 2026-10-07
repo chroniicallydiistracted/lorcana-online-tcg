@@ -57,3 +57,7 @@ An independent reviewer inspected the foundation and reproduced the boundary/lif
 Durable sanitized prior-session logs now live under [validation/logs](logs/) with [historical run records](runs/). RUN-20261006-901 through908 preserve clean validation, final workspace, preserved checks, image build, earlier validation/fix/browser attempts and final fixes. Exact execution times and invocation/exit metadata are not reconstructed; import timestamps and `reported` outcomes are labeled. The six-file equivalence comparison is recorded in [the source manifest](boot-01-source-manifest.json). Transient /tmp paths are provenance only. The original command/result tables describe the earlier session, not fresh audit runs.
 
 The disposable proof container was removed after successful historical validation. Current container/listener observations and fresh governance checks belong to [the dated project audit](../audits/2026-10-06-project-audit.md) and [handoff](../HANDOFF.md).
+
+## BOOT-05 continuation
+
+The preceding results/decisions are retained as dated task checkpoints. BOOT-05 now implements public protocol/negotiation and release artifact v2 binding/retained pins with final-source local evidence; [ADR0006](../adr/0006-protocol-release-contracts.md) and [BOOT-05 validation](../validation/boot-05.md) describe the current scope. This extension does not implement authenticated gameplay or production activation.

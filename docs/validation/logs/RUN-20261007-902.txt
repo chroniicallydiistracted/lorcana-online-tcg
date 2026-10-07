@@ -1,0 +1,124 @@
+BOOT-05 independent whole-scope read-only review
+Repository: /home/andre/lorcana-online-tcg
+Branch: codex/boot-05-contracts
+Intake/current HEAD: 1c2580cac2dd8bafb66d45b26e79ce97c86cce80
+Review scope: entire task-owned uncommitted BOOT-05 implementation; no shared-file edits, listeners, builds, DB mutations or secret-file reads.
+Execution times below are sampled by commands when present; file timestamps are not execution evidence.
+Observed tool access: default exec process failed; read-only escalated /bin/bash works. Existing Dev Container 3e5816dff0be via docker exec as node.
+Required AGENTS/universal workflow/handoff plus requesting-code-review template, BOOT-05 plan/protocol/release/ADR source read. Relevant original authority sections are reviewed below.
+2026-10-07T04:15:34Z
+codex/boot-05-contracts
+1c2580cac2dd8bafb66d45b26e79ce97c86cce80
+ CHANGELOG.md                             |  86 +++
+ apps/web/src/App.tsx                     |  19 +-
+ apps/web/tests/foundation.spec.ts        |  18 +
+ docs/current-state.json                  | 976 ++++++++++++++++++++++++++-----
+ docs/documentation-map.json              |  52 ++
+ docs/features.json                       |  75 ++-
+ packages/contracts/src/index.ts          |   2 +
+ packages/service-runtime/package.json    |   5 +
+ packages/service-runtime/src/index.ts    |  23 +-
+ scripts/ci/artifacts.mjs                 |  19 +-
+ tests/ci/gates.test.mjs                  |  28 +-
+ tests/foundation/boundaries.test.mjs     |   5 +
+ tests/foundation/browser-bundle.test.mjs |   2 +-
+ 13 files changed, 1138 insertions(+), 172 deletions(-)
+v24.21.0
+Probe started 2026-10-07T04:16:32.296Z
+ID rejected "request-1\n" Invalid hello request
+ID rejected "request-1\r" Invalid hello request
+ID rejected "request-1\r\n" Invalid hello request
+ID rejected "request-1 " Invalid hello request
+Commit rejected Invalid release manifest
+Incompatible HTTP 426 upgrade= null body= {"type":"hello_result","requestId":"request-1","serverReleaseId":"local-foundation","outcome":"unsupported_version","supportedProtocol":{"min":1,"max":1},"action":"upgrade_required"}
+Future revision factory 200 {"type":"hello_result","requestId":"request-1","serverReleaseId":"local-foundation","outcome":"accepted","protocolVersion":2}
+Probe finished 2026-10-07T04:16:32.417Z
+Archive dependency probe started 2026-10-07T04:16:54.746Z
+TAMPER ACCEPTED build/packages/service-runtime/dist/index.js unchanged release= foundation-f9c29306381de83a7672d50481060811d116627e9f29c4960df60da9522d6e78
+TAMPER ACCEPTED build/packages/contracts/dist/index.js unchanged release= foundation-f9c29306381de83a7672d50481060811d116627e9f29c4960df60da9522d6e78
+TAMPER ACCEPTED build/apps/api/package.json unchanged release= foundation-f9c29306381de83a7672d50481060811d116627e9f29c4960df60da9522d6e78
+Archive dependency probe finished 2026-10-07T04:16:54.774Z
+Boundary fixture probes started 2026-10-07T04:18:05.991Z
+prototype hello ACCEPTED
+prototype release ACCEPTED
+registry output {}
+registry prototype release ACCEPTED
+ID "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" ACCEPTED
+ID "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" rejected Invalid hello request
+ID "_x" rejected Invalid hello request
+ID "a/b" rejected Invalid hello request
+ID "a\u0000" rejected Invalid hello request
+ID "é" rejected Invalid hello request
+range {"min":65535,"max":65535} ACCEPTED
+range {"min":65536,"max":65536} rejected Invalid protocol range
+range {"min":1,"max":2} ACCEPTED
+range {"min":2,"max":1} rejected Invalid protocol range
+range {"min":1,"max":3} rejected Invalid protocol range
+snapshot count 0 ACCEPTED
+snapshot count 1000 ACCEPTED
+snapshot count 1001 rejected Invalid server frame
+snapshot count -1 rejected Invalid server frame
+snapshot count NaN rejected Invalid server frame
+snapshot count Infinity rejected Invalid server frame
+snapshot count 1.1 rejected Invalid server frame
+exact 16KiB frame ACCEPTED
+16KiB+1 frame rejected Invalid client frame
+maintenance hello ACCEPTED
+same-registry pins [] ACCEPTED
+same-registry pins ["release-v1"] ACCEPTED
+same-registry pins ["release-v1","release-v1"] ACCEPTED
+same-registry pins ["missing"] rejected Unavailable pinned release
+Boundary fixture probes finished 2026-10-07T04:18:06.011Z
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (4.007707ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (3.550848ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.577675ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (3.0808ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (8.098403ms)
+✔ release registry defensively freezes source and never silently replaces an unavailable pinned release (5.78705ms)
+✔ release transition proof rejects dropped or changed pins but accepts canonical field reordering (8.231815ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 278.408156
+
+Commands actually used for probes/tests (all through existing container as node/workdir):
+- docker exec -i -u node -w /workspaces/lorcana-online-tcg 3e5816dff0be node --input-type=module [stdin JS]
+  Probe 1 imports public contracts/fixtures and service-runtime; parses trailing-newline IDs, injects incompatible hello without listening and constructs server range2.
+  Probe 2 creates /tmp synthetic nine-workspace dist/manifests plus SQL/toolchain/lock fixtures; createArtifacts; changes archived service-runtime dist, contracts dist and API package.json, recomputes only each outer files row bytes/SHA256, then verifyArtifacts; finally removes scratch tree.
+  Probe 3 checks inherited-property hello/release DTOs and registry, exact ID/revision/count/frame boundaries, maintenance reply and retained pin behavior.
+- docker exec -u node -w /workspaces/lorcana-online-tcg 3e5816dff0be node --conditions=lorcana-source --test packages/contracts/tests/protocol.test.mjs packages/contracts/tests/release.test.mjs packages/service-runtime/tests/release.test.mjs
+  Actual output above: seven passing tests, no failures/skips/cancellations.
+
+Reproduction summaries (observed before parent's correction edits):
+Important 1: scripts/release-manifest.mjs:23-28 omitted executable workspace dependencies/package manifests from semantic component identity.
+Synthetic archived packages/service-runtime/dist/index.js, packages/contracts/dist/index.js and apps/api/package.json modifications pass verifyArtifacts after recomputing outer file row hash. release-manifest.json and releaseId remain unchanged. Real apps/api/dist/main.js and apps/match-service/dist/main.js import @lorcana/service-runtime; worker main imports its lifecycle subpath. Bind owning metadata and runtime workspace dependency closure (plus db migration runtime) to component digests; include negative fixtures for each changed dependency.
+
+Important 2: packages/service-runtime/src/index.ts:24,30 and apps/web/src/App.tsx:50 used HTTP426 for a JSON application revision conflict.
+Listener-free Fastify inject returns426, Upgrade header null, same HTTP transport. RFC9110 section15.5.22 requires Upgrade for426; section7.8 concerns changing the underlying connection protocol. Official source inspected: https://www.rfc-editor.org/rfc/rfc9110.html#name-426-upgrade-required . Use an application-level conflict status (409 is suitable), align response schema/browser/tests/contracts.
+
+Important 3: packages/contracts/src/protocol.ts:14-16 / packages/service-runtime/src/release.ts:21-23 validate original input before copying it.
+parseReleaseManifest(Object.create(releaseFixture())) succeeds. createReleaseRegistry([Object.create(releaseFixture())], 'release-v1').active is frozen {} because structuredClone omits inherited required fields. Public parser also accepts prototype-only hello. Validate actual copied retained data and require/normalize safe own-field DTOs; add prototype/accessor fixtures so shape cannot change after successful validation/copy.
+
+Important 4: packages/service-runtime/src/index.ts:10-12,29-31 allows advertising unimplemented revision2.
+createHttpService('api', {supportedProtocol:{min:2,max:2}}) then inject hello offer2 returns200 accepted protocolVersion2 although command/server codecs are literal revision1. Docs explicitly require implemented qualified schemas/handlers before advertising new revision. Reject configured range outside FOUNDATION_PROTOCOL until handlers actually exist; keep generic arithmetic negotiation helper usable with hypothetical future ranges.
+
+Strengths: closed nested wire variants; bounded frame/counter/ID/range checks; generic parser errors; explicit reserved/game metadata distinction; defensive frozen ordinary registry copies; no missing-pin fallback; canonical pin comparison; SQL archived and semantically bound; browser package ownership enforcement; timeout/correlation/status fail-closed UI; preserved historical artifact format scope.
+No Critical issue observed. No separate Minor issue required.
+
+Considered and set aside as outside BOOT-05 acceptance:
+- Real card actions/engine correctness/authenticated sockets/player authorization and full hidden-information noninterference: PLAY/RULE own these; synthetic public shapes are explicitly limited.
+- Durable pin discovery/transactional activation/concurrent admission and actual retained engine bundles: helper contract accepts supplied authoritative pin set and docs defer implementation.
+- Signatures/attestation, malicious replacement of all unsigned identity metadata, production deployment/rollback/recovery certification: documented separate promotion/OPS/Director gates; no deploy command is implemented.
+- Real Windows/hardware GPU/touch/performance and GitHub-hosted execution/required checks: separate reported/external gates; read-only reviewer inferred none.
+- Obvious stale current documentation while parent aligns it: in-progress, no final status claimed by this reviewer.
+
+Assessment at review checkpoint: With fixes. Correct the four Important findings and run final-source scoped regressions/full acceptance evidence before closure. Parent accepted findings1/2/4 and announced corrections; no post-correction pass is inferred from that message. Finding3 was sent separately with actual prototype reproduction.
+No shared source/docs/index/HEAD edits by reviewer; no owned listeners or DB mutations; disposable /tmp fixture removed.
+2026-10-07T04:19:54Z
+codex/boot-05-contracts
+1c2580cac2dd8bafb66d45b26e79ce97c86cce80
+Exact start/end UTC for the seven-test owning fixture invocation were not captured by the command itself and are unknown (null); TAP durations are observed, not converted into invented wall-clock times. The injected negotiation and synthetic archive/boundary probes above contain their actual sampled start/end UTC. Reviewer read current baseline paragraphs on workspace boundaries, protocol synchronization, hidden information and release promotion/rollback; none were interpreted as accepting pending product scope.

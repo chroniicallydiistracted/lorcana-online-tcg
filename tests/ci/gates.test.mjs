@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync, symlinkSync, readFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, symlinkSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -31,6 +31,12 @@ test('license and advisory gates reject unknown policy and unavailable/malformed
 function fixture(t) {
   const root=mkdtempSync(join(tmpdir(),'ci-artifact-')),out=join(root,'.local/artifacts');t.after(()=>rmSync(root,{recursive:true,force:true}));
   for(const file of ['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db'].flatMap(workspace=>[workspace+'/package.json',workspace+'/dist/index.js'])) {mkdirSync(join(root,file,'..'),{recursive:true});writeFileSync(join(root,file),'synthetic');}
+  for (const workspace of ['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db']) {
+    const name='@lorcana/'+workspace.split('/')[1];
+    const dependencies=workspace.startsWith('apps/') && workspace!=='apps/web' ? {'@lorcana/service-runtime':'workspace:*'} : workspace==='packages/service-runtime' ? {'@lorcana/contracts':'workspace:*'} : {};
+    writeFileSync(join(root,workspace,'package.json'),JSON.stringify({name,dependencies}));
+  }
+  mkdirSync(join(root,'packages/db/migrations'),{recursive:true});writeFileSync(join(root,'packages/db/migrations/0001-foundation-probes.sql'),'SELECT 1;');
   for(const file of ['package.json','pnpm-lock.yaml','pnpm-workspace.yaml'])writeFileSync(join(root,file),'{}');
   const toolchain=JSON.parse(readFileSync(new URL('../../toolchain.json',import.meta.url)));writeFileSync(join(root,'toolchain.json'),JSON.stringify(toolchain));
   const identity={source_commit:'a'.repeat(40),source_fingerprint:'b'.repeat(64),lock_sha256:sha256('{}'),dirty:true,node:toolchain.node,pnpm:toolchain.pnpm,platform:'linux',architecture:'x64',project:'lorcana-ci-'+'a'.repeat(32),workspace_image_id:'sha256:'+'a'.repeat(64),postgres_image:toolchain.postgresImage};
@@ -68,6 +74,31 @@ test('pipeline rejects ordinary local database and propagates failing stages wit
   let after=false;const stages=[['failure',['false']],['after',['true']]];
   assert.throws(()=>runStages(stages,(_command,name)=>{if(name==='failure')throw new Error('fixture');after=true;}));assert.equal(after,false);
 });
+
+test('version2 artifacts carry a release bound to app and actual SQL migration bytes', t => {
+  const {root,out,reports,identity}=fixture(t);createArtifacts(root,out,reports,identity);
+  assert.ok(existsSync(join(out,'release-manifest.json')));
+  const release=JSON.parse(readFileSync(join(out,'release-manifest.json')));
+  assert.equal(release.source.fingerprint,identity.source_fingerprint);
+  assert.equal(release.purpose,'foundation');assert.deepEqual(release.components.engine,{status:'reserved'});
+  assert.equal(JSON.parse(readFileSync(join(out,'manifest.json'))).schema_version,2);
+  assert.equal(readFileSync(join(out,'build/packages/db/migrations/0001-foundation-probes.sql'),'utf8'),'SELECT 1;');
+  assert.doesNotThrow(()=>verifyArtifacts(out));
+});
+test('release binding rejects modified inner metadata or build/SQL bytes even with recomputed outer hashes', t => {
+  const {root,out,reports,identity}=fixture(t);
+  for(const change of ['release','app','migration']){
+    rmSync(out,{recursive:true,force:true});createArtifacts(root,out,reports,identity);
+    assert.ok(existsSync(join(out,'release-manifest.json')));
+    const path=change==='release'?'release-manifest.json':change==='app'?'build/apps/web/dist/index.js':'build/packages/db/migrations/0001-foundation-probes.sql';
+    if(change==='release'){const release=JSON.parse(readFileSync(join(out,path)));release.components.web.sha256='d'.repeat(64);writeFileSync(join(out,path),JSON.stringify(release));}
+    else writeFileSync(join(out,path),'modified synthetic bytes');
+    const manifest=JSON.parse(readFileSync(join(out,'manifest.json'))),bytes=readFileSync(join(out,path));
+    const row=manifest.files.find(row=>row.path===path);row.bytes=bytes.length;row.sha256=sha256(bytes);
+    writeFileSync(join(out,'manifest.json'),JSON.stringify(manifest));
+    assert.throws(()=>verifyArtifacts(out),/release|Release/);
+  }
+});
 test('a shallow repository cannot bypass full-history qualification', t => {
   const temp=mkdtempSync(join(tmpdir(),'ci-history-'));t.after(()=>rmSync(temp,{recursive:true,force:true}));
   const root=join(temp,'origin'),copy=join(temp,'copy');mkdirSync(root);
@@ -76,4 +107,16 @@ test('a shallow repository cannot bypass full-history qualification', t => {
   writeFileSync(join(root,'public.txt'),'public');git(['add','.']);git(['commit','-m','fixture']);
   git(['clone','--depth','1','file://'+root,copy]);
   assert.throws(()=>sourceSecretScan(copy),/full Git history|shallow/);
+});
+
+test('release identity binds transitive executable workspace bytes and package resolution metadata', t => {
+  const {root,out,reports,identity}=fixture(t);
+  for(const file of ['packages/service-runtime/dist/index.js','packages/contracts/dist/index.js','apps/api/package.json','packages/service-runtime/package.json','packages/db/dist/index.js']) {
+    rmSync(out,{recursive:true,force:true});createArtifacts(root,out,reports,identity);
+    const path=join(out,'build',file),bytes=readFileSync(path);
+    writeFileSync(path,file.endsWith('package.json') ? JSON.stringify({...JSON.parse(bytes),exports:{'.':'./dist/changed.js'}}) : bytes+'\n// changed executable');
+    const manifestPath=join(out,'manifest.json'),manifest=JSON.parse(readFileSync(manifestPath));
+    const row=manifest.files.find(row=>row.path==='build/'+file),changed=readFileSync(path);row.bytes=changed.length;row.sha256=sha256(changed);writeFileSync(manifestPath,JSON.stringify(manifest));
+    assert.throws(()=>verifyArtifacts(out),file);
+  }
 });

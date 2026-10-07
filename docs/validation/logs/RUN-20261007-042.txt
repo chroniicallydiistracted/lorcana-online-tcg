@@ -1,0 +1,35 @@
+✔ public diagnostics reject private data and malformed service responses (2.52103ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (3.072345ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (3.703192ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.603887ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.845461ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (11.129613ms)
+✔ actual HTTP negotiation is typed, rejects unknown/coerced/oversized input and drains (217.010682ms)
+✔ release registry defensively freezes source and never silently replaces an unavailable pinned release (6.839234ms)
+✔ release transition proof rejects dropped or changed pins but accepts canonical field reordering (8.972664ms)
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (2.127139ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.427174ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (36.996169ms)
+✔ manifest traversal, duplicate and missing entries are rejected (18.431899ms)
+✔ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (12.567426ms)
+✔ documented artifact command accepts the pnpm argument separator (628.189888ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.392672ms)
+✔ version2 artifacts carry a release bound to app and actual SQL migration bytes (13.72409ms)
+✔ release binding rejects modified inner metadata or build/SQL bytes even with recomputed outer hashes (26.699636ms)
+✔ a shallow repository cannot bypass full-history qualification (36.695739ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1209.287869
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+

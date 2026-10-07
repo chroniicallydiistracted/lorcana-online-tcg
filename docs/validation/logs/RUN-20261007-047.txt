@@ -1,0 +1,30 @@
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (4.541757ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (4.590575ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.77881ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.891446ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (8.499697ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.214395ms)
+✔ actual HTTP negotiation is typed, rejects unknown/coerced/oversized input and drains (236.394736ms)
+✔ HTTP service cannot advertise a revision without an implemented foundation codec (0.909378ms)
+✔ release registry defensively freezes source and never silently replaces an unavailable pinned release (8.828446ms)
+✔ release transition proof rejects dropped or changed pins but accepts canonical field reordering (8.663765ms)
+✔ release registry cannot expose empty cloned data from inherited manifest fields (0.21718ms)
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.982817ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.529462ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (41.570737ms)
+✔ manifest traversal, duplicate and missing entries are rejected (16.412318ms)
+✔ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (21.728942ms)
+✔ documented artifact command accepts the pnpm argument separator (717.662697ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.430431ms)
+✔ version2 artifacts carry a release bound to app and actual SQL migration bytes (14.122207ms)
+✔ release binding rejects modified inner metadata or build/SQL bytes even with recomputed outer hashes (35.796831ms)
+✔ a shallow repository cannot bypass full-history qualification (44.458673ms)
+✔ release identity binds transitive executable workspace bytes and package resolution metadata (59.331354ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1402.894888

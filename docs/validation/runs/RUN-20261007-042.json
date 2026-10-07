@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-042",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{spawnSync}from'node:child_process';for(const args of [['--conditions=lorcana-source','--test','packages/contracts/tests/health.test.mjs','packages/contracts/tests/protocol.test.mjs','packages/contracts/tests/release.test.mjs','packages/service-runtime/tests/protocol.test.mjs','packages/service-runtime/tests/release.test.mjs','tests/ci/gates.test.mjs']]){const r=spawnSync('node',args,{stdio:'inherit'});if(r.status!==0)process.exit(r.status??1);}for(const name of ['@lorcana/contracts','@lorcana/service-runtime']){const r=spawnSync('pnpm',['--filter',name,'build'],{stdio:'inherit'});if(r.status!==0)process.exit(r.status??1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "dea7fc5ff012a422a2a43996d2f85662b69bffeb2d664305fe066fd3e7bc38f4",
+  "started_at": "2026-10-07T04:06:36.382Z",
+  "finished_at": "2026-10-07T04:06:39.997Z",
+  "recorded_at": "2026-10-07T04:06:39.997Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3614,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "BOOT-05 green public protocol/release, actual HTTP/retention and artifact semantic-binding fixtures plus strict package builds",
+  "log_path": "docs/validation/logs/RUN-20261007-042.txt",
+  "log_sha256": "0c4bfec67de8847648c09b0202b7427e5f7ee1b9e6bbdaf86947cafa6b70e239",
+  "redactions": 0
+}

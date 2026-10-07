@@ -1,0 +1,34 @@
+
+> lorcana-online-tcg@0.0.0 test:e2e:smoke /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/web test:e2e
+
+
+> @lorcana/web@0.0.0 test:e2e /workspaces/lorcana-online-tcg/apps/web
+> playwright test
+
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/foundation.spec.ts:3:1 › real client reaches both services, mounts WebGL, resizes and releases repeated scenes (1.5s)
+  ✓  2 tests/foundation.spec.ts:34:1 › unavailable service and renderer disposal remain usable from keyboard (545ms)
+[WebServer] The request id "/workspaces/lorcana-online-tcg/packages/db/README.md" is outside of Vite serving allow list.
+[WebServer] 
+[WebServer] - /workspaces/lorcana-online-tcg/apps/web
+[WebServer] - /workspaces/lorcana-online-tcg/packages/contracts
+[WebServer] - /workspaces/lorcana-online-tcg/packages/design-system
+[WebServer] - /workspaces/lorcana-online-tcg/packages/presentation
+[WebServer] - /workspaces/lorcana-online-tcg/node_modules
+[WebServer] 
+[WebServer] Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+[WebServer] 
+  ✓  3 tests/foundation.spec.ts:47:1 › development file serving rejects server-owned files outside the browser roots (14ms)
+  ✓  4 tests/foundation.spec.ts:54:1 › unavailable WebGL leaves a semantic stop control usable (550ms)
+  ✓  5 tests/foundation.spec.ts:69:1 › protocol compatibility reaches the actual local negotiation diagnostic (333ms)
+  ✓  6 tests/foundation.spec.ts:74:1 › protocol compatibility shows update and rejects malformed or uncorrelated server responses (556ms)
+
+  6 passed (17.0s)

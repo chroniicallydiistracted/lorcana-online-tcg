@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-039",
+  "category": "container",
+  "command": [
+    "node",
+    "--conditions=lorcana-source",
+    "--test",
+    "packages/contracts/tests/protocol.test.mjs",
+    "packages/contracts/tests/release.test.mjs",
+    "packages/service-runtime/tests/protocol.test.mjs",
+    "packages/service-runtime/tests/release.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "d442cbbb50a6d8582193f3f2073b092658beb521611502e7ca6ed2787edce22a",
+  "started_at": "2026-10-07T03:59:53.999Z",
+  "finished_at": "2026-10-07T03:59:54.564Z",
+  "recorded_at": "2026-10-07T03:59:54.564Z",
+  "time_precision": "exact",
+  "elapsed_ms": 565,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-05 red public protocol/release and actual HTTP/retention fixtures before implementation",
+  "log_path": "docs/validation/logs/RUN-20261007-039.txt",
+  "log_sha256": "732da17d096693f6aa720213e9de09bdfcd39df1c3a33b7ff1c7b733c98416d7",
+  "redactions": 0
+}

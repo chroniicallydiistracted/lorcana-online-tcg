@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { parseReadiness } from '@lorcana/contracts';
+import { parseReadiness, parseHelloResponse, FOUNDATION_PROTOCOL } from '@lorcana/contracts';
+import type { HelloRequest } from '@lorcana/contracts';
 import { ActionButton } from '@lorcana/design-system';
 import styles from './App.module.css';
 
@@ -37,6 +38,21 @@ function RenderingCheck() {
     <p>Three neutral card shapes. No card content or gameplay is connected.</p>
   </>;
 }
+function ProtocolStatus() {
+  const [state, setState] = useState('checking');
+  useEffect(() => {
+    const controller = new AbortController();
+    let active = true;
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    const hello: HelloRequest = { type: 'hello', requestId: globalThis.crypto.randomUUID(), clientReleaseId: 'local-foundation', supportedProtocol: FOUNDATION_PROTOCOL };
+    void fetch('/match/protocol/negotiate', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(hello), signal: controller.signal }).then(async response => {
+      const body = parseHelloResponse(await response.json(), hello);
+      if (active) setState(response.status === 200 && body.outcome === 'accepted' ? 'compatible' : response.status === 409 && body.outcome === 'unsupported_version' ? 'update required' : 'unavailable');
+    }).catch(() => { if (active) setState('unavailable'); }).finally(() => clearTimeout(timeout));
+    return () => { active = false; clearTimeout(timeout); controller.abort(); };
+  }, []);
+  return <li>Protocol {state}</li>;
+}
 export function App() {
   const [rendering, setRendering] = useState(false);
   return <main className={styles.page}>
@@ -48,6 +64,7 @@ export function App() {
       <ul aria-live="polite">
         <ServiceStatus path="/api/readyz" name="API" expectedService="api" />
         <ServiceStatus path="/match/readyz" name="Match service" expectedService="match-service" />
+        <ProtocolStatus />
       </ul>
     </section>
     <section aria-labelledby="renderer-title">

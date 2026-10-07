@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-049",
+  "category": "container",
+  "command": [
+    "node",
+    "--conditions=lorcana-source",
+    "--test",
+    "--test-name-pattern",
+    "version2 artifacts",
+    "tests/ci/gates.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "dec5cd8234cfab0ed4e560b7dce331c135849aa20908c87fa300a65ef435c449",
+  "started_at": "2026-10-07T04:25:58.485Z",
+  "finished_at": "2026-10-07T04:25:58.913Z",
+  "recorded_at": "2026-10-07T04:25:58.913Z",
+  "time_precision": "exact",
+  "elapsed_ms": 428,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Real migration filename regression red: artifact scope must accept the reviewed hyphenated SQL file",
+  "log_path": "docs/validation/logs/RUN-20261007-049.txt",
+  "log_sha256": "d2e7b6d02cc0ab49406d2ccd5d7258a0b18d40fe25e1dbc047a6c4672edb26cc",
+  "redactions": 0
+}

@@ -18,7 +18,7 @@ pnpm dev
 
 Use `pnpm run doctor`: bare `pnpm doctor` selects pnpm's built-in command rather than this repository's doctor script. Keep Node 24.21.0 and pnpm 10.33.0; the pnpm update banner is informational.
 
-Open forwarded **5173** from VS Code's Ports panel. Expect **Application foundation**, **API ready**, **Match service ready**, and a **Start rendering check** control displaying three synthetic card shapes. The local web server proxies `/api` and `/match` to ports **3001** and **3002**. The worker has no HTTP listener. Stop the stack with Ctrl+C. A failed service stops the supervised stack; server source changes restart the three server processes. Vite handles browser changes.
+Open forwarded **5173** from VS Code's Ports panel. Expect **Application foundation**, **API ready**, **Match service ready**, **Protocol compatible**, and a **Start rendering check** control displaying three synthetic card shapes. The local web server proxies `/api` and `/match` to ports **3001** and **3002**. The worker has no HTTP listener. Stop the stack with Ctrl+C. A failed service stops the supervised stack; server source changes restart the three server processes. Vite handles browser changes.
 
 `pnpm dev:smoke` remains the original connectivity diagnostic. Run it separately, after stopping the app on 5173; its plain response is not the game UI.
 
@@ -34,9 +34,9 @@ Open forwarded **5173** from VS Code's Ports panel. Expect **Application foundat
 | `pnpm lint` | ESLint and browser/public ownership checks |
 | `pnpm build` | Ordered shared-package declarations/ESM, web bundle and three executable server apps |
 | `pnpm test` | Builds, bootstrap, schema/service/scene tests, negative boundaries, bundle, real-process lifecycle and documentation/evidence regression checks |
-| `pnpm test:e2e:smoke` | Linux Chromium, live services, software WebGL, resize/remount, keyboard controls and unavailable-service behavior |
+| `pnpm test:e2e:smoke` | Linux Chromium, live services, software WebGL, resize/remount, keyboard controls, unavailable services and version/correlation rejection |
 | `pnpm ci:config` / `pnpm test:ci` | Static workflow/Compose policy and negative scanner/artifact/launcher safety checks |
-| `pnpm ci:artifacts -- PATH` | Verify copied artifact scope, sizes, SHA256 and secret patterns |
+| `pnpm ci:artifacts -- PATH` | Verify artifact v2 scope, bytes, secrets and release manifest binding to app builds and SQL migrations |
 | `pnpm db:check` | Existing bootstrap administrator connection only |
 | `pnpm db:provision` | Explicit managed app local/test databases and eight restricted logins |
 | `pnpm db:migrate -- --target local` | Reviewed transactional migration; use test for the isolated test DB |
@@ -49,13 +49,13 @@ For browser automation, install its pinned browser inside the container once wit
 
 | Workspace | Implemented responsibility |
 |---|---|
-| `apps/web` | Semantic React controls, CSS Modules, service status, lazy renderer |
-| `apps/api` / `apps/match-service` | Separate Fastify `/healthz` and `/readyz` diagnostic executables |
+| `apps/web` | Semantic React controls, CSS Modules, service/readiness and compatibility status, lazy renderer |
+| `apps/api` / `apps/match-service` | Separate Fastify health/readiness and bounded `POST /protocol/negotiate` diagnostic executables |
 | `apps/worker` | Local idle process with bounded signal shutdown; no job implementation |
-| `packages/contracts` | Public TypeBox health/readiness schema and validated response types |
+| `packages/contracts` | Public TypeBox health/readiness, closed protocol frames and release manifest schemas/parsers |
 | `packages/design-system` | React Aria action control; full design system deferred |
 | `packages/presentation` | Synthetic Babylon scene and mount/resize/dispose ownership |
-| `packages/service-runtime` | Server-only diagnostics and cancellable startup/shutdown |
+| `packages/service-runtime` | Server-only negotiation, cancellable lifecycle and immutable retained-release registry |
 
 `db` now owns BOOT-02 restricted local/test connections, reviewed SQL and typed synthetic Drizzle probes. `domain`, `engine-adapter`, `rules-data`, `testkit` and `vendor/tcg-engines` remain explicitly reserved. Private state and credentials have no browser exports. The browser guard checks declarations, imports/aliases/reexports, HTML/CSS and asset URLs; Vite enforces it again and restricts served filesystem roots. Development children receive a small environment without the bootstrap database administrator credentials.
 
@@ -65,7 +65,7 @@ Dependencies are exact pins in owning workspaces. The lockfile covers nine works
 
 See [workspace qualification](docs/WORKSPACE_QUALIFICATION.md) and [BOOT-01 validation](docs/validation/boot-01.md) for executed checks and their limits. The lazy synthetic renderer still triggers Vite's large-chunk warning; this is not performance qualification.
 
-BOOT-02 local acceptance is verified; see [database operation](docs/runbooks/database.md) and [evidence](docs/validation/boot-02.md) for scoped roles, migrations, isolated test DB and disposable recreation proof. BOOT-03 local CI/artifact acceptance is verified; hosted workflow execution remains pending; see [CI operation](docs/runbooks/ci.md) and [evidence](docs/validation/boot-03.md). BOOT-05 remains protocol/release compatibility. RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).
+BOOT-02 local acceptance is verified; see [database operation](docs/runbooks/database.md) and [evidence](docs/validation/boot-02.md) for scoped roles, migrations, isolated test DB and disposable recreation proof. BOOT-03 local CI/artifact acceptance is verified; hosted workflow execution remains pending; see [CI operation](docs/runbooks/ci.md) and [evidence](docs/validation/boot-03.md). BOOT-05 protocol/release implementation is verified locally; see [protocol](docs/contracts/protocol.md), [release policy](docs/contracts/release.md) and [acceptance evidence](docs/validation/boot-05.md). RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).
 
 ## Development continuity
 

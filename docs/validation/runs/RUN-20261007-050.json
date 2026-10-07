@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-050",
+  "category": "container",
+  "command": [
+    "node",
+    "--conditions=lorcana-source",
+    "--test",
+    "tests/ci/gates.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-07T04:26:12.106Z",
+  "finished_at": "2026-10-07T04:26:13.396Z",
+  "recorded_at": "2026-10-07T04:26:13.396Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1290,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Real migration filename correction green: complete CI artifact safety including transitive executable and SQL identities",
+  "log_path": "docs/validation/logs/RUN-20261007-050.txt",
+  "log_sha256": "4922f8e7b70b06a872b0c757d38fd3072f3ff60d8cbd6a938d565b08a020bc62",
+  "redactions": 0
+}

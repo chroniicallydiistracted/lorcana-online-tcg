@@ -1,0 +1,36 @@
+# BOOT-05 protocol/release acceptance evidence
+
+Completed scoped local acceptance on `codex/boot-05-contracts`, from clean `1c2580cac2dd8bafb66d45b26e79ce97c86cce80`. BOOT-05 accepts valid/invalid fixture tests, a bounded version-negotiation contract and proven browser/server separation. Full gameplay, authenticated sockets, qualified engine/content, real-device/Windows/hosted execution and production remain their independent tasks.
+
+Intake RUN20261007-035…038 passed actual existing-container doctor, static/documentation, five original bootstrap checks and authenticated read-only bootstrap database connectivity. No source/private credential/data/volume changes were made by those checks. Current-source proofs, review findings and closure will be appended before acceptance; no prior BOOT-03 result is claimed for changed source.
+
+## Implementation checkpoint
+
+RUN039…041 retain expected preimplementation failures: missing parsers/registry/negotiation route, missing release artifact and SQL binding, and missing browser compatibility controls. RUN042 passed19 targeted contract/runtime/CI regressions and strict owning builds. RUN043 passed6 actual Linux Chromium/SwiftShader checks, including real negotiation and fail-closed upgrade/correlation behavior. These are source-identified checkpoints; final full-source pipeline/recreation/canonical proof and independent review are still required. Current interfaces/policy are in [protocol](../contracts/protocol.md), [release](../contracts/release.md) and [ADR0006](../adr/0006-protocol-release-contracts.md).
+
+## Review and corrections
+
+Independent reported RUN902 preserves four Important findings and listener-free probes with unknown aggregate execution times. No finding is waived. RUN045/046 capture three review regressions and inherited-manifest failures before correction; RUN047 passes22 targeted cases after the fixes. Application negotiation now uses409; runtime ranges cannot advertise unimplemented codecs; copied releases are revalidated and parsers require own-data DTOs; release hashes bind all executable transitive workspaces/package export metadata and the DB migrator/SQL tree. RUN044 passed the pre-review full foundation90 checks; its source is a preserved checkpoint, not final acceptance.
+
+RUN048 completed the frozen foundation94, eight restricted identity/five live DB and6 Linux browser checks, then rejected the real hyphenated migration filename at artifact creation. Its independent clock guard also detected a wall/monotonic discontinuity; result remains failed and no artifact was published. All owned resources/image were removed. RUN049 reproduces the actual filename with the targeted fixture; RUN050 verifies the corrected allowlist. The next whole-source pipeline supplies fresh acceptance; no clock tolerance/result is weakened or rewritten.
+
+## Final-source acceptance
+
+RUN051 passed all twelve stages in an actual fresh non-root Dockerfile-built workspace/private PostgreSQL project: frozen install, ordered builds/types/lint/import/static/docs/history,94 mixed foundation checks (70 Node and24 Python, including five original bootstrap checks), eight authenticated restricted identities/five live DB checks and6 Linux Chromium/SwiftShader browser checks. UTC/monotonic timing is consistent; final executable fingerprint is `8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584`. This proves BOOT-05 valid/invalid fixtures, actual negotiation and browser/server separation against the final code, alongside continued BOOT-01/02/03 checks. No Windows/hardware/hosted acceptance is inferred.
+
+RUN052 verifies artifact v2:98 payload entries plus outer manifest, complete source/image/lock identity, release `foundation-047e01b78d07590dae714d3a5d0b18815c92697623d73c89827c857e1ba9c757`, actual app/shared runtime/package metadata/DB migrator/SQL binding and all report/secret gates. SBOM includes200 installed Linux npm components; ten absent published notice files remain visible and the registry audit reports zero advisories at the recorded retrieval. Foundation component engine/content/rules/products/rewards remain reserved. Hashes are unsigned identity and do not grant production/authenticity/legal acceptance. The host verified all owned running/stopped containers, networks/volumes and its unique image were removed before result publication.
+
+RUN053 requalifies actual disposable database recreation, concurrent locked migrations, persisted typed rows/journals and role/transaction restrictions against the same fingerprint. It cleans its own project; original VS Code/private database/volume remain untouched. Canonical staged Git-byte proof and final read-only resource/private/original-scope closure passed in RUN054/055. Existing failed/red receipts and the independent historical review remain append-only; no important finding is waived.
+
+| BOOT-05 acceptance | Evidence and limit |
+|---|---|
+| Valid/invalid public protocol/release fixtures | Final RUN051; own-data objects, bounds/unknown/private fields, every discriminant/outcome, dates/digests, game reserved rejection and immutable retained pins |
+| Version negotiation contract | Real API/match HTTP success409 conflict/503 maintenance, correlation/range rejection, unimplemented codec refusal; six actual Linux browser checks in RUN051 |
+| Browser/server import split | Negative actual server-only release import plus production browser bundle inspection in RUN051; no private registry/credentials/browser exports |
+| Release identity/compatibility policy | RUN051/052 semantic archive binding including transitive runtime/export metadata/SQL; documented version/admission/retention/rollback policy; no deploy/activation/game bundle loader |
+
+## Canonical checkout and closure
+
+RUN054 passed a fresh frozen install and all94 foundation checks from canonical staged Git archive bytes with identical executable fingerprint. RUN055 confirms actual absence of listeners5173/3001/3002, all three owned CI/persistence projects and two unique CI image tags; original healthy private PostgreSQL/source bind/pg18_data remain preserved. Both owner-only private files and all nine credential values remain protected; current/staged source and durable logs contain no known private values. Frozen lock/toolchain/Dev Container, all548 original requirement values/20 optional flags, Director decisions/research/certification and archive provenance are preserved; only R30.015 prerequisite ticket/evidence fields intentionally change. Staged formatting passes with raw logs preserved by digest. Final documentation/secret/history checks are in RUN056 and finalized CHG-20261007-002.
+
+BOOT-05 is implemented_verified against its backlog acceptance. Six real Linux headless checks are separate from simulation and pending Windows/hardware observation. Hosted execution/required checks, authentic signatures, actual retained engine bundles/durable admission/gameplay/auth, OS/legal/device/performance/backup/production gates remain pending. No deployment, branch publication, merge, spend, visibility change or Director decision was performed. Next documented critical-path work is RULE-01 source acquisition/diff/catalog/printing/skipped-test inventory; BOOT-04 provider/budget and UX-01/02 keep their Director prerequisites.

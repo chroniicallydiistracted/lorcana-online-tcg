@@ -37,3 +37,7 @@ See [validation evidence](../validation/boot-01.md) for exact runs, review corre
 ## Audited development-process cleanup correction
 
 The documentation audit exposed Vite surviving its pnpm leader after a clean-checkout busy-port test. Waiting only for the leader and canceling escalation did not prove group cleanup. Keep group ownership until Linux /proc confirms no executable descendants, share overlapping cleanup promises, and use bounded monotonic grace/SIGKILL checks. Real descendant regressions cover both exiting and already-exited leaders. Actual RUN-033 failure and CHG-20261006-005 retain the finding and source-matched correction evidence; this does not change game authority or device acceptance.
+
+## BOOT-05 continuation
+
+The preceding results/decisions are retained as dated task checkpoints. BOOT-05 now implements public protocol/negotiation and release artifact v2 binding/retained pins with final-source local evidence; [ADR0006](../adr/0006-protocol-release-contracts.md) and [BOOT-05 validation](../validation/boot-05.md) describe the current scope. This extension does not implement authenticated gameplay or production activation.

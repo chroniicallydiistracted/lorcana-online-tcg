@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-041",
+  "category": "headless_browser",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/web",
+    "test:e2e",
+    "--grep",
+    "protocol compatibility"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "c1be52119a219db949aca911d85a57521471a51e72b543aad99acd1273906c7c",
+  "started_at": "2026-10-07T04:01:44.749Z",
+  "finished_at": "2026-10-07T04:02:09.125Z",
+  "recorded_at": "2026-10-07T04:02:09.125Z",
+  "time_precision": "exact",
+  "elapsed_ms": 24244,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-05 red real Linux browser compatibility status before client integration",
+  "log_path": "docs/validation/logs/RUN-20261007-041.txt",
+  "log_sha256": "6f8493554fcc14aea11c969e5183273b10704ad7eb786e3eba46ba226851a5a8",
+  "redactions": 0
+}

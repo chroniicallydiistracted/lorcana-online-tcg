@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-046",
+  "category": "container",
+  "command": [
+    "node",
+    "--conditions=lorcana-source",
+    "--test",
+    "packages/contracts/tests/release.test.mjs",
+    "packages/service-runtime/tests/release.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "source_fingerprint": "5b2de4be980cb7cc4dac0950647deec99b4bda00875f27eb1e7b8d9eb11f7691",
+  "started_at": "2026-10-07T04:19:20.711Z",
+  "finished_at": "2026-10-07T04:19:21.075Z",
+  "recorded_at": "2026-10-07T04:19:21.075Z",
+  "time_precision": "exact",
+  "elapsed_ms": 364,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Review regression red: reject prototype-only DTOs and invalid post-clone registry data",
+  "log_path": "docs/validation/logs/RUN-20261007-046.txt",
+  "log_sha256": "917c40847d9f37d906bffa0e8535544f927e3ee7145fb320fdbe51c3fc7c91d3",
+  "redactions": 0
+}

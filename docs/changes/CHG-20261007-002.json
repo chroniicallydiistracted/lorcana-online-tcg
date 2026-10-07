@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261007-002",
+  "title": "BOOT-05 strict protocol, release identity and compatibility foundation",
+  "actor": "Codex architect/developer/QA",
+  "status": "finalized",
+  "recorded_at": "2026-10-07T04:38:41.082Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "1c2580cac2dd8bafb66d45b26e79ce97c86cce80",
+  "task_ids": [
+    "BOOT-05",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R30.015"
+  ],
+  "feature_ids": [
+    "F-CONTRACTS",
+    "F-HTTP",
+    "F-WEB",
+    "F-BOUNDARIES",
+    "F-PROTOCOL",
+    "F-RELEASE",
+    "F-CI"
+  ],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "Implement closed bounded public protocol/release schemas, version negotiation, server-only immutable retained pins and built-artifact release identity; preserve future gameplay/auth/sockets/production gates."
+    },
+    {
+      "kind": "fix",
+      "description": "Correct four independent review findings: complete executable/runtime/package/SQL release identity, HTTP409 application conflict, own-data validation/revalidated immutable copies and rejection of unimplemented advertised revisions; preserve red/green receipts."
+    },
+    {
+      "kind": "test",
+      "description": "Valid/invalid closed DTOs, bounded/correlated live negotiation, immutable retained pins, recomputed outer-hash tampering, server-only browser import and six actual Linux browser cases; final full-source proof follows."
+    },
+    {
+      "kind": "documentation",
+      "description": "Align every relevant current package/feature/contract/CI/workspace/task document; retain original vision/optional/Director decisions and labeled historical checkpoint evidence."
+    },
+    {
+      "kind": "fix",
+      "description": "Actual isolated proof caught the reviewed hyphenated SQL filename; retained failed RUN048/049, corrected the narrow allowlist and passed RUN050 plus fresh final-source RUN051. Preserve the clock discontinuity as failed; no evidence guard weakened."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "apps/api/README.md",
+    "apps/match-service/README.md",
+    "apps/web/README.md",
+    "apps/web/src/App.tsx",
+    "apps/web/tests/foundation.spec.ts",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0002-application-foundation.md",
+    "docs/adr/0005-ci-artifact-qualification.md",
+    "docs/adr/0006-protocol-release-contracts.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261007-002.json",
+    "docs/contracts/protocol.md",
+    "docs/contracts/release.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-07-boot-03-ci.md",
+    "docs/plans/2026-10-07-boot-05-contracts.md",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/workspace-setup.md",
+    "docs/validation/boot-01.md",
+    "docs/validation/boot-02.md",
+    "docs/validation/boot-03.md",
+    "docs/validation/boot-05.md",
+    "docs/validation/logs/RUN-20261007-035.txt",
+    "docs/validation/logs/RUN-20261007-036.txt",
+    "docs/validation/logs/RUN-20261007-037.txt",
+    "docs/validation/logs/RUN-20261007-038.txt",
+    "docs/validation/logs/RUN-20261007-039.txt",
+    "docs/validation/logs/RUN-20261007-040.txt",
+    "docs/validation/logs/RUN-20261007-041.txt",
+    "docs/validation/logs/RUN-20261007-042.txt",
+    "docs/validation/logs/RUN-20261007-043.txt",
+    "docs/validation/logs/RUN-20261007-044.txt",
+    "docs/validation/logs/RUN-20261007-045.txt",
+    "docs/validation/logs/RUN-20261007-046.txt",
+    "docs/validation/logs/RUN-20261007-047.txt",
+    "docs/validation/logs/RUN-20261007-048.txt",
+    "docs/validation/logs/RUN-20261007-049.txt",
+    "docs/validation/logs/RUN-20261007-050.txt",
+    "docs/validation/logs/RUN-20261007-051.txt",
+    "docs/validation/logs/RUN-20261007-052.txt",
+    "docs/validation/logs/RUN-20261007-053.txt",
+    "docs/validation/logs/RUN-20261007-054.txt",
+    "docs/validation/logs/RUN-20261007-055.txt",
+    "docs/validation/logs/RUN-20261007-056.txt",
+    "docs/validation/logs/RUN-20261007-902.txt",
+    "docs/validation/runs/RUN-20261007-035.json",
+    "docs/validation/runs/RUN-20261007-036.json",
+    "docs/validation/runs/RUN-20261007-037.json",
+    "docs/validation/runs/RUN-20261007-038.json",
+    "docs/validation/runs/RUN-20261007-039.json",
+    "docs/validation/runs/RUN-20261007-040.json",
+    "docs/validation/runs/RUN-20261007-041.json",
+    "docs/validation/runs/RUN-20261007-042.json",
+    "docs/validation/runs/RUN-20261007-043.json",
+    "docs/validation/runs/RUN-20261007-044.json",
+    "docs/validation/runs/RUN-20261007-045.json",
+    "docs/validation/runs/RUN-20261007-046.json",
+    "docs/validation/runs/RUN-20261007-047.json",
+    "docs/validation/runs/RUN-20261007-048.json",
+    "docs/validation/runs/RUN-20261007-049.json",
+    "docs/validation/runs/RUN-20261007-050.json",
+    "docs/validation/runs/RUN-20261007-051.json",
+    "docs/validation/runs/RUN-20261007-052.json",
+    "docs/validation/runs/RUN-20261007-053.json",
+    "docs/validation/runs/RUN-20261007-054.json",
+    "docs/validation/runs/RUN-20261007-055.json",
+    "docs/validation/runs/RUN-20261007-056.json",
+    "docs/validation/runs/RUN-20261007-902.json",
+    "docs/vision/README.md",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "infra/README.md",
+    "packages/contracts/README.md",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/protocol.ts",
+    "packages/contracts/src/release.ts",
+    "packages/contracts/tests/fixtures.mjs",
+    "packages/contracts/tests/protocol.test.mjs",
+    "packages/contracts/tests/release.test.mjs",
+    "packages/service-runtime/README.md",
+    "packages/service-runtime/package.json",
+    "packages/service-runtime/src/index.ts",
+    "packages/service-runtime/src/release.ts",
+    "packages/service-runtime/tests/protocol.test.mjs",
+    "packages/service-runtime/tests/release.test.mjs",
+    "scripts/ci/artifacts.mjs",
+    "scripts/release-manifest.mjs",
+    "tests/ci/gates.test.mjs",
+    "tests/foundation/boundaries.test.mjs",
+    "tests/foundation/browser-bundle.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "apps/api/README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "apps/worker/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing semantic controls, synthetic mount/resize/dispose or idle cancellable worker are unchanged and rerun in RUN051/054. Protocol status lives in web and release metadata in contracts/runtime; no assets/jobs/art/device acceptance added here."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed the document against BOOT-05: its existing local environment, previously recorded plan/architectural or reserved scope remains accurate and is retained with its stated time/authority. New protocol/release behavior and current task results are recorded in the owning contract documents, ADR0006 and validation; independent product/device/hosted gates remain unchanged."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed the document against BOOT-05: its existing local environment, previously recorded plan/architectural or reserved scope remains accurate and is retained with its stated time/authority. New protocol/release behavior and current task results are recorded in the owning contract documents, ADR0006 and validation; independent product/device/hosted gates remain unchanged."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Managed roles, synthetic SQL, credentials, grant/migration/lifecycle and DB commands remain unchanged; same-source RUN051/053 requalify them. Release identity newly includes the DB runtime/SQL without adding app/domain database integration or altering data."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Managed roles, synthetic SQL, credentials, grant/migration/lifecycle and DB commands remain unchanged; same-source RUN051/053 requalify them. Release identity newly includes the DB runtime/SQL without adding app/domain database integration or altering data."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed the document against BOOT-05: its existing local environment, previously recorded plan/architectural or reserved scope remains accurate and is retained with its stated time/authority. New protocol/release behavior and current task results are recorded in the owning contract documents, ADR0006 and validation; independent product/device/hosted gates remain unchanged."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Managed roles, synthetic SQL, credentials, grant/migration/lifecycle and DB commands remain unchanged; same-source RUN051/053 requalify them. Release identity newly includes the DB runtime/SQL without adding app/domain database integration or altering data."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Governance schemas remain version1: existing UTC/source/log/sealed-history and documentation/canonical handoff rules cover BOOT-05 without a format change. Public release/artifact versions use their separate owning package and ADR; historical review is imported without inventing execution times."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "BOOT-05 is already assigned scope; X06/X07 governance and all Director-owned audience/art/budget/device/market/visibility decisions remain unchanged. Local contracts neither add product acceptance nor resolve these decisions."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "BOOT-05 is already assigned scope; X06/X07 governance and all Director-owned audience/art/budget/device/market/visibility decisions remain unchanged. Local contracts neither add product acceptance nor resolve these decisions."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    },
+    {
+      "path": "packages/db/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Managed roles, synthetic SQL, credentials, grant/migration/lifecycle and DB commands remain unchanged; same-source RUN051/053 requalify them. Release identity newly includes the DB runtime/SQL without adding app/domain database integration or altering data."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing semantic controls, synthetic mount/resize/dispose or idle cancellable worker are unchanged and rerun in RUN051/054. Protocol status lives in web and release metadata in contracts/runtime; no assets/jobs/art/device acceptance added here."
+    },
+    {
+      "path": "packages/presentation/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing semantic controls, synthetic mount/resize/dispose or idle cancellable worker are unchanged and rerun in RUN051/054. Protocol status lives in web and release metadata in contracts/runtime; no assets/jobs/art/device acceptance added here."
+    },
+    {
+      "path": "packages/service-runtime/README.md",
+      "disposition": "updated",
+      "reason": "Compared this owning document/register against the final public contracts, HTTP409/revision1 behavior, immutable pins, app/shared runtime/package/SQL artifact identity and matching RUN051\u2026055; updated its current interface/evidence/status or source-impact coverage while retaining labeled prior checkpoints and pending independent gates."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-035.json",
+      "outcome": "passed",
+      "scope": "BOOT-05 intake pinned toolchain and protected private environment; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-036.json",
+      "outcome": "passed",
+      "scope": "BOOT-05 intake preserved static and documentation checks; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-037.json",
+      "outcome": "passed",
+      "scope": "BOOT-05 intake continued bootstrap behavior; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-038.json",
+      "outcome": "passed",
+      "scope": "BOOT-05 intake authenticated read-only bootstrap database; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-039.json",
+      "outcome": "failed",
+      "scope": "BOOT-05 red public protocol/release and actual HTTP/retention fixtures before implementation; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-040.json",
+      "outcome": "failed",
+      "scope": "BOOT-05 red built release and SQL artifact semantic binding fixtures; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-041.json",
+      "outcome": "failed",
+      "scope": "BOOT-05 red real Linux browser compatibility status before client integration; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-042.json",
+      "outcome": "passed",
+      "scope": "BOOT-05 green public protocol/release, actual HTTP/retention and artifact semantic-binding fixtures plus strict package builds; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-043.json",
+      "outcome": "passed",
+      "scope": "BOOT-05 green actual local negotiation and compatibility/update/malformed client states with continued renderer/service browser checks; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-902.json",
+      "outcome": "historical",
+      "scope": "Independent BOOT-05 review: four reproduced findings; parent retains red RUN045/046 and green RUN047, final-source proof follows"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-044.json",
+      "outcome": "passed",
+      "scope": "BOOT-05 complete existing-container foundation verification: static/docs, types, lint, builds and all regressions; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-045.json",
+      "outcome": "failed",
+      "scope": "Review regression red: transitive runtime and manifest binding, HTTP application conflict and unsupported codec advertisement; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-046.json",
+      "outcome": "failed",
+      "scope": "Review regression red: reject prototype-only DTOs and invalid post-clone registry data; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-047.json",
+      "outcome": "passed",
+      "scope": "Review corrections green: complete runtime/package/migration release identity, 409 negotiation, qualified codec and own-data validation; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-048.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-049.json",
+      "outcome": "failed",
+      "scope": "Real migration filename regression red: artifact scope must accept the reviewed hyphenated SQL file; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-050.json",
+      "outcome": "passed",
+      "scope": "Real migration filename correction green: complete CI artifact safety including transitive executable and SQL identities; retain exact checkpoint source/outcome; final acceptance requires matching final source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-051.json",
+      "outcome": "passed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; final matching source and consistent exact UTC/monotonic evidence, scoped local acceptance only."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-052.json",
+      "outcome": "passed",
+      "scope": "Final copied artifact v2: source/image/lock, release executable/runtime/package/SQL binding, reports and secret verification; final matching source and consistent exact UTC/monotonic evidence, scoped local acceptance only."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-053.json",
+      "outcome": "passed",
+      "scope": "Actual host-orchestrated disposable PostgreSQL recreation: typed rows/journals and role/transaction checks; existing VS Code project/volume untouched; final matching source and consistent exact UTC/monotonic evidence, scoped local acceptance only."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-054.json",
+      "outcome": "passed",
+      "scope": "Final canonical staged Git bytes: fresh frozen installation, complete foundation94 and matching executable fingerprint; final matching source and consistent exact UTC/monotonic evidence, scoped local acceptance only."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-055.json",
+      "outcome": "passed",
+      "scope": "Read-only closure: actual owned resource/listener cleanup, private/current/staged secret protection, original scope/archive/lock and workspace/volume preservation, staged formatting; final matching source and consistent exact UTC/monotonic evidence, scoped local acceptance only."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-056.json",
+      "outcome": "passed",
+      "scope": "Finalized BOOT-05 current/canonical documentation, full-history known-secret and staged formatting gates; unchanged executable identity; final matching source and consistent exact UTC/monotonic evidence, scoped local acceptance only."
+    }
+  ],
+  "limitations": [
+    "Windows/hardware and GitHub-hosted/required-check/production acceptance remain pending.",
+    "Public schemas and immutable metadata do not implement authenticated gameplay, durable pin admission, qualified engine/content bundles or deployment.",
+    "Unsigned source/artifact identity is not authenticity/full security/legal distribution certification; ten published notice-file gaps remain explicit.",
+    "RUN048 retained a real filename/clock failure; fresh RUN051 passed unchanged evidence/clock gates. WSL crash/clock-step causes remain unconfirmed."
+  ],
+  "next_actions": [
+    "RULE-01: acquire official current source bytes, rules diff, printing/catalog and skipped-test inventory with sourced denominators/release mapping.",
+    "RULE-02 and UX-01/02 retain engine/vendor/Director prerequisites; BOOT-04 retains provider/budget gates.",
+    "Observe real Windows foundation separately; hosted execution/publication/merge/deploy/spend require Director authority."
+  ]
+}

@@ -1,7 +1,6 @@
 # packages/contracts
 
-Public TypeBox foundation health/readiness schemas and parseReadiness(unknown), which throws for invalid values. No secrets, authoritative engine internals or match/release protocol.
+Public browser-safe TypeBox health/readiness, revision-1 protocol and release schemas with runtime parsers. Unknown keys/private fields, invalid ranges/revisions and oversized client frames are rejected. See [protocol fields/functions](../../docs/contracts/protocol.md), [release schema](../../docs/contracts/release.md), [feature register](../../docs/FEATURES.md) and [BOOT-05 evidence](../../docs/validation/boot-05.md). Schemas do not implement authenticated game commands or certify engine content. No Node/database/private engine exports.
 
-Current behavior and callable contracts: [F-CONTRACTS](../../docs/FEATURES.md). Exact manifests/types and source define the interface; [BOOT-01 evidence](../../docs/validation/boot-01.md) records validation and limits. This is infrastructure foundation. Full game/device/production acceptance remains pending.
 
-Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for changes, documentation impact review and timestamped test evidence. Runtime/build/test dependencies belong to this workspace; root tasks follow the dependency graph.
+Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for scoped dependencies, semantic documentation review and timestamped evidence. Full gameplay/device/production acceptance remains separate.
