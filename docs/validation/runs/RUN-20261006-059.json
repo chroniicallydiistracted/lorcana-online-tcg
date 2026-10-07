@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-059",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {provision} from './packages/db/dist/provision.js'; try {await provision();} catch(e){if(e.code) console.error('PG code '+e.code); else console.error(e.message);process.exitCode=1;}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "8890bcf5143b7a131a0605fa64b4748f36e58589c1eede8c40513a5a2679fde6",
+  "started_at": "2026-10-06T23:20:19.974Z",
+  "finished_at": "2026-10-06T23:20:20.084Z",
+  "recorded_at": "2026-10-06T23:20:20.084Z",
+  "time_precision": "exact",
+  "elapsed_ms": 110,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Safe provisioning diagnostic: controlled errors or PostgreSQL error code only; no SQL/config values",
+  "log_path": "docs/validation/logs/RUN-20261006-059.txt",
+  "log_sha256": "27f4cf50bf53aaf8b71c5a0fa476fb52c596ca0e7d2cfe175d4037f5ff3dd1f6",
+  "redactions": 0
+}

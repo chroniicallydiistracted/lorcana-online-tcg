@@ -1,0 +1,24 @@
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (109.016058ms)
+✔ cross-environment logins cannot connect to either other managed database (42.492036ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (48.22949ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (226.492205ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 786.665263

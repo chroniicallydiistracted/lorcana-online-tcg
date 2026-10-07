@@ -1,0 +1,18 @@
+Independent read-only BOOT-02 host recorder review. All Docker/DB commands mocked in temporary roots. No Docker or database changes, no ports, no shared source edits. This is simulated recorder behavior, not actual persistence evidence. Exact UTC execution times were not captured.
+Source SHA256: 32f2074d975b2b78a2abfa788813447f8bd04382be162aaa84d2ba4dba4eb202
+
+test_SIGINT (__main__.ProofReview.test_SIGINT) ... ok
+test_SIGTERM (__main__.ProofReview.test_SIGTERM) ... ok
+test_cleanup_error (__main__.ProofReview.test_cleanup_error) ... ok
+test_fingerprint_error (__main__.ProofReview.test_fingerprint_error) ... ok
+test_redaction (__main__.ProofReview.test_redaction) ... ok
+test_remaining (__main__.ProofReview.test_remaining) ... ok
+test_server_secret (__main__.ProofReview.test_server_secret) ... ok
+test_source_changed (__main__.ProofReview.test_source_changed) ... ok
+test_success (__main__.ProofReview.test_success) ... ok
+test_timeout (__main__.ProofReview.test_timeout) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.013s
+
+OK

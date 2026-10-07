@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-066",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['--filter','@lorcana/db','build'],['exec','eslint','packages/db','tests/foundation/browser-bundle.test.mjs'],['db:test']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0)process.exit(r.status||1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "4fdab4159db263e9bfb71bef93a57ab045c75bc5c1b6f1532c8cdf4029aaa7b8",
+  "started_at": "2026-10-06T23:26:58.857Z",
+  "finished_at": "2026-10-06T23:27:04.430Z",
+  "recorded_at": "2026-10-06T23:27:04.430Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5573,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Database build, lint and live grant-option/MAINTAIN/default ACL regressions",
+  "log_path": "docs/validation/logs/RUN-20261006-066.txt",
+  "log_sha256": "ef2091c3d9af753b286561c7417817fa3a4147410e60679de3047da974263cca",
+  "redactions": 0
+}

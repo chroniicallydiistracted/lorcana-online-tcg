@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-070",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:clean"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "bc51ea7626d7fbc6bdea4d499644ef16f5c5a703ef505ff8bae211dc6dd4e81e",
+  "started_at": "2026-10-06T23:34:13.417Z",
+  "finished_at": "2026-10-06T23:35:03.725Z",
+  "recorded_at": "2026-10-06T23:35:03.725Z",
+  "time_precision": "exact",
+  "elapsed_ms": 50201,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final whole-source clean frozen install, ordered builds/typecheck/lint, bootstrap/service/browser-boundary/governance/database-unit/mocked-recorder tests",
+  "log_path": "docs/validation/logs/RUN-20261006-070.txt",
+  "log_sha256": "eda991a9ba47f21c0ba60d42a1d8ca8ac8dca7f33c491bd1b0686f99bd2962a9",
+  "redactions": 0
+}

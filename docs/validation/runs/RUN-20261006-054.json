@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-054",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "install"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "ceccafc961f336ca9f6a7e11d98d6b0694299bd038a9ad2d1cff71bae9432a26",
+  "started_at": "2026-10-06T23:16:05.876Z",
+  "finished_at": "2026-10-06T23:16:07.742Z",
+  "recorded_at": "2026-10-06T23:16:07.742Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1865,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "source_changed",
+  "summary": "Install pinned pg and Drizzle into server-only db workspace with strict peers",
+  "log_path": "docs/validation/logs/RUN-20261006-054.txt",
+  "log_sha256": "bbae809f9d8db29009511485cf1d98bc1cedca4485b1eac558f24ece5e73f780",
+  "redactions": 0
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-052",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "9d603fb84217ab92567ec38c6cac2435f67ddde36e4c86055c51282ccb9d010f",
+  "started_at": "2026-10-06T23:07:03.913Z",
+  "finished_at": "2026-10-06T23:07:04.300Z",
+  "recorded_at": "2026-10-06T23:07:04.300Z",
+  "time_precision": "exact",
+  "elapsed_ms": 388,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "BOOT-02 intake baseline: authenticated read-only bootstrap database connection",
+  "log_path": "docs/validation/logs/RUN-20261006-052.txt",
+  "log_sha256": "26140bd8ff92ea3ca7677f335523ceade9cd655d8818f41d155f3f81c42813af",
+  "redactions": 0
+}

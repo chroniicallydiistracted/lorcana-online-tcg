@@ -1,5 +1,7 @@
 # BOOT-01 validation evidence
 
+Current continuation: BOOT-02 local acceptance is verified on `codex/boot-02-database`; [its validation record](boot-02.md) and ADR0004 supersede the earlier database-pending observations below. This document retains explicitly dated BOOT-01/governance evidence; Windows, full product/device, CI and production acceptance remain pending.
+
 Director assignment: 2026-10-05 America/Phoenix. Agent execution: 2026-10-06 UTC / 2026-10-05 local. Baseline main `335da7edffea40294b8dcf60ae256524432c350b`, clean at takeover; implementation branch `codex/boot-01-foundation`.
 
 ## Executed in the existing Dev Container

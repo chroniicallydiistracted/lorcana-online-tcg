@@ -36,6 +36,10 @@ Open forwarded **5173** from VS Code's Ports panel. Expect **Application foundat
 | `pnpm test` | Builds, bootstrap, schema/service/scene tests, negative boundaries, bundle, real-process lifecycle and documentation/evidence regression checks |
 | `pnpm test:e2e:smoke` | Linux Chromium, live services, software WebGL, resize/remount, keyboard controls and unavailable-service behavior |
 | `pnpm db:check` | Existing bootstrap administrator connection only |
+| `pnpm db:provision` | Explicit managed app local/test databases and eight restricted logins |
+| `pnpm db:migrate -- --target local` | Reviewed transactional migration; use test for the isolated test DB |
+| `pnpm db:health -- --target test` | Authenticate all four identities; local target also supported |
+| `pnpm db:test` | Actual isolated DB authorization/transaction checks |
 
 For browser automation, install its pinned browser inside the container once with `pnpm --filter @lorcana/web exec playwright install chromium`. Shared Linux libraries are persisted in the Dockerfile. Browser caches are per container user. Tests own fixed ports 5173/3001/3002; stop `pnpm dev` first.
 
@@ -51,7 +55,7 @@ For browser automation, install its pinned browser inside the container once wit
 | `packages/presentation` | Synthetic Babylon scene and mount/resize/dispose ownership |
 | `packages/service-runtime` | Server-only diagnostics and cancellable startup/shutdown |
 
-`domain`, `db`, `engine-adapter`, `rules-data`, `testkit` and `vendor/tcg-engines` remain explicitly reserved. Private state and credentials have no browser exports. The browser guard checks declarations, imports/aliases/reexports, HTML/CSS and asset URLs; Vite enforces it again and restricts served filesystem roots. Development children receive a small environment without the bootstrap database administrator credentials.
+`db` now owns BOOT-02 restricted local/test connections, reviewed SQL and typed synthetic Drizzle probes. `domain`, `engine-adapter`, `rules-data`, `testkit` and `vendor/tcg-engines` remain explicitly reserved. Private state and credentials have no browser exports. The browser guard checks declarations, imports/aliases/reexports, HTML/CSS and asset URLs; Vite enforces it again and restricts served filesystem roots. Development children receive a small environment without the bootstrap database administrator credentials.
 
 Dependencies are exact pins in owning workspaces. The lockfile covers nine workspace projects, not every library in the anticipated [dependency register](docs/vision/dependencies.json). Strict peers and an empty build-script allowance remain enabled; see [ADR 0002](docs/adr/0002-application-foundation.md).
 
@@ -59,7 +63,7 @@ Dependencies are exact pins in owning workspaces. The lockfile covers nine works
 
 See [workspace qualification](docs/WORKSPACE_QUALIFICATION.md) and [BOOT-01 validation](docs/validation/boot-01.md) for executed checks and their limits. The lazy synthetic renderer still triggers Vite's large-chunk warning; this is not performance qualification.
 
-BOOT-02 remains restricted database roles, migrations, isolated test DB and persistence through recreation. BOOT-03 remains CI/artifact checks; BOOT-05 remains protocol/release compatibility. RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).
+BOOT-02 local acceptance is verified; see [database operation](docs/runbooks/database.md) and [evidence](docs/validation/boot-02.md) for scoped roles, migrations, isolated test DB and disposable recreation proof. BOOT-03 remains CI/artifact checks; BOOT-05 remains protocol/release compatibility. RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).
 
 ## Development continuity
 

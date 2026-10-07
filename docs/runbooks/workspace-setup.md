@@ -48,7 +48,7 @@ The web server uses same-origin `/api` and `/match` proxies; no cross-origin per
 
 The workspace has no Docker CLI/socket. Discover the active Compose project through Docker Desktop, the Dev Containers log or selective host Docker labels. At BOOT-01 inspection it was `lorcana-online-tcg_devcontainer`; do not hardcode its container IDs for future sessions. Manage services from Ubuntu/Windows against that actual project, not an inferred alternate Compose project.
 
-PostgreSQL is reached at `postgres:5432` only on the private Compose network, with its volume at `/var/lib/postgresql` and no published host port. Closing/reopening the editor preserves that named volume; preservation has not yet been demonstrated through container recreation. BOOT-02 must implement restricted migration/application roles, migrations and an isolated test database, then prove persistence. `pnpm db:check` uses the existing bootstrap administrator only.
+PostgreSQL is reached at `postgres:5432` only on the private Compose network, with its volume at `/var/lib/postgresql` and no published host port. The current VS Code volume remains preserved. BOOT-02 adds managed application local/test databases, per-service credentials and reviewed migrations; [database operation](database.md) describes the separate disposable recreation proof and its exact scope. `pnpm db:check` uses the existing bootstrap administrator only.
 
 An initialized volume retains its original password. Do not regenerate it while reusing that volume. Debian's psql utility is not a version-matched PostgreSQL 18 backup client; backup/restore tooling remains future work.
 

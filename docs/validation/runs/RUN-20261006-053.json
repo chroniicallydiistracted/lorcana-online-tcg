@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-053",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "packages/db/tests/policy.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "355120e038b96c617704c175a3633ef39ea2461a0df9dfd901c1ed179763a7c5",
+  "started_at": "2026-10-06T23:14:36.522Z",
+  "finished_at": "2026-10-06T23:14:36.598Z",
+  "recorded_at": "2026-10-06T23:14:36.598Z",
+  "time_precision": "exact",
+  "elapsed_ms": 75,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Red database policy tests before implementation",
+  "log_path": "docs/validation/logs/RUN-20261006-053.txt",
+  "log_sha256": "bd828748aa7ef2877d0b216e83483362a20a71370da41f57dace4582e5de1e97",
+  "redactions": 0
+}

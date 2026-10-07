@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-057",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "db:provision"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "e21691d9ad799badde45dfae88eaa1249c393e2aa8be99aa0b3789ea051efc64",
+  "started_at": "2026-10-06T23:18:39.068Z",
+  "finished_at": "2026-10-06T23:18:40.662Z",
+  "recorded_at": "2026-10-06T23:18:40.662Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1594,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Provision only managed local/test databases and eight restricted accounts; preserve bootstrap configuration",
+  "log_path": "docs/validation/logs/RUN-20261006-057.txt",
+  "log_sha256": "23982618b8d17f5ba3aa8bd0fa40411ca254ba4dfee5603edc5f54d5a114653b",
+  "redactions": 0
+}

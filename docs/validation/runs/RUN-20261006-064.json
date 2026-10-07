@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-064",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['--filter','@lorcana/db','build'],['exec','eslint','packages/db','tests/foundation/browser-bundle.test.mjs']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0)process.exit(r.status||1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "68b8e02e12e1266e6cdab3fb6e032404029a4f2c92a183ef1033c981545d3fe0",
+  "started_at": "2026-10-06T23:25:10.282Z",
+  "finished_at": "2026-10-06T23:25:12.702Z",
+  "recorded_at": "2026-10-06T23:25:12.702Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2420,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Corrected database package build and lint before disposable recreation",
+  "log_path": "docs/validation/logs/RUN-20261006-064.txt",
+  "log_sha256": "46fbd5461ec34ee4b1d35fa5a5c8ccc460b89f7aab3f89d9b290ea8639d46d31",
+  "redactions": 0
+}

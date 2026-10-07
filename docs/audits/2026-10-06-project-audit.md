@@ -1,5 +1,7 @@
 # Project audit — 2026-10-06 America/Phoenix
 
+Current continuation: BOOT-02 local acceptance is verified on `codex/boot-02-database`; [its validation record](../validation/boot-02.md) and ADR0004 supersede the earlier database-pending observations below. This document retains explicitly dated BOOT-01/governance evidence; Windows, full product/device, CI and production acceptance remain pending.
+
 Authority: the Director's original 2026-10-05 BOOT-01 handoff, actual newer repository code, and the 2026-10-06 documentation/continuity instruction. Intake was clean at `8c94b274ebd6ad91223cdb6df085ca0597c107c9` on `codex/boot-01-foundation`; this scope uses `codex/documentation-governance`. Origin is the Director's lorcana-online-tcg GitHub repository. No merge, deployment, visibility change, data reset or external purchase occurred.
 
 ## Comparison with the original assignment

@@ -1,0 +1,82 @@
+Independent BOOT-02 security/transaction review
+Baseline: 82e22733ebe41c01e373d409eac34e09345fbc1b; branch codex/boot-02-database, uncommitted source.
+Review scope: packages/db configuration, roles/provisioning and effective/default ACLs; reviewed SQL/Drizzle schema; migration prefix/checksum/transaction/advisory lock; explicit local/test command paths; disposable Compose ownership and host recorder. Shared project source was not edited. No project ports, provisioning, database writes or Docker changes performed by this reviewer. Exact UTC reviewer execution times were not captured.
+
+Current result: no remaining critical or important findings in the reviewed code after corrections. Implementation-level corrections inspected: source-derived credential root; parent validation before credential creation; distinct app DB names preserving bootstrap; eight roles created before cross-environment audit; effective/default ACL rejection including NULL semantics, MAINTAIN and column grant option; password statement logging controls; pending-migration concurrency probe; interruption/timeout/final-identity cleanup/receipt handling and redaction parity.
+Current database permissions independently checked through read-only queries/connections. Parent-recorded RUN066 and RUN069 logs/receipts inspected; RUN069 shows one application across concurrent pending migrations on each fresh DB, retained typed rows and journals, five live integration checks, secret-safe standard server logs and owned proof cleanup. Full final source-matching foundation/canonical Git validation remains the implementing parent's acceptance gate. Diagnostic apps have no DB integration; no auth/domain/economy/RLS/backup/production acceptance. Windows observation remains pending.
+Manual provenance recovery remains necessary if CREATE DATABASE succeeds but its COMMENT marker is interrupted; the database runbook now states this safe-refusal boundary. Do not relax unmanaged DB refusal.
+
+Independent six unit checks:
+
+> @lorcana/db@0.0.0 test /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/policy.test.mjs tests/config.test.mjs
+
+✔ credentials are private, distinct and byte-preserved across provisioning retries (2.8688ms)
+✔ tooling fails closed outside the private local container network (0.181256ms)
+✔ unsafe parent directory is rejected before generating any credential file (0.521365ms)
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (0.616081ms)
+✔ migration history must be an unchanged contiguous prefix (0.154949ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (0.69477ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 91.970804
+
+Independent read-only current database/config checks:
+PASS unsafe symlink rejected before credential write; workspace default resolves root credentials
+{"ownSchemaReads":6,"deniedCrossSchemaAndJournalReads":18,"deniedCrossEnvironmentConnections":8,"extraDatabaseSchemaTruncatePrivileges":false}
+
+Independent PostgreSQL read-only synthetic CTE default-ACL checks:
+PASS actual PostgreSQL read-only CTE fixtures: global PUBLIC/wrong-service defaults rejected; intended schema CRUD allowed
+
+Mocked host recorder behavior (all Docker/DB commands substituted, not an actual persistence proof):
+Independent read-only BOOT-02 host recorder review. All Docker/DB commands mocked in temporary roots. No Docker or database changes, no ports, no shared source edits. This is simulated recorder behavior, not actual persistence evidence. Exact UTC execution times were not captured.
+Source SHA256: 32f2074d975b2b78a2abfa788813447f8bd04382be162aaa84d2ba4dba4eb202
+
+test_SIGINT (__main__.ProofReview.test_SIGINT) ... ok
+test_SIGTERM (__main__.ProofReview.test_SIGTERM) ... ok
+test_cleanup_error (__main__.ProofReview.test_cleanup_error) ... ok
+test_fingerprint_error (__main__.ProofReview.test_fingerprint_error) ... ok
+test_redaction (__main__.ProofReview.test_redaction) ... ok
+test_remaining (__main__.ProofReview.test_remaining) ... ok
+test_server_secret (__main__.ProofReview.test_server_secret) ... ok
+test_source_changed (__main__.ProofReview.test_source_changed) ... ok
+test_success (__main__.ProofReview.test_success) ... ok
+test_timeout (__main__.ProofReview.test_timeout) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.013s
+
+OK
+
+
+Historical reviewer probe qualification: an assertion expecting the old unsafe symlink write failed because the implementing parent's correction landed before execution. No outside credential file was written; the corrected negative probe later passed. This is not evidence that the original defect was executed or reproduced. Exact output preserved below:
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+false !== true
+
+    at file:///workspaces/lorcana-online-tcg/[eval1]:12:78
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:223:26
+    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:220:20)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0
+
+Saved fixture: /tmp/lorcana-review-boot02-proof-tests.py (SHA256 7c776ccc291e6a298e42d4a1b5045568f6213638e882362ff02c3c9caa97eebb).
+Mocked report: /tmp/lorcana-review-boot02-proof-mocks.txt (SHA256 70f1287f61cbd4ebb529ab4b1c03eb1e68dbf58f0ad23f046bb029fda3acda4a).

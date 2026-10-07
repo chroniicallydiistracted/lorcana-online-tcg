@@ -1,0 +1,79 @@
+Validate disposable Compose configuration
+
+Start isolated pinned PostgreSQL
+ Network lorcana-proof-4efa5d29d7b9_default Creating 
+ Network lorcana-proof-4efa5d29d7b9_default Creating 
+ Volume lorcana-proof-4efa5d29d7b9_proof_data Creating 
+ Volume lorcana-proof-4efa5d29d7b9_proof_data Creating 
+ Volume lorcana-proof-4efa5d29d7b9_proof_data Created 
+ Volume lorcana-proof-4efa5d29d7b9_proof_data Created 
+ Network lorcana-proof-4efa5d29d7b9_default Created 
+ Network lorcana-proof-4efa5d29d7b9_default Created 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Creating 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Created 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Starting 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Started 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Waiting 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Healthy 
+
+Seed local/test typed markers and journals
+ Container lorcana-proof-4efa5d29d7b9-runner-run-3208fb4203cd Creating 
+ Container lorcana-proof-4efa5d29d7b9-runner-run-3208fb4203cd Created 
+PASS local two concurrent pending migrations: one application, one no-op
+PASS seed local typed UUID row, UTC timestamp and migration checksum
+PASS test two concurrent pending migrations: one application, one no-op
+PASS seed test typed UUID row, UTC timestamp and migration checksum
+
+PASS duration/sampled/transaction server logging enabled; no known private credentials in server log
+Stop only the proof PostgreSQL container
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Stopping 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Stopped 
+
+Remove proof container; retain proof volume
+Going to remove lorcana-proof-4efa5d29d7b9-postgres-1
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Removing 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Removed 
+
+Recreate proof PostgreSQL against retained volume
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Creating 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Created 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Starting 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Started 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Waiting 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Healthy 
+
+Verify local/test rows and journals after recreation
+ Container lorcana-proof-4efa5d29d7b9-runner-run-3b8b405f876e Creating 
+ Container lorcana-proof-4efa5d29d7b9-runner-run-3b8b405f876e Created 
+PASS check local typed UUID row, UTC timestamp and migration checksum
+PASS check test typed UUID row, UTC timestamp and migration checksum
+
+Verify actual role restrictions and migration rollback after recreation
+ Container lorcana-proof-4efa5d29d7b9-runner-run-40bc01e4515a Creating 
+ Container lorcana-proof-4efa5d29d7b9-runner-run-40bc01e4515a Created 
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (96.944497ms)
+✔ cross-environment logins cannot connect to either other managed database (35.637485ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (44.366409ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (246.760695ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (831.087002ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1605.428448
+
+PASS duration/sampled/transaction server logging enabled; no known private credentials in server log
+Clean only the disposable proof project and volume
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Stopping 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Stopped 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Removing 
+ Container lorcana-proof-4efa5d29d7b9-postgres-1 Removed 
+ Volume lorcana-proof-4efa5d29d7b9_proof_data Removing 
+ Network lorcana-proof-4efa5d29d7b9_default Removing 
+ Volume lorcana-proof-4efa5d29d7b9_proof_data Removed 
+ Network lorcana-proof-4efa5d29d7b9_default Removed 
+
+PASS no disposable containers or volumes remain

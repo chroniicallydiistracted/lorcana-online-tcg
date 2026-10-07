@@ -30,9 +30,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json",
-        "docs/validation/runs/RUN-20261006-041.json",
-        "docs/validation/runs/RUN-20261006-042.json"
+        "docs/validation/runs/RUN-20261006-070.json",
+        "docs/validation/runs/RUN-20261007-001.json"
       ]
     },
     {
@@ -54,7 +53,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -75,7 +74,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -99,7 +98,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -120,7 +119,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -141,7 +140,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -163,8 +162,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json",
-        "docs/validation/runs/RUN-20261006-043.json"
+        "docs/validation/runs/RUN-20261006-070.json",
+        "docs/validation/runs/RUN-20261007-002.json"
       ]
     },
     {
@@ -185,8 +184,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json",
-        "docs/validation/runs/RUN-20261006-043.json"
+        "docs/validation/runs/RUN-20261006-070.json",
+        "docs/validation/runs/RUN-20261007-002.json"
       ]
     },
     {
@@ -211,7 +210,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -235,8 +234,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json",
-        "docs/validation/runs/RUN-20261006-044.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -261,7 +259,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -285,7 +283,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
-        "docs/validation/runs/RUN-20261006-040.json"
+        "docs/validation/runs/RUN-20261006-070.json"
       ]
     },
     {
@@ -293,15 +291,13 @@
       "name": "Future shared domains and infrastructure",
       "implementation": "reserved",
       "verification": "pending",
-      "description": "Explicit reservation; no game, authentication, economy, database/engine or deployment implementation.",
+      "description": "Domain, engine, rules, testkit, upstream vendor and production infrastructure remain reserved.",
       "sources": [
         "packages/domain/**",
-        "packages/db/**",
         "packages/engine-adapter/**",
         "packages/rules-data/**",
         "packages/testkit/**",
-        "vendor/tcg-engines/**",
-        "infra/**"
+        "vendor/tcg-engines/**"
       ],
       "documents": [
         "docs/FEATURES.md",
@@ -318,6 +314,33 @@
       ],
       "requirement_ids": [],
       "evidence": []
+    },
+    {
+      "id": "F-DB",
+      "name": "Local restricted PostgreSQL foundation",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Verified local managed app databases, restricted service identities, typed synthetic probes, reviewed locked/transactional/checksummed migrations and disposable recreation proof; domain/app/production acceptance remains separate.",
+      "sources": [
+        "packages/db/**",
+        "infra/**",
+        "scripts/db-persistence-proof.py",
+        "tests/database/**"
+      ],
+      "documents": [
+        "packages/db/README.md",
+        "docs/validation/boot-02.md",
+        "docs/runbooks/database.md"
+      ],
+      "task_ids": [
+        "BOOT-02"
+      ],
+      "requirement_ids": [],
+      "evidence": [
+        "docs/validation/runs/RUN-20261006-070.json",
+        "docs/validation/runs/RUN-20261006-071.json",
+        "docs/validation/runs/RUN-20261007-001.json"
+      ]
     }
   ]
 }

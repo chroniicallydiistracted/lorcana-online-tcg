@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-005",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{spawnSync}from'node:child_process';for(const [command,args] of [['pnpm',['verify']],['git',['diff','--cached','--check','--','.',' :(exclude)docs/validation/logs/**'.trim()]]]){const result=spawnSync(command,args,{stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "bc51ea7626d7fbc6bdea4d499644ef16f5c5a703ef505ff8bae211dc6dd4e81e",
+  "started_at": "2026-10-07T01:17:46.963Z",
+  "finished_at": "2026-10-07T01:17:49.934Z",
+  "recorded_at": "2026-10-07T01:17:49.934Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2890,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Finalized documentation consistency, preserved static workspace/JSON/syntax checks and staged source/document formatting",
+  "log_path": "docs/validation/logs/RUN-20261007-005.txt",
+  "log_sha256": "4e13d431768e37dd14a2e6b7af86d430f04ebe897d3934f7c32ae77a1c56e594",
+  "redactions": 0
+}

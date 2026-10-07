@@ -1,0 +1,10 @@
+
+> lorcana-online-tcg@0.0.0 db:provision /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js provision
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+Database command failed; verify local access, managed ownership and migration history. Private errors are not logged.
+ ELIFECYCLE  Command failed with exit code 1.

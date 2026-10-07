@@ -1,0 +1,17 @@
+
+> @lorcana/db@0.0.0 test /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/policy.test.mjs tests/config.test.mjs
+
+✔ credentials are private, distinct and byte-preserved across provisioning retries (4.179245ms)
+✔ tooling fails closed outside the private local container network (0.322898ms)
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (0.620884ms)
+✔ migration history must be an unchanged contiguous prefix (0.339473ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (1.108569ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.924251

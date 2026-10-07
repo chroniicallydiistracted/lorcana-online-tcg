@@ -1,0 +1,47 @@
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/policy.test.mjs tests/config.test.mjs
+
+✔ credentials are private, distinct and byte-preserved across provisioning retries (2.882822ms)
+✔ tooling fails closed outside the private local container network (0.160032ms)
+✔ unsafe parent directory is rejected before generating any credential file (0.541456ms)
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (0.798248ms)
+✔ migration history must be an unchanged contiguous prefix (0.154159ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (0.761927ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 91.473713
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (97.279378ms)
+✔ cross-environment logins cannot connect to either other managed database (37.245144ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (42.725454ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (249.364685ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (624.429363ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1393.649728

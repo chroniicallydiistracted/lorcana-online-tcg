@@ -1,0 +1,30 @@
+{
+  "name": "@lorcana/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "lorcana": {
+    "scope": "server"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test tests/policy.test.mjs tests/config.test.mjs",
+    "test:integration": "node --test tests/integration.test.mjs"
+  },
+  "dependencies": {
+    "pg": "8.23.1",
+    "drizzle-orm": "0.45.3"
+  },
+  "devDependencies": {
+    "@types/pg": "8.23.1",
+    "@types/node": "24.19.1"
+  },
+  "exports": {
+    ".": {
+      "lorcana-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  }
+}

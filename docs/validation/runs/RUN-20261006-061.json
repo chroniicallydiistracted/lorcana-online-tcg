@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-061",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process'; for(const args of [['db:migrate','--','--target','local'],['db:migrate','--','--target','test'],['db:health','--','--target','local'],['db:health','--','--target','test'],['db:test']]) { const r=spawnSync('pnpm',args,{stdio:'inherit'}); if(r.status!==0)process.exit(r.status||1); }"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "d69218cb822fc2ff60e4f508ce47a6adc4cc659fd48d06d3c5c1aff3cf8c04fc",
+  "started_at": "2026-10-06T23:21:55.381Z",
+  "finished_at": "2026-10-06T23:22:04.203Z",
+  "recorded_at": "2026-10-06T23:22:04.203Z",
+  "time_precision": "exact",
+  "elapsed_ms": 8822,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Local/test migration, all eight authenticated identities, and actual authorization/rollback tests after cwd correction",
+  "log_path": "docs/validation/logs/RUN-20261006-061.txt",
+  "log_sha256": "e688edbbb6a945914b58b76a83f74ee7434f0e08fd469d376799f00b0e50e33b",
+  "redactions": 0
+}

@@ -10,7 +10,7 @@ The goal is a premium Lorcana game for Illumineers: desktop web first, touch/tab
 
 BOOT-01 implements executable React/Vite web, synthetic Babylon rendering, typed Fastify API/match diagnostics and an idle worker, with shared contracts, presentation, design-system and server-only service-runtime. See `docs/validation/boot-01.md` for acceptance evidence and limits. The diagnostic page is not the approved game UI.
 
-Domain, db, engine-adapter, rules-data and testkit remain reserved. BOOT-02/03/05, gameplay, auth, migrations, real device/performance and production acceptance remain pending. The planned dependency register is a baseline, not a root install list.
+BOOT-02 local acceptance is verified: server-only db package, restricted local/test roles and reviewed migrations, with disposable recreation proof. Follow docs/runbooks/database.md and docs/validation/boot-02.md; preserve both private credential files and all existing data. Domain, engine-adapter, rules-data and testkit remain reserved. BOOT-03/05, gameplay, auth, real device/performance and production acceptance remain pending. The planned dependency register is a baseline, not a root install list.
 
 ## Working environment
 

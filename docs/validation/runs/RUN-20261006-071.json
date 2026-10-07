@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-071",
+  "category": "container",
+  "command": [
+    "python3",
+    "scripts/db-persistence-proof.py",
+    "--id",
+    "RUN-20261006-071"
+  ],
+  "cwd": "/home/andre/lorcana-online-tcg",
+  "environment": {
+    "node": "24.21.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "executor": "WSL Docker orchestration with disposable container execution",
+    "workspace_image": "sha256:84979b2249f1c786fe075766ff928aa0623ce55615a0b265110caaa4f563366f",
+    "pnpm": "10.33.0",
+    "compose_project": "lorcana-proof-4efa5d29d7b9"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "bc51ea7626d7fbc6bdea4d499644ef16f5c5a703ef505ff8bae211dc6dd4e81e",
+  "started_at": "2026-10-06T23:35:00.216Z",
+  "finished_at": "2026-10-06T23:35:17.997Z",
+  "recorded_at": "2026-10-06T23:35:17.997Z",
+  "time_precision": "exact",
+  "elapsed_ms": 17726,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Actual host-orchestrated disposable PostgreSQL recreation: typed rows/journals and role/transaction checks; existing VS Code project/volume untouched",
+  "log_path": "docs/validation/logs/RUN-20261006-071.txt",
+  "log_sha256": "f62928b127c081cbf5a1184f4caa36b41dc5d70034be6a4ec2ffef0d2275d481",
+  "redactions": 0
+}

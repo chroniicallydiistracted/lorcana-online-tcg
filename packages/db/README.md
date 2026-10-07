@@ -1,5 +1,11 @@
-# packages/db
+# @lorcana/db
 
-PostgreSQL schema, migrations, transactional repositories and role boundaries. Server-only.
+Server-only BOOT-02 owner of pg connections, reviewed SQL migrations and typed Drizzle synthetic probes. Browser/public imports are rejected by the existing resolver/Vite boundaries. Runtime dependencies are pg8.23.1 and Drizzle0.45.3; no schema generator or dependency build scripts are added.
 
-Reserved directory: no application implementation or package manifest yet. Implement its scoped manifest and dependencies through the foundation backlog.
+`connection(target, identity, root?)` validates the private local environment and explicit local/test target, then returns credential-bearing pg configuration. `client(...)` creates an unconnected pg Client; caller connects/ends it in a bounded operation. Default `workspaceRoot` derives from this module, so package-cwd tooling resolves the same ignored mode600 config. These are private server APIs; never serialize them into public contracts or logs.
+
+`probeRepository(client, service)` returns typed insert/find/update/remove promises for that service's synthetic UUID/label/UTC timestamp table. SQL identifier ownership is fixed by the service schema; input values use Drizzle parameters. The caller supplies the correct runtime identity and owns connection lifecycle. These probes model no player ownership or economic transaction.
+
+Internal tooling: `credentials(root?, create?)` validates private parent/file/schema and preserves bytes; `provision` manages ownership-marked local/test roles/databases and rejects unexpected role/owner/effective/default grants. `migrationFiles` hashes reviewed contiguous SQL; `validateHistory` rejects non-prefix/modified history; `migrate(target, root?, fixture?)` owns connection/transaction/advisory lock/journal and rollback. Fixtures are test-target-only. CLI exposes provision/migrate/health and generic private-safe failures. [Database runbook](../../docs/runbooks/database.md) gives exact operation and recovery boundaries; [BOOT-02 evidence](../../docs/validation/boot-02.md) records current acceptance. SQL and Drizzle definitions must change together under reviewed numbered migrations.
+
+The normal package test is six source-only unit checks and runs in clean installs without private credentials or a live DB. Integration tests are explicit `pnpm db:test` after provisioning/migration. Domain, economy/auth/match/job tables, RLS, production pools/migration deployment and app readiness integration remain unimplemented.

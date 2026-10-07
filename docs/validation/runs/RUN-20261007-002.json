@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-002",
+  "category": "headless_browser",
+  "command": [
+    "pnpm",
+    "test:e2e:smoke"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "bc51ea7626d7fbc6bdea4d499644ef16f5c5a703ef505ff8bae211dc6dd4e81e",
+  "started_at": "2026-10-07T01:11:30.365Z",
+  "finished_at": "2026-10-07T01:11:44.106Z",
+  "recorded_at": "2026-10-07T01:11:44.106Z",
+  "time_precision": "exact",
+  "elapsed_ms": 13742,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Post-recovery actual Linux Chromium/SwiftShader foundation four checks; Windows/device observation remains pending",
+  "log_path": "docs/validation/logs/RUN-20261007-002.txt",
+  "log_sha256": "61f1702d129615bc6263c9afc1da7bd8cbd519fedf0e081a09c3fb4b173f4210",
+  "redactions": 0
+}

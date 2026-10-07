@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-06T20:14:05.000Z",
+  "observed_at": "2026-10-07T01:17:59.054Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -21,7 +21,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -48,7 +49,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -141,7 +143,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -163,7 +166,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -185,7 +189,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -207,7 +212,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -229,7 +235,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -251,7 +258,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -287,7 +295,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -319,7 +328,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -341,7 +351,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -363,7 +374,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -390,7 +402,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -426,7 +439,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -472,7 +486,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -519,7 +534,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -541,7 +557,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -568,7 +585,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -595,7 +613,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -627,7 +646,8 @@
         ".env.example",
         ".gitignore",
         ".gitattributes",
-        ".editorconfig"
+        ".editorconfig",
+        "infra/**"
       ]
     },
     {
@@ -642,7 +662,7 @@
     },
     {
       "path": "infra/README.md",
-      "classification": "reserved",
+      "classification": "current",
       "sources": [
         "infra/**"
       ]
@@ -656,7 +676,7 @@
     },
     {
       "path": "packages/db/README.md",
-      "classification": "reserved",
+      "classification": "current",
       "sources": [
         "packages/db/**"
       ]
@@ -716,6 +736,58 @@
       "sources": [
         "vendor/tcg-engines/**"
       ]
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "classification": "current",
+      "sources": [
+        "packages/db/**",
+        "infra/**",
+        "scripts/db-persistence-proof.py",
+        "tests/foundation/browser-bundle.test.mjs",
+        "package.json",
+        "pnpm-lock.yaml",
+        "tests/database/**"
+      ]
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "classification": "current",
+      "sources": [
+        "packages/db/**",
+        "infra/**",
+        "scripts/db-persistence-proof.py",
+        "tests/foundation/browser-bundle.test.mjs",
+        "package.json",
+        "pnpm-lock.yaml",
+        "tests/database/**"
+      ]
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "classification": "current",
+      "sources": [
+        "packages/db/**",
+        "infra/**",
+        "scripts/db-persistence-proof.py",
+        "tests/foundation/browser-bundle.test.mjs",
+        "package.json",
+        "pnpm-lock.yaml",
+        "tests/database/**"
+      ]
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "classification": "current",
+      "sources": [
+        "packages/db/**",
+        "infra/**",
+        "scripts/db-persistence-proof.py",
+        "tests/foundation/browser-bundle.test.mjs",
+        "package.json",
+        "pnpm-lock.yaml",
+        "tests/database/**"
+      ]
     }
   ],
   "change_ids": [
@@ -723,16 +795,18 @@
     "CHG-20261006-002",
     "CHG-20261006-003",
     "CHG-20261006-004",
-    "CHG-20261006-005"
+    "CHG-20261006-005",
+    "CHG-20261006-006"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
     "CHG-20261006-002": "finalized",
     "CHG-20261006-003": "finalized",
     "CHG-20261006-004": "finalized",
-    "CHG-20261006-005": "finalized"
+    "CHG-20261006-005": "finalized",
+    "CHG-20261006-006": "finalized"
   },
-  "source_fingerprint": "9d603fb84217ab92567ec38c6cac2435f67ddde36e4c86055c51282ccb9d010f",
+  "source_fingerprint": "bc51ea7626d7fbc6bdea4d499644ef16f5c5a703ef505ff8bae211dc6dd4e81e",
   "files": {
     ".devcontainer/Dockerfile": "75ba6365bc4115283f817c57c54beddee7570dd3ce109897318501914ec8dd16",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -747,8 +821,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "c58d328dce0e83ff7898a916065f3f9a89d50e994eb8474a7c97da34ca3994c9",
-    "README.md": "73b72943e7b31b8e9b55720c2f9cd7bfd99aefa7b8e80d70f4be786e3268c55e",
+    "AGENTS.md": "2470e667818b82f5f0ba4fe61bcbb1c39854c4baa8200d80d031f34041753168",
+    "README.md": "6a1dfa2c1bbea6a698123d508fbcedb626c79276b0e74af3fc12579a154fc1b3",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "1444881df2f8582b93816a770d56a170a2c919eca296fcf5bcb1b46864989fa6",
@@ -775,21 +849,24 @@
     "apps/worker/src/main.ts": "48f226ac4b06c316c19ccc45328a37cb4df49b8520326b2293dc0cc3069ac223",
     "apps/worker/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "docs/ARCHIVE_PROVENANCE.md": "e77e3909b03bae735287e3176fcab76c5418ee87cde40b972beb9631cb6bedda",
-    "docs/CHANGELOG_FORMAT.md": "2d0d41128ed58cefe270a1bc8fc118b9c99a1c3926fa018aa768f4867fc164fa",
-    "docs/DEVELOPMENT_WORKFLOW.md": "d712515b948c9088ed9ddb1967accee49884d4ae36065c0ec72dd8c9c7d1b9d9",
-    "docs/FEATURES.md": "9e5719aca80839435fed34aadf21447a3fa06c63c74f36ff114a98368e4d3de3",
-    "docs/HANDOFF.md": "1b0c3ecef9722ece3debd6fb00b2cc05e571f4f9ce840b91fa7fc645349978fd",
-    "docs/README.md": "668510bdb8f52dc4f0fdf89794ec2c4214f9a9c546e9a1251737ed474de3efd7",
-    "docs/WORKSPACE_QUALIFICATION.md": "e8399c48475669ddce6d834487d7036c64d7b2cb1b6c5ca97fea33b520a852fb",
-    "docs/adr/0001-local-development-environment.md": "d8ef544637df657c4c41fe7312d859c1c0c73b2f3f567307c73193410551b81b",
-    "docs/adr/0002-application-foundation.md": "57f258a18d7d2c5d5b222f2da85a44b4b9b7eea53794c2974671f0649bbab01e",
+    "docs/CHANGELOG_FORMAT.md": "818adef6c2955a583fdaff881c12bb3005e6d5c9518d9da9e85084f2e6085efd",
+    "docs/DEVELOPMENT_WORKFLOW.md": "b04f4a6b3d9392009528810b2b8b84b63aaa6f5844786076ca7f9ef9a9d463fb",
+    "docs/FEATURES.md": "266ac631a21367d77318a39b0769d5826a8cb6f4eb6894a80e208e52cce2a07f",
+    "docs/HANDOFF.md": "a4fa473cd0486cf5014dbca23f52a9a649ec0ae09585ba58fa2254bd0cacd94e",
+    "docs/README.md": "3eeff85ca064b1ecb7d03a0650ab3b771bda4552cb8c919c4012c939d8e67e2e",
+    "docs/WORKSPACE_QUALIFICATION.md": "3a73340f31304d395b24d79b330cac70e893a494395fe467e183c38e5f7df687",
+    "docs/adr/0001-local-development-environment.md": "c481ac004b256c4e2adbf2f02f9ea85b363fa6fc78aac7134a8e0f20270c8dc2",
+    "docs/adr/0002-application-foundation.md": "ff129c04ca3e0e5c1b5c21caa9f680ca5f9bbb110fc64231d7a0bbb080cbe3be",
     "docs/adr/0003-documentation-evidence.md": "59243bc3be7e6bc3f3b95d89e5d099f8d2ce7ae1699209b0af51865ef247e600",
-    "docs/audits/2026-10-06-project-audit.md": "237c25303d7d1186c5671f41d35162af6a185357825870f1f8efc7be7e1ee2cb",
-    "docs/documentation-map.json": "6f68675c31b169793cef48d16257a779624e7295d1c6ffcd2a4a826232ee4dd7",
-    "docs/features.json": "868698ec21bd163f1633409d03970bd3529921885f1acf9aba6d9efa37624148",
-    "docs/plans/2026-10-06-documentation-governance.md": "6518ac7baa1f489277e47207ebf2b93fb81b9b560fabccda5e5595c3051ff42f",
+    "docs/adr/0004-restricted-local-database.md": "6eef66050e5e11c8b3c2dc77a35576be7d48110af7fe546f33fb7d69cc836a7d",
+    "docs/audits/2026-10-06-project-audit.md": "02a8bad3fdbfdb49bb5934e7f5c472121bee95bcbdf04fd17a7bee5e31cecc88",
+    "docs/documentation-map.json": "8cc499e729c9e4dffc5624572ce6bacde0f1158810ed658f7ea0817c7e097dfa",
+    "docs/features.json": "a99366552f08a562331c53f26b4ba5c3eed2563127d0457ddc040d6c8887ab0f",
+    "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
+    "docs/plans/2026-10-06-documentation-governance.md": "a2f9b988823d992f8996568d0d443e2d1c6189defb9205a3dd2bbbb689877caa",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
-    "docs/runbooks/workspace-setup.md": "12d831ea1226eeee099d08787115bd35ea49c0db1e157da2af7ffe57abf13d8a",
+    "docs/runbooks/database.md": "71294a6c009d3a3df49960aebfef963483b1ee1a3c376fc51648d895128fc1ea",
+    "docs/runbooks/workspace-setup.md": "097f377cd1ecbf570130881cf7b875e149debb8197898aa3ba300260be39d035",
     "docs/schemas/change.schema.json": "11a2de343d65b08be1efc45203d98f0a078cafafee2275b9972a482c32dfb2de",
     "docs/schemas/documentation-map.schema.json": "071c80437ab170e6a7b6c3ca7c75b37e600ef4a95b3c2a8ed930263adec54c6d",
     "docs/schemas/features.schema.json": "0c502bd344781cfe87c4a429049c8df59288c94d96d81b40e994a14cde36ba43",
@@ -797,31 +874,50 @@
     "docs/schemas/state.schema.json": "1882ca68d58de5bb26b31bfd8a6ff20b0096360a6c2862a270f7dc5712acc9e8",
     "docs/templates/change.json": "814c6507da7bc2bca4fdd278395d740f7adc01589239df10cada7a34f61d812f",
     "docs/templates/handoff.md": "38eeb385e9b69db2adf787670ccf01546f971b1c35d8212336348654da6ca3c0",
+    "docs/validation/archive/2026-10-06-wsl-interruption/README.md": "ddbc61e9c18de77a5bacd37127c9e0d52555a8b9e106fd127dc5fd522ad37f66",
+    "docs/validation/archive/2026-10-06-wsl-interruption/RUN-20261006-072.json.bytes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/validation/archive/2026-10-06-wsl-interruption/RUN-20261006-072.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "docs/validation/archive/RUN-20261006-017-original.json": "30250d26ce512d9d37327b6c9f257a8b144143ab0dd3e22947fe8e5d5b02be2a",
     "docs/validation/boot-01-source-manifest.json": "b9780fcd1618e54aebffda71b3afce2502575bb1fb6e0ae37ef2f16397cb8082",
-    "docs/validation/boot-01.md": "879ac56c7b0e8c0b79926ebde9742cfbe7db71528c66987cf96aefce6d0d4891",
+    "docs/validation/boot-01.md": "d525fadfec6254bcc0d5d2134fb5d8a33ec472624f14869e4384956ff10171dc",
+    "docs/validation/boot-02.md": "b0a61d1677da5d677c75ac4b49db90e6b32197db197f16d52dffc3f5c50dd690",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
-    "docs/vision/README.md": "eb046d8dfeeb03e330988e332044c0346fbc319d76f1c762d62f3aa9110fa251",
+    "docs/vision/README.md": "acfb7c0435f8a5af7e916b52172ebfadbb5e8e482a1d631bc83a032137e4ca3d",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
     "docs/vision/decision_register.csv": "a8606564877bf273af77b0caa9fc857aef2a23ef4e7ca65c9b3765d0e5612e45",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "95fb3d9e5739dc892dec5fd01b11b4638d1c3487373107552c2dcf70214a8b21",
+    "docs/vision/initial_backlog.csv": "4dc1da7808975f6b9226f27ccd4e15a525c5213a4a1b847953c4058bd2cbe4c6",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "2f2449e8c82ddc16e4b6d8ea5bbe5b44f53e7754be204613b15aeaddcbcacdc8",
     "docs/vision/rules_certification_template.csv": "5ff136b9900020eb10306e47c4df455b98bbe376ac4640a077c191c9063fc56b",
     "docs/vision/source_register.json": "32e54839404cbcdb809411eddddbd3ad5fc1c74da2060090b822a16e05250ea7",
     "eslint.config.mjs": "acfe87a19267453bf44a7b2933333e9062e8e0a692b2efa6983155bdb66f6418",
-    "infra/README.md": "c0b831c184e89b899c0ab0fc5a77e4bf95c1a9dc4d7244cb3b2b37bfac846877",
-    "package.json": "330948de767e734bc27c64acfc65e3d60a257be48cd129223ab2518256019674",
+    "infra/README.md": "f9326f0b41d2b866fdab78dc82a3cd47fb5a4587428cb1963f52bf007b057d13",
+    "infra/compose.persistence.yaml": "21a987cefd5d5db3b19fb213a197f560b1bb3da9e111852ee9f619cec55e57f2",
+    "package.json": "c17c77427446c521534dcd20339876f0559f68c18922ecba5d251c005234ec67",
     "packages/contracts/README.md": "b702819d274ec9b7e139313263c86777d606aad59cc23135a4b413209daaabc5",
     "packages/contracts/package.json": "a2da6ae3bb628ece0f305657aee9017a659012feafd7bc1cd3c1b95933ad2889",
     "packages/contracts/src/index.ts": "ef73590935ed82e977a3372f27f8d66c11cc768e4f3ddc7945a2c09c1c742a33",
     "packages/contracts/tests/health.test.mjs": "368871a9a7ac294d17527f9a0f7db281b67a946017f7a2063202c10ea2994b30",
     "packages/contracts/tsconfig.json": "1bd86ae5eb4bccac21a9d29caaa9dd80718bef7b447126708b40cbdaa8d0e769",
-    "packages/db/README.md": "638a56daa8055803b18d927264b1bc0487ce618a9a83389f03674704d7cf99e8",
+    "packages/db/README.md": "7d7e2df3c15e27ad4411121517d11cddbe9bd4db794daf4de514e6f0c0edf59e",
+    "packages/db/migrations/0001-foundation-probes.sql": "6f8d66f0637aec7872bce8f9a1d7e9462d7f441d63d7bc034d136e4549dc45ce",
+    "packages/db/package.json": "d24102e225be34d94911c451192a29c9f1d21ff05358c7dbb164f85d572506fe",
+    "packages/db/src/cli.ts": "473326e4d9fbb538f5f63634caded19e172819ae65c8a53132b904c41895cec6",
+    "packages/db/src/config.ts": "f7d54351ce9ef8e067adc1936e277f1eb4e46a93496a3391110991206ab3a588",
+    "packages/db/src/index.ts": "5ac73ea178bddc07d4c52c37e85c05499e40954099f15e47214b88d31032d532",
+    "packages/db/src/migrate.ts": "447d9bb0e18e76b5c9891cca7df4487c4f88188fb4a709efcb6ea813ac6a01ed",
+    "packages/db/src/persistence-probe.ts": "ceb71e37fe07bd7b9a69b6e2e0d44a6796fbb9d5dcc7d97305ffee7b5a3c5340",
+    "packages/db/src/policy.ts": "ea8e8a78a0158a4dda096983deb185b3e6bcdeb195b41e3d5bee9268f5826f9a",
+    "packages/db/src/provision.ts": "d8db14fa6ea0c3d680184ddcddbd1b854879c4a9147dd486c1168acc64cde4b4",
+    "packages/db/src/schema.ts": "9773bcfe0f6fc933458c93cc46911aede19ec7d2795404b46363cd45b0b06eaf",
+    "packages/db/tests/config.test.mjs": "df9a2ae3a365ef736a52c59554f1b21218bdc46996cf7debd729d364b5837b95",
+    "packages/db/tests/integration.test.mjs": "76e7f23981a6f3db3e24a64673345fee7b03c41b0572b326ab51850280ef61ad",
+    "packages/db/tests/policy.test.mjs": "eb0625b0c6bf8269a60ff1d583e6051a019279dee82ea28fdcc94dd8a0be51fb",
+    "packages/db/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "packages/design-system/README.md": "ba5cd57355fcef8c5871112261c1eb636531c0601cf85e31d9d87d9546db7329",
     "packages/design-system/package.json": "5a884fd1d716cad0eeac7db471bedc2f0fd4299a001de209a69ddf15e03a8602",
     "packages/design-system/src/index.tsx": "2cbec4e2cc0a63d09d356d04a51f422586f51849b132219b7eed89d7ff6d3bcf",
@@ -842,12 +938,13 @@
     "packages/service-runtime/tests/service.test.mjs": "bc3e4bfb8ec6a0bbfb4fc552c60b5dce0e1b3fc07e4b2d52a8f47b2b582f4565",
     "packages/service-runtime/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "packages/testkit/README.md": "59995194f19edfb1f488b74882df1c09918ab51a7166e6c197cd405929e55c8c",
-    "pnpm-lock.yaml": "892c39c2a283336b9da225ba34c23fbcaf9808162c95bdf830537d91c1d72f16",
+    "pnpm-lock.yaml": "4cc15fc579a76704225d9152f222b4dd784489ec0bd6627eb59f2f3b4174a882",
     "pnpm-workspace.yaml": "45ecd4ccc77f405790542557f4302c5a97dfed95e41f00d3a5ea5d2ae4fe38a7",
     "scripts/browser-boundary-plugin.mjs": "288f40a57ff065440b032238206060bf7c94c2ab415a517b83c911cddbc9c000",
     "scripts/check-boundaries.mjs": "7f93d3d38d6d0c25151fafcb4c5c77d92aa9e4aaba432cb25a913744c257020f",
     "scripts/check-documentation.mjs": "f5054a69f72c2e57112b3983f941020957c86a7ee82eb890e0a3d3434a97df99",
     "scripts/db-check.mjs": "2420d9710c111f64884a705fbb38696a951eaca5038ab7bf4a71020ea69ed1f5",
+    "scripts/db-persistence-proof.py": "32f2074d975b2b78a2abfa788813447f8bd04382be162aaa84d2ba4dba4eb202",
     "scripts/dev.mjs": "0f6a930be0c65429d300a69c7c3ac62924717db9a3ff96363b016191a63fea41",
     "scripts/doctor.mjs": "6af4220c40b24786a26a15e30af0906e6c4c149af9a54f8679e821e730508213",
     "scripts/documentation-lib.mjs": "d029c2dc40860d33f76e550d5b1b8fcc908535e0ff0d0895e86866a1b0472f53",
@@ -863,11 +960,12 @@
     "scripts/validate-clean-checkout.mjs": "37df31e9b89263a951cf87ea6a08576b29b40a699e99b5c754147bc2934d4edb",
     "scripts/verify-config.py": "3db68cd6dd3cc13bf2c03813135bc997c2c6b3f3240e1b8b607958c03bfebe72",
     "scripts/verify.mjs": "8896579f784ade56c6fdba37a272fadcc2a3cde2b57d6066b789e98eaab83730",
+    "tests/database/persistence-proof.test.py": "d854939765c1f221448273aa7566405597d10b4c275b2e679ebe05dfde1cf9c9",
     "tests/documentation/evidence.test.mjs": "a2a1539c999c705fffc238f3eeda4d86218152ed4b98c524bb913cc5ce458d4e",
     "tests/documentation/governance.test.mjs": "acd1e95b4653386bbacbcade6bd156a6f52e6c1ce4492766c6ee01c5f7d12a5b",
     "tests/env_test.py": "abd54711919f3934d5ceeaa45503c098058a1fc52897ebe35670f137588f9d9f",
     "tests/foundation/boundaries.test.mjs": "8b3abd9fcb054214ce052f7169f87737e3931dc912d597151449b267a954e8da",
-    "tests/foundation/browser-bundle.test.mjs": "cb27510f7c3bcfcd08fc8dd772bf47423cfe31e235c26bd1ecb86513cbb577a4",
+    "tests/foundation/browser-bundle.test.mjs": "7fb27367086c146ca6423bf80e1ad0cbb60debaf9bde5f900771e09c96c3de15",
     "tests/foundation/process-groups.test.mjs": "2a8cd2b8f038d72474610a6b62b2507520fded1b7858f73837875885cd682262",
     "tests/foundation/processes.test.mjs": "85705a954dd920ebf3f9eef924a250d9a2b5232937a56886195622742632bfd4",
     "tests/smoke.test.mjs": "11e379f37ffaeff7ee3cba311e1d34bcc599459393f464fe67ef08b10e8e9700",
@@ -1199,6 +1297,609 @@
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "3e2c488e89bd78e5986ebd166c405b7115af3c6d23cc264ade4cc2c63ba0b504"
+    },
+    {
+      "file": "packages/db/src/cli.ts",
+      "name": "main",
+      "line": 6,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "9899e02e0b7a781dbffd4eaf9c4aa6335fd80849ae99f159f1a0f07435377e56"
+    },
+    {
+      "file": "packages/db/src/cli.ts",
+      "name": "<callback>",
+      "line": 7,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "arg",
+      "sha256": "c1eb91dec90f3974e572cd286f1c87fa6c4c16c1c49d3d67fa715182c5f46416"
+    },
+    {
+      "file": "packages/db/src/cli.ts",
+      "name": "<callback>",
+      "line": 26,
+      "column": 14,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "483602eddcb18be3ffee6798aab8ad1955c3ac1a2dd92ab1f51f30445079cb4b"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "localEnvironment",
+      "line": 11,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "6738b945bbcbaa68ac14e7666efaf12a6b8eb4e17111c0323d803de475ddb6e5"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "credentialPath",
+      "line": 14,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root = workspaceRoot",
+      "sha256": "8ceef2c686d8f23f00254b17956bab7ba995bbf022500ef7d4e9327090044d3a"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "privateFile",
+      "line": 15,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "path: string",
+      "sha256": "cd53997bb860b92d84734226ba119be5f222d7453745d7121bb57d4620f9e550"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "credentials",
+      "line": 19,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root = workspaceRoot, create = false",
+      "sha256": "5e00325c8603edc7eb590f7d457ac91703ed537c50c77de1d4cf8318d067b158"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "<callback>",
+      "line": 26,
+      "column": 64,
+      "kind": "ArrowFunction",
+      "signature": "target",
+      "sha256": "1085d6b96ff6f3c2a2df8152690f4f984ce8fc6637f0c277cd0299eee2420ecf"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "<callback>",
+      "line": 26,
+      "column": 117,
+      "kind": "ArrowFunction",
+      "signature": "role",
+      "sha256": "1408c85a3ea1b8b4597b2ae374df4a471220d25b97333c6fceafbc2af1ea8da1"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "<callback>",
+      "line": 33,
+      "column": 34,
+      "kind": "ArrowFunction",
+      "signature": "role",
+      "sha256": "dbbf076c1aa53fc8f543777353a95902259e497ee5686384609c8004fae19fef"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "<callback>",
+      "line": 33,
+      "column": 75,
+      "kind": "ArrowFunction",
+      "signature": "target",
+      "sha256": "25c58aa5b181fa1417d3d9c4ee233eb94837cda2ec96525e1dc3f398c6d30145"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "<callback>",
+      "line": 34,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "password",
+      "sha256": "de1568fef1fc546e0bb0a39c1fc2bd5b873ebe921b05656b8ee4c0aebb604319"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "connection",
+      "line": 37,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "target: Target, identity: Identity, root = workspaceRoot",
+      "sha256": "03372db9f24b5c81dcda4201834c981ea2899680ef50df8953965845d731724a"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "client",
+      "line": 43,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "target: Target, identity: Identity, root = workspaceRoot",
+      "sha256": "d64e56490325c9ddf98213dfd9b9c4b12b49407eff1b86938d3c0fe14843beb5"
+    },
+    {
+      "file": "packages/db/src/config.ts",
+      "name": "administrator",
+      "line": 44,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "database = process.env.POSTGRES_DB",
+      "sha256": "ade997a74beee3396c61abedf98bf4550911e49a2f1e58ac663ebb82fa9164b0"
+    },
+    {
+      "file": "packages/db/src/migrate.ts",
+      "name": "migrate",
+      "line": 4,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "target: Target, root = workspaceRoot, fixture?: readonly Migration[]",
+      "sha256": "6c489671166a55761306661b6c94f0dc725002b2b777ceaf80cf12174c5dbbfb"
+    },
+    {
+      "file": "packages/db/src/persistence-probe.ts",
+      "name": "main",
+      "line": 6,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "ba1e5f004319e2a2f7e97d7785663cf5a3f540b270c0d13d56a96f5600cb20db"
+    },
+    {
+      "file": "packages/db/src/persistence-probe.ts",
+      "name": "<callback>",
+      "line": 13,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "result",
+      "sha256": "3bf124295da30aa0fae770200f549509807d7a10fb206736beb01aa5e5a72f9d"
+    },
+    {
+      "file": "packages/db/src/persistence-probe.ts",
+      "name": "<callback>",
+      "line": 13,
+      "column": 57,
+      "kind": "ArrowFunction",
+      "signature": "a, b",
+      "sha256": "c22e5ac5fb1db676c5760913e1f944f228cfe32d411259c1e91165d3b13e448e"
+    },
+    {
+      "file": "packages/db/src/persistence-probe.ts",
+      "name": "<callback>",
+      "line": 33,
+      "column": 14,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "0a5c47872e4b2f05cf83530f6672d0e90ed6dd005dc47ead685d0c59c145a698"
+    },
+    {
+      "file": "packages/db/src/policy.ts",
+      "name": "targetNames",
+      "line": 8,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "target: unknown",
+      "sha256": "bd00b0cb7a71bba36d368aa6c27faee7ddf8c2a21128066ef45906d36c462c39"
+    },
+    {
+      "file": "packages/db/src/policy.ts",
+      "name": "migrationFiles",
+      "line": 14,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "600ff803720e7ac89d069277a6382c4b03a5bee33fc9ba50807fdfd598b79185"
+    },
+    {
+      "file": "packages/db/src/policy.ts",
+      "name": "<callback>",
+      "line": 17,
+      "column": 35,
+      "kind": "ArrowFunction",
+      "signature": "name, i",
+      "sha256": "797ee33d3416ee84d54404a0899980ab68bf14da0cf82a266b27c938858af424"
+    },
+    {
+      "file": "packages/db/src/policy.ts",
+      "name": "<callback>",
+      "line": 18,
+      "column": 20,
+      "kind": "ArrowFunction",
+      "signature": "name",
+      "sha256": "bd694e3b01a1aed10275a8efa441452226233b159cea019769b5095d3a1d310c"
+    },
+    {
+      "file": "packages/db/src/policy.ts",
+      "name": "validateHistory",
+      "line": 23,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "files: readonly Pick<Migration, 'id' | 'sha256'>[], applied: readonly Pick<Migration, 'id' | 'sha256'>[]",
+      "sha256": "54db4289b65ea8210775760112c3acc262ab35156e122f3f1c84cbc309bc285a"
+    },
+    {
+      "file": "packages/db/src/policy.ts",
+      "name": "<callback>",
+      "line": 24,
+      "column": 53,
+      "kind": "ArrowFunction",
+      "signature": "row, i",
+      "sha256": "3fffb5ce8a4626a2a6e673780aadd08b2f0cde42ebdd205d5e70c8c012b6e5b6"
+    },
+    {
+      "file": "packages/db/src/provision.ts",
+      "name": "ident",
+      "line": 5,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "value: string",
+      "sha256": "3acce27a829c868a14c2a0d57e4811d7fe39ba321d12bd00cd22950043b83a7d"
+    },
+    {
+      "file": "packages/db/src/provision.ts",
+      "name": "provision",
+      "line": 6,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root = workspaceRoot",
+      "sha256": "aaa69669a9687ccb614855b8c8abc6984d12bdd7dc4f3e744569410970ba9e87"
+    },
+    {
+      "file": "packages/db/src/provision.ts",
+      "name": "provisionDatabase",
+      "line": 33,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "target: Target",
+      "sha256": "337430fea9e23639774aadc9c179ab7c8d530ee8179966155cbeff424b30187f"
+    },
+    {
+      "file": "packages/db/src/provision.ts",
+      "name": "validateRuntimePrivileges",
+      "line": 66,
+      "column": 5,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "41e0e18418794f480738160805c290b41f46be9de036cc63b76051a5466404ab"
+    },
+    {
+      "file": "packages/db/src/schema.ts",
+      "name": "table",
+      "line": 6,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "schema: string",
+      "sha256": "aee383280d3acc9049f3264df171cc45f399e2eb1c8b9a5c73ebb57aaf9efb58"
+    },
+    {
+      "file": "packages/db/src/schema.ts",
+      "name": "probeRepository",
+      "line": 12,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "client: Client, service: typeof services[number]",
+      "sha256": "95e950e28e73885b5392700301189f6ba67ca753439e5d182dba4b2d81280c4d"
+    },
+    {
+      "file": "packages/db/src/schema.ts",
+      "name": "<callback>",
+      "line": 15,
+      "column": 13,
+      "kind": "ArrowFunction",
+      "signature": "label: string",
+      "sha256": "e211c7735aa12a44814564a440f677cda1ba27dcbb8f9d3fa22e6347c033e495"
+    },
+    {
+      "file": "packages/db/src/schema.ts",
+      "name": "<callback>",
+      "line": 16,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "id: string",
+      "sha256": "8d08810c89801587b22a32760d0edab45a820d37859641ea7eaeb7a4c0df04fd"
+    },
+    {
+      "file": "packages/db/src/schema.ts",
+      "name": "<callback>",
+      "line": 17,
+      "column": 13,
+      "kind": "ArrowFunction",
+      "signature": "id: string, label: string",
+      "sha256": "47fef192392b755d149391b960de68d77e1eab6ae8cce9c58967664be509653e"
+    },
+    {
+      "file": "packages/db/src/schema.ts",
+      "name": "<callback>",
+      "line": 18,
+      "column": 13,
+      "kind": "ArrowFunction",
+      "signature": "id: string",
+      "sha256": "c2a5461350ec9b181e3aedc3d62264b3a443db52325acec070352a3ae8ce14f2"
+    },
+    {
+      "file": "packages/db/tests/config.test.mjs",
+      "name": "<callback>",
+      "line": 7,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "181b5b889e6a266a6c4dac00cfbd7bcbfb7b0066d5736f6b1c2d4de88463df28"
+    },
+    {
+      "file": "packages/db/tests/config.test.mjs",
+      "name": "<callback>",
+      "line": 13,
+      "column": 39,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "9b13b8564281fdd2c90bf57b0ff3fc4543456880fda55a963d8c430f53149a81"
+    },
+    {
+      "file": "packages/db/tests/config.test.mjs",
+      "name": "<callback>",
+      "line": 14,
+      "column": 42,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "9b13b8564281fdd2c90bf57b0ff3fc4543456880fda55a963d8c430f53149a81"
+    },
+    {
+      "file": "packages/db/tests/config.test.mjs",
+      "name": "<callback>",
+      "line": 15,
+      "column": 60,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "9b13b8564281fdd2c90bf57b0ff3fc4543456880fda55a963d8c430f53149a81"
+    },
+    {
+      "file": "packages/db/tests/config.test.mjs",
+      "name": "<callback>",
+      "line": 18,
+      "column": 73,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7d447c16fba50dd02c2437ef44485c34d489f2f3ee26852570e45af6065b630c"
+    },
+    {
+      "file": "packages/db/tests/config.test.mjs",
+      "name": "<callback>",
+      "line": 24,
+      "column": 82,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2bb2e002770770306cc72293d9a6e1098451fb9d92721290f6ef17b1c05b81be"
+    },
+    {
+      "file": "packages/db/tests/config.test.mjs",
+      "name": "<callback>",
+      "line": 26,
+      "column": 60,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "d4b3803b57f8f16cd4bd23c1555e5f2aae1e84c22a690056fe16026ed1554ff3"
+    },
+    {
+      "file": "packages/db/tests/config.test.mjs",
+      "name": "<callback>",
+      "line": 26,
+      "column": 102,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "3956e803f99321b0eb98261c20a7287c445589ca71b96b63ce10b4454b1be505"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "using",
+      "line": 10,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "identity, fn",
+      "sha256": "b8cada448ea625a642facb1723e7d736d69da25c7b5d9493a867fc4943c9dc2a"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "denied",
+      "line": 11,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "db, sql",
+      "sha256": "d3e89b05f6ceab7966a9242e80db2b5193f7b8acf718c3259176eb01902ae20b"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 12,
+      "column": 100,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "94b628cadad32cb27cf503259c5c2c1568570be7a4770092be773f565766feb5"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 14,
+      "column": 53,
+      "kind": "ArrowFunction",
+      "signature": "db",
+      "sha256": "be7e0c06a2c5b84a69cf8471e9b41022280fc373297fe8cb4b365d7cb3aa5db6"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 16,
+      "column": 41,
+      "kind": "ArrowFunction",
+      "signature": "[key,value]",
+      "sha256": "12e2c2a3fa5c3b7d52255ba40bcdf9c3240accf15bf98e745b5f9e8062199ec8"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 24,
+      "column": 38,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "df26db8ae89d357d73385079d898224ff45d39f1a301e203e9a93ccb8a62b6a5"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 28,
+      "column": 69,
+      "kind": "ArrowFunction",
+      "signature": "role",
+      "sha256": "b586d0c924f1f64952fa719d3003f8ed9a75b337c88c29e7cbd31d0a8229be67"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 31,
+      "column": 81,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b7d0ce85fb9073d25009ac8ef021a2bf14fc79204f1a08f4f95401a6b2d0a37b"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 38,
+      "column": 112,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "0e43543c0516483381a3063e419be010c6aa2e3d0b2b3fb8f9c1bbb01ff5c1c1"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 40,
+      "column": 99,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "9d6f3d0e5d0db76f18bf7fdcf1ecd5b56c745c49ba32b7f9628a72bcc7a6a2c7"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 44,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "db",
+      "sha256": "bb1082d91bc4b4558f24979a142d0acf7680ca9cc85f3544ff9ab0f8557fc5aa"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 49,
+      "column": 30,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "b9adc2a54c09e72da6325787ccaad6ec124fe94e88ce130a1bcca1d769dcd8a3"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 54,
+      "column": 107,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "4daa37072af5348f6a47675956b2140ec73556ad789b85dcc689929ba969d248"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 55,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "owner",
+      "sha256": "8f9ba253c46baced7172359d49f7b4f876723573b69dceb049019f0d3eef75f2"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 58,
+      "column": 22,
+      "kind": "ArrowFunction",
+      "signature": "db",
+      "sha256": "4ab3db8c81d31d15f97a7fd8931b0e0989c57124748ada223f54b563d53e577d"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 59,
+      "column": 24,
+      "kind": "ArrowFunction",
+      "signature": "db",
+      "sha256": "b72856039b7bb0dddb33598bca8bafcff89fb94cc34d73cd3ea72b0db1301361"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 67,
+      "column": 103,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8eb3b7507ffbf97ddfcbd691c39d14a9d59bd9fb59a26086223acc11bee10631"
+    },
+    {
+      "file": "packages/db/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 68,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "db",
+      "sha256": "bdee34b3e58696f60952e640df245ddca018c682b30fa438a6c93f67fcd9817b"
+    },
+    {
+      "file": "packages/db/tests/policy.test.mjs",
+      "name": "<callback>",
+      "line": 4,
+      "column": 78,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "593a36412d691592713e60dba4abd05483dd7ec77b2236b3e8b3ca318df5008f"
+    },
+    {
+      "file": "packages/db/tests/policy.test.mjs",
+      "name": "<callback>",
+      "line": 7,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "07b1e5399bde44ee6e1558babcc1e30d38a3dde35e68eead8c8c4cb663d88187"
+    },
+    {
+      "file": "packages/db/tests/policy.test.mjs",
+      "name": "<callback>",
+      "line": 9,
+      "column": 65,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "47706c17709575e1236eed1b9e73c7b3d9408791cedc4a664943cf8575b0bd82"
+    },
+    {
+      "file": "packages/db/tests/policy.test.mjs",
+      "name": "<callback>",
+      "line": 12,
+      "column": 113,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "81f639989e49ab61bd5cbb420d9081f6889b12597b21eb49c86ec919b81243e0"
+    },
+    {
+      "file": "packages/db/tests/policy.test.mjs",
+      "name": "<callback>",
+      "line": 14,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "36b5d138e0355aee5c7f39c5b0d2783476596e8decb56e6c544160a9574f4d52"
     },
     {
       "file": "packages/design-system/src/index.tsx",
@@ -1766,6 +2467,70 @@
       "kind": "FunctionDeclaration",
       "signature": "folder",
       "sha256": "34e9458666eb540fe1faeb95d62d304e2291a2e95c69d0d1fa424e0460bf6a23"
+    },
+    {
+      "file": "scripts/db-persistence-proof.py",
+      "name": "utc",
+      "line": 17,
+      "column": 1,
+      "kind": "FunctionDef",
+      "signature": ""
+    },
+    {
+      "file": "scripts/db-persistence-proof.py",
+      "name": "redact",
+      "line": 20,
+      "column": 1,
+      "kind": "FunctionDef",
+      "signature": "text, secrets"
+    },
+    {
+      "file": "scripts/db-persistence-proof.py",
+      "name": "main",
+      "line": 30,
+      "column": 1,
+      "kind": "FunctionDef",
+      "signature": ""
+    },
+    {
+      "file": "scripts/db-persistence-proof.py",
+      "name": "capture",
+      "line": 39,
+      "column": 5,
+      "kind": "FunctionDef",
+      "signature": "args, env=None, timeout=180"
+    },
+    {
+      "file": "scripts/db-persistence-proof.py",
+      "name": "fingerprint",
+      "line": 53,
+      "column": 5,
+      "kind": "FunctionDef",
+      "signature": ""
+    },
+    {
+      "file": "scripts/db-persistence-proof.py",
+      "name": "interrupted",
+      "line": 77,
+      "column": 5,
+      "kind": "FunctionDef",
+      "signature": "signum, _frame"
+    },
+    {
+      "file": "scripts/db-persistence-proof.py",
+      "name": "step",
+      "line": 82,
+      "column": 5,
+      "kind": "FunctionDef",
+      "signature": "args, label"
+    },
+    {
+      "file": "scripts/db-persistence-proof.py",
+      "name": "server_logs_private",
+      "line": 94,
+      "column": 5,
+      "kind": "FunctionDef",
+      "signature": ""
     },
     {
       "file": "scripts/dev.mjs",
@@ -2774,6 +3539,38 @@
       "sha256": "03258814da8bc0a4236b93ca27db1735069d2214d8427cf3c7f856670cfe0d2a"
     },
     {
+      "file": "tests/database/persistence-proof.test.py",
+      "name": "fixture",
+      "line": 12,
+      "column": 5,
+      "kind": "FunctionDef",
+      "signature": "self, mode"
+    },
+    {
+      "file": "tests/database/persistence-proof.test.py",
+      "name": "register",
+      "line": 23,
+      "column": 13,
+      "kind": "FunctionDef",
+      "signature": "sig, handler"
+    },
+    {
+      "file": "tests/database/persistence-proof.test.py",
+      "name": "execute",
+      "line": 27,
+      "column": 13,
+      "kind": "FunctionDef",
+      "signature": "args, **kwargs"
+    },
+    {
+      "file": "tests/database/persistence-proof.test.py",
+      "name": "<lambda>",
+      "line": 96,
+      "column": 38,
+      "kind": "Lambda",
+      "signature": "self, mode=mode"
+    },
+    {
       "file": "tests/documentation/evidence.test.mjs",
       "name": "<callback>",
       "line": 8,
@@ -3405,16 +4202,25 @@
       "column": 86,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "bbcbdb3f85124d0abc706b36c3021c65a99049dc69218ab2107f43039e1e15ec"
+      "sha256": "53e79fdb0dae0340001288d418d96c4e52b95c13dc6d7f4fab58891e1cd26e34"
     },
     {
       "file": "tests/foundation/browser-bundle.test.mjs",
       "name": "<callback>",
-      "line": 8,
+      "line": 9,
       "column": 47,
       "kind": "ArrowFunction",
       "signature": "name",
       "sha256": "8749d836ec0c9ea2b8284d7a6ad46d5df21eaf990f36edc632086a2e64c1845d"
+    },
+    {
+      "file": "tests/foundation/browser-bundle.test.mjs",
+      "name": "<callback>",
+      "line": 14,
+      "column": 22,
+      "kind": "ArrowFunction",
+      "signature": "secret",
+      "sha256": "eb12b86ed540ba280b530a40efd6b4e8fac23cb035e519d0e1f1b8e63fd89a30"
     },
     {
       "file": "tests/foundation/process-groups.test.mjs",

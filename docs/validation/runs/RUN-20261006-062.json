@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-062",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "db:test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "eee2c22647a661956eebccb2151604f784fef4c7fac5b6d2612d412509fd9c3a",
+  "started_at": "2026-10-06T23:23:00.534Z",
+  "finished_at": "2026-10-06T23:23:03.214Z",
+  "recorded_at": "2026-10-06T23:23:03.214Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2681,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Existing role ACL drift rejection, future object defaults and real role/migration checks",
+  "log_path": "docs/validation/logs/RUN-20261006-062.txt",
+  "log_sha256": "21448cb708631964cd7843fca638c79ade3ded3bd9ac405c99b1421520bd8d47",
+  "redactions": 0
+}

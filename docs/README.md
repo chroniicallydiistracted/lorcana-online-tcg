@@ -13,6 +13,7 @@ Every developer and agent starts with [AGENTS.md](../AGENTS.md), the [current ha
 | [Qualification](WORKSPACE_QUALIFICATION.md) / [foundation evidence](validation/boot-01.md) | Historical Director evidence, container execution, simulation, browser and pending device evidence |
 | [Run records](validation/runs/) / [logs](validation/logs/) | Exact invocation, source fingerprint, timestamps, exit/signal and sanitized log digest |
 | [Setup runbook](runbooks/workspace-setup.md) | Existing PC/container operation and new-checkout setup |
+| [Database operation](runbooks/database.md) / [BOOT-02 evidence](validation/boot-02.md) | Managed roles/migrations/test DB and disposable persistence proof |
 | [ADRs](adr/) | Context, affected tasks/requirements, alternatives and material architectural decisions |
 | [Vision index](vision/README.md) | Full 548-item original vision, additional scope, task and decision registers |
 | [Templates](templates/) / [schemas](schemas/) | Copyable handoff/change format and versioned validation contracts |

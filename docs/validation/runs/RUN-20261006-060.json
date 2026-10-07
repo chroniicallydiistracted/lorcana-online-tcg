@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261006-060",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "db:provision"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "e8dc16f3b4ab6a00dccc2398fc7034320cb4c91e9ee20a23d74b6445ee99b9e6",
+  "started_at": "2026-10-06T23:20:59.370Z",
+  "finished_at": "2026-10-06T23:21:01.282Z",
+  "recorded_at": "2026-10-06T23:21:01.282Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1913,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Provision app-specific local/test DB names after correctly rejecting collision with existing bootstrap DB",
+  "log_path": "docs/validation/logs/RUN-20261006-060.txt",
+  "log_sha256": "be404f92298e10253ef08f4f82836e1b9f109f0567e97015fb3756ee685c8a55",
+  "redactions": 0
+}

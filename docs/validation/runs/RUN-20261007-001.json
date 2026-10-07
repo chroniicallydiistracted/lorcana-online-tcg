@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-001",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['install','--frozen-lockfile'],['run','doctor'],['db:check'],['db:health','--','--target','local'],['db:health','--','--target','test'],['db:migrate','--','--target','local'],['db:migrate','--','--target','test'],['db:test'],['build'],['exec','node','--test','tests/foundation/browser-bundle.test.mjs']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0)process.exit(r.status||1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82e22733ebe41c01e373d409eac34e09345fbc1b",
+  "source_fingerprint": "bc51ea7626d7fbc6bdea4d499644ef16f5c5a703ef505ff8bae211dc6dd4e81e",
+  "started_at": "2026-10-07T01:10:29.448Z",
+  "finished_at": "2026-10-07T01:10:49.100Z",
+  "recorded_at": "2026-10-07T01:10:49.100Z",
+  "time_precision": "exact",
+  "elapsed_ms": 19567,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Post-recovery live frozen install, doctor7, bootstrap connectivity, eight managed identities, persisted migration journals, live DB5 and actual private-credential bundle scan",
+  "log_path": "docs/validation/logs/RUN-20261007-001.txt",
+  "log_sha256": "7dedf2681dc129fb5ad7fffdd842e63e7c6a60f33c5cb28b94b2c73fbc4a7579",
+  "redactions": 0
+}
