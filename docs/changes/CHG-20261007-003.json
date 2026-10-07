@@ -3,10 +3,10 @@
   "id": "CHG-20261007-003",
   "title": "Publish and integrate completed foundation branches into main",
   "actor": "Codex architect/developer/QA",
-  "status": "draft",
-  "recorded_at": "2026-10-07T06:18:03.115Z",
-  "occurred_at": null,
-  "event_time_basis": "recorded_only",
+  "status": "finalized",
+  "recorded_at": "2026-10-07T06:26:47.107Z",
+  "occurred_at": "2026-10-07T06:23:31.858Z",
+  "event_time_basis": "execution",
   "source_commit": "bf8659ace9d3ac51dbeb61a0032d69154b3a39c7",
   "task_ids": [
     "BOOT-01",
@@ -26,35 +26,99 @@
     {
       "kind": "revision",
       "description": "Director authorizes publication of all five committed foundation/governance branches and integration into main. Verify remote ancestry, current container checks/secrets, merged result and exact remote refs; preserve all commits/private data and pending BOOT-04/device/hosted gates."
+    },
+    {
+      "kind": "revision",
+      "description": "Published all five completed branches atomically with upstream tracking; local main fast-forwarded from335da7e to612a8c9 and ancestry confirms every branch is included. Remote main publication awaits merged-result verification."
+    },
+    {
+      "kind": "revision",
+      "description": "After fresh merged-main validation, published main from335da7e to612a8c9; all five remote branch tips are ancestors, retained without rewriting/deleting commits or changing visibility/settings/data."
+    },
+    {
+      "kind": "test",
+      "description": "RUN057 baseline/full foundation94 and history/known-secret passed; RUN058 merged-main94 passed; RUN059 proves exact remote refs/ancestry, private environment/listener preservation and timestamped Git actions. Final documentation/canonical checks in RUN060."
+    },
+    {
+      "kind": "documentation",
+      "description": "Current handoff, qualification and CI operation record actual publication authorization/results; BOOT-04/device/product/production remain pending; hosted snapshot is observed progress, not completed acceptance."
     }
   ],
   "files": [
+    "AGENTS.md",
     "CHANGELOG.md",
+    "README.md",
     "docs/HANDOFF.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
     "docs/changes/CHG-20261007-003.json",
     "docs/current-state.json",
+    "docs/runbooks/ci.md",
     "docs/validation/logs/RUN-20261007-057.txt",
-    "docs/validation/runs/RUN-20261007-057.json"
+    "docs/validation/logs/RUN-20261007-058.txt",
+    "docs/validation/logs/RUN-20261007-059.txt",
+    "docs/validation/logs/RUN-20261007-060.txt",
+    "docs/validation/runs/RUN-20261007-057.json",
+    "docs/validation/runs/RUN-20261007-058.json",
+    "docs/validation/runs/RUN-20261007-059.json",
+    "docs/validation/runs/RUN-20261007-060.json"
   ],
   "documentation_reviews": [
     {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057\u2026059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057\u2026059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates."
+    },
+    {
       "path": "docs/HANDOFF.md",
       "disposition": "updated",
-      "reason": "Director now authorizes branch/main publication and merge; update active objective/source and leave BOOT-04/provider/device/production statuses distinct."
+      "reason": "Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057\u2026059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057\u2026059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057\u2026059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates."
     }
   ],
   "verification": [
     {
       "evidence": "docs/validation/runs/RUN-20261007-057.json",
       "outcome": "passed",
-      "scope": "Fresh prepublication baseline, complete foundation94 and current/full-history known-secret gates inside existing Dev Container; executable fingerprint matches BOOT-05 final proof."
+      "scope": "Fresh prepublication baseline, complete foundation94 and current/full-history known-secret gates inside existing Dev Container; exact source/UTC/log receipt; limits remain explicit."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-058.json",
+      "outcome": "passed",
+      "scope": "Fresh merged-main full foundation94: ordered builds/types/lint/import/docs/history and all regressions after preserving every branch ancestor; exact source/UTC/log receipt; limits remain explicit."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-059.json",
+      "outcome": "passed",
+      "scope": "Read-only publication verification: five exact remote ancestor branches and merged main, preserved private environment/data/listeners and observed hosted state; prior Git action times remain separate; exact source/UTC/log receipt; limits remain explicit."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-060.json",
+      "outcome": "passed",
+      "scope": "Final publication/current and canonical staged prose, history/known-secret/format before successful-hosted continuation CHG-20261007-004."
     }
   ],
   "limitations": [
-    "BOOT-04 provider definitions/spend worksheet remains pending. Windows/hardware and hosted checks are not inferred from local success.",
-    "Publication does not authorize provider spending, production deployment or visibility/branch-protection changes."
+    "BOOT-04 provider definitions/spend worksheet remains pending; Windows/hardware and product/production gates remain separate.",
+    "First hosted workflow snapshot is in progress; no completed hosted qualification, required-check settings or cancellation acceptance inferred.",
+    "No spending, deployment, visibility or branch-protection/settings change performed; observed main protected=false."
   ],
   "next_actions": [
-    "Verify fresh current foundation and secret/history gates; publish the five completed branches, fast-forward main with all ancestor commits, verify merged source and remote refs, record actual hosted results if execution starts."
+    "RULE-01 official source acquisition/diff/catalog/printing/skipped-test inventory with hashes/denominators and release-status mapping.",
+    "Check latest main Actions result/artifact identity before hosted qualification; required checks and Windows observation remain separate.",
+    "BOOT-04/provider/budget and UX/engine work retain documented prerequisites."
   ]
 }

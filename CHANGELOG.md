@@ -2,12 +2,58 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261007-004 — First successful hosted qualification and final publication handoff
+
+- Status: finalized
+- Actor: Codex architect/developer/QA
+- Recorded (UTC): 2026-10-07T06:38:33.983Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 612a8c98b9376298870dc2a2dd772e897daf7911
+- Tasks: BOOT-03, DOC-01, DOC-02
+- Features: F-CI, F-DOCS, F-EVIDENCE
+- Requirements: none
+
+### Changes
+
+- **revision:** Continue finalized CHG-20261007-003 publication snapshot with newly observed actual hosted source612a8c9 success; preserve the earlier in-progress snapshot and original branch/commit history.
+- **test:** RUN061 verifies actual completed GitHub run37581249875 and downloaded artifact98 against published source/image/lock/release/executable fingerprint, all12 stages, foundation94/live DB5/browser6/owned cleanup; reported remote times remain distinct from local verification.
+- **documentation:** Update relevant instructions/README/features/BOOT-03 register/CI/qualification/audit/current handoff with source-specific hosted evidence. No code/dependency/config/private data/visibility/settings change. BOOT-04/device/required-check/production remain separate.
+
+### Verification
+
+- **passed:** Actual remote success/job/stage/artifact identity and local downloaded archive verification; API remote execution times are reported, wrapper times measure local verification. ([evidence](docs/validation/runs/RUN-20261007-061.json))
+- **passed:** Final current/canonical publication and completed-hosted qualification documentation, history/known-secret/format gates; unchanged executable fingerprint; final hosted-success prose matches current/canonical bytes, unchanged qualified executable fingerprint. ([evidence](docs/validation/runs/RUN-20261007-062.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [README.md](README.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/features.json](docs/features.json) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+- **updated:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261007-004.json).
+
+### Limits and next actions
+
+- Hosted qualification covers source612a8c9 and matching executable fingerprint; later documentation commits trigger separate workflow observations.
+- Required checks/branch-protection/cancellation policy, BOOT-04, Windows/hardware, OS/legal/signature/content/engine and production gates remain pending; no settings/spending/deployment changes.
+- RULE-01: acquire official current source bytes/rules diff/set/printing/skipped-test inventory with hashes/denominators/release status.
+- Check latest main workflow at next intake; qualified source612a8c9/executable fingerprint remains explicit, later metadata commits have separate runs.
+- BOOT-04, required-check/cancellation/settings and Windows/device/product/production retain documented prerequisites.
+
 ## CHG-20261007-003 — Publish and integrate completed foundation branches into main
 
-- Status: draft
+- Status: finalized
 - Actor: Codex architect/developer/QA
-- Recorded (UTC): 2026-10-07T06:18:03.115Z
-- Event: unknown; recorded retrospectively (recorded_only)
+- Recorded (UTC): 2026-10-07T06:26:47.107Z
+- Event: 2026-10-07T06:23:31.858Z (execution)
 - Source: bf8659ace9d3ac51dbeb61a0032d69154b3a39c7
 - Tasks: BOOT-01, BOOT-02, BOOT-03, BOOT-05, DOC-01, DOC-02
 - Features: F-CI, F-DOCS, F-EVIDENCE
@@ -16,22 +62,36 @@ Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; 
 ### Changes
 
 - **revision:** Director authorizes publication of all five committed foundation/governance branches and integration into main. Verify remote ancestry, current container checks/secrets, merged result and exact remote refs; preserve all commits/private data and pending BOOT-04/device/hosted gates.
+- **revision:** Published all five completed branches atomically with upstream tracking; local main fast-forwarded from335da7e to612a8c9 and ancestry confirms every branch is included. Remote main publication awaits merged-result verification.
+- **revision:** After fresh merged-main validation, published main from335da7e to612a8c9; all five remote branch tips are ancestors, retained without rewriting/deleting commits or changing visibility/settings/data.
+- **test:** RUN057 baseline/full foundation94 and history/known-secret passed; RUN058 merged-main94 passed; RUN059 proves exact remote refs/ancestry, private environment/listener preservation and timestamped Git actions. Final documentation/canonical checks in RUN060.
+- **documentation:** Current handoff, qualification and CI operation record actual publication authorization/results; BOOT-04/device/product/production remain pending; hosted snapshot is observed progress, not completed acceptance.
 
 ### Verification
 
-- **passed:** Fresh prepublication baseline, complete foundation94 and current/full-history known-secret gates inside existing Dev Container; executable fingerprint matches BOOT-05 final proof. ([evidence](docs/validation/runs/RUN-20261007-057.json))
+- **passed:** Fresh prepublication baseline, complete foundation94 and current/full-history known-secret gates inside existing Dev Container; exact source/UTC/log receipt; limits remain explicit. ([evidence](docs/validation/runs/RUN-20261007-057.json))
+- **passed:** Fresh merged-main full foundation94: ordered builds/types/lint/import/docs/history and all regressions after preserving every branch ancestor; exact source/UTC/log receipt; limits remain explicit. ([evidence](docs/validation/runs/RUN-20261007-058.json))
+- **passed:** Read-only publication verification: five exact remote ancestor branches and merged main, preserved private environment/data/listeners and observed hosted state; prior Git action times remain separate; exact source/UTC/log receipt; limits remain explicit. ([evidence](docs/validation/runs/RUN-20261007-059.json))
+- **passed:** Final publication/current and canonical staged prose, history/known-secret/format before successful-hosted continuation CHG-20261007-004. ([evidence](docs/validation/runs/RUN-20261007-060.json))
 
 ### Documentation and files
 
-- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Director now authorizes branch/main publication and merge; update active objective/source and leave BOOT-04/provider/device/production statuses distinct.
+- **updated:** [AGENTS.md](AGENTS.md) — Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057…059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates.
+- **updated:** [README.md](README.md) — Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057…059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057…059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057…059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Director authorized publication/merge; compare current remote ancestry/main, unchanged executable fingerprint and RUN057…059 against current operating/handoff/evidence text. Record timestamped hosted progress separately from completed qualification and retain BOOT-04/device/production gates.
 
 Full changed-file inventory: [record](docs/changes/CHG-20261007-003.json).
 
 ### Limits and next actions
 
-- BOOT-04 provider definitions/spend worksheet remains pending. Windows/hardware and hosted checks are not inferred from local success.
-- Publication does not authorize provider spending, production deployment or visibility/branch-protection changes.
-- Verify fresh current foundation and secret/history gates; publish the five completed branches, fast-forward main with all ancestor commits, verify merged source and remote refs, record actual hosted results if execution starts.
+- BOOT-04 provider definitions/spend worksheet remains pending; Windows/hardware and product/production gates remain separate.
+- First hosted workflow snapshot is in progress; no completed hosted qualification, required-check settings or cancellation acceptance inferred.
+- No spending, deployment, visibility or branch-protection/settings change performed; observed main protected=false.
+- RULE-01 official source acquisition/diff/catalog/printing/skipped-test inventory with hashes/denominators and release-status mapping.
+- Check latest main Actions result/artifact identity before hosted qualification; required checks and Windows observation remain separate.
+- BOOT-04/provider/budget and UX/engine work retain documented prerequisites.
 
 ## CHG-20261007-002 — BOOT-05 strict protocol, release identity and compatibility foundation
 

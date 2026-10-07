@@ -1,6 +1,6 @@
 # BOOT-03 CI and artifact acceptance evidence
 
-Task acceptance: reviewed GitHub CI definition, frozen installs, artifact identity and secret/license scans, proven through a local pipeline without deployment credentials. Work uses `codex/boot-03-ci` from clean BOOT-02 `beae58ea0e7184e41f82e34088a6945270345ff9`. Local acceptance is verified; no hosted run or production acceptance is claimed.
+Task acceptance: reviewed GitHub CI definition, frozen installs, artifact identity and secret/license scans, proven through a local pipeline without deployment credentials. Work uses `codex/boot-03-ci` from clean BOOT-02 `beae58ea0e7184e41f82e34088a6945270345ff9`. Local acceptance was verified at this BOOT-03 checkpoint; first actual hosted qualification is now appended below. No production acceptance is claimed.
 
 Intake RUN20261007-006…009 passed actual existing-container doctor, preserved static/documentation checks, five original bootstrap checks and authenticated read-only bootstrap connectivity. Existing source/credentials/data/Compose project were preserved. RUN010 records intentional red fixtures before implementation; RUN011 passes five Node safety checks and five mocked Python launcher/config checks. These are checkpoint evidence; final current-source results are recorded below and in the finalized change record.
 
@@ -21,3 +21,7 @@ Closure: [RUN030](runs/RUN-20261007-030.json) passed actual disposable database 
 ## BOOT-05 continuation
 
 The preceding results/decisions are retained as dated task checkpoints. BOOT-05 now implements public protocol/negotiation and release artifact v2 binding/retained pins with final-source local evidence; [ADR0006](../adr/0006-protocol-release-contracts.md) and [BOOT-05 validation](../validation/boot-05.md) describe the current scope. This extension does not implement authenticated gameplay or production activation.
+
+## First actual hosted qualification — publication continuation
+
+Hosted run37581249875 passed for commit612a8c9; RUN061 verifies the downloaded98-payload artifact/source/image/lock/release against executable fingerprint8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584. All12 stages, foundation94, eight identities/five live DB checks,6 Linux software-WebGL browser checks and owned cleanup passed.200 npm components, ten published notice gaps and zero reported registry advisories remain explicit. API/job/stage times are reported remote execution; RUN061 timestamps capture local artifact verification. Required checks/branch protection/cancellation, OS/legal/device/production acceptance are separate. See [actual successful Actions run](https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/37581249875) and the durable RUN061 verification log/API/job/stage/artifact identity. This continuation corrects earlier hosted-pending observations with new evidence, without rewriting executed results. Current main includes all five published foundation/governance branches; BOOT-04 remains pending. No spending/deployment/visibility/settings change performed.

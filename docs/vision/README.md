@@ -14,6 +14,6 @@ The Director added X06 (documentation accuracy) and X07 (universal timestamped c
 
 BOOT-02 current implementation/verification is recorded in [the database runbook](../runbooks/database.md) and [validation](../validation/boot-02.md). The original bootstrap administrator is separate from managed app credentials; normal clean foundation checks need no private DB. Actual integration/recreation checks are explicit and must retain their own source/timestamp/results.
 
-BOOT-03 implements a reviewed Actions definition and shared isolated local CI/artifact checks with local acceptance verified and hosted execution pending; see [CI operation](../runbooks/ci.md) and [validation](../validation/boot-03.md). This does not provision hosting or resolve Director release/budget/market choices.
+BOOT-03 implements a reviewed Actions definition and shared isolated local CI/artifact checks with local and first hosted source612a8c9 qualification verified (RUN061); required-check/settings gates remain separate; see [CI operation](../runbooks/ci.md) and [validation](../validation/boot-03.md). This does not provision hosting or resolve Director release/budget/market choices.
 
 BOOT-05 now implements protocol/release compatibility contracts verified locally; see [owning validation](../validation/boot-05.md) and [release policy](../contracts/release.md). Original R30.015 retains its wider product/device acceptance gate; contract evidence is a prerequisite, not complete version-compatibility acceptance.

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-059",
+  "category": "static",
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path\nimport json,os,stat,subprocess\nROOT=Path('/home/andre/lorcana-online-tcg')\ndef capture(args):\n r=subprocess.run(args,cwd=ROOT,capture_output=True,text=True,timeout=45)\n if r.returncode:raise RuntimeError('Publication verification failed; credentials withheld')\n return r.stdout.strip()\nbranches=['codex/boot-01-foundation','codex/documentation-governance','codex/boot-02-database','codex/boot-03-ci','codex/boot-05-contracts']\nremote=dict((ref,sha) for sha,ref in (line.split() for line in capture(['git','ls-remote','--heads','origin']).splitlines()))\nhead=capture(['git','rev-parse','HEAD']);assert capture(['git','branch','--show-current'])=='main';assert remote['refs/heads/main']==head\nfor branch in branches:\n sha=capture(['git','rev-parse',branch]);assert remote['refs/heads/'+branch]==sha\n capture(['git','merge-base','--is-ancestor',branch,'main'])\n print('PASS published ancestor',branch,sha)\nprint('PASS remote main equals merged local main',head)\nprivate=[ROOT/'.env.local',ROOT/'.local/database.json'];before=[p.read_bytes() for p in private]\nfor p in private:\n assert not p.is_symlink() and stat.S_IMODE(p.stat().st_mode)==0o600 and p.stat().st_uid==os.getuid()\n capture(['git','check-ignore','-q',str(p.relative_to(ROOT))])\nassert stat.S_IMODE((ROOT/'.local').stat().st_mode)==0o700\nproject='lorcana-online-tcg_devcontainer';workspace=capture(['docker','ps','-q','--filter','label=com.docker.compose.project='+project,'--filter','label=com.docker.compose.service=workspace']);postgres=capture(['docker','ps','-q','--filter','label=com.docker.compose.project='+project,'--filter','label=com.docker.compose.service=postgres'])\nassert workspace and postgres and capture(['docker','inspect','--format','{{.State.Health.Status}}',postgres])=='healthy'\nports=json.loads(capture(['docker','inspect','--format','{{json .NetworkSettings.Ports}}',postgres]));assert ports=={'5432/tcp':None}\nmounts=json.loads(capture(['docker','inspect','--format','{{json .Mounts}}',postgres]));assert any(m['Name']==project+'_pg18_data' and m['Destination']=='/var/lib/postgresql' for m in mounts if m['Type']=='volume')\nprobe=\"const fs=require('node:fs');for(const path of ['/proc/net/tcp','/proc/net/tcp6'])for(const line of fs.readFileSync(path,'utf8').split('\\\\n').slice(1)){const f=line.trim().split(/\\\\s+/);if(f[3]==='0A'&&[5173,3001,3002].includes(parseInt(f[1].split(':').at(-1),16)))throw Error('Owned foundation listener remains');}console.log('PASS no owned foundation listeners5173/3001/3002');\"\nprint(capture(['docker','exec','-u','node',workspace,'node','-e',probe]));assert before==[p.read_bytes() for p in private]\nprint('PASS original healthy private database/volume and owner-only ignored private files preserved')\nprint('Observed remote-main policy:',capture(['gh','api','repos/chroniicallydiistracted/lorcana-online-tcg/branches/main','--jq','{name,protected,sha:.commit.sha}']))\nprint('Observed hosted workflow state:',capture(['gh','run','list','--branch','main','--limit','5','--json','databaseId,headSha,status,conclusion,url,workflowName']))\nprint('Prior publication actions with their own captured UTC/exit/output, distinct from this read-only verification:')\nprint(Path('/tmp/lorcana-publication-events.json').read_text())\n"
+  ],
+  "cwd": "/home/andre/lorcana-online-tcg",
+  "environment": {
+    "node": "24.21.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "pnpm": "10.33.0",
+    "executor": "Read-only WSL Python/Docker inspection and Dev Container listener probe",
+    "compose_project": "lorcana-online-tcg_devcontainer"
+  },
+  "source_commit": "612a8c98b9376298870dc2a2dd772e897daf7911",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-07T06:23:32.564Z",
+  "finished_at": "2026-10-07T06:23:34.884Z",
+  "recorded_at": "2026-10-07T06:23:34.884Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2320,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Read-only publication verification: five exact remote ancestor branches and merged main, preserved private environment/data/listeners and observed hosted state; prior Git action times remain separate",
+  "log_path": "docs/validation/logs/RUN-20261007-059.txt",
+  "log_sha256": "0a4744d5dab9d210e198a584b61d32cc5b7de586334adb4ae3978cb9d9785d40",
+  "redactions": 0
+}

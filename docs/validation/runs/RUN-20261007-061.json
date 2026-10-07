@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-061",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{readFileSync}from'node:fs';import{verifyArtifacts}from'./scripts/ci/artifacts.mjs';import{sourceFingerprint}from'./scripts/documentation-lib.mjs';import{privateRedactionValues}from'./scripts/evidence-lib.mjs';const base='.local/hosted-publication-37581249875';const observation=JSON.parse(readFileSync(base+'/observation.json'));const root=base+'/artifacts';const artifact=verifyArtifacts(root,{knownSecrets:Object.values(privateRedactionValues(process.cwd()))});if(observation.run.conclusion!=='success'||observation.run.status!=='completed'||observation.jobs.jobs.some(j=>j.conclusion!=='success')||artifact.identity.source_commit!==observation.run.head_sha||artifact.identity.source_fingerprint!==sourceFingerprint())throw Error('Hosted source/result mismatch');const pipeline=JSON.parse(readFileSync(root+'/pipeline.json'));if(pipeline.result!=='passed'||pipeline.stages.length!==12)throw Error('Hosted pipeline incomplete');const release=JSON.parse(readFileSync(root+'/release-manifest.json'));const sbom=JSON.parse(readFileSync(root+'/sbom.cdx.json'));const audit=JSON.parse(readFileSync(root+'/dependency-audit.json'));const log=readFileSync(base+'/job.log','utf8');const counts=log.match(/(?:ℹ tests|# tests|Ran |[0-9]+ passed)[^\\r\\n]{0,45}/g);if(!log.includes('6 passed')||!log.includes('PASS isolated pipeline and cleanup'))throw Error('Hosted browser/cleanup result absent');console.log(JSON.stringify({observedRun:{id:observation.run.id,url:observation.run.html_url,sha:observation.run.head_sha,status:observation.run.status,conclusion:observation.run.conclusion},jobs:observation.jobs.jobs.map(j=>({id:j.id,conclusion:j.conclusion,started_at:j.started_at,completed_at:j.completed_at,runner_name:j.runner_name,labels:j.labels,steps:j.steps})),artifact:observation.artifacts.artifacts.map(a=>({id:a.id,name:a.name,size_in_bytes:a.size_in_bytes,digest:a.digest,created_at:a.created_at})),identity:artifact.identity,payloadEntries:artifact.files.length,releaseId:release.releaseId,components:sbom.components.length,pipeline,counts,audit},null,2));console.log('PASS actual completed GitHub foundation run and downloaded artifact98/source fingerprint, all12 stages, browser6 and owned cleanup; API times are reported remote times, this wrapper captures local artifact verification');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "612a8c98b9376298870dc2a2dd772e897daf7911",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-07T06:31:27.272Z",
+  "finished_at": "2026-10-07T06:31:27.652Z",
+  "recorded_at": "2026-10-07T06:31:27.652Z",
+  "time_precision": "exact",
+  "elapsed_ms": 380,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Verify actual successful hosted Actions source612a8c9/artifact98 against final source: reported job/stage timestamps, foundation94/live DB5/browser6, image/lock/release identity and cleanup; local artifact verification",
+  "log_path": "docs/validation/logs/RUN-20261007-061.txt",
+  "log_sha256": "02997d7b90de65894d51d2f9ac7c67c4b87968a89b85091cdc1389da60296f4b",
+  "redactions": 0
+}

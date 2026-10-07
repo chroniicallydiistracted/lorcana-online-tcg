@@ -1,0 +1,317 @@
+{
+  "observedRun": {
+    "id": 37581249875,
+    "url": "https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/37581249875",
+    "sha": "612a8c98b9376298870dc2a2dd772e897daf7911",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "jobs": [
+    {
+      "id": 112661187206,
+      "conclusion": "success",
+      "started_at": "2026-10-07T06:23:42Z",
+      "completed_at": "2026-10-07T06:26:55Z",
+      "runner_name": "GitHub Actions 1000001822",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T06:23:42Z",
+          "completed_at": "2026-10-07T06:23:43Z"
+        },
+        {
+          "name": "Checkout full evidence history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T06:23:43Z",
+          "completed_at": "2026-10-07T06:23:44Z"
+        },
+        {
+          "name": "Run the same isolated local pipeline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T06:23:44Z",
+          "completed_at": "2026-10-07T06:26:52Z"
+        },
+        {
+          "name": "Preserve identified foundation build evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T06:26:52Z",
+          "completed_at": "2026-10-07T06:26:53Z"
+        },
+        {
+          "name": "Post Checkout full evidence history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T06:26:53Z",
+          "completed_at": "2026-10-07T06:26:54Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T06:26:54Z",
+          "completed_at": "2026-10-07T06:26:54Z"
+        }
+      ]
+    }
+  ],
+  "artifact": [
+    {
+      "id": 11464937175,
+      "name": "foundation-612a8c98b9376298870dc2a2dd772e897daf7911-1",
+      "size_in_bytes": 681204,
+      "digest": "sha256:d1d2309dba8f26fd04a5a01973df708fe5aaec72b957fb225387139f6391e763",
+      "created_at": "2026-10-07T06:26:53Z"
+    }
+  ],
+  "identity": {
+    "source_commit": "612a8c98b9376298870dc2a2dd772e897daf7911",
+    "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+    "lock_sha256": "4cc15fc579a76704225d9152f222b4dd784489ec0bd6627eb59f2f3b4174a882",
+    "dirty": false,
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "project": "lorcana-ci-040345a27ac1488198c10649cf89386c",
+    "workspace_image_id": "sha256:7dd429f4f888acc8ab9386ac5c6625422de6c7f2e9234411428f483ff713f6d8",
+    "postgres_image": "postgres:18@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722"
+  },
+  "payloadEntries": 98,
+  "releaseId": "foundation-9f29280ecb3862c79b7cbee41f0c17fb2203944ac65789610c58e564d02eaaa7",
+  "components": 200,
+  "pipeline": {
+    "schema_version": 1,
+    "result": "passed",
+    "stages": [
+      {
+        "name": "frozen-install",
+        "command": [
+          "pnpm",
+          "install",
+          "--frozen-lockfile"
+        ],
+        "started_at": "2026-10-07T06:24:33.317Z",
+        "finished_at": "2026-10-07T06:24:33.973Z",
+        "elapsed_ms": 655,
+        "result": "passed"
+      },
+      {
+        "name": "doctor",
+        "command": [
+          "pnpm",
+          "run",
+          "doctor"
+        ],
+        "started_at": "2026-10-07T06:24:33.973Z",
+        "finished_at": "2026-10-07T06:24:34.709Z",
+        "elapsed_ms": 737,
+        "result": "passed"
+      },
+      {
+        "name": "foundation",
+        "command": [
+          "pnpm",
+          "verify:foundation"
+        ],
+        "started_at": "2026-10-07T06:24:34.709Z",
+        "finished_at": "2026-10-07T06:25:51.757Z",
+        "elapsed_ms": 77047,
+        "result": "passed"
+      },
+      {
+        "name": "bootstrap-database",
+        "command": [
+          "pnpm",
+          "db:check"
+        ],
+        "started_at": "2026-10-07T06:25:51.757Z",
+        "finished_at": "2026-10-07T06:25:52.187Z",
+        "elapsed_ms": 430,
+        "result": "passed"
+      },
+      {
+        "name": "restricted-database",
+        "command": [
+          "pnpm",
+          "db:provision"
+        ],
+        "started_at": "2026-10-07T06:25:52.187Z",
+        "finished_at": "2026-10-07T06:25:54.488Z",
+        "elapsed_ms": 2301,
+        "result": "passed"
+      },
+      {
+        "name": "local-migration",
+        "command": [
+          "pnpm",
+          "db:migrate",
+          "--",
+          "--target",
+          "local"
+        ],
+        "started_at": "2026-10-07T06:25:54.488Z",
+        "finished_at": "2026-10-07T06:25:56.618Z",
+        "elapsed_ms": 2130,
+        "result": "passed"
+      },
+      {
+        "name": "test-migration",
+        "command": [
+          "pnpm",
+          "db:migrate",
+          "--",
+          "--target",
+          "test"
+        ],
+        "started_at": "2026-10-07T06:25:56.618Z",
+        "finished_at": "2026-10-07T06:25:58.728Z",
+        "elapsed_ms": 2110,
+        "result": "passed"
+      },
+      {
+        "name": "local-identities",
+        "command": [
+          "pnpm",
+          "db:health",
+          "--",
+          "--target",
+          "local"
+        ],
+        "started_at": "2026-10-07T06:25:58.728Z",
+        "finished_at": "2026-10-07T06:26:00.883Z",
+        "elapsed_ms": 2155,
+        "result": "passed"
+      },
+      {
+        "name": "test-identities",
+        "command": [
+          "pnpm",
+          "db:health",
+          "--",
+          "--target",
+          "test"
+        ],
+        "started_at": "2026-10-07T06:26:00.883Z",
+        "finished_at": "2026-10-07T06:26:03.042Z",
+        "elapsed_ms": 2159,
+        "result": "passed"
+      },
+      {
+        "name": "live-database",
+        "command": [
+          "pnpm",
+          "db:test"
+        ],
+        "started_at": "2026-10-07T06:26:03.042Z",
+        "finished_at": "2026-10-07T06:26:07.268Z",
+        "elapsed_ms": 4226,
+        "result": "passed"
+      },
+      {
+        "name": "pinned-chromium",
+        "command": [
+          "pnpm",
+          "--filter",
+          "@lorcana/web",
+          "exec",
+          "playwright",
+          "install",
+          "chromium"
+        ],
+        "started_at": "2026-10-07T06:26:07.268Z",
+        "finished_at": "2026-10-07T06:26:16.750Z",
+        "elapsed_ms": 9482,
+        "result": "passed"
+      },
+      {
+        "name": "browser",
+        "command": [
+          "pnpm",
+          "test:e2e:smoke"
+        ],
+        "started_at": "2026-10-07T06:26:16.750Z",
+        "finished_at": "2026-10-07T06:26:39.917Z",
+        "elapsed_ms": 23166,
+        "result": "passed"
+      }
+    ],
+    "source_scan": "passed",
+    "dependency_scans": "passed",
+    "limitations": [
+      "Local/headless foundation evidence only; no deployment or Windows/GPU qualification."
+    ]
+  },
+  "counts": [
+    "ℹ tests 1",
+    "Ran 4 tests in 0.003s",
+    "ℹ tests 7",
+    "ℹ tests 6",
+    "ℹ tests 1",
+    "ℹ tests 8",
+    "ℹ tests 12",
+    "ℹ tests 24",
+    "Ran 10 tests in 0.020s",
+    "ℹ tests 11",
+    "Ran 10 tests in 0.049s",
+    "ℹ tests 5",
+    "6 passed (21.9s)"
+  ],
+  "audit": {
+    "recorded_at": "2026-10-07T06:26:48.529Z",
+    "command": [
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "result": "passed",
+    "blocking_severities": [
+      "high",
+      "critical"
+    ],
+    "response": {
+      "actions": [],
+      "advisories": {},
+      "muted": [],
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0
+        },
+        "dependencies": 235,
+        "devDependencies": 0,
+        "optionalDependencies": 0,
+        "totalDependencies": 235
+      }
+    },
+    "license_file_gaps": [
+      "@humanfs/types@0.15.0",
+      "@rolldown/binding-linux-x64-gnu@1.2.12",
+      "abstract-logging@2.0.1",
+      "client-only@0.0.1",
+      "drizzle-orm@0.45.3",
+      "esrecurse@4.3.0",
+      "imurmurhash@0.1.4",
+      "natural-compare@1.4.0",
+      "pg-types@2.2.0",
+      "pgpass@1.0.5"
+    ]
+  }
+}
+PASS actual completed GitHub foundation run and downloaded artifact98/source fingerprint, all12 stages, browser6 and owned cleanup; API times are reported remote times, this wrapper captures local artifact verification

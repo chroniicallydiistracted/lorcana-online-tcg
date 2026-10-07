@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261007-004",
+  "title": "First successful hosted qualification and final publication handoff",
+  "actor": "Codex architect/developer/QA",
+  "status": "finalized",
+  "recorded_at": "2026-10-07T06:38:33.983Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "612a8c98b9376298870dc2a2dd772e897daf7911",
+  "task_ids": [
+    "BOOT-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-CI",
+    "F-DOCS",
+    "F-EVIDENCE"
+  ],
+  "changes": [
+    {
+      "kind": "revision",
+      "description": "Continue finalized CHG-20261007-003 publication snapshot with newly observed actual hosted source612a8c9 success; preserve the earlier in-progress snapshot and original branch/commit history."
+    },
+    {
+      "kind": "test",
+      "description": "RUN061 verifies actual completed GitHub run37581249875 and downloaded artifact98 against published source/image/lock/release/executable fingerprint, all12 stages, foundation94/live DB5/browser6/owned cleanup; reported remote times remain distinct from local verification."
+    },
+    {
+      "kind": "documentation",
+      "description": "Update relevant instructions/README/features/BOOT-03 register/CI/qualification/audit/current handoff with source-specific hosted evidence. No code/dependency/config/private data/visibility/settings change. BOOT-04/device/required-check/production remain separate."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261007-003.json",
+    "docs/changes/CHG-20261007-004.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/ci.md",
+    "docs/validation/boot-03.md",
+    "docs/validation/logs/RUN-20261007-058.txt",
+    "docs/validation/logs/RUN-20261007-059.txt",
+    "docs/validation/logs/RUN-20261007-060.txt",
+    "docs/validation/logs/RUN-20261007-061.txt",
+    "docs/validation/logs/RUN-20261007-062.txt",
+    "docs/validation/runs/RUN-20261007-058.json",
+    "docs/validation/runs/RUN-20261007-059.json",
+    "docs/validation/runs/RUN-20261007-060.json",
+    "docs/validation/runs/RUN-20261007-061.json",
+    "docs/validation/runs/RUN-20261007-062.json",
+    "docs/vision/README.md",
+    "docs/vision/initial_backlog.csv"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Actual hosted source612a8c9 success/downloaded RUN061 supersedes earlier hosted-pending snapshots. Update current source-specific qualification/action status while preserving publication/history and pending required-check/cancellation/BOOT-04/device/production gates."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-061.json",
+      "outcome": "passed",
+      "scope": "Actual remote success/job/stage/artifact identity and local downloaded archive verification; API remote execution times are reported, wrapper times measure local verification."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261007-062.json",
+      "outcome": "passed",
+      "scope": "Final current/canonical publication and completed-hosted qualification documentation, history/known-secret/format gates; unchanged executable fingerprint; final hosted-success prose matches current/canonical bytes, unchanged qualified executable fingerprint."
+    }
+  ],
+  "limitations": [
+    "Hosted qualification covers source612a8c9 and matching executable fingerprint; later documentation commits trigger separate workflow observations.",
+    "Required checks/branch-protection/cancellation policy, BOOT-04, Windows/hardware, OS/legal/signature/content/engine and production gates remain pending; no settings/spending/deployment changes."
+  ],
+  "next_actions": [
+    "RULE-01: acquire official current source bytes/rules diff/set/printing/skipped-test inventory with hashes/denominators/release status.",
+    "Check latest main workflow at next intake; qualified source612a8c9/executable fingerprint remains explicit, later metadata commits have separate runs.",
+    "BOOT-04, required-check/cancellation/settings and Windows/device/product/production retain documented prerequisites."
+  ]
+}

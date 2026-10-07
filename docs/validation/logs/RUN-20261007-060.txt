@@ -1,0 +1,19 @@
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":514,"documents":396,"functions":582,"changes":9,"runs":155}
+PASS JSON parsing and JavaScript syntax checks
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+
+> lorcana-online-tcg@0.0.0 verify /tmp/lorcana-final-docs-dJW9a2
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":514,"documents":396,"functions":582,"changes":9,"runs":155}
+PASS JSON parsing and JavaScript syntax checks
+PASS canonical final staged source/document static verification with existing dependencies; full-history sealing checked in original checkout
+PASS finalized documentation/static/current and full-history secret/staged formatting/canonical byte checks; executable identity unchanged
