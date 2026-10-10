@@ -1,6 +1,6 @@
 # Current developer handoff
 
-Observed at: 2026-10-10T05:26:28Z; display timezone America/Phoenix (2026-10-09 22:26). Actor: Claude Code agent (architect/research role) on the Director's BOOT-04 request. Active change: [CHG-20261010-001](changes/CHG-20261010-001.json), finalized after the documentation checks below.
+Observed at: 2026-10-10T05:26:28Z; display timezone America/Phoenix (2026-10-09 22:26). Actor: Claude Code agent (architect/research role) on the Director's BOOT-04 request. Changes: [CHG-20261010-001](changes/CHG-20261010-001.json) (BOOT-04 worksheet, finalized) and [CHG-20261010-002](changes/CHG-20261010-002.json) (Director-authorized main integration).
 
 - **Objective and authorized scope:**
   - BOOT-04 decision worksheet with DOC-01/02 records: providers, vendors, services, the exact dependency baseline, environments, DNS and secret inventory, and line-item quotes.
@@ -9,7 +9,8 @@ Observed at: 2026-10-10T05:26:28Z; display timezone America/Phoenix (2026-10-09 
   - No spending, accounts, provisioning, DNS, deployment, credentials, visibility or settings changes were authorized or performed.
 - **Repository:**
   - Claude Code cloud checkout `/home/user/lorcana-online-tcg`, branch `claude/lorcana-tcg-stack-research-6vyhh9`, from main `5819142f76a1ea853b804af8b768048a3dccc4dd`. Origin is `https://github.com/chroniicallydiistracted/lorcana-online-tcg.git`, observed `public` on 2026-10-10.
-  - Task-owned edits are committed and pushed to that branch; nothing was merged to main.
+  - Task-owned edits are committed and pushed to that branch. On 2026-10-10 UTC the Director authorized integration into main ([CHG-20261010-002](changes/CHG-20261010-002.json)): main fast-forwards to the commit containing that record (identify its SHA through Git). No history was rewritten, and the branch is retained.
+  - Pushing main triggers the foundation workflow; observe its actual result before treating that commit as hosted-qualified.
   - The Director's WSL source `/home/andre/lorcana-online-tcg`, `.env.local`, private database and Dev Container were not accessed.
 - **Execution:**
   - Claude Code remote cloud container (Linux x64, 4 vCPU). No Docker daemon, so the committed Dev Container could not run.
@@ -25,6 +26,7 @@ Observed at: 2026-10-10T05:26:28Z; display timezone America/Phoenix (2026-10-09 
 - **Verification** (static category, cloud container, not Dev Container):
   - RUN-20261010-001: `pnpm docs:check` on the draft snapshot.
   - RUN-20261010-002: `pnpm test:documentation`.
+  - RUN-20261010-003: `pnpm docs:check` for the integration record.
   - The outcomes are in the change record. The final post-finalization `pnpm docs:check` was rerun without the recorder. No application, database, browser, device or production checks apply to this documentation-only change.
 - **Listeners/resources:** no processes or ports were started in the repository. Scratch artifacts (upstream clone, benchmark harness, Node 24 tarball) live outside the repository in the ephemeral session container.
 - **Pending gates:**

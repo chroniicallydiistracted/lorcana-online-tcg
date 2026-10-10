@@ -2,6 +2,41 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261010-002 — Director-authorized BOOT-04 branch integration into main
+
+- Status: finalized
+- Actor: Claude Code agent (architect/research role) on Director request
+- Recorded (UTC): 2026-10-10T19:09:21.954Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 2fa0ab79619700569014b795d220221c9ab930c5
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **revision:** The Director authorized pushing and merging claude/lorcana-tcg-stack-research-6vyhh9 (finalized CHG-20261010-001 at 2fa0ab7) into main on 2026-10-10. Main fast-forwards to the commit containing this record; no history rewrite, and the branch is retained.
+- **documentation:** Handoff now states main integration and that the triggered foundation workflow result must be observed, not inferred.
+
+### Verification
+
+- **passed:** Static docs:check of the integration record and updated handoff on the draft snapshot; unchanged executable fingerprint; cloud container, not the Dev Container. Hosted workflow on the new main commit is observed separately. ([evidence](docs/validation/runs/RUN-20261010-003.json))
+
+### Documentation and files
+
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — The repository/branch status changed from branch-only to Director-authorized main integration; the hosted workflow for the new main commit is pending observation.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Merging does not change any decision, quote or pending sign-off/provisioning status.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — BOOT-04 status is unchanged by integration; sign-off and configuration remain pending.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261010-002.json).
+
+### Limits and next actions
+
+- The integration publishes documentation only; no account, purchase, DNS, deployment or setting change.
+- Hosted foundation workflow results for the new main commit must be observed separately.
+- Observe the foundation workflow on the new main commit.
+- Director completes the BOOT-04 worksheet §12 sign-off.
+
 ## CHG-20261010-001 — BOOT-04 finalized provider, stack and spend decision worksheet
 
 - Status: finalized
