@@ -1,0 +1,19 @@
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":548,"documents":430,"functions":582,"changes":12,"runs":166}
+PASS JSON parsing and JavaScript syntax checks
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":548,"documents":430,"functions":582,"changes":12,"runs":166}
+file:///workspaces/lorcana-online-tcg/scripts/ci/security.mjs:18
+    if(knownSecrets.some(value=>value.length>=16&&text.includes(value)))found.push({path,rule:'known_credential'});
+                    ^
+
+TypeError: knownSecrets.some is not a function
+    at scanSecrets (file:///workspaces/lorcana-online-tcg/scripts/ci/security.mjs:18:21)
+    at sourceSecretScan (file:///workspaces/lorcana-online-tcg/scripts/ci/security.mjs:96:15)
+    at file:///workspaces/lorcana-online-tcg/[eval1]:3:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:223:26
+    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:220:20)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.21.0

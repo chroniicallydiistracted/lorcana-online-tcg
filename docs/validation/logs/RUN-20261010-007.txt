@@ -1,0 +1,60 @@
+
+> lorcana-online-tcg@0.0.0 test:documentation /workspaces/lorcana-online-tcg
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (340.801621ms)
+✔ source changes during a command prevent a successful evidence claim (319.2256ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1821.143611ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.370008ms)
+✔ credentials generated during a child command are redacted before durable logs (303.339191ms)
+✔ unsafe generated credential configuration withholds all output and records a schema-valid failure (352.8785ms)
+✖ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1989.311446ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.659738ms)
+✔ new documentation governance exposes real validation and sync operations (0.991632ms)
+✔ source drift requires a covering change and review of impacted documentation (351.918289ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (90.824143ms)
+✔ change records reject unqualified timestamps and historical execution inventions (16.334038ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (80.87296ms)
+✔ documentation edits and newly added source files require recorded coverage (130.379344ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (16.945533ms)
+✔ committed finalized history cannot be changed or deleted (152.656423ms)
+✔ log tampering and exit status contradictions invalidate execution evidence (230.796004ms)
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history (84.043382ms)
+✔ removing old source-impact edges cannot erase required documentation reviews (86.655964ms)
+✔ committing a rewrite does not make sealed history valid (153.287912ms)
+✔ executed passing evidence needs a log and consistent execution/recording times (54.964915ms)
+✔ isolated branches are not required to contain unrelated scope history (148.280171ms)
+✔ a misspelled documentation impact path cannot silently disable reviews (17.716404ms)
+✔ human device reports preserve verdict without inventing process exit or machine verification (199.976114ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 23
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5388.841595
+
+✖ failing tests:
+
+test at tests/documentation/evidence.test.mjs:63:1
+✖ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1989.311446ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'clock_changed'
+  - 'timeout'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/evidence.test.mjs:68:68)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'clock_changed',
+    expected: 'timeout',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Command failed with exit code 1.
+
+[Recorder failure: clock_changed]

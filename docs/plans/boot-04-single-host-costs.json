@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-08T18:24:36.918Z",
+  "status": "proposal_not_approved",
+  "currency": "USD",
+  "purpose": "Single-host October8 comparison; dated advertised rates and declared quantities, not equivalent capacity or complete invoices. Refresh account/region/stock/options before purchase.",
+  "source_metadata": "docs/plans/boot-04-single-host-sources.json",
+  "shared": {
+    "r2_storage": {
+      "public_gb": 50,
+      "private_backup_replay_gb": 50,
+      "account_free_gb": 10,
+      "billable_gb": 90,
+      "usd_per_gb_month": 0.015,
+      "monthly_usd": 1.35,
+      "source_id": "cloudflare-r2",
+      "limitation": "100GB total modeled resident storage; operations assumed below account-wide free quotas, not measured retention/usage. Separate public/private buckets and credentials."
+    },
+    "dokploy_software_monthly_usd": 0,
+    "monitoring_email": "Free quota fixtures only; no required paid collaborator/email plan. Resend upgrade optional20USD/month; no auth/email provider selected."
+  },
+  "candidates": [
+    {
+      "id": "hetzner-na-ccx23",
+      "host": "CCX23",
+      "hardware": "4 dedicated vCPU /16GB /160GB NVMe",
+      "region": "Ashburn or Hillsboro",
+      "host_monthly_usd": 102.99,
+      "host_source_id": "hetzner-rate-update",
+      "host_rate_selector": "USA ASH/HIL CCX23 new USD monthly, excluding IPv4/VAT; 0.1650 hourly cap102.99",
+      "ipv4_monthly_usd": 0.6,
+      "ipv4_source_id": "hetzner-ip",
+      "setup_usd": null,
+      "known_monthly_subtotal_usd": 104.94,
+      "qualification": "Size is a measurement candidate, not verified50-player capacity. Cloud virtual cores are not physical bare-metal cores; stock/account final quote pending."
+    },
+    {
+      "id": "hetzner-na-ccx33",
+      "host": "CCX33",
+      "hardware": "8 dedicated vCPU /32GB /240GB NVMe",
+      "region": "Ashburn or Hillsboro",
+      "host_monthly_usd": 165.99,
+      "host_source_id": "hetzner-rate-update",
+      "host_rate_selector": "USA ASH/HIL CCX33 new USD monthly, excluding IPv4/VAT; 0.2660 hourly cap165.99",
+      "ipv4_monthly_usd": 0.6,
+      "ipv4_source_id": "hetzner-ip",
+      "setup_usd": null,
+      "known_monthly_subtotal_usd": 167.94,
+      "qualification": "Optional headroom, no benchmark or provider stock verification."
+    },
+    {
+      "id": "hetzner-eu-ax42",
+      "host": "AX42-1",
+      "hardware": "8 physical cores Ryzen7PRO8700GE /64GB ECC /2x512GB NVMe",
+      "region": "Falkenstein or Helsinki",
+      "host_monthly_usd": 117.1,
+      "host_source_id": "hetzner-rate-update",
+      "host_rate_selector": "Falkenstein/Helsinki AX42-1 USD monthly117.10/setup59 excluding IPv4/VAT, not LTD/auction",
+      "ipv4_monthly_usd": 1.9,
+      "ipv4_source_id": "hetzner-ip",
+      "setup_usd": 59,
+      "known_monthly_subtotal_usd": 120.35,
+      "qualification": "European bare metal; transatlantic origin latency remains. Not a NA dedicated-root offer."
+    },
+    {
+      "id": "ovh-us-advance3-2024",
+      "host": "Advance-3 2024 starting configuration",
+      "hardware": "12 physical cores EPYC4464P /64GB minimum /NVMe",
+      "region": "US-market listing; exact eligible location pending configuration quote",
+      "host_monthly_usd": 255,
+      "host_source_id": "ovh-advance-us",
+      "host_rate_selector": "Advance-3 2024 starting monthly255 and installation255; do not use 2026 variant332",
+      "ipv4_monthly_usd": null,
+      "ipv4_source_id": null,
+      "setup_usd": 255,
+      "known_monthly_subtotal_usd": 256.35,
+      "qualification": "Starting-price signal only; stock, regional eligibility, memory/disks/IP and account options may add charges."
+    }
+  ],
+  "unpriced": [
+    "Tax",
+    "Domain registration/renewal",
+    "Cloud setup/account adjustments not separately quoted",
+    "OVH selected regional/configuration/IP options",
+    "R2 operations above shared free quotas",
+    "Host traffic above included allowances",
+    "Backup/WAL growth, retention and restore-host usage",
+    "Optional extra staging/bot compute and mail/monitor quotas",
+    "Human operations/moderation; art/device/development-tool budget outside this infrastructure worksheet"
+  ],
+  "comparison": "October7 stage+beta263.26 worksheet included different resource/recovery/operator assumptions and paid shared services. It remains dated conditional evidence, not this proposal's minimum or measured equivalent."
+}

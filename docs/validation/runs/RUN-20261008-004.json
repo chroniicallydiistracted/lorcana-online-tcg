@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261008-004",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';import {readFileSync,statSync} from 'node:fs';import assert from 'node:assert/strict';import {sourceSecretScan} from './scripts/ci/security.mjs';import {privateRedactionValues} from './scripts/evidence-lib.mjs';import {sourceFingerprint} from './scripts/documentation-lib.mjs';\nconst root=process.cwd();for(const args of [['verify'],['docs:check']]){const x=spawnSync('pnpm',args,{stdio:'inherit'});assert.equal(x.status,0);}\nsourceSecretScan(root,privateRedactionValues(root));\nassert.equal(sourceFingerprint(root),JSON.parse(readFileSync('docs/validation/runs/RUN-20261008-001.json')).source_fingerprint);\nconst changed=spawnSync('git',['diff','--name-only','HEAD','--','apps','packages','scripts','tests','.devcontainer','.github','.vscode','infra/compose.persistence.yaml','infra/compose.ci.yaml','package.json','pnpm-lock.yaml','pnpm-workspace.yaml','toolchain.json','tsconfig.base.json','eslint.config.mjs'],{encoding:'utf8'});assert.equal(changed.status,0);assert.equal(changed.stdout.trim(),'');\nfor(const file of ['.env.local','.local/database.json']){const s=statSync(file);assert.equal(s.mode&0o777,0o600);assert.equal(s.uid,1000);assert.equal(spawnSync('git',['check-ignore','-q',file]).status,0);}\nconst ports=new Set([5173,3001,3002]);for(const file of ['/proc/net/tcp','/proc/net/tcp6'])for(const line of readFileSync(file,'utf8').trim().split('\\n').slice(1)){const a=line.trim().split(/\\s+/);if(a[3]==='0A')assert(!ports.has(parseInt(a[1].split(':').at(-1),16)));}\nconst fmt=spawnSync('git',['diff','--check','--','.',':(exclude)docs/validation/logs/**'],{stdio:'inherit'});assert.equal(fmt.status,0);console.log('PASS unchanged executable/config/dependency fingerprint; owner-only ignored private files; no listeners5173/3001/3002; formatting. No provider/device qualification.');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "5819142f76a1ea853b804af8b768048a3dccc4dd",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-08T18:35:40.469Z",
+  "finished_at": "2026-10-08T18:35:50.745Z",
+  "recorded_at": "2026-10-08T18:35:50.745Z",
+  "time_precision": "exact",
+  "elapsed_ms": 10277,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Final research docs/config/history and safe known-secret checks; unchanged implementation/private-file/source/owned-port preservation; no deployment or device qualification",
+  "log_path": "docs/validation/logs/RUN-20261008-004.txt",
+  "log_sha256": "b958aa3501a3890f38ddb9a56802ebeed7f6c27754bcc0a319bda1e74e8314d1",
+  "redactions": 0
+}

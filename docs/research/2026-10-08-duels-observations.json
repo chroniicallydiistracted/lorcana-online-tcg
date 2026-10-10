@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-08T18:24:36.918Z",
+  "category": "headless_browser_research",
+  "subject": "https://duels.ink/",
+  "scope": "Accessible public product breadth, one self-created guest bot game, console/network listings and eight delivered JS assets; not total authenticated-site/backend inspection.",
+  "observer": "Codex via Chrome DevTools MCP",
+  "environment": {
+    "observed_at": "2026-10-08T18:18:11.157Z",
+    "platform": "Linux x86_64",
+    "browser": "Chrome149.0.0.0",
+    "viewport": {
+      "width": 1705,
+      "height": 937
+    },
+    "session": "Separate automated profile initially anonymous, later an own guest bot session; Director's signed-in Codex tab inaccessible."
+  },
+  "access_limit": {
+    "windows_computer_use_error": "sandboxCwd is not a local file URI: file:///home/andre/lorcana-online-tcg",
+    "signed_in_session": "Requested; not available during recorded inspection. No OAuth login performed."
+  },
+  "director_report": {
+    "occurred_at": null,
+    "source": "Human-supplied developer message and Director experience in this conversation",
+    "reported_stack": [
+      "One dedicated host for app/Postgres/Redis",
+      "Dokploy",
+      "10 WebSocket workers;5 HTTP workers;some bot workers",
+      "Postgres connection pooler;Redis Pub/Sub",
+      "Cloudflare DNS/CDN/card-image hosting",
+      "Strong CPU recommendation about12cores/64GB;Hetzner suggested"
+    ],
+    "concurrency": "Director reports300+ concurrent users; not independently measured"
+  },
+  "coverage": [
+    {
+      "route": "/",
+      "observation": "Homepage/live counters/embedded public replay and guest bot entry examined; counters are site-reported, not benchmark evidence.",
+      "observed_at": null
+    },
+    {
+      "route": "/cards",
+      "observation": "3456-card library listing with filters/search/size controls; one named-card detail dialog and full WebP image inspected. Every card/search/filter combination not tested.",
+      "observed_at": null
+    },
+    {
+      "route": "/puzzles",
+      "observation": "92-puzzle listing and community/progress/sorting surfaces inspected. Practice puzzle entry opened a sign-in dialog, so puzzle execution not tested.",
+      "observed_at": null
+    },
+    {
+      "route": "/learn",
+      "observation": "Coaching/creator guide listing inspected; external paid guide checkout not opened.",
+      "observed_at": null
+    },
+    {
+      "route": "/stats/core-bo1",
+      "observation": "Loaded season/queue/rank filters, color-pair statistics and community aggregate view observed; published totals are not independently verified.",
+      "observed_at": "2026-10-08T18:17:07.446Z"
+    },
+    {
+      "route": "/leaderboard",
+      "observation": "Public rank/rating/game/win-rate listing and season/queue controls; no player-private data inspected.",
+      "observed_at": null
+    },
+    {
+      "route": "/decks/public",
+      "observation": "Suggested/starter/Coconut category navigation observed.",
+      "observed_at": null
+    },
+    {
+      "route": "/decks/public/suggested",
+      "observation": "Preset60-card deck summaries with view/copy controls observed; no clipboard action or saved deck change.",
+      "observed_at": "2026-10-08T18:16:55.585Z"
+    },
+    {
+      "route": "/decks/community",
+      "observation": "Community deck listing, format and sort controls observed; no likes/comments/publication.",
+      "observed_at": "2026-10-08T18:17:01.285Z"
+    },
+    {
+      "route": "/about",
+      "observation": "Free fan simulator, community/distribution statements and donation/affiliate funding disclosures read; these do not approve our rights or change our all-features-free policy.",
+      "observed_at": null
+    },
+    {
+      "route": "/privacy",
+      "observation": "October2 policy names OVHcloud France app/DB/Redis, Hetzner Nuremberg replay/log/backup storage, Cloudflare card/CDN/DNS and EU PostHog proxy; site-published claims, not backend verification.",
+      "observed_at": null
+    },
+    {
+      "route": "/login",
+      "observation": "Google/Discord OAuth and guest alternatives observed; authentication not performed.",
+      "observed_at": "2026-10-08T18:17:13.569Z"
+    },
+    {
+      "route": "/table/<own-guest-table>",
+      "observation": "Created through Try a bot game; selected preset deck, toggled ready, started a normal bot game. No invitations, chat or human opponent.",
+      "observed_at": null
+    },
+    {
+      "route": "/game/<own-guest-game>",
+      "observation": "Kept hand; ended first turn; bot inked/played character/ended turn; turn3 hand/board/log visible after reload; explicitly ended bot game and returned home. No load/fault injection or ranked result.",
+      "observed_at": "2026-10-08T18:15:45.171Z",
+      "game_board_sample": {
+        "observed_at": "2026-10-08T18:14:34.942Z",
+        "canvas_count": 0,
+        "hand_card_images": 7,
+        "buttons": 6,
+        "svg_elements": 8
+      },
+      "cleanup": {
+        "game_ended": true,
+        "returned_home": true,
+        "exact_event_time": null
+      }
+    }
+  ],
+  "network_summary": {
+    "normal_read_routes": [
+      "/api/auth/get-session",
+      "/api/settings/public",
+      "/api/home/data",
+      "/api/table/access",
+      "/api/sealed/queues",
+      "/api/version",
+      "/api/replay/home-preview",
+      "/api/puzzle/community",
+      "/api/learn/guides",
+      "/api/learn/creators",
+      "/api/learn/counts",
+      "/api/stats/meta",
+      "/api/leaderboard",
+      "/_serverFn/<hash>"
+    ],
+    "guest_game_routes": [
+      "POST /api/table/create ->200",
+      "POST /api/table/<id>/action ->200",
+      "GET /api/table/<id>/view ->200",
+      "GET /api/table/<id>/ws-token ->200",
+      "GET /api/game/<id>/ws-token ->200",
+      "GET /api/game/<id>/ranks ->200"
+    ],
+    "socket": {
+      "console_connection": "wss://ws2.duels.ink/game/<id>?token=[redacted]",
+      "console_connected": true,
+      "quiet_mulligan_resync_logged": true,
+      "network_tool_websocket_entries": 0,
+      "frames_captured": false
+    },
+    "assets": {
+      "origin": "Cloudflare responses observed",
+      "inspected_js_cache": "public,max-age31536000,immutable;CF-cache HIT;zstd",
+      "card_images": "Separate cards.duels.ink origin;WebP thumbnail/full paths",
+      "document_cache": "no-store;CF-cache DYNAMIC",
+      "home_data_cache": "public,max-age10,stale-while-revalidate5;CDN-cache no-store",
+      "replay_response_content_type": "application/gzip"
+    },
+    "errors": {
+      "account_only_401": [
+        "feedback unread",
+        "matchmaking heartbeat",
+        "user preferences",
+        "saved decks/folders"
+      ],
+      "content_decoding_failed": "Intermittent console error; tool returned no attributable request/stack. Cause unresolved; do not equate with failed gameplay."
+    }
+  },
+  "performance": {
+    "initial_navigation": {
+      "dom_content_loaded_ms": 1605,
+      "load_ms": 4355.9,
+      "document_transfer_bytes": 9378,
+      "protocol": "h2",
+      "observed_at": null
+    },
+    "interpretation": "Single uncontrolled automated run, not a hardware/latency/throughput benchmark or Director Windows verification; no load testing."
+  },
+  "delivered_sources": {
+    "sampled_at": "2026-10-08T18:13:56.437Z",
+    "method": "Normal anonymous fetch of advertised asset URLs in browser;SHA256 of decoded response bytes;no source bodies/maps copied into repository.",
+    "assets": [
+      {
+        "path": "/assets/index-CfhIOMYm.js",
+        "decoded_bytes": 6657340,
+        "sha256": "9a013c2a47358cee5fbe3268cf3cb2bfebdcbfc0b392d74c04b88fc18144b7be",
+        "status": 200,
+        "source_map_advertised": false
+      },
+      {
+        "path": "/assets/vendor-react-B4W_1BLO.js",
+        "decoded_bytes": 222966,
+        "sha256": "894236a1b12cfac09d372b102782e9324effd82eddfb8837d7b4f9b66d9e961e",
+        "status": 200,
+        "source_map_advertised": false
+      },
+      {
+        "path": "/assets/vendor-tanstack-Uc0FRIJ6.js",
+        "decoded_bytes": 139846,
+        "sha256": "118d51f217fe323b755b099e39e48747672cb371a8403e5b57e788a08f4c8927",
+        "status": 200,
+        "source_map_advertised": false
+      },
+      {
+        "path": "/assets/vendor-radix-CA-RlO1v.js",
+        "decoded_bytes": 167105,
+        "sha256": "8b2ce545cf0fe5097485478a63055aaf418c28c4435ecd1092f53e316fa44d7b",
+        "status": 200,
+        "source_map_advertised": false
+      },
+      {
+        "path": "/assets/game-engine-CyacNxQw.js",
+        "decoded_bytes": 5365,
+        "sha256": "f7c6456bf9da6a93f1715ec91d719e504c3c9d0dbd08f67892b3fb6b32b55916",
+        "status": 200,
+        "source_map_advertised": false
+      },
+      {
+        "path": "/assets/game-abilities-B3pxA2Pi.js",
+        "decoded_bytes": 88487,
+        "sha256": "54a2b25e0a608dea389c868a46ca878f05a9369165e09f37fd18204cf4b8cb4a",
+        "status": 200,
+        "source_map_advertised": false
+      },
+      {
+        "path": "/assets/_tableId-DUqEZ8L1.js",
+        "decoded_bytes": 79990,
+        "sha256": "28341223fe00b5b41c69cf82aa33668ce2e52ad1f048e45bd562772fd67cb6f4",
+        "status": 200,
+        "source_map_advertised": false
+      },
+      {
+        "path": "/assets/_gameId-C8Vvjd-a.js",
+        "decoded_bytes": 70383,
+        "sha256": "5cb72738af1905b35fb9734a4163a53f3d2a023d3d3c391899793eb797461fc1",
+        "status": 200,
+        "source_map_advertised": false
+      }
+    ],
+    "observed_indicators": [
+      "React19.3.0 vendor",
+      "TanStack/Radix named vendor chunks",
+      "QueryClient",
+      "better-auth string",
+      "WebSocket constructors",
+      "ws-token/reconnect/resync",
+      "CSS perspective/rotateY",
+      "Hashed lazy route imports"
+    ],
+    "inferences": [
+      "TanStack Start-style server function/routing integration likely; exact framework/build/server versions unverified",
+      "DOM/CSS/card-image presentation used in sampled game; other routes may use different renderers"
+    ]
+  },
+  "not_examined": [
+    "Director's signed-in session",
+    "Account/saved deck/history/settings features",
+    "Authenticated ranked/limited/multiplayer/cooperative flows",
+    "Every catalog card/puzzle/deck interaction",
+    "Every delivered source file or WebSocket frame",
+    "Backend source/server console/DB/Redis/pooler/process counts/hardware",
+    "Fault durability, hidden-state correctness, cross-region load and device accessibility"
+  ],
+  "privacy": "All stored request paths normalized;no cookies,passwords,tokens,rawHAR,player identifiers or private replay content. Earlier route times were not sampled and remain null."
+}

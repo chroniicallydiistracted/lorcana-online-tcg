@@ -1,6 +1,6 @@
 # BOOT-04 decision worksheet: providers, stack, inventory and spend
 
-Recorded: 2026-10-10 UTC / 2026-10-09 America/Phoenix. Task: BOOT-04 ("Staging provider definitions and complete spend worksheet"). Acceptance evidence required: "Reviewable projects/services/DNS/secret inventory with current line-item quotes". Decisions: [ADR0007 hosting/providers](../adr/0007-hosting-provider-baseline.md) and [ADR0008 engine placement/dependencies](../adr/0008-engine-placement-dependency-baseline.md). Change record: [CHG-20261010-001](../changes/CHG-20261010-001.json).
+Recorded: 2026-10-10 UTC / 2026-10-09 America/Phoenix. Task: BOOT-04 ("Staging provider definitions and complete spend worksheet"). Acceptance evidence required: "Reviewable projects/services/DNS/secret inventory with current line-item quotes". Decisions: [ADR0007 hosting/providers](../adr/0007-hosting-provider-baseline.md) and [ADR0008 engine placement/dependencies](../adr/0008-engine-placement-dependency-baseline.md). Change record: [CHG-20261010-001](../changes/CHG-20261010-001.json). Reconciliation with earlier Codex research: [CHG-20261010-003](../changes/CHG-20261010-003.json); evidence in [BOOT-04 validation](../validation/boot-04.md).
 
 **Status:**
 - The decisions are final as the project baseline.
@@ -20,10 +20,12 @@ No vendor or engineer can guarantee prices, stock or terms for a multi-year live
 
 | Input | Date (UTC) | Effect |
 |---|---|---|
-| Total hosting budget about $25/month | 2026-10-08 | Replaces the blueprint §14.4 $150–$400 planning allowance |
+| Primarily North America; up to 50 concurrent invited-beta players; compare cost tiers before setting a ceiling | Before 2026-10-07 16:27 (recorded by the earlier Codex research, CHG-20261007-005; exact time unknown) | Confirms B4-13 `US-EAST-VA`; 50 players is a small fraction of VPS-3 engine capacity (§4) |
+| Total hosting budget about $25/month | 2026-10-08 | Replaces the blueprint §14.4 $150–$400 planning allowance and settles the earlier cost-tier comparison |
 | Keep the complete vision; no scope reduction | 2026-10-09 | All 548 requirements and X01–X07 stay in scope; compute-heavy trust-free features move to the browser (ADR0008) |
 | Request for the finalized stack, vendors, services and dependencies | 2026-10-10 | This worksheet; the guarantee limits are stated in §1 |
 | duels.ink operator hardware report (12 vCPU / 24 GB shared host for most of its life; recent move to a ~€100 dedicated server; intermittent Hetzner connection drops; bot model trained offline) | 2026-10-09 | Supports a shared-vCPU host at launch scale; reconnect design and an off-host uptime probe are mandatory; the offline-trained bot option is recorded for R12 |
+| duels.ink reference facts recorded by the earlier Codex research: Director-reported 300+ concurrency on the one-box stack; published privacy policy naming OVHcloud for app/PostgreSQL/Redis, Hetzner for backups and Cloudflare for card images; browser observations (Cloudflare, separate card-image origin, WebSocket reconnect/resync, CSS-rendered board) | 2026-10-08 ([observations](../research/2026-10-08-duels-observations.json)) | Attributed reports, not capacity proof for our engine; consistent with the OVHcloud/Cloudflare selection |
 
 ## 3. Decision register (BOOT-04)
 
@@ -41,9 +43,9 @@ No vendor or engineer can guarantee prices, stock or terms for a multi-year live
 | B4-10 | **tcg-engines fork**, isomorphic placement (server-authoritative for anything rewarded or hidden; browser for trust-free modes) | Server-only simulation workers | R02, R04, R12–R13, R15 |
 | B4-11 | Production **Node 24.21.0** with a precompiled engine; **Bun 1.4.2** for CI/development only | Unchanged / clarified | RULE-02 acceptance |
 | B4-12 | Server randomness: injected generator built on `node:crypto` from a secret 256-bit seed; `seedrandom` only in the browser Lab | Upstream `seedrandom` / `Math.random` | R29.003–R29.004, R28.008 |
-| B4-13 | Region `US-EAST-VA`; `US-WEST-OR` is the alternative if D03 shows a western/Asian majority | Render Oregon | Latency (§4) |
+| B4-13 | Region `US-EAST-VA` (Director: primarily North America); `US-WEST-OR` is the alternative if D03 shows a western/Asian majority | Render Oregon | Latency (§4) |
 | B4-14 | Billing: month-to-month at purchase; 12-month prepay only once a launch date is fixed | — | Budget |
-| B4-15 | **Rejected/deferred:** Render, Railway, Fly.io, Hetzner, netcup, Oracle Always Free, Kimsufi, Dokploy/Coolify, Redis/Valkey, Supabase/Neon, Cloudflare Images, paid LLM (R14 stays deterministic first), OTel exporter | — | ADR0007/0008 evidence |
+| B4-15 | **Rejected/deferred:** Render, Railway, Fly.io, Hetzner, netcup, Oracle Always Free, Kimsufi, Dokploy/Coolify (Dokploy was the earlier Codex proposal; deferred because its control plane uses RAM on a 12 GB host and its scheduled dumps are not WAL PITR), Redis/Valkey, Supabase/Neon, Cloudflare Images, paid LLM (R14 stays deterministic first), OTel exporter | — | ADR0007/0008 evidence |
 
 ## 4. Evidence summary
 
@@ -61,6 +63,7 @@ These are exploratory measurements, not repository run evidence. They ran in a C
 **Capacity reading:**
 - A player-vs-player game is about 90 actions × 25–34 ms, roughly 2–3 CPU-seconds over 20–30 minutes.
 - The engine CPU of a 6-vCore host is therefore not the constraint at launch scale; memory is (§6).
+- The Director's planning input of up to 50 concurrent invited-beta players means at most 25 matches, about 2.5 accepted commands/s on average (12.5 in a 5× burst), roughly 0.1 of one core of engine time at the measured cost.
 - A 1,000-game simulation is about 67 CPU-minutes, which is why simulations run in the browser.
 - Networking, projection and database overhead were not measured (OPS-01).
 
@@ -106,6 +109,8 @@ Every account belongs to the Director, with a unique password and 2FA. Agents ne
 | Host | Debian 13, Docker, page cache | ~1.5 GiB | — |
 
 - **Memory:** planned limits total about 11.1 GiB of 12 GiB. Disk: 100 GB, with an alert at 70%.
+- **Growth fixture (Codex research, 50 players, 4 occupied hours/day):** about 1.08 GB/month of journal at 1 kB per command versus 43.2 GB/month if a 40 kB state were rewritten per command, so the journal-plus-checkpoint design is required. About 40 GB/month of projection egress (12 KiB × 3 recipients) is covered by unlimited traffic.
+- **Builds and large restores never run on the live match CPU path:** CI builds the artifact, and restore drills run against staging or off-peak.
 - **CPU:** 6 shared vCores. Containers get CPU limits so staging cannot starve production.
 - **Ports:** service ports `3001` (api) and `3002` (match) stay internal to Compose networks. Nothing listens publicly except SSH (§8).
 
@@ -214,6 +219,7 @@ Prices are USD before tax. The OVHcloud US catalog reports `taxRate` 0; any sale
 ## 13. Remaining BOOT-04 work (reviewed configuration, separate change)
 
 Each item needs its own change record and executable evidence:
+- Remote runtime support: validated non-local configuration for origins, ports, secrets and images. Current services refuse to start unless `APP_ENV=local` (`packages/service-runtime/src/lifecycle.ts`); production must also refuse localhost/test values (blueprint §5.4).
 - Production/staging Compose profiles with resource limits.
 - A derived PostgreSQL 18 image with pinned pgBackRest.
 - `cloudflared` service configuration, pinning the multi-arch digest of `cloudflare/cloudflared:2026.10.0`.
@@ -349,6 +355,17 @@ Every requirement group maps to the stack above with no additional paid service:
 - **Tests/CI:** R28.
 
 The two compute-heavy optional areas, R04.028 and R12.004, run on players' devices or offline training hardware.
+
+## 15. Earlier research preserved as evidence
+
+An earlier Codex agent researched BOOT-04 on 2026-10-07/08 without committing it. That work is now restored unchanged as evidence:
+- [October 7 full-vision comparison](2026-10-07-boot-04-provider-research.md) and [October 8 single-host reassessment](2026-10-08-single-host-reassessment.md).
+- Proposed [ADR file 0007-single-host-beta-proposal](../adr/0007-single-host-beta-proposal.md), superseded; it keeps its duplicate number because finalized records reference it.
+- Cost/source fixtures (`boot-04-costs.json`, `boot-04-sources.json`, `boot-04-single-host-costs.json`, `boot-04-single-host-sources.json`).
+- [duels.ink observations](../research/2026-10-08-duels-observations.json).
+- Records CHG-20261007-005 and CHG-20261008-001/002, with RUN-20261007-063…067 and RUN-20261008-001…009 (failed runs preserved).
+
+This worksheet's decisions take precedence. Adopted: the Director inputs (§2), the remote-runtime prerequisite (§13), the growth fixture and build/restore separation (§6), and the duels.ink facts (§2). Not adopted: Hetzner CCX23/CCX33 ($104.94/$167.94 known subtotals, now unavailable and above the cap) and Dokploy (B4-15). Its managed/HA alternatives (Render, Railway, AWS) remain rejected under the cap.
 
 ## Appendix A: measurement harness
 

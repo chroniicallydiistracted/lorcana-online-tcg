@@ -6,6 +6,8 @@ Recorded date: 2026-10-10 UTC / 2026-10-09 America/Phoenix. Status: accepted as 
 
 Blueprint §3.1, §5.2–5.3 and §14.4 selected Cloudflare Pages plus paid Render services/PostgreSQL in Oregon for staging and closed beta, with a $150–$400/month planning allowance. On 2026-10-08 the Director set a total hosting budget of about $25/month, and on 2026-10-09 required the complete 548-item vision without scope reduction. The blueprint remains a preserved planning snapshot; this ADR amends its hosting rows.
 
+Reconciliation note (2026-10-10 UTC, [CHG-20261010-003](../changes/CHG-20261010-003.json)): an earlier, uncommitted Codex proposal using the same number, [`0007-single-host-beta-proposal.md`](0007-single-host-beta-proposal.md) (one Dokploy-managed host, Hetzner CCX candidates), is preserved as superseded evidence. This ADR is the accepted decision. Director inputs recorded in that research also apply here: primarily North America and up to 50 concurrent invited-beta players. Both support `US-EAST-VA` and a single VPS-3.
+
 ## Decision
 
 1. **Compute:** one OVHcloud US VPS-3 (2027 range: 6 vCores, 12 GB RAM, 100 GB NVMe, unlimited traffic, anti-DDoS included) in `US-EAST-VA` (Vint Hill, Virginia), running Debian 13. Production and staging run as separate Docker Compose projects with separate PostgreSQL containers, roles, secrets, buckets and tunnels.

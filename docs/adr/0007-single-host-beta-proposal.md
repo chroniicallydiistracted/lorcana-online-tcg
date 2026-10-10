@@ -1,0 +1,19 @@
+# ADR0007: One-host beta deployment candidate
+
+> **Superseded proposal — historical evidence (correction note added 2026-10-10 UTC, [CHG-20261010-003](../changes/CHG-20261010-003.json)).** This uncommitted Codex proposal was never accepted. The accepted decisions are [ADR0007 single-host hosting and provider baseline](0007-hosting-provider-baseline.md), [ADR0008](0008-engine-placement-dependency-baseline.md) and the [BOOT-04 decision worksheet](../plans/2026-10-10-boot-04-decision-worksheet.md). This file keeps its original name, and therefore the duplicate number 0007, because finalized records CHG-20261008-001/002 reference it. Its one-host direction, off-host backups, durable-authority controls and remote-runtime prerequisite carried forward; its Hetzner CCX candidates and Dokploy were not selected. The text below is unchanged.
+
+Recorded date: 2026-10-08 UTC / America/Phoenix. Status: **proposed**, pending Director provider/budget/operations/recovery decisions. Affected task BOOT-04; prerequisite planning for R30.009, R30.012, R30.013 and R30.014. No deployment or product requirement accepted.
+
+## Proposed direction and evidence
+
+Prefer a single Linux host running immutable web files, API/match/job processes and PostgreSQL, managed through Dokploy. Optional local Redis handles cross-worker fanout; optional PgBouncer bounds connection pressure. Cloudflare caches permitted assets and proxies HTTPS/WSS; private off-host backups support replacement-host recovery. Preserve monorepo package boundaries and server authority regardless of physical co-location.
+
+[The reassessment](../plans/2026-10-08-single-host-reassessment.md) compares this with the October7 managed-service/HA alternatives and records primary-source pricing/semantics plus accessible Duels browser observations. The Director supplied a developer's one-box stack and reported300+ concurrency. A guest bot game/turn/reload was observed; neither the report nor browser proves server hardware, durability or capacity for our engine. Duels' published privacy policy names OVHcloud app hosting and Hetzner backup storage. No third-party source implementation is incorporated.
+
+The prior default paid footprint was excessive for an invited50-player beta before load/recovery targets and operator ownership were selected. Premium presentation, broad features and independently owned application packages do not demand separate hosts. Keep managed DB/compute and multi-zone options available if actual operating burden, failure tolerance or measured bottlenecks justify them. A regional NA cloud host and European bare metal are distinct latency/capacity offers; do not assume Hetzner US cloud implies US dedicated-root stock.
+
+## Consequences and limits
+
+One host removes WAN app-to-DB hops and simplifies billing/deployment, but combines machine failure/maintenance and resource contention. It requires an operator, private data services, bounded bot/background work, durable commands/economy, deploy-drain/reconnect, externally checked availability and a tested off-host restore. Redis Pub/Sub is disposable transport; PgBouncer pooling mode must fit transactions/prepared statements/session-dependent listeners. Start with measured process counts rather than importing another application's10/5 worker tuning.
+
+Synthetic staging can share hardware while maintaining separate logical DBs/credentials/buckets and workload limits. A second paid staging host, paid analytics/error-reporting tier and multi-zone DB are not prerequisites for the initial proposal. Existing local-only runtime, pinned dependencies, CI, SQL, contracts/release identities and viewer/economic requirements remain unchanged. Provider-native definitions, remote runtime support and actual restore/load/device evidence are subsequent authorized work. This proposed ADR does not authorize spending or provisioning.

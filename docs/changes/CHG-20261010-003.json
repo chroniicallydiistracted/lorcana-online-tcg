@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261010-003",
+  "title": "Reconcile preserved Codex BOOT-04 research with the finalized decision worksheet",
+  "actor": "Claude Code agent (architect/developer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-10T21:00:22.897Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "3687bedd461ae14ae2b70dac37b140259d407078",
+  "task_ids": [
+    "BOOT-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-STAGING",
+    "F-DOCS",
+    "F-EVIDENCE"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Local intake found uncommitted Codex BOOT-04 research from 2026-10-07/08: 41 untracked files plus stash@{0} edits to 15 tracked files based on 5819142. Compared it against the finalized BOOT-04 worksheet, ADR0007 and ADR0008 merged at 3687bed. The Director chose to reconcile, keeping the finalized decisions authoritative and the Codex data as evidence."
+    },
+    {
+      "kind": "revision",
+      "description": "Restore unchanged as evidence: Codex records CHG-20261007-005 and CHG-20261008-001/002; RUN-20261007-063..067 and RUN-20261008-001..009 with logs (failures preserved); cost/source fixtures; duels.ink observations. Restore the October 7/8 plans and the proposed ADR file 0007-single-host-beta-proposal.md with only a dated supersession note. Classify them historical (observations: evidence)."
+    },
+    {
+      "kind": "revision",
+      "description": "Restore the non-conflicting stash edits: the corrected hosted-CI sentence in DEVELOPMENT_WORKFLOW, the F-STAGING planned feature, and the FEATURES/WORKSPACE_QUALIFICATION/README entries. Reword them to the final decisions. Hand-merge the conflicting AGENTS, docs/README, vision/README, infra/README, backlog, decision register, documentation map and handoff onto main's versions. Do not carry over the Codex proposal files added as impact sources on current documents."
+    },
+    {
+      "kind": "documentation",
+      "description": "Adopt Codex findings into the worksheet: Director inputs (primarily North America; up to 50 concurrent invited-beta players; cost tiers before a ceiling); duels.ink reference facts; the remote-runtime prerequisite (APP_ENV=local enforced in packages/service-runtime/src/lifecycle.ts); the 50-player growth fixture; build/restore separation; and a section listing preserved research. Add matching notes to ADR0007 and D02/D03, make validation/boot-04.md the current BOOT-04 evidence document, and rewrite the handoff."
+    },
+    {
+      "kind": "test",
+      "description": "Local Dev Container (Node 24.21.0/pnpm 10.33.0) intake RUN-20261010-004 doctor and RUN-20261010-005 read-only db:check passed. Final verify/test:documentation runs are referenced in verification."
+    },
+    {
+      "kind": "test",
+      "description": "Final local Dev Container checks: RUN-20261010-006 pnpm verify passed. RUN-20261010-007 test:documentation failed when the WSL wall clock stepped back about 2.3 s mid-run (wall 3448 ms vs monotonic 5760 ms): one timing test saw clock_changed instead of timeout, and the recorder failed the run. Preserved unchanged; no test or validator was altered. After confirming 0 ms drift, RUN-20261010-008 reran the same suite on unchanged source and passed. RUN-20261010-009 docs:check passed after the handoff/evidence updates."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0007-hosting-provider-baseline.md",
+    "docs/adr/0007-single-host-beta-proposal.md",
+    "docs/changes/CHG-20261007-005.json",
+    "docs/changes/CHG-20261008-001.json",
+    "docs/changes/CHG-20261008-002.json",
+    "docs/changes/CHG-20261010-003.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-07-boot-04-provider-research.md",
+    "docs/plans/2026-10-08-single-host-reassessment.md",
+    "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+    "docs/plans/boot-04-costs.json",
+    "docs/plans/boot-04-single-host-costs.json",
+    "docs/plans/boot-04-single-host-sources.json",
+    "docs/plans/boot-04-sources.json",
+    "docs/research/2026-10-08-duels-observations.json",
+    "docs/validation/boot-04.md",
+    "docs/validation/logs/RUN-20261007-063.txt",
+    "docs/validation/logs/RUN-20261007-064.txt",
+    "docs/validation/logs/RUN-20261007-065.txt",
+    "docs/validation/logs/RUN-20261007-066.txt",
+    "docs/validation/logs/RUN-20261007-067.txt",
+    "docs/validation/logs/RUN-20261008-001.txt",
+    "docs/validation/logs/RUN-20261008-002.txt",
+    "docs/validation/logs/RUN-20261008-003.txt",
+    "docs/validation/logs/RUN-20261008-004.txt",
+    "docs/validation/logs/RUN-20261008-005.txt",
+    "docs/validation/logs/RUN-20261008-006.txt",
+    "docs/validation/logs/RUN-20261008-007.txt",
+    "docs/validation/logs/RUN-20261008-008.txt",
+    "docs/validation/logs/RUN-20261008-009.txt",
+    "docs/validation/logs/RUN-20261010-004.txt",
+    "docs/validation/logs/RUN-20261010-005.txt",
+    "docs/validation/logs/RUN-20261010-006.txt",
+    "docs/validation/logs/RUN-20261010-007.txt",
+    "docs/validation/logs/RUN-20261010-008.txt",
+    "docs/validation/logs/RUN-20261010-009.txt",
+    "docs/validation/runs/RUN-20261007-063.json",
+    "docs/validation/runs/RUN-20261007-064.json",
+    "docs/validation/runs/RUN-20261007-065.json",
+    "docs/validation/runs/RUN-20261007-066.json",
+    "docs/validation/runs/RUN-20261007-067.json",
+    "docs/validation/runs/RUN-20261008-001.json",
+    "docs/validation/runs/RUN-20261008-002.json",
+    "docs/validation/runs/RUN-20261008-003.json",
+    "docs/validation/runs/RUN-20261008-004.json",
+    "docs/validation/runs/RUN-20261008-005.json",
+    "docs/validation/runs/RUN-20261008-006.json",
+    "docs/validation/runs/RUN-20261008-007.json",
+    "docs/validation/runs/RUN-20261008-008.json",
+    "docs/validation/runs/RUN-20261008-009.json",
+    "docs/validation/runs/RUN-20261010-004.json",
+    "docs/validation/runs/RUN-20261010-005.json",
+    "docs/validation/runs/RUN-20261010-006.json",
+    "docs/validation/runs/RUN-20261010-007.json",
+    "docs/validation/runs/RUN-20261010-008.json",
+    "docs/validation/runs/RUN-20261010-009.json",
+    "docs/vision/README.md",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv",
+    "infra/README.md"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "updated",
+      "reason": "Decisions unchanged and authoritative. Added the Codex-recorded Director inputs, duels.ink facts, remote-runtime prerequisite, growth fixture, build/restore separation and the preserved-research section. The 50-player arithmetic was checked against the measured 25–34 ms/action."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "updated",
+      "reason": "Reconciliation note: the same-numbered Codex proposal is superseded evidence; NA/50-player inputs support US-EAST-VA and VPS-3."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "updated",
+      "reason": "Now the current BOOT-04 evidence document, with a status section listing actual run categories/outcomes and the adopted/not-adopted findings. The Codex checkpoint text is retained unchanged below it."
+    },
+    {
+      "path": "docs/adr/0007-single-host-beta-proposal.md",
+      "disposition": "historical_preserved",
+      "reason": "Codex proposal restored unchanged except for a dated supersession note; reclassified historical."
+    },
+    {
+      "path": "docs/plans/2026-10-08-single-host-reassessment.md",
+      "disposition": "historical_preserved",
+      "reason": "Codex research restored unchanged except for a dated supersession note listing adopted and not-adopted items; reclassified historical."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-04-provider-research.md",
+      "disposition": "historical_preserved",
+      "reason": "Codex research restored unchanged except for a dated supersession note; reclassified historical."
+    },
+    {
+      "path": "docs/plans/boot-04-costs.json",
+      "disposition": "historical_preserved",
+      "reason": "Codex quoted-rate fixture restored byte-for-byte; historical."
+    },
+    {
+      "path": "docs/plans/boot-04-sources.json",
+      "disposition": "historical_preserved",
+      "reason": "Codex source-retrieval metadata restored byte-for-byte; historical."
+    },
+    {
+      "path": "docs/plans/boot-04-single-host-costs.json",
+      "disposition": "historical_preserved",
+      "reason": "Codex single-host cost fixture restored byte-for-byte; historical."
+    },
+    {
+      "path": "docs/plans/boot-04-single-host-sources.json",
+      "disposition": "historical_preserved",
+      "reason": "Codex single-host source metadata restored byte-for-byte; historical."
+    },
+    {
+      "path": "docs/research/2026-10-08-duels-observations.json",
+      "disposition": "historical_preserved",
+      "reason": "Codex browser observations restored byte-for-byte; classified evidence."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Main's BOOT-04 boundary kept; added that the Codex research is superseded evidence and its proposed ADR file is not accepted."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "The restored Codex paragraph now states the final BOOT-04 decisions, preserved research and the APP_ENV=local limit."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "BOOT-04 index row links the evidence document and notes the preserved research."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Notes the preserved research and the carried-forward Director inputs."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "D02 records the cost-tier request before the $25 cap; D03 records North America and up to 50 concurrent players with the US-EAST-VA selection."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "BOOT-04 status unchanged; validation/boot-04.md added to the evidence links."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "updated",
+      "reason": "States that services still require APP_ENV=local and that remote runtime support is remaining configuration work."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "F-STAGING row restored and reworded to the final decisions; planned only."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-STAGING restored (required by the Codex records), with a description/documents/sources matching the final decisions; planned/pending, no evidence claimed."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Codex dated qualification sections restored; appended a dated reconciliation section with actual local intake results."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "updated",
+      "reason": "Restored the Codex correction: hosted CI was qualified by RUN061 at 612a8c9, replacing the stale 'hosted execution unverified' text."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Rewritten for the local session: branch, retained stash/branch, Dev Container execution, verification and next actions."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "CI operation unchanged; its statements remain accurate."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Hosted qualification evidence unchanged."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Its statement that BOOT-04 keeps Director prerequisites remains accurate."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Engine/dependency decisions unaffected; the Codex research made no engine decision."
+    },
+    {
+      "path": "docs/vision/Development_Blueprint_2026-10-05.md",
+      "disposition": "historical_preserved",
+      "reason": "Planning snapshot preserved."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-004.json",
+      "outcome": "passed",
+      "scope": "Local Dev Container intake pnpm run doctor at 3687bed (Node 24.21.0/pnpm 10.33.0)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-005.json",
+      "outcome": "passed",
+      "scope": "Local Dev Container read-only bootstrap PostgreSQL 18 connectivity (db:check)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-006.json",
+      "outcome": "passed",
+      "scope": "pnpm verify (configuration/syntax/documentation consistency) on the reconciled draft snapshot; unchanged executable fingerprint 8e52e134…"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-007.json",
+      "outcome": "failed",
+      "scope": "test:documentation failed on a WSL wall-clock step (clock_changed), not a source defect; preserved per the wall-clock correction policy."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-008.json",
+      "outcome": "passed",
+      "scope": "Rerun of test:documentation after clock stabilization; unchanged source."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-009.json",
+      "outcome": "passed",
+      "scope": "Final docs:check after recording the RUN-007/008 outcomes in the handoff and evidence document."
+    }
+  ],
+  "limitations": [
+    "Documentation and evidence restoration only: no executable, dependency, private data, provisioning, DNS, deployment or setting change.",
+    "The Codex records/runs/logs are restored as authored; this change does not re-execute or re-qualify their research.",
+    "stash@{0} and the empty local branch codex/boot-04-provider-plan are retained until the Director approves dropping them after merge."
+  ],
+  "next_actions": [
+    "Director approves merging claude/boot-04-codex-reconciliation into main; observe the hosted workflow.",
+    "After the merge, drop stash@{0} with Director approval.",
+    "RULE-01, then RULE-02 per ADR0008; BOOT-04 configuration including remote runtime support before the first outside tester."
+  ]
+}

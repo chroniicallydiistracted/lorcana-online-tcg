@@ -2,6 +2,77 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261010-003 — Reconcile preserved Codex BOOT-04 research with the finalized decision worksheet
+
+- Status: finalized
+- Actor: Claude Code agent (architect/developer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-10T21:00:22.897Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 3687bedd461ae14ae2b70dac37b140259d407078
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-STAGING, F-DOCS, F-EVIDENCE
+- Requirements: none
+
+### Changes
+
+- **review:** Local intake found uncommitted Codex BOOT-04 research from 2026-10-07/08: 41 untracked files plus stash@{0} edits to 15 tracked files based on 5819142. Compared it against the finalized BOOT-04 worksheet, ADR0007 and ADR0008 merged at 3687bed. The Director chose to reconcile, keeping the finalized decisions authoritative and the Codex data as evidence.
+- **revision:** Restore unchanged as evidence: Codex records CHG-20261007-005 and CHG-20261008-001/002; RUN-20261007-063..067 and RUN-20261008-001..009 with logs (failures preserved); cost/source fixtures; duels.ink observations. Restore the October 7/8 plans and the proposed ADR file 0007-single-host-beta-proposal.md with only a dated supersession note. Classify them historical (observations: evidence).
+- **revision:** Restore the non-conflicting stash edits: the corrected hosted-CI sentence in DEVELOPMENT_WORKFLOW, the F-STAGING planned feature, and the FEATURES/WORKSPACE_QUALIFICATION/README entries. Reword them to the final decisions. Hand-merge the conflicting AGENTS, docs/README, vision/README, infra/README, backlog, decision register, documentation map and handoff onto main's versions. Do not carry over the Codex proposal files added as impact sources on current documents.
+- **documentation:** Adopt Codex findings into the worksheet: Director inputs (primarily North America; up to 50 concurrent invited-beta players; cost tiers before a ceiling); duels.ink reference facts; the remote-runtime prerequisite (APP_ENV=local enforced in packages/service-runtime/src/lifecycle.ts); the 50-player growth fixture; build/restore separation; and a section listing preserved research. Add matching notes to ADR0007 and D02/D03, make validation/boot-04.md the current BOOT-04 evidence document, and rewrite the handoff.
+- **test:** Local Dev Container (Node 24.21.0/pnpm 10.33.0) intake RUN-20261010-004 doctor and RUN-20261010-005 read-only db:check passed. Final verify/test:documentation runs are referenced in verification.
+- **test:** Final local Dev Container checks: RUN-20261010-006 pnpm verify passed. RUN-20261010-007 test:documentation failed when the WSL wall clock stepped back about 2.3 s mid-run (wall 3448 ms vs monotonic 5760 ms): one timing test saw clock_changed instead of timeout, and the recorder failed the run. Preserved unchanged; no test or validator was altered. After confirming 0 ms drift, RUN-20261010-008 reran the same suite on unchanged source and passed. RUN-20261010-009 docs:check passed after the handoff/evidence updates.
+
+### Verification
+
+- **passed:** Local Dev Container intake pnpm run doctor at 3687bed (Node 24.21.0/pnpm 10.33.0). ([evidence](docs/validation/runs/RUN-20261010-004.json))
+- **passed:** Local Dev Container read-only bootstrap PostgreSQL 18 connectivity (db:check). ([evidence](docs/validation/runs/RUN-20261010-005.json))
+- **passed:** pnpm verify (configuration/syntax/documentation consistency) on the reconciled draft snapshot; unchanged executable fingerprint 8e52e134… ([evidence](docs/validation/runs/RUN-20261010-006.json))
+- **failed:** test:documentation failed on a WSL wall-clock step (clock_changed), not a source defect; preserved per the wall-clock correction policy. ([evidence](docs/validation/runs/RUN-20261010-007.json))
+- **passed:** Rerun of test:documentation after clock stabilization; unchanged source. ([evidence](docs/validation/runs/RUN-20261010-008.json))
+- **passed:** Final docs:check after recording the RUN-007/008 outcomes in the handoff and evidence document. ([evidence](docs/validation/runs/RUN-20261010-009.json))
+
+### Documentation and files
+
+- **updated:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Decisions unchanged and authoritative. Added the Codex-recorded Director inputs, duels.ink facts, remote-runtime prerequisite, growth fixture, build/restore separation and the preserved-research section. The 50-player arithmetic was checked against the measured 25–34 ms/action.
+- **updated:** [docs/adr/0007-hosting-provider-baseline.md](docs/adr/0007-hosting-provider-baseline.md) — Reconciliation note: the same-numbered Codex proposal is superseded evidence; NA/50-player inputs support US-EAST-VA and VPS-3.
+- **updated:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Now the current BOOT-04 evidence document, with a status section listing actual run categories/outcomes and the adopted/not-adopted findings. The Codex checkpoint text is retained unchanged below it.
+- **historical_preserved:** [docs/adr/0007-single-host-beta-proposal.md](docs/adr/0007-single-host-beta-proposal.md) — Codex proposal restored unchanged except for a dated supersession note; reclassified historical.
+- **historical_preserved:** [docs/plans/2026-10-08-single-host-reassessment.md](docs/plans/2026-10-08-single-host-reassessment.md) — Codex research restored unchanged except for a dated supersession note listing adopted and not-adopted items; reclassified historical.
+- **historical_preserved:** [docs/plans/2026-10-07-boot-04-provider-research.md](docs/plans/2026-10-07-boot-04-provider-research.md) — Codex research restored unchanged except for a dated supersession note; reclassified historical.
+- **historical_preserved:** [docs/plans/boot-04-costs.json](docs/plans/boot-04-costs.json) — Codex quoted-rate fixture restored byte-for-byte; historical.
+- **historical_preserved:** [docs/plans/boot-04-sources.json](docs/plans/boot-04-sources.json) — Codex source-retrieval metadata restored byte-for-byte; historical.
+- **historical_preserved:** [docs/plans/boot-04-single-host-costs.json](docs/plans/boot-04-single-host-costs.json) — Codex single-host cost fixture restored byte-for-byte; historical.
+- **historical_preserved:** [docs/plans/boot-04-single-host-sources.json](docs/plans/boot-04-single-host-sources.json) — Codex single-host source metadata restored byte-for-byte; historical.
+- **historical_preserved:** [docs/research/2026-10-08-duels-observations.json](docs/research/2026-10-08-duels-observations.json) — Codex browser observations restored byte-for-byte; classified evidence.
+- **updated:** [AGENTS.md](AGENTS.md) — Main's BOOT-04 boundary kept; added that the Codex research is superseded evidence and its proposed ADR file is not accepted.
+- **updated:** [README.md](README.md) — The restored Codex paragraph now states the final BOOT-04 decisions, preserved research and the APP_ENV=local limit.
+- **updated:** [docs/README.md](docs/README.md) — BOOT-04 index row links the evidence document and notes the preserved research.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Notes the preserved research and the carried-forward Director inputs.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D02 records the cost-tier request before the $25 cap; D03 records North America and up to 50 concurrent players with the US-EAST-VA selection.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — BOOT-04 status unchanged; validation/boot-04.md added to the evidence links.
+- **updated:** [infra/README.md](infra/README.md) — States that services still require APP_ENV=local and that remote runtime support is remaining configuration work.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-STAGING row restored and reworded to the final decisions; planned only.
+- **updated:** [docs/features.json](docs/features.json) — F-STAGING restored (required by the Codex records), with a description/documents/sources matching the final decisions; planned/pending, no evidence claimed.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Codex dated qualification sections restored; appended a dated reconciliation section with actual local intake results.
+- **updated:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Restored the Codex correction: hosted CI was qualified by RUN061 at 612a8c9, replacing the stale 'hosted execution unverified' text.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the local session: branch, retained stash/branch, Dev Container execution, verification and next actions.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — CI operation unchanged; its statements remain accurate.
+- **reviewed_unchanged:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Hosted qualification evidence unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Its statement that BOOT-04 keeps Director prerequisites remains accurate.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Engine/dependency decisions unaffected; the Codex research made no engine decision.
+- **historical_preserved:** [docs/vision/Development_Blueprint_2026-10-05.md](docs/vision/Development_Blueprint_2026-10-05.md) — Planning snapshot preserved.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261010-003.json).
+
+### Limits and next actions
+
+- Documentation and evidence restoration only: no executable, dependency, private data, provisioning, DNS, deployment or setting change.
+- The Codex records/runs/logs are restored as authored; this change does not re-execute or re-qualify their research.
+- stash@{0} and the empty local branch codex/boot-04-provider-plan are retained until the Director approves dropping them after merge.
+- Director approves merging claude/boot-04-codex-reconciliation into main; observe the hosted workflow.
+- After the merge, drop stash@{0} with Director approval.
+- RULE-01, then RULE-02 per ADR0008; BOOT-04 configuration including remote runtime support before the first outside tester.
+
 ## CHG-20261010-002 — Director-authorized BOOT-04 branch integration into main
 
 - Status: finalized
@@ -99,6 +170,189 @@ Full changed-file inventory: [record](docs/changes/CHG-20261010-001.json).
 - Director completes the worksheet §12 sign-off before any purchase.
 - BOOT-04 configuration change: Compose profiles, PostgreSQL+pgBackRest image, cloudflared/wrangler configuration, pull-deploy timer, host hardening, hosting runbook.
 - RULE-01 source inventory, then RULE-02 vendor closure per ADR0008, with Dev Container reproduction of the measurement harness.
+
+## CHG-20261008-002 — Post-checkpoint evidence references and hosted-CI documentation correction
+
+- Status: finalized
+- Actor: Codex architect/researcher/QA
+- Recorded (UTC): 2026-10-08T18:50:26.332Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 5819142f76a1ea853b804af8b768048a3dccc4dd
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-STAGING, F-DOCS, F-EVIDENCE
+- Requirements: R30.009, R30.012, R30.013, R30.014
+
+### Changes
+
+- **documentation:** Add passing finalized research RUN007 reference to current validation/handoff; correct stale hosted-pending universal workflow text against existing BOOT-03 RUN061 at commit612a8c9. No new hosted execution or product acceptance claimed.
+- **test:** Post-finalization refresh underCHG001 was rejected by the new-record guard; docs:check then reported stale snapshot. RUN008 durably reproduces/preserves that failure. RestoreCHG001 to its last synchronized finalized content and use this separate correction record; leave validators and raw evidence unchanged.
+- **test:** RUN009 passes the separate correction documentation gate with consistent paired timing. Finalize only documentation follow-up; preserve finalized001 content, all failed attempts, unchanged runtime source and pending BOOT-04/provider/device acceptance.
+
+### Verification
+
+- **passed:** Finalized001 research documentation gate before follow-up wording/reference changes. ([evidence](docs/validation/runs/RUN-20261008-007.json))
+- **failed:** Actual stale snapshot after post-finalization prose/reference edits; new correction record required. No application failure. ([evidence](docs/validation/runs/RUN-20261008-008.json))
+- **passed:** Corrected002 documentation snapshot/inventory/links/history/evidence consistency with consistent paired timing; sanitized log reviewed. Final status/reference refresh checked by synchronization. ([evidence](docs/validation/runs/RUN-20261008-009.json))
+
+### Documentation and files
+
+- **updated:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Existing BOOT-03 RUN061 qualifies first hosted run; settings/cancellation remain pending. Replace stale hosted-pending statement only.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Separate finalized research001 and this later evidence-reference/workflow correction; preserve access, timing and deployment limits.
+- **updated:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Retain RUN007 actual passing scope and RUN008 actual failure; overall BOOT-04 remains in progress.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261008-002.json).
+
+### Limits and next actions
+
+- Documentation-only follow-up; no runtime/dependency/private data changes, hosted rerun, provisioning, authenticated reference or device acceptance.
+- BOOT-04 remains in progress; research proposal is unapproved.
+- Review the single-host proposal and final NA quote, operator/recovery/budget/domain decisions with the Director; no provisioning authorized.
+
+## CHG-20261008-001 — BOOT-04 single-host reassessment using the Duels reference
+
+- Status: finalized
+- Actor: Codex architect/researcher/QA
+- Recorded (UTC): 2026-10-08T18:45:04.163Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 5819142f76a1ea853b804af8b768048a3dccc4dd
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-STAGING, F-DOCS, F-EVIDENCE
+- Requirements: R30.009, R30.012, R30.013, R30.014
+
+### Changes
+
+- **review:** Reassess October7 managed-service preference against the Director-supplied one-host Duels stack. Inspect accessible public pages, delivered JS, sanitized console/network signals and own guest bot turn/reload/cleanup; authenticated Codex session remains unreachable.
+- **revision:** Prefer one Dokploy-managed NA host with local PostgreSQL and bounded processes, optional Redis/pooler, cached assets and off-host backups. Preserve full vision/authority/package boundaries; larger paid/HA footprints become conditional alternatives.
+- **documentation:** Record proposed ADR, dated provider semantics/rate retrievals, explicit costs/unknowns, observed source hashes/coverage/access limits and updated current recommendation/handoff.
+- **test:** Fresh baseline RUN001 passed existing-container doctor/static/docs/bootstrap5/read-only DB. RUN003 passes source/rate/arithmetic/scope/observation checks; RUN006 passes corrected final docs/history/secret/preservation checks. Failed attempts retained separately.
+- **fix:** Documentation edit initially used generic status/evidence names instead of implementation_status/evidence_links and interrupted CSV output. Reconstructed all baseline rows plus the intended BOOT-04 update; correction verification then used an overwritten local variable and failed before comparing the right file. Final explicit-path comparison proves all32 task rows and unrelated values preserved. No application/private data affected.
+- **test:** RUN-20261008-002 retains a real static-check KeyError from using optional instead of source_optional. Earlier source/rate/cost assertions ran before the failure; no complete pass claimed. Source retrieval clock audit separately flags four discontinuous raw intervals, preserving wall/monotonic samples and body hashes.
+- **test:** RUN004 preserves a caller TypeError in sourceSecretScan after successful docs/static checks; privateRedactionValues returns an object. Correct only the invocation to Object.values, retaining the scanner and failed receipt.
+- **test:** RUN005 exited0 after corrected documentation/secret checks, but the recorder failed it for clock_changed. Review also identified over-escaped line/field splitting in its port probe; no listener proof is claimed. Preserve raw receipt/log; rerun proper TCP parsing with consistent clock samples, without changing the recorder or clocks.
+- **test:** RUN006 passes corrected final static/documentation/history/private-file/preservation checks with actual TCP parsing and consistent paired timing. Sanitized logs reviewed. Finalize only this research correction, keeping overall BOOT-04/provider/capacity/recovery acceptance pending.
+
+### Verification
+
+- **passed:** Actual existing-container fresh baseline; no application changes or provider/device qualification. ([evidence](docs/validation/runs/RUN-20261008-001.json))
+- **failed:** Static research check failed on source_optional CSV field named optional in the check; actual requirements unchanged. Preserve failure; rerun corrected field. ([evidence](docs/validation/runs/RUN-20261008-002.json))
+- **passed:** Corrected static assertions:16 source body hashes, expected404, exact NA/EU/USD rate selectors, four sums/unknowns, scope548/33/20 and32 preserved task rows,14 observed surfaces/eight assets and sanitized limits. Source wall intervals separately labeled; no provider/runtime certification. ([evidence](docs/validation/runs/RUN-20261008-003.json))
+- **failed:** Docs/static gates passed; combined proof stopped because the caller supplied the secret-helper object instead of its value array. No secret finding or downstream preservation pass is claimed; corrected invocation follows. ([evidence](docs/validation/runs/RUN-20261008-004.json))
+- **failed:** Exit0 with clock_discontinuous/failure_reason clock_changed is not passing acceptance. Over-escaped port parsing also required correction; no actual listener proof claimed from this run. ([evidence](docs/validation/runs/RUN-20261008-005.json))
+- **passed:** Corrected final static/docs gates, current/full-history known-secret scan, unchanged executable fingerprint, ignored owner-only private files and actual15 kernel TCP rows proving no app listeners. Consistent paired clock; no provider/device qualification. ([evidence](docs/validation/runs/RUN-20261008-006.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [README.md](README.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/README.md](docs/README.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/features.json](docs/features.json) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [infra/README.md](infra/README.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/plans/2026-10-07-boot-04-provider-research.md](docs/plans/2026-10-07-boot-04-provider-research.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/plans/2026-10-08-single-host-reassessment.md](docs/plans/2026-10-08-single-host-reassessment.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/plans/boot-04-single-host-sources.json](docs/plans/boot-04-single-host-sources.json) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/plans/boot-04-single-host-costs.json](docs/plans/boot-04-single-host-costs.json) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/research/2026-10-08-duels-observations.json](docs/research/2026-10-08-duels-observations.json) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+- **updated:** [docs/adr/0007-single-host-beta-proposal.md](docs/adr/0007-single-host-beta-proposal.md) — Review the October8 one-host recommendation against unchanged local-only code and the Director's correction; preserve dated evidence, full product/free-feature scope, explicit browser/backend limits and pending approval/capacity/recovery.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261008-001.json).
+
+### Limits and next actions
+
+- BOOT-04 remains in progress; no provider/budget/recovery/operations/domain selection or deployment.
+- Signed-in Codex session/backend sources/socket frames unreachable; accessible browser research is not whole-site or load certification.
+- No application/dependency/data/credentials changes; remote runtime remains rejected.
+- Four public-source retrieval intervals and RUN005 have discontinuous wall/monotonic samples; raw timing retained, exact intervals unqualified.
+- Review the one-host proposal with the Director; settle one NA quote, budget/operator/recovery/domain decisions and make provider-native definitions plus remote runtime support reviewable before provisioning.
+- Inspect authenticated reference surfaces if the pending test-session access becomes available; this does not block the topology opinion.
+
+## CHG-20261007-005 — BOOT-04 full-vision provider research and cost comparison checkpoint
+
+- Status: finalized
+- Actor: Codex architect/researcher/QA
+- Recorded (UTC): 2026-10-07T16:27:05.527Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 5819142f76a1ea853b804af8b768048a3dccc4dd
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-STAGING, F-DOCS, F-EVIDENCE
+- Requirements: R30.009, R30.012, R30.013, R30.014
+
+### Changes
+
+- **review:** Read the full blueprint/checklist/548-leaf register and researched current official provider prices and recovery limitations before proposing services. Director requests cost-tier comparison, primarily North America and up to 50 concurrent players.
+- **test:** Fresh existing-container baseline passed doctor, static/documentation verification, five bootstrap tests and read-only PostgreSQL connectivity in RUN063. Public source retrievals are research observations, not deployed-service qualification.
+- **documentation:** Prepare a dated full33-group provider research proposal, six explicit quoted-rate cost fixtures, 35 retrieval records (34 successful plus404), service/DNS/secret inventory, recovery/retention/capacity assumptions and future runtime prerequisites. Current indexes, feature/map, backlog, decisions, qualification and handoff distinguish proposal from implemented code.
+- **review:** Render/PG18/Cloudflare/Resend/Sentry versus Railway metered PG18 and AWS synchronous RDS/Fargate alternatives researched from current official sources. No provider selection or purchase/deployment. Unknown domain/age/region/account/tax/usage quotes remain explicit; unsupported zero-loss/50-player claims are rejected.
+- **test:** RUN064 passed static full-scope/cost/official source-byte/SKU assertions. Source URL404/missing-file extraction and missing ss utility probe are preserved as failed research/probe attempts, not passing acceptance; corrected preservation uses proc TCP tables. No ad hoc tooling installed.
+- **fix:** Documentation gate RUN065 correctly rejects added scope X04/X06/X07 in fields restricted to original leaf requirement IDs. Correct only draft change/feature references to affected R30 leaves; retain X01-X07 scope in cost/proposal/task narratives without altering the validator or548-ID register.
+- **test:** RUN066 passes corrected docs/static gates, current/full-history known-secret scans, unchanged executable/config/dependency bytes, owner-only ignored private files, actual proc TCP-table no-listener proof and formatting. Finalized scope is the research checkpoint only; BOOT-04 design acceptance remains in progress.
+- **test:** RUN067 passed final research checkpoint docs/config/history/log/format consistency after finalizing only completed research; no deployed/load/recovery/device acceptance inferred.
+
+### Verification
+
+- **passed:** Existing-container intake baseline only; sanitized log reviewed. No external deployment/load/recovery/device proof. ([evidence](docs/validation/runs/RUN-20261007-063.json))
+- **passed:** Static arithmetic/source observations: six fixtures, 34 retrieved body digests,548 original leaf IDs/20 optional flags unchanged, selected AWS SKU and Sentry monthly rates; no deployed capacity/recovery/security acceptance. ([evidence](docs/validation/runs/RUN-20261007-064.json))
+- **failed:** Actual docs:sync failure (exit1) for mistaken scope-vs-leaf ID references; preserved before correcting only draft metadata. No acceptance bypass or validator change. ([evidence](docs/validation/runs/RUN-20261007-065.json))
+- **passed:** Corrected current research/docs/static/source/history/secret and preservation gates in existing container before final checkpoint metadata; actual executable fingerprint unchanged, original private files safe/ignored, no owned ports. No provider load/recovery/deployment/device acceptance. ([evidence](docs/validation/runs/RUN-20261007-066.json))
+- **passed:** Finalized research checkpoint current/static documentation/configuration/history/log/source-format gates; exit0, unchanged executable fingerprint. Overall BOOT-04 still awaits Director choices and final quotes. ([evidence](docs/validation/runs/RUN-20261007-067.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [README.md](README.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/README.md](docs/README.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/features.json](docs/features.json) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [infra/README.md](infra/README.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/plans/2026-10-07-boot-04-provider-research.md](docs/plans/2026-10-07-boot-04-provider-research.md) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/plans/boot-04-costs.json](docs/plans/boot-04-costs.json) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **updated:** [docs/plans/boot-04-sources.json](docs/plans/boot-04-sources.json) — Reflect BOOT-04 research/proposal stage and Director NA/50-player/cost-tier inputs; distinguish explicit quote/capacity/recovery assumptions and pending choices from unchanged local-only implemented code, prior proofs and actual deployment.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/contracts/release.md](docs/contracts/release.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Research changed no application/configuration/dependency or executable callable; current local operation/foundation and source-specific proof remain accurate. This proposal does not accept deployment, real gameplay, devices or full product gates.
+- **historical_preserved:** [docs/vision/Development_Blueprint_2026-10-05.md](docs/vision/Development_Blueprint_2026-10-05.md) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+- **historical_preserved:** [docs/vision/original_action_items.md](docs/vision/original_action_items.md) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+- **historical_preserved:** [docs/vision/dependencies.json](docs/vision/dependencies.json) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+- **historical_preserved:** [docs/vision/source_register.json](docs/vision/source_register.json) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+- **historical_preserved:** [docs/vision/rules_certification_template.csv](docs/vision/rules_certification_template.csv) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+- **historical_preserved:** [VALIDATION_RESULTS.json](VALIDATION_RESULTS.json) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+- **historical_preserved:** [SHA256SUMS.txt](SHA256SUMS.txt) — Preserve authoritative original548/20-optional and X01-X07 scope, researched historical baseline/certification/archive provenance. Provider planning neither rewrites source bytes nor claims product/rules/runtime acceptance.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261007-005.json).
+
+### Limits and next actions
+
+- BOOT-04 remains in progress: Director ceiling/recovery/provider/domain/age/operations and final exact regional/account/domain/tax quotes are open. No new infrastructure is deployed or purchased.
+- 50-player capacity, CPU/memory/WAL/asset/egress/replay quantities and reserve percentage are planning assumptions; no benchmark or operational service guarantee.
+- AWS NAT allowance comes from an official Ohio example, not a verified us-east-1 SKU; unpriced meters remain explicit. Railway averages are not fixed reservations; Render standby is asynchronous.
+- Public raw research cache is ignored; third-party mutable URLs/digests are research observations, not retained provider content/current rules qualification.404 source and missing ss probe are not accepted evidence.
+- Existing executable fingerprint is unchanged; Windows/devices, rules/engine/auth/real jobs/gameplay/economy, privacy/content/notice/required-settings/production gates remain separate.
+- Receive pending Director recovery answer and domain/registrar/name input; choose ceiling/provider/region/operations ownership and intended age/audience.
+- Refresh selected exact quotes and quantities, approve written design, create ADR/provider-native reviewable definitions, then finish BOOT-04 scoped design acceptance.
+- Before authorized deployment, implement validated remote runtime/origin/port/secret/image boundaries and execute restricted PG18/auth/drain/restore/load qualification; never set remote APP_ENV=local.
 
 ## CHG-20261007-004 — First successful hosted qualification and final publication handoff
 

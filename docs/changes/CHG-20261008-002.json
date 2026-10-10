@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261008-002",
+  "title": "Post-checkpoint evidence references and hosted-CI documentation correction",
+  "actor": "Codex architect/researcher/QA",
+  "status": "finalized",
+  "recorded_at": "2026-10-08T18:50:26.332Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "5819142f76a1ea853b804af8b768048a3dccc4dd",
+  "task_ids": [
+    "BOOT-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R30.009",
+    "R30.012",
+    "R30.013",
+    "R30.014"
+  ],
+  "feature_ids": [
+    "F-STAGING",
+    "F-DOCS",
+    "F-EVIDENCE"
+  ],
+  "changes": [
+    {
+      "kind": "documentation",
+      "description": "Add passing finalized research RUN007 reference to current validation/handoff; correct stale hosted-pending universal workflow text against existing BOOT-03 RUN061 at commit612a8c9. No new hosted execution or product acceptance claimed."
+    },
+    {
+      "kind": "test",
+      "description": "Post-finalization refresh underCHG001 was rejected by the new-record guard; docs:check then reported stale snapshot. RUN008 durably reproduces/preserves that failure. RestoreCHG001 to its last synchronized finalized content and use this separate correction record; leave validators and raw evidence unchanged."
+    },
+    {
+      "kind": "test",
+      "description": "RUN009 passes the separate correction documentation gate with consistent paired timing. Finalize only documentation follow-up; preserve finalized001 content, all failed attempts, unchanged runtime source and pending BOOT-04/provider/device acceptance."
+    }
+  ],
+  "files": [
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/HANDOFF.md",
+    "docs/validation/boot-04.md",
+    "docs/changes/CHG-20261008-002.json",
+    "CHANGELOG.md",
+    "docs/current-state.json",
+    "docs/validation/runs/RUN-20261008-007.json",
+    "docs/validation/logs/RUN-20261008-007.txt",
+    "docs/validation/runs/RUN-20261008-008.json",
+    "docs/validation/logs/RUN-20261008-008.txt",
+    "docs/validation/runs/RUN-20261008-009.json",
+    "docs/validation/logs/RUN-20261008-009.txt"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "updated",
+      "reason": "Existing BOOT-03 RUN061 qualifies first hosted run; settings/cancellation remain pending. Replace stale hosted-pending statement only."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Separate finalized research001 and this later evidence-reference/workflow correction; preserve access, timing and deployment limits."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "updated",
+      "reason": "Retain RUN007 actual passing scope and RUN008 actual failure; overall BOOT-04 remains in progress."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261008-007.json",
+      "outcome": "passed",
+      "scope": "Finalized001 research documentation gate before follow-up wording/reference changes."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261008-008.json",
+      "outcome": "failed",
+      "scope": "Actual stale snapshot after post-finalization prose/reference edits; new correction record required. No application failure."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261008-009.json",
+      "outcome": "passed",
+      "scope": "Corrected002 documentation snapshot/inventory/links/history/evidence consistency with consistent paired timing; sanitized log reviewed. Final status/reference refresh checked by synchronization."
+    }
+  ],
+  "limitations": [
+    "Documentation-only follow-up; no runtime/dependency/private data changes, hosted rerun, provisioning, authenticated reference or device acceptance.",
+    "BOOT-04 remains in progress; research proposal is unapproved."
+  ],
+  "next_actions": [
+    "Review the single-host proposal and final NA quote, operator/recovery/budget/domain decisions with the Director; no provisioning authorized."
+  ]
+}

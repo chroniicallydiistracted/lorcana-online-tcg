@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-067",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";import assert from \"node:assert/strict\";for(const [cmd,args] of [[\"pnpm\",[\"verify\"]],[\"git\",[\"diff\",\"--check\",\"--\",\".\",\":(exclude)docs/validation/logs/**\"]]]) {const r=spawnSync(cmd,args,{stdio:\"inherit\"});assert.equal(r.status,0);}console.log(\"PASS finalized research checkpoint static documentation/configuration/history/log/format gates; no external runtime acceptance\");"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "5819142f76a1ea853b804af8b768048a3dccc4dd",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-07T16:52:50.520Z",
+  "finished_at": "2026-10-07T16:52:55.114Z",
+  "recorded_at": "2026-10-07T16:52:55.114Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4593,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "BOOT-04 finalized research checkpoint documentation/configuration/history/log consistency and source formatting; overall design choices remain open",
+  "log_path": "docs/validation/logs/RUN-20261007-067.txt",
+  "log_sha256": "0edc7f187588f92ba182ee5bc656e02483c7bb551020b4bb86a2b32f0a7d83ee",
+  "redactions": 0
+}

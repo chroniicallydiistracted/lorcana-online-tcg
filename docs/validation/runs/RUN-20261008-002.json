@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261008-002",
+  "category": "static",
+  "command": [
+    "python3",
+    "-c",
+    "import csv,json,hashlib,re,html,subprocess,pathlib\nr=pathlib.Path('.')\nsources=json.loads((r/'docs/plans/boot-04-single-host-sources.json').read_text())\nok=[s for s in sources['retrievals'] if s['http_status']==200];bad=[s for s in sources['retrievals'] if s['http_status']!=200]\nassert len(ok)==16 and len(bad)==1 and bad[0]['http_status']==404\ntexts={}\nfor s in ok:\n b=(r/'.local/boot-04-single-host-source-cache'/(s['id']+'.body')).read_bytes()\n assert len(b)==s['bytes'] and hashlib.sha256(b).hexdigest()==s['sha256']\n texts[s['id']]=re.sub(r'\\s+',' ',html.unescape(re.sub('<[^>]+>',' ',b.decode())))\nrates=texts['hetzner-rate-update']\nassert 'CCX23 0.0545 / 33.99 0.1402 / 87.49 0.0641 / 39.99 0.1650 / 102.99' in rates\nassert 'CCX33 0.1042 / 64.99 0.2259 / 140.99 0.1234 / 76.99 0.2660 / 165.99' in rates\nassert 'AX42-1 97.30 49.00 117.10 59.00' in rates\nassert 'Cloud Primary IPv4 € 0.50 ($ 0.60) monthly' in texts['hetzner-ip']\nassert 'Primary IPv4 € 1.70 € - $ 1.90 $ -' in texts['hetzner-ip']\nassert re.search(r'Advance-3 2024 Starting at \\$255',texts['ovh-advance-us'])\nassert 'at-most-once' in texts['redis-pubsub'] and 'forever lost' in texts['redis-pubsub']\nassert 'LISTEN' in texts['pgbouncer'] and 'transaction' in texts['pgbouncer'].lower()\nassert 'dokploy-postgres' in texts['dokploy-control-backup']\nassert 'S3' in texts['dokploy-database-backup']\nassert 'cannot order dedicated root servers' in texts['hetzner-locations']\nassert 'OVHcloud (Gravelines, France)' in texts['duels-privacy']\ncosts=json.loads((r/'docs/plans/boot-04-single-host-costs.json').read_text())\nshared=costs['shared']['r2_storage'];assert shared['billable_gb']==shared['public_gb']+shared['private_backup_replay_gb']-shared['account_free_gb'];assert round(shared['billable_gb']*shared['usd_per_gb_month'],2)==shared['monthly_usd']\nfor c in costs['candidates']:\n assert round(c['host_monthly_usd']+(c['ipv4_monthly_usd'] or 0)+shared['monthly_usd'],2)==c['known_monthly_subtotal_usd']\n assert c['host_source_id'] in texts\nassert len(costs['candidates'])==4 and len(costs['unpriced'])>=8\nscope=json.loads((r/'docs/plans/boot-04-costs.json').read_text())['scope_source']\nb=(r/'docs/vision/requirements.csv').read_bytes();assert hashlib.sha256(b).hexdigest()==scope['sha256']\nrows=list(csv.DictReader(b.decode().splitlines()));assert len(rows)==548 and len({x['group_id'] for x in rows})==33 and sum(x['optional']=='true' for x in rows)==20\nold=list(csv.DictReader(subprocess.run(['git','show','HEAD:docs/vision/initial_backlog.csv'],text=True,capture_output=True,check=True).stdout.splitlines()))\nnew=list(csv.DictReader((r/'docs/vision/initial_backlog.csv').read_text().splitlines()));assert len(old)==len(new)==32\nfor a,z in zip(old,new):\n assert a['task_id']==z['task_id']\n if a['task_id']!='BOOT-04':assert a==z\n else:\n  assert z['implementation_status']=='in_progress_single_host_proposal_director_decisions_open'\n  assert all(a[k]==z[k] for k in a if k not in ['implementation_status','evidence_links'])\nobserved=json.loads((r/'docs/research/2026-10-08-duels-observations.json').read_text())\nassert len(observed['coverage'])==14 and len(observed['delivered_sources']['assets'])==8\nassert observed['network_summary']['socket']['frames_captured'] is False\nassert observed['coverage'][-1]['cleanup']['game_ended'] is True\nassert observed['director_report']['occurred_at'] is None\nassert not re.search(r'eyJ[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+\\.',json.dumps(observed))\nprint('PASS16 source body hashes + expected404; current NA/EU/USD selectors; four cost sums/unknowns; Redis/pooler/backups/locations;548 requirements/33groups/20flags and32 preserved tasks; sanitized14-surface/eight-asset browser evidence limits.')\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "5819142f76a1ea853b804af8b768048a3dccc4dd",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-08T18:33:05.642Z",
+  "finished_at": "2026-10-08T18:33:05.723Z",
+  "recorded_at": "2026-10-08T18:33:05.723Z",
+  "time_precision": "exact",
+  "elapsed_ms": 82,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Single-host research: cached source-byte integrity, actual quote selectors/arithmetic, unchanged vision/backlog and sanitized browser observation coverage; no runtime/provider capacity qualification",
+  "log_path": "docs/validation/logs/RUN-20261008-002.txt",
+  "log_sha256": "e541140bc7044290c81db4f6790ff852cd67bdf8a5faf8d03e0f383133012c72",
+  "redactions": 0
+}

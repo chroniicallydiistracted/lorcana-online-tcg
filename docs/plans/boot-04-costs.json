@@ -1,0 +1,1931 @@
+{
+  "schema_version": 1,
+  "status": "research_proposal_not_approved",
+  "recorded_at": "2026-10-07T16:31:12.053Z",
+  "source_commit": "5819142f76a1ea853b804af8b768048a3dccc4dd",
+  "currency": "USD",
+  "taxes_included": false,
+  "director_inputs": {
+    "budget": "Compare cost tiers before setting a ceiling",
+    "initial_geography": "Primarily North America",
+    "peak_concurrent_players": 50,
+    "recovery_policy": null,
+    "domain": null,
+    "audience_age_policy": null,
+    "provider_approval": null,
+    "event_times": null,
+    "event_time_basis": "recorded_only; these human answers have no independently supported exact execution/event times"
+  },
+  "capacity_assumptions": {
+    "ordinary_match_seats": 2,
+    "peak_matches": 25,
+    "mean_commands_per_match_second": 0.1,
+    "aggregate_commands_per_second": 2.5,
+    "burst_multiplier": 5,
+    "burst_commands_per_second": 12.5,
+    "active_hours_per_day": 4,
+    "days_per_usage_month": 30,
+    "accepted_commands_per_month": 1080000,
+    "projection_bytes_per_recipient": 12288,
+    "recipients_per_command": 3,
+    "projection_egress_decimal_GB": 39.81312,
+    "live_connections_fixture": 80,
+    "connections_basis": "50players+25spectators+5extra/reconnect-tab clients; not approved or measured",
+    "raw_journal_bytes_per_command": 1000,
+    "raw_journal_decimal_GB_per_month": 1.08,
+    "state_rewrite_bytes_per_command": 40000,
+    "state_rewrite_decimal_GB_per_month": 43.2,
+    "continuous_24h_state_rewrite_GB_per_month": 259.2,
+    "capacity_evidence": "not_run; estimates only, no current gameplay or50-player load test"
+  },
+  "scope_source": {
+    "path": "docs/vision/requirements.csv",
+    "sha256": "7317edf13599dae982832abc74008101b753bc3093f61b025f5526f00fb42c48",
+    "requirements": 548,
+    "groups": 33,
+    "optional": 20
+  },
+  "scope_coverage": [
+    {
+      "group_id": "R01",
+      "name": "Core Card & Rules Platform",
+      "requirement_ids": [
+        "R01.001",
+        "R01.002",
+        "R01.003",
+        "R01.004",
+        "R01.005",
+        "R01.006",
+        "R01.007",
+        "R01.008",
+        "R01.009",
+        "R01.010",
+        "R01.011",
+        "R01.012",
+        "R01.013",
+        "R01.014",
+        "R01.015",
+        "R01.016",
+        "R01.017",
+        "R01.018",
+        "R01.019",
+        "R01.020",
+        "R01.021",
+        "R01.022",
+        "R01.023",
+        "R01.024",
+        "R01.025",
+        "R01.026"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Versioned rules/catalog imports, immutable release artifacts and content provenance; public catalog CDN versus private certification records."
+    },
+    {
+      "group_id": "R02",
+      "name": "Actual Match Engine",
+      "requirement_ids": [
+        "R02.001",
+        "R02.002",
+        "R02.003",
+        "R02.004",
+        "R02.005",
+        "R02.006",
+        "R02.007",
+        "R02.008",
+        "R02.009",
+        "R02.010",
+        "R02.011",
+        "R02.012",
+        "R02.013",
+        "R02.014",
+        "R02.015",
+        "R02.016",
+        "R02.017",
+        "R02.018",
+        "R02.019",
+        "R02.020",
+        "R02.021",
+        "R02.022",
+        "R02.023",
+        "R02.024",
+        "R02.025",
+        "R02.026",
+        "R02.027",
+        "R02.028",
+        "R02.029",
+        "R02.030",
+        "R02.031",
+        "R02.032",
+        "R02.033",
+        "R02.034"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Authoritative CPU match processes, transactions/journal/receipts, private RNG and viewer projections; reconnect/drain without instance affinity."
+    },
+    {
+      "group_id": "R03",
+      "name": "Deckbuilder",
+      "requirement_ids": [
+        "R03.001",
+        "R03.002",
+        "R03.003",
+        "R03.004",
+        "R03.005",
+        "R03.006",
+        "R03.007",
+        "R03.008",
+        "R03.009",
+        "R03.010",
+        "R03.011",
+        "R03.012",
+        "R03.013",
+        "R03.014",
+        "R03.015",
+        "R03.016",
+        "R03.017",
+        "R03.018",
+        "R03.019",
+        "R03.020",
+        "R03.021",
+        "R03.022",
+        "R03.023",
+        "R03.024",
+        "R03.025",
+        "R03.026",
+        "R03.027"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Authenticated relational deck storage, revision conflicts, indexes/search, exports and asset CDN; local deck editing remains responsive."
+    },
+    {
+      "group_id": "R04",
+      "name": "Sandbox / Lab Mode",
+      "requirement_ids": [
+        "R04.001",
+        "R04.002",
+        "R04.003",
+        "R04.004",
+        "R04.005",
+        "R04.006",
+        "R04.007",
+        "R04.008",
+        "R04.009",
+        "R04.010",
+        "R04.011",
+        "R04.012",
+        "R04.013",
+        "R04.014",
+        "R04.015",
+        "R04.016",
+        "R04.017",
+        "R04.018",
+        "R04.019",
+        "R04.020",
+        "R04.021",
+        "R04.022",
+        "R04.023",
+        "R04.024",
+        "R04.025",
+        "R04.026",
+        "R04.027",
+        "R04.028",
+        "R04.029"
+      ],
+      "optional_ids": [
+        "R04.028"
+      ],
+      "hosting_implications": "Ownership-free Lab and separate manipulated Sandbox; bounded bots/simulations; admission/eligibility enforce reward policy."
+    },
+    {
+      "group_id": "R05",
+      "name": "Player Collection",
+      "requirement_ids": [
+        "R05.001",
+        "R05.002",
+        "R05.003",
+        "R05.004",
+        "R05.005",
+        "R05.006",
+        "R05.007",
+        "R05.008",
+        "R05.009",
+        "R05.010",
+        "R05.011",
+        "R05.012",
+        "R05.013",
+        "R05.014",
+        "R05.015",
+        "R05.016",
+        "R05.017",
+        "R05.018"
+      ],
+      "optional_ids": [
+        "R05.016"
+      ],
+      "hosting_implications": "Printing/finish-aware durable holdings, ledger, receipts and authoritative inventory; CDN art never substitutes for ownership records."
+    },
+    {
+      "group_id": "R06",
+      "name": "Virtual Product System",
+      "requirement_ids": [
+        "R06.001",
+        "R06.002",
+        "R06.003",
+        "R06.004",
+        "R06.005",
+        "R06.006",
+        "R06.007",
+        "R06.008",
+        "R06.009",
+        "R06.010",
+        "R06.011",
+        "R06.012",
+        "R06.013",
+        "R06.014",
+        "R06.015",
+        "R06.016",
+        "R06.017",
+        "R06.018"
+      ],
+      "optional_ids": [
+        "R06.013"
+      ],
+      "hosting_implications": "Transactional virtual packs/boxes/products and reveal receipts; client Babylon renders authored assets without cloud GPU."
+    },
+    {
+      "group_id": "R07",
+      "name": "Progression & Economy",
+      "requirement_ids": [
+        "R07.001",
+        "R07.002",
+        "R07.003",
+        "R07.004",
+        "R07.005",
+        "R07.006",
+        "R07.007",
+        "R07.008",
+        "R07.009",
+        "R07.010",
+        "R07.011",
+        "R07.012",
+        "R07.013",
+        "R07.014",
+        "R07.015",
+        "R07.016",
+        "R07.017",
+        "R07.018",
+        "R07.019"
+      ],
+      "optional_ids": [
+        "R07.014",
+        "R07.015"
+      ],
+      "hosting_implications": "Idempotent grants, integer ledger and durable jobs/outbox; rate controls and audit for free-player economy."
+    },
+    {
+      "group_id": "R08",
+      "name": "Player Profile",
+      "requirement_ids": [
+        "R08.001",
+        "R08.002",
+        "R08.003",
+        "R08.004",
+        "R08.005",
+        "R08.006",
+        "R08.007",
+        "R08.008",
+        "R08.009",
+        "R08.010",
+        "R08.011",
+        "R08.012",
+        "R08.013",
+        "R08.014",
+        "R08.015",
+        "R08.016",
+        "R08.017"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Profiles and preferences in relational storage; privacy/deletion, synchronized device settings and limited public fields."
+    },
+    {
+      "group_id": "R09",
+      "name": "Matchmaking",
+      "requirement_ids": [
+        "R09.001",
+        "R09.002",
+        "R09.003",
+        "R09.004",
+        "R09.005",
+        "R09.006",
+        "R09.007",
+        "R09.008",
+        "R09.009",
+        "R09.010",
+        "R09.011",
+        "R09.012",
+        "R09.013",
+        "R09.014",
+        "R09.015",
+        "R09.016",
+        "R09.017"
+      ],
+      "optional_ids": [
+        "R09.017"
+      ],
+      "hosting_implications": "Transactional queue/admission, private ownership versus legality checks, clocks and connection recovery."
+    },
+    {
+      "group_id": "R10",
+      "name": "Ranked System",
+      "requirement_ids": [
+        "R10.001",
+        "R10.002",
+        "R10.003",
+        "R10.004",
+        "R10.005",
+        "R10.006",
+        "R10.007",
+        "R10.008",
+        "R10.009",
+        "R10.010",
+        "R10.011"
+      ],
+      "optional_ids": [
+        "R10.005"
+      ],
+      "hosting_implications": "Ranked season/rating transactions, leaderboards, abuse review and retained eligible release versions."
+    },
+    {
+      "group_id": "R11",
+      "name": "Limited Formats",
+      "requirement_ids": [
+        "R11.001",
+        "R11.002",
+        "R11.003",
+        "R11.004",
+        "R11.005",
+        "R11.006",
+        "R11.007",
+        "R11.008",
+        "R11.009",
+        "R11.010",
+        "R11.011",
+        "R11.012",
+        "R11.013"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Draft/sealed/rush admission and product pools, timed draft sessions, durable choices and arrival-spike qualification."
+    },
+    {
+      "group_id": "R12",
+      "name": "AI Opponents",
+      "requirement_ids": [
+        "R12.001",
+        "R12.002",
+        "R12.003",
+        "R12.004",
+        "R12.005",
+        "R12.006",
+        "R12.007",
+        "R12.008",
+        "R12.009",
+        "R12.010",
+        "R12.011",
+        "R12.012",
+        "R12.013",
+        "R12.014",
+        "R12.015",
+        "R12.016"
+      ],
+      "optional_ids": [
+        "R12.004"
+      ],
+      "hosting_implications": "CPU search/bot workers with concurrency/time budgets separate from live-match capacity; optional advanced AI unselected."
+    },
+    {
+      "group_id": "R13",
+      "name": "Tutorial & Learning System",
+      "requirement_ids": [
+        "R13.001",
+        "R13.002",
+        "R13.003",
+        "R13.004",
+        "R13.005",
+        "R13.006",
+        "R13.007",
+        "R13.008",
+        "R13.009",
+        "R13.010",
+        "R13.011",
+        "R13.012",
+        "R13.013",
+        "R13.014",
+        "R13.015",
+        "R13.016",
+        "R13.017",
+        "R13.018",
+        "R13.019"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Versioned tutorial/scenario assets and progress, deterministic teaching fixtures and accessibility checks."
+    },
+    {
+      "group_id": "R14",
+      "name": "Rules Assistant",
+      "requirement_ids": [
+        "R14.001",
+        "R14.002",
+        "R14.003",
+        "R14.004",
+        "R14.005",
+        "R14.006",
+        "R14.007",
+        "R14.008",
+        "R14.009",
+        "R14.010",
+        "R14.011"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Source-linked rules search/index and context; paid model APIs optional, separately approved and privacy-qualified."
+    },
+    {
+      "group_id": "R15",
+      "name": "Match History & Replay System",
+      "requirement_ids": [
+        "R15.001",
+        "R15.002",
+        "R15.003",
+        "R15.004",
+        "R15.005",
+        "R15.006",
+        "R15.007",
+        "R15.008",
+        "R15.009",
+        "R15.010",
+        "R15.011",
+        "R15.012",
+        "R15.013",
+        "R15.014",
+        "R15.015",
+        "R15.016",
+        "R15.017",
+        "R15.018",
+        "R15.019"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Authorized per-viewer replay objects, retained engine/rules/catalog versions, access/deletion and export expiry."
+    },
+    {
+      "group_id": "R16",
+      "name": "Post-Game Analytics",
+      "requirement_ids": [
+        "R16.001",
+        "R16.002",
+        "R16.003",
+        "R16.004",
+        "R16.005",
+        "R16.006",
+        "R16.007",
+        "R16.008",
+        "R16.009",
+        "R16.010",
+        "R16.011",
+        "R16.012",
+        "R16.013",
+        "R16.014",
+        "R16.015",
+        "R16.016"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Asynchronous replay analysis and relational aggregates; job quotas and private/public data separation."
+    },
+    {
+      "group_id": "R17",
+      "name": "Spectator System",
+      "requirement_ids": [
+        "R17.001",
+        "R17.002",
+        "R17.003",
+        "R17.004",
+        "R17.005",
+        "R17.006",
+        "R17.007",
+        "R17.008",
+        "R17.009",
+        "R17.010",
+        "R17.011",
+        "R17.012",
+        "R17.013"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Spectator fan-out/delay, caster/judge scopes and hidden-state protection; distinct connection and egress allowance."
+    },
+    {
+      "group_id": "R18",
+      "name": "Tournament Platform",
+      "requirement_ids": [
+        "R18.001",
+        "R18.002",
+        "R18.003",
+        "R18.004",
+        "R18.005",
+        "R18.006",
+        "R18.007",
+        "R18.008",
+        "R18.009",
+        "R18.010",
+        "R18.011",
+        "R18.012",
+        "R18.013",
+        "R18.014",
+        "R18.015",
+        "R18.016",
+        "R18.017",
+        "R18.018",
+        "R18.019",
+        "R18.020"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Tournament bursts, judge/admin authorization, bracket/result transactions and delayed replay retention."
+    },
+    {
+      "group_id": "R19",
+      "name": "Social Features",
+      "requirement_ids": [
+        "R19.001",
+        "R19.002",
+        "R19.003",
+        "R19.004",
+        "R19.005",
+        "R19.006",
+        "R19.007",
+        "R19.008",
+        "R19.009",
+        "R19.010",
+        "R19.011",
+        "R19.012"
+      ],
+      "optional_ids": [
+        "R19.005"
+      ],
+      "hosting_implications": "Friends/blocks/chat/invites and report queues; moderation ownership, rate limits and durable notifications."
+    },
+    {
+      "group_id": "R20",
+      "name": "Card Encyclopedia",
+      "requirement_ids": [
+        "R20.001",
+        "R20.002",
+        "R20.003",
+        "R20.004",
+        "R20.005",
+        "R20.006",
+        "R20.007",
+        "R20.008",
+        "R20.009",
+        "R20.010",
+        "R20.011",
+        "R20.012",
+        "R20.013",
+        "R20.014",
+        "R20.015",
+        "R20.016",
+        "R20.017",
+        "R20.018",
+        "R20.019",
+        "R20.020",
+        "R20.021"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Public encyclopedia/catalog search, relationships, version labels and licensed CDN assets."
+    },
+    {
+      "group_id": "R21",
+      "name": "Metagame & Competitive Data",
+      "requirement_ids": [
+        "R21.001",
+        "R21.002",
+        "R21.003",
+        "R21.004",
+        "R21.005",
+        "R21.006",
+        "R21.007",
+        "R21.008",
+        "R21.009",
+        "R21.010",
+        "R21.011",
+        "R21.012",
+        "R21.013",
+        "R21.014",
+        "R21.015"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Bounded aggregate statistics and scheduled refresh; privacy floors and certified-format filters."
+    },
+    {
+      "group_id": "R22",
+      "name": "Deck Discovery",
+      "requirement_ids": [
+        "R22.001",
+        "R22.002",
+        "R22.003",
+        "R22.004",
+        "R22.005",
+        "R22.006",
+        "R22.007",
+        "R22.008",
+        "R22.009",
+        "R22.010",
+        "R22.011",
+        "R22.012"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Deck discovery/search/sharing with moderation and publication consent; PostgreSQL indexes before hosted search."
+    },
+    {
+      "group_id": "R23",
+      "name": "Achievements",
+      "requirement_ids": [
+        "R23.001",
+        "R23.002",
+        "R23.003",
+        "R23.004",
+        "R23.005",
+        "R23.006",
+        "R23.007",
+        "R23.008",
+        "R23.009",
+        "R23.010",
+        "R23.011"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Idempotent achievements and completion events through existing ledger/outbox patterns."
+    },
+    {
+      "group_id": "R24",
+      "name": "Cosmetics",
+      "requirement_ids": [
+        "R24.001",
+        "R24.002",
+        "R24.003",
+        "R24.004",
+        "R24.005",
+        "R24.006",
+        "R24.007",
+        "R24.008",
+        "R24.009",
+        "R24.010",
+        "R24.011",
+        "R24.012"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Entitlements and cosmetic unlocks are durable; CDN audio/table/card assets and client rendering budgets."
+    },
+    {
+      "group_id": "R25",
+      "name": "Accessibility & User Experience",
+      "requirement_ids": [
+        "R25.001",
+        "R25.002",
+        "R25.003",
+        "R25.004",
+        "R25.005",
+        "R25.006",
+        "R25.007",
+        "R25.008",
+        "R25.009",
+        "R25.010",
+        "R25.011",
+        "R25.012",
+        "R25.013",
+        "R25.014",
+        "R25.015",
+        "R25.016"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Browser/device accessibility, localization and reduced motion; network/CDN latency plus interruption recovery, actual hardware tests."
+    },
+    {
+      "group_id": "R26",
+      "name": "Notifications",
+      "requirement_ids": [
+        "R26.001",
+        "R26.002",
+        "R26.003",
+        "R26.004",
+        "R26.005",
+        "R26.006",
+        "R26.007",
+        "R26.008",
+        "R26.009",
+        "R26.010",
+        "R26.011"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "In-app notifications plus budgeted transactional email; dedupe, priorities, opt-out and recovery-mail burst control."
+    },
+    {
+      "group_id": "R27",
+      "name": "Content Management Backend",
+      "requirement_ids": [
+        "R27.001",
+        "R27.002",
+        "R27.003",
+        "R27.004",
+        "R27.005",
+        "R27.006",
+        "R27.007",
+        "R27.008",
+        "R27.009",
+        "R27.010",
+        "R27.011",
+        "R27.012",
+        "R27.013",
+        "R27.014",
+        "R27.015",
+        "R27.016"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Privileged content management, source provenance, staged imports, review/rollback and immutable release publication."
+    },
+    {
+      "group_id": "R28",
+      "name": "Card Implementation Testing",
+      "requirement_ids": [
+        "R28.001",
+        "R28.002",
+        "R28.003",
+        "R28.004",
+        "R28.005",
+        "R28.006",
+        "R28.007",
+        "R28.008",
+        "R28.009",
+        "R28.010",
+        "R28.011",
+        "R28.012"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "CI qualification matrices, retained fixtures and bounded batch card simulations separate from production gameplay."
+    },
+    {
+      "group_id": "R29",
+      "name": "Game Integrity & Anti-Cheat",
+      "requirement_ids": [
+        "R29.001",
+        "R29.002",
+        "R29.003",
+        "R29.004",
+        "R29.005",
+        "R29.006",
+        "R29.007",
+        "R29.008",
+        "R29.009",
+        "R29.010",
+        "R29.011",
+        "R29.012"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Private authority/RNG, validated frames, fraud/moderation evidence, rate limiting and secret/log redaction."
+    },
+    {
+      "group_id": "R30",
+      "name": "Accounts & Infrastructure",
+      "requirement_ids": [
+        "R30.001",
+        "R30.002",
+        "R30.003",
+        "R30.004",
+        "R30.005",
+        "R30.006",
+        "R30.007",
+        "R30.008",
+        "R30.009",
+        "R30.010",
+        "R30.011",
+        "R30.012",
+        "R30.013",
+        "R30.014",
+        "R30.015",
+        "R30.016",
+        "R30.017"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Accounts, private PostgreSQL, backups/restores, telemetry, maintenance, load balancing and protocol/release compatibility."
+    },
+    {
+      "group_id": "R31",
+      "name": "Moderation & Administration",
+      "requirement_ids": [
+        "R31.001",
+        "R31.002",
+        "R31.003",
+        "R31.004",
+        "R31.005",
+        "R31.006",
+        "R31.007",
+        "R31.008",
+        "R31.009",
+        "R31.010",
+        "R31.011",
+        "R31.012",
+        "R31.013"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Admin MFA/roles, investigation queues, reversible sanctions with audit and incident responsibilities."
+    },
+    {
+      "group_id": "R32",
+      "name": "Developer / Debug Tools",
+      "requirement_ids": [
+        "R32.001",
+        "R32.002",
+        "R32.003",
+        "R32.004",
+        "R32.005",
+        "R32.006",
+        "R32.007",
+        "R32.008",
+        "R32.009",
+        "R32.010",
+        "R32.011",
+        "R32.012",
+        "R32.013",
+        "R32.014"
+      ],
+      "optional_ids": [],
+      "hosting_implications": "Synthetic staging and authorized debug tooling; private exports/replays and capped simulation compute."
+    },
+    {
+      "group_id": "R33",
+      "name": "Public API / Data Layer",
+      "requirement_ids": [
+        "R33.001",
+        "R33.002",
+        "R33.003",
+        "R33.004",
+        "R33.005",
+        "R33.006",
+        "R33.007",
+        "R33.008",
+        "R33.009",
+        "R33.010",
+        "R33.011"
+      ],
+      "optional_ids": [
+        "R33.001",
+        "R33.002",
+        "R33.003",
+        "R33.004",
+        "R33.005",
+        "R33.006",
+        "R33.007",
+        "R33.008",
+        "R33.009",
+        "R33.010",
+        "R33.011"
+      ],
+      "hosting_implications": "All eleven public API/webhook/third-party requirements remain optional; scopes/rate limits/hosting budget added only if selected."
+    }
+  ],
+  "additional_scope": [
+    "X01",
+    "X02",
+    "X03",
+    "X04",
+    "X05",
+    "X06",
+    "X07"
+  ],
+  "rates": {
+    "render_pro": {
+      "usd": 25,
+      "unit": "workspace-month",
+      "source_id": "render-pricing",
+      "selector": "Pro workspace flat subscription; compute extra",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "render_app_small": {
+      "usd": 7,
+      "unit": "instance-month",
+      "source_id": "render-pricing",
+      "selector": "Web services/background workers: 0.5c-512mb",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "render_app_medium": {
+      "usd": 25,
+      "unit": "instance-month",
+      "source_id": "render-pricing",
+      "selector": "Web services/background workers: 1c-2g",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "render_pg_small": {
+      "usd": 19,
+      "unit": "instance-month",
+      "source_id": "render-pricing",
+      "selector": "Render Postgres: 0.5c-1g, 100 connections",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "render_pg_medium": {
+      "usd": 40,
+      "unit": "instance-month",
+      "source_id": "render-pricing",
+      "selector": "Render Postgres: 1c-2g, 100 connections",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "render_pg_storage": {
+      "usd": 0.3,
+      "unit": "GB-month",
+      "source_id": "render-pricing",
+      "selector": "Expandable Postgres storage",
+      "qualification": "Conservatively charges all provisioned GB; no unverified included-storage discount. No persistent disk on stateless application services."
+    },
+    "render_egress": {
+      "usd": 0.15,
+      "unit": "GB above workspace inclusion",
+      "source_id": "render-pricing",
+      "selector": "Hobby 5 GB / Pro 25 GB monthly shared bandwidth included, then $0.15/GB",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "render_cron": {
+      "usd": 0.00016,
+      "unit": "active minute",
+      "source_id": "render-pricing",
+      "selector": "Cron 0.5c-512mb; $1/month minimum per job in render-cron",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "railway_ram": {
+      "usd": 3.86e-06,
+      "unit": "GB-second",
+      "source_id": "railway-pricing",
+      "selector": "Memory",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "railway_cpu": {
+      "usd": 7.72e-06,
+      "unit": "vCPU-second",
+      "source_id": "railway-pricing",
+      "selector": "CPU (actual usage)",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "railway_volume": {
+      "usd": 6e-08,
+      "unit": "GB-second",
+      "source_id": "railway-pricing",
+      "selector": "Volumes",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "railway_egress": {
+      "usd": 0.05,
+      "unit": "GB",
+      "source_id": "railway-pricing",
+      "selector": "Service egress",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "railway_bucket": {
+      "usd": 0.015,
+      "unit": "GB-month",
+      "source_id": "railway-pricing",
+      "selector": "Object storage; operations and egress free on published plan",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "r2_storage": {
+      "usd": 0.015,
+      "unit": "GB-month above shared 10 GB",
+      "source_id": "r2-pricing",
+      "selector": "Standard class",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "r2_class_a": {
+      "usd": 4.5,
+      "unit": "million operations above shared 1 million",
+      "source_id": "r2-pricing",
+      "selector": "Standard Class A; round billed units upward",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "r2_class_b": {
+      "usd": 0.36,
+      "unit": "million operations above shared 10 million",
+      "source_id": "r2-pricing",
+      "selector": "Standard Class B; round billed units upward",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "resend_pro": {
+      "usd": 20,
+      "unit": "month",
+      "source_id": "resend-pricing",
+      "selector": "Pro transactional: 50,000 messages monthly; $0.90/1000 excess only when enabled",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "sentry_team": {
+      "usd": 29,
+      "unit": "month",
+      "source_id": "sentry-pricing",
+      "selector": "JSON-LD priceSpecification: Team Monthly Subscription",
+      "qualification": "Visible $26/month is billed annually ($312/year); use actual $29 monthly rate. Team 50k errors, 5GB logs, 5M spans, one uptime and one cron monitor; disable paid AI/profiling/session replay and configure sampling/quotas."
+    },
+    "sentry_uptime": {
+      "usd": 1,
+      "unit": "additional monitor-month",
+      "source_id": "sentry-pricing",
+      "selector": "Uptime monitoring table: first monitor included",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "sentry_cron": {
+      "usd": 0.78,
+      "unit": "additional monitor-month",
+      "source_id": "sentry-pricing",
+      "selector": "Cron monitoring table: first monitor included",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "github_artifact": {
+      "usd": 0.25,
+      "unit": "GB-month above shared 0.5GB quota",
+      "source_id": "github-actions-price",
+      "selector": "Artifact storage",
+      "qualification": "Public standard runners are free; artifact storage is separately accounted. Account/Packages shared quota must be inspected before purchase. No paid larger runners."
+    },
+    "aws_cpu": {
+      "usd": 0.04048,
+      "unit": "vCPU-hour",
+      "source_id": "aws-ecs-region",
+      "selector": "SKU 8CESGAFWKAJ98PME; us-east-1 Linux x86 Fargate OnDemand",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_ram": {
+      "usd": 0.004445,
+      "unit": "GB-hour",
+      "source_id": "aws-ecs-region",
+      "selector": "SKU PBZNQUSEXZUC34C9; us-east-1 Fargate memory",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_rds_medium": {
+      "usd": 0.129,
+      "unit": "hour",
+      "source_id": "aws-rds-region",
+      "selector": "SKU SCBZU9XX357QUA4D; PostgreSQL db.t4g.medium Multi-AZ; effective 2026-10-01",
+      "qualification": "Already includes the Multi-AZ deployment; do not double this rate. Burstable CPU credits are extra; PG18 instance/region support and load must be qualified."
+    },
+    "aws_rds_gp3": {
+      "usd": 0.23,
+      "unit": "GB-month",
+      "source_id": "aws-rds-region",
+      "selector": "SKU J7S7KD4WFDNQWKNX; PostgreSQL Multi-AZ gp3",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_backup": {
+      "usd": 0.095,
+      "unit": "excess backup GB-month",
+      "source_id": "aws-rds-region",
+      "selector": "SKU 6W8ECRFVDATCER7J; PostgreSQL RDS:ChargedBackupUsage",
+      "qualification": "Additional backup storage above account allowance; quantity is a planning fixture, not measured WAL/snapshot growth."
+    },
+    "aws_alb": {
+      "usd": 0.0225,
+      "unit": "hour",
+      "source_id": "aws-elb-region",
+      "selector": "SKU 37CUWUT8GSNQEPUV; Application LoadBalancer usage, us-east-1 AWS Region",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_lcu": {
+      "usd": 0.008,
+      "unit": "LCU-hour",
+      "source_id": "aws-elb-region",
+      "selector": "SKU P2XGEJ8N3KU52WA8; used Application capacity units, us-east-1",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_ipv4": {
+      "usd": 0.005,
+      "unit": "address-hour",
+      "source_id": "aws-vpc-region",
+      "selector": "SKU 4GQUNXTFWVSGPUZK; in-use public IPv4 us-east-1",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_nat": {
+      "usd": 0.045,
+      "unit": "gateway-hour",
+      "source_id": "aws-vpc",
+      "selector": "Official NAT pricing example: US East (Ohio)",
+      "qualification": "Allowance based on the official Ohio example, NOT a verified us-east-1 NAT SKU quote. Requote region before purchase; known subtotal remains provisional."
+    },
+    "aws_nat_data": {
+      "usd": 0.045,
+      "unit": "processed GB",
+      "source_id": "aws-vpc",
+      "selector": "Official NAT pricing example: US East (Ohio)",
+      "qualification": "Same regional-quote limitation as aws_nat. NAT processing and Internet egress are separate meters."
+    },
+    "aws_secret": {
+      "usd": 0.4,
+      "unit": "secret-month",
+      "source_id": "aws-secrets",
+      "selector": "Published pricing example",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_secret_calls": {
+      "usd": 0.05,
+      "unit": "10000 calls",
+      "source_id": "aws-secrets",
+      "selector": "Published pricing example",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_log_ingest": {
+      "usd": 0.5,
+      "unit": "GB",
+      "source_id": "aws-logs",
+      "selector": "Published ingested-log example: 5 to 30GB @ $0.50",
+      "qualification": "Conservative full quantity without assuming account free-tier allocation; not the distinct OTel metrics meter."
+    },
+    "aws_log_storage": {
+      "usd": 0.03,
+      "unit": "GB-month",
+      "source_id": "aws-logs",
+      "selector": "Published archived compressed log example",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    },
+    "aws_ecr": {
+      "usd": 0.1,
+      "unit": "GB-month",
+      "source_id": "aws-ecr",
+      "selector": "Pricing Example1 private software image storage",
+      "qualification": "Published rate, not a guarantee of workload capacity."
+    }
+  },
+  "zero_cost_lines": [
+    {
+      "item": "Cloudflare Pages static website delivery",
+      "basis": "Static Vite files only; free plan constraints500builds/month,20kfiles,25MiB/file. Worker/function execution excluded.",
+      "source_id": "pages-limits"
+    },
+    {
+      "item": "R2 direct egress",
+      "basis": "Published direct R2 egress has no charge; service-origin upload/other cloud transfer can still incur charges.",
+      "source_id": "r2-pricing"
+    },
+    {
+      "item": "R2 request fixtures",
+      "basis": "Combined account500kA/5mB operations/month below shared1mA/10mB; round excess units upward.",
+      "source_id": "r2-pricing"
+    },
+    {
+      "item": "GitHub Actions standard public runners",
+      "basis": "Current public repository only. No larger runners. Private-repository choice changes included minutes and rates.",
+      "source_id": "github-actions-price"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "render-staging",
+      "name": "Compact synthetic staging only",
+      "scope": "One synthetic environment; not an invited beta capacity certification",
+      "lines": [
+        {
+          "item": "API staging .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "Match staging 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Worker staging .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "PG staging .5c/1GB",
+          "rate_id": "render_pg_small",
+          "quantity": 1,
+          "monthly_usd": 19.0
+        },
+        {
+          "item": "PG staging provisioned storage",
+          "rate_id": "render_pg_storage",
+          "quantity": 10,
+          "monthly_usd": 3.0
+        },
+        {
+          "item": "Daily export cron: 300 active minutes/month, $1 service minimum",
+          "rate_id": "render_cron",
+          "quantity": 300,
+          "monthly_usd": 1.0,
+          "minimum_monthly_usd": 1,
+          "billing_formula": "max(minimum_monthly_usd, quantity * rate)"
+        },
+        {
+          "item": "Hobby workspace bandwidth: 50GB less5 included",
+          "rate_id": "render_egress",
+          "quantity": 45,
+          "monthly_usd": 6.75
+        },
+        {
+          "item": "Shared R2 standard: 50GB less10 included",
+          "rate_id": "r2_storage",
+          "quantity": 40,
+          "monthly_usd": 0.6
+        }
+      ],
+      "known_monthly_subtotal_usd": 69.35,
+      "total_is_complete": false,
+      "notes": [
+        "Hobby workspace $0, free static delivery, free Resend only within3000/month and100/day, Sentry Developer one human account/one monitor. No paid AI or public-player support promise.",
+        "Does not carry any beta database or beta secrets."
+      ]
+    },
+    {
+      "id": "render-beta",
+      "name": "Paid beta alone (for comparison)",
+      "scope": "One beta environment, staging excluded",
+      "lines": [
+        {
+          "item": "Pro workspace shared subscription",
+          "rate_id": "render_pro",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "API beta 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Match beta 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Worker beta .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "PG beta 1c/2GB",
+          "rate_id": "render_pg_medium",
+          "quantity": 1,
+          "monthly_usd": 40.0
+        },
+        {
+          "item": "PG beta provisioned storage",
+          "rate_id": "render_pg_storage",
+          "quantity": 20,
+          "monthly_usd": 6.0
+        },
+        {
+          "item": "Daily export cron: 300 active minutes/month, $1 service minimum",
+          "rate_id": "render_cron",
+          "quantity": 300,
+          "monthly_usd": 1.0,
+          "minimum_monthly_usd": 1,
+          "billing_formula": "max(minimum_monthly_usd, quantity * rate)"
+        },
+        {
+          "item": "Shared Pro bandwidth100GB less25",
+          "rate_id": "render_egress",
+          "quantity": 75,
+          "monthly_usd": 11.25
+        },
+        {
+          "item": "Shared R2 standard50GB less10",
+          "rate_id": "r2_storage",
+          "quantity": 40,
+          "monthly_usd": 0.6
+        },
+        {
+          "item": "Transactional email (shared 50k plan)",
+          "rate_id": "resend_pro",
+          "quantity": 1,
+          "monthly_usd": 20.0
+        },
+        {
+          "item": "Team monitoring monthly subscription",
+          "rate_id": "sentry_team",
+          "quantity": 1,
+          "monthly_usd": 29.0
+        },
+        {
+          "item": "Two additional uptime monitors (three total)",
+          "rate_id": "sentry_uptime",
+          "quantity": 2,
+          "monthly_usd": 2.0
+        },
+        {
+          "item": "CI mean retained artifacts: 2GB less shared .5GB",
+          "rate_id": "github_artifact",
+          "quantity": 1.5,
+          "monthly_usd": 0.375
+        }
+      ],
+      "known_monthly_subtotal_usd": 192.23,
+      "total_is_complete": false,
+      "notes": [
+        "Single database instance; Pro PITR is7days, with latest eligible restore time at least10minutes behind now. No AZ-zero-loss guarantee.",
+        "One API/match instance is a qualification starting point, not a50-player benchmark. Worker .5GB may need a larger SKU once jobs exist."
+      ]
+    },
+    {
+      "id": "render-stage-beta",
+      "name": "Separate staging and beta in one Pro workspace",
+      "scope": "Two isolated environments; distinct databases, buckets/credentials and deployment controls",
+      "lines": [
+        {
+          "item": "Shared Pro workspace subscription",
+          "rate_id": "render_pro",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "API staging .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "Match staging 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Worker staging .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "PG staging .5c/1GB",
+          "rate_id": "render_pg_small",
+          "quantity": 1,
+          "monthly_usd": 19.0
+        },
+        {
+          "item": "PG staging provisioned storage",
+          "rate_id": "render_pg_storage",
+          "quantity": 10,
+          "monthly_usd": 3.0
+        },
+        {
+          "item": "Daily export cron: 300 active minutes/month, $1 service minimum",
+          "rate_id": "render_cron",
+          "quantity": 300,
+          "monthly_usd": 1.0,
+          "minimum_monthly_usd": 1,
+          "billing_formula": "max(minimum_monthly_usd, quantity * rate)"
+        },
+        {
+          "item": "API beta 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Match beta 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Worker beta .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "PG beta 1c/2GB",
+          "rate_id": "render_pg_medium",
+          "quantity": 1,
+          "monthly_usd": 40.0
+        },
+        {
+          "item": "PG beta provisioned storage",
+          "rate_id": "render_pg_storage",
+          "quantity": 20,
+          "monthly_usd": 6.0
+        },
+        {
+          "item": "Daily export cron: 300 active minutes/month, $1 service minimum",
+          "rate_id": "render_cron",
+          "quantity": 300,
+          "monthly_usd": 1.0,
+          "minimum_monthly_usd": 1,
+          "billing_formula": "max(minimum_monthly_usd, quantity * rate)"
+        },
+        {
+          "item": "Shared bandwidth150GB less25",
+          "rate_id": "render_egress",
+          "quantity": 125,
+          "monthly_usd": 18.75
+        },
+        {
+          "item": "Combined R2 storage100GB less10 shared",
+          "rate_id": "r2_storage",
+          "quantity": 90,
+          "monthly_usd": 1.35
+        },
+        {
+          "item": "Transactional email (shared 50k plan)",
+          "rate_id": "resend_pro",
+          "quantity": 1,
+          "monthly_usd": 20.0
+        },
+        {
+          "item": "Team monitoring monthly subscription",
+          "rate_id": "sentry_team",
+          "quantity": 1,
+          "monthly_usd": 29.0
+        },
+        {
+          "item": "Two additional uptime monitors (three total)",
+          "rate_id": "sentry_uptime",
+          "quantity": 2,
+          "monthly_usd": 2.0
+        },
+        {
+          "item": "CI mean retained artifacts: 2GB less shared .5GB",
+          "rate_id": "github_artifact",
+          "quantity": 1.5,
+          "monthly_usd": 0.375
+        },
+        {
+          "item": "Second environment export cron monitor",
+          "rate_id": "sentry_cron",
+          "quantity": 1,
+          "monthly_usd": 0.78
+        }
+      ],
+      "known_monthly_subtotal_usd": 263.26,
+      "total_is_complete": false,
+      "notes": [
+        "Pro cross-environment network block, public DB deny rules and separate credentials must be configured and verified; mere environment names do not isolate anything.",
+        "Provider workspace/bandwidth, R2 allowances, Resend/Sentry plans and CI quotas are shared once across both environments; no per-bucket duplication of free tiers."
+      ]
+    },
+    {
+      "id": "render-stage-beta-ha",
+      "name": "Separate staging plus beta with asynchronous standby",
+      "scope": "Same two environments; standby on beta only",
+      "lines": [
+        {
+          "item": "Shared Pro workspace subscription",
+          "rate_id": "render_pro",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "API staging .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "Match staging 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Worker staging .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "PG staging .5c/1GB",
+          "rate_id": "render_pg_small",
+          "quantity": 1,
+          "monthly_usd": 19.0
+        },
+        {
+          "item": "PG staging provisioned storage",
+          "rate_id": "render_pg_storage",
+          "quantity": 10,
+          "monthly_usd": 3.0
+        },
+        {
+          "item": "Daily export cron: 300 active minutes/month, $1 service minimum",
+          "rate_id": "render_cron",
+          "quantity": 300,
+          "monthly_usd": 1.0,
+          "minimum_monthly_usd": 1,
+          "billing_formula": "max(minimum_monthly_usd, quantity * rate)"
+        },
+        {
+          "item": "API beta 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Match beta 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Worker beta .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "PG beta 1c/2GB",
+          "rate_id": "render_pg_medium",
+          "quantity": 1,
+          "monthly_usd": 40.0
+        },
+        {
+          "item": "PG beta provisioned storage",
+          "rate_id": "render_pg_storage",
+          "quantity": 20,
+          "monthly_usd": 6.0
+        },
+        {
+          "item": "Daily export cron: 300 active minutes/month, $1 service minimum",
+          "rate_id": "render_cron",
+          "quantity": 300,
+          "monthly_usd": 1.0,
+          "minimum_monthly_usd": 1,
+          "billing_formula": "max(minimum_monthly_usd, quantity * rate)"
+        },
+        {
+          "item": "Shared bandwidth150GB less25",
+          "rate_id": "render_egress",
+          "quantity": 125,
+          "monthly_usd": 18.75
+        },
+        {
+          "item": "Combined R2 storage100GB less10 shared",
+          "rate_id": "r2_storage",
+          "quantity": 90,
+          "monthly_usd": 1.35
+        },
+        {
+          "item": "Transactional email (shared 50k plan)",
+          "rate_id": "resend_pro",
+          "quantity": 1,
+          "monthly_usd": 20.0
+        },
+        {
+          "item": "Team monitoring monthly subscription",
+          "rate_id": "sentry_team",
+          "quantity": 1,
+          "monthly_usd": 29.0
+        },
+        {
+          "item": "Two additional uptime monitors (three total)",
+          "rate_id": "sentry_uptime",
+          "quantity": 2,
+          "monthly_usd": 2.0
+        },
+        {
+          "item": "CI mean retained artifacts: 2GB less shared .5GB",
+          "rate_id": "github_artifact",
+          "quantity": 1.5,
+          "monthly_usd": 0.375
+        },
+        {
+          "item": "Second environment export cron monitor",
+          "rate_id": "sentry_cron",
+          "quantity": 1,
+          "monthly_usd": 0.78
+        },
+        {
+          "item": "Beta identical standby instance",
+          "rate_id": "render_pg_medium",
+          "quantity": 1,
+          "monthly_usd": 40.0
+        },
+        {
+          "item": "Beta identical standby storage",
+          "rate_id": "render_pg_storage",
+          "quantity": 20,
+          "monthly_usd": 6.0
+        }
+      ],
+      "known_monthly_subtotal_usd": 309.26,
+      "total_is_complete": false,
+      "notes": [
+        "Render standby replication is asynchronous. This improves availability but cannot satisfy a requirement to preserve every acknowledged change after primary-zone loss.",
+        "App replica count remains one each in this fixture; standby is not complete application HA."
+      ]
+    },
+    {
+      "id": "railway-stage-beta",
+      "name": "Railway usage-sensitive stage+beta alternative",
+      "scope": "Two isolated environments, single-node PG18 each",
+      "lines": [
+        {
+          "item": "Aggregate resident memory: beta4GB+stage2GB for30days",
+          "rate_id": "railway_ram",
+          "quantity": 15552000,
+          "monthly_usd": 60.03072
+        },
+        {
+          "item": "Aggregate actual averageCPU: beta.5+stage.25vCPU for30days",
+          "rate_id": "railway_cpu",
+          "quantity": 1944000.0,
+          "monthly_usd": 15.00768
+        },
+        {
+          "item": "Database volumes:20GB beta+10GB stage",
+          "rate_id": "railway_volume",
+          "quantity": 77760000,
+          "monthly_usd": 4.6656
+        },
+        {
+          "item": "Service egress150GB including backup uploads",
+          "rate_id": "railway_egress",
+          "quantity": 150,
+          "monthly_usd": 7.5
+        },
+        {
+          "item": "PITR archive buckets100GB combined",
+          "rate_id": "railway_bucket",
+          "quantity": 100,
+          "monthly_usd": 1.5
+        },
+        {
+          "item": "Public assets on R2:50GB less10 shared",
+          "rate_id": "r2_storage",
+          "quantity": 40,
+          "monthly_usd": 0.6
+        },
+        {
+          "item": "Transactional email (shared 50k plan)",
+          "rate_id": "resend_pro",
+          "quantity": 1,
+          "monthly_usd": 20.0
+        },
+        {
+          "item": "Team monitoring monthly subscription",
+          "rate_id": "sentry_team",
+          "quantity": 1,
+          "monthly_usd": 29.0
+        },
+        {
+          "item": "Two additional uptime monitors (three total)",
+          "rate_id": "sentry_uptime",
+          "quantity": 2,
+          "monthly_usd": 2.0
+        },
+        {
+          "item": "CI mean retained artifacts: 2GB less shared .5GB",
+          "rate_id": "github_artifact",
+          "quantity": 1.5,
+          "monthly_usd": 0.375
+        },
+        {
+          "item": "Second environment backup cron monitor",
+          "rate_id": "sentry_cron",
+          "quantity": 1,
+          "monthly_usd": 0.78
+        }
+      ],
+      "known_monthly_subtotal_usd": 141.46,
+      "total_is_complete": false,
+      "notes": [
+        "Railway Pro bill is max($20, metered compute/storage/service usage), NOT $20 plus that usage. Metered amount here exceeds20; common external providers are added separately.",
+        "Average memory and actualCPU usage are UNMEASURED planning fixtures, not allocated SKU limits. Doubling both raises platform subtotal by about75.04/month. No price/capacity promise.",
+        "PITR archive byte/operation growth and transfers are unmeasured. Weekly full/daily differential/WAL archive must be monitored; failure may truncate the window.",
+        "HA not priced: default3PG+3etcd+3HAProxy needs measured usage, failure-domain and durability qualification. No claimed zero-loss HA."
+      ]
+    },
+    {
+      "id": "aws-beta-render-stage",
+      "name": "AWS synchronous beta with compact Render synthetic staging",
+      "scope": "Beta private AWS VPC/twoAZs; unrelated synthetic Render staging",
+      "lines": [
+        {
+          "item": "Fargate API2 \u00d7 .5CPU + match2 \u00d71CPU + worker1 \u00d7.25CPU",
+          "rate_id": "aws_cpu",
+          "quantity": 2372.5,
+          "monthly_usd": 96.0388
+        },
+        {
+          "item": "Fargate API2 \u00d71GB + match2 \u00d72GB + worker1 \u00d7.5GB",
+          "rate_id": "aws_ram",
+          "quantity": 4745.0,
+          "monthly_usd": 21.091525
+        },
+        {
+          "item": "PG db.t4g.medium Multi-AZ (both nodes included)",
+          "rate_id": "aws_rds_medium",
+          "quantity": 730,
+          "monthly_usd": 94.17
+        },
+        {
+          "item": "Multi-AZ gp3 provisioned20GB",
+          "rate_id": "aws_rds_gp3",
+          "quantity": 20,
+          "monthly_usd": 4.6
+        },
+        {
+          "item": "Extra backup storage above allocated/account allowance",
+          "rate_id": "aws_backup",
+          "quantity": 20,
+          "monthly_usd": 1.9
+        },
+        {
+          "item": "One application load balancer in twoAZs",
+          "rate_id": "aws_alb",
+          "quantity": 730,
+          "monthly_usd": 16.425
+        },
+        {
+          "item": "OneLCU average allowance; actual highest dimension measured",
+          "rate_id": "aws_lcu",
+          "quantity": 730,
+          "monthly_usd": 5.84
+        },
+        {
+          "item": "Two ALB publicIPv4 addresses (minimum assumption)",
+          "rate_id": "aws_ipv4",
+          "quantity": 1460,
+          "monthly_usd": 7.3
+        },
+        {
+          "item": "Two private-subnet NAT gateways (Ohio-rate allowance)",
+          "rate_id": "aws_nat",
+          "quantity": 1460,
+          "monthly_usd": 65.7
+        },
+        {
+          "item": "Two NAT publicIPv4 addresses",
+          "rate_id": "aws_ipv4",
+          "quantity": 1460,
+          "monthly_usd": 7.3
+        },
+        {
+          "item": "NAT outbound processing50GB",
+          "rate_id": "aws_nat_data",
+          "quantity": 50,
+          "monthly_usd": 2.25
+        },
+        {
+          "item": "Ten Secrets Manager entries",
+          "rate_id": "aws_secret",
+          "quantity": 10,
+          "monthly_usd": 4.0
+        },
+        {
+          "item": "Ten-thousand secretAPI calls, cached startup reads",
+          "rate_id": "aws_secret_calls",
+          "quantity": 1,
+          "monthly_usd": 0.05
+        },
+        {
+          "item": "CloudWatch standard log ingest10GB conservative",
+          "rate_id": "aws_log_ingest",
+          "quantity": 10,
+          "monthly_usd": 5.0
+        },
+        {
+          "item": "CloudWatch compressed retained logs5GB conservative",
+          "rate_id": "aws_log_storage",
+          "quantity": 5,
+          "monthly_usd": 0.15
+        },
+        {
+          "item": "Private ECR image retention5GB",
+          "rate_id": "aws_ecr",
+          "quantity": 5,
+          "monthly_usd": 0.5
+        },
+        {
+          "item": "API staging .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "Match staging 1c/2GB",
+          "rate_id": "render_app_medium",
+          "quantity": 1,
+          "monthly_usd": 25.0
+        },
+        {
+          "item": "Worker staging .5c/512MB",
+          "rate_id": "render_app_small",
+          "quantity": 1,
+          "monthly_usd": 7.0
+        },
+        {
+          "item": "PG staging .5c/1GB",
+          "rate_id": "render_pg_small",
+          "quantity": 1,
+          "monthly_usd": 19.0
+        },
+        {
+          "item": "PG staging provisioned storage",
+          "rate_id": "render_pg_storage",
+          "quantity": 10,
+          "monthly_usd": 3.0
+        },
+        {
+          "item": "Daily export cron: 300 active minutes/month, $1 service minimum",
+          "rate_id": "render_cron",
+          "quantity": 300,
+          "monthly_usd": 1.0,
+          "minimum_monthly_usd": 1,
+          "billing_formula": "max(minimum_monthly_usd, quantity * rate)"
+        },
+        {
+          "item": "Render Hobby staged service egress50GB less5",
+          "rate_id": "render_egress",
+          "quantity": 45,
+          "monthly_usd": 6.75
+        },
+        {
+          "item": "Combined R2 public/assets/exports100GB less10",
+          "rate_id": "r2_storage",
+          "quantity": 90,
+          "monthly_usd": 1.35
+        },
+        {
+          "item": "Transactional email (shared 50k plan)",
+          "rate_id": "resend_pro",
+          "quantity": 1,
+          "monthly_usd": 20.0
+        },
+        {
+          "item": "Team monitoring monthly subscription",
+          "rate_id": "sentry_team",
+          "quantity": 1,
+          "monthly_usd": 29.0
+        },
+        {
+          "item": "Two additional uptime monitors (three total)",
+          "rate_id": "sentry_uptime",
+          "quantity": 2,
+          "monthly_usd": 2.0
+        },
+        {
+          "item": "CI mean retained artifacts: 2GB less shared .5GB",
+          "rate_id": "github_artifact",
+          "quantity": 1.5,
+          "monthly_usd": 0.375
+        },
+        {
+          "item": "Second environment export cron monitor",
+          "rate_id": "sentry_cron",
+          "quantity": 1,
+          "monthly_usd": 0.78
+        }
+      ],
+      "known_monthly_subtotal_usd": 454.57,
+      "total_is_complete": false,
+      "notes": [
+        "Beta compute and database colocate in us-east-1; never connect Render live match compute to RDS over the public internet. Stage has no beta data/secrets.",
+        "AWS uses730h sizing month; Railway uses30days/2592000seconds. Render fixed monthly rates with actual prorating at purchase.",
+        "NAT rates use an official Ohio example, pending exact us-east-1 quote. AWS cross-AZ transfers, excess Internet egress, t4g CPUcredits and optional metrics/alarms/support not included in known subtotal; quantities/rates must be resolved in approved worksheet.",
+        "AWS Internet egress fixture100GB fits the shared100GB account allowance only if no other account usage; never assume it perenvironment. Public IPv4 grows if ALB scales; all variable meters need alerts.",
+        "RDS synchronous standby is the candidate for a stronger single-AZ durability requirement, subject to actual configured durability, transaction-ack semantics, failover/restore drills and a named operations owner. Not region-disaster zero loss."
+      ]
+    }
+  ],
+  "unpriced_items": [
+    {
+      "item": "Domain first-year and renewal plus tax",
+      "monthly_usd": null,
+      "reason": "Director-selected name/TLD/ownership unknown. Registrar at-cost statement is not an exact quote."
+    },
+    {
+      "item": "AWS us-east-1 NAT re-quote, cross-AZ transfer, t4gCPU credits and excess Internet egress",
+      "monthly_usd": null,
+      "reason": "Official example rates/allowances do not replace regional/account usage qualification."
+    },
+    {
+      "item": "AWS advanced metrics/alarms/KMS customer keys/WAF/support or another uptime/status provider",
+      "monthly_usd": null,
+      "reason": "Not selected; necessary operational alerts require qualification before stronger-tier finalization."
+    },
+    {
+      "item": "Extra simulation workers, tournament/event replicas and heavy analysis",
+      "monthly_usd": null,
+      "reason": "Not measured; future scale scenarios need CPU/time/egress/job metrics."
+    },
+    {
+      "item": "Provider tax, recovery rehearsal restore instances, build/CI overage and surge reserve",
+      "monthly_usd": null,
+      "reason": "Use a separate Director contingency, not an asserted spend ceiling; clone+restore/drill resources temporarily bill."
+    },
+    {
+      "item": "Human operations/moderation, legal/content permission, art, devices and development tools",
+      "monthly_usd": null,
+      "reason": "Required overall project budget categories; outside requested monthly infrastructure comparison, not free or completed."
+    }
+  ],
+  "controls": [
+    "No paid provisioning or deployment authorized. No reserved/annual commitment or introductory credits in comparisons.",
+    "Subtotals are arithmetic at stated unmeasured quantities, not invoices or capacity commitments; unresolved prices are null, never zero.",
+    "Quota-limited mail/observability/CI sampling and admission/job limits need alerts. Provider budget cutoffs may terminate active games; do not use Railway hard cap as graceful admission logic.",
+    "Refresh official rates, chosen region/domain/renewal/account quotas/tax and source bytes before purchase. Isolated synthetic staging and invited beta maintain separate persistence/secrets."
+  ]
+}

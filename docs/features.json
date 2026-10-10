@@ -456,6 +456,34 @@
         "docs/validation/runs/RUN-20261007-051.json",
         "docs/validation/runs/RUN-20261007-052.json"
       ]
+    },
+    {
+      "id": "F-STAGING",
+      "name": "Staging service/provider and spending definitions",
+      "implementation": "planned",
+      "verification": "pending",
+      "description": "BOOT-04 final decisions (worksheet, ADR0007/0008): one OVHcloud US VPS-3 in US-EAST-VA behind Cloudflare Free/Tunnel/Workers static assets/R2, pgBackRest to R2 and B2, under the Director's $25/month cap; isomorphic engine placement and exact dependency baseline. Earlier Codex single-host research is preserved as evidence. Planned only: services still require APP_ENV=local; no remote runtime support, deployment configuration, account, purchase or capacity/restore evidence. Director sign-off pending.",
+      "sources": [
+        "infra/**",
+        "packages/service-runtime/**"
+      ],
+      "documents": [
+        "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+        "docs/adr/0007-hosting-provider-baseline.md",
+        "docs/adr/0008-engine-placement-dependency-baseline.md",
+        "docs/validation/boot-04.md",
+        "docs/FEATURES.md"
+      ],
+      "task_ids": [
+        "BOOT-04"
+      ],
+      "requirement_ids": [
+        "R30.009",
+        "R30.012",
+        "R30.013",
+        "R30.014"
+      ],
+      "evidence": []
     }
   ]
 }

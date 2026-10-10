@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261007-065",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "docs:sync",
+    "--change",
+    "CHG-20261007-005"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "5819142f76a1ea853b804af8b768048a3dccc4dd",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-07T16:47:44.599Z",
+  "finished_at": "2026-10-07T16:47:46.083Z",
+  "recorded_at": "2026-10-07T16:47:46.083Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1483,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "BOOT-04 draft documentation gate rejects added-scope labels mistakenly placed in original leaf requirement ID fields; preserve failure before correction",
+  "log_path": "docs/validation/logs/RUN-20261007-065.txt",
+  "log_sha256": "bb67dd48461d07ec29084adc7fd138c8a8fc9bdbb83b950b1d4cab2ee741cdda",
+  "redactions": 0
+}
