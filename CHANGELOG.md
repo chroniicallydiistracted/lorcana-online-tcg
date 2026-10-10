@@ -2,6 +2,41 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261010-006 — Director-authorized publication and main integration of the D07 decision and BOOT-04 sign-off
+
+- Status: finalized
+- Actor: Claude Code agent (architect/developer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-10T21:35:55.687Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 54a85d45e74db5cc4888931b2b62669c37f5995c
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **revision:** The Director authorized publishing claude/boot-04-signoff-d07 (finalized CHG-20261010-005 at 54a85d4) and fast-forwarding main to it. Main fast-forwards to the commit containing this record; no history rewrite. The branch is retained.
+- **documentation:** Handoff records the authorized integration and that the hosted workflow for the new main commit must be observed rather than inferred.
+
+### Verification
+
+- **passed:** Local Dev Container docs:check of the integration record and updated handoff on the draft snapshot; unchanged executable fingerprint. The hosted workflow on the new main commit is observed separately. ([evidence](docs/validation/runs/RUN-20261010-013.json))
+
+### Documentation and files
+
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Repository status changed to Director-authorized main integration; the publication gate is removed from pending gates and next actions.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Integration changes no policy content.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — BOOT-04 status unchanged by integration.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261010-006.json).
+
+### Limits and next actions
+
+- Integration only; no executable, dependency, provisioning, DNS, deployment or setting change.
+- The hosted foundation workflow result for the new main commit must be observed separately.
+- Observe the foundation workflow on the new main commit.
+- RULE-01 source inventory.
+
 ## CHG-20261010-005 — Record Director D07 asset decision, fan-content notice and BOOT-04 sign-off
 
 - Status: finalized

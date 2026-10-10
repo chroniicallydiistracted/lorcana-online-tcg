@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261010-006",
+  "title": "Director-authorized publication and main integration of the D07 decision and BOOT-04 sign-off",
+  "actor": "Claude Code agent (architect/developer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-10T21:35:55.687Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "54a85d45e74db5cc4888931b2b62669c37f5995c",
+  "task_ids": [
+    "BOOT-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "revision",
+      "description": "The Director authorized publishing claude/boot-04-signoff-d07 (finalized CHG-20261010-005 at 54a85d4) and fast-forwarding main to it. Main fast-forwards to the commit containing this record; no history rewrite. The branch is retained."
+    },
+    {
+      "kind": "documentation",
+      "description": "Handoff records the authorized integration and that the hosted workflow for the new main commit must be observed rather than inferred."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261010-006.json",
+    "docs/current-state.json",
+    "docs/validation/logs/RUN-20261010-013.txt",
+    "docs/validation/runs/RUN-20261010-013.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Repository status changed to Director-authorized main integration; the publication gate is removed from pending gates and next actions."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Integration changes no policy content."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "BOOT-04 status unchanged by integration."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-013.json",
+      "outcome": "passed",
+      "scope": "Local Dev Container docs:check of the integration record and updated handoff on the draft snapshot; unchanged executable fingerprint. The hosted workflow on the new main commit is observed separately."
+    }
+  ],
+  "limitations": [
+    "Integration only; no executable, dependency, provisioning, DNS, deployment or setting change.",
+    "The hosted foundation workflow result for the new main commit must be observed separately."
+  ],
+  "next_actions": [
+    "Observe the foundation workflow on the new main commit.",
+    "RULE-01 source inventory."
+  ]
+}
