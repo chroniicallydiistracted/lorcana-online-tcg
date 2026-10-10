@@ -1,0 +1,27 @@
+PASS Node 24.21.0
+PASS pnpm 10.33.0
+PASS Linux development environment
+PASS .env.local exists with owner-only access
+PASS Local environment loaded into container
+PASS Container database address
+PASS Generated database bootstrap configuration
+Workspace toolchain ready. Run pnpm db:check to verify authenticated database access.
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":599,"documents":481,"functions":582,"changes":19,"runs":186}
+PASS JSON parsing and JavaScript syntax checks
+✔ browser connectivity contract serves readiness and rejects other routes/methods (37.150686ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.515435
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK
+PASS authenticated PostgreSQL 18 connection to the local bootstrap database.

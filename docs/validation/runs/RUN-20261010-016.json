@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-016",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';\nimport {readFileSync,statSync} from 'node:fs';\nimport {spawnSync} from 'node:child_process';\nimport {sourceFingerprint} from './scripts/documentation-lib.mjs';\nimport {sourceSecretScan} from './scripts/ci/security.mjs';\nimport {privateRedactionValues} from './scripts/evidence-lib.mjs';\nconst run=(name,args,options={})=>{const x=spawnSync(name,args,{encoding:'utf8',...options});assert.equal(x.status,0,x.stderr);return x.stdout;};\nrun('pnpm',['docs:check'],{stdio:'inherit'});\nassert.equal(sourceFingerprint(process.cwd()),JSON.parse(readFileSync('docs/validation/runs/RUN-20261010-015.json')).source_fingerprint);\nassert.equal(run('git',['diff','--name-only','HEAD','--','apps','packages','scripts','tests','.devcontainer','.github','.vscode','infra','package.json','pnpm-lock.yaml','pnpm-workspace.yaml','toolchain.json','tsconfig.base.json','eslint.config.mjs']).trim(),'');\nfor(const file of ['.env.local','.local/database.json']){\n const s=statSync(file);assert.equal(s.mode&0o777,0o600);assert.equal(s.uid,1000);run('git',['check-ignore','-q',file]);\n}\nconst ports=new Set([5173,3001,3002]);let tcpRows=0;\nfor(const file of ['/proc/net/tcp','/proc/net/tcp6']){\n const lines=readFileSync(file,'utf8').trim().split('\\n');assert(lines[0].includes('local_address'));\n for(const line of lines.slice(1)){const a=line.trim().split(/\\s+/);assert(a.length>=10);tcpRows++;if(a[3]==='0A')assert(!ports.has(parseInt(a[1].split(':').at(-1),16)));}\n}\nassert(tcpRows>0);\nrun('python3',['-c',\"import csv,json,re,subprocess\\nfrom pathlib import Path\\nrows=list(csv.DictReader(Path('docs/vision/requirements.csv').open()))\\nassert len(rows)==548 and len({r['group_id'] for r in rows})==33\\nassert sum(r['source_optional']=='true' for r in rows)==20\\noriginal=re.findall(r'^\\\\s+\\\\*\\\\s+(.+)$',Path('docs/vision/original_action_items.md').read_text(),re.M)\\nassert [r['source_text'] for r in rows]==original\\nassert Path('docs/vision/requirements.csv').read_bytes()==subprocess.check_output(['git','show','335da7edffea40294b8dcf60ae256524432c350b:docs/vision/requirements.csv'])\\nd=json.loads(Path('docs/vision/dependencies.json').read_text()); assert len(d['packages'])==61\\nw=Path('docs/plans/2026-10-10-boot-04-decision-worksheet.md').read_text()\\nclaims=re.findall(r'^\\\\| \\\\x60([^\\\\x60]+)\\\\x60 \\\\| ([\\\\d.]+) \\\\| .*? \\\\| Installed \\\\(([^)]+)\\\\) \\\\|$',w,re.M)\\nassert len(claims)>15\\nrefs=0\\nfor name,version,owners in claims:\\n for owner in owners.split(','):\\n  base=Path('.') if owner.strip()=='root' else Path(owner.strip())\\n  x=json.loads((base/'package.json').read_text())\\n  assert any(x.get(k,{}).get(name)==version for k in ['dependencies','devDependencies','peerDependencies']),(name,owner)\\n  refs+=1\\ntasks=list(csv.DictReader(Path('docs/vision/initial_backlog.csv').open())); assert len(tasks)==32\\nassert next(r for r in tasks if r['task_id']=='RULE-01')['implementation_status']=='pending'\\nassert next(r for r in tasks if r['task_id']=='BOOT-04')['implementation_status']=='decision_worksheet_finalized_director_signoff_recorded_deployment_configuration_pending'\\nassert round(14.50+0.80+10.46/12,2)==16.17\\nassert round(25-(14.50+0.80+10.46/12),2)==8.83\\nprint('PASS548 original source texts/unchanged bytes,33 groups/20 optional flags,61 selected dependencies,',len(claims),'installed claims/',refs,'owner references,32 task statuses and dated quote arithmetic. No current-price/capacity certification.')\"],{stdio:'inherit'});\nsourceSecretScan(process.cwd(),Object.values(privateRedactionValues(process.cwd())));\nrun('git',['diff','--check','--','.',':(exclude)docs/validation/logs/**'],{stdio:'inherit'});\nconsole.log('PASS unchanged executable/config/dependencies, ignored0600 UID1000 private files, actual TCP rows',tcpRows,'without app listeners, full-history secret checks and formatting.');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "efe166d9557ce501b6fd795133f12201ac7fd756",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-10T22:13:23.752Z",
+  "finished_at": "2026-10-10T22:13:26.956Z",
+  "recorded_at": "2026-10-10T22:13:26.956Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 5511,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "Signed-off BOOT-04 review: documentation gate, full original scope/register/installed-claim/quote consistency, unchanged source, actual port/private-file preservation and full-history secret scan",
+  "log_path": "docs/validation/logs/RUN-20261010-016.txt",
+  "log_sha256": "e07ddae0e698896135a8906c7be7ae338d7f41a57860417ea8dfd507d71a1793",
+  "redactions": 0
+}

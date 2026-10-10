@@ -1,43 +1,16 @@
 # Current developer handoff
 
-Observed at: 2026-10-10T21:29:33Z; display timezone America/Phoenix (2026-10-10 14:29). Actor: Claude Code agent (architect/developer role), local WSL session. Changes: [CHG-20261010-005](changes/CHG-20261010-005.json) (D07 decision and BOOT-04 sign-off, finalized) and [CHG-20261010-006](changes/CHG-20261010-006.json) (Director-authorized publication and main integration). Prior same-day records: CHG-20261010-001/002 (BOOT-04 worksheet and merge), CHG-20261010-003/004 (Codex reconciliation and merge).
+Observed at: 2026-10-10T22:21:13.899Z; display timezone America/Phoenix. Actor: Codex architect/developer/QA reviewer. Active [CHG-20261010-007](changes/CHG-20261010-007.json): signed-off BOOT-04 review before RULE-01; consult the record for final status. Earlier finalized decision/sign-off/publication records remain unchanged.
 
-- **Objective and authorized scope:**
-  - Record the Director's D07 decision: use all planned Disney Lorcana assets, card art and images in full, under Ravensburger's fan-content terms with the required notice and no charges for use or access. The [fan content policy](policies/fan-content.md) holds the verbatim notice and the rules that follow.
-  - Record the Director's BOOT-04 sign-off: worksheet §12 all accepted, with purchase-specific items (domain, payment methods, purchase) executed when the first staging deploy is ready.
-  - No spending, accounts, provisioning, DNS, deployment, credentials, visibility or settings changes.
-  - On 2026-10-10 the Director authorized publishing this branch and fast-forwarding main to it (CHG-20261010-006).
-- **Repository:**
-  - `/home/andre/lorcana-online-tcg` on WSL. Branch `claude/boot-04-signoff-d07`, from main `a810bfd07eac05a87ccbf0a8b5ea4fa77a8af274`. Main (local and origin) fast-forwards to the commit containing CHG-20261010-006; identify its SHA through Git. The branch is retained on origin. Origin `https://github.com/chroniicallydiistracted/lorcana-online-tcg.git` (public).
-  - Before this branch was created, the checkout had been switched outside this session (at 21:12Z) to the merged `claude/lorcana-tcg-stack-research-6vyhh9` (`3687bed`). Its working tree was clean; nothing was lost.
-  - The empty local branch `codex/boot-04-provider-plan` is retained. The teleport stash was dropped earlier (CHG-20261010-004).
-- **Execution:**
-  - Git runs on the WSL host.
-  - pnpm/evidence commands run inside Dev Container `lorcana-online-tcg_devcontainer-workspace-1` (Compose project `lorcana-online-tcg_devcontainer`, with PostgreSQL 18 healthy) via `docker exec -u node -w /workspaces/lorcana-online-tcg`. Node 24.21.0, pnpm 10.33.0.
-  - Preserve `.env.local`, `.local/database.json` and the `pg18_data` volume.
-- **Implemented behavior:** none. This change is documentation only, and the executable fingerprint is unchanged. The required notice is in `README.md` now. Showing it in the web app is an acceptance gate for the UX/WEB tasks and must happen before any official asset is shown outside local development.
-- **Documentation:**
-  - New current [fan content policy](policies/fan-content.md).
-  - Updated: decision register D02 (durability accepted), D03 (region accepted) and D07 (decision); worksheet §2/§12 and status; [BOOT-04 validation](validation/boot-04.md); ADR0007 status; AGENTS.md asset boundary; README notice; the docs and vision indexes; the F-STAGING feature row/entry; backlog status `decision_worksheet_finalized_director_signoff_recorded_deployment_configuration_pending`.
-- **Verification:**
-  - Policy check: the notice URL resolves to Ravensburger's Community Code PDF (conduct policy, effective 2023-05-10). It does not itself grant fan-content permissions. The brand-portal Fan Content Policy could not be read automatically; record a dated copy from a browser before public launch.
-  - RUN-20261010-011 (`pnpm verify`) and RUN-20261010-012 (`pnpm test:documentation`) in the local Dev Container: both passed.
-  - RUN-20261010-013 (`pnpm docs:check`): integration record, recorded in CHG-20261010-006.
-  - Pushing main triggers the foundation workflow; observe its actual result before treating the new main commit as hosted-qualified.
-  - The hosted Foundation qualification run 38086279082 succeeded for main `a810bfd` (observed with `gh`; reported only).
-- **Listeners/resources:** this session started no processes or ports. The Dev Container services pre-existed (VS Code).
-- **Pending gates:**
-  - BOOT-04 reviewed deployment configuration, including remote runtime support (worksheet §13).
-  - Purchase-time items (domain/D01, payment methods).
-  - Notice display in the web app and a dated copy of the Fan Content Policy page before public assets.
-  - RULE-01, then RULE-02.
-  - Actual Windows/GPU/touch/device/performance observation.
-  - Required checks, branch protection and cancellation policy.
-  - Privacy/age terms (D03/D07 privacy part); backup/restore drill (OPS-01); production.
-- **Next actions:**
-  1. Observe the hosted foundation workflow for the new main commit.
-  2. RULE-01 source inventory (official rules/card sources; asset provenance fields per the fan content policy).
-  3. Early parity work: typed config module and configured web addresses.
-  4. BOOT-04 configuration before the first outside tester.
+- Objective and authorized scope: Director requested complete review of final BOOT-04 documentation before RULE-01. Preserve the accepted OVHcloud US VPS-3/US-EAST-VA/$25 cap, Cloudflare services, pgBackRest backups, ADR0008 engine placement/dependencies and D07 policy. No new hosting recommendation, RULE-01 implementation, purchase, provisioning, deployment, messages or settings change.
+- Repository: `/home/andre/lorcana-online-tcg`; intake branch `claude/boot-04-signoff-d07`, clean HEAD `efe166d9557ce501b6fd795133f12201ac7fd756`, matching local main and origin-main refs. Scoped review branch `codex/boot-04-decision-review` at the same HEAD; origin `https://github.com/chroniicallydiistracted/lorcana-online-tcg.git`. Dirty work is owned documentation/evidence only: review, change record, handoff/index/map/qualification/BOOT-04 validation and generated views. No commit or push in this review. Main remains unchanged.
+- Execution: normal shell sandbox could not start because bubblewrap is unavailable; authorized read/check/edit calls used host escalation. WSL reaches existing workspace `3e5816dff0be` and healthy PostgreSQL `1695ec6fc3eb`, project `lorcana-online-tcg_devcontainer`; rediscover IDs. Application checks run as node UID1000 in `/workspaces/lorcana-online-tcg`, Node24.21.0/pnpm10.33.0. Preserve Linux bind source, `.env.local`, `.local/database.json` and original database volume.
+- Implemented behavior: none. Local-only application foundation and reserved engine/rules/domain/testkit boundaries remain. Decisions and source inventory readiness are reviewed; no game/card integration or additional dependency installed. RULE-01 and RULE-02 remain pending.
+- Documentation: [signed-off review](reviews/2026-10-10-boot-04-final-decisions.md) records full worksheet/ADR/policy/register coverage, accepted precedence, trust modes, source-count and capacity/restore/privacy gates. Current indices/map/qualification/BOOT-04 evidence updated. Original source/requirement registers, accepted decisions, historical research and sealed records remain unchanged.
+- Verification: [RUN014](validation/runs/RUN-20261010-014.json) child exit0 but recorder failed clock_changed; [RUN015](validation/runs/RUN-20261010-015.json) repeated existing-container doctor/static-docs/bootstrap5/read-only DB passed with consistent timing. RUN016 preserves an incorrect initial335-register byte assertion and clock step; RUN017 preserves checker-caller syntax failure. [RUN018](validation/runs/RUN-20261010-018.json) corrected assertions/docs/full-history secret scan exited0 but clock_changed failed the receipt. [RUN019](validation/runs/RUN-20261010-019.json) passed scoped original548/register/installed-package/private-file/listener/config/format preservation with a consistent clock. All logs reviewed and failures retained. Executable fingerprint remains `8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584`. [RUN020](validation/runs/RUN-20261010-020.json) passed the synchronized documentation gate with consistent timing; final closure outcomes belong to CHG007 and subsequent run receipts.
+- Hosted status: read-only GitHub metadata reports [Foundation run38088257250](https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/38088257250) completed successfully for intake efe166d. This is reported remote status, without independent downloaded-artifact verification; RUN061 retains its earlier precise artifact scope. Required-check/settings/cancellation remain separate.
+- Listeners/resources: this review started only self-cleaned bootstrap connectivity tests; no development listener, browser, container recreation, data/secret change, install or provisioning. RUN019 observes no listeners5173/3001/3002 and ignored0600 UID1000 private files; never stop unrelated services. Existing fantasy-command-center services are outside scope.
+- Pending gates: BOOT-04 reviewed deployment configuration and remote runtime support; purchase-time domain/payment/provider work; real engine/bot/spectator/host capacity, end-to-end WAL/restore RPO/RTO; public asset notice/policy-copy/provenance, age/privacy, real Windows/GPU/touch/device and production; required repository checks/settings. These do not block local RULE-01 inventory.
+- Next actions: RULE-01 in a separate assigned scope: current official source bytes/hashes/version/effective dates and supersession, rules diff, catalog identity/printing/release mapping and skipped/todo-test counts with denominators. Flag missing sources and uncertified identities explicitly. Vendor/build/certification work follows under RULE-02/03/04; no paid host is needed to begin.
 
-Preserve failures and interrupted work. Link exact records and use the same schema as the changelog. Update before leaving or transferring work; never claim a live process without observing it.
+Preserve failures and interrupted work. Use the same schema/format for every agent; update before leaving. Never infer live-provider/device/engine acceptance from this review.

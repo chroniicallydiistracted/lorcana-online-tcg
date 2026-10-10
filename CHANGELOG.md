@@ -2,6 +2,77 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261010-007 — Review signed-off BOOT-04 decisions before RULE-01
+
+- Status: finalized
+- Actor: Codex architect/developer/QA reviewer
+- Recorded (UTC): 2026-10-10T22:22:02.601Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: efe166d9557ce501b6fd795133f12201ac7fd756
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-STAGING, F-DOCS, F-EVIDENCE
+- Requirements: R01.006, R15.015, R20.003, R28.008, R29.005, R30.012
+
+### Changes
+
+- **review:** Read the complete signed-off BOOT-04 package and compare its inventories, precedence, engine trust modes, dependencies, D07 policy and future gates with actual source/registers. No blocker to RULE-01 source inventory; do not reopen decisions or implement RULE-01.
+- **documentation:** Record review coverage and carry-forward source, capacity, WAL/restore, replay privacy and asset gates; update current indexes, qualification, BOOT-04 evidence and handoff without rewriting earlier executed evidence.
+- **test:** RUN014 preserves exit0 with clock_changed; RUN015 repeats doctor/static-docs/bootstrap5/read-only DB and passes with consistent paired timing. Logs reviewed. No clock/validator alteration or runtime/private-data change.
+- **review:** Read-only GitHub metadata reports successful Foundation run38088257250 for intake efe166d; this is a reported remote status, not independently downloaded artifact qualification.
+- **test:** Initial orchestration string failed parsing before launching any tool; corrected caller construction only. RUN016 then preserves a real overly broad initial-register byte assertion failure, plus clock discontinuity. All548 original source texts match the checklist; correct the assertion to preserve original identity/text/optional fields and exact current intake bytes, while retaining legitimate earlier evidence metadata.
+- **test:** RUN017 preserves a check-caller SyntaxError before assertions; replace-string dollar expansion corrupted embedded Python regex text. Reconstruct from original command and use a replacement callback. Only the caller changes; retain receipt/log and unchanged code/registers.
+- **test:** RUN018 completed all corrected assertions, installed-claim checks and full-history secret scan with child exit0, but its recorder failed clock_changed (wall18.597s, monotonic20.915s). RUN019 independently passed short source/register/package/private-file/listener preservation with consistent timing. Preserve all receipts and logs; neither timing validation nor project code changed.
+- **test:** RUN020 passed the synchronized documentation gate with consistent timing. The final review/handoff prose carries unchanged decisions and separately pending source, deployment, asset, restore and device gates; final gate outcomes remain in their receipts.
+- **documentation:** Finish the full accepted-decision review and final handoff; RUN021 passed final documentation checks with consistent timing. Finalize this review-only change and regenerate current views; all acceptance limits and failed attempts remain visible.
+
+### Verification
+
+- **failed:** All four child baseline commands exited0, but clock discontinuity failed the receipt; no passing acceptance. ([evidence](docs/validation/runs/RUN-20261010-014.json))
+- **passed:** Existing-container doctor/static-docs/config/bootstrap5/read-only bootstrap DB with consistent timing and unchanged executable fingerprint. ([evidence](docs/validation/runs/RUN-20261010-015.json))
+- **failed:** Docs gate passed; register assertion incorrectly demanded original335 byte identity despite legitimate BOOT-01 ticket/evidence additions. Child exit1, with additional clock_changed qualification failure. No later installed-claim/secret scan pass claimed. ([evidence](docs/validation/runs/RUN-20261010-016.json))
+- **failed:** Node syntax failure in the inline checker caller before any assertions ran; JavaScript replacement-string expansion corrupted an embedded regex. Consistent clock; no product or validator change. ([evidence](docs/validation/runs/RUN-20261010-017.json))
+- **failed:** Corrected combined assertions, docs and full-history secret scan emitted PASS and exited0; clock discontinuity invalidates passing acceptance. All output retained and reviewed. ([evidence](docs/validation/runs/RUN-20261010-018.json))
+- **passed:** Original548 IDs/text/optional scope and exact intake bytes,33 groups/20 optional flags,61 selected dependencies,20 installed claims/30 owning-package references,32 task statuses, dated quote arithmetic, unchanged executable/config/dependency bytes, ignored0600 UID1000 private files, actual TCP rows with no5173/3001/3002 listeners and formatting. Does not qualify prices/capacity, docs or the long full-history scan. ([evidence](docs/validation/runs/RUN-20261010-019.json))
+- **passed:** Synchronized documentation coverage, source/function inventory, links, schemas, append-only records/log digests, feature evidence and changelog consistency; consistent paired clock, no application change. ([evidence](docs/validation/runs/RUN-20261010-020.json))
+- **passed:** Final reviewed handoff/prose, documentation classifications/coverage, source/callable inventory, schemas, links, log digests, changelog and evidence consistency with exact paired timing. No product/engine/device/provider acceptance. ([evidence](docs/validation/runs/RUN-20261010-021.json))
+
+### Documentation and files
+
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — Accepted provider/budget, engine and D07 instructions agree with final worksheet; no implementation or permission boundary changed.
+- **reviewed_unchanged:** [README.md](README.md) — Final OVHcloud baseline and notice agree with signed-off worksheet and policy; no art or game activation claim.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — F-STAGING correctly distinguishes final decisions and pending deployment/capacity/restore.
+- **reviewed_unchanged:** [docs/features.json](docs/features.json) — Staging remains planned/pending; executable features retain source-matched evidence.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Reviewed all sections, appendices and sources; preserve final Director choices and carry future capacity/restore/source qualification forward.
+- **reviewed_unchanged:** [docs/adr/0007-hosting-provider-baseline.md](docs/adr/0007-hosting-provider-baseline.md) — Accepted OVHcloud/Cloudflare hosting decision and staged durability gates preserved.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Rewarded and hidden-information games remain authoritative; browser trust-free modes and pinned closure require later qualification.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — D07 provenance/notice/free-access/fallback requirements and recorded policy verification limit preserved.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — BOOT-04 final decision/deployment-pending distinction is correct; RULE-01 remains pending with source/hash/count/skipped-test acceptance.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D02/D03/D07 decisions preserved; domain/public durability/privacy/device choices remain separate.
+- **reviewed_unchanged:** [infra/README.md](infra/README.md) — No remote/provider configuration exists; local-only runtime boundary accurately documented.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — Current decision precedence and preserved source/dependency snapshots agree with signed-off package.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Review follows intake, scoped evidence, append-only failed receipts and precise handoff convention.
+- **reviewed_unchanged:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Use recorded-only review timestamp; actual tests carry clock-qualified execution receipts.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Record dated accepted-decision review and exact evidence categories/results, preserving final choices and separately pending runtime/source/device gates.
+- **updated:** [docs/README.md](docs/README.md) — Record dated accepted-decision review and exact evidence categories/results, preserving final choices and separately pending runtime/source/device gates.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Record dated accepted-decision review and exact evidence categories/results, preserving final choices and separately pending runtime/source/device gates.
+- **updated:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Record dated accepted-decision review and exact evidence categories/results, preserving final choices and separately pending runtime/source/device gates.
+- **updated:** [docs/reviews/2026-10-10-boot-04-final-decisions.md](docs/reviews/2026-10-10-boot-04-final-decisions.md) — Record dated accepted-decision review and exact evidence categories/results, preserving final choices and separately pending runtime/source/device gates.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Record dated accepted-decision review and exact evidence categories/results, preserving final choices and separately pending runtime/source/device gates.
+- **historical_preserved:** [docs/vision/Development_Blueprint_2026-10-05.md](docs/vision/Development_Blueprint_2026-10-05.md) — Read original scope and contracts; accepted ADRs amend hosting/engine placement while retaining original vision.
+- **historical_preserved:** [docs/vision/dependencies.json](docs/vision/dependencies.json) — Read selected61-package baseline and compare current manifests; does not claim future pins installed.
+- **historical_preserved:** [docs/vision/source_register.json](docs/vision/source_register.json) — Original40-source snapshot supplies RULE-01 discovery inputs; dates/hashes/current authority require future acquisition.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261010-007.json).
+
+### Limits and next actions
+
+- Review/documentation only; no RULE-01 implementation, engine certification, provisioning, deployment, purchase, device or restore acceptance.
+- Dated provider quotes and exploratory cloud benchmark remain attributed planning inputs; actual stock/usage/capacity/RPO require later evidence.
+- Reported current hosted success is not independent artifact qualification; prior RUN061 retains its precise scope.
+- WSL wall-clock steps invalidated RUN014/018 and additionally RUN016; valid fresh intake RUN015 and scoped static RUN019 have consistent paired clocks. Long full-history scan output in RUN018 is retained under a failed receipt.
+- Begin RULE-01 in a separate assigned scope: current official bytes, hashes, effective dates and supersession; rules diff, catalog identities/printings/release mapping and skipped-test counts with denominators. No paid hosting prerequisite.
+- Preserve accepted BOOT-04 decisions and explicit later deployment, capacity, restoration, asset-policy and device gates.
+
 ## CHG-20261010-006 — Director-authorized publication and main integration of the D07 decision and BOOT-04 sign-off
 
 - Status: finalized

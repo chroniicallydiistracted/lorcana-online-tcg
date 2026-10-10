@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-014",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process'; for(const args of [['run','doctor'],['verify'],['test:bootstrap'],['db:check']]){ const r=spawnSync('pnpm',args,{stdio:'inherit'}); if(r.status!==0)process.exit(r.status??1); }"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "efe166d9557ce501b6fd795133f12201ac7fd756",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-10T22:06:21.563Z",
+  "finished_at": "2026-10-10T22:06:27.597Z",
+  "recorded_at": "2026-10-10T22:06:27.597Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 8295,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "Accepted BOOT-04 decision intake: fresh doctor, static/documentation verification, five bootstrap tests and read-only PostgreSQL connectivity; no deployment or engine qualification",
+  "log_path": "docs/validation/logs/RUN-20261010-014.txt",
+  "log_sha256": "0233a9de97a79435369e1ad31c69f9bd9936b28b9bbebc4271829e665864cf67",
+  "redactions": 0
+}

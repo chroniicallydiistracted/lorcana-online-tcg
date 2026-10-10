@@ -17,6 +17,7 @@ Every developer and agent starts with [AGENTS.md](../AGENTS.md), the [current ha
 | [CI operation](runbooks/ci.md) / [BOOT-03 evidence](validation/boot-03.md) | Repeatable disposable local pipeline, checked Actions definition, dependency/secret gates and build artifacts |
 | [Protocol](contracts/protocol.md) / [release policy](contracts/release.md) / [BOOT-05 evidence](validation/boot-05.md) | Closed public frames, bounded negotiation, built release identity and retained-version policy |
 | [BOOT-04 decision worksheet](plans/2026-10-10-boot-04-decision-worksheet.md) / [hosting ADR](adr/0007-hosting-provider-baseline.md) / [engine/dependency ADR](adr/0008-engine-placement-dependency-baseline.md) / [BOOT-04 evidence](validation/boot-04.md) | Finalized provider, service, dependency, DNS/secret inventory and line-item quote baseline; earlier Codex research preserved as superseded evidence; Director sign-off recorded; purchase and deployment configuration pending |
+| [Signed-off BOOT-04 review](reviews/2026-10-10-boot-04-final-decisions.md) | Dated consistency review, evidence limits and RULE-01 entry requirements |
 | [Fan content policy](policies/fan-content.md) | Director D07 asset decision, the required Ravensburger fan-content notice, no-charge rule, provenance and takedown readiness |
 | [ADRs](adr/) | Context, affected tasks/requirements, alternatives and material architectural decisions |
 | [Vision index](vision/README.md) | Full 548-item original vision, additional scope, task and decision registers |

@@ -34,6 +34,12 @@ Nothing was purchased, provisioned or deployed.
 
 **Not adopted:** the Hetzner CCX candidates and Dokploy. Its finalized records and runs remain unchanged evidence.
 
+## Signed-off decision review (2026-10-10 UTC)
+
+[Review](../reviews/2026-10-10-boot-04-final-decisions.md) compares the complete final package with intake efe166d and current source/registers. Final choices and deployment-pending status are preserved; no blocker to the separately assigned RULE-01 inventory. [RUN014](runs/RUN-20261010-014.json) preserves clock_changed despite exit0; corrected [RUN015](runs/RUN-20261010-015.json) passes fresh doctor/static-docs/bootstrap5/read-only DB with consistent timing. [CHG007](../changes/CHG-20261010-007.json) owns this review and later static checks. No provisioning, engine/capacity/recovery/device acceptance or new policy-source permission verification.
+
+RUN018 completed corrected assertions/docs/full-history scan with child exit0 but remains failed for clock_changed. RUN019 passes scoped register/installed-claim/configuration/private-file/listener preservation with consistent timing. Original548 scope and current-intake CSV bytes are intact. Final documentation gates are in CHG007; all earlier failures/logs remain unchanged.
+
 ## Preserved Codex research checkpoints (2026-10-07/08)
 
 The text below was written by the earlier Codex agent and is retained unchanged; "current" in it refers to its own dates.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-10T21:36:00.400Z",
+  "observed_at": "2026-10-10T22:22:10.221Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -1219,6 +1219,11 @@
       "path": "docs/research/2026-10-08-duels-observations.json",
       "classification": "evidence",
       "sources": []
+    },
+    {
+      "path": "docs/reviews/2026-10-10-boot-04-final-decisions.md",
+      "classification": "historical",
+      "sources": []
     }
   ],
   "change_ids": [
@@ -1240,7 +1245,8 @@
     "CHG-20261010-003",
     "CHG-20261010-004",
     "CHG-20261010-005",
-    "CHG-20261010-006"
+    "CHG-20261010-006",
+    "CHG-20261010-007"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -1261,7 +1267,8 @@
     "CHG-20261010-003": "finalized",
     "CHG-20261010-004": "finalized",
     "CHG-20261010-005": "finalized",
-    "CHG-20261010-006": "finalized"
+    "CHG-20261010-006": "finalized",
+    "CHG-20261010-007": "finalized"
   },
   "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
   "files": {
@@ -1310,9 +1317,9 @@
     "docs/CHANGELOG_FORMAT.md": "de3bb6f22723e31eca77673cb93661105484c9598325f87b4b1684677fdb0e44",
     "docs/DEVELOPMENT_WORKFLOW.md": "8503b4afff126a19d41f924afd06ce71f267566dcede616755c5a1a042b6b072",
     "docs/FEATURES.md": "07f8a145e9cd33d847cb3d0c337891320836f7702e8d91d2e34ca3d42dacb80a",
-    "docs/HANDOFF.md": "ffe7b21eae1fda3276da8546ee0b3d24e1c2d599e54792c4694b5bd93dfdd611",
-    "docs/README.md": "6c437f3ac7e26076fd7964ade51f8ff09c94f304b1c362c5c3bf3452e127bd28",
-    "docs/WORKSPACE_QUALIFICATION.md": "802ce8da2cf1950e910c6c540ffe1a8fb4c155fd134585ebcba5f94e6e215080",
+    "docs/HANDOFF.md": "abe0efc1ea4ab8a69d5eb526df21dfe9bd56d3057c8d7b9560dbcada894c51aa",
+    "docs/README.md": "70fc6af468405c8440b3d048febdcb3a12bf5fd92e7e3681d607e6bc0540139c",
+    "docs/WORKSPACE_QUALIFICATION.md": "7122ad2bdb95be232b5d6aebc2bad045fb2909f7339e134494d44404914f7d28",
     "docs/adr/0001-local-development-environment.md": "c481ac004b256c4e2adbf2f02f9ea85b363fa6fc78aac7134a8e0f20270c8dc2",
     "docs/adr/0002-application-foundation.md": "0984d0a0c33b762be91c64273b6c17ba1da66fa823c9957293a1dd8ea325fa1d",
     "docs/adr/0003-documentation-evidence.md": "71a56e217ba1fa49a3a9fd070996a65d9dd967f7ebc51ab4a7f25e73620c5385",
@@ -1325,7 +1332,7 @@
     "docs/audits/2026-10-06-project-audit.md": "b273326bdac271ae0ce86a0157659b203e0a7f43eba33059fffb9ca096dd0621",
     "docs/contracts/protocol.md": "6482f9ef5e06dfed03aad9c2936027cada33771757f34504dbc491160423041d",
     "docs/contracts/release.md": "cf4c29e57bb13afa747d947b4d1bf9d3ab4912550e536d97b20b1716d88a1133",
-    "docs/documentation-map.json": "552d2bb6cde23ef2d4eb7c000fefbaa13d9bbb983dda527f01b67d5fde6576da",
+    "docs/documentation-map.json": "48152ffcf76e009935e2e2008d64a9155f406c5bc0a56abb9bcb1509828b35ba",
     "docs/features.json": "75f314f3d6c04c596614acc11106acf6cc2c152711d3798d5ba86a6cc7ff9119",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "bddc6c6ef4055286cf40312d1df7ae5ac80fd4f02afbf7f858035de8b4de9b83",
@@ -1341,6 +1348,7 @@
     "docs/plans/boot-04-sources.json": "ee0630f06c37cff799db4ca6dc08f92e120fed5db72be405e0a1765e96232c82",
     "docs/policies/fan-content.md": "a27898496e122701a923265b10ac7970d6ce0894a1b4bea5f2c08659a1b87c85",
     "docs/research/2026-10-08-duels-observations.json": "ffca50766215f37b56dd2e461dc698acfd14cb1d94f3cec3352e7e9efe91907f",
+    "docs/reviews/2026-10-10-boot-04-final-decisions.md": "4901cc9ce59f2b87c66ffc2ca8d3b4b0d4fa40d2df3a0a749498c19c9527c081",
     "docs/runbooks/ci.md": "f9f33a22f5b26a0f25d2381d35013386991fd2f579cecb45c830cff5ad17fdab",
     "docs/runbooks/database.md": "71294a6c009d3a3df49960aebfef963483b1ee1a3c376fc51648d895128fc1ea",
     "docs/runbooks/workspace-setup.md": "591f2488f8b610aed7654dc7098c27ebed31275402296b24390097fe9c16e498",
@@ -1359,7 +1367,7 @@
     "docs/validation/boot-01.md": "074b30f2364a25e4f215fa4a9919b7923d0f766faf7a1cac470b136e5733507e",
     "docs/validation/boot-02.md": "304085f2026e7ca7221c1091823a7df85fd1045a83d84907daf111f6b47f7a71",
     "docs/validation/boot-03.md": "7eb7d6784353a62e9ed15575dddb28d93296ca5b351969ce00ea13ac243bcbb0",
-    "docs/validation/boot-04.md": "2b4f0b54e1003a20a2a8905fb552ac6e1bafec4fcb0988cb979b2343479daa62",
+    "docs/validation/boot-04.md": "1be6a9e4fc4626e200219e38d8910ba11fde569da38c589cb99bae2e5fef94dc",
     "docs/validation/boot-05.md": "fcef0380aed43b01c08804d21a9f1a502696142e735375f7d222097f574824f5",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
