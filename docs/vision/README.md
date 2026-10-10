@@ -16,4 +16,6 @@ BOOT-02 current implementation/verification is recorded in [the database runbook
 
 BOOT-03 implements a reviewed Actions definition and shared isolated local CI/artifact checks with local and first hosted source612a8c9 qualification verified (RUN061); required-check/settings gates remain separate; see [CI operation](../runbooks/ci.md) and [validation](../validation/boot-03.md). This does not provision hosting or resolve Director release/budget/market choices.
 
+BOOT-04 records finalized provider, stack, dependency and spend decisions in the [decision worksheet](../plans/2026-10-10-boot-04-decision-worksheet.md). [ADR0007](../adr/0007-hosting-provider-baseline.md) and [ADR0008](../adr/0008-engine-placement-dependency-baseline.md) amend the blueprint's hosting baseline (Render/Pages, Oregon, $150–$400 allowance) and engine placement under the Director's $25/month cap; the blueprint and `dependencies.json` remain preserved planning snapshots. No account, purchase or deployment was made.
+
 BOOT-05 now implements protocol/release compatibility contracts verified locally; see [owning validation](../validation/boot-05.md) and [release policy](../contracts/release.md). Original R30.015 retains its wider product/device acceptance gate; contract evidence is a prerequisite, not complete version-compatibility acceptance.

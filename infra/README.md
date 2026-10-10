@@ -4,6 +4,6 @@
 
 `compose.ci.yaml` is the separate BOOT-03 disposable pipeline project owned by `scripts/ci-local.py`; see [CI operation](../docs/runbooks/ci.md). It uses generated temporary credentials, a Dockerfile-built image and private PostgreSQL, with no published ports or existing volume references.
 
-Production/staging hosting, deployments, budgets, production secrets, backups and monitoring remain reserved. This file does not provision them. Director authorization is required for spending or deployment.
+Production/staging hosting, deployments, budgets, production secrets, backups and monitoring remain reserved. This file does not provision them. Director authorization is required for spending or deployment. Their decisions (OVHcloud US VPS, Cloudflare Tunnel/Workers/R2, pgBackRest to R2/B2, resource limits, DNS and secret inventory) are recorded in the [BOOT-04 decision worksheet](../docs/plans/2026-10-10-boot-04-decision-worksheet.md); no configuration for them exists yet.
 
 BOOT-05 CI artifacts now bind copied application builds and reviewed SQL migrations to a public release manifest; [release policy](../docs/contracts/release.md) defines compatibility and unsigned-identity limits. No deployment or provider provisioning is active.

@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261010-001",
+  "title": "BOOT-04 finalized provider, stack and spend decision worksheet",
+  "actor": "Claude Code agent (architect/research role) on Director request",
+  "status": "finalized",
+  "recorded_at": "2026-10-10T05:28:24.148Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "5819142f76a1ea853b804af8b768048a3dccc4dd",
+  "task_ids": [
+    "BOOT-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-RESERVED",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Review the full vision (548 requirements in 33 groups, X01–X07, blueprint, backlog, decision and dependency registers) against the Director's $25/month hosting cap and the no-scope-reduction instruction. Classify server-authoritative, browser trust-free, content and CI workloads."
+    },
+    {
+      "kind": "documentation",
+      "description": "Add the BOOT-04 decision worksheet. It contains: decision register B4-01…B4-15; environments/projects/accounts; host resource budget; DNS and secret inventory; line-item quotes with sources and retrieval UTC; cost controls; re-open triggers; the Director sign-off checklist; remaining configuration scope; the exact dependency baseline (61 register packages, additions, platform pins, later vendor choices); and the exploratory measurement summary with its harness."
+    },
+    {
+      "kind": "documentation",
+      "description": "Add ADR0007: OVHcloud US VPS-3 US-EAST-VA, Cloudflare Free/Tunnel/Workers static assets/R2, pgBackRest to R2+B2, Resend/Sentry/UptimeRobot free tiers, pull-based deploys; supersedes the blueprint's Render/Pages/Oregon/allowance rows. Add ADR0008: keep the pinned tcg-engines fork; server-authoritative plus browser trust-free placement; injected node:crypto randomness; Node 24 production with Bun CI-only; dependency keep/defer/add/exclude decisions."
+    },
+    {
+      "kind": "revision",
+      "description": "Update the BOOT-04 backlog status/evidence and the D02/D03 working recommendations. Add BOOT-04 pointers to AGENTS.md, docs/README.md, docs/vision/README.md and infra/README.md. Map the three new current documents with source-impact edges. Rewrite the handoff for this session."
+    },
+    {
+      "kind": "test",
+      "description": "Static documentation validation with checksum-verified Node 24.21.0/pnpm 10.33.0 in the Claude Code cloud container (no Docker daemon, so no Dev Container): recorded docs:check and test:documentation runs referenced below. Exploratory engine/bundle measurements ran outside the repository and are not recorded evidence."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/adr/0007-hosting-provider-baseline.md",
+    "docs/adr/0008-engine-placement-dependency-baseline.md",
+    "docs/changes/CHG-20261010-001.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+    "docs/validation/logs/RUN-20261010-001.txt",
+    "docs/validation/logs/RUN-20261010-002.txt",
+    "docs/validation/runs/RUN-20261010-001.json",
+    "docs/validation/runs/RUN-20261010-002.json",
+    "docs/vision/README.md",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv",
+    "infra/README.md"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "updated",
+      "reason": "New current BOOT-04 worksheet. Every price/version/limit was compared against its cited source, retrieval time, installed manifests, the register and the upstream lockfile at 53a7941. Requirement IDs were checked against requirements.csv."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "updated",
+      "reason": "New ADR amending blueprint hosting rows with comparative quotes and affected IDs; no provisioning claimed."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "updated",
+      "reason": "New ADR for engine placement/runtime/randomness/dependencies. Measurements are labeled exploratory; RULE-02 acceptance is unchanged and still pending."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "The current implementation boundary now names the recorded BOOT-04 decisions and that provisioning remains unauthorized."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Indexes the worksheet and ADR0007/0008 with pending sign-off/purchase/configuration."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Records that the ADRs amend the preserved blueprint hosting baseline and that no purchase occurred."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "BOOT-04 status is now worksheet finalized, with sign-off and configuration pending; evidence links added. Other rows are unchanged."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "D02 reflects the Director's 2026-10-08 $25/month cap, with durability sign-off still open. D03 records the US-EAST-VA hosting selection pending audience evidence. Other decisions are unchanged."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "updated",
+      "reason": "Points to the recorded hosting decisions while stating that no configuration exists."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Session handoff per the template, with the actual cloud execution limits, evidence categories, pending gates and next actions."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Describes local foundation operation and checks only; no hosting/provider claim to change."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No behavior changed; F-RESERVED still accurately reserves production infrastructure/engine scope."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "No implemented/verified status changes; F-RESERVED already lists BOOT-04."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Its BOOT-04-pending statements remain true (sign-off/configuration/purchase pending)."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "CI operation unchanged; its BOOT-04-pending statement remains accurate. The public repository keeps standard runners free."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Hosted qualification evidence unchanged; BOOT-04 still pending."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Its statement that BOOT-04 keeps Director prerequisites remains accurate."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Local role model is unchanged; the worksheet extends the same role naming to staging/prod without implementing it."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The reserved infra/vendor/engine rows remain accurate: no hosting or upstream code activated."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Still reserved for RULE-02; its ledger requirements match ADR0008."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reserved package description remains accurate; ADR0008 defines the future placement."
+    },
+    {
+      "path": "docs/vision/Development_Blueprint_2026-10-05.md",
+      "disposition": "historical_preserved",
+      "reason": "Planning snapshot preserved; ADR0007/0008 amend §3.1/§3.3/§5.2–5.3/§14.4 without rewriting it."
+    },
+    {
+      "path": "docs/vision/dependencies.json",
+      "disposition": "historical_preserved",
+      "reason": "Researched 61-package planning register preserved; the worksheet records keep/defer/add decisions."
+    },
+    {
+      "path": "docs/vision/source_register.json",
+      "disposition": "historical_preserved",
+      "reason": "Original Render/R2/Resend source references preserved as research history."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-001.json",
+      "outcome": "passed",
+      "scope": "Static docs:check of the complete BOOT-04 document set on the CHG draft snapshot; unchanged executable fingerprint 8e52e134…; Claude Code cloud container with Node 24.21.0/pnpm 10.33.0, not the Dev Container. Validates consistency, not vendor facts or prose truth."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-002.json",
+      "outcome": "passed",
+      "scope": "Static documentation/evidence regression suite (test:documentation) on the same source; cloud container, not the Dev Container."
+    }
+  ],
+  "limitations": [
+    "Decisions and documentation only: no account, purchase, DNS, deployment, credential, setting or visibility change.",
+    "Vendor prices/stock/terms can change; quotes are retrieval-dated and must be confirmed at checkout.",
+    "Engine/bundle measurements are exploratory (cloud container, Bun 1.4.2 and Node 22.22.0/tsx, outside the recorder) and do not qualify RULE-02 or any requirement.",
+    "No Dev Container or Docker daemon was available; only static documentation checks were recorded."
+  ],
+  "next_actions": [
+    "Director completes the worksheet §12 sign-off before any purchase.",
+    "BOOT-04 configuration change: Compose profiles, PostgreSQL+pgBackRest image, cloudflared/wrangler configuration, pull-deploy timer, host hardening, hosting runbook.",
+    "RULE-01 source inventory, then RULE-02 vendor closure per ADR0008, with Dev Container reproduction of the measurement harness."
+  ]
+}

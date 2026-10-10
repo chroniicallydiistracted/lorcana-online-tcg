@@ -16,6 +16,7 @@ Every developer and agent starts with [AGENTS.md](../AGENTS.md), the [current ha
 | [Database operation](runbooks/database.md) / [BOOT-02 evidence](validation/boot-02.md) | Managed roles/migrations/test DB and disposable persistence proof |
 | [CI operation](runbooks/ci.md) / [BOOT-03 evidence](validation/boot-03.md) | Repeatable disposable local pipeline, checked Actions definition, dependency/secret gates and build artifacts |
 | [Protocol](contracts/protocol.md) / [release policy](contracts/release.md) / [BOOT-05 evidence](validation/boot-05.md) | Closed public frames, bounded negotiation, built release identity and retained-version policy |
+| [BOOT-04 decision worksheet](plans/2026-10-10-boot-04-decision-worksheet.md) / [hosting ADR](adr/0007-hosting-provider-baseline.md) / [engine/dependency ADR](adr/0008-engine-placement-dependency-baseline.md) | Finalized provider, service, dependency, DNS/secret inventory and line-item quote baseline; sign-off, purchase and deployment configuration remain pending |
 | [ADRs](adr/) | Context, affected tasks/requirements, alternatives and material architectural decisions |
 | [Vision index](vision/README.md) | Full 548-item original vision, additional scope, task and decision registers |
 | [Templates](templates/) / [schemas](schemas/) | Copyable handoff/change format and versioned validation contracts |

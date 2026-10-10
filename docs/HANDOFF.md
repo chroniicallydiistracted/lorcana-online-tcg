@@ -1,21 +1,46 @@
 # Current developer handoff
 
-Observed session:2026-10-07 UTC /2026-10-06 America/Phoenix. Publication event time is in finalized [CHG-20261007-003](changes/CHG-20261007-003.json); newly observed hosted qualification/final handoff is recorded in [CHG-20261007-004](changes/CHG-20261007-004.json). Actor: Codex architect/developer/QA. Director authorization: commit/publish each completed branch and merge into main; spending/deployment/visibility/settings changes remain outside scope.
+Observed at: 2026-10-10T05:26:28Z; display timezone America/Phoenix (2026-10-09 22:26). Actor: Claude Code agent (architect/research role) on the Director's BOOT-04 request. Active change: [CHG-20261010-001](changes/CHG-20261010-001.json), finalized after the documentation checks below.
 
-Repository: `/home/andre/lorcana-online-tcg`, current branch `main`, intake BOOT-05 commit `bf8659ace9d3ac51dbeb61a0032d69154b3a39c7`, origin `https://github.com/chroniicallydiistracted/lorcana-online-tcg.git`. Original main `335da7e` fast-forwarded locally and remotely to `612a8c9`, preserving every original implementation commit. The containing final publication-record commit extends/publishes main; identify its final SHA through Git. All task-owned edits are prepared/committed with no incoming work; no branch is deleted or history rewritten.
+- **Objective and authorized scope:**
+  - BOOT-04 decision worksheet with DOC-01/02 records: providers, vendors, services, the exact dependency baseline, environments, DNS and secret inventory, and line-item quotes.
+  - [ADR0007](adr/0007-hosting-provider-baseline.md) (hosting/providers under the Director's $25/month cap) and [ADR0008](adr/0008-engine-placement-dependency-baseline.md) (isomorphic engine placement, runtime, randomness, dependency baseline).
+  - Director decisions still required: the sign-off checklist in §12 of the [worksheet](plans/2026-10-10-boot-04-decision-worksheet.md) — region, billing term, durability, purchase timing, domain (D01), payment methods, D07 asset rights.
+  - No spending, accounts, provisioning, DNS, deployment, credentials, visibility or settings changes were authorized or performed.
+- **Repository:**
+  - Claude Code cloud checkout `/home/user/lorcana-online-tcg`, branch `claude/lorcana-tcg-stack-research-6vyhh9`, from main `5819142f76a1ea853b804af8b768048a3dccc4dd`. Origin is `https://github.com/chroniicallydiistracted/lorcana-online-tcg.git`, observed `public` on 2026-10-10.
+  - Task-owned edits are committed and pushed to that branch; nothing was merged to main.
+  - The Director's WSL source `/home/andre/lorcana-online-tcg`, `.env.local`, private database and Dev Container were not accessed.
+- **Execution:**
+  - Claude Code remote cloud container (Linux x64, 4 vCPU). No Docker daemon, so the committed Dev Container could not run.
+  - Documentation checks ran with checksum-verified Node 24.21.0 and pnpm 10.33.0 from a session scratch directory, after `pnpm install --frozen-lockfile`.
+  - Exploratory engine measurements (worksheet §4, Appendix A) ran outside the repository against an upstream clone with Bun 1.4.2 and Node 22.22.0/tsx. They are not repository evidence; RULE-02 must reproduce them in the Dev Container under Node 24.21.0.
+  - Carried forward: Dev Container project `lorcana-online-tcg_devcontainer`, Node 24.21.0, pnpm 10.33.0, PostgreSQL 18.6, and hosted qualification of source `612a8c9` (RUN061) as recorded in CHG-20261007-004.
+- **Implemented behavior:** none. This change is documentation and decisions only. The executable fingerprint stays `8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584`, and feature verification status is unchanged. F-RESERVED still covers production infrastructure, engine-adapter and vendor scope.
+- **Documentation:**
+  - New current documents, each mapped with source-impact edges: the worksheet, ADR0007 and ADR0008.
+  - Updated: AGENTS.md, docs/README.md, docs/vision/README.md, infra/README.md, the BOOT-04 row in docs/vision/initial_backlog.csv, the D02/D03 recommendations in docs/vision/decision_register.csv, and this handoff.
+  - Preserved: the blueprint and `dependencies.json` remain planning snapshots, amended by the ADRs.
+  - Each reviewed-unchanged reason is in the change record.
+- **Verification** (static category, cloud container, not Dev Container):
+  - RUN-20261010-001: `pnpm docs:check` on the draft snapshot.
+  - RUN-20261010-002: `pnpm test:documentation`.
+  - The outcomes are in the change record. The final post-finalization `pnpm docs:check` was rerun without the recorder. No application, database, browser, device or production checks apply to this documentation-only change.
+- **Listeners/resources:** no processes or ports were started in the repository. Scratch artifacts (upstream clone, benchmark harness, Node 24 tarball) live outside the repository in the ephemeral session container.
+- **Pending gates:**
+  - Director sign-off (worksheet §12).
+  - Remaining BOOT-04 reviewed deployment configuration (worksheet §13).
+  - RULE-01 source inventory.
+  - RULE-02 vendor closure, including the ADR0008 randomness/projection patch list, Node 24 precompiled closure and Bun-only CI suites.
+  - Actual Windows/GPU/touch/device/performance observation.
+  - Required checks, branch protection and cancellation policy.
+  - OS/image/legal/content (D07, ten notice gaps).
+  - Signatures/authenticity, backup/restore drill (OPS-01) and production.
+- **Next actions:**
+  1. Director completes the worksheet §12 sign-off. No purchase happens before the first staging deploy is ready.
+  2. RULE-01: official source bytes, rules diff, and set/printing/skipped-test inventory with hashes and denominators.
+  3. RULE-02 per ADR0008, reproducing worksheet Appendix A as Dev Container evidence.
+  4. BOOT-04 configuration change (Compose profiles, derived PostgreSQL/pgBackRest image, cloudflared/wrangler configuration, pull-deploy timer, host hardening, hosting runbook) with executable evidence before any purchase.
+  5. At intake, rediscover main/HEAD/dirty state/access and the latest hosted workflow status.
 
-Published and retained branches: BOOT-01 `codex/boot-01-foundation` at8c94b27, governance `codex/documentation-governance` at82e2273, BOOT-02 `codex/boot-02-database` atbeae58e, BOOT-03 `codex/boot-03-ci` at1c2580c, BOOT-05 `codex/boot-05-contracts` at612a8c9 (contains original bf8659a plus publication preparation). Every remote tip matches its local reference and is an ancestor of main, verified in RUN059. Keep these versioned scope snapshots; latest operating status is on main.
-
-Execution: existing non-root Dev Container source `/workspaces/lorcana-online-tcg`, Compose project `lorcana-online-tcg_devcontainer`, Node24.21.0/pnpm10.33.0/PostgreSQL18.6. Preserve original `.env.local`, `.local/database.json`, WSL source and private pg18_data. Git/GitHub operations execute on the WSL host; all application checks execute inside the container. No database host port/Docker socket/config/dependency/data/credential/visibility change. Rediscover IDs/access rather than assuming the observed ones.
-
-Implemented scope: BOOT-01 executable synthetic web/API/match/idle worker; BOOT-02 restricted roles/migrations/test DB and real disposable recreation; BOOT-03 local pipeline and actual hosted qualification; BOOT-05 closed revision1 protocol/negotiation and release artifact/runtime/package/SQL identities/immutable pins. Read [protocol](contracts/protocol.md), [release policy](contracts/release.md), [database](runbooks/database.md), [CI](runbooks/ci.md) and owning validation. Domain/engine/rules/testkit remain reserved; no authenticated sockets/gameplay/economy/persistent match admission/production bundle activation or deployment is implemented. Preserve Collection Play, ordinary Lab and manipulated Sandbox distinctions.
-
-Evidence: prior finalized BOOT-05 CHG-20261007-002 retains all red/review/failure/correction/final source receipts (including the clock/real-filename failure). New RUN057 passed fresh existing-container doctor/static/docs/bootstrap5/bootstrap DB connectivity and full foundation94/history/known-secret; RUN058 passed merged-main foundation94. RUN059 captures exact remote branches/main, actual UTC Git actions and original private environment/healthy DB/volume/no-listener preservation. RUN060 checked final publication prose/current and canonical Git/static/history/secrets/format before hosted-success update; RUN061 subsequently verifies actual completed [GitHub run37581249875](https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/37581249875) for source612a8c9, job/stage times and downloaded artifact98 against the same source/image/lock/release. All12 stages, foundation94, eight authenticated identities/five live DB and6 actual Linux Chromium/SwiftShader cases plus owned cleanup succeeded.200 npm components/ten published notice gaps/zero recorded registry advisories. Remote API times are reported execution, local RUN061 times are artifact verification; no fabricated remote monotonic result. RUN062 is final current/canonical documentation/history/credential/format proof in CHG-20261007-004 after this update. Executable fingerprint remains `8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584`. Final metadata push has a separate workflow; check its actual result before treating that SHA as hosted-qualified.
-
-Documentation: relevant current instructions/README/feature/register/CI/qualification/audit/handoff status reflect actual hosted evidence. Original548 requirements/20 optional flags, decisions and labeled planning/archive/sealed evidence remain preserved. BOOT-03 has local+hosted-source acceptance; required checks/cancellation/settings are unqualified. BOOT-04 remains pending; publication does not complete provider definitions/spend worksheet. Timestamped CHG/RUN history is append-only after sealing.
-
-Listeners/resources: no interactive preview retained. RUN059 verifies no owned listeners5173/3001/3002 and original healthy private PostgreSQL/volume/owner-only ignored credential files. Existing VS Code workspace/services stay running; all CI/recreation disposable projects were removed by their own proof. Downloaded hosted artifacts/logs are ignored .local evidence, separate from durable sanitized run records; preserve or remove only owned generated artifacts. Never stop unrelated processes/reset data. Use pnpm dev/Ctrl+C for separately recorded Director Windows observation.
-
-Pending gates: BOOT-04 providers/budget, actual Windows/GPU/touch/device/performance, repository required-check/branch-protection/cancellation policy, OS/image/legal/content qualification (ten notice gaps), signatures/authenticity, durable match admission/qualified engine/current rules, backup/restore and production. Observed main protected=false; no setting was changed. The successful hosted code fingerprint does not accept these gates or any full product requirement.
-
-Next: RULE-01 official source bytes/rules diff/set/printing/skipped-test inventory, with hashes/denominators/missing-source and release-status mapping. RULE-02 requires qualified RULE-01/vendor closure; UX-01/02 and BOOT-04 keep Director/device/budget prerequisites. Rediscover main/HEAD/dirty/access and latest hosted status at intake; create the next scoped branch. No new work starts implicitly from this publication.
+Preserve failures and interrupted work. Link exact records and use the same schema as the changelog. Update before leaving or transferring work; never claim a live process without observing it.
