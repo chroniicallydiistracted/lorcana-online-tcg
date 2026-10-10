@@ -2,6 +2,58 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261010-005 — Record Director D07 asset decision, fan-content notice and BOOT-04 sign-off
+
+- Status: finalized
+- Actor: Claude Code agent (architect/developer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-10T21:31:16.285Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: a810bfd07eac05a87ccbf0a8b5ea4fa77a8af274
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-STAGING, F-DOCS
+- Requirements: none
+
+### Changes
+
+- **documentation:** Record the Director's D07 decision (2026-10-10): use all planned Disney Lorcana assets, card art and images in full under Ravensburger fan-content terms, with the required notice and no charges for use or access. New current docs/policies/fan-content.md holds the verbatim notice and its placement (README now; web app before any official asset is shown outside local development; published media), plus the no-payment, no-endorsement, per-asset provenance and takedown-readiness rules.
+- **review:** Checked the policy URL in the notice: it resolves to Ravensburger's Community Code PDF (conduct policy, effective 2023-05-10), which does not itself state fan-content permissions or the notice. The brand-portal Fan Content Policy could not be read automatically. This verification gap and the revocation risk (Community Code sole discretion; Pixelborn 2024) are recorded; the decision is the Director's.
+- **revision:** Record the BOOT-04 §12 sign-off: all items accepted; purchase-specific items (domain/D01, payment methods, purchase) execute when the first staging deploy is ready. Update the worksheet status/§2/§12, ADR0007 status, BOOT-04 validation, F-STAGING, the backlog status, decision register D02/D03/D07, the AGENTS.md asset boundary, the README notice, the indexes and the handoff.
+- **test:** Local Dev Container RUN-20261010-011 pnpm verify and RUN-20261010-012 test:documentation passed on the draft snapshot (clock drift 0 ms; executable fingerprint unchanged).
+
+### Verification
+
+- **passed:** pnpm verify (configuration/syntax/documentation consistency) in the local Dev Container; unchanged executable fingerprint. Validates consistency, not legal sufficiency of the asset policy. ([evidence](docs/validation/runs/RUN-20261010-011.json))
+- **passed:** Documentation/evidence regression suite in the local Dev Container. ([evidence](docs/validation/runs/RUN-20261010-012.json))
+
+### Documentation and files
+
+- **updated:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — New current policy with the Director-supplied notice verbatim; placement and rules derived from the decision. Verification limits match the retrieved Community Code PDF and the unreadable brand portal.
+- **updated:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — §12 checked off per the Director, with purchase items marked at purchase; status and §2 record the sign-off and D07. Decisions otherwise unchanged.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D02 durability and D03 region accepted; D07 records the Director decision with privacy terms still open. Other rows unchanged.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — BOOT-04 status now records the sign-off; deployment configuration still pending.
+- **updated:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Current status reflects the recorded sign-off and D07; deployment configuration remains open.
+- **updated:** [docs/adr/0007-hosting-provider-baseline.md](docs/adr/0007-hosting-provider-baseline.md) — Status line: sign-off recorded; purchase deferred.
+- **updated:** [AGENTS.md](AGENTS.md) — The asset boundary now reflects D07: official assets permitted with provenance, notice, no charges and neutral fallback; synthetic fixtures remain for tests.
+- **updated:** [README.md](README.md) — Adds the required fan-content notice (subject 'This project') and a link to the policy.
+- **updated:** [docs/README.md](docs/README.md) — BOOT-04 row notes the recorded sign-off; new fan content policy row.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Records the sign-off and the D07 decision.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-STAGING limits: sign-off recorded; capacity/restore evidence still pending.
+- **updated:** [docs/features.json](docs/features.json) — F-STAGING description: sign-off recorded; purchase deferred; still planned/pending.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Session handoff for the D07/sign-off change, including the outside branch switch observed in the reflog.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Engine/dependency decisions unaffected by asset rights.
+- **historical_preserved:** [docs/vision/Development_Blueprint_2026-10-05.md](docs/vision/Development_Blueprint_2026-10-05.md) — The planning snapshot keeps its original D07 recommendation; the decision register and policy record the change.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261010-005.json).
+
+### Limits and next actions
+
+- Documentation only: no executable change; the web-app notice display is a later UX/WEB acceptance gate.
+- The Ravensburger Fan Content Policy page itself was not readable automatically; it must be re-read and recorded before public launch. Not legal advice.
+- No purchase, account, domain, DNS or deployment; purchase-specific checklist items execute later.
+- Director authorizes publishing and merging claude/boot-04-signoff-d07.
+- RULE-01 source inventory including asset provenance fields.
+- UX/WEB: render the required notice before showing official assets outside local development.
+
 ## CHG-20261010-004 — Director-authorized publication and main integration of the BOOT-04 Codex reconciliation
 
 - Status: finalized

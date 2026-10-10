@@ -4,7 +4,7 @@ Recorded: 2026-10-10 UTC / 2026-10-09 America/Phoenix. Task: BOOT-04 ("Staging p
 
 **Status:**
 - The decisions are final as the project baseline.
-- Director sign-off (§12) and purchase remain open.
+- Director sign-off (§12) was recorded on 2026-10-10 ([CHG-20261010-005](../changes/CHG-20261010-005.json)). Purchase-specific items run when the first staging deploy is ready.
 - No account was opened, nothing was bought, and no DNS, deployment, credential or setting was changed.
 - Reviewed deployment configuration is the remaining BOOT-04 work (§13).
 
@@ -24,6 +24,7 @@ No vendor or engineer can guarantee prices, stock or terms for a multi-year live
 | Total hosting budget about $25/month | 2026-10-08 | Replaces the blueprint §14.4 $150–$400 planning allowance and settles the earlier cost-tier comparison |
 | Keep the complete vision; no scope reduction | 2026-10-09 | All 548 requirements and X01–X07 stay in scope; compute-heavy trust-free features move to the browser (ADR0008) |
 | Request for the finalized stack, vendors, services and dependencies | 2026-10-10 | This worksheet; the guarantee limits are stated in §1 |
+| §12 sign-off accepted, purchase-specific items deferred to purchase time; D07: use all planned assets, card art and images in full under Ravensburger fan-content terms, with the required notice and no charges | 2026-10-10 | §12 checked off; [fan content policy](../policies/fan-content.md) governs asset use, notice placement, provenance and takedown readiness |
 | duels.ink operator hardware report (12 vCPU / 24 GB shared host for most of its life; recent move to a ~€100 dedicated server; intermittent Hetzner connection drops; bot model trained offline) | 2026-10-09 | Supports a shared-vCPU host at launch scale; reconnect design and an off-host uptime probe are mandatory; the offline-trained bot option is recorded for R12 |
 | duels.ink reference facts recorded by the earlier Codex research: Director-reported 300+ concurrency on the one-box stack; published privacy policy naming OVHcloud for app/PostgreSQL/Redis, Hetzner for backups and Cloudflare for card images; browser observations (Cloudflare, separate card-image origin, WebSocket reconnect/resync, CSS-rendered board) | 2026-10-08 ([observations](../research/2026-10-08-duels-observations.json)) | Attributed reports, not capacity proof for our engine; consistent with the OVHcloud/Cloudflare selection |
 
@@ -207,14 +208,16 @@ Prices are USD before tax. The OVHcloud US catalog reports `taxRate` 0; any sale
 
 ## 12. Director sign-off checklist
 
-- [ ] Region `US-EAST-VA` (or `US-WEST-OR`).
-- [ ] Month-to-month at purchase; prepay only at launch date.
-- [ ] Durability for staging/closed beta: RPO ≤ 60 s, RTO ≤ 4 h, single host; zero-loss deferred to the public-release gate (D02).
-- [ ] Purchase timing: when the first staging deploy is ready (after PLAY-01/M1 readiness), not before.
-- [ ] Domain name (D01) and registrar purchase.
-- [ ] Payment methods: OVHcloud US, Cloudflare (required for R2), Backblaze.
-- [ ] Accept UptimeRobot's free terms for this non-commercial fan project.
-- [ ] Assets: staging uses neutral fixtures until D07 resolves card art/text rights.
+Recorded 2026-10-10 UTC: the Director accepted every item ([CHG-20261010-005](../changes/CHG-20261010-005.json)). Items marked *at purchase* are accepted now and executed when the first staging deploy is ready.
+
+- [x] Region `US-EAST-VA`.
+- [x] Month-to-month at purchase; prepay only at launch date.
+- [x] Durability for staging/closed beta: RPO ≤ 60 s, RTO ≤ 4 h, single host; zero-loss deferred to the public-release gate (D02).
+- [x] Purchase timing: when the first staging deploy is ready (after PLAY-01/M1 readiness), not before.
+- [x] Domain name (D01) and registrar purchase: *at purchase*; the name is chosen with the product identity.
+- [x] Payment methods: OVHcloud US, Cloudflare (required for R2), Backblaze: *at purchase*.
+- [x] Accept UptimeRobot's free terms for this non-commercial fan project.
+- [x] Assets (D07, decided 2026-10-10): use all planned Disney Lorcana assets, card art and images in full under Ravensburger's fan-content terms. Display the required notice and never charge for use or access. Rules, notice text and verification limits: [fan content policy](../policies/fan-content.md).
 
 ## 13. Remaining BOOT-04 work (reviewed configuration, separate change)
 

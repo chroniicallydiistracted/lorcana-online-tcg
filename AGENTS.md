@@ -29,7 +29,7 @@ BOOT-02 local acceptance is verified: server-only db package, restricted local/t
 - Version rules, catalog, engine and protocol together. Place upstream code behind `engine-adapter` and retain license/provenance and a patch ledger.
 - `.env.local` stays private and ignored. Never print credentials or commit generated secret files.
 - The initial PostgreSQL credential is a local bootstrap administrator only. Application services must receive restricted roles before their integration.
-- Use synthetic fixtures and neutral assets until content provenance and engine qualification are recorded.
+- Use synthetic fixtures for tests until engine qualification is recorded. Official Disney Lorcana assets, card art and text are permitted by the Director's D07 decision under docs/policies/fan-content.md: record each imported asset's provenance, show the required notice, never charge for access, and keep the neutral-asset fallback for takedown readiness.
 
 ## Collaboration and verification
 

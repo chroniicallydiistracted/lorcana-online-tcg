@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-10T21:05:05.053Z",
+  "observed_at": "2026-10-10T21:31:21.330Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -1160,6 +1160,15 @@
       ]
     },
     {
+      "path": "docs/policies/fan-content.md",
+      "classification": "current",
+      "sources": [
+        "apps/web/**",
+        "packages/rules-data/**",
+        "vendor/tcg-engines/**"
+      ]
+    },
+    {
       "path": "docs/validation/boot-04.md",
       "classification": "current",
       "sources": [
@@ -1229,7 +1238,8 @@
     "CHG-20261010-001",
     "CHG-20261010-002",
     "CHG-20261010-003",
-    "CHG-20261010-004"
+    "CHG-20261010-004",
+    "CHG-20261010-005"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -1248,7 +1258,8 @@
     "CHG-20261010-001": "finalized",
     "CHG-20261010-002": "finalized",
     "CHG-20261010-003": "finalized",
-    "CHG-20261010-004": "finalized"
+    "CHG-20261010-004": "finalized",
+    "CHG-20261010-005": "finalized"
   },
   "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
   "files": {
@@ -1266,8 +1277,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "ee04285782f84de53070969ca93883a37732aa08fd83ddea760369260c13e387",
-    "README.md": "7d0ab8d04a26ecdc41e345850620e2b8893eb03b81766d80df6d863ecee50fd6",
+    "AGENTS.md": "0148c65f666c9a2cc7cf42060d4f62229eeec337500997726fc8ba07f3711057",
+    "README.md": "a535881b57c2baf7f6ed08ca65a9b11af8ac5dd8c22d55dc77955937f622976b",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -1296,9 +1307,9 @@
     "docs/ARCHIVE_PROVENANCE.md": "e77e3909b03bae735287e3176fcab76c5418ee87cde40b972beb9631cb6bedda",
     "docs/CHANGELOG_FORMAT.md": "de3bb6f22723e31eca77673cb93661105484c9598325f87b4b1684677fdb0e44",
     "docs/DEVELOPMENT_WORKFLOW.md": "8503b4afff126a19d41f924afd06ce71f267566dcede616755c5a1a042b6b072",
-    "docs/FEATURES.md": "bb5ab99f970b5b51bc6240e6fec0d648c7759f14507b6e26ba6f6faa79011025",
-    "docs/HANDOFF.md": "d864b6767e81f53b3c14ff2b27d56b68ed7db14f28c635b89be0127e00d4161f",
-    "docs/README.md": "ddba6767277374a2a31898fab651d62d2238527bdd42ba210fd4180d6255df52",
+    "docs/FEATURES.md": "07f8a145e9cd33d847cb3d0c337891320836f7702e8d91d2e34ca3d42dacb80a",
+    "docs/HANDOFF.md": "7985667753488ea159ef9bbd17b71304f67220457eedf707f05a0702690e0a1a",
+    "docs/README.md": "6c437f3ac7e26076fd7964ade51f8ff09c94f304b1c362c5c3bf3452e127bd28",
     "docs/WORKSPACE_QUALIFICATION.md": "802ce8da2cf1950e910c6c540ffe1a8fb4c155fd134585ebcba5f94e6e215080",
     "docs/adr/0001-local-development-environment.md": "c481ac004b256c4e2adbf2f02f9ea85b363fa6fc78aac7134a8e0f20270c8dc2",
     "docs/adr/0002-application-foundation.md": "0984d0a0c33b762be91c64273b6c17ba1da66fa823c9957293a1dd8ea325fa1d",
@@ -1306,26 +1317,27 @@
     "docs/adr/0004-restricted-local-database.md": "6eef66050e5e11c8b3c2dc77a35576be7d48110af7fe546f33fb7d69cc836a7d",
     "docs/adr/0005-ci-artifact-qualification.md": "d593388f73aa8f4ad8f6a1d17d1a19c3a5a004a3835e4dd61fff8c2a52b919c1",
     "docs/adr/0006-protocol-release-contracts.md": "2c519c89bf3fab52ccd92f3e76ca877d632acdb921cd7be599f46d704d6cf19f",
-    "docs/adr/0007-hosting-provider-baseline.md": "6dcf12492866055a57599cedd10d8dd1a0982a6ad744deb4bdca1790e357d8f0",
+    "docs/adr/0007-hosting-provider-baseline.md": "9d4c3de99c73e9c88cd8e708e69a9eafcc1bc6fb8b55919ec1050b0a268db800",
     "docs/adr/0007-single-host-beta-proposal.md": "13ee0af57f98d4dcc67319e1e4b1558622e24b123f2d8ed4fa16b693fac70ccf",
     "docs/adr/0008-engine-placement-dependency-baseline.md": "678a02f700d97b171400167d4e39a31653481d74a51e0127ba31c52f99e4f4e1",
     "docs/audits/2026-10-06-project-audit.md": "b273326bdac271ae0ce86a0157659b203e0a7f43eba33059fffb9ca096dd0621",
     "docs/contracts/protocol.md": "6482f9ef5e06dfed03aad9c2936027cada33771757f34504dbc491160423041d",
     "docs/contracts/release.md": "cf4c29e57bb13afa747d947b4d1bf9d3ab4912550e536d97b20b1716d88a1133",
-    "docs/documentation-map.json": "21db73ed7210fa00fbb52f72e2f917980c7f4abe8c33b28cc37be70046a0624e",
-    "docs/features.json": "154ca43d930cf6f42ff22dd1f9ded1d5e59448646babb9b0c1a0f33efd2da555",
+    "docs/documentation-map.json": "552d2bb6cde23ef2d4eb7c000fefbaa13d9bbb983dda527f01b67d5fde6576da",
+    "docs/features.json": "75f314f3d6c04c596614acc11106acf6cc2c152711d3798d5ba86a6cc7ff9119",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "bddc6c6ef4055286cf40312d1df7ae5ac80fd4f02afbf7f858035de8b4de9b83",
     "docs/plans/2026-10-07-boot-03-ci.md": "d533afc905a764256c25d70ee262c8a54c47378bc8c21f481113c94d6f6519c0",
     "docs/plans/2026-10-07-boot-04-provider-research.md": "6c8ca0726bf0f95831fd62c90657ba79d0f8329f24cd9244c1027e4618cc1b84",
     "docs/plans/2026-10-07-boot-05-contracts.md": "43d4f138342ef1f962d7b0ca0b413d05523bb58727340be81777d8820783302d",
     "docs/plans/2026-10-08-single-host-reassessment.md": "41d60e0d00dead00dd8553449c8964ef7ab7b3096c52f1bcfc930d7a6986e06c",
-    "docs/plans/2026-10-10-boot-04-decision-worksheet.md": "5e5b2802d5add4a3ff2c37f390e4bc56014210cf6b92761c2f5c28a557917550",
+    "docs/plans/2026-10-10-boot-04-decision-worksheet.md": "d2b975133017caeddaef31a84c4399e24fa9486deaec7caa3a443352cbf148fa",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
     "docs/plans/boot-04-costs.json": "db38b14c7d22fce7fbf18c88f29062beb9462732cc578e09b744d4170f2ebda5",
     "docs/plans/boot-04-single-host-costs.json": "f3fb2b6de8b9bb07522dbf753fb60daede3c2f8df8ec00c865718ead438018a7",
     "docs/plans/boot-04-single-host-sources.json": "ba482ffd611d5dc06ed5d9d30f5c677a9945a48122c693d9e9938b7d2912b83a",
     "docs/plans/boot-04-sources.json": "ee0630f06c37cff799db4ca6dc08f92e120fed5db72be405e0a1765e96232c82",
+    "docs/policies/fan-content.md": "a27898496e122701a923265b10ac7970d6ce0894a1b4bea5f2c08659a1b87c85",
     "docs/research/2026-10-08-duels-observations.json": "ffca50766215f37b56dd2e461dc698acfd14cb1d94f3cec3352e7e9efe91907f",
     "docs/runbooks/ci.md": "f9f33a22f5b26a0f25d2381d35013386991fd2f579cecb45c830cff5ad17fdab",
     "docs/runbooks/database.md": "71294a6c009d3a3df49960aebfef963483b1ee1a3c376fc51648d895128fc1ea",
@@ -1345,16 +1357,16 @@
     "docs/validation/boot-01.md": "074b30f2364a25e4f215fa4a9919b7923d0f766faf7a1cac470b136e5733507e",
     "docs/validation/boot-02.md": "304085f2026e7ca7221c1091823a7df85fd1045a83d84907daf111f6b47f7a71",
     "docs/validation/boot-03.md": "7eb7d6784353a62e9ed15575dddb28d93296ca5b351969ce00ea13ac243bcbb0",
-    "docs/validation/boot-04.md": "a90e82dc515a1e51d7fd36eb14afdbbc15c9da7a081ad8845eac410c84b908ce",
+    "docs/validation/boot-04.md": "2b4f0b54e1003a20a2a8905fb552ac6e1bafec4fcb0988cb979b2343479daa62",
     "docs/validation/boot-05.md": "fcef0380aed43b01c08804d21a9f1a502696142e735375f7d222097f574824f5",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
-    "docs/vision/README.md": "d3a08018277e9a7afc4715178fef16aeec42a60cff41fd8123d323eff37bb468",
+    "docs/vision/README.md": "cd4eb146b58bb1c5c18e9c68235c3583896053870c7e034bb840050459585d60",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "246c982952d73314328143c8919b4df6a6e8dd6e361eda16cc58d3f2a1229240",
+    "docs/vision/decision_register.csv": "f7c39cd37308ff71f02154b508b432a477c1ca4d679f9bb5bab51fa430a58659",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "36787e080448deb54abc8b548bdd867c7f396684d4cb09818c7d81ecb2be20be",
+    "docs/vision/initial_backlog.csv": "fd8fd8b79ab46aaa3d06a42a2fe715ca7cb03b087a8d67c804649c2394c0ea9c",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "7317edf13599dae982832abc74008101b753bc3093f61b025f5526f00fb42c48",

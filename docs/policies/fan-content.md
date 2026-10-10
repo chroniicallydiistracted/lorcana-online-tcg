@@ -1,0 +1,44 @@
+# Fan content, attribution and asset policy
+
+Recorded: 2026-10-10 UTC. Decision owner: Project Director (D07). Change record: [CHG-20261010-005](../changes/CHG-20261010-005.json). Applies to every surface of the project: web app, repository, published artwork, video, social posts and any listing.
+
+## Director decision (D07)
+
+- **Assets:** use all planned Disney Lorcana assets in full, with no project-imposed limitation. This includes card art and images, card text, names, set symbols and the other assets the vision plans (R20.003 high-resolution art, R24 cosmetics, R06 products). The basis is Ravensburger's fan-content terms as cited by the Director.
+- **Free:** the project stays free to players. Nobody is ever charged to use or access any content; this matches the existing "players never pay to play, obtain cards or use features" rule (blueprint §1.1).
+
+This supersedes the earlier working recommendation of "neutral fixtures until authorized distribution is established". Synthetic fixtures remain the default for automated tests until engine qualification is recorded.
+
+## Required notice (verbatim)
+
+> [This website, artwork, etc.] uses trademarks and/or copyrights associated with Disney Lorcana TCG, used under Ravensburger’s Community Code Policy (https://cdn.ravensburger.com/lorcana/community-code-en). We are expressly prohibited from charging you to use or access this content. [This website, artwork, etc.] is not published, endorsed, or specifically approved by Disney or Ravensburger. For more information about Disney Lorcana TCG, visit https://www.disneylorcana.com/en-US/.
+
+Replace only the bracketed subject: use the product name once D01 settles it, or "This website" / "This project" / "This artwork". Keep the rest word-for-word, including both links.
+
+## Where the notice must appear
+
+| Surface | Requirement | When |
+|---|---|---|
+| Web app | A footer or About/legal page reachable from every screen, and the start/loading screen | Before any official asset is shown to anyone outside local development: an acceptance gate for UX/WEB tasks and before phase 3 private playtests |
+| Repository | `README.md` | Now |
+| Published media | Artwork, videos, screenshots in posts, store or directory listings | Every publication |
+
+## Rules that follow from the decision
+
+1. **No payment for access or use.** No paid tiers, paid cosmetics, paid tournament entry or donation-unlocked perks. Supporter perks like duels.ink's name colors are not allowed here. Accepting even voluntary donations that unlock nothing needs a separate Director decision. Advertising is not planned.
+2. **No implied endorsement.** Official Disney Lorcana logos are never used as the project's own branding; the product identity (D01) stays visibly distinct.
+3. **Provenance for every imported asset** (blueprint §6.2): source system/URL, retrieval date, checksum, dimensions/format, rendition family, and rights basis `D07: Ravensburger fan-content terms`.
+4. **Takedown readiness.**
+   - Official assets are served from R2 through the versioned asset manifest.
+   - One configuration switch replaces official art with neutral placeholders and disables card-image routes, without redeploying the engine.
+   - Neutral fixtures stay maintained as that fallback.
+   - Any Ravensburger or Disney request is answered and executed promptly.
+5. **Conduct.** Ravensburger's Community Code behavior standards inform our chat, reporting and moderation features (R19, R31).
+
+## Verification limits
+
+- The URL in the notice resolves to Ravensburger's **Community Code** (PDF, effective May 10, 2023, retrieved 2026-10-10). It is a conduct policy covering behavior, cheating, personal data and counterfeit/unauthorized products. It does not itself state fan-content permissions or this notice.
+- The notice is the community disclaimer the Director supplied, used verbatim by community creators such as The Lorcana Muses podcast. Ravensburger's separate **Fan Content Policy** on its brand portal (`brand.ravensburger-group.com`, also cited by the tcg-engines disclaimer) could not be read by automated retrieval.
+- **Before public launch,** open that page in a browser and record a dated copy or notes here.
+- **Revocation risk:** Ravensburger reserves sole discretion over whether an action violates its policies (Community Code, "Future-Proofing"). Pixelborn ended support in 2024 after Disney representatives asked for removal. The Director accepts this risk; takedown readiness is the mitigation.
+- This document records a project decision. It is not legal advice.

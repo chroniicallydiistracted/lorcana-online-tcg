@@ -78,3 +78,9 @@ The [2026-10-06 audit](docs/audits/2026-10-06-project-audit.md) addresses the or
 For the same pipeline used by Actions, run `python3 scripts/ci-local.py --evidence-id RUN-YYYYMMDD-NNN` on the WSL/Linux Docker host. It builds/runs a fresh non-root development image and private PostgreSQL project, preserves existing data and records sanitized identified artifacts after cleanup. See the CI runbook for flags, scan limitations and hosted acceptance.
 
 BOOT-04 hosting, stack and spend decisions are final in the [decision worksheet](docs/plans/2026-10-10-boot-04-decision-worksheet.md), with [ADR0007](docs/adr/0007-hosting-provider-baseline.md) and [ADR0008](docs/adr/0008-engine-placement-dependency-baseline.md): one OVHcloud US VPS behind Cloudflare under the Director's $25/month cap. Nothing is purchased or deployed. Earlier Codex single-host research (2026-10-07/08) is preserved as evidence in [BOOT-04 validation](docs/validation/boot-04.md). Current runtimes accept only `APP_ENV=local`; remote runtime support is part of the remaining BOOT-04 configuration work.
+
+## Fan content notice
+
+This project uses trademarks and/or copyrights associated with Disney Lorcana TCG, used under Ravensburger’s Community Code Policy (https://cdn.ravensburger.com/lorcana/community-code-en). We are expressly prohibited from charging you to use or access this content. This project is not published, endorsed, or specifically approved by Disney or Ravensburger. For more information about Disney Lorcana TCG, visit https://www.disneylorcana.com/en-US/.
+
+See the [fan content policy](docs/policies/fan-content.md) for the rules this notice carries.

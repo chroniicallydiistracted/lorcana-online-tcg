@@ -2,12 +2,13 @@
 
 ## Current status (2026-10-10 UTC)
 
-BOOT-04 decisions are **final** in the [decision worksheet](../plans/2026-10-10-boot-04-decision-worksheet.md) with [ADR0007](../adr/0007-hosting-provider-baseline.md) and [ADR0008](../adr/0008-engine-placement-dependency-baseline.md) ([CHG-20261010-001](../changes/CHG-20261010-001.json), merged to main by [CHG-20261010-002](../changes/CHG-20261010-002.json)). Backlog status: `decision_worksheet_finalized_director_signoff_and_deployment_configuration_pending`.
+BOOT-04 decisions are **final** in the [decision worksheet](../plans/2026-10-10-boot-04-decision-worksheet.md) with [ADR0007](../adr/0007-hosting-provider-baseline.md) and [ADR0008](../adr/0008-engine-placement-dependency-baseline.md) ([CHG-20261010-001](../changes/CHG-20261010-001.json), merged to main by [CHG-20261010-002](../changes/CHG-20261010-002.json)). Backlog status: `decision_worksheet_finalized_director_signoff_recorded_deployment_configuration_pending`.
 
 Acceptance evidence required by the backlog is "reviewable projects/services/DNS/secret inventory with current line-item quotes". Worksheet §5–§9 supply it: environments/projects/accounts, host layout, DNS and secret inventory, and retrieval-dated quotes (about $16.17/month month-to-month).
 
+Director sign-off (worksheet §12) and the D07 asset decision were recorded on 2026-10-10 in [CHG-20261010-005](../changes/CHG-20261010-005.json); see the [fan content policy](../policies/fan-content.md).
+
 Still open:
-- **Director sign-off** (worksheet §12).
 - **Reviewed deployment configuration** (worksheet §13). This includes remote runtime support, because current services refuse to start unless `APP_ENV=local` (`packages/service-runtime/src/lifecycle.ts`).
 
 Nothing was purchased, provisioned or deployed.

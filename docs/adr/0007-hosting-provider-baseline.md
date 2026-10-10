@@ -1,6 +1,6 @@
 # ADR0007: Single-host hosting and provider baseline under a $25 monthly cap
 
-Recorded date: 2026-10-10 UTC / 2026-10-09 America/Phoenix. Status: accepted as the BOOT-04 decision baseline; Director sign-off items and purchase remain open in the [BOOT-04 decision worksheet](../plans/2026-10-10-boot-04-decision-worksheet.md). Change record: [CHG-20261010-001](../changes/CHG-20261010-001.json). Affected tasks: BOOT-04, OPS-01, AUTH-01, PLAY-03, DOC-01/02. Affected requirements (prerequisite infrastructure, none accepted): R30.008–R30.017, R27.016, R29.001, R20.003, R26, R33.009. Companion decision: [ADR0008](0008-engine-placement-dependency-baseline.md).
+Recorded date: 2026-10-10 UTC / 2026-10-09 America/Phoenix. Status: accepted as the BOOT-04 decision baseline; Director sign-off was recorded on 2026-10-10 in the [BOOT-04 decision worksheet](../plans/2026-10-10-boot-04-decision-worksheet.md) §12 ([CHG-20261010-005](../changes/CHG-20261010-005.json)); the purchase is deferred until the first staging deploy is ready. Change record: [CHG-20261010-001](../changes/CHG-20261010-001.json). Affected tasks: BOOT-04, OPS-01, AUTH-01, PLAY-03, DOC-01/02. Affected requirements (prerequisite infrastructure, none accepted): R30.008–R30.017, R27.016, R29.001, R20.003, R26, R33.009. Companion decision: [ADR0008](0008-engine-placement-dependency-baseline.md).
 
 ## Context
 
