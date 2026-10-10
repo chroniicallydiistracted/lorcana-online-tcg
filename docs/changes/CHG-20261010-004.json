@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261010-004",
+  "title": "Director-authorized publication and main integration of the BOOT-04 Codex reconciliation",
+  "actor": "Claude Code agent (architect/developer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-10T21:04:59.255Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "fcddc5c86e941db1c2d9fa7441f7353fe9b8f284",
+  "task_ids": [
+    "BOOT-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "revision",
+      "description": "The Director authorized publishing claude/boot-04-codex-reconciliation (finalized CHG-20261010-003 at fcddc5c), fast-forwarding main to it, and dropping the teleport stash. Main fast-forwards to the commit containing this record; no history rewrite. The branch is retained."
+    },
+    {
+      "kind": "removal",
+      "description": "Dropped local stash@{0} ('Stashing to teleport the Claude Session', commit 0af9ba102cbdc039051987f54bca2fac56ad2eb5, base 5819142). CHG-20261010-003 restored its non-conflicting edits and hand-merged its conflicting edits. The commit stays recoverable by SHA only until git garbage collection. The empty local branch codex/boot-04-provider-plan is retained."
+    },
+    {
+      "kind": "documentation",
+      "description": "Handoff records the authorized integration, the stash drop, and that the hosted workflow for the new main commit must be observed rather than inferred."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261010-004.json",
+    "docs/current-state.json",
+    "docs/validation/logs/RUN-20261010-010.txt",
+    "docs/validation/runs/RUN-20261010-010.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Repository status changed: Director-authorized publication and main integration; teleport stash dropped; merge and stash approvals removed from pending gates."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Integration changes no BOOT-04 evidence, decision or pending status."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "BOOT-04 status unchanged by integration."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-010.json",
+      "outcome": "passed",
+      "scope": "Local Dev Container docs:check of the integration record and updated handoff on the draft snapshot; unchanged executable fingerprint. The hosted workflow on the new main commit is observed separately."
+    }
+  ],
+  "limitations": [
+    "Integration and stash removal only; no executable, dependency, provisioning, DNS, deployment or setting change.",
+    "The hosted foundation workflow result for the new main commit must be observed separately."
+  ],
+  "next_actions": [
+    "Observe the foundation workflow on the new main commit.",
+    "Director completes the BOOT-04 worksheet §12 sign-off; then RULE-01."
+  ]
+}

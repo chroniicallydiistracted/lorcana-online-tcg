@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-010",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "fcddc5c86e941db1c2d9fa7441f7353fe9b8f284",
+  "source_fingerprint": "8e52e134ba2e4af4195e28c71a93abfe27910fa9b5012ee0550476887e819584",
+  "started_at": "2026-10-10T21:04:45.343Z",
+  "finished_at": "2026-10-10T21:04:51.154Z",
+  "recorded_at": "2026-10-10T21:04:51.154Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5810,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Documentation consistency for Director-authorized BOOT-04 reconciliation integration record CHG-20261010-004 (draft snapshot); local Dev Container",
+  "log_path": "docs/validation/logs/RUN-20261010-010.txt",
+  "log_sha256": "f1bcbcd75be9136c055ca7cf6a2f9fca9c3812099cb09145563b1c854a494c24",
+  "redactions": 0
+}

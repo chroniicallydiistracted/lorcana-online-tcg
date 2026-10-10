@@ -2,6 +2,42 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261010-004 — Director-authorized publication and main integration of the BOOT-04 Codex reconciliation
+
+- Status: finalized
+- Actor: Claude Code agent (architect/developer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-10T21:04:59.255Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: fcddc5c86e941db1c2d9fa7441f7353fe9b8f284
+- Tasks: BOOT-04, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **revision:** The Director authorized publishing claude/boot-04-codex-reconciliation (finalized CHG-20261010-003 at fcddc5c), fast-forwarding main to it, and dropping the teleport stash. Main fast-forwards to the commit containing this record; no history rewrite. The branch is retained.
+- **removal:** Dropped local stash@{0} ('Stashing to teleport the Claude Session', commit 0af9ba102cbdc039051987f54bca2fac56ad2eb5, base 5819142). CHG-20261010-003 restored its non-conflicting edits and hand-merged its conflicting edits. The commit stays recoverable by SHA only until git garbage collection. The empty local branch codex/boot-04-provider-plan is retained.
+- **documentation:** Handoff records the authorized integration, the stash drop, and that the hosted workflow for the new main commit must be observed rather than inferred.
+
+### Verification
+
+- **passed:** Local Dev Container docs:check of the integration record and updated handoff on the draft snapshot; unchanged executable fingerprint. The hosted workflow on the new main commit is observed separately. ([evidence](docs/validation/runs/RUN-20261010-010.json))
+
+### Documentation and files
+
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Repository status changed: Director-authorized publication and main integration; teleport stash dropped; merge and stash approvals removed from pending gates.
+- **reviewed_unchanged:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Integration changes no BOOT-04 evidence, decision or pending status.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — BOOT-04 status unchanged by integration.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261010-004.json).
+
+### Limits and next actions
+
+- Integration and stash removal only; no executable, dependency, provisioning, DNS, deployment or setting change.
+- The hosted foundation workflow result for the new main commit must be observed separately.
+- Observe the foundation workflow on the new main commit.
+- Director completes the BOOT-04 worksheet §12 sign-off; then RULE-01.
+
 ## CHG-20261010-003 — Reconcile preserved Codex BOOT-04 research with the finalized decision worksheet
 
 - Status: finalized
