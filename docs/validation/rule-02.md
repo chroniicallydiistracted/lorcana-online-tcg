@@ -63,3 +63,28 @@ The usage-limit interruption affected the agent/review tool, not the running che
 | Version/release qualification remains conservative | Temporal/admission and artifact tests in RUN053/055/058; CR2.3/set14 never auto-admitted; RULE-03/04/PLAY-02 remain pending |
 | Repeatable installation/image and review | RUN054 source-only frozen install; RUN055 isolated image/DB/13-stage CI; read-only independent assessment; RUN060 static docs and RUN061 canonical full foundation |
 | Protected environment and durable evidence | RUN062 actual container listener/private/log/scope checks; attributed host cleanup report; final documentation/seal receipts in the active change |
+
+## Independent audit and integration — 2026-10-11 UTC
+
+Claude Code reviewed commit 481735d on the Director's instruction before integration ([CHG-20261011-003](../changes/CHG-20261011-003.json)). Verdict: every RULE-02 backlog acceptance element is present and independently reproduced at the same executable fingerprint `831cb35f…`. The Director's hosting, engine-placement and D07 decisions are unchanged.
+
+| Run | Result |
+|---|---|
+| RUN-20261011-065 | `pnpm engine:check` passed: 347 files and 2 patches against the committed lock |
+| RUN-20261011-066 | Importer `--check` against the pinned inert checkout reproduced every payload, license, patch original and the lock |
+| RUN-20261011-067 | Separate audit script using `git cat-file` (not the project importer): 345 files byte-identical to pin `53a79413…`, 2 patched files whose originals match the pinned blobs, both MIT notices identical, no extra or missing files; 304 runtime and 43 test-only files |
+| RUN-20261011-068 | Compiled server adapter probe: a non-chooser cannot pick the first player, an actor cannot act as the opponent through `playerId`, out-of-turn and judge-only moves are refused, malformed commands and extra options throw, concession ends the match with `rewardEligible:false`, and admission stays closed for CR 2.3.0/set 014 on 2026-10-15, 10-16, 10-22, 10-23 and 2027-01-01 |
+| RUN-20261011-069 | `pnpm engine:test-upstream`: 338 passed, 1 inherited skip, 0 failed, 838 expect calls across 27 files under Bun 1.4.2 |
+| RUN-20261011-070 | `pnpm test:engine-browser`: two real Chromium workers passed |
+| RUN-20261011-071 | `pnpm verify:foundation`: 124 checks counted in the log (100 Node and 24 Python), plus the same 338/1 upstream result |
+| RUN-20261011-072 | Host `python3 scripts/ci-local.py`: fresh Dockerfile-built x64 image, all 13 isolated stages passed (frozen install, doctor, foundation with the same 338/1 upstream result, managed database identities and live checks, six Chromium foundation scenarios, two engine workers, source/history secret, dependency and license gates, artifact v3); owned containers, volume and network removed |
+
+Cross-checks: the upstream suites resolve only declared workspace dependencies (no phantom packages), and the skipped quest case is in the unchanged upstream file. The split that leaves randomness/replay to RULE-03, official behavior to RULE-04 and viewer privacy to PLAY-02 matches the backlog's own task definitions. ADR0008's consequence bullet was amended in place; its earlier wording remains in Git history at 1925127, and ADR0009 records the change.
+
+**Inputs for RULE-03.** The vendored runtime still contains these randomness and clock sources (paths under `lorcana-engine/src/` unless noted):
+- Shuffles that use `Math.random`: `core/runtime/zone-operations.ts:103` (default when no random function is supplied), `runtime-moves/resolution/action-effects/move-cards-from-under-effect.ts:29` and `lorcana-types/src/utils/shuffle.ts:5`.
+- `core/runtime/match-runtime.random-apis.ts:14` derives draws from seedrandom over the caller's seed, which is reproducible but not secret.
+- Identifier defaults: `crypto.randomUUID` in `core/types/branded-utils.ts:4`, and `Math.random`/`Date.now` command, match and game IDs in `match-runtime.utils.ts`, `lorcana-engine-base.ts`, `server-engine.ts` and `auth.ts`.
+- `Date.now()` defaults in `match-runtime.init.ts` and `match-runtime.time-apis.ts`, which affect replay equality.
+
+**Inputs for WEB-01 and performance work.** The compiled kernel keeps upstream development invariant checks (`NODE_ENV` is defined as development), as ADR0009 states. The synthetic-only kernel is 847 KB minified (184 KB gzip); the full catalog will add to this.

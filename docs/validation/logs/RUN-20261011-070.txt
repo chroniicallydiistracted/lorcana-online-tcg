@@ -1,0 +1,10 @@
+
+> lorcana-online-tcg@0.0.0 test:engine-browser /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/engine-lab test:browser
+
+
+> @lorcana/engine-lab@0.0.0 test:browser /workspaces/lorcana-online-tcg/packages/engine-lab
+> node tests/browser.mjs
+
+{"environment":{"userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36","node":"undefined","bun":"undefined"},"isolatedWorkers":2,"checks":["unqualified mode rejection","synthetic opening/mulligan/concession","terminal winner","bounded summaries","dispose and fresh worker","no Node/Bun/page errors"],"workerBytes":836908}
+PASS actual Linux Chromium Web Workers; no Windows, GPU, live multiplayer or determinism certification

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-067",
+  "category": "container",
+  "command": [
+    "python3",
+    "-I",
+    "-c",
+    "import json, hashlib, subprocess, sys, os\nrepo, up = sys.argv[1], sys.argv[2]\nrev = '53a79413c58678b1c50dde57e71de5c123132716'\nlock = json.load(open(os.path.join(repo, 'vendor/tcg-engines/upstream.lock.json')))\nassert lock['revision'] == rev\np = subprocess.Popen(['git', '-C', up, 'cat-file', '--batch'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)\ndef blob(path):\n    p.stdin.write(f'{rev}:{path}\\n'.encode()); p.stdin.flush()\n    header = p.stdout.readline().split()\n    if header[-1] == b'missing': raise SystemExit('missing upstream ' + path)\n    size = int(header[2]); data = p.stdout.read(size); p.stdout.read(1)\n    return header[0].decode(), data\npatched = {x['path'] for x in lock['patches']}\nsame = diff = 0\nfor row in lock['files']:\n    oid, data = blob(row['upstream_path'])\n    assert oid == row['git_blob'], row['path']\n    assert hashlib.sha256(data).hexdigest() == row['upstream_sha256'], row['path']\n    local = open(os.path.join(repo, 'vendor/tcg-engines', row['path']), 'rb').read()\n    if row['path'] in patched:\n        diff += 1; assert local != data\n    else:\n        assert local == data, row['path']; same += 1\nfor lic in lock['licenses']:\n    oid, data = blob(lic['upstream_path'])\n    assert data == open(os.path.join(repo, 'vendor/tcg-engines', lic['path']), 'rb').read(), lic['path']\nfor pt in lock['patches']:\n    orig = open(os.path.join(repo, 'vendor/tcg-engines', pt['original_path']), 'rb').read()\n    oid, data = blob(pt['path'].removeprefix('upstream/'))\n    assert orig == data, pt['id']\n# every file present on disk under upstream/ is in the lock\nlisted = {r['path'] for r in lock['files']}\ndisk = set()\nfor d, _, fs in os.walk(os.path.join(repo, 'vendor/tcg-engines/upstream')):\n    for f in fs: disk.add(os.path.relpath(os.path.join(d, f), os.path.join(repo, 'vendor/tcg-engines')))\nassert disk == listed, (disk ^ listed)\nscopes = {}\nfor r in lock['files']: scopes[r['scope']] = scopes.get(r['scope'], 0) + 1\nprint(f'PASS independent git cat-file check: {len(lock[\"files\"])} files ({same} identical, {diff} patched), scopes {scopes}, {len(lock[\"licenses\"])} licenses, {len(lock[\"patches\"])} patch originals, tests {len(lock[\"tests\"])}, runtime externals {lock[\"runtime_externals\"]}')",
+    "/workspaces/lorcana-online-tcg",
+    "/workspaces/lorcana-online-tcg/.local/rule-01/upstream"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "481735dabbde016e62d9fb3c7de87bee6ce3af15",
+  "source_fingerprint": "831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e",
+  "started_at": "2026-10-11T22:59:39.934Z",
+  "finished_at": "2026-10-11T22:59:40.050Z",
+  "recorded_at": "2026-10-11T22:59:40.050Z",
+  "time_precision": "exact",
+  "elapsed_ms": 117,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Recorded command outcome",
+  "log_path": "docs/validation/logs/RUN-20261011-067.txt",
+  "log_sha256": "d7fe13beaaad52b590d8455a118af257734fe3837552f3163d832bc40c73cbff",
+  "redactions": 0
+}

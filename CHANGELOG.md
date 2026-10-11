@@ -2,6 +2,66 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261011-003 — Independent audit of RULE-02 and Director-authorized integration into main
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-11T22:58:54.735Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 481735dabbde016e62d9fb3c7de87bee6ce3af15
+- Tasks: RULE-02, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **review:** Audited Codex commit 481735d (RULE-02, CHG-20261011-002) against the backlog acceptance (reproduce relevant upstream tests; compile/run the selected adapter under Node 24; no Bun-only production dependency), ADR0008 and ADR0009. Present: 347 vendored files (304 runtime, 43 test-only) at pin 53a79413 with Git blob/SHA-256 lock, both MIT notices, two reproducible patches (P001 matcher preload, P002 disabled environment tracing) that change no assertion or rule logic; precompiled kernel with only mutative, @logtape/logtape and seedrandom; server adapter and trust-free Lab worker with closed bounded input, explicit player authority and fail-closed admission; Bun 1.4.2 hash-pinned and test-only; artifact v3 engine/provenance binding. Code review covered the importer, closure walker, integrity verifier, Bun installer, boundary checker, artifact/release changes and Dockerfile.
+- **test:** Independent local runs RUN-20261011-065..072 all passed at executable fingerprint 831cb35f…: engine:check; importer reproduction from the pinned checkout; a separate git cat-file byte audit (345 identical, 2 patched, licenses, no extra/missing files); a compiled-adapter authority/input/admission probe; upstream 338 pass/1 inherited skip/0 fail across 27 files; two Chromium workers; verify:foundation 124 checks (100 Node + 24 Python); and the host isolated 13-stage CI pipeline with a fresh image and owned cleanup. RUN-20261011-073 docs:check covers this record.
+- **documentation:** Append an independent-audit section to docs/validation/rule-02.md with results, cross-checks and the randomness/clock sources RULE-03 must replace; update the handoff with the audit, the Director-authorized integration and next actions.
+- **revision:** The Director authorized pushing and merging RULE-02 once the audit confirmed it. Publish codex/rule-02-engine-vendor and claude/rule-02-audit; fast-forward main to the commit containing this record. No history rewrite.
+
+### Verification
+
+- **passed:** pnpm engine:check: offline vendor lock, bytes, patches, licenses and resolver integrity (347 files, 2 patches). Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-065.json))
+- **passed:** Importer --check against the pinned inert checkout reproduced every payload, license, patch original and the lock. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-066.json))
+- **passed:** Separate git cat-file audit script independent of project tooling: 345 identical + 2 patched files, both licenses, patch originals, no extra/missing files. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-067.json))
+- **passed:** Compiled server adapter probe: first-player authority, opponent impersonation, out-of-turn/judge moves, malformed input, terminal state and date-boundary admission refusals. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-068.json))
+- **passed:** pnpm engine:test-upstream: 338 pass, 1 inherited skip, 0 fail, 838 expect calls across 27 unchanged files under Bun 1.4.2. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-069.json))
+- **passed:** pnpm test:engine-browser: two real Linux Chromium Web Workers. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-070.json))
+- **passed:** pnpm verify:foundation at fingerprint 831cb35f…: 124 checks (100 Node + 24 Python) plus the upstream 338/1. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-071.json))
+- **passed:** Host scripts/ci-local.py: fresh x64 image, 13 isolated stages including live PostgreSQL, Chromium, engine workers, scans and artifact v3, with owned cleanup. Local Docker, not hosted. ([evidence](docs/validation/runs/RUN-20261011-072.json))
+- **passed:** pnpm docs:check covering this audit record, the rule-02 audit section and handoff. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-073.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — Appended a dated independent-audit section with actual run outcomes, cross-checks and RULE-03/WEB-01 inputs; Codex text unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Header actors, authorized publication/integration replacing 'no publication', audit verification and next actions; other Codex content unchanged.
+- **reviewed_unchanged:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — Decision, file counts, dependencies, patches, ownership and gates match the code and RUN-20261011-065..072.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — The amended consequence and the RULE-02 dependency note match the backlog split and the actual runtime externals; earlier wording is retained in Git history.
+- **reviewed_unchanged:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Commands and callable contracts match the scripts reviewed and executed; input bounds match packages/engine-lab/src/index.ts.
+- **reviewed_unchanged:** [docs/plans/2026-10-11-rule-02-engine-vendor.md](docs/plans/2026-10-11-rule-02-engine-vendor.md) — Execution outcome claims match the independently reproduced evidence.
+- **reviewed_unchanged:** [docs/reviews/2026-10-11-rule-02-closure.md](docs/reviews/2026-10-11-rule-02-closure.md) — Review conclusions are consistent with this audit; its stated limits are preserved.
+- **reviewed_unchanged:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Counts, patch descriptions and dependency list match the lock and RUN-20261011-067.
+- **reviewed_unchanged:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Server-only qualification entry matches the source and probe RUN-20261011-068.
+- **reviewed_unchanged:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — Lab/worker ownership matches the source and RUN-20261011-070.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — RULE-02 status implemented_verified_minimal_synthetic_runtime_later_play_gates_blocked matches the audited evidence; RULE-03/04 remain pending.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R01.005/.006/.018 and R29.005 gain prerequisite-only references; statuses remain pending.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The RULE-02 boundary instruction matches the boundary checker and the import rules exercised by verify:foundation.
+- **reviewed_unchanged:** [README.md](README.md) — New engine commands and the twelve-workspace note match package.json and pnpm-workspace.yaml.
+- **reviewed_unchanged:** [docs/contracts/release.md](docs/contracts/release.md) — Artifact v3 and engine component binding match scripts/ci/artifacts.mjs and scripts/release-manifest.mjs.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — The engine-browser stage and Bun image note match the 13 stages observed in RUN-20261011-072.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — The RULE-02 pointer is accurate; RULE-01 inventory content unchanged.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261011-003.json).
+
+### Limits and next actions
+
+- Local Dev Container and local Docker evidence only; the hosted foundation workflow for the integrated main commit must be observed separately.
+- The audit does not certify rules, cards, randomness, replay, viewer privacy, Windows/GPU/touch behaviour, ARM64 execution or production; those gates remain with RULE-03/04, PLAY-02 and later tasks.
+- The Director clarification splitting RULE-02 from RULE-03/04/PLAY-02 is recorded by Codex; it matches the backlog task definitions but the original instruction was not observed by this auditor.
+- Observe the hosted foundation run for the integrated main commit.
+- RULE-03: replace the listed Math.random/seedrandom/randomUUID/Date.now sources with injected server RNG and clocks and prove replay equality.
+
 ## CHG-20261011-002 — RULE-02 pinned engine vendoring and temporal qualification gates
 
 - Status: finalized
