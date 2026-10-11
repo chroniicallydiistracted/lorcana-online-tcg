@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-010",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "6f02557465a996b4c76b2d66c201cd8d5a7d53d7",
+  "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+  "started_at": "2026-10-11T00:22:58.200Z",
+  "finished_at": "2026-10-11T00:23:58.010Z",
+  "recorded_at": "2026-10-11T00:23:58.010Z",
+  "time_precision": "exact",
+  "elapsed_ms": 59764,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-01 audit: independent full pnpm verify:foundation (verify, typecheck, lint, complete test suite including 19 inventory regressions) at Codex final executable source",
+  "log_path": "docs/validation/logs/RUN-20261011-010.txt",
+  "log_sha256": "5b16c4faae14d0586e9e3775eb58f552c0361b7a36070c46113ec4a882a15aba",
+  "redactions": 0
+}

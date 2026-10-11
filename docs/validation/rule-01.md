@@ -79,3 +79,25 @@ Status: **RULE-01 inventory acceptance verified, source gaps flagged.** Every ba
 Final executable fingerprint: `117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8`. Foundation113 includes simulated NullEngine, mocked database recorder/CI launcher and deliberate safety mutations; those do not become real rendering/persistence/hosting evidence. DB integration5 is a separate actual test-database result, not a new recreation/backup drill. The known Vite large-renderer-chunk warning remains. No new headless browser, Windows, GPU/touch, provider, upstream engine or production run occurred. F-WEB/F-CI preserve historical browser/full pipeline qualification explicitly while fresh local foundation/security evidence remains linked. Final documentation/canonical-byte/format closure is retained in CHG008 and subsequent static receipts.
 
 Canonical closure: RUN-20261011-004 passes current/full-history documentation, all677 canonical staged/live file byte comparisons, identical executable fingerprint, canonical configuration/syntax/offline inventory and focused19 checks, plus staged formatting excluding immutable raw logs. The temporary source archive was removed. No unrelated application rerun is inferred from this static result. Finalized documentation receipt/commit closure remains in CHG008.
+
+## Independent audit and integration — 2026-10-11 UTC
+
+Claude Code reviewed commits 9aa11df (BOOT-04 decision review) and 6f02557 (this inventory) on the Director's instruction before integration ([CHG-20261011-001](../changes/CHG-20261011-001.json)). Verdict: every backlog acceptance element is present and independently reproduced. The Director's BOOT-04, engine-placement and D07 decisions are unchanged.
+
+| Run | Local Dev Container result |
+|---|---|
+| RUN-20261011-006 | `pnpm rules:check` passed (offline metadata integrity) |
+| RUN-20261011-007 | `pnpm test:rules-inventory` passed (19 focused regressions) |
+| RUN-20261011-008 | `pnpm rules:verify-bytes` passed (every acquired raw/text hash) |
+| RUN-20261011-009 | `pnpm rules:reproduce` passed (byte-for-byte regeneration from the cache and pinned inert checkout) |
+| RUN-20261011-010 | `pnpm verify:foundation` passed: 113 checks counted in the log (89 Node tests and 24 Python tests) at fingerprint `117c9248…` |
+| RUN-20261011-011 | Fresh download of the official CR 2.2.0 and CR 2.3.0 PDFs matched the recorded byte counts and SHA-256; the resources page links the October update |
+
+Cross-checks against earlier independent cloud measurements of the same pin: 3,131 literal definitions plus 67 non-definition files equal the 3,198 card files counted in sets 001–013, and the 3,289 test files equal the per-package counts. The 529 todo declarations are mostly the upstream UI simulator's (459). Engine and card packages contribute 70 todo and 27 skipped declarations, which are the ones relevant to RULE-02/04.
+
+**Time-sensitive inputs for RULE-02/04:**
+- CR 2.3.0 takes effect 2026-10-16.
+- Set 14 (Hyperia City) has prerelease 2026-10-16 and release 2026-10-23.
+- The pinned upstream defines sets 001–013 only and references CR 2.0.1.
+
+Gameplay certification still requires the RULE-02/04 work.

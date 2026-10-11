@@ -2,6 +2,60 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261011-001 — Independent audit of RULE-01 and Director-authorized integration into main
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-11T00:27:47.162Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 6f02557465a996b4c76b2d66c201cd8d5a7d53d7
+- Tasks: RULE-01, BOOT-04, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **review:** Audited Codex commit 9aa11df (BOOT-04 decision review, CHG-20261010-007): it preserves the Director's hosting, engine-placement and D07 decisions and adds qualification gates (measured memory limits; end-to-end WAL archival within the accepted RPO). No decision changed.
+- **review:** Audited Codex commit 6f02557 (RULE-01, CHG-20261010-008) against the backlog acceptance. Present: hashed official source bytes; a nonempty CR 2.2.0→2.3.0 numbered-leaf diff; per-set printing/identity/release-status inventory with denominators; static upstream test inventory including skipped/todo; explicit missing-document, localization and identity-reconciliation gaps. Cross-checked counts against earlier independent measurements of the same pin (3,198 card files; 3,289 test files). The new root dev dependency pdfjs-dist 6.4.299 (Apache-2.0) is exact-pinned with no install scripts, allowBuilds empty and no application import. Script safety reviewed: PDF eval disabled, HTTPS-only bounded fetches, exclusive writes, argument-array git, symlinks not followed, AST parsing without execution.
+- **test:** Independent local Dev Container runs RUN-20261011-006..011 all passed: rules:check, test:rules-inventory, rules:verify-bytes, rules:reproduce, verify:foundation (113 checks = 89 Node + 24 Python), and a fresh download of the official CR 2.2.0/2.3.0 PDFs matching the recorded SHA-256. RUN-20261011-012 docs:check covers this record.
+- **documentation:** Add an independent-audit section to docs/validation/rule-01.md and update the handoff with the audit results, the Director-authorized integration and the time-sensitive RULE-02/04 inputs (CR 2.3.0 effective 2026-10-16; set 14 Hyperia City prerelease 2026-10-16, release 2026-10-23; upstream covers sets 001–013).
+- **revision:** The Director authorized committing, pushing and merging RULE-01 into main. Publish codex/boot-04-decision-review, codex/rule-01-source-inventory and claude/rule-01-audit; fast-forward main to the commit containing this record. No history rewrite.
+- **fix:** The first commit attempt was stopped by the staged formatting check (git diff --check): the appended rule-01 audit section left a trailing blank line. Removed it, restored the generated snapshot/changelog from HEAD (nothing had been committed), reopened this record as a draft, re-synchronized, and recorded RUN-20261011-013 docs:check on the corrected content before finalizing.
+
+### Verification
+
+- **passed:** pnpm rules:check: offline committed inventory metadata integrity. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-006.json))
+- **passed:** pnpm test:rules-inventory: 19 focused synthetic regressions. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-007.json))
+- **passed:** pnpm rules:verify-bytes: every acquired raw/text hash against the ignored research cache. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-008.json))
+- **passed:** pnpm rules:reproduce: byte-for-byte regeneration from the cache and pinned inert upstream checkout. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-009.json))
+- **passed:** pnpm verify:foundation at fingerprint 117c9248…: verify, typecheck, lint and 113 tests (89 Node + 24 Python). Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-010.json))
+- **passed:** Fresh download of official CR 2.2.0/2.3.0 PDFs: byte counts and SHA-256 equal recorded values; the resources page links the October update. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-011.json))
+- **passed:** docs:check of this audit/integration record on the draft snapshot. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-012.json))
+- **passed:** docs:check after the trailing-blank-line correction (draft snapshot). Local Dev Container. ([evidence](docs/validation/runs/RUN-20261011-013.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Appended a dated independent-audit section with actual run outcomes and cross-checks; Codex text unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Header actors/changes, the integration status replacing 'no publish', audit verification and time-sensitive next actions; other Codex content unchanged.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Operation/callable contracts match the scripts reviewed and the commands executed in RUN-20261011-006..009.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-rule-01-source-inventory.md](docs/plans/2026-10-10-rule-01-source-inventory.md) — Plan completion claims match the independently reproduced evidence.
+- **reviewed_unchanged:** [docs/reviews/2026-10-10-boot-04-final-decisions.md](docs/reviews/2026-10-10-boot-04-final-decisions.md) — Preserves the accepted BOOT-04/D07 decisions; its gates are consistent with the worksheet.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — The only Codex change notes pdfjs-dist as root tooling outside the product baseline, which is accurate.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — RULE-01 status implemented_verified_inventory_source_gaps_flagged matches the audited evidence.
+- **reviewed_unchanged:** [docs/features.json](docs/features.json) — F-RULE-INVENTORY evidence links resolve to passing runs at the current fingerprint (docs:check enforced).
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The RULE-01 instruction matches the actual tooling and checks.
+- **reviewed_unchanged:** [README.md](README.md) — New rules commands and the PDF.js tooling note match package.json.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261011-001.json).
+
+### Limits and next actions
+
+- The audit re-executes the inventory and foundation checks but does not re-acquire every source; only the two CR PDFs and the resources link were re-downloaded.
+- No gameplay, engine execution, certification, device, hosted artifact or production evidence; RULE-02/03/04 own those.
+- Integration publishes documentation, research metadata and root tooling only; no provisioning or deployment.
+- Observe the hosted foundation workflow on the new main commit.
+- RULE-02: vendor the pinned closure per ADR0008, planning for CR 2.3.0 (effective 2026-10-16) and set 14 Hyperia City (release 2026-10-23), which the pinned upstream does not cover.
+
 ## CHG-20261010-008 — RULE-01 current source and catalog/test inventory
 
 - Status: finalized

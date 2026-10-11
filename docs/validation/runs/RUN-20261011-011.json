@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-011",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Independent re-acquisition of official CR PDFs; compares SHA-256 with RULE-01 recorded values (audit only).\nimport { createHash } from 'node:crypto';\nimport { readFileSync } from 'node:fs';\nconst recorded = JSON.parse(readFileSync('docs/rules/2026-10-10-sources.json', 'utf8')).sources;\nconst want = Object.fromEntries(recorded.filter(r => ['cr-2.2', 'cr-2.3', 'resources'].includes(r.id)).map(r => [r.id, r]));\nlet ok = true;\nfor (const id of ['cr-2.2', 'cr-2.3']) {\n  const r = want[id];\n  const res = await fetch(r.url, { signal: AbortSignal.timeout(60000) });\n  const buf = Buffer.from(await res.arrayBuffer());\n  const sha = createHash('sha256').update(buf).digest('hex');\n  const match = sha === r.sha256 && buf.length === r.bytes;\n  ok &&= match && res.ok && buf.subarray(0, 5).toString() === '%PDF-';\n  console.log(`${id} http=${res.status} bytes=${buf.length} sha256=${sha} recorded_match=${match}`);\n}\nconst page = await (await fetch(want.resources.url, { signal: AbortSignal.timeout(60000) })).text();\nconst linked = page.includes('CRUpdate_EN_Oct-2026.pdf');\nconst linked22 = page.includes('Comprehensive-Rules_2.2.0-EN.pdf');\nconsole.log(`resources page links CRUpdate_EN_Oct-2026.pdf=${linked} Comprehensive-Rules_2.2.0-EN.pdf=${linked22} (page bytes change over time; hash not compared)`);\nok &&= linked;\nconsole.log(ok ? 'PASS independent re-acquisition' : 'FAIL independent re-acquisition');\nprocess.exitCode = ok ? 0 : 1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "6f02557465a996b4c76b2d66c201cd8d5a7d53d7",
+  "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+  "started_at": "2026-10-11T00:24:23.542Z",
+  "finished_at": "2026-10-11T00:24:26.601Z",
+  "recorded_at": "2026-10-11T00:24:26.601Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3059,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-01 audit: independent fresh download of official CR 2.2.0 and CR 2.3.0 PDFs with SHA-256 comparison to recorded values, and resources-page link check",
+  "log_path": "docs/validation/logs/RUN-20261011-011.txt",
+  "log_sha256": "d8c55a4d9ceb9881933c3b547325e3ad7c9288fd40f70e1e3aebfaca043ac37b",
+  "redactions": 0
+}

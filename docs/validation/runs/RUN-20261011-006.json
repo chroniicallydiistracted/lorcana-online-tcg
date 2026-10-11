@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-006",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "rules:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "6f02557465a996b4c76b2d66c201cd8d5a7d53d7",
+  "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+  "started_at": "2026-10-11T00:22:34.962Z",
+  "finished_at": "2026-10-11T00:22:35.610Z",
+  "recorded_at": "2026-10-11T00:22:35.610Z",
+  "time_precision": "exact",
+  "elapsed_ms": 648,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-01 audit: offline committed inventory metadata integrity check",
+  "log_path": "docs/validation/logs/RUN-20261011-006.txt",
+  "log_sha256": "0483605502cd6b1740e944c93c8246113f21e288989c08458d43a469bda99f8a",
+  "redactions": 0
+}
