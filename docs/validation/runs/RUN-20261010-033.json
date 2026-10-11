@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-033",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/inventory.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "c51f58c354675bec191c1d892225f475b0d02096ca09b7917c0b573c01d4eaca",
+  "started_at": "2026-10-10T23:45:08.054Z",
+  "finished_at": "2026-10-10T23:45:08.368Z",
+  "recorded_at": "2026-10-10T23:45:08.368Z",
+  "time_precision": "exact",
+  "elapsed_ms": 314,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Intentional red: upstream Git symlinks must be verified as inert blob bytes",
+  "log_path": "docs/validation/logs/RUN-20261010-033.txt",
+  "log_sha256": "7667599d0c4a3744e1600acc1dee41886a14b27bf4b91f6edb539d02346b043f",
+  "redactions": 0
+}

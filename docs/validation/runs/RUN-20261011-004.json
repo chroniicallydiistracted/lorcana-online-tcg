@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-004",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from \"node:assert/strict\";import {readFileSync,mkdtempSync,rmSync,symlinkSync} from \"node:fs\";import {tmpdir} from \"node:os\";import {join} from \"node:path\";import {spawnSync} from \"node:child_process\";import {checkDocumentation,sourceFingerprint} from \"./scripts/documentation-lib.mjs\";\nconst root=process.cwd();checkDocumentation(root);const entries=spawnSync(\"git\",[\"ls-files\",\"-s\",\"-z\"],{encoding:\"utf8\",maxBuffer:5000000});assert.equal(entries.status,0);let count=0;for(const line of entries.stdout.split(\"\\0\").filter(Boolean)){const [meta,path]=line.split(\"\\t\"),[mode,blob,stage]=meta.split(\" \");assert.equal(stage,\"0\");assert([\"100644\",\"100755\"].includes(mode));const bytes=spawnSync(\"git\",[\"cat-file\",\"blob\",blob],{maxBuffer:20000000});assert.equal(bytes.status,0);assert(readFileSync(path).equals(bytes.stdout),\"Canonical staged bytes differ \"+path);count++;}\nconst format=spawnSync(\"git\",[\"diff\",\"--cached\",\"--check\",\"--\",\".\",\":(exclude)docs/validation/logs/**\"],{stdio:\"inherit\"});assert.equal(format.status,0);\nconst tree=spawnSync(\"git\",[\"write-tree\"],{encoding:\"utf8\"});assert.equal(tree.status,0);const archive=spawnSync(\"git\",[\"archive\",\"--format=tar\",tree.stdout.trim()],{maxBuffer:30000000});assert.equal(archive.status,0);const folder=mkdtempSync(join(tmpdir(),\"lorcana-rule-01-canonical-\"));try{const tar=spawnSync(\"tar\",[\"-xf\",\"-\",\"-C\",folder,\"--no-same-owner\"],{input:archive.stdout});assert.equal(tar.status,0);symlinkSync(join(root,\"node_modules\"),join(folder,\"node_modules\"),\"dir\");assert.equal(sourceFingerprint(folder),sourceFingerprint(root));for(const command of [[\"scripts/verify.mjs\"],[\"--test\",\"tests/rules/inventory.test.mjs\",\"tests/rules/check-inventory.test.mjs\"]]){const r=spawnSync(process.execPath,command,{cwd:folder,stdio:\"inherit\"});assert.equal(r.status,0);}}finally{rmSync(folder,{recursive:true,force:true});}\nconsole.log(\"PASS canonical staged/live bytes\",count,\"files; identical executable fingerprint; current/full-history documentation, canonical verify/focused19, source formatting; archive copy removed\");\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+  "started_at": "2026-10-11T00:07:25.120Z",
+  "finished_at": "2026-10-11T00:07:36.178Z",
+  "recorded_at": "2026-10-11T00:07:36.178Z",
+  "time_precision": "exact",
+  "elapsed_ms": 11040,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Current and canonical Git-byte docs/config/inventory checks, focused19 and staged source formatting",
+  "log_path": "docs/validation/logs/RUN-20261011-004.txt",
+  "log_sha256": "a2066b4cb1c6ae8392e5aefba23a7c7315efa00dd8663b95d32a5e8683568018",
+  "redactions": 0
+}

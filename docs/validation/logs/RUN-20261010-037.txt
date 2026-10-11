@@ -1,0 +1,87 @@
+✔ committed source metadata supports an offline inventory check (19.94719ms)
+✖ an inflated declaration denominator is rejected (23.837273ms)
+✖ source hash substitution and empty rules comparison are rejected (24.353877ms)
+✖ retrieval metadata cannot promote scheduled rules or certify a printing (14.955267ms)
+✖ incomplete trees and escaped private/cache paths are rejected (24.473911ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 1
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 161.181153
+
+✖ failing tests:
+
+test at tests/rules/check-inventory.test.mjs:9:1
+✖ an inflated declaration denominator is rejected (23.837273ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/check-inventory.test.mjs:11:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /denominator/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/rules/check-inventory.test.mjs:13:1
+✖ source hash substitution and empty rules comparison are rejected (24.353877ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/check-inventory.test.mjs:15:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /source hash/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/rules/check-inventory.test.mjs:19:1
+✖ retrieval metadata cannot promote scheduled rules or certify a printing (14.955267ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/check-inventory.test.mjs:21:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /effective/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/rules/check-inventory.test.mjs:25:1
+✖ incomplete trees and escaped private/cache paths are rejected (24.473911ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/check-inventory.test.mjs:27:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /truncated/,
+    operator: 'throws',
+    diff: 'simple'
+  }

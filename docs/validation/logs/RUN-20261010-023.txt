@@ -1,0 +1,171 @@
+✖ an HTML error page cannot qualify as an acquired PDF (0.888281ms)
+✖ hash mismatch rejects substituted source bytes (0.215037ms)
+✖ retrieval does not make a future or unknown effective date current (0.341537ms)
+✖ truncated or duplicate trees cannot supply complete denominators (0.662528ms)
+✖ reprints share provisional identity while future and enemy printings remain separate (0.280945ms)
+✖ skipped suites propagate; comments/strings do not become test cases (0.159176ms)
+✖ each/conditional/focused declarations do not pretend to be executed case counts (0.121514ms)
+✖ rule comparison preserves identifiers and distinguishes added/removed/changed text (0.646798ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 0
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.930245
+
+✖ failing tests:
+
+test at tests/rules/inventory.test.mjs:5:1
+✖ an HTML error page cannot qualify as an acquired PDF (0.888281ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:6:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /PDF/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/rules/inventory.test.mjs:9:1
+✖ hash mismatch rejects substituted source bytes (0.215037ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:10:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /hash/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/rules/inventory.test.mjs:12:1
+✖ retrieval does not make a future or unknown effective date current (0.341537ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - false
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:13:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/inventory.test.mjs:17:1
+✖ truncated or duplicate trees cannot supply complete denominators (0.662528ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:18:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /truncated/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/rules/inventory.test.mjs:22:1
+✖ reprints share provisional identity while future and enemy printings remain separate (0.280945ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 4
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:30:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/inventory.test.mjs:37:1
+✖ skipped suites propagate; comments/strings do not become test cases (0.159176ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 3
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:39:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/inventory.test.mjs:44:1
+✖ each/conditional/focused declarations do not pretend to be executed case counts (0.121514ms)
+  TypeError: Cannot read properties of undefined (reading 'parameterized')
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:46:50)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/rules/inventory.test.mjs:51:1
+✖ rule comparison preserves identifiers and distinguishes added/removed/changed text (0.646798ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   '1.1.3'
+  - ]
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:53:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '1.1.3' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-032",
+  "category": "static",
+  "command": [
+    "node",
+    "scripts/rules/build-inventory.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "32f4940b9c5abcb074ffec83677635f09dc2eb786b64bf36f5443664bae9561d",
+  "started_at": "2026-10-10T23:44:04.601Z",
+  "finished_at": "2026-10-10T23:44:06.983Z",
+  "recorded_at": "2026-10-10T23:44:06.983Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2382,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Build RULE-01 sourced catalog/rules/static-test inventories; verify every scoped upstream Git blob",
+  "log_path": "docs/validation/logs/RUN-20261010-032.txt",
+  "log_sha256": "a530eb558893ff5f1352e54520c8585a545cdf3c0050c1ceacee6c33db25d646",
+  "redactions": 0
+}

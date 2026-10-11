@@ -1,0 +1,45 @@
+✔ an HTML error page cannot qualify as an acquired PDF (1.663895ms)
+✔ hash mismatch rejects substituted source bytes (0.890191ms)
+✔ retrieval does not make a future or unknown effective date current (0.168647ms)
+✔ truncated or duplicate trees cannot supply complete denominators (0.40822ms)
+✔ reprints share provisional identity while future and enemy printings remain separate (5.826405ms)
+✔ skipped suites propagate; comments/strings do not become test cases (5.92681ms)
+✔ each/conditional/focused declarations do not pretend to be executed case counts (1.333317ms)
+✔ rule comparison preserves identifiers and distinguishes added/removed/changed text (1.363093ms)
+✔ official gallery data is read as syntax without evaluating executable site code (3.884099ms)
+✔ promotional printings do not inherit an old set release date as proven availability (0.300768ms)
+✔ suite parameterization and variable titles remain visible in static declarations (0.849568ms)
+✔ glossary/update appendices cannot contaminate the final numbered rule hash (0.163201ms)
+✔ a Git symlink blob is its inert target string, never dereferenced file contents (0.771873ms)
+✖ a table-of-contents Glossary entry cannot suppress the actual rules body (0.324144ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 295.222631
+
+✖ failing tests:
+
+test at tests/rules/inventory.test.mjs:88:1
+✖ a table-of-contents Glossary entry cannot suppress the actual rules body (0.324144ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:90:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

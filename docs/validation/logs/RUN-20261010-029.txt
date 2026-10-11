@@ -1,0 +1,64 @@
+✔ an HTML error page cannot qualify as an acquired PDF (1.264279ms)
+✔ hash mismatch rejects substituted source bytes (0.668968ms)
+✔ retrieval does not make a future or unknown effective date current (0.142753ms)
+✔ truncated or duplicate trees cannot supply complete denominators (0.303467ms)
+✔ reprints share provisional identity while future and enemy printings remain separate (5.140049ms)
+✔ skipped suites propagate; comments/strings do not become test cases (5.16557ms)
+✔ each/conditional/focused declarations do not pretend to be executed case counts (1.040155ms)
+✔ rule comparison preserves identifiers and distinguishes added/removed/changed text (0.834255ms)
+✔ official gallery data is read as syntax without evaluating executable site code (3.009902ms)
+✔ promotional printings do not inherit an old set release date as proven availability (0.196995ms)
+✖ suite parameterization and variable titles remain visible in static declarations (0.493336ms)
+✖ glossary/update appendices cannot contaminate the final numbered rule hash (0.264671ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 10
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 253.238784
+
+✖ failing tests:
+
+test at tests/rules/inventory.test.mjs:68:1
+✖ suite parameterization and variable titles remain visible in static declarations (0.493336ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:70:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/inventory.test.mjs:74:1
+✖ glossary/update appendices cannot contaminate the final numbered rule hash (0.264671ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:76:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

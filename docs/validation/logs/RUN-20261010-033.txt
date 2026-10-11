@@ -1,0 +1,44 @@
+✔ an HTML error page cannot qualify as an acquired PDF (1.827895ms)
+✔ hash mismatch rejects substituted source bytes (0.95997ms)
+✔ retrieval does not make a future or unknown effective date current (0.186855ms)
+✔ truncated or duplicate trees cannot supply complete denominators (0.391847ms)
+✔ reprints share provisional identity while future and enemy printings remain separate (6.021812ms)
+✔ skipped suites propagate; comments/strings do not become test cases (6.245112ms)
+✔ each/conditional/focused declarations do not pretend to be executed case counts (1.457368ms)
+✔ rule comparison preserves identifiers and distinguishes added/removed/changed text (1.7751ms)
+✔ official gallery data is read as syntax without evaluating executable site code (4.488048ms)
+✔ promotional printings do not inherit an old set release date as proven availability (0.55184ms)
+✔ suite parameterization and variable titles remain visible in static declarations (0.75153ms)
+✔ glossary/update appendices cannot contaminate the final numbered rule hash (0.169148ms)
+✖ a Git symlink blob is its inert target string, never dereferenced file contents (1.621291ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 262.76415
+
+✖ failing tests:
+
+test at tests/rules/inventory.test.mjs:81:1
+✖ a Git symlink blob is its inert target string, never dereferenced file contents (1.621291ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '' !== 'target'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:85:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'target',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

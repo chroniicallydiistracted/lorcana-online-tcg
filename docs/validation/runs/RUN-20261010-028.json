@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-028",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/inventory.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "8f2fc73846d0fb649d62ee7285b1c00006dd5515f697de12ca68bec15cd65c96",
+  "started_at": "2026-10-10T23:40:57.146Z",
+  "finished_at": "2026-10-10T23:40:57.446Z",
+  "recorded_at": "2026-10-10T23:40:57.446Z",
+  "time_precision": "exact",
+  "elapsed_ms": 300,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Ten synthetic source, rules, static-test, official-gallery and promotional-release safeguards",
+  "log_path": "docs/validation/logs/RUN-20261010-028.txt",
+  "log_sha256": "c181cce3467bcf623f4ce3591d8d25a50241c88517a5c767f9aad5bfbf8ec3a7",
+  "redactions": 0
+}

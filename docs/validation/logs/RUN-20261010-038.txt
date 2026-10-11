@@ -1,0 +1,69 @@
+✔ committed source metadata supports an offline inventory check (33.874313ms)
+✔ an inflated declaration denominator is rejected (27.970517ms)
+✔ source hash substitution and empty rules comparison are rejected (42.56625ms)
+✖ retrieval metadata cannot promote scheduled rules or certify a printing (13.104037ms)
+✔ incomplete trees and escaped private/cache paths are rejected (41.167248ms)
+✔ an HTML error page cannot qualify as an acquired PDF (1.970269ms)
+✔ hash mismatch rejects substituted source bytes (1.1826ms)
+✔ retrieval does not make a future or unknown effective date current (0.239856ms)
+✔ truncated or duplicate trees cannot supply complete denominators (0.541108ms)
+✔ reprints share provisional identity while future and enemy printings remain separate (6.504682ms)
+✔ skipped suites propagate; comments/strings do not become test cases (8.538775ms)
+✔ each/conditional/focused declarations do not pretend to be executed case counts (1.689935ms)
+✔ rule comparison preserves identifiers and distinguishes added/removed/changed text (1.30323ms)
+✔ official gallery data is read as syntax without evaluating executable site code (4.231342ms)
+✔ promotional printings do not inherit an old set release date as proven availability (0.328827ms)
+✔ suite parameterization and variable titles remain visible in static declarations (0.797677ms)
+✔ glossary/update appendices cannot contaminate the final numbered rule hash (0.213979ms)
+✔ a Git symlink blob is its inert target string, never dereferenced file contents (1.003689ms)
+✔ a table-of-contents Glossary entry cannot suppress the actual rules body (0.264628ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 433.759037
+
+✖ failing tests:
+
+test at tests/rules/check-inventory.test.mjs:19:1
+✖ retrieval metadata cannot promote scheduled rules or certify a printing (13.104037ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /effective/. Input:
+  
+  'AssertionError [ERR_ASSERTION]: Inventory source hash mismatch cr-2.3\n' +
+    '+ actual - expected\n' +
+    '\n' +
+    "+ '5ffa31172fcaae2cbdbf127aebdd54987f01a4e72008812c96556c29d0942d8f'\n" +
+    "- '8b7a458169978a13b688493d4b24d713bdc8baee32ce5e774b0515079a0b91fe'\n"
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/check-inventory.test.mjs:21:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: AssertionError [ERR_ASSERTION]: Inventory source hash mismatch cr-2.3
+    + actual - expected
+    
+    + '5ffa31172fcaae2cbdbf127aebdd54987f01a4e72008812c96556c29d0942d8f'
+    - '8b7a458169978a13b688493d4b24d713bdc8baee32ce5e774b0515079a0b91fe'
+    
+        at bind (file:///workspaces/lorcana-online-tcg/scripts/rules/check-inventory.mjs:24:37)
+        at checkSnapshots (file:///workspaces/lorcana-online-tcg/scripts/rules/check-inventory.mjs:28:3)
+        at file:///workspaces/lorcana-online-tcg/tests/rules/check-inventory.test.mjs:21:21
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/check-inventory.test.mjs:21:10)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19),
+    expected: /effective/,
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-001",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from \"node:assert/strict\";import {dependencyReports,sourceSecretScan} from \"./scripts/ci/security.mjs\";import {privateRedactionValues} from \"./scripts/evidence-lib.mjs\";const r=dependencyReports(process.cwd());const sbom=r[\"sbom.cdx.json\"];assert(sbom.components.some(x=>x.name===\"pdfjs-dist\"&&x.version===\"6.4.299\"));console.log(\"PASS installed Linux dependency graph\",sbom.components.length,\"notice gaps\",r[\"dependency-audit.json\"].license_file_gaps.length,JSON.stringify(r[\"dependency-audit.json\"].response.metadata?.vulnerabilities));sourceSecretScan(process.cwd(),Object.values(privateRedactionValues(process.cwd())));"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+  "started_at": "2026-10-11T00:01:14.914Z",
+  "finished_at": "2026-10-11T00:01:31.820Z",
+  "recorded_at": "2026-10-11T00:01:31.820Z",
+  "time_precision": "exact",
+  "elapsed_ms": 16891,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Installed Linux dependency license/advisory graph and public/full-history secret scan after research-tool pin",
+  "log_path": "docs/validation/logs/RUN-20261011-001.txt",
+  "log_sha256": "99e595458fe7cbd734818d3fd8bc5bac875124c53923e689a712b80e1c9c1405",
+  "redactions": 0
+}

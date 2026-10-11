@@ -70,6 +70,8 @@ Keep all validation categories distinct. Hosted CI, deployment, production secur
 
 ## Documentation and evidence operation
 
+RULE-01 source tooling is in [rules operation](../rules/README.md). Ordinary `pnpm verify` checks committed inventory metadata offline and `pnpm test` runs the focused regressions. Explicit raw-byte/reproduction checks need the ignored source cache/pinned inert checkout and cannot be inferred from clean installation. No PDF/engine research parser runs in application services or the browser.
+
 Read [the universal workflow](../DEVELOPMENT_WORKFLOW.md) and [record format](../CHANGELOG_FORMAT.md) before editing. Capture checks inside the container with `pnpm evidence:run --id RUN-YYYYMMDD-NNN --category container -- pnpm verify:foundation`. Use `headless_browser` for browser automation; report actual Windows observation separately with device details. These write sanitized durable logs and exact source/timing/outcome records; inspect logs for unknown secret forms before committing.
 
 Update the active draft's files, documentation dispositions, feature/task IDs and evidence references; run `pnpm docs:sync --change CHG-YYYYMMDD-NNN` followed by `pnpm docs:check`. A drift failure requires a documented change and semantic review, not deletion of the snapshot or evidence. Finalized records are sealed; append corrections. BOOT-03 adds the same gates to its isolated local/Actions pipeline; hosted observation remains a separate acceptance item.

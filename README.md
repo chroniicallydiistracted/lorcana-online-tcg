@@ -42,6 +42,8 @@ Open forwarded **5173** from VS Code's Ports panel. Expect **Application foundat
 | `pnpm db:migrate -- --target local` | Reviewed transactional migration; use test for the isolated test DB |
 | `pnpm db:health -- --target test` | Authenticate all four identities; local target also supported |
 | `pnpm db:test` | Actual isolated DB authorization/transaction checks |
+| `pnpm rules:check` / `pnpm test:rules-inventory` | Offline source/catalog/test denominator and date checks; synthetic corruption/regression proofs |
+| `pnpm rules:verify-bytes` / `pnpm rules:reproduce` | Explicit ignored-cache byte proof and exact regeneration against the pinned inert upstream checkout |
 
 For browser automation, install its pinned browser inside the container once with `pnpm --filter @lorcana/web exec playwright install chromium`. Shared Linux libraries are persisted in the Dockerfile. Browser caches are per container user. Tests own fixed ports 5173/3001/3002; stop `pnpm dev` first.
 
@@ -59,7 +61,7 @@ For browser automation, install its pinned browser inside the container once wit
 
 `db` now owns BOOT-02 restricted local/test connections, reviewed SQL and typed synthetic Drizzle probes. `domain`, `engine-adapter`, `rules-data`, `testkit` and `vendor/tcg-engines` remain explicitly reserved. Private state and credentials have no browser exports. The browser guard checks declarations, imports/aliases/reexports, HTML/CSS and asset URLs; Vite enforces it again and restricts served filesystem roots. Development children receive a small environment without the bootstrap database administrator credentials.
 
-Dependencies are exact pins in owning workspaces. The lockfile covers nine workspace projects, not every library in the anticipated [dependency register](docs/vision/dependencies.json). Strict peers and an empty build-script allowance remain enabled; see [ADR 0002](docs/adr/0002-application-foundation.md).
+Dependencies are exact pins in owning workspaces. The lockfile covers the root plus nine app/shared workspaces, not every library in the anticipated [dependency register](docs/vision/dependencies.json). Strict peers and an empty build-script allowance remain enabled; see [ADR 0002](docs/adr/0002-application-foundation.md). PDF.js6.4.299 is root development tooling for RULE-01 document extraction, with no application imports.
 
 ## Evidence and next foundations
 
@@ -68,6 +70,8 @@ See [workspace qualification](docs/WORKSPACE_QUALIFICATION.md) and [BOOT-01 vali
 BOOT-02 local acceptance is verified; see [database operation](docs/runbooks/database.md) and [evidence](docs/validation/boot-02.md) for scoped roles, migrations, isolated test DB and disposable recreation proof. BOOT-03 local and first hosted CI/artifact qualification are verified at commit612a8c9 (RUN061); required-check/settings qualification remains separate; see [CI operation](docs/runbooks/ci.md) and [evidence](docs/validation/boot-03.md). BOOT-05 protocol/release implementation is verified locally; see [protocol](docs/contracts/protocol.md), [release policy](docs/contracts/release.md) and [acceptance evidence](docs/validation/boot-05.md). RULE-01/02 and UX-01/02 retain their rules, engine and art-direction gates. No upstream code, official cards or art were activated. The original 548 requirements remain tracked individually; foundation proofs do not complete gameplay, accessibility or device requirements. Archive preparation files retain their original [provenance scope](docs/ARCHIVE_PROVENANCE.md).
 
 ## Development continuity
+
+RULE-01 adds [dated source, catalog and static upstream test inventories](docs/rules/README.md), with [acceptance evidence and missing-document limits](docs/validation/rule-01.md). CR2.2 is effective at the October10 inventory; CR2.3 is published but takes effect October16. Every identity remains uncertified and the product engine/rules packages remain reserved. Ordinary verification includes offline inventory checks; full raw source bytes live in an ignored research cache. RULE-02 owns vendoring/license/patch review, reproduced upstream suites and precompiled Node24 qualification.
 
 Every developer/agent follows [the universal workflow](docs/DEVELOPMENT_WORKFLOW.md) and [versioned changelog format](docs/CHANGELOG_FORMAT.md). Start at [the documentation index](docs/README.md) and [current handoff](docs/HANDOFF.md). Keep relevant docs and action status current at implementation/test checkpoints; record UTC timestamps, changed files/functions/features, review dispositions, results and limitations.
 

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-023",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/inventory.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "e16a54d794729cfefe3c59fe3c8a71ba10444eaf24dbaad31c0195e0964158f2",
+  "started_at": "2026-10-10T23:34:37.874Z",
+  "finished_at": "2026-10-10T23:34:38.042Z",
+  "recorded_at": "2026-10-10T23:34:38.042Z",
+  "time_precision": "exact",
+  "elapsed_ms": 167,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Intentional red: inventory rejects false source/catalog/test coverage claims before implementation",
+  "log_path": "docs/validation/logs/RUN-20261010-023.txt",
+  "log_sha256": "fb05e3d58dfdd160984889510913199c815be549d3b96bbbeeb3f9bb7d89fc4e",
+  "redactions": 0
+}

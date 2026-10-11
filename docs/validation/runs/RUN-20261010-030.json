@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-030",
+  "category": "container",
+  "command": [
+    "node",
+    "scripts/rules/sources.mjs",
+    "docs/rules/source-specs-supplement.json",
+    "docs/rules/2026-10-10-sources-supplement.json"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "016b583ef83cb092137ed34736f2988189f4145dc9d56200a6d41d4a90b52632",
+  "started_at": "2026-10-10T23:42:18.224Z",
+  "finished_at": "2026-10-10T23:42:23.523Z",
+  "recorded_at": "2026-10-10T23:42:23.523Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5299,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Additional publisher scenario and official ruling discovery; original404 retained",
+  "log_path": "docs/validation/logs/RUN-20261010-030.txt",
+  "log_sha256": "97b819562605736194d54f9d27e76e8a4b7afdec8ea685e349c4310281225298",
+  "redactions": 0
+}

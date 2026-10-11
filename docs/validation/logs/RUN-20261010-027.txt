@@ -1,0 +1,64 @@
+✔ an HTML error page cannot qualify as an acquired PDF (1.372748ms)
+✔ hash mismatch rejects substituted source bytes (0.893758ms)
+✔ retrieval does not make a future or unknown effective date current (0.202903ms)
+✔ truncated or duplicate trees cannot supply complete denominators (0.3903ms)
+✔ reprints share provisional identity while future and enemy printings remain separate (5.425341ms)
+✔ skipped suites propagate; comments/strings do not become test cases (6.02715ms)
+✔ each/conditional/focused declarations do not pretend to be executed case counts (1.829502ms)
+✔ rule comparison preserves identifiers and distinguishes added/removed/changed text (1.039404ms)
+✖ official gallery data is read as syntax without evaluating executable site code (0.377251ms)
+✖ promotional printings do not inherit an old set release date as proven availability (0.360825ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 8
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 258.357306
+
+✖ failing tests:
+
+test at tests/rules/inventory.test.mjs:57:1
+✖ official gallery data is read as syntax without evaluating executable site code (0.377251ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 3
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:60:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/inventory.test.mjs:64:1
+✖ promotional printings do not inherit an old set release date as proven availability (0.360825ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'released'
+  - 'printing_release_unverified'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/inventory.test.mjs:66:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'released',
+    expected: 'printing_release_unverified',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

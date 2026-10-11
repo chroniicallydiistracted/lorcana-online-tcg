@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-035",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/inventory.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "8abaca3ca2708fd5cf574256c17b643192626bbbc5029fd41c37903517b71770",
+  "started_at": "2026-10-10T23:46:49.750Z",
+  "finished_at": "2026-10-10T23:46:50.110Z",
+  "recorded_at": "2026-10-10T23:46:50.110Z",
+  "time_precision": "exact",
+  "elapsed_ms": 360,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Intentional red: table-of-contents glossary must not suppress all numbered rules",
+  "log_path": "docs/validation/logs/RUN-20261010-035.txt",
+  "log_sha256": "fb047ee8e006170ba3925cf0d1e82a11fa2137b0348cba230b8c9a048881b15c",
+  "redactions": 0
+}

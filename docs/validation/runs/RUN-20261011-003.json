@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-003",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from \"node:assert/strict\";import {readFileSync,statSync} from \"node:fs\";import {spawnSync} from \"node:child_process\";import {inventory,sourceFingerprint} from \"./scripts/documentation-lib.mjs\";import {scanSecrets} from \"./scripts/ci/security.mjs\";import {privateRedactionValues} from \"./scripts/evidence-lib.mjs\";import {checkSnapshots,readSnapshots} from \"./scripts/rules/check-inventory.mjs\";\nconst p=process.cwd(),fp=sourceFingerprint(p);\nfor(const id of [\"RUN-20261010-039\",\"RUN-20261010-040\",\"RUN-20261011-001\",\"RUN-20261011-002\"]){const r=JSON.parse(readFileSync(\"docs/validation/runs/\"+id+\".json\"));assert.equal(r.result,\"passed\");assert.equal(r.source_fingerprint,fp);assert.equal(r.clock_discontinuity,false);}\nfor(const f of [\".env.local\",\".local/database.json\"]){assert.equal(statSync(f).mode&0o777,0o600);assert.equal(statSync(f).uid,1000);assert.equal(spawnSync(\"git\",[\"check-ignore\",\"--quiet\",f]).status,0);}\nfor(const f of [\"docs/vision/requirements.csv\",\"docs/vision/requirement_groups.json\",\"docs/vision/additional_scope.csv\",\"docs/vision/source_register.json\",\"docs/vision/dependencies.json\",\"docs/vision/rules_certification_template.csv\",\"docs/vision/decision_register.csv\",\"VALIDATION_RESULTS.json\",\"SHA256SUMS.txt\",\".devcontainer/compose.yaml\",\".devcontainer/Dockerfile\",\"toolchain.json\",\"pnpm-workspace.yaml\"]){const r=spawnSync(\"git\",[\"show\",\"9aa11df:\"+f]);assert.equal(r.status,0);assert(readFileSync(f).equals(r.stdout),\"Preservation mismatch \"+f);}\nconst rows=[\"/proc/net/tcp\",\"/proc/net/tcp6\"].flatMap(f=>readFileSync(f,\"utf8\").trim().split(\"\\n\").slice(1).map(x=>x.trim().split(/\\s+/)));const listening=rows.filter(x=>x[3]===\"0A\").map(x=>parseInt(x[1].split(\":\")[1],16));for(const port of [5173,3001,3002])assert(!listening.includes(port),\"App listener remains\");\nconst known=Object.values(privateRedactionValues(p));assert.deepEqual(scanSecrets(inventory(p).map(path=>({path,bytes:readFileSync(path)})),{knownSecrets:known}),[]);\ncheckSnapshots(readSnapshots());for(const a of [[\"scripts/rules/check-inventory.mjs\",\"--bytes\"],[\"scripts/rules/build-inventory.mjs\",\"--check\"]]){const r=spawnSync(process.execPath,a,{stdio:\"inherit\"});assert.equal(r.status,0);}\nconsole.log(\"PASS same final executable fingerprint across source, full, clean and security checks\",fp,\"; original scope/config/archive, private files, public secret scan and listener cleanup\");\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+  "started_at": "2026-10-11T00:03:57.283Z",
+  "finished_at": "2026-10-11T00:04:00.301Z",
+  "recorded_at": "2026-10-11T00:04:00.301Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3019,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final identity/source reproduction, original scope/config/private-file protection and actual listener cleanup",
+  "log_path": "docs/validation/logs/RUN-20261011-003.txt",
+  "log_sha256": "0f91443df21593b8ffd2e4150b638b5b2fc296c46c23dbf4c50da651fb20e779",
+  "redactions": 0
+}

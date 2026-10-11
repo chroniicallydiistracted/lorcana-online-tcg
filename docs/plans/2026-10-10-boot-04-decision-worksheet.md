@@ -304,7 +304,7 @@ Source: `docs/vision/dependencies.json` (61 packages, researched 2026-10-05). "I
 | `xstate` | 5.33.2 | MIT | apps/web | Interaction state machines | UI | Keep; install at owning task |
 | `zustand` | 5.0.15 | MIT | apps/web | Local UI state | UI | Keep; install at owning task |
 
-Installed root tooling outside the register: `ajv` 8.20.0 (MIT), `parse5` 8.0.0 (MIT), `postcss-value-parser` 4.2.0 (MIT).
+Installed root tooling outside the register: `ajv` 8.20.0 (MIT), `parse5` 8.0.0 (MIT), `postcss-value-parser` 4.2.0 (MIT). RULE-01 subsequently installs `pdfjs-dist` 6.4.299 (Apache-2.0) as root-only document-extraction tooling; no app/runtime or engine closure change. See [rules operation](../rules/README.md).
 
 ### 14.2 Additions decided now
 

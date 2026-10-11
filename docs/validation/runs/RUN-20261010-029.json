@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-029",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/inventory.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "016b583ef83cb092137ed34736f2988189f4145dc9d56200a6d41d4a90b52632",
+  "started_at": "2026-10-10T23:42:12.626Z",
+  "finished_at": "2026-10-10T23:42:12.929Z",
+  "recorded_at": "2026-10-10T23:42:12.929Z",
+  "time_precision": "exact",
+  "elapsed_ms": 303,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Intentional red: dynamic titles/inherited parameterization and non-rule appendix isolation",
+  "log_path": "docs/validation/logs/RUN-20261010-029.txt",
+  "log_sha256": "7e0133f387409a37411a29686b031754bdf9e48c26a8c302dd41691d493dce60",
+  "redactions": 0
+}

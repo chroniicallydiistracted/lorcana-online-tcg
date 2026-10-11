@@ -14,6 +14,8 @@ BOOT-02 local acceptance is verified: server-only db package, restricted local/t
 
 ## Working environment
 
+RULE-01 source tooling and dated inventories are documented in `docs/rules/README.md` and `docs/validation/rule-01.md`. Use current official bytes/effective dates over historical indexed skill/planning references. At the October10 inventory CR2.2 is effective and published CR2.3 is scheduled for October16. Ordinary `verify`/`test` check metadata/regressions offline; cache-byte verification and inert upstream regeneration are explicit extra checks. Inventory does not activate cards, certify rules or select D04 launch scope; RULE-02/03/04 keep their gates.
+
 - Work inside the committed Dev Container. Match `toolchain.json` and the frozen lockfile.
 - Run `pnpm run doctor` (bare `pnpm doctor` selects the pnpm built-in), `pnpm verify`, `pnpm test:bootstrap` and `pnpm db:check` for relevant workspace changes. Browser forwarding must also be checked on the Director's PC.
 - Use `pnpm dev` for the real foundation and `pnpm verify:foundation` for application checks. `pnpm dev:smoke` is only a separate connectivity diagnostic.

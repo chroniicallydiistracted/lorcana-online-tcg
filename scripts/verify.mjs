@@ -17,6 +17,7 @@ try {
   inspect(root);
   run("python3", ["scripts/verify-config.py"], { cwd: root });
   run("python3", ["scripts/ci/check-config.py"], { cwd: root });
+  run(process.execPath, ["scripts/rules/check-inventory.mjs"], { cwd: root });
   run(process.execPath, ["scripts/check-documentation.mjs"], { cwd: root });
   console.log("PASS JSON parsing and JavaScript syntax checks");
 } catch (error) {

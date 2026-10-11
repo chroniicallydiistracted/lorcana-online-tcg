@@ -1,0 +1,768 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261010-008",
+  "title": "RULE-01 current source and catalog/test inventory",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-11T00:10:49.911Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "task_ids": [
+    "RULE-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R29.001",
+    "R29.002",
+    "R29.003",
+    "R29.005",
+    "R30.015"
+  ],
+  "feature_ids": [
+    "F-RESERVED",
+    "F-DOCS",
+    "F-EVIDENCE",
+    "F-RULE-INVENTORY"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Preserve completed BOOT-04 review in local commit9aa11df and isolate RULE-01 on codex/rule-01-source-inventory. Read current authority, source/certification inputs and accepted engine/asset boundaries; no main/publish/provision action."
+    },
+    {
+      "kind": "test",
+      "description": "Fresh container RUN022 passed doctor/verify/bootstrap5/read-only database. Discovery uncovered a newly listed October2026 CR update and future Hyperia City release. Incorrect source-register shape inspection exited1 read-only; obsolete LorcanaJSON URL returned404; preserve discovery gaps and use project-published paths."
+    },
+    {
+      "kind": "implementation",
+      "description": "Add tool-only PDF.js6.4.299 acquisition/extraction and inert TypeScript/HTML AST inventories. Acquire 21 primary and5 supplemental source requests with hashes, preserving the initial hunny404. Verify the complete scoped pinned Git tree and all11231 Lorcana blobs, including inert symbolic-link target bytes. No upstream installation/execution or product asset imports."
+    },
+    {
+      "kind": "fix",
+      "description": "Retain real failures and test-first regressions: document/PDF/hash/effective-date guards, gallery supplies and unknown promo dates, inherited suite modifiers, glossary/update parsing and symlink blob handling. Initial all-zero rules diff from RUN034 is preserved as superseded; RUN036 verifies nonempty v2 with489 to504 leaves. Probe errors included stale public URLs, truncated root tree, PDF.js document.destroy misuse corrected to loadingTask.destroy, and a host heredoc without docker stdin forwarding that executed no script."
+    },
+    {
+      "kind": "test",
+      "description": "RUN023/027/029/033/035 are intentional failing synthetic regressions; RUN024/028/031 and RUN036 pass subsequent fixes. RUN025/026/030 acquire public documents/pinned inert sources. RUN032 retains actual symlink hash-reader failure; RUN034 proves catalog/test hashes but its initial empty rules diff is unqualified. Discovery lint passed for scripts/rules and tests/rules."
+    },
+    {
+      "kind": "function",
+      "description": "Implement offline checkSnapshots/readSnapshots and root rules:check/verify-bytes/reproduce/test commands. Ordinary verify/test include integrity/corruption checks without network or ignored-cache inputs; explicit byte/regeneration checks require acquired inputs."
+    },
+    {
+      "kind": "test",
+      "description": "Retain RUN037 red corruption fixtures and RUN038 early hash rejection from a misbound future-date fixture; corrected RUN039 passes19 checks plus source/text hashes and exact regeneration. A multi-file documentation patch was rejected on one missing context line before any edits; corrected exact-context patch applied."
+    },
+    {
+      "kind": "documentation",
+      "description": "Update operational/index/feature/map/backlog/reservation/handoff/qualification records and distinguish CR2.2 effective, CR2.3 scheduled, incomplete sources and uncertified identities. Preserve initial empty-diff artifact as superseded, original planning registers and all execution evidence. Mark stale whole-fingerprint feature verification pending until fresh proof."
+    },
+    {
+      "kind": "fix",
+      "description": "Draft synchronization rejected a Python six-digit fractional timestamp against repository millisecond timestamp format. Correct the recording precision only; no executed times/results altered."
+    },
+    {
+      "kind": "test",
+      "description": "Final unchanged executable fingerprint117c9248 verified: RUN040 existing frozen full113/doctor/bootstrap/DB health/integration5; RUN20261011-001 real203-component licenses/advisories and full-history private-value scan,11 notice gaps/zero advisories; RUN002 clean frozen203/full113 without cache/credentials/DB; RUN003 exact source reconstruction/hash/protected scope/config/archive/private-file/listener proof. All logs reviewed."
+    },
+    {
+      "kind": "review",
+      "description": "Read-only WSL Docker inspection at final closure observes the same original source bind and healthy PostgreSQL pg18_data mounted at /var/lib/postgresql. No runtime/data recreation or other project touched. F-WEB/F-CI retain historical browser/full hosted/artifact scope rather than infer a new run."
+    },
+    {
+      "kind": "documentation",
+      "description": "Close RULE-01 backlog inventory acceptance with flagged source/identity/localization gaps. Record final-source results/limits and next RULE-02/03/04 gates; preserve original548/33/20 and Director-owned launch/provider/asset decisions. Commit locally after canonical/document closure; no push or main change."
+    },
+    {
+      "kind": "test",
+      "description": "RUN20261011-004 passes677 canonical staged/live byte comparisons, identical executable fingerprint, current/full-history and canonical docs/config/inventory, focused19, source/document formatting and temporary archive cleanup. Finalize only RULE-01 inventory acceptance; all missing-source/game/engine/device/provider gates remain explicit."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/changes/CHG-20261010-008.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+    "docs/plans/2026-10-10-rule-01-source-inventory.md",
+    "docs/rules/2026-10-10-catalog.json",
+    "docs/rules/2026-10-10-rules-diff-v2.json",
+    "docs/rules/2026-10-10-rules-diff.json",
+    "docs/rules/2026-10-10-sources-supplement.json",
+    "docs/rules/2026-10-10-sources.json",
+    "docs/rules/2026-10-10-upstream-tests.json",
+    "docs/rules/README.md",
+    "docs/rules/source-specs-supplement.json",
+    "docs/rules/source-specs.json",
+    "docs/runbooks/workspace-setup.md",
+    "docs/validation/logs/RUN-20261010-022.txt",
+    "docs/validation/logs/RUN-20261010-023.txt",
+    "docs/validation/logs/RUN-20261010-024.txt",
+    "docs/validation/logs/RUN-20261010-025.txt",
+    "docs/validation/logs/RUN-20261010-026.txt",
+    "docs/validation/logs/RUN-20261010-027.txt",
+    "docs/validation/logs/RUN-20261010-028.txt",
+    "docs/validation/logs/RUN-20261010-029.txt",
+    "docs/validation/logs/RUN-20261010-030.txt",
+    "docs/validation/logs/RUN-20261010-031.txt",
+    "docs/validation/logs/RUN-20261010-032.txt",
+    "docs/validation/logs/RUN-20261010-033.txt",
+    "docs/validation/logs/RUN-20261010-034.txt",
+    "docs/validation/logs/RUN-20261010-035.txt",
+    "docs/validation/logs/RUN-20261010-036.txt",
+    "docs/validation/logs/RUN-20261010-037.txt",
+    "docs/validation/logs/RUN-20261010-038.txt",
+    "docs/validation/logs/RUN-20261010-039.txt",
+    "docs/validation/logs/RUN-20261010-040.txt",
+    "docs/validation/logs/RUN-20261011-001.txt",
+    "docs/validation/logs/RUN-20261011-002.txt",
+    "docs/validation/logs/RUN-20261011-003.txt",
+    "docs/validation/logs/RUN-20261011-004.txt",
+    "docs/validation/logs/RUN-20261011-005.txt",
+    "docs/validation/rule-01.md",
+    "docs/validation/runs/RUN-20261010-022.json",
+    "docs/validation/runs/RUN-20261010-023.json",
+    "docs/validation/runs/RUN-20261010-024.json",
+    "docs/validation/runs/RUN-20261010-025.json",
+    "docs/validation/runs/RUN-20261010-026.json",
+    "docs/validation/runs/RUN-20261010-027.json",
+    "docs/validation/runs/RUN-20261010-028.json",
+    "docs/validation/runs/RUN-20261010-029.json",
+    "docs/validation/runs/RUN-20261010-030.json",
+    "docs/validation/runs/RUN-20261010-031.json",
+    "docs/validation/runs/RUN-20261010-032.json",
+    "docs/validation/runs/RUN-20261010-033.json",
+    "docs/validation/runs/RUN-20261010-034.json",
+    "docs/validation/runs/RUN-20261010-035.json",
+    "docs/validation/runs/RUN-20261010-036.json",
+    "docs/validation/runs/RUN-20261010-037.json",
+    "docs/validation/runs/RUN-20261010-038.json",
+    "docs/validation/runs/RUN-20261010-039.json",
+    "docs/validation/runs/RUN-20261010-040.json",
+    "docs/validation/runs/RUN-20261011-001.json",
+    "docs/validation/runs/RUN-20261011-002.json",
+    "docs/validation/runs/RUN-20261011-003.json",
+    "docs/validation/runs/RUN-20261011-004.json",
+    "docs/validation/runs/RUN-20261011-005.json",
+    "docs/vision/README.md",
+    "docs/vision/initial_backlog.csv",
+    "package.json",
+    "packages/rules-data/README.md",
+    "pnpm-lock.yaml",
+    "scripts/rules/build-inventory.mjs",
+    "scripts/rules/check-inventory.mjs",
+    "scripts/rules/inventory.mjs",
+    "scripts/rules/sources.mjs",
+    "scripts/verify.mjs",
+    "tests/rules/check-inventory.test.mjs",
+    "tests/rules/inventory.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Same schema-v1/exclusive UTC run/log contract; new task preserves failures and distinguishes acquisition/static/synthetic evidence. No schema change."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native task follows intake/semantic review/draft checkpoint/whole-fingerprint pending-and-requalification; ordinary verification remains offline."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Committed Linux Dev Container/source/private volume/Node/pnpm remain; no OS/manual install or image/runtime change."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Product package boundaries/synthetic app behavior unchanged; PDF.js is root-only research tooling, existing strict peers and no allowed dependency scripts retained."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Inventory uses existing map/file/callable/evidence/changelog schema and failure/time contracts; no new governance architecture."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No DB code/roles/SQL/credential changes; source acquisition never imports server data. Prior recreation evidence remains dated."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Same launcher/full-history/secret/license/artifact architecture; verify now adds offline inventory so ignored research cache is unnecessary in CI."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Preserve accepted OVHcloud/Cloudflare/$25/services/restore gates; research dependency does not provision or amend hosting."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Exact pinned engine/trust/RNG/hidden-state/product dependency decisions preserved. Fresh inventory refines counts in its own evidence; cloud benchmark remains attributed, no engine installed."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated original audit/checkpoints preserved; current inventory changes own present feature/backlog/handoff records instead of rewriting executed results."
+    },
+    {
+      "path": "docs/changes/CHG-20261010-008.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Completed DB scope/independent review/checkpoints unchanged; no database implementation revision."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Earlier dated implementation/checkpoints preserved; same universal format applied to new source tooling."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Completed CI plan and historical checkpoint results preserved; current root validation extends existing offline stage without new hosting/settings claims."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-10-rule-01-source-inventory.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/2026-10-10-catalog.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/2026-10-10-rules-diff-v2.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/2026-10-10-rules-diff.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/2026-10-10-sources-supplement.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/2026-10-10-sources.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/2026-10-10-upstream-tests.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Same isolated invocation/result/cleanup/hosted limits; new verify/test subchecks use committed metadata offline and fit existing stages."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Managed identities/migration/health/integration commands unchanged and no ignored credential file rewritten; normal clean check still lacks DB access."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Same required keys/enums/time/file/review/evidence format used for CHG008; no format extension."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Same branch/access/owned work/evidence/limits/next-action template followed in RULE-01 handoff."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Original dated technical/Windows limits retained; root research addition changes no app ports/rendering/lifecycle. New whole-source checks belong to RULE-01."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-02 units/recreation/recovery evidence retained; ROOT research dependency is not new DB/domain/restore acceptance."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "First hosted source612a8c9 evidence retained; no new hosted run or artifact qualification inferred from local RULE-01 checks."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Final provider/dependency decisions and separate deployment/capacity/restore gates remain; local source inventory needs no paid host."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-022.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-023.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-024.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-025.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-026.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-027.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-028.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-029.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-030.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-031.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-032.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-033.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-034.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-035.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-036.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-037.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-038.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/logs/RUN-20261010-039.txt",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-022.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-023.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-024.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-025.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-026.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-027.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-028.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-029.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-030.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-031.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-032.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-033.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-034.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-035.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-036.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-037.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-038.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/validation/runs/RUN-20261010-039.json",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing X06/X07 documentation/history obligations followed; no added product scope or loss of optional flags."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D04 launch catalog deferred until inventory as specified; no new provider/asset/launch decision inferred."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "All548 original IDs/text/20 optional flags and wider product acceptance retained; inventory evidence accepts no leaf requirement."
+    },
+    {
+      "path": "packages/rules-data/README.md",
+      "disposition": "updated",
+      "reason": "Compare current RULE-01 source tooling/counts/effective-date/release/certification limits with its owning record; updated pointers/status/ownership without product acceptance."
+    },
+    {
+      "path": "docs/vision/source_register.json",
+      "disposition": "historical_preserved",
+      "reason": "Preserve dated planning byte/source/version assumptions. Current exact research evidence lives under docs/rules; no retrospective certification or rewriting."
+    },
+    {
+      "path": "docs/vision/dependencies.json",
+      "disposition": "historical_preserved",
+      "reason": "Preserve dated planning byte/source/version assumptions. Current exact research evidence lives under docs/rules; no retrospective certification or rewriting."
+    },
+    {
+      "path": "docs/vision/Development_Blueprint_2026-10-05.md",
+      "disposition": "historical_preserved",
+      "reason": "Preserve dated planning byte/source/version assumptions. Current exact research evidence lives under docs/rules; no retrospective certification or rewriting."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schema-v1 change/run/map/state/feature contract remains; source tools use separate metadata integrity checks without governance schema edits."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schema-v1 change/run/map/state/feature contract remains; source tools use separate metadata integrity checks without governance schema edits."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schema-v1 change/run/map/state/feature contract remains; source tools use separate metadata integrity checks without governance schema edits."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schema-v1 change/run/map/state/feature contract remains; source tools use separate metadata integrity checks without governance schema edits."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schema-v1 change/run/map/state/feature contract remains; source tools use separate metadata integrity checks without governance schema edits."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-022.json",
+      "outcome": "passed",
+      "scope": "RULE-01 fresh existing Dev Container intake: doctor, verify, bootstrap and read-only database; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-023.json",
+      "outcome": "failed",
+      "scope": "Intentional red: inventory rejects false source/catalog/test coverage claims before implementation; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-024.json",
+      "outcome": "passed",
+      "scope": "Eight synthetic source/catalog/AST/rules-diff regressions after implementation; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-025.json",
+      "outcome": "passed",
+      "scope": "RULE-01 public official/community/pinned source acquisition and PDF extraction; failures remain explicit; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-026.json",
+      "outcome": "passed",
+      "scope": "Read-only sparse upstream source acquisition at the accepted pin; no upstream code execution; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-027.json",
+      "outcome": "failed",
+      "scope": "Intentional red: official gallery identity provenance and unresolved promotional release dates; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-028.json",
+      "outcome": "passed",
+      "scope": "Ten synthetic source, rules, static-test, official-gallery and promotional-release safeguards; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-029.json",
+      "outcome": "failed",
+      "scope": "Intentional red: dynamic titles/inherited parameterization and non-rule appendix isolation; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-030.json",
+      "outcome": "passed",
+      "scope": "Additional publisher scenario and official ruling discovery; original404 retained; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-031.json",
+      "outcome": "passed",
+      "scope": "Twelve source/catalog/AST/rule-hash safeguards, including future policies and dynamic declarations; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-032.json",
+      "outcome": "failed",
+      "scope": "Build RULE-01 sourced catalog/rules/static-test inventories; verify every scoped upstream Git blob; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-033.json",
+      "outcome": "failed",
+      "scope": "Intentional red: upstream Git symlinks must be verified as inert blob bytes; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-034.json",
+      "outcome": "passed",
+      "scope": "Thirteen inventory regressions and actual source-bound inventory generation with inert Git symlink verification; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-035.json",
+      "outcome": "failed",
+      "scope": "Intentional red: table-of-contents glossary must not suppress all numbered rules; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-036.json",
+      "outcome": "passed",
+      "scope": "Fourteen regressions and corrected nonempty rules-diff generation; initial empty artifact retained superseded; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-037.json",
+      "outcome": "failed",
+      "scope": "Offline snapshot corruption regressions before checker implementation; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-038.json",
+      "outcome": "failed",
+      "scope": "Offline snapshot checker with corruption regressions and cached source-byte verification; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-039.json",
+      "outcome": "passed",
+      "scope": "Nineteen regressions, cached-byte verification and exact regeneration; corrected future-rule fixture binding; see exact category/timing/log. RUN034 empty diff superseded/unqualified."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261010-040.json",
+      "outcome": "passed",
+      "scope": "Final RULE-01 frozen foundation and continued workspace/bootstrap/live database behavior; exact captured category, source/timing/outcomes in receipt/log."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-001.json",
+      "outcome": "passed",
+      "scope": "Installed Linux dependency license/advisory graph and public/full-history secret scan after research-tool pin; exact captured category, source/timing/outcomes in receipt/log."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-002.json",
+      "outcome": "passed",
+      "scope": "Clean source-only frozen installation and full offline inventory/application foundation without research cache or private database; exact captured category, source/timing/outcomes in receipt/log."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-003.json",
+      "outcome": "passed",
+      "scope": "Final identity/source reproduction, original scope/config/private-file protection and actual listener cleanup; exact captured category, source/timing/outcomes in receipt/log."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-004.json",
+      "outcome": "passed",
+      "scope": "Current/full-history docs and exact canonical staged/live bytes677, matching executable fingerprint, canonical configuration/syntax/offline inventory, focused19 and staged formatting; static proof, no new browser/engine/hosting execution."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-005.json",
+      "outcome": "passed",
+      "scope": "Finalized documentation coverage/source/callables/map/links/schema/changelog/append-only history and evidence/log identity with consistent paired timing."
+    }
+  ],
+  "limitations": [
+    "Inventory only; no engine vendor integration, gameplay certification, asset serving, format admission or deployment.",
+    "Original source/dependency/planning registers remain historical; current source gaps and future release states must be explicit.",
+    "Missing notes1\u20138/14, full cooperative rulesheets and localized coverage; catalog identity reconciliation/promo release proof and game/engine certification remain separate.",
+    "Static upstream modifier totals overlap and are not runtime case/pass counts. PDF extraction can contaminate changed-text candidates."
+  ],
+  "next_actions": [
+    "RULE-02 pinned minimal vendoring/license/patch closure and reproduced upstream suite/precompiled Node24 execution when assigned.",
+    "Carry missing sources/provisional identity/promo dates and scheduled CR2.3 into RULE-04 certification and D04 launch policy; no premature game admission."
+  ]
+}

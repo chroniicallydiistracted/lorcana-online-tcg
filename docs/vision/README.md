@@ -8,6 +8,8 @@ Start with `Development_Blueprint_2026-10-05.md`, `original_action_items.md`, `r
 
 `source_register.json`, `container-manifests.json` and `rules_certification_template.csv` preserve source/qualification references. Recorded research is not evidence of successful container execution or certified game rules.
 
+RULE-01 supplements the preserved October5 source register with [actual dated byte/hash and catalog/test inventories](../rules/README.md) and [validation](../validation/rule-01.md). At the October10 inventory CR2.2 is effective; published CR2.3 takes effect October16. Missing notes/scenario/localized materials and uncertified identities remain explicit. No launch-catalog choice, runtime engine integration or game requirement is accepted from inventory evidence.
+
 The blueprint and researched dependency/source/container registers are historical planning snapshots, not current runtime certifications. Some companion filenames mentioned inside the original blueprint (such as SETUP_RUNBOOK.md, catalog and planning qualification reports) were not delivered into this repository; the current setup/evidence documents are indexed in [docs/README.md](../README.md). Do not invent missing source evidence.
 
 The Director added X06 (documentation accuracy) and X07 (universal timestamped change/evidence history) on 2026-10-06. Their DOC-01/DOC-02 backlog entries and [universal workflow](../DEVELOPMENT_WORKFLOW.md) apply to all future work. The original 548 requirement IDs and 20 optional flags are unchanged. Current task status belongs to initial_backlog.csv; open product decisions remain Director-owned.

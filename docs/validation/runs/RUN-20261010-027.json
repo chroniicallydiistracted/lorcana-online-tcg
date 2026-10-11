@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-027",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/inventory.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "035b14eca897df65cd01db97cbb922c66c83966806f8e0153817e99d9ef19f37",
+  "started_at": "2026-10-10T23:40:26.047Z",
+  "finished_at": "2026-10-10T23:40:26.351Z",
+  "recorded_at": "2026-10-10T23:40:26.351Z",
+  "time_precision": "exact",
+  "elapsed_ms": 304,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Intentional red: official gallery identity provenance and unresolved promotional release dates",
+  "log_path": "docs/validation/logs/RUN-20261010-027.txt",
+  "log_sha256": "ec113e702dcc7e527f110648ac7a0ad4e48b02f985c57e730099cb6bec77710a",
+  "redactions": 0
+}

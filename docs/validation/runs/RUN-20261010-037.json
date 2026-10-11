@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261010-037",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/check-inventory.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9aa11dfd37b87beb2b8a6fc092ea7f8900450220",
+  "source_fingerprint": "0bca91e70f30f298e857450555525d3f3c67ab9210b5ed9a6c9b6a6fb0bdca6d",
+  "started_at": "2026-10-10T23:51:53.411Z",
+  "finished_at": "2026-10-10T23:51:53.626Z",
+  "recorded_at": "2026-10-10T23:51:53.626Z",
+  "time_precision": "exact",
+  "elapsed_ms": 216,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Offline snapshot corruption regressions before checker implementation",
+  "log_path": "docs/validation/logs/RUN-20261010-037.txt",
+  "log_sha256": "2222aabc95fdd5426d710cd531ced4d2e2b8aca6df6664ee65d1f91185b4c887",
+  "redactions": 0
+}
