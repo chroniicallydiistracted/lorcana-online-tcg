@@ -403,3 +403,7 @@ Bundle probe: `bun build <entry importing LorcanaServer + getLorcanaCardCatalogS
 - **Cloudflare:** [Pages](https://developers.cloudflare.com/pages/), [Tunnel availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/), [CDN terms](https://www.cloudflare.com/service-specific-terms-application-services/).
 - **Backup and data tooling:** [pgBackRest](https://pgbackrest.org/), [PgBouncer features](https://www.pgbouncer.org/features.html), [Redis licenses](https://redis.io/legal/licenses/), [Valkey](https://github.com/valkey-io/valkey).
 - **Upstream engine:** [tcg-engines at 53a7941](https://github.com/TheCardGoat/tcg-engines/tree/53a79413c58678b1c50dde57e71de5c123132716).
+
+## RULE-02 implementation clarification — 2026-10-11 UTC
+
+The Director selected the backlog sequence: vendoring/runtime qualification in RULE-02, secure RNG/replay in RULE-03, official certification in RULE-04, wire privacy in PLAY-02. Rewarded/private/ordinary Lab/Collection play stays blocked. The actual minimal kernel imports mutative1.3.0, LogTape2.0.7 and seedrandom3.0.5; Zod/name helpers remain planned exact pins and Pretty2.0.7 is test-only. The synthetic Node harness is qualification, not an eligible server match. [ADR0009](../adr/0009-pinned-engine-qualification.md) and [evidence](../validation/rule-02.md) describe the current boundary; prior cloud measurements are retained and are not reproduced performance acceptance. Hosting/$25/Director/D07 decisions remain unchanged.

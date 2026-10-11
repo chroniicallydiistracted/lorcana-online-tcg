@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-050",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/foundation/boundaries.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "b8efa6b032e428963d48356023ecdc277353d96e1c9cdba1fe4b0a2ca8d2d78c",
+  "started_at": "2026-10-11T01:15:02.105Z",
+  "finished_at": "2026-10-11T01:15:06.291Z",
+  "recorded_at": "2026-10-11T01:15:06.291Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4163,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: relative server Lab route must enter through adapter",
+  "log_path": "docs/validation/logs/RUN-20261011-050.txt",
+  "log_sha256": "f1dbe3b995cbd837ba3de8d50f4bb12009ffe886574ae91d7d8d7b4ab85b4b0c",
+  "redactions": 0
+}

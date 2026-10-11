@@ -1,0 +1,1185 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261011-002",
+  "title": "RULE-02 pinned engine vendoring and temporal qualification gates",
+  "actor": "Codex architect/developer/QA",
+  "status": "finalized",
+  "recorded_at": "2026-10-11T20:09:16.139Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "task_ids": [
+    "RULE-02",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R01.005",
+    "R01.006",
+    "R01.018",
+    "R29.005"
+  ],
+  "feature_ids": [
+    "F-ENGINE",
+    "F-BOUNDARIES",
+    "F-CI",
+    "F-RELEASE",
+    "F-RULE-INVENTORY",
+    "F-DOCS",
+    "F-RESERVED"
+  ],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "Vendor exact minimal347-file closure at53a7941 with original Git/SHA256 identities,304 runtime source-or-types, two reproducible patches and MIT notices."
+    },
+    {
+      "kind": "function",
+      "description": "Compile pure synthetic kernel, closed Node adapter and standalone trust-free Lab worker; explicit player authority, actor/revision/terminal/disposal handling and bounded private-free summaries."
+    },
+    {
+      "kind": "feature",
+      "description": "Retain Director task sequence: secure RNG RULE-03, official behavior RULE-04 and wire privacy PLAY-02; all eligible/private/official play blocked across October16/23 date transitions."
+    },
+    {
+      "kind": "expansion",
+      "description": "Add hash-pinned dev/CI-only Bun1.4.2 and owning exact minimal dependencies; artifact v3 binds twelve builds and engine/provenance, SBOM/notices include vendored component."
+    },
+    {
+      "kind": "fix",
+      "description": "Independent review regressions bound sparse/aggregate/accessor inputs and sparse admission sets, block direct/computed/relative server engine bypasses and bind actual test resolver aliases to selection."
+    },
+    {
+      "kind": "test",
+      "description": "Retain every red/green checkpoint; final source passes124 project checks and338 unchanged upstream tests/1 existing skip, clean frozen installation,13-stage isolated image/DB/artifact proof and six plus two Chromium scenarios."
+    },
+    {
+      "kind": "documentation",
+      "description": "Update current owning docs, architecture/status/map/features/task/requirement evidence and handoff; preserve all original scope and immutable dated/archive evidence."
+    },
+    {
+      "kind": "review",
+      "description": "Observe closed RULE-01 hosted main1925127 run38098551762 and verify its downloaded v2 artifact at intake with the historical verifier; no RULE-02 hosted acceptance inferred."
+    },
+    {
+      "kind": "review",
+      "description": "Read-only independent reviewer found no unresolved Critical/Important findings after retained corrections; canonical Git1173-file identity/full foundation and actual cleanup/private/log/original-scope proofs pass. Preserve exact canonical helper and separately attributed host inspection, including its corrected read-only missing-health query."
+    }
+  ],
+  "files": [
+    ".devcontainer/Dockerfile",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0001-local-development-environment.md",
+    "docs/adr/0002-application-foundation.md",
+    "docs/adr/0005-ci-artifact-qualification.md",
+    "docs/adr/0006-protocol-release-contracts.md",
+    "docs/adr/0008-engine-placement-dependency-baseline.md",
+    "docs/adr/0009-pinned-engine-qualification.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261011-002.json",
+    "docs/contracts/release.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-06-documentation-governance.md",
+    "docs/plans/2026-10-07-boot-03-ci.md",
+    "docs/plans/2026-10-07-boot-05-contracts.md",
+    "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+    "docs/plans/2026-10-11-rule-02-engine-vendor.md",
+    "docs/reviews/2026-10-11-rule-02-closure.md",
+    "docs/rules/README.md",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/workspace-setup.md",
+    "docs/validation/boot-01.md",
+    "docs/validation/boot-02.md",
+    "docs/validation/boot-03.md",
+    "docs/validation/boot-05.md",
+    "docs/validation/logs/RUN-20261011-014.txt",
+    "docs/validation/logs/RUN-20261011-015.txt",
+    "docs/validation/logs/RUN-20261011-016.txt",
+    "docs/validation/logs/RUN-20261011-017.txt",
+    "docs/validation/logs/RUN-20261011-018.txt",
+    "docs/validation/logs/RUN-20261011-019.txt",
+    "docs/validation/logs/RUN-20261011-020.txt",
+    "docs/validation/logs/RUN-20261011-021.txt",
+    "docs/validation/logs/RUN-20261011-022.txt",
+    "docs/validation/logs/RUN-20261011-023.txt",
+    "docs/validation/logs/RUN-20261011-024.txt",
+    "docs/validation/logs/RUN-20261011-025.txt",
+    "docs/validation/logs/RUN-20261011-026.txt",
+    "docs/validation/logs/RUN-20261011-027.txt",
+    "docs/validation/logs/RUN-20261011-028.txt",
+    "docs/validation/logs/RUN-20261011-029.txt",
+    "docs/validation/logs/RUN-20261011-030.txt",
+    "docs/validation/logs/RUN-20261011-031.txt",
+    "docs/validation/logs/RUN-20261011-032.txt",
+    "docs/validation/logs/RUN-20261011-033.txt",
+    "docs/validation/logs/RUN-20261011-034.txt",
+    "docs/validation/logs/RUN-20261011-035.txt",
+    "docs/validation/logs/RUN-20261011-036.txt",
+    "docs/validation/logs/RUN-20261011-037.txt",
+    "docs/validation/logs/RUN-20261011-038.txt",
+    "docs/validation/logs/RUN-20261011-039.txt",
+    "docs/validation/logs/RUN-20261011-040.txt",
+    "docs/validation/logs/RUN-20261011-041.txt",
+    "docs/validation/logs/RUN-20261011-042.txt",
+    "docs/validation/logs/RUN-20261011-043.txt",
+    "docs/validation/logs/RUN-20261011-044.txt",
+    "docs/validation/logs/RUN-20261011-045.txt",
+    "docs/validation/logs/RUN-20261011-046.txt",
+    "docs/validation/logs/RUN-20261011-047.txt",
+    "docs/validation/logs/RUN-20261011-048.txt",
+    "docs/validation/logs/RUN-20261011-049.txt",
+    "docs/validation/logs/RUN-20261011-050.txt",
+    "docs/validation/logs/RUN-20261011-051.txt",
+    "docs/validation/logs/RUN-20261011-052.txt",
+    "docs/validation/logs/RUN-20261011-053.txt",
+    "docs/validation/logs/RUN-20261011-054.txt",
+    "docs/validation/logs/RUN-20261011-055.txt",
+    "docs/validation/logs/RUN-20261011-056.txt",
+    "docs/validation/logs/RUN-20261011-057.txt",
+    "docs/validation/logs/RUN-20261011-058.txt",
+    "docs/validation/logs/RUN-20261011-059.txt",
+    "docs/validation/logs/RUN-20261011-060.txt",
+    "docs/validation/logs/RUN-20261011-061.txt",
+    "docs/validation/logs/RUN-20261011-062.txt",
+    "docs/validation/logs/RUN-20261011-063.txt",
+    "docs/validation/logs/RUN-20261011-064.txt",
+    "docs/validation/rule-01.md",
+    "docs/validation/rule-02-canonical-check.mjs.txt",
+    "docs/validation/rule-02-host-closure.json",
+    "docs/validation/rule-02.md",
+    "docs/validation/runs/RUN-20261011-014.json",
+    "docs/validation/runs/RUN-20261011-015.json",
+    "docs/validation/runs/RUN-20261011-016.json",
+    "docs/validation/runs/RUN-20261011-017.json",
+    "docs/validation/runs/RUN-20261011-018.json",
+    "docs/validation/runs/RUN-20261011-019.json",
+    "docs/validation/runs/RUN-20261011-020.json",
+    "docs/validation/runs/RUN-20261011-021.json",
+    "docs/validation/runs/RUN-20261011-022.json",
+    "docs/validation/runs/RUN-20261011-023.json",
+    "docs/validation/runs/RUN-20261011-024.json",
+    "docs/validation/runs/RUN-20261011-025.json",
+    "docs/validation/runs/RUN-20261011-026.json",
+    "docs/validation/runs/RUN-20261011-027.json",
+    "docs/validation/runs/RUN-20261011-028.json",
+    "docs/validation/runs/RUN-20261011-029.json",
+    "docs/validation/runs/RUN-20261011-030.json",
+    "docs/validation/runs/RUN-20261011-031.json",
+    "docs/validation/runs/RUN-20261011-032.json",
+    "docs/validation/runs/RUN-20261011-033.json",
+    "docs/validation/runs/RUN-20261011-034.json",
+    "docs/validation/runs/RUN-20261011-035.json",
+    "docs/validation/runs/RUN-20261011-036.json",
+    "docs/validation/runs/RUN-20261011-037.json",
+    "docs/validation/runs/RUN-20261011-038.json",
+    "docs/validation/runs/RUN-20261011-039.json",
+    "docs/validation/runs/RUN-20261011-040.json",
+    "docs/validation/runs/RUN-20261011-041.json",
+    "docs/validation/runs/RUN-20261011-042.json",
+    "docs/validation/runs/RUN-20261011-043.json",
+    "docs/validation/runs/RUN-20261011-044.json",
+    "docs/validation/runs/RUN-20261011-045.json",
+    "docs/validation/runs/RUN-20261011-046.json",
+    "docs/validation/runs/RUN-20261011-047.json",
+    "docs/validation/runs/RUN-20261011-048.json",
+    "docs/validation/runs/RUN-20261011-049.json",
+    "docs/validation/runs/RUN-20261011-050.json",
+    "docs/validation/runs/RUN-20261011-051.json",
+    "docs/validation/runs/RUN-20261011-052.json",
+    "docs/validation/runs/RUN-20261011-053.json",
+    "docs/validation/runs/RUN-20261011-054.json",
+    "docs/validation/runs/RUN-20261011-055.json",
+    "docs/validation/runs/RUN-20261011-056.json",
+    "docs/validation/runs/RUN-20261011-057.json",
+    "docs/validation/runs/RUN-20261011-058.json",
+    "docs/validation/runs/RUN-20261011-059.json",
+    "docs/validation/runs/RUN-20261011-060.json",
+    "docs/validation/runs/RUN-20261011-061.json",
+    "docs/validation/runs/RUN-20261011-062.json",
+    "docs/validation/runs/RUN-20261011-063.json",
+    "docs/validation/runs/RUN-20261011-064.json",
+    "docs/vision/README.md",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "eslint.config.mjs",
+    "package.json",
+    "packages/engine-adapter/README.md",
+    "packages/engine-adapter/package.json",
+    "packages/engine-adapter/src/index.ts",
+    "packages/engine-adapter/tests/node.test.mjs",
+    "packages/engine-adapter/tsconfig.json",
+    "packages/engine-lab/README.md",
+    "packages/engine-lab/build-worker.mjs",
+    "packages/engine-lab/package.json",
+    "packages/engine-lab/src/index.ts",
+    "packages/engine-lab/src/worker.ts",
+    "packages/engine-lab/tests/adapter.test.mjs",
+    "packages/engine-lab/tests/browser.mjs",
+    "packages/engine-lab/tsconfig.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "scripts/browser-boundary-plugin.mjs",
+    "scripts/check-boundaries.mjs",
+    "scripts/ci/artifacts.mjs",
+    "scripts/ci/pipeline.mjs",
+    "scripts/ci/security.mjs",
+    "scripts/engine/bun.mjs",
+    "scripts/engine/closure.mjs",
+    "scripts/engine/selection.json",
+    "scripts/engine/test-upstream.mjs",
+    "scripts/engine/vendor.mjs",
+    "scripts/release-manifest.mjs",
+    "scripts/verify-config.py",
+    "scripts/verify.mjs",
+    "tests/ci/gates.test.mjs",
+    "tests/engine/closure.test.mjs",
+    "tests/foundation/boundaries.test.mjs",
+    "toolchain.json",
+    "vendor/tcg-engines/LICENSE",
+    "vendor/tcg-engines/README.md",
+    "vendor/tcg-engines/build.mjs",
+    "vendor/tcg-engines/package.json",
+    "vendor/tcg-engines/provenance/LORCANA_LICENSE.txt",
+    "vendor/tcg-engines/provenance/runtime-trace.original.ts",
+    "vendor/tcg-engines/provenance/testing-index.original.ts",
+    "vendor/tcg-engines/src/kernel.d.ts",
+    "vendor/tcg-engines/src/kernel.ts",
+    "vendor/tcg-engines/tsconfig.json",
+    "vendor/tcg-engines/upstream.lock.json",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/bot-core/src/deadlock.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/bot-core/src/hash.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/bot-core/src/index.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/bot-core/src/profile.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/bot-core/src/schedule.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/bot-core/src/statistics.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/bot-core/src/types.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/card-model/src/base-card-definition.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/card-model/src/external-source.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/card-model/src/index.ts",
+    "vendor/tcg-engines/upstream/submodules/agnostic-simulator/packages/card-model/src/printing.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/actor-resolution.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/deadlock.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/decision-trace.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/deck-aware-strategy.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/deck-profile.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/default-strategy.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/effect-polarity.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/forced-family-strategy.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/move-adapter.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/planner.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/promotions/current.json",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/resolution-shape.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/resolve-policy-inventory.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy-data/cards.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy-data/fixtures.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy-data/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy-data/matchups.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy-data/shared-profiles.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy-data/types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy-registry.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/common.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/composer.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/families/activate-ability.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/families/alter-hand.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/families/challenge.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/families/choose-who-goes-first.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/families/play-card.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/families/put-ink.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/families/quest.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/families/resolve.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/strategy/internal-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/target-priority.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/available-moves.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/card-i18n.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/card-input-resolver.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/card-utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/config/logtape/configure.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/client-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/contracts.readonly.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/contracts.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/projection.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/server-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/auth.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/card-contracts.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/card-instance-bootstrap.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/card-runtime.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/card-runtime.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/clock-view.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/clock-view.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/in-memory-transport.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/in-memory-transport.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.apis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.commands.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.flow.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.framework-api.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.init.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.logs.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.logs.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.patches.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.priority.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.queries.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.random-apis.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.random-apis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.time-apis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.validation.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.zone-apis.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.zone-apis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/multiplayer-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/mutative.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/mutative.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/network-state.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/persistence.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/private-field.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/private-field.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/protocol-types.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/protocol-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/replay.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/security.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/serialization.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/state-scoped-value-cache.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/static-resources.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/time-control.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/time-control.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/turn-owner.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/types.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/view-filter.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/view-filter.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-registry.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-registry.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/testing/core-test-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/testing/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/testing/multiplayer-test-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/types/branded-utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/types/branded.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/types/branded.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/types/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/types/state.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/engine-initialization.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/fallback-card-definition.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/flow/runtime-flow-config.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/lorcana-client.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/lorcana-engine-base.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/lorcana-engine-normalization.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/lorcana-server.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/banish-lethal-challenge.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/banish.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/cards.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/damage.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/exert.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/gain-lore.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/pending-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/static-context.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/static-restriction-bypass.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/operations/zones.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/play-card-disabled-reason.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/projection/card-derived.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/rules/condition-context.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/rules/condition-evaluator.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/rules/derived-state.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/rules/effect-registry.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/rules/operator-utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/rules/static-effect-registry.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/definition.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/definition.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/lorcanaPacketAnimations.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/move-log-factory.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/move-outcome-accumulator.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/project-board.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/debug/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/debug/manual-moves.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/be-chosen.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/continuous-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/play-from-discard-permissions.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/play-from-under-permissions.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/replacement-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/temporary-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/triggered-abilities.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/win-condition-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/abilities/activate-ability.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/abilities/banish-character-cost-candidates.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/abilities/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/challenge-trigger-windows.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/challenge.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/move-character-to-location.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/quest.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/quest.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/resources.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/alter-hand.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/alter-hand.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/choose-who-goes-first.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/choose-who-goes-first.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/resolve-player-ids.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/setup-move-test-context.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/setup.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/concede.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/concede.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/forfeit-game.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/forfeit-game.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/pass-turn.test.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/pass-turn.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effect-resolver.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/action-condition-evaluator.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/additional-inkwell-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/amount-resolver.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/banish-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/card-filter-match-utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/composed-effect-resolver.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/conditional-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/cost-reduction-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/count-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/create-replacement-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/create-triggered-ability-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/deal-damage-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/discard-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/draw-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/draw-until-hand-size-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/effect-logger.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/enable-play-from-discard-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/enable-play-from-under-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/event-snapshot-utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/exert-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/for-each-opponent-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/gain-keyword-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/gain-lore-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/grant-ability-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/lose-keyword-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/lose-lore-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/mill-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/modify-stat-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/move-cards-from-under-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/move-damage-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/move-to-location-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/pending-action-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/play-card-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/player-target-resolver.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/property-modification-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/put-damage-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/put-in-hand-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/put-into-inkwell-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/put-on-bottom-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/put-on-top-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/put-under-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/ready-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/remove-damage-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/restriction-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/return-from-discard-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/return-random-from-inkwell-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/return-to-hand-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/reveal-and-route-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/reveal-hand-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/reveal-inkwell-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/reveal-top-card-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/reveal-until-match-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/scry-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/search-deck-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/select-target-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/selection-context.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/selection-state.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/shuffle-into-deck-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/support-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/unsupported-action-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/vanish.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/resolve-bag.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/resolve-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/rules/challenge-rules.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/rules/move-registry-cache.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/rules/play-card-rules.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/rules/registry-provider.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/rules/static-ability-utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/rules/static-effects-invalidation.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/shared/amount/normalize-variable-amount.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/shared/amount/resolve-variable-amount.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/shared/banish-snapshot.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/shared/execute-shift-play.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/shared/validation-helpers.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/state/derived-card-cache.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/state/game-state-check.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/state/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/state/lethal-damage-sweep.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/state/runtime-card-derived.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/state/shift-stack.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/state/turn-action-ink.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/state/turn-metrics.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-trace.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/serialization.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/runtime/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/runtime/optional-skip-analysis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/runtime/resolution-requirements.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/runtime/target-analysis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/runtime/target-availability.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/runtime/target-resolver.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/slotted-targets.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/targeting-service.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/card-mocks.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/lorcana-multiplayer-test-engine-helpers.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/lorcana-multiplayer-test-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/register-matchers.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/serialization.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/triggered-abilities/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/card-representation.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/domain-events.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/log-messages.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/move-log.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/projected-board.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/resolution-selection.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/runtime-client-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/runtime-move-params.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/runtime-state.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/zones/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/zones/runtime-zone-config.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/ability-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/condition-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/cost-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/basic-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/combined-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/control-flow.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/modifier-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/movement-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/scry-effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/helpers/Abilities.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/helpers/Conditions.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/helpers/Costs.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/helpers/Effects.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/helpers/Targets.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/helpers/Triggers.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/helpers/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/helpers/up-to-rules.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/target-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/trigger-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/branded.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/cards/card-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/cards/classifications.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/cards/deck-validation.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/cards/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/cards/ink-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/decks/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/decks/validate-deck.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/expressions/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/game/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/game/state-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/targeting/enum-expansions.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/targeting/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/targeting/lorcana-target-dsl.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/targeting/normalize.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/targeting/shared.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/targeting/target-dsl.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/utils/performance.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/utils/shuffle.ts"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Run/change schema1, UTC/monotonic and append-only contracts remain intact; artifact v3 has a separate namespace and all failed attempts are retained."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native intake/review/source-matched evidence/canonical-check closure remains the required workflow; vendoring adds no approval or agent-specific ledger."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Current CI statement identifies RULE-02 local v3 proof separately from historical hosted BOOT-03/RULE-01; synthetic engine and later gates match owned interfaces."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Replace interrupted pending-test checkpoint with actual final source-matched results, protected environment, owned cleanup and next RULE-03 task; preserve later admission/device gates."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Index current engine operation and dated independent review, preserving source, historical and current documentation authority."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema-version1 governance and clock/sealing rules unchanged; the new build-artifact format is separate."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No role/SQL/credential/DB integration changes; the synthetic adapter has no database path and original data is protected."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "OVHcloud/Cloudflare/$25 decision and purchase/deploy gates remain unchanged; synthetic runtime proof does not reproduce capacity measurements."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Revision1 wire schemas still have no executable game intent or engine state; the synthetic harness is in-process only and no protocol revision changed."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Classify dated independent review as evidence and retain current engine boundary/release/CI/dependency ownership edges."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing restricted-role/migration/recreation plan and dated completion remain accurate; no new persistence or backup claim."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/plans/2026-10-11-rule-02-engine-vendor.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "D07 notice/provenance/free access/takedown policy unchanged; no official card art/text definition was imported by runtime."
+    },
+    {
+      "path": "docs/reviews/2026-10-11-rule-02-closure.md",
+      "disposition": "updated",
+      "reason": "Retain read-only final assessment, independently corrected findings and explicit review limits; executed checks remain separate source-bound receipts."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Corrected supplement acquisition/hash evidence unchanged; vendoring cannot close missing source gaps."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated acquisition specs and official hashes unchanged; no new official rule/source claim."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Managed role/migration/live-test ownership and disposable recreation operation unchanged; no engine persistence is wired."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Uniform schema1 required fields/explicit verification categories preserved; current change supplies complete file coverage."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Exact intake/source/execution/behavior/docs/evidence/resource/limits/next-action template is followed by updated handoff."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Append current v3/twelve-workspace continuation to dated BOOT-05 v2 checkpoint; restricted SQL/roles unchanged and fresh isolated database checks do not imply engine persistence."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Director decisions and labeled superseded research remain intact; ADR0009 refines task sequencing without new provider/deploy acceptance."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/validation/rule-02-canonical-check.mjs.txt",
+      "disposition": "updated",
+      "reason": "Retain exact ignored helper bytes executed by canonical RUN061; read-only evidence text, not new runtime tooling; identity compared in RUN062."
+    },
+    {
+      "path": "docs/validation/rule-02-host-closure.json",
+      "disposition": "updated",
+      "reason": "Retain actual WSL host cleanup/mount inspection separately from container receipt, including corrected read-only missing-health query and unknown earlier execution times."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "updated",
+      "reason": "Acceptance table maps minimal pin/test/Node/worker criteria to actual receipts, preserves every failure/skip, corrects cache wording and distinguishes canonical/document/host cleanup."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "X06/X07 exact documentation and timestamped evidence contracts retained; RULE-02 adds implementation within existing scope."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D04 launch admission and all Director choices retained; calendar phases cannot select a launch catalog."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Two owned disposable Compose projects and production reservations remain accurate; current release-policy link now defines engine v3 binding."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-014.json",
+      "outcome": "passed",
+      "scope": "RULE-02 intake toolchain baseline"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-015.json",
+      "outcome": "passed",
+      "scope": "RULE-02 unchanged intake configuration and documentation baseline"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-016.json",
+      "outcome": "passed",
+      "scope": "RULE-02 intake bootstrap baseline"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-017.json",
+      "outcome": "passed",
+      "scope": "RULE-02 intake authenticated bootstrap database baseline"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-018.json",
+      "outcome": "failed",
+      "scope": "Verify completed RULE-01 hosted CI and downloaded artifact against merged source; local verification of remote evidence"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-019.json",
+      "outcome": "passed",
+      "scope": "Verify merged RULE-01 hosted CI and downloaded artifact using the actual download directory"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-020.json",
+      "outcome": "failed",
+      "scope": "RED: engine closure traversal and unsafe-import rejection before implementation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-021.json",
+      "outcome": "passed",
+      "scope": "GREEN: dependency traversal rejects nonliteral, unresolved, unapproved and escaping imports"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-022.json",
+      "outcome": "failed",
+      "scope": "RED: reject vendor drift, unlisted patches and source membership changes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-023.json",
+      "outcome": "passed",
+      "scope": "GREEN: byte/blob integrity rejects modified, extra/missing source and unlisted patches"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-024.json",
+      "outcome": "failed",
+      "scope": "RED: real adapter command/lifecycle and rules/set temporal admission behaviors before implementation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-025.json",
+      "outcome": "failed",
+      "scope": "RED: browser ownership must allow only the designated Lab-to-compiled-kernel edge (source_changed, unqualified checkpoint)"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-026.json",
+      "outcome": "failed",
+      "scope": "Engine development build failure capture: bridge import must match actual pinned exports"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-027.json",
+      "outcome": "passed",
+      "scope": "Precompiled kernel build after correcting the pinned ID export location"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-028.json",
+      "outcome": "failed",
+      "scope": "Strict Lab adapter and standalone browser worker build"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-029.json",
+      "outcome": "failed",
+      "scope": "Adapter lifecycle commands and temporal admission guards against real compiled kernel"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-030.json",
+      "outcome": "passed",
+      "scope": "Unchanged selected pinned upstream tests under checksum-verified Bun1.4.2"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-031.json",
+      "outcome": "passed",
+      "scope": "Pure browser/Node kernel compile after replacing environment lookups with explicit strict qualification constants"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-032.json",
+      "outcome": "failed",
+      "scope": "Browser-safe Lab worker compilation and strict own-interface types"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-033.json",
+      "outcome": "failed",
+      "scope": "Real synthetic opening/mulligan/concession, explicit player authority, lifecycle and temporal gates"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-034.json",
+      "outcome": "passed",
+      "scope": "Compile pure kernel with listed trace adaptation and mandatory actor arguments"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-035.json",
+      "outcome": "passed",
+      "scope": "Compile strict Lab wrapper and environment-free standalone worker"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-036.json",
+      "outcome": "passed",
+      "scope": "GREEN: actual opening/mulligan/concession, player-only authority, lifecycle, boundaries and October fail-closed qualification gates"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-037.json",
+      "outcome": "passed",
+      "scope": "Verify documented local patches preserve all selected unchanged upstream test assertions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-038.json",
+      "outcome": "passed",
+      "scope": "Actual Linux Chromium execution of two standalone synthetic Lab Web Workers; no Node/Bun or live network state"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-039.json",
+      "outcome": "failed",
+      "scope": "RED: CI artifact must identify compiled engine/provenance without activating rules/catalog"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-040.json",
+      "outcome": "passed",
+      "scope": "GREEN: artifactv3 binds engine/kernel/provenance and rejects rehashed modified kernel bytes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-041.json",
+      "outcome": "failed",
+      "scope": "RED: server apps must not bypass engine adapter and dependency closure must reject parent symlink escape"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-042.json",
+      "outcome": "passed",
+      "scope": "GREEN: engine closure symlink isolation and adapter-only server imports"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-043.json",
+      "outcome": "passed",
+      "scope": "Current workspace strict type checks and all ordered package builds"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-044.json",
+      "outcome": "failed",
+      "scope": "ESLint and actual browser/server engine import boundaries"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-045.json",
+      "outcome": "passed",
+      "scope": "Corrected lint and actual browser/server engine boundaries"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-046.json",
+      "outcome": "failed",
+      "scope": "RED: independent review sparse/aggregate JSON input bounds and server import bypasses"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-047.json",
+      "outcome": "passed",
+      "scope": "GREEN: independent review bounded data and adapter-only server imports"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-048.json",
+      "outcome": "failed",
+      "scope": "RED: bind actual upstream test aliases to the byte-verified selection"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-049.json",
+      "outcome": "passed",
+      "scope": "GREEN: review resolver binding and bounded input/import regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-050.json",
+      "outcome": "failed",
+      "scope": "RED: relative server Lab route must enter through adapter"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-051.json",
+      "outcome": "failed",
+      "scope": "RED: sparse admission sets must fail closed"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-052.json",
+      "outcome": "passed",
+      "scope": "GREEN: all independent review bounds/admission/relative-import/resolver regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-053.json",
+      "outcome": "passed",
+      "scope": "Full current-source configuration/docs/build/type/lint/bootstrap/project/upstream foundation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-054.json",
+      "outcome": "passed",
+      "scope": "Source-only clean frozen install and complete RULE-02 foundation with no private/cache/Git input"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-055.json",
+      "outcome": "passed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-056.json",
+      "outcome": "passed",
+      "scope": "Exact pinned upstream closure/license/patch reproduction from retained source bytes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-057.json",
+      "outcome": "passed",
+      "scope": "Final-source Linux Chromium foundation6 and two synthetic engine workers with cleanup"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-058.json",
+      "outcome": "passed",
+      "scope": "Independent current-source artifact v3/release/engine/provenance/SBOM re-verification"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-059.json",
+      "outcome": "passed",
+      "scope": "Resumed existing-container doctor/bootstrap5/authenticated PostgreSQL baseline"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-060.json",
+      "outcome": "passed",
+      "scope": "Current documentation/static configuration/import/vendor/rules checks after final semantic review"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-061.json",
+      "outcome": "passed",
+      "scope": "Canonical staged Git archive: exact live byte identity, frozen install and complete foundation; verified tooling caches may be reused"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-062.json",
+      "outcome": "passed",
+      "scope": "Actual final listener/private/log/requirement/archive preservation and retained host/canonical evidence identity"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-063.json",
+      "outcome": "passed",
+      "scope": "Completed-scope documentation/static review and original requirement preservation with fully captured checker input"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261011-064.json",
+      "outcome": "passed",
+      "scope": "Finalized documentation seal: staged/live canonical identities, complete file coverage, known-secret scan and append-only Git ancestry checks"
+    }
+  ],
+  "limitations": [
+    "Rules2.3.0 effective2026-10-16 and Hyperia14 general release2026-10-23 require future certification; current pin is not certified.",
+    "Secure injected randomness and viewer projection remain gated by RULE-03/PLAY-02; no rewarded/private production play.",
+    "Upstream strict typing, full original lock/catalog/all-card coverage and complete redistribution qualification are not accepted; scoped upstream tests retain one inherited skip.",
+    "No new hosted RULE-02, real Windows/GPU/touch/loading/load/ARM64 or production evidence; unsigned artifact identity includes twelve explicit npm root notice-file gaps."
+  ],
+  "next_actions": [
+    "Create the coherent reviewed local RULE-02 commit; no publication/deployment/main integration for this scope.",
+    "Continue RULE-03 secure injected RNG, recorded deterministic outcomes, replay equality and random-stream access tests; retain RULE-04/PLAY-02 and official/reward/private admission gates."
+  ]
+}

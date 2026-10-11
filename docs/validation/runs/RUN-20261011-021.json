@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-021",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/engine/closure.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "2a74ef7f4533f0d81b112dcbd5e2354f3fe45ba73dd8eb376f7dcb30b37b2bf4",
+  "started_at": "2026-10-11T00:43:03.252Z",
+  "finished_at": "2026-10-11T00:43:03.569Z",
+  "recorded_at": "2026-10-11T00:43:03.569Z",
+  "time_precision": "exact",
+  "elapsed_ms": 317,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "GREEN: dependency traversal rejects nonliteral, unresolved, unapproved and escaping imports",
+  "log_path": "docs/validation/logs/RUN-20261011-021.txt",
+  "log_sha256": "c30d18148abc9b61fcac018b7211fd24775d727621666b66931eb731d8889aff",
+  "redactions": 0
+}

@@ -46,7 +46,11 @@ Blueprint §2.3 conditionally adopts `TheCardGoat/tcg-engines` at `53a79413c5867
 
 ## Consequences
 
-- RULE-02 must prove a Node 24.21.0 precompiled closure, upstream suites under pinned Bun, deterministic replay with injected randomness, and wire-level non-disclosure.
+- Director clarification, 2026-10-11: retain the documented task sequence. RULE-02 proves the precompiled Node24 closure and selected unchanged suites under pinned Bun; RULE-03 injects randomness/proves replay, RULE-04 certifies official behavior, and PLAY-02 proves wire-level privacy. Rewarded/private play stays blocked until those gates pass. [ADR0009](0009-pinned-engine-qualification.md) records the implemented synthetic-only boundary and evidence.
 - WEB-01 must keep the lazy engine chunk within the loading budget on the reference networks.
 - Renderer (Babylon), React/Vite, Fastify/TypeBox, PostgreSQL/Drizzle, Better Auth and pg-boss stay as selected. Babylon remains subject to the M1 device proof (blueprint §3.2).
 - Any change to these choices needs a superseding ADR with comparative evidence.
+
+## RULE-02 dependency qualification
+
+The traced minimal runtime imports only mutative1.3.0, @logtape/logtape2.0.7 and seedrandom3.0.5. Zod4.4.3 and unique-names-generator4.7.1 remain baseline targets for the later closures that use them. Pretty2.0.7 is dev-only with compatible LogTape peer. The server qualification harness can execute synthetic upstream randomness without becoming an eligible server match; real server play still requires RULE-03. No hosting/provider, asset, runtime or dependency-pin decision is changed.

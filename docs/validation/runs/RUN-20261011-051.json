@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-051",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "packages/engine-lab/tests/adapter.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "34e3a5b9ea3f4c7797705894a68ab92eedc0dc81bf2ccd965971e38913686fc4",
+  "started_at": "2026-10-11T01:15:30.941Z",
+  "finished_at": "2026-10-11T01:15:31.115Z",
+  "recorded_at": "2026-10-11T01:15:31.115Z",
+  "time_precision": "exact",
+  "elapsed_ms": 174,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: sparse admission sets must fail closed",
+  "log_path": "docs/validation/logs/RUN-20261011-051.txt",
+  "log_sha256": "6dfff03c32128982577758edf02eb3668faa87dc49413b67089a5ef4927560fb",
+  "redactions": 0
+}

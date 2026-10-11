@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-034",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/vendor-engine",
+    "build"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "52d723680be48d6ee322b684166cb0fce5c6a6bd76a2e068e4a93fd6c7fb7175",
+  "started_at": "2026-10-11T00:57:41.973Z",
+  "finished_at": "2026-10-11T00:57:43.547Z",
+  "recorded_at": "2026-10-11T00:57:43.547Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1574,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Compile pure kernel with listed trace adaptation and mandatory actor arguments",
+  "log_path": "docs/validation/logs/RUN-20261011-034.txt",
+  "log_sha256": "3dbee0f30fab1ba87ec5040da1c1556c15b40f12617da43c8cf60ced8fa5f821",
+  "redactions": 0
+}

@@ -20,13 +20,14 @@ The generator creates owner-only `.env.local` and preserves existing values. `co
 
 ## Open or rebuild the container
 
-In Windows VS Code use **Dev Containers: Reopen in Container**. After Dockerfile changes use **Rebuild Container**, preserving the named database volume. The workspace runs as `node`, with source at `/workspaces/lorcana-online-tcg`. It installs Node 24.21.0, pnpm 10.33.0, Git, Python/PyYAML, psql, ripgrep and Chromium test libraries. No extra host Node or undocumented manual tooling install is needed.
+In Windows VS Code use **Dev Containers: Reopen in Container**. After Dockerfile changes use **Rebuild Container**, preserving the named database volume. The workspace runs as `node`, with source at `/workspaces/lorcana-online-tcg`. It installs Node 24.21.0, pnpm 10.33.0, Git, Python/PyYAML, psql, ripgrep, hash-pinned development-only Bun1.4.2 and Chromium test libraries. No extra host Node or undocumented manual tooling install is needed.
 
 The original post-create pipeline remains doctor → frozen install → configuration/syntax/documentation checks → bootstrap tests → authenticated database check. Its success proves workspace bootstrap, not full application or game acceptance. Run application checks separately:
 
 ```bash
 pnpm run doctor
 pnpm install --frozen-lockfile
+pnpm engine:setup
 pnpm verify:foundation
 pnpm db:check
 pnpm --filter @lorcana/web exec playwright install chromium
@@ -81,3 +82,7 @@ The live preview described during the prior session is no longer running at the 
 `pnpm verify:clean` copies the audited project-owned source to a temporary directory, excluding credentials/Git/dependencies/build output, then performs a frozen install and complete foundation validation. It removes the temporary copy on exit and never connects to or recreates the existing database. Stop fixed-port development first. Capture it as container evidence; this is a source-only clean-checkout proof, not device or image qualification.
 
 BOOT-05 adds `POST /protocol/negotiate` on both diagnostic HTTP services. The web match proxy checks revision/correlation and displays update-required or unavailable responses. Read [protocol](../contracts/protocol.md) and [release policy](../contracts/release.md) before extending transport or runtime identity. CI-generated identities are separate from the local development label; no game/admission/database route is active.
+
+## Engine tooling continuation
+
+RULE-02 runs unchanged selected upstream tests with pinned development-only Bun and builds pure Node/browser JavaScript. New images persist the runner; `pnpm engine:setup` verifies or installs the exact runner in the existing container without recreating its data. See [engine operation](engine.md) for closure/reproduction/worker checks and later play gates. The current web diagnostic has no engine worker control or game ingress.

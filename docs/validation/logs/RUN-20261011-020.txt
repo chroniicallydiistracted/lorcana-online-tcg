@@ -1,0 +1,21 @@
+✖ closure follows cyclic relative imports, type imports and explicit aliases, omitting unrelated files (2.070479ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.021886
+
+✖ failing tests:
+
+test at tests/engine/closure.test.mjs:8:1
+✖ closure follows cyclic relative imports, type imports and explicit aliases, omitting unrelated files (2.070479ms)
+  Error: Engine closure not implemented
+      at collectClosure (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:1:42)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/engine/closure.test.mjs:17:20)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)

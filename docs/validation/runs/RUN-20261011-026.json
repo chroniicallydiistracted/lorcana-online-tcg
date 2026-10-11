@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-026",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/vendor-engine",
+    "build"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "1a31a324e4d167addd11b4027ed2212cf1c641fac87a65402572b520ec6eb518",
+  "started_at": "2026-10-11T00:53:33.670Z",
+  "finished_at": "2026-10-11T00:53:35.206Z",
+  "recorded_at": "2026-10-11T00:53:35.206Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1511,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Engine development build failure capture: bridge import must match actual pinned exports",
+  "log_path": "docs/validation/logs/RUN-20261011-026.txt",
+  "log_sha256": "4c2ff6c22e065d6dd131c13df61cd8c7aeef1693563f5553029967aa2c623ca4",
+  "redactions": 0
+}

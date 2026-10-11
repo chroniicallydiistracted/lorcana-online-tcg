@@ -4,5 +4,21 @@
   "pnpm": "10.33.0",
   "postgresMajor": 18,
   "nodeImage": "node:24.21.0-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
-  "postgresImage": "postgres:18@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722"
+  "postgresImage": "postgres:18@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722",
+  "bunTestRunner": {
+    "version": "1.4.2",
+    "purpose": "development_and_CI_upstream_tests_only",
+    "assets": {
+      "x64": {
+        "archive": "bun-linux-x64.zip",
+        "archiveSha256": "36368faef7527875d5ffa52e53cd48021741f2a83eb6208a8dd64068d422a913",
+        "binarySha256": "a83d263767d839e4d2649ca8e35d07159c7afc99afdc96d731ced29e056dda0c"
+      },
+      "arm64": {
+        "archive": "bun-linux-aarch64.zip",
+        "archiveSha256": "54328bbc2d9c8e0c9f892c544d66c57a83b84139e34909e5ee81758f1ac8fda7",
+        "binarySha256": "616f267a34278ff5ac282df37ffdfba1d7141f4f6926bca99af2cd6ef3ad32b1"
+      }
+    }
+  }
 }

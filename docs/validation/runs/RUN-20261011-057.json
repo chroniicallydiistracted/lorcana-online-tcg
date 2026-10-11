@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-057",
+  "category": "headless_browser",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process'; for (const args of [['test:e2e:smoke'],['test:engine-browser']]) { const r=spawnSync('pnpm',args,{stdio:'inherit'}); if(r.status!==0||r.signal||r.error) process.exit(1); }"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e",
+  "started_at": "2026-10-11T01:22:04.516Z",
+  "finished_at": "2026-10-11T01:22:26.852Z",
+  "recorded_at": "2026-10-11T01:22:26.852Z",
+  "time_precision": "exact",
+  "elapsed_ms": 22306,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final-source Linux Chromium foundation6 and two synthetic engine workers with cleanup",
+  "log_path": "docs/validation/logs/RUN-20261011-057.txt",
+  "log_sha256": "a76a9d6575729807d7ae01756a8814aea6ecbe3d4dbb4b94d90f846d5163d393",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-047",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "packages/engine-lab/tests/adapter.test.mjs",
+    "tests/foundation/boundaries.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "429dded06c9b943d2c368d67f74118b06e97dc3af39605dd3bcb295e7f6bcbbf",
+  "started_at": "2026-10-11T01:12:24.924Z",
+  "finished_at": "2026-10-11T01:12:28.763Z",
+  "recorded_at": "2026-10-11T01:12:28.763Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3838,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "GREEN: independent review bounded data and adapter-only server imports",
+  "log_path": "docs/validation/logs/RUN-20261011-047.txt",
+  "log_sha256": "b525d5ee3c88476eb3ee5e25044549f39f44808e973ba2c790ff1d5494dcb778",
+  "redactions": 0
+}

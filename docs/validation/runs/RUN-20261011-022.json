@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-022",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/engine/closure.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "cf32d98624dc9ba026ff731fe22a3c2a84d7d738b0fe45a2f623ec3d9914282b",
+  "started_at": "2026-10-11T00:45:13.401Z",
+  "finished_at": "2026-10-11T00:45:13.770Z",
+  "recorded_at": "2026-10-11T00:45:13.770Z",
+  "time_precision": "exact",
+  "elapsed_ms": 369,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: reject vendor drift, unlisted patches and source membership changes",
+  "log_path": "docs/validation/logs/RUN-20261011-022.txt",
+  "log_sha256": "e3bffdbbfafb5d9782bd20cf54d6b9e2e6e2ba4d04e2a47223d6127aa2a90a37",
+  "redactions": 0
+}

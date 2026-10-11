@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-060",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process'; for(const args of [['docs:check'],['verify']]) {const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0||r.signal||r.error)process.exit(1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e",
+  "started_at": "2026-10-11T19:59:24.479Z",
+  "finished_at": "2026-10-11T19:59:46.666Z",
+  "recorded_at": "2026-10-11T19:59:46.666Z",
+  "time_precision": "exact",
+  "elapsed_ms": 22186,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Current documentation/static configuration/import/vendor/rules checks after final semantic review",
+  "log_path": "docs/validation/logs/RUN-20261011-060.txt",
+  "log_sha256": "93cf1cd3360bc5993d73a8a3524d1de2cc12970d6d6a5c19c9a20b6024c090a0",
+  "redactions": 0
+}

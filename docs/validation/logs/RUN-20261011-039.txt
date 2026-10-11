@@ -1,0 +1,45 @@
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.72153ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.655575ms)
+✖ experimental engine and provenance are carried and release-bound; calendar metadata does not make a game release (31.282293ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (41.25557ms)
+✔ manifest traversal, duplicate and missing entries are rejected (19.023606ms)
+✔ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (17.855355ms)
+✔ documented artifact command accepts the pnpm argument separator (670.918392ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.379904ms)
+✔ version2 artifacts carry a release bound to app and actual SQL migration bytes (19.310786ms)
+✔ release binding rejects modified inner metadata or build/SQL bytes even with recomputed outer hashes (45.739412ms)
+✔ a shallow repository cannot bypass full-history qualification (47.938332ms)
+✔ release identity binds transitive executable workspace bytes and package resolution metadata (61.736942ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1349.452397
+
+✖ failing tests:
+
+test at tests/ci/gates.test.mjs:53:1
+✖ experimental engine and provenance are carried and release-bound; calendar metadata does not make a game release (31.282293ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'reserved'
+  - 'built'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/ci/gates.test.mjs:56:55)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'reserved',
+    expected: 'built',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

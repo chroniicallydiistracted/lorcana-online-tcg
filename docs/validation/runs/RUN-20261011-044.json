@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-044",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "lint"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "b51a9d302339f0aec5c76395e0af6a8ddcac59fe1a96910fe2f03d100b201d29",
+  "started_at": "2026-10-11T01:07:45.771Z",
+  "finished_at": "2026-10-11T01:07:48.923Z",
+  "recorded_at": "2026-10-11T01:07:48.923Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3153,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "ESLint and actual browser/server engine import boundaries",
+  "log_path": "docs/validation/logs/RUN-20261011-044.txt",
+  "log_sha256": "a2a5014e527d6a3e95118c8f7390e099db8a3571afd09f8d4ee690b26ffac22a",
+  "redactions": 0
+}

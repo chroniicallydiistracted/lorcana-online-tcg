@@ -14,6 +14,19 @@ RUN npm install --global --ignore-scripts --no-audit --no-fund pnpm@10.33.0 \
     && test "$(node --version)" = "v24.21.0" \
     && test "$(pnpm --version)" = "10.33.0"
 
+# Bun is qualification tooling only; application artifacts run on Node.
+RUN case "$(dpkg --print-architecture)" in \
+      amd64) task_bun_arch=x64; task_bun_sha=36368faef7527875d5ffa52e53cd48021741f2a83eb6208a8dd64068d422a913 ;; \
+      arm64) task_bun_arch=aarch64; task_bun_sha=54328bbc2d9c8e0c9f892c544d66c57a83b84139e34909e5ee81758f1ac8fda7 ;; \
+      *) exit 1 ;; \
+    esac \
+    && curl --fail --location --max-time 120 "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-linux-${task_bun_arch}.zip" -o /tmp/bun.zip \
+    && printf '%s  /tmp/bun.zip\n' "$task_bun_sha" | sha256sum --check \
+    && python3 -c 'import sys,zipfile;z=zipfile.ZipFile("/tmp/bun.zip");open("/usr/local/bin/bun","wb").write(z.read("bun-linux-"+sys.argv[1]+"/bun"))' "$task_bun_arch" \
+    && chmod 755 /usr/local/bin/bun \
+    && test "$(bun --version)" = "1.4.2" \
+    && rm /tmp/bun.zip
+
 USER node
 WORKDIR /workspaces/lorcana-online-tcg
 CMD ["sleep", "infinity"]

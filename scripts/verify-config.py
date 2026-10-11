@@ -38,7 +38,7 @@ assert mount["bind"]["create_host_path"] is False
 assert "docker.sock" not in str(compose)
 assert "POSTGRES_PASSWORD:" not in (root / ".devcontainer/compose.yaml").read_text()
 assert (root / ".devcontainer/Dockerfile").read_text().splitlines()[0] == "FROM " + toolchain["nodeImage"]
-assert workspace["packages"] == ["apps/*", "packages/*"]
+assert workspace["packages"] == ["apps/*", "packages/*", "vendor/tcg-engines"]
 for setting in ("saveExact", "engineStrict", "strictPeerDependencies", "packageManagerStrictVersion", "strictDepBuilds"):
     assert workspace[setting] is True, setting
 assert workspace["allowBuilds"] == {}

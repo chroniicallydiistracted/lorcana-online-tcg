@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-041",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/foundation/boundaries.test.mjs",
+    "tests/engine/closure.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "dc50c1859e229abf3efe95a69a4a2b1eff6bdb7ab494c5b57afbed9e56e5fcc9",
+  "started_at": "2026-10-11T01:02:14.818Z",
+  "finished_at": "2026-10-11T01:02:18.854Z",
+  "recorded_at": "2026-10-11T01:02:18.854Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4035,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: server apps must not bypass engine adapter and dependency closure must reject parent symlink escape",
+  "log_path": "docs/validation/logs/RUN-20261011-041.txt",
+  "log_sha256": "83d64ae67a120df66ce6eec455d3d85b49496ec71166629f00f0281fdb92a711",
+  "redactions": 0
+}

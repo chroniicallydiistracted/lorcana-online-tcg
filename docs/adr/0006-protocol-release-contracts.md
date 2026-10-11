@@ -23,3 +23,7 @@ Any incompatible wire/semantic/secrecy change requires a new protocol revision p
 ## Independent review corrections
 
 Four reproduced findings were corrected with retained red/green receipts: application conflicts use HTTP409; configured services advertise only implemented revision1; public DTOs reject inherited/accessor data and registry copies are revalidated; release components bind owning package/export metadata and complete runtime workspace closure, including the database migrator and SQL tree. HTTP409 represents application-version conflict while the transport remains HTTP; no transport upgrade is performed. These decisions refine the original scope rather than accepting gameplay or deployment.
+
+## Current RULE-02 continuation — 2026-10-11 UTC
+
+Earlier reserved-engine/no-upstream-execution and artifact-v2 statements above describe their dated checkpoints. [Engine qualification](../validation/rule-02.md) and [ADR0009](../adr/0009-pinned-engine-qualification.md) now define the minimal pinned synthetic Node/Lab-worker implementation, development-only Bun, current artifact v3 and source-matched results. Rules-data/domain/testkit remain reserved. Secure randomness/replay, official rules/cards and wire privacy remain RULE-03/RULE-04/PLAY-02 gates; rewarded/private/ordinary Lab/Collection play stays blocked. Hosted RULE-01 main1925127 passed run38098551762 (downloaded artifact RUN-20261011-019); current RULE-02 hosted/device/production evidence is not inferred. Full548 scope/20 optional flags and provider/D07 decisions remain unchanged.

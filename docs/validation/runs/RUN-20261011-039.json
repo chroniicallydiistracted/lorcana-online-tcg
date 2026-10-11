@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-039",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/ci/gates.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "4d82513d5c3f756725d48e423b0128e1f79bd77143b2268c408ba97d34ac7c9b",
+  "started_at": "2026-10-11T00:59:40.380Z",
+  "finished_at": "2026-10-11T00:59:41.800Z",
+  "recorded_at": "2026-10-11T00:59:41.800Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1420,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: CI artifact must identify compiled engine/provenance without activating rules/catalog",
+  "log_path": "docs/validation/logs/RUN-20261011-039.txt",
+  "log_sha256": "3b4f630136e65f10f83d60e3673038e31db0cb9f7c498d04396b4f15a4b000aa",
+  "redactions": 0
+}

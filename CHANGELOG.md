@@ -2,6 +2,159 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261011-002 — RULE-02 pinned engine vendoring and temporal qualification gates
+
+- Status: finalized
+- Actor: Codex architect/developer/QA
+- Recorded (UTC): 2026-10-11T20:09:16.139Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 19251271a635bd94556ce70a6ef0a77e4ccd7b65
+- Tasks: RULE-02, DOC-01, DOC-02
+- Features: F-ENGINE, F-BOUNDARIES, F-CI, F-RELEASE, F-RULE-INVENTORY, F-DOCS, F-RESERVED
+- Requirements: R01.005, R01.006, R01.018, R29.005
+
+### Changes
+
+- **implementation:** Vendor exact minimal347-file closure at53a7941 with original Git/SHA256 identities,304 runtime source-or-types, two reproducible patches and MIT notices.
+- **function:** Compile pure synthetic kernel, closed Node adapter and standalone trust-free Lab worker; explicit player authority, actor/revision/terminal/disposal handling and bounded private-free summaries.
+- **feature:** Retain Director task sequence: secure RNG RULE-03, official behavior RULE-04 and wire privacy PLAY-02; all eligible/private/official play blocked across October16/23 date transitions.
+- **expansion:** Add hash-pinned dev/CI-only Bun1.4.2 and owning exact minimal dependencies; artifact v3 binds twelve builds and engine/provenance, SBOM/notices include vendored component.
+- **fix:** Independent review regressions bound sparse/aggregate/accessor inputs and sparse admission sets, block direct/computed/relative server engine bypasses and bind actual test resolver aliases to selection.
+- **test:** Retain every red/green checkpoint; final source passes124 project checks and338 unchanged upstream tests/1 existing skip, clean frozen installation,13-stage isolated image/DB/artifact proof and six plus two Chromium scenarios.
+- **documentation:** Update current owning docs, architecture/status/map/features/task/requirement evidence and handoff; preserve all original scope and immutable dated/archive evidence.
+- **review:** Observe closed RULE-01 hosted main1925127 run38098551762 and verify its downloaded v2 artifact at intake with the historical verifier; no RULE-02 hosted acceptance inferred.
+- **review:** Read-only independent reviewer found no unresolved Critical/Important findings after retained corrections; canonical Git1173-file identity/full foundation and actual cleanup/private/log/original-scope proofs pass. Preserve exact canonical helper and separately attributed host inspection, including its corrected read-only missing-health query.
+
+### Verification
+
+- **passed:** RULE-02 intake toolchain baseline ([evidence](docs/validation/runs/RUN-20261011-014.json))
+- **passed:** RULE-02 unchanged intake configuration and documentation baseline ([evidence](docs/validation/runs/RUN-20261011-015.json))
+- **passed:** RULE-02 intake bootstrap baseline ([evidence](docs/validation/runs/RUN-20261011-016.json))
+- **passed:** RULE-02 intake authenticated bootstrap database baseline ([evidence](docs/validation/runs/RUN-20261011-017.json))
+- **failed:** Verify completed RULE-01 hosted CI and downloaded artifact against merged source; local verification of remote evidence ([evidence](docs/validation/runs/RUN-20261011-018.json))
+- **passed:** Verify merged RULE-01 hosted CI and downloaded artifact using the actual download directory ([evidence](docs/validation/runs/RUN-20261011-019.json))
+- **failed:** RED: engine closure traversal and unsafe-import rejection before implementation ([evidence](docs/validation/runs/RUN-20261011-020.json))
+- **passed:** GREEN: dependency traversal rejects nonliteral, unresolved, unapproved and escaping imports ([evidence](docs/validation/runs/RUN-20261011-021.json))
+- **failed:** RED: reject vendor drift, unlisted patches and source membership changes ([evidence](docs/validation/runs/RUN-20261011-022.json))
+- **passed:** GREEN: byte/blob integrity rejects modified, extra/missing source and unlisted patches ([evidence](docs/validation/runs/RUN-20261011-023.json))
+- **failed:** RED: real adapter command/lifecycle and rules/set temporal admission behaviors before implementation ([evidence](docs/validation/runs/RUN-20261011-024.json))
+- **failed:** RED: browser ownership must allow only the designated Lab-to-compiled-kernel edge (source_changed, unqualified checkpoint) ([evidence](docs/validation/runs/RUN-20261011-025.json))
+- **failed:** Engine development build failure capture: bridge import must match actual pinned exports ([evidence](docs/validation/runs/RUN-20261011-026.json))
+- **passed:** Precompiled kernel build after correcting the pinned ID export location ([evidence](docs/validation/runs/RUN-20261011-027.json))
+- **failed:** Strict Lab adapter and standalone browser worker build ([evidence](docs/validation/runs/RUN-20261011-028.json))
+- **failed:** Adapter lifecycle commands and temporal admission guards against real compiled kernel ([evidence](docs/validation/runs/RUN-20261011-029.json))
+- **passed:** Unchanged selected pinned upstream tests under checksum-verified Bun1.4.2 ([evidence](docs/validation/runs/RUN-20261011-030.json))
+- **passed:** Pure browser/Node kernel compile after replacing environment lookups with explicit strict qualification constants ([evidence](docs/validation/runs/RUN-20261011-031.json))
+- **failed:** Browser-safe Lab worker compilation and strict own-interface types ([evidence](docs/validation/runs/RUN-20261011-032.json))
+- **failed:** Real synthetic opening/mulligan/concession, explicit player authority, lifecycle and temporal gates ([evidence](docs/validation/runs/RUN-20261011-033.json))
+- **passed:** Compile pure kernel with listed trace adaptation and mandatory actor arguments ([evidence](docs/validation/runs/RUN-20261011-034.json))
+- **passed:** Compile strict Lab wrapper and environment-free standalone worker ([evidence](docs/validation/runs/RUN-20261011-035.json))
+- **passed:** GREEN: actual opening/mulligan/concession, player-only authority, lifecycle, boundaries and October fail-closed qualification gates ([evidence](docs/validation/runs/RUN-20261011-036.json))
+- **passed:** Verify documented local patches preserve all selected unchanged upstream test assertions ([evidence](docs/validation/runs/RUN-20261011-037.json))
+- **passed:** Actual Linux Chromium execution of two standalone synthetic Lab Web Workers; no Node/Bun or live network state ([evidence](docs/validation/runs/RUN-20261011-038.json))
+- **failed:** RED: CI artifact must identify compiled engine/provenance without activating rules/catalog ([evidence](docs/validation/runs/RUN-20261011-039.json))
+- **passed:** GREEN: artifactv3 binds engine/kernel/provenance and rejects rehashed modified kernel bytes ([evidence](docs/validation/runs/RUN-20261011-040.json))
+- **failed:** RED: server apps must not bypass engine adapter and dependency closure must reject parent symlink escape ([evidence](docs/validation/runs/RUN-20261011-041.json))
+- **passed:** GREEN: engine closure symlink isolation and adapter-only server imports ([evidence](docs/validation/runs/RUN-20261011-042.json))
+- **passed:** Current workspace strict type checks and all ordered package builds ([evidence](docs/validation/runs/RUN-20261011-043.json))
+- **failed:** ESLint and actual browser/server engine import boundaries ([evidence](docs/validation/runs/RUN-20261011-044.json))
+- **passed:** Corrected lint and actual browser/server engine boundaries ([evidence](docs/validation/runs/RUN-20261011-045.json))
+- **failed:** RED: independent review sparse/aggregate JSON input bounds and server import bypasses ([evidence](docs/validation/runs/RUN-20261011-046.json))
+- **passed:** GREEN: independent review bounded data and adapter-only server imports ([evidence](docs/validation/runs/RUN-20261011-047.json))
+- **failed:** RED: bind actual upstream test aliases to the byte-verified selection ([evidence](docs/validation/runs/RUN-20261011-048.json))
+- **passed:** GREEN: review resolver binding and bounded input/import regressions ([evidence](docs/validation/runs/RUN-20261011-049.json))
+- **failed:** RED: relative server Lab route must enter through adapter ([evidence](docs/validation/runs/RUN-20261011-050.json))
+- **failed:** RED: sparse admission sets must fail closed ([evidence](docs/validation/runs/RUN-20261011-051.json))
+- **passed:** GREEN: all independent review bounds/admission/relative-import/resolver regressions ([evidence](docs/validation/runs/RUN-20261011-052.json))
+- **passed:** Full current-source configuration/docs/build/type/lint/bootstrap/project/upstream foundation ([evidence](docs/validation/runs/RUN-20261011-053.json))
+- **passed:** Source-only clean frozen install and complete RULE-02 foundation with no private/cache/Git input ([evidence](docs/validation/runs/RUN-20261011-054.json))
+- **passed:** Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts ([evidence](docs/validation/runs/RUN-20261011-055.json))
+- **passed:** Exact pinned upstream closure/license/patch reproduction from retained source bytes ([evidence](docs/validation/runs/RUN-20261011-056.json))
+- **passed:** Final-source Linux Chromium foundation6 and two synthetic engine workers with cleanup ([evidence](docs/validation/runs/RUN-20261011-057.json))
+- **passed:** Independent current-source artifact v3/release/engine/provenance/SBOM re-verification ([evidence](docs/validation/runs/RUN-20261011-058.json))
+- **passed:** Resumed existing-container doctor/bootstrap5/authenticated PostgreSQL baseline ([evidence](docs/validation/runs/RUN-20261011-059.json))
+- **passed:** Current documentation/static configuration/import/vendor/rules checks after final semantic review ([evidence](docs/validation/runs/RUN-20261011-060.json))
+- **passed:** Canonical staged Git archive: exact live byte identity, frozen install and complete foundation; verified tooling caches may be reused ([evidence](docs/validation/runs/RUN-20261011-061.json))
+- **passed:** Actual final listener/private/log/requirement/archive preservation and retained host/canonical evidence identity ([evidence](docs/validation/runs/RUN-20261011-062.json))
+- **passed:** Completed-scope documentation/static review and original requirement preservation with fully captured checker input ([evidence](docs/validation/runs/RUN-20261011-063.json))
+- **passed:** Finalized documentation seal: staged/live canonical identities, complete file coverage, known-secret scan and append-only Git ancestry checks ([evidence](docs/validation/runs/RUN-20261011-064.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [README.md](README.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Run/change schema1, UTC/monotonic and append-only contracts remain intact; artifact v3 has a separate namespace and all failed attempts are retained.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Native intake/review/source-matched evidence/canonical-check closure remains the required workflow; vendoring adds no approval or agent-specific ledger.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Current CI statement identifies RULE-02 local v3 proof separately from historical hosted BOOT-03/RULE-01; synthetic engine and later gates match owned interfaces.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Replace interrupted pending-test checkpoint with actual final source-matched results, protected environment, owned cleanup and next RULE-03 task; preserve later admission/device gates.
+- **updated:** [docs/README.md](docs/README.md) — Index current engine operation and dated independent review, preserving source, historical and current documentation authority.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/adr/0003-documentation-evidence.md](docs/adr/0003-documentation-evidence.md) — Schema-version1 governance and clock/sealing rules unchanged; the new build-artifact format is separate.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — No role/SQL/credential/DB integration changes; the synthetic adapter has no database path and original data is protected.
+- **updated:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/adr/0007-hosting-provider-baseline.md](docs/adr/0007-hosting-provider-baseline.md) — OVHcloud/Cloudflare/$25 decision and purchase/deploy gates remain unchanged; synthetic runtime proof does not reproduce capacity measurements.
+- **updated:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Revision1 wire schemas still have no executable game intent or engine state; the synthetic harness is in-process only and no protocol revision changed.
+- **updated:** [docs/contracts/release.md](docs/contracts/release.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classify dated independent review as evidence and retain current engine boundary/release/CI/dependency ownership edges.
+- **updated:** [docs/features.json](docs/features.json) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — Existing restricted-role/migration/recreation plan and dated completion remain accurate; no new persistence or backup claim.
+- **updated:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/plans/2026-10-07-boot-05-contracts.md](docs/plans/2026-10-07-boot-05-contracts.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/plans/2026-10-11-rule-02-engine-vendor.md](docs/plans/2026-10-11-rule-02-engine-vendor.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — D07 notice/provenance/free access/takedown policy unchanged; no official card art/text definition was imported by runtime.
+- **updated:** [docs/reviews/2026-10-11-rule-02-closure.md](docs/reviews/2026-10-11-rule-02-closure.md) — Retain read-only final assessment, independently corrected findings and explicit review limits; executed checks remain separate source-bound receipts.
+- **updated:** [docs/rules/README.md](docs/rules/README.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — Corrected supplement acquisition/hash evidence unchanged; vendoring cannot close missing source gaps.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — Dated acquisition specs and official hashes unchanged; no new official rule/source claim.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — Managed role/migration/live-test ownership and disposable recreation operation unchanged; no engine persistence is wired.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/schemas/change.schema.json](docs/schemas/change.schema.json) — Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3.
+- **reviewed_unchanged:** [docs/schemas/documentation-map.schema.json](docs/schemas/documentation-map.schema.json) — Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3.
+- **reviewed_unchanged:** [docs/schemas/features.schema.json](docs/schemas/features.schema.json) — Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3.
+- **reviewed_unchanged:** [docs/schemas/run.schema.json](docs/schemas/run.schema.json) — Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3.
+- **reviewed_unchanged:** [docs/schemas/state.schema.json](docs/schemas/state.schema.json) — Schema1 structural fields/enums/identity/time/sealing contract reviewed; no governance schema or wire-format migration required by artifact v3.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Uniform schema1 required fields/explicit verification categories preserved; current change supplies complete file coverage.
+- **reviewed_unchanged:** [docs/templates/handoff.md](docs/templates/handoff.md) — Exact intake/source/execution/behavior/docs/evidence/resource/limits/next-action template is followed by updated handoff.
+- **updated:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Append current v3/twelve-workspace continuation to dated BOOT-05 v2 checkpoint; restricted SQL/roles unchanged and fresh isolated database checks do not imply engine persistence.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Director decisions and labeled superseded research remain intact; ADR0009 refines task sequencing without new provider/deploy acceptance.
+- **updated:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/validation/rule-02-canonical-check.mjs.txt](docs/validation/rule-02-canonical-check.mjs.txt) — Retain exact ignored helper bytes executed by canonical RUN061; read-only evidence text, not new runtime tooling; identity compared in RUN062.
+- **updated:** [docs/validation/rule-02-host-closure.json](docs/validation/rule-02-host-closure.json) — Retain actual WSL host cleanup/mount inspection separately from container receipt, including corrected read-only missing-health query and unknown earlier execution times.
+- **updated:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — Acceptance table maps minimal pin/test/Node/worker criteria to actual receipts, preserves every failure/skip, corrects cache wording and distinguishes canonical/document/host cleanup.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — X06/X07 exact documentation and timestamped evidence contracts retained; RULE-02 adds implementation within existing scope.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D04 launch admission and all Director choices retained; calendar phases cannot select a launch catalog.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **reviewed_unchanged:** [infra/README.md](infra/README.md) — Two owned disposable Compose projects and production reservations remain accurate; current release-policy link now defines engine v3 binding.
+- **updated:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+- **updated:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Updated current behavior/status/ownership/evidence against synthetic engine source; previous execution tables remain source-specific and later play gates stay pending.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261011-002.json).
+
+### Limits and next actions
+
+- Rules2.3.0 effective2026-10-16 and Hyperia14 general release2026-10-23 require future certification; current pin is not certified.
+- Secure injected randomness and viewer projection remain gated by RULE-03/PLAY-02; no rewarded/private production play.
+- Upstream strict typing, full original lock/catalog/all-card coverage and complete redistribution qualification are not accepted; scoped upstream tests retain one inherited skip.
+- No new hosted RULE-02, real Windows/GPU/touch/loading/load/ARM64 or production evidence; unsigned artifact identity includes twelve explicit npm root notice-file gaps.
+- Create the coherent reviewed local RULE-02 commit; no publication/deployment/main integration for this scope.
+- Continue RULE-03 secure injected RNG, recorded deterministic outcomes, replay equality and random-stream access tests; retain RULE-04/PLAY-02 and official/reward/private admission gates.
+
 ## CHG-20261011-001 — Independent audit of RULE-01 and Director-authorized integration into main
 
 - Status: finalized

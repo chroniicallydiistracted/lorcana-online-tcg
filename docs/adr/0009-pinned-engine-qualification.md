@@ -1,0 +1,27 @@
+# ADR0009: Minimal precompiled engine and gated qualification
+
+Recorded 2026-10-11 UTC. Status: implemented for RULE-02; execution evidence is in [validation](../validation/rule-02.md). Authority: the Director's RULE-02 assignment and explicit clarification to keep the documented task sequence. Affected tasks RULE-02/03/04, PLAY-02, BOOT-03/05, DOC-01/02; prerequisite evidence only for R01.005/.006/.018 and R29.005.
+
+## Decision and comparative evidence
+
+Retain ADR0008's pinned fork and isomorphic placement. Import the TypeScript dependency closure of the synthetic runtime and 27 selected existing upstream test files at `53a79413c58678b1c50dde57e71de5c123132716`. The reviewed selection yields 347 files, including 304 runtime source/type files. It excludes the full official card catalog, simulator UI, generators and unrelated games. Every file binds original Git blob/SHA-256, local bytes and scope in `upstream.lock.json`; extra, changed, missing and escaping source files fail. The importer checks exact source HEAD and original Git blobs and refuses automatic replacement of an existing vendor tree.
+
+Keep both upstream MIT notices, original patched files and a two-entry patch ledger. P001 removes only automatic nonliteral Bun matcher loading; the unchanged matcher is explicitly preloaded. P002 disables environment-driven private tracing in the shared kernel. Neither patch changes test assertions or card-rule logic. Reproduction against the pinned ignored checkout checks all selected bytes and the lock. A whole-upstream copy would import unrelated catalogs and runtime/test tools; the explicit AST closure supplies a smaller auditable boundary.
+
+Compile a narrow project-owned synthetic kernel into ordinary JavaScript using Vite. Its only production dependencies are mutative1.3.0, @logtape/logtape2.0.7 and seedrandom3.0.5; unused Zod/name helpers remain planned exact pins. @logtape/pretty2.0.7 is test-only. No Bun, source loader, Node/environment import or private viewer resource is exported by the kernel. Project-owned interfaces undergo strict TypeScript checks; upstream source is transpiled, byte-verified and behavior-tested, not claimed to pass a complete upstream strict-type audit. Retaining development invariant checks avoids silently turning unsupported effects into production no-ops.
+
+`engine-lab` owns the compiled-kernel edge and a standalone Web Worker; the server-only `engine-adapter` owns Node qualification. Server applications must enter through the project adapter. Browser/public consumers cannot import server code or raw upstream files; only engine-lab can import the compiled vendor entry. Tests exercise actual Node24 and two Chromium workers with synthetic opening, mulligan, concession and disposal. The current web shell does not load the worker; lazy integration/Workbox and device/loading budgets remain WEB/UX work.
+
+Bun1.4.2 is development/CI tooling only, persisted in the Dockerfile with exact official archive hashes and independently recorded binary hashes. The repo-owned setup helper supports an existing container without recreating its data. Upstream assertions run unchanged under that runner and approved project dependency pins, rather than claiming reproduction of the entire upstream lock/workspace. ARM64 downloads are identified; runtime execution qualification is x64 only.
+
+## Director clarification and admission
+
+The Director explicitly selected the backlog sequence: RULE-02 vendors and qualifies the runtime, RULE-03 injects secure randomness and proves replay, RULE-04 certifies official behaviors, PLAY-02 proves wire/viewer privacy. This supersedes ADR0008's consequence assigning all three protections to RULE-02; their substantive requirements are retained. The current server adapter is an experimental synthetic harness, never an eligible authoritative match. Seedrandom and upstream random paths cannot grant economic/competitive/private play.
+
+The factories accept only synthetic qualification/manipulated Sandbox fixtures. An executable admission helper rejects ordinary Lab, Collection Play, official rule/catalog requests, rewards and hidden-state requests. It reports CR2.3 effective October16 and set14 prerelease October16/general release October23 separately; date passage never grants certification or admission. No official card definition is activated. The dated RULE-01 source inventory and its missing-document gates remain authoritative inputs for RULE-04.
+
+## Artifact consequences
+
+Artifact manifest schema_version3 requires twelve workspace builds plus vendor lock and both MIT notices. The public release schema/protocol/governance versions stay1. Engine status becomes built for **foundation** identity only; its digest binds adapter, Lab, compiled kernel, package metadata and provenance. Content/rules/products/rewards remain reserved. Mutation plus rehashing the outer manifest still fails inner release binding. SBOM/notices add the exact vendored component separately from installed npm packages; development Bun/OS/Chromium remain explicitly excluded. Prior v1/v2 artifacts require the matching historical Git source/verifier; today’s verifier accepts v3 only. Their append-only evidence remains unchanged.
+
+No authentic signature, deployed release, full catalog, current-rules certification, secure replay, production authority or device/performance acceptance follows from these build identities. Original private credentials, persistent database, provider decisions and all548 requirements/20 optional flags remain intact.

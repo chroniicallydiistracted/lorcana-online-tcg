@@ -37,11 +37,32 @@ function fixture(t) {
     writeFileSync(join(root,workspace,'package.json'),JSON.stringify({name,dependencies}));
   }
   mkdirSync(join(root,'packages/db/migrations'),{recursive:true});writeFileSync(join(root,'packages/db/migrations/0001-foundation-probes.sql'),'SELECT 1;');
+  for (const workspace of ['packages/engine-adapter', 'packages/engine-lab', 'vendor/tcg-engines']) {
+    mkdirSync(join(root, workspace, 'dist'), { recursive: true });
+    const name = workspace === 'vendor/tcg-engines' ? '@lorcana/vendor-engine' : '@lorcana/' + workspace.split('/')[1];
+    const dependencies = workspace === 'packages/engine-adapter' ? { '@lorcana/engine-lab': 'workspace:*' } : workspace === 'packages/engine-lab' ? { '@lorcana/vendor-engine': 'workspace:*' } : {};
+    writeFileSync(join(root, workspace, 'package.json'), JSON.stringify({ name, dependencies }));
+    writeFileSync(join(root, workspace, 'dist/kernel.js'), 'synthetic compiled engine');
+  }
+  for (const file of ['LICENSE', 'upstream.lock.json', 'provenance/LORCANA_LICENSE.txt']) { mkdirSync(join(root, 'vendor/tcg-engines', file, '..'), { recursive: true }); writeFileSync(join(root, 'vendor/tcg-engines', file), 'synthetic provenance'); }
   for(const file of ['package.json','pnpm-lock.yaml','pnpm-workspace.yaml'])writeFileSync(join(root,file),'{}');
   const toolchain=JSON.parse(readFileSync(new URL('../../toolchain.json',import.meta.url)));writeFileSync(join(root,'toolchain.json'),JSON.stringify(toolchain));
   const identity={source_commit:'a'.repeat(40),source_fingerprint:'b'.repeat(64),lock_sha256:sha256('{}'),dirty:true,node:toolchain.node,pnpm:toolchain.pnpm,platform:'linux',architecture:'x64',project:'lorcana-ci-'+'a'.repeat(32),workspace_image_id:'sha256:'+'a'.repeat(64),postgres_image:toolchain.postgresImage};
   return {root,out,identity,reports:{'sbom.cdx.json':{bomFormat:'CycloneDX'},'dependency-audit.json':{result:'passed'},'THIRD_PARTY_NOTICES.txt':'Synthetic notices','pipeline.json':{result:'passed'}}};
 }
+test('experimental engine and provenance are carried and release-bound; calendar metadata does not make a game release', t => {
+  const { root, out, reports, identity } = fixture(t); createArtifacts(root, out, reports, identity);
+  const release = JSON.parse(readFileSync(join(out, 'release-manifest.json')));
+  assert.equal(release.purpose, 'foundation'); assert.equal(release.components.engine.status, 'built');
+  assert.equal(release.components.rules.status, 'reserved'); assert.equal(release.components.content.status, 'reserved');
+  assert.equal(readFileSync(join(out, 'build/vendor/tcg-engines/LICENSE'), 'utf8'), 'synthetic provenance');
+  const file = 'build/vendor/tcg-engines/dist/kernel.js';
+  writeFileSync(join(out, file), 'modified kernel');
+  const manifest = JSON.parse(readFileSync(join(out, 'manifest.json'))), row = manifest.files.find(entry => entry.path === file), bytes = readFileSync(join(out, file));
+  row.bytes = bytes.length; row.sha256 = sha256(bytes);
+  writeFileSync(join(out, 'manifest.json'), JSON.stringify(manifest));
+  assert.throws(() => verifyArtifacts(out), /Release|release/);
+});
 test('artifact verification rejects tampered bytes, missing/extra/private paths and symlinks', t => {
   const {root,out,reports,identity}=fixture(t);createArtifacts(root,out,reports,identity);
   assert.doesNotThrow(()=>verifyArtifacts(out));
@@ -75,13 +96,13 @@ test('pipeline rejects ordinary local database and propagates failing stages wit
   assert.throws(()=>runStages(stages,(_command,name)=>{if(name==='failure')throw new Error('fixture');after=true;}));assert.equal(after,false);
 });
 
-test('version2 artifacts carry a release bound to app and actual SQL migration bytes', t => {
+test('version3 artifacts carry a release bound to app, engine and actual SQL migration bytes', t => {
   const {root,out,reports,identity}=fixture(t);createArtifacts(root,out,reports,identity);
   assert.ok(existsSync(join(out,'release-manifest.json')));
   const release=JSON.parse(readFileSync(join(out,'release-manifest.json')));
   assert.equal(release.source.fingerprint,identity.source_fingerprint);
-  assert.equal(release.purpose,'foundation');assert.deepEqual(release.components.engine,{status:'reserved'});
-  assert.equal(JSON.parse(readFileSync(join(out,'manifest.json'))).schema_version,2);
+  assert.equal(release.purpose,'foundation');assert.equal(release.components.engine.status,'built');
+  assert.equal(JSON.parse(readFileSync(join(out,'manifest.json'))).schema_version,3);
   assert.equal(readFileSync(join(out,'build/packages/db/migrations/0001-foundation-probes.sql'),'utf8'),'SELECT 1;');
   assert.doesNotThrow(()=>verifyArtifacts(out));
 });

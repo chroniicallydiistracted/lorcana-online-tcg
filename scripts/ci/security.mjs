@@ -2,6 +2,7 @@ import { readFileSync, readdirSync, lstatSync, realpathSync } from 'node:fs';
 import { join, resolve, relative } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { sha256, inventory } from '../documentation-lib.mjs';
+import { checkVendor } from '../engine/vendor.mjs';
 
 const policy=JSON.parse(readFileSync(new URL('./policy.json',import.meta.url)));
 const patterns=[
@@ -80,11 +81,15 @@ export function dependencyReports(root) {
     }
   }
   if(observed.size!==installed.size)throw new Error('License graph omits installed packages');
+  checkVendor();
+  const vendor=JSON.parse(readFileSync(join(root,'vendor/tcg-engines/upstream.lock.json')));
+  components.push({type:'library','bom-ref':'tcg-engines@'+vendor.revision,name:'tcg-engines minimal Lorcana closure',version:vendor.revision,licenses:[{license:{id:'MIT'}}],hashes:[{alg:'SHA-256',content:sha256(readFileSync(join(root,'vendor/tcg-engines/upstream.lock.json')))}],externalReferences:[{type:'vcs',url:vendor.repository+'/tree/'+vendor.revision}],properties:[{name:'lorcana:coverage',value:'vendored minimal closure; '+vendor.files.length+' files; '+vendor.patches.length+' reviewed patches; not rules certification'}]});
+  for(const license of vendor.licenses)notices.push('\n=== tcg-engines@'+vendor.revision+' | '+license.upstream_path+' | MIT ===\n'+readFileSync(join(root,'vendor/tcg-engines',license.path),'utf8')+'\n');
   components.sort((a,b)=>a['bom-ref'].localeCompare(b['bom-ref']));
   const audit=jsonCommand(root,'pnpm',['audit','--json'],[0,1]);validateAudit(audit.value,audit.status);
   const recordedAt=new Date().toISOString();
   return {
-    'sbom.cdx.json':{bomFormat:'CycloneDX',specVersion:'1.6',version:1,metadata:{timestamp:recordedAt,properties:[{name:'lorcana:lock-sha256',value:sha256(readFileSync(join(root,'pnpm-lock.yaml')))},{name:'lorcana:scope',value:'Installed Linux npm graph; excludes uninstalled platform options, OS packages and downloaded Chromium.'}]},components},
+    'sbom.cdx.json':{bomFormat:'CycloneDX',specVersion:'1.6',version:1,metadata:{timestamp:recordedAt,properties:[{name:'lorcana:lock-sha256',value:sha256(readFileSync(join(root,'pnpm-lock.yaml')))},{name:'lorcana:scope',value:'Installed Linux npm graph plus pinned vendored MIT closure; excludes uninstalled platform options, OS packages, development Bun and downloaded Chromium.'}]},components},
     'dependency-audit.json':{recorded_at:recordedAt,command:['pnpm','audit','--json'],result:'passed',blocking_severities:['high','critical'],response:audit.value,license_file_gaps:gaps.sort()},
     'THIRD_PARTY_NOTICES.txt':'Installed dependency notices. Metadata policy approval is not complete redistribution/legal qualification. Missing published notice files are listed in dependency-audit.json.\n'+notices.join(''),
   };

@@ -1,0 +1,16 @@
+# RULE-02 execution plan
+
+Recorded 2026-10-11 UTC. Authority: Director instruction, RULE-02 backlog, ADR0008 and the accepted RULE-01 inventory. Scope: pinned engine reuse, executable adapter, provenance and upstream test reproduction. No current-rules, secure RNG, transport or card admission acceptance is inferred.
+
+1. Preserve the clean merged source1925127 and existing private environment/database. Capture baseline and verify the completed hosted RULE-01 artifact.
+2. Trace TypeScript imports from the runtime kernel and selected upstream synthetic/core tests. Vendor only that dependency closure at53a79413c58678b1c50dde57e71de5c123132716. Bind every original file to Git blob/SHA-256, retain MIT notices, list every local patch, and reject drift/missing or extra source files.
+3. Persist Bun1.4.2 as development/CI tooling with official archive hashes. Run unchanged selected upstream tests; retain actual failures, skips and denominator. Pin dependencies in their owning workspace. Precompile the runtime into JavaScript usable by Node24.21.0 without Bun or source loaders.
+4. Implement project-owned experimental adapter and a separate trust-free browser worker entry. Keep server imports and upstream viewer resources out of public contracts. Fail closed for competitive/economic/hidden-state use until secure RNG, projections and rules certification are complete. Test actual commands, invalid/stale actor input, terminal state and disposal with synthetic cards.
+5. Record current2.2.0 and scheduled2.3.0 effective2026-10-16 separately. Set14 Hyperia prerelease is2026-10-16 and general release2026-10-23. Calendar passage cannot grant compatibility or admit cards. Add executable negative checks for both date boundaries and unqualified coverage.
+6. Update all affected current documents/registers and artifact/build gates. Capture final ordered checks, frozen clean install, upstream tests and isolated CI. Review canonical Git bytes, source-matched evidence and owned process cleanup; hand off a coherent scoped commit.
+
+Shared interfaces: vendoring lock feeds integrity/build/test tooling; the compiled kernel feeds the server adapter and trust-free worker; temporal coverage feeds qualification rejection; CI binds built bytes and provenance. Upstream assertions remain unchanged. Adaptation patches must carry exact original/revised hashes and reasons. Runtime typing covers project-owned interfaces; upstream source is separately identified third-party code.
+
+Review focus: alias/import closure gaps, accidental full-catalog imports, source drift or unlisted patches, Bun leakage into production bundles, server/private imports into browser output, calendar-based admission, command/default judge authority, mutation/terminal/disposal behavior, test filters and misleading pass counts, stale feature/evidence claims and cleanup.
+
+Execution outcome: steps1–6 implemented; RUN053/054/055/056/057 provide matching-source full foundation, clean installation, isolated image/DB/browser/artifact and exact pinned reproduction. Independent review findings were reproduced/corrected with retained red/green evidence. Final canonical/documentation/local-commit closure belongs to CHG-20261011-002. RULE-03 and the other play gates remain pending.

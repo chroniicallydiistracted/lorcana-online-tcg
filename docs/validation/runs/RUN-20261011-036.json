@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-036",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "packages/engine-lab/tests/adapter.test.mjs",
+    "tests/foundation/boundaries.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "52d723680be48d6ee322b684166cb0fce5c6a6bd76a2e068e4a93fd6c7fb7175",
+  "started_at": "2026-10-11T00:57:46.010Z",
+  "finished_at": "2026-10-11T00:57:49.408Z",
+  "recorded_at": "2026-10-11T00:57:49.408Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3398,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "GREEN: actual opening/mulligan/concession, player-only authority, lifecycle, boundaries and October fail-closed qualification gates",
+  "log_path": "docs/validation/logs/RUN-20261011-036.txt",
+  "log_sha256": "e540b053a3d5555207f35aa8c217260a58cd2ad28ced392cfe7f904d247c4449",
+  "redactions": 0
+}

@@ -7,7 +7,7 @@ Every developer and agent starts with [AGENTS.md](../AGENTS.md), the [current ha
 | [Workflow](DEVELOPMENT_WORKFLOW.md) / [record format](CHANGELOG_FORMAT.md) | Mandatory intake, documentation review, timestamp, verification and completion rules |
 | [Changelog](../CHANGELOG.md) / [change records](changes/) | Uniform implementation and revision history; records are authoritative, Markdown is generated |
 | [Feature register](FEATURES.md) / [structured features](features.json) | Current behavior, ownership, verification limits, planned/reserved scope |
-| [Current state](current-state.json) | Generated project-owned file hashes and JS/TS/Python callable inventory observed at one UTC timestamp |
+| [Current state](current-state.json) | Generated audited source file hashes and JS/TS/Python callable inventory (vendored paths identify third-party provenance) observed at one UTC timestamp |
 | [Documentation map](documentation-map.json) | Classification and source-impact dependencies for every project-owned document |
 | [Audit](audits/2026-10-06-project-audit.md) | Comparison with the original assignment, directory review and resolved/pending findings |
 | [Qualification](WORKSPACE_QUALIFICATION.md) / [foundation evidence](validation/boot-01.md) | Historical Director evidence, container execution, simulation, browser and pending device evidence |
@@ -19,6 +19,8 @@ Every developer and agent starts with [AGENTS.md](../AGENTS.md), the [current ha
 | [BOOT-04 decision worksheet](plans/2026-10-10-boot-04-decision-worksheet.md) / [hosting ADR](adr/0007-hosting-provider-baseline.md) / [engine/dependency ADR](adr/0008-engine-placement-dependency-baseline.md) / [BOOT-04 evidence](validation/boot-04.md) | Finalized provider, service, dependency, DNS/secret inventory and line-item quote baseline; earlier Codex research preserved as superseded evidence; Director sign-off recorded; purchase and deployment configuration pending |
 | [Signed-off BOOT-04 review](reviews/2026-10-10-boot-04-final-decisions.md) | Dated consistency review, evidence limits and RULE-01 entry requirements |
 | [Rules/source operation](rules/README.md) / [RULE-01 validation](validation/rule-01.md) | Dated official byte/hash/effective-date evidence, rules diff, English printing/identity/release states, pinned static test counts and missing-source gates; no engine/card certification |
+| [Engine operation](runbooks/engine.md) / [RULE-02 evidence](validation/rule-02.md) / [ADR0009](adr/0009-pinned-engine-qualification.md) | Pinned minimal closure, license/patch/resolver identity, precompiled Node and trust-free worker qualification; later RNG/rules/privacy play gates remain closed |
+| [RULE-02 independent review](reviews/2026-10-11-rule-02-closure.md) | Read-only final assessment, corrected findings, source-bound evidence and explicitly unreviewed later acceptance |
 | [Fan content policy](policies/fan-content.md) | Director D07 asset decision, the required Ravensburger fan-content notice, no-charge rule, provenance and takedown readiness |
 | [ADRs](adr/) | Context, affected tasks/requirements, alternatives and material architectural decisions |
 | [Vision index](vision/README.md) | Full 548-item original vision, additional scope, task and decision registers |

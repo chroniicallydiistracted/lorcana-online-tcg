@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-024",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "packages/engine-lab/tests/adapter.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "d4af04aa87b27fc06a122cd4edf8ce56ba0853420f1171cd5952aebaafcdc2a8",
+  "started_at": "2026-10-11T00:50:23.729Z",
+  "finished_at": "2026-10-11T00:50:23.874Z",
+  "recorded_at": "2026-10-11T00:50:23.874Z",
+  "time_precision": "exact",
+  "elapsed_ms": 146,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: real adapter command/lifecycle and rules/set temporal admission behaviors before implementation",
+  "log_path": "docs/validation/logs/RUN-20261011-024.txt",
+  "log_sha256": "c5066f1595582c157256e8a08cd8c28a5c0f8a73c7ef2573dd54bcf2877c1366",
+  "redactions": 0
+}

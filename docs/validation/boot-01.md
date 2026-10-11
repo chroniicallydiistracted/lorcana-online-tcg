@@ -61,3 +61,7 @@ The disposable proof container was removed after successful historical validatio
 ## BOOT-05 continuation
 
 The preceding results/decisions are retained as dated task checkpoints. BOOT-05 now implements public protocol/negotiation and release artifact v2 binding/retained pins with final-source local evidence; [ADR0006](../adr/0006-protocol-release-contracts.md) and [BOOT-05 validation](../validation/boot-05.md) describe the current scope. This extension does not implement authenticated gameplay or production activation.
+
+## Current RULE-02 continuation — 2026-10-11 UTC
+
+Earlier reserved-engine/no-upstream-execution and artifact-v2 statements above describe their dated checkpoints. [Engine qualification](rule-02.md) and [ADR0009](../adr/0009-pinned-engine-qualification.md) now define the minimal pinned synthetic Node/Lab-worker implementation, development-only Bun, current artifact v3 and source-matched results. Rules-data/domain/testkit remain reserved. Secure randomness/replay, official rules/cards and wire privacy remain RULE-03/RULE-04/PLAY-02 gates; rewarded/private/ordinary Lab/Collection play stays blocked. Hosted RULE-01 main1925127 passed run38098551762 (downloaded artifact RUN-20261011-019); current RULE-02 hosted/device/production evidence is not inferred. Full548 scope/20 optional flags and provider/D07 decisions remain unchanged.

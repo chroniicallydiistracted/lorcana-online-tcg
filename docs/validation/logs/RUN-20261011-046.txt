@@ -1,0 +1,52 @@
+✖ qualification input bounds sparse arrays, aggregate size, keys and accessors before engine execution (14.951225ms)
+✔ synthetic match commands run on Node with player authority, stale rejection, terminal winner and idempotent disposal (12.820614ms)
+✔ October rules and set dates never grant unqualified rules/catalog or hidden/economic admission (0.641859ms)
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (207.042128ms)
+✖ server applications cannot bypass the project adapter using vendor or raw upstream imports (4.638399ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1733.063519ms)
+✔ browser source cannot import the server-only release registry through its package subpath (2.027331ms)
+✔ declaring a database dependency in a public contract package is rejected (206.194751ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (210.819521ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (214.174552ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (216.067127ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (845.856416ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 10
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3683.199642
+
+✖ failing tests:
+
+test at packages/engine-lab/tests/adapter.test.mjs:5:1
+✖ qualification input bounds sparse arrays, aggregate size, keys and accessors before engine execution (14.951225ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-lab/tests/adapter.test.mjs:9:130)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /limits|key|JSON/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/foundation/boundaries.test.mjs:18:1
+✖ server applications cannot bypass the project adapter using vendor or raw upstream imports (4.638399ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/foundation/boundaries.test.mjs:21:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Forbidden engine import/,
+    operator: 'throws',
+    diff: 'simple'
+  }

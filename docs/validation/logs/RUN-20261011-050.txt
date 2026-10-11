@@ -1,0 +1,33 @@
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (215.012153ms)
+✖ server applications cannot bypass the project adapter using vendor or raw upstream imports (11.901633ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1843.713759ms)
+✔ browser source cannot import the server-only release registry through its package subpath (2.090792ms)
+✔ declaring a database dependency in a public contract package is rejected (262.921921ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (270.337248ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (246.399733ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (244.36906ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (944.561171ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4088.484433
+
+✖ failing tests:
+
+test at tests/foundation/boundaries.test.mjs:18:1
+✖ server applications cannot bypass the project adapter using vendor or raw upstream imports (11.901633ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/foundation/boundaries.test.mjs:24:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Forbidden engine import/,
+    operator: 'throws',
+    diff: 'simple'
+  }

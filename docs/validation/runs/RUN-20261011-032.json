@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-032",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/engine-lab",
+    "build"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "5c1c677b6bb29ba03e1f45b0e23f0dbe490e40ecc661233289a67724cbdeb83d",
+  "started_at": "2026-10-11T00:55:45.782Z",
+  "finished_at": "2026-10-11T00:55:46.745Z",
+  "recorded_at": "2026-10-11T00:55:46.745Z",
+  "time_precision": "exact",
+  "elapsed_ms": 963,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Browser-safe Lab worker compilation and strict own-interface types",
+  "log_path": "docs/validation/logs/RUN-20261011-032.txt",
+  "log_sha256": "4e7a80eab3913733cf8c1981b0a3b2c520d055d39991d2d6a962c54eaf018b1b",
+  "redactions": 0
+}

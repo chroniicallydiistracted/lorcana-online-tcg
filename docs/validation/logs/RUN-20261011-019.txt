@@ -1,0 +1,186 @@
+{
+  "run": {
+    "id": 38098551762,
+    "url": "https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/38098551762",
+    "sha": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+    "created_at": "2026-10-11T00:28:39Z",
+    "updated_at": "2026-10-11T00:32:11Z",
+    "conclusion": "success"
+  },
+  "jobs": [
+    {
+      "id": 114349486088,
+      "started_at": "2026-10-11T00:28:42Z",
+      "completed_at": "2026-10-11T00:32:10Z",
+      "conclusion": "success"
+    }
+  ],
+  "identity": {
+    "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+    "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+    "lock_sha256": "92eeef17cdb128d4656ab60b9108c23ceeb1162152769c056a3276a6fb1fa1a2",
+    "dirty": false,
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "project": "lorcana-ci-259b987338ef4d02a2f245215c56c59d",
+    "workspace_image_id": "sha256:5f90c443c6702b6751f45f212d9612de625639a14ad2731eb1f4b083742617c5",
+    "postgres_image": "postgres:18@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722"
+  },
+  "files": 98,
+  "stages": [
+    {
+      "name": "frozen-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "started_at": "2026-10-11T00:29:54.742Z",
+      "finished_at": "2026-10-11T00:29:55.222Z",
+      "elapsed_ms": 479,
+      "result": "passed"
+    },
+    {
+      "name": "doctor",
+      "command": [
+        "pnpm",
+        "run",
+        "doctor"
+      ],
+      "started_at": "2026-10-11T00:29:55.222Z",
+      "finished_at": "2026-10-11T00:29:55.725Z",
+      "elapsed_ms": 503,
+      "result": "passed"
+    },
+    {
+      "name": "foundation",
+      "command": [
+        "pnpm",
+        "verify:foundation"
+      ],
+      "started_at": "2026-10-11T00:29:55.725Z",
+      "finished_at": "2026-10-11T00:30:57.108Z",
+      "elapsed_ms": 61383,
+      "result": "passed"
+    },
+    {
+      "name": "bootstrap-database",
+      "command": [
+        "pnpm",
+        "db:check"
+      ],
+      "started_at": "2026-10-11T00:30:57.108Z",
+      "finished_at": "2026-10-11T00:30:57.419Z",
+      "elapsed_ms": 312,
+      "result": "passed"
+    },
+    {
+      "name": "restricted-database",
+      "command": [
+        "pnpm",
+        "db:provision"
+      ],
+      "started_at": "2026-10-11T00:30:57.420Z",
+      "finished_at": "2026-10-11T00:30:59.255Z",
+      "elapsed_ms": 1835,
+      "result": "passed"
+    },
+    {
+      "name": "local-migration",
+      "command": [
+        "pnpm",
+        "db:migrate",
+        "--",
+        "--target",
+        "local"
+      ],
+      "started_at": "2026-10-11T00:30:59.255Z",
+      "finished_at": "2026-10-11T00:31:00.881Z",
+      "elapsed_ms": 1626,
+      "result": "passed"
+    },
+    {
+      "name": "test-migration",
+      "command": [
+        "pnpm",
+        "db:migrate",
+        "--",
+        "--target",
+        "test"
+      ],
+      "started_at": "2026-10-11T00:31:00.881Z",
+      "finished_at": "2026-10-11T00:31:02.436Z",
+      "elapsed_ms": 1555,
+      "result": "passed"
+    },
+    {
+      "name": "local-identities",
+      "command": [
+        "pnpm",
+        "db:health",
+        "--",
+        "--target",
+        "local"
+      ],
+      "started_at": "2026-10-11T00:31:02.436Z",
+      "finished_at": "2026-10-11T00:31:04.000Z",
+      "elapsed_ms": 1564,
+      "result": "passed"
+    },
+    {
+      "name": "test-identities",
+      "command": [
+        "pnpm",
+        "db:health",
+        "--",
+        "--target",
+        "test"
+      ],
+      "started_at": "2026-10-11T00:31:04.000Z",
+      "finished_at": "2026-10-11T00:31:05.609Z",
+      "elapsed_ms": 1609,
+      "result": "passed"
+    },
+    {
+      "name": "live-database",
+      "command": [
+        "pnpm",
+        "db:test"
+      ],
+      "started_at": "2026-10-11T00:31:05.609Z",
+      "finished_at": "2026-10-11T00:31:08.857Z",
+      "elapsed_ms": 3247,
+      "result": "passed"
+    },
+    {
+      "name": "pinned-chromium",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@lorcana/web",
+        "exec",
+        "playwright",
+        "install",
+        "chromium"
+      ],
+      "started_at": "2026-10-11T00:31:08.857Z",
+      "finished_at": "2026-10-11T00:31:15.848Z",
+      "elapsed_ms": 6991,
+      "result": "passed"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "pnpm",
+        "test:e2e:smoke"
+      ],
+      "started_at": "2026-10-11T00:31:15.848Z",
+      "finished_at": "2026-10-11T00:31:33.819Z",
+      "elapsed_ms": 17972,
+      "result": "passed"
+    }
+  ]
+}
+PASS completed RULE-01 hosted CI and downloaded artifact; remote timestamps are reported by GitHub, this receipt times local verification

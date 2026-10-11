@@ -2,12 +2,12 @@ import { readdirSync, lstatSync, readFileSync, writeFileSync, mkdirSync, copyFil
 import { join, dirname, resolve } from 'node:path';
 import { sha256 } from '../documentation-lib.mjs';
 import { scanSecrets } from './security.mjs';
-import { buildFoundationRelease, verifyFoundationRelease } from '../release-manifest.mjs';
+import { buildFoundationRelease, verifyFoundationRelease, engineProvenanceFiles } from '../release-manifest.mjs';
 
-export const workspaces=['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db'];
+export const workspaces=['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db','packages/engine-adapter','packages/engine-lab','vendor/tcg-engines'];
 const metadata=['package.json','pnpm-lock.yaml','pnpm-workspace.yaml','toolchain.json'];
 const reportNames=['sbom.cdx.json','dependency-audit.json','THIRD_PARTY_NOTICES.txt','pipeline.json','release-manifest.json'];
-const purpose='foundation build evidence with BOOT-05 release identity; not a deployment';
+const purpose='foundation build evidence with BOOT-05 release identity and RULE-02 experimental engine; not a deployment';
 export function validateIdentity(identity,toolchain,lockBytes) {
   const keys=['source_commit','source_fingerprint','lock_sha256','dirty','node','pnpm','platform','architecture','project','workspace_image_id','postgres_image'];
   if(!identity||Object.keys(identity).sort().join()!==keys.sort().join()||!/^([a-f0-9]{40}|[a-f0-9]{64})$/.test(identity.source_commit)||!/^([a-f0-9]{64})$/.test(identity.source_fingerprint)||identity.lock_sha256!==sha256(lockBytes)||typeof identity.dirty!=='boolean'||identity.node!==toolchain.node||identity.pnpm!==toolchain.pnpm||identity.postgres_image!==toolchain.postgresImage||identity.platform!=='linux'||!['x64','arm64'].includes(identity.architecture)||!/^lorcana-ci-[a-f0-9]{32}$/.test(identity.project)||!/^sha256:[a-f0-9]{64}$/.test(identity.workspace_image_id))throw new Error('Invalid artifact source/toolchain/lock identity');
@@ -24,7 +24,7 @@ function walk(root,prefix='') {
 }
 function allowed(path) {
   if(typeof path!=='string'||path.includes('\\')||path.startsWith('/')||path.split('/').some(part=>['','..','.'].includes(part)))return false;
-  if(metadata.some(file=>path==='build/'+file)||reportNames.includes(path))return true;
+  if(metadata.some(file=>path==='build/'+file)||engineProvenanceFiles.some(file=>path==='build/'+file)||reportNames.includes(path))return true;
   if(/^build\/packages\/db\/migrations\/[0-9]{4}[-_][a-z0-9_-]+\.sql$/.test(path))return true;
   return workspaces.some(workspace=>path==='build/'+workspace+'/package.json'||path.startsWith('build/'+workspace+'/dist/'))&&!/(?:^|\/)(?:\.env(?:\..*)?|.*\.(?:pem|key))$/.test(path);
 }
@@ -43,6 +43,7 @@ export function createArtifacts(root,out,reports,identity,{knownSecrets=[]}={}) 
     for(const path of paths)copy(workspace+'/dist/'+path);
   }
   for(const path of walk(join(root,'packages/db/migrations')))copy('packages/db/migrations/'+path);
+  for(const path of engineProvenanceFiles)copy(path);
   for(const name of reportNames) {
     const report=name==='release-manifest.json'?buildFoundationRelease(join(out,'build'),identity):reports[name];
     if(report===undefined)throw new Error('Missing artifact report');
@@ -52,14 +53,14 @@ export function createArtifacts(root,out,reports,identity,{knownSecrets=[]}={}) 
   if(paths.some(path=>!allowed(path)))throw new Error('Forbidden artifact path');
   if(scanSecrets(paths.map(path=>({path,bytes:readFileSync(join(out,path))})),{knownSecrets,exceptions:[]}).length)throw new Error('Secret scan rejected build/report artifacts');
   validateIdentity(identity,JSON.parse(readFileSync(join(root,'toolchain.json'))),readFileSync(join(root,'pnpm-lock.yaml')));
-  const manifest={schema_version:2,created_at:new Date().toISOString(),purpose,identity,files:paths.map(path=>{const bytes=readFileSync(join(out,path));return {path,bytes:bytes.length,sha256:sha256(bytes)};})};
+  const manifest={schema_version:3,created_at:new Date().toISOString(),purpose,identity,files:paths.map(path=>{const bytes=readFileSync(join(out,path));return {path,bytes:bytes.length,sha256:sha256(bytes)};})};
   writeFileSync(join(out,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
   verifyArtifacts(out,{knownSecrets});return manifest;
 }
 export function verifyArtifacts(out,{knownSecrets=[]}={}) {
   if(lstatSync(out).isSymbolicLink()||lstatSync(join(out,'manifest.json')).isSymbolicLink())throw new Error('Unsafe artifact root/manifest');
   const manifest=JSON.parse(readFileSync(join(out,'manifest.json')));
-  if(Object.keys(manifest).sort().join()!==['schema_version','created_at','purpose','identity','files'].sort().join()||manifest.schema_version!==2||manifest.purpose!==purpose||!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(manifest.created_at)||!Array.isArray(manifest.files)||!manifest.files.length)throw new Error('Invalid artifact manifest');
+  if(Object.keys(manifest).sort().join()!==['schema_version','created_at','purpose','identity','files'].sort().join()||manifest.schema_version!==3||manifest.purpose!==purpose||!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(manifest.created_at)||!Array.isArray(manifest.files)||!manifest.files.length)throw new Error('Invalid artifact manifest');
   const seen=new Set();
   for(const row of manifest.files) {
     if(!allowed(row.path)||seen.has(row.path)||!/^[a-f0-9]{64}$/.test(row.sha256)||!Number.isSafeInteger(row.bytes)||row.bytes<0)throw new Error('Invalid artifact file entry');
@@ -71,7 +72,7 @@ export function verifyArtifacts(out,{knownSecrets=[]}={}) {
     const bytes=readFileSync(join(out,row.path));
     if(bytes.length!==row.bytes||sha256(bytes)!==row.sha256)throw new Error('Artifact bytes differ from manifest');
   }
-  if(reportNames.some(path=>!seen.has(path))||metadata.some(path=>!seen.has('build/'+path))||workspaces.some(workspace=>!seen.has('build/'+workspace+'/package.json')||!actual.some(path=>path.startsWith('build/'+workspace+'/dist/'))))throw new Error('Incomplete artifact scope');
+  if(reportNames.some(path=>!seen.has(path))||[...metadata,...engineProvenanceFiles].some(path=>!seen.has('build/'+path))||workspaces.some(workspace=>!seen.has('build/'+workspace+'/package.json')||!actual.some(path=>path.startsWith('build/'+workspace+'/dist/'))))throw new Error('Incomplete artifact scope');
   validateIdentity(manifest.identity,JSON.parse(readFileSync(join(out,'build/toolchain.json'))),readFileSync(join(out,'build/pnpm-lock.yaml')));
   verifyFoundationRelease(join(out,'build'),JSON.parse(readFileSync(join(out,'release-manifest.json'))),manifest.identity);
   if(scanSecrets([...actual,'manifest.json'].map(path=>({path,bytes:readFileSync(join(out,path))})),{knownSecrets,exceptions:[]}).length)throw new Error('Artifact pattern scan failed');

@@ -101,3 +101,7 @@ Cross-checks against earlier independent cloud measurements of the same pin: 3,1
 - The pinned upstream defines sets 001–013 only and references CR 2.0.1.
 
 Gameplay certification still requires the RULE-02/04 work.
+
+## Observed RULE-01 hosted continuation — 2026-10-11 UTC
+
+GitHub main19251271a635bd94556ce70a6ef0a77e4ccd7b65 passed [run38098551762](https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/38098551762). RUN-20261011-019 verifies its downloaded v2 artifact and exact source/image/lock/release binding using the original verifier. RUN018 retains a failed wrong-subdirectory invocation. GitHub reports run00:28:39Z–00:32:11Z and job00:28:42Z–00:32:10Z; these are remote metadata, distinct from local verification execution. [RULE-02 validation](rule-02.md) carries artifact ID/digest and the new v3 engine continuation. All preceding tables remain dated source-specific results; no RULE-02 hosted, required-check, device or production acceptance is inferred.

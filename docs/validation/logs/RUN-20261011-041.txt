@@ -1,0 +1,54 @@
+✔ closure follows cyclic relative imports, type imports and explicit aliases, omitting unrelated files (11.965971ms)
+✖ closure rejects source reached through a directory symlink outside the pinned root (2.100604ms)
+✔ vendor integrity rejects modified, extra and missing source plus an unlisted patch (4.153998ms)
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (216.220437ms)
+✖ server applications cannot bypass the project adapter using vendor or raw upstream imports (0.997447ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1828.350303ms)
+✔ browser source cannot import the server-only release registry through its package subpath (1.956296ms)
+✔ declaring a database dependency in a public contract package is rejected (238.378342ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (256.780398ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (241.725163ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (218.871731ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (906.601599ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 10
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3962.313689
+
+✖ failing tests:
+
+test at tests/engine/closure.test.mjs:31:1
+✖ closure rejects source reached through a directory symlink outside the pinned root (2.100604ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/engine/closure.test.mjs:35:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Unsafe/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/foundation/boundaries.test.mjs:18:1
+✖ server applications cannot bypass the project adapter using vendor or raw upstream imports (0.997447ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/foundation/boundaries.test.mjs:21:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Forbidden engine import/,
+    operator: 'throws',
+    diff: 'simple'
+  }

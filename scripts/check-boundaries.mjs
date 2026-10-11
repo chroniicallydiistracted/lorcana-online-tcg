@@ -11,7 +11,7 @@ const forbiddenExternal = /^(?:pg(?:\/|$)|fastify(?:\/|$)|drizzle-|better-auth|p
 const builtins = new Set(builtinModules.map(name => name.replace(/^node:/, '')));
 export function boundaryContext(root = repository) {
   const owners = [];
-  for (const group of ['apps', 'packages']) {
+  for (const group of ['apps', 'packages', 'vendor']) {
     const folder = join(root, group);
     if (!existsSync(folder)) continue;
     for (const dir of readdirSync(folder, { withFileTypes: true })) {
@@ -28,11 +28,33 @@ function ownerOf(path, context) {
   return context.owners.find(owner => path === owner.path || path.startsWith(owner.path + '/'));
 }
 function fail(file, target) { throw new Error(`Forbidden browser import: ${file} -> ${target}`); }
+function kernelEdge(owner, target, name) {
+  return owner?.name === '@lorcana/engine-lab' && owner.scope === 'browser' && target?.name === '@lorcana/vendor-engine' && target.scope === 'engine' && name === '@lorcana/vendor-engine';
+}
+function compiledKernel(path, owner) {
+  return owner?.name === '@lorcana/vendor-engine' && owner.scope === 'engine' && ['dist/kernel.js', 'dist/kernel.d.ts'].some(name => path === join(owner.path, name));
+}
+function inspectEngineEdge(file, owner, name, compiler, context) {
+  const result = ts.resolveModuleName(name, file, compiler, ts.sys).resolvedModule;
+  const target = result ? ownerOf(existsSync(result.resolvedFileName) ? realpathSync(result.resolvedFileName) : resolve(result.resolvedFileName), context) : undefined;
+  const relativeTarget = name.startsWith('.') || name.startsWith('/') ? ownerOf(resolve(dirname(file), name), context) : undefined;
+  if ((name.startsWith('@lorcana/engine-lab') || target?.name === '@lorcana/engine-lab' || relativeTarget?.name === '@lorcana/engine-lab') && owner.name !== '@lorcana/engine-adapter') throw new Error(`Forbidden engine import: ${file} -> ${name}`);
+  if (name.startsWith('@tcg/') || name.startsWith('@lorcana/vendor-engine') || target?.scope === 'engine' || relativeTarget?.scope === 'engine') {
+    if (!kernelEdge(owner, target ?? context.owners.find(pkg => pkg.name === name), name)) throw new Error(`Forbidden engine import: ${file} -> ${name}`);
+  }
+}
 export function assertBrowserModule(file, context = boundaryContext()) {
   const path = existsSync(file) ? realpathSync(file) : resolve(file);
   if (path.includes('/node_modules/')) return;
   const owner = ownerOf(path, context);
-  if (!owner || !['browser', 'public'].includes(owner.scope) || /(?:^|\/)\.env(?:\.|$)/.test(path)) fail(file, path);
+  if (!owner || !['browser', 'public'].includes(owner.scope) && !compiledKernel(path, owner) || /(?:^|\/)\.env(?:\.|$)/.test(path)) fail(file, path);
+}
+export function assertBrowserImport(file, importer, context = boundaryContext()) {
+  const path = existsSync(file) ? realpathSync(file) : resolve(file), owner = ownerOf(path, context);
+  if (owner?.scope === 'engine') {
+    const from = existsSync(importer) ? realpathSync(importer) : resolve(importer);
+    if (!compiledKernel(path, owner) || !kernelEdge(ownerOf(from, context), owner, '@lorcana/vendor-engine')) fail(importer, file);
+  }
 }
 function inspectAsset(file, name, context) {
   if (/^(?:https?:|data:|#)/i.test(name)) return;
@@ -53,11 +75,27 @@ function containsImportMeta(node) {
 }
 export function checkSource(file, context = boundaryContext(), content) {
   const owner = ownerOf(resolve(file), context);
-  if (!owner || !['browser', 'public'].includes(owner.scope)) return;
+  if (!owner || !['browser', 'public', 'server'].includes(owner.scope)) return;
   const configFile = join(owner.path, 'tsconfig.json');
   const raw = existsSync(configFile) ? ts.readConfigFile(configFile, ts.sys.readFile).config : {};
   const compiler = ts.parseJsonConfigFileContent(raw ?? {}, ts.sys, owner.path).options;
   const bytes = content ?? readFileSync(file, 'utf8');
+  if (owner.scope === 'server') {
+    const source = ts.createSourceFile(file, bytes, ts.ScriptTarget.Latest, true);
+    function visitServer(node) {
+      let specifier;
+      if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier) specifier = node.moduleSpecifier;
+      if (ts.isImportTypeNode(node) && ts.isLiteralTypeNode(node.argument)) specifier = node.argument.literal;
+      if (ts.isCallExpression(node) && (node.expression.kind === ts.SyntaxKind.ImportKeyword || ts.isIdentifier(node.expression) && node.expression.text === 'require')) specifier = node.arguments[0];
+      if (specifier) {
+        if (!ts.isStringLiteralLike(specifier)) throw new Error(`Forbidden engine import: ${file} -> nonliteral module specifier`);
+        inspectEngineEdge(file, owner, specifier.text, compiler, context);
+      }
+      ts.forEachChild(node, visitServer);
+    }
+    visitServer(source);
+    return;
+  }
   if (file.endsWith('.html')) {
     const document = parse(bytes);
     function visitHTML(node) {
@@ -94,9 +132,13 @@ export function checkSource(file, context = boundaryContext(), content) {
     const name = specifier.text;
     if (name.startsWith('node:') || builtins.has(name) || forbiddenExternal.test(name)) fail(file, name);
     const targetOwner = context.owners.find(pkg => name === pkg.name || name.startsWith(pkg.name + '/'));
-    if (targetOwner && (!['browser', 'public'].includes(targetOwner.scope) || (owner.scope === 'public' && targetOwner.scope !== 'public'))) fail(file, name);
+    if (targetOwner && !kernelEdge(owner, targetOwner, name) && (!['browser', 'public'].includes(targetOwner.scope) || (owner.scope === 'public' && targetOwner.scope !== 'public'))) fail(file, name);
     const result = ts.resolveModuleName(name, file, compiler, ts.sys).resolvedModule;
-    if (result && !result.resolvedFileName.includes('/node_modules/')) assertBrowserModule(result.resolvedFileName, context);
+    if (result && !result.resolvedFileName.includes('/node_modules/')) {
+      const resolvedOwner = ownerOf(resolve(result.resolvedFileName), context);
+      if (resolvedOwner?.scope === 'engine' && !kernelEdge(owner, resolvedOwner, name)) fail(file, name);
+      assertBrowserModule(result.resolvedFileName, context);
+    }
     if (name.startsWith('.') || name.startsWith('/')) {
       const target = resolve(dirname(file), name);
       assertBrowserModule(target, context);
@@ -120,10 +162,14 @@ export function checkSource(file, context = boundaryContext(), content) {
 export function checkBoundaries(root = repository) {
   const context = boundaryContext(root);
   for (const owner of context.owners) {
-    if (!['browser', 'public'].includes(owner.scope)) continue;
+    if (!['browser', 'public', 'server'].includes(owner.scope)) continue;
     for (const name of Object.keys({ ...owner.dependencies, ...owner.optionalDependencies, ...owner.peerDependencies })) {
       const pkg = context.owners.find(target => target.name === name);
-      if ((pkg && (!['browser', 'public'].includes(pkg.scope) || (owner.scope === 'public' && pkg.scope !== 'public'))) || forbiddenExternal.test(name)) fail(owner.path + '/package.json', name);
+      if (owner.scope === 'server') {
+        inspectEngineEdge(owner.path + '/package.json', owner, name, {}, context);
+        continue;
+      }
+      if ((pkg && !kernelEdge(owner, pkg, name) && (!['browser', 'public'].includes(pkg.scope) || (owner.scope === 'public' && pkg.scope !== 'public'))) || forbiddenExternal.test(name)) fail(owner.path + '/package.json', name);
     }
     function walk(folder) {
       if (!existsSync(folder)) return;

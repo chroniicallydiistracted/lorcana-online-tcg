@@ -23,3 +23,7 @@ Docker Compose 5.5.1 is the observed local version; the blueprint's earlier “C
 ## Qualification update, 2026-10-05
 
 The Director subsequently supplied successful PC build/start, post-create and Windows connectivity evidence for the initial main commit. Fresh BOOT-01 inspection confirmed the running non-root workspace and authenticated PostgreSQL 18.6. ADR 0002 establishes the application packages and updated development image; qualification details distinguish historical, agent and pending device evidence. That BOOT-01 observation did not perform database recreation. ADR0004 and the BOOT-02 validation record describe current scoped proof.
+
+## Current RULE-02 continuation — 2026-10-11 UTC
+
+Earlier reserved-engine/no-upstream-execution and artifact-v2 statements above describe their dated checkpoints. [Engine qualification](../validation/rule-02.md) and [ADR0009](../adr/0009-pinned-engine-qualification.md) now define the minimal pinned synthetic Node/Lab-worker implementation, development-only Bun, current artifact v3 and source-matched results. Rules-data/domain/testkit remain reserved. Secure randomness/replay, official rules/cards and wire privacy remain RULE-03/RULE-04/PLAY-02 gates; rewarded/private/ordinary Lab/Collection play stays blocked. Hosted RULE-01 main1925127 passed run38098551762 (downloaded artifact RUN-20261011-019); current RULE-02 hosted/device/production evidence is not inferred. Full548 scope/20 optional flags and provider/D07 decisions remain unchanged.

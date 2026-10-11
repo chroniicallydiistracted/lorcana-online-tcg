@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-048",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/engine/closure.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "4befc3f0438260b6574242e9632a80d242771899b9cca4a92e3bd5d142cc83e6",
+  "started_at": "2026-10-11T01:12:58.799Z",
+  "finished_at": "2026-10-11T01:12:59.036Z",
+  "recorded_at": "2026-10-11T01:12:59.036Z",
+  "time_precision": "exact",
+  "elapsed_ms": 237,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: bind actual upstream test aliases to the byte-verified selection",
+  "log_path": "docs/validation/logs/RUN-20261011-048.txt",
+  "log_sha256": "b7444a8a52e8856420774cd740d0d354503591ae5cb435ab05795db0ce059894",
+  "redactions": 0
+}

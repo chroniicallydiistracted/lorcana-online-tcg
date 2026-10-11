@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-016",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:bootstrap"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+  "started_at": "2026-10-11T00:39:13.005Z",
+  "finished_at": "2026-10-11T00:39:13.443Z",
+  "recorded_at": "2026-10-11T00:39:13.443Z",
+  "time_precision": "exact",
+  "elapsed_ms": 438,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-02 intake bootstrap baseline",
+  "log_path": "docs/validation/logs/RUN-20261011-016.txt",
+  "log_sha256": "3300bc64316078e67ac0fd41bc8b36af430ce0ef7b74f3efcc9c29cf2c14ede1",
+  "redactions": 0
+}

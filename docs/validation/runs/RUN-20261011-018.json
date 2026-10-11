@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-018",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import{readFileSync}from'node:fs';import{verifyArtifacts}from'./scripts/ci/artifacts.mjs';import{sourceFingerprint}from'./scripts/documentation-lib.mjs';const base='.local/rule-02/hosted-rule-01';const run=JSON.parse(readFileSync(base+'/run.json'));const jobs=JSON.parse(readFileSync(base+'/jobs.json'));const artifact=verifyArtifacts(base+'/artifacts');const pipeline=JSON.parse(readFileSync(base+'/artifacts/pipeline.json'));if(run.status!=='completed'||run.conclusion!=='success'||jobs.jobs.some(j=>j.conclusion!=='success')||artifact.identity.source_commit!==run.head_sha||artifact.identity.source_fingerprint!==sourceFingerprint()||pipeline.result!=='passed')throw Error('Hosted result/source mismatch');console.log(JSON.stringify({run:{id:run.id,url:run.html_url,sha:run.head_sha,conclusion:run.conclusion,created_at:run.created_at,updated_at:run.updated_at},jobs:jobs.jobs.map(j=>({id:j.id,started_at:j.started_at,completed_at:j.completed_at,conclusion:j.conclusion})),identity:artifact.identity,files:artifact.files.length,stages:pipeline.stages},null,2));console.log('PASS completed RULE-01 hosted run and downloaded artifact identity; remote times are GitHub-reported, this receipt times local verification');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "117c9248f08fc7ba28710152bd96f6edc440bdc5d44551e368c931da450500c8",
+  "started_at": "2026-10-11T00:40:56.297Z",
+  "finished_at": "2026-10-11T00:40:56.764Z",
+  "recorded_at": "2026-10-11T00:40:56.764Z",
+  "time_precision": "exact",
+  "elapsed_ms": 467,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Verify completed RULE-01 hosted CI and downloaded artifact against merged source; local verification of remote evidence",
+  "log_path": "docs/validation/logs/RUN-20261011-018.txt",
+  "log_sha256": "f383f5e00cb21718363cbea95a0dd29a2d2463c8bc34fbe3d97da7c1778bbc5a",
+  "redactions": 0
+}

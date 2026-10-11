@@ -141,6 +141,25 @@ importers:
         specifier: 19.3.0
         version: 19.3.0(react@19.3.0)
 
+  packages/engine-adapter:
+    dependencies:
+      '@lorcana/engine-lab':
+        specifier: workspace:*
+        version: link:../engine-lab
+
+  packages/engine-lab:
+    dependencies:
+      '@lorcana/vendor-engine':
+        specifier: workspace:*
+        version: link:../../vendor/tcg-engines
+    devDependencies:
+      '@playwright/test':
+        specifier: 1.63.0
+        version: 1.63.0
+      vite:
+        specifier: 8.3.2
+        version: 8.3.2(@types/node@24.19.1)
+
   packages/presentation:
     dependencies:
       '@babylonjs/core':
@@ -165,6 +184,25 @@ importers:
       '@types/node':
         specifier: 24.19.1
         version: 24.19.1
+
+  vendor/tcg-engines:
+    dependencies:
+      '@logtape/logtape':
+        specifier: 2.0.7
+        version: 2.0.7
+      mutative:
+        specifier: 1.3.0
+        version: 1.3.0
+      seedrandom:
+        specifier: 3.0.5
+        version: 3.0.5
+    devDependencies:
+      '@logtape/pretty':
+        specifier: 2.0.7
+        version: 2.0.7(@logtape/logtape@2.0.7)
+      vite:
+        specifier: 8.3.2
+        version: 8.3.2(@types/node@24.19.1)
 
 packages:
 
@@ -276,6 +314,14 @@ packages:
 
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
+
+  '@logtape/logtape@2.0.7':
+    resolution: {integrity: sha512-SUkjkEIfQ3zCadlLi8rfGfe4l/JRKNbp248bfLeowyUFs9KZME/k8y+5sugWYZet/gMYnmwCc9xa3J+kjDjSSQ==}
+
+  '@logtape/pretty@2.0.7':
+    resolution: {integrity: sha512-FluT3vEBsZcK4cIuPAUTK6+RiAGQgnvFU1J76WJ0NJMReoDb4wbd2R/vO/n9SxND676hELgdP4X/RC82w9ieeg==}
+    peerDependencies:
+      '@logtape/logtape': ^2.0.7
 
   '@napi-rs/canvas-android-arm64@1.0.11':
     resolution: {integrity: sha512-dtJS4FQEfH9OwSYLtMrEnj7T8DzBbJc/97LI/OkiWOYpW/iW5t6R/gcxVrUXS8l45gCVpwMufgucRe/pe0ISqA==}
@@ -1009,6 +1055,10 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
+  mutative@1.3.0:
+    resolution: {integrity: sha512-8MJj6URmOZAV70dpFe1YnSppRTKC4DsMkXQiBDFayLcDI4ljGokHxmpqaBQuDWa4iAxWaJJ1PS8vAmbntjjKmQ==}
+    engines: {node: '>=14.0'}
+
   nanoid@3.3.20:
     resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -1215,6 +1265,9 @@ packages:
 
   secure-json-parse@4.1.0:
     resolution: {integrity: sha512-l4KnYfEyqYJxDwlNVyRfO2E4NTHfMKAWdUuA8J0yve2Dz/E/PdBepY03RvyJpssIpRFwJoCD55wA+mEDs6ByWA==}
+
+  seedrandom@3.0.5:
+    resolution: {integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==}
 
   semver@7.8.5:
     resolution: {integrity: sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==}
@@ -1466,6 +1519,12 @@ snapshots:
       keyv: 5.6.0
 
   '@keyv/serialize@1.1.1': {}
+
+  '@logtape/logtape@2.0.7': {}
+
+  '@logtape/pretty@2.0.7(@logtape/logtape@2.0.7)':
+    dependencies:
+      '@logtape/logtape': 2.0.7
 
   '@napi-rs/canvas-android-arm64@1.0.11':
     optional: true
@@ -2035,6 +2094,8 @@ snapshots:
 
   ms@2.1.3: {}
 
+  mutative@1.3.0: {}
+
   nanoid@3.3.20: {}
 
   natural-compare@1.4.0: {}
@@ -2250,6 +2311,8 @@ snapshots:
   scheduler@0.28.0: {}
 
   secure-json-parse@4.1.0: {}
+
+  seedrandom@3.0.5: {}
 
   semver@7.8.5: {}
 

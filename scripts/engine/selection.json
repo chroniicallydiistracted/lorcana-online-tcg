@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/TheCardGoat/tcg-engines",
+  "revision": "53a79413c58678b1c50dde57e71de5c123132716",
+  "aliases": {
+    "#core": "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/index.ts",
+    "#core/testing": "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/testing/index.ts",
+    "@tcg/lorcana-types": "submodules/lorcana/packages/lorcana/lorcana-types/src/index.ts",
+    "@tcg/lorcana-engine": "submodules/lorcana/packages/lorcana/lorcana-engine/src/index.ts",
+    "@tcg/lorcana-engine/testing": "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/index.ts",
+    "@tcg/bot-core": "submodules/agnostic-simulator/packages/bot-core/src/index.ts",
+    "@tcg/card-model": "submodules/agnostic-simulator/packages/card-model/src/index.ts",
+    "@tcg/lorcana-engine/automation": "submodules/lorcana/packages/lorcana/lorcana-engine/src/automation/index.ts",
+    "@tcg/lorcana-engine/i18n": "submodules/lorcana/packages/lorcana/lorcana-engine/src/i18n/index.ts",
+    "@tcg/lorcana-engine/testing/matchers": "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/matchers.d.ts",
+    "@tcg/lorcana-engine/support-probe": "submodules/lorcana/packages/lorcana/lorcana-engine/src/support-probe/index.ts",
+    "@tcg/lorcana-types/abilities": "submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/index.ts",
+    "@tcg/lorcana-types/cards": "submodules/lorcana/packages/lorcana/lorcana-types/src/cards/index.ts",
+    "@tcg/lorcana-types/targeting": "submodules/lorcana/packages/lorcana/lorcana-types/src/targeting/index.ts",
+    "@tcg/lorcana-types/expressions": "submodules/lorcana/packages/lorcana/lorcana-types/src/expressions/index.ts",
+    "@tcg/lorcana-types/name-generator": "submodules/lorcana/packages/lorcana/lorcana-types/src/name-generator/generator.ts",
+    "@tcg/bot-core/schemas": "submodules/agnostic-simulator/packages/bot-core/src/schemas.ts"
+  },
+  "runtime_seeds": [
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/definition.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/static-resources.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/types/branded.ts"
+  ],
+  "tests": [
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/contracts.readonly.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/card-runtime.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/clock-view.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/in-memory-transport.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.logs.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.patches.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.random-apis.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.zone-apis.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/mutative.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/private-field.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/protocol-types.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/time-control.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/types.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/view-filter.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-registry.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/types/branded.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/definition.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/challenge-trigger-windows.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/quest.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/alter-hand.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/choose-who-goes-first.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/setup.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/concede.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/forfeit-game.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/pass-turn.test.ts"
+  ],
+  "test_preloads": [
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/register-matchers.ts"
+  ],
+  "externals": [
+    "mutative",
+    "@logtape/logtape",
+    "seedrandom",
+    "unique-names-generator",
+    "zod",
+    "bun:test",
+    "node:fs",
+    "node:path",
+    "@logtape/pretty"
+  ]
+}

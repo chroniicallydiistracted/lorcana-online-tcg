@@ -19,13 +19,14 @@ function digestTree(root) {
   return sha256(JSON.stringify(rows));
 }
 
-const releaseWorkspaces = ['apps/web', 'apps/api', 'apps/match-service', 'apps/worker', 'packages/contracts', 'packages/design-system', 'packages/presentation', 'packages/service-runtime', 'packages/db'];
+const releaseWorkspaces = ['apps/web', 'apps/api', 'apps/match-service', 'apps/worker', 'packages/contracts', 'packages/design-system', 'packages/presentation', 'packages/service-runtime', 'packages/db', 'packages/engine-adapter', 'packages/engine-lab', 'vendor/tcg-engines'];
+export const engineProvenanceFiles = ['vendor/tcg-engines/upstream.lock.json', 'vendor/tcg-engines/LICENSE', 'vendor/tcg-engines/provenance/LORCANA_LICENSE.txt'];
 function digestClosure(root, owner, includeMigrations = false) {
   const packages = new Map(releaseWorkspaces.map(path => {
     const file = join(root, path, 'package.json');
     if (lstatSync(file).isSymbolicLink() || !lstatSync(file).isFile()) throw new Error('Unsafe release package');
     const manifest = JSON.parse(readFileSync(file));
-    if (manifest.name !== '@lorcana/' + path.split('/')[1]) throw new Error('Invalid release package identity');
+    if (manifest.name !== (path === 'vendor/tcg-engines' ? '@lorcana/vendor-engine' : '@lorcana/' + path.split('/')[1])) throw new Error('Invalid release package identity');
     return [manifest.name, { path, file, manifest }];
   }));
   const rows = [], seen = new Set();
@@ -37,6 +38,11 @@ function digestClosure(root, owner, includeMigrations = false) {
     const bytes = readFileSync(pkg.file);
     rows.push({ path: pkg.path + '/package.json', bytes: bytes.length, sha256: sha256(bytes) });
     rows.push({ path: pkg.path + '/dist', sha256: digestTree(join(root, pkg.path, 'dist')) });
+    if (name === '@lorcana/vendor-engine') for (const path of engineProvenanceFiles) {
+      const file = join(root, path);
+      if (!lstatSync(file).isFile() || lstatSync(file).isSymbolicLink()) throw new Error('Unsafe engine provenance');
+      const bytes = readFileSync(file); rows.push({ path, bytes: bytes.length, sha256: sha256(bytes) });
+    }
     for (const [dependency, version] of Object.entries({ ...pkg.manifest.dependencies, ...pkg.manifest.optionalDependencies, ...pkg.manifest.peerDependencies })) {
       if (dependency.startsWith('@lorcana/') || String(version).startsWith('workspace:')) visit(dependency);
     }
@@ -54,7 +60,9 @@ export function buildFoundationRelease(root, identity, createdAt = new Date().to
   }
   const schemaDigest = digestClosure(root, 'packages/db', true);
   components.databaseSchema = { status: 'built', version: 'schema-' + schemaDigest, sha256: schemaDigest };
-  for (const name of ['engine', 'content', 'rules', 'products', 'rewards']) components[name] = { status: 'reserved' };
+  const engineDigest = digestClosure(root, 'packages/engine-adapter');
+  components.engine = { status: 'built', version: 'engine-' + engineDigest, sha256: engineDigest };
+  for (const name of ['content', 'rules', 'products', 'rewards']) components[name] = { status: 'reserved' };
   const fields = { schemaVersion: 1, purpose: 'foundation', createdAt, source: { commit: identity.source_commit, fingerprint: identity.source_fingerprint, lockSha256: identity.lock_sha256 }, protocol: FOUNDATION_PROTOCOL, components };
   return parseReleaseManifest({ ...fields, releaseId: 'foundation-' + sha256(JSON.stringify(fields)) });
 }

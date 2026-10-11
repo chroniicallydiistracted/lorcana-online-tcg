@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import {mkdtempSync,readFileSync,existsSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {inventory,sourceFingerprint,repository} from '../../scripts/documentation-lib.mjs';
+const copy=mkdtempSync(join(tmpdir(),'lorcana-canonical-rule02-'));
+const expected='831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e';
+const env=Object.fromEntries(Object.entries(process.env).filter(([key])=>!/(?:password|secret|token|credential|private_key)|^(?:PG|POSTGRES|DATABASE)/i.test(key)));
+try {
+  const extract=spawnSync('tar',['-xf',join(repository,'.local/rule-02/canonical.tar'),'-C',copy],{stdio:'inherit'});
+  assert.equal(extract.status,0);
+  assert.equal(sourceFingerprint(copy),expected);
+  assert.equal(sourceFingerprint(repository),expected);
+  const files=inventory(copy);
+  for(const path of files)assert.ok(readFileSync(join(copy,path)).equals(readFileSync(join(repository,path))),'canonical/live bytes differ: '+path);
+  assert.equal(existsSync(join(copy,'.env.local')),false);
+  assert.equal(existsSync(join(copy,'.local')),false);
+  assert.equal(existsSync(join(copy,'.git')),false);
+  for(const args of [['install','--frozen-lockfile'],['verify:foundation']]) {
+    const r=spawnSync('pnpm',args,{cwd:copy,env,stdio:'inherit'});
+    assert.equal(r.error,undefined);assert.equal(r.signal,null);assert.equal(r.status,0);
+  }
+  console.log('PASS canonical staged Git archive: '+files.length+' files match live bytes; frozen install and complete foundation validation; final executable fingerprint '+expected+'. No private files/Git copied; verified tooling caches may be reused.');
+} finally {rmSync(copy,{recursive:true,force:true});assert.equal(existsSync(copy),false);console.log('PASS canonical temporary source cleanup.');}

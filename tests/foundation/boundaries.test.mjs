@@ -5,6 +5,25 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
+test('only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it', async () => {
+  const { checkSource } = await import('../../scripts/check-boundaries.mjs');
+  assert.doesNotThrow(() => checkSource(join(process.cwd(), 'packages/engine-lab/src/probe.ts'), undefined, "import { createSyntheticKernel } from '@lorcana/vendor-engine';"));
+  for (const path of ['apps/web/src/probe.ts', 'packages/contracts/src/probe.ts']) {
+    assert.throws(() => checkSource(join(process.cwd(), path), undefined, "import '@lorcana/vendor-engine';"), /Forbidden browser import/);
+    assert.throws(() => checkSource(join(process.cwd(), path), undefined, "import '@lorcana/engine-adapter';"), /Forbidden browser import/);
+  }
+  assert.throws(() => checkSource(join(process.cwd(), 'packages/engine-lab/src/probe.ts'), undefined, "import '../../../vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/index.ts';"), /Forbidden browser import/);
+});
+
+test('server applications cannot bypass the project adapter using vendor or raw upstream imports', async () => {
+  const { checkSource } = await import('../../scripts/check-boundaries.mjs');
+  for (const code of ["import '@lorcana/vendor-engine';", "import '@lorcana/engine-lab';", "const p='@lorcana/vendor-engine'; import(p);", "import '@tcg/lorcana-engine';", "import '../../../vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/index.ts';"]) {
+    assert.throws(() => checkSource(join(process.cwd(), 'apps/match-service/src/probe.ts'), undefined, code), /Forbidden engine import/);
+  }
+  assert.doesNotThrow(() => checkSource(join(process.cwd(), 'apps/match-service/src/probe.ts'), undefined, "import '@lorcana/engine-adapter';"));
+  assert.throws(() => checkSource(join(process.cwd(), 'apps/match-service/src/probe.ts'), undefined, "import '../../../packages/engine-lab/src/index.ts';"), /Forbidden engine import/);
+});
+
 test('browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations', async () => {
   for (const code of [
     "import '@lorcana/db';",

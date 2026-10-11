@@ -1,0 +1,31 @@
+✔ qualification input bounds sparse arrays, aggregate size, keys and accessors before engine execution (11.687953ms)
+✔ synthetic match commands run on Node with player authority, stale rejection, terminal winner and idempotent disposal (10.492472ms)
+✖ October rules and set dates never grant unqualified rules/catalog or hidden/economic admission (0.994347ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108.939524
+
+✖ failing tests:
+
+test at packages/engine-lab/tests/adapter.test.mjs:37:1
+✖ October rules and set dates never grant unqualified rules/catalog or hidden/economic admission (0.994347ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-lab/tests/adapter.test.mjs:50:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /JSON|admission/,
+    operator: 'throws',
+    diff: 'simple'
+  }

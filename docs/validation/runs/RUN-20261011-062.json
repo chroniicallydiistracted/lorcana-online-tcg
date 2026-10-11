@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-062",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';\nimport {readFileSync,readdirSync,lstatSync,readlinkSync,existsSync} from 'node:fs';\nimport {join} from 'node:path';\nimport {spawnSync} from 'node:child_process';\nimport {createConnection} from 'node:net';\nimport {inventory,sourceFingerprint,sha256,repository} from './scripts/documentation-lib.mjs';\nimport {privateRedactionValues} from './scripts/evidence-lib.mjs';\nassert.equal(sourceFingerprint(),'831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e');\nconst credentials=Object.values(privateRedactionValues(repository));assert.equal(credentials.length,9);\nconst publicPaths=inventory();\nfor(const path of publicPaths){const bytes=readFileSync(path);for(const value of credentials)assert.equal(bytes.includes(Buffer.from(value)),false,'private value found in public path: '+path);}\nfor(const path of ['.env.local','.local/database.json']){\n const s=lstatSync(path);assert.equal(s.mode&0o777,0o600);assert.equal(s.uid,process.getuid());assert.equal(s.isSymbolicLink(),false);assert.equal(s.nlink,1);\n assert.equal(spawnSync('git',['check-ignore','-q',path]).status,0);\n const intake=JSON.parse(readFileSync('docs/validation/runs/RUN-20261011-014.json'));\n assert.ok(s.mtimeMs<=Date.parse(intake.started_at),'private file modified after intake');\n}\nassert.equal(lstatSync('.local').mode&0o777,0o700);\nconsole.log('PASS known private values absent from all public source/receipts/logs; private files owned0600/ignored with mtimes preceding intake.');\nlet runs=0;\nfor(const name of readdirSync('docs/validation/runs').filter(n=>/^RUN-20261011-\\d{3}\\.json$/.test(n)&&Number(n.slice(-8,-5))>=14)){\n const r=JSON.parse(readFileSync(join('docs/validation/runs',name)));assert.equal(sha256(readFileSync(r.log_path)),r.log_sha256);runs++;\n}\nassert.equal(runs,48);console.log('PASS48 retained RULE-02 execution logs match their original receipt digests, including failures.');\nconst args=process.env.PY_REQUIREMENT_CHECK;assert.ok(args);\nconst csv=spawnSync('python3',['-c',args],{stdio:'inherit'});assert.equal(csv.status,0);\nfor(const path of ['SHA256SUMS.txt','VALIDATION_RESULTS.json','docs/vision/Development_Blueprint_2026-10-05.md','docs/vision/original_action_items.md','docs/vision/dependencies.json','docs/vision/source_register.json','docs/vision/additional_scope.csv','docs/vision/decision_register.csv','docs/vision/rules_certification_template.csv']){\n const base=spawnSync('git',['show','HEAD:'+path]);assert.equal(base.status,0);assert.ok(readFileSync(path).equals(base.stdout),'immutable baseline changed: '+path);\n}\nconsole.log('PASS original vision/decision/source/dependency/certification/archive provenance bytes preserved.');\nfor(const port of [5173,3001,3002]){\n await new Promise((resolve,reject)=>{const s=createConnection({host:'127.0.0.1',port});s.setTimeout(1500);s.once('connect',()=>{s.destroy();reject(new Error('Unexpected listener on '+port));});s.once('timeout',()=>{s.destroy();reject(new Error('Inconclusive listener probe'));});s.once('error',e=>e.code==='ECONNREFUSED'?resolve():reject(e));});\n}\nlet scanned=0;\nfor(const pid of readdirSync('/proc').filter(p=>/^\\d+$/.test(p)&&Number(p)!==process.pid)){\n try {\n  const args=readFileSync('/proc/'+pid+'/cmdline','utf8').split('\\0').filter(Boolean);const cwd=readlinkSync('/proc/'+pid+'/cwd');\n  if(!/^(?:node|bun)$/.test(args[0]?.split('/').at(-1)??''))continue;\n  scanned++;\n  assert.ok(!args.some(a=>a==='scripts/dev.mjs'||a.endsWith('/scripts/dev.mjs')||/apps\\/(?:api|match-service|worker)\\/(?:src|dist)\\/main\\.(?:ts|js)$/.test(a)),'Owned service process remains');\n  assert.ok(!(cwd.startsWith(repository+'apps/')&&args.some(a=>a==='src/main.ts'||a==='dist/main.js')),'Owned service process remains');\n  assert.ok(!args.some(a=>/node_modules\\/.*(?:vite\\/bin\\/vite|playwright.*(?:cli|run-server))/.test(a)),'Owned browser/dev process remains');\n } catch(e){if(!['ENOENT','EACCES'].includes(e.code))throw e;}\n}\nconsole.log('PASS actual container ports5173/3001/3002 refused; no owned dev/service/browser executables among '+scanned+' inspected Node/Bun processes.');\nassert.ok(readFileSync('.local/rule-02/canonical-check.mjs').equals(readFileSync('docs/validation/rule-02-canonical-check.mjs.txt')));\nconst host=JSON.parse(readFileSync('docs/validation/rule-02-host-closure.json'));\nassert.equal(host.category,'host_inspection');assert.equal(host.result,'passed');assert.equal(host.source_fingerprint,sourceFingerprint());\nassert.equal(Object.values(host.remaining).flat().length,0);assert.equal(host.isolated_image_absent,true);\nconsole.log('PASS retained canonical program identity and separately attributed WSL host cleanup report at '+host.observed_at);\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e",
+  "started_at": "2026-10-11T20:03:58.123Z",
+  "finished_at": "2026-10-11T20:03:58.467Z",
+  "recorded_at": "2026-10-11T20:03:58.467Z",
+  "time_precision": "exact",
+  "elapsed_ms": 344,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Actual final listener/private/log/requirement/archive preservation and retained host/canonical evidence identity",
+  "log_path": "docs/validation/logs/RUN-20261011-062.txt",
+  "log_sha256": "a809845516b2f14dc38b142ddfc58e17ae93c92a589cca6b725c9b423bb42723",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-063",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict'; import {spawnSync} from 'node:child_process'; import {sourceFingerprint} from './scripts/documentation-lib.mjs'; assert.equal(sourceFingerprint(),'831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e'); const p=spawnSync('python3',['-c',\"import csv,io,subprocess\\nfrom pathlib import Path\\nold=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show','HEAD:docs/vision/requirements.csv'],text=True))))\\nnew=list(csv.DictReader(Path('docs/vision/requirements.csv').open()))\\nassert len(old)==len(new)==548\\nassert len({r['group_id'] for r in new})==33\\nassert sum(r['source_optional']=='true' for r in new)==20\\nchanged=[]\\nallowed={'R01.005','R01.006','R01.018','R29.005'}\\nfor a,b in zip(old,new):\\n    assert a['requirement_id']==b['requirement_id']\\n    if a!=b:\\n        changed.append(a['requirement_id'])\\n        assert a['requirement_id'] in allowed\\n        assert all(a[k]==b[k] for k in a if k not in ['ticket_ids','evidence_links'])\\nassert set(changed)==allowed\\nprint('PASS all548 requirement identities/text/statuses,33 areas and20 optional flags; only four ticket/evidence prerequisites extended.')\\n\"],{stdio:'inherit'});assert.equal(p.status,0);for(const args of [['docs:check'],['verify']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});assert.equal(r.status,0);assert.equal(r.signal,null);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e",
+  "started_at": "2026-10-11T20:06:26.153Z",
+  "finished_at": "2026-10-11T20:06:47.012Z",
+  "recorded_at": "2026-10-11T20:06:47.012Z",
+  "time_precision": "exact",
+  "elapsed_ms": 20859,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Completed-scope documentation/static review and original requirement preservation with fully captured checker input",
+  "log_path": "docs/validation/logs/RUN-20261011-063.txt",
+  "log_sha256": "dd11ef690a92bbebe4c2cd308692a0341ed3da1575f172f3cd9c2d94b483c74e",
+  "redactions": 0
+}

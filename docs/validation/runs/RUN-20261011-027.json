@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-027",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/vendor-engine",
+    "build"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "93c02142e3b26cb9a94faed74ac7b4f85e09257e149006b57c1c3c2a660d8d26",
+  "started_at": "2026-10-11T00:53:59.631Z",
+  "finished_at": "2026-10-11T00:54:01.293Z",
+  "recorded_at": "2026-10-11T00:54:01.293Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1662,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Precompiled kernel build after correcting the pinned ID export location",
+  "log_path": "docs/validation/logs/RUN-20261011-027.txt",
+  "log_sha256": "6b1629499895367890aef4819c955ae7cdf451ad0b70cd6a18aa2f924ae10a47",
+  "redactions": 0
+}

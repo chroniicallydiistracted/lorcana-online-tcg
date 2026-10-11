@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-059",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process'; for(const args of [['run','doctor'],['test:bootstrap'],['db:check']]) {const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0||r.signal||r.error)process.exit(1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e",
+  "started_at": "2026-10-11T19:49:29.325Z",
+  "finished_at": "2026-10-11T19:49:30.734Z",
+  "recorded_at": "2026-10-11T19:49:30.734Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1409,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Resumed existing-container doctor/bootstrap5/authenticated PostgreSQL baseline",
+  "log_path": "docs/validation/logs/RUN-20261011-059.txt",
+  "log_sha256": "04b04b1deb69957e94fe64017ef56edc0a432eb158ade3750a2148f628716ac4",
+  "redactions": 0
+}

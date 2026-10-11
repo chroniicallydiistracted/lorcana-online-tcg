@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-043",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "typecheck"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "b51a9d302339f0aec5c76395e0af6a8ddcac59fe1a96910fe2f03d100b201d29",
+  "started_at": "2026-10-11T01:07:08.332Z",
+  "finished_at": "2026-10-11T01:07:25.921Z",
+  "recorded_at": "2026-10-11T01:07:25.921Z",
+  "time_precision": "exact",
+  "elapsed_ms": 17590,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Current workspace strict type checks and all ordered package builds",
+  "log_path": "docs/validation/logs/RUN-20261011-043.txt",
+  "log_sha256": "69008446992ab6160e1f0dd73ead12dc732a91992935ec16c27bcd8eef078b76",
+  "redactions": 0
+}

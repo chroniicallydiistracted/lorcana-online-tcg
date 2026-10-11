@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-037",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "engine:test-upstream"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "52d723680be48d6ee322b684166cb0fce5c6a6bd76a2e068e4a93fd6c7fb7175",
+  "started_at": "2026-10-11T00:57:50.136Z",
+  "finished_at": "2026-10-11T00:57:52.093Z",
+  "recorded_at": "2026-10-11T00:57:52.093Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1957,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Verify documented local patches preserve all selected unchanged upstream test assertions",
+  "log_path": "docs/validation/logs/RUN-20261011-037.txt",
+  "log_sha256": "5bb259b5c9e62c473803127967b26ce373bd4f4e320e6a3f015965bd4ea74988",
+  "redactions": 0
+}

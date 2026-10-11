@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-058",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict'; import {readFileSync} from 'node:fs'; import {join} from 'node:path'; import {verifyArtifacts} from './scripts/ci/artifacts.mjs'; import {sourceFingerprint} from './scripts/documentation-lib.mjs'; const path='.local/ci-results/lorcana-ci-9d115e51f03b4255acd61949ba9a986a/artifacts'; const m=verifyArtifacts(path); assert.equal(m.identity.source_fingerprint,sourceFingerprint()); const read=n=>JSON.parse(readFileSync(join(path,n))); const release=read('release-manifest.json'); assert.equal(release.components.engine.status,'built'); for(const n of ['content','rules','products','rewards'])assert.equal(release.components[n].status,'reserved'); assert.equal(read('pipeline.json').stages.length,13); const sbom=read('sbom.cdx.json');assert.equal(sbom.components.filter(c=>c.name==='tcg-engines minimal Lorcana closure').length,1);console.log('PASS current source-bound artifact v3: '+m.files.length+' payloads, '+sbom.components.length+' components, '+read('dependency-audit.json').license_file_gaps.length+' explicit notice gaps, '+release.releaseId);"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e",
+  "started_at": "2026-10-11T19:48:56.193Z",
+  "finished_at": "2026-10-11T19:48:56.850Z",
+  "recorded_at": "2026-10-11T19:48:56.850Z",
+  "time_precision": "exact",
+  "elapsed_ms": 658,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Independent current-source artifact v3/release/engine/provenance/SBOM re-verification",
+  "log_path": "docs/validation/logs/RUN-20261011-058.txt",
+  "log_sha256": "1f0345e8408f147b4860055375fbf87d84297090740e9ac38d7487a3709973c3",
+  "redactions": 0
+}

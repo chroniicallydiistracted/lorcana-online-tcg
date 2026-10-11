@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261011-025",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/foundation/boundaries.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "e42d0abdcc06e91c639acd70041fc9d44b393c5770e9a0bc7a358e51df3da06c",
+  "started_at": "2026-10-11T00:51:49.021Z",
+  "finished_at": "2026-10-11T00:51:53.274Z",
+  "recorded_at": "2026-10-11T00:51:53.274Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4253,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "source_changed",
+  "summary": "RED: browser ownership must allow only the designated Lab-to-compiled-kernel edge",
+  "log_path": "docs/validation/logs/RUN-20261011-025.txt",
+  "log_sha256": "3d754f8c11c12338ad095c00990c8290250a75f21e77a401931310ea1a0ed316",
+  "redactions": 0
+}

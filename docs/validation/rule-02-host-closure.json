@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-11T20:02:50.909Z",
+  "category": "host_inspection",
+  "actor": "Codex WSL host inspection",
+  "source_commit": "19251271a635bd94556ce70a6ef0a77e4ccd7b65",
+  "source_fingerprint": "831cb35f241bab4ac7ff320dc3eafa1fc553e8a1fe93e88b49e43d49412ffb6e",
+  "queries": [
+    [
+      "docker",
+      "ps",
+      "-aq",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-9d115e51f03b4255acd61949ba9a986a"
+    ],
+    [
+      "docker",
+      "volume",
+      "ls",
+      "-q",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-9d115e51f03b4255acd61949ba9a986a"
+    ],
+    [
+      "docker",
+      "network",
+      "ls",
+      "-q",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-9d115e51f03b4255acd61949ba9a986a"
+    ],
+    [
+      "docker",
+      "image",
+      "inspect",
+      "--format",
+      "{{.Id}}",
+      "sha256:bfd5c179a74fae5636c113cd2c79ec5422e6de2b4b87da1c0b301157031c7dfc"
+    ],
+    [
+      "docker",
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"state\":{{json .State}},\"mounts\":{{json .Mounts}}}",
+      "lorcana-online-tcg_devcontainer-workspace-1"
+    ],
+    [
+      "docker",
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"state\":{{json .State}},\"mounts\":{{json .Mounts}}}",
+      "lorcana-online-tcg_devcontainer-postgres-1"
+    ],
+    [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ]
+  ],
+  "isolated_project": "lorcana-ci-9d115e51f03b4255acd61949ba9a986a",
+  "remaining": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "isolated_image_absent": true,
+  "original_services": [
+    {
+      "name": "lorcana-online-tcg_devcontainer-workspace-1",
+      "id": "3e5816dff0bed2b6e553297c170779f6b4ad87a82e63da807a509061374eac82",
+      "running": true,
+      "database_healthy": null,
+      "project_mount": {
+        "Destination": "/workspaces/lorcana-online-tcg",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/andre/lorcana-online-tcg",
+        "Type": "bind"
+      }
+    },
+    {
+      "name": "lorcana-online-tcg_devcontainer-postgres-1",
+      "id": "1695ec6fc3ebd923802916c4649fae195cfbb4f9c69029159099bcfb6fb0ed1b",
+      "running": true,
+      "database_healthy": "healthy",
+      "project_mount": {
+        "Destination": "/var/lib/postgresql",
+        "Driver": "local",
+        "Mode": "rw",
+        "Name": "lorcana-online-tcg_devcontainer_pg18_data",
+        "Propagation": "",
+        "RW": true,
+        "Source": "/var/lib/docker/volumes/lorcana-online-tcg_devcontainer_pg18_data/_data",
+        "Type": "volume"
+      }
+    }
+  ],
+  "result": "passed",
+  "earlier_attempts": [
+    {
+      "result": "failed",
+      "exit_code": 1,
+      "execution_times": null,
+      "command": [
+        "docker",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"running\":{{json .State.Running}},\"health\":{{json .State.Health}},\"mounts\":{{json .Mounts}}}",
+        "lorcana-online-tcg_devcontainer-workspace-1"
+      ],
+      "diagnostic": "Template referenced missing State.Health on workspace container; read-only inspection failed, then corrected to optional Health within State. No service mutation."
+    }
+  ],
+  "limitations": [
+    "Tool-level read-only WSL Docker observations; not a schema-v1 recorder run, production, restore or Windows/GPU acceptance."
+  ]
+}

@@ -1,0 +1,45 @@
+✖ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (202.411369ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1908.184338ms)
+✔ browser source cannot import the server-only release registry through its package subpath (3.944589ms)
+✔ declaring a database dependency in a public contract package is rejected (232.264299ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (243.270217ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (250.066945ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (267.638228ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (1006.75276ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4172.679195
+
+✖ failing tests:
+
+test at tests/foundation/boundaries.test.mjs:8:1
+✖ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (202.411369ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "Forbidden browser import: /workspaces/lorcana-online-tcg/packages/engine-lab/src/probe.ts -> @lorcana/vendor-engine"
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/foundation/boundaries.test.mjs:10:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: Error: Forbidden browser import: /workspaces/lorcana-online-tcg/packages/engine-lab/src/probe.ts -> @lorcana/vendor-engine
+        at fail (file:///workspaces/lorcana-online-tcg/scripts/check-boundaries.mjs:30:37)
+        at inspect (file:///workspaces/lorcana-online-tcg/scripts/check-boundaries.mjs:104:73)
+        at visit (file:///workspaces/lorcana-online-tcg/scripts/check-boundaries.mjs:107:97)
+        at visitNodes (/workspaces/lorcana-online-tcg/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/typescript.js:32559:22)
+        at forEachChildInSourceFile (/workspaces/lorcana-online-tcg/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/typescript.js:32772:12)
+        at Object.forEachChild (/workspaces/lorcana-online-tcg/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/typescript.js:33072:35)
+        at visit (file:///workspaces/lorcana-online-tcg/scripts/check-boundaries.mjs:116:8)
+        at checkSource (file:///workspaces/lorcana-online-tcg/scripts/check-boundaries.mjs:118:3)
+        at file:///workspaces/lorcana-online-tcg/tests/foundation/boundaries.test.mjs:10:29
+        at getActual (node:assert:611:5),
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }
+
+[Recorder failure: source_changed]

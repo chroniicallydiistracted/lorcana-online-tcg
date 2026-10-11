@@ -1,0 +1,20 @@
+✔ closure follows cyclic relative imports, type imports and explicit aliases, omitting unrelated files (17.637536ms)
+✔ closure rejects source reached through a directory symlink outside the pinned root (1.543889ms)
+✔ vendor integrity rejects modified, extra and missing source plus an unlisted patch (2.834304ms)
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (255.524685ms)
+✔ server applications cannot bypass the project adapter using vendor or raw upstream imports (8.893846ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1929.02577ms)
+✔ browser source cannot import the server-only release registry through its package subpath (3.300107ms)
+✔ declaring a database dependency in a public contract package is rejected (280.033708ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (249.515635ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (245.491271ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (227.105631ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (924.953311ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4180.305682

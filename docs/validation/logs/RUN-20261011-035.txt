@@ -1,0 +1,13 @@
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 4 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  835.85 kB │ gzip: 184.08 kB
+
+✓ built in 129ms
+PASS synthetic trust-free worker without server/private/Bun runtime

@@ -33,3 +33,5 @@ BOOT-02 acceptance: reproducible start/health/provision/migrate passed; effectiv
 ## BOOT-05 continuation
 
 The preceding results/decisions are retained as dated task checkpoints. BOOT-05 now implements public protocol/negotiation and release artifact v2 binding/retained pins with final-source local evidence; [ADR0006](../adr/0006-protocol-release-contracts.md) and [BOOT-05 validation](../validation/boot-05.md) describe the current scope. This extension does not implement authenticated gameplay or production activation.
+
+RULE-02 continuation recorded2026-10-11T19:55:24Z: the earlier v2 statement describes its BOOT-05 checkpoint. Current artifacts use v3 engine/provenance binding and twelve workspace builds; [RULE-02 validation](rule-02.md) records the fresh isolated five-check database regression and original bootstrap connection. Roles, migrations, credentials and SQL are unchanged; engine persistence remains unimplemented.

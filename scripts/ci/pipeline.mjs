@@ -34,6 +34,7 @@ export function pipeline(root,env=process.env) {
     ['live-database',['pnpm','db:test']],
     ['pinned-chromium',['pnpm','--filter','@lorcana/web','exec','playwright','install','chromium']],
     ['browser',['pnpm','test:e2e:smoke']],
+    ['engine-browser',['pnpm','test:engine-browser']],
   ];
   const reports=runStages(stages,(command,name)=>{
     console.log('CI stage: '+name);
