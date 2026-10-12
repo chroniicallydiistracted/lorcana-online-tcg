@@ -464,8 +464,8 @@
       "id": "F-DB",
       "name": "Local restricted PostgreSQL foundation",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Verified local managed app databases, restricted service identities, typed synthetic probes, reviewed locked/transactional/checksummed migrations and disposable recreation proof; domain/app/production acceptance remains separate. Current-source live isolated checks completed in timing-rejected CI; historical scoped recreation/role acceptance remains preserved, without promoting failed receipts.",
+      "verification": "verified",
+      "description": "Verified local managed app databases, restricted service identities, typed synthetic probes, reviewed locked/transactional/checksummed migrations and disposable recreation proof; domain/app/production acceptance remains separate. Current-source live isolated checks (eight managed identities, local/test migrations, five live checks) passed with exact timing in RUN-20261012-043 after the timing-rejected RUN028/029; historical scoped recreation/role acceptance remains preserved.",
       "sources": [
         "packages/db/**",
         "infra/**",
@@ -498,15 +498,16 @@
         "docs/validation/runs/RUN-20261012-025.json",
         "docs/validation/runs/RUN-20261012-026.json",
         "docs/validation/runs/RUN-20261012-027.json",
-        "docs/validation/runs/RUN-20261012-031.json"
+        "docs/validation/runs/RUN-20261012-031.json",
+        "docs/validation/runs/RUN-20261012-043.json"
       ]
     },
     {
       "id": "F-CI",
       "name": "Reproducible CI and qualified build artifacts",
       "implementation": "implemented",
-      "verification": "pending",
-      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 complete all child stages but fail clock_changed; no result published. Director leaves environment unchanged; current isolated timing acceptance stays pending. Prior hosted results remain source-qualified; RULE-02 success is Director-reported.",
+      "verification": "verified",
+      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 completed all child stages but failed clock_changed and published no result. Independent audit RUN-20261012-043 then passed the unchanged guard (exact timing, 13 stages, scans, artifact) at the final RULE-03 fingerprint, and RUN044 re-verified its artifact. Hosted RULE-02 main f61aad8 run 38183090003 succeeded (observed through the GitHub API by the audit; its artifact was not downloaded). Hosted RULE-03 and required-check settings remain separate.",
       "sources": [
         "scripts/ci/**",
         "scripts/ci-local.py",
@@ -544,7 +545,9 @@
         "docs/validation/runs/RUN-20261012-025.json",
         "docs/validation/runs/RUN-20261012-026.json",
         "docs/validation/runs/RUN-20261012-027.json",
-        "docs/validation/runs/RUN-20261012-031.json"
+        "docs/validation/runs/RUN-20261012-031.json",
+        "docs/validation/runs/RUN-20261012-043.json",
+        "docs/validation/runs/RUN-20261012-044.json"
       ]
     },
     {

@@ -54,3 +54,36 @@ RULE-04 is next. The local branch is prepared for Director audit; no publication
 ## Final record classification correction
 
 RUN034 retained a failed final metadata gate: the native reported disposition requires an actual manual-device receipt, whereas the independent review/host inspection are attributed non-recorder observations. Their ledger disposition is historical with explicit scope/unknown detailed execution times; no device verdict or passing run is fabricated. No executable/schema/clock/CI threshold change. Fresh corrected final documentation/staged verification follows in the change record.
+
+
+## Independent audit and integration — 2026-10-12 UTC
+
+Auditor: Claude Code agent (architect/QA reviewer role) on the Director's request to audit RULE-03 for accuracy and completeness and, once confirmed, publish and merge it. Change record: [CHG-20261012-002](../changes/CHG-20261012-002.json). Audited commit 7d7ca20fa2874e3ae4566b325e96f8824291bcd7 on codex/rule-03-secure-rng (base f61aad8). Every run below passed at executable fingerprint `2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58` (the same fingerprint as RUN024–033), with 0 redactions and no clock discontinuity. Run IDs use 20261012.
+
+| Run | Observed result |
+|---|---|
+| RUN036 | `pnpm verify:foundation`: verify (including the randomness guard), typecheck, lint, build and 141 project checks (117 Node + 24 Python), 338 unchanged upstream passes/1 inherited skip across 27 files and 2 project injection tests |
+| RUN037 | Importer `--check` against the pinned checkout reproduced all 347 payloads, both licenses, 28 patch originals and the lock |
+| RUN038 | Separate Python `git cat-file` audit: 319 files byte-identical to the pin, 28 patched files equal to their ledger (each anchor occurs once; every original equals its pinned blob), both licenses identical, 27 selected tests unchanged, no extra or missing files; runtime externals are only `@logtape/logtape` and `mutative` |
+| RUN039 | Independent Python HMAC-SHA256 re-derivation matched 3,765 compiled server outcomes over 251 indices: 53-bit floats, rejection-sampled integers for 11 bounds from 1 to 2^32 (220 rejection retries reproduced) and domain-separated identifiers |
+| RUN040 | Compiled-adapter probe with ambient `Math.random`, `Date.now`/`new Date()`, `crypto.randomUUID` and `getRandomValues` disabled: 40 secret-seeded matches completed and verified, with 40 distinct seed commitments, initial and final state hashes; first chooser split 19/21; the frozen handle exposes only status/submit/exportReplay/dispose and neither it nor live status contains the seed; caller seeds, injected sources, accessors, null-prototype and invalid options refused; the same seed and commands give byte-identical archives and a different seed differs; rejected actor/stale commands are journaled without outcomes and a timestamp regression throws without journaling; 10 tamper cases with recomputed outer digests rejected, including a different seed with a correctly recomputed commitment; interleaved matches verify independently; admission stays closed outside synthetic qualification; `dist/replay.js` is not reachable through the package exports |
+| RUN041 | Built-bundle scan: the compiled kernel contains no `Math.random`, `randomUUID`, `getRandomValues`, seedrandom, HMAC, `node:crypto`, Bun or raw-suite defaults; the Lab worker/facade contain no server RNG or replay code; the server adapter contains no seedrandom; the four app `dist` trees (47 files) contain no engine RNG or replay code |
+| RUN042 | Two compiled synthetic Lab workers in actual headless Chromium, including rejected private replay/random/snapshot/restore RPC |
+| RUN043 | Host isolated 13-stage CI from a fresh Dockerfile-built image: frozen install, doctor, full foundation, bootstrap/restricted database, local/test migrations and identities, live database, pinned Chromium, 6 browser scenarios, 2 engine workers, source/full-history secret and dependency/license scans, and the v3 artifact. Exact timing (210,199 ms monotonic, no discontinuity); the launcher removed its project, volume, network and image |
+| RUN044 | `pnpm ci:artifacts` re-verified the RUN043 artifact: allowlist, regular files, sizes, SHA-256, release/app/SQL/engine binding and secret patterns |
+| RUN045 | `docs:check` for this audit record |
+
+Code review covered `random.ts`, `replay.ts`, `validation.ts`, `code-identity.ts`, `admission.ts` and `index.ts`; the kernel bridge, build guard and compatibility preload; all 28 patches; the AST randomness guard, boundary changes, release identity and dependency moves. Every gameplay shuffle and draw in the runtime goes through the injected source: zone shuffles, effect shuffles, board setup, first-player selection and mulligan moves. Rejected or rolled-back attempts reuse the same indices, so a retry cannot reroll an outcome. The requirement edits only add RULE-03 as prerequisite evidence; all 548 requirement dispositions, the D03 decision value and the scope counts are unchanged.
+
+Isolated CI: RUN043 passed the unchanged 1-second timestamp guard at the final RULE-03 fingerprint, so the timing qualification left pending after RUN028/029 is now satisfied. No clock, tolerance, service or environment change was made; RUN028/029/030 remain preserved as failed or diagnostic receipts. F-CI and F-DB return to verified with RUN043 evidence, and the RULE-03 backlog status no longer carries the timing-pending suffix. Hosted result: the foundation workflow for RULE-02 main f61aad853e80135827ec45ba815f9da79c9eebb0 (run 38183090003, push, created 2026-10-11T23:07:34Z, completed 23:12:48Z) concluded success. The auditor observed it through the GitHub API; its artifact was not downloaded. Hosted RULE-03 execution follows integration and must be observed separately.
+
+Backlog acceptance: no competitive `Math.random` fallback — met (RUN036/038/040/041); replay equality — met (RUN036/040); random-stream access tests — met (RUN036/040/041/042).
+
+Non-blocking observations for later work:
+
+- The compiled kernel still reads `Date.now()` for four LogTape log-record timestamps and one cache-timing fallback. None reaches match state: RUN040 completes and verifies matches with ambient clocks throwing. Future logging must stay out of state and replay.
+- `performMulligan` in `core/runtime/zone-operations.ts` is exported but unused and builds zone operations without the match's random source, so it fails closed. Any future caller must pass the match random API.
+- P006 (`clock-view.ts`) only adds an unused import and rewrites a comment; the time-control patch also rewrites a doc comment. Both are harmless and come from a blanket replacement.
+- The Lab bundle contains seedrandom's autoseed code (`getRandomValues`/`randomBytes`/`new Date`). It is unreachable because the Lab always passes an explicit seed, and Lab play is noncompetitive.
+
+The D10 disclosure decision and the Director's earlier leave-environment instruction are recorded by Codex. They match the backlog and ADR0010, but this auditor did not observe the original instructions.

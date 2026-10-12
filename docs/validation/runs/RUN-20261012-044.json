@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-044",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "ci:artifacts",
+    "--",
+    "/workspaces/lorcana-online-tcg/.local/ci-results/lorcana-ci-c4d50e8ee870422593e12eeb71774a12/artifacts"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "7d7ca20fa2874e3ae4566b325e96f8824291bcd7",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T16:11:41.791Z",
+  "finished_at": "2026-10-12T16:11:42.475Z",
+  "recorded_at": "2026-10-12T16:11:42.475Z",
+  "time_precision": "exact",
+  "elapsed_ms": 683,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Independent RULE-03 audit: re-verify the RUN043 isolated CI v3 artifact (allowlist, regular files, sizes, SHA-256, release/app/SQL/engine binding, secret patterns)",
+  "log_path": "docs/validation/logs/RUN-20261012-044.txt",
+  "log_sha256": "43da509ab2d7192a772d24176eea2973a4c846d8e1bf272b31183e1c4aff282f",
+  "redactions": 0
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-12T04:57:52.079Z",
+  "observed_at": "2026-10-12T16:15:43.265Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -1661,7 +1661,8 @@
     "CHG-20261011-001",
     "CHG-20261011-002",
     "CHG-20261011-003",
-    "CHG-20261012-001"
+    "CHG-20261012-001",
+    "CHG-20261012-002"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -1688,7 +1689,8 @@
     "CHG-20261011-001": "finalized",
     "CHG-20261011-002": "finalized",
     "CHG-20261011-003": "finalized",
-    "CHG-20261012-001": "finalized"
+    "CHG-20261012-001": "finalized",
+    "CHG-20261012-002": "finalized"
   },
   "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
   "files": {
@@ -1736,8 +1738,8 @@
     "docs/ARCHIVE_PROVENANCE.md": "e77e3909b03bae735287e3176fcab76c5418ee87cde40b972beb9631cb6bedda",
     "docs/CHANGELOG_FORMAT.md": "de3bb6f22723e31eca77673cb93661105484c9598325f87b4b1684677fdb0e44",
     "docs/DEVELOPMENT_WORKFLOW.md": "8503b4afff126a19d41f924afd06ce71f267566dcede616755c5a1a042b6b072",
-    "docs/FEATURES.md": "63f72721c99ed5134cc31de51a8074c6279563caad2191a5b6c577954c9a7a7c",
-    "docs/HANDOFF.md": "0ca50ffd59bd7d28119e7b06a3df609619279788ee4f43cb63df563b8a0687fb",
+    "docs/FEATURES.md": "0210385c87b2e0ab03b2d2185126b7778c5d866fa525fa3c1bc7945165637aa5",
+    "docs/HANDOFF.md": "6c61d644646c02cb65ddb51ee13b01775d3ca41d82789e04e03449bc2045a7dd",
     "docs/README.md": "1699f467018384e02f6c397e36935af86a533d57f08935cb6edc4944b9d07005",
     "docs/WORKSPACE_QUALIFICATION.md": "685f273768613baaffe81c807823e2acfa9211d51dd7b9f6b524d49ef3a0f3ce",
     "docs/adr/0001-local-development-environment.md": "d8ac21f6473981f75ad8e9210834cbc890580b2fef4a8394d2b3f6c505468395",
@@ -1750,12 +1752,12 @@
     "docs/adr/0007-single-host-beta-proposal.md": "13ee0af57f98d4dcc67319e1e4b1558622e24b123f2d8ed4fa16b693fac70ccf",
     "docs/adr/0008-engine-placement-dependency-baseline.md": "3390f5759676043f0bab9804da02d0db543ffe88f202617d16cf99b0054f1798",
     "docs/adr/0009-pinned-engine-qualification.md": "04cda9603bf6a4cb5a5fa2d014b4ec1e7ada856efa24bf0aea6787c634e2b395",
-    "docs/adr/0010-secure-randomness-replay.md": "13318fc25503008f2cb13bfe38831369afe1eddd5b90de1f510de1698341f35a",
+    "docs/adr/0010-secure-randomness-replay.md": "75d68b7b3e914fceb942aec05dba25ced27ade26eee96d4714a14d970cfa9e32",
     "docs/audits/2026-10-06-project-audit.md": "9f369bc89ade5a325a7d6c597b4abf24f046cc8a4e9b0ee0817429f3dcea250f",
     "docs/contracts/protocol.md": "6482f9ef5e06dfed03aad9c2936027cada33771757f34504dbc491160423041d",
     "docs/contracts/release.md": "221bbc065ed374fc56da0015c1b29d22f1540c903f908f01cdc8fa7c2fde3b8b",
     "docs/documentation-map.json": "0cc9686a9ceb064d681ae21505b8cd88fe37b0a536f363950a02855d2b129444",
-    "docs/features.json": "2520f300fd73050fc2c110797c271589d6941282d2559ac0482255730e33c1c3",
+    "docs/features.json": "339bb1c6f1b14b5beef2dc7c4fe68cf47a5c357ee62d5da93c450d6400eca155",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "b99ddd45b47509a8bfa69f0ca90d87b59767d72859c3724413d4cdc995440bf8",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -1765,7 +1767,7 @@
     "docs/plans/2026-10-10-boot-04-decision-worksheet.md": "c07cc1bc7e7bca43a57138de065484806d740db1e8365d99c98a24c62cbfab51",
     "docs/plans/2026-10-10-rule-01-source-inventory.md": "4fd58c5c6d0379bb9f428d401431026817ca01f39dbccb938284eff74c67101f",
     "docs/plans/2026-10-11-rule-02-engine-vendor.md": "a2a8b0acbc6aef02d0a917a03b3ac7879f3e22c6d3d16df46aabc1a60a9781c0",
-    "docs/plans/2026-10-12-rule-03-randomness-replay.md": "096a1f792a6d7141c4308c64d6c04fa705bd4bb4ebe0dc284318f15d505bb7cb",
+    "docs/plans/2026-10-12-rule-03-randomness-replay.md": "a49ad5e0fe48c0157472f6539fac4cc0112669f1ebcd892b2085c7fa0474e054",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
     "docs/plans/boot-04-costs.json": "db38b14c7d22fce7fbf18c88f29062beb9462732cc578e09b744d4170f2ebda5",
     "docs/plans/boot-04-single-host-costs.json": "f3fb2b6de8b9bb07522dbf753fb60daede3c2f8df8ec00c865718ead438018a7",
@@ -1813,14 +1815,14 @@
     "docs/validation/rule-02.md": "1bf342a3040101dcee13e804a51c801dc9e9b260026fa1c715a0f715a2b7c92a",
     "docs/validation/rule-03-canonical-check.mjs.txt": "cf9d865a075824ccbc245c69dc204df08734cb77c21da321aba3301863ddb3ee",
     "docs/validation/rule-03-host-closure.json": "3980919ababfccae41ca97dcdc6e853345f4c9e2567d2f73b6cb48dda1a58a0c",
-    "docs/validation/rule-03.md": "138351ccc9d56fce916393a8acc191479997ea6ee2ca3b68dc141cdf5239354b",
+    "docs/validation/rule-03.md": "84fc79c790a64f3b79d5a49874100808c9f7cebe6e3baf32835c3825a50eebd6",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "13d981ab7786701bbac6ae693141c9c961fdd6066c28a380a41632503494f55a",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
     "docs/vision/decision_register.csv": "89751c5c5492a330c911334befa95ce2b15f77283ae19889cef3357a94fb05bd",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "392fa0fc143f1cd7f826435e7cc6d5ba555f687529e484d7add3d5fc9931a2ad",
+    "docs/vision/initial_backlog.csv": "d4a7f5db15813e1952f465e2338194d1c122e2f077104cacddcb1fb2725e510c",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "0a72e091a909c17e9aec56888eed9d37f29bc0b144113b02184184eba862ee60",

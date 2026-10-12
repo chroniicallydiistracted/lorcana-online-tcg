@@ -24,3 +24,8 @@ Primary references: [Node24 crypto](https://nodejs.org/docs/latest-v24.x/api/cry
 ## Director environment disposition
 
 Recorded: 2026-10-12T04:40:15.573Z. After two complete isolated child pipelines were timing-rejected, the Director chose to leave the environment unchanged and retain CI timing qualification pending. No clock/driver/service/restart/tolerance change follows. Passing source-matched core/frozen/clean/canonical/browser checks are independent of those failed receipts; details are in RULE-03 validation.
+
+
+## Independent audit update
+
+Recorded: 2026-10-12 UTC by the Claude Code audit ([CHG-20261012-002](../changes/CHG-20261012-002.json)). The decision is unchanged and matches the audited source. Isolated CI RUN-20261012-043 passed the unchanged timestamp guard at the final RULE-03 fingerprint without any environment change, so the timing qualification recorded as pending above is now satisfied. Details are in [RULE-03 validation](../validation/rule-03.md).

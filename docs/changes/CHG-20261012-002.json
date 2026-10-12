@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261012-002",
+  "title": "Independent audit of RULE-03 and Director-authorized integration into main",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-12T16:15:30.486Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "7d7ca20fa2874e3ae4566b325e96f8824291bcd7",
+  "task_ids": [
+    "RULE-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS",
+    "F-CI",
+    "F-DB",
+    "F-ENGINE"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Audited Codex commit 7d7ca20 (RULE-03, CHG-20261012-001) against the backlog acceptance (no competitive Math.random fallback; replay equality and random-stream access tests), ADR0010, ADR0008/0009 and D10. Code review covered packages/engine-adapter/src (random, replay, validation, code-identity, admission, index), the kernel bridge, build guard and Bun-only compatibility preload, all 28 vendor patches (P001/P002 retained, P003-P028 new), the AST randomness guard, boundary/loader changes, release two-root identity and the seedrandom move to browser Lab. Every gameplay shuffle/draw in the runtime goes through the injected per-match source; legacy helpers fail closed outside Bun; rejected/rolled-back attempts reuse committed indices. Requirement edits only add prerequisite evidence; all 548 dispositions, D03 and scope counts are unchanged."
+    },
+    {
+      "kind": "test",
+      "description": "Independent runs RUN-20261012-036..044 all passed at executable fingerprint 2e6c4734... with exact timing: verify:foundation (141 project checks, 338 upstream passes/1 inherited skip, 2 injection tests); importer reproduction from the pinned checkout; separate git cat-file byte audit (319 identical, 28 patched to ledger, licenses, 27 unchanged tests, no extra/missing files); independent Python HMAC re-derivation of 3765 compiled server outcomes including 220 rejection retries; compiled-adapter probe with ambient Math.random/Date/randomUUID/getRandomValues disabled (40 secret-seeded matches, seed privacy, refused caller entropy, fixed-seed determinism, journaled rejections, 10 recomputed-digest tamper rejections, interleaved matches, closed admission, blocked internal exports); built-bundle scan; two Chromium workers; host isolated 13-stage CI with owned cleanup; artifact re-verification. RUN-20261012-045 docs:check covers this record."
+    },
+    {
+      "kind": "revision",
+      "description": "RUN-20261012-043 passed the unchanged isolated CI timestamp guard at the final RULE-03 fingerprint, so the timing qualification left pending after RUN028/029 is satisfied without any clock, tolerance or environment change. F-CI returns from pending and F-DB from historical_verified to verified with RUN043 evidence; the RULE-03 backlog status drops its timing-pending suffix. Hosted RULE-02 main f61aad8 run 38183090003 (success) is recorded as an auditor GitHub API observation."
+    },
+    {
+      "kind": "documentation",
+      "description": "Append an independent-audit section to docs/validation/rule-03.md (results, acceptance mapping, non-blocking observations, hosted RULE-02 observation); add dated audit notes to ADR0010 and the RULE-03 plan; update docs/features.json, docs/FEATURES.md, docs/vision/initial_backlog.csv and the handoff. Codex's executed text is preserved."
+    },
+    {
+      "kind": "revision",
+      "description": "The Director authorized publishing and merging RULE-03 through the normal process once the audit confirmed it. Publish codex/rule-03-secure-rng and claude/rule-03-audit; fast-forward main to the commit containing this record. No history rewrite."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/adr/0010-secure-randomness-replay.md",
+    "docs/changes/CHG-20261012-002.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/plans/2026-10-12-rule-03-randomness-replay.md",
+    "docs/validation/logs/RUN-20261012-036.txt",
+    "docs/validation/logs/RUN-20261012-037.txt",
+    "docs/validation/logs/RUN-20261012-038.txt",
+    "docs/validation/logs/RUN-20261012-039.txt",
+    "docs/validation/logs/RUN-20261012-040.txt",
+    "docs/validation/logs/RUN-20261012-041.txt",
+    "docs/validation/logs/RUN-20261012-042.txt",
+    "docs/validation/logs/RUN-20261012-043.txt",
+    "docs/validation/logs/RUN-20261012-044.txt",
+    "docs/validation/logs/RUN-20261012-045.txt",
+    "docs/validation/rule-03.md",
+    "docs/validation/runs/RUN-20261012-036.json",
+    "docs/validation/runs/RUN-20261012-037.json",
+    "docs/validation/runs/RUN-20261012-038.json",
+    "docs/validation/runs/RUN-20261012-039.json",
+    "docs/validation/runs/RUN-20261012-040.json",
+    "docs/validation/runs/RUN-20261012-041.json",
+    "docs/validation/runs/RUN-20261012-042.json",
+    "docs/validation/runs/RUN-20261012-043.json",
+    "docs/validation/runs/RUN-20261012-044.json",
+    "docs/validation/runs/RUN-20261012-045.json",
+    "docs/vision/initial_backlog.csv"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "updated",
+      "reason": "Appended a dated independent-audit section with actual run outcomes, acceptance mapping, CI timing resolution, hosted RULE-02 observation and non-blocking observations; Codex text unchanged."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Header actors, authorized publication/integration, audit verification, pending gates and next actions; other Codex content unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-CI pending->verified and F-DB historical_verified->verified with RUN-20261012-043 (and RUN044 for F-CI) evidence at the current fingerprint; descriptions record the RUN028/029 history and hosted RULE-02 observation."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "F-CI acceptance limit now states RUN043 timing-qualified CI and RUN044 artifact proof instead of pending timing; other rows unchanged."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "RULE-03 status drops the isolated-CI-timing-pending suffix after RUN043 and links this audit record; acceptance text unchanged."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "updated",
+      "reason": "Added a dated audit note: decision unchanged and matches source; pending CI timing qualification satisfied by RUN043. Earlier status text retained as recorded."
+    },
+    {
+      "path": "docs/plans/2026-10-12-rule-03-randomness-replay.md",
+      "disposition": "updated",
+      "reason": "Planning document: appended an audit outcome line for the deferred CI timing task; checklist preserved as written."
+    },
+    {
+      "path": "docs/reviews/2026-10-12-rule-03-closure.md",
+      "disposition": "historical_preserved",
+      "reason": "Codex's attributed closure review is evidence of its own assessment at that time; its 'CI timing pending' statement is superseded by the appended validation audit, not rewritten."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Signatures, bounds (128 retries, 4096 outcomes per drain, 2048/2MiB journal), closed options, D10 limits and Lab ownership match the code and RUN040."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Operation and artifact verification commands match RUN043/044; no RULE-03 timing claim requires change."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "RULE-03 supersession paragraph is accurate; older dated results are historical."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Two-root engine identity matches scripts/release-manifest.mjs and the RUN044 artifact verification."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Kernel ownership refinement is recorded in ADR0010; ADR0009 history retained."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Node crypto server RNG and browser-only seedrandom match the placement baseline."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "RULE-03 inputs listed in the RULE-02 audit are all addressed by the audited patches."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Server API description matches index.ts exports and RUN040."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Lab-owned noncompetitive seedrandom and refused private RPC match source and RUN042."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "347 files/28 patches/27 unchanged tests and provenance match RUN037/038."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Only prerequisite references were added by Codex; 548 rows and all dispositions unchanged."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D10 added; D03 unquoting is value-identical (parsed comparison)."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "RULE-03 boundary and gate statements match the audited source."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "RULE-02/03 summaries and continuation paragraph match the audited source."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "RULE-03 index entry accurate."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "RULE-03 supersession paragraph accurate; timing statements refer to older dated runs."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-036.json",
+      "outcome": "passed",
+      "scope": "pnpm verify:foundation: verify incl. randomness guard, typecheck, lint, build, 141 project checks, 338 upstream passes/1 inherited skip and 2 injection tests. Local Dev Container."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-037.json",
+      "outcome": "passed",
+      "scope": "Importer --check against the pinned inert checkout reproduced all payloads, licenses, 28 patch originals and the lock. Local Dev Container."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-038.json",
+      "outcome": "passed",
+      "scope": "Separate Python git cat-file byte audit of the vendor tree and 28-patch ledger. Local Dev Container."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-039.json",
+      "outcome": "passed",
+      "scope": "Independent Python HMAC-SHA256 re-derivation of 3765 compiled server stream outcomes. Local Dev Container; not a DRBG/statistical certification."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-040.json",
+      "outcome": "passed",
+      "scope": "Compiled-adapter RNG/replay/access probe with ambient entropy and clocks disabled. Local Dev Container; synthetic content only."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-041.json",
+      "outcome": "passed",
+      "scope": "Built-bundle scan of kernel, Lab, server adapter and app dist trees. Static evidence over local build output."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-042.json",
+      "outcome": "passed",
+      "scope": "Two compiled synthetic Lab workers in actual headless Linux Chromium. No Windows/GPU/device claim."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-043.json",
+      "outcome": "passed",
+      "scope": "Host isolated 13-stage CI: fresh image, database, Chromium, scans, v3 artifact, owned cleanup, exact timing. Local Docker on WSL."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-044.json",
+      "outcome": "passed",
+      "scope": "Re-verification of the RUN043 v3 artifact. Local Dev Container."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-045.json",
+      "outcome": "passed",
+      "scope": "pnpm docs:check for this audit record (static)."
+    }
+  ],
+  "limitations": [
+    "Local Dev Container and local Docker evidence only; the hosted foundation run for the integrated main commit must be observed separately. The hosted RULE-02 result is an auditor GitHub API observation without artifact download.",
+    "The audit does not certify official rules/cards, NIST DRBG/FIPS or statistical randomness, viewer/wire privacy, durable restore, Windows/GPU/touch, ARM64 or production; those gates remain with RULE-04, PLAY-01/02, AUTH/REPLAY and later tasks.",
+    "D10 and the Director's earlier leave-environment instruction are recorded by Codex; they match the backlog and ADR0010 but the original instructions were not observed by this auditor.",
+    "RUN043 shows the WSL clock was stable for that run; the host clock can still step, so long runs remain subject to the unchanged guard."
+  ],
+  "next_actions": [
+    "Observe the hosted foundation run for the integrated main commit.",
+    "RULE-04: sourced current-rules scenario suite and per-card certification template (CR2.3 effective 2026-10-16; set 14 prerelease 2026-10-16/general 2026-10-23).",
+    "Before future vendoring changes, consider the non-blocking audit observations listed in docs/validation/rule-03.md."
+  ]
+}

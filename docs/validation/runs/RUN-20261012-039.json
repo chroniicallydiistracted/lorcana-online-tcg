@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-039",
+  "category": "container",
+  "command": [
+    "python3",
+    "-I",
+    "-c",
+    "import hashlib, hmac, json, subprocess\nseed = bytes(range(32)); ctx = 'independent-audit-context'\nbounds = [1, 2, 3, 7, 10, 17, 60, 1000, 2**31 + 1, 2**32 - 1, 2**32]\njs = r\"\"\"\nimport {createRandomSource} from './packages/engine-adapter/dist/random.js';\nconst seed=Buffer.from(Array.from({length:32},(_,i)=>i)),s=createRandomSource(seed,process.argv[1]),bounds=JSON.parse(process.argv[2]),out=[];\nfor(let i=0;i<=250;i++){out.push(['float',i,s.random(i)]);for(const b of bounds)out.push(['integer',i,b,s.integer(i,b)]);for(const d of ['instance','match','game'])out.push(['identifier',i,d,s.identifier(d,i)]);}\nconst recorded=s.takeOutcomes();s.dispose();\nconsole.log(JSON.stringify({out,recorded:recorded.length,attempts:recorded.filter(r=>r.kind==='integer').reduce((n,r)=>n+r.attempts,0)}));\n\"\"\"\nres = subprocess.run(['node', '--input-type=module', '-e', js, ctx, json.dumps(bounds)], capture_output=True, text=True, check=True)\ndata = json.loads(res.stdout)\ndef block(kind, index, retry=0):\n    msg = json.dumps(['lorcana-rng', 'hmac-sha256-indexed-v1', ctx, kind, index, retry], separators=(',', ':')).encode()\n    return hmac.new(seed, msg, hashlib.sha256).digest()\nretries = 0\nfor row in data['out']:\n    if row[0] == 'float':\n        b = block('float', row[1])\n        expect = (int.from_bytes(b[0:4], 'big') * 2**21 + (int.from_bytes(b[4:8], 'big') >> 11)) / 2**53\n        assert 0 <= expect < 1 and row[2] == expect, row\n    elif row[0] == 'integer':\n        _, i, bound, got = row; limit = (2**32 // bound) * bound\n        for attempt in range(128):\n            w = int.from_bytes(block('integer:%d' % bound, i, attempt)[0:4], 'big')\n            if w < limit:\n                break\n            retries += 1\n        else:\n            raise AssertionError('limit')\n        assert got == w % bound, row\n    else:\n        _, i, dom, got = row\n        assert got == block('identifier:' + dom, i).hex(), row\nn = len(data['out'])\nassert data['recorded'] == n and retries > 0\nprint(json.dumps({'outcomes_compared': n, 'indices': 251, 'bounds': bounds, 'rejection_retries_reproduced': retries}))\nprint('PASS independent Python HMAC-SHA256 derivation equals compiled server stream (float53, rejection-sampled integers, domain-separated identifiers)')"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "7d7ca20fa2874e3ae4566b325e96f8824291bcd7",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T16:06:32.937Z",
+  "finished_at": "2026-10-12T16:06:33.090Z",
+  "recorded_at": "2026-10-12T16:06:33.090Z",
+  "time_precision": "exact",
+  "elapsed_ms": 153,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Independent RULE-03 audit: Python HMAC-SHA256 re-derivation of the compiled server stream (3765 float53/rejection-sampled integer/domain-separated identifier outcomes incl. retry paths)",
+  "log_path": "docs/validation/logs/RUN-20261012-039.txt",
+  "log_sha256": "91c820ea533c732815e1f04d4cff79435e8fe5b2c28f1d795d0bfd78cf2239dd",
+  "redactions": 0
+}
