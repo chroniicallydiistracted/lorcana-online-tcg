@@ -1,0 +1,32 @@
+✖ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1.053385ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41.425493
+
+✖ failing tests:
+
+test at tests/rules/scenarios.test.mjs:7:1
+✖ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1.053385ms)
+  AssertionError [ERR_ASSERTION]: RULE-04 Node scenario harness is missing
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:8:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

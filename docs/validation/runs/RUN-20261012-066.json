@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-066",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const args of [[\"scripts/rules/certification.mjs\",\"--bytes\"],[\"--test\",\"tests/rules/certification.test.mjs\",\"tests/rules/scenarios.test.mjs\",\"tests/foundation/boundaries.test.mjs\"]]){const r=spawnSync(process.execPath,args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "bb1e6174b6f83c709046c68c93add6780e25ec49d2833ef454f20b220e668930",
+  "started_at": "2026-10-12T22:13:01.297Z",
+  "finished_at": "2026-10-12T22:13:05.546Z",
+  "recorded_at": "2026-10-12T22:13:05.546Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4249,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 integrated source-byte and card-template gates, fixture isolation and sourced runtime scenarios",
+  "log_path": "docs/validation/logs/RUN-20261012-066.txt",
+  "log_sha256": "eb8d74ba3e39f049a12706a1463cb7ba20de233b703aa7cc6e7820f1d8796007",
+  "redactions": 0
+}

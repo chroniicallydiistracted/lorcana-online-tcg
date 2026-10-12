@@ -62,6 +62,7 @@ export type SimpleKeywordType =
   | "Reckless"
   | "Vanish"
   | "Alert"
+  | "Adventurous"
   | "QuestWhileDrying";
 
 /**
@@ -548,6 +549,7 @@ export function isSimpleKeyword(keyword: KeywordType): keyword is SimpleKeywordT
     "Reckless",
     "Vanish",
     "Alert",
+    "Adventurous",
   ].includes(keyword);
 }
 

@@ -1,0 +1,36 @@
+
+> lorcana-online-tcg@0.0.0 test:documentation /workspaces/lorcana-online-tcg
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (322.412154ms)
+✔ source changes during a command prevent a successful evidence claim (315.475164ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1786.169508ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.425086ms)
+✔ credentials generated during a child command are redacted before durable logs (306.215514ms)
+✔ unsafe generated credential configuration withholds all output and records a schema-valid failure (332.416847ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1982.130007ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.317627ms)
+✔ new documentation governance exposes real validation and sync operations (0.79361ms)
+✔ source drift requires a covering change and review of impacted documentation (361.755554ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (95.682045ms)
+✔ change records reject unqualified timestamps and historical execution inventions (18.714362ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (90.134545ms)
+✔ documentation edits and newly added source files require recorded coverage (121.002398ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (15.302406ms)
+✔ committed finalized history cannot be changed or deleted (145.620557ms)
+✔ log tampering and exit status contradictions invalidate execution evidence (202.26107ms)
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history (83.433544ms)
+✔ removing old source-impact edges cannot erase required documentation reviews (82.060059ms)
+✔ committing a rewrite does not make sealed history valid (160.802385ms)
+✔ executed passing evidence needs a log and consistent execution/recording times (51.049946ms)
+✔ isolated branches are not required to contain unrelated scope history (163.492812ms)
+✔ a misspelled documentation impact path cannot silently disable reviews (19.728544ms)
+✔ human device reports preserve verdict without inventing process exit or machine verification (189.283647ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5297.687575

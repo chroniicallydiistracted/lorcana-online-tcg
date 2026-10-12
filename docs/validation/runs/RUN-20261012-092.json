@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-092",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const args of [[\"db:health\",\"--\",\"--target\",\"local\"],[\"db:health\",\"--\",\"--target\",\"test\"]]){const r=spawnSync(\"pnpm\",args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}await import(\"./.local/rule-04/closure.mjs\");"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "5f405778696fe4413b4a374f11c966ae7691817a2429136be9519aaeec572689",
+  "started_at": "2026-10-12T23:10:31.848Z",
+  "finished_at": "2026-10-12T23:10:36.413Z",
+  "recorded_at": "2026-10-12T23:10:36.413Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4423,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 read-only restricted identities, private/scope/archive/full-history/log and actual service/listener closure",
+  "log_path": "docs/validation/logs/RUN-20261012-092.txt",
+  "log_sha256": "24ba6193ea44c62227504c07ab2f252cc3fe0e8d6a2cc1659fa53eaa4a15a638",
+  "redactions": 0
+}

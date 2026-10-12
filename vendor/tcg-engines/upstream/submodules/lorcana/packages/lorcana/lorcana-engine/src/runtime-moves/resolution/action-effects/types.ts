@@ -17,6 +17,7 @@ type PlayCardExecutionContext = Pick<
 >;
 
 type ActionResolutionInput = {
+  effectInkDropCounters?: number[];
   targets?: TargetSelectionInput;
   /**
    * Structured selections for multi-slot effects (move-damage, shift-and-choose,

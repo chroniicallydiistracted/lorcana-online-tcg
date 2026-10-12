@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-059",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/scenarios.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "12f1a6ec97b0404e95fdf3eabfc8d49e9c552692105d2077aaf530ef4109527a",
+  "started_at": "2026-10-12T21:52:03.814Z",
+  "finished_at": "2026-10-12T21:52:06.435Z",
+  "recorded_at": "2026-10-12T21:52:06.435Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2621,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 corrected Adventurous enumeration, keyword type guard and ability fixture; 67 sourced Node scenarios",
+  "log_path": "docs/validation/logs/RUN-20261012-059.txt",
+  "log_sha256": "48057f880c3af02bb8e371aff1e1434c5e2ff0c4b2634b0fde44a93ccb3df52a",
+  "redactions": 0
+}

@@ -28,7 +28,6 @@ import {
   hasPendingBagItems,
   removeBagItemMatchingPendingSource,
 } from "../effects/triggered-abilities";
-import { emitBeChosenEvents } from "../effects/be-chosen";
 import { continuePendingChallengeResolution } from "../moves/core/challenge";
 import { continuePendingTurnTransition } from "../moves/turn/pass-turn";
 import {
@@ -611,6 +610,11 @@ function normalizeResolveEffectParams(params: unknown): PendingActionResolutionI
 
   const record = params as Record<string, unknown>;
   const normalized: PendingActionResolutionInput = {};
+  if (record.effectInkDropCounters !== undefined) {
+    if (!Array.isArray(record.effectInkDropCounters) || record.effectInkDropCounters.length > 128 ||
+        !record.effectInkDropCounters.every(value => Number.isSafeInteger(value) && value >= 0)) throw new Error("Invalid effect counter selections");
+    normalized.effectInkDropCounters = [...record.effectInkDropCounters] as number[];
+  }
 
   if (record.amount !== undefined) {
     normalized.amount = record.amount as PendingActionResolutionInput["amount"];
@@ -1267,10 +1271,7 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
       };
     }
 
-    // Emit be-chosen events for targets submitted in this deferred resolution step.
-    // The initial emission in resolveActionCardEffects only covers pre-determined targets.
-    // Targets chosen during pending-effect resolution (e.g., choice option targets) are new.
-    emitBeChosenEvents(ctx, pendingEffect.cardPlayed, normalizedParams);
+
 
     const result = resolveActionEffect(
       ctx,

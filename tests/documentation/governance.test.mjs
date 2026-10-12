@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, cpSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, copyFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -12,7 +12,10 @@ function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'lorcana-docs-test-'));
   mkdirSync(join(root, 'docs/changes'), { recursive: true });
   mkdirSync(join(root, 'scripts'));
-  cpSync(join(repo,'docs/schemas'),join(root,'docs/schemas'),{recursive:true});
+  mkdirSync(join(root,'docs/schemas'));
+  // This miniature fixture owns governance schemas, not unrelated product
+  // authoring schemas added by later tasks. Keep its declared file coverage exact.
+  for (const name of ['change','features','documentation-map','run','state']) copyFileSync(join(repo,'docs/schemas',name+'.schema.json'),join(root,'docs/schemas',name+'.schema.json'));
   const write = (path,value) => writeFileSync(join(root,path), typeof value === 'string' ? value : JSON.stringify(value,null,2)+'\n');
   write('package.json',{scripts:{check:'node scripts/app.mjs'},engines:{node:'24.21.0',pnpm:'10.33.0'}});
   write('scripts/app.mjs','export function ping() { return "foundation"; }\n');

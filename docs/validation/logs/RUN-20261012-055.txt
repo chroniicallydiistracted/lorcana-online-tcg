@@ -1,0 +1,152 @@
+✔ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1240.53069ms)
+[resolveBag] target validation failed {
+  bagId: 'bag:0:1',
+  playerId: 'p1',
+  sourceCardId: 'hero',
+  effectType: 'optional',
+  errorCode: 'INVALID_ACTION_TARGET',
+  error: 'Target hero is not a legal target',
+  explicitTargets: [ 'hero' ],
+  analysis: {
+    cardCandidates: [ 'friend' ],
+    playerCandidates: [],
+    minSelections: 1,
+    maxSelections: 1,
+    allowDuplicateTargets: false
+  }
+}
+▶ RULE-04 representative sourced runtime scenarios
+  ✔ SCN-001: Quest gains printed lore and exerts the dry character (9.659785ms)
+  ✔ SCN-002: A drying character cannot quest (1.78503ms)
+  ✔ SCN-003: An exerted character cannot quest again (1.04396ms)
+  ✔ SCN-004: An opponent cannot quest with a character they do not control (0.768852ms)
+  ✔ SCN-005: Reaching twenty lore ends the game at the state check (2.127134ms)
+  ✔ SCN-006: Items cannot quest (0.881079ms)
+  ✔ SCN-007: Reckless prevents questing (0.889072ms)
+  ✔ SCN-008: Challenge deals simultaneous strength damage and exerts attacker (5.817764ms)
+  ✔ SCN-009: Ordinary characters cannot challenge ready opposing characters (1.100738ms)
+  ✔ SCN-010: Drying characters without Rush cannot challenge (0.875338ms)
+  ✔ SCN-011: Rush permits a drying character to challenge (4.434398ms)
+  ✔ SCN-012: Evasive blocks a non-Evasive attacker (0.846566ms)
+  ✔ SCN-013: Alert allows challenging an exerted Evasive character (2.611565ms)
+  ✔ SCN-014: Alert does not let its defender evade an ordinary challenge (2.593196ms)
+  ✔ SCN-015: A valid exerted Bodyguard prevents choosing a different character (0.759963ms)
+  ✔ SCN-016: An exerted Bodyguard can be chosen for a challenge (2.587837ms)
+  ✔ SCN-017: Challenger adds strength only while its character challenges (2.490152ms)
+  ✔ SCN-018: Challenger does not add defending damage (2.957956ms)
+  ✔ SCN-019: Resist reduces challenge damage (2.191907ms)
+  ✔ SCN-020: An inkable hand card moves to the inkwell ready (1.741343ms)
+  ✔ SCN-021: A noninkable hand card cannot be inked (0.519547ms)
+  ✔ SCN-022: A second ordinary inking in one turn is rejected (0.919572ms)
+  ✔ SCN-023: Insufficient ink rejects play without partial payment (1.267505ms)
+  ✔ SCN-024: Playing a character pays ink and leaves it drying (2.389677ms)
+  ✔ SCN-025: A stale revision cannot repeat a quest (0.957083ms)
+  ✔ SCN-026: A missing card reference is rejected without mutation (0.581783ms)
+  ✔ SCN-027: An opponent cannot end the active player turn (0.472669ms)
+  ✔ SCN-028: A dry Singer can sing a song above its printed cost (5.830467ms)
+  ✔ SCN-029: A drying character cannot pay a song singing cost (0.733362ms)
+  ✔ SCN-030: Sing Together combines ready singers and exerts both (2.714834ms)
+  ✔ SCN-031: Duplicate singers cannot count twice toward Sing Together (0.485317ms)
+  ✔ SCN-032: Shift inherits drying and damage from its underlying character (3.4209ms)
+  ✔ SCN-033: Shift cannot use an opposing character as its base (0.69544ms)
+  ✔ SCN-034: Boost puts one top card facedown under its character once per turn (3.21701ms)
+  ✔ SCN-035: Ward prevents an opponent choosing the character for an action (1.1066ms)
+  ✔ SCN-036: Lethal challenge damage banishes both characters simultaneously (3.76235ms)
+  ✔ SCN-037: Active player chooses bag order before opponent and normal actions wait (8.198177ms)
+  ✔ SCN-038: Unknown bag IDs reject without removing valid triggered effects (1.697111ms)
+  ✔ SCN-039: An optional triggered effect can be declined without granting its lore (2.009954ms)
+  ✔ SCN-040: An optional triggered effect can be accepted and resolves fully (2.831626ms)
+  ✔ SCN-041: Support permits choosing another character after the quest (6.93667ms)
+  ✔ SCN-042: Support cannot choose the questing character itself (2.533503ms)
+  ✖ SCN-043: Vanish waits for the opposing action to finish before banishing (3.607559ms)
+  ✔ SCN-044: Vanish does not trigger when its controller chooses it with an action (2.134185ms)
+  ✔ SCN-045: Vanish does not trigger for an opposing activated character ability (2.937063ms)
+  ✖ SCN-046: Vanish becomes inapplicable after the action returns its source to hand (2.817124ms)
+  ✖ SCN-047: Vanish waits for all separate action effects before checking its play zone (2.984816ms)
+✖ RULE-04 representative sourced runtime scenarios (1005.557418ms)
+ℹ tests 49
+ℹ suites 0
+ℹ pass 45
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2469.081938
+
+✖ failing tests:
+
+test at tests/rules/scenarios.test.mjs:43:53
+✖ SCN-043: Vanish waits for the opposing action to finish before banishing (3.607559ms)
+  AssertionError [ERR_ASSERTION]: ctx.zones.private.cardMeta.enemy.damage
+  
+  undefined !== 1
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:24:39)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:54:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:43:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:42:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 1,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:43:53
+✖ SCN-046: Vanish becomes inapplicable after the action returns its source to hand (2.817124ms)
+  AssertionError [ERR_ASSERTION]: G.triggeredAbilities.bag.items
+  
+  0 !== 1
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:17)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:54:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:43:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:42:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:43:53
+✖ SCN-047: Vanish waits for all separate action effects before checking its play zone (2.984816ms)
+  AssertionError [ERR_ASSERTION]: ctx.zones.private.zoneCards.hand:p2
+  + actual - expected
+  
+  + []
+  - [
+  -   'enemy'
+  - ]
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:24:39)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:54:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:43:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:42:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'enemy' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

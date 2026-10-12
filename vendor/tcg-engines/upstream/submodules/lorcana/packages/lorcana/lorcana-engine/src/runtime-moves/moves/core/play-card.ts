@@ -1459,6 +1459,8 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
           {
             framework: ctx.framework,
             cards: ctx.cards,
+            G: ctx.G,
+            args: ctx.args,
             playerId: currentPlayer as PlayerId,
           },
           getStandardPlayCardBasicCost(cardDef, costReduction, costIncrease),
@@ -1542,6 +1544,8 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
             {
               framework: ctx.framework,
               cards: ctx.cards,
+              G: ctx.G,
+              args: ctx.args,
               playerId: currentPlayer as PlayerId,
             },
             getShiftPlayCardBasicCost(cardDef, shiftCostReduction),
@@ -1633,6 +1637,8 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
           {
             framework: ctx.framework,
             cards: ctx.cards,
+            G: ctx.G,
+            args: ctx.args,
             playerId: currentPlayer as PlayerId,
           },
           getSingPlayCardBasicCost(singer, singerDef),
@@ -1741,6 +1747,8 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
           {
             framework: ctx.framework,
             cards: ctx.cards,
+            G: ctx.G,
+            args: ctx.args,
             playerId: currentPlayer as PlayerId,
           },
           getSingTogetherPlayCardBasicCost(singers, (cardId) =>
@@ -2142,7 +2150,7 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
         const { flatTargets: flatTargetsForValidation } = splitActionTargetInput(params.targets);
         const selectionValidation = validateInitialActionTargetSelection(
           actionEffects.map((ability) => ability.effect),
-          flatTargetsForValidation,
+          isSlottedTargetInput(params.targets) ? params.targets : flatTargetsForValidation,
           combinedAnalysis,
           {
             currentPlayer: currentPlayer as PlayerId,
@@ -2238,6 +2246,8 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
           {
             framework: ctx.framework,
             cards: ctx.cards,
+            G: ctx.G,
+            args: ctx.args,
             playerId: currentPlayer,
           },
           getStandardPlayCardBasicCost(cardDef, standardCostReduction),
@@ -2345,6 +2355,8 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
             {
               framework: ctx.framework,
               cards: ctx.cards,
+              G: ctx.G,
+              args: ctx.args,
               playerId: currentPlayer,
             },
             getShiftPlayCardBasicCost(cardDef, shiftCostReduction),
@@ -2370,6 +2382,8 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
           {
             framework: ctx.framework,
             cards: ctx.cards,
+            G: ctx.G,
+            args: ctx.args,
             playerId: currentPlayer,
           },
           getSingPlayCardBasicCost(singer!, singerDef),
@@ -2387,6 +2401,8 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
           {
             framework: ctx.framework,
             cards: ctx.cards,
+            G: ctx.G,
+            args: ctx.args,
             playerId: currentPlayer,
           },
           getSingTogetherPlayCardBasicCost(
@@ -2675,7 +2691,7 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
         splitActionTargetInput(params.targets);
       const normalizedSelection = validateInitialActionTargetSelection(
         actionEffects.map((ability) => ability.effect),
-        playCardFlatTargets,
+        playCardSlottedTargets ?? playCardFlatTargets,
         combinedAnalysis,
         {
           currentPlayer,
@@ -2737,6 +2753,7 @@ export const playCard: LorcanaMoveDefinition<"playCard"> = {
           : "Action effect begins resolution",
       });
       const actionResolutionInput = {
+        effectInkDropCounters: params.effectInkDropCounters ? [...params.effectInkDropCounters] : undefined,
         targets: flattenNormalizedTargetSelection(normalizedSelection.selection),
         slottedTargets: playCardSlottedTargets,
         targetSelectionResolved: params.targets !== undefined ? true : undefined,

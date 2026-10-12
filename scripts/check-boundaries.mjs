@@ -38,6 +38,8 @@ function inspectEngineEdge(file, owner, name, compiler, context) {
   const result = ts.resolveModuleName(name, file, compiler, ts.sys).resolvedModule;
   const target = result ? ownerOf(existsSync(result.resolvedFileName) ? realpathSync(result.resolvedFileName) : resolve(result.resolvedFileName), context) : undefined;
   const relativeTarget = name.startsWith('.') || name.startsWith('/') ? ownerOf(resolve(dirname(file), name), context) : undefined;
+  const localPath = result?.resolvedFileName ?? ((name.startsWith('.') || name.startsWith('/')) ? resolve(dirname(file), name) : undefined);
+  if (localPath && ['scripts', 'tests'].some(folder => resolve(localPath).startsWith(join(context.root, folder) + '/'))) throw new Error(`Forbidden engine import: ${file} -> test/development tooling ${name}`);
   if (name.startsWith('@lorcana/engine-lab') || target?.name === '@lorcana/engine-lab' || relativeTarget?.name === '@lorcana/engine-lab') throw new Error(`Forbidden engine import: ${file} -> ${name}`);
   if (name.startsWith('@tcg/') || name.startsWith('@lorcana/vendor-engine') || target?.scope === 'engine' || relativeTarget?.scope === 'engine') {
     if (!kernelEdge(owner, target ?? context.owners.find(pkg => pkg.name === name), name)) throw new Error(`Forbidden engine import: ${file} -> ${name}`);

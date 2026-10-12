@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-056",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/scenarios.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "9295c0e73161b446d74ebc96ab7e1130f9a0716acdc9f93ce1712fd610ed4da7",
+  "started_at": "2026-10-12T21:40:36.116Z",
+  "finished_at": "2026-10-12T21:40:38.901Z",
+  "recorded_at": "2026-10-12T21:40:38.901Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2785,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 Vanish bag correction with actual chooser and play-zone resolution; sourced runtime regressions",
+  "log_path": "docs/validation/logs/RUN-20261012-056.txt",
+  "log_sha256": "f28a5e6cd17cdf80503f889cdd729ae649b4ad9ec3a7db540c871ba74aebe061",
+  "redactions": 0
+}

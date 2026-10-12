@@ -44,6 +44,7 @@ export type {
   Effect,
   EntersPlayWithEffect,
   GainKeywordsEffect,
+  GainInkDropCountersEffect,
   PayCostEffect,
   ReplacementEffect,
   StaticEffect,

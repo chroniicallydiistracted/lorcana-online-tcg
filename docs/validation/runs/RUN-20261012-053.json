@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-053",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/certification.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "99ba1e641b9844020467665cab776d0eea1402713e09257638edb336b6426732",
+  "started_at": "2026-10-12T20:24:26.297Z",
+  "finished_at": "2026-10-12T20:24:26.405Z",
+  "recorded_at": "2026-10-12T20:24:26.405Z",
+  "time_precision": "exact",
+  "elapsed_ms": 108,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 red checkpoint: per-card coverage and false-admission gates are absent",
+  "log_path": "docs/validation/logs/RUN-20261012-053.txt",
+  "log_sha256": "44189ca36c053026b6328796ef529b5be4f7d0bc6af05955ec827821aa58978a",
+  "redactions": 0
+}

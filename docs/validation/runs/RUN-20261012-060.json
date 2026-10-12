@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-060",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/scenarios.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "027783464e442e73bb501fdfa9dfea5441066eec891f3853bce6aeceed4edf05",
+  "started_at": "2026-10-12T22:07:18.224Z",
+  "finished_at": "2026-10-12T22:07:20.992Z",
+  "recorded_at": "2026-10-12T22:07:20.992Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2767,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 review regressions before Vanish object-lifetime and duplicate-event correction",
+  "log_path": "docs/validation/logs/RUN-20261012-060.txt",
+  "log_sha256": "125da81e08f7019e0ac184973e1955249d56a4aac0a8c6dd8548926367a86a09",
+  "redactions": 0
+}

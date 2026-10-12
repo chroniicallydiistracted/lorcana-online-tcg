@@ -29,7 +29,6 @@ import {
   queueTriggeredEvent,
   snapshotTriggeredCandidatesForCard,
 } from "../../effects/triggered-abilities";
-import { emitBeChosenEvents } from "../../effects/be-chosen";
 import { recordBanishedCharacterThisTurn } from "../../state/turn-metrics";
 import { getGrantedActivatedAbilities } from "../../rules/static-ability-utils";
 import { getOrBuildMoveRegistry } from "../../rules/move-registry-cache";
@@ -953,6 +952,8 @@ export const activateAbility: LorcanaMoveDefinition<"activateAbility"> = {
       {
         framework: ctx.framework,
         cards: ctx.cards,
+        G: ctx.G,
+        args: ctx.args,
         playerId: currentPlayer,
       },
       {
@@ -1061,6 +1062,8 @@ export const activateAbility: LorcanaMoveDefinition<"activateAbility"> = {
       {
         framework: ctx.framework,
         cards: ctx.cards,
+        G: ctx.G,
+        args: ctx.args,
         playerId: currentPlayer,
       },
       {
@@ -1288,7 +1291,7 @@ export const activateAbility: LorcanaMoveDefinition<"activateAbility"> = {
       );
     }
 
-    const resolutionInput: ActionResolutionInput = {};
+    const resolutionInput: ActionResolutionInput = { effectInkDropCounters: ctx.args.effectInkDropCounters ? [...ctx.args.effectInkDropCounters] : undefined };
     const flattenedTargets = flattenNormalizedTargetSelection(finalSelection.selection);
     if (flattenedTargets) {
       resolutionInput.targets = flattenedTargets;
@@ -1315,7 +1318,7 @@ export const activateAbility: LorcanaMoveDefinition<"activateAbility"> = {
     }
 
     // Emit be-chosen events for targets of this activated ability
-    emitBeChosenEvents(ctx, source, resolutionInput);
+
 
     const result = resolveActionEffect(ctx, source, ability.effect, resolutionInput, {
       allowPromptForExistingChosenTargets: true,

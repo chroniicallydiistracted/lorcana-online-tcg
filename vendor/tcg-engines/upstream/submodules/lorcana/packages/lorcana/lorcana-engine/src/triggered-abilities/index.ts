@@ -1826,6 +1826,41 @@ function collectFloatingTriggerCandidates(ctx: TriggerRuntimeContext): TriggerMa
     }));
 }
 
+/** CR8.14/7.7: capture the actual chooser before the action effect resolves. */
+export function recordChosenOperation(
+  ctx: TriggerRuntimeContext,
+  action: CardPlayedPayload,
+  sourceId: CardInstanceId,
+  chooserId: PlayerId,
+): void {
+  const card = ctx.cards.get(sourceId);
+  const controllerId = card?.controllerID as PlayerId | undefined;
+  if (!controllerId) return;
+  const zone = ctx.framework.zones.getCardZone(sourceId);
+  // Capture candidates before this primitive can move or alter its target.
+  const candidates = [...snapshotTriggeredCandidatesForCard(ctx, sourceId)];
+  if (action.cardType === "action" && chooserId !== controllerId &&
+      (zone === "play" || zone?.startsWith("play:")) &&
+      getDerivedRuntimeCard(ctx, sourceId)?.keywords?.includes("Vanish")) {
+    const incarnation = ctx.framework.state._zonesPrivate.cardIndex[sourceId]?.zoneIncarnation ?? 0;
+    candidates.push({
+      abilityId: `${sourceId}:keyword-vanish`, controllerId, sourceId,
+      cardPlayed: buildSourcePayload(ctx, sourceId), resolutionInput: {},
+      ability: {
+        id: `${sourceId}:keyword-vanish`, name: "Vanish",
+        trigger: { event: "be-chosen", on: "SELF", timing: "when" },
+        effect: { type: "conditional", condition: { type: "source-zone-incarnation", incarnation },
+          then: { type: "banish", target: { selector: "self", count: 1, owner: "you", zones: ["play"] } } },
+      },
+    });
+  }
+  recordEvent(ctx, {
+    event: "be-chosen", playerId: controllerId, subjectCardId: sourceId,
+    triggerSourceCardId: action.cardId, sourceCardType: action.cardType,
+    triggerCandidates: candidates,
+  });
+}
+
 function enqueueMatchedTrigger(
   ctx: TriggerRuntimeContext,
   candidate: TriggerMatchCandidate,

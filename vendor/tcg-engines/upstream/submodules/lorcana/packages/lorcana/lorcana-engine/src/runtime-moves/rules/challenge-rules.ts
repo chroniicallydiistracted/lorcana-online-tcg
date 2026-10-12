@@ -428,6 +428,7 @@ function isChallengeReadyAttacker(ctx: ChallengeAnyContext, attackerId: CardInst
   const currentTurn = getCurrentTurn(ctx);
   const controllerId = getCardsApi(ctx).require(attackerId).controllerID as PlayerId | undefined;
   const registry = getOrBuildMoveRegistry(ctx);
+  if (hasKeywordIncludingTemporary(ctx, attackerId, "Adventurous", registry)) return false;
 
   if (
     controllerId &&
@@ -772,6 +773,9 @@ export function validateChallengeAction(ctx: ChallengeValidationContext): Runtim
     | PlayerId
     | undefined;
   const registry = getOrBuildMoveRegistry(ctx);
+  if (hasKeywordIncludingTemporary(ctx, attackerId, "Adventurous", registry)) {
+    return createFailure("Adventurous cannot challenge", "ADVENTUROUS_CANT_CHALLENGE");
+  }
   if (
     attackerControllerId &&
     hasTemporaryPlayerRestriction(

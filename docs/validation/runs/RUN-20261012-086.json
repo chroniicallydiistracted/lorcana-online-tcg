@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-086",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const args of [[\"scripts/engine/vendor.mjs\",\"--source\",\".local/rule-01/upstream\",\"--check\"],[\"scripts/rules/certification.mjs\",\"--bytes\"],[\"scripts/rules/check-inventory.mjs\",\"--bytes\"],[\"scripts/engine/check-randomness.mjs\"]]){const r=spawnSync(process.execPath,args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "5f405778696fe4413b4a374f11c966ae7691817a2429136be9519aaeec572689",
+  "started_at": "2026-10-12T22:40:45.063Z",
+  "finished_at": "2026-10-12T22:40:50.050Z",
+  "recorded_at": "2026-10-12T22:40:50.050Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4988,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 final source exact pin53-patch reproduction, source bytes and public/private bundle guards",
+  "log_path": "docs/validation/logs/RUN-20261012-086.txt",
+  "log_sha256": "8fec539649addd5d13bd68b9731a9b4b9f6b6f9d8bf3a18287f99f24bdd6de88",
+  "redactions": 0
+}

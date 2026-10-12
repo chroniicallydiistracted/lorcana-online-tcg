@@ -1,0 +1,896 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261012-003",
+  "title": "RULE-04 sourced scenarios and card certification foundation",
+  "actor": "Codex architect/developer/rules QA",
+  "status": "finalized",
+  "recorded_at": "2026-10-12T23:17:57.050Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "task_ids": [
+    "RULE-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R01.005",
+    "R01.006",
+    "R01.009",
+    "R01.011",
+    "R01.016",
+    "R28.002",
+    "R28.003",
+    "R28.004",
+    "R28.005",
+    "R28.007",
+    "R28.010",
+    "R28.011",
+    "R28.012"
+  ],
+  "feature_ids": [
+    "F-ENGINE",
+    "F-RULE-CERTIFICATION",
+    "F-BOUNDARIES",
+    "F-CI",
+    "F-RELEASE",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Intake on clean main82849f4; discovered the existing workspace/postgres Compose services and began reading the required source, workflow and RULE-04 acceptance documents."
+    },
+    {
+      "kind": "test",
+      "description": "RUN-20261012-046 captures passing pre-change doctor, verification, bootstrap and original database checks. An initial recorder invocation requested the already-used RUN045 ID; exclusive creation refused it before any child command or overwrite."
+    },
+    {
+      "kind": "revision",
+      "description": "Director expressly selected implementing Adventurous and ink-drop counters now; D11/ADR0011 retain representative-only certification and all play gates."
+    },
+    {
+      "kind": "implementation",
+      "description": "Add test-only compiled Node fixture runtime,91 sourced scenarios, independent state invariants, per-card schema/template fail-closed promotion, distinct offline/cache source checks and root verification integration."
+    },
+    {
+      "kind": "fix",
+      "description": "Reproduce53 reviewed patches at unchanged pin; Vanish after-action bag/actual chooser/event/zone incarnation, temporary keyword loss, Adventurous challenge/quest obligation, separate consumable counters and chosen-slot/cardinality/nested payment choices. No upstream assertions changed; unreachable old be-chosen helper removed."
+    },
+    {
+      "kind": "test",
+      "description": "Retain RUN048\u2013079 missing-tool/fixture/source/oracle/engine/review red failures and corrected passes, including original composed zone patch anchor correction. RUN079 passes91 scenarios with invalid-state/grouping and certification negatives; full foundation/clean/hosted/device qualification not inferred."
+    },
+    {
+      "kind": "review",
+      "description": "Independent source-hash/oracle review followed by supplied-code review after reviewer automatic approval usage limit. Actual chooser/lifetime/duplicate-slot/payment findings addressed with regressions. No denied action bypassed or final independent execution claimed."
+    },
+    {
+      "kind": "documentation",
+      "description": "Add native plan/ADR/operation/validation/source/template classification, update current ownership continuations and D11/prerequisite edges, demote stale whole-source verification, preserve prior executed evidence and548 original requirements/20 optional flags."
+    },
+    {
+      "kind": "fix",
+      "description": "Draft sync refused X06/X07 in the original-requirement-ID field; retain their authority through DOC-01/DOC-02 task scope instead, without changing native validation."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN080 full frozen/type/lint/build execution reached eight unchanged upstream feedback failures; planner now preserves INSUFFICIENT_INK needed/available semantics for normal shortfalls and distinguishes explicit invalid counter selections. RUN081 passes338 unchanged upstream/one inherited skip plus99 project rules checks. Source comment updated to separate payment units from ink-card count."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN082 full foundation passed upstream/build/type/lint but exposed a synthetic governance fixture copying the new unrelated card schema outside its declared file coverage. Fixture now copies only its five owned governance schemas; all original drift/history/assertions remain unchanged and RUN084 passes."
+    },
+    {
+      "kind": "function",
+      "description": "Record callable contracts for withScenarioRuntime/createScenarioRuntime/assertScenarioState/chosenOperationGroups, checkScenarioSources/verifyScenarioSourceBytes and validateCardCertification; explicit test-only authority, errors, rollback, source pins, lifecycle and fail-closed promotion."
+    },
+    {
+      "kind": "test",
+      "description": "Final5f405778 passes085 complete frozen241 project+338 unchanged upstream/one inherited skip+2 injection;086 source/cache/AST reproduction;087 six Chromium/two workers;088 source-only clean;090 canonical1466 live-equal files. No new scenarios skipped."
+    },
+    {
+      "kind": "revision",
+      "description": "Two complete isolated child pipelines089/091 fail clock_changed despite child exit0; both owned environments cleaned, no result published. Honor persistent Director leave-environment instruction: no maintenance, clock/tolerance/service/restart change. Separate CI timing qualification remains pending; representative RULE-04 backlog criteria are locally verified."
+    },
+    {
+      "kind": "documentation",
+      "description": "Correct086 summary scope to source/AST rather than a standalone bundle scan; actual build/bundle checks are085. Keep legacy pending_RULE-04 metadata as the explicit full-card/version certification gate, distinct from representative task acceptance; update final-source records without rewriting any receipt."
+    },
+    {
+      "kind": "review",
+      "description": "Final092 passes eight read-only original managed identities, current/full-history secrets1662 unique blobs,376 immutable logs,548/33/20/all dispositions/D01\u2013D10/archive/lock/toolchain/container and actual owned-service/listener cleanup. Attributed host observation confirms both failed CI projects/images absent and original healthy Linux bind/private volume retained; detailed host-query intervals unknown."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/CHANGELOG_FORMAT.md",
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0001-local-development-environment.md",
+    "docs/adr/0002-application-foundation.md",
+    "docs/adr/0008-engine-placement-dependency-baseline.md",
+    "docs/adr/0009-pinned-engine-qualification.md",
+    "docs/adr/0010-secure-randomness-replay.md",
+    "docs/adr/0011-sourced-rule-scenarios.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261012-003.json",
+    "docs/contracts/release.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-06-documentation-governance.md",
+    "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+    "docs/plans/2026-10-12-rule-04-certification.md",
+    "docs/reviews/2026-10-12-rule-04-closure.md",
+    "docs/rules/2026-10-12-rule-04-sources.json",
+    "docs/rules/README.md",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/rules-certification.md",
+    "docs/runbooks/workspace-setup.md",
+    "docs/schemas/card-certification.schema.json",
+    "docs/templates/card-certification.json",
+    "docs/validation/boot-01.md",
+    "docs/validation/boot-03.md",
+    "docs/validation/logs/RUN-20261012-046.txt",
+    "docs/validation/logs/RUN-20261012-047.txt",
+    "docs/validation/logs/RUN-20261012-048.txt",
+    "docs/validation/logs/RUN-20261012-049.txt",
+    "docs/validation/logs/RUN-20261012-050.txt",
+    "docs/validation/logs/RUN-20261012-051.txt",
+    "docs/validation/logs/RUN-20261012-052.txt",
+    "docs/validation/logs/RUN-20261012-053.txt",
+    "docs/validation/logs/RUN-20261012-054.txt",
+    "docs/validation/logs/RUN-20261012-055.txt",
+    "docs/validation/logs/RUN-20261012-056.txt",
+    "docs/validation/logs/RUN-20261012-057.txt",
+    "docs/validation/logs/RUN-20261012-058.txt",
+    "docs/validation/logs/RUN-20261012-059.txt",
+    "docs/validation/logs/RUN-20261012-060.txt",
+    "docs/validation/logs/RUN-20261012-061.txt",
+    "docs/validation/logs/RUN-20261012-062.txt",
+    "docs/validation/logs/RUN-20261012-063.txt",
+    "docs/validation/logs/RUN-20261012-064.txt",
+    "docs/validation/logs/RUN-20261012-065.txt",
+    "docs/validation/logs/RUN-20261012-066.txt",
+    "docs/validation/logs/RUN-20261012-067.txt",
+    "docs/validation/logs/RUN-20261012-068.txt",
+    "docs/validation/logs/RUN-20261012-069.txt",
+    "docs/validation/logs/RUN-20261012-070.txt",
+    "docs/validation/logs/RUN-20261012-071.txt",
+    "docs/validation/logs/RUN-20261012-072.txt",
+    "docs/validation/logs/RUN-20261012-073.txt",
+    "docs/validation/logs/RUN-20261012-074.txt",
+    "docs/validation/logs/RUN-20261012-075.txt",
+    "docs/validation/logs/RUN-20261012-076.txt",
+    "docs/validation/logs/RUN-20261012-077.txt",
+    "docs/validation/logs/RUN-20261012-078.txt",
+    "docs/validation/logs/RUN-20261012-079.txt",
+    "docs/validation/logs/RUN-20261012-080.txt",
+    "docs/validation/logs/RUN-20261012-081.txt",
+    "docs/validation/logs/RUN-20261012-082.txt",
+    "docs/validation/logs/RUN-20261012-083.txt",
+    "docs/validation/logs/RUN-20261012-084.txt",
+    "docs/validation/logs/RUN-20261012-085.txt",
+    "docs/validation/logs/RUN-20261012-086.txt",
+    "docs/validation/logs/RUN-20261012-087.txt",
+    "docs/validation/logs/RUN-20261012-088.txt",
+    "docs/validation/logs/RUN-20261012-089.txt",
+    "docs/validation/logs/RUN-20261012-090.txt",
+    "docs/validation/logs/RUN-20261012-091.txt",
+    "docs/validation/logs/RUN-20261012-092.txt",
+    "docs/validation/rule-01.md",
+    "docs/validation/rule-02.md",
+    "docs/validation/rule-03.md",
+    "docs/validation/rule-04-canonical-check.mjs.txt",
+    "docs/validation/rule-04-closure-check.mjs.txt",
+    "docs/validation/rule-04-host-closure.json",
+    "docs/validation/rule-04.md",
+    "docs/validation/runs/RUN-20261012-046.json",
+    "docs/validation/runs/RUN-20261012-047.json",
+    "docs/validation/runs/RUN-20261012-048.json",
+    "docs/validation/runs/RUN-20261012-049.json",
+    "docs/validation/runs/RUN-20261012-050.json",
+    "docs/validation/runs/RUN-20261012-051.json",
+    "docs/validation/runs/RUN-20261012-052.json",
+    "docs/validation/runs/RUN-20261012-053.json",
+    "docs/validation/runs/RUN-20261012-054.json",
+    "docs/validation/runs/RUN-20261012-055.json",
+    "docs/validation/runs/RUN-20261012-056.json",
+    "docs/validation/runs/RUN-20261012-057.json",
+    "docs/validation/runs/RUN-20261012-058.json",
+    "docs/validation/runs/RUN-20261012-059.json",
+    "docs/validation/runs/RUN-20261012-060.json",
+    "docs/validation/runs/RUN-20261012-061.json",
+    "docs/validation/runs/RUN-20261012-062.json",
+    "docs/validation/runs/RUN-20261012-063.json",
+    "docs/validation/runs/RUN-20261012-064.json",
+    "docs/validation/runs/RUN-20261012-065.json",
+    "docs/validation/runs/RUN-20261012-066.json",
+    "docs/validation/runs/RUN-20261012-067.json",
+    "docs/validation/runs/RUN-20261012-068.json",
+    "docs/validation/runs/RUN-20261012-069.json",
+    "docs/validation/runs/RUN-20261012-070.json",
+    "docs/validation/runs/RUN-20261012-071.json",
+    "docs/validation/runs/RUN-20261012-072.json",
+    "docs/validation/runs/RUN-20261012-073.json",
+    "docs/validation/runs/RUN-20261012-074.json",
+    "docs/validation/runs/RUN-20261012-075.json",
+    "docs/validation/runs/RUN-20261012-076.json",
+    "docs/validation/runs/RUN-20261012-077.json",
+    "docs/validation/runs/RUN-20261012-078.json",
+    "docs/validation/runs/RUN-20261012-079.json",
+    "docs/validation/runs/RUN-20261012-080.json",
+    "docs/validation/runs/RUN-20261012-081.json",
+    "docs/validation/runs/RUN-20261012-082.json",
+    "docs/validation/runs/RUN-20261012-083.json",
+    "docs/validation/runs/RUN-20261012-084.json",
+    "docs/validation/runs/RUN-20261012-085.json",
+    "docs/validation/runs/RUN-20261012-086.json",
+    "docs/validation/runs/RUN-20261012-087.json",
+    "docs/validation/runs/RUN-20261012-088.json",
+    "docs/validation/runs/RUN-20261012-089.json",
+    "docs/validation/runs/RUN-20261012-090.json",
+    "docs/validation/runs/RUN-20261012-091.json",
+    "docs/validation/runs/RUN-20261012-092.json",
+    "docs/vision/README.md",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "package.json",
+    "packages/engine-adapter/README.md",
+    "packages/engine-lab/README.md",
+    "scripts/check-boundaries.mjs",
+    "scripts/engine/patches.json",
+    "scripts/engine/vendor.mjs",
+    "scripts/rules/certification.mjs",
+    "scripts/rules/scenario-build.mjs",
+    "scripts/rules/scenario-runtime.mjs",
+    "scripts/verify.mjs",
+    "tests/documentation/governance.test.mjs",
+    "tests/foundation/boundaries.test.mjs",
+    "tests/rules/certification.test.mjs",
+    "tests/rules/fixtures/rule-sources.json",
+    "tests/rules/fixtures/scenarios.json",
+    "tests/rules/scenarios.test.mjs",
+    "vendor/tcg-engines/README.md",
+    "vendor/tcg-engines/provenance/P029.original.ts",
+    "vendor/tcg-engines/provenance/P030.original.ts",
+    "vendor/tcg-engines/provenance/P031.original.ts",
+    "vendor/tcg-engines/provenance/P032.original.ts",
+    "vendor/tcg-engines/provenance/P033.original.ts",
+    "vendor/tcg-engines/provenance/P034.original.ts",
+    "vendor/tcg-engines/provenance/P035.original.ts",
+    "vendor/tcg-engines/provenance/P036.original.ts",
+    "vendor/tcg-engines/provenance/P037.original.ts",
+    "vendor/tcg-engines/provenance/P038.original.ts",
+    "vendor/tcg-engines/provenance/P039.original.ts",
+    "vendor/tcg-engines/provenance/P040.original.ts",
+    "vendor/tcg-engines/provenance/P041.original.ts",
+    "vendor/tcg-engines/provenance/P042.original.ts",
+    "vendor/tcg-engines/provenance/P043.original.ts",
+    "vendor/tcg-engines/provenance/P044.original.ts",
+    "vendor/tcg-engines/provenance/P045.original.ts",
+    "vendor/tcg-engines/provenance/P046.original.ts",
+    "vendor/tcg-engines/provenance/P047.original.ts",
+    "vendor/tcg-engines/provenance/P048.original.ts",
+    "vendor/tcg-engines/provenance/P049.original.ts",
+    "vendor/tcg-engines/provenance/P050.original.ts",
+    "vendor/tcg-engines/provenance/P051.original.ts",
+    "vendor/tcg-engines/provenance/P052.original.ts",
+    "vendor/tcg-engines/provenance/P053.original.ts",
+    "vendor/tcg-engines/upstream.lock.json",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/card-utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/projection/card-derived.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/rules/condition-evaluator.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/be-chosen.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/abilities/activate-ability.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/move-character-to-location.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/pass-turn.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effect-resolver.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/composed-effect-resolver.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/play-card-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/vanish.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/resolve-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/rules/challenge-rules.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/rules/play-card-rules.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/runtime/optional-skip-analysis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/targeting/runtime/target-analysis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/triggered-abilities/index.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/runtime-move-params.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/types/runtime-state.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/ability-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/condition-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/combined-types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/abilities/effect-types/index.ts"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/adr/0011-sourced-rule-scenarios.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/runbooks/rules-certification.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/schemas/card-certification.schema.json",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/templates/card-certification.json",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "updated",
+      "reason": "Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-046.json",
+      "outcome": "passed",
+      "scope": "RULE-04 intake: doctor, existing verification, bootstrap tests and original database connectivity; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-047.json",
+      "outcome": "passed",
+      "scope": "RULE-04 official source refresh and merged RULE-03 hosted CI metadata acquisition; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-048.json",
+      "outcome": "failed",
+      "scope": "RULE-04 red checkpoint: actual compiled Node scenario harness is absent; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-049.json",
+      "outcome": "failed",
+      "scope": "RULE-04 first real synthetic quest through the Node compiled fixture runtime; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-050.json",
+      "outcome": "passed",
+      "scope": "RULE-04 compiled quest regression after correcting the fixture command input to cardId; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-051.json",
+      "outcome": "failed",
+      "scope": "RULE-04 initial 43 sourced current-rules scenarios through compiled Node runtime, preserving failures; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-052.json",
+      "outcome": "failed",
+      "scope": "RULE-04 source-bound scenario fixtures after song subtype correction; Vanish timing regression retained; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-053.json",
+      "outcome": "failed",
+      "scope": "RULE-04 red checkpoint: per-card coverage and false-admission gates are absent; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-054.json",
+      "outcome": "passed",
+      "scope": "RULE-04 per-card template rejects unqualified promotion and false admission; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-055.json",
+      "outcome": "failed",
+      "scope": "RULE-04 expanded Vanish red regressions: bag timing, action-only trigger, source leaves play and complete multi-effect action; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-056.json",
+      "outcome": "failed",
+      "scope": "RULE-04 Vanish bag correction with actual chooser and play-zone resolution; sourced runtime regressions; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-057.json",
+      "outcome": "failed",
+      "scope": "RULE-04 red checkpoint for Director-approved Adventurous and ink-drop generation/payments/invalid selections; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-058.json",
+      "outcome": "failed",
+      "scope": "RULE-04 first Adventurous/counter implementation through 67 sourced Node scenarios and original rules regressions; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-059.json",
+      "outcome": "passed",
+      "scope": "RULE-04 corrected Adventurous enumeration, keyword type guard and ability fixture; 67 sourced Node scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-060.json",
+      "outcome": "failed",
+      "scope": "RULE-04 review regressions before Vanish object-lifetime and duplicate-event correction; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-061.json",
+      "outcome": "failed",
+      "scope": "RULE-04 single chosen events, zone-incarnation guards, real setup and conservation scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-062.json",
+      "outcome": "failed",
+      "scope": "RULE-04 corrected vendor closure and all representative regression scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-063.json",
+      "outcome": "passed",
+      "scope": "RULE-04 corrected full-file zone patch anchor and representative source scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-064.json",
+      "outcome": "passed",
+      "scope": "RULE-04 deferred and delegated Vanish choices plus invalid-state detection; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-065.json",
+      "outcome": "failed",
+      "scope": "RULE-04 source/certification negatives and pre-correction fixture import guard; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-066.json",
+      "outcome": "passed",
+      "scope": "RULE-04 integrated source-byte and card-template gates, fixture isolation and sourced runtime scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-067.json",
+      "outcome": "failed",
+      "scope": "RULE-04 temporary grant/loss, counter-vs-ink counts and overflow atomicity; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-068.json",
+      "outcome": "failed",
+      "scope": "RULE-04 case-sensitive temporary metadata correction and all 81 source scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-069.json",
+      "outcome": "passed",
+      "scope": "RULE-04 temporary keyword loss correction and 81 sourced scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-070.json",
+      "outcome": "failed",
+      "scope": "RULE-04 dynamic counter generation red test, nested costs and Ready-Set-Draw; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-071.json",
+      "outcome": "passed",
+      "scope": "RULE-04 dynamic counter amount correction and 84 sourced scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-072.json",
+      "outcome": "failed",
+      "scope": "RULE-04 multi-slot choice identity versus reused targets before correction; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-073.json",
+      "outcome": "failed",
+      "scope": "RULE-04 selected nested counter payment regressions before forwarding correction; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-074.json",
+      "outcome": "failed",
+      "scope": "RULE-04 independent choose-slot identity and per-nested-cost counter selection correction; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-075.json",
+      "outcome": "failed",
+      "scope": "RULE-04 preserved named slots through initial validation and selected nested payments; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-076.json",
+      "outcome": "passed",
+      "scope": "RULE-04 independent-slot cardinality correction and all 88 representative scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-077.json",
+      "outcome": "passed",
+      "scope": "RULE-04 final choice uniqueness, all 89 scenarios, certification negatives and source bytes; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-078.json",
+      "outcome": "failed",
+      "scope": "RULE-04 explicit invalid nested selection and skipped payment branch regressions before correction; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-079.json",
+      "outcome": "passed",
+      "scope": "RULE-04 final reviewed grouping preconditions, invalid selection rollback and 91 sourced scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-080.json",
+      "outcome": "failed",
+      "scope": "RULE-04 complete frozen foundation: doctor, ordered types/lint/build/tests and preserved original PostgreSQL; exact source/time in receipt; not card/device/production acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-081.json",
+      "outcome": "passed",
+      "scope": "RULE-04 corrected shortfall feedback: unchanged upstream suites and representative scenarios; exact source/time in receipt; not card/device/production acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-082.json",
+      "outcome": "failed",
+      "scope": "RULE-04 final frozen complete foundation, all source/type/lint/build/tests and original database; exact checkpoint source/time in receipt."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-083.json",
+      "outcome": "passed",
+      "scope": "RULE-04 exact pinned importer reproduction and official scenario source bytes; exact checkpoint source/time in receipt."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-084.json",
+      "outcome": "passed",
+      "scope": "RULE-04 governance fixture owns only its five declared schemas; original drift/sealing/evidence negatives unchanged; exact checkpoint source/time in receipt."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-085.json",
+      "outcome": "passed",
+      "scope": "RULE-04 final frozen full foundation after feedback and isolated governance fixture corrections; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-086.json",
+      "outcome": "passed",
+      "scope": "RULE-04 final source exact pin53-patch reproduction, source bytes and public/private bundle guards; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-087.json",
+      "outcome": "passed",
+      "scope": "RULE-04 actual Linux Chromium foundation and two compiled Lab workers; no Windows/device acceptance; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-088.json",
+      "outcome": "passed",
+      "scope": "RULE-04 clean source-only frozen installation and complete foundation; no private files or database copy; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-089.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-090.json",
+      "outcome": "passed",
+      "scope": "RULE-04 canonical staged Git bytes: fresh frozen install/full foundation, all archived files equal live source and temporary cleanup; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-091.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md."
+    },
+    {
+      "evidence": "docs/reviews/2026-10-12-rule-04-closure.md",
+      "outcome": "historical",
+      "scope": "Attributed early independent source review and later supplied-code review; detailed execution times unknown and no independent final suite execution inferred."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-092.json",
+      "outcome": "passed",
+      "scope": "Read-only original managed identities and actual privacy/scope/history/log/listener closure at final5f405778; no data reset or full new CI/persistence acceptance."
+    },
+    {
+      "evidence": "docs/validation/rule-04-host-closure.json",
+      "outcome": "historical",
+      "scope": "Attributed read-only host observation at recorded_at; detailed command intervals unknown, no manual-device verdict."
+    }
+  ],
+  "limitations": [
+    "Representative scenario/template acceptance only; no full rules/card certification or ordinary/official/reward/private/durable/economic play.",
+    "Isolated CI089/091 receipts fail clock_changed; no qualified new artifact/hosted RULE-04 result. Director leave-environment instruction honored; no maintenance/tolerance/restarts.",
+    "Final review uses primary execution and supplied-source review after reviewer automatic approval usage limit; no independent final execution, Windows/GPU/touch/load/restore/production acceptance.",
+    "No purchases, deployment, branch publication or main merge. All548 requirements/20 optional flags and BOOT-04/D07/D10 scope preserved."
+  ],
+  "next_actions": [
+    "Director audit/publication may observe fresh hosted CI; preserve089/091 timing failures and existing environment.",
+    "PLAY-01 durable receipt/CAS/outbox foundation follows; PLAY-02 privacy, D04 card-bound certification and AUTH/REPLAY/economic/device/production gates remain."
+  ]
+}

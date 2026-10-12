@@ -1,0 +1,80 @@
+✗ Build failed in 63ms
+✖ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1048.574452ms)
+✗ Build failed in 38ms
+✖ RULE-04 representative sourced runtime scenarios (900.174479ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2160.491251
+
+✖ failing tests:
+
+test at tests/rules/scenarios.test.mjs:8:1
+✖ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1048.574452ms)
+  Build failed with 1 error:
+  
+  [31m[builtin:vite-transform] [0mUnexpected token
+       [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.ts:764:5 [38;5;246m][0m
+       [38;5;246m│[0m
+   [38;5;246m764 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m}
+   [38;5;240m    │[0m     ┬  
+   [38;5;240m    │[0m     ╰── 
+  [38;5;246m─────╯[0m
+  
+      at aggregateBindingErrorsIntoJsError (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/rolldown@1.2.12/node_modules/rolldown/dist/shared/error-Bj1xBdEY.mjs:49:18)
+      at unwrapBindingResult (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/rolldown@1.2.12/node_modules/rolldown/dist/shared/error-Bj1xBdEY.mjs:19:128)
+      at #build (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/rolldown@1.2.12/node_modules/rolldown/dist/shared/rolldown-jmAeXo_f.mjs:133:34)
+      at async buildEnvironment (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/vite@8.3.2_@types+node@24.19.1/node_modules/vite/dist/node/chunks/node.js:34490:66)
+      at async Object.build (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/vite@8.3.2_@types+node@24.19.1/node_modules/vite/dist/node/chunks/node.js:34911:19)
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:18:5)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:10:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    errors: [
+      [Error: [31m[builtin:vite-transform] [0mUnexpected token
+           [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.ts:764:5 [38;5;246m][0m
+           [38;5;246m│[0m
+       [38;5;246m764 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m}
+       [38;5;240m    │[0m     ┬  
+       [38;5;240m    │[0m     ╰── 
+      [38;5;246m─────╯[0m
+      ]
+    ]
+  }
+
+test at tests/rules/scenarios.test.mjs:49:1
+✖ RULE-04 representative sourced runtime scenarios (900.174479ms)
+  Build failed with 1 error:
+  
+  [31m[builtin:vite-transform] [0mUnexpected token
+       [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.ts:764:5 [38;5;246m][0m
+       [38;5;246m│[0m
+   [38;5;246m764 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m}
+   [38;5;240m    │[0m     ┬  
+   [38;5;240m    │[0m     ╰── 
+  [38;5;246m─────╯[0m
+  
+      at aggregateBindingErrorsIntoJsError (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/rolldown@1.2.12/node_modules/rolldown/dist/shared/error-Bj1xBdEY.mjs:49:18)
+      at unwrapBindingResult (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/rolldown@1.2.12/node_modules/rolldown/dist/shared/error-Bj1xBdEY.mjs:19:128)
+      at #build (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/rolldown@1.2.12/node_modules/rolldown/dist/shared/rolldown-jmAeXo_f.mjs:133:34)
+      at async buildEnvironment (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/vite@8.3.2_@types+node@24.19.1/node_modules/vite/dist/node/chunks/node.js:34490:66)
+      at async Object.build (file:///workspaces/lorcana-online-tcg/node_modules/.pnpm/vite@8.3.2_@types+node@24.19.1/node_modules/vite/dist/node/chunks/node.js:34911:19)
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:18:5)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:51:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errors: [
+      [Error: [31m[builtin:vite-transform] [0mUnexpected token
+           [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.ts:764:5 [38;5;246m][0m
+           [38;5;246m│[0m
+       [38;5;246m764 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m}
+       [38;5;240m    │[0m     ┬  
+       [38;5;240m    │[0m     ╰── 
+      [38;5;246m─────╯[0m
+      ]
+    ]
+  }

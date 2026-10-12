@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-087",
+  "category": "headless_browser",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const args of [[\"test:e2e:smoke\"],[\"test:engine-browser\"]]){const r=spawnSync(\"pnpm\",args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "5f405778696fe4413b4a374f11c966ae7691817a2429136be9519aaeec572689",
+  "started_at": "2026-10-12T22:43:02.610Z",
+  "finished_at": "2026-10-12T22:43:23.362Z",
+  "recorded_at": "2026-10-12T22:43:23.362Z",
+  "time_precision": "exact",
+  "elapsed_ms": 20753,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 actual Linux Chromium foundation and two compiled Lab workers; no Windows/device acceptance",
+  "log_path": "docs/validation/logs/RUN-20261012-087.txt",
+  "log_sha256": "063ad6ba5dffc60371ba9f4ca747553cb1e6ec8805aef800eef35bb1fe523846",
+  "redactions": 0
+}

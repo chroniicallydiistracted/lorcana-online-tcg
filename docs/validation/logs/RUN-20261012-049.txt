@@ -1,0 +1,30 @@
+✖ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1258.302519ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1491.987754
+
+✖ failing tests:
+
+test at tests/rules/scenarios.test.mjs:7:1
+✖ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1258.302519ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:11:12
+      at Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:18)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:9:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

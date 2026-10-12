@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-055",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/scenarios.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "d09be5237742fd3b8927c7b8ade7cb5bd9a4b0ced172456a47093b8bf496e3c2",
+  "started_at": "2026-10-12T20:28:04.435Z",
+  "finished_at": "2026-10-12T20:28:06.977Z",
+  "recorded_at": "2026-10-12T20:28:06.977Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2543,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 expanded Vanish red regressions: bag timing, action-only trigger, source leaves play and complete multi-effect action",
+  "log_path": "docs/validation/logs/RUN-20261012-055.txt",
+  "log_sha256": "dc11b331a03f3cd0152ece451ffb10edbc268b10e92db93d1367322a89c3cb58",
+  "redactions": 0
+}

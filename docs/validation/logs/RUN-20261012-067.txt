@@ -1,0 +1,216 @@
+
+> lorcana-online-tcg@0.0.0 test:rules /workspaces/lorcana-online-tcg
+> node --test tests/rules/scenarios.test.mjs tests/rules/certification.test.mjs
+
+✔ a per-card template cannot be promoted to tested without bound execution and coverage (2.858443ms)
+✔ a forged admission status cannot bypass later queue policies (0.428177ms)
+✔ scenario oracles reject missing or duplicate IDs, wrong rules and missing positive assertions (12.705033ms)
+✔ draft card references cannot borrow a source or hide an ability branch (6.836144ms)
+✔ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1228.26038ms)
+[resolveBag] target validation failed {
+  bagId: 'bag:0:1',
+  playerId: 'p1',
+  sourceCardId: 'hero',
+  effectType: 'optional',
+  errorCode: 'INVALID_ACTION_TARGET',
+  error: 'Target hero is not a legal target',
+  explicitTargets: [ 'hero' ],
+  analysis: {
+    cardCandidates: [ 'friend' ],
+    playerCandidates: [],
+    minSelections: 1,
+    maxSelections: 1,
+    allowDuplicateTargets: false
+  }
+}
+▶ RULE-04 representative sourced runtime scenarios
+  ✔ SCN-001: Quest gains printed lore and exerts the dry character (12.508941ms)
+  ✔ SCN-002: A drying character cannot quest (2.11448ms)
+  ✔ SCN-003: An exerted character cannot quest again (1.210371ms)
+  ✔ SCN-004: An opponent cannot quest with a character they do not control (0.922855ms)
+  ✔ SCN-005: Reaching twenty lore ends the game at the state check (2.48073ms)
+  ✔ SCN-006: Items cannot quest (0.88275ms)
+  ✔ SCN-007: Reckless prevents questing (1.074536ms)
+  ✔ SCN-008: Challenge deals simultaneous strength damage and exerts attacker (6.59311ms)
+  ✔ SCN-009: Ordinary characters cannot challenge ready opposing characters (1.273842ms)
+  ✔ SCN-010: Drying characters without Rush cannot challenge (1.140504ms)
+  ✔ SCN-011: Rush permits a drying character to challenge (3.678178ms)
+  ✔ SCN-012: Evasive blocks a non-Evasive attacker (1.004346ms)
+  ✔ SCN-013: Alert allows challenging an exerted Evasive character (2.734771ms)
+  ✔ SCN-014: Alert does not let its defender evade an ordinary challenge (3.283029ms)
+  ✔ SCN-015: A valid exerted Bodyguard prevents choosing a different character (1.106637ms)
+  ✔ SCN-016: An exerted Bodyguard can be chosen for a challenge (3.196258ms)
+  ✔ SCN-017: Challenger adds strength only while its character challenges (3.58727ms)
+  ✔ SCN-018: Challenger does not add defending damage (3.575547ms)
+  ✔ SCN-019: Resist reduces challenge damage (3.167435ms)
+  ✔ SCN-020: An inkable hand card moves to the inkwell ready (2.466675ms)
+  ✔ SCN-021: A noninkable hand card cannot be inked (0.758494ms)
+  ✔ SCN-022: A second ordinary inking in one turn is rejected (1.298775ms)
+  ✔ SCN-023: Insufficient ink rejects play without partial payment (1.818755ms)
+  ✔ SCN-024: Playing a character pays ink and leaves it drying (3.216722ms)
+  ✔ SCN-025: A stale revision rejects an otherwise legal quest (1.739154ms)
+  ✔ SCN-026: A missing card reference is rejected without mutation (0.819683ms)
+  ✔ SCN-027: An opponent cannot end the active player turn (0.640988ms)
+  ✔ SCN-028: A dry Singer can sing a song above its printed cost (9.333201ms)
+  ✔ SCN-029: A drying character cannot pay a song singing cost (1.500065ms)
+  ✔ SCN-030: Sing Together combines ready singers and exerts both (3.701003ms)
+  ✔ SCN-031: Duplicate singers cannot count twice toward Sing Together (0.759713ms)
+  ✔ SCN-032: Shift inherits drying and damage from its underlying character (5.084404ms)
+  ✔ SCN-033: Shift cannot use an opposing character as its base (1.08147ms)
+  ✔ SCN-034: Boost puts one top card facedown under its character once per turn (5.616364ms)
+  ✔ SCN-035: Ward prevents an opponent choosing the character for an action (1.642515ms)
+  ✔ SCN-036: Lethal challenge damage banishes both characters simultaneously (4.452477ms)
+  ✔ SCN-037: Active player chooses bag order before opponent and normal actions wait (11.857306ms)
+  ✔ SCN-038: Unknown bag IDs reject without removing valid triggered effects (2.527978ms)
+  ✔ SCN-039: An optional triggered effect can be declined without granting its lore (2.979578ms)
+  ✔ SCN-040: An optional triggered effect can be accepted and resolves fully (3.402382ms)
+  ✔ SCN-041: Support permits choosing another character after the quest (9.471382ms)
+  ✔ SCN-042: Support cannot choose the questing character itself (3.279487ms)
+  ✔ SCN-043: Vanish waits for the opposing action to finish before banishing (7.387237ms)
+  ✔ SCN-044: Vanish does not trigger when its controller chooses it with an action (2.64914ms)
+  ✔ SCN-045: Vanish does not trigger for an opposing activated character ability (2.448138ms)
+  ✔ SCN-046: Vanish becomes inapplicable after the action returns its source to hand (3.59274ms)
+  ✔ SCN-047: Vanish waits for all separate action effects before checking its play zone (4.482373ms)
+  ✔ SCN-048: Adventurous prevents challenging even when Rush would allow it (0.690858ms)
+  ✔ SCN-049: A ready Adventurous character that can quest prevents ending the turn (0.784979ms)
+  ✔ SCN-050: A drying Adventurous character cannot quest and does not prevent ending the turn (3.628974ms)
+  ✔ SCN-051: Questing exerts Adventurous and permits ending the turn (2.905692ms)
+  ✔ SCN-052: Adventurous with zero lore still must quest if able (3.154184ms)
+  ✔ SCN-053: Adventurous and Reckless together permit ending the turn because neither action is legal (2.831658ms)
+  ✔ SCN-054: Adventurous can sing and its exerted state permits ending the turn (4.195635ms)
+  ✔ SCN-055: Adventurous can exert for an activated ability instead of questing (3.315988ms)
+  ✔ SCN-056: An effect generates ink-drop counters without adding any ink cards (2.081641ms)
+  ✔ SCN-057: Ink-drop counters pay a character ink cost and are consumed (1.402139ms)
+  ✔ SCN-058: A mixed payment exerts ink cards and consumes only the remaining counters (1.797968ms)
+  ✔ SCN-059: A player can explicitly pay counters while leaving enough ink cards ready (1.399455ms)
+  ✔ SCN-060: A player cannot spend an opponents ink-drop counters (0.967425ms)
+  ✔ SCN-061: Insufficient cards and counters reject without partial consumption (0.689621ms)
+  ✔ SCN-062: Ink-drop counters pay an activated ability ink cost (1.711668ms)
+  ✔ SCN-063: Ink-drop counters pay an alternate Shift ink cost (2.221539ms)
+  ✔ SCN-064: Ink-drop counters pay a location movement ink cost (2.224521ms)
+  ✔ SCN-065: Invalid selected counter payment -1 rejects without mutation (0.917138ms)
+  ✔ SCN-066: Invalid selected counter payment 1.5 rejects without mutation (0.82604ms)
+  ✔ SCN-067: Invalid selected counter payment 3 rejects without mutation (0.743452ms)
+  ✔ SCN-068: One chosen operation queues Vanish and its observer once each (3.296817ms)
+  ✔ SCN-069: A prior Vanish trigger cannot banish a new incarnation of its source (5.433594ms)
+  ✔ SCN-070: Spent counters are removed and cannot pay a second card (2.099808ms)
+  ✔ SCN-071: Unused counters persist across turn changes (1.852592ms)
+  ✔ SCN-072: Setup deals seven, permits mulligans and skips the first draw (7.780463ms)
+  ✔ SCN-073: Deferred targets wait for the chooser and reject unknown targets without mutation (10.353006ms)
+  ✔ SCN-074: Vanish follows an opposing chooser even when the action belongs to its controller (6.601842ms)
+  ✔ SCN-075: Vanish ignores a same-controller chooser even for an opposing action (4.009484ms)
+  ✖ SCN-076: A temporarily granted Adventurous keyword forbids challenging (4.14019ms)
+  ✖ SCN-077: Losing Adventurous permits an otherwise legal challenge (2.799202ms)
+  ✖ SCN-078: Temporarily granted Vanish queues after an opposing choice (2.52928ms)
+  ✖ SCN-079: Losing Vanish prevents its opposing choice trigger (2.266036ms)
+  ✔ SCN-080: Ink-drop counters do not satisfy an ink-card count condition (2.042216ms)
+  ✔ SCN-081: Counter overflow rejects the effect without committing a partial pool (1.345446ms)
+  ✔ Invalid snapshots are detected independently of move acceptance (2.910876ms)
+✖ RULE-04 representative sourced runtime scenarios (1121.012748ms)
+ℹ tests 88
+ℹ suites 0
+ℹ pass 83
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2605.239953
+
+✖ failing tests:
+
+test at tests/rules/scenarios.test.mjs:52:53
+✖ SCN-076: A temporarily granted Adventurous keyword forbids challenging (4.14019ms)
+  AssertionError [ERR_ASSERTION]: challenge: null
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:63:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:51:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:52:53
+✖ SCN-077: Losing Adventurous permits an otherwise legal challenge (2.799202ms)
+  AssertionError [ERR_ASSERTION]: challenge: ADVENTUROUS_CANT_CHALLENGE
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:63:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:51:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:52:53
+✖ SCN-078: Temporarily granted Vanish queues after an opposing choice (2.52928ms)
+  AssertionError [ERR_ASSERTION]: G.triggeredAbilities.bag.items
+  
+  0 !== 1
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:17)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:66:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:51:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:52:53
+✖ SCN-079: Losing Vanish prevents its opposing choice trigger (2.266036ms)
+  AssertionError [ERR_ASSERTION]: G.triggeredAbilities.bag.items
+  
+  1 !== 0
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:17)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:66:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:51:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Command failed with exit code 1.

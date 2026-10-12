@@ -1,0 +1,20 @@
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target local
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 local: four authenticated managed identities
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target test
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 test: four authenticated managed identities
+PASS original548/33/20 and all dispositions, existing Director decisions, archive provenance, lock/toolchain/container preserved; only D11 added.
+PASS private ignored0600 ownership, current/full-history secret scans (1662 unique blobs), 376 immutable log digests, no executable owned services/listeners5173/3001/3002; source 5f405778696fe4413b4a374f11c966ae7691817a2429136be9519aaeec572689.

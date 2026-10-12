@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-077",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const args of [[\"scripts/rules/certification.mjs\",\"--bytes\"],[\"--test\",\"tests/rules/certification.test.mjs\",\"tests/rules/scenarios.test.mjs\",\"tests/foundation/boundaries.test.mjs\"]]){const r=spawnSync(process.execPath,args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "29c79d6cb334c618e51a78f1e5414958cf819b0088d35cbc05fc9853ca7e5959",
+  "started_at": "2026-10-12T22:24:38.253Z",
+  "finished_at": "2026-10-12T22:24:42.592Z",
+  "recorded_at": "2026-10-12T22:24:42.592Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4340,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 final choice uniqueness, all 89 scenarios, certification negatives and source bytes",
+  "log_path": "docs/validation/logs/RUN-20261012-077.txt",
+  "log_sha256": "82e786f25b724fa2a1f2914f939cf1a5b900e1fa356f06a2d0ad80ce7a29f622",
+  "redactions": 0
+}

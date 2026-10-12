@@ -10,7 +10,7 @@ import {
   isParameterizedKeywordAbility,
   isValueKeywordAbility,
 } from "../card-utils";
-import { getTemporaryKeywordValue } from "../runtime-moves/effects/temporary-effects";
+import { hasTemporaryLostKeyword, getTemporaryKeywordValue } from "../runtime-moves/effects/temporary-effects";
 import type {
   LorcanaCardDefinition,
   LorcanaCardMeta,
@@ -235,7 +235,7 @@ export function projectLorcanaCardDerived(args: {
       ...staticKeywords.keywords,
     ]),
   ]
-    .filter((keyword) => !staticKeywordLosses.includes(keyword))
+    .filter((keyword) => !staticKeywordLosses.includes(keyword) && !hasTemporaryLostKeyword(meta, currentTurn, keyword))
     .sort((left, right) => left.localeCompare(right));
   derived.hasSupport = derived.keywords.includes("Support");
   derived.hasReckless = derived.keywords.includes("Reckless");

@@ -1,0 +1,723 @@
+
+> lorcana-online-tcg@0.0.0 verify:clean /workspaces/lorcana-online-tcg
+> node scripts/validate-clean-checkout.mjs
+
+Scope: all 13 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +207
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 207, reused 207, downloaded 0, added 207, done
+
+devDependencies:
++ @eslint/js 10.0.1
++ ajv 8.20.0
++ eslint 10.12.0
++ parse5 8.0.0
++ pdfjs-dist 6.4.299
++ postcss-value-parser 4.2.0
++ typescript 6.0.3
++ typescript-eslint 8.71.1
+
+Done in 1s using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 verify:foundation /tmp/lorcana-clean-checkout-FzTI21
+> pnpm verify && pnpm typecheck && pnpm lint && pnpm test
+
+
+> lorcana-online-tcg@0.0.0 verify /tmp/lorcana-clean-checkout-FzTI21
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS RULE-01 offline metadata, denominators, dated release/effective status and uncertified boundaries
+PASS representative rule sources/template; no card admission {"scenarios":91,"versions":["2.2.0","2.3.0"]}
+PASS pinned vendor integrity {"revision":"53a79413c58678b1c50dde57e71de5c123132716","files":346,"patches":53}
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 346 selected source files
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":1464,"documents":894,"functions":8427,"changes":27,"runs":372}
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21
+> pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck
+
+Scope: 8 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 243 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  841.59 kB │ gzip: 183.59 kB
+
+✓ built in 200ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  843.71 kB │ gzip: 186.33 kB
+
+✓ built in 143ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/service-runtime@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/service-runtime
+> tsc -p tsconfig.json
+
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/db@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/packages/db
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/design-system@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/packages/design-system
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/presentation@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/packages/presentation
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/web@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-adapter@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/packages/engine-adapter
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-lab@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/packages/engine-lab
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/service-runtime@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/packages/service-runtime
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/api@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/apps/api
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-service@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/apps/match-service
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/worker@0.0.0 typecheck /tmp/lorcana-clean-checkout-FzTI21/apps/worker
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 lint /tmp/lorcana-clean-checkout-FzTI21
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /tmp/lorcana-clean-checkout-FzTI21
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+
+> lorcana-online-tcg@0.0.0 test /tmp/lorcana-clean-checkout-FzTI21
+> pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci && pnpm test:rules-inventory && pnpm test:rules && pnpm test:engine-tooling
+
+
+> lorcana-online-tcg@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21
+> pnpm boundaries && pnpm -r --workspace-concurrency=1 build
+
+
+> lorcana-online-tcg@0.0.0 boundaries /tmp/lorcana-clean-checkout-FzTI21
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 243 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  841.59 kB │ gzip: 183.59 kB
+
+✓ built in 199ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/web@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/apps/web
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 2511 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           0.38 kB │ gzip:   0.28 kB
+dist/assets/index-Cs1RDOyn.css                            0.96 kB │ gzip:   0.54 kB
+dist/assets/postprocess.vertex-DJCmMhI8.js                0.46 kB │ gzip:   0.30 kB
+dist/assets/shaderStore-D-XQlhUT.js                       0.46 kB │ gzip:   0.17 kB
+dist/assets/rgbdDecode.fragment-Cdz2Tveq.js               0.52 kB │ gzip:   0.34 kB
+dist/assets/postprocess.vertex-CmVXXq2T.js                0.58 kB │ gzip:   0.35 kB
+dist/assets/rgbdDecode.fragment-DXl2fYur.js               0.66 kB │ gzip:   0.38 kB
+dist/assets/math.scalar.functions-lnL7TJ7T.js             0.76 kB │ gzip:   0.41 kB
+dist/assets/color.fragment-SH3AKoaS.js                    0.87 kB │ gzip:   0.42 kB
+dist/assets/mesh.vertexData.functions-CD4JOR2q.js         0.93 kB │ gzip:   0.48 kB
+dist/assets/color.fragment-DVaYbzXa.js                    0.98 kB │ gzip:   0.45 kB
+dist/assets/ddsTextureLoader-CnOqxmwJ.js                  1.25 kB │ gzip:   0.62 kB
+dist/assets/color.vertex-UAuK67V9.js                      1.35 kB │ gzip:   0.61 kB
+dist/assets/color.vertex-BYaj1Jpp.js                      1.41 kB │ gzip:   0.61 kB
+dist/assets/logger-CuBYPcDK.js                            1.88 kB │ gzip:   0.82 kB
+dist/assets/logDepthDeclaration-BKcd_JEL.js               2.16 kB │ gzip:   0.85 kB
+dist/assets/fogFragment-WPqtYpyX.js                       2.20 kB │ gzip:   0.70 kB
+dist/assets/hdrTextureLoader-BQVwkxK1.js                  2.31 kB │ gzip:   1.13 kB
+dist/assets/fogFragment-NFgubt9V.js                       2.43 kB │ gzip:   0.76 kB
+dist/assets/iesTextureLoader-3O5bSkSd.js                  2.47 kB │ gzip:   1.07 kB
+dist/assets/logDepthDeclaration-CLGvI4QS.js               2.54 kB │ gzip:   0.84 kB
+dist/assets/tgaTextureLoader-CqhhocF6.js                  3.40 kB │ gzip:   1.35 kB
+dist/assets/cubemapToSphericalPolynomial-DQLobdjo.js      3.65 kB │ gzip:   1.60 kB
+dist/assets/typeStore-CuqQeP4D.js                         4.87 kB │ gzip:   1.80 kB
+dist/assets/helperFunctions-BH8P-eyq.js                   6.48 kB │ gzip:   2.18 kB
+dist/assets/helperFunctions-gEnZbjN3.js                   6.81 kB │ gzip:   2.31 kB
+dist/assets/dds.pure-CyPDIBuU.js                          6.93 kB │ gzip:   2.54 kB
+dist/assets/vertexColorMixing-HinktY3n.js                10.39 kB │ gzip:   2.14 kB
+dist/assets/vertexColorMixing-CBmtHj8r.js                11.72 kB │ gzip:   2.17 kB
+dist/assets/exrTextureLoader-C86K4-F4.js                 13.14 kB │ gzip:   4.81 kB
+dist/assets/ktxTextureLoader-C5lMybt9.js                 16.40 kB │ gzip:   4.78 kB
+dist/assets/guid-BN1U1Zos.js                             17.72 kB │ gzip:   6.15 kB
+dist/assets/default.vertex-CF_7OiRp.js                   19.62 kB │ gzip:   4.39 kB
+dist/assets/basisTextureLoader-Xdypzq5p.js               27.22 kB │ gzip:   8.16 kB
+dist/assets/envTextureLoader-pSz_G0GG.js                 31.54 kB │ gzip:   8.88 kB
+dist/assets/default.vertex-uAWj3KN-.js                   38.03 kB │ gzip:   6.28 kB
+dist/assets/math.color.pure-DQiG_7Jy.js                  77.34 kB │ gzip:  18.33 kB
+dist/assets/default.fragment-DOpJD8Rt.js                110.44 kB │ gzip:  22.56 kB
+dist/assets/default.fragment-JYy_LTJ1.js                115.22 kB │ gzip:  22.38 kB
+dist/assets/index--mOsM8DA.js                           305.76 kB │ gzip:  95.62 kB
+dist/assets/src-3pUG3QJN.js                           1,084.54 kB │ gzip: 261.57 kB
+
+✓ built in 997ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+> @lorcana/engine-adapter@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  843.71 kB │ gzip: 186.33 kB
+
+✓ built in 170ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/service-runtime@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/packages/service-runtime
+> tsc -p tsconfig.json
+
+
+> @lorcana/api@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/apps/api
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/worker@0.0.0 build /tmp/lorcana-clean-checkout-FzTI21/apps/worker
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 test:bootstrap /tmp/lorcana-clean-checkout-FzTI21
+> node scripts/test-bootstrap.mjs
+
+✔ browser connectivity contract serves readiness and rejects other routes/methods (29.654014ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 110.64191
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 test /tmp/lorcana-clean-checkout-FzTI21/packages/contracts
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+✔ public diagnostics reject private data and malformed service responses (3.164774ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (5.607511ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (2.744846ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (2.23078ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (4.086695ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (8.195148ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.34326ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 275.697658
+
+> @lorcana/db@0.0.0 test /tmp/lorcana-clean-checkout-FzTI21/packages/db
+> node --test tests/policy.test.mjs tests/config.test.mjs
+
+✔ credentials are private, distinct and byte-preserved across provisioning retries (3.445758ms)
+✔ tooling fails closed outside the private local container network (0.220078ms)
+✔ unsafe parent directory is rejected before generating any credential file (0.8763ms)
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (0.693384ms)
+✔ migration history must be an unchanged contiguous prefix (0.175074ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (0.900208ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.983318
+
+> @lorcana/presentation@0.0.0 test /tmp/lorcana-clean-checkout-FzTI21/packages/presentation
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+BJS - [22:45:11]: Babylon.js v9.29.0 - Null engine
+BJS - [22:45:11]: Babylon.js v9.29.0 - Null engine
+BJS - [22:45:12]: Babylon.js v9.29.0 - Null engine
+✔ synthetic scene renders and releases meshes and engine through repeatable mount/dispose (412.901274ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 634.01329
+
+> @lorcana/vendor-engine@0.0.0 test /tmp/lorcana-clean-checkout-FzTI21/vendor/tcg-engines
+> node ../../scripts/engine/test-upstream.mjs && node ../../scripts/engine/test-injection.mjs
+
+Selected 27 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+ 338 pass
+ 1 skip
+ 0 fail
+ 838 expect() calls
+Ran 339 tests across 27 files. [817.00ms]
+bun test v1.4.2 (744846f84)
+
+src/injection.test.ts:
+(pass) injected initialization/first chooser and active clock resume ignore ambient wall time [3.87ms]
+(pass) invalid injected results cannot advance a committed random cursor [0.14ms]
+
+ 2 pass
+ 0 fail
+ 9 expect() calls
+Ran 2 tests across 1 file. [44.00ms]
+
+> @lorcana/engine-adapter@0.0.0 test /tmp/lorcana-clean-checkout-FzTI21/packages/engine-adapter
+> node --test tests/*.test.mjs
+
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (2.947595ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (1.233682ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (27.897603ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (7.940004ms)
+✔ new server match fails closed when operating-system entropy is unavailable (49.218061ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.682721ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (36.014327ms)
+✔ completed private archive is immutable across late rejected submissions (7.837621ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (55.253817ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (69.578505ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (33.350227ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (1.941028ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 286.391564
+
+> @lorcana/engine-lab@0.0.0 test /tmp/lorcana-clean-checkout-FzTI21/packages/engine-lab
+> node --test tests/*.test.mjs
+
+✔ qualification input bounds sparse arrays, aggregate size, keys and accessors before engine execution (11.288993ms)
+✔ synthetic match commands run on Node with player authority, stale rejection, terminal winner and idempotent disposal (11.605045ms)
+✔ October rules and set dates never grant unqualified rules/catalog or hidden/economic admission (0.795338ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 119.303185
+
+> @lorcana/service-runtime@0.0.0 test /tmp/lorcana-clean-checkout-FzTI21/packages/service-runtime
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+✔ shutdown interrupts pending initialization and calls cleanup: async () =>  (55.806984ms)
+✔ shutdown interrupts pending initialization and calls cleanup: signal => {  (56.197014ms)
+✔ actual HTTP negotiation is typed, rejects unknown/coerced/oversized input and drains (249.73028ms)
+✔ HTTP service cannot advertise a revision without an implemented foundation codec (0.8352ms)
+✔ release registry defensively freezes source and never silently replaces an unavailable pinned release (9.530164ms)
+✔ release transition proof rejects dropped or changed pins but accepts canonical field reordering (10.414182ms)
+✔ release registry cannot expose empty cloned data from inherited manifest fields (0.316292ms)
+✔ HTTP service serves scoped diagnostics, rejects unknown routes, and drains readiness (207.347259ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 563.614664
+✔ production apps cannot import the manipulated RULE-04 fixture bridge (213.603465ms)
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (11.085758ms)
+✔ server applications cannot bypass the project adapter using vendor or raw upstream imports (9.095519ms)
+✔ server module loader aliases cannot bypass the engine adapter (5.364825ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1742.843858ms)
+✔ browser source cannot import the server-only release registry through its package subpath (1.522166ms)
+✔ private server RNG/replay cannot cross browser boundaries and server adapter cannot enter the Lab generator (9.100865ms)
+✔ browser resolver cannot treat a server adapter as a permitted browser kernel importer (0.657065ms)
+✔ declaring a database dependency in a public contract package is rejected (206.945007ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (206.602593ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (204.185394ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (213.270691ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (904.789369ms)
+✔ built browser assets contain no server configuration or bootstrap credential (10.811186ms)
+✔ supervisor cleanup stops a descendant even when its leader exits first (146.232283ms)
+✔ cleanup retains the group of an already-exited leader (146.917223ms)
+✔ built application processes start, remain alive and stop on both signals without public worker ingress (2124.683374ms)
+✔ development supervisor rejects a busy service port and leaves the existing listener intact (14253.900859ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16424.518835
+
+> lorcana-online-tcg@0.0.0 test:documentation /tmp/lorcana-clean-checkout-FzTI21
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (275.208795ms)
+✔ source changes during a command prevent a successful evidence claim (280.12744ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1765.214841ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.367598ms)
+✔ credentials generated during a child command are redacted before durable logs (313.233065ms)
+✔ unsafe generated credential configuration withholds all output and records a schema-valid failure (327.02597ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1975.64505ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.324132ms)
+✔ new documentation governance exposes real validation and sync operations (0.70763ms)
+✔ source drift requires a covering change and review of impacted documentation (291.906016ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (80.437523ms)
+✔ change records reject unqualified timestamps and historical execution inventions (14.852968ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (74.978203ms)
+✔ documentation edits and newly added source files require recorded coverage (118.509643ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (19.361075ms)
+✔ committed finalized history cannot be changed or deleted (126.790784ms)
+✔ log tampering and exit status contradictions invalidate execution evidence (182.789614ms)
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history (71.315859ms)
+✔ removing old source-impact edges cannot erase required documentation reviews (70.062476ms)
+✔ committing a rewrite does not make sealed history valid (136.834455ms)
+✔ executed passing evidence needs a log and consistent execution/recording times (48.360718ms)
+✔ isolated branches are not required to contain unrelated scope history (142.379561ms)
+✔ a misspelled documentation impact path cannot silently disable reviews (14.738255ms)
+✔ human device reports preserve verdict without inventing process exit or machine verification (189.412291ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5175.435623
+
+> lorcana-online-tcg@0.0.0 test:database-tooling /tmp/lorcana-clean-checkout-FzTI21
+> python3 tests/database/persistence-proof.test.py
+
+test_SIGINT (__main__.ProofReview.test_SIGINT) ... ok
+test_SIGTERM (__main__.ProofReview.test_SIGTERM) ... ok
+test_cleanup_error (__main__.ProofReview.test_cleanup_error) ... ok
+test_fingerprint_error (__main__.ProofReview.test_fingerprint_error) ... ok
+test_redaction (__main__.ProofReview.test_redaction) ... ok
+test_remaining (__main__.ProofReview.test_remaining) ... ok
+test_server_secret (__main__.ProofReview.test_server_secret) ... ok
+test_source_changed (__main__.ProofReview.test_source_changed) ... ok
+test_success (__main__.ProofReview.test_success) ... ok
+test_timeout (__main__.ProofReview.test_timeout) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.016s
+
+OK
+Simulated recorder regressions: all Docker/DB commands mocked; no actual persistence proof.
+
+> lorcana-online-tcg@0.0.0 test:ci /tmp/lorcana-clean-checkout-FzTI21
+> node --test tests/ci/*.test.mjs && python3 tests/ci/launcher.test.py
+
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.515791ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.528753ms)
+✔ experimental engine and provenance are carried and release-bound; calendar metadata does not make a game release (86.345541ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (31.783344ms)
+✔ manifest traversal, duplicate and missing entries are rejected (15.742749ms)
+✔ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (17.078665ms)
+✔ documented artifact command accepts the pnpm argument separator (657.677906ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.390924ms)
+✔ version3 artifacts carry a release bound to app, engine and actual SQL migration bytes (19.516774ms)
+✔ release binding rejects modified inner metadata or build/SQL bytes even with recomputed outer hashes (44.473894ms)
+✔ a shallow repository cannot bypass full-history qualification (39.149721ms)
+✔ release identity binds transitive executable workspace bytes and package resolution metadata (79.390802ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1388.340988
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.033s
+
+OK
+
+> lorcana-online-tcg@0.0.0 test:rules-inventory /tmp/lorcana-clean-checkout-FzTI21
+> node --test tests/rules/inventory.test.mjs tests/rules/check-inventory.test.mjs
+
+✔ committed source metadata supports an offline inventory check (24.511152ms)
+✔ an inflated declaration denominator is rejected (22.041686ms)
+✔ source hash substitution and empty rules comparison are rejected (33.674795ms)
+✔ retrieval metadata cannot promote scheduled rules or certify a printing (22.459924ms)
+✔ incomplete trees and escaped private/cache paths are rejected (28.685588ms)
+✔ an HTML error page cannot qualify as an acquired PDF (1.253851ms)
+✔ hash mismatch rejects substituted source bytes (0.861803ms)
+✔ retrieval does not make a future or unknown effective date current (0.147076ms)
+✔ truncated or duplicate trees cannot supply complete denominators (0.333776ms)
+✔ reprints share provisional identity while future and enemy printings remain separate (5.342327ms)
+✔ skipped suites propagate; comments/strings do not become test cases (5.501759ms)
+✔ each/conditional/focused declarations do not pretend to be executed case counts (1.150414ms)
+✔ rule comparison preserves identifiers and distinguishes added/removed/changed text (1.012417ms)
+✔ official gallery data is read as syntax without evaluating executable site code (3.949437ms)
+✔ promotional printings do not inherit an old set release date as proven availability (0.261817ms)
+✔ suite parameterization and variable titles remain visible in static declarations (0.675362ms)
+✔ glossary/update appendices cannot contaminate the final numbered rule hash (0.287117ms)
+✔ a Git symlink blob is its inert target string, never dereferenced file contents (0.747574ms)
+✔ a table-of-contents Glossary entry cannot suppress the actual rules body (0.181116ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 358.840099
+
+> lorcana-online-tcg@0.0.0 test:rules /tmp/lorcana-clean-checkout-FzTI21
+> node --test tests/rules/scenarios.test.mjs tests/rules/certification.test.mjs
+
+✔ a per-card template cannot be promoted to tested without bound execution and coverage (2.473344ms)
+✔ a forged admission status cannot bypass later queue policies (0.371052ms)
+✔ scenario oracles reject missing or duplicate IDs, wrong rules and missing positive assertions (11.963306ms)
+✔ draft card references cannot borrow a source or hide an ability branch (8.035626ms)
+✔ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1291.65823ms)
+[resolveBag] target validation failed {
+  bagId: 'bag:0:1',
+  playerId: 'p1',
+  sourceCardId: 'hero',
+  effectType: 'optional',
+  errorCode: 'INVALID_ACTION_TARGET',
+  error: 'Target hero is not a legal target',
+  explicitTargets: [ 'hero' ],
+  analysis: {
+    cardCandidates: [ 'friend' ],
+    playerCandidates: [],
+    minSelections: 1,
+    maxSelections: 1,
+    allowDuplicateTargets: false
+  }
+}
+▶ RULE-04 representative sourced runtime scenarios
+  ✔ SCN-001: Quest gains printed lore and exerts the dry character (10.035749ms)
+  ✔ SCN-002: A drying character cannot quest (1.909137ms)
+  ✔ SCN-003: An exerted character cannot quest again (1.114046ms)
+  ✔ SCN-004: An opponent cannot quest with a character they do not control (1.262418ms)
+  ✔ SCN-005: Reaching twenty lore ends the game at the state check (2.123902ms)
+  ✔ SCN-006: Items cannot quest (0.814796ms)
+  ✔ SCN-007: Reckless prevents questing (0.957644ms)
+  ✔ SCN-008: Challenge deals simultaneous strength damage and exerts attacker (5.961636ms)
+  ✔ SCN-009: Ordinary characters cannot challenge ready opposing characters (1.282427ms)
+  ✔ SCN-010: Drying characters without Rush cannot challenge (1.000674ms)
+  ✔ SCN-011: Rush permits a drying character to challenge (3.992165ms)
+  ✔ SCN-012: Evasive blocks a non-Evasive attacker (1.032282ms)
+  ✔ SCN-013: Alert allows challenging an exerted Evasive character (2.7184ms)
+  ✔ SCN-014: Alert does not let its defender evade an ordinary challenge (2.964349ms)
+  ✔ SCN-015: A valid exerted Bodyguard prevents choosing a different character (0.936471ms)
+  ✔ SCN-016: An exerted Bodyguard can be chosen for a challenge (4.180366ms)
+  ✔ SCN-017: Challenger adds strength only while its character challenges (4.230504ms)
+  ✔ SCN-018: Challenger does not add defending damage (3.516295ms)
+  ✔ SCN-019: Resist reduces challenge damage (2.960205ms)
+  ✔ SCN-020: An inkable hand card moves to the inkwell ready (1.780738ms)
+  ✔ SCN-021: A noninkable hand card cannot be inked (0.703719ms)
+  ✔ SCN-022: A second ordinary inking in one turn is rejected (1.172382ms)
+  ✔ SCN-023: Insufficient ink rejects play without partial payment (1.765783ms)
+  ✔ SCN-024: Playing a character pays ink and leaves it drying (3.451261ms)
+  ✔ SCN-025: A stale revision rejects an otherwise legal quest (1.296118ms)
+  ✔ SCN-026: A missing card reference is rejected without mutation (0.707844ms)
+  ✔ SCN-027: An opponent cannot end the active player turn (0.571948ms)
+  ✔ SCN-028: A dry Singer can sing a song above its printed cost (6.131661ms)
+  ✔ SCN-029: A drying character cannot pay a song singing cost (0.779614ms)
+  ✔ SCN-030: Sing Together combines ready singers and exerts both (2.572572ms)
+  ✔ SCN-031: Duplicate singers cannot count twice toward Sing Together (0.878961ms)
+  ✔ SCN-032: Shift inherits drying and damage from its underlying character (4.554847ms)
+  ✔ SCN-033: Shift cannot use an opposing character as its base (0.842575ms)
+  ✔ SCN-034: Boost puts one top card facedown under its character once per turn (4.383649ms)
+  ✔ SCN-035: Ward prevents an opponent choosing the character for an action (1.354195ms)
+  ✔ SCN-036: Lethal challenge damage banishes both characters simultaneously (3.47448ms)
+  ✔ SCN-037: Active player chooses bag order before opponent and normal actions wait (11.680244ms)
+  ✔ SCN-038: Unknown bag IDs reject without removing valid triggered effects (2.183162ms)
+  ✔ SCN-039: An optional triggered effect can be declined without granting its lore (2.425498ms)
+  ✔ SCN-040: An optional triggered effect can be accepted and resolves fully (3.527894ms)
+  ✔ SCN-041: Support permits choosing another character after the quest (11.49281ms)
+  ✔ SCN-042: Support cannot choose the questing character itself (2.917735ms)
+  ✔ SCN-043: Vanish waits for the opposing action to finish before banishing (7.964147ms)
+  ✔ SCN-044: Vanish does not trigger when its controller chooses it with an action (3.507562ms)
+  ✔ SCN-045: Vanish does not trigger for an opposing activated character ability (3.161633ms)
+  ✔ SCN-046: Vanish becomes inapplicable after the action returns its source to hand (3.541268ms)
+  ✔ SCN-047: Vanish waits for all separate action effects before checking its play zone (5.319445ms)
+  ✔ SCN-048: Adventurous prevents challenging even when Rush would allow it (0.812154ms)
+  ✔ SCN-049: A ready Adventurous character that can quest prevents ending the turn (0.850575ms)
+  ✔ SCN-050: A drying Adventurous character cannot quest and does not prevent ending the turn (3.333167ms)
+  ✔ SCN-051: Questing exerts Adventurous and permits ending the turn (2.312161ms)
+  ✔ SCN-052: Adventurous with zero lore still must quest if able (2.687231ms)
+  ✔ SCN-053: Adventurous and Reckless together permit ending the turn because neither action is legal (2.150665ms)
+  ✔ SCN-054: Adventurous can sing and its exerted state permits ending the turn (5.745464ms)
+  ✔ SCN-055: Adventurous can exert for an activated ability instead of questing (2.844445ms)
+  ✔ SCN-056: An effect generates ink-drop counters without adding any ink cards (1.784534ms)
+  ✔ SCN-057: Ink-drop counters pay a character ink cost and are consumed (1.208547ms)
+  ✔ SCN-058: A mixed payment exerts ink cards and consumes only the remaining counters (1.220096ms)
+  ✔ SCN-059: A player can explicitly pay counters while leaving enough ink cards ready (1.108198ms)
+  ✔ SCN-060: A player cannot spend an opponents ink-drop counters (0.681924ms)
+  ✔ SCN-061: Insufficient cards and counters reject without partial consumption (0.537722ms)
+  ✔ SCN-062: Ink-drop counters pay an activated ability ink cost (1.450029ms)
+  ✔ SCN-063: Ink-drop counters pay an alternate Shift ink cost (1.79181ms)
+  ✔ SCN-064: Ink-drop counters pay a location movement ink cost (1.710409ms)
+  ✔ SCN-065: Invalid selected counter payment -1 rejects without mutation (0.952281ms)
+  ✔ SCN-066: Invalid selected counter payment 1.5 rejects without mutation (0.671515ms)
+  ✔ SCN-067: Invalid selected counter payment 3 rejects without mutation (0.894069ms)
+  ✔ SCN-068: One chosen operation queues Vanish and its observer once each (3.097568ms)
+  ✔ SCN-069: A prior Vanish trigger cannot banish a new incarnation of its source (3.84796ms)
+  ✔ SCN-070: Spent counters are removed and cannot pay a second card (1.60506ms)
+  ✔ SCN-071: Unused counters persist across turn changes (1.392837ms)
+  ✔ SCN-072: Setup deals seven, permits mulligans and skips the first draw (6.632772ms)
+  ✔ SCN-073: Deferred targets wait for the chooser and reject unknown targets without mutation (7.950163ms)
+  ✔ SCN-074: Vanish follows an opposing chooser even when the action belongs to its controller (4.889974ms)
+  ✔ SCN-075: Vanish ignores a same-controller chooser even for an opposing action (3.42911ms)
+  ✔ SCN-076: A temporarily granted Adventurous keyword forbids challenging (1.048181ms)
+  ✔ SCN-077: Losing Adventurous permits an otherwise legal challenge (4.552801ms)
+  ✔ SCN-078: Temporarily granted Vanish queues after an opposing choice (4.122635ms)
+  ✔ SCN-079: Losing Vanish prevents its opposing choice trigger (1.993025ms)
+  ✔ SCN-080: Ink-drop counters do not satisfy an ink-card count condition (1.705763ms)
+  ✔ SCN-081: Counter overflow rejects the effect without committing a partial pool (1.271886ms)
+  ✔ SCN-082: Counter generation resolves its dynamic amount using the existing effect context (1.813329ms)
+  ✔ SCN-083: A nested ink cost consumes counters without ready ink cards (1.640815ms)
+  ✔ SCN-084: Turn transition readies cards, dries characters, grants location lore and draws (2.360308ms)
+  ✔ SCN-085: Two distinct choose slots preserve two occurrences when they select the same card (2.494827ms)
+  ✔ SCN-086: Reusing a previously chosen target does not create a second choice (4.171692ms)
+  ✔ SCN-087: A nested cost can select counters and preserve ready ink (1.857257ms)
+  ✔ SCN-088: Separate nested costs consume their own ordered counter selections (2.13979ms)
+  ✔ SCN-089: A single choose slot cannot select one instance twice (0.816906ms)
+  ✔ SCN-090: An excessive explicit nested counter selection rejects with full rollback (1.104116ms)
+  ✔ SCN-091: An unentered cost branch does not consume the next actual payment selection (1.741485ms)
+  ✔ Invalid snapshots are detected independently of move acceptance (3.061417ms)
+  ✔ Choice grouping scopes prior slots and never fabricates a missing choice (0.136368ms)
+✔ RULE-04 representative sourced runtime scenarios (1136.907011ms)
+ℹ tests 99
+ℹ suites 0
+ℹ pass 99
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2677.014004
+
+> lorcana-online-tcg@0.0.0 test:engine-tooling /tmp/lorcana-clean-checkout-FzTI21
+> node --test tests/engine/*.test.mjs
+
+✔ upstream test resolver cannot redirect selected aliases outside the verified closure (5.845924ms)
+✔ closure follows cyclic relative imports, type imports and explicit aliases, omitting unrelated files (12.407896ms)
+✔ closure rejects source reached through a directory symlink outside the pinned root (0.917399ms)
+✔ vendor integrity rejects modified, extra and missing source plus an unlisted patch (2.575488ms)
+✔ vendored source has no ambient Math.random/UUID or runtime seedrandom fallback (11.925379ms)
+✔ entropy guard rejects computed access and aliases, including hidden seedrandom imports (8.199653ms)
+✔ entropy guard closes crypto aliases, alternate module forms and cast global receivers (4.235822ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 259.821077
+PASS clean source-only frozen install and complete foundation validation; no local credentials, Git state or database connection copied.

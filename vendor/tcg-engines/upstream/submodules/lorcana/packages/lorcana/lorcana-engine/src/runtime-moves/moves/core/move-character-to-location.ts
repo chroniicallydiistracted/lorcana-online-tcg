@@ -322,7 +322,7 @@ function validateMoveCharacterToLocation(
     0,
     baseMoveCost - getStaticMoveCostReduction(ctx, characterId, locationId, currentPlayer),
   );
-  const availableInk = getAvailableInk({ framework: ctx.framework }, currentPlayer);
+  const availableInk = getAvailableInk({ framework: ctx.framework, G: ctx.G }, currentPlayer);
   if (availableInk < moveCost) {
     return {
       valid: false,

@@ -1122,6 +1122,7 @@ export interface DiscardedCardHasClassificationCondition {
  * the fields it needs with no ambiguous optional fields.
  */
 export type Condition =
+  | { type: "source-zone-incarnation"; incarnation: number }
   // Character Existence (strict variants)
   | HasNamedCharacterCondition
   | HasCharacterWithClassificationCondition

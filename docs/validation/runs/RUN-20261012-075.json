@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-075",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "2b9c68107b90ae9f0988ee9a8be53eb22e0d992e02fa3af82ceb2463d81a31ca",
+  "started_at": "2026-10-12T22:22:39.843Z",
+  "finished_at": "2026-10-12T22:22:42.658Z",
+  "recorded_at": "2026-10-12T22:22:42.658Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2815,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 preserved named slots through initial validation and selected nested payments",
+  "log_path": "docs/validation/logs/RUN-20261012-075.txt",
+  "log_sha256": "cf96fbc4453dc734d81d8d8faef100d67d59dcd01b2e33b191f89fee7e258f87",
+  "redactions": 0
+}

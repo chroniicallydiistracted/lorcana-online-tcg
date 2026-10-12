@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-054",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/certification.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "39b9c969e02904ca2ec737ec8911bb77210d5584ff147359ff3d1d02ba4f829a",
+  "started_at": "2026-10-12T20:26:10.483Z",
+  "finished_at": "2026-10-12T20:26:10.662Z",
+  "recorded_at": "2026-10-12T20:26:10.662Z",
+  "time_precision": "exact",
+  "elapsed_ms": 179,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 per-card template rejects unqualified promotion and false admission",
+  "log_path": "docs/validation/logs/RUN-20261012-054.txt",
+  "log_sha256": "7c3767ab24351211b3e2a48f1c4c5fbfc53856ebe55b152c128911e4ea757181",
+  "redactions": 0
+}

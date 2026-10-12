@@ -1,0 +1,6445 @@
+{
+  "schema_version": 1,
+  "purpose": "Representative synthetic runtime certification; no admitted cards or complete-rules claim",
+  "engine_revision": "53a79413c58678b1c50dde57e71de5c123132716",
+  "scenarios": [
+    {
+      "id": "SCN-001",
+      "title": "Quest gains printed lore and exerts the dry character",
+      "category": "actions",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.5.1.3",
+        "4.5.1.4"
+      ],
+      "keywords": [],
+      "expectation": "Quest gains printed lore and exerts the dry character",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "lore": 2
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.state",
+          "equals": "exerted"
+        }
+      ]
+    },
+    {
+      "id": "SCN-002",
+      "title": "A drying character cannot quest",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.5.1.2"
+      ],
+      "keywords": [],
+      "expectation": "A drying character cannot quest",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "meta": {
+              "isDrying": true
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-003",
+      "title": "An exerted character cannot quest again",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.5.1.2"
+      ],
+      "keywords": [],
+      "expectation": "An exerted character cannot quest again",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-004",
+      "title": "An opponent cannot quest with a character they do not control",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "3.3.2.1",
+        "4.5.1"
+      ],
+      "keywords": [],
+      "expectation": "An opponent cannot quest with a character they do not control",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p2",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-005",
+      "title": "Reaching twenty lore ends the game at the state check",
+      "category": "endings",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.8.1.1"
+      ],
+      "keywords": [],
+      "expectation": "Reaching twenty lore ends the game at the state check",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "lore": 2
+          }
+        ],
+        "lore": {
+          "p1": 18,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.status.gameEnded",
+          "equals": true
+        },
+        {
+          "path": "ctx.status.winner",
+          "equals": "p1"
+        }
+      ]
+    },
+    {
+      "id": "SCN-006",
+      "title": "Items cannot quest",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.5.1"
+      ],
+      "keywords": [],
+      "expectation": "Items cannot quest",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "item"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-007",
+      "title": "Reckless prevents questing",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.7.2"
+      ],
+      "keywords": [
+        "Reckless"
+      ],
+      "expectation": "Reckless prevents questing",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Reckless"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-008",
+      "title": "Challenge deals simultaneous strength damage and exerts attacker",
+      "category": "combat",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.6.4.4",
+        "4.6.6.2"
+      ],
+      "keywords": [],
+      "expectation": "Challenge deals simultaneous strength damage and exerts attacker",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "willpower": 6
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "strength": 2,
+            "willpower": 6,
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.hero.damage",
+          "equals": 2
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 3
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.state",
+          "equals": "exerted"
+        }
+      ]
+    },
+    {
+      "id": "SCN-009",
+      "title": "Ordinary characters cannot challenge ready opposing characters",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.6.4.2"
+      ],
+      "keywords": [],
+      "expectation": "Ordinary characters cannot challenge ready opposing characters",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play"
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-010",
+      "title": "Drying characters without Rush cannot challenge",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.6.4.1"
+      ],
+      "keywords": [],
+      "expectation": "Drying characters without Rush cannot challenge",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "meta": {
+              "isDrying": true
+            }
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-011",
+      "title": "Rush permits a drying character to challenge",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.9.1"
+      ],
+      "keywords": [
+        "Rush"
+      ],
+      "expectation": "Rush permits a drying character to challenge",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "meta": {
+              "isDrying": true
+            },
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Rush"
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "strength": 2,
+            "willpower": 6,
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.hero.state",
+          "equals": "exerted"
+        }
+      ]
+    },
+    {
+      "id": "SCN-012",
+      "title": "Evasive blocks a non-Evasive attacker",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.6.1"
+      ],
+      "keywords": [
+        "Evasive"
+      ],
+      "expectation": "Evasive blocks a non-Evasive attacker",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "willpower": 6
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            },
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Evasive"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-013",
+      "title": "Alert allows challenging an exerted Evasive character",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.2.1"
+      ],
+      "keywords": [
+        "Alert",
+        "Evasive"
+      ],
+      "expectation": "Alert allows challenging an exerted Evasive character",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Alert"
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            },
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Evasive"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-014",
+      "title": "Alert does not let its defender evade an ordinary challenge",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.2.2"
+      ],
+      "keywords": [
+        "Alert"
+      ],
+      "expectation": "Alert does not let its defender evade an ordinary challenge",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "willpower": 6
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            },
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Alert"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 3
+        }
+      ]
+    },
+    {
+      "id": "SCN-015",
+      "title": "A valid exerted Bodyguard prevents choosing a different character",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.3.3"
+      ],
+      "keywords": [
+        "Bodyguard"
+      ],
+      "expectation": "A valid exerted Bodyguard prevents choosing a different character",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "willpower": 6
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "strength": 2,
+            "willpower": 6,
+            "meta": {
+              "state": "exerted"
+            }
+          },
+          {
+            "id": "guard",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            },
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Bodyguard"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-016",
+      "title": "An exerted Bodyguard can be chosen for a challenge",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.3.3"
+      ],
+      "keywords": [
+        "Bodyguard"
+      ],
+      "expectation": "An exerted Bodyguard can be chosen for a challenge",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "willpower": 6
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "willpower": 6,
+            "meta": {
+              "state": "exerted"
+            },
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Bodyguard"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 3
+        }
+      ]
+    },
+    {
+      "id": "SCN-017",
+      "title": "Challenger adds strength only while its character challenges",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.5.1"
+      ],
+      "keywords": [
+        "Challenger"
+      ],
+      "expectation": "Challenger adds strength only while its character challenges",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 1,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Challenger",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "strength": 2,
+            "willpower": 6,
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 4
+        }
+      ]
+    },
+    {
+      "id": "SCN-018",
+      "title": "Challenger does not add defending damage",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.5.2"
+      ],
+      "keywords": [
+        "Challenger"
+      ],
+      "expectation": "Challenger does not add defending damage",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "willpower": 6
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "strength": 1,
+            "meta": {
+              "state": "exerted"
+            },
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Challenger",
+                "value": 5
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.hero.damage",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-019",
+      "title": "Resist reduces challenge damage",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.8.1"
+      ],
+      "keywords": [
+        "Resist"
+      ],
+      "expectation": "Resist reduces challenge damage",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "willpower": 6
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "willpower": 6,
+            "meta": {
+              "state": "exerted"
+            },
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Resist",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-020",
+      "title": "An inkable hand card moves to the inkwell ready",
+      "category": "costs",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.2.1.1",
+        "4.2.1.3"
+      ],
+      "keywords": [],
+      "expectation": "An inkable hand card moves to the inkwell ready",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "putCardIntoInkwell",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.hand:p1",
+          "count": 0
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "equals": [
+            "hero"
+          ]
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.state",
+          "equals": "ready"
+        }
+      ]
+    },
+    {
+      "id": "SCN-021",
+      "title": "A noninkable hand card cannot be inked",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.2.1.1"
+      ],
+      "keywords": [],
+      "expectation": "A noninkable hand card cannot be inked",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "inkable": false
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "putCardIntoInkwell",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-022",
+      "title": "A second ordinary inking in one turn is rejected",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.2.3"
+      ],
+      "keywords": [],
+      "expectation": "A second ordinary inking in one turn is rejected",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand"
+          },
+          {
+            "id": "second",
+            "owner": "p1",
+            "zone": "hand"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "putCardIntoInkwell",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "putCardIntoInkwell",
+          "args": {
+            "cardId": "second"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "equals": [
+            "hero"
+          ]
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.hand:p1",
+          "equals": [
+            "second"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-023",
+      "title": "Insufficient ink rejects play without partial payment",
+      "category": "costs",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.3.2.3",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "expectation": "Insufficient ink rejects play without partial payment",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 2
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard"
+          },
+          "accepted": false,
+          "checks": [],
+          "code": "INSUFFICIENT_INK"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-024",
+      "title": "Playing a character pays ink and leaves it drying",
+      "category": "costs",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.3.2.4",
+        "4.3.3.1",
+        "3.2.2.1"
+      ],
+      "keywords": [],
+      "expectation": "Playing a character pays ink and leaves it drying",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand"
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.ink.state",
+          "equals": "exerted"
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.isDrying",
+          "equals": true
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.play:p1",
+          "equals": [
+            "hero"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-025",
+      "title": "A stale revision rejects an otherwise legal quest",
+      "category": "invalid_state",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.5.1.2"
+      ],
+      "keywords": [],
+      "expectation": "A stale revision rejects an otherwise legal quest",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play"
+          },
+          {
+            "id": "other",
+            "owner": "p1",
+            "zone": "play"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "other"
+          },
+          "accepted": false,
+          "checks": [],
+          "revision": 0,
+          "code": "STALE_STATE"
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-026",
+      "title": "A missing card reference is rejected without mutation",
+      "category": "invalid_state",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.5.1"
+      ],
+      "keywords": [],
+      "expectation": "A missing card reference is rejected without mutation",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "missing"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-027",
+      "title": "An opponent cannot end the active player turn",
+      "category": "negative",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "3.3.2.1"
+      ],
+      "keywords": [],
+      "expectation": "An opponent cannot end the active player turn",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p2",
+          "move": "passTurn",
+          "args": {},
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-028",
+      "title": "A dry Singer can sing a song above its printed cost",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.11.1",
+        "8.11.2"
+      ],
+      "keywords": [
+        "Singer"
+      ],
+      "expectation": "A dry Singer can sing a song above its printed cost",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "cost": 1,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Singer",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "id": "song",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 3,
+            "classifications": [
+              "Song"
+            ],
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ],
+            "actionSubtype": "song"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song",
+            "cost": "sing",
+            "singer": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.state",
+          "equals": "exerted"
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.discard:p1",
+          "equals": [
+            "song"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-029",
+      "title": "A drying character cannot pay a song singing cost",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.11.1",
+        "4.4.2"
+      ],
+      "keywords": [
+        "Singer"
+      ],
+      "expectation": "A drying character cannot pay a song singing cost",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "cost": 3,
+            "meta": {
+              "isDrying": true
+            }
+          },
+          {
+            "id": "song",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 3,
+            "classifications": [
+              "Song"
+            ],
+            "actionSubtype": "song"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song",
+            "cost": "sing",
+            "singer": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-030",
+      "title": "Sing Together combines ready singers and exerts both",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.12.1",
+        "8.12.2"
+      ],
+      "keywords": [
+        "SingTogether"
+      ],
+      "expectation": "Sing Together combines ready singers and exerts both",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "cost": 2
+          },
+          {
+            "id": "friend",
+            "owner": "p1",
+            "zone": "play",
+            "cost": 3
+          },
+          {
+            "id": "song",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 5,
+            "classifications": [
+              "Song"
+            ],
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "SingTogether",
+                "value": 5
+              },
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ],
+            "actionSubtype": "song"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song",
+            "cost": "singTogether",
+            "singers": [
+              "hero",
+              "friend"
+            ]
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.hero.state",
+          "equals": "exerted"
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.friend.state",
+          "equals": "exerted"
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-031",
+      "title": "Duplicate singers cannot count twice toward Sing Together",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.12.2"
+      ],
+      "keywords": [
+        "SingTogether"
+      ],
+      "expectation": "Duplicate singers cannot count twice toward Sing Together",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "cost": 3
+          },
+          {
+            "id": "song",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 5,
+            "classifications": [
+              "Song"
+            ],
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "SingTogether",
+                "value": 5
+              }
+            ],
+            "actionSubtype": "song"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song",
+            "cost": "singTogether",
+            "singers": [
+              "hero",
+              "hero"
+            ]
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-032",
+      "title": "Shift inherits drying and damage from its underlying character",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.10.4",
+        "8.10.6"
+      ],
+      "keywords": [
+        "Shift"
+      ],
+      "expectation": "Shift inherits drying and damage from its underlying character",
+      "fixture": {
+        "cards": [
+          {
+            "id": "base",
+            "owner": "p1",
+            "zone": "play",
+            "name": "Synthetic Hero",
+            "meta": {
+              "isDrying": true,
+              "damage": 2
+            }
+          },
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "name": "Synthetic Hero",
+            "cost": 5,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Shift",
+                "cost": {
+                  "ink": 1
+                }
+              }
+            ]
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "shift",
+            "shiftTarget": "base"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.hero.damage",
+          "equals": 2
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.isDrying",
+          "equals": true
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.cardsUnder",
+          "equals": [
+            "base"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-033",
+      "title": "Shift cannot use an opposing character as its base",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.10.1"
+      ],
+      "keywords": [
+        "Shift"
+      ],
+      "expectation": "Shift cannot use an opposing character as its base",
+      "fixture": {
+        "cards": [
+          {
+            "id": "base",
+            "owner": "p2",
+            "zone": "play",
+            "name": "Synthetic Hero"
+          },
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "name": "Synthetic Hero",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Shift",
+                "cost": {
+                  "ink": 0
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "shift",
+            "shiftTarget": "base"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-034",
+      "title": "Boost puts one top card facedown under its character once per turn",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.4.1",
+        "8.4.3"
+      ],
+      "keywords": [
+        "Boost"
+      ],
+      "expectation": "Boost puts one top card facedown under its character once per turn",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Boost",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "top",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          },
+          {
+            "id": "ink2",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.hero.cardsUnder",
+          "equals": [
+            "top"
+          ]
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.deck:p1",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-035",
+      "title": "Ward prevents an opponent choosing the character for an action",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.15.1"
+      ],
+      "keywords": [
+        "Ward"
+      ],
+      "expectation": "Ward prevents an opponent choosing the character for an action",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Ward"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-036",
+      "title": "Lethal challenge damage banishes both characters simultaneously",
+      "category": "combat",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.6.6.2",
+        "1.8.1.4"
+      ],
+      "keywords": [],
+      "expectation": "Lethal challenge damage banishes both characters simultaneously",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "willpower": 2
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "strength": 2,
+            "willpower": 3,
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.discard:p1",
+          "equals": [
+            "hero"
+          ]
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.discard:p2",
+          "equals": [
+            "enemy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-037",
+      "title": "Active player chooses bag order before opponent and normal actions wait",
+      "category": "bag_choices",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "7.7.3.1",
+        "7.7.4.2",
+        "7.7.4.3",
+        "7.7.4.4",
+        "7.7.4.5"
+      ],
+      "keywords": [],
+      "expectation": "Active player chooses bag order before opponent and normal actions wait",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "id": "hero-trigger",
+                "type": "triggered",
+                "trigger": {
+                  "event": "quest",
+                  "on": "SELF",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "target": "CONTROLLER",
+                  "amount": 2
+                }
+              }
+            ]
+          },
+          {
+            "id": "watcher",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "id": "watcher-trigger",
+                "type": "triggered",
+                "trigger": {
+                  "event": "quest",
+                  "on": "YOUR_CHARACTERS",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "target": "CONTROLLER",
+                  "amount": 3
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "id": "enemy-trigger",
+                "type": "triggered",
+                "trigger": {
+                  "event": "quest",
+                  "on": "OPPONENT_CHARACTERS",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "target": "CONTROLLER",
+                  "amount": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": false,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "passTurn",
+          "args": {},
+          "accepted": false,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "watcher"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.lore.p1",
+              "equals": 4
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.lore.p1",
+              "equals": 6
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p2",
+          "equals": 4
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        },
+        {
+          "path": "ctx.priority.holder",
+          "equals": "p1"
+        }
+      ]
+    },
+    {
+      "id": "SCN-038",
+      "title": "Unknown bag IDs reject without removing valid triggered effects",
+      "category": "bag_choices",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "7.7.4.2"
+      ],
+      "keywords": [],
+      "expectation": "Unknown bag IDs reject without removing valid triggered effects",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "id": "hero-trigger",
+                "type": "triggered",
+                "trigger": {
+                  "event": "quest",
+                  "on": "SELF",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "target": "CONTROLLER",
+                  "amount": 2
+                }
+              }
+            ]
+          },
+          {
+            "id": "watcher",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "id": "watcher-trigger",
+                "type": "triggered",
+                "trigger": {
+                  "event": "quest",
+                  "on": "YOUR_CHARACTERS",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "target": "CONTROLLER",
+                  "amount": 3
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "id": "enemy-trigger",
+                "type": "triggered",
+                "trigger": {
+                  "event": "quest",
+                  "on": "OPPONENT_CHARACTERS",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "target": "CONTROLLER",
+                  "amount": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": "wrong",
+            "params": {}
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "SCN-039",
+      "title": "An optional triggered effect can be declined without granting its lore",
+      "category": "bag_choices",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "6.1.4"
+      ],
+      "keywords": [],
+      "expectation": "An optional triggered effect can be declined without granting its lore",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "id": "may-lore",
+                "type": "triggered",
+                "trigger": {
+                  "event": "quest",
+                  "on": "SELF",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "optional",
+                  "effect": {
+                    "type": "gain-lore",
+                    "amount": 3,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {
+              "resolveOptional": false
+            }
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-040",
+      "title": "An optional triggered effect can be accepted and resolves fully",
+      "category": "bag_choices",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "6.1.4"
+      ],
+      "keywords": [],
+      "expectation": "An optional triggered effect can be accepted and resolves fully",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "id": "may-lore",
+                "type": "triggered",
+                "trigger": {
+                  "event": "quest",
+                  "on": "SELF",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "optional",
+                  "effect": {
+                    "type": "gain-lore",
+                    "amount": 3,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {
+              "resolveOptional": true
+            }
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 4
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-041",
+      "title": "Support permits choosing another character after the quest",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.13.1"
+      ],
+      "keywords": [
+        "Support"
+      ],
+      "expectation": "Support permits choosing another character after the quest",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 3,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Support"
+              }
+            ]
+          },
+          {
+            "id": "friend",
+            "owner": "p1",
+            "zone": "play",
+            "strength": 1
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "strength": 2,
+            "willpower": 6,
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {
+              "resolveOptional": true,
+              "targets": [
+                "friend"
+              ]
+            }
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "friend",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 4
+        }
+      ]
+    },
+    {
+      "id": "SCN-042",
+      "title": "Support cannot choose the questing character itself",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.13.1"
+      ],
+      "keywords": [
+        "Support"
+      ],
+      "expectation": "Support cannot choose the questing character itself",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Support"
+              }
+            ]
+          },
+          {
+            "id": "friend",
+            "owner": "p1",
+            "zone": "play"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {
+              "resolveOptional": true,
+              "targets": [
+                "hero"
+              ]
+            }
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-043",
+      "title": "Vanish waits for the opposing action to finish before banishing",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Vanish waits for the opposing action to finish before banishing",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "ctx.zones.private.cardMeta.enemy.damage",
+              "equals": 1
+            },
+            {
+              "path": "ctx.zones.private.zoneCards.discard:p1",
+              "equals": [
+                "spell"
+              ]
+            },
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.discard:p2",
+          "equals": [
+            "enemy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-044",
+      "title": "Vanish does not trigger when its controller chooses it with an action",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "7.7.3.1"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Vanish does not trigger when its controller chooses it with an action",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "hero"
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.hero.damage",
+          "equals": 1
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-045",
+      "title": "Vanish does not trigger for an opposing activated character ability",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "7.7.3.1"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Vanish does not trigger for an opposing activated character ability",
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "activated",
+                "cost": {},
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0,
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 1
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-046",
+      "title": "Vanish becomes inapplicable after the action returns its source to hand",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "7.7.3.1"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Vanish becomes inapplicable after the action returns its source to hand",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "return-to-hand",
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": [
+            {
+              "path": "ctx.zones.private.zoneCards.hand:p2",
+              "equals": [
+                "enemy"
+              ]
+            },
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "actor": "p2",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.hand:p2",
+          "equals": [
+            "enemy"
+          ]
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-047",
+      "title": "Vanish waits for all separate action effects before checking its play zone",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "7.7.3.1"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Vanish waits for all separate action effects before checking its play zone",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              },
+              {
+                "type": "action",
+                "effect": {
+                  "type": "return-to-hand",
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": [
+            {
+              "path": "ctx.zones.private.zoneCards.hand:p2",
+              "equals": [
+                "enemy"
+              ]
+            },
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy",
+              "bag_index": 0
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "actor": "p2",
+          "checks": []
+        },
+        {
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy",
+              "bag_index": 0
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "actor": "p2",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.hand:p2",
+          "equals": [
+            "enemy"
+          ]
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-048",
+      "title": "Adventurous prevents challenging even when Rush would allow it",
+      "expectation": "Adventurous prevents challenging even when Rush would allow it",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.2"
+      ],
+      "keywords": [
+        "Adventurous",
+        "Rush"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              },
+              {
+                "type": "keyword",
+                "keyword": "Rush"
+              }
+            ],
+            "meta": {
+              "isDrying": true
+            }
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-049",
+      "title": "A ready Adventurous character that can quest prevents ending the turn",
+      "expectation": "A ready Adventurous character that can quest prevents ending the turn",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.3"
+      ],
+      "keywords": [
+        "Adventurous"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "passTurn",
+          "args": {},
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-050",
+      "title": "A drying Adventurous character cannot quest and does not prevent ending the turn",
+      "expectation": "A drying Adventurous character cannot quest and does not prevent ending the turn",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.3",
+        "4.5.1.2"
+      ],
+      "keywords": [
+        "Adventurous"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              }
+            ],
+            "meta": {
+              "isDrying": true
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.status.turnOwnerId",
+          "equals": "p2"
+        }
+      ]
+    },
+    {
+      "id": "SCN-051",
+      "title": "Questing exerts Adventurous and permits ending the turn",
+      "expectation": "Questing exerts Adventurous and permits ending the turn",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.3",
+        "4.5.1.3"
+      ],
+      "keywords": [
+        "Adventurous"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        },
+        {
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        },
+        {
+          "path": "ctx.status.turnOwnerId",
+          "equals": "p2"
+        }
+      ]
+    },
+    {
+      "id": "SCN-052",
+      "title": "Adventurous with zero lore still must quest if able",
+      "expectation": "Adventurous with zero lore still must quest if able",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.3",
+        "4.5.1"
+      ],
+      "keywords": [
+        "Adventurous"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "lore": 0,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "passTurn",
+          "args": {},
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        },
+        {
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        },
+        {
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-053",
+      "title": "Adventurous and Reckless together permit ending the turn because neither action is legal",
+      "expectation": "Adventurous and Reckless together permit ending the turn because neither action is legal",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.2",
+        "8.16.3",
+        "8.7.2",
+        "8.7.3"
+      ],
+      "keywords": [
+        "Adventurous",
+        "Reckless"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              },
+              {
+                "type": "keyword",
+                "keyword": "Reckless"
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.status.turnOwnerId",
+          "equals": "p2"
+        }
+      ]
+    },
+    {
+      "id": "SCN-054",
+      "title": "Adventurous can sing and its exerted state permits ending the turn",
+      "expectation": "Adventurous can sing and its exerted state permits ending the turn",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.4"
+      ],
+      "keywords": [
+        "Adventurous"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "cost": 3,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              }
+            ]
+          },
+          {
+            "id": "song",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "actionSubtype": "song",
+            "cost": 3,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "song",
+            "cost": "sing",
+            "singer": "hero"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        },
+        {
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-055",
+      "title": "Adventurous can exert for an activated ability instead of questing",
+      "expectation": "Adventurous can exert for an activated ability instead of questing",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.4"
+      ],
+      "keywords": [
+        "Adventurous"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              },
+              {
+                "type": "activated",
+                "cost": {
+                  "exert": true
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 2,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        },
+        {
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-056",
+      "title": "An effect generates ink-drop counters without adding any ink cards",
+      "expectation": "An effect generates ink-drop counters without adding any ink cards",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop-counters",
+                  "amount": 3,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 3
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-057",
+      "title": "Ink-drop counters pay a character ink cost and are consumed",
+      "expectation": "Ink-drop counters pay a character ink cost and are consumed",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 2
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 3,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 1
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.play:p1",
+          "equals": [
+            "hero"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-058",
+      "title": "A mixed payment exerts ink cards and consumes only the remaining counters",
+      "expectation": "A mixed payment exerts ink cards and consumes only the remaining counters",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 3
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 3,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 1
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink.state",
+          "equals": "exerted"
+        }
+      ]
+    },
+    {
+      "id": "SCN-059",
+      "title": "A player can explicitly pay counters while leaving enough ink cards ready",
+      "expectation": "A player can explicitly pay counters while leaving enough ink cards ready",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 1
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard",
+            "inkDropCounters": 1
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 1
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink.state",
+          "equals": "ready"
+        }
+      ]
+    },
+    {
+      "id": "SCN-060",
+      "title": "A player cannot spend an opponents ink-drop counters",
+      "expectation": "A player cannot spend an opponents ink-drop counters",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 1
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 0,
+          "p2": 3
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard"
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-061",
+      "title": "Insufficient cards and counters reject without partial consumption",
+      "expectation": "Insufficient cards and counters reject without partial consumption",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 3
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 1,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard"
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": [],
+          "code": "INSUFFICIENT_INK"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-062",
+      "title": "Ink-drop counters pay an activated ability ink cost",
+      "expectation": "Ink-drop counters pay an activated ability ink cost",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.4.3.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "activated",
+                "cost": {
+                  "ink": 2
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-063",
+      "title": "Ink-drop counters pay an alternate Shift ink cost",
+      "expectation": "Ink-drop counters pay an alternate Shift ink cost",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4",
+        "8.10.1"
+      ],
+      "keywords": [
+        "Shift"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "base",
+            "owner": "p1",
+            "zone": "play",
+            "name": "Synthetic Hero"
+          },
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "name": "Synthetic Hero",
+            "cost": 5,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Shift",
+                "cost": {
+                  "ink": 2
+                }
+              }
+            ]
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "shift",
+            "shiftTarget": "base"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 0
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.cardsUnder",
+          "equals": [
+            "base"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-064",
+      "title": "Ink-drop counters pay a location movement ink cost",
+      "expectation": "Ink-drop counters pay a location movement ink cost",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.7.3.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play"
+          },
+          {
+            "id": "site",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "location",
+            "moveCost": 2,
+            "willpower": 6,
+            "lore": 0
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "moveCharacterToLocation",
+          "args": {
+            "characterId": "hero",
+            "locationId": "site"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 0
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.atLocationId",
+          "equals": "site"
+        }
+      ]
+    },
+    {
+      "id": "SCN-065",
+      "title": "Invalid selected counter payment -1 rejects without mutation",
+      "expectation": "Invalid selected counter payment -1 rejects without mutation",
+      "category": "invalid_state",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 1
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard",
+            "inkDropCounters": -1
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-066",
+      "title": "Invalid selected counter payment 1.5 rejects without mutation",
+      "expectation": "Invalid selected counter payment 1.5 rejects without mutation",
+      "category": "invalid_state",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 1
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard",
+            "inkDropCounters": 1.5
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-067",
+      "title": "Invalid selected counter payment 3 rejects without mutation",
+      "expectation": "Invalid selected counter payment 3 rejects without mutation",
+      "category": "invalid_state",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 1
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard",
+            "inkDropCounters": 3
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-068",
+      "title": "One chosen operation queues Vanish and its observer once each",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "7.7.3.1"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "One chosen operation queues Vanish and its observer once each",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              },
+              {
+                "id": "observer",
+                "type": "triggered",
+                "trigger": {
+                  "event": "be-chosen",
+                  "on": "SELF",
+                  "timing": "when"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "target": "CONTROLLER",
+                  "amount": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "ctx.zones.private.cardMeta.enemy.damage",
+              "equals": 1
+            },
+            {
+              "path": "ctx.zones.private.zoneCards.discard:p1",
+              "equals": [
+                "spell"
+              ]
+            },
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 2
+            }
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-069",
+      "title": "A prior Vanish trigger cannot banish a new incarnation of its source",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "7.7.3.1",
+        "7.1.6"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "A prior Vanish trigger cannot banish a new incarnation of its source",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "return-to-hand",
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": [
+            {
+              "path": "ctx.zones.private.zoneCards.hand:p2",
+              "equals": [
+                "enemy"
+              ]
+            },
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "role": "judge",
+          "move": "manualMoveCard",
+          "args": {
+            "cardId": "enemy",
+            "targetZoneId": "play:p2"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "actor": "p2",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.play:p2",
+          "equals": [
+            "enemy"
+          ]
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-070",
+      "title": "Spent counters are removed and cannot pay a second card",
+      "expectation": "Spent counters are removed and cannot pay a second card",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 2
+          },
+          {
+            "id": "second",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 2
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 3,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "hero",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "second",
+            "cost": "standard"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 1
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.play:p1",
+          "equals": [
+            "hero"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-071",
+      "title": "Unused counters persist across turn changes",
+      "expectation": "Unused counters persist across turn changes",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "4.3.2.4"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "hand",
+            "cost": 2
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 3,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 3
+        },
+        {
+          "path": "ctx.priority.holder",
+          "equals": "p2"
+        }
+      ]
+    },
+    {
+      "id": "SCN-072",
+      "title": "Setup deals seven, permits mulligans and skips the first draw",
+      "expectation": "Setup deals seven, permits mulligans and skips the first draw",
+      "category": "setup_turn",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "2.2.1.4",
+        "2.2.2.1",
+        "2.2.3",
+        "3.2.3.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "setup": true,
+        "cards": [
+          {
+            "id": "p1-deck-0",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-1",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-2",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-3",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-4",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-5",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-6",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-7",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-8",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-9",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-10",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-11",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-12",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-13",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-14",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-15",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-16",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-17",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-18",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p1-deck-19",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-0",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-1",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-2",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-3",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-4",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-5",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-6",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-7",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-8",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-9",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-10",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-11",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-12",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-13",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-14",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-15",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-16",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-17",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-18",
+            "owner": "p2",
+            "zone": "deck"
+          },
+          {
+            "id": "p2-deck-19",
+            "owner": "p2",
+            "zone": "deck"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "chooseWhoGoesFirst",
+          "args": {
+            "playerId": "p1"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "ctx.zones.private.zoneCards.hand:p1",
+              "count": 7
+            },
+            {
+              "path": "ctx.zones.private.zoneCards.hand:p2",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "alterHand",
+          "args": {
+            "cardsToMulligan": []
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p2",
+          "move": "alterHand",
+          "args": {
+            "cardsToMulligan": []
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "ctx.zones.private.zoneCards.hand:p1",
+              "count": 7
+            },
+            {
+              "path": "ctx.status.phase",
+              "equals": "main"
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "checks": [
+            {
+              "path": "ctx.zones.private.zoneCards.hand:p2",
+              "count": 8
+            }
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.priority.holder",
+          "equals": "p2"
+        }
+      ]
+    },
+    {
+      "id": "SCN-073",
+      "title": "Deferred targets wait for the chooser and reject unknown targets without mutation",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Deferred targets wait for the chooser and reject unknown targets without mutation",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.pendingEffects",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "move": "resolveEffect",
+          "args": {
+            "effectId": {
+              "pending_index": 0
+            },
+            "params": {
+              "targets": [
+                "enemy"
+              ]
+            }
+          },
+          "accepted": false,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveEffect",
+          "args": {
+            "effectId": {
+              "pending_index": 0
+            },
+            "params": {
+              "targets": [
+                "absent"
+              ]
+            }
+          },
+          "accepted": false,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveEffect",
+          "args": {
+            "effectId": {
+              "pending_index": 0
+            },
+            "params": {
+              "targets": [
+                "enemy"
+              ]
+            }
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.discard:p2",
+          "equals": [
+            "enemy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-074",
+      "title": "Vanish follows an opposing chooser even when the action belongs to its controller",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Vanish follows an opposing chooser even when the action belongs to its controller",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER",
+                  "chosenBy": "opponent"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.pendingEffects",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "move": "resolveEffect",
+          "args": {
+            "effectId": {
+              "pending_index": 0
+            },
+            "params": {
+              "targets": [
+                "enemy"
+              ]
+            }
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.discard:p1",
+          "equals": [
+            "spell",
+            "enemy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-075",
+      "title": "Vanish ignores a same-controller chooser even for an opposing action",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Vanish ignores a same-controller chooser even for an opposing action",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER",
+                  "chosenBy": "opponent"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.pendingEffects",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "move": "resolveEffect",
+          "args": {
+            "effectId": {
+              "pending_index": 0
+            },
+            "params": {
+              "targets": [
+                "enemy"
+              ]
+            }
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.play:p2",
+          "equals": [
+            "enemy"
+          ]
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-076",
+      "title": "A temporarily granted Adventurous keyword forbids challenging",
+      "expectation": "A temporarily granted Adventurous keyword forbids challenging",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.2"
+      ],
+      "keywords": [
+        "Adventurous",
+        "Rush"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Rush"
+              }
+            ],
+            "meta": {
+              "temporaryKeywords": {
+                "Adventurous": 1
+              }
+            }
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-077",
+      "title": "Losing Adventurous permits an otherwise legal challenge",
+      "expectation": "Losing Adventurous permits an otherwise legal challenge",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.2"
+      ],
+      "keywords": [
+        "Adventurous",
+        "Rush"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              },
+              {
+                "type": "keyword",
+                "keyword": "Rush"
+              }
+            ],
+            "meta": {
+              "temporaryLostKeywords": {
+                "Adventurous": 1
+              }
+            }
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.enemy.damage",
+          "equals": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-078",
+      "title": "Temporarily granted Vanish queues after an opposing choice",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Temporarily granted Vanish queues after an opposing choice",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [],
+            "meta": {
+              "temporaryKeywords": {
+                "Vanish": 1
+              }
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "ctx.zones.private.cardMeta.enemy.damage",
+              "equals": 1
+            },
+            {
+              "path": "ctx.zones.private.zoneCards.discard:p1",
+              "equals": [
+                "spell"
+              ]
+            },
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p2",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.discard:p2",
+          "equals": [
+            "enemy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-079",
+      "title": "Losing Vanish prevents its opposing choice trigger",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Losing Vanish prevents its opposing choice trigger",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "deal-damage",
+                  "amount": 1,
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ],
+            "meta": {
+              "temporaryLostKeywords": {
+                "Vanish": 1
+              }
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "ctx.zones.private.cardMeta.enemy.damage",
+              "equals": 1
+            },
+            {
+              "path": "ctx.zones.private.zoneCards.discard:p1",
+              "equals": [
+                "spell"
+              ]
+            },
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-080",
+      "title": "Ink-drop counters do not satisfy an ink-card count condition",
+      "expectation": "Ink-drop counters do not satisfy an ink-card count condition",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "conditional",
+                  "condition": {
+                    "type": "resource-count",
+                    "what": "ink",
+                    "controller": "you",
+                    "comparison": "gte",
+                    "value": 1
+                  },
+                  "then": {
+                    "type": "gain-lore",
+                    "amount": 9,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 3
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 3
+        }
+      ]
+    },
+    {
+      "id": "SCN-081",
+      "title": "Counter overflow rejects the effect without committing a partial pool",
+      "expectation": "Counter overflow rejects the effect without committing a partial pool",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop-counters",
+                  "amount": 3,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 9007199254740991
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 9007199254740991
+        }
+      ]
+    },
+    {
+      "id": "SCN-082",
+      "title": "Counter generation resolves its dynamic amount using the existing effect context",
+      "expectation": "Counter generation resolves its dynamic amount using the existing effect context",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop-counters",
+                  "amount": {
+                    "type": "cards-in-hand",
+                    "controller": "you"
+                  },
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "remaining",
+            "owner": "p1",
+            "zone": "hand"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 1
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-083",
+      "title": "A nested ink cost consumes counters without ready ink cards",
+      "expectation": "A nested ink cost consumes counters without ready ink cards",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "pay-cost",
+                  "cost": {
+                    "ink": 2
+                  },
+                  "effect": {
+                    "type": "gain-lore",
+                    "amount": 3,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 3
+        }
+      ]
+    },
+    {
+      "id": "SCN-084",
+      "title": "Turn transition readies cards, dries characters, grants location lore and draws",
+      "expectation": "Turn transition readies cards, dries characters, grants location lore and draws",
+      "category": "setup_turn",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "3.2.1.1",
+        "3.2.2.1",
+        "3.2.2.2",
+        "3.2.3.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted",
+              "isDrying": true
+            }
+          },
+          {
+            "id": "ink",
+            "owner": "p2",
+            "zone": "inkwell",
+            "meta": {
+              "state": "exerted"
+            }
+          },
+          {
+            "id": "place",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "location",
+            "lore": 2
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.hero.state",
+          "equals": "ready"
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.hero.isDrying",
+          "falsey": true
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink.state",
+          "equals": "ready"
+        },
+        {
+          "path": "G.lore.p2",
+          "equals": 2
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.hand:p2",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-085",
+      "title": "Two distinct choose slots preserve two occurrences when they select the same card",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "6.1.3"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Two distinct choose slots preserve two occurrences when they select the same card",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "move-damage",
+                  "amount": 1,
+                  "from": "CHOSEN_OPPOSING_CHARACTER",
+                  "to": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ],
+            "meta": {
+              "damage": 1
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": {
+              "kind": "move-damage",
+              "from": [
+                "enemy"
+              ],
+              "to": [
+                "enemy"
+              ]
+            }
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 2
+            }
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-086",
+      "title": "Reusing a previously chosen target does not create a second choice",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "7.7.3.1",
+        "6.1.3"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "Reusing a previously chosen target does not create a second choice",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "sequence",
+                  "effects": [
+                    {
+                      "type": "deal-damage",
+                      "amount": 1,
+                      "target": "CHOSEN_CHARACTER"
+                    },
+                    {
+                      "type": "return-to-hand",
+                      "target": {
+                        "ref": "previous-target"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": [
+              "enemy"
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": [
+            {
+              "path": "ctx.zones.private.zoneCards.hand:p2",
+              "equals": [
+                "enemy"
+              ]
+            },
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "enemy"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "actor": "p2",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.zoneCards.hand:p2",
+          "equals": [
+            "enemy"
+          ]
+        },
+        {
+          "path": "G.triggeredAbilities.bag.items",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-087",
+      "title": "A nested cost can select counters and preserve ready ink",
+      "expectation": "A nested cost can select counters and preserve ready ink",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "pay-cost",
+                  "cost": {
+                    "ink": 2
+                  },
+                  "effect": {
+                    "type": "gain-lore",
+                    "amount": 3,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "ink1",
+            "owner": "p1",
+            "zone": "inkwell"
+          },
+          {
+            "id": "ink2",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "effectInkDropCounters": [
+              2
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 3
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink1.state",
+          "equals": "ready"
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink2.state",
+          "equals": "ready"
+        }
+      ]
+    },
+    {
+      "id": "SCN-088",
+      "title": "Separate nested costs consume their own ordered counter selections",
+      "expectation": "Separate nested costs consume their own ordered counter selections",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "sequence",
+                  "effects": [
+                    {
+                      "type": "pay-cost",
+                      "cost": {
+                        "ink": 1
+                      },
+                      "effect": {
+                        "type": "gain-lore",
+                        "amount": 1,
+                        "target": "CONTROLLER"
+                      }
+                    },
+                    {
+                      "type": "pay-cost",
+                      "cost": {
+                        "ink": 1
+                      },
+                      "effect": {
+                        "type": "gain-lore",
+                        "amount": 1,
+                        "target": "CONTROLLER"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "ink1",
+            "owner": "p1",
+            "zone": "inkwell"
+          },
+          {
+            "id": "ink2",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "effectInkDropCounters": [
+              1,
+              0
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink1.state",
+          "equals": "exerted"
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink2.state",
+          "equals": "ready"
+        }
+      ]
+    },
+    {
+      "id": "SCN-089",
+      "title": "A single choose slot cannot select one instance twice",
+      "category": "keyword",
+      "rules_versions": [
+        "2.2.0",
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.14.1",
+        "8.14.2",
+        "6.1.3"
+      ],
+      "keywords": [
+        "Vanish"
+      ],
+      "expectation": "A single choose slot cannot select one instance twice",
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "move-damage",
+                  "amount": 1,
+                  "from": "CHOSEN_OPPOSING_CHARACTER",
+                  "to": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Vanish"
+              }
+            ],
+            "meta": {
+              "damage": 1
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "targets": {
+              "kind": "move-damage",
+              "from": [
+                "enemy",
+                "enemy"
+              ],
+              "to": [
+                "enemy"
+              ]
+            }
+          },
+          "accepted": false,
+          "checks": [],
+          "code": "DUPLICATE_TARGETS"
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-090",
+      "title": "An excessive explicit nested counter selection rejects with full rollback",
+      "expectation": "An excessive explicit nested counter selection rejects with full rollback",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "pay-cost",
+                  "cost": {
+                    "ink": 2
+                  },
+                  "effect": {
+                    "type": "gain-lore",
+                    "amount": 3,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "ink1",
+            "owner": "p1",
+            "zone": "inkwell"
+          },
+          {
+            "id": "ink2",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 2
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "effectInkDropCounters": [
+              3
+            ]
+          },
+          "accepted": false,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-091",
+      "title": "An unentered cost branch does not consume the next actual payment selection",
+      "expectation": "An unentered cost branch does not consume the next actual payment selection",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "sequence",
+                  "effects": [
+                    {
+                      "type": "conditional",
+                      "condition": {
+                        "type": "resource-count",
+                        "what": "ink",
+                        "controller": "you",
+                        "comparison": "gte",
+                        "value": 2
+                      },
+                      "then": {
+                        "type": "pay-cost",
+                        "cost": {
+                          "ink": 1
+                        },
+                        "effect": {
+                          "type": "gain-lore",
+                          "amount": 9,
+                          "target": "CONTROLLER"
+                        }
+                      }
+                    },
+                    {
+                      "type": "pay-cost",
+                      "cost": {
+                        "ink": 1
+                      },
+                      "effect": {
+                        "type": "gain-lore",
+                        "amount": 1,
+                        "target": "CONTROLLER"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "ink1",
+            "owner": "p1",
+            "zone": "inkwell"
+          }
+        ],
+        "inkDropCounters": {
+          "p1": 1
+        }
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "effectInkDropCounters": [
+              1
+            ]
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDropCounters.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink1.state",
+          "equals": "ready"
+        }
+      ]
+    }
+  ]
+}

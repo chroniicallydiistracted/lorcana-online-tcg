@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261012-004",
+  "title": "RULE-04 final documentation formatting and static closure",
+  "actor": "Codex developer/reviewer",
+  "status": "finalized",
+  "recorded_at": "2026-10-12T23:25:02.961Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "task_ids": [
+    "RULE-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS",
+    "F-RULE-CERTIFICATION"
+  ],
+  "changes": [
+    {
+      "kind": "fix",
+      "description": "Final semantic/format review after CHG003 native seal found three retained checkpoint table rows separated from their table header. Move them into the same table without altering results, code or sealed receipts; new correction record honors the finalized snapshot guard."
+    },
+    {
+      "kind": "documentation",
+      "description": "Point current handoff/validation at this final static closure while preserving CHG003. Executable fingerprint5f405778 and all scoped results/gates remain unchanged; no CI timing, device, publishing or main acceptance inferred."
+    },
+    {
+      "kind": "test",
+      "description": "RUN093 passes final native documentation/source/callable/link/changelog/sealed-history/log consistency and staged formatting at unchanged executable5f405778. Final record synchronization and local commit retain the same code; no isolated CI/artifact, publishing or main acceptance inferred."
+    }
+  ],
+  "files": [
+    "docs/changes/CHG-20261012-004.json",
+    "docs/validation/rule-04.md",
+    "docs/HANDOFF.md",
+    "CHANGELOG.md",
+    "docs/current-state.json",
+    "docs/validation/runs/RUN-20261012-093.json",
+    "docs/validation/logs/RUN-20261012-093.txt"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "updated",
+      "reason": "Keep every retained checkpoint in its correctly rendered table; unchanged qualified source/results and failed CI timing gates."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Name the final correction/static record separately from sealed implementation history, without inventing a self-referential commit SHA."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-085.json",
+      "outcome": "passed",
+      "scope": "Unchanged final executable5f405778 full foundation; this correction edits prose/history only."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-093.json",
+      "outcome": "passed",
+      "scope": "Actual final native documentation/history/log/source and staged formatting gates, static execution with exact timing and unchanged5f405778."
+    }
+  ],
+  "limitations": [
+    "Isolated CI089/091 clock-failed; original leave-environment instruction unchanged; no new artifact/hosted/device/production acceptance.",
+    "Representative suite/template only; full card/rules/ordinary/reward/private/durable/economic gates remain."
+  ],
+  "next_actions": [
+    "Director audit/publication may observe hosted CI; retain089/091 timing failures and leave the environment unchanged.",
+    "Next documented implementation is PLAY-01; full card/rules/D04/privacy/auth/replay/economy/device/production gates remain."
+  ]
+}

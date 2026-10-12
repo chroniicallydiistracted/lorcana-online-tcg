@@ -5,6 +5,15 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
+test('production apps cannot import the manipulated RULE-04 fixture bridge', async () => {
+  const { checkSource } = await import('../../scripts/check-boundaries.mjs');
+  for (const app of ['api', 'match-service', 'worker']) {
+    for (const loader of ["import '../../../scripts/rules/scenario-runtime.mjs';", "void import('../../../scripts/rules/scenario-build.mjs');"]) {
+      assert.throws(() => checkSource(join(process.cwd(), `apps/${app}/src/probe.ts`), undefined, loader), /Forbidden engine import/);
+    }
+  }
+});
+
 test('only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it', async () => {
   const { checkSource } = await import('../../scripts/check-boundaries.mjs');
   assert.doesNotThrow(() => checkSource(join(process.cwd(), 'packages/engine-lab/src/probe.ts'), undefined, "import { createSyntheticKernel } from '@lorcana/vendor-engine';"));

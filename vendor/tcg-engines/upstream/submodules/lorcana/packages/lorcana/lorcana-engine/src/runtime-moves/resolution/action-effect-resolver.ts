@@ -7,7 +7,6 @@ import {
 import { resolveActionEffect } from "./action-effects/composed-effect-resolver";
 import { evaluateActionCondition } from "./action-effects/action-condition-evaluator";
 import { resolveRecordedVanishTargets } from "./action-effects/vanish";
-import { emitBeChosenEvents } from "../effects/be-chosen";
 
 export function resolveActionCardEffects(
   ctx: PlayCardExecutionContext,
@@ -20,7 +19,7 @@ export function resolveActionCardEffects(
   }
 
   // Emit be-chosen events for all pre-determined targets of this action
-  emitBeChosenEvents(ctx, cardPlayed, resolutionInput);
+
 
   const effectiveResolutionInput = resolutionInput.eventSnapshot
     ? resolutionInput

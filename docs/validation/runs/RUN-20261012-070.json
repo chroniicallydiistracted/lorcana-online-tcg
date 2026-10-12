@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-070",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "2bad7e35ba1c6ade410eae22d544a5e6646984dff1ec3b3e08939baaa5082086",
+  "started_at": "2026-10-12T22:16:22.584Z",
+  "finished_at": "2026-10-12T22:16:25.511Z",
+  "recorded_at": "2026-10-12T22:16:25.511Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2927,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 dynamic counter generation red test, nested costs and Ready-Set-Draw",
+  "log_path": "docs/validation/logs/RUN-20261012-070.txt",
+  "log_sha256": "496b334515b6657ab7d8caae7d231b67b0bafe639cc070d63313cc1173a30e27",
+  "redactions": 0
+}

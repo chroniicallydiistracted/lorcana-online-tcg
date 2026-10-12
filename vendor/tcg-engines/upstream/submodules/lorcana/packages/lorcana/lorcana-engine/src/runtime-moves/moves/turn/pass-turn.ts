@@ -36,6 +36,7 @@ import {
 } from "../../effects/triggered-abilities";
 import {
   hasTemporaryKeyword,
+  hasTemporaryLostKeyword,
   hasTemporaryPlayerRestriction,
   pruneExpiredTemporaryPlayerRestrictions,
   hasTemporaryRestriction,
@@ -748,6 +749,19 @@ function getPassTurnFailure(ctx: PassTurnIntentContext): PassTurnFailure | null 
     const meta = ctx.cards.require(cardId).meta;
     return hasTemporaryRestriction(meta, currentTurn, "must-quest");
   });
+  const adventurousCanQuest = eligibleQuesters.some(cardId => {
+    const card = ctx.cards.require(cardId);
+    const definition = ctx.cards.getDefinition(cardId);
+    const meta = card.meta ?? {};
+    const lost = hasTemporaryLostKeyword(meta, currentTurn, "Adventurous");
+    return !lost && ((definition && hasKeyword(definition, "Adventurous")) ||
+      hasTemporaryKeyword(meta, currentTurn, "Adventurous") ||
+      (registry.byTarget.get(cardId) ?? []).some(entry =>
+        entry.kind === "gain-keyword" && entry.payload.keyword === "Adventurous"));
+  });
+  if (adventurousCanQuest) {
+    return { valid: false, error: "Adventurous must quest if able", errorCode: "PASS_TURN_ADVENTUROUS_QUEST_REQUIRED" };
+  }
   if (mustQuestCharacterPending) {
     return {
       valid: false,

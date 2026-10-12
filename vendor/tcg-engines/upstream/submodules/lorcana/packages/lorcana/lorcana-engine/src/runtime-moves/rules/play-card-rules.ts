@@ -50,6 +50,8 @@ export interface ShiftRules {
 }
 
 type BasicCostValidationContext = {
+  G?: { inkDropCounters?: Record<PlayerId, number> };
+  args?: { inkDropCounters?: number };
   framework: {
     state: object;
     zones: {
@@ -443,9 +445,10 @@ export function getInkwellZoneId(playerId: PlayerId): string {
   return `${INKWELL_ZONE_PREFIX}${playerId}`;
 }
 
-/** Available ink = ready cards in the current player's inkwell. */
+/** Available ink-cost payment units: ready cards plus consumable drops, never an ink-card count. */
 export function getAvailableInk(
   state: {
+    G?: { inkDropCounters?: Record<PlayerId, number> };
     framework: {
       zones: {
         getCards: (zone: { zone: string; playerId: string }) => string[];
@@ -462,34 +465,37 @@ export function getAvailableInk(
     zone: "inkwell",
     playerId,
   }) as string[];
+  const counters = state.G?.inkDropCounters?.[playerId] ?? 0;
+  if (!Number.isSafeInteger(counters) || counters < 0) throw new Error("Invalid ink-drop counter state");
   return cards.filter((id) => readCostCardMeta(state.framework.cards, id)?.state !== "exerted")
-    .length;
+    .length + counters;
 }
 
-/** Exert ready inkwell cards in zone order to pay ink costs. */
-export function spendInk(
-  ctx: BasicCostWriteContext,
-  playerId: PlayerId,
-  amount: number,
-): CardInstanceId[] {
-  const cards = ctx.framework.zones.getCards({
-    zone: "inkwell",
-    playerId,
-  }) as string[];
-  const paidWith: CardInstanceId[] = [];
-
-  for (const cardId of cards) {
-    if (paidWith.length >= amount) {
-      break;
-    }
-    if (readCostCardMeta(ctx.cards, cardId)?.state === "exerted") {
-      continue;
-    }
-    ctx.cards.patchMeta(cardId, { state: "exerted" });
-    paidWith.push(cardId as CardInstanceId);
+/** Plan one complete payment before mutating any card or counter. */
+function planInkPayment(ctx: BasicCostValidationContext, playerId: PlayerId, amount: number):
+  { valid: true; cards: string[]; counters: number } | { valid: false; error: string; errorCode: string } {
+  const pool = ctx.G?.inkDropCounters?.[playerId] ?? 0;
+  const ready = ctx.framework.zones.getCards({ zone: "inkwell", playerId })
+    .filter(id => readCostCardMeta(ctx.cards, id)?.state !== "exerted");
+  const requested = ctx.args?.inkDropCounters;
+  const counters = requested === undefined ? Math.max(0, amount - ready.length) : requested;
+  if (!Number.isSafeInteger(pool) || pool < 0 || !Number.isSafeInteger(amount) || amount < 0 ||
+      !Number.isSafeInteger(counters) || counters < 0 || counters > amount || (requested !== undefined && counters > pool)) {
+    return { valid: false, error: "Invalid ink-drop payment", errorCode: "INVALID_INK_DROP_PAYMENT" };
   }
+  if (counters > pool || ready.length < amount - counters) {
+    return { valid: false, error: `Not enough ink (have ${ready.length + pool}, need ${amount})`, errorCode: "INSUFFICIENT_INK" };
+  }
+  return { valid: true, cards: ready.slice(0, amount - counters), counters };
+}
 
-  return paidWith;
+/** Default preserves ink-drop counters by using ready cards first; explicit selection may use counters first. */
+export function spendInk(ctx: BasicCostWriteContext, playerId: PlayerId, amount: number): CardInstanceId[] {
+  const plan = planInkPayment(ctx, playerId, amount);
+  if (!plan.valid) throw new Error(plan.errorCode);
+  for (const id of plan.cards) ctx.cards.patchMeta(id, { state: "exerted" });
+  if (plan.counters > 0 && ctx.G?.inkDropCounters) ctx.G.inkDropCounters[playerId] -= plan.counters;
+  return plan.cards as CardInstanceId[];
 }
 
 export function isSongCard(cardDef: LorcanaCardDefinition | undefined): boolean {
@@ -799,25 +805,9 @@ function normalizeExertSubject(subject: string | undefined): string {
   return subject && subject.trim().length > 0 ? subject : "Card";
 }
 
-function validateInkCost(
-  state: Pick<BasicCostValidationContext, "framework">,
-  playerId: PlayerId,
-  ink: number,
-): BasicCostValidationResult {
-  const normalizedInk = normalizeInkCost(ink);
-  if (normalizedInk === 0) {
-    return { valid: true };
-  }
-
-  const availableInk = getAvailableInk(state, playerId);
-  if (availableInk < normalizedInk) {
-    return createBasicCostFailure(
-      `Not enough ink (have ${availableInk}, need ${normalizedInk})`,
-      "INSUFFICIENT_INK",
-    );
-  }
-
-  return { valid: true };
+function validateInkCost(state: BasicCostValidationContext, playerId: PlayerId, ink: number): BasicCostValidationResult {
+  const plan = planInkPayment(state, playerId, normalizeInkCost(ink));
+  return plan.valid ? { valid: true } : createBasicCostFailure(plan.error, plan.errorCode);
 }
 
 function validateExertCardCost(
@@ -854,6 +844,8 @@ function validateExertCardCost(
  * Context for paying basic ability costs (ink and exert)
  */
 export interface PayBasicCostContext {
+  G?: { inkDropCounters?: Record<PlayerId, number> };
+  args?: { inkDropCounters?: number };
   framework: BasicCostWriteContext["framework"];
   cards: BasicCostWriteContext["cards"];
   playerId: PlayerId;
@@ -883,7 +875,7 @@ export function validateBasicCost(
     }
   }
 
-  return validateInkCost({ framework: ctx.framework }, ctx.playerId, cost.ink ?? 0);
+  return validateInkCost(ctx, ctx.playerId, cost.ink ?? 0);
 }
 
 /**

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-076",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "54ab148b63fdf7dffbccace7baf8e6634a27899b2bc7268b16c7bc7640728385",
+  "started_at": "2026-10-12T22:23:31.205Z",
+  "finished_at": "2026-10-12T22:23:34.188Z",
+  "recorded_at": "2026-10-12T22:23:34.188Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2984,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 independent-slot cardinality correction and all 88 representative scenarios",
+  "log_path": "docs/validation/logs/RUN-20261012-076.txt",
+  "log_sha256": "e6fd2a1137798884cac0d04ecef637a7594e9e2dcd082663fdfc38b0d2955228",
+  "redactions": 0
+}

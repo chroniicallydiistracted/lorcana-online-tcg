@@ -2,98 +2,43 @@ import type { CardInstanceId, PlayerId } from "#core";
 import type { CardPlayedPayload } from "../../../types";
 import type { PlayCardExecutionContext, ActionResolutionInput } from "./types";
 import { normalizeSelectedTargets, normalizeTargetDescriptor } from "../../../targeting/runtime";
-import { hasVanish } from "../../../card-utils";
-import { resolveBanishEffect } from "./banish-effect";
+import { recordChosenOperation } from "../../effects/triggered-abilities";
 
 const CHOSEN_SELECTOR_FIELDS = ["target", "character", "location", "from", "to"] as const;
 
-function getCardZone(ctx: PlayCardExecutionContext, cardId: CardInstanceId): string | undefined {
-  return ctx.framework.zones.getCardZone(cardId);
+export function chosenOperationGroups(effect: unknown, resolutionInput: ActionResolutionInput): readonly (readonly unknown[])[] {
+  const record = effect && typeof effect === "object" ? effect as Record<string, unknown> : null;
+  const chosenFields = CHOSEN_SELECTOR_FIELDS.filter(field => normalizeTargetDescriptor(record?.[field])?.selector === "chosen");
+  if (!chosenFields.length) return [];
+  const flat = normalizeSelectedTargets(resolutionInput.currentTargets ?? resolutionInput.targets) ?? [];
+  const slots = resolutionInput.slottedTargets;
+  return record?.type === "move-damage" && slots?.kind === "move-damage"
+    ? chosenFields.filter(field => field === "from" || field === "to").map(field => field === "from" ? slots.from : slots.to)
+    : record?.type === "move-to-location" && slots?.kind === "move-to-location"
+      ? chosenFields.filter(field => field === "character" || field === "location").map(field => field === "character" ? slots.subject : slots.location)
+      : chosenFields.length === 2 && chosenFields.includes("from") && chosenFields.includes("to")
+        ? [[flat[0]], [flat[1]]]
+        : [flat];
 }
 
 export function recordVanishChosenTargets(args: {
-  ctx: PlayCardExecutionContext;
-  effect: unknown;
-  resolutionInput: ActionResolutionInput;
-  chooserId: PlayerId;
+  ctx: PlayCardExecutionContext; effect: unknown; resolutionInput: ActionResolutionInput;
+  chooserId: PlayerId; cardPlayed: CardPlayedPayload;
 }): void {
-  const { ctx, effect, resolutionInput, chooserId } = args;
-  const effectRecord =
-    effect && typeof effect === "object" ? (effect as Record<string, unknown>) : null;
-  const hasChosenSelector = CHOSEN_SELECTOR_FIELDS.some((field) => {
-    const descriptor = normalizeTargetDescriptor(effectRecord?.[field]);
-    return descriptor?.selector === "chosen";
-  });
-  if (!hasChosenSelector) {
-    return;
-  }
-
-  const selectedTargets = normalizeSelectedTargets(resolutionInput.targets) ?? [];
-  const chosenCardIds = selectedTargets.filter(
-    (targetId): targetId is CardInstanceId => typeof targetId === "string",
-  );
-  if (chosenCardIds.length === 0) {
-    return;
-  }
-
-  const snapshot = resolutionInput.eventSnapshot;
-  if (!snapshot) {
-    return;
-  }
-
-  const entries = [...(snapshot.vanishChosenCards ?? [])];
-  for (const cardId of chosenCardIds) {
-    if (entries.some((entry) => entry.cardId === cardId && entry.chooserId === chooserId)) {
-      continue;
+  const { ctx, effect, resolutionInput, chooserId, cardPlayed } = args;
+  for (const ids of chosenOperationGroups(effect, resolutionInput)) {
+    const seen = new Set<string>();
+    for (const id of ids) {
+      if (typeof id !== "string" || seen.has(id)) continue;
+      seen.add(id);
+      recordChosenOperation(ctx, cardPlayed, id as CardInstanceId, chooserId);
     }
-    entries.push({ cardId, chooserId });
   }
-  snapshot.vanishChosenCards = entries;
 }
 
+// Compatibility hook for the existing resolver closure. Vanish now waits in
+// the bag; this must never perform a second, immediate banishment.
 export function resolveRecordedVanishTargets(
-  ctx: PlayCardExecutionContext,
-  cardPlayed: CardPlayedPayload,
-  resolutionInput: ActionResolutionInput,
-): void {
-  if (cardPlayed.cardType !== "action") {
-    return;
-  }
-
-  const vanishChosenCards = resolutionInput.eventSnapshot?.vanishChosenCards ?? [];
-  if (vanishChosenCards.length === 0) {
-    return;
-  }
-
-  const targetIds: CardInstanceId[] = [];
-  for (const { cardId, chooserId } of vanishChosenCards) {
-    const definition = ctx.cards.getDefinition(cardId);
-    const ownerId = ctx.framework.zones.getCardOwner(cardId);
-    if (!definition || !ownerId || ownerId === chooserId || !hasVanish(definition)) {
-      continue;
-    }
-
-    const zoneKey = getCardZone(ctx, cardId);
-    if (zoneKey !== "play" && zoneKey !== `play:${ownerId}`) {
-      continue;
-    }
-
-    if (!targetIds.includes(cardId)) {
-      targetIds.push(cardId);
-    }
-  }
-
-  if (targetIds.length === 0) {
-    return;
-  }
-
-  resolveBanishEffect(
-    ctx,
-    cardPlayed,
-    { type: "banish", target: { ref: "none" } as never },
-    {
-      eventSnapshot: resolutionInput.eventSnapshot,
-      targets: targetIds,
-    },
-  );
-}
+  _ctx: PlayCardExecutionContext, _cardPlayed: CardPlayedPayload,
+  _resolutionInput: ActionResolutionInput,
+): void {}

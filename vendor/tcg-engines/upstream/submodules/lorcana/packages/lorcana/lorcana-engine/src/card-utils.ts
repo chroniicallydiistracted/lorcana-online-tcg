@@ -63,6 +63,7 @@ export function isLocation(card: LorcanaCardDefinition): boolean {
 
 const PRINTED_KEYWORD_TITLES = new Set([
   "Alert",
+  "Adventurous",
   "Bodyguard",
   "Boost",
   "Challenger",

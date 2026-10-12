@@ -1,0 +1,140 @@
+
+> lorcana-online-tcg@0.0.0 engine:test-upstream /workspaces/lorcana-online-tcg
+> node scripts/engine/test-upstream.mjs
+
+Selected 27 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+ 338 pass
+ 1 skip
+ 0 fail
+ 838 expect() calls
+Ran 339 tests across 27 files. [678.00ms]
+
+> lorcana-online-tcg@0.0.0 test:rules /workspaces/lorcana-online-tcg
+> node --test tests/rules/scenarios.test.mjs tests/rules/certification.test.mjs
+
+✔ a per-card template cannot be promoted to tested without bound execution and coverage (2.159712ms)
+✔ a forged admission status cannot bypass later queue policies (0.296346ms)
+✔ scenario oracles reject missing or duplicate IDs, wrong rules and missing positive assertions (11.587143ms)
+✔ draft card references cannot borrow a source or hide an ability branch (6.668647ms)
+✔ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1111.715524ms)
+[resolveBag] target validation failed {
+  bagId: 'bag:0:1',
+  playerId: 'p1',
+  sourceCardId: 'hero',
+  effectType: 'optional',
+  errorCode: 'INVALID_ACTION_TARGET',
+  error: 'Target hero is not a legal target',
+  explicitTargets: [ 'hero' ],
+  analysis: {
+    cardCandidates: [ 'friend' ],
+    playerCandidates: [],
+    minSelections: 1,
+    maxSelections: 1,
+    allowDuplicateTargets: false
+  }
+}
+▶ RULE-04 representative sourced runtime scenarios
+  ✔ SCN-001: Quest gains printed lore and exerts the dry character (12.658429ms)
+  ✔ SCN-002: A drying character cannot quest (3.642603ms)
+  ✔ SCN-003: An exerted character cannot quest again (1.196131ms)
+  ✔ SCN-004: An opponent cannot quest with a character they do not control (1.237826ms)
+  ✔ SCN-005: Reaching twenty lore ends the game at the state check (2.935578ms)
+  ✔ SCN-006: Items cannot quest (0.934884ms)
+  ✔ SCN-007: Reckless prevents questing (1.378407ms)
+  ✔ SCN-008: Challenge deals simultaneous strength damage and exerts attacker (8.252291ms)
+  ✔ SCN-009: Ordinary characters cannot challenge ready opposing characters (1.522271ms)
+  ✔ SCN-010: Drying characters without Rush cannot challenge (1.370724ms)
+  ✔ SCN-011: Rush permits a drying character to challenge (4.699804ms)
+  ✔ SCN-012: Evasive blocks a non-Evasive attacker (1.20095ms)
+  ✔ SCN-013: Alert allows challenging an exerted Evasive character (3.412625ms)
+  ✔ SCN-014: Alert does not let its defender evade an ordinary challenge (3.378719ms)
+  ✔ SCN-015: A valid exerted Bodyguard prevents choosing a different character (1.538789ms)
+  ✔ SCN-016: An exerted Bodyguard can be chosen for a challenge (4.451546ms)
+  ✔ SCN-017: Challenger adds strength only while its character challenges (3.460303ms)
+  ✔ SCN-018: Challenger does not add defending damage (3.97441ms)
+  ✔ SCN-019: Resist reduces challenge damage (3.035285ms)
+  ✔ SCN-020: An inkable hand card moves to the inkwell ready (2.268552ms)
+  ✔ SCN-021: A noninkable hand card cannot be inked (0.687139ms)
+  ✔ SCN-022: A second ordinary inking in one turn is rejected (1.727786ms)
+  ✔ SCN-023: Insufficient ink rejects play without partial payment (1.590028ms)
+  ✔ SCN-024: Playing a character pays ink and leaves it drying (3.270946ms)
+  ✔ SCN-025: A stale revision rejects an otherwise legal quest (1.545194ms)
+  ✔ SCN-026: A missing card reference is rejected without mutation (0.674087ms)
+  ✔ SCN-027: An opponent cannot end the active player turn (0.485505ms)
+  ✔ SCN-028: A dry Singer can sing a song above its printed cost (7.055875ms)
+  ✔ SCN-029: A drying character cannot pay a song singing cost (0.996349ms)
+  ✔ SCN-030: Sing Together combines ready singers and exerts both (3.316967ms)
+  ✔ SCN-031: Duplicate singers cannot count twice toward Sing Together (0.863779ms)
+  ✔ SCN-032: Shift inherits drying and damage from its underlying character (4.594845ms)
+  ✔ SCN-033: Shift cannot use an opposing character as its base (0.890831ms)
+  ✔ SCN-034: Boost puts one top card facedown under its character once per turn (4.122295ms)
+  ✔ SCN-035: Ward prevents an opponent choosing the character for an action (1.44197ms)
+  ✔ SCN-036: Lethal challenge damage banishes both characters simultaneously (4.731864ms)
+  ✔ SCN-037: Active player chooses bag order before opponent and normal actions wait (10.029825ms)
+  ✔ SCN-038: Unknown bag IDs reject without removing valid triggered effects (2.231348ms)
+  ✔ SCN-039: An optional triggered effect can be declined without granting its lore (2.583961ms)
+  ✔ SCN-040: An optional triggered effect can be accepted and resolves fully (2.9568ms)
+  ✔ SCN-041: Support permits choosing another character after the quest (7.89161ms)
+  ✔ SCN-042: Support cannot choose the questing character itself (2.590616ms)
+  ✔ SCN-043: Vanish waits for the opposing action to finish before banishing (6.781986ms)
+  ✔ SCN-044: Vanish does not trigger when its controller chooses it with an action (2.690099ms)
+  ✔ SCN-045: Vanish does not trigger for an opposing activated character ability (2.456596ms)
+  ✔ SCN-046: Vanish becomes inapplicable after the action returns its source to hand (4.238113ms)
+  ✔ SCN-047: Vanish waits for all separate action effects before checking its play zone (5.088984ms)
+  ✔ SCN-048: Adventurous prevents challenging even when Rush would allow it (0.720628ms)
+  ✔ SCN-049: A ready Adventurous character that can quest prevents ending the turn (0.86311ms)
+  ✔ SCN-050: A drying Adventurous character cannot quest and does not prevent ending the turn (3.480606ms)
+  ✔ SCN-051: Questing exerts Adventurous and permits ending the turn (2.521661ms)
+  ✔ SCN-052: Adventurous with zero lore still must quest if able (2.926636ms)
+  ✔ SCN-053: Adventurous and Reckless together permit ending the turn because neither action is legal (2.577674ms)
+  ✔ SCN-054: Adventurous can sing and its exerted state permits ending the turn (3.805771ms)
+  ✔ SCN-055: Adventurous can exert for an activated ability instead of questing (3.264259ms)
+  ✔ SCN-056: An effect generates ink-drop counters without adding any ink cards (1.727646ms)
+  ✔ SCN-057: Ink-drop counters pay a character ink cost and are consumed (1.424597ms)
+  ✔ SCN-058: A mixed payment exerts ink cards and consumes only the remaining counters (1.276922ms)
+  ✔ SCN-059: A player can explicitly pay counters while leaving enough ink cards ready (1.248282ms)
+  ✔ SCN-060: A player cannot spend an opponents ink-drop counters (0.871672ms)
+  ✔ SCN-061: Insufficient cards and counters reject without partial consumption (0.603867ms)
+  ✔ SCN-062: Ink-drop counters pay an activated ability ink cost (1.832009ms)
+  ✔ SCN-063: Ink-drop counters pay an alternate Shift ink cost (1.933582ms)
+  ✔ SCN-064: Ink-drop counters pay a location movement ink cost (1.96905ms)
+  ✔ SCN-065: Invalid selected counter payment -1 rejects without mutation (0.754946ms)
+  ✔ SCN-066: Invalid selected counter payment 1.5 rejects without mutation (0.73654ms)
+  ✔ SCN-067: Invalid selected counter payment 3 rejects without mutation (0.74205ms)
+  ✔ SCN-068: One chosen operation queues Vanish and its observer once each (3.048224ms)
+  ✔ SCN-069: A prior Vanish trigger cannot banish a new incarnation of its source (4.449188ms)
+  ✔ SCN-070: Spent counters are removed and cannot pay a second card (1.662315ms)
+  ✔ SCN-071: Unused counters persist across turn changes (1.520675ms)
+  ✔ SCN-072: Setup deals seven, permits mulligans and skips the first draw (6.8114ms)
+  ✔ SCN-073: Deferred targets wait for the chooser and reject unknown targets without mutation (9.166931ms)
+  ✔ SCN-074: Vanish follows an opposing chooser even when the action belongs to its controller (5.523338ms)
+  ✔ SCN-075: Vanish ignores a same-controller chooser even for an opposing action (3.548505ms)
+  ✔ SCN-076: A temporarily granted Adventurous keyword forbids challenging (0.936202ms)
+  ✔ SCN-077: Losing Adventurous permits an otherwise legal challenge (3.4382ms)
+  ✔ SCN-078: Temporarily granted Vanish queues after an opposing choice (5.167676ms)
+  ✔ SCN-079: Losing Vanish prevents its opposing choice trigger (2.433651ms)
+  ✔ SCN-080: Ink-drop counters do not satisfy an ink-card count condition (1.624088ms)
+  ✔ SCN-081: Counter overflow rejects the effect without committing a partial pool (1.337109ms)
+  ✔ SCN-082: Counter generation resolves its dynamic amount using the existing effect context (2.021186ms)
+  ✔ SCN-083: A nested ink cost consumes counters without ready ink cards (1.947312ms)
+  ✔ SCN-084: Turn transition readies cards, dries characters, grants location lore and draws (3.062499ms)
+  ✔ SCN-085: Two distinct choose slots preserve two occurrences when they select the same card (3.149738ms)
+  ✔ SCN-086: Reusing a previously chosen target does not create a second choice (5.4956ms)
+  ✔ SCN-087: A nested cost can select counters and preserve ready ink (3.927525ms)
+  ✔ SCN-088: Separate nested costs consume their own ordered counter selections (2.523033ms)
+  ✔ SCN-089: A single choose slot cannot select one instance twice (0.90236ms)
+  ✔ SCN-090: An excessive explicit nested counter selection rejects with full rollback (1.239982ms)
+  ✔ SCN-091: An unentered cost branch does not consume the next actual payment selection (2.009984ms)
+  ✔ Invalid snapshots are detected independently of move acceptance (3.352614ms)
+  ✔ Choice grouping scopes prior slots and never fabricates a missing choice (0.271952ms)
+✔ RULE-04 representative sourced runtime scenarios (1048.917503ms)
+ℹ tests 99
+ℹ suites 0
+ℹ pass 99
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2384.033102

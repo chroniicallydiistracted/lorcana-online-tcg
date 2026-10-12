@@ -248,6 +248,8 @@ function canPayNestedCost(
     {
       framework: ctx.framework,
       cards: ctx.cards,
+      G: ctx.G,
+      args: {},
       playerId,
     },
     { ink, exertCards },

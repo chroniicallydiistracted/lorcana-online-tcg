@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261012-005",
+  "title": "RULE-04 final handoff observation timestamp",
+  "actor": "Codex developer/reviewer",
+  "status": "finalized",
+  "recorded_at": "2026-10-12T23:29:13.518Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "task_ids": [
+    "RULE-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "fix",
+      "description": "Final chronology review found the handoff observation header retained23:17 while later proof093 was appended. Refresh the actual observation time after093 and identify this correction separately;003/004 and every run/log remain unchanged. No execution time is repaired."
+    },
+    {
+      "kind": "test",
+      "description": "RUN094 passes actual native synchronization/chronology/source/changelog/history/log consistency. Observation is refreshed after094; only current prose and this finalization metadata change, executable5f405778 and sealed003/004 remain unchanged."
+    }
+  ],
+  "files": [
+    "docs/changes/CHG-20261012-005.json",
+    "docs/HANDOFF.md",
+    "CHANGELOG.md",
+    "docs/current-state.json",
+    "docs/validation/runs/RUN-20261012-094.json",
+    "docs/validation/logs/RUN-20261012-094.txt",
+    "docs/validation/rule-04.md"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "The observation timestamp must occur after every completed proof it describes; retain distinct intake/precommit HEAD and actual run intervals."
+    },
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "updated",
+      "reason": "Link actual final timestamp/static correction and passing094, retaining every code/CI/card/device limitation."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-093.json",
+      "outcome": "passed",
+      "scope": "Existing passing final-source native/static checks; this is only a handoff timestamp/record correction."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-094.json",
+      "outcome": "passed",
+      "scope": "Actual native final synchronization with exact UTC/monotonic pair and unchanged5f405778; no execution times repaired."
+    }
+  ],
+  "limitations": [
+    "Executable5f405778 unchanged; isolated CI timing89/91 remains pending and original environment instruction stands.",
+    "No full card/rules/ordinary/reward/private/durable/device/production or publishing/main acceptance."
+  ],
+  "next_actions": [
+    "Director audit/publication may observe hosted CI; preserve timing failures and the unchanged environment.",
+    "PLAY-01 follows; official/card/privacy/auth/replay/economy/device/production gates remain."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-063",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/scenarios.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "0c6f48286d5d7f94a33b5bab2986436a4a15887c9acc7e94723c57579c5a03d8",
+  "started_at": "2026-10-12T22:09:10.225Z",
+  "finished_at": "2026-10-12T22:09:12.734Z",
+  "recorded_at": "2026-10-12T22:09:12.734Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2509,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 corrected full-file zone patch anchor and representative source scenarios",
+  "log_path": "docs/validation/logs/RUN-20261012-063.txt",
+  "log_sha256": "3bf135e0486de4c6eb161897b3be9b907bcf8a297874eef8eeb3b0099a1e4be9",
+  "redactions": 0
+}

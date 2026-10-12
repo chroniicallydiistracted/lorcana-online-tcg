@@ -2,6 +2,237 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261012-005 — RULE-04 final handoff observation timestamp
+
+- Status: finalized
+- Actor: Codex developer/reviewer
+- Recorded (UTC): 2026-10-12T23:29:13.518Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 82849f4fd0804cd474e8d7afcd5e935b6ac18700
+- Tasks: RULE-04, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **fix:** Final chronology review found the handoff observation header retained23:17 while later proof093 was appended. Refresh the actual observation time after093 and identify this correction separately;003/004 and every run/log remain unchanged. No execution time is repaired.
+- **test:** RUN094 passes actual native synchronization/chronology/source/changelog/history/log consistency. Observation is refreshed after094; only current prose and this finalization metadata change, executable5f405778 and sealed003/004 remain unchanged.
+
+### Verification
+
+- **passed:** Existing passing final-source native/static checks; this is only a handoff timestamp/record correction. ([evidence](docs/validation/runs/RUN-20261012-093.json))
+- **passed:** Actual native final synchronization with exact UTC/monotonic pair and unchanged5f405778; no execution times repaired. ([evidence](docs/validation/runs/RUN-20261012-094.json))
+
+### Documentation and files
+
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — The observation timestamp must occur after every completed proof it describes; retain distinct intake/precommit HEAD and actual run intervals.
+- **updated:** [docs/validation/rule-04.md](docs/validation/rule-04.md) — Link actual final timestamp/static correction and passing094, retaining every code/CI/card/device limitation.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261012-005.json).
+
+### Limits and next actions
+
+- Executable5f405778 unchanged; isolated CI timing89/91 remains pending and original environment instruction stands.
+- No full card/rules/ordinary/reward/private/durable/device/production or publishing/main acceptance.
+- Director audit/publication may observe hosted CI; preserve timing failures and the unchanged environment.
+- PLAY-01 follows; official/card/privacy/auth/replay/economy/device/production gates remain.
+
+## CHG-20261012-004 — RULE-04 final documentation formatting and static closure
+
+- Status: finalized
+- Actor: Codex developer/reviewer
+- Recorded (UTC): 2026-10-12T23:25:02.961Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 82849f4fd0804cd474e8d7afcd5e935b6ac18700
+- Tasks: RULE-04, DOC-01, DOC-02
+- Features: F-DOCS, F-RULE-CERTIFICATION
+- Requirements: none
+
+### Changes
+
+- **fix:** Final semantic/format review after CHG003 native seal found three retained checkpoint table rows separated from their table header. Move them into the same table without altering results, code or sealed receipts; new correction record honors the finalized snapshot guard.
+- **documentation:** Point current handoff/validation at this final static closure while preserving CHG003. Executable fingerprint5f405778 and all scoped results/gates remain unchanged; no CI timing, device, publishing or main acceptance inferred.
+- **test:** RUN093 passes final native documentation/source/callable/link/changelog/sealed-history/log consistency and staged formatting at unchanged executable5f405778. Final record synchronization and local commit retain the same code; no isolated CI/artifact, publishing or main acceptance inferred.
+
+### Verification
+
+- **passed:** Unchanged final executable5f405778 full foundation; this correction edits prose/history only. ([evidence](docs/validation/runs/RUN-20261012-085.json))
+- **passed:** Actual final native documentation/history/log/source and staged formatting gates, static execution with exact timing and unchanged5f405778. ([evidence](docs/validation/runs/RUN-20261012-093.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/rule-04.md](docs/validation/rule-04.md) — Keep every retained checkpoint in its correctly rendered table; unchanged qualified source/results and failed CI timing gates.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Name the final correction/static record separately from sealed implementation history, without inventing a self-referential commit SHA.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261012-004.json).
+
+### Limits and next actions
+
+- Isolated CI089/091 clock-failed; original leave-environment instruction unchanged; no new artifact/hosted/device/production acceptance.
+- Representative suite/template only; full card/rules/ordinary/reward/private/durable/economic gates remain.
+- Director audit/publication may observe hosted CI; retain089/091 timing failures and leave the environment unchanged.
+- Next documented implementation is PLAY-01; full card/rules/D04/privacy/auth/replay/economy/device/production gates remain.
+
+## CHG-20261012-003 — RULE-04 sourced scenarios and card certification foundation
+
+- Status: finalized
+- Actor: Codex architect/developer/rules QA
+- Recorded (UTC): 2026-10-12T23:17:57.050Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 82849f4fd0804cd474e8d7afcd5e935b6ac18700
+- Tasks: RULE-04, DOC-01, DOC-02
+- Features: F-ENGINE, F-RULE-CERTIFICATION, F-BOUNDARIES, F-CI, F-RELEASE, F-DOCS
+- Requirements: R01.005, R01.006, R01.009, R01.011, R01.016, R28.002, R28.003, R28.004, R28.005, R28.007, R28.010, R28.011, R28.012
+
+### Changes
+
+- **review:** Intake on clean main82849f4; discovered the existing workspace/postgres Compose services and began reading the required source, workflow and RULE-04 acceptance documents.
+- **test:** RUN-20261012-046 captures passing pre-change doctor, verification, bootstrap and original database checks. An initial recorder invocation requested the already-used RUN045 ID; exclusive creation refused it before any child command or overwrite.
+- **revision:** Director expressly selected implementing Adventurous and ink-drop counters now; D11/ADR0011 retain representative-only certification and all play gates.
+- **implementation:** Add test-only compiled Node fixture runtime,91 sourced scenarios, independent state invariants, per-card schema/template fail-closed promotion, distinct offline/cache source checks and root verification integration.
+- **fix:** Reproduce53 reviewed patches at unchanged pin; Vanish after-action bag/actual chooser/event/zone incarnation, temporary keyword loss, Adventurous challenge/quest obligation, separate consumable counters and chosen-slot/cardinality/nested payment choices. No upstream assertions changed; unreachable old be-chosen helper removed.
+- **test:** Retain RUN048–079 missing-tool/fixture/source/oracle/engine/review red failures and corrected passes, including original composed zone patch anchor correction. RUN079 passes91 scenarios with invalid-state/grouping and certification negatives; full foundation/clean/hosted/device qualification not inferred.
+- **review:** Independent source-hash/oracle review followed by supplied-code review after reviewer automatic approval usage limit. Actual chooser/lifetime/duplicate-slot/payment findings addressed with regressions. No denied action bypassed or final independent execution claimed.
+- **documentation:** Add native plan/ADR/operation/validation/source/template classification, update current ownership continuations and D11/prerequisite edges, demote stale whole-source verification, preserve prior executed evidence and548 original requirements/20 optional flags.
+- **fix:** Draft sync refused X06/X07 in the original-requirement-ID field; retain their authority through DOC-01/DOC-02 task scope instead, without changing native validation.
+- **fix:** RUN080 full frozen/type/lint/build execution reached eight unchanged upstream feedback failures; planner now preserves INSUFFICIENT_INK needed/available semantics for normal shortfalls and distinguishes explicit invalid counter selections. RUN081 passes338 unchanged upstream/one inherited skip plus99 project rules checks. Source comment updated to separate payment units from ink-card count.
+- **fix:** RUN082 full foundation passed upstream/build/type/lint but exposed a synthetic governance fixture copying the new unrelated card schema outside its declared file coverage. Fixture now copies only its five owned governance schemas; all original drift/history/assertions remain unchanged and RUN084 passes.
+- **function:** Record callable contracts for withScenarioRuntime/createScenarioRuntime/assertScenarioState/chosenOperationGroups, checkScenarioSources/verifyScenarioSourceBytes and validateCardCertification; explicit test-only authority, errors, rollback, source pins, lifecycle and fail-closed promotion.
+- **test:** Final5f405778 passes085 complete frozen241 project+338 unchanged upstream/one inherited skip+2 injection;086 source/cache/AST reproduction;087 six Chromium/two workers;088 source-only clean;090 canonical1466 live-equal files. No new scenarios skipped.
+- **revision:** Two complete isolated child pipelines089/091 fail clock_changed despite child exit0; both owned environments cleaned, no result published. Honor persistent Director leave-environment instruction: no maintenance, clock/tolerance/service/restart change. Separate CI timing qualification remains pending; representative RULE-04 backlog criteria are locally verified.
+- **documentation:** Correct086 summary scope to source/AST rather than a standalone bundle scan; actual build/bundle checks are085. Keep legacy pending_RULE-04 metadata as the explicit full-card/version certification gate, distinct from representative task acceptance; update final-source records without rewriting any receipt.
+- **review:** Final092 passes eight read-only original managed identities, current/full-history secrets1662 unique blobs,376 immutable logs,548/33/20/all dispositions/D01–D10/archive/lock/toolchain/container and actual owned-service/listener cleanup. Attributed host observation confirms both failed CI projects/images absent and original healthy Linux bind/private volume retained; detailed host-query intervals unknown.
+
+### Verification
+
+- **passed:** RULE-04 intake: doctor, existing verification, bootstrap tests and original database connectivity; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-046.json))
+- **passed:** RULE-04 official source refresh and merged RULE-03 hosted CI metadata acquisition; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-047.json))
+- **failed:** RULE-04 red checkpoint: actual compiled Node scenario harness is absent; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-048.json))
+- **failed:** RULE-04 first real synthetic quest through the Node compiled fixture runtime; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-049.json))
+- **passed:** RULE-04 compiled quest regression after correcting the fixture command input to cardId; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-050.json))
+- **failed:** RULE-04 initial 43 sourced current-rules scenarios through compiled Node runtime, preserving failures; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-051.json))
+- **failed:** RULE-04 source-bound scenario fixtures after song subtype correction; Vanish timing regression retained; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-052.json))
+- **failed:** RULE-04 red checkpoint: per-card coverage and false-admission gates are absent; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-053.json))
+- **passed:** RULE-04 per-card template rejects unqualified promotion and false admission; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-054.json))
+- **failed:** RULE-04 expanded Vanish red regressions: bag timing, action-only trigger, source leaves play and complete multi-effect action; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-055.json))
+- **failed:** RULE-04 Vanish bag correction with actual chooser and play-zone resolution; sourced runtime regressions; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-056.json))
+- **failed:** RULE-04 red checkpoint for Director-approved Adventurous and ink-drop generation/payments/invalid selections; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-057.json))
+- **failed:** RULE-04 first Adventurous/counter implementation through 67 sourced Node scenarios and original rules regressions; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-058.json))
+- **passed:** RULE-04 corrected Adventurous enumeration, keyword type guard and ability fixture; 67 sourced Node scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-059.json))
+- **failed:** RULE-04 review regressions before Vanish object-lifetime and duplicate-event correction; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-060.json))
+- **failed:** RULE-04 single chosen events, zone-incarnation guards, real setup and conservation scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-061.json))
+- **failed:** RULE-04 corrected vendor closure and all representative regression scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-062.json))
+- **passed:** RULE-04 corrected full-file zone patch anchor and representative source scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-063.json))
+- **passed:** RULE-04 deferred and delegated Vanish choices plus invalid-state detection; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-064.json))
+- **failed:** RULE-04 source/certification negatives and pre-correction fixture import guard; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-065.json))
+- **passed:** RULE-04 integrated source-byte and card-template gates, fixture isolation and sourced runtime scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-066.json))
+- **failed:** RULE-04 temporary grant/loss, counter-vs-ink counts and overflow atomicity; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-067.json))
+- **failed:** RULE-04 case-sensitive temporary metadata correction and all 81 source scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-068.json))
+- **passed:** RULE-04 temporary keyword loss correction and 81 sourced scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-069.json))
+- **failed:** RULE-04 dynamic counter generation red test, nested costs and Ready-Set-Draw; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-070.json))
+- **passed:** RULE-04 dynamic counter amount correction and 84 sourced scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-071.json))
+- **failed:** RULE-04 multi-slot choice identity versus reused targets before correction; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-072.json))
+- **failed:** RULE-04 selected nested counter payment regressions before forwarding correction; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-073.json))
+- **failed:** RULE-04 independent choose-slot identity and per-nested-cost counter selection correction; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-074.json))
+- **failed:** RULE-04 preserved named slots through initial validation and selected nested payments; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-075.json))
+- **passed:** RULE-04 independent-slot cardinality correction and all 88 representative scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-076.json))
+- **passed:** RULE-04 final choice uniqueness, all 89 scenarios, certification negatives and source bytes; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-077.json))
+- **failed:** RULE-04 explicit invalid nested selection and skipped payment branch regressions before correction; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-078.json))
+- **passed:** RULE-04 final reviewed grouping preconditions, invalid selection rollback and 91 sourced scenarios; checkpoint source identity in receipt, not whole-product/card/device acceptance. ([evidence](docs/validation/runs/RUN-20261012-079.json))
+- **failed:** RULE-04 complete frozen foundation: doctor, ordered types/lint/build/tests and preserved original PostgreSQL; exact source/time in receipt; not card/device/production acceptance. ([evidence](docs/validation/runs/RUN-20261012-080.json))
+- **passed:** RULE-04 corrected shortfall feedback: unchanged upstream suites and representative scenarios; exact source/time in receipt; not card/device/production acceptance. ([evidence](docs/validation/runs/RUN-20261012-081.json))
+- **failed:** RULE-04 final frozen complete foundation, all source/type/lint/build/tests and original database; exact checkpoint source/time in receipt. ([evidence](docs/validation/runs/RUN-20261012-082.json))
+- **passed:** RULE-04 exact pinned importer reproduction and official scenario source bytes; exact checkpoint source/time in receipt. ([evidence](docs/validation/runs/RUN-20261012-083.json))
+- **passed:** RULE-04 governance fixture owns only its five declared schemas; original drift/sealing/evidence negatives unchanged; exact checkpoint source/time in receipt. ([evidence](docs/validation/runs/RUN-20261012-084.json))
+- **passed:** RULE-04 final frozen full foundation after feedback and isolated governance fixture corrections; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md. ([evidence](docs/validation/runs/RUN-20261012-085.json))
+- **passed:** RULE-04 final source exact pin53-patch reproduction, source bytes and public/private bundle guards; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md. ([evidence](docs/validation/runs/RUN-20261012-086.json))
+- **passed:** RULE-04 actual Linux Chromium foundation and two compiled Lab workers; no Windows/device acceptance; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md. ([evidence](docs/validation/runs/RUN-20261012-087.json))
+- **passed:** RULE-04 clean source-only frozen installation and complete foundation; no private files or database copy; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md. ([evidence](docs/validation/runs/RUN-20261012-088.json))
+- **failed:** Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md. ([evidence](docs/validation/runs/RUN-20261012-089.json))
+- **passed:** RULE-04 canonical staged Git bytes: fresh frozen install/full foundation, all archived files equal live source and temporary cleanup; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md. ([evidence](docs/validation/runs/RUN-20261012-090.json))
+- **failed:** Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; actual source/time/result in immutable receipt; source-only correction for086 and clock-failed CI89/91 are detailed in validation/rule-04.md. ([evidence](docs/validation/runs/RUN-20261012-091.json))
+- **historical:** Attributed early independent source review and later supplied-code review; detailed execution times unknown and no independent final suite execution inferred. ([evidence](docs/reviews/2026-10-12-rule-04-closure.md))
+- **passed:** Read-only original managed identities and actual privacy/scope/history/log/listener closure at final5f405778; no data reset or full new CI/persistence acceptance. ([evidence](docs/validation/runs/RUN-20261012-092.json))
+- **historical:** Attributed read-only host observation at recorded_at; detailed command intervals unknown, no manual-device verdict. ([evidence](docs/validation/rule-04-host-closure.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [README.md](README.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/README.md](docs/README.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/adr/0003-documentation-evidence.md](docs/adr/0003-documentation-evidence.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/adr/0007-hosting-provider-baseline.md](docs/adr/0007-hosting-provider-baseline.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/adr/0010-secure-randomness-replay.md](docs/adr/0010-secure-randomness-replay.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/adr/0011-sourced-rule-scenarios.md](docs/adr/0011-sourced-rule-scenarios.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/contracts/release.md](docs/contracts/release.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/features.json](docs/features.json) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-05-contracts.md](docs/plans/2026-10-07-boot-05-contracts.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/rules/README.md](docs/rules/README.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/runbooks/rules-certification.md](docs/runbooks/rules-certification.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/schemas/card-certification.schema.json](docs/schemas/card-certification.schema.json) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/schemas/change.schema.json](docs/schemas/change.schema.json) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/schemas/documentation-map.schema.json](docs/schemas/documentation-map.schema.json) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/schemas/features.schema.json](docs/schemas/features.schema.json) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/schemas/run.schema.json](docs/schemas/run.schema.json) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/schemas/state.schema.json](docs/schemas/state.schema.json) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/templates/card-certification.json](docs/templates/card-certification.json) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/templates/handoff.md](docs/templates/handoff.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **reviewed_unchanged:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/validation/rule-04.md](docs/validation/rule-04.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — Reviewed relevant contract against scoped RULE-04 changes: existing governance, environment, provider/asset or schema behavior unchanged; representative fixtures do not widen product authority or acceptance.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+- **updated:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Compared and updated current representative RULE-04 code/ownership/acceptance, exact source/time/result and separate CI/card/play/device gates; historical evidence retained.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261012-003.json).
+
+### Limits and next actions
+
+- Representative scenario/template acceptance only; no full rules/card certification or ordinary/official/reward/private/durable/economic play.
+- Isolated CI089/091 receipts fail clock_changed; no qualified new artifact/hosted RULE-04 result. Director leave-environment instruction honored; no maintenance/tolerance/restarts.
+- Final review uses primary execution and supplied-source review after reviewer automatic approval usage limit; no independent final execution, Windows/GPU/touch/load/restore/production acceptance.
+- No purchases, deployment, branch publication or main merge. All548 requirements/20 optional flags and BOOT-04/D07/D10 scope preserved.
+- Director audit/publication may observe fresh hosted CI; preserve089/091 timing failures and existing environment.
+- PLAY-01 durable receipt/CAS/outbox foundation follows; PLAY-02 privacy, D04 card-bound certification and AUTH/REPLAY/economic/device/production gates remain.
+
 ## CHG-20261012-002 — Independent audit of RULE-03 and Director-authorized integration into main
 
 - Status: finalized

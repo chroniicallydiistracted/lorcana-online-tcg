@@ -128,6 +128,8 @@ export type PublicZoneSummary = {
 };
 
 export type ZoneCardIndexEntry = {
+  /** Private object identity; zone changes create a new rules object. */
+  zoneIncarnation?: number;
   zoneKey: ZoneId;
   index?: number;
   ownerID: PlayerId;

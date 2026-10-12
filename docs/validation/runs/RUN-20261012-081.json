@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-081",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const args of [[\"engine:test-upstream\"],[\"test:rules\"]]){const r=spawnSync(\"pnpm\",args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "f25de4738a1f75433c5666fd97ac23013e4e38d9787e01155989aeae39aef9b6",
+  "started_at": "2026-10-12T22:33:29.496Z",
+  "finished_at": "2026-10-12T22:33:34.301Z",
+  "recorded_at": "2026-10-12T22:33:34.301Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4804,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 corrected shortfall feedback: unchanged upstream suites and representative scenarios",
+  "log_path": "docs/validation/logs/RUN-20261012-081.txt",
+  "log_sha256": "b0eefc9b47cd5b12afd586926d4cea5eee9a4c259009c04d778f8449d591c50b",
+  "redactions": 0
+}

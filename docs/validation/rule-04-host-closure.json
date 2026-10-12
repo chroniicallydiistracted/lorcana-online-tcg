@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-12T23:15:54.842Z",
+  "category": "host_inspection",
+  "actor": "Codex read-only WSL Docker inspection",
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "5f405778696fe4413b4a374f11c966ae7691817a2429136be9519aaeec572689",
+  "queries": [
+    [
+      "docker",
+      "container",
+      "ls",
+      "-q",
+      "--all",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-9af5989c23874693aa56ab610fb12a7d"
+    ],
+    [
+      "docker",
+      "volume",
+      "ls",
+      "-q",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-9af5989c23874693aa56ab610fb12a7d"
+    ],
+    [
+      "docker",
+      "network",
+      "ls",
+      "-q",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-9af5989c23874693aa56ab610fb12a7d"
+    ],
+    [
+      "docker",
+      "image",
+      "ls",
+      "-q",
+      "--filter",
+      "reference=lorcana-ci-9af5989c23874693aa56ab610fb12a7d:workspace"
+    ],
+    [
+      "docker",
+      "container",
+      "ls",
+      "-q",
+      "--all",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-ac332ca27cb940caac41145e9625e6c3"
+    ],
+    [
+      "docker",
+      "volume",
+      "ls",
+      "-q",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-ac332ca27cb940caac41145e9625e6c3"
+    ],
+    [
+      "docker",
+      "network",
+      "ls",
+      "-q",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-ci-ac332ca27cb940caac41145e9625e6c3"
+    ],
+    [
+      "docker",
+      "image",
+      "ls",
+      "-q",
+      "--filter",
+      "reference=lorcana-ci-ac332ca27cb940caac41145e9625e6c3:workspace"
+    ],
+    [
+      "docker",
+      "inspect",
+      "3e5816dff0be",
+      "--format",
+      "{{json .Mounts}}"
+    ],
+    [
+      "docker",
+      "inspect",
+      "1695ec6fc3eb",
+      "--format",
+      "{{json .Mounts}}"
+    ],
+    [
+      "docker",
+      "inspect",
+      "1695ec6fc3eb",
+      "--format",
+      "{{.State.Health.Status}}"
+    ],
+    [
+      "docker",
+      "inspect",
+      "1695ec6fc3eb",
+      "--format",
+      "{{json .HostConfig.PortBindings}}"
+    ]
+  ],
+  "owned_resources": {
+    "lorcana-ci-9af5989c23874693aa56ab610fb12a7d": {
+      "container": "",
+      "volume": "",
+      "network": "",
+      "image": ""
+    },
+    "lorcana-ci-ac332ca27cb940caac41145e9625e6c3": {
+      "container": "",
+      "volume": "",
+      "network": "",
+      "image": ""
+    }
+  },
+  "original_workspace_mounts": [
+    {
+      "Type": "volume",
+      "Name": "vscode",
+      "Source": "/var/lib/docker/volumes/vscode/_data",
+      "Destination": "/vscode",
+      "Driver": "local",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": ""
+    },
+    {
+      "Type": "bind",
+      "Source": "/run/desktop/mnt/host/wsl/docker-desktop-bind-mounts/Ubuntu/847c042b10537e0eed1ba8d50b55810202f9b34866514caad4c7656658894164",
+      "Destination": "/tmp/vscode-wayland-6f3deeb6-375b-4e24-a178-fa12e113c2d4.sock",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/andre/lorcana-online-tcg",
+      "Destination": "/workspaces/lorcana-online-tcg",
+      "Mode": "",
+      "RW": true,
+      "Propagation": "rprivate"
+    }
+  ],
+  "original_postgres_mounts": [
+    {
+      "Type": "volume",
+      "Name": "lorcana-online-tcg_devcontainer_pg18_data",
+      "Source": "/var/lib/docker/volumes/lorcana-online-tcg_devcontainer_pg18_data/_data",
+      "Destination": "/var/lib/postgresql",
+      "Driver": "local",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": ""
+    }
+  ],
+  "original_postgres_health": "healthy",
+  "original_postgres_published_ports": {},
+  "limits": "Observation timestamp only; detailed per-query execution intervals unknown. No environment values, maintenance, private data reset or device/production qualification."
+}

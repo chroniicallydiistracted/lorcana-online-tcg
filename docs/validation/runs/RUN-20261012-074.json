@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-074",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "24fd2549e5bd8d972d09cbb8ccde8f2190e00859743cf0e5a5db837573f80b70",
+  "started_at": "2026-10-12T22:22:06.123Z",
+  "finished_at": "2026-10-12T22:22:08.963Z",
+  "recorded_at": "2026-10-12T22:22:08.963Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2840,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 independent choose-slot identity and per-nested-cost counter selection correction",
+  "log_path": "docs/validation/logs/RUN-20261012-074.txt",
+  "log_sha256": "15886e099e8a60e53dc689b775d4187c5d4c89201929160cdff3d6baeaec29ed",
+  "redactions": 0
+}

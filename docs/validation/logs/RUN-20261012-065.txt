@@ -1,0 +1,90 @@
+✖ production apps cannot import the manipulated RULE-04 fixture bridge (196.879399ms)
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (13.737628ms)
+✔ server applications cannot bypass the project adapter using vendor or raw upstream imports (8.829823ms)
+✔ server module loader aliases cannot bypass the engine adapter (6.240447ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1778.997957ms)
+✔ browser source cannot import the server-only release registry through its package subpath (1.945624ms)
+✔ private server RNG/replay cannot cross browser boundaries and server adapter cannot enter the Lab generator (9.820046ms)
+✔ browser resolver cannot treat a server adapter as a permitted browser kernel importer (0.775665ms)
+✔ declaring a database dependency in a public contract package is rejected (219.16384ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (216.938467ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (226.169572ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (224.278098ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (893.353263ms)
+✔ a per-card template cannot be promoted to tested without bound execution and coverage (2.500539ms)
+✔ a forged admission status cannot bypass later queue policies (0.358982ms)
+✖ scenario oracles reject missing or duplicate IDs, wrong rules and missing positive assertions (3.124037ms)
+✖ draft card references cannot borrow a source or hide an ability branch (2.457483ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 14
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3843.130824
+
+✖ failing tests:
+
+test at tests/foundation/boundaries.test.mjs:8:1
+✖ production apps cannot import the manipulated RULE-04 fixture bridge (196.879399ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/foundation/boundaries.test.mjs:12:14)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Forbidden engine import/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/rules/certification.test.mjs:17:1
+✖ scenario oracles reject missing or duplicate IDs, wrong rules and missing positive assertions (3.124037ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "Scenario citation missing from applicable rules"
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/certification.test.mjs:19:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: AssertionError [ERR_ASSERTION]: Scenario citation missing from applicable rules
+        at Module.checkScenarioSources (file:///workspaces/lorcana-online-tcg/scripts/rules/certification.mjs:28:7)
+        at file:///workspaces/lorcana-online-tcg/tests/rules/certification.test.mjs:19:43
+        at getActual (node:assert:611:5)
+        at strict.doesNotThrow (node:assert:779:32)
+        at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/certification.test.mjs:19:10)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19)
+        at Test.run (node:internal/test_runner/test:1467:12),
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }
+
+test at tests/rules/certification.test.mjs:32:1
+✖ draft card references cannot borrow a source or hide an ability branch (2.457483ms)
+  AssertionError [ERR_ASSERTION]: Scenario citation missing from applicable rules
+      at checkScenarioSources (file:///workspaces/lorcana-online-tcg/scripts/rules/certification.mjs:28:7)
+      at Module.validateCardCertification (file:///workspaces/lorcana-online-tcg/scripts/rules/certification.mjs:46:3)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/certification.test.mjs:36:30)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

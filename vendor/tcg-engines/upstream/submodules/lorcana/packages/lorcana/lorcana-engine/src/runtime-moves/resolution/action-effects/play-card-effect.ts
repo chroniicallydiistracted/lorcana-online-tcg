@@ -814,11 +814,14 @@ export function resolvePlayCardEffect(
         {
           framework: ctx.framework,
           cards: ctx.cards,
+          G: ctx.G,
+          args: { inkDropCounters: resolutionInput.effectInkDropCounters?.[0] },
           playerId,
         },
         { ink: inkCost },
       );
       if (!costValidation.valid) {
+        if (costValidation.errorCode === "INVALID_INK_DROP_PAYMENT") throw new Error("Invalid selected nested counter payment");
         continue;
       }
 
@@ -826,6 +829,8 @@ export function resolvePlayCardEffect(
         {
           framework: ctx.framework,
           cards: ctx.cards,
+          G: ctx.G,
+          args: { inkDropCounters: resolutionInput.effectInkDropCounters?.[0] },
           playerId,
         },
         { ink: inkCost },
@@ -833,6 +838,7 @@ export function resolvePlayCardEffect(
       if (!payResult.success) {
         continue;
       }
+      resolutionInput.effectInkDropCounters?.shift();
 
       consumeAppliedCostReductions(
         ctx.G.turnMetadata,

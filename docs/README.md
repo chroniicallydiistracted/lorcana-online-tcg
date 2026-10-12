@@ -34,3 +34,7 @@ The map accounts for documentation across the whole repository, including worksp
 ## Current RULE-03 entry point
 
 [ADR0010](adr/0010-secure-randomness-replay.md), [task plan](plans/2026-10-12-rule-03-randomness-replay.md), [engine operation](runbooks/engine.md) and [validation](validation/rule-03.md) govern secure server randomness, captured clocks, bounded private completed verification and Director D10 disclosure. The task has no delivery/auth/persistence endpoint. RULE-04 official scenarios/certification follows; PLAY-02 wire privacy and economic/ordinary-play gates stay closed.
+
+## Current RULE-04 entry point
+
+[ADR0011](adr/0011-sourced-rule-scenarios.md), [operation](runbooks/rules-certification.md), [task plan](plans/2026-10-12-rule-04-certification.md), [validation](validation/rule-04.md), [fresh sources](rules/2026-10-12-rule-04-sources.json), [per-card schema](schemas/card-certification.schema.json) and [template](templates/card-certification.json) own the representative current-rules suite and Director-approved new mechanics. Generic fixtures cannot certify or admit a card. RULE-03 hosted main82849f4 is now observed successful; RULE-04 representative acceptance is locally verified; isolated CI timing qualification remains pending after089/091 clock rejections. PLAY durability/privacy and official/card/device/production gates remain.

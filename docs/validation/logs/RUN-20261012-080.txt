@@ -1,0 +1,553 @@
+Scope: all 13 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 513ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 doctor /workspaces/lorcana-online-tcg
+> node scripts/doctor.mjs
+
+PASS Node 24.21.0
+PASS pnpm 10.33.0
+PASS Linux development environment
+PASS .env.local exists with owner-only access
+PASS Local environment loaded into container
+PASS Container database address
+PASS Generated database bootstrap configuration
+Workspace toolchain ready. Run pnpm db:check to verify authenticated database access.
+
+> lorcana-online-tcg@0.0.0 verify:foundation /workspaces/lorcana-online-tcg
+> pnpm verify && pnpm typecheck && pnpm lint && pnpm test
+
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS RULE-01 offline metadata, denominators, dated release/effective status and uncertified boundaries
+PASS representative rule sources/template; no card admission {"scenarios":91,"versions":["2.2.0","2.3.0"]}
+PASS pinned vendor integrity {"revision":"53a79413c58678b1c50dde57e71de5c123132716","files":346,"patches":53}
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 346 selected source files
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":1448,"documents":878,"functions":8427,"changes":27,"runs":364}
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 typecheck /workspaces/lorcana-online-tcg
+> pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck
+
+Scope: 8 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 243 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  841.55 kB │ gzip: 183.57 kB
+
+✓ built in 188ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  843.67 kB │ gzip: 186.30 kB
+
+✓ built in 154ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/db@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/design-system@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/presentation@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-adapter@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-lab@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/service-runtime@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/api@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-service@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/worker@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+
+> lorcana-online-tcg@0.0.0 test /workspaces/lorcana-online-tcg
+> pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci && pnpm test:rules-inventory && pnpm test:rules && pnpm test:engine-tooling
+
+
+> lorcana-online-tcg@0.0.0 build /workspaces/lorcana-online-tcg
+> pnpm boundaries && pnpm -r --workspace-concurrency=1 build
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 243 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  841.55 kB │ gzip: 183.57 kB
+
+✓ built in 174ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/web@0.0.0 build /workspaces/lorcana-online-tcg/apps/web
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 2511 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           0.38 kB │ gzip:   0.28 kB
+dist/assets/index-Cs1RDOyn.css                            0.96 kB │ gzip:   0.54 kB
+dist/assets/postprocess.vertex-DJCmMhI8.js                0.46 kB │ gzip:   0.30 kB
+dist/assets/shaderStore-D-XQlhUT.js                       0.46 kB │ gzip:   0.17 kB
+dist/assets/rgbdDecode.fragment-Cdz2Tveq.js               0.52 kB │ gzip:   0.34 kB
+dist/assets/postprocess.vertex-CmVXXq2T.js                0.58 kB │ gzip:   0.35 kB
+dist/assets/rgbdDecode.fragment-DXl2fYur.js               0.66 kB │ gzip:   0.38 kB
+dist/assets/math.scalar.functions-lnL7TJ7T.js             0.76 kB │ gzip:   0.41 kB
+dist/assets/color.fragment-SH3AKoaS.js                    0.87 kB │ gzip:   0.42 kB
+dist/assets/mesh.vertexData.functions-CD4JOR2q.js         0.93 kB │ gzip:   0.48 kB
+dist/assets/color.fragment-DVaYbzXa.js                    0.98 kB │ gzip:   0.45 kB
+dist/assets/ddsTextureLoader-CnOqxmwJ.js                  1.25 kB │ gzip:   0.62 kB
+dist/assets/color.vertex-UAuK67V9.js                      1.35 kB │ gzip:   0.61 kB
+dist/assets/color.vertex-BYaj1Jpp.js                      1.41 kB │ gzip:   0.61 kB
+dist/assets/logger-CuBYPcDK.js                            1.88 kB │ gzip:   0.82 kB
+dist/assets/logDepthDeclaration-BKcd_JEL.js               2.16 kB │ gzip:   0.85 kB
+dist/assets/fogFragment-WPqtYpyX.js                       2.20 kB │ gzip:   0.70 kB
+dist/assets/hdrTextureLoader-BQVwkxK1.js                  2.31 kB │ gzip:   1.13 kB
+dist/assets/fogFragment-NFgubt9V.js                       2.43 kB │ gzip:   0.76 kB
+dist/assets/iesTextureLoader-3O5bSkSd.js                  2.47 kB │ gzip:   1.07 kB
+dist/assets/logDepthDeclaration-CLGvI4QS.js               2.54 kB │ gzip:   0.84 kB
+dist/assets/tgaTextureLoader-CqhhocF6.js                  3.40 kB │ gzip:   1.35 kB
+dist/assets/cubemapToSphericalPolynomial-DQLobdjo.js      3.65 kB │ gzip:   1.60 kB
+dist/assets/typeStore-CuqQeP4D.js                         4.87 kB │ gzip:   1.80 kB
+dist/assets/helperFunctions-BH8P-eyq.js                   6.48 kB │ gzip:   2.18 kB
+dist/assets/helperFunctions-gEnZbjN3.js                   6.81 kB │ gzip:   2.31 kB
+dist/assets/dds.pure-CyPDIBuU.js                          6.93 kB │ gzip:   2.54 kB
+dist/assets/vertexColorMixing-HinktY3n.js                10.39 kB │ gzip:   2.14 kB
+dist/assets/vertexColorMixing-CBmtHj8r.js                11.72 kB │ gzip:   2.17 kB
+dist/assets/exrTextureLoader-C86K4-F4.js                 13.14 kB │ gzip:   4.81 kB
+dist/assets/ktxTextureLoader-C5lMybt9.js                 16.40 kB │ gzip:   4.78 kB
+dist/assets/guid-BN1U1Zos.js                             17.72 kB │ gzip:   6.15 kB
+dist/assets/default.vertex-CF_7OiRp.js                   19.62 kB │ gzip:   4.39 kB
+dist/assets/basisTextureLoader-Xdypzq5p.js               27.22 kB │ gzip:   8.16 kB
+dist/assets/envTextureLoader-pSz_G0GG.js                 31.54 kB │ gzip:   8.88 kB
+dist/assets/default.vertex-uAWj3KN-.js                   38.03 kB │ gzip:   6.28 kB
+dist/assets/math.color.pure-DQiG_7Jy.js                  77.34 kB │ gzip:  18.33 kB
+dist/assets/default.fragment-DOpJD8Rt.js                110.44 kB │ gzip:  22.56 kB
+dist/assets/default.fragment-JYy_LTJ1.js                115.22 kB │ gzip:  22.38 kB
+dist/assets/index--mOsM8DA.js                           305.76 kB │ gzip:  95.62 kB
+dist/assets/src-3pUG3QJN.js                           1,084.54 kB │ gzip: 261.57 kB
+
+✓ built in 903ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  843.67 kB │ gzip: 186.30 kB
+
+✓ built in 154ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+
+> @lorcana/api@0.0.0 build /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/worker@0.0.0 build /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 test:bootstrap /workspaces/lorcana-online-tcg
+> node scripts/test-bootstrap.mjs
+
+✔ browser connectivity contract serves readiness and rejects other routes/methods (27.531349ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 105.741308
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+✔ public diagnostics reject private data and malformed service responses (2.39351ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (2.851179ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (3.388904ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.509547ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.846384ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (8.03032ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.266062ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 205.402643
+
+> @lorcana/db@0.0.0 test /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/policy.test.mjs tests/config.test.mjs
+
+✔ credentials are private, distinct and byte-preserved across provisioning retries (2.890187ms)
+✔ tooling fails closed outside the private local container network (0.204329ms)
+✔ unsafe parent directory is rejected before generating any credential file (0.685342ms)
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (0.675601ms)
+✔ migration history must be an unchanged contiguous prefix (0.156862ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (0.696711ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 100.880426
+
+> @lorcana/presentation@0.0.0 test /workspaces/lorcana-online-tcg/packages/presentation
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+BJS - [22:32:38]: Babylon.js v9.29.0 - Null engine
+BJS - [22:32:38]: Babylon.js v9.29.0 - Null engine
+BJS - [22:32:39]: Babylon.js v9.29.0 - Null engine
+✔ synthetic scene renders and releases meshes and engine through repeatable mount/dispose (409.892173ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 592.752166
+
+> @lorcana/vendor-engine@0.0.0 test /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node ../../scripts/engine/test-upstream.mjs && node ../../scripts/engine/test-injection.mjs
+
+Selected 27 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:
+ 98 |       hand: [inkTestCharacter],
+ 99 |       inkwell: 2,
+100 |       deck: 2,
+101 |     });
+102 | 
+103 |     expect(engine.asPlayerOne().playCard(inkTestCharacter)).toEqual(
+                                                                  ^
+error: expect(received).toEqual(expected)
+
+@@ -1,4 +1,5 @@
+- ObjectContaining 
+  {
+-   "errorCode": "INSUFFICIENT_INK",
++   "currentStateID": 0,
++   "error": "Invalid ink-drop payment",
++   "errorCode": "INVALID_INK_DROP_PAYMENT",
+    "success": false,
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:103:61)
+(fail) ink validation > rejects playing a card with insufficient ink [4.65ms]
+113 |       hand: [inkTestCharacter],
+114 |       inkwell: 0,
+115 |       deck: 2,
+116 |     });
+117 | 
+118 |     expect(engine.asPlayerOne().playCard(inkTestCharacter)).toEqual(
+                                                                  ^
+error: expect(received).toEqual(expected)
+
+@@ -1,4 +1,5 @@
+- ObjectContaining 
+  {
+-   "errorCode": "INSUFFICIENT_INK",
++   "currentStateID": 0,
++   "error": "Invalid ink-drop payment",
++   "errorCode": "INVALID_INK_DROP_PAYMENT",
+    "success": false,
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:118:61)
+(fail) ink validation > rejects playing a card with zero ink [5.35ms]
+187 | 
+188 |     // First play succeeds (3 ink spent, 2 remaining)
+189 |     expect(engine.asPlayerOne().playCard(cheapCharacter).success).toBe(true);
+190 | 
+191 |     // Second play should fail (need 5, have 2)
+192 |     expect(engine.asPlayerOne().playCard(inkTestCharacter)).toEqual(
+                                                                  ^
+error: expect(received).toEqual(expected)
+
+@@ -1,4 +1,5 @@
+- ObjectContaining 
+  {
+-   "errorCode": "INSUFFICIENT_INK",
++   "currentStateID": 1,
++   "error": "Invalid ink-drop payment",
++   "errorCode": "INVALID_INK_DROP_PAYMENT",
+    "success": false,
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:192:61)
+(fail) ink validation > rejects playing a second card after ink is spent on the first [7.97ms]
+233 |       deck: 2,
+234 |     });
+235 | 
+236 |     // Explicit standard cost must reject when ink is insufficient,
+237 |     // even though the song could be sung by the singer.
+238 |     expect(engine.asPlayerOne().playCard(songCard, { cost: "standard" })).toEqual(
+                                                                                ^
+error: expect(received).toEqual(expected)
+
+@@ -1,4 +1,5 @@
+- ObjectContaining 
+  {
+-   "errorCode": "INSUFFICIENT_INK",
++   "currentStateID": 0,
++   "error": "Invalid ink-drop payment",
++   "errorCode": "INVALID_INK_DROP_PAYMENT",
+    "success": false,
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:238:75)
+(fail) drag-and-drop ink-only enforcement > rejects playing a song with standard cost when ink is insufficient even if a singer is available [3.37ms]
+588 |       hand: [inkTestCharacter],
+589 |       inkwell: 2,
+590 |       deck: 2,
+591 |     });
+592 | 
+593 |     expect(engine.asPlayerOne().getPlayCardDisabledReason(inkTestCharacter)).toEqual({
+                                                                                   ^
+error: expect(received).toEqual(expected)
+
+@@ -1,6 +1,5 @@
+  {
+-   "code": "INSUFFICIENT_INK",
++   "code": "UNKNOWN",
+    "params": {
+-     "available": 2,
+-     "needed": 5,
++     "validateMoveErrorCode": "INVALID_INK_DROP_PAYMENT",
+    },
+
+- Expected  - 3
++ Received  + 2
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:593:78)
+(fail) getPlayCardDisabledReason > reports INSUFFICIENT_INK with needed/available params [4.51ms]
+653 |       play: [{ card: singerCharacterForReason, isDrying: true }],
+654 |       inkwell: 0,
+655 |       deck: 2,
+656 |     });
+657 | 
+658 |     expect(engine.asPlayerOne().getPlayCardDisabledReason(songCardForReason)).toEqual({
+                                                                                    ^
+error: expect(received).toEqual(expected)
+
+@@ -1,5 +1,5 @@
+  {
+-   "code": "SONG_NO_SINGER",
++   "code": "UNKNOWN",
+    "params": {
+-     "songCost": 4,
++     "validateMoveErrorCode": "INVALID_INK_DROP_PAYMENT",
+    },
+
+- Expected  - 2
++ Received  + 2
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:658:79)
+(fail) getPlayCardDisabledReason > reports SONG_NO_SINGER when a song can't be sung and there's no ink [2.58ms]
+798 |       // Shift is fully playable here (Diablo on board + action in hand) so the
+799 |       // composite method returns null...
+800 |       expect(engine.asPlayerOne().getPlayCardDisabledReason(devotedHeraldLike)).toBeNull();
+801 |       // ...but standard-cost play still needs 3 ink, and the "Play" CTA's
+802 |       // tooltip should say so.
+803 |       expect(engine.asPlayerOne().getStandardPlayDisabledReason(devotedHeraldLike)).toEqual({
+                                                                                          ^
+error: expect(received).toEqual(expected)
+
+@@ -1,6 +1,5 @@
+  {
+-   "code": "INSUFFICIENT_INK",
++   "code": "UNKNOWN",
+    "params": {
+-     "available": 0,
+-     "needed": 3,
++     "validateMoveErrorCode": "INVALID_INK_DROP_PAYMENT",
+    },
+
+- Expected  - 3
++ Received  + 2
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:803:85)
+(fail) getPlayCardDisabledReason > per-category accessors > getStandardPlayDisabledReason returns INSUFFICIENT_INK even when shift is available [2.88ms]
+893 |         deck: 2,
+894 |       });
+895 | 
+896 |       const reason = engine.asPlayerOne().getStandardPlayDisabledReason(expensiveCharacter);
+897 |       // Cost reducer makes 5 → 4. Player has 2. So `needed` should be 4, not 5.
+898 |       expect(reason).toEqual({
+                           ^
+error: expect(received).toEqual(expected)
+
+@@ -1,6 +1,5 @@
+  {
+-   "code": "INSUFFICIENT_INK",
++   "code": "UNKNOWN",
+    "params": {
+-     "available": 2,
+-     "needed": 4,
++     "validateMoveErrorCode": "INVALID_INK_DROP_PAYMENT",
+    },
+
+- Expected  - 3
++ Received  + 2
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:898:22)
+(fail) getPlayCardDisabledReason > per-category accessors > INSUFFICIENT_INK reports the cost-reduction-adjusted needed value, not the printed cost [3.29ms]
+
+ 330 pass
+ 1 skip
+ 8 fail
+ 838 expect() calls
+Ran 339 tests across 27 files. [718.00ms]
+/workspaces/lorcana-online-tcg/vendor/tcg-engines:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/vendor-engine@0.0.0 test: `node ../../scripts/engine/test-upstream.mjs && node ../../scripts/engine/test-injection.mjs`
+Exit status 1
+ ELIFECYCLE  Test failed. See above for more details.
+ ELIFECYCLE  Command failed with exit code 1.

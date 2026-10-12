@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-068",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "361c36426e667c74d4cccd02480277429a7ae1e1b0360e417b6305a0d905c8d3",
+  "started_at": "2026-10-12T22:15:00.995Z",
+  "finished_at": "2026-10-12T22:15:03.808Z",
+  "recorded_at": "2026-10-12T22:15:03.808Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2813,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 case-sensitive temporary metadata correction and all 81 source scenarios",
+  "log_path": "docs/validation/logs/RUN-20261012-068.txt",
+  "log_sha256": "8f8695bd5b5f648d4c7f19345d44507be04a930f953791a031202568161ff20c",
+  "redactions": 0
+}

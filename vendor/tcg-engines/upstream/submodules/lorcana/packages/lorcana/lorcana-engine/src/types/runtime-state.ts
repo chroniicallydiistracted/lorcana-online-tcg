@@ -462,6 +462,7 @@ export interface PendingActionEffectContinuation {
 }
 
 export interface PendingActionResolutionInput {
+  effectInkDropCounters?: number[];
   targets?: CardInstanceId | PlayerId | readonly (CardInstanceId | PlayerId)[];
   /**
    * Structured selections for multi-slot effects. Populated at the move input
@@ -585,6 +586,9 @@ export interface LorcanaCardMeta extends Record<string, unknown> {
 export interface LorcanaG {
   /** Lore totals for each player (win at 20) */
   lore: Record<PlayerId, number>;
+
+  /** CR2.3 counters outside play; absent in older states means zero. Never card instances or ink. */
+  inkDropCounters?: Record<PlayerId, number>;
 
   /**
    * Override lore required to win for specific players.

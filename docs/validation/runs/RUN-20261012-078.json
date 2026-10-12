@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-078",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "24f86a5849453fc5b0b7ab892524a94039f3648632dcee54c7dadfcfe54acfac",
+  "started_at": "2026-10-12T22:27:48.019Z",
+  "finished_at": "2026-10-12T22:27:50.919Z",
+  "recorded_at": "2026-10-12T22:27:50.919Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2900,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 explicit invalid nested selection and skipped payment branch regressions before correction",
+  "log_path": "docs/validation/logs/RUN-20261012-078.txt",
+  "log_sha256": "2d27f3a42b727d399b4952b4c785abafa8ed1a901b062b58fa16c4909657122d",
+  "redactions": 0
+}

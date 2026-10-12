@@ -186,6 +186,9 @@ export function createZoneOperations(
     // Remove from old zone
     const oldEntry = zones.private.cardIndex[cardId];
     const fromZone = oldEntry?.zoneKey;
+    const oldIncarnation = oldEntry?.zoneIncarnation ?? 0;
+    const zoneIncarnation = oldIncarnation + (fromZone !== zoneId ? 1 : 0);
+    if (!Number.isSafeInteger(zoneIncarnation) || zoneIncarnation < 0) throw new Error("Invalid zone incarnation");
     if (oldEntry) {
       const oldZoneCards = zones.private.zoneCards[oldEntry.zoneKey];
       if (oldZoneCards) {
@@ -217,6 +220,7 @@ export function createZoneOperations(
 
     zones.private.cardIndex[cardId] = {
       zoneKey: zoneId,
+      zoneIncarnation,
       index: index ?? newZoneCards.length - 1,
       ownerID: ownerId,
       controllerID: controllerId,

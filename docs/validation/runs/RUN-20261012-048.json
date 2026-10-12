@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-048",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/scenarios.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "d4f9c7ef9da09df2f6642ca63fcdeba55162baa2dbc868960a77b78c15a8f213",
+  "started_at": "2026-10-12T20:11:46.968Z",
+  "finished_at": "2026-10-12T20:11:47.084Z",
+  "recorded_at": "2026-10-12T20:11:47.084Z",
+  "time_precision": "exact",
+  "elapsed_ms": 116,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 red checkpoint: actual compiled Node scenario harness is absent",
+  "log_path": "docs/validation/logs/RUN-20261012-048.txt",
+  "log_sha256": "bb075c006c2ad0832f7455f44975b4dfd1dfdd82815e66a91420fb7694783786",
+  "redactions": 0
+}

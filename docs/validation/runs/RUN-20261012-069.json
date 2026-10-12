@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-069",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "333845ee097527e366dc235e2053d0cab1a045df16684629c635139df90cff34",
+  "started_at": "2026-10-12T22:15:57.615Z",
+  "finished_at": "2026-10-12T22:16:00.195Z",
+  "recorded_at": "2026-10-12T22:16:00.195Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2580,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "RULE-04 temporary keyword loss correction and 81 sourced scenarios",
+  "log_path": "docs/validation/logs/RUN-20261012-069.txt",
+  "log_sha256": "356ab21a81937cb5df8c44e4794f5a351a9599e090670b7b15eb579aa1afdc86",
+  "redactions": 0
+}

@@ -20,7 +20,7 @@
     "typecheck": "pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck",
     "lint": "eslint . && pnpm boundaries",
     "boundaries": "node scripts/check-boundaries.mjs",
-    "test": "pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci && pnpm test:rules-inventory && pnpm test:engine-tooling",
+    "test": "pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci && pnpm test:rules-inventory && pnpm test:rules && pnpm test:engine-tooling",
     "test:e2e:smoke": "pnpm --filter @lorcana/web test:e2e",
     "verify:foundation": "pnpm verify && pnpm typecheck && pnpm lint && pnpm test",
     "docs:check": "node scripts/check-documentation.mjs",
@@ -40,14 +40,17 @@
     "rules:check": "node scripts/rules/check-inventory.mjs",
     "rules:verify-bytes": "node scripts/rules/check-inventory.mjs --bytes",
     "rules:reproduce": "node scripts/rules/build-inventory.mjs --check",
-    "test:rules-inventory": "node --test tests/rules/*.test.mjs",
+    "test:rules-inventory": "node --test tests/rules/inventory.test.mjs tests/rules/check-inventory.test.mjs",
     "engine:check": "node scripts/engine/vendor.mjs",
     "engine:setup": "node scripts/engine/bun.mjs",
     "engine:test-upstream": "node scripts/engine/test-upstream.mjs",
     "test:engine-browser": "pnpm --filter @lorcana/engine-lab test:browser",
     "test:engine-tooling": "node --test tests/engine/*.test.mjs",
     "engine:test-injection": "node scripts/engine/test-injection.mjs",
-    "engine:check-randomness": "node scripts/engine/check-randomness.mjs"
+    "engine:check-randomness": "node scripts/engine/check-randomness.mjs",
+    "test:rules": "node --test tests/rules/scenarios.test.mjs tests/rules/certification.test.mjs",
+    "rules:check-scenarios": "node scripts/rules/certification.mjs",
+    "rules:verify-scenario-bytes": "node scripts/rules/certification.mjs --bytes"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

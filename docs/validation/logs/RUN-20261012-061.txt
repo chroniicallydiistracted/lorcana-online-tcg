@@ -1,0 +1,40 @@
+✖ RULE-04: sourced synthetic quest runs under the compiled Node runtime (52.02559ms)
+✖ RULE-04 representative sourced runtime scenarios (37.220326ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 301.976213
+
+✖ failing tests:
+
+test at tests/rules/scenarios.test.mjs:8:1
+✖ RULE-04: sourced synthetic quest runs under the compiled Node runtime (52.02559ms)
+  Error: Extra source: /workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/be-chosen.ts
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:74:79)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at verifyVendor (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:77:3)
+
+test at tests/rules/scenarios.test.mjs:49:1
+✖ RULE-04 representative sourced runtime scenarios (37.220326ms)
+  Error: Extra source: /workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/effects/be-chosen.ts
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:74:79)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at walk (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:73:32)
+      at verifyVendor (file:///workspaces/lorcana-online-tcg/scripts/engine/closure.mjs:77:3)

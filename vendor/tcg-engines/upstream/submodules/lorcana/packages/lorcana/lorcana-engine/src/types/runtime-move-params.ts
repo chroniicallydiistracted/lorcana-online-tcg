@@ -96,7 +96,7 @@ export interface LorcanaRuntimeMoveParams {
   putCardIntoInkwell: { cardId: CardInstanceId };
 
   // ===== Core Game Moves =====
-  playCard: { cardId: CardInstanceId } & PlayCardCost & PlayCardActionResolutionInput;
+  playCard: { cardId: CardInstanceId; effectInkDropCounters?: number[]; inkDropCounters?: number } & PlayCardCost & PlayCardActionResolutionInput;
   quest: { cardId: CardInstanceId };
   questWithAll: Record<string, never>;
   challenge: { attackerId: CardInstanceId; defenderId: CardInstanceId };
@@ -109,11 +109,13 @@ export interface LorcanaRuntimeMoveParams {
   moveCharacterToLocation: {
     characterId: CardInstanceId;
     locationId: CardInstanceId;
+    effectInkDropCounters?: number[]; inkDropCounters?: number;
   };
 
   // ===== Ability Moves =====
   activateAbility: {
     cardId: CardInstanceId;
+    effectInkDropCounters?: number[]; inkDropCounters?: number;
     abilityIndex?: number;
     abilityText?: string;
     targets?: TargetInput;

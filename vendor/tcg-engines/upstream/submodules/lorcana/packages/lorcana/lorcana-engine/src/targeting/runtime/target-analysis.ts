@@ -1836,7 +1836,7 @@ export function analyzeEffectTargets(
     minSelections: explicitDescriptorCount > 0 ? Math.max(0, minSelections) : 0,
     maxSelections:
       explicitDescriptorCount > 0
-        ? Math.max(1, Math.min(cardCandidates.length + playerCandidates.length, maxSelections))
+        ? Math.max(1, chosenCardTargetDescriptors.length > 1 && !chosenCardTargetDescriptors.some(d => d.requireDifferentTargets === true) ? maxSelections : Math.min(cardCandidates.length + playerCandidates.length, maxSelections))
         : 0,
     declaredMaxSelections: explicitDescriptorCount > 0 ? Math.max(1, maxSelections) : 0,
     requiresExplicitSelection: explicitDescriptorCount > 0,
@@ -1888,6 +1888,10 @@ export function validateAndNormalizeTargetSelection(
   const cardIds: CardInstanceId[] = [];
   const playerIds: PlayerId[] = [];
   const seen = new Set<string>();
+  const slotted = isSlottedTargetInput(targets);
+  if (slotted && Object.values(targets).some(slot => Array.isArray(slot) && new Set(slot).size !== slot.length)) {
+    return { valid: false, error: "Targets within one choice must be unique", errorCode: "DUPLICATE_TARGETS" };
+  }
 
   for (const target of rawTargets) {
     if (typeof target !== "string" || target.length === 0) {

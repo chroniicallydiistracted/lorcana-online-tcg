@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-051",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/rules/scenarios.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "82849f4fd0804cd474e8d7afcd5e935b6ac18700",
+  "source_fingerprint": "12fdaf29f108baad227e2eb4720723b7fe999cac43a98da7c0a6ecd22595333b",
+  "started_at": "2026-10-12T20:18:52.592Z",
+  "finished_at": "2026-10-12T20:18:55.325Z",
+  "recorded_at": "2026-10-12T20:18:55.325Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2734,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RULE-04 initial 43 sourced current-rules scenarios through compiled Node runtime, preserving failures",
+  "log_path": "docs/validation/logs/RUN-20261012-051.txt",
+  "log_sha256": "b9b63875603da0ecab673e4e470b9b0f14ae41fb5d0b4c2080e32e329b6f19ac",
+  "redactions": 0
+}

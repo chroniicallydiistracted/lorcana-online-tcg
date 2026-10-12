@@ -793,6 +793,8 @@ function resolvePayCostEffect(
     {
       framework: ctx.framework,
       cards: ctx.cards,
+      G: ctx.G,
+      args: { inkDropCounters: resolutionInput.effectInkDropCounters?.[0] },
       playerId: actorId,
     },
     {
@@ -800,6 +802,7 @@ function resolvePayCostEffect(
       exertCards: cost.exert ? [{ cardId: cardPlayed.cardId, subject: "source" }] : undefined,
     },
   );
+  if (!costValidation.valid && costValidation.errorCode === "INVALID_INK_DROP_PAYMENT") throw new Error("Invalid selected nested counter payment");
   if (
     !costValidation.valid ||
     !canPayMillTopDeckCost(ctx, actorId, millTopDeckAmount) ||
@@ -832,6 +835,8 @@ function resolvePayCostEffect(
     {
       framework: ctx.framework,
       cards: ctx.cards,
+      G: ctx.G,
+      args: { inkDropCounters: resolutionInput.effectInkDropCounters?.[0] },
       playerId: actorId,
     },
     {
@@ -842,6 +847,7 @@ function resolvePayCostEffect(
   if (!payResult.success) {
     return RESOLVED_ACTION_EFFECT;
   }
+  resolutionInput.effectInkDropCounters?.shift();
   if (!payMillTopDeckCost(ctx, actorId, millTopDeckAmount)) {
     return RESOLVED_ACTION_EFFECT;
   }
@@ -1356,6 +1362,7 @@ export const ACTION_EFFECT_RESOLVER_TYPES = [
   "draw",
   "optional",
   "gain-lore",
+  "gain-ink-drop-counters",
   "restriction",
   "banish",
   "deal-damage",
@@ -2380,6 +2387,24 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
       effect as DrawUntilHandSizeEffect,
       resolutionInput,
     );
+    return RESOLVED_ACTION_EFFECT;
+  },
+
+  "gain-ink-drop-counters": (ctx, cardPlayed, effect, resolutionInput) => {
+    const resolved = resolveEffectExecutionContext(ctx, cardPlayed, effect, resolutionInput);
+    const amount = resolveAggregateFieldAmount(resolved.resolvedDynamic.amount);
+    if (!Number.isSafeInteger(amount) || amount < 0) {
+      throw new Error("Invalid ink-drop counter generation");
+    }
+    const recipients = resolveTargetPlayerIdsForEffect(ctx, cardPlayed, effect, resolutionInput);
+    if (!recipients?.length) throw new Error("Invalid ink-drop recipient");
+    ctx.G.inkDropCounters ??= {};
+    for (const playerId of recipients) {
+      const current = ctx.G.inkDropCounters[playerId] ?? 0;
+      const next = current + amount;
+      if (!Number.isSafeInteger(current) || current < 0 || !Number.isSafeInteger(next)) throw new Error("Invalid ink-drop counter state");
+      ctx.G.inkDropCounters[playerId] = next;
+    }
     return RESOLVED_ACTION_EFFECT;
   },
 
@@ -3559,6 +3584,8 @@ function isEffectCurrentlyLegal(
       {
         framework: ctx.framework,
         cards: ctx.cards,
+        G: ctx.G,
+        args: { inkDropCounters: resolutionInput.effectInkDropCounters?.[0] },
         playerId: actorId,
       },
       {
@@ -3812,6 +3839,7 @@ export function resolveActionEffect(
   recordVanishChosenTargets({
     ctx,
     effect,
+    cardPlayed,
     resolutionInput: effectiveResolutionInput,
     chooserId: getCurrentActionActorId(ctx, cardPlayed),
   });

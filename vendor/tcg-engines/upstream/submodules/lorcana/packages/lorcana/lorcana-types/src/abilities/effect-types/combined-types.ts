@@ -104,6 +104,12 @@ import type { ScryEffect } from "./scry-effects";
 /**
  * All possible effects
  */
+export interface GainInkDropCountersEffect {
+  type: "gain-ink-drop-counters";
+  amount: AmountExpr;
+  target: PlayerTarget;
+}
+
 export type Effect =
   // Draw/Discard
   | DrawEffect
@@ -117,6 +123,7 @@ export type Effect =
   | MoveDamageEffect
   // Lore
   | GainLoreEffect
+  | GainInkDropCountersEffect
   | LoseLoreEffect
   // Card State
   | ExertEffect

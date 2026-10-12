@@ -26,6 +26,7 @@ import type {
  * See `packages/lorcana/lorcana-engine/AGENTS.md` → "How to add a condition".
  */
 export const CONDITION_VARIANT_TYPES = [
+  "source-zone-incarnation",
   "and",
   "at-location",
   "banished-in-challenge-this-turn",
@@ -925,6 +926,11 @@ export function evaluateCondition(
   }
 
   switch (condition.type) {
+    case "source-zone-incarnation": {
+      if (!ctx.sourceCardId) return false;
+      const entry = ctx.framework.state._zonesPrivate?.cardIndex[ctx.sourceCardId];
+      return Boolean(entry?.zoneKey.startsWith("play:") && (entry.zoneIncarnation ?? 0) === condition.incarnation);
+    }
     case "and":
       return condition.conditions.every((sub) => evaluateCondition(sub, ctx));
     case "or":
