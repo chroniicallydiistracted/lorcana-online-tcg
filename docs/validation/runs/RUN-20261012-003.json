@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-003",
+  "category": "static",
+  "command": [
+    "node",
+    "--test",
+    "tests/engine/randomness.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "8aac749310d223bd3bc45e29f81a93d6d79a32f1ca6b75094fc1c7f5d545c440",
+  "started_at": "2026-10-12T02:24:34.095Z",
+  "finished_at": "2026-10-12T02:24:34.298Z",
+  "recorded_at": "2026-10-12T02:24:34.298Z",
+  "time_precision": "exact",
+  "elapsed_ms": 203,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: whole selected upstream source still has ambient shuffle/identifier/randomness fallbacks",
+  "log_path": "docs/validation/logs/RUN-20261012-003.txt",
+  "log_sha256": "a8352d2d702755afeb69434e6f3218b614cc5c70a66986a469ec5abb4b672c03",
+  "redactions": 0
+}

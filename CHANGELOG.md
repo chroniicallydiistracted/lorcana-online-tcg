@@ -2,6 +2,154 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261012-001 — RULE-03 secure per-match randomness and private deterministic replay
+
+- Status: finalized
+- Actor: Codex architect/developer/QA
+- Recorded (UTC): 2026-10-12T04:57:35.971Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: f61aad853e80135827ec45ba815f9da79c9eebb0
+- Tasks: RULE-03, DOC-01, DOC-02
+- Features: F-ENGINE, F-BOUNDARIES, F-CI, F-RELEASE, F-DOCS
+- Requirements: R01.018, R15.009, R28.008, R29.003, R29.004, R29.005, R32.011
+
+### Changes
+
+- **review:** Read RULE-03 architecture/backlog/audit/source contracts; actual main f61aad8 clean at intake, Director reports RULE-02 audited/merged/passing. RULE-03 baseline captured in RUN001.
+- **revision:** Director restricts completed-match seed and full private replay access to participants/authorized auditors. No user-facing delivery or public disclosure in this task.
+- **edit:** Recorded disclosure decision under D10; initial draft preparation refused existing D08, preserving D08/D09 and all prior Director choices.
+- **implementation:** Add server-only256-bit crypto seed/indexed HMAC source, per-match pure kernel injection and captured-clock private replay with trusted digest;28 reproduced fork patches,347 files,27 unchanged suites. Verification in progress.
+- **fix:** Retain RUN004 compiled raw-suite-legacy guard failure; compile-time compatibility activation removed from product bytes. RUN005 pure kernel passed but TypeScript6 requires explicit Node types; owning tsconfig corrected. A descriptor newline edit was refused before upstream writes, then corrected/reproduced.
+- **function:** Implement createQualificationMatch without caller seed; indexed HMAC provider, private completed export/reconstruction, framed compiled executable identity, bounded validation/attempt/outcome/state journal and rollback/disposal.
+- **test:** Preserve all red/failed checkpoints and source-matched corrected tests, including entropy failure, integer bias, immutable completion, journal rollback, semantic tamper, post-shuffle retry, built-kernel mutation and partition identity, crypto/global/module aliases and browser/private RPC rejection.
+- **fix:** Independent review corrected compiled-kernel identity omission/unframed concatenation and ambient entropy/server loader bypasses. RUN015/016 retained harmless card/performance guard false positives; RUN017 invalid duplicate-ID fixture corrected. No inherited upstream assertion was changed.
+- **documentation:** Update all relevant current package/runbook/ADR/qualification/task/requirement/feature/index documents; append source-specific continuations without rewriting sealed evidence. Preserve548/33/20, original planning/provenance and BOOT-04/D07 choices; record D10 restricted private replay disclosure.
+- **review:** Auxiliary process-list inspection failed because ps is absent from the existing image; no manual tool install/change. Actual final process/listener proof uses Linux proc files. Unknown exploratory execution times remain unknown.
+- **revision:** Director explicitly chooses to leave the environment unchanged and retain RULE-03 as implemented with isolated CI timing qualification pending. No Windows/WSL/Docker/time/driver/threshold change; no passing CI receipt/artifact inferred from child exit0.
+- **review:** Fresh independent read-only reviewer confirms no unresolved Critical/Important source or semantic-doc findings at final fingerprint; ad-hoc independent HMAC70/vector/identity/rollback/guard/pin probes supplement retained receipts. Declines future official/auth/privacy/durable/device/production scope; explicit CI timing deferral honored.
+- **test:** Final source2e6c4734: frozen/full141 project checks+338 unchanged upstream passes/1 inherited skip+2 owned Bun; exact pin28patches; six Chromium foundation scenarios/two workers; clean source and canonical1309 live-equal files; private/history/scope/log316/actual cleanup passed. RUN028/029 timing-rejected despite complete child stages; no artifact published; final semantic/static033 passed.
+- **revision:** Final documentation update was not executed when automatic approval review hit a usage limit. Director requested continuation; resumed inspection confirms unchanged source/branch/HEAD and preserved containers. No approval check was bypassed, no environment/clock change, and all failed CI evidence is retained.
+- **fix:** RUN034 preserves final-gate failure: native reported disposition requires an actual manual-device run. Correct non-recorder independent review/WSL host observations to historical attribution, without inventing device/process timing or changing schema/gates; source remains2e6c4734.
+
+### Verification
+
+- **passed:** RULE-03 intake: actual pinned toolchain/static workspace/bootstrap/authenticated PostgreSQL baseline ([evidence](docs/validation/runs/RUN-20261012-001.json))
+- **failed:** RED: indexed secret server stream and completed deterministic replay do not exist yet ([evidence](docs/validation/runs/RUN-20261012-002.json))
+- **failed:** RED: whole selected upstream source still has ambient shuffle/identifier/randomness fallbacks ([evidence](docs/validation/runs/RUN-20261012-003.json))
+- **failed:** First secure RNG integration: frozen graph, pure kernel/Node adapter builds, actual secret/replay tests and unchanged upstream suites ([evidence](docs/validation/runs/RUN-20261012-004.json))
+- **failed:** Corrected production compatibility removal, kernel/Node secure RNG/replay and unchanged upstream regression qualification ([evidence](docs/validation/runs/RUN-20261012-005.json))
+- **passed:** Explicit Node types, secure source/replay execution, whole-source entropy guards and unchanged upstream suites ([evidence](docs/validation/runs/RUN-20261012-006.json))
+- **failed:** RED: completed private archive must remain fixed after late submissions; semantic tampering must reject ([evidence](docs/validation/runs/RUN-20261012-007.json))
+- **passed:** Completed archive freeze, speculative journal rollback, live secrecy and strict semantic replay reconstruction tests ([evidence](docs/validation/runs/RUN-20261012-008.json))
+- **failed:** RED: AST entropy/import-alias guard is missing; direct-token scanning is insufficient ([evidence](docs/validation/runs/RUN-20261012-009.json))
+- **failed:** RED: server kernel permission must not authorize a browser resolver edge ([evidence](docs/validation/runs/RUN-20261012-010.json))
+- **failed:** AST entropy/alias and browser isolation fixes, controlled clock/provider tests, entropy failure and actual Lab build regressions ([evidence](docs/validation/runs/RUN-20261012-011.json))
+- **passed:** Correct source-kind parsing: entropy/alias guards, captured clocks, secure replay, browser/server boundaries and Lab regressions ([evidence](docs/validation/runs/RUN-20261012-012.json))
+- **failed:** RED review regressions: compiled kernel identity and alternate ambient entropy sources ([evidence](docs/validation/runs/RUN-20261012-013.json))
+- **failed:** RED review regression: aliased CommonJS server loaders bypass engine facade ([evidence](docs/validation/runs/RUN-20261012-014.json))
+- **failed:** Review corrections: compiled identity, entropy and loader guards, actual post-draw rollback and private replay ([evidence](docs/validation/runs/RUN-20261012-015.json))
+- **failed:** Corrected guard preserves card require methods and performance-only global aliases; replay/security regressions ([evidence](docs/validation/runs/RUN-20261012-016.json))
+- **failed:** Review correction recheck with static safe telemetry key, actual identity/stream rollback and lint ([evidence](docs/validation/runs/RUN-20261012-017.json))
+- **passed:** Correct unique synthetic identifiers for post-draw rollback regression; review corrections and lint ([evidence](docs/validation/runs/RUN-20261012-018.json))
+- **failed:** RED follow-up guard regression: assigned and forward-declared global aliases ([evidence](docs/validation/runs/RUN-20261012-019.json))
+- **failed:** RED exact executable identity framing regression ([evidence](docs/validation/runs/RUN-20261012-020.json))
+- **failed:** RED standard CommonJS module.require member bypass regression ([evidence](docs/validation/runs/RUN-20261012-021.json))
+- **passed:** Final review regression checks: framed actual identity, fixed-point global aliases, CommonJS members and post-draw rollback ([evidence](docs/validation/runs/RUN-20261012-022.json))
+- **passed:** Independent engine roots: modified server, Lab, kernel and provenance rejected despite outer rehash ([evidence](docs/validation/runs/RUN-20261012-023.json))
+- **passed:** Final frozen complete foundation/build/type/lint/Node/upstream/injection/governance and preserved doctor/database ([evidence](docs/validation/runs/RUN-20261012-024.json))
+- **passed:** Exact pinned upstream payload, 28 patch originals/descriptors, notices and lock reproduction ([evidence](docs/validation/runs/RUN-20261012-025.json))
+- **passed:** Actual Linux Chromium foundation six scenarios plus two synthetic workers; private replay/stream RPC rejected ([evidence](docs/validation/runs/RUN-20261012-026.json))
+- **passed:** Final source-only frozen install/full foundation, no private files/Git/build input; verified tooling cache may be reused ([evidence](docs/validation/runs/RUN-20261012-027.json))
+- **failed:** Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts ([evidence](docs/validation/runs/RUN-20261012-028.json))
+- **failed:** Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts ([evidence](docs/validation/runs/RUN-20261012-029.json))
+- **passed:** Read-only three-clock diagnostic after two isolated timestamp rejections; no time or policy changes ([evidence](docs/validation/runs/RUN-20261012-030.json))
+- **passed:** Canonical staged Git archive equals live files; frozen install and full foundation; retained exact verification program ([evidence](docs/validation/runs/RUN-20261012-031.json))
+- **passed:** Final actual private/source/history/log/scope/archive/listener preservation; exact checker retained in command arguments ([evidence](docs/validation/runs/RUN-20261012-032.json))
+- **passed:** Final semantic-doc/source/negative import/offline engine and rules/JSON/JS gate; CI timing remains explicitly deferred ([evidence](docs/validation/runs/RUN-20261012-033.json))
+- **failed:** Resumed sealed static/docs/pinned doctor/read-only PG/history/private and all staged-live bytes; CI timing deferred ([evidence](docs/validation/runs/RUN-20261012-034.json))
+- **historical:** Fresh independent read-only assessment: no unresolved Critical/Important source/core/doc finding; no mutation or broader acceptance; CI timing deferred by Director. Attributed non-recorder observation, recorded during this task; detailed exploratory execution times unknown, no passing-run or device verdict. ([evidence](docs/reviews/2026-10-12-rule-03-closure.md))
+- **historical:** Read-only attributed WSL Docker inspection: both CI project resources/image tags absent; original healthy PG18 volume/private network and Linux source bind preserved. Attributed non-recorder observation, recorded during this task; detailed exploratory execution times unknown, no passing-run or device verdict. ([evidence](docs/validation/rule-03-host-closure.json))
+- **passed:** Corrected sealed final docs/static/pinned doctor/read-only original PostgreSQL, all1318 staged/live bytes and full-history/private scan; source unchanged, CI timing deferred. ([evidence](docs/validation/runs/RUN-20261012-035.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [README.md](README.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Schema1 change/run/time/redaction/sealing and manual-device conventions unchanged; new RULE-03 commands are captured through the same native recorder.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Intake/semantic review, matched evidence, canonical bytes, local gates and authorization remain valid; RULE-03 uses them without a new integration/deployment privilege.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/README.md](docs/README.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/adr/0003-documentation-evidence.md](docs/adr/0003-documentation-evidence.md) — No governance schema or recorder implementation change; existing UTC/monotonic/digest/seal rules still govern private RNG work.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — Private RNG/journal is in-process only; no SQL/role/grant change, DB connection or production recovery claim.
+- **updated:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/adr/0007-hosting-provider-baseline.md](docs/adr/0007-hosting-provider-baseline.md) — OVHcloud/Cloudflare/$25/region/recovery selection unchanged; no infrastructure provision/deploy/purchase follows from RNG qualification.
+- **updated:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/adr/0010-secure-randomness-replay.md](docs/adr/0010-secure-randomness-replay.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Public revision1 shapes and bounded transport remain unchanged; private replay/seed types are server-only and not new wire frames.
+- **updated:** [docs/contracts/release.md](docs/contracts/release.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/features.json](docs/features.json) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — Completed scoped database plan and its source-specific receipts retained; RULE-03 does not implement durable match persistence.
+- **updated:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/plans/2026-10-07-boot-05-contracts.md](docs/plans/2026-10-07-boot-05-contracts.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/plans/2026-10-12-rule-03-randomness-replay.md](docs/plans/2026-10-12-rule-03-randomness-replay.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Director D07/no-charge/provenance/notice/takedown obligations preserved; this task uses synthetic fixtures and imports no official assets.
+- **updated:** [docs/reviews/2026-10-12-rule-03-closure.md](docs/reviews/2026-10-12-rule-03-closure.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/rules/README.md](docs/rules/README.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — Supplemented dated source gaps/URLs remain unchanged; CR2.3/set14 admission cannot follow from RNG proofs.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — Dated acquisition inputs/URLs remain unchanged; source inventories not reacquired or promoted to gameplay certification.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — No provisioning/migration operation added; original restricted targets/data and disposable proof workflow retained.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/schemas/change.schema.json](docs/schemas/change.schema.json) — Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid.
+- **reviewed_unchanged:** [docs/schemas/documentation-map.schema.json](docs/schemas/documentation-map.schema.json) — Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid.
+- **reviewed_unchanged:** [docs/schemas/features.schema.json](docs/schemas/features.schema.json) — Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid.
+- **reviewed_unchanged:** [docs/schemas/run.schema.json](docs/schemas/run.schema.json) — Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid.
+- **reviewed_unchanged:** [docs/schemas/state.schema.json](docs/schemas/state.schema.json) — Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Schema1 template still records complete scope/file/doc/evidence/time fields; no private seeds or replay payloads belong in records.
+- **reviewed_unchanged:** [docs/templates/handoff.md](docs/templates/handoff.md) — Existing nine intake/behavior/docs/evidence/resource/gate/next-action sections remain sufficient; current RULE-03 handoff uses them.
+- **updated:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/rule-03-canonical-check.mjs.txt](docs/validation/rule-03-canonical-check.mjs.txt) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/rule-03-host-closure.json](docs/validation/rule-03-host-closure.json) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — X01–X07 retained with DOC-01/02 universal obligations; no scope expansion/removal in this task.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **reviewed_unchanged:** [infra/README.md](infra/README.md) — Reviewed existing source-qualified CI/task contracts; no changed implementation claim is promoted without current matched evidence.
+- **updated:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+- **updated:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261012-001.json).
+
+### Limits and next actions
+
+- RUN028/029 complete every isolated CI child stage but remain failed clock_changed; no result/artifact published. Director explicitly leaves environment unchanged and retains this timing qualification pending.
+- Internal synthetic RNG/reconstruction only; RULE-04 official rules/cards, PLAY-01 durability, PLAY-02 viewer/wire privacy and AUTH/REPLAY recipient delivery remain unimplemented gates. Ordinary Lab/Collection/rewards/private/official play stays blocked.
+- No NIST DRBG/FIPS/statistical certification, authentic signature, whole-program secrecy, durable restore, full upstream strict-type/catalog or all-card-test claim.
+- Windows/GPU/touch/ARM64/load/restore/production and fresh hosted RULE-03/required-check observations not performed; original548/33/20 acceptance/device values unchanged.
+- Director audit of the local RULE-03 implementation; current-source isolated CI timing remains pending until a later authorized stable-environment run.
+- RULE-04: sourced representative current-rules scenarios and per-card certification, including October16 CR2.3/October23 set14 and retained RULE-01 source gaps.
+- Keep PLAY/AUTH/REPLAY/economic/ordinary-play gates and D10 participant/auditor-only disclosure before delivery; preserve private data and all prior evidence.
+
 ## CHG-20261011-003 — Independent audit of RULE-02 and Director-authorized integration into main
 
 - Status: finalized

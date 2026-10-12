@@ -1,0 +1,25 @@
+✖ browser resolver cannot treat a server adapter as a permitted browser kernel importer (194.410777ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 239.292092
+
+✖ failing tests:
+
+test at tests/foundation/boundaries.test.mjs:70:1
+✖ browser resolver cannot treat a server adapter as a permitted browser kernel importer (194.410777ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/foundation/boundaries.test.mjs:72:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Forbidden browser import/,
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -1,3 +1,4 @@
+import { qualificationClock } from "../core/runtime/match-runtime.random-apis";
 import {
   buildEngineProjectionSnapshot,
   type EngineBoardProjection,
@@ -901,7 +902,7 @@ export function projectLorcanaBoardView(
     status: state.ctx.status.gameEnded ? "finished" : "playing",
     winner: state.ctx.status.winner ?? null,
     reason: state.ctx.status.reason ?? null,
-    timerView: projectTimerView(state, projectionCtx?.serverTimestamp ?? Date.now()),
+    timerView: projectTimerView(state, projectionCtx?.serverTimestamp ?? qualificationClock()),
     activeEffects: projection.activeEffects,
     pendingEffects: projection.pendingEffects
       .filter((pendingEffect) => pendingEffect.source !== "priority")

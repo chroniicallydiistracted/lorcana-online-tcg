@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-004",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';const calls=[['install','--frozen-lockfile'],['--filter','@lorcana/vendor-engine','build'],['--filter','@lorcana/engine-adapter','build'],['--filter','@lorcana/engine-adapter','test'],['test:engine-tooling'],['engine:test-upstream']];for(const args of calls){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0||r.signal||r.error)process.exit(1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "c0d9fe8a2181ef09dd30702213caa919c49fc942b61e0c8eca8c4e9c22cd7147",
+  "started_at": "2026-10-12T02:39:40.735Z",
+  "finished_at": "2026-10-12T02:39:43.180Z",
+  "recorded_at": "2026-10-12T02:39:43.180Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2445,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "First secure RNG integration: frozen graph, pure kernel/Node adapter builds, actual secret/replay tests and unchanged upstream suites",
+  "log_path": "docs/validation/logs/RUN-20261012-004.txt",
+  "log_sha256": "38c53c9e6e58933a6b16cc29af79cf7bd76817da9b2764b345137d9ea331a0b6",
+  "redactions": 0
+}

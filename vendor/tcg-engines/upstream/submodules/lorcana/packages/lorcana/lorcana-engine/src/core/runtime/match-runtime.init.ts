@@ -1,3 +1,5 @@
+import { qualificationClock } from "./match-runtime.random-apis";
+import type { Draft } from "mutative";
 /**
  * MatchRuntime Initialization
  *
@@ -57,6 +59,13 @@ export function initializeMatchState(ctx: MatchInitContext): {
     choosingFirstPlayer,
     players,
   });
+  if (!choosingFirstPlayer && players.length) {
+    const random = createRandomAPIForDraft({ ctx: tcgCtx } as Draft<MatchState>, ctx.config.randomSource);
+    const chooser = players[random.integer(players.length)].id;
+    tcgCtx.status.choosingFirstPlayer = chooser;
+    tcgCtx.priority.holder = chooser;
+    tcgCtx.priority.windowOpen = true;
+  }
 
   if (ctx.config.zones) {
     const zoneRegistry = buildZoneRegistry(
@@ -72,14 +81,14 @@ export function initializeMatchState(ctx: MatchInitContext): {
 
   // Set initial players in time control
   if (tcgCtx.time.mode !== "none") {
-    initializeTimeControlPlayers(tcgCtx.time, players, tcgCtx.time.config);
+    initializeTimeControlPlayers(tcgCtx.time, players, tcgCtx.time.config, ctx.config.now ?? qualificationClock);
 
     // Start the clock immediately for the player choosing first.
     // Pre-game decisions (choosing first player, mulliganing) should tick the clock.
-    if (choosingFirstPlayer) {
+    if (tcgCtx.status.choosingFirstPlayer) {
       const time = tcgCtx.time as ChessClockContext | PriorityClockContext | DynamicClockContext;
-      time.activePlayerID = choosingFirstPlayer;
-      time.startedAtMs = Date.now();
+      time.activePlayerID = tcgCtx.status.choosingFirstPlayer;
+      time.startedAtMs = (ctx.config.now ?? qualificationClock)();
       time.running = true;
       time.pausedReason = undefined;
     }
@@ -95,7 +104,7 @@ export function initializeMatchState(ctx: MatchInitContext): {
       ctx.config.boardSetup!(draft, {
         players,
         staticResources,
-        random: createRandomAPIForDraft(draft),
+        random: createRandomAPIForDraft(draft, ctx.config.randomSource),
       });
     });
   }
@@ -118,6 +127,7 @@ function initializeTimeControlPlayers(
   timeContext: { mode: string; players: Record<string, unknown>; config: unknown },
   players: Player[],
   config: unknown,
+  now: () => number,
 ): void {
   if (timeContext.mode === "chess") {
     const chessConfig = config as { initialReserveMs: number };
@@ -126,7 +136,7 @@ function initializeTimeControlPlayers(
         reserveMsRemaining: chessConfig.initialReserveMs,
         totalConsumedMs: 0,
         movesMade: 0,
-        lastUpdatedAtMs: Date.now(),
+        lastUpdatedAtMs: now(),
         timeoutCount: 0,
         isInNegativeTime: false,
       };
@@ -141,7 +151,7 @@ function initializeTimeControlPlayers(
         movesMade: 0,
         moveBonusMsGranted: 0,
         windowTimeouts: 0,
-        lastUpdatedAtMs: Date.now(),
+        lastUpdatedAtMs: now(),
       };
     }
   } else if (timeContext.mode === "dynamic") {
@@ -151,7 +161,7 @@ function initializeTimeControlPlayers(
         reserveMsRemaining: dynamicConfig.initialReserveMs,
         totalConsumedMs: 0,
         movesMade: 0,
-        lastUpdatedAtMs: Date.now(),
+        lastUpdatedAtMs: now(),
         timeoutCount: 0,
         isInNegativeTime: false,
         actionBonusMsGranted: 0,

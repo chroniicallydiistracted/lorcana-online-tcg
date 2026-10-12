@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-006",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['--filter','@lorcana/engine-adapter','build'],['--filter','@lorcana/engine-adapter','test'],['test:engine-tooling'],['engine:test-upstream']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0||r.signal||r.error)process.exit(1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "7338b21c1dab028dd36f9956935f5b93f02b2c0648fbe3d4cb60e8730f4cc83c",
+  "started_at": "2026-10-12T02:49:33.620Z",
+  "finished_at": "2026-10-12T02:49:38.452Z",
+  "recorded_at": "2026-10-12T02:49:38.452Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4832,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Explicit Node types, secure source/replay execution, whole-source entropy guards and unchanged upstream suites",
+  "log_path": "docs/validation/logs/RUN-20261012-006.txt",
+  "log_sha256": "7db4951dcfa9049c61d5c22f388fe4a76e4ebdb09aabc7154a7d3a0a387c74e5",
+  "redactions": 0
+}

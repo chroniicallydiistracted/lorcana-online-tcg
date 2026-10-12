@@ -1,3 +1,4 @@
+import { qualificationClock } from "./match-runtime.random-apis";
 /**
  * MatchRuntime Time API Factories
  */
@@ -15,7 +16,7 @@ export function createTimeQueryAPI(state: MatchState): TimeQueryAPI {
   };
 }
 
-export function createTimeOperationsForDraft(draft: Draft<MatchState>): TimeOperationsAPI {
+export function createTimeOperationsForDraft(draft: Draft<MatchState>, now?: () => number): TimeOperationsAPI {
   return {
     getRemainingTime: (playerId) => {
       if (draft.ctx.time.mode === "none") return Infinity;
@@ -31,7 +32,7 @@ export function createTimeOperationsForDraft(draft: Draft<MatchState>): TimeOper
       if (draft.ctx.time.mode !== "none") {
         draft.ctx.time.running = true;
         draft.ctx.time.pausedReason = undefined;
-        draft.ctx.time.startedAtMs = Date.now();
+        draft.ctx.time.startedAtMs = (now ?? qualificationClock)();
       }
     },
   };

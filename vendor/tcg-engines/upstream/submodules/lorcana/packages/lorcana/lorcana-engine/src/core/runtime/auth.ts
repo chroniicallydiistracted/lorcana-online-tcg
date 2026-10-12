@@ -1,3 +1,4 @@
+import { qualificationRandom, qualificationClock } from "./match-runtime.random-apis";
 /**
  * Authentication and Authorization
  *
@@ -74,7 +75,7 @@ export class SimpleAuthProvider implements AuthProvider {
   }
 
   async generateToken(playerID: string, matchID: string, role: Role): Promise<string> {
-    const token = `token-${matchID}-${playerID}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const token = `token-${matchID}-${playerID}-${qualificationClock()}-${qualificationRandom().toString(36).substr(2, 9)}`;
     this.validTokens.set(token, { playerID, matchID, role });
     return token;
   }
@@ -128,7 +129,7 @@ export class AuthService {
       playerID,
       role: "player", // This would be determined by match config
       matchID,
-      authenticatedAt: Date.now(),
+      authenticatedAt: qualificationClock(),
     };
 
     this.activeSessions.set(this.getSessionKey(playerID, matchID), context);
@@ -276,7 +277,7 @@ export class AuditLogger {
    */
   log(event: Omit<AuditEvent, "timestamp">): void {
     const fullEvent: AuditEvent = {
-      timestamp: Date.now(),
+      timestamp: qualificationClock(),
       ...event,
     };
 

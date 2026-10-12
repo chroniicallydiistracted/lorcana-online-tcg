@@ -1,0 +1,105 @@
+
+> lorcana-online-tcg@0.0.0 engine:check-randomness /workspaces/lorcana-online-tcg
+> node scripts/engine/check-randomness.mjs
+
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 347 selected source files
+
+> lorcana-online-tcg@0.0.0 test:engine-tooling /workspaces/lorcana-online-tcg
+> node --test tests/engine/*.test.mjs
+
+✔ upstream test resolver cannot redirect selected aliases outside the verified closure (6.056177ms)
+✔ closure follows cyclic relative imports, type imports and explicit aliases, omitting unrelated files (13.578876ms)
+✔ closure rejects source reached through a directory symlink outside the pinned root (1.160123ms)
+✔ vendor integrity rejects modified, extra and missing source plus an unlisted patch (2.604101ms)
+✔ vendored source has no ambient Math.random/UUID or runtime seedrandom fallback (15.664077ms)
+✔ entropy guard rejects computed access and aliases, including hidden seedrandom imports (8.223008ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 248.844878
+
+> lorcana-online-tcg@0.0.0 engine:test-injection /workspaces/lorcana-online-tcg
+> node scripts/engine/test-injection.mjs
+
+bun test v1.4.2 (744846f84)
+
+src/injection.test.ts:
+(pass) injected initialization/first chooser and active clock resume ignore ambient wall time [3.80ms]
+(pass) invalid injected results cannot advance a committed random cursor [0.20ms]
+
+ 2 pass
+ 0 fail
+ 9 expect() calls
+Ran 2 tests across 1 file. [51.00ms]
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test tests/*.test.mjs
+
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (23.853077ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (10.834879ms)
+✔ new server match fails closed when operating-system entropy is unavailable (48.047674ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.741504ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (35.668517ms)
+✔ completed private archive is immutable across late rejected submissions (7.466312ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (45.80426ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (63.844865ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (29.64669ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 249.552219
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  839.42 kB │ gzip: 185.13 kB
+
+✓ built in 168ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/engine-lab@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-lab
+> node --test tests/*.test.mjs
+
+✔ qualification input bounds sparse arrays, aggregate size, keys and accessors before engine execution (10.918868ms)
+✔ synthetic match commands run on Node with player authority, stale rejection, terminal winner and idempotent disposal (10.77888ms)
+✔ October rules and set dates never grant unqualified rules/catalog or hidden/economic admission (0.707744ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107.405554
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (199.331012ms)
+✔ server applications cannot bypass the project adapter using vendor or raw upstream imports (12.415762ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1710.346882ms)
+✔ browser source cannot import the server-only release registry through its package subpath (1.733347ms)
+✔ private server RNG/replay cannot cross browser boundaries and server adapter cannot enter the Lab generator (9.272287ms)
+✔ browser resolver cannot treat a server adapter as a permitted browser kernel importer (0.491844ms)
+✔ declaring a database dependency in a public contract package is rejected (201.672969ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (186.227356ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (199.601679ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (203.674408ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (829.62687ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3596.399387

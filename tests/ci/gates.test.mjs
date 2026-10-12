@@ -40,7 +40,7 @@ function fixture(t) {
   for (const workspace of ['packages/engine-adapter', 'packages/engine-lab', 'vendor/tcg-engines']) {
     mkdirSync(join(root, workspace, 'dist'), { recursive: true });
     const name = workspace === 'vendor/tcg-engines' ? '@lorcana/vendor-engine' : '@lorcana/' + workspace.split('/')[1];
-    const dependencies = workspace === 'packages/engine-adapter' ? { '@lorcana/engine-lab': 'workspace:*' } : workspace === 'packages/engine-lab' ? { '@lorcana/vendor-engine': 'workspace:*' } : {};
+    const dependencies = workspace !== 'vendor/tcg-engines' ? { '@lorcana/vendor-engine': 'workspace:*' } : {};
     writeFileSync(join(root, workspace, 'package.json'), JSON.stringify({ name, dependencies }));
     writeFileSync(join(root, workspace, 'dist/kernel.js'), 'synthetic compiled engine');
   }
@@ -56,12 +56,14 @@ test('experimental engine and provenance are carried and release-bound; calendar
   assert.equal(release.purpose, 'foundation'); assert.equal(release.components.engine.status, 'built');
   assert.equal(release.components.rules.status, 'reserved'); assert.equal(release.components.content.status, 'reserved');
   assert.equal(readFileSync(join(out, 'build/vendor/tcg-engines/LICENSE'), 'utf8'), 'synthetic provenance');
-  const file = 'build/vendor/tcg-engines/dist/kernel.js';
-  writeFileSync(join(out, file), 'modified kernel');
-  const manifest = JSON.parse(readFileSync(join(out, 'manifest.json'))), row = manifest.files.find(entry => entry.path === file), bytes = readFileSync(join(out, file));
-  row.bytes = bytes.length; row.sha256 = sha256(bytes);
-  writeFileSync(join(out, 'manifest.json'), JSON.stringify(manifest));
-  assert.throws(() => verifyArtifacts(out), /Release|release/);
+  for(const file of ['build/packages/engine-adapter/dist/kernel.js','build/packages/engine-lab/dist/kernel.js','build/vendor/tcg-engines/dist/kernel.js','build/vendor/tcg-engines/upstream.lock.json']){
+    rmSync(out,{recursive:true,force:true});createArtifacts(root,out,reports,identity);
+    writeFileSync(join(out, file), 'modified engine bytes');
+    const manifest = JSON.parse(readFileSync(join(out, 'manifest.json'))), row = manifest.files.find(entry => entry.path === file), bytes = readFileSync(join(out, file));
+    row.bytes = bytes.length; row.sha256 = sha256(bytes);
+    writeFileSync(join(out, 'manifest.json'), JSON.stringify(manifest));
+    assert.throws(() => verifyArtifacts(out), /Release|release/);
+  }
 });
 test('artifact verification rejects tampered bytes, missing/extra/private paths and symlinks', t => {
   const {root,out,reports,identity}=fixture(t);createArtifacts(root,out,reports,identity);

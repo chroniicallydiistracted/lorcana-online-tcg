@@ -23,16 +23,7 @@ export function isMoveCardsFromUnderEffect(effect: unknown): effect is MoveCards
   );
 }
 
-function shuffleCards<T>(cards: T[]): T[] {
-  const shuffled = [...cards];
-  for (let index = shuffled.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(Math.random() * (index + 1));
-    const current = shuffled[index]!;
-    shuffled[index] = shuffled[swapIndex]!;
-    shuffled[swapIndex] = current;
-  }
-  return shuffled;
-}
+
 
 function removeUnderCardFromParent(
   ctx: PlayCardExecutionContext,
@@ -212,7 +203,7 @@ export function resolveMoveCardsFromUnderEffect(
   const sourceCardIds = resolveSourceCardIds(ctx, cardPlayed, effect, resolutionInput);
   const uniqueSourceCardIds = [...new Set(sourceCardIds)];
   const cardsToMove =
-    destination === "deck-bottom-random" ? shuffleCards(uniqueSourceCardIds) : uniqueSourceCardIds;
+    destination === "deck-bottom-random" ? ctx.framework.random.shuffle(uniqueSourceCardIds) : uniqueSourceCardIds;
 
   // For "under-chosen" destination, resolve the target from resolution input
   let underTargetId: CardInstanceId | undefined;

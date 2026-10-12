@@ -1,3 +1,4 @@
+import { qualificationClock } from "./core/runtime/match-runtime.random-apis";
 /**
  * Lorcana Client Runtime
  *
@@ -162,7 +163,7 @@ export class LorcanaClient extends LorcanaEngineBase {
       roleCtx,
       this.staticResources,
       {
-        serverTimestamp: Date.now(),
+        serverTimestamp: qualificationClock(),
       },
     ) as unknown as LorcanaProjectedBoardView;
 

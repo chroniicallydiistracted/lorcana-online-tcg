@@ -1,3 +1,4 @@
+import { qualificationRandom, qualificationClock } from "./match-runtime.random-apis";
 /**
  * MultiplayerEngine - Server-side game engine
  *
@@ -164,7 +165,7 @@ export class MultiplayerEngine {
    */
   executeMove(moveType: string, payload: EngineMovePayload): EngineMoveResult {
     const command: CommandEnvelope = {
-      commandID: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      commandID: `${qualificationClock()}-${qualificationRandom().toString(36).slice(2)}`,
       move: moveType,
       input: payload.input,
     };
@@ -173,7 +174,7 @@ export class MultiplayerEngine {
       command,
       payload.playerId,
       this.runtime.getCurrentStateID(),
-      Date.now(),
+      qualificationClock(),
       "player",
     );
 
@@ -182,7 +183,7 @@ export class MultiplayerEngine {
         moveType,
         playerId: payload.playerId,
         payload: payload.input,
-        timestamp: Date.now(),
+        timestamp: qualificationClock(),
       });
 
       return {

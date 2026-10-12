@@ -1,3 +1,4 @@
+import { qualificationRandom, qualificationClock } from "../runtime/match-runtime.random-apis";
 /**
  * Responsibility: authoritative runtime host and state distributor.
  * Owns command validation/execution against `MatchRuntime` and broadcasts
@@ -155,7 +156,7 @@ export class ServerEngine implements GameEngine {
     this.stateHistory.push({
       stateID: 0,
       state: this.runtime.getState(),
-      timestamp: Date.now(),
+      timestamp: qualificationClock(),
     });
   }
 
@@ -192,7 +193,7 @@ export class ServerEngine implements GameEngine {
       const previousState = this.runtime.getState();
       const previousStateID = this.runtime.getCurrentStateID();
       const runtimeSnapshotBeforeMove = this.runtime.createRuntimeSnapshot();
-      const commandTimestamp = Date.now();
+      const commandTimestamp = qualificationClock();
       const shouldPostProcess =
         this.shouldPostProcessClientCommand?.(playerId, message.command) ?? true;
       const result = this.runtime.processCommand(
@@ -347,7 +348,7 @@ export class ServerEngine implements GameEngine {
     const checkpoint = this.undoStack.at(-1)!;
     const previousState = this.runtime.getState();
     const previousStateID = this.runtime.getCurrentStateID();
-    const timestamp = Date.now();
+    const timestamp = qualificationClock();
     const nextStateID = previousStateID + 1;
     const undoCommand: CommandEnvelope = {
       commandID: commandID ?? `undo-${playerId}-${timestamp}`,
@@ -423,7 +424,7 @@ export class ServerEngine implements GameEngine {
   getBoard(): DeepReadonly<FilteredMatchView> {
     return this.runtime.getProjectedBoardView(
       { role: "judge" },
-      { serverTimestamp: Date.now() },
+      { serverTimestamp: qualificationClock() },
     ) as DeepReadonly<FilteredMatchView>;
   }
 
@@ -460,7 +461,7 @@ export class ServerEngine implements GameEngine {
     actorRole: RuntimeActorRole = "player",
   ): EngineMoveValidationResult {
     const command: CommandEnvelope = {
-      commandID: `validate-${Date.now()}`,
+      commandID: `validate-${qualificationClock()}`,
       move: moveId as keyof InferMoveInputMap<MoveRecord> & string,
       input,
     };
@@ -506,14 +507,14 @@ export class ServerEngine implements GameEngine {
     actorRole: RuntimeActorRole = "player",
   ): EngineMoveExecutionResult {
     const command: CommandEnvelope = {
-      commandID: `server-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      commandID: `server-${qualificationClock()}-${qualificationRandom().toString(36).slice(2)}`,
       move: moveId as keyof InferMoveInputMap<MoveRecord> & string,
       input,
     };
     const previousState = this.runtime.getState();
     const previousStateID = this.runtime.getCurrentStateID();
     const runtimeSnapshotBeforeMove = this.runtime.createRuntimeSnapshot();
-    const commandTimestamp = Date.now();
+    const commandTimestamp = qualificationClock();
     const result = this.runtime.processCommand(
       command,
       playerId,
@@ -622,7 +623,7 @@ export class ServerEngine implements GameEngine {
       {
         stateID: snapshot.state.ctx._stateID,
         state: this.runtime.getState(),
-        timestamp: Date.now(),
+        timestamp: qualificationClock(),
       },
     ];
     this.moveHistory = [];

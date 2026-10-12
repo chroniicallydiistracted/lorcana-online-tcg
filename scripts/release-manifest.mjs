@@ -60,7 +60,7 @@ export function buildFoundationRelease(root, identity, createdAt = new Date().to
   }
   const schemaDigest = digestClosure(root, 'packages/db', true);
   components.databaseSchema = { status: 'built', version: 'schema-' + schemaDigest, sha256: schemaDigest };
-  const engineDigest = digestClosure(root, 'packages/engine-adapter');
+  const engineDigest = sha256(JSON.stringify({ server: digestClosure(root, 'packages/engine-adapter'), lab: digestClosure(root, 'packages/engine-lab') }));
   components.engine = { status: 'built', version: 'engine-' + engineDigest, sha256: engineDigest };
   for (const name of ['content', 'rules', 'products', 'rewards']) components[name] = { status: 'reserved' };
   const fields = { schemaVersion: 1, purpose: 'foundation', createdAt, source: { commit: identity.source_commit, fingerprint: identity.source_fingerprint, lockSha256: identity.lock_sha256 }, protocol: FOUNDATION_PROTOCOL, components };

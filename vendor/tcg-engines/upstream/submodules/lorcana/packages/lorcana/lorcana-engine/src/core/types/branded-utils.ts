@@ -1,7 +1,8 @@
+import { qualificationIdentifier } from "../runtime/match-runtime.random-apis";
 import type { CardInstanceId, GameId, PlayerId, ZoneId } from "@tcg/lorcana-types";
 
 function createBrandedId<T extends string>(id?: string): T {
-  return (id ?? crypto.randomUUID()) as T;
+  return (id ?? qualificationIdentifier()) as T;
 }
 
 /**

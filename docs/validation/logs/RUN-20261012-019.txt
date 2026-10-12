@@ -1,0 +1,31 @@
+✔ vendored source has no ambient Math.random/UUID or runtime seedrandom fallback (32.739691ms)
+✔ entropy guard rejects computed access and aliases, including hidden seedrandom imports (17.272259ms)
+✖ entropy guard closes crypto aliases, alternate module forms and cast global receivers (6.340561ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 435.442883
+
+✖ failing tests:
+
+test at tests/engine/randomness.test.mjs:18:1
+✖ entropy guard closes crypto aliases, alternate module forms and cast global receivers (6.340561ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:27:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /entropy|seedrandom/,
+    operator: 'throws',
+    diff: 'simple'
+  }

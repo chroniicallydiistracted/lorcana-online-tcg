@@ -23,6 +23,16 @@ test('server applications cannot bypass the project adapter using vendor or raw 
   assert.doesNotThrow(() => checkSource(join(process.cwd(), 'apps/match-service/src/probe.ts'), undefined, "import '@lorcana/engine-adapter';"));
   assert.throws(() => checkSource(join(process.cwd(), 'apps/match-service/src/probe.ts'), undefined, "import '../../../packages/engine-lab/src/index.ts';"), /Forbidden engine import/);
 });
+test('server module loader aliases cannot bypass the engine adapter',async()=>{
+  const {checkSource}=await import('../../scripts/check-boundaries.mjs');
+  for(const code of [
+    "const load=require;load('@lorcana/vendor-engine');",
+    "import {createRequire} from 'node:module';const load=createRequire(import.meta.url);load('@lorcana/vendor-engine');",
+    "import {createRequire as makeLoader} from 'module';const load=makeLoader(import.meta.url);load('@lorcana/vendor-engine');",
+    "module.require('../../../vendor/tcg-engines/dist/kernel.js');",
+    "module['require']('../../../vendor/tcg-engines/dist/kernel.js');",
+  ])assert.throws(()=>checkSource(join(process.cwd(),'apps/match-service/src/probe.ts'),undefined,code),/Forbidden engine import/);
+});
 
 test('browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations', async () => {
   for (const code of [
@@ -54,6 +64,22 @@ test('browser imports reject database/server sources, aliases, reexports, dynami
 test('browser source cannot import the server-only release registry through its package subpath', async () => {
   const { checkSource } = await import('../../scripts/check-boundaries.mjs');
   assert.throws(() => checkSource(join(process.cwd(),'apps/web/src/registry-probe.ts'), undefined, "import { createReleaseRegistry } from '@lorcana/service-runtime/release';"), /Forbidden browser import/);
+});
+
+test('private server RNG/replay cannot cross browser boundaries and server adapter cannot enter the Lab generator',async()=>{
+  const {checkSource}=await import('../../scripts/check-boundaries.mjs');
+  for(const code of ["import '@lorcana/engine-adapter';","import '../../../packages/engine-adapter/src/random.ts';","export * from '../../../packages/engine-adapter/src/replay.ts';","import type {PrivateCompletedReplay} from '@lorcana/engine-adapter';"]){
+    assert.throws(()=>checkSource(join(process.cwd(),'apps/web/src/probe.ts'),undefined,code),/Forbidden browser import/);
+  }
+  const file=join(process.cwd(),'packages/engine-adapter/src/probe.ts');
+  assert.doesNotThrow(()=>checkSource(file,undefined,"import '@lorcana/vendor-engine';"));
+  assert.throws(()=>checkSource(file,undefined,"import '@lorcana/engine-lab';"),/Forbidden engine import/);
+  assert.throws(()=>checkSource(file,undefined,"import '../../../vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/index.ts';"),/Forbidden engine import/);
+});
+
+test('browser resolver cannot treat a server adapter as a permitted browser kernel importer',async()=>{
+  const {assertBrowserImport}=await import('../../scripts/check-boundaries.mjs');
+  assert.throws(()=>assertBrowserImport(join(process.cwd(),'vendor/tcg-engines/dist/kernel.js'),join(process.cwd(),'packages/engine-adapter/src/index.ts')),/Forbidden browser import/);
 });
 
 test('declaring a database dependency in a public contract package is rejected', async () => {

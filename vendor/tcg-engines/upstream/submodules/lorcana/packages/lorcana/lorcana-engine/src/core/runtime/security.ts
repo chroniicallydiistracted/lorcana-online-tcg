@@ -1,3 +1,4 @@
+import { qualificationClock } from "./match-runtime.random-apis";
 import {
   REDACTED_MOVE_INPUT,
   type MatchState,
@@ -251,7 +252,7 @@ export class RateLimiter {
    * Check if a request is allowed under rate limiting.
    */
   checkLimit(key: string): { allowed: boolean; retryAfterMs?: number } {
-    const now = Date.now();
+    const now = qualificationClock();
     const entry = this.limits.get(key);
 
     if (!entry) {
@@ -315,11 +316,11 @@ export class RateLimiter {
         remaining: this.policy.rateLimitPerSecond,
         limit: this.policy.rateLimitPerSecond,
         windowMs: this.windowMs,
-        resetTime: Date.now() + this.windowMs,
+        resetTime: qualificationClock() + this.windowMs,
       };
     }
 
-    const now = Date.now();
+    const now = qualificationClock();
     const remaining = Math.max(0, this.policy.rateLimitPerSecond - entry.count);
     const resetTime = entry.windowStart + this.windowMs;
 

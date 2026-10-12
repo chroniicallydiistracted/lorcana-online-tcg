@@ -1,0 +1,26 @@
+# ADR0010: Per-match randomness and private deterministic verification
+
+Recorded/updated: 2026-10-12T04:40:15.573Z. Status: implemented and locally verified for RULE-03 RNG/reconstruction; isolated CI timing qualification pending by Director instruction. See [validation](../validation/rule-03.md) for observed results. Earlier draft-edit execution times are unknown. Authority: Director assignment to complete RULE-03 and explicit answer restricting completed-match seeds/private replay to participants and authorized auditors. Affected tasks RULE-03, RULE-04, PLAY-01/02, REPLAY-01, DOC-01/02; prerequisite evidence for R01.018, R15.009, R28.008, R29.003/.004/.005 and R32.011. None of those complete product requirements is accepted by synthetic qualification.
+
+## Decision
+
+Use a 32-byte seed from Node24 `crypto.randomBytes`, never a caller-selected seed for a new server match. Use an indexed HMAC-SHA256 stream with explicit version/context/purpose/index/retry encoding. Float output uses53 bits; bounded integers use32-bit rejection sampling with a finite retry limit, avoiding modulo bias. Identifier domains are separate from gameplay draws so exposing an instance ID cannot disclose a gameplay draw. The provider is per match and remains outside serialized upstream state. Failure to obtain entropy or a valid provider fails closed. This is an application PRF construction, not a claim of NIST DRBG/FIPS certification.
+
+The shared precompiled kernel accepts an explicit source and captured clock. Server adapter owns Node crypto and private replay; browser Lab owns seedrandom3.0.5. Engine-adapter and engine-lab may import only the compiled pure kernel; other server apps and browser/public packages must use their owning facade. This refines ADR0009's sole Lab kernel edge because routing the server through the Lab facade would bring its noncompetitive generator into the server. Raw upstream imports remain forbidden. No second rules engine is introduced.
+
+Patch the pinned fork through reproducible, source-linked ledger entries. Draft randomness, zone/effect shuffles, first-player selection, IDs and state-affecting clocks must use the injected source/time. Legacy helpers fail closed without an explicit provider; unchanged raw upstream suites receive an explicitly installed development-only compatibility provider under Bun. The compatibility provider is absent from production bundles and cannot qualify server play. No global mutation of Math.random or clocks is used by implementation.
+
+Record private initialization outcomes and validated command/result/outcome/state-hash checkpoints. Rejected speculative draws are discarded; their indices remain repeatable from the committed state. Completed replay binds exact engine/adapter identity, RNG/fixture/schema versions, setup, captured timestamps and final state. Verification requires a separately trusted archive digest and recomputes every checkpoint/outcome with bounded input/work. It demonstrates deterministic reconstruction and integrity against that anchor; it does not authenticate an untrusted digest, a user, or an action.
+
+Live matches expose no seed, random stream, state or replay. Private completed archives are internal server objects only. Director policy permits participants and authorized auditors, never public seed/private replay disclosure. Authentication/authorization, participant delivery, sharing, durable journals, projection-safe replay and restoration remain AUTH/PLAY/REPLAY work. No endpoint is introduced. All ordinary Lab/Collection/reward/private/official admissions stay closed pending RULE-04 and PLAY-02 and their other prerequisites.
+
+## Alternatives and evidence
+
+Keeping seedrandom on the server contradicts ADR0008 and leaves a noncryptographic generator. Fresh crypto.randomInt for each draw is secure but cannot reconstruct from the agreed seed without a separate tape. Indexed HMAC makes rollback/retry deterministic without mutating a shared global stream; bounded rejection avoids integer bias. Source audit found zone/effect/type shuffle defaults, first-player/ID helpers and initialization/resume clocks; the complete source/build guards and exercised paths are recorded in RULE-03 validation rather than assumed from helper tests.
+
+Primary references: [Node24 crypto](https://nodejs.org/docs/latest-v24.x/api/crypto.html#cryptorandombytessize-callback) defines cryptographically strong seed bytes; [HMAC](https://www.rfc-editor.org/rfc/rfc2104) defines the keyed primitive. [NIST90A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-90Ar1.pdf) defines standardized DRBGs; this application does not assert certification against it. Security inference: secrecy depends on a uniformly secret256-bit seed and HMAC-SHA256 assumptions, not passing statistical distribution tests. Algorithm/source identities and independent review are required before scoped closure.
+
+
+## Director environment disposition
+
+Recorded: 2026-10-12T04:40:15.573Z. After two complete isolated child pipelines were timing-rejected, the Director chose to leave the environment unchanged and retain CI timing qualification pending. No clock/driver/service/restart/tolerance change follows. Passing source-matched core/frozen/clean/canonical/browser checks are independent of those failed receipts; details are in RULE-03 validation.

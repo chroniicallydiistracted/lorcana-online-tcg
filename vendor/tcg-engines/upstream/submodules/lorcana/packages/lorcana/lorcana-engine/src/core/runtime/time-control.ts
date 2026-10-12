@@ -1,3 +1,4 @@
+import { qualificationClock } from "./match-runtime.random-apis";
 /**
  * Time Control - Passive Clock Management
  *
@@ -496,13 +497,13 @@ function computeActivePlayerWindowMs(
  *   whoever has priority (the decision-maker, not necessarily the turn
  *   player) is on the clock, and a single decision window is capped.
  *
- * Pass `now` (defaults to `Date.now()`). For precise cap checks callers
+ * Pass `now` (defaults to `qualificationClock()`). For precise cap checks callers
  * should `settleClocks(state, now)` first.
  */
 export function checkTimeout(
   state: MatchState,
   playerId: string,
-  now: number = Date.now(),
+  now: number = qualificationClock(),
 ): "first" | "second" | null {
   const time = state.ctx.time;
   if (time.mode !== "chess" && time.mode !== "dynamic") return null;
@@ -536,7 +537,7 @@ export function checkTimeout(
  */
 export function getActivePlayerDecisionMs(
   state: MatchState,
-  now: number = Date.now(),
+  now: number = qualificationClock(),
 ): { playerId: string; windowMs: number; maxDecisionTimeMs: number } | null {
   const time = state.ctx.time;
   if (time.mode !== "chess" && time.mode !== "dynamic") return null;
@@ -641,7 +642,7 @@ export function getPlayerTimeSummary(
     state.ctx.time.activePlayerID === playerId &&
     state.ctx.time.activeWindow
   ) {
-    const now = Date.now();
+    const now = qualificationClock();
     summary.windowRemainingMs = Math.max(0, state.ctx.time.activeWindow.deadlineMs - now);
   }
 

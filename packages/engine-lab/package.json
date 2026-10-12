@@ -1,8 +1,30 @@
 {
-  "name": "@lorcana/engine-lab", "version": "0.0.0", "private": true, "type": "module",
-  "lorcana": { "scope": "browser" },
-  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" }, "./worker": "./dist/lab-worker.js" },
-  "scripts": { "build": "tsc -p tsconfig.json && node build-worker.mjs", "typecheck": "tsc -p tsconfig.json --noEmit", "test": "node --test tests/*.test.mjs", "test:browser": "node tests/browser.mjs" },
-  "dependencies": { "@lorcana/vendor-engine": "workspace:*" },
-  "devDependencies": { "vite": "8.3.2", "@playwright/test": "1.63.0" }
+  "name": "@lorcana/engine-lab",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "lorcana": {
+    "scope": "browser"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./worker": "./dist/lab-worker.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node build-worker.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "dependencies": {
+    "@lorcana/vendor-engine": "workspace:*",
+    "seedrandom": "3.0.5"
+  },
+  "devDependencies": {
+    "vite": "8.3.2",
+    "@playwright/test": "1.63.0"
+  }
 }

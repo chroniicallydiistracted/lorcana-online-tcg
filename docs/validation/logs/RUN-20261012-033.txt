@@ -1,0 +1,11 @@
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS RULE-01 offline metadata, denominators, dated release/effective status and uncertified boundaries
+PASS pinned vendor integrity {"revision":"53a79413c58678b1c50dde57e71de5c123132716","files":347,"patches":28}
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 347 selected source files
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":1314,"documents":775,"functions":7364,"changes":25,"runs":317}
+PASS JSON parsing and JavaScript syntax checks

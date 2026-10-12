@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-010",
+  "category": "static",
+  "command": [
+    "node",
+    "--test",
+    "--test-name-pattern",
+    "browser resolver cannot treat",
+    "tests/foundation/boundaries.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "21ff3489fa320c0e7e5827c23a2701ba8792b4dd7c4d63e64a3447307ffb3eeb",
+  "started_at": "2026-10-12T03:18:12.281Z",
+  "finished_at": "2026-10-12T03:18:12.611Z",
+  "recorded_at": "2026-10-12T03:18:12.611Z",
+  "time_precision": "exact",
+  "elapsed_ms": 330,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: server kernel permission must not authorize a browser resolver edge",
+  "log_path": "docs/validation/logs/RUN-20261012-010.txt",
+  "log_sha256": "dfabe41245df712172cde7199f87587792e33d374ef8cb5a44e12254f28d1f68",
+  "redactions": 0
+}

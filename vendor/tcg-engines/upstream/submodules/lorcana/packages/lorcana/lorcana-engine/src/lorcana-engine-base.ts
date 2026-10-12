@@ -1,3 +1,4 @@
+import { qualificationRandom, qualificationClock } from "./core/runtime/match-runtime.random-apis";
 /**
  * Lorcana Engine Base Abstract Class
  *
@@ -1165,7 +1166,7 @@ export abstract class LorcanaEngineBase {
         },
         playerId,
         currentStateID,
-        Date.now(),
+        qualificationClock(),
         "player",
       );
 
@@ -1598,7 +1599,7 @@ export abstract class LorcanaEngineBase {
       patches: [],
       gameEvents: [],
       processedCommand: {
-        commandID: `undo-${resolvedPlayerId}-${Date.now()}`,
+        commandID: `undo-${resolvedPlayerId}-${qualificationClock()}`,
         move: "undo",
       },
       animations: [],
@@ -2148,7 +2149,7 @@ export abstract class LorcanaEngineBase {
   }
 
   protected generateCommandID(): string {
-    return `cmd-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    return `cmd-${qualificationClock()}-${qualificationRandom().toString(36).substr(2, 9)}`;
   }
 
   getCardDefinitionByInstanceId(cardId: CardInstanceId): LorcanaCardDefinition {
@@ -3289,7 +3290,7 @@ export abstract class LorcanaEngineBase {
     };
   }
 
-  protected createNoopResult(commandId = `automated-noop-${Date.now()}`): CommandResult {
+  protected createNoopResult(commandId = `automated-noop-${qualificationClock()}`): CommandResult {
     return {
       success: true,
       stateID: this.getStateID(),

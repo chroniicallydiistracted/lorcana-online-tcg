@@ -1,3 +1,4 @@
+import { qualificationClock } from "./match-runtime.random-apis";
 /**
  * Serialization Contract for Match State
  *
@@ -154,7 +155,7 @@ export function createSerializedMatchState(
     version: SERIALIZATION_FORMAT_VERSION,
     gameType,
     stateID: state.ctx._stateID,
-    timestamp: Date.now(),
+    timestamp: qualificationClock(),
     state,
     resourceRefs: {
       cardsCatalogRef: resources.cards.ref,

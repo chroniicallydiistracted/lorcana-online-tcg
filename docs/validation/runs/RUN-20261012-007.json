@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-007",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-name-pattern",
+    "completed private archive|semantic tampering",
+    "packages/engine-adapter/tests/replay.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "6c0beb715fb4e4d178ce25b33cf05dc39c4a53ab5f0c6d8199029808d1b074be",
+  "started_at": "2026-10-12T02:55:47.031Z",
+  "finished_at": "2026-10-12T02:55:47.274Z",
+  "recorded_at": "2026-10-12T02:55:47.274Z",
+  "time_precision": "exact",
+  "elapsed_ms": 243,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED: completed private archive must remain fixed after late submissions; semantic tampering must reject",
+  "log_path": "docs/validation/logs/RUN-20261012-007.txt",
+  "log_sha256": "071f3d3592183a3114c8c282a109ab856f3d12d7c9ec0723a0fb77913ae46646",
+  "redactions": 0
+}

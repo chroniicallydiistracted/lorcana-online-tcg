@@ -38,6 +38,7 @@ try {
           const status = await send({ type: 'status' }); revision = status.result.revision;
         }
         messages.push(await send({ type: 'status' }));
+        for (const type of ['exportReplay','random','snapshot','restore']) messages.push(await send({ type }));
         messages.push(await send({ type: 'dispose' }));
         messages.push(await send({ type: 'status' }));
       } finally { worker.terminate(); }
@@ -50,8 +51,9 @@ try {
     assert.equal(messages[1].ok, true); assert.equal(messages[1].result.rewardEligible, false);
     for (const row of messages.slice(2, 6)) assert.equal(row.result.accepted, true);
     assert.equal(messages[6].result.winner, 'p2'); assert.equal(messages[6].result.ended, true);
-    assert.deepEqual(messages[7], { ok: true, result: { disposed: true } });
-    assert.deepEqual(messages[8], { ok: false, code: 'LAB_REQUEST_REJECTED' });
+    for (const row of messages.slice(7, 11)) assert.deepEqual(row, { ok: false, code: 'LAB_REQUEST_REJECTED' });
+    assert.deepEqual(messages[11], { ok: true, result: { disposed: true } });
+    assert.deepEqual(messages[12], { ok: false, code: 'LAB_REQUEST_REJECTED' });
     assert.deepEqual(Object.keys(messages[6].result).sort(), ['ended', 'mode', 'revision', 'rewardEligible', 'winner']);
   }
   assert.equal(result.environment.node, 'undefined'); assert.equal(result.environment.bun, 'undefined'); assert.deepEqual(errors, []);

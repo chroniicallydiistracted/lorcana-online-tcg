@@ -86,3 +86,7 @@ BOOT-05 adds `POST /protocol/negotiate` on both diagnostic HTTP services. The we
 ## Engine tooling continuation
 
 RULE-02 runs unchanged selected upstream tests with pinned development-only Bun and builds pure Node/browser JavaScript. New images persist the runner; `pnpm engine:setup` verifies or installs the exact runner in the existing container without recreating its data. See [engine operation](engine.md) for closure/reproduction/worker checks and later play gates. The current web diagnostic has no engine worker control or game ingress.
+
+## RULE-03 engine continuation
+
+The server-only adapter now supplies private crypto randomness and completed synthetic reconstruction; browser Lab alone owns seedrandom. Use [engine operation](engine.md) and [RULE-03 validation](../validation/rule-03.md) for signatures, entropy/injection tests and disclosure policy. No HTTP/game ingress or extra listener is added; existing ports/toolchain/private database operation remain unchanged. Real Windows observation and later gameplay/privacy/certification gates are separate.

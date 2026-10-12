@@ -1,8 +1,13 @@
-import { createLabMatch, type LabMatch } from '@lorcana/engine-lab';
-export { ENGINE_QUALIFICATION, assessEngineAdmission } from '@lorcana/engine-lab';
+import { randomBytes } from 'node:crypto';
+import { createRecordedMatch, type QualificationMatch } from './replay.js';
+import { validateSetup } from './validation.js';
+export { verifyCompletedReplay } from './replay.js';
+export type { QualificationMatch, ServerStatus, PrivateCompletedReplay } from './replay.js';
+export { ENGINE_QUALIFICATION, assessEngineAdmission } from './admission.js';
 
-/** Qualification only. This entry is server-owned; no live match ingress is enabled. */
-export function createQualificationMatch(options: { seed: string; players: [string, string] }): LabMatch {
-  if (Object.keys(options).some(key => !['seed', 'players'].includes(key))) throw new Error('Invalid qualification options');
-  return createLabMatch({ mode: 'qualification', fixture: 'synthetic', ...options });
+/** Synthetic server qualification only; caller-selected entropy is refused. */
+export function createQualificationMatch(options: unknown): QualificationMatch {
+  const setup = validateSetup(options), seed = randomBytes(32);
+  try { return createRecordedMatch(setup, seed); }
+  finally { seed.fill(0); }
 }

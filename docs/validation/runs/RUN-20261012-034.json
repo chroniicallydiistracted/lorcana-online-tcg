@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-034",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {spawnSync} from 'node:child_process';import {inventory,sourceFingerprint} from './scripts/documentation-lib.mjs';import {sourceSecretScan} from './scripts/ci/security.mjs';import {privateRedactionValues} from './scripts/evidence-lib.mjs';\nassert.equal(sourceFingerprint(),'2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58');\nfor(const args of [['verify'],['run','doctor'],['db:check']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});assert.equal(r.status,0);}\nconst tree=spawnSync('git',['write-tree'],{encoding:'utf8'});assert.equal(tree.status,0);const paths=inventory();const result=spawnSync('git',['cat-file','--batch'],{input:paths.map(p=>tree.stdout.trim()+':'+p).join('\\n')+'\\n',maxBuffer:64*1024*1024});assert.equal(result.status,0);let offset=0;for(const p of paths){const end=result.stdout.indexOf(10,offset),header=result.stdout.subarray(offset,end).toString();assert.match(header,/^[a-f0-9]+ blob [0-9]+$/,'Missing staged path: '+p);const size=Number(header.split(' ')[2]);offset=end+1;assert.ok(result.stdout.subarray(offset,offset+size).equals(readFileSync(p)),'Staged/live mismatch: '+p);offset+=size+1;}assert.equal(offset,result.stdout.length);\nconst privatePaths=spawnSync('git',['ls-files','.env.local','.local'],{encoding:'utf8'});assert.equal(privatePaths.stdout.trim(),'');sourceSecretScan(process.cwd(),Object.values(privateRedactionValues(process.cwd())));\nconsole.log('PASS sealed final docs/static/bootstrap environment/read-only original DB, full-history/private scan and '+paths.length+' staged/live file byte matches; code unchanged. CI timing remains pending by Director instruction.');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T04:51:53.899Z",
+  "finished_at": "2026-10-12T04:52:03.349Z",
+  "recorded_at": "2026-10-12T04:52:03.349Z",
+  "time_precision": "exact",
+  "elapsed_ms": 9450,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Resumed sealed static/docs/pinned doctor/read-only PG/history/private and all staged-live bytes; CI timing deferred",
+  "log_path": "docs/validation/logs/RUN-20261012-034.txt",
+  "log_sha256": "4cf9206dfdcd46bca0a42185e2c5c67299ad01cfbe83d4f1746381666d992055",
+  "redactions": 0
+}

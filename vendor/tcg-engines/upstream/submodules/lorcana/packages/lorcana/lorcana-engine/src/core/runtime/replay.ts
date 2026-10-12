@@ -1,3 +1,4 @@
+import { qualificationClock } from "./match-runtime.random-apis";
 /**
  * Replay System
  *
@@ -167,7 +168,7 @@ export class ReplayEngine {
     return JSON.stringify(
       {
         version: "2.0.0",
-        exportedAt: Date.now(),
+        exportedAt: qualificationClock(),
         data: this.replayData,
       },
       null,
@@ -227,8 +228,8 @@ export class ReplayBuilder {
       matchID: this.config.matchID,
       metadata: {
         matchID: this.config.matchID,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
+        createdAt: qualificationClock(),
+        updatedAt: qualificationClock(),
         rulesetHash: this.config.rulesetHash,
         config: this.config.config,
         playerIDs: this.config.playerIDs,
@@ -254,7 +255,7 @@ export class ReplayExporter {
       metadata: {
         matchID: replayData.matchID,
         version: "2.0.0",
-        exportedAt: Date.now(),
+        exportedAt: qualificationClock(),
         totalSteps: replayData.steps.length,
       },
     };
@@ -271,7 +272,7 @@ export class ReplayExporter {
       metadata: {
         matchID: replayData.matchID,
         version: "2.0.0",
-        exportedAt: Date.now(),
+        exportedAt: qualificationClock(),
         totalSteps: replayData.steps.length,
       },
     };

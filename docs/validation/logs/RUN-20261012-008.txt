@@ -1,0 +1,24 @@
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test tests/*.test.mjs
+
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (23.064925ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (6.758614ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.548374ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (32.873011ms)
+✔ completed private archive is immutable across late rejected submissions (7.68939ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (54.000803ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (58.678069ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (30.517915ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 249.4876

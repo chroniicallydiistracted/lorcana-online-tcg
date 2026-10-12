@@ -28,6 +28,15 @@ export function createVendorPlan(source) {
   if (!traceOriginal.includes(traceBefore)) throw new Error('Trace patch anchor changed');
   patches.push({ id: 'P002', path: 'upstream/' + tracePath, original_path: 'provenance/runtime-trace.original.ts', before: traceBefore, after: '  return undefined;', reason: 'Disable environment-driven upstream private runtime tracing in the pure shared kernel; preserves rule execution and avoids server environment reads in the trust-free worker. Project-owned diagnostics remain separate.' });
   overrides[tracePath] = traceOriginal.replace(traceBefore, '  return undefined;');
+  const extraPatches = JSON.parse(readFileSync(join(root, 'scripts/engine/patches.json')));
+  for (const patch of extraPatches) {
+    const path = patch.path.slice('upstream/'.length);
+    if (!patch.path.startsWith('upstream/') || path.includes('..') || patches.some(row => row.path === patch.path)) throw new Error('Invalid/duplicate reviewed patch');
+    const bytes = readFileSync(join(source, path), 'utf8');
+    if (!patch.before || bytes.split(patch.before).length !== 2) throw new Error('Reviewed patch anchor changed: ' + path);
+    overrides[path] = bytes.replace(patch.before, patch.after);
+    patches.push(patch);
+  }
   const runtime = collectClosure(source, selection.runtime_seeds, selection.aliases, selection.externals, overrides);
   const all = collectClosure(source, [...selection.runtime_seeds, ...selection.tests, ...selection.test_preloads], selection.aliases, selection.externals, overrides);
   if (runtime.externals.some(name => name.startsWith('node:') || name.startsWith('bun:') || name === '@logtape/pretty')) throw new Error('Server/Bun/test dependency in runtime closure');
@@ -41,8 +50,7 @@ export function createVendorPlan(source) {
     payloads.set('upstream/' + path, revised);
     return { path: 'upstream/' + path, upstream_path: path, git_blob: blob[1], upstream_sha256: sha256(bytes), sha256: sha256(revised), bytes: revised.length, scope: runtime.files.includes(path) ? 'runtime_source_or_type' : 'test_only' };
   });
-  payloads.set(patches[0].original_path, Buffer.from(original));
-  payloads.set(patches[1].original_path, Buffer.from(traceOriginal));
+  for (const patch of patches) payloads.set(patch.original_path, readFileSync(join(source, patch.path.slice('upstream/'.length))));
   const licenses = ['LICENSE', 'submodules/lorcana/LICENSE'].map((path, index) => {
     const bytes = readFileSync(join(source, path)), destination = index === 0 ? 'LICENSE' : 'provenance/LORCANA_LICENSE.txt';
     const object = spawnSync('git', ['ls-tree', 'HEAD', '--', path], { cwd: source, encoding: 'utf8' });
@@ -50,7 +58,7 @@ export function createVendorPlan(source) {
     payloads.set(destination, bytes);
     return { path: destination, upstream_path: path, git_blob: gitBlob(bytes), sha256: sha256(bytes), bytes: bytes.length, license: 'MIT' };
   });
-  return { payloads, lock: { schema_version: 1, repository: selection.repository, revision: selection.revision, selection_sha256: sha256(readFileSync(join(root, 'scripts/engine/selection.json'))), runtime_files: runtime.files, runtime_externals: runtime.externals, test_externals: all.externals, tests: selection.tests, licenses, patches, files, compatibility: { as_of: '2026-10-11', current_rules: '2.2.0', scheduled_rules: '2.3.0', effective_on: '2026-10-16', set14: { prerelease_on: '2026-10-16', general_release_on: '2026-10-23', included: false }, certified_rules_versions: [], admitted_sets: [], secure_rng: 'pending_RULE-03', viewer_projection: 'pending_PLAY-02', purpose: 'RULE-02 synthetic runtime qualification only' } } };
+  return { payloads, lock: { schema_version: 1, repository: selection.repository, revision: selection.revision, selection_sha256: sha256(readFileSync(join(root, 'scripts/engine/selection.json'))), runtime_files: runtime.files, runtime_externals: runtime.externals, test_externals: all.externals, tests: selection.tests, licenses, patches, files, compatibility: { as_of: '2026-10-12', current_rules: '2.2.0', scheduled_rules: '2.3.0', effective_on: '2026-10-16', set14: { prerelease_on: '2026-10-16', general_release_on: '2026-10-23', included: false }, certified_rules_versions: [], admitted_sets: [], secure_rng: 'RULE-03_injected', viewer_projection: 'pending_PLAY-02', purpose: 'Synthetic randomness/replay qualification only; no game admission' } } };
 }
 export function checkVendor() {
   const folder = join(root, 'vendor/tcg-engines'), lock = JSON.parse(readFileSync(join(folder, 'upstream.lock.json')));

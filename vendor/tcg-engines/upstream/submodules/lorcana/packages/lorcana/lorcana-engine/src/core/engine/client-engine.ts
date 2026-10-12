@@ -1,3 +1,4 @@
+import { qualificationClock } from "../runtime/match-runtime.random-apis";
 /**
  * Responsibility: client-side synchronized view of authoritative match state.
  * Receives full/patch updates from `ServerEngine`, applies them locally, and forwards
@@ -216,7 +217,7 @@ export class ClientEngine implements GameEngine {
       this.localView = this.buildVisibleViewFromRuntime(
         this.runtime,
         authoritativeState,
-        Date.now(),
+        qualificationClock(),
       );
       this.projectionDirty = false;
     } else {
@@ -396,7 +397,7 @@ export class ClientEngine implements GameEngine {
     this.runtime.loadState(state);
     this.confirmedState = state;
     if (this.projectionMode === "eager") {
-      this.localView = this.buildVisibleViewFromRuntime(this.runtime, state, Date.now());
+      this.localView = this.buildVisibleViewFromRuntime(this.runtime, state, qualificationClock());
       this.projectionDirty = false;
     } else {
       this.projectionDirty = true;
@@ -409,7 +410,7 @@ export class ClientEngine implements GameEngine {
       this.localView = this.buildVisibleViewFromRuntime(
         this.runtime,
         this.runtime.getState(),
-        Date.now(),
+        qualificationClock(),
       );
       this.projectionDirty = false;
     }
@@ -417,7 +418,7 @@ export class ClientEngine implements GameEngine {
     const visibleView =
       this.optimisticState?.view ??
       this.localView ??
-      this.buildVisibleViewFromRuntime(this.runtime, this.runtime.getState(), Date.now());
+      this.buildVisibleViewFromRuntime(this.runtime, this.runtime.getState(), qualificationClock());
     return visibleView as DeepReadonly<FilteredMatchView>;
   }
 
@@ -455,7 +456,7 @@ export class ClientEngine implements GameEngine {
     }
 
     const command: CommandEnvelope = {
-      commandID: `validate-${this.config.playerId}-${Date.now()}`,
+      commandID: `validate-${this.config.playerId}-${qualificationClock()}`,
       move: moveId,
       input,
     };
@@ -525,7 +526,7 @@ export class ClientEngine implements GameEngine {
 
     this.commandCounter++;
     const command: CommandEnvelope = {
-      commandID: `cmd-${this.config.playerId}-${Date.now()}-${this.commandCounter}`,
+      commandID: `cmd-${this.config.playerId}-${qualificationClock()}-${this.commandCounter}`,
       move: moveId,
       input,
     };
@@ -568,7 +569,7 @@ export class ClientEngine implements GameEngine {
       input,
       playerId: this.config.playerId,
       role: this.config.role,
-      timestamp: Date.now(),
+      timestamp: qualificationClock(),
       stateID: this.stateID,
       turnNumber: currentTurn,
       transitionType: "move",
@@ -626,7 +627,7 @@ export class ClientEngine implements GameEngine {
 
     this.commandCounter++;
     const command: CommandEnvelope = {
-      commandID: `undo-${this.config.playerId}-${Date.now()}-${this.commandCounter}`,
+      commandID: `undo-${this.config.playerId}-${qualificationClock()}-${this.commandCounter}`,
       move: "undo",
     };
 
@@ -727,7 +728,7 @@ export class ClientEngine implements GameEngine {
         command,
         this.config.playerId,
         this.stateID,
-        Date.now(),
+        qualificationClock(),
         "player",
       );
 
@@ -762,7 +763,7 @@ export class ClientEngine implements GameEngine {
       return {
         kind: "success",
         state: finalState,
-        view: this.buildVisibleViewFromRuntime(sandboxRuntime, finalState, Date.now()),
+        view: this.buildVisibleViewFromRuntime(sandboxRuntime, finalState, qualificationClock()),
       };
     } catch (error) {
       logger.warning("Failed to build optimistic state", {

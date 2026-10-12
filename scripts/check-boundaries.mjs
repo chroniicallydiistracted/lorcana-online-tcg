@@ -29,7 +29,7 @@ function ownerOf(path, context) {
 }
 function fail(file, target) { throw new Error(`Forbidden browser import: ${file} -> ${target}`); }
 function kernelEdge(owner, target, name) {
-  return owner?.name === '@lorcana/engine-lab' && owner.scope === 'browser' && target?.name === '@lorcana/vendor-engine' && target.scope === 'engine' && name === '@lorcana/vendor-engine';
+  return (owner?.name === '@lorcana/engine-lab' && owner.scope === 'browser' || owner?.name === '@lorcana/engine-adapter' && owner.scope === 'server') && target?.name === '@lorcana/vendor-engine' && target.scope === 'engine' && name === '@lorcana/vendor-engine';
 }
 function compiledKernel(path, owner) {
   return owner?.name === '@lorcana/vendor-engine' && owner.scope === 'engine' && ['dist/kernel.js', 'dist/kernel.d.ts'].some(name => path === join(owner.path, name));
@@ -38,7 +38,7 @@ function inspectEngineEdge(file, owner, name, compiler, context) {
   const result = ts.resolveModuleName(name, file, compiler, ts.sys).resolvedModule;
   const target = result ? ownerOf(existsSync(result.resolvedFileName) ? realpathSync(result.resolvedFileName) : resolve(result.resolvedFileName), context) : undefined;
   const relativeTarget = name.startsWith('.') || name.startsWith('/') ? ownerOf(resolve(dirname(file), name), context) : undefined;
-  if ((name.startsWith('@lorcana/engine-lab') || target?.name === '@lorcana/engine-lab' || relativeTarget?.name === '@lorcana/engine-lab') && owner.name !== '@lorcana/engine-adapter') throw new Error(`Forbidden engine import: ${file} -> ${name}`);
+  if (name.startsWith('@lorcana/engine-lab') || target?.name === '@lorcana/engine-lab' || relativeTarget?.name === '@lorcana/engine-lab') throw new Error(`Forbidden engine import: ${file} -> ${name}`);
   if (name.startsWith('@tcg/') || name.startsWith('@lorcana/vendor-engine') || target?.scope === 'engine' || relativeTarget?.scope === 'engine') {
     if (!kernelEdge(owner, target ?? context.owners.find(pkg => pkg.name === name), name)) throw new Error(`Forbidden engine import: ${file} -> ${name}`);
   }
@@ -53,7 +53,7 @@ export function assertBrowserImport(file, importer, context = boundaryContext())
   const path = existsSync(file) ? realpathSync(file) : resolve(file), owner = ownerOf(path, context);
   if (owner?.scope === 'engine') {
     const from = existsSync(importer) ? realpathSync(importer) : resolve(importer);
-    if (!compiledKernel(path, owner) || !kernelEdge(ownerOf(from, context), owner, '@lorcana/vendor-engine')) fail(importer, file);
+    if (!compiledKernel(path, owner) || ownerOf(from, context)?.scope !== 'browser' || !kernelEdge(ownerOf(from, context), owner, '@lorcana/vendor-engine')) fail(importer, file);
   }
 }
 function inspectAsset(file, name, context) {
@@ -83,12 +83,15 @@ export function checkSource(file, context = boundaryContext(), content) {
   if (owner.scope === 'server') {
     const source = ts.createSourceFile(file, bytes, ts.ScriptTarget.Latest, true);
     function visitServer(node) {
+      if (ts.isIdentifier(node) && node.text === 'module' && !(ts.isPropertyAccessExpression(node.parent) && node.parent.name === node)) throw new Error(`Forbidden engine import: ${file} -> unchecked CommonJS module loader`);
+      if (ts.isIdentifier(node) && node.text === 'require' && !(ts.isPropertyAccessExpression(node.parent) && node.parent.name === node) && !(ts.isCallExpression(node.parent) && node.parent.expression === node)) throw new Error(`Forbidden engine import: ${file} -> aliased module loader`);
       let specifier;
       if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier) specifier = node.moduleSpecifier;
       if (ts.isImportTypeNode(node) && ts.isLiteralTypeNode(node.argument)) specifier = node.argument.literal;
       if (ts.isCallExpression(node) && (node.expression.kind === ts.SyntaxKind.ImportKeyword || ts.isIdentifier(node.expression) && node.expression.text === 'require')) specifier = node.arguments[0];
       if (specifier) {
         if (!ts.isStringLiteralLike(specifier)) throw new Error(`Forbidden engine import: ${file} -> nonliteral module specifier`);
+        if (['node:module', 'module'].includes(specifier.text)) throw new Error(`Forbidden engine import: ${file} -> unchecked module loader`);
         inspectEngineEdge(file, owner, specifier.text, compiler, context);
       }
       ts.forEachChild(node, visitServer);

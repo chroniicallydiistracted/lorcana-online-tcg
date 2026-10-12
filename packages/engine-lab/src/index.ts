@@ -1,9 +1,10 @@
 import { createSyntheticKernel, type SyntheticKernel } from '@lorcana/vendor-engine';
+import seedrandom from 'seedrandom';
 
 export const ENGINE_QUALIFICATION = Object.freeze({
   revision: '53a79413c58678b1c50dde57e71de5c123132716',
   rules230EffectiveOn: '2026-10-16', set14PrereleaseOn: '2026-10-16', set14GeneralReleaseOn: '2026-10-23',
-  rulesCertification: 'pending_RULE-04', randomQualification: 'pending_RULE-03', viewerProjection: 'pending_PLAY-02',
+  rulesCertification: 'pending_RULE-04', randomQualification: 'browser_lab_noncompetitive', viewerProjection: 'pending_PLAY-02',
   catalog: 'synthetic-only', rewards: false,
 });
 export interface LabStatus { mode: 'advanced-sandbox' | 'qualification'; revision: number; ended: boolean; winner: string | null; rewardEligible: false }
@@ -57,10 +58,16 @@ export function createLabMatch(options: unknown): LabMatch {
   if (!Array.isArray(value.players) || value.players.length !== 2 || value.players[0] === value.players[1]) throw new Error('Invalid players');
   const players: [string, string] = [text(value.players[0], 'players'), text(value.players[1], 'players')];
   const mode = value.mode;
-  let kernel: SyntheticKernel | undefined = createSyntheticKernel(text(value.seed, 'seed', 256), players);
+  const seed = text(value.seed, 'seed', 256);
+  const random = (index: number) => seedrandom(`${seed}:${index}`)();
+  let kernel: SyntheticKernel | undefined = createSyntheticKernel({ players, startTimestamp: 0, choosingFirstPlayer: players[0], randomSource: {
+    random,
+    integer: (index, bound) => Math.floor(random(index) * bound),
+    identifier(domain, index) { const draw = seedrandom(`${seed}:identifier:${domain}:${index}`); return Array.from({ length: 32 }, () => Math.floor(draw() * 256).toString(16).padStart(2, '0')).join(''); },
+  } });
   function active(): SyntheticKernel { if (!kernel) throw new Error('Match disposed'); return kernel; }
   return Object.freeze({
-    status: (): LabStatus => ({ mode, ...active().status(), rewardEligible: false }),
+    status: (): LabStatus => { const { revision, ended, winner } = active().status(); return { mode, revision, ended, winner, rewardEligible: false }; },
     submit(command: unknown) {
       const engine = active(), status = engine.status(), input = record(command, ['actor', 'expectedRevision', 'timestamp', 'commandId', 'move', 'input']);
       const actor = text(input.actor, 'actor'), revision = integer(input.expectedRevision, 'revision');
@@ -84,7 +91,7 @@ export function assessEngineAdmission(request: unknown): { allowed: boolean; rea
   if (!['advanced-sandbox', 'qualification'].includes(mode)) reasons.push('MODE_UNQUALIFIED');
   if (version !== 'synthetic-fixture') reasons.push('RULES_UNCERTIFIED');
   if (sets.some(set => set !== 'TST')) reasons.push('CATALOG_UNQUALIFIED');
-  if (value.rewards) reasons.push('SECURE_RNG_PENDING');
+  if (value.rewards) reasons.push('REWARDS_UNQUALIFIED');
   if (value.hiddenState) reasons.push('VIEWER_PROJECTION_PENDING');
   return { allowed: !reasons.length, reasons, rules230Phase: date < ENGINE_QUALIFICATION.rules230EffectiveOn ? 'scheduled' : 'effective', set14Phase: date < ENGINE_QUALIFICATION.set14PrereleaseOn ? 'scheduled' : date < ENGINE_QUALIFICATION.set14GeneralReleaseOn ? 'prerelease' : 'general_release' };
 }

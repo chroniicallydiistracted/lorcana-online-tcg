@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-008",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['--filter','@lorcana/engine-adapter','build'],['--filter','@lorcana/engine-adapter','test']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0||r.signal||r.error)process.exit(1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "e2cde0773fdd8839a404290ab125f98748f68101d98259ce2525350ca1961cf4",
+  "started_at": "2026-10-12T02:57:31.629Z",
+  "finished_at": "2026-10-12T02:57:33.429Z",
+  "recorded_at": "2026-10-12T02:57:33.429Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1800,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Completed archive freeze, speculative journal rollback, live secrecy and strict semantic replay reconstruction tests",
+  "log_path": "docs/validation/logs/RUN-20261012-008.txt",
+  "log_sha256": "05728a4606f32a7b342b36b5ddc8f546ab7990d212a13229c913f895d3812198",
+  "redactions": 0
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-027",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:clean"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T04:13:48.381Z",
+  "finished_at": "2026-10-12T04:15:15.799Z",
+  "recorded_at": "2026-10-12T04:15:15.799Z",
+  "time_precision": "exact",
+  "elapsed_ms": 86931,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final source-only frozen install/full foundation, no private files/Git/build input; verified tooling cache may be reused",
+  "log_path": "docs/validation/logs/RUN-20261012-027.txt",
+  "log_sha256": "8b4264c7390e6344ac3c8658aa8e4cd6da0d1c4173dc9fcf058ce5d08753136e",
+  "redactions": 0
+}

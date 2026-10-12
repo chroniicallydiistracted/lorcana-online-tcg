@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-024",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['install','--frozen-lockfile'],['verify:foundation'],['run','doctor'],['db:check']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0)process.exit(r.status??1);}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T04:08:55.507Z",
+  "finished_at": "2026-10-12T04:10:22.962Z",
+  "recorded_at": "2026-10-12T04:10:22.962Z",
+  "time_precision": "exact",
+  "elapsed_ms": 86973,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final frozen complete foundation/build/type/lint/Node/upstream/injection/governance and preserved doctor/database",
+  "log_path": "docs/validation/logs/RUN-20261012-024.txt",
+  "log_sha256": "fdc0a0e1642dbbca4ae740efeaab91f3f647d138f782bb4ee535ff07995ede24",
+  "redactions": 0
+}

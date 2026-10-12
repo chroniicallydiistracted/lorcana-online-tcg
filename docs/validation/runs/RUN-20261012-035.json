@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-035",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {readFileSync} from 'node:fs';import {spawnSync} from 'node:child_process';const prior=JSON.parse(readFileSync('docs/validation/runs/RUN-20261012-034.json'));if(prior.source_fingerprint!=='2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58')throw new Error('Unexpected checker identity');const r=spawnSync(prior.command[0],prior.command.slice(1),{stdio:'inherit'});if(r.error||r.signal)throw new Error('Final checker interrupted');process.exitCode=r.status??1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T04:54:52.944Z",
+  "finished_at": "2026-10-12T04:55:41.314Z",
+  "recorded_at": "2026-10-12T04:55:41.314Z",
+  "time_precision": "exact",
+  "elapsed_ms": 48167,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Corrected final sealed docs/static/doctor/read-only PG/staged-live/history/private; exact checker from preserved RUN034",
+  "log_path": "docs/validation/logs/RUN-20261012-035.txt",
+  "log_sha256": "526ccfcbf5c3e2942d18aac68c2f8d0b60303295bc23d1b8f512fd365d193694",
+  "redactions": 0
+}

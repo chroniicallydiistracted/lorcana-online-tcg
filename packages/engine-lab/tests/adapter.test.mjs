@@ -43,7 +43,7 @@ test('October rules and set dates never grant unqualified rules/catalog or hidde
   const released = assessEngineAdmission({ ...request, asOf: '2026-10-23' });
   assert.equal(released.allowed, false); assert.equal(released.set14Phase, 'general_release');
   assert.ok(released.reasons.includes('RULES_UNCERTIFIED')); assert.ok(released.reasons.includes('CATALOG_UNQUALIFIED'));
-  assert.ok(released.reasons.includes('SECURE_RNG_PENDING')); assert.ok(released.reasons.includes('VIEWER_PROJECTION_PENDING'));
+  assert.ok(released.reasons.includes('REWARDS_UNQUALIFIED')); assert.ok(released.reasons.includes('VIEWER_PROJECTION_PENDING'));
   assert.equal(assessEngineAdmission({ ...request, rulesVersion: '2.2.0', sets: ['001'] }).allowed, false);
   assert.equal(assessEngineAdmission({ asOf: '2026-10-10', mode: 'advanced-sandbox', rulesVersion: 'synthetic-fixture', sets: ['TST'], rewards: false, hiddenState: false }).allowed, true);
   assert.throws(() => assessEngineAdmission({ ...request, asOf: '2026-02-30' }), /date/);

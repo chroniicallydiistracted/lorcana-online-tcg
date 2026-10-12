@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-011",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['engine:check-randomness'],['test:engine-tooling'],['engine:test-injection'],['--filter','@lorcana/engine-adapter','test'],['--filter','@lorcana/engine-lab','build'],['--filter','@lorcana/engine-lab','test']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0||r.signal||r.error)process.exit(1);}const r=spawnSync('node',['--test','tests/foundation/boundaries.test.mjs'],{stdio:'inherit'});if(r.status!==0||r.signal||r.error)process.exit(1);"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "9b0688f88a5e8bebe14e5b8a635c5251df14dd7692d3d85bde8764881e018c47",
+  "started_at": "2026-10-12T03:21:18.167Z",
+  "finished_at": "2026-10-12T03:21:19.786Z",
+  "recorded_at": "2026-10-12T03:21:19.786Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1619,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "AST entropy/alias and browser isolation fixes, controlled clock/provider tests, entropy failure and actual Lab build regressions",
+  "log_path": "docs/validation/logs/RUN-20261012-011.txt",
+  "log_sha256": "4c364c07788f906b632086458ebd7f6ce78335a22f4b05913da1dcffeebf8472",
+  "redactions": 0
+}

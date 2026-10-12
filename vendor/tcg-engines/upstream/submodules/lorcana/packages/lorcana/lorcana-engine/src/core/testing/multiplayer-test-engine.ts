@@ -1,3 +1,4 @@
+import { qualificationClock } from "../runtime/match-runtime.random-apis";
 /**
  * Responsibility: generic multiplayer test harness.
  * Wires one authoritative `ServerEngine` with per-view `ClientEngine` instances via
@@ -293,8 +294,8 @@ export class MultiplayerTestEngine extends CoreTestEngine<
   async syncToStateID(targetStateID: number, options: SyncOptions = {}): Promise<void> {
     const timeoutMs = options.timeoutMs ?? 1000;
     const pollIntervalMs = options.pollIntervalMs ?? 10;
-    const deadline = Date.now() + timeoutMs;
-    for (; Date.now() < deadline; ) {
+    const deadline = qualificationClock() + timeoutMs;
+    for (; qualificationClock() < deadline; ) {
       const allSynced = Array.from(this.playerEngines.values()).every(
         (e) => e.getStateID() >= targetStateID,
       );
@@ -389,7 +390,7 @@ export class MultiplayerTestEngine extends CoreTestEngine<
         .getRuntime()
         .getProjectedBoardView(
           { role: "judge" },
-          { serverTimestamp: Date.now() },
+          { serverTimestamp: qualificationClock() },
         ) as FilteredMatchView;
     }
 

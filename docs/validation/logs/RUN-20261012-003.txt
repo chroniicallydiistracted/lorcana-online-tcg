@@ -1,0 +1,32 @@
+✖ vendored source has no ambient Math.random/UUID or runtime seedrandom fallback (5.059957ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50.207238
+
+✖ failing tests:
+
+test at tests/engine/randomness.test.mjs:6:1
+✖ vendored source has no ambient Math.random/UUID or runtime seedrandom fallback (5.059957ms)
+  AssertionError [ERR_ASSERTION]: ambient randomness: /workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/server-engine.ts
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:257)
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:144)
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:144)
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:144)
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:144)
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:144)
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:144)
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:144)
+      at walk (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:8:144)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/engine/randomness.test.mjs:9:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

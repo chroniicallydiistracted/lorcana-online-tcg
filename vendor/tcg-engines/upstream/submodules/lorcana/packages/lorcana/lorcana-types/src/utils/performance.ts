@@ -1,3 +1,4 @@
+import { qualificationClock } from "../../../lorcana-engine/src/core/runtime/match-runtime.random-apis";
 /**
  * High-resolution monotonic time in milliseconds.
  * Uses `performance.now` when available (browser, modern Node/Bun); otherwise `Date.now`.
@@ -5,7 +6,7 @@
 export function nowMs(): number {
   return typeof performance !== "undefined" && typeof performance.now === "function"
     ? performance.now()
-    : Date.now();
+    : qualificationClock();
 }
 
 export type PerformanceMeasurement = Readonly<{

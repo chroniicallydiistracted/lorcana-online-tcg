@@ -30,3 +30,7 @@ Every developer and agent starts with [AGENTS.md](../AGENTS.md), the [current ha
 Current documents describe current code and action status. Planning documents retain intended future scope and explicitly identify implementation limits. Historical/archive records retain what was known at their recorded event; add corrections without rewriting executed results. Reserved-package READMEs describe reservations. Generated records are refreshed through tooling. Classification is never permission to leave a current behavioral claim inaccurate.
 
 The map accounts for documentation across the whole repository, including workspace READMEs and root files. Generated dependencies, build output, browser caches, Git internals and private credentials are excluded from the source inventory; they are not independent documentation sources. The audit records these exclusions and their reasons.
+
+## Current RULE-03 entry point
+
+[ADR0010](adr/0010-secure-randomness-replay.md), [task plan](plans/2026-10-12-rule-03-randomness-replay.md), [engine operation](runbooks/engine.md) and [validation](validation/rule-03.md) govern secure server randomness, captured clocks, bounded private completed verification and Director D10 disclosure. The task has no delivery/auth/persistence endpoint. RULE-04 official scenarios/certification follows; PLAY-02 wire privacy and economic/ordinary-play gates stay closed.

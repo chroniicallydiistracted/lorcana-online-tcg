@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-018",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['--filter','@lorcana/engine-adapter','test'],['test:engine-tooling'],['lint']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0)process.exit(r.status??1);}const r=spawnSync(process.execPath,['--test','tests/foundation/boundaries.test.mjs'],{stdio:'inherit'});process.exitCode=r.status??1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "f9e4e6aa2d9fb0f5d956f80aaae079b0d2b7f75ef57164b5323b3b9f145ba255",
+  "started_at": "2026-10-12T03:53:20.130Z",
+  "finished_at": "2026-10-12T03:53:29.665Z",
+  "recorded_at": "2026-10-12T03:53:29.665Z",
+  "time_precision": "exact",
+  "elapsed_ms": 9383,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Correct unique synthetic identifiers for post-draw rollback regression; review corrections and lint",
+  "log_path": "docs/validation/logs/RUN-20261012-018.txt",
+  "log_sha256": "e595755c02d0dc1718eb04932b3633d0d3e27e47bd916d756d727d951a4fbf80",
+  "redactions": 0
+}

@@ -1,0 +1,30 @@
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS RULE-01 offline metadata, denominators, dated release/effective status and uncertified boundaries
+PASS pinned vendor integrity {"revision":"53a79413c58678b1c50dde57e71de5c123132716","files":347,"patches":28}
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 347 selected source files
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":1318,"documents":779,"functions":7364,"changes":25,"runs":319}
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 doctor /workspaces/lorcana-online-tcg
+> node scripts/doctor.mjs
+
+PASS Node 24.21.0
+PASS pnpm 10.33.0
+PASS Linux development environment
+PASS .env.local exists with owner-only access
+PASS Local environment loaded into container
+PASS Container database address
+PASS Generated database bootstrap configuration
+Workspace toolchain ready. Run pnpm db:check to verify authenticated database access.
+
+> lorcana-online-tcg@0.0.0 db:check /workspaces/lorcana-online-tcg
+> node scripts/db-check.mjs
+
+PASS authenticated PostgreSQL 18 connection to the local bootstrap database.
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+PASS sealed final docs/static/bootstrap environment/read-only original DB, full-history/private scan and 1318 staged/live file byte matches; code unchanged. CI timing remains pending by Director instruction.

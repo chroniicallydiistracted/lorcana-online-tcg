@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-016",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process';for(const args of [['--filter','@lorcana/engine-adapter','build'],['engine:check-randomness'],['--filter','@lorcana/engine-adapter','test'],['test:engine-tooling']]){const r=spawnSync('pnpm',args,{stdio:'inherit'});if(r.status!==0)process.exit(r.status??1);}const r=spawnSync(process.execPath,['--test','tests/foundation/boundaries.test.mjs'],{stdio:'inherit'});process.exitCode=r.status??1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "9dee09c198ae7364a431632950c79439fd9a3a3d03769a8686ee97d12ba9c69e",
+  "started_at": "2026-10-12T03:50:26.843Z",
+  "finished_at": "2026-10-12T03:50:30.075Z",
+  "recorded_at": "2026-10-12T03:50:30.075Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3232,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Corrected guard preserves card require methods and performance-only global aliases; replay/security regressions",
+  "log_path": "docs/validation/logs/RUN-20261012-016.txt",
+  "log_sha256": "916acddaa0e820c478628f313db5ad714309a71c1e1610af7978022b67f17227",
+  "redactions": 0
+}

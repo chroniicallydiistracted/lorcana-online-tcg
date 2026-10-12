@@ -1,3 +1,4 @@
+import { qualificationClock } from "./match-runtime.random-apis";
 import type { MatchState } from "./types";
 import type { StaticResourceRefs } from "./static-resources";
 
@@ -230,7 +231,7 @@ export class PersistenceManager {
       matchID,
       stateID: state.ctx._stateID,
       state,
-      timestamp: Date.now(),
+      timestamp: qualificationClock(),
     });
   }
 
@@ -253,7 +254,7 @@ export class PersistenceManager {
     resourceRefs?: StaticResourceRefs,
   ): Promise<void> {
     const existing = await this.adapter.getMetadata(matchID);
-    const now = Date.now();
+    const now = qualificationClock();
 
     await this.adapter.saveMetadata({
       matchID,
@@ -276,7 +277,7 @@ export class PersistenceManager {
     const metadata = await this.adapter.getMetadata(matchID);
     if (metadata) {
       metadata.status = "completed";
-      metadata.updatedAt = Date.now();
+      metadata.updatedAt = qualificationClock();
       metadata.winner = winner;
       metadata.endReason = endReason;
       await this.adapter.saveMetadata(metadata);
@@ -293,7 +294,7 @@ export class PersistenceManager {
     playerID?: string,
   ): Promise<void> {
     await this.adapter.appendAuditLog({
-      timestamp: Date.now(),
+      timestamp: qualificationClock(),
       matchID,
       eventType,
       playerID,

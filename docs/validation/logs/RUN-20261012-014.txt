@@ -1,0 +1,36 @@
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (293.937109ms)
+✔ server applications cannot bypass the project adapter using vendor or raw upstream imports (10.167331ms)
+✖ server module loader aliases cannot bypass the engine adapter (1.639417ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1697.930456ms)
+✔ browser source cannot import the server-only release registry through its package subpath (1.328126ms)
+✔ private server RNG/replay cannot cross browser boundaries and server adapter cannot enter the Lab generator (8.037041ms)
+✔ browser resolver cannot treat a server adapter as a permitted browser kernel importer (0.542534ms)
+✔ declaring a database dependency in a public contract package is rejected (214.735149ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (215.859502ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (203.483059ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (212.255902ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (829.80017ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3760.023531
+
+✖ failing tests:
+
+test at tests/foundation/boundaries.test.mjs:26:1
+✖ server module loader aliases cannot bypass the engine adapter (1.639417ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/foundation/boundaries.test.mjs:32:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Forbidden engine import/,
+    operator: 'throws',
+    diff: 'simple'
+  }

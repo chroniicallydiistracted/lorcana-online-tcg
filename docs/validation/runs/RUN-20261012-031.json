@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-031",
+  "category": "container",
+  "command": [
+    "node",
+    ".local/rule-03/canonical-check.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T04:32:50.741Z",
+  "finished_at": "2026-10-12T04:34:06.403Z",
+  "recorded_at": "2026-10-12T04:34:06.403Z",
+  "time_precision": "exact",
+  "elapsed_ms": 75324,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Canonical staged Git archive equals live files; frozen install and full foundation; retained exact verification program",
+  "log_path": "docs/validation/logs/RUN-20261012-031.txt",
+  "log_sha256": "17f9bd1e847287ff96823fd7d38c659ec794d4b4fa65dd7884d408d6183f2f13",
+  "redactions": 0
+}

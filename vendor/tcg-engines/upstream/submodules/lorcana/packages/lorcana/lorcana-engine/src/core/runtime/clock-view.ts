@@ -1,3 +1,4 @@
+import { qualificationClock } from "./match-runtime.random-apis";
 /**
  * Clock View - Shared consolidated clock data model
  *
@@ -118,7 +119,7 @@ export function formatClockTime(ms: number): string {
  * (now - startedAtMs)`. When paused (or when the clock mode is "none"), the
  * snapshot's reserve is returned as-is.
  *
- * Never calls `Date.now()` internally — the caller must supply `now` so drift
+ * Never calls `qualificationClock()` internally — the caller must supply `now` so drift
  * between display and affordance logic is impossible.
  */
 export function deriveClockView(

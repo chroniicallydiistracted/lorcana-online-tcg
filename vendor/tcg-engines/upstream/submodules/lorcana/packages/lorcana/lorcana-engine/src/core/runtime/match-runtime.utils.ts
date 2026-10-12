@@ -1,3 +1,4 @@
+import { qualificationRandom, qualificationClock } from "./match-runtime.random-apis";
 /**
  * MatchRuntime Utilities
  *
@@ -191,11 +192,12 @@ function createWriteContextBase(opts: BuildWriteContextOptions): RuntimeLifecycl
   const invalidateCardViews = () => {
     getCardQueryRuntimeInternals(cardsApi)?.invalidateCardViews();
   };
-  const random = createRandomAPIForDraft(draft);
+  const random = createRandomAPIForDraft(draft, config.randomSource);
   const zones = createZoneOperations(draft, zoneRegistry, emitGameEvent, {
     cardQuery: cardsApi,
     onUndoBarrier: undo.markBarrier,
     random: random.random,
+    integer: random.integer,
     onCardViewsInvalidated: invalidateCardViews,
     onCardEnteredZone: (_cardId, toZone, ownerId) => {
       if (isDiscardZoneKey(toZone)) {
@@ -206,7 +208,7 @@ function createWriteContextBase(opts: BuildWriteContextOptions): RuntimeLifecycl
       }
     },
   });
-  const time = createTimeOperationsForDraft(draft);
+  const time = createTimeOperationsForDraft(draft, config.now);
   const events = createEventAPI(emitGameEvent, draft, gameEndTracker);
   const frameworkState = createFrameworkStateSnapshot(draft, effectiveGameEnded);
   const framework = createFrameworkWriteAPI(
@@ -264,16 +266,16 @@ export function buildExecutionContext<TInput extends MoveInput = MoveInput>(
 // =============================================================================
 
 export function generateMatchID(): string {
-  return `match-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  return `match-${qualificationClock()}-${qualificationRandom().toString(36).substr(2, 9)}`;
 }
 
 export function generateGameID(): string {
-  return `game-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  return `game-${qualificationClock()}-${qualificationRandom().toString(36).substr(2, 9)}`;
 }
 
 export function computeRulesetHash(config: MatchRuntimeConfig): string {
   // Simplified - would hash game definition in real implementation
-  return `ruleset-${config.name}-${Date.now()}`;
+  return config.rulesetIdentity ?? `ruleset-${config.name}-raw-fixture`;
 }
 
 export function inferQueryPlayerId(state: MatchState): string | undefined {

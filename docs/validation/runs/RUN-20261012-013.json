@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-013",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process'; for(const args of [['--test','packages/engine-adapter/tests/identity.test.mjs'],['--test','tests/engine/randomness.test.mjs']]){const r=spawnSync(process.execPath,args,{stdio:'inherit'});if(r.status!==0)process.exitCode=1;}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "e59958b468542aa1025d6494660de3a3a7b4ff1febae81e1de924dfc9bf86416",
+  "started_at": "2026-10-12T03:47:07.425Z",
+  "finished_at": "2026-10-12T03:47:07.942Z",
+  "recorded_at": "2026-10-12T03:47:07.942Z",
+  "time_precision": "exact",
+  "elapsed_ms": 516,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED review regressions: compiled kernel identity and alternate ambient entropy sources",
+  "log_path": "docs/validation/logs/RUN-20261012-013.txt",
+  "log_sha256": "29ea132723f513f022e4d30391460e54c72ea8f54a28fa2af5b6362afdeb4fe6",
+  "redactions": 0
+}

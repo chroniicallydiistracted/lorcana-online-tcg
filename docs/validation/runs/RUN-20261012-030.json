@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-030",
+  "category": "container",
+  "command": [
+    "python3",
+    "-c",
+    "import time,json; samples=[(time.time_ns(),time.monotonic_ns(),time.clock_gettime_ns(time.CLOCK_MONOTONIC_RAW))];time.sleep(10);samples.append((time.time_ns(),time.monotonic_ns(),time.clock_gettime_ns(time.CLOCK_MONOTONIC_RAW)));print(json.dumps({'read_only_clock_sample_ms':dict(zip(['realtime','monotonic','raw'],[(samples[1][i]-samples[0][i])/1e6 for i in range(3)]))}))"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T04:27:36.670Z",
+  "finished_at": "2026-10-12T04:27:46.728Z",
+  "recorded_at": "2026-10-12T04:27:46.728Z",
+  "time_precision": "exact",
+  "elapsed_ms": 10058,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Read-only three-clock diagnostic after two isolated timestamp rejections; no time or policy changes",
+  "log_path": "docs/validation/logs/RUN-20261012-030.txt",
+  "log_sha256": "e033b8617b5b0dc6d37af8c4bf211078e9d59bbec83627b57d08e284e9cd49a7",
+  "redactions": 0
+}

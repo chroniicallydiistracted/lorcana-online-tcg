@@ -1,0 +1,33 @@
+✖ completed private archive is immutable across late rejected submissions (25.159374ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (54.573684ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 154.186224
+
+✖ failing tests:
+
+test at packages/engine-adapter/tests/replay.test.mjs:35:1
+✖ completed private archive is immutable across late rejected submissions (25.159374ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'aabeca21de2ac0562d13f5419a8ca530b227cfbad3204b602240860f3436b460'
+  - 'a91eeeb32765371d091f8d8fe18e7ad04d5e8a38bffd70033bed8d82c552d091'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/replay.test.mjs:41:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'aabeca21de2ac0562d13f5419a8ca530b227cfbad3204b602240860f3436b460',
+    expected: 'a91eeeb32765371d091f8d8fe18e7ad04d5e8a38bffd70033bed8d82c552d091',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

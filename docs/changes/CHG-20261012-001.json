@@ -1,0 +1,822 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261012-001",
+  "title": "RULE-03 secure per-match randomness and private deterministic replay",
+  "actor": "Codex architect/developer/QA",
+  "status": "finalized",
+  "recorded_at": "2026-10-12T04:57:35.971Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "task_ids": [
+    "RULE-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R01.018",
+    "R15.009",
+    "R28.008",
+    "R29.003",
+    "R29.004",
+    "R29.005",
+    "R32.011"
+  ],
+  "feature_ids": [
+    "F-ENGINE",
+    "F-BOUNDARIES",
+    "F-CI",
+    "F-RELEASE",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Read RULE-03 architecture/backlog/audit/source contracts; actual main f61aad8 clean at intake, Director reports RULE-02 audited/merged/passing. RULE-03 baseline captured in RUN001."
+    },
+    {
+      "kind": "revision",
+      "description": "Director restricts completed-match seed and full private replay access to participants/authorized auditors. No user-facing delivery or public disclosure in this task."
+    },
+    {
+      "kind": "edit",
+      "description": "Recorded disclosure decision under D10; initial draft preparation refused existing D08, preserving D08/D09 and all prior Director choices."
+    },
+    {
+      "kind": "implementation",
+      "description": "Add server-only256-bit crypto seed/indexed HMAC source, per-match pure kernel injection and captured-clock private replay with trusted digest;28 reproduced fork patches,347 files,27 unchanged suites. Verification in progress."
+    },
+    {
+      "kind": "fix",
+      "description": "Retain RUN004 compiled raw-suite-legacy guard failure; compile-time compatibility activation removed from product bytes. RUN005 pure kernel passed but TypeScript6 requires explicit Node types; owning tsconfig corrected. A descriptor newline edit was refused before upstream writes, then corrected/reproduced."
+    },
+    {
+      "kind": "function",
+      "description": "Implement createQualificationMatch without caller seed; indexed HMAC provider, private completed export/reconstruction, framed compiled executable identity, bounded validation/attempt/outcome/state journal and rollback/disposal."
+    },
+    {
+      "kind": "test",
+      "description": "Preserve all red/failed checkpoints and source-matched corrected tests, including entropy failure, integer bias, immutable completion, journal rollback, semantic tamper, post-shuffle retry, built-kernel mutation and partition identity, crypto/global/module aliases and browser/private RPC rejection."
+    },
+    {
+      "kind": "fix",
+      "description": "Independent review corrected compiled-kernel identity omission/unframed concatenation and ambient entropy/server loader bypasses. RUN015/016 retained harmless card/performance guard false positives; RUN017 invalid duplicate-ID fixture corrected. No inherited upstream assertion was changed."
+    },
+    {
+      "kind": "documentation",
+      "description": "Update all relevant current package/runbook/ADR/qualification/task/requirement/feature/index documents; append source-specific continuations without rewriting sealed evidence. Preserve548/33/20, original planning/provenance and BOOT-04/D07 choices; record D10 restricted private replay disclosure."
+    },
+    {
+      "kind": "review",
+      "description": "Auxiliary process-list inspection failed because ps is absent from the existing image; no manual tool install/change. Actual final process/listener proof uses Linux proc files. Unknown exploratory execution times remain unknown."
+    },
+    {
+      "kind": "revision",
+      "description": "Director explicitly chooses to leave the environment unchanged and retain RULE-03 as implemented with isolated CI timing qualification pending. No Windows/WSL/Docker/time/driver/threshold change; no passing CI receipt/artifact inferred from child exit0."
+    },
+    {
+      "kind": "review",
+      "description": "Fresh independent read-only reviewer confirms no unresolved Critical/Important source or semantic-doc findings at final fingerprint; ad-hoc independent HMAC70/vector/identity/rollback/guard/pin probes supplement retained receipts. Declines future official/auth/privacy/durable/device/production scope; explicit CI timing deferral honored."
+    },
+    {
+      "kind": "test",
+      "description": "Final source2e6c4734: frozen/full141 project checks+338 unchanged upstream passes/1 inherited skip+2 owned Bun; exact pin28patches; six Chromium foundation scenarios/two workers; clean source and canonical1309 live-equal files; private/history/scope/log316/actual cleanup passed. RUN028/029 timing-rejected despite complete child stages; no artifact published; final semantic/static033 passed."
+    },
+    {
+      "kind": "revision",
+      "description": "Final documentation update was not executed when automatic approval review hit a usage limit. Director requested continuation; resumed inspection confirms unchanged source/branch/HEAD and preserved containers. No approval check was bypassed, no environment/clock change, and all failed CI evidence is retained."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN034 preserves final-gate failure: native reported disposition requires an actual manual-device run. Correct non-recorder independent review/WSL host observations to historical attribution, without inventing device/process timing or changing schema/gates; source remains2e6c4734."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0001-local-development-environment.md",
+    "docs/adr/0002-application-foundation.md",
+    "docs/adr/0005-ci-artifact-qualification.md",
+    "docs/adr/0006-protocol-release-contracts.md",
+    "docs/adr/0008-engine-placement-dependency-baseline.md",
+    "docs/adr/0009-pinned-engine-qualification.md",
+    "docs/adr/0010-secure-randomness-replay.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261012-001.json",
+    "docs/contracts/release.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-06-documentation-governance.md",
+    "docs/plans/2026-10-07-boot-03-ci.md",
+    "docs/plans/2026-10-07-boot-05-contracts.md",
+    "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+    "docs/plans/2026-10-12-rule-03-randomness-replay.md",
+    "docs/reviews/2026-10-12-rule-03-closure.md",
+    "docs/rules/README.md",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/workspace-setup.md",
+    "docs/validation/boot-01.md",
+    "docs/validation/boot-02.md",
+    "docs/validation/boot-03.md",
+    "docs/validation/boot-04.md",
+    "docs/validation/boot-05.md",
+    "docs/validation/logs/RUN-20261012-001.txt",
+    "docs/validation/logs/RUN-20261012-002.txt",
+    "docs/validation/logs/RUN-20261012-003.txt",
+    "docs/validation/logs/RUN-20261012-004.txt",
+    "docs/validation/logs/RUN-20261012-005.txt",
+    "docs/validation/logs/RUN-20261012-006.txt",
+    "docs/validation/logs/RUN-20261012-007.txt",
+    "docs/validation/logs/RUN-20261012-008.txt",
+    "docs/validation/logs/RUN-20261012-009.txt",
+    "docs/validation/logs/RUN-20261012-010.txt",
+    "docs/validation/logs/RUN-20261012-011.txt",
+    "docs/validation/logs/RUN-20261012-012.txt",
+    "docs/validation/logs/RUN-20261012-013.txt",
+    "docs/validation/logs/RUN-20261012-014.txt",
+    "docs/validation/logs/RUN-20261012-015.txt",
+    "docs/validation/logs/RUN-20261012-016.txt",
+    "docs/validation/logs/RUN-20261012-017.txt",
+    "docs/validation/logs/RUN-20261012-018.txt",
+    "docs/validation/logs/RUN-20261012-019.txt",
+    "docs/validation/logs/RUN-20261012-020.txt",
+    "docs/validation/logs/RUN-20261012-021.txt",
+    "docs/validation/logs/RUN-20261012-022.txt",
+    "docs/validation/logs/RUN-20261012-023.txt",
+    "docs/validation/logs/RUN-20261012-024.txt",
+    "docs/validation/logs/RUN-20261012-025.txt",
+    "docs/validation/logs/RUN-20261012-026.txt",
+    "docs/validation/logs/RUN-20261012-027.txt",
+    "docs/validation/logs/RUN-20261012-028.txt",
+    "docs/validation/logs/RUN-20261012-029.txt",
+    "docs/validation/logs/RUN-20261012-030.txt",
+    "docs/validation/logs/RUN-20261012-031.txt",
+    "docs/validation/logs/RUN-20261012-032.txt",
+    "docs/validation/logs/RUN-20261012-033.txt",
+    "docs/validation/logs/RUN-20261012-034.txt",
+    "docs/validation/logs/RUN-20261012-035.txt",
+    "docs/validation/rule-01.md",
+    "docs/validation/rule-02.md",
+    "docs/validation/rule-03-canonical-check.mjs.txt",
+    "docs/validation/rule-03-host-closure.json",
+    "docs/validation/rule-03.md",
+    "docs/validation/runs/RUN-20261012-001.json",
+    "docs/validation/runs/RUN-20261012-002.json",
+    "docs/validation/runs/RUN-20261012-003.json",
+    "docs/validation/runs/RUN-20261012-004.json",
+    "docs/validation/runs/RUN-20261012-005.json",
+    "docs/validation/runs/RUN-20261012-006.json",
+    "docs/validation/runs/RUN-20261012-007.json",
+    "docs/validation/runs/RUN-20261012-008.json",
+    "docs/validation/runs/RUN-20261012-009.json",
+    "docs/validation/runs/RUN-20261012-010.json",
+    "docs/validation/runs/RUN-20261012-011.json",
+    "docs/validation/runs/RUN-20261012-012.json",
+    "docs/validation/runs/RUN-20261012-013.json",
+    "docs/validation/runs/RUN-20261012-014.json",
+    "docs/validation/runs/RUN-20261012-015.json",
+    "docs/validation/runs/RUN-20261012-016.json",
+    "docs/validation/runs/RUN-20261012-017.json",
+    "docs/validation/runs/RUN-20261012-018.json",
+    "docs/validation/runs/RUN-20261012-019.json",
+    "docs/validation/runs/RUN-20261012-020.json",
+    "docs/validation/runs/RUN-20261012-021.json",
+    "docs/validation/runs/RUN-20261012-022.json",
+    "docs/validation/runs/RUN-20261012-023.json",
+    "docs/validation/runs/RUN-20261012-024.json",
+    "docs/validation/runs/RUN-20261012-025.json",
+    "docs/validation/runs/RUN-20261012-026.json",
+    "docs/validation/runs/RUN-20261012-027.json",
+    "docs/validation/runs/RUN-20261012-028.json",
+    "docs/validation/runs/RUN-20261012-029.json",
+    "docs/validation/runs/RUN-20261012-030.json",
+    "docs/validation/runs/RUN-20261012-031.json",
+    "docs/validation/runs/RUN-20261012-032.json",
+    "docs/validation/runs/RUN-20261012-033.json",
+    "docs/validation/runs/RUN-20261012-034.json",
+    "docs/validation/runs/RUN-20261012-035.json",
+    "docs/vision/README.md",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "package.json",
+    "packages/engine-adapter/README.md",
+    "packages/engine-adapter/package.json",
+    "packages/engine-adapter/src/admission.ts",
+    "packages/engine-adapter/src/code-identity.ts",
+    "packages/engine-adapter/src/index.ts",
+    "packages/engine-adapter/src/random.ts",
+    "packages/engine-adapter/src/replay.ts",
+    "packages/engine-adapter/src/validation.ts",
+    "packages/engine-adapter/tests/identity.test.mjs",
+    "packages/engine-adapter/tests/node.test.mjs",
+    "packages/engine-adapter/tests/random.test.mjs",
+    "packages/engine-adapter/tests/replay.test.mjs",
+    "packages/engine-adapter/tsconfig.json",
+    "packages/engine-lab/README.md",
+    "packages/engine-lab/package.json",
+    "packages/engine-lab/src/index.ts",
+    "packages/engine-lab/src/seedrandom.d.ts",
+    "packages/engine-lab/tests/adapter.test.mjs",
+    "packages/engine-lab/tests/browser.mjs",
+    "pnpm-lock.yaml",
+    "scripts/check-boundaries.mjs",
+    "scripts/engine/check-randomness.mjs",
+    "scripts/engine/patches.json",
+    "scripts/engine/test-injection.mjs",
+    "scripts/engine/test-upstream.mjs",
+    "scripts/engine/vendor.mjs",
+    "scripts/release-manifest.mjs",
+    "scripts/verify.mjs",
+    "tests/ci/gates.test.mjs",
+    "tests/engine/randomness.test.mjs",
+    "tests/foundation/boundaries.test.mjs",
+    "vendor/tcg-engines/README.md",
+    "vendor/tcg-engines/build.mjs",
+    "vendor/tcg-engines/package.json",
+    "vendor/tcg-engines/provenance/P003.original.ts",
+    "vendor/tcg-engines/provenance/P004.original.ts",
+    "vendor/tcg-engines/provenance/P005.original.ts",
+    "vendor/tcg-engines/provenance/P006.original.ts",
+    "vendor/tcg-engines/provenance/P007.original.ts",
+    "vendor/tcg-engines/provenance/P008.original.ts",
+    "vendor/tcg-engines/provenance/P009.original.ts",
+    "vendor/tcg-engines/provenance/P010.original.ts",
+    "vendor/tcg-engines/provenance/P011.original.ts",
+    "vendor/tcg-engines/provenance/P012.original.ts",
+    "vendor/tcg-engines/provenance/P013.original.ts",
+    "vendor/tcg-engines/provenance/P014.original.ts",
+    "vendor/tcg-engines/provenance/P015.original.ts",
+    "vendor/tcg-engines/provenance/P016.original.ts",
+    "vendor/tcg-engines/provenance/P017.original.ts",
+    "vendor/tcg-engines/provenance/P018.original.ts",
+    "vendor/tcg-engines/provenance/P019.original.ts",
+    "vendor/tcg-engines/provenance/P020.original.ts",
+    "vendor/tcg-engines/provenance/P021.original.ts",
+    "vendor/tcg-engines/provenance/P022.original.ts",
+    "vendor/tcg-engines/provenance/P023.original.ts",
+    "vendor/tcg-engines/provenance/P024.original.ts",
+    "vendor/tcg-engines/provenance/P025.original.ts",
+    "vendor/tcg-engines/provenance/P026.original.ts",
+    "vendor/tcg-engines/provenance/P027.original.ts",
+    "vendor/tcg-engines/provenance/P028.original.ts",
+    "vendor/tcg-engines/src/injection.test.ts",
+    "vendor/tcg-engines/src/kernel.d.ts",
+    "vendor/tcg-engines/src/kernel.ts",
+    "vendor/tcg-engines/src/upstream-compatibility-preload.ts",
+    "vendor/tcg-engines/upstream.lock.json",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/client-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/engine/server-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/auth.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/clock-view.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.init.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.random-apis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.time-apis.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.types.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/match-runtime.utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/multiplayer-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/persistence.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/replay.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/security.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/serialization.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/time-control.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/runtime/zone-operations.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/testing/multiplayer-test-engine.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/core/types/branded-utils.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/lorcana-client.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/lorcana-engine-base.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/lorcana-server.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-game/project-board.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/move-cards-from-under-effect.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/utils/performance.ts",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-types/src/utils/shuffle.ts"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema1 change/run/time/redaction/sealing and manual-device conventions unchanged; new RULE-03 commands are captured through the same native recorder."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Intake/semantic review, matched evidence, canonical bytes, local gates and authorization remain valid; RULE-03 uses them without a new integration/deployment privilege."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No governance schema or recorder implementation change; existing UTC/monotonic/digest/seal rules still govern private RNG work."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Private RNG/journal is in-process only; no SQL/role/grant change, DB connection or production recovery claim."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "OVHcloud/Cloudflare/$25/region/recovery selection unchanged; no infrastructure provision/deploy/purchase follows from RNG qualification."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Public revision1 shapes and bounded transport remain unchanged; private replay/seed types are server-only and not new wire frames."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Completed scoped database plan and its source-specific receipts retained; RULE-03 does not implement durable match persistence."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/plans/2026-10-12-rule-03-randomness-replay.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Director D07/no-charge/provenance/notice/takedown obligations preserved; this task uses synthetic fixtures and imports no official assets."
+    },
+    {
+      "path": "docs/reviews/2026-10-12-rule-03-closure.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Supplemented dated source gaps/URLs remain unchanged; CR2.3/set14 admission cannot follow from RNG proofs."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated acquisition inputs/URLs remain unchanged; source inventories not reacquired or promoted to gameplay certification."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No provisioning/migration operation added; original restricted targets/data and disposable proof workflow retained."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed schema1 fields against native records; no schema/format/protocol migration and all earlier evidence remains valid."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema1 template still records complete scope/file/doc/evidence/time fields; no private seeds or replay payloads belong in records."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing nine intake/behavior/docs/evidence/resource/gate/next-action sections remain sufficient; current RULE-03 handoff uses them."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/rule-03-canonical-check.mjs.txt",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/rule-03-host-closure.json",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "X01–X07 retained with DOC-01/02 universal obligations; no scope expansion/removal in this task."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed existing source-qualified CI/task contracts; no changed implementation claim is promoted without current matched evidence."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "updated",
+      "reason": "Compared current engine/RNG/private replay signatures, ownership, scoped prerequisites and actual checkpoint results; updated current text with D10 and explicit later gates, preserving dated executed history."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-001.json",
+      "outcome": "passed",
+      "scope": "RULE-03 intake: actual pinned toolchain/static workspace/bootstrap/authenticated PostgreSQL baseline"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-002.json",
+      "outcome": "failed",
+      "scope": "RED: indexed secret server stream and completed deterministic replay do not exist yet"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-003.json",
+      "outcome": "failed",
+      "scope": "RED: whole selected upstream source still has ambient shuffle/identifier/randomness fallbacks"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-004.json",
+      "outcome": "failed",
+      "scope": "First secure RNG integration: frozen graph, pure kernel/Node adapter builds, actual secret/replay tests and unchanged upstream suites"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-005.json",
+      "outcome": "failed",
+      "scope": "Corrected production compatibility removal, kernel/Node secure RNG/replay and unchanged upstream regression qualification"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-006.json",
+      "outcome": "passed",
+      "scope": "Explicit Node types, secure source/replay execution, whole-source entropy guards and unchanged upstream suites"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-007.json",
+      "outcome": "failed",
+      "scope": "RED: completed private archive must remain fixed after late submissions; semantic tampering must reject"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-008.json",
+      "outcome": "passed",
+      "scope": "Completed archive freeze, speculative journal rollback, live secrecy and strict semantic replay reconstruction tests"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-009.json",
+      "outcome": "failed",
+      "scope": "RED: AST entropy/import-alias guard is missing; direct-token scanning is insufficient"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-010.json",
+      "outcome": "failed",
+      "scope": "RED: server kernel permission must not authorize a browser resolver edge"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-011.json",
+      "outcome": "failed",
+      "scope": "AST entropy/alias and browser isolation fixes, controlled clock/provider tests, entropy failure and actual Lab build regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-012.json",
+      "outcome": "passed",
+      "scope": "Correct source-kind parsing: entropy/alias guards, captured clocks, secure replay, browser/server boundaries and Lab regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-013.json",
+      "outcome": "failed",
+      "scope": "RED review regressions: compiled kernel identity and alternate ambient entropy sources"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-014.json",
+      "outcome": "failed",
+      "scope": "RED review regression: aliased CommonJS server loaders bypass engine facade"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-015.json",
+      "outcome": "failed",
+      "scope": "Review corrections: compiled identity, entropy and loader guards, actual post-draw rollback and private replay"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-016.json",
+      "outcome": "failed",
+      "scope": "Corrected guard preserves card require methods and performance-only global aliases; replay/security regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-017.json",
+      "outcome": "failed",
+      "scope": "Review correction recheck with static safe telemetry key, actual identity/stream rollback and lint"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-018.json",
+      "outcome": "passed",
+      "scope": "Correct unique synthetic identifiers for post-draw rollback regression; review corrections and lint"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-019.json",
+      "outcome": "failed",
+      "scope": "RED follow-up guard regression: assigned and forward-declared global aliases"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-020.json",
+      "outcome": "failed",
+      "scope": "RED exact executable identity framing regression"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-021.json",
+      "outcome": "failed",
+      "scope": "RED standard CommonJS module.require member bypass regression"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-022.json",
+      "outcome": "passed",
+      "scope": "Final review regression checks: framed actual identity, fixed-point global aliases, CommonJS members and post-draw rollback"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-023.json",
+      "outcome": "passed",
+      "scope": "Independent engine roots: modified server, Lab, kernel and provenance rejected despite outer rehash"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-024.json",
+      "outcome": "passed",
+      "scope": "Final frozen complete foundation/build/type/lint/Node/upstream/injection/governance and preserved doctor/database"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-025.json",
+      "outcome": "passed",
+      "scope": "Exact pinned upstream payload, 28 patch originals/descriptors, notices and lock reproduction"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-026.json",
+      "outcome": "passed",
+      "scope": "Actual Linux Chromium foundation six scenarios plus two synthetic workers; private replay/stream RPC rejected"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-027.json",
+      "outcome": "passed",
+      "scope": "Final source-only frozen install/full foundation, no private files/Git/build input; verified tooling cache may be reused"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-028.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-029.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-030.json",
+      "outcome": "passed",
+      "scope": "Read-only three-clock diagnostic after two isolated timestamp rejections; no time or policy changes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-031.json",
+      "outcome": "passed",
+      "scope": "Canonical staged Git archive equals live files; frozen install and full foundation; retained exact verification program"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-032.json",
+      "outcome": "passed",
+      "scope": "Final actual private/source/history/log/scope/archive/listener preservation; exact checker retained in command arguments"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-033.json",
+      "outcome": "passed",
+      "scope": "Final semantic-doc/source/negative import/offline engine and rules/JSON/JS gate; CI timing remains explicitly deferred"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-034.json",
+      "outcome": "failed",
+      "scope": "Resumed sealed static/docs/pinned doctor/read-only PG/history/private and all staged-live bytes; CI timing deferred"
+    },
+    {
+      "evidence": "docs/reviews/2026-10-12-rule-03-closure.md",
+      "outcome": "historical",
+      "scope": "Fresh independent read-only assessment: no unresolved Critical/Important source/core/doc finding; no mutation or broader acceptance; CI timing deferred by Director. Attributed non-recorder observation, recorded during this task; detailed exploratory execution times unknown, no passing-run or device verdict."
+    },
+    {
+      "evidence": "docs/validation/rule-03-host-closure.json",
+      "outcome": "historical",
+      "scope": "Read-only attributed WSL Docker inspection: both CI project resources/image tags absent; original healthy PG18 volume/private network and Linux source bind preserved. Attributed non-recorder observation, recorded during this task; detailed exploratory execution times unknown, no passing-run or device verdict."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261012-035.json",
+      "outcome": "passed",
+      "scope": "Corrected sealed final docs/static/pinned doctor/read-only original PostgreSQL, all1318 staged/live bytes and full-history/private scan; source unchanged, CI timing deferred."
+    }
+  ],
+  "limitations": [
+    "RUN028/029 complete every isolated CI child stage but remain failed clock_changed; no result/artifact published. Director explicitly leaves environment unchanged and retains this timing qualification pending.",
+    "Internal synthetic RNG/reconstruction only; RULE-04 official rules/cards, PLAY-01 durability, PLAY-02 viewer/wire privacy and AUTH/REPLAY recipient delivery remain unimplemented gates. Ordinary Lab/Collection/rewards/private/official play stays blocked.",
+    "No NIST DRBG/FIPS/statistical certification, authentic signature, whole-program secrecy, durable restore, full upstream strict-type/catalog or all-card-test claim.",
+    "Windows/GPU/touch/ARM64/load/restore/production and fresh hosted RULE-03/required-check observations not performed; original548/33/20 acceptance/device values unchanged."
+  ],
+  "next_actions": [
+    "Director audit of the local RULE-03 implementation; current-source isolated CI timing remains pending until a later authorized stable-environment run.",
+    "RULE-04: sourced representative current-rules scenarios and per-card certification, including October16 CR2.3/October23 set14 and retained RULE-01 source gaps.",
+    "Keep PLAY/AUTH/REPLAY/economic/ordinary-play gates and D10 participant/auditor-only disclosure before delivery; preserve private data and all prior evidence."
+  ]
+}

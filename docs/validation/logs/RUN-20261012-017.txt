@@ -1,0 +1,64 @@
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 244 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  837.26 kB │ gzip: 182.37 kB
+
+✓ built in 194ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 engine:check-randomness /workspaces/lorcana-online-tcg
+> node scripts/engine/check-randomness.mjs
+
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 347 selected source files
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test tests/*.test.mjs
+
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (3.35941ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (31.575368ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (8.586531ms)
+✔ new server match fails closed when operating-system entropy is unavailable (53.818119ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.895617ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (34.350706ms)
+✔ completed private archive is immutable across late rejected submissions (7.945096ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (49.450192ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (64.850525ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (30.125445ms)
+✖ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (0.438474ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 260.480873
+
+✖ failing tests:
+
+test at tests/replay.test.mjs:93:1
+✖ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (0.438474ms)
+  Error: CARDS_MAPS_INVALID: duplicate instance 'instance-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' assigned to multiple owners
+      at et (file:///workspaces/lorcana-online-tcg/vendor/tcg-engines/dist/kernel.js:984:23)
+      at tt (file:///workspaces/lorcana-online-tcg/vendor/tcg-engines/dist/kernel.js:997:10)
+      at new Ig (file:///workspaces/lorcana-online-tcg/vendor/tcg-engines/dist/kernel.js:13933:27)
+      at gD (file:///workspaces/lorcana-online-tcg/vendor/tcg-engines/dist/kernel.js:25418:207)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/replay.test.mjs:99:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+/workspaces/lorcana-online-tcg/packages/engine-adapter:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/engine-adapter@0.0.0 test: `node --test tests/*.test.mjs`
+Exit status 1

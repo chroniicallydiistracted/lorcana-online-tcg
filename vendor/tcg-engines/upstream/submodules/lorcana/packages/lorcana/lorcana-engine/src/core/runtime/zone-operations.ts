@@ -1,3 +1,4 @@
+import { qualificationRandom } from "./match-runtime.random-apis";
 import type { EventCause, GameEvent, MatchState, TCGCtx, ZoneRevealWindow } from "./types";
 import type { PlayerId } from "../types";
 import type { CardQueryAPI, RuntimeCardWithDefinition } from "./card-runtime";
@@ -84,6 +85,7 @@ interface ZoneOperationsOptions {
   cardQuery?: Pick<CardQueryAPI, "get">;
   onUndoBarrier?: (reason: UndoBarrierReason) => void;
   random?: () => number;
+  integer?: (bound: number) => number;
   onCardEnteredZone?: (cardId: string, toZone: string, ownerId: string) => void;
   onCardViewsInvalidated?: () => void;
 }
@@ -100,7 +102,7 @@ export function createZoneOperations(
 ): ZoneOperationsAPI {
   const zones = draft.ctx.zones;
   const defaultCause: EventCause = { kind: "SYSTEM", source: "ZONE_OPERATION" };
-  const random = options?.random ?? Math.random;
+  const random = options?.random ?? qualificationRandom;
   const markUndoBarrier = options?.onUndoBarrier;
   const onCardEnteredZone = options?.onCardEnteredZone;
   const invalidateCardViews = options?.onCardViewsInvalidated;
@@ -174,7 +176,8 @@ export function createZoneOperations(
 
   function shuffleArrayInPlace<T>(items: T[]): void {
     for (let i = items.length - 1; i > 0; i--) {
-      const j = Math.floor(random() * (i + 1));
+      const j = options?.integer ? options.integer(i + 1) : Math.floor(random() * (i + 1));
+      if (!Number.isInteger(j) || j < 0 || j > i) throw new Error("Invalid random shuffle index");
       [items[i], items[j]] = [items[j], items[i]];
     }
   }

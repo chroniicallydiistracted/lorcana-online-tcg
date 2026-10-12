@@ -55,6 +55,9 @@ export interface RuntimeBoardProjectionContext {
 
 interface MatchRuntimeConfigCore {
   name: string;
+  randomSource?: import("./match-runtime.random-apis").InjectedRandomSource;
+  now?: () => number;
+  rulesetIdentity?: string;
   moves: MoveRecord;
   flow: RuntimeFlowDefinition;
   timeControl?: TimeControlConfig;
@@ -297,6 +300,8 @@ export type RuntimeActorRole = "player" | "judge";
 export type MoveContext<TInput extends MoveInput = MoveInput> = MoveExecutionContext<TInput>;
 
 export interface MatchRuntimeInit {
+  randomSource?: import("./match-runtime.random-apis").InjectedRandomSource;
+  now?: () => number;
   players: Player[];
   cardsMaps: CardsMaps;
   cardCatalog: CardCatalog;
@@ -404,6 +409,7 @@ export interface TimeOperationsAPI extends TimeQueryAPI {
 }
 
 export interface RandomAPI {
+  integer: (bound: number) => number;
   random: () => number;
   shuffle: <T>(array: T[]) => T[];
 }

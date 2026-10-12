@@ -45,7 +45,9 @@
     "engine:setup": "node scripts/engine/bun.mjs",
     "engine:test-upstream": "node scripts/engine/test-upstream.mjs",
     "test:engine-browser": "pnpm --filter @lorcana/engine-lab test:browser",
-    "test:engine-tooling": "node --test tests/engine/*.test.mjs"
+    "test:engine-tooling": "node --test tests/engine/*.test.mjs",
+    "engine:test-injection": "node scripts/engine/test-injection.mjs",
+    "engine:check-randomness": "node scripts/engine/check-randomness.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

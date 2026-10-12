@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-019",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/engine/randomness.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "acab9d2f53fabdc54dea479efec55fd75a4083482c8eaa9347919f5c588e62af",
+  "started_at": "2026-10-12T03:53:56.224Z",
+  "finished_at": "2026-10-12T03:53:56.796Z",
+  "recorded_at": "2026-10-12T03:53:56.796Z",
+  "time_precision": "exact",
+  "elapsed_ms": 573,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED follow-up guard regression: assigned and forward-declared global aliases",
+  "log_path": "docs/validation/logs/RUN-20261012-019.txt",
+  "log_sha256": "a8633d7c9a4b016a92a6687c186f5a82bb4d902f4de53fe77d032bc9d7019c3b",
+  "redactions": 0
+}

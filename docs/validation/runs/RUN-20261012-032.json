@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-032",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';import {readFileSync,readdirSync,lstatSync} from 'node:fs';import {spawnSync} from 'node:child_process';import {sourceFingerprint,inventory,sha256} from './scripts/documentation-lib.mjs';import {privateRedactionValues} from './scripts/evidence-lib.mjs';import {sourceSecretScan} from './scripts/ci/security.mjs';\nconst root=process.cwd(),expected='2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58';assert.equal(sourceFingerprint(root),expected);\nconst values=Object.values(privateRedactionValues(root));assert.equal(values.length,9);\nfor(const p of ['.env.local','.local/database.json']){const s=lstatSync(p);assert.equal(s.uid,process.getuid());assert.equal(s.mode&0o777,0o600);assert.equal(spawnSync('git',['check-ignore','-q',p]).status,0);assert.equal(spawnSync('git',['ls-files',p],{encoding:'utf8'}).stdout.trim(),'');}\nsourceSecretScan(root,values);\nlet logs=0;for(const n of readdirSync('docs/validation/runs').filter(n=>n.endsWith('.json'))){const r=JSON.parse(readFileSync('docs/validation/runs/'+n));if(r.log_path){assert.equal(sha256(readFileSync(r.log_path)),r.log_sha256);logs++;}}\nfor(const p of inventory()){const b=readFileSync(p,'utf8');assert.ok(!values.some(v=>b.includes(v)),'Known private value in public source: '+p);}\nconst listeners=[];for(const p of ['/proc/net/tcp','/proc/net/tcp6'])for(const row of readFileSync(p,'utf8').trim().split('\\n').slice(1)){const fields=row.trim().split(/\\s+/),port=parseInt(fields[1].split(':')[1],16);if(fields[3]==='0A'&&[5173,3001,3002].includes(port))listeners.push(port);}assert.equal(listeners.length,0);\nconst servers=[];for(const pid of readdirSync('/proc').filter(p=>/^\\d+$/.test(p))){try{const status=readFileSync('/proc/'+pid+'/stat','utf8');if(/\\) [ZX]/.test(status))continue;const args=readFileSync('/proc/'+pid+'/cmdline','utf8').split('\\0');if(args.some(a=>/^(?:\\/workspaces\\/lorcana-online-tcg|\\/tmp\\/lorcana-(?:clean-checkout|canonical-rule03)-[^/]+)\\/(?:apps\\/(?:api|match-service|worker)\\/(?:src|dist)\\/index\\.(?:ts|js)|scripts\\/(?:dev|serve-smoke)\\.mjs|node_modules\\/.*vite\\/bin\\/vite\\.js)$/.test(a)))servers.push(pid);}catch{}}assert.equal(servers.length,0);\nconst altered=spawnSync('git',['diff','HEAD','--name-only','--diff-filter=MD','--','docs/changes','docs/validation/runs','docs/validation/logs','docs/validation/archive'],{encoding:'utf8'});assert.equal(altered.status,0);assert.equal(altered.stdout.trim(),'');\nfor(const p of ['SHA256SUMS.txt','VALIDATION_RESULTS.json','toolchain.json','.devcontainer/Dockerfile','.devcontainer/compose.yaml','pnpm-workspace.yaml','docs/vision/original_action_items.md','docs/vision/additional_scope.csv','docs/vision/dependencies.json','docs/vision/source_register.json']){const old=spawnSync('git',['show','HEAD:'+p]);assert.equal(old.status,0);assert.ok(old.stdout.equals(readFileSync(p)),'Baseline bytes changed: '+p);}\nconst python=spawnSync('python3',['-c',\"import csv,io,subprocess;from pathlib import Path\\nbase=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show','HEAD:docs/vision/requirements.csv'],text=True))));now=list(csv.DictReader(Path('docs/vision/requirements.csv').open()));assert len(now)==548 and len({r['group_id'] for r in now})==33 and sum(r['source_optional']=='true' for r in now)==20\\nassert [{k:v for k,v in r.items() if k not in ('ticket_ids','evidence_links')} for r in base]==[{k:v for k,v in r.items() if k not in ('ticket_ids','evidence_links')} for r in now]\\nd0=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show','HEAD:docs/vision/decision_register.csv'],text=True))));d1=list(csv.DictReader(Path('docs/vision/decision_register.csv').open()));assert d0==d1[:len(d0)] and d1[-1]['decision_id']=='D10'\\nprint('PASS original548/33/20 acceptance/device values, prior Director choices and allowed prerequisite-only links')\"],{stdio:'inherit'});assert.equal(python.status,0);\nassert.ok(readFileSync('.local/rule-03/canonical-check.mjs').equals(readFileSync('docs/validation/rule-03-canonical-check.mjs.txt')));\nconsole.log('PASS actual private0600/ignored ownership, public/history known-secret scan, '+logs+' run-log digests, no owned servers/listeners and preserved archive/toolchain/source scope.');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "2e6c47341b421434f0efc84a15927b8ccbd07c099f087b5c3d29702678793f58",
+  "started_at": "2026-10-12T04:37:03.752Z",
+  "finished_at": "2026-10-12T04:37:36.468Z",
+  "recorded_at": "2026-10-12T04:37:36.468Z",
+  "time_precision": "exact",
+  "elapsed_ms": 32544,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final actual private/source/history/log/scope/archive/listener preservation; exact checker retained in command arguments",
+  "log_path": "docs/validation/logs/RUN-20261012-032.txt",
+  "log_sha256": "326f4e7a8b0bee853c81244f4be235283c2fae1575ec32c8d4721506718f4538",
+  "redactions": 0
+}

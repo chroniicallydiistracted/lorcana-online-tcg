@@ -158,7 +158,7 @@ export class MatchRuntime {
   });
 
   constructor(config: MatchRuntimeConfig, init: MatchRuntimeInit) {
-    this.config = config;
+    this.config = { ...config, randomSource: init.randomSource ?? config.randomSource, now: init.now ?? config.now };
     this.capturePatches = init.capturePatches ?? false;
 
     if (init._skipInitialization && init._prebuiltStaticResources) {
@@ -177,7 +177,7 @@ export class MatchRuntime {
     );
 
     const { state, board } = initializeMatchState({
-      config: config as unknown as MatchRuntimeConfig,
+      config: this.config as unknown as MatchRuntimeConfig,
       players: init.players,
       seed: init.seed,
       matchID: init.matchID,

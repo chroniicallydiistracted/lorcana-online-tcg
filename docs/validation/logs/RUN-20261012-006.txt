@@ -1,0 +1,50 @@
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test tests/*.test.mjs
+
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (28.600615ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (8.391389ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.763743ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (41.238909ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (38.669398ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 151.851581
+
+> lorcana-online-tcg@0.0.0 test:engine-tooling /workspaces/lorcana-online-tcg
+> node --test tests/engine/*.test.mjs
+
+✔ upstream test resolver cannot redirect selected aliases outside the verified closure (5.744888ms)
+✔ closure follows cyclic relative imports, type imports and explicit aliases, omitting unrelated files (12.079712ms)
+✔ closure rejects source reached through a directory symlink outside the pinned root (0.863651ms)
+✔ vendor integrity rejects modified, extra and missing source plus an unlisted patch (2.207458ms)
+✔ vendored source has no ambient Math.random/UUID or runtime seedrandom fallback (14.013279ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 239.235773
+
+> lorcana-online-tcg@0.0.0 engine:test-upstream /workspaces/lorcana-online-tcg
+> node scripts/engine/test-upstream.mjs
+
+Selected 27 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+ 338 pass
+ 1 skip
+ 0 fail
+ 838 expect() calls
+Ran 339 tests across 27 files. [919.00ms]

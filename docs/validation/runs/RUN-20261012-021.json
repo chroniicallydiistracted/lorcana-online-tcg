@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261012-021",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/foundation/boundaries.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "f61aad853e80135827ec45ba815f9da79c9eebb0",
+  "source_fingerprint": "6d4516cd77cb1287236af9b2467134155a83e1a19ea079cd883c218ef3f2831b",
+  "started_at": "2026-10-12T03:57:28.701Z",
+  "finished_at": "2026-10-12T03:57:33.045Z",
+  "recorded_at": "2026-10-12T03:57:33.045Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4344,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED standard CommonJS module.require member bypass regression",
+  "log_path": "docs/validation/logs/RUN-20261012-021.txt",
+  "log_sha256": "96b5c0f4a7c5f454056308c8062f9383c1bfef09e7af0808a255908ff84a5cde",
+  "redactions": 0
+}

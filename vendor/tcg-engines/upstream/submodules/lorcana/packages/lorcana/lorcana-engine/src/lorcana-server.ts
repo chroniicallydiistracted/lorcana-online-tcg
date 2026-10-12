@@ -1,3 +1,4 @@
+import { qualificationClock } from "./core/runtime/match-runtime.random-apis";
 /**
  * Lorcana Server Runtime
  *
@@ -194,7 +195,7 @@ export class LorcanaServer extends LorcanaEngineBase {
       patches: [],
       gameEvents: runtime.getPublishedGameEvents().slice(previousGameEventCount),
       processedCommand: {
-        commandID: `undo-${playerId}-${Date.now()}`,
+        commandID: `undo-${playerId}-${qualificationClock()}`,
         move: "undo",
       },
       animations: [],
@@ -239,7 +240,7 @@ export class LorcanaServer extends LorcanaEngineBase {
       undoable: false,
       moveLogs: result.result?.moveLogs ?? runtime.getMoveLogHistory().slice(previousLogCount),
       processedCommand: {
-        commandID: `forfeit-${winnerId}-${Date.now()}`,
+        commandID: `forfeit-${winnerId}-${qualificationClock()}`,
         move: "forfeitGame",
         input,
       },
@@ -279,7 +280,7 @@ export class LorcanaServer extends LorcanaEngineBase {
       moveLogs: result.result?.moveLogs || runtime.getMoveLogHistory().slice(previousLogCount),
       processedCommand: {
         ...commandEnvelope,
-        commandID: `server-${ctx.playerId}-${moveId}-${Date.now()}`,
+        commandID: `server-${ctx.playerId}-${moveId}-${qualificationClock()}`,
         input,
         move: moveId,
       },
@@ -311,7 +312,7 @@ export class LorcanaServer extends LorcanaEngineBase {
       .getRuntime()
       .getProjectedBoardView(
         { role: "player", playerID: playerId },
-        { serverTimestamp: Date.now() },
+        { serverTimestamp: qualificationClock() },
       ) ?? this.getBoard()) as LorcanaProjectedBoardView;
   }
 
