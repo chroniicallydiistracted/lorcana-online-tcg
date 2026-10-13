@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-008",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';\nimport {readFileSync, readdirSync, statSync} from 'node:fs';\nimport {join} from 'node:path';\nconst read = p => readFileSync(p, 'utf8');\nconst walk = d => readdirSync(d).flatMap(n => { const p = join(d, n); return statSync(p).isDirectory() ? walk(p) : [p]; });\nconst count = (s, re) => (s.match(re) || []).length;\n// RULE-04 test-only fixture bridge markers must never reach a shipped bundle.\nconst BRIDGE = [/createScenarioRuntime/, /assertScenarioState/, /RULE-04-test-only/, /rule04-fixture/, /lorcana-rule04-/, /withScenarioRuntime/, /chosenOperationGroups/];\nconst kernel = read('vendor/tcg-engines/dist/kernel.js');\nfor (const re of [/Math\\.random/, /randomUUID/, /getRandomValues/, /seedrandom/, /createHmac/, /randomBytes/, /node:crypto/, /raw-suite-legacy/, /installQualificationDefaults/, /\\bBun\\b/, /lorcana-rng/, /completed-private-replay/, ...BRIDGE.filter(re => !/chosenOperationGroups/.test(String(re)))])\n  assert.equal(count(kernel, new RegExp(re, 'g')), 0, 'kernel contains ' + re);\nconst clocks = [...kernel.matchAll(/Date\\.now\\(\\)|performance\\.now\\(\\)/g)].map(m => kernel.slice(Math.max(0, m.index - 80), m.index + 40));\nassert.ok(clocks.every(c => /timestamp: Date\\.now\\(\\)/.test(c) || /\\? performance\\.now\\(\\) : Date\\.now\\(\\)/.test(c)), 'unexpected kernel clock read');\nassert.equal(count(kernel, /Captured clock required/g), 1); assert.equal(count(kernel, /Legacy random helper/g), 1);\nconst lab = read('packages/engine-lab/dist/lab-worker.js') + read('packages/engine-lab/dist/index.js');\nfor (const re of [/createHmac/, /node:crypto/, /verifyCompletedReplay/, /seedCommitment/, /completed-private-replay/, /server-match-seed/, /lorcana-rng/, /exportReplay/, /engine-adapter/, /raw-suite-legacy/, /installQualificationDefaults/, ...BRIDGE.filter(re => !/chosenOperationGroups/.test(String(re)))])\n  assert.equal(count(lab, new RegExp(re, 'g')), 0, 'lab contains ' + re);\nconst server = readdirSync('packages/engine-adapter/dist').filter(n => n.endsWith('.js')).map(n => read(join('packages/engine-adapter/dist', n))).join('\\n');\nassert.equal(count(server, /seedrandom/g), 0, 'server adapter contains seedrandom');\nfor (const re of BRIDGE.slice(0, 6)) assert.equal(count(server, new RegExp(re, 'g')), 0, 'server adapter contains ' + re);\nfor (const re of [/gain-ink-drop-counters/, /Adventurous/, /source-zone-incarnation/, /keyword-vanish/]) assert.ok(re.test(kernel), 'kernel lacks reviewed RULE-04 mechanic ' + re);\nassert.ok(/createHmac/.test(server) && /randomBytes\\(32\\)/.test(server));\nconst apps = ['apps/web/dist', 'apps/api/dist', 'apps/match-service/dist', 'apps/worker/dist'].filter(d => { try { return statSync(d).isDirectory(); } catch { return false; } });\nconst appFiles = apps.flatMap(walk).filter(p => /\\.(js|mjs|cjs|html|css|map)$/.test(p));\nfor (const p of appFiles) { const s = read(p); for (const re of [/createSyntheticKernel/, /createHmac/, /seedCommitment/, /verifyCompletedReplay/, /lorcana-rng/, /seedrandom/, /completed-private-replay/, ...BRIDGE]) assert.ok(!re.test(s), p + ' contains ' + re); }\nconsole.log(JSON.stringify({kernelBytes: kernel.length, kernelClockReads: clocks.length, labBytes: lab.length, serverFiles: readdirSync('packages/engine-adapter/dist').filter(n => n.endsWith('.js')).length, appDirs: apps, appFiles: appFiles.length}));\nconsole.log('PASS compiled kernel has no ambient entropy/Bun/raw-suite defaults (clock reads only in log timestamps/cache telemetry) and contains the reviewed RULE-04 mechanics; Lab bundle has no server RNG/replay; server has no seedrandom; no kernel/Lab/server/app bundle contains the RULE-04 test-only fixture bridge; app bundles contain no engine RNG/replay');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "808de78251ff3df099c2fb2861afb8f98f4ec28e",
+  "source_fingerprint": "5f405778696fe4413b4a374f11c966ae7691817a2429136be9519aaeec572689",
+  "started_at": "2026-10-13T00:31:46.094Z",
+  "finished_at": "2026-10-13T00:31:46.189Z",
+  "recorded_at": "2026-10-13T00:31:46.189Z",
+  "time_precision": "exact",
+  "elapsed_ms": 95,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Recorded command outcome",
+  "log_path": "docs/validation/logs/RUN-20261013-008.txt",
+  "log_sha256": "d742e7f32e6b3a746a6558cd3dae1e3e9160199d6ad83500b365105381b2a900",
+  "redactions": 0
+}

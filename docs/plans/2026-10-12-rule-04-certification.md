@@ -27,3 +27,7 @@ Source citations must actually support each oracle. Bag semantics must follow Lo
 ## Outcome
 
 Representative acceptance is locally verified at final fingerprint5f405778 through085/086/087/088/090. Independent source/supplied-code review findings were resolved; final execution remains primary. Isolated child pipelines089/091 completed but both timing receipts failed and no artifact was published; preserve that gate and the Director's leave-environment instruction. Final metadata/resource proof and local commit closure are recorded in CHG003; hosted/device/full-card/play gates remain.
+
+## Audit and integration note — 2026-10-13 UTC
+
+The Director asked for an independent audit and, once completion was confirmed, publication and main integration. The Claude Code audit ([CHG-20261013-001](../changes/CHG-20261013-001.json)) confirmed the representative acceptance with RUN-20261013-001..010 and recorded two follow-ups (Adventurous static-loss end-of-turn defect; manual/debug moves with player authority) in [validation](../validation/rule-04.md). Its isolated CI RUN011 was clock-rejected and RUN012 shows the host clock stepping forward, so CI timing qualification stays pending; hosted CI for the integrated main commit is observed after publication.

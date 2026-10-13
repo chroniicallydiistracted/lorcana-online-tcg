@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-007",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// RULE-04 audit observation, appended to the unchanged RULE-03 probe output:\n// the pinned engine's upstream debug \"manual\" moves are not filtered by the\n// server adapter. Characterization only; admission stays closed.\nimport assert from 'node:assert/strict';\nconst A = await import('./packages/engine-adapter/dist/index.js');\nlet n = 0;\nconst m = A.createQualificationMatch({ players: ['p1', 'p2'], startTimestamp: 1000 });\nconst cmd = (actor, move, input = {}) => ({ actor, move, input, timestamp: 2000 + n, expectedRevision: m.status().revision, commandId: 'o' + (n++) });\nconst chooser = m.status().choosingFirstPlayer;\nassert.equal(m.submit(cmd(chooser, 'chooseWhoGoesFirst', { playerId: 'p1' })).accepted, true);\nfor (const p of ['p1', 'p2']) assert.equal(m.submit(cmd(p, 'alterHand', { cardsToMulligan: [] })).accepted, true);\nconst r = m.submit(cmd('p2', 'manualSetLore', { amount: 20 }));\nconst status = m.status();\nm.dispose();\nconsole.log(JSON.stringify({ observation: 'manualSetLore submitted by the non-active player through createQualificationMatch', accepted: r.accepted, code: r.code, ended: status.ended, winner: status.winner }));\nconsole.log('OBSERVED pre-existing gap: the server adapter forwards upstream manual/debug moves with player authority; PLAY-01 needs a server move allowlist before any real match');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "808de78251ff3df099c2fb2861afb8f98f4ec28e",
+  "source_fingerprint": "5f405778696fe4413b4a374f11c966ae7691817a2429136be9519aaeec572689",
+  "started_at": "2026-10-13T00:31:45.194Z",
+  "finished_at": "2026-10-13T00:31:45.312Z",
+  "recorded_at": "2026-10-13T00:31:45.312Z",
+  "time_precision": "exact",
+  "elapsed_ms": 119,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Recorded command outcome",
+  "log_path": "docs/validation/logs/RUN-20261013-007.txt",
+  "log_sha256": "8571cb93ca779f1093ceaaecdd71bd40519569e86f3ab6f05367c0f43d6bf474",
+  "redactions": 0
+}

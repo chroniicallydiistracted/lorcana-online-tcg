@@ -25,3 +25,7 @@ This qualifies representative behavior, including the Director-selected new mech
 ## Qualified checkpoint
 
 Final executable fingerprint5f405778696fe4413b4a374f11c966ae7691817a2429136be9519aaeec572689: RUN085/086/087/088/090 pass full/frozen/source/browser/clean/canonical checks. RUN089/091 child pipelines complete all13 stages but both receipts fail clock_changed and publish no artifact. This separate CI timing gate remains pending; no environment/clock/threshold change is authorized or performed. Scoped scenario/template criteria are met; all official/card/game/production gates stay closed.
+
+## Independent audit note — 2026-10-13 UTC
+
+Recorded by the Claude Code audit ([CHG-20261013-001](../changes/CHG-20261013-001.json)). The decision is unchanged and matches the audited source at fingerprint 5f405778. Independent runs RUN-20261013-001..010 pass, including an auditor probe of 16 CR2.3-sourced Adventurous, ink-drop and Vanish cases. Two follow-ups are recorded in [validation](../validation/rule-04.md): the end-of-turn Adventurous check ignores static keyword losses although the challenge check honors them (fix with a sourced regression before any Adventurous card admission), and upstream manual/debug moves still reach the engine with player authority (pre-existing; PLAY-01 needs a server move allowlist). Isolated CI RUN-20261013-011 completed all child stages but was clock-rejected like RUN089/091, so timing qualification stays pending without any environment change.

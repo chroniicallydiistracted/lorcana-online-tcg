@@ -2,6 +2,76 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261013-001 — Independent audit of RULE-04 and Director-authorized integration into main
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-13T00:23:36.961Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 808de78251ff3df099c2fb2861afb8f98f4ec28e
+- Tasks: RULE-04, DOC-01, DOC-02
+- Features: F-DOCS, F-CI, F-ENGINE, F-RULE-CERTIFICATION
+- Requirements: R01.009, R01.011, R01.016, R28.002, R28.003, R28.004, R28.005, R28.007, R28.010, R28.011, R28.012
+
+### Changes
+
+- **review:** Audited Codex commit 808de78 (RULE-04, CHG-20261012-003/004/005) against the backlog acceptance (sourced expected results, negative cases, effect-bag/choices, new-keyword and invalid-state coverage), ADR0011, D10 and D11. Code review covered the test-only scenario build/runtime bridge, certification gate, schema/template, the 91 scenario oracles against the official CR2.3/CR2.2 text (1.13, 7.7.3-7.7.6, 8.14 and 8.16 read in full), boundary and governance-test changes, and every behavioral change in the 25 new and expanded patches: ink-drop payment planning, getAvailableInk callers, Adventurous challenge/end-of-turn checks, temporary keyword loss in the derived projection, Vanish recording through the actual chooser with a captured zone incarnation, removal of duplicate be-chosen emissions, slotted-target cardinality and counter generation. Requirement edits only add RULE-04 as prerequisite evidence; all 548 dispositions and scope counts are unchanged. Verdict: representative RULE-04 acceptance met.
+- **test:** Independent runs RUN-20261013-001..010 all passed at Codex final fingerprint 5f405778 with exact timing: verify:foundation (241 project checks = 217 Node + 24 Python, 338 upstream passes/1 inherited skip/838 expectations, 2 injection tests); importer reproduction (346 payloads, 53 patches); separate git cat-file byte audit (293 identical, 53 patched to ledger, licenses, 27 unchanged tests, no card/test patches, be-chosen helper outside the closure); official rule-source bytes; auditor rules probe with 16 CR2.3-sourced Adventurous/ink-drop/Vanish/bag cases and zero-mutation checks on rejections; the unchanged RULE-03 compiled-adapter probe on the new kernel; manual-move characterization; built-bundle scan (no test bridge in any kernel/Lab/server/app bundle); boundary probe (264 refused imports across 11 owners); Chromium 6 web scenarios and 2 Lab workers. RUN-20261013-013 docs:check covers this record.
+- **test:** Host isolated CI RUN-20261013-011 completed all 13 child stages with child exit 0 but the receipt failed clock_changed (265,558 ms wall vs 264,004 ms monotonic, 1,554 ms over the unchanged 1,000 ms guard); no result published; owned project/volume/network/image removed. Read-only RUN-20261013-012 sampled the clock for 60 s and saw the wall clock step forward 171.5 ms twice (343.7 ms/min), so the audit did not retry. CI timing qualification stays pending under the Director's leave-environment instruction; no clock, tolerance, service or environment change.
+- **review:** Findings recorded for later work, neither blocking the representative acceptance: (1) defect - after a static lose-keyword effect removes Adventurous, the challenge check honors the loss but the end-of-turn check still refuses passTurn (RUN005), to be fixed with a sourced regression before any Adventurous card admission; (2) pre-existing since RULE-02 - upstream manual/debug moves such as manualSetLore are accepted with player authority through the kernel bridge and server adapter, letting a player set lore and win (RUN007); admission is closed, and PLAY-01 needs a server move allowlist before any real match; (3) move enumeration is name-level and still lists passTurn under Adventurous/Reckless/must-quest obligations, while submission refuses it.
+- **fix:** Removed a leading empty ";" entry from the ticket_ids and evidence_links fields of R01.009, R01.011, R01.016, R28.002, R28.003, R28.004, R28.005, R28.007, R28.010, R28.011 and R28.012 (introduced when RULE-04 was appended to empty fields). No other field or disposition changed.
+- **documentation:** Appended a dated audit section to docs/validation/rule-04.md and dated notes to ADR0011, the RULE-04 plan, the engine runbook (command-authority gap) and the rules-certification runbook (Adventurous static-loss defect). Updated AGENTS.md, README.md and docs/README.md current RULE-04 status, F-CI/F-ENGINE/F-RULE-CERTIFICATION descriptions/evidence, the FEATURES summary, the backlog evidence link and the handoff. The D11 selection is recorded by Codex; this auditor did not observe the original instruction.
+- **revision:** Director-authorized integration: publish codex/rule-04-certification (808de78) and claude/rule-04-audit, then fast-forward main to the audit commit containing this record. Hosted CI for the integrated main commit is observed after the push and recorded in a later change.
+
+### Verification
+
+- **passed:** pnpm verify:foundation: 241 project checks (217 Node + 24 Python incl. 99 rules checks), 338 upstream passes/1 inherited skip, 2 injection tests. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261013-001.json))
+- **passed:** Importer --check against the pinned checkout: 346 payloads, licenses, 53 patch originals and the lock reproduced. ([evidence](docs/validation/runs/RUN-20261013-002.json))
+- **passed:** Independent Python git cat-file byte audit of the 346-file closure and 53-patch ledger. ([evidence](docs/validation/runs/RUN-20261013-003.json))
+- **passed:** Official CR2.2/CR2.3 PDF, text and numbered-leaf byte identities; template unexecuted, no admission. ([evidence](docs/validation/runs/RUN-20261013-004.json))
+- **passed:** Auditor rules probe: 16 CR2.3-sourced Adventurous/ink-drop/Vanish/bag cases on the compiled pinned runtime; also characterizes the Adventurous static-loss defect. ([evidence](docs/validation/runs/RUN-20261013-005.json))
+- **passed:** Unchanged RULE-03 compiled-adapter probe on the RULE-04 kernel with ambient entropy and clocks disabled. ([evidence](docs/validation/runs/RUN-20261013-006.json))
+- **passed:** Characterization: manualSetLore from the non-active player is accepted through the server adapter and ends the game (pre-existing gap). ([evidence](docs/validation/runs/RUN-20261013-007.json))
+- **passed:** Built-bundle scan: kernel invariants, reviewed mechanics present, no test-only bridge in kernel/Lab/server/app bundles. ([evidence](docs/validation/runs/RUN-20261013-008.json))
+- **passed:** Boundary probe: 11 browser/public/server owners refuse 264 imports of RULE-04 test tooling. ([evidence](docs/validation/runs/RUN-20261013-009.json))
+- **passed:** Actual headless Linux Chromium: 6 web foundation scenarios and 2 compiled Lab Web Workers. ([evidence](docs/validation/runs/RUN-20261013-010.json))
+- **failed:** Host isolated 13-stage CI: every child stage completed, receipt failed clock_changed (1,554 ms); no artifact published; owned resources removed. ([evidence](docs/validation/runs/RUN-20261013-011.json))
+- **passed:** Read-only 60-second clock sample: wall clock stepped forward 343.7 ms per minute; diagnostic only, not CI acceptance. ([evidence](docs/validation/runs/RUN-20261013-012.json))
+- **passed:** pnpm docs:check over the audit documentation, records and generated views at fingerprint 5f405778. ([evidence](docs/validation/runs/RUN-20261013-013.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/rule-04.md](docs/validation/rule-04.md) — Appended a dated independent-audit section with actual run outcomes, acceptance mapping, the clock-rejected isolated CI and diagnostic, findings and the D11 observation limit; Codex text unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Header actors, authorized publication/integration, audit verification and findings, failed timing addition, pending gates and next actions; other Codex content unchanged.
+- **updated:** [docs/adr/0011-sourced-rule-scenarios.md](docs/adr/0011-sourced-rule-scenarios.md) — Dated audit note: decision unchanged and matching the audited source; follow-ups and pending CI timing.
+- **updated:** [docs/plans/2026-10-12-rule-04-certification.md](docs/plans/2026-10-12-rule-04-certification.md) — Dated audit/integration note appended; checklist and outcome preserved.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Known command-authority gap: manual/debug moves reach the engine with player authority; PLAY-01 allowlist requirement.
+- **updated:** [docs/runbooks/rules-certification.md](docs/runbooks/rules-certification.md) — Known defect: end-of-turn Adventurous check ignores static keyword losses; fix before Adventurous card admission.
+- **updated:** [AGENTS.md](AGENTS.md) — Current boundary statement: audited RULE-04 status, third clock rejection and the move-allowlist requirement for PLAY-01.
+- **updated:** [README.md](README.md) — Short dated audit section pointing to findings; earlier continuation sections preserved.
+- **updated:** [docs/README.md](docs/README.md) — Current RULE-04 entry point links the audit and its findings.
+- **updated:** [docs/features.json](docs/features.json) — F-CI adds the clock-rejected RUN011 and RUN012 diagnostic (verification unchanged); F-ENGINE and F-RULE-CERTIFICATION add audit evidence and findings.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Summary line notes the audit, the third clock rejection and the follow-ups.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — RULE-04 evidence links add this audit; status unchanged because isolated CI timing remains pending.
+- **updated:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Removed leading empty list entries in 11 rows; dispositions and all other fields unchanged.
+- **historical_preserved:** [docs/reviews/2026-10-12-rule-04-closure.md](docs/reviews/2026-10-12-rule-04-closure.md) — Codex review record of its own reviewer; the independent audit is recorded separately in validation.
+- **reviewed_unchanged:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — RULE-03 claims re-checked on the new kernel by RUN006/008; no change needed.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — CI operation unchanged; the clock-guard behavior it documents is what rejected RUN011.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D11 recorded by Codex matches ADR0011 and the backlog; not observed by this auditor, noted in validation.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261013-001.json).
+
+### Limits and next actions
+
+- Isolated CI timing qualification remains pending: RUN011 was clock-rejected like RUN089/091 and the host clock is currently stepping forward; no environment change was made.
+- The Adventurous static-loss end-of-turn defect and the manual/debug move authority gap are recorded, not fixed; no admitted card or real match is affected while all admission gates stay closed.
+- D11 and the leave-environment instruction are recorded by Codex; this auditor did not observe the original instructions.
+- No full rules/card certification, ordinary/reward/private/durable/device/production acceptance; hosted CI for the integrated main commit is observed only after publication.
+- Observe hosted CI for the integrated main commit and record it in the next change.
+- PLAY-01 should begin with a server-side player-move allowlist that refuses upstream manual/debug moves (Lab too).
+- Fix the end-of-turn Adventurous check to honor static keyword losses, with a sourced regression, before any Adventurous card admission.
+- Check timedatectl and a short clock sample before long isolated CI runs; never change clocks or thresholds without authorization.
+
 ## CHG-20261012-005 — RULE-04 final handoff observation timestamp
 
 - Status: finalized

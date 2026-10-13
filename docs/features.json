@@ -572,7 +572,7 @@
       "name": "Reproducible CI and qualified build artifacts",
       "implementation": "implemented",
       "verification": "historical_verified",
-      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 completed all child stages but failed clock_changed and published no result. Independent audit RUN-20261012-043 then passed the unchanged guard (exact timing, 13 stages, scans, artifact) at the final RULE-03 fingerprint, and RUN044 re-verified its artifact. Hosted RULE-02 main f61aad8 run 38183090003 succeeded (observed through the GitHub API by the audit; its artifact was not downloaded). Hosted RULE-03 and required-check settings remain separate.",
+      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 completed all child stages but failed clock_changed and published no result. Independent audit RUN-20261012-043 then passed the unchanged guard (exact timing, 13 stages, scans, artifact) at the final RULE-03 fingerprint, and RUN044 re-verified its artifact. Hosted RULE-02 main f61aad8 run 38183090003 succeeded (observed through the GitHub API by the audit; its artifact was not downloaded). Hosted RULE-03 and required-check settings remain separate. RULE-04 audit RUN-20261013-011 completed all 13 child stages at fingerprint 5f405778 but was clock-rejected (1,554 ms) like RUN089/091; read-only RUN-20261013-012 shows the host wall clock stepping forward about 343 ms per minute. No artifact published; no environment change.",
       "sources": [
         "scripts/ci/**",
         "scripts/ci-local.py",
@@ -617,7 +617,9 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-011.json",
+        "docs/validation/runs/RUN-20261013-012.json"
       ]
     },
     {
@@ -781,7 +783,7 @@
       "name": "Pinned synthetic engine, secure server RNG and private deterministic verification",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "346 pinned files/303 runtime source-type-data files,53 reproduced patches/MIT notices, exact dev-only Bun1.4.2 and27 unchanged upstream suites. Pure compiled kernel accepts providers; server owns crypto256-bit seed/indexed HMAC/unbiased integers/captured clocks/bounded completed private replay/trusted digest; browser Lab owns noncompetitive seedrandom. Representative RULE-04 scenarios/template implemented; complete card/rules and PLAY-01/PLAY-02/AUTH/REPLAY gates remain; no ordinary Lab/Collection/rewards/private/official play or delivery endpoint.",
+      "description": "346 pinned files/303 runtime source-type-data files,53 reproduced patches/MIT notices, exact dev-only Bun1.4.2 and27 unchanged upstream suites. Pure compiled kernel accepts providers; server owns crypto256-bit seed/indexed HMAC/unbiased integers/captured clocks/bounded completed private replay/trusted digest; browser Lab owns noncompetitive seedrandom. Representative RULE-04 scenarios/template implemented; complete card/rules and PLAY-01/PLAY-02/AUTH/REPLAY gates remain; no ordinary Lab/Collection/rewards/private/official play or delivery endpoint. Audit RUN-20261013-007: upstream manual/debug moves are accepted with player authority through the kernel bridge and server adapter; PLAY-01 needs a server move allowlist.",
       "sources": [
         "scripts/engine/**",
         "vendor/tcg-engines/**",
@@ -834,7 +836,9 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-006.json",
+        "docs/validation/runs/RUN-20261013-007.json"
       ]
     },
     {
@@ -842,7 +846,7 @@
       "name": "Representative sourced rules and per-card authoring contract",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "91 synthetic scenarios under the actual pinned runtime, source profile/leaf identities, card conservation/rejected-state checks, Director-approved Adventurous/counters and reviewed Vanish/choice corrections. Schema/template authoring only; tested/interaction promotion and every game admission remain closed. Local source-matched qualification passed; isolated CI timing pending; no full card/rules certification.",
+      "description": "91 synthetic scenarios under the actual pinned runtime, source profile/leaf identities, card conservation/rejected-state checks, Director-approved Adventurous/counters and reviewed Vanish/choice corrections. Schema/template authoring only; tested/interaction promotion and every game admission remain closed. Local source-matched qualification passed; isolated CI timing pending; no full card/rules certification. Independent audit CHG-20261013-001 (RUN-20261013-001..010) confirmed the representative scope and found that the end-of-turn Adventurous check ignores static keyword losses; fix with a sourced regression before any Adventurous card admission.",
       "sources": [
         "scripts/rules/certification.mjs",
         "scripts/rules/scenario-build.mjs",
@@ -884,7 +888,9 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-001.json",
+        "docs/validation/runs/RUN-20261013-005.json"
       ]
     }
   ]
