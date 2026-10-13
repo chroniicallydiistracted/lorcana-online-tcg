@@ -573,7 +573,7 @@
       "name": "Reproducible CI and qualified build artifacts",
       "implementation": "implemented",
       "verification": "historical_verified",
-      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 completed all child stages but failed clock_changed and published no result. Independent audit RUN-20261012-043 then passed the unchanged guard (exact timing, 13 stages, scans, artifact) at the final RULE-03 fingerprint, and RUN044 re-verified its artifact. Hosted RULE-02 main f61aad8 run 38183090003 succeeded (observed through the GitHub API by the audit; its artifact was not downloaded). Hosted RULE-03 and required-check settings remain separate. RULE-04 audit RUN-20261013-011 completed all 13 child stages at fingerprint 5f405778 but was clock-rejected (1,554 ms) like RUN089/091; read-only RUN-20261013-012 shows the host wall clock stepping forward about 343 ms per minute. No artifact published; no environment change. Fresh RUN-20261013-024 confirms hosted RULE-04 maina45ac4b success (38329018576); the source refresh branch is not covered. Local stepped-clock qualification remains pending, unchanged guard/environment. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 completed all child stages but failed clock_changed and published no result. Independent audit RUN-20261012-043 then passed the unchanged guard (exact timing, 13 stages, scans, artifact) at the final RULE-03 fingerprint, and RUN044 re-verified its artifact. Hosted RULE-02 main f61aad8 run 38183090003 succeeded (observed through the GitHub API by the audit; its artifact was not downloaded). Hosted RULE-03 and required-check settings remain separate. RULE-04 audit RUN-20261013-011 completed all 13 child stages at fingerprint 5f405778 but was clock-rejected (1,554 ms) like RUN089/091; read-only RUN-20261013-012 shows the host wall clock stepping forward about 343 ms per minute. No artifact published; no environment change. Fresh RUN-20261013-024 confirms hosted RULE-04 maina45ac4b success (38329018576); the source refresh branch is not covered. Local stepped-clock qualification remains pending, unchanged guard/environment. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred. Refresh audit: isolated CI RUN-20261013-058 passed its first ten stages (foundation, databases, identities, live database) then failed at pinned-chromium on a browser-download network timeout; no clock discontinuity, no artifact.",
       "sources": [
         "scripts/ci/**",
         "scripts/ci-local.py",
@@ -621,7 +621,8 @@
         "docs/validation/runs/RUN-20261012-090.json",
         "docs/validation/runs/RUN-20261013-011.json",
         "docs/validation/runs/RUN-20261013-012.json",
-        "docs/validation/runs/RUN-20261013-024.json"
+        "docs/validation/runs/RUN-20261013-024.json",
+        "docs/validation/runs/RUN-20261013-058.json"
       ]
     },
     {
@@ -785,7 +786,7 @@
       "name": "Pinned synthetic engine, secure server RNG and private deterministic verification",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "361 selected/308 runtime files at6de59de1,59 reproduced patches/MIT notices,37 unchanged upstream test files. Provider-only pure kernel; private server RNG/completed deterministic replay and noncompetitive Lab retained. Native inkDrops/event/payment/effective-state compatibility,120 synthetic sourced cases. All ordinary/official/private/reward/card gates closed; PLAY-01 server/Lab must refuse manual/debug moves including manualSetInkDrops.",
+      "description": "361 selected/308 runtime files at6de59de1,59 reproduced patches/MIT notices,37 unchanged upstream test files. Provider-only pure kernel; private server RNG/completed deterministic replay and noncompetitive Lab retained. Native inkDrops/event/payment/effective-state compatibility,120 synthetic sourced cases. All ordinary/official/private/reward/card gates closed; PLAY-01 server/Lab must refuse manual/debug moves including manualSetInkDrops. Independent refresh audit CHG-20261013-003: pin confirmed against GitHub (363 blob ids), timing-valid full foundation RUN-20261013-047, RULE-03 adapter/HMAC/bundle probes pass on the refreshed kernel; debug moves (now incl. manualSetInkDrops) still reach the engine (RUN054).",
       "sources": [
         "scripts/engine/**",
         "vendor/tcg-engines/**",
@@ -844,7 +845,11 @@
         "docs/validation/runs/RUN-20261013-006.json",
         "docs/validation/runs/RUN-20261013-007.json",
         "docs/validation/runs/RUN-20261013-036.json",
-        "docs/validation/runs/RUN-20261013-043.json"
+        "docs/validation/runs/RUN-20261013-043.json",
+        "docs/validation/runs/RUN-20261013-047.json",
+        "docs/validation/runs/RUN-20261013-049.json",
+        "docs/validation/runs/RUN-20261013-052.json",
+        "docs/validation/runs/RUN-20261013-054.json"
       ]
     },
     {
@@ -852,7 +857,7 @@
       "name": "Representative sourced rules and per-card authoring contract",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "120 synthetic sourced scenarios under actual6de59de1 runtime, source/leaf profiles, conservation/rejected-state/projection controls and native counter/payment/lifetime/effective-state regressions. Permanent static Adventurous-loss corrected; test-only fixture probes and authoring template cannot admit official cards/games. Full rules/card/privacy/authority gates remain.",
+      "description": "120 synthetic sourced scenarios under actual6de59de1 runtime, source/leaf profiles, conservation/rejected-state/projection controls and native counter/payment/lifetime/effective-state regressions. Permanent static Adventurous-loss corrected; test-only fixture probes and authoring template cannot admit official cards/games. Full rules/card/privacy/authority gates remain. Independent audit RUN-20261013-051 re-ran the 16 earlier auditor cases on the refreshed kernel and confirmed the static-loss fix.",
       "sources": [
         "scripts/rules/certification.mjs",
         "scripts/rules/scenario-build.mjs",
@@ -899,7 +904,8 @@
         "docs/validation/runs/RUN-20261013-001.json",
         "docs/validation/runs/RUN-20261013-005.json",
         "docs/validation/runs/RUN-20261013-035.json",
-        "docs/validation/runs/RUN-20261013-036.json"
+        "docs/validation/runs/RUN-20261013-036.json",
+        "docs/validation/runs/RUN-20261013-051.json"
       ]
     }
   ]

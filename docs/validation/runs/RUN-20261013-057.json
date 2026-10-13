@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-057",
+  "category": "headless_browser",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const args of [[\"test:e2e:smoke\"],[\"test:engine-browser\"]]){const r=spawnSync(\"pnpm\",args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "1abe9ce202889a372a3336fcf6ea195341be87d7",
+  "source_fingerprint": "4ba45cc4ddaf904fe0d3b433ef7884dba981b0dcc10744bd0327e6a7d28a8b0c",
+  "started_at": "2026-10-13T15:23:17.079Z",
+  "finished_at": "2026-10-13T15:23:39.217Z",
+  "recorded_at": "2026-10-13T15:23:39.217Z",
+  "time_precision": "exact",
+  "elapsed_ms": 22143,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Recorded command outcome",
+  "log_path": "docs/validation/logs/RUN-20261013-057.txt",
+  "log_sha256": "526aca45d2ce93d48f76c43624a648cec0c3e801c6b8a6363c4e2ae4cbb7bd47",
+  "redactions": 0
+}

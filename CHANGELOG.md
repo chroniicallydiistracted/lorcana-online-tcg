@@ -2,6 +2,71 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261013-003 — Independent audit of the upstream engine refresh and Director-authorized integration into main
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-13T15:18:33.015Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 1abe9ce202889a372a3336fcf6ea195341be87d7
+- Tasks: RULE-02, RULE-03, RULE-04, DOC-01, DOC-02
+- Features: F-DOCS, F-CI, F-ENGINE, F-RULE-CERTIFICATION
+- Requirements: none
+
+### Changes
+
+- **review:** Audited Codex commit 1abe9ce (upstream engine refresh, CHG-20261013-002) against ADR0012, ADR0009/0010/0011, D10/D11 and the RULE-02/03/04 guarantees. Upstream identity checked through the public GitHub API: 6de59de1 is TheCardGoat/tcg-engines main, signature verified, sole parent 53a79413, tree d3496c4b equal to the inert clone (51,113 blobs). Reviewed selection/importer changes, the 59-patch reconciliation (RULE-03 P003-P028 and RULE-04 P029-P053 rebased; new P054-P059), adapter/Lab revision constants, the test-only projection probe and upstream debug-move, log, turn-flow and ink-drop changes. All 91 earlier scenario oracles are unchanged apart from the inkDropCounters -> inkDrops rename; 29 new scenarios add the static-loss fix and native ink-drop/lifetime/aura/replacement/projection regressions. Requirement/backlog edits add evidence links only; 548 dispositions and task statuses unchanged. Verdict: refresh confirmed.
+- **test:** Independent runs RUN-20261013-047..057 all passed at fingerprint 4ba45cc4 with exact timing: timing-valid full verify:foundation (270 project checks = 246 Node + 24 Python, 406 upstream passes/1 inherited skip/1,362 expectations, 2 injection tests), importer reproduction, separate byte audit with GitHub blob-id cross-check of all 363 pinned files/licenses, official source bytes plus AST entropy guard, 20-case auditor rules probe (16 earlier cases plus the confirmed static Adventurous-loss fix), RULE-03 adapter probe, HMAC re-derivation, manual-move characterization, bundle scan, boundary probe and Chromium 6 web scenarios/2 workers. RUN-20261013-059 docs:check covers this record.
+- **test:** Host isolated CI RUN-20261013-058 passed its first ten stages (frozen install, doctor, full foundation, bootstrap/restricted databases, local/test migrations, eight identities, live database) and failed at pinned-chromium: the fresh image could not download Chrome for Testing (187 MiB) from storage.googleapis.com within Playwright's 30 s request timeout. An unrecorded manual check measured about 7 KB/s from that host and a GitHub API timeout, so the connection was degraded; no retry. No clock discontinuity over 726,495 ms; owned project/volume/network/image removed.
+- **review:** Follow-ups recorded, none blocking integration: (1) manual/debug moves, now including upstream manualSetInkDrops, are still accepted with player authority through the server adapter (RUN054); PLAY-01 must begin with server and Lab move allowlists. (2) P056 changes upstream setup from at-least-two to exactly-two players; consistent with the current two-player kernel and blueprint, but must be revisited when X01 multiplayer/teams is certified. (3) Upstream structured move-log changes are PLAY-02 privacy scope, not claimed here.
+- **documentation:** Appended a dated audit section to docs/validation/upstream-engine-review.md and dated notes to ADR0012, the refresh plan and the engine runbook; updated AGENTS.md, README.md and docs/README.md refresh status, F-CI/F-ENGINE/F-RULE-CERTIFICATION descriptions and evidence, the FEATURES summary, the RULE-02 backlog evidence link and the handoff.
+- **revision:** Director-authorized integration: publish codex/upstream-engine-review (1abe9ce) and claude/upstream-engine-audit, run hosted CI on the audit branch, and fast-forward main to the audit commit once it passes. Hosted results are recorded in a later change.
+
+### Verification
+
+- **passed:** Timing-valid pnpm verify:foundation: 270 project checks (246 Node + 24 Python incl. 128 rules checks), 406 upstream passes/1 inherited skip, 2 injection tests. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261013-047.json))
+- **passed:** Importer --check against the inert 6de59de1 clone: 361 payloads, licenses, 59 patch originals and the lock reproduced. ([evidence](docs/validation/runs/RUN-20261013-048.json))
+- **passed:** Independent Python byte audit of the 361-file closure and 59-patch ledger, with every pinned blob id cross-checked against GitHub's tree for the commit. ([evidence](docs/validation/runs/RUN-20261013-049.json))
+- **passed:** Official RULE-01 cache and CR2.2/CR2.3 scenario-source bytes; AST ambient-entropy guard across 361 selected files. ([evidence](docs/validation/runs/RUN-20261013-050.json))
+- **passed:** Auditor rules probe on the refreshed kernel: 16 earlier CR2.3-sourced cases plus 4 static Adventurous-loss cases. ([evidence](docs/validation/runs/RUN-20261013-051.json))
+- **passed:** Unchanged RULE-03 compiled-adapter probe on the refreshed kernel with ambient entropy and clocks disabled. ([evidence](docs/validation/runs/RUN-20261013-052.json))
+- **passed:** Independent Python HMAC-SHA256 re-derivation of 3,765 compiled server outcomes. ([evidence](docs/validation/runs/RUN-20261013-053.json))
+- **passed:** Characterization: manualSetInkDrops and manualSetLore from the non-active player accepted through the server adapter (pre-existing gap; PLAY-01). ([evidence](docs/validation/runs/RUN-20261013-054.json))
+- **passed:** Built-bundle scan: kernel invariants, reviewed mechanics present, no test-only bridge in any bundle. ([evidence](docs/validation/runs/RUN-20261013-055.json))
+- **passed:** Boundary probe: 11 owners refuse 264 imports of scenario tooling. ([evidence](docs/validation/runs/RUN-20261013-056.json))
+- **passed:** Actual headless Linux Chromium: 6 web foundation scenarios and 2 compiled Lab Web Workers. ([evidence](docs/validation/runs/RUN-20261013-057.json))
+- **failed:** Host isolated CI: first ten stages passed; pinned-chromium failed on a browser-download network timeout; no artifact; owned resources removed. ([evidence](docs/validation/runs/RUN-20261013-058.json))
+- **passed:** pnpm docs:check over the audit documentation, records and generated views at fingerprint 4ba45cc4. ([evidence](docs/validation/runs/RUN-20261013-059.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/upstream-engine-review.md](docs/validation/upstream-engine-review.md) — Appended a dated independent-audit section with upstream identity, run outcomes, the network-failed isolated CI, verdict and follow-ups; Codex text unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Header actors, authorized publication/integration sequence, audit verification and follow-ups, and next actions; other Codex content unchanged.
+- **updated:** [docs/adr/0012-upstream-kernel-refresh.md](docs/adr/0012-upstream-kernel-refresh.md) — Dated audit note: decision unchanged and matching the audited source; GitHub identity, P056 X01 caveat and isolated CI outcome.
+- **updated:** [docs/plans/2026-10-13-upstream-engine-review.md](docs/plans/2026-10-13-upstream-engine-review.md) — Dated audit/integration note appended; checklist and closure preserved.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Audit note on P056 two-player guard and the manualSetInkDrops extension of the debug-move gap.
+- **updated:** [AGENTS.md](AGENTS.md) — Current refresh statement notes the independent audit, the timing-valid foundation receipt and the P056 X01 caveat.
+- **updated:** [README.md](README.md) — Short dated audit section; earlier sections preserved.
+- **updated:** [docs/README.md](docs/README.md) — Current refresh entry point links the audit and its follow-ups.
+- **updated:** [docs/features.json](docs/features.json) — F-CI adds the network-failed RUN058 (verification unchanged); F-ENGINE and F-RULE-CERTIFICATION add audit evidence.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Refresh summary line notes the audit receipts and the isolated CI outcome.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — RULE-02 evidence links add this audit; statuses unchanged.
+- **historical_preserved:** [docs/reviews/2026-10-13-upstream-engine-review.md](docs/reviews/2026-10-13-upstream-engine-review.md) — Codex reviewer record; the independent audit is recorded separately in validation.
+- **reviewed_unchanged:** [docs/runbooks/rules-certification.md](docs/runbooks/rules-certification.md) — Codex already marked the audited Adventurous defect as corrected; RUN051 confirms it.
+- **reviewed_unchanged:** [docs/validation/rule-04.md](docs/validation/rule-04.md) — Historical RULE-04 audit section remains accurate for its source; the fix is recorded in the refresh validation.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Codex edits add evidence links only (R01.005/.006, R29.005); no disposition change.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261013-003.json).
+
+### Limits and next actions
+
+- No new timing-qualified isolated CI artifact: RUN058 failed on a network timeout downloading the browser; hosted CI is observed after publication.
+- The debug-move authority gap remains open for PLAY-01; P056 is a current two-player boundary to revisit for X01.
+- Upstream structured-log privacy, full rules/card certification, durable play, AUTH/replay delivery, device and production acceptance are not claimed.
+- Observe hosted CI on the audit branch and on main; record both in the next change.
+- Assign PLAY-01, starting with server and Lab move allowlists that refuse every manual/debug move including manualSetLore and manualSetInkDrops.
+- Revisit P056 when X01 multiplayer/teams is certified.
+
 ## CHG-20261013-002 — Refresh reviewed upstream kernel before PLAY-01
 
 - Status: finalized

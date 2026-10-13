@@ -1,0 +1,912 @@
+
+> lorcana-online-tcg@0.0.0 ci:verify /workspaces/lorcana-online-tcg
+> node scripts/ci/pipeline.mjs
+
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+CI stage: frozen-install
+Scope: all 13 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 483ms using pnpm v10.33.0
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 10.33.0 → 12.11.2.   │
+   │   Changelog: https://pnpm.io/v/12.11.2   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+CI stage: doctor
+
+> lorcana-online-tcg@0.0.0 doctor /workspaces/lorcana-online-tcg
+> node scripts/doctor.mjs
+
+PASS Node 24.21.0
+PASS pnpm 10.33.0
+PASS Linux development environment
+PASS .env.local exists with owner-only access
+PASS Local environment loaded into container
+PASS Container database address
+PASS Generated database bootstrap configuration
+Workspace toolchain ready. Run pnpm db:check to verify authenticated database access.
+CI stage: foundation
+
+> lorcana-online-tcg@0.0.0 verify:foundation /workspaces/lorcana-online-tcg
+> pnpm verify && pnpm typecheck && pnpm lint && pnpm test
+
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS RULE-01 offline metadata, denominators, dated release/effective status and uncertified boundaries
+PASS representative rule sources/template; no card admission {"scenarios":120,"versions":["2.2.0","2.3.0"]}
+PASS pinned vendor integrity {"revision":"6de59de1c203827edc1bc6faa1bc6184cd126a5f","files":361,"patches":59}
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 361 selected source files
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":1632,"documents":1041,"functions":8934,"changes":32,"runs":436}
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 typecheck /workspaces/lorcana-online-tcg
+> pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck
+
+Scope: 8 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  895.85 kB │ gzip: 194.91 kB
+
+✓ built in 218ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  898.70 kB │ gzip: 197.79 kB
+
+✓ built in 153ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/db@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/design-system@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/presentation@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-adapter@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-lab@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/service-runtime@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/api@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-service@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/worker@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+
+> lorcana-online-tcg@0.0.0 test /workspaces/lorcana-online-tcg
+> pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci && pnpm test:rules-inventory && pnpm test:rules && pnpm test:engine-tooling
+
+
+> lorcana-online-tcg@0.0.0 build /workspaces/lorcana-online-tcg
+> pnpm boundaries && pnpm -r --workspace-concurrency=1 build
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  895.85 kB │ gzip: 194.91 kB
+
+✓ built in 177ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/web@0.0.0 build /workspaces/lorcana-online-tcg/apps/web
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 2511 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           0.38 kB │ gzip:   0.28 kB
+dist/assets/index-Cs1RDOyn.css                            0.96 kB │ gzip:   0.54 kB
+dist/assets/postprocess.vertex-DJCmMhI8.js                0.46 kB │ gzip:   0.30 kB
+dist/assets/shaderStore-D-XQlhUT.js                       0.46 kB │ gzip:   0.17 kB
+dist/assets/rgbdDecode.fragment-Cdz2Tveq.js               0.52 kB │ gzip:   0.34 kB
+dist/assets/postprocess.vertex-CmVXXq2T.js                0.58 kB │ gzip:   0.35 kB
+dist/assets/rgbdDecode.fragment-DXl2fYur.js               0.66 kB │ gzip:   0.38 kB
+dist/assets/math.scalar.functions-lnL7TJ7T.js             0.76 kB │ gzip:   0.41 kB
+dist/assets/color.fragment-SH3AKoaS.js                    0.87 kB │ gzip:   0.42 kB
+dist/assets/mesh.vertexData.functions-CD4JOR2q.js         0.93 kB │ gzip:   0.48 kB
+dist/assets/color.fragment-DVaYbzXa.js                    0.98 kB │ gzip:   0.45 kB
+dist/assets/ddsTextureLoader-CnOqxmwJ.js                  1.25 kB │ gzip:   0.62 kB
+dist/assets/color.vertex-UAuK67V9.js                      1.35 kB │ gzip:   0.61 kB
+dist/assets/color.vertex-BYaj1Jpp.js                      1.41 kB │ gzip:   0.61 kB
+dist/assets/logger-CuBYPcDK.js                            1.88 kB │ gzip:   0.82 kB
+dist/assets/logDepthDeclaration-BKcd_JEL.js               2.16 kB │ gzip:   0.85 kB
+dist/assets/fogFragment-WPqtYpyX.js                       2.20 kB │ gzip:   0.70 kB
+dist/assets/hdrTextureLoader-BQVwkxK1.js                  2.31 kB │ gzip:   1.13 kB
+dist/assets/fogFragment-NFgubt9V.js                       2.43 kB │ gzip:   0.76 kB
+dist/assets/iesTextureLoader-3O5bSkSd.js                  2.47 kB │ gzip:   1.07 kB
+dist/assets/logDepthDeclaration-CLGvI4QS.js               2.54 kB │ gzip:   0.84 kB
+dist/assets/tgaTextureLoader-CqhhocF6.js                  3.40 kB │ gzip:   1.35 kB
+dist/assets/cubemapToSphericalPolynomial-DQLobdjo.js      3.65 kB │ gzip:   1.60 kB
+dist/assets/typeStore-CuqQeP4D.js                         4.87 kB │ gzip:   1.80 kB
+dist/assets/helperFunctions-BH8P-eyq.js                   6.48 kB │ gzip:   2.18 kB
+dist/assets/helperFunctions-gEnZbjN3.js                   6.81 kB │ gzip:   2.31 kB
+dist/assets/dds.pure-CyPDIBuU.js                          6.93 kB │ gzip:   2.54 kB
+dist/assets/vertexColorMixing-HinktY3n.js                10.39 kB │ gzip:   2.14 kB
+dist/assets/vertexColorMixing-CBmtHj8r.js                11.72 kB │ gzip:   2.17 kB
+dist/assets/exrTextureLoader-C86K4-F4.js                 13.14 kB │ gzip:   4.81 kB
+dist/assets/ktxTextureLoader-C5lMybt9.js                 16.40 kB │ gzip:   4.78 kB
+dist/assets/guid-BN1U1Zos.js                             17.72 kB │ gzip:   6.15 kB
+dist/assets/default.vertex-CF_7OiRp.js                   19.62 kB │ gzip:   4.39 kB
+dist/assets/basisTextureLoader-Xdypzq5p.js               27.22 kB │ gzip:   8.16 kB
+dist/assets/envTextureLoader-pSz_G0GG.js                 31.54 kB │ gzip:   8.88 kB
+dist/assets/default.vertex-uAWj3KN-.js                   38.03 kB │ gzip:   6.28 kB
+dist/assets/math.color.pure-DQiG_7Jy.js                  77.34 kB │ gzip:  18.33 kB
+dist/assets/default.fragment-DOpJD8Rt.js                110.44 kB │ gzip:  22.56 kB
+dist/assets/default.fragment-JYy_LTJ1.js                115.22 kB │ gzip:  22.38 kB
+dist/assets/index--mOsM8DA.js                           305.76 kB │ gzip:  95.62 kB
+dist/assets/src-3pUG3QJN.js                           1,084.54 kB │ gzip: 261.57 kB
+
+✓ built in 924ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  898.70 kB │ gzip: 197.79 kB
+
+✓ built in 212ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+
+> @lorcana/api@0.0.0 build /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/worker@0.0.0 build /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 test:bootstrap /workspaces/lorcana-online-tcg
+> node scripts/test-bootstrap.mjs
+
+✔ browser connectivity contract serves readiness and rejects other routes/methods (29.458966ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.228203
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+✔ public diagnostics reject private data and malformed service responses (2.604188ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (3.061186ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (3.447953ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (2.561469ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (3.201499ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (8.258129ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.19719ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 224.274883
+
+> @lorcana/db@0.0.0 test /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/policy.test.mjs tests/config.test.mjs
+
+✔ credentials are private, distinct and byte-preserved across provisioning retries (2.916087ms)
+✔ tooling fails closed outside the private local container network (0.1895ms)
+✔ unsafe parent directory is rejected before generating any credential file (0.644866ms)
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (0.709941ms)
+✔ migration history must be an unchanged contiguous prefix (0.176884ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (0.803314ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 96.051422
+
+> @lorcana/presentation@0.0.0 test /workspaces/lorcana-online-tcg/packages/presentation
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+BJS - [15:27:52]: Babylon.js v9.29.0 - Null engine
+BJS - [15:27:53]: Babylon.js v9.29.0 - Null engine
+BJS - [15:27:53]: Babylon.js v9.29.0 - Null engine
+✔ synthetic scene renders and releases meshes and engine through repeatable mount/dispose (413.225516ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 606.801669
+
+> @lorcana/vendor-engine@0.0.0 test /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node ../../scripts/engine/test-upstream.mjs && node ../../scripts/engine/test-injection.mjs
+
+Selected 37 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+ 406 pass
+ 1 skip
+ 0 fail
+ 1362 expect() calls
+Ran 407 tests across 37 files. [1445.00ms]
+bun test v1.4.2 (744846f84)
+
+src/injection.test.ts:
+(pass) injected initialization/first chooser and active clock resume ignore ambient wall time [4.30ms]
+(pass) invalid injected results cannot advance a committed random cursor [0.13ms]
+
+ 2 pass
+ 0 fail
+ 9 expect() calls
+Ran 2 tests across 1 file. [48.00ms]
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test tests/*.test.mjs
+
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (2.212349ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (1.422746ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (25.688717ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (8.871491ms)
+✔ new server match fails closed when operating-system entropy is unavailable (50.184283ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.679975ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (34.628262ms)
+✔ completed private archive is immutable across late rejected submissions (8.234288ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (54.294953ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (65.769637ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (33.192943ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (2.546054ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 276.643932
+
+> @lorcana/engine-lab@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-lab
+> node --test tests/*.test.mjs
+
+✔ qualification input bounds sparse arrays, aggregate size, keys and accessors before engine execution (14.993728ms)
+✔ synthetic match commands run on Node with player authority, stale rejection, terminal winner and idempotent disposal (12.670156ms)
+✔ October rules and set dates never grant unqualified rules/catalog or hidden/economic admission (1.443801ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 125.469602
+
+> @lorcana/service-runtime@0.0.0 test /workspaces/lorcana-online-tcg/packages/service-runtime
+> node --conditions=lorcana-source --test tests/*.test.mjs
+
+✔ shutdown interrupts pending initialization and calls cleanup: async () =>  (61.956823ms)
+✔ shutdown interrupts pending initialization and calls cleanup: signal => {  (59.062428ms)
+✔ actual HTTP negotiation is typed, rejects unknown/coerced/oversized input and drains (248.515197ms)
+✔ HTTP service cannot advertise a revision without an implemented foundation codec (0.83387ms)
+✔ release registry defensively freezes source and never silently replaces an unavailable pinned release (9.637452ms)
+✔ release transition proof rejects dropped or changed pins but accepts canonical field reordering (11.495552ms)
+✔ release registry cannot expose empty cloned data from inherited manifest fields (0.386624ms)
+✔ HTTP service serves scoped diagnostics, rejects unknown routes, and drains readiness (187.472431ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 558.627947
+✔ production apps cannot import the manipulated RULE-04 fixture bridge (237.918033ms)
+✔ only the trust-free Lab wrapper may import the compiled kernel; public contracts and web cannot bypass it (16.425581ms)
+✔ server applications cannot bypass the project adapter using vendor or raw upstream imports (12.338932ms)
+✔ server module loader aliases cannot bypass the engine adapter (6.077709ms)
+✔ browser imports reject database/server sources, aliases, reexports, dynamic imports and dependency declarations (1981.432557ms)
+✔ browser source cannot import the server-only release registry through its package subpath (2.258477ms)
+✔ private server RNG/replay cannot cross browser boundaries and server adapter cannot enter the Lab generator (12.881119ms)
+✔ browser resolver cannot treat a server adapter as a permitted browser kernel importer (0.566717ms)
+✔ declaring a database dependency in a public contract package is rejected (225.574104ms)
+✔ CSS asset references cannot embed server-owned files: body { background: url("../../../packages/db/README.md"); } (227.564156ms)
+✔ CSS asset references cannot embed server-owned files: body { background: image-set("../../../packages/db/README.md" 1x); } (223.935887ms)
+✔ CSS asset references cannot embed server-owned files: body { background: -webkit-image-set("../../../packages/db/README.md" 1x); } (213.284223ms)
+✔ HTML entry assets and inline modules cannot embed server-owned files (913.569409ms)
+✔ built browser assets contain no server configuration or bootstrap credential (10.385301ms)
+✔ supervisor cleanup stops a descendant even when its leader exits first (149.049659ms)
+✔ cleanup retains the group of an already-exited leader (150.055234ms)
+✔ built application processes start, remain alive and stop on both signals without public worker ingress (2367.613621ms)
+✔ development supervisor rejects a busy service port and leaves the existing listener intact (13929.970783ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16358.830314
+
+> lorcana-online-tcg@0.0.0 test:documentation /workspaces/lorcana-online-tcg
+> node --test tests/documentation/*.test.mjs
+
+✔ evidence capture preserves failure, timestamps and redacts inherited secrets (288.687029ms)
+✔ source changes during a command prevent a successful evidence claim (278.747735ms)
+✔ a timed-out child that ignores SIGTERM is terminated and recorded as failed (1760.711822ms)
+✔ known inherited secrets are redacted even when shorter than eight characters (0.580819ms)
+✔ credentials generated during a child command are redacted before durable logs (271.356474ms)
+✔ unsafe generated credential configuration withholds all output and records a schema-valid failure (303.031751ms)
+✔ a fast-exiting leader cannot leave an ignoring-SIGTERM grandchild alive (1940.888387ms)
+✔ a backwards or stepped wall clock cannot become trustworthy elapsed-time evidence (0.309927ms)
+✔ new documentation governance exposes real validation and sync operations (0.675396ms)
+✔ source drift requires a covering change and review of impacted documentation (301.895367ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (80.09414ms)
+✔ change records reject unqualified timestamps and historical execution inventions (14.565683ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (71.562729ms)
+✔ documentation edits and newly added source files require recorded coverage (110.589761ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (16.045079ms)
+✔ committed finalized history cannot be changed or deleted (125.435297ms)
+✔ log tampering and exit status contradictions invalidate execution evidence (180.563399ms)
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history (70.923934ms)
+✔ removing old source-impact edges cannot erase required documentation reviews (72.704086ms)
+✔ committing a rewrite does not make sealed history valid (122.349866ms)
+✔ executed passing evidence needs a log and consistent execution/recording times (45.952493ms)
+✔ isolated branches are not required to contain unrelated scope history (130.592721ms)
+✔ a misspelled documentation impact path cannot silently disable reviews (15.108931ms)
+✔ human device reports preserve verdict without inventing process exit or machine verification (176.324599ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5068.644149
+
+> lorcana-online-tcg@0.0.0 test:database-tooling /workspaces/lorcana-online-tcg
+> python3 tests/database/persistence-proof.test.py
+
+test_SIGINT (__main__.ProofReview.test_SIGINT) ... ok
+test_SIGTERM (__main__.ProofReview.test_SIGTERM) ... ok
+test_cleanup_error (__main__.ProofReview.test_cleanup_error) ... ok
+test_fingerprint_error (__main__.ProofReview.test_fingerprint_error) ... ok
+test_redaction (__main__.ProofReview.test_redaction) ... ok
+test_remaining (__main__.ProofReview.test_remaining) ... ok
+test_server_secret (__main__.ProofReview.test_server_secret) ... ok
+test_source_changed (__main__.ProofReview.test_source_changed) ... ok
+test_success (__main__.ProofReview.test_success) ... ok
+test_timeout (__main__.ProofReview.test_timeout) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.015s
+
+OK
+Simulated recorder regressions: all Docker/DB commands mocked; no actual persistence proof.
+
+> lorcana-online-tcg@0.0.0 test:ci /workspaces/lorcana-online-tcg
+> node --test tests/ci/*.test.mjs && python3 tests/ci/launcher.test.py
+
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.706112ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.391054ms)
+✔ experimental engine and provenance are carried and release-bound; calendar metadata does not make a game release (96.508397ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (38.606727ms)
+✔ manifest traversal, duplicate and missing entries are rejected (16.86987ms)
+✔ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (19.408485ms)
+✔ documented artifact command accepts the pnpm argument separator (648.516583ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.436739ms)
+✔ version3 artifacts carry a release bound to app, engine and actual SQL migration bytes (24.533686ms)
+✔ release binding rejects modified inner metadata or build/SQL bytes even with recomputed outer hashes (46.691952ms)
+✔ a shallow repository cannot bypass full-history qualification (39.891159ms)
+✔ release identity binds transitive executable workspace bytes and package resolution metadata (75.051654ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1365.362903
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.032s
+
+OK
+
+> lorcana-online-tcg@0.0.0 test:rules-inventory /workspaces/lorcana-online-tcg
+> node --test tests/rules/inventory.test.mjs tests/rules/check-inventory.test.mjs
+
+✔ committed source metadata supports an offline inventory check (26.893079ms)
+✔ an inflated declaration denominator is rejected (21.269184ms)
+✔ source hash substitution and empty rules comparison are rejected (36.123973ms)
+✔ retrieval metadata cannot promote scheduled rules or certify a printing (22.610748ms)
+✔ incomplete trees and escaped private/cache paths are rejected (26.553836ms)
+✔ an HTML error page cannot qualify as an acquired PDF (1.343291ms)
+✔ hash mismatch rejects substituted source bytes (0.808373ms)
+✔ retrieval does not make a future or unknown effective date current (0.144196ms)
+✔ truncated or duplicate trees cannot supply complete denominators (0.318334ms)
+✔ reprints share provisional identity while future and enemy printings remain separate (5.110484ms)
+✔ skipped suites propagate; comments/strings do not become test cases (5.920664ms)
+✔ each/conditional/focused declarations do not pretend to be executed case counts (1.135286ms)
+✔ rule comparison preserves identifiers and distinguishes added/removed/changed text (0.961101ms)
+✔ official gallery data is read as syntax without evaluating executable site code (3.249206ms)
+✔ promotional printings do not inherit an old set release date as proven availability (0.233461ms)
+✔ suite parameterization and variable titles remain visible in static declarations (0.500566ms)
+✔ glossary/update appendices cannot contaminate the final numbered rule hash (0.120803ms)
+✔ a Git symlink blob is its inert target string, never dereferenced file contents (0.589842ms)
+✔ a table-of-contents Glossary entry cannot suppress the actual rules body (0.168663ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 356.471424
+
+> lorcana-online-tcg@0.0.0 test:rules /workspaces/lorcana-online-tcg
+> node --test tests/rules/scenarios.test.mjs tests/rules/certification.test.mjs
+
+✔ a per-card template cannot be promoted to tested without bound execution and coverage (2.104881ms)
+✔ a forged admission status cannot bypass later queue policies (0.307943ms)
+✔ scenario oracles reject missing or duplicate IDs, wrong rules and missing positive assertions (12.124431ms)
+✔ draft card references cannot borrow a source or hide an ability branch (8.010881ms)
+✔ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1254.119225ms)
+[resolveBag] target validation failed {
+  bagId: 'bag:0:1',
+  playerId: 'p1',
+  sourceCardId: 'hero',
+  effectType: 'optional',
+  errorCode: 'INVALID_ACTION_TARGET',
+  error: 'Target hero is not a legal target',
+  explicitTargets: [ 'hero' ],
+  analysis: {
+    cardCandidates: [ 'friend' ],
+    playerCandidates: [],
+    minSelections: 1,
+    maxSelections: 1,
+    allowDuplicateTargets: false
+  }
+}
+▶ RULE-04 representative sourced runtime scenarios
+  ✔ SCN-001: Quest gains printed lore and exerts the dry character (11.000157ms)
+  ✔ SCN-002: A drying character cannot quest (1.564976ms)
+  ✔ SCN-003: An exerted character cannot quest again (1.120273ms)
+  ✔ SCN-004: An opponent cannot quest with a character they do not control (0.91095ms)
+  ✔ SCN-005: Reaching twenty lore ends the game at the state check (1.965475ms)
+  ✔ SCN-006: Items cannot quest (0.759587ms)
+  ✔ SCN-007: Reckless prevents questing (1.099121ms)
+  ✔ SCN-008: Challenge deals simultaneous strength damage and exerts attacker (5.991785ms)
+  ✔ SCN-009: Ordinary characters cannot challenge ready opposing characters (1.240024ms)
+  ✔ SCN-010: Drying characters without Rush cannot challenge (1.727943ms)
+  ✔ SCN-011: Rush permits a drying character to challenge (3.860294ms)
+  ✔ SCN-012: Evasive blocks a non-Evasive attacker (0.895721ms)
+  ✔ SCN-013: Alert allows challenging an exerted Evasive character (3.651528ms)
+  ✔ SCN-014: Alert does not let its defender evade an ordinary challenge (2.674521ms)
+  ✔ SCN-015: A valid exerted Bodyguard prevents choosing a different character (1.100632ms)
+  ✔ SCN-016: An exerted Bodyguard can be chosen for a challenge (3.106327ms)
+  ✔ SCN-017: Challenger adds strength only while its character challenges (2.918245ms)
+  ✔ SCN-018: Challenger does not add defending damage (2.944974ms)
+  ✔ SCN-019: Resist reduces challenge damage (2.584686ms)
+  ✔ SCN-020: An inkable hand card moves to the inkwell ready (2.19676ms)
+  ✔ SCN-021: A noninkable hand card cannot be inked (0.586499ms)
+  ✔ SCN-022: A second ordinary inking in one turn is rejected (1.384043ms)
+  ✔ SCN-023: Insufficient ink rejects play without partial payment (1.536925ms)
+  ✔ SCN-024: Playing a character pays ink and leaves it drying (3.147345ms)
+  ✔ SCN-025: A stale revision rejects an otherwise legal quest (1.255833ms)
+  ✔ SCN-026: A missing card reference is rejected without mutation (0.621237ms)
+  ✔ SCN-027: An opponent cannot end the active player turn (0.447171ms)
+  ✔ SCN-028: A dry Singer can sing a song above its printed cost (6.344671ms)
+  ✔ SCN-029: A drying character cannot pay a song singing cost (0.736616ms)
+  ✔ SCN-030: Sing Together combines ready singers and exerts both (3.17773ms)
+  ✔ SCN-031: Duplicate singers cannot count twice toward Sing Together (0.614491ms)
+  ✔ SCN-032: Shift inherits drying and damage from its underlying character (4.036856ms)
+  ✔ SCN-033: Shift cannot use an opposing character as its base (0.744715ms)
+  ✔ SCN-034: Boost puts one top card facedown under its character once per turn (3.661189ms)
+  ✔ SCN-035: Ward prevents an opponent choosing the character for an action (1.298299ms)
+  ✔ SCN-036: Lethal challenge damage banishes both characters simultaneously (3.547915ms)
+  ✔ SCN-037: Active player chooses bag order before opponent and normal actions wait (9.321839ms)
+  ✔ SCN-038: Unknown bag IDs reject without removing valid triggered effects (1.832388ms)
+  ✔ SCN-039: An optional triggered effect can be declined without granting its lore (2.308968ms)
+  ✔ SCN-040: An optional triggered effect can be accepted and resolves fully (2.616454ms)
+  ✔ SCN-041: Support permits choosing another character after the quest (8.031611ms)
+  ✔ SCN-042: Support cannot choose the questing character itself (3.084036ms)
+  ✔ SCN-043: Vanish waits for the opposing action to finish before banishing (6.078152ms)
+  ✔ SCN-044: Vanish does not trigger when its controller chooses it with an action (2.438964ms)
+  ✔ SCN-045: Vanish does not trigger for an opposing activated character ability (2.148152ms)
+  ✔ SCN-046: Vanish becomes inapplicable after the action returns its source to hand (4.749619ms)
+  ✔ SCN-047: Vanish waits for all separate action effects before checking its play zone (4.521964ms)
+  ✔ SCN-048: Adventurous prevents challenging even when Rush would allow it (0.626616ms)
+  ✔ SCN-049: A ready Adventurous character that can quest prevents ending the turn (0.950633ms)
+  ✔ SCN-050: A drying Adventurous character cannot quest and does not prevent ending the turn (3.351589ms)
+  ✔ SCN-051: Questing exerts Adventurous and permits ending the turn (2.464387ms)
+  ✔ SCN-052: Adventurous with zero lore still must quest if able (2.515104ms)
+  ✔ SCN-053: Adventurous and Reckless together permit ending the turn because neither action is legal (2.255558ms)
+  ✔ SCN-054: Adventurous can sing and its exerted state permits ending the turn (3.766618ms)
+  ✔ SCN-055: Adventurous can exert for an activated ability instead of questing (2.977668ms)
+  ✔ SCN-056: An effect generates ink-drop counters without adding any ink cards (2.173631ms)
+  ✔ SCN-057: Ink-drop counters pay a character ink cost and are consumed (1.423163ms)
+  ✔ SCN-058: A mixed payment exerts ink cards and consumes only the remaining counters (1.350068ms)
+  ✔ SCN-059: A player can explicitly pay counters while leaving enough ink cards ready (1.503064ms)
+  ✔ SCN-060: A player cannot spend an opponents ink-drop counters (0.504686ms)
+  ✔ SCN-061: Insufficient cards and counters reject without partial consumption (0.498963ms)
+  ✔ SCN-062: Ink-drop counters pay an activated ability ink cost (1.415929ms)
+  ✔ SCN-063: Ink-drop counters pay an alternate Shift ink cost (1.930561ms)
+  ✔ SCN-064: Ink-drop counters pay a location movement ink cost (1.968266ms)
+  ✔ SCN-065: Invalid selected counter payment -1 rejects without mutation (0.689268ms)
+  ✔ SCN-066: Invalid selected counter payment 1.5 rejects without mutation (0.640609ms)
+  ✔ SCN-067: Invalid selected counter payment 3 rejects without mutation (0.576669ms)
+  ✔ SCN-068: One chosen operation queues Vanish and its observer once each (2.996667ms)
+  ✔ SCN-069: A prior Vanish trigger cannot banish a new incarnation of its source (3.711413ms)
+  ✔ SCN-070: Spent counters are removed and cannot pay a second card (1.905644ms)
+  ✔ SCN-071: Unused counters persist across turn changes (1.309706ms)
+  ✔ SCN-072: Setup deals seven, permits mulligans and skips the first draw (6.783388ms)
+  ✔ SCN-073: Deferred targets wait for the chooser and reject unknown targets without mutation (8.127196ms)
+  ✔ SCN-074: Vanish follows an opposing chooser even when the action belongs to its controller (4.246075ms)
+  ✔ SCN-075: Vanish ignores a same-controller chooser even for an opposing action (3.098144ms)
+  ✔ SCN-076: A temporarily granted Adventurous keyword forbids challenging (0.758776ms)
+  ✔ SCN-077: Losing Adventurous permits an otherwise legal challenge (2.885909ms)
+  ✔ SCN-078: Temporarily granted Vanish queues after an opposing choice (3.946448ms)
+  ✔ SCN-079: Losing Vanish prevents its opposing choice trigger (1.950203ms)
+  ✔ SCN-080: Ink-drop counters do not satisfy an ink-card count condition (1.417398ms)
+  ✔ SCN-081: Counter overflow rejects the effect without committing a partial pool (1.106806ms)
+  ✔ SCN-082: Counter generation resolves its dynamic amount using the existing effect context (3.185056ms)
+  ✔ SCN-083: A nested ink cost consumes counters without ready ink cards (1.903768ms)
+  ✔ SCN-084: Turn transition readies cards, dries characters, grants location lore and draws (2.660091ms)
+  ✔ SCN-085: Two distinct choose slots preserve two occurrences when they select the same card (2.776215ms)
+  ✔ SCN-086: Reusing a previously chosen target does not create a second choice (5.666103ms)
+  ✔ SCN-087: A nested cost can select counters and preserve ready ink (2.257146ms)
+  ✔ SCN-088: Separate nested costs consume their own ordered counter selections (2.149186ms)
+  ✔ SCN-089: A single choose slot cannot select one instance twice (0.756662ms)
+  ✔ SCN-090: An excessive explicit nested counter selection rejects with full rollback (1.281379ms)
+  ✔ SCN-091: An unentered cost branch does not consume the next actual payment selection (1.998633ms)
+  ✔ SCN-092: A permanent static loss of Adventurous removes the quest obligation (2.535503ms)
+  ✔ SCN-093: The upstream gain-ink-drop effect credits the controller without creating ink cards (1.863408ms)
+  ✔ SCN-094: Mandatory activated ink-drop costs consume their own pool exactly once (1.633406ms)
+  ✔ SCN-095: gain-ink-drop-counters updates turn metrics and queues its counter-gain observer (3.006349ms)
+  ✔ SCN-096: gain-ink-drop updates turn metrics and queues its counter-gain observer (2.716619ms)
+  ✔ SCN-097: Default drop payment validates and executes the same conditional scry branch (2.807433ms)
+  ✔ SCN-098: Explicit drop payment validates and executes the same conditional scry branch (1.681396ms)
+  ✔ SCN-099: Explicit nested drop payment preserves its played-card condition (2.908921ms)
+  ✔ SCN-100: Default nested drop payment preserves its played-card condition (1.828385ms)
+  ✔ SCN-101: Effect replay starts a fresh once-per-turn source lifetime (11.346082ms)
+  ✔ SCN-102: Effect Shift starts a fresh once-per-turn source lifetime (13.615007ms)
+  ✔ SCN-103: suppressed entry aura respects effective ability state (2.946255ms)
+  ✔ SCN-104: false-condition entry aura respects effective ability state (2.125351ms)
+  ✔ SCN-105: active entry aura respects effective ability state (1.442861ms)
+  ✔ SCN-106: suppressed drop replacement respects effective ability state (2.936549ms)
+  ✔ SCN-107: false-condition drop replacement respects effective ability state (1.848385ms)
+  ✔ SCN-108: active drop replacement respects effective ability state (3.358752ms)
+  ✔ SCN-109: Projected restrictions and quest payment agree on the controller-owned drop pool (3.259268ms)
+  ✔ SCN-110: Projected restrictions and challenge payment agree on the controller-owned drop pool (3.40875ms)
+  ✔ SCN-111: Projected restrictions and quest payment agree on the controller-owned drop pool (0.934726ms)
+  ✔ SCN-112: Native counter overflow rejects without partially committing the pool (1.561925ms)
+  ✔ SCN-113: Mandatory and ordinary ink payments cannot reuse a single counter (pool 1) (0.544289ms)
+  ✔ SCN-114: Mandatory and ordinary ink payments cannot reuse a single counter (pool 2) (1.636768ms)
+  ✔ SCN-115: Default payment includes static cost increase in both validation and execution (2.081952ms)
+  ✔ SCN-116: Explicit payment includes static cost increase in both validation and execution (1.869774ms)
+  ✔ SCN-117: Entry aura evaluates its source-owned G counter condition (pool 1) (1.537946ms)
+  ✔ SCN-118: Entry aura evaluates its source-owned G counter condition (pool 0) (1.388213ms)
+  ✔ SCN-119: A counter-conditioned suppressor uses complete source G state (2.182498ms)
+  ✔ SCN-120: Legacy counter generation offers the same active replacement choice (2.691218ms)
+  ✔ Invalid snapshots are detected independently of move acceptance (3.278072ms)
+  ✔ Choice grouping scopes prior slots and never fabricates a missing choice (0.143187ms)
+✔ RULE-04 representative sourced runtime scenarios (1176.146547ms)
+ℹ tests 128
+ℹ suites 0
+ℹ pass 128
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2660.625338
+
+> lorcana-online-tcg@0.0.0 test:engine-tooling /workspaces/lorcana-online-tcg
+> node --test tests/engine/*.test.mjs
+
+✔ upstream test resolver cannot redirect selected aliases outside the verified closure (5.865925ms)
+✔ closure follows cyclic relative imports, type imports and explicit aliases, omitting unrelated files (10.267932ms)
+✔ closure rejects source reached through a directory symlink outside the pinned root (0.745857ms)
+✔ vendor integrity rejects modified, extra and missing source plus an unlisted patch (2.164365ms)
+✔ vendored source has no ambient Math.random/UUID or runtime seedrandom fallback (12.370921ms)
+✔ entropy guard rejects computed access and aliases, including hidden seedrandom imports (8.904769ms)
+✔ entropy guard closes crypto aliases, alternate module forms and cast global receivers (4.522732ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 228.911753
+CI stage: bootstrap-database
+
+> lorcana-online-tcg@0.0.0 db:check /workspaces/lorcana-online-tcg
+> node scripts/db-check.mjs
+
+PASS authenticated PostgreSQL 18 connection to the local bootstrap database.
+CI stage: restricted-database
+
+> lorcana-online-tcg@0.0.0 db:provision /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js provision
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS managed local/test roles, databases and schema grants provisioned
+CI stage: local-migration
+
+> lorcana-online-tcg@0.0.0 db:migrate /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js migrate -- --target local
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+{"target":"local","applied":1,"total":1}
+CI stage: test-migration
+
+> lorcana-online-tcg@0.0.0 db:migrate /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js migrate -- --target test
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+{"target":"test","applied":1,"total":1}
+CI stage: local-identities
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target local
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 local: four authenticated managed identities
+CI stage: test-identities
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target test
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 test: four authenticated managed identities
+CI stage: live-database
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (97.675695ms)
+✔ cross-environment logins cannot connect to either other managed database (38.697305ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (44.291003ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (252.98982ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (872.574656ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1651.533178
+CI stage: pinned-chromium
+Downloading Chrome for Testing 153.0.8010.12 (playwright chromium v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-linux64.zip
+|                                                                                |   0% of 186.8 MiB
+Error: Request to https://storage.googleapis.com/chrome-for-testing-public/153.0.8010.12/linux64/chrome-linux64.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/workspaces/lorcana-online-tcg/node_modules/.pnpm/playwright-core@1.63.0/node_modules/playwright-core/lib/coreBundle.js:8793:15)
+    at ClientRequest.wrapper (node:events:639:12)
+    at ClientRequest.emit (node:events:514:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:1122:9)
+    at TLSSocket.wrapper (node:events:639:12)
+    at TLSSocket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:824:8)
+    at Timeout.onStreamTimeout (node:internal/stream_base_commons:237:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)
+Downloading Chrome for Testing 153.0.8010.12 (playwright chromium v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-linux64.zip
+Error: socket hang up
+    at TLSSocket.socketOnEnd (node:_http_client:790:25)
+    at TLSSocket.emit (node:events:526:24)
+    at endReadableNT (node:internal/streams/readable:1764:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'ECONNRESET'
+}
+Downloading Chrome for Testing 153.0.8010.12 (playwright chromium v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-linux64.zip
+|                                                                                |   0% of 186.8 MiB
+Error: Request to https://storage.googleapis.com/chrome-for-testing-public/153.0.8010.12/linux64/chrome-linux64.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/workspaces/lorcana-online-tcg/node_modules/.pnpm/playwright-core@1.63.0/node_modules/playwright-core/lib/coreBundle.js:8793:15)
+    at ClientRequest.wrapper (node:events:639:12)
+    at ClientRequest.emit (node:events:514:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:1122:9)
+    at TLSSocket.wrapper (node:events:639:12)
+    at TLSSocket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:824:8)
+    at Timeout.onStreamTimeout (node:internal/stream_base_commons:237:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)
+Downloading Chrome for Testing 153.0.8010.12 (playwright chromium v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-linux64.zip
+|                                                                                |   0% of 186.8 MiB
+Error: Request to https://storage.googleapis.com/chrome-for-testing-public/153.0.8010.12/linux64/chrome-linux64.zip timed out after 30000ms
+    at ClientRequest.<anonymous> (/workspaces/lorcana-online-tcg/node_modules/.pnpm/playwright-core@1.63.0/node_modules/playwright-core/lib/coreBundle.js:8793:15)
+    at ClientRequest.wrapper (node:events:639:12)
+    at ClientRequest.emit (node:events:514:28)
+    at TLSSocket.emitRequestTimeout (node:_http_client:1122:9)
+    at TLSSocket.wrapper (node:events:639:12)
+    at TLSSocket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:824:8)
+    at Timeout.onStreamTimeout (node:internal/stream_base_commons:237:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)
+Downloading Chrome for Testing 153.0.8010.12 (playwright chromium v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-linux64.zip
+Error: socket hang up
+    at TLSSocket.socketOnEnd (node:_http_client:790:25)
+    at TLSSocket.emit (node:events:526:24)
+    at endReadableNT (node:internal/streams/readable:1764:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'ECONNRESET'
+}
+Failed to install browsers
+Error: Failed to download Chrome for Testing 153.0.8010.12 (playwright chromium v1243), caused by
+Error: Download failure, code=1
+    at ChildProcess.<anonymous> (/workspaces/lorcana-online-tcg/node_modules/.pnpm/playwright-core@1.63.0/node_modules/playwright-core/lib/coreBundle.js:32428:32)
+    at ChildProcess.emit (node:events:514:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:295:12)
+undefined
+/workspaces/lorcana-online-tcg/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: playwright install chromium
+CI stage failed: pinned-chromium
+ ELIFECYCLE  Command failed with exit code 1.

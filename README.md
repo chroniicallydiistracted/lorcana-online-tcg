@@ -107,3 +107,7 @@ An independent audit confirmed the representative RULE-04 acceptance at fingerpr
 ## Current upstream refresh — 2026-10-13 UTC
 
 The reviewed upstream kernel now pins6de59de1 (361 selected/308 runtime/59 patches/37 unchanged test files), with120 sourced synthetic scenarios. Permanent static Adventurous loss is corrected; the next PLAY-01 scope still begins with legitimate server/Lab move filtering and durable receipts. No official cards or ordinary games are enabled. Merged RULE-04 GitHub run38329018576 passed at maina45ac4b; this branch requires its own hosted qualification. See [refresh qualification](docs/validation/upstream-engine-review.md) for current evidence and limits.
+
+## Upstream refresh independent audit — 2026-10-13 UTC
+
+An independent audit confirmed the refresh to upstream 6de59de1 (checked against GitHub), re-ran the earlier RULE-03/RULE-04 audit probes on the new kernel and confirmed the Adventurous static-loss fix. RUN-20261013-047 is a timing-valid full foundation receipt for this source. Debug moves still need PLAY-01's server allowlist, and the new exactly-two-player guard (P056) must be revisited for X01 multiplayer. See [refresh validation](docs/validation/upstream-engine-review.md).

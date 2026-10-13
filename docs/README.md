@@ -41,4 +41,4 @@ The map accounts for documentation across the whole repository, including worksp
 
 ## Current upstream refresh — 2026-10-13 UTC
 
-Read ADR0012, upstream-engine-review validation and the dated full upstream inventories for the pre-PLAY refresh. Operational current pins come from the lock/runbooks; dated research and executed evidence remain source-specific. See [refresh qualification](validation/upstream-engine-review.md) for current evidence and limits.
+Read ADR0012, upstream-engine-review validation and the dated full upstream inventories for the pre-PLAY refresh. Operational current pins come from the lock/runbooks; dated research and executed evidence remain source-specific. See [refresh qualification](validation/upstream-engine-review.md) for current evidence and limits. Its [independent audit](validation/upstream-engine-review.md#independent-audit-and-integration--2026-10-13-utc) confirms the refresh and records the remaining debug-move and two-player-guard follow-ups.

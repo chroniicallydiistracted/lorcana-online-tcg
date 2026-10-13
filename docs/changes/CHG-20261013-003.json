@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261013-003",
+  "title": "Independent audit of the upstream engine refresh and Director-authorized integration into main",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-13T15:18:33.015Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "1abe9ce202889a372a3336fcf6ea195341be87d7",
+  "task_ids": [
+    "RULE-02",
+    "RULE-03",
+    "RULE-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS",
+    "F-CI",
+    "F-ENGINE",
+    "F-RULE-CERTIFICATION"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Audited Codex commit 1abe9ce (upstream engine refresh, CHG-20261013-002) against ADR0012, ADR0009/0010/0011, D10/D11 and the RULE-02/03/04 guarantees. Upstream identity checked through the public GitHub API: 6de59de1 is TheCardGoat/tcg-engines main, signature verified, sole parent 53a79413, tree d3496c4b equal to the inert clone (51,113 blobs). Reviewed selection/importer changes, the 59-patch reconciliation (RULE-03 P003-P028 and RULE-04 P029-P053 rebased; new P054-P059), adapter/Lab revision constants, the test-only projection probe and upstream debug-move, log, turn-flow and ink-drop changes. All 91 earlier scenario oracles are unchanged apart from the inkDropCounters -> inkDrops rename; 29 new scenarios add the static-loss fix and native ink-drop/lifetime/aura/replacement/projection regressions. Requirement/backlog edits add evidence links only; 548 dispositions and task statuses unchanged. Verdict: refresh confirmed."
+    },
+    {
+      "kind": "test",
+      "description": "Independent runs RUN-20261013-047..057 all passed at fingerprint 4ba45cc4 with exact timing: timing-valid full verify:foundation (270 project checks = 246 Node + 24 Python, 406 upstream passes/1 inherited skip/1,362 expectations, 2 injection tests), importer reproduction, separate byte audit with GitHub blob-id cross-check of all 363 pinned files/licenses, official source bytes plus AST entropy guard, 20-case auditor rules probe (16 earlier cases plus the confirmed static Adventurous-loss fix), RULE-03 adapter probe, HMAC re-derivation, manual-move characterization, bundle scan, boundary probe and Chromium 6 web scenarios/2 workers. RUN-20261013-059 docs:check covers this record."
+    },
+    {
+      "kind": "test",
+      "description": "Host isolated CI RUN-20261013-058 passed its first ten stages (frozen install, doctor, full foundation, bootstrap/restricted databases, local/test migrations, eight identities, live database) and failed at pinned-chromium: the fresh image could not download Chrome for Testing (187 MiB) from storage.googleapis.com within Playwright's 30 s request timeout. An unrecorded manual check measured about 7 KB/s from that host and a GitHub API timeout, so the connection was degraded; no retry. No clock discontinuity over 726,495 ms; owned project/volume/network/image removed."
+    },
+    {
+      "kind": "review",
+      "description": "Follow-ups recorded, none blocking integration: (1) manual/debug moves, now including upstream manualSetInkDrops, are still accepted with player authority through the server adapter (RUN054); PLAY-01 must begin with server and Lab move allowlists. (2) P056 changes upstream setup from at-least-two to exactly-two players; consistent with the current two-player kernel and blueprint, but must be revisited when X01 multiplayer/teams is certified. (3) Upstream structured move-log changes are PLAY-02 privacy scope, not claimed here."
+    },
+    {
+      "kind": "documentation",
+      "description": "Appended a dated audit section to docs/validation/upstream-engine-review.md and dated notes to ADR0012, the refresh plan and the engine runbook; updated AGENTS.md, README.md and docs/README.md refresh status, F-CI/F-ENGINE/F-RULE-CERTIFICATION descriptions and evidence, the FEATURES summary, the RULE-02 backlog evidence link and the handoff."
+    },
+    {
+      "kind": "revision",
+      "description": "Director-authorized integration: publish codex/upstream-engine-review (1abe9ce) and claude/upstream-engine-audit, run hosted CI on the audit branch, and fast-forward main to the audit commit once it passes. Hosted results are recorded in a later change."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/adr/0012-upstream-kernel-refresh.md",
+    "docs/changes/CHG-20261013-003.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/plans/2026-10-13-upstream-engine-review.md",
+    "docs/runbooks/engine.md",
+    "docs/validation/logs/RUN-20261013-047.txt",
+    "docs/validation/logs/RUN-20261013-048.txt",
+    "docs/validation/logs/RUN-20261013-049.txt",
+    "docs/validation/logs/RUN-20261013-050.txt",
+    "docs/validation/logs/RUN-20261013-051.txt",
+    "docs/validation/logs/RUN-20261013-052.txt",
+    "docs/validation/logs/RUN-20261013-053.txt",
+    "docs/validation/logs/RUN-20261013-054.txt",
+    "docs/validation/logs/RUN-20261013-055.txt",
+    "docs/validation/logs/RUN-20261013-056.txt",
+    "docs/validation/logs/RUN-20261013-057.txt",
+    "docs/validation/logs/RUN-20261013-058.txt",
+    "docs/validation/logs/RUN-20261013-059.txt",
+    "docs/validation/runs/RUN-20261013-047.json",
+    "docs/validation/runs/RUN-20261013-048.json",
+    "docs/validation/runs/RUN-20261013-049.json",
+    "docs/validation/runs/RUN-20261013-050.json",
+    "docs/validation/runs/RUN-20261013-051.json",
+    "docs/validation/runs/RUN-20261013-052.json",
+    "docs/validation/runs/RUN-20261013-053.json",
+    "docs/validation/runs/RUN-20261013-054.json",
+    "docs/validation/runs/RUN-20261013-055.json",
+    "docs/validation/runs/RUN-20261013-056.json",
+    "docs/validation/runs/RUN-20261013-057.json",
+    "docs/validation/runs/RUN-20261013-058.json",
+    "docs/validation/runs/RUN-20261013-059.json",
+    "docs/validation/upstream-engine-review.md",
+    "docs/vision/initial_backlog.csv"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/validation/upstream-engine-review.md",
+      "disposition": "updated",
+      "reason": "Appended a dated independent-audit section with upstream identity, run outcomes, the network-failed isolated CI, verdict and follow-ups; Codex text unchanged."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Header actors, authorized publication/integration sequence, audit verification and follow-ups, and next actions; other Codex content unchanged."
+    },
+    {
+      "path": "docs/adr/0012-upstream-kernel-refresh.md",
+      "disposition": "updated",
+      "reason": "Dated audit note: decision unchanged and matching the audited source; GitHub identity, P056 X01 caveat and isolated CI outcome."
+    },
+    {
+      "path": "docs/plans/2026-10-13-upstream-engine-review.md",
+      "disposition": "updated",
+      "reason": "Dated audit/integration note appended; checklist and closure preserved."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Audit note on P056 two-player guard and the manualSetInkDrops extension of the debug-move gap."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Current refresh statement notes the independent audit, the timing-valid foundation receipt and the P056 X01 caveat."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Short dated audit section; earlier sections preserved."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Current refresh entry point links the audit and its follow-ups."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-CI adds the network-failed RUN058 (verification unchanged); F-ENGINE and F-RULE-CERTIFICATION add audit evidence."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Refresh summary line notes the audit receipts and the isolated CI outcome."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "RULE-02 evidence links add this audit; statuses unchanged."
+    },
+    {
+      "path": "docs/reviews/2026-10-13-upstream-engine-review.md",
+      "disposition": "historical_preserved",
+      "reason": "Codex reviewer record; the independent audit is recorded separately in validation."
+    },
+    {
+      "path": "docs/runbooks/rules-certification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Codex already marked the audited Adventurous defect as corrected; RUN051 confirms it."
+    },
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Historical RULE-04 audit section remains accurate for its source; the fix is recorded in the refresh validation."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Codex edits add evidence links only (R01.005/.006, R29.005); no disposition change."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-047.json",
+      "outcome": "passed",
+      "scope": "Timing-valid pnpm verify:foundation: 270 project checks (246 Node + 24 Python incl. 128 rules checks), 406 upstream passes/1 inherited skip, 2 injection tests. Local Dev Container."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-048.json",
+      "outcome": "passed",
+      "scope": "Importer --check against the inert 6de59de1 clone: 361 payloads, licenses, 59 patch originals and the lock reproduced."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-049.json",
+      "outcome": "passed",
+      "scope": "Independent Python byte audit of the 361-file closure and 59-patch ledger, with every pinned blob id cross-checked against GitHub's tree for the commit."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-050.json",
+      "outcome": "passed",
+      "scope": "Official RULE-01 cache and CR2.2/CR2.3 scenario-source bytes; AST ambient-entropy guard across 361 selected files."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-051.json",
+      "outcome": "passed",
+      "scope": "Auditor rules probe on the refreshed kernel: 16 earlier CR2.3-sourced cases plus 4 static Adventurous-loss cases."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-052.json",
+      "outcome": "passed",
+      "scope": "Unchanged RULE-03 compiled-adapter probe on the refreshed kernel with ambient entropy and clocks disabled."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-053.json",
+      "outcome": "passed",
+      "scope": "Independent Python HMAC-SHA256 re-derivation of 3,765 compiled server outcomes."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-054.json",
+      "outcome": "passed",
+      "scope": "Characterization: manualSetInkDrops and manualSetLore from the non-active player accepted through the server adapter (pre-existing gap; PLAY-01)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-055.json",
+      "outcome": "passed",
+      "scope": "Built-bundle scan: kernel invariants, reviewed mechanics present, no test-only bridge in any bundle."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-056.json",
+      "outcome": "passed",
+      "scope": "Boundary probe: 11 owners refuse 264 imports of scenario tooling."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-057.json",
+      "outcome": "passed",
+      "scope": "Actual headless Linux Chromium: 6 web foundation scenarios and 2 compiled Lab Web Workers."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-058.json",
+      "outcome": "failed",
+      "scope": "Host isolated CI: first ten stages passed; pinned-chromium failed on a browser-download network timeout; no artifact; owned resources removed."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-059.json",
+      "outcome": "passed",
+      "scope": "pnpm docs:check over the audit documentation, records and generated views at fingerprint 4ba45cc4."
+    }
+  ],
+  "limitations": [
+    "No new timing-qualified isolated CI artifact: RUN058 failed on a network timeout downloading the browser; hosted CI is observed after publication.",
+    "The debug-move authority gap remains open for PLAY-01; P056 is a current two-player boundary to revisit for X01.",
+    "Upstream structured-log privacy, full rules/card certification, durable play, AUTH/replay delivery, device and production acceptance are not claimed."
+  ],
+  "next_actions": [
+    "Observe hosted CI on the audit branch and on main; record both in the next change.",
+    "Assign PLAY-01, starting with server and Lab move allowlists that refuse every manual/debug move including manualSetLore and manualSetInkDrops.",
+    "Revisit P056 when X01 multiplayer/teams is certified."
+  ]
+}

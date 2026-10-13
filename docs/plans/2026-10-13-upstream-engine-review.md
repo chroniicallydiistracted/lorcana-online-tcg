@@ -30,3 +30,7 @@ The repository-owned workflow, record format and engine/rules runbooks govern ex
 Checkpoint: RUN024 captures full source/API/AST review; final RUN035 passes120 scenarios/128 rules checks at fingerprint4ba45cc4. ADR0012 records the59-patch current compatibility decision. Remaining final execution/closure is recorded as it runs.
 
 Closure: source review/integration and all appropriate functional checks executed; full270-project/406-upstream/build/browser/canonical assertions pass, but037/038/039/042/044 retain failed clock receipts.035/036/040/041/043/045/046 are valid passing final-source scoped receipts. Native documentation/patch/source identity is verified; local review commit prepared. Long local timing/current hosted qualification remains explicitly pending under the unchanged environment, rather than silently bypassed. PLAY-01 and every ordinary/card/reward/private gate remain closed.
+
+## Audit and integration note — 2026-10-13 UTC
+
+The Director asked for an independent audit and, once confirmed, publication and main integration before tasking PLAY-01. The Claude Code audit ([CHG-20261013-003](../changes/CHG-20261013-003.json)) confirmed the refresh with RUN-20261013-047..057; isolated CI RUN058 failed on a browser-download network timeout. Hosted CI runs on the published audit branch before main is fast-forwarded. See [validation](../validation/upstream-engine-review.md).
