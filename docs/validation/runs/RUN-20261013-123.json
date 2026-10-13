@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-123",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm db:test && pnpm db:health -- --target local && pnpm db:health -- --target test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "34b609b24bb822f7f2a1b73caf1e7ed5f08e1e4e",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-13T22:56:52.652Z",
+  "finished_at": "2026-10-13T22:56:59.348Z",
+  "recorded_at": "2026-10-13T22:56:59.348Z",
+  "time_precision": "exact",
+  "elapsed_ms": 6696,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Auditor PLAY-01: existing live database regressions and all eight restricted identities on local and test",
+  "log_path": "docs/validation/logs/RUN-20261013-123.txt",
+  "log_sha256": "361a54bc57e07926e876fd585eec9ecde5d4d407c716f47c3b40293eb60f44cb",
+  "redactions": 0
+}

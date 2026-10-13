@@ -1028,7 +1028,7 @@
       "name": "Durable synthetic match commands",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Internal two-player synthetic command service: trusted actor,13-move policy, private deterministic recovery, restricted row-fenced CAS, atomic accepted journal/receipts/metadata outbox and process-death retry. Local core acceptance verified; authenticated transport, viewer/log privacy, publication, clocks, multiplayer and all ordinary/official/private/reward/card admission remain gated.",
+      "description": "Internal two-player synthetic command service: trusted actor,13-move policy, private deterministic recovery, restricted row-fenced CAS, atomic accepted journal/receipts/metadata outbox and process-death retry. Local core acceptance verified; authenticated transport, viewer/log privacy, publication, clocks, multiplayer and all ordinary/official/private/reward/card admission remain gated. Independently audited (CHG-20261013-006): full foundation, real suite, six-way race/duplicate-storm/forgery/privacy probe, role privileges, boundary/bundle and Chromium at the same fingerprint.",
       "sources": [
         "apps/match-service/**",
         "packages/db/**",
@@ -1068,7 +1068,14 @@
         "docs/validation/runs/RUN-20261013-112.json",
         "docs/validation/runs/RUN-20261013-114.json",
         "docs/validation/runs/RUN-20261013-115.json",
-        "docs/validation/runs/RUN-20261013-116.json"
+        "docs/validation/runs/RUN-20261013-116.json",
+        "docs/validation/runs/RUN-20261013-118.json",
+        "docs/validation/runs/RUN-20261013-119.json",
+        "docs/validation/runs/RUN-20261013-120.json",
+        "docs/validation/runs/RUN-20261013-121.json",
+        "docs/validation/runs/RUN-20261013-122.json",
+        "docs/validation/runs/RUN-20261013-124.json",
+        "docs/validation/runs/RUN-20261013-126.json"
       ]
     }
   ]

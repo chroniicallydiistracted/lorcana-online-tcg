@@ -2,6 +2,71 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261013-006 — Independent audit of PLAY-01 durable synthetic match commands and Director-authorized integration into main
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-13T22:51:00.000Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 34b609b24bb822f7f2a1b73caf1e7ed5f08e1e4e
+- Tasks: PLAY-01, DOC-01, DOC-02
+- Features: F-DOCS, F-MATCH-COMMANDS
+- Requirements: none
+
+### Changes
+
+- **review:** Audited Codex commit 34b609b (PLAY-01, CHG-20261013-004/005) against ADR0013, blueprint §7.1, the backlog acceptance and the earlier audit findings. Reviewed the shared 13-move policy and its server/Lab guards (forbidden check after ended/revision checks, before mutation, never journaled), the replay refactor and private persistence module (closed records, separate digest domain, canonical bytes, match-bound RNG context, full re-execution comparison, seed zeroing), the bounded worker executor (limits, environment filtering, output draining, termination ownership, queue expiry, close), the service order (receipt, participant, pins, stale, forbidden, outside-transaction candidate, CAS), the repository (FOR UPDATE row lock, receipt re-check under the lock, version/checkpoint-digest fence, atomic receipt/journal/outbox, rollback), additive migrations 0002/0003, the evidence-recorder flush/fsync change (clock guard unchanged), the single-fingerprint documentation load, the pinned Bun cache and test-file scheduling (all tests retained). Requirement/backlog edits add evidence links only; 548 dispositions unchanged. Verdict: PLAY-01 acceptance met; the manual/debug-move finding from the RULE-04 and refresh audits is closed for server and Lab.
+- **test:** Independent runs RUN-20261013-118..126 all passed at Codex's final fingerprint 2c343976 with exact timing and 0 redactions: full verify:foundation (286 project checks = 262 Node + 24 Python, 406 upstream passes/1 inherited skip, 2 injection tests); auditor policy probe (25-move registry, 13 allowlisted, 176 refusals across server, Lab qualification, Lab advanced-sandbox and the private wrapper for both players, identity binds policy bytes, 12 re-digested checkpoint forgeries refused, 6 replays verified/6 tampers refused); Codex's real PostgreSQL suite (3 storage + 10 service cases incl. both SIGKILL boundaries); auditor live service probe (six-way terminal race commits once with one terminal event, six-way duplicate storm, 28 forbidden receipts, 8 no-write refusals, storage-writer forgeries fail closed, lost-ack/isolation/clock-floor/create checks, privacy scan of 74 rows); migration history and role privileges on local and test; five DB regressions and eight identities; boundary/bundle probe (280 browser and 80 server-to-kernel imports refused, no server-only markers in bundles, kernel unchanged); pinned Chromium install into the recreated workspace container; Chromium 6 web scenarios and 2 Lab workers. RUN-20261013-127 docs:check covers this record.
+- **review:** Follow-ups recorded, none blocking integration: (1) Lab advanced-sandbox now refuses the raw manual moves; Sandbox manipulation requirements R04.009-R04.017 remain in the Director's scope and need dedicated reward-isolated operations (ADR0013 anticipates this). (2) Restore re-executes the full private transcript within a 5 s/64 MiB worker for every command; realistic-length real-card matches are unmeasured and must be timed before PLAY-03/OPS-01. (3) Private checkpoints in match.matches contain live seeds, readable only by the match role; database backups/exports are secret material (OPS-01, D10). (4) Stale/rejected receipts are final per command ID; the PLAY-03 client protocol must issue new IDs. (5) Correction: the refresh audit's RUN055 '895,847 bytes' counted UTF-16 characters; the kernel file is 895,853 bytes and unchanged by PLAY-01.
+- **documentation:** Appended a dated independent-audit section to docs/validation/play-01.md and dated audit notes to ADR0013, the PLAY-01 plan, the match-commands runbook and (correction) the upstream refresh review; added the audit sentence to AGENTS.md, README.md and docs/README.md; updated HANDOFF, the F-MATCH-COMMANDS feature entry/evidence, FEATURES.md and the PLAY-01 backlog evidence link. Codex text, records and run logs are unchanged.
+- **review:** Local isolated CI was not rerun: the Windows host had a low-memory crash during PLAY-01 and two later CI attempts were cancelled for memory pressure (interruption record), and the unchanged clock guard rejected Codex's otherwise complete RUN113. Under the Director's leave-environment decision no clock, threshold or memory setting was changed. Hosted Foundation qualification, which runs the same ci-local.py pipeline including the new live-match stage, is dispatched on the published audit branch before main is fast-forwarded and observed again on main; both are recorded in a later change.
+
+### Verification
+
+- **passed:** Timing-valid pnpm verify:foundation: 286 project checks (262 Node + 24 Python), 406 upstream passes/1 inherited skip/1,362 expectations, 2 injection tests. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261013-118.json))
+- **passed:** Auditor policy probe: allowlist vs upstream registry, 176 refusals across four facades for both players, identity binds policy bytes, 12 forged private checkpoints refused, RULE-03 completed replay intact. ([evidence](docs/validation/runs/RUN-20261013-119.json))
+- **passed:** Codex real restricted-PostgreSQL suite: 3 storage + 10 service cases including SIGKILL before COMMIT and after COMMIT/before response. ([evidence](docs/validation/runs/RUN-20261013-120.json))
+- **passed:** Auditor live service probe: six-way terminal race commits once, duplicate storm, durable forbidden receipts, no-write refusals, storage-writer forgeries fail closed, lost-ack/isolation/clock/create checks, privacy scan of 74 rows. ([evidence](docs/validation/runs/RUN-20261013-121.json))
+- **passed:** Auditor database probe: local/test migration histories, 0001 unchanged since main, match-table ownership and role privileges, 0003 constraints and terminal-event index. ([evidence](docs/validation/runs/RUN-20261013-122.json))
+- **passed:** db:test five live regressions and all eight restricted identities on local and test. ([evidence](docs/validation/runs/RUN-20261013-123.json))
+- **passed:** Auditor boundary and bundle probe: 280 browser and 80 server-to-kernel imports refused, no server-only markers in web/Lab bundles, Lab carries the guard, kernel unchanged. ([evidence](docs/validation/runs/RUN-20261013-124.json))
+- **passed:** Project-pinned Linux Chromium install into the recreated Dev Container. ([evidence](docs/validation/runs/RUN-20261013-125.json))
+- **passed:** Actual headless Linux Chromium: 6 web foundation scenarios and 2 compiled Lab Web Workers including forbidden-move negatives. ([evidence](docs/validation/runs/RUN-20261013-126.json))
+- **passed:** docs:check over the completed audit documentation and evidence (static). ([evidence](docs/validation/runs/RUN-20261013-127.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-01.md](docs/validation/play-01.md) — Appended a dated independent-audit section: run outcomes, code-review scope, acceptance verdict, follow-ups and the isolated-CI decision; Codex text unchanged.
+- **updated:** [docs/adr/0013-durable-synthetic-match-commands.md](docs/adr/0013-durable-synthetic-match-commands.md) — Dated audit note: decision unchanged and consistent with the source; Sandbox, restore-cost and seed-at-rest follow-ups.
+- **updated:** [docs/plans/2026-10-13-play-01-durable-commands.md](docs/plans/2026-10-13-play-01-durable-commands.md) — Execution-ledger note recording the independent audit and hosted-CI-before-merge sequence.
+- **updated:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — Operating cautions: per-command-ID finality, seeds in backups, restore cost.
+- **updated:** [docs/validation/upstream-engine-review.md](docs/validation/upstream-engine-review.md) — Appended correction: RUN055's kernel figure counted characters (895,847); the file is 895,853 bytes. Original audit text and RUN055 preserved.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Header actors, independent-audit verification, follow-ups and the authorized publication/integration sequence; Codex content otherwise unchanged.
+- **updated:** [AGENTS.md](AGENTS.md) — PLAY-01 paragraph notes the independent audit, hosted-CI-before-merge sequence and that Sandbox manipulation stays in scope.
+- **updated:** [README.md](README.md) — Same PLAY-01 audit sentence as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same PLAY-01 audit sentence as AGENTS.md.
+- **updated:** [docs/features.json](docs/features.json) — F-MATCH-COMMANDS description notes the audit; evidence adds RUN-20261013-118..122/124/126.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-MATCH-COMMANDS acceptance-limit cell references the independent audit runs.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-01 evidence link to this audit record only; status and every other row unchanged.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — PLAY-01 link-only edits reviewed; 548 dispositions unchanged; R04.009-R04.017 Sandbox manipulation remains in scope and is noted as a follow-up rather than edited.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Public seven-outcome schemas unchanged; internal receipts cover three durable outcomes as stated.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — Migration operation consistent with RUN122 (local/test histories equal 0001-0003).
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Live-match stage and pending timing qualification described accurately; hosted runs will be recorded in a later change.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Sequential heavy-workload rule followed; no change needed.
+- **reviewed_unchanged:** [apps/match-service/README.md](apps/match-service/README.md) — Matches the audited service interface and limits.
+- **historical_preserved:** [docs/validation/play-01-interruption.json](docs/validation/play-01-interruption.json) — Codex's incident record is the basis for not rerunning local isolated CI; unchanged.
+- **historical_preserved:** [docs/changes/CHG-20261013-004.json](docs/changes/CHG-20261013-004.json) — Finalized Codex record; audited, not modified.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261013-006.json).
+
+### Limits and next actions
+
+- Audit evidence is local Linux Dev Container and headless Chromium only; no Windows, touch, GPU, load or production observation.
+- Local isolated CI was not rerun (host memory incident and clock guard); hosted CI results are observed after publication and recorded in a later change.
+- Probes characterize the internal two-player synthetic service; viewer/log privacy, authenticated transport, publication, clocks, multiplayer and card admission remain gated.
+- Push both branches, run hosted Foundation qualification on claude/play-01-audit, fast-forward main only after it passes, observe the main run and record both run IDs in the next change.
+- PLAY-02 next; carry the Sandbox, restore-cost, seed-at-rest and command-ID follow-ups into PLAY-03/OPS-01/Sandbox planning.
+
 ## CHG-20261013-005 — Clarify final PLAY-01 handoff next actions
 
 - Status: finalized

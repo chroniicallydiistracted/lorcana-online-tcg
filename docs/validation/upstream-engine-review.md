@@ -97,3 +97,5 @@ Observations for later work (none blocks integration):
 ## PLAY-01 continuation — 2026-10-13 UTC
 
 PLAY-01 implements the internal two-player synthetic durable command service with participant-scoped idempotent receipts, row-fenced CAS, private deterministic recovery, atomic accepted journal and metadata-only outbox. Both server and Lab refuse every manual/debug move. Fastify remains diagnostics-only; authenticated transport, viewer/structured-log privacy (PLAY-02), publication (PLAY-03), game clocks (PLAY-04), X01 multiplayer and ordinary/official/private/reward/card admission remain gated. See [PLAY-01 operation](../runbooks/match-commands.md) and [validation](play-01.md); local core/full/browser/database/clean acceptance is verified; isolated CI timing remains pending after RUN113 clock rejection.
+
+Correction (2026-10-13 UTC, CHG-20261013-006): the independent refresh audit's RUN055 row above gives the compiled kernel as "895,847 bytes". That figure counts UTF-16 characters. The file is 895,853 bytes, and it is unchanged by PLAY-01 (RUN-20261013-124). The original audit text and RUN055 are preserved.

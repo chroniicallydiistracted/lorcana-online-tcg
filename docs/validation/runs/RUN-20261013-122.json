@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-122",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Independent auditor database probe: migration history in both managed databases equals the\n// checked-in bytes, 0001 is byte-identical to main, and only the match runtime role (plus the\n// owning migrator) holds privileges on the new private match tables; no PUBLIC/api/worker access.\nimport assert from 'node:assert/strict';\nimport { createHash } from 'node:crypto';\nimport { readFileSync } from 'node:fs';\nimport { execFileSync } from 'node:child_process';\nimport { client } from './packages/db/dist/index.js';\n\nconst files = ['0001-foundation-probes.sql', '0002-match-commands.sql', '0003-match-receipt-invariants.sql'].map(name => {\n  const bytes = readFileSync('packages/db/migrations/' + name); return { id: name.slice(0, 4), name, sha256: createHash('sha256').update(bytes).digest('hex') };\n});\nconst mainBytes = execFileSync('git', ['show', '9b9c8ac:packages/db/migrations/0001-foundation-probes.sql']);\nassert.equal(createHash('sha256').update(mainBytes).digest('hex'), files[0].sha256, '0001 changed since main');\nconst tables = ['releases', 'matches', 'command_receipts', 'journal', 'outbox'];\nconst out = {};\nfor (const target of ['local', 'test']) {\n  const c = client(target, 'migrator'); await c.connect();\n  try {\n    const rows = (await c.query('SELECT id,sha256 FROM foundation.migrations ORDER BY id')).rows;\n    assert.deepEqual(rows.map(r => [r.id, r.sha256]), files.map(f => [f.id, f.sha256]), target + ' migration history');\n    const roles = { migrator: `lorcana_${target}_migrator`, api: `lorcana_${target}_api`, match: `lorcana_${target}_match`, worker: `lorcana_${target}_worker` };\n    const other = target === 'local' ? 'test' : 'local';\n    for (const t of tables) {\n      const owner = (await c.query(\"SELECT tableowner FROM pg_tables WHERE schemaname='match' AND tablename=$1\", [t])).rows[0]?.tableowner;\n      assert.equal(owner, roles.migrator, target + ' owner ' + t);\n      for (const [name, role] of Object.entries(roles)) {\n        const p = (await c.query(\"SELECT has_table_privilege($1,$2,'SELECT') s, has_table_privilege($1,$2,'INSERT') i, has_table_privilege($1,$2,'UPDATE') u, has_table_privilege($1,$2,'DELETE') d\", [role, 'match.' + t])).rows[0];\n        if (name === 'api' || name === 'worker') assert.deepEqual([p.s, p.i, p.u, p.d], [false, false, false, false], target + ' ' + name + ' ' + t);\n        if (name === 'match') assert.deepEqual([p.s, p.i, p.u, p.d], [true, true, true, true], target + ' match ' + t);\n      }\n      const pub = (await c.query(\"SELECT count(*)::int n FROM information_schema.role_table_grants WHERE table_schema='match' AND table_name=$1 AND grantee='PUBLIC'\", [t])).rows[0].n;\n      assert.equal(pub, 0, target + ' PUBLIC grant on ' + t);\n      // Cross-environment roles exist in the cluster but have no privilege here.\n      const foreign = (await c.query(\"SELECT has_table_privilege($1,$2,'SELECT') s\", [`lorcana_${other}_match`, 'match.' + t])).rows[0].s;\n      assert.equal(foreign, false, target + ' cross-environment match role on ' + t);\n    }\n    const constraints = (await c.query(\"SELECT conname FROM pg_constraint WHERE conrelid='match.command_receipts'::regclass AND contype='c' ORDER BY conname\")).rows.map(r => r.conname);\n    for (const n of ['command_receipts_actor_identity', 'command_receipts_command_identity', 'command_receipts_outcome_reason']) assert.ok(constraints.includes(n), target + ' missing ' + n);\n    assert.equal(constraints.includes('command_receipts_check'), false);\n    const terminal = (await c.query(\"SELECT indexdef FROM pg_indexes WHERE schemaname='match' AND indexname='match_one_terminal_event'\")).rows[0]?.indexdef ?? '';\n    assert.match(terminal, /UNIQUE INDEX .* \\(match_id\\) WHERE \\(\\(kind\\)::text = 'match_completed'::text\\)/);\n    out[target] = { migrations: rows.length, tables: tables.length, constraints: constraints.length };\n  } finally { await c.end(); }\n  // The api and worker logins really are refused at query time.\n  for (const id of ['api', 'worker']) {\n    const c2 = client(target, id); await c2.connect();\n    try { for (const t of tables) await assert.rejects(c2.query('SELECT 1 FROM match.' + t + ' LIMIT 1'), e => e.code === '42501', target + ' ' + id + ' ' + t); }\n    finally { await c2.end(); }\n  }\n}\nconsole.log(JSON.stringify({ migrations: files.map(f => f.id + ':' + f.sha256.slice(0, 12)), main0001Unchanged: true, ...out }));\nconsole.log('PASS auditor PLAY-01 database probe: local and test histories equal the three checked-in migrations (0001 byte-identical to main); match tables owned by the migrator, full CRUD only for the match role, no api/worker/PUBLIC/cross-environment access; 0003 constraints and the single-terminal-event index present');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "34b609b24bb822f7f2a1b73caf1e7ed5f08e1e4e",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-13T22:56:51.387Z",
+  "finished_at": "2026-10-13T22:56:51.870Z",
+  "recorded_at": "2026-10-13T22:56:51.870Z",
+  "time_precision": "exact",
+  "elapsed_ms": 482,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Auditor PLAY-01 database probe: local/test migration histories, 0001 unchanged since main, match-table ownership and role privileges, 0003 constraints and terminal-event index",
+  "log_path": "docs/validation/logs/RUN-20261013-122.txt",
+  "log_sha256": "3feac41fdbf8d05cfd3f1e866c499609272a44a73c89bb70f064dc38b59107a6",
+  "redactions": 0
+}

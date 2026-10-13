@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-120",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:match-integration"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "34b609b24bb822f7f2a1b73caf1e7ed5f08e1e4e",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-13T22:54:16.909Z",
+  "finished_at": "2026-10-13T22:54:26.493Z",
+  "recorded_at": "2026-10-13T22:54:26.493Z",
+  "time_precision": "exact",
+  "elapsed_ms": 9584,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Auditor PLAY-01: Codex real restricted-PostgreSQL match storage and service suite (3 storage + 10 service cases incl. both SIGKILL boundaries)",
+  "log_path": "docs/validation/logs/RUN-20261013-120.txt",
+  "log_sha256": "e950890f9a265a7b394812b6b00840e1716761903bdb4c0220184160b9deb86b",
+  "redactions": 0
+}

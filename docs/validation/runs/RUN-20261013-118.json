@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-118",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "34b609b24bb822f7f2a1b73caf1e7ed5f08e1e4e",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-13T22:51:44.536Z",
+  "finished_at": "2026-10-13T22:53:27.671Z",
+  "recorded_at": "2026-10-13T22:53:27.671Z",
+  "time_precision": "exact",
+  "elapsed_ms": 102786,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Auditor PLAY-01: timing-valid full pnpm verify:foundation at Codex final fingerprint",
+  "log_path": "docs/validation/logs/RUN-20261013-118.txt",
+  "log_sha256": "d619d63bffc8af01dc8d87d26d1f68ec8a4be0f6365b95d98e67a241c982a7f4",
+  "redactions": 0
+}

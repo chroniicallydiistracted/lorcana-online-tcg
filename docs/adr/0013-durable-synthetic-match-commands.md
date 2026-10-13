@@ -25,3 +25,17 @@ No game HTTP/WebSocket ingress is added before AUTH and PLAY-02/03; the existing
 ## Acceptance evidence
 
 Use the native PLAY-01 plan, operation and validation records. Required proofs are allowlist negatives; live private restore/tamper/bounds; immutable matching receipts and changed-content refusal; independent concurrent candidates with one committed version; transaction rollback on journal/outbox failure; process kills before commit and after commit/before acknowledgement with fresh-process retry; restricted-role visibility; bounded worker cancellation/deadlines; source/full/clean/browser/database/CI/documentation regression evidence. No fixture or template alone supplies this evidence.
+
+## Independent audit note — 2026-10-13 UTC
+
+An independent audit (CHG-20261013-006; [validation](../validation/play-01.md)) reviewed this decision against the implemented source at 34b609b and found them consistent. The checks cover the outside-transaction candidate, the row-fenced CAS with the receipt re-checked under the row lock, metadata-only outbox, match-bound private re-execution and the shared 13-move policy. Re-executed and independent evidence at fingerprint 2c343976 includes:
+- RUN-20261013-118: full foundation.
+- RUN-20261013-120: real storage and service suite.
+- RUN-20261013-121: six-way terminal race, duplicate storm, storage-writer forgeries and privacy scan.
+- RUN-20261013-122: role privileges.
+- RUN-20261013-119/124/126: policy, boundary and browser.
+
+The decision is unchanged. Three follow-ups:
+- The Sandbox manipulation requirements R04.009–R04.017 remain in scope and need the dedicated authorized operations this ADR anticipates.
+- Restore-by-re-execution must be timed on realistic-length real-card matches before PLAY-03/OPS-01.
+- Stored checkpoints include live seeds, so backups are secret material.

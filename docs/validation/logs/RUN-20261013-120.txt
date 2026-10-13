@@ -1,0 +1,29 @@
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (21.47626ms)
+✔ server-only database exports the bounded match repository (0.288244ms)
+✔ real receipt constraint refuses a rejected result with a null reason (47.084104ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 532.889971
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (520.324957ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (519.083956ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (446.974744ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (355.138929ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (506.144761ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (512.993696ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (62.869186ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (567.3914ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2069.037382ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2001.010569ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8321.164982

@@ -1,0 +1,2 @@
+{"migrations":["0001:6f8d66f0637a","0002:8e632c5ba2c0","0003:246fdc89b14d"],"main0001Unchanged":true,"local":{"migrations":3,"tables":5,"constraints":7},"test":{"migrations":3,"tables":5,"constraints":7}}
+PASS auditor PLAY-01 database probe: local and test histories equal the three checked-in migrations (0001 byte-identical to main); match tables owned by the migrator, full CRUD only for the match role, no api/worker/PUBLIC/cross-environment access; 0003 constraints and the single-terminal-event index present

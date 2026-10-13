@@ -27,3 +27,12 @@ Executor defaults are2 active workers,32 queued jobs and5-second execution/queue
 After reviewed migrations, use `pnpm test:match-integration`: three real storage constraints and ten service scenarios use isolated test-role fixtures. Scenarios prove independent same-version candidates, stable retries/actor isolation, exact pins and corrupt checkpoints, actual journal/outbox SQL failures, and SIGKILL before COMMIT and after COMMIT/before response with fresh-process recovery. Tests delete only their owned match fixtures. `pnpm verify:foundation` remains DB-free for clean installation; it includes private replay/policy/worker unit regressions. The disposable CI pipeline runs live match tests after both DB migrations and role checks.
 
 Fixture release manifests use actual built hashes and an explicitly simulated creation time; they are not promoted releases. Preserve every native red/green receipt. Never print/assert-diff private archives. Check owned children/pools/listeners after verification. Current-only synthetic restore does not supply retained production engine loaders, authenticated transport, viewer/log privacy, full catalog/rules certification, multiplayer or player-facing admission. X01 must revisit P056 and the two-seat schema deliberately; PLAY-02 must certify structured game logs.
+
+## Audit notes — 2026-10-13 UTC
+
+The independent audit (CHG-20261013-006) adds three operating cautions:
+- **Command IDs:** a `stale`, `forbidden` or `invalid_intent` receipt is final for its command ID. Callers resubmit a new intent under a new ID, and retry only the identical intent under the old one.
+- **Seeds in storage and backups:** private checkpoints in `match.matches` contain each live match's seed. Treat database dumps, backups and restore copies of the match schema as secret material, and keep them away from logs, tickets and shared storage.
+- **Restore cost:** each command restores the match by re-executing its full transcript within the 5-second worker limit. Measure that cost on realistic-length matches before raising command limits or admitting real cards.
+
+See [validation](../validation/play-01.md) for the audit evidence.
