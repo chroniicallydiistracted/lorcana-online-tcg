@@ -5,8 +5,8 @@
       "id": "F-WORKSPACE",
       "name": "Reproducible local workspace",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Pinned container, private credential preservation and real baseline checks; BOOT-02 local roles/persistence are owned by F-DB.",
+      "verification": "historical_verified",
+      "description": "Pinned container, private credential preservation and real baseline checks; BOOT-02 local roles/persistence are owned by F-DB. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         ".devcontainer/**",
         "toolchain.json",
@@ -55,8 +55,8 @@
       "id": "F-CONNECTIVITY",
       "name": "Bootstrap connectivity diagnostic",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Independent diagnostic HTTP only.",
+      "verification": "historical_verified",
+      "description": "Independent diagnostic HTTP only. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "scripts/serve-smoke.mjs",
         "tests/smoke.test.mjs"
@@ -94,8 +94,8 @@
       "id": "F-CONTRACTS",
       "name": "Public foundation schemas",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Typed health/readiness and closed own-data protocol/release schemas/parsers; browser-safe metadata only.",
+      "verification": "historical_verified",
+      "description": "Typed health/readiness and closed own-data protocol/release schemas/parsers; browser-safe metadata only. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "packages/contracts/**"
       ],
@@ -133,8 +133,8 @@
       "id": "F-HTTP",
       "name": "Separate API and match diagnostics",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Local Fastify liveness/readiness and strict bounded correlated application-version negotiation; no gameplay/auth/database integration.",
+      "verification": "historical_verified",
+      "description": "Local Fastify liveness/readiness and strict bounded correlated application-version negotiation; no gameplay/auth/database integration. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "apps/api/**",
         "apps/match-service/**",
@@ -176,8 +176,8 @@
       "id": "F-LIFECYCLE",
       "name": "Cancellable server lifecycle",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Signal-first cancellable startup and bounded graceful cleanup.",
+      "verification": "historical_verified",
+      "description": "Signal-first cancellable startup and bounded graceful cleanup. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "packages/service-runtime/**"
       ],
@@ -214,8 +214,8 @@
       "id": "F-WORKER",
       "name": "Idle worker foundation",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Executable idle worker without ingress or jobs.",
+      "verification": "historical_verified",
+      "description": "Executable idle worker without ingress or jobs. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "apps/worker/**"
       ],
@@ -252,8 +252,8 @@
       "id": "F-WEB",
       "name": "Semantic foundation client",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Semantic React diagnostics, fail-closed protocol compatibility and opt-in synthetic rendering; no engine worker/game control integration. Headless/Windows/device/art-direction qualification is separate.",
+      "verification": "historical_verified",
+      "description": "Semantic React diagnostics, fail-closed protocol compatibility and opt-in synthetic rendering; no engine worker/game control integration. Headless/Windows/device/art-direction qualification is separate. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "apps/web/**",
         "packages/design-system/**"
@@ -294,8 +294,8 @@
       "id": "F-RENDERER",
       "name": "Synthetic Babylon lifecycle",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Synthetic scene resize/dispose; simulation/software WebGL evidence only.",
+      "verification": "historical_verified",
+      "description": "Synthetic scene resize/dispose; simulation/software WebGL evidence only. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "packages/presentation/**"
       ],
@@ -334,8 +334,8 @@
       "id": "F-BOUNDARIES",
       "name": "Browser/public ownership enforcement",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Resolved dependency/module/HTML/CSS/asset boundaries with negative proofs.",
+      "verification": "historical_verified",
+      "description": "Resolved dependency/module/HTML/CSS/asset boundaries with negative proofs. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "scripts/check-boundaries.mjs",
         "scripts/browser-boundary-plugin.mjs",
@@ -377,8 +377,8 @@
       "id": "F-SUPERVISOR",
       "name": "Local development supervision",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Retained group ownership, idempotent cleanup, live descendant verification, sanitized source processes and fail-fast stack.",
+      "verification": "historical_verified",
+      "description": "Retained group ownership, idempotent cleanup, live descendant verification, sanitized source processes and fail-fast stack. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "scripts/dev.mjs",
         "tests/foundation/processes.test.mjs",
@@ -419,7 +419,7 @@
       "name": "Universal documentation governance",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Classified impact map, file/callable snapshots, changelog and evidence consistency.",
+      "description": "Classified impact map, exact source/callable/file snapshots, links/changelog and immutable evidence consistency. Current-source native gate passed RUN046 with valid timing. Tool checks require explicit semantic review; whole build/browser timing qualification remains separate.",
       "sources": [
         "scripts/documentation-lib.mjs",
         "scripts/check-documentation.mjs",
@@ -453,15 +453,16 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-046.json"
       ]
     },
     {
       "id": "F-EVIDENCE",
       "name": "Timestamped execution evidence",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Actual result/timestamps, source/log identity, failure/signal and supported secret redaction.",
+      "verification": "historical_verified",
+      "description": "Actual result/timestamps, source/log identity, failure/signal and supported secret redaction. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "scripts/evidence-lib.mjs",
         "scripts/record-evidence.mjs",
@@ -525,7 +526,7 @@
       "name": "Local restricted PostgreSQL foundation",
       "implementation": "implemented",
       "verification": "historical_verified",
-      "description": "Verified local managed app databases, restricted service identities, typed synthetic probes, reviewed locked/transactional/checksummed migrations and disposable recreation proof; domain/app/production acceptance remains separate. Current-source live isolated checks (eight managed identities, local/test migrations, five live checks) passed with exact timing in RUN-20261012-043 after the timing-rejected RUN028/029; historical scoped recreation/role acceptance remains preserved.",
+      "description": "Verified local managed app databases, restricted service identities, typed synthetic probes, reviewed locked/transactional/checksummed migrations and disposable recreation proof; domain/app/production acceptance remains separate. Current-source live isolated checks (eight managed identities, local/test migrations, five live checks) passed with exact timing in RUN-20261012-043 after the timing-rejected RUN028/029; historical scoped recreation/role acceptance remains preserved. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "packages/db/**",
         "infra/**",
@@ -572,7 +573,7 @@
       "name": "Reproducible CI and qualified build artifacts",
       "implementation": "implemented",
       "verification": "historical_verified",
-      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 completed all child stages but failed clock_changed and published no result. Independent audit RUN-20261012-043 then passed the unchanged guard (exact timing, 13 stages, scans, artifact) at the final RULE-03 fingerprint, and RUN044 re-verified its artifact. Hosted RULE-02 main f61aad8 run 38183090003 succeeded (observed through the GitHub API by the audit; its artifact was not downloaded). Hosted RULE-03 and required-check settings remain separate. RULE-04 audit RUN-20261013-011 completed all 13 child stages at fingerprint 5f405778 but was clock-rejected (1,554 ms) like RUN089/091; read-only RUN-20261013-012 shows the host wall clock stepping forward about 343 ms per minute. No artifact published; no environment change.",
+      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 completed all child stages but failed clock_changed and published no result. Independent audit RUN-20261012-043 then passed the unchanged guard (exact timing, 13 stages, scans, artifact) at the final RULE-03 fingerprint, and RUN044 re-verified its artifact. Hosted RULE-02 main f61aad8 run 38183090003 succeeded (observed through the GitHub API by the audit; its artifact was not downloaded). Hosted RULE-03 and required-check settings remain separate. RULE-04 audit RUN-20261013-011 completed all 13 child stages at fingerprint 5f405778 but was clock-rejected (1,554 ms) like RUN089/091; read-only RUN-20261013-012 shows the host wall clock stepping forward about 343 ms per minute. No artifact published; no environment change. Fresh RUN-20261013-024 confirms hosted RULE-04 maina45ac4b success (38329018576); the source refresh branch is not covered. Local stepped-clock qualification remains pending, unchanged guard/environment. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "scripts/ci/**",
         "scripts/ci-local.py",
@@ -619,15 +620,16 @@
         "docs/validation/runs/RUN-20261012-088.json",
         "docs/validation/runs/RUN-20261012-090.json",
         "docs/validation/runs/RUN-20261013-011.json",
-        "docs/validation/runs/RUN-20261013-012.json"
+        "docs/validation/runs/RUN-20261013-012.json",
+        "docs/validation/runs/RUN-20261013-024.json"
       ]
     },
     {
       "id": "F-PROTOCOL",
       "name": "Bounded public protocol and version negotiation",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Verified local closed revision-1 frames, bounded/correlated strict HTTP negotiation and semantic client status; gameplay/authenticated transport remains separate.",
+      "verification": "historical_verified",
+      "description": "Verified local closed revision-1 frames, bounded/correlated strict HTTP negotiation and semantic client status; gameplay/authenticated transport remains separate. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "packages/contracts/src/protocol.ts",
         "packages/service-runtime/**",
@@ -666,8 +668,8 @@
       "id": "F-RELEASE",
       "name": "Release artifact identity and immutable retained pins",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Public release/retained pins and v3 archive binding identify built apps/SQL plus separate server-adapter/Lab runtime roots and compiled kernel/provenance; rules/content/products/rewards remain reserved. No admission/activation or match-secret input.",
+      "verification": "historical_verified",
+      "description": "Public release/retained pins and v3 archive binding identify built apps/SQL plus separate server-adapter/Lab runtime roots and compiled kernel/provenance; rules/content/products/rewards remain reserved. No admission/activation or match-secret input. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "packages/contracts/src/release.ts",
         "packages/service-runtime/**",
@@ -737,8 +739,8 @@
       "id": "F-RULE-INVENTORY",
       "name": "Dated rules/catalog and upstream source inventory",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Research-only public acquisition and inert AST inventory, offline metadata/date/denominator/certification guards and exact acquired-source regeneration. Explicit missing-document/identity/localization gates; no product integration or upstream execution.",
+      "verification": "historical_verified",
+      "description": "Research-only public acquisition and inert AST inventory, offline metadata/date/denominator/certification guards and exact acquired-source regeneration. Explicit missing-document/identity/localization gates; no product integration or upstream execution. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
       "sources": [
         "scripts/rules/**",
         "tests/rules/**"
@@ -783,7 +785,7 @@
       "name": "Pinned synthetic engine, secure server RNG and private deterministic verification",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "346 pinned files/303 runtime source-type-data files,53 reproduced patches/MIT notices, exact dev-only Bun1.4.2 and27 unchanged upstream suites. Pure compiled kernel accepts providers; server owns crypto256-bit seed/indexed HMAC/unbiased integers/captured clocks/bounded completed private replay/trusted digest; browser Lab owns noncompetitive seedrandom. Representative RULE-04 scenarios/template implemented; complete card/rules and PLAY-01/PLAY-02/AUTH/REPLAY gates remain; no ordinary Lab/Collection/rewards/private/official play or delivery endpoint. Audit RUN-20261013-007: upstream manual/debug moves are accepted with player authority through the kernel bridge and server adapter; PLAY-01 needs a server move allowlist.",
+      "description": "361 selected/308 runtime files at6de59de1,59 reproduced patches/MIT notices,37 unchanged upstream test files. Provider-only pure kernel; private server RNG/completed deterministic replay and noncompetitive Lab retained. Native inkDrops/event/payment/effective-state compatibility,120 synthetic sourced cases. All ordinary/official/private/reward/card gates closed; PLAY-01 server/Lab must refuse manual/debug moves including manualSetInkDrops.",
       "sources": [
         "scripts/engine/**",
         "vendor/tcg-engines/**",
@@ -799,7 +801,9 @@
         "packages/engine-adapter/README.md",
         "packages/engine-lab/README.md",
         "docs/validation/rule-03.md",
-        "docs/adr/0010-secure-randomness-replay.md"
+        "docs/adr/0010-secure-randomness-replay.md",
+        "docs/adr/0012-upstream-kernel-refresh.md",
+        "docs/validation/upstream-engine-review.md"
       ],
       "task_ids": [
         "RULE-02",
@@ -838,7 +842,9 @@
         "docs/validation/runs/RUN-20261012-088.json",
         "docs/validation/runs/RUN-20261012-090.json",
         "docs/validation/runs/RUN-20261013-006.json",
-        "docs/validation/runs/RUN-20261013-007.json"
+        "docs/validation/runs/RUN-20261013-007.json",
+        "docs/validation/runs/RUN-20261013-036.json",
+        "docs/validation/runs/RUN-20261013-043.json"
       ]
     },
     {
@@ -846,7 +852,7 @@
       "name": "Representative sourced rules and per-card authoring contract",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "91 synthetic scenarios under the actual pinned runtime, source profile/leaf identities, card conservation/rejected-state checks, Director-approved Adventurous/counters and reviewed Vanish/choice corrections. Schema/template authoring only; tested/interaction promotion and every game admission remain closed. Local source-matched qualification passed; isolated CI timing pending; no full card/rules certification. Independent audit CHG-20261013-001 (RUN-20261013-001..010) confirmed the representative scope and found that the end-of-turn Adventurous check ignores static keyword losses; fix with a sourced regression before any Adventurous card admission.",
+      "description": "120 synthetic sourced scenarios under actual6de59de1 runtime, source/leaf profiles, conservation/rejected-state/projection controls and native counter/payment/lifetime/effective-state regressions. Permanent static Adventurous-loss corrected; test-only fixture probes and authoring template cannot admit official cards/games. Full rules/card/privacy/authority gates remain.",
       "sources": [
         "scripts/rules/certification.mjs",
         "scripts/rules/scenario-build.mjs",
@@ -862,7 +868,8 @@
         "docs/runbooks/rules-certification.md",
         "docs/validation/rule-04.md",
         "docs/adr/0011-sourced-rule-scenarios.md",
-        "docs/templates/card-certification.json"
+        "docs/templates/card-certification.json",
+        "docs/validation/upstream-engine-review.md"
       ],
       "task_ids": [
         "RULE-04"
@@ -890,7 +897,9 @@
         "docs/validation/runs/RUN-20261012-088.json",
         "docs/validation/runs/RUN-20261012-090.json",
         "docs/validation/runs/RUN-20261013-001.json",
-        "docs/validation/runs/RUN-20261013-005.json"
+        "docs/validation/runs/RUN-20261013-005.json",
+        "docs/validation/runs/RUN-20261013-035.json",
+        "docs/validation/runs/RUN-20261013-036.json"
       ]
     }
   ]

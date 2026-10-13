@@ -2,7 +2,7 @@ import { createSyntheticKernel, type SyntheticKernel } from '@lorcana/vendor-eng
 import seedrandom from 'seedrandom';
 
 export const ENGINE_QUALIFICATION = Object.freeze({
-  revision: '53a79413c58678b1c50dde57e71de5c123132716',
+  revision: '6de59de1c203827edc1bc6faa1bc6184cd126a5f',
   rules230EffectiveOn: '2026-10-16', set14PrereleaseOn: '2026-10-16', set14GeneralReleaseOn: '2026-10-23',
   rulesCertification: 'pending_RULE-04', randomQualification: 'browser_lab_noncompetitive', viewerProjection: 'pending_PLAY-02',
   catalog: 'synthetic-only', rewards: false,

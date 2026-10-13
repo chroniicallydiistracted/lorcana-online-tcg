@@ -5,6 +5,8 @@ import type {
   PlayCardExecutionContext,
 } from "./types";
 import type { CardInstanceId, PlayerId } from "#core";
+import type { Effect } from "@tcg/lorcana-types";
+import { createLorcanaLogProjection } from "../../../types";
 import type { CardRuntimeReadAPI, DeepReadonly, FrameworkReadAPI } from "../../../core/runtime";
 import type {
   AdditionalInkwellEffect,
@@ -24,6 +26,7 @@ import type {
   ForEachOpponentEffect,
   GainKeywordEffect,
   GainKeywordsEffect,
+  GainInkDropEffect,
   GainLoreEffect,
   GrantAbilityEffect,
   LoseKeywordEffect,
@@ -110,6 +113,16 @@ import {
 import { isExertEffect, resolveExertEffect } from "./exert-effect";
 import { isGainKeywordEffect, resolveGainKeywordEffect } from "./gain-keyword-effect";
 import { isGainLoreEffect, resolveGainLoreEffect } from "./gain-lore-effect";
+import {
+  isGainInkDropEffect,
+  resolveGainInkDropEffect,
+  resolveGainInkDropTargetPlayerIds,
+  redirectGainToInkwellReplacement,
+} from "./gain-ink-drop-effect";
+import {
+  isRevealTopsHighestCostToHandEffect,
+  resolveRevealTopsHighestCostToHandEffect,
+} from "./reveal-tops-highest-cost-to-hand-effect";
 import { isGrantAbilityEffect, resolveGrantAbilityEffect } from "./grant-ability-effect";
 import { isLoseKeywordEffect, resolveLoseKeywordEffect } from "./lose-keyword-effect";
 import { isLoseLoreEffect, resolveLoseLoreEffect } from "./lose-lore-effect";
@@ -176,6 +189,7 @@ import { isRevealTopCardEffect, resolveRevealTopCardEffect } from "./reveal-top-
 import { isRevealAndRouteEffect, resolveRevealAndRouteEffect } from "./reveal-and-route-effect";
 import {
   getScryLookedAtCards,
+  revealScryCards,
   isScryEffect,
   resolveScryDeckPlayerId,
   resolveScryEffect,
@@ -184,7 +198,11 @@ import { isSearchDeckEffect, resolveSearchDeckEffect } from "./search-deck-effec
 import { isSelectTargetEffect, resolveSelectTargetEffect } from "./select-target-effect";
 import { isShuffleIntoDeckEffect, resolveShuffleIntoDeckEffect } from "./shuffle-into-deck-effect";
 import { isSupportEffect, resolveSupportEffect } from "./support-effect";
-import { isForEachOpponentEffect, resolveForEachOpponentEffect } from "./for-each-opponent-effect";
+import {
+  isForEachOpponentEffect,
+  resolveForEachOpponentEffect,
+  scopeResolutionToOpponent,
+} from "./for-each-opponent-effect";
 import { markLastEffectPerformed, resetLastEffectPerformed } from "./event-snapshot-utils";
 import { sweepLethalDamageInPlay } from "../../state/lethal-damage-sweep";
 import { handleUnsupportedActionEffect } from "./unsupported-action-effect";
@@ -200,6 +218,7 @@ import { resolveTargetPlayerIds } from "./player-target-resolver";
 import { applyReplacementEffects } from "../../effects/replacement-effects";
 import {
   analyzeEffectTargets,
+  isChosenPlayerTarget,
   analyzeTargetSelectionAvailabilityFromAnalysis,
   normalizeSelectedTargets,
   normalizeTargetDescriptor,
@@ -794,7 +813,7 @@ function resolvePayCostEffect(
       framework: ctx.framework,
       cards: ctx.cards,
       G: ctx.G,
-      args: { inkDropCounters: resolutionInput.effectInkDropCounters?.[0] },
+      args: { inkDrops: resolutionInput.effectInkDropCounters?.[0] },
       playerId: actorId,
     },
     {
@@ -836,7 +855,7 @@ function resolvePayCostEffect(
       framework: ctx.framework,
       cards: ctx.cards,
       G: ctx.G,
-      args: { inkDropCounters: resolutionInput.effectInkDropCounters?.[0] },
+      args: { inkDrops: resolutionInput.effectInkDropCounters?.[0] },
       playerId: actorId,
     },
     {
@@ -864,7 +883,7 @@ function resolveChoiceChooserId(
   if (effect.chooser) {
     const chooserSelectionInput = getEffectTargetSelectionInput(effect.chooser, resolutionInput);
 
-    if (effect.chooser === "CHOSEN_PLAYER") {
+    if (isChosenPlayerTarget(effect.chooser)) {
       return (
         resolveSelectedPlayerIdsFromTargets(
           ctx.framework.state.playerIds,
@@ -918,7 +937,7 @@ function resolveOptionalChooserId(
 
   const chooserSelectionInput = getEffectTargetSelectionInput(effect.chooser, resolutionInput);
 
-  if (effect.chooser === "CHOSEN_PLAYER") {
+  if (isChosenPlayerTarget(effect.chooser)) {
     return (
       resolveSelectedPlayerIdsFromTargets(
         ctx.framework.state.playerIds,
@@ -971,10 +990,17 @@ function maybeSuspendForChosenTargets(
     "chosenBy" in effectRecord && chooserId !== currentActorId && !isResolvingPendingSelection
       ? clearCurrentSelectionTargets(resolutionInput)
       : resolutionInput;
+  const needsDiscardPlayerSelection =
+    effectRecord.type === "discard" &&
+    isChosenPlayerTarget(effectRecord.target) &&
+    (resolveSelectedPlayerIdsFromTargets(
+      ctx.framework.state.playerIds,
+      getCombinedSelectionInput(resolutionInput),
+    )?.length ?? 0) === 0;
   if (
     effectRecord.type === "choice" ||
     effectRecord.type === "conditional" ||
-    effectRecord.type === "discard" ||
+    (effectRecord.type === "discard" && !needsDiscardPlayerSelection) ||
     effectRecord.type === "for-each-opponent" ||
     effectRecord.type === "name-a-card" ||
     effectRecord.type === "optional" ||
@@ -1047,7 +1073,13 @@ function maybeSuspendForChosenTargets(
   // their target, we must NOT re-suspend here — otherwise the pay-cost
   // resolver never runs, the cost is never paid, and the discard never fires.
   if (selectionContext.kind === "target-selection" || selectionContext.kind === "discard-choice") {
-    const currentTargetCount = getCurrentSelectionTargets(selectionResolutionInput).length;
+    const currentSelection = getCurrentSelectionTargets(selectionResolutionInput);
+    const currentTargetCount =
+      selectionContext.playerCandidateIds.length > 0
+        ? currentSelection.filter((id) =>
+            selectionContext.playerCandidateIds.some((playerId) => String(playerId) === String(id)),
+          ).length
+        : currentSelection.length;
     if (
       (selectionContext.chooserId === currentActorId || isResolvingPendingSelection) &&
       currentTargetCount > 0 &&
@@ -1127,7 +1159,7 @@ function maybeSuspendForChosenPlayerSelection(
   resolutionInput: ActionResolutionInput,
   options?: ActionEffectResolutionOptions,
 ): ActionResolutionResult | undefined {
-  if (effect.chooser !== "CHOSEN_PLAYER") {
+  if (!isChosenPlayerTarget(effect.chooser)) {
     return undefined;
   }
 
@@ -1355,6 +1387,8 @@ function resolveSelectedCardTargetsForEffect(
 export const ACTION_EFFECT_RESOLVER_TYPES = [
   "gain-keyword",
   "gain-keywords",
+  "gain-ink-drop",
+  "reveal-tops-highest-cost-to-hand",
   "modify-stat",
   "sequence",
   "play-card",
@@ -1731,15 +1765,25 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
           ? { remainingEffects: options.continuation.remainingEffects }
           : {},
       );
-      const result = resolveActionEffect(ctx, cardPlayed, nestedEffect, nestedResolutionInput, {
+      // Once a sequence has advanced, its later required steps are not optional.
+      // A nested optional still creates its own independent choice.
+      const stepOptions = {
         ...options,
+        originatesFromOptional: index === 0 ? options?.originatesFromOptional : undefined,
         continuation,
-      });
+      };
+      const result = resolveActionEffect(
+        ctx,
+        cardPlayed,
+        nestedEffect,
+        nestedResolutionInput,
+        stepOptions,
+      );
       if (result.status === "suspended") {
         const selectionContext = result.pendingEffect.selectionContext;
         if (
           selectionContext &&
-          resolutionInput.resolveOptional === true &&
+          stepOptions.originatesFromOptional === true &&
           (selectionContext.kind === "target-selection" ||
             selectionContext.kind === "discard-choice")
         ) {
@@ -1852,9 +1896,38 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
       // This handles optionals nested inside sequences (e.g. "draw, then you
       // may play a character for free") where the preceding steps (draw) have
       // already executed and the candidate pool reflects the updated board state.
-      if (resolutionInput.resolveOptional === undefined && effect.effect) {
+      if (
+        (resolutionInput.resolveOptional === undefined || actorId !== chooserId) &&
+        effect.effect
+      ) {
         const innerRecord = effect.effect as unknown as Record<string, unknown>;
         let hasCandidates = true;
+
+        if (innerRecord.type === "discard") {
+          hasCandidates =
+            ctx.framework.zones.getCards({
+              zone: typeof innerRecord.from === "string" ? innerRecord.from : "hand",
+              playerId: chooserId,
+            }).length > 0;
+          const selection = buildResolutionSelectionContext({
+            origin: "pending-effect",
+            requestId: "optional:discard-preview",
+            sourceCardId: cardPlayed.cardId,
+            chooserId,
+            cardPlayed,
+            effect: effect.effect,
+            resolutionInput: {
+              ...chooserScopedResolutionInput,
+              targets: undefined,
+              currentTargets: undefined,
+              targetSelectionResolved: false,
+            },
+            ctx,
+          });
+          if (selection?.kind === "discard-choice" || selection?.kind === "target-selection") {
+            hasCandidates = selection.cardCandidateIds.length > 0;
+          }
+        }
 
         if (innerRecord.type === "play-card") {
           const from = typeof innerRecord.from === "string" ? innerRecord.from : "hand";
@@ -1989,10 +2062,9 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
     }
 
     if (effect.effect) {
-      const baseResolutionInput =
-        effect.chooser === "CHOSEN_PLAYER"
-          ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
-          : resolutionInput;
+      const baseResolutionInput = isChosenPlayerTarget(effect.chooser)
+        ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
+        : resolutionInput;
       // Clear resolveOptional so it does not leak into nested optionals.
       // This optional has already been accepted/rejected; a child optional
       // (e.g. inside a sequence wrapped by this optional) must create its
@@ -2096,10 +2168,9 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
     }
 
     const choiceIndex = Math.min(rawChoiceIndex, choiceOptions.length - 1);
-    const baseNested =
-      effect.chooser === "CHOSEN_PLAYER"
-        ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
-        : resolutionInput;
+    const baseNested = isChosenPlayerTarget(effect.chooser)
+      ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
+      : resolutionInput;
     // Nested choice/or under the selected arm must not reuse this choiceIndex.
     const nestedResolutionInput = { ...baseNested, choiceIndex: undefined };
     return resolveActionEffect(
@@ -2146,10 +2217,9 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
 
     if (legalOptionIndices.length === 1 && actorId === chooserId) {
       const forcedChoiceIndex = legalOptionIndices[0]!;
-      const baseNested =
-        effect.chooser === "CHOSEN_PLAYER"
-          ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
-          : resolutionInput;
+      const baseNested = isChosenPlayerTarget(effect.chooser)
+        ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
+        : resolutionInput;
       const nestedResolutionInput = { ...baseNested, choiceIndex: undefined };
       return resolveActionEffect(
         ctx,
@@ -2198,10 +2268,9 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
       return RESOLVED_ACTION_EFFECT;
     }
 
-    const baseNested =
-      effect.chooser === "CHOSEN_PLAYER"
-        ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
-        : resolutionInput;
+    const baseNested = isChosenPlayerTarget(effect.chooser)
+      ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
+      : resolutionInput;
     const nestedResolutionInput = { ...baseNested, choiceIndex: undefined };
     return resolveActionEffect(
       ctx,
@@ -2390,7 +2459,7 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
     return RESOLVED_ACTION_EFFECT;
   },
 
-  "gain-ink-drop-counters": (ctx, cardPlayed, effect, resolutionInput) => {
+  "gain-ink-drop-counters": (ctx, cardPlayed, effect, resolutionInput, options) => {
     const resolved = resolveEffectExecutionContext(ctx, cardPlayed, effect, resolutionInput);
     const amount = resolveAggregateFieldAmount(resolved.resolvedDynamic.amount);
     if (!Number.isSafeInteger(amount) || amount < 0) {
@@ -2398,14 +2467,7 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
     }
     const recipients = resolveTargetPlayerIdsForEffect(ctx, cardPlayed, effect, resolutionInput);
     if (!recipients?.length) throw new Error("Invalid ink-drop recipient");
-    ctx.G.inkDropCounters ??= {};
-    for (const playerId of recipients) {
-      const current = ctx.G.inkDropCounters[playerId] ?? 0;
-      const next = current + amount;
-      if (!Number.isSafeInteger(current) || current < 0 || !Number.isSafeInteger(next)) throw new Error("Invalid ink-drop counter state");
-      ctx.G.inkDropCounters[playerId] = next;
-    }
-    return RESOLVED_ACTION_EFFECT;
+    return resolveActionEffect(ctx, cardPlayed, { ...effect, type: "gain-ink-drop", amount }, resolutionInput, options);
   },
 
   "gain-lore": (ctx, cardPlayed, effect, resolutionInput) => {
@@ -2442,8 +2504,124 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
         resolutionInput,
       },
     );
-    resolveGainLoreEffect(ctx, cardPlayed, effect as GainLoreEffect, {
+    const loreGained = resolveGainLoreEffect(ctx, cardPlayed, effect as GainLoreEffect, {
       gainAmount: replacedEvent.amount,
+      selectedPlayerIds,
+      selectedTargets: resolveSelectedCardTargetsForEffect(effect, resolutionInput),
+    });
+    markLastEffectPerformed(resolutionInput.eventSnapshot, loreGained);
+    return RESOLVED_ACTION_EFFECT;
+  },
+
+  "reveal-tops-highest-cost-to-hand": (ctx, cardPlayed, effect, resolutionInput) => {
+    if (!isRevealTopsHighestCostToHandEffect(effect)) {
+      handleUnsupportedActionEffect(
+        "reveal-tops-highest-cost-to-hand",
+        "Malformed reveal-tops-highest-cost-to-hand effect payload",
+      );
+      return RESOLVED_ACTION_EFFECT;
+    }
+    resolveRevealTopsHighestCostToHandEffect(ctx, cardPlayed, effect, resolutionInput);
+    return RESOLVED_ACTION_EFFECT;
+  },
+
+  "gain-ink-drop": (ctx, cardPlayed, effect, resolutionInput, options) => {
+    if (!isGainInkDropEffect(effect)) {
+      handleUnsupportedActionEffect("gain-ink-drop", "Malformed gain-ink-drop effect payload");
+      return RESOLVED_ACTION_EFFECT;
+    }
+
+    const resolved = resolveEffectExecutionContext(ctx, cardPlayed, effect, resolutionInput);
+    const baseAmount =
+      resolved.resolvedDynamic.amount === undefined
+        ? 1
+        : resolveAggregateFieldAmount(resolved.resolvedDynamic.amount);
+    const selectedPlayerIds = resolveTargetPlayerIdsForEffect(
+      ctx,
+      cardPlayed,
+      effect,
+      resolutionInput,
+    );
+    const gainAmount =
+      typeof baseAmount === "number" && Number.isFinite(baseAmount)
+        ? Math.max(0, Math.floor(baseAmount))
+        : 0;
+    const targetPlayerIds = resolveGainInkDropTargetPlayerIds(
+      ctx,
+      cardPlayed,
+      effect.target,
+      selectedPlayerIds,
+    );
+    const canReplace = (playerId: PlayerId): boolean =>
+      effect.replacementDecision !== "keep-drop" &&
+      redirectGainToInkwellReplacement(ctx, playerId) &&
+      ctx.framework.zones.getCards({ zone: "deck", playerId }).length > 0;
+    if (gainAmount > 0 && targetPlayerIds.some(canReplace)) {
+      const targetFor = (playerId: PlayerId): "CONTROLLER" | "OPPONENT" =>
+        playerId === cardPlayed.playerId ? "CONTROLLER" : "OPPONENT";
+      // Each incoming drop can be replaced once. Re-evaluate the board and
+      // deck for each drop so an exhausted deck leaves the remaining gains intact.
+      if (gainAmount > 1 || targetPlayerIds.length > 1) {
+        const steps: Effect[] = targetPlayerIds.flatMap((playerId) =>
+          canReplace(playerId)
+            ? Array.from(
+                { length: gainAmount },
+                (): GainInkDropEffect => ({
+                  type: "gain-ink-drop",
+                  amount: 1,
+                  target: targetFor(playerId),
+                }),
+              )
+            : [
+                {
+                  type: "gain-ink-drop",
+                  amount: gainAmount,
+                  target: targetFor(playerId),
+                  replacementDecision: "keep-drop",
+                } satisfies GainInkDropEffect,
+              ],
+        );
+        return resolveActionEffect(
+          ctx,
+          cardPlayed,
+          { type: "sequence", steps },
+          { ...resolutionInput, choiceIndex: undefined },
+          options,
+        );
+      }
+      const target = targetFor(targetPlayerIds[0]!);
+      const replacementChoice: ChoiceEffect = {
+        type: "choice",
+        chooser: target,
+        optionLabels: [
+          "Supercharge: put the top card of your deck into your inkwell facedown and exerted instead.",
+          "Get 1 ink drop.",
+        ],
+        options: [
+          {
+            type: "put-into-inkwell",
+            source: "top-of-deck",
+            target,
+            facedown: true,
+            exerted: true,
+          },
+          { type: "gain-ink-drop", amount: 1, target, replacementDecision: "keep-drop" },
+        ],
+      };
+      return resolveActionEffect(
+        ctx,
+        cardPlayed,
+        replacementChoice,
+        { ...resolutionInput, choiceIndex: undefined },
+        options,
+      );
+    }
+    if (gainAmount > 0 && targetPlayerIds.length > 0) {
+      resolutionInput.eventSnapshot ??= {};
+      resolutionInput.eventSnapshot.anyEffectPerformed = true;
+    }
+    resolveGainInkDropEffect(ctx, cardPlayed, effect as GainInkDropEffect, {
+      gainAmount,
       selectedPlayerIds,
       selectedTargets: resolveSelectedCardTargetsForEffect(effect, resolutionInput),
     });
@@ -2523,7 +2701,9 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
       if (lookedAtCards.length > 0) {
         const scryRevealVisibility: "all" | string[] =
           (effect as { revealAll?: unknown }).revealAll === true ? "all" : [chooserId];
-        const revealWindowIds = [ctx.framework.zones.reveal(lookedAtCards, scryRevealVisibility)];
+        const revealWindowIds = [
+          revealScryCards(ctx, cardPlayed, lookedAtCards, scryRevealVisibility, deckPlayerId),
+        ];
         const scryVisibility = {
           mode: "PUBLIC_WITH_OVERRIDES" as const,
           overrides: {
@@ -2558,7 +2738,14 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
           chooserId,
           abilityIndex: options?.sourceAbilityIndex,
           cardPlayed,
-          effect,
+          effect: {
+            ...effect,
+            destinations: effect.destinations.map((destination) =>
+              lookedAtCards.length < (destination.requiresLookedAtLeast ?? 0)
+                ? { ...destination, min: 0, max: 0 }
+                : destination,
+            ),
+          },
           continuation: options?.continuation,
           resolutionInput: {
             ...resolutionInput,
@@ -2576,6 +2763,9 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
       }
     }
 
+    const inspectedCards =
+      resolutionInput.eventSnapshot?.revealedCardIds ??
+      getScryLookedAtCards(ctx, resolveScryDeckPlayerId(cardPlayed, selectedPlayerIds), scryAmount);
     resolveScryEffect(ctx, cardPlayed, effect as ScryEffect, {
       destinations: resolutionInput.destinations,
       lookedAtCards: resolutionInput.eventSnapshot?.revealedCardIds,
@@ -2584,6 +2774,8 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
       selectedPlayerIds,
       enterPlayExerted: resolutionInput.enterPlayExerted,
     });
+
+    markLastEffectPerformed(resolutionInput.eventSnapshot, inspectedCards.length > 0);
 
     // Handle repeatOnHandMatch: if any card was placed into hand, re-queue this scry effect.
     // Used for "repeat this effect" cards (e.g. Sisu - Uniting Dragon).
@@ -2938,12 +3130,15 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
       return RESOLVED_ACTION_EFFECT;
     }
 
-    const resolved = resolveEffectExecutionContext(ctx, cardPlayed, effect, resolutionInput);
+    const discardResolutionInput = isChosenPlayerTarget(effect.target)
+      ? promoteSelectedPlayersToTargetContext(ctx, resolutionInput)
+      : resolutionInput;
+    const resolved = resolveEffectExecutionContext(ctx, cardPlayed, effect, discardResolutionInput);
     const selectionWasSubmitted =
-      resolutionInput.targetSelectionResolved === true ||
-      resolutionInput.currentTargets !== undefined ||
-      resolutionInput.contextTargets !== undefined;
-    const selectedTargets = getCombinedSelectionTargets(resolutionInput).filter(
+      discardResolutionInput.targetSelectionResolved === true ||
+      discardResolutionInput.currentTargets !== undefined ||
+      discardResolutionInput.contextTargets !== undefined;
+    const selectedTargets = getCombinedSelectionTargets(discardResolutionInput).filter(
       (targetId): targetId is CardInstanceId => typeof targetId === "string",
     );
     const countSelectedTargets = effect.chosen === true && effect.amount === "DISCARDED_COUNT";
@@ -2958,7 +3153,7 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
       ctx,
       cardPlayed,
       effect as DiscardEffect,
-      resolutionInput,
+      discardResolutionInput,
       {
         discardAmount,
         discardAll,
@@ -3100,13 +3295,46 @@ const actionEffectResolvers: Record<SupportedActionEffectType, ActionEffectResol
   reveal: (_ctx, _cardPlayed, _effect, resolutionInput) => {
     // Reveal the currently selected card(s) to all players.
     // Used when a card ability requires revealing a card from hand (e.g. "reveal a song card").
-    const targets = getCurrentSelectionTargets(resolutionInput) as CardInstanceId[];
+    const usesPreviousTarget =
+      typeof _effect === "object" &&
+      _effect !== null &&
+      "target" in _effect &&
+      _effect.target === "previous-target";
+    let targets = (
+      usesPreviousTarget
+        ? getContextSelectionTargets(resolutionInput)
+        : getCurrentSelectionTargets(resolutionInput)
+    ) as CardInstanceId[];
+    if (
+      usesPreviousTarget &&
+      typeof _effect === "object" &&
+      _effect !== null &&
+      "amount" in _effect &&
+      typeof _effect.amount === "number"
+    ) {
+      const amount = Math.max(0, Math.floor(_effect.amount));
+      targets = amount > 0 ? targets.slice(-amount) : [];
+    }
     if (targets.length > 0) {
-      _ctx.framework.zones.reveal(targets, "all");
+      _ctx.framework.zones.reveal(
+        targets,
+        "all",
+        usesPreviousTarget ? { stateID: _ctx.framework.state.stateID + 1 } : undefined,
+      );
       if (!resolutionInput.eventSnapshot) {
         resolutionInput.eventSnapshot = {};
       }
       resolutionInput.eventSnapshot.revealedCardIds = targets;
+      for (const revealedCardId of targets) {
+        _ctx.framework.log(
+          createLorcanaLogProjection(
+            "lorcana.outcome.revealedCard",
+            { playerId: _cardPlayed.playerId, revealedCardId },
+            { mode: "PUBLIC" },
+            "action",
+          ),
+        );
+      }
     }
     return RESOLVED_ACTION_EFFECT;
   },
@@ -3585,7 +3813,7 @@ function isEffectCurrentlyLegal(
         framework: ctx.framework,
         cards: ctx.cards,
         G: ctx.G,
-        args: { inkDropCounters: resolutionInput.effectInkDropCounters?.[0] },
+        args: { inkDrops: resolutionInput.effectInkDropCounters?.[0] },
         playerId: actorId,
       },
       {
@@ -3688,7 +3916,7 @@ function isEffectCurrentlyLegal(
     });
   }
 
-  if (isReturnToHandEffect(effect)) {
+  if (isReturnToHandEffect(effect) || isPutOnBottomEffect(effect)) {
     const descriptor = normalizeTargetDescriptor(effect.target);
     if (!descriptor) {
       return false;
@@ -3704,7 +3932,11 @@ function isEffectCurrentlyLegal(
     // are valid candidates (e.g. targeting self when excludeSelf=true), treat this option
     // as not currently legal. The "or" handler will then auto-force the other branch
     // (e.g. banish self), preventing the exploit of playing the card with no cost.
-    if (descriptor.selector === "chosen" && selectedTargets.length > 0) {
+    if (
+      isReturnToHandEffect(effect) &&
+      descriptor.selector === "chosen" &&
+      selectedTargets.length > 0
+    ) {
       const validSelections = selectedTargets.filter((t) => candidates.includes(t));
       if (validSelections.length === 0) {
         return false;
@@ -3794,6 +4026,7 @@ export function resolveActionEffect(
   resolutionInput: ActionResolutionInput,
   options?: ActionEffectResolutionOptions,
 ): ActionResolutionResult {
+  ctx = scopeResolutionToOpponent(ctx, cardPlayed, resolutionInput);
   resolutionInput.eventSnapshot ??= {};
   const effectiveResolutionInput = resolutionInput;
   const effectType = getEffectType(effect);
@@ -3844,5 +4077,11 @@ export function resolveActionEffect(
     chooserId: getCurrentActionActorId(ctx, cardPlayed),
   });
 
-  return resolver(ctx, cardPlayed, effect, effectiveResolutionInput, options);
+  const result = resolver(ctx, cardPlayed, effect, effectiveResolutionInput, options);
+  const outcome = effectiveResolutionInput.eventSnapshot;
+  if (result.status === "resolved" && outcome?.effectOutcomeReported) {
+    outcome.abilityFullyResolved =
+      outcome.abilityFullyResolved !== false && outcome.lastEffectPerformed === true;
+  }
+  return result;
 }

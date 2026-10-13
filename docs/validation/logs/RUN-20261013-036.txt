@@ -1,0 +1,42 @@
+PASS pinned vendor integrity {"revision":"6de59de1c203827edc1bc6faa1bc6184cd126a5f","files":361,"patches":59}
+
+> lorcana-online-tcg@0.0.0 engine:check-randomness /workspaces/lorcana-online-tcg
+> node scripts/engine/check-randomness.mjs
+
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 361 selected source files
+
+> lorcana-online-tcg@0.0.0 rules:verify-bytes /workspaces/lorcana-online-tcg
+> node scripts/rules/check-inventory.mjs --bytes
+
+PASS RULE-01 cached bytes and offline metadata, denominators, dated release/effective status and uncertified boundaries
+
+> lorcana-online-tcg@0.0.0 rules:verify-scenario-bytes /workspaces/lorcana-online-tcg
+> node scripts/rules/certification.mjs --bytes
+
+PASS representative rule sources/template; no card admission {"scenarios":120,"versions":["2.2.0","2.3.0"]}
+
+> lorcana-online-tcg@0.0.0 engine:test-upstream /workspaces/lorcana-online-tcg
+> node scripts/engine/test-upstream.mjs
+
+Selected 37 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+ 406 pass
+ 1 skip
+ 0 fail
+ 1362 expect() calls
+Ran 407 tests across 37 files. [1373.00ms]
+
+> lorcana-online-tcg@0.0.0 engine:test-injection /workspaces/lorcana-online-tcg
+> node scripts/engine/test-injection.mjs
+
+bun test v1.4.2 (744846f84)
+
+src/injection.test.ts:
+(pass) injected initialization/first chooser and active clock resume ignore ambient wall time [3.92ms]
+(pass) invalid injected results cannot advance a committed random cursor [0.12ms]
+
+ 2 pass
+ 0 fail
+ 9 expect() calls
+Ran 2 tests across 1 file. [42.00ms]

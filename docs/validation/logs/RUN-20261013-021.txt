@@ -1,0 +1,38 @@
+
+> lorcana-online-tcg@0.0.0 engine:test-upstream /workspaces/lorcana-online-tcg
+> node scripts/engine/test-upstream.mjs
+
+Selected 37 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:
+1480 |   );
+1481 |   expect(engine.asPlayerOne().passTurn()).toBeSuccessfulCommand();
+1482 |   const player = engine.asPlayerTwo(),
+1483 |     cardId = engine.findCardInstanceId(shifted, "hand", PLAYER_TWO),
+1484 |     targetId = engine.findCardInstanceId(base, "play", PLAYER_TWO);
+1485 |   expect(player.getShiftPlayDisabledReason(shifted)).toEqual({
+                                                            ^
+error: expect(received).toEqual(expected)
+
+- {
+-   "code": "SHIFT_INSUFFICIENT_INK",
+-   "params": {
+-     "available": 4,
+-     "needed": 5,
+-   },
+- }
++ null
+
+- Expected  - 7
++ Received  + 1
+
+      at <anonymous> (/workspaces/lorcana-online-tcg/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/core/play-card.test.ts:1485:54)
+(fail) selected ink drops participate in Shift reasons, move discovery, and target choices [5.97ms]
+
+ 405 pass
+ 1 skip
+ 1 fail
+ 1355 expect() calls
+Ran 407 tests across 37 files. [1403.00ms]
+ ELIFECYCLE  Command failed with exit code 1.

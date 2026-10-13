@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-13T05:59:02.505Z",
+  "category": "host_inspection",
+  "actor": "Codex read-only WSL Docker inspection",
+  "source_commit": "a45ac4b3794192d560ab7edca23c4b23a27cc9c2",
+  "source_fingerprint": "4ba45cc4ddaf904fe0d3b433ef7884dba981b0dcc10744bd0327e6a7d28a8b0c",
+  "queries": [
+    [
+      "docker",
+      "ps",
+      "-q",
+      "--filter",
+      "label=com.docker.compose.service=workspace"
+    ],
+    [
+      "docker",
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"labels\":{{json .Config.Labels}},\"state\":{{json .State}},\"mounts\":{{json .Mounts}}}",
+      "3e5816dff0be"
+    ],
+    [
+      "docker",
+      "ps",
+      "-q",
+      "--filter",
+      "label=com.docker.compose.project=lorcana-online-tcg_devcontainer",
+      "--filter",
+      "label=com.docker.compose.service=postgres"
+    ],
+    [
+      "docker",
+      "inspect",
+      "--format",
+      "{\"id\":{{json .Id}},\"state\":{{json .State}},\"mounts\":{{json .Mounts}},\"ports\":{{json .HostConfig.PortBindings}}}",
+      "1695ec6fc3eb"
+    ],
+    [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ]
+  ],
+  "compose_project": "lorcana-online-tcg_devcontainer",
+  "workspace_id": "3e5816dff0bed2b6e553297c170779f6b4ad87a82e63da807a509061374eac82",
+  "workspace_bind": "/home/andre/lorcana-online-tcg",
+  "postgres_id": "1695ec6fc3ebd923802916c4649fae195cfbb4f9c69029159099bcfb6fb0ed1b",
+  "postgres_health": "healthy",
+  "postgres_mount": {
+    "Destination": "/var/lib/postgresql",
+    "Driver": "local",
+    "Mode": "rw",
+    "Name": "lorcana-online-tcg_devcontainer_pg18_data",
+    "Propagation": "",
+    "RW": true,
+    "Source": "/var/lib/docker/volumes/lorcana-online-tcg_devcontainer_pg18_data/_data",
+    "Type": "volume"
+  },
+  "postgres_host_ports": {},
+  "result": "passed",
+  "limitations": [
+    "Read-only host configuration observation, not a timed command receipt or database recreation/data-integrity/Windows/production qualification. No Docker mutation."
+  ]
+}

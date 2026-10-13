@@ -15,7 +15,9 @@ import type {
   DiscardEffect,
   DrawEffect,
   ExertEffect,
+  GainInkDropEffect,
   GainLoreEffect,
+  RevealTopsHighestCostToHandEffect,
   LookAtCardsEffect,
   LoseLoreEffect,
   MillEffect,
@@ -115,6 +117,7 @@ export type Effect =
   | DrawEffect
   | DiscardEffect
   | MillEffect
+  | RevealTopsHighestCostToHandEffect
   | ScryEffect
   // Damage
   | DealDamageEffect
@@ -122,6 +125,7 @@ export type Effect =
   | RemoveDamageEffect
   | MoveDamageEffect
   // Lore
+  | GainInkDropEffect
   | GainLoreEffect
   | GainInkDropCountersEffect
   | LoseLoreEffect

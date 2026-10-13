@@ -29,3 +29,7 @@ Final executable fingerprint5f405778696fe4413b4a374f11c966ae7691817a2429136be951
 ## Independent audit note — 2026-10-13 UTC
 
 Recorded by the Claude Code audit ([CHG-20261013-001](../changes/CHG-20261013-001.json)). The decision is unchanged and matches the audited source at fingerprint 5f405778. Independent runs RUN-20261013-001..010 pass, including an auditor probe of 16 CR2.3-sourced Adventurous, ink-drop and Vanish cases. Two follow-ups are recorded in [validation](../validation/rule-04.md): the end-of-turn Adventurous check ignores static keyword losses although the challenge check honors them (fix with a sourced regression before any Adventurous card admission), and upstream manual/debug moves still reach the engine with player authority (pre-existing; PLAY-01 needs a server move allowlist). Isolated CI RUN-20261013-011 completed all child stages but was clock-rejected like RUN089/091, so timing qualification stays pending without any environment change.
+
+## Current upstream refresh — 2026-10-13 UTC
+
+The representative oracle extends from91 to120 cases at6de59de1, adding static Adventurous loss and native payment/event/lifetime/effective-state controls. Card promotion remains refused; test-only projection probes do not widen product exports. See [refresh qualification](../validation/upstream-engine-review.md) for current evidence and limits.

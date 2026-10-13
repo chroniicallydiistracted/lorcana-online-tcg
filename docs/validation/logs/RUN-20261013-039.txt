@@ -1,0 +1,257 @@
+Scope: all 13 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 413ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 doctor /workspaces/lorcana-online-tcg
+> node scripts/doctor.mjs
+
+PASS Node 24.21.0
+PASS pnpm 10.33.0
+PASS Linux development environment
+PASS .env.local exists with owner-only access
+PASS Local environment loaded into container
+PASS Container database address
+PASS Generated database bootstrap configuration
+Workspace toolchain ready. Run pnpm db:check to verify authenticated database access.
+
+> lorcana-online-tcg@0.0.0 typecheck /workspaces/lorcana-online-tcg
+> pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck
+
+Scope: 8 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  895.85 kB │ gzip: 194.91 kB
+
+✓ built in 185ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  898.70 kB │ gzip: 197.79 kB
+
+✓ built in 163ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/db@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/design-system@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/presentation@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-adapter@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-lab@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/service-runtime@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/api@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-service@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/worker@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+
+> lorcana-online-tcg@0.0.0 build /workspaces/lorcana-online-tcg
+> pnpm boundaries && pnpm -r --workspace-concurrency=1 build
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+Scope: 12 of 13 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  895.85 kB │ gzip: 194.91 kB
+
+✓ built in 165ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/web@0.0.0 build /workspaces/lorcana-online-tcg/apps/web
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 2511 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           0.38 kB │ gzip:   0.28 kB
+dist/assets/index-Cs1RDOyn.css                            0.96 kB │ gzip:   0.54 kB
+dist/assets/postprocess.vertex-DJCmMhI8.js                0.46 kB │ gzip:   0.30 kB
+dist/assets/shaderStore-D-XQlhUT.js                       0.46 kB │ gzip:   0.17 kB
+dist/assets/rgbdDecode.fragment-Cdz2Tveq.js               0.52 kB │ gzip:   0.34 kB
+dist/assets/postprocess.vertex-CmVXXq2T.js                0.58 kB │ gzip:   0.35 kB
+dist/assets/rgbdDecode.fragment-DXl2fYur.js               0.66 kB │ gzip:   0.38 kB
+dist/assets/math.scalar.functions-lnL7TJ7T.js             0.76 kB │ gzip:   0.41 kB
+dist/assets/color.fragment-SH3AKoaS.js                    0.87 kB │ gzip:   0.42 kB
+dist/assets/mesh.vertexData.functions-CD4JOR2q.js         0.93 kB │ gzip:   0.48 kB
+dist/assets/color.fragment-DVaYbzXa.js                    0.98 kB │ gzip:   0.45 kB
+dist/assets/ddsTextureLoader-CnOqxmwJ.js                  1.25 kB │ gzip:   0.62 kB
+dist/assets/color.vertex-UAuK67V9.js                      1.35 kB │ gzip:   0.61 kB
+dist/assets/color.vertex-BYaj1Jpp.js                      1.41 kB │ gzip:   0.61 kB
+dist/assets/logger-CuBYPcDK.js                            1.88 kB │ gzip:   0.82 kB
+dist/assets/logDepthDeclaration-BKcd_JEL.js               2.16 kB │ gzip:   0.85 kB
+dist/assets/fogFragment-WPqtYpyX.js                       2.20 kB │ gzip:   0.70 kB
+dist/assets/hdrTextureLoader-BQVwkxK1.js                  2.31 kB │ gzip:   1.13 kB
+dist/assets/fogFragment-NFgubt9V.js                       2.43 kB │ gzip:   0.76 kB
+dist/assets/iesTextureLoader-3O5bSkSd.js                  2.47 kB │ gzip:   1.07 kB
+dist/assets/logDepthDeclaration-CLGvI4QS.js               2.54 kB │ gzip:   0.84 kB
+dist/assets/tgaTextureLoader-CqhhocF6.js                  3.40 kB │ gzip:   1.35 kB
+dist/assets/cubemapToSphericalPolynomial-DQLobdjo.js      3.65 kB │ gzip:   1.60 kB
+dist/assets/typeStore-CuqQeP4D.js                         4.87 kB │ gzip:   1.80 kB
+dist/assets/helperFunctions-BH8P-eyq.js                   6.48 kB │ gzip:   2.18 kB
+dist/assets/helperFunctions-gEnZbjN3.js                   6.81 kB │ gzip:   2.31 kB
+dist/assets/dds.pure-CyPDIBuU.js                          6.93 kB │ gzip:   2.54 kB
+dist/assets/vertexColorMixing-HinktY3n.js                10.39 kB │ gzip:   2.14 kB
+dist/assets/vertexColorMixing-CBmtHj8r.js                11.72 kB │ gzip:   2.17 kB
+dist/assets/exrTextureLoader-C86K4-F4.js                 13.14 kB │ gzip:   4.81 kB
+dist/assets/ktxTextureLoader-C5lMybt9.js                 16.40 kB │ gzip:   4.78 kB
+dist/assets/guid-BN1U1Zos.js                             17.72 kB │ gzip:   6.15 kB
+dist/assets/default.vertex-CF_7OiRp.js                   19.62 kB │ gzip:   4.39 kB
+dist/assets/basisTextureLoader-Xdypzq5p.js               27.22 kB │ gzip:   8.16 kB
+dist/assets/envTextureLoader-pSz_G0GG.js                 31.54 kB │ gzip:   8.88 kB
+dist/assets/default.vertex-uAWj3KN-.js                   38.03 kB │ gzip:   6.28 kB
+dist/assets/math.color.pure-DQiG_7Jy.js                  77.34 kB │ gzip:  18.33 kB
+dist/assets/default.fragment-DOpJD8Rt.js                110.44 kB │ gzip:  22.56 kB
+dist/assets/default.fragment-JYy_LTJ1.js                115.22 kB │ gzip:  22.38 kB
+dist/assets/index--mOsM8DA.js                           305.76 kB │ gzip:  95.62 kB
+dist/assets/src-3pUG3QJN.js                           1,084.54 kB │ gzip: 261.57 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 846ms
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 13 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  898.70 kB │ gzip: 197.79 kB
+
+✓ built in 155ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+
+> @lorcana/api@0.0.0 build /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/worker@0.0.0 build /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json
+
+
+[Recorder failure: clock_changed]

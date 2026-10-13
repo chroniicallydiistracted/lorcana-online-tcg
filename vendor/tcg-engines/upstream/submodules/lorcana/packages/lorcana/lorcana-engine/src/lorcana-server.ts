@@ -65,6 +65,8 @@ export type LorcanaEnginePlayerInfo = {
 };
 
 export type LorcanaEngineInit = {
+  /** Internal setup injection used by the fixture harness. */
+  _fixtureSetup?: MatchRuntimeConfig["setup"];
   seed: string;
   instanceIdPrefix?: string;
   matchID?: string;
@@ -90,6 +92,7 @@ export class LorcanaServer extends LorcanaEngineBase {
     const serverEngineConfig: ServerEngineConfig = {
       runtimeConfig: {
         ...(lorcanaRuntimeConfig as unknown as MatchRuntimeConfig),
+        ...(init._fixtureSetup ? { setup: init._fixtureSetup } : {}),
         timeControl: init.timeControl,
       },
       players: init.players,
@@ -146,6 +149,18 @@ export class LorcanaServer extends LorcanaEngineBase {
     return this.engine.canUndo(playerId);
   }
 
+  canUndoToTurnStart(playerId: string): boolean {
+    return this.engine.canUndoToTurnStart(playerId);
+  }
+
+  getTurnStartCheckpointSnapshot(): LorcanaUndoStackEntrySnapshot | null {
+    return this.engine.getTurnStartCheckpointSnapshot();
+  }
+
+  getTurnStartStateID(): number | null {
+    return this.engine.getTurnStartStateID();
+  }
+
   getUndoStackSnapshot(): LorcanaUndoStackEntrySnapshot[] {
     return this.engine.getUndoStackSnapshot().map(
       (entry) =>
@@ -169,15 +184,32 @@ export class LorcanaServer extends LorcanaEngineBase {
             })),
           }
         : {}),
+      turnStartCheckpoint: snapshot.turnStartCheckpoint ?? null,
+      turnStartStateID: snapshot.turnStartStateID ?? null,
     });
     this.#automatedActionBlockedStateTracker.clear();
   }
 
   override undo(playerId: string, prevStateID?: number): CommandResult {
+    return this.performUndo(playerId, prevStateID, "undo");
+  }
+
+  undoToTurnStart(playerId: string, prevStateID?: number): CommandResult {
+    return this.performUndo(playerId, prevStateID, "undoToTurnStart");
+  }
+
+  private performUndo(
+    playerId: string,
+    prevStateID: number | undefined,
+    move: "undo" | "undoToTurnStart",
+  ): CommandResult {
     const runtime = this.engine.getRuntime();
     const previousGameEventCount = runtime.getPublishedGameEvents().length;
     const previousLogCount = runtime.getMoveLogHistory().length;
-    const wasAccepted = this.engine.undo(playerId, prevStateID);
+    const wasAccepted =
+      move === "undo"
+        ? this.engine.undo(playerId, prevStateID)
+        : this.engine.undoToTurnStart(playerId, prevStateID);
 
     if (!wasAccepted) {
       return {
@@ -195,8 +227,8 @@ export class LorcanaServer extends LorcanaEngineBase {
       patches: [],
       gameEvents: runtime.getPublishedGameEvents().slice(previousGameEventCount),
       processedCommand: {
-        commandID: `undo-${playerId}-${qualificationClock()}`,
-        move: "undo",
+        commandID: `${move}-${playerId}-${qualificationClock()}`,
+        move,
       },
       animations: [],
       undoable: false,

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-023",
+  "category": "container",
+  "command": [
+    "node",
+    ".local/upstream-2026-10-13/source-review.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "a45ac4b3794192d560ab7edca23c4b23a27cc9c2",
+  "source_fingerprint": "1a55e13e788a773d39920dc46dfd301f5ca21bcc47e073f0dfe604e027e7c875",
+  "started_at": "2026-10-13T05:05:00.979Z",
+  "finished_at": "2026-10-13T05:05:01.304Z",
+  "recorded_at": "2026-10-13T05:05:01.304Z",
+  "time_precision": "exact",
+  "elapsed_ms": 325,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Complete upstream tree/blob identity, changed-path dispositions, fresh hosted RULE04 metadata and static Lorcana definition/test inventory",
+  "log_path": "docs/validation/logs/RUN-20261013-023.txt",
+  "log_sha256": "0b6674d2f6b6f74132320889168defebed957619ca50f5903770cee2f2566214",
+  "redactions": 0
+}

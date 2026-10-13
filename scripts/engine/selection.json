@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "repository": "https://github.com/TheCardGoat/tcg-engines",
-  "revision": "53a79413c58678b1c50dde57e71de5c123132716",
+  "revision": "6de59de1c203827edc1bc6faa1bc6184cd126a5f",
   "aliases": {
     "#core": "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/index.ts",
     "#core/testing": "submodules/lorcana/packages/lorcana/lorcana-engine/src/core/testing/index.ts",
@@ -54,7 +54,17 @@
     "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/setup/setup.test.ts",
     "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/concede.test.ts",
     "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/forfeit-game.test.ts",
-    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/pass-turn.test.ts"
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/pass-turn.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/end-turn-final-check.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/moves/turn/static-must-quest.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/once-full-resolution.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/once-per-turn-replay.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/support-last-known.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/temporary-stat-zone-change.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/structured-choice-player.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/chosen-player-discard.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/runtime-moves/resolution/action-effects/selection-context.test.ts",
+    "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/hand-look-visibility.test.ts"
   ],
   "test_preloads": [
     "submodules/lorcana/packages/lorcana/lorcana-engine/src/testing/register-matchers.ts"

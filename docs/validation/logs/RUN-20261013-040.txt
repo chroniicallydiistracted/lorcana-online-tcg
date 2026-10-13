@@ -1,0 +1,18 @@
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (44.101696ms)
+✔ completed private archive is immutable across late rejected submissions (8.984927ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (59.660462ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (62.49354ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (31.893662ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (2.034151ms)
+✔ qualification input bounds sparse arrays, aggregate size, keys and accessors before engine execution (10.871203ms)
+✔ synthetic match commands run on Node with player authority, stale rejection, terminal winner and idempotent disposal (15.358716ms)
+✔ October rules and set dates never grant unqualified rules/catalog or hidden/economic admission (1.275568ms)
+✔ built browser assets contain no server configuration or bootstrap credential (10.590606ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 295.911462

@@ -1,0 +1,388 @@
+
+> lorcana-online-tcg@0.0.0 test:rules /workspaces/lorcana-online-tcg
+> node --test tests/rules/scenarios.test.mjs tests/rules/certification.test.mjs
+
+✔ a per-card template cannot be promoted to tested without bound execution and coverage (2.580417ms)
+✔ a forged admission status cannot bypass later queue policies (0.343035ms)
+✔ scenario oracles reject missing or duplicate IDs, wrong rules and missing positive assertions (14.332479ms)
+✔ draft card references cannot borrow a source or hide an ability branch (8.581734ms)
+✔ RULE-04: sourced synthetic quest runs under the compiled Node runtime (1393.042876ms)
+[resolveBag] target validation failed {
+  bagId: 'bag:0:1',
+  playerId: 'p1',
+  sourceCardId: 'hero',
+  effectType: 'optional',
+  errorCode: 'INVALID_ACTION_TARGET',
+  error: 'Target hero is not a legal target',
+  explicitTargets: [ 'hero' ],
+  analysis: {
+    cardCandidates: [ 'friend' ],
+    playerCandidates: [],
+    minSelections: 1,
+    maxSelections: 1,
+    allowDuplicateTargets: false
+  }
+}
+▶ RULE-04 representative sourced runtime scenarios
+  ✔ SCN-001: Quest gains printed lore and exerts the dry character (11.294523ms)
+  ✔ SCN-002: A drying character cannot quest (1.523467ms)
+  ✔ SCN-003: An exerted character cannot quest again (1.001373ms)
+  ✔ SCN-004: An opponent cannot quest with a character they do not control (0.803126ms)
+  ✔ SCN-005: Reaching twenty lore ends the game at the state check (1.952904ms)
+  ✔ SCN-006: Items cannot quest (0.736189ms)
+  ✔ SCN-007: Reckless prevents questing (1.085961ms)
+  ✔ SCN-008: Challenge deals simultaneous strength damage and exerts attacker (6.108422ms)
+  ✔ SCN-009: Ordinary characters cannot challenge ready opposing characters (1.265067ms)
+  ✔ SCN-010: Drying characters without Rush cannot challenge (1.062329ms)
+  ✔ SCN-011: Rush permits a drying character to challenge (4.069006ms)
+  ✔ SCN-012: Evasive blocks a non-Evasive attacker (0.974155ms)
+  ✔ SCN-013: Alert allows challenging an exerted Evasive character (3.068433ms)
+  ✔ SCN-014: Alert does not let its defender evade an ordinary challenge (2.697111ms)
+  ✔ SCN-015: A valid exerted Bodyguard prevents choosing a different character (1.024803ms)
+  ✔ SCN-016: An exerted Bodyguard can be chosen for a challenge (3.628644ms)
+  ✔ SCN-017: Challenger adds strength only while its character challenges (3.816214ms)
+  ✔ SCN-018: Challenger does not add defending damage (3.2106ms)
+  ✔ SCN-019: Resist reduces challenge damage (2.463666ms)
+  ✔ SCN-020: An inkable hand card moves to the inkwell ready (1.797137ms)
+  ✔ SCN-021: A noninkable hand card cannot be inked (0.663905ms)
+  ✔ SCN-022: A second ordinary inking in one turn is rejected (1.316821ms)
+  ✔ SCN-023: Insufficient ink rejects play without partial payment (1.570744ms)
+  ✔ SCN-024: Playing a character pays ink and leaves it drying (3.412751ms)
+  ✔ SCN-025: A stale revision rejects an otherwise legal quest (1.287237ms)
+  ✔ SCN-026: A missing card reference is rejected without mutation (0.629993ms)
+  ✔ SCN-027: An opponent cannot end the active player turn (0.435792ms)
+  ✔ SCN-028: A dry Singer can sing a song above its printed cost (6.932669ms)
+  ✔ SCN-029: A drying character cannot pay a song singing cost (0.823406ms)
+  ✔ SCN-030: Sing Together combines ready singers and exerts both (3.032218ms)
+  ✔ SCN-031: Duplicate singers cannot count twice toward Sing Together (0.61545ms)
+  ✔ SCN-032: Shift inherits drying and damage from its underlying character (4.160863ms)
+  ✔ SCN-033: Shift cannot use an opposing character as its base (0.925321ms)
+  ✔ SCN-034: Boost puts one top card facedown under its character once per turn (5.59776ms)
+  ✔ SCN-035: Ward prevents an opponent choosing the character for an action (1.388511ms)
+  ✔ SCN-036: Lethal challenge damage banishes both characters simultaneously (3.728865ms)
+  ✔ SCN-037: Active player chooses bag order before opponent and normal actions wait (9.101468ms)
+  ✔ SCN-038: Unknown bag IDs reject without removing valid triggered effects (1.784415ms)
+  ✔ SCN-039: An optional triggered effect can be declined without granting its lore (2.38744ms)
+  ✔ SCN-040: An optional triggered effect can be accepted and resolves fully (2.977546ms)
+  ✔ SCN-041: Support permits choosing another character after the quest (8.704533ms)
+  ✔ SCN-042: Support cannot choose the questing character itself (2.527035ms)
+  ✔ SCN-043: Vanish waits for the opposing action to finish before banishing (6.493737ms)
+  ✔ SCN-044: Vanish does not trigger when its controller chooses it with an action (2.825309ms)
+  ✔ SCN-045: Vanish does not trigger for an opposing activated character ability (4.352571ms)
+  ✔ SCN-046: Vanish becomes inapplicable after the action returns its source to hand (5.959132ms)
+  ✔ SCN-047: Vanish waits for all separate action effects before checking its play zone (5.356362ms)
+  ✔ SCN-048: Adventurous prevents challenging even when Rush would allow it (0.898838ms)
+  ✔ SCN-049: A ready Adventurous character that can quest prevents ending the turn (1.225027ms)
+  ✔ SCN-050: A drying Adventurous character cannot quest and does not prevent ending the turn (4.294457ms)
+  ✔ SCN-051: Questing exerts Adventurous and permits ending the turn (3.884348ms)
+  ✔ SCN-052: Adventurous with zero lore still must quest if able (3.775884ms)
+  ✔ SCN-053: Adventurous and Reckless together permit ending the turn because neither action is legal (2.892053ms)
+  ✔ SCN-054: Adventurous can sing and its exerted state permits ending the turn (4.245515ms)
+  ✔ SCN-055: Adventurous can exert for an activated ability instead of questing (2.75146ms)
+  ✔ SCN-056: An effect generates ink-drop counters without adding any ink cards (1.977176ms)
+  ✔ SCN-057: Ink-drop counters pay a character ink cost and are consumed (1.70436ms)
+  ✔ SCN-058: A mixed payment exerts ink cards and consumes only the remaining counters (1.414324ms)
+  ✔ SCN-059: A player can explicitly pay counters while leaving enough ink cards ready (1.276699ms)
+  ✔ SCN-060: A player cannot spend an opponents ink-drop counters (0.451989ms)
+  ✔ SCN-061: Insufficient cards and counters reject without partial consumption (0.430899ms)
+  ✔ SCN-062: Ink-drop counters pay an activated ability ink cost (1.501872ms)
+  ✔ SCN-063: Ink-drop counters pay an alternate Shift ink cost (2.124449ms)
+  ✔ SCN-064: Ink-drop counters pay a location movement ink cost (1.916544ms)
+  ✔ SCN-065: Invalid selected counter payment -1 rejects without mutation (0.612538ms)
+  ✔ SCN-066: Invalid selected counter payment 1.5 rejects without mutation (0.624391ms)
+  ✔ SCN-067: Invalid selected counter payment 3 rejects without mutation (0.541573ms)
+  ✔ SCN-068: One chosen operation queues Vanish and its observer once each (3.020608ms)
+  ✔ SCN-069: A prior Vanish trigger cannot banish a new incarnation of its source (3.763086ms)
+  ✔ SCN-070: Spent counters are removed and cannot pay a second card (1.840079ms)
+  ✔ SCN-071: Unused counters persist across turn changes (2.51938ms)
+  ✔ SCN-072: Setup deals seven, permits mulligans and skips the first draw (6.697865ms)
+  ✔ SCN-073: Deferred targets wait for the chooser and reject unknown targets without mutation (10.393683ms)
+  ✔ SCN-074: Vanish follows an opposing chooser even when the action belongs to its controller (8.173967ms)
+  ✔ SCN-075: Vanish ignores a same-controller chooser even for an opposing action (3.652597ms)
+  ✔ SCN-076: A temporarily granted Adventurous keyword forbids challenging (1.638785ms)
+  ✔ SCN-077: Losing Adventurous permits an otherwise legal challenge (3.192167ms)
+  ✔ SCN-078: Temporarily granted Vanish queues after an opposing choice (5.031345ms)
+  ✔ SCN-079: Losing Vanish prevents its opposing choice trigger (2.170123ms)
+  ✔ SCN-080: Ink-drop counters do not satisfy an ink-card count condition (1.452048ms)
+  ✔ SCN-081: Counter overflow rejects the effect without committing a partial pool (1.148953ms)
+  ✔ SCN-082: Counter generation resolves its dynamic amount using the existing effect context (1.389342ms)
+  ✔ SCN-083: A nested ink cost consumes counters without ready ink cards (3.695419ms)
+  ✔ SCN-084: Turn transition readies cards, dries characters, grants location lore and draws (2.609256ms)
+  ✔ SCN-085: Two distinct choose slots preserve two occurrences when they select the same card (3.271708ms)
+  ✔ SCN-086: Reusing a previously chosen target does not create a second choice (4.373416ms)
+  ✔ SCN-087: A nested cost can select counters and preserve ready ink (1.76518ms)
+  ✔ SCN-088: Separate nested costs consume their own ordered counter selections (2.298556ms)
+  ✔ SCN-089: A single choose slot cannot select one instance twice (0.686118ms)
+  ✔ SCN-090: An excessive explicit nested counter selection rejects with full rollback (0.948461ms)
+  ✔ SCN-091: An unentered cost branch does not consume the next actual payment selection (1.901664ms)
+  ✔ SCN-092: A permanent static loss of Adventurous removes the quest obligation (2.545836ms)
+  ✔ SCN-093: The upstream gain-ink-drop effect credits the controller without creating ink cards (1.974334ms)
+  ✔ SCN-094: Mandatory activated ink-drop costs consume their own pool exactly once (1.638775ms)
+  ✖ SCN-095: gain-ink-drop-counters updates turn metrics and queues its counter-gain observer (2.080247ms)
+  ✔ SCN-096: gain-ink-drop updates turn metrics and queues its counter-gain observer (3.199402ms)
+  ✖ SCN-097: Default drop payment validates and executes the same conditional scry branch (0.984474ms)
+  ✔ SCN-098: Explicit drop payment validates and executes the same conditional scry branch (2.354207ms)
+  ✖ SCN-099: Explicit nested drop payment preserves its played-card condition (3.314763ms)
+  ✖ SCN-100: Default nested drop payment preserves its played-card condition (2.043349ms)
+  ✖ SCN-101: Effect replay starts a fresh once-per-turn source lifetime (8.882493ms)
+  ✖ SCN-102: Effect Shift starts a fresh once-per-turn source lifetime (10.303776ms)
+  ✖ SCN-103: suppressed entry aura respects effective ability state (3.036551ms)
+  ✖ SCN-104: false-condition entry aura respects effective ability state (2.359791ms)
+  ✔ SCN-105: active entry aura respects effective ability state (1.605148ms)
+  ✖ SCN-106: suppressed drop replacement respects effective ability state (3.500131ms)
+  ✖ SCN-107: false-condition drop replacement respects effective ability state (2.033115ms)
+  ✔ SCN-108: active drop replacement respects effective ability state (3.377985ms)
+  ✔ Invalid snapshots are detected independently of move acceptance (3.109706ms)
+  ✔ Choice grouping scopes prior slots and never fabricates a missing choice (0.168205ms)
+✖ RULE-04 representative sourced runtime scenarios (1202.976197ms)
+ℹ tests 116
+ℹ suites 0
+ℹ pass 105
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2863.034631
+
+✖ failing tests:
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-095: gain-ink-drop-counters updates turn metrics and queues its counter-gain observer (2.080247ms)
+  AssertionError [ERR_ASSERTION]: G.turnMetadata.inkDropsGainedThisTurn.p1
+  
+  undefined !== 1
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:44)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:67:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 1,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-097: Default drop payment validates and executes the same conditional scry branch (0.984474ms)
+  AssertionError [ERR_ASSERTION]: playCard: INVALID_RESOLVE_EFFECT_SCRY_DESTINATIONS
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:64:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-099: Explicit nested drop payment preserves its played-card condition (3.314763ms)
+  AssertionError [ERR_ASSERTION]: G.lore.p1
+  
+  1 !== 2
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:44)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:70:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-100: Default nested drop payment preserves its played-card condition (2.043349ms)
+  AssertionError [ERR_ASSERTION]: G.lore.p1
+  
+  1 !== 2
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:44)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:70:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-101: Effect replay starts a fresh once-per-turn source lifetime (8.882493ms)
+  AssertionError [ERR_ASSERTION]: G.triggeredAbilities.bag.items
+  
+  0 !== 1
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:26:17)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:67:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-102: Effect Shift starts a fresh once-per-turn source lifetime (10.303776ms)
+  AssertionError [ERR_ASSERTION]: G.triggeredAbilities.bag.items
+  
+  0 !== 1
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:26:17)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:67:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-103: suppressed entry aura respects effective ability state (3.036551ms)
+  AssertionError [ERR_ASSERTION]: ctx.zones.private.cardMeta.entrant.damage
+  
+  1 !== 0
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:44)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:70:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-104: false-condition entry aura respects effective ability state (2.359791ms)
+  AssertionError [ERR_ASSERTION]: ctx.zones.private.cardMeta.entrant.damage
+  
+  1 !== 0
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:44)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:70:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-106: suppressed drop replacement respects effective ability state (3.500131ms)
+  AssertionError [ERR_ASSERTION]: G.inkDrops.p1
+  
+  0 !== 1
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:44)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:70:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/rules/scenarios.test.mjs:53:53
+✖ SCN-107: false-condition drop replacement respects effective ability state (2.033115ms)
+  AssertionError [ERR_ASSERTION]: G.inkDrops.p1
+  
+  0 !== 1
+  
+      at checks (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:25:44)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:70:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:53:53
+      at async Module.withScenarioRuntime (file:///workspaces/lorcana-online-tcg/scripts/rules/scenario-build.mjs:23:12)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/rules/scenarios.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1409:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Command failed with exit code 1.

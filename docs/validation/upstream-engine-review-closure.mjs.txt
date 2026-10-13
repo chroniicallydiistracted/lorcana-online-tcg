@@ -1,0 +1,57 @@
+import assert from 'node:assert/strict';
+import { readFileSync, readdirSync, lstatSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { inventory, repository, sha256, sourceFingerprint } from '../../scripts/documentation-lib.mjs';
+import { privateRedactionValues } from '../../scripts/evidence-lib.mjs';
+import { scanSecrets } from '../../scripts/ci/security.mjs';
+const expected='4ba45cc4ddaf904fe0d3b433ef7884dba981b0dcc10744bd0327e6a7d28a8b0c';
+assert.equal(sourceFingerprint(repository),expected);
+const git=(args,input)=>{const r=spawnSync('git',args,{cwd:repository,input,maxBuffer:200_000_000});assert.equal(r.status,0,'Git inspection failed');return r.stdout;};
+for(const path of ['.env.local','.local/database.json']) {
+  const stat=lstatSync(join(repository,path));assert(!stat.isSymbolicLink()&&stat.isFile()&&stat.uid===process.getuid()&&(stat.mode&0o777)===0o600,'Private file ownership/mode');
+  assert.equal(spawnSync('git',['check-ignore','-q',path],{cwd:repository}).status,0,'Private file must stay ignored');
+  assert.equal(git(['ls-files','--',path]).length,0,'Private file must stay untracked');
+}
+const knownSecrets=Object.values(privateRedactionValues(repository));
+assert.equal(scanSecrets(inventory().map(path=>({path,bytes:readFileSync(join(repository,path))})),{knownSecrets}).length,0,'Current known/pattern secret scan');
+const memberships=new Map();
+for(const revision of git(['rev-list','--all']).toString().trim().split('\n')) {
+  for(const entry of git(['ls-tree','-rz',revision]).toString().split('\0').filter(Boolean)) {
+    const [metadata,path]=entry.split('\t'),[mode,type,hash]=metadata.split(' ');assert(type==='blob'&&mode!=='120000','Historical regular source only');
+    if(!memberships.has(hash))memberships.set(hash,new Set());memberships.get(hash).add(path);
+  }
+}
+const batch=git(['cat-file','--batch'],Buffer.from([...memberships.keys()].join('\n')+'\n'));let offset=0;
+for(const [hash,paths] of memberships) {
+  const end=batch.indexOf(10,offset),[observed,type,sizeText]=batch.subarray(offset,end).toString().split(' ');assert(observed===hash&&type==='blob','Historical blob identity');const size=Number(sizeText),bytes=batch.subarray(end+1,end+1+size);offset=end+size+2;
+  assert.equal(scanSecrets([...paths].map(path=>({path,bytes})),{knownSecrets}).length,0,'Historical known/pattern secret scan');
+}
+let logs=0;
+for(const file of readdirSync(join(repository,'docs/validation/runs')).filter(name=>name.endsWith('.json'))) {
+  const r=JSON.parse(readFileSync(join(repository,'docs/validation/runs',file)));
+  if(r.log_path){assert.equal(sha256(readFileSync(join(repository,r.log_path))),r.log_sha256,'Captured log digest');logs++;}
+}
+const scope=spawnSync('python3',['-c',`import csv,subprocess,pathlib,io
+base=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show','HEAD:docs/vision/requirements.csv'],text=True))))
+current=list(csv.DictReader(open('docs/vision/requirements.csv')))
+assert len(base)==len(current)==548
+assert len({r['group_id'] for r in current})==33
+assert sum(r['source_optional']=='true' for r in current)==20
+for a,b in zip(base,current):
+ assert all(a[k]==b[k] for k in a if k not in ['ticket_ids','evidence_links'])
+old=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show','HEAD:docs/vision/decision_register.csv'],text=True))))
+new=list(csv.DictReader(open('docs/vision/decision_register.csv')))
+assert old==new
+for path in ['SHA256SUMS.txt','VALIDATION_RESULTS.json','toolchain.json','pnpm-lock.yaml','.devcontainer/Dockerfile','.devcontainer/compose.yaml','.devcontainer/devcontainer.json']:
+ assert pathlib.Path(path).read_bytes()==subprocess.check_output(['git','show','HEAD:'+path])
+print('PASS original548/33/20 and all dispositions, existing Director decisions, archive provenance, lock/toolchain/container preserved; Director decisions unchanged.')`],{cwd:repository,stdio:'inherit'});assert.equal(scope.status,0);
+for(const path of ['/proc/net/tcp','/proc/net/tcp6']) {
+  if(!existsSync(path))continue;
+  for(const line of readFileSync(path,'utf8').split('\n').slice(1)) {const fields=line.trim().split(/\s+/);if(fields[3]==='0A')assert(![5173,3001,3002].includes(parseInt(fields[1].split(':')[1],16)),'Owned foundation listener remains');}
+}
+for(const pid of readdirSync('/proc').filter(name=>/^\d+$/.test(name))) {
+  try {const cmd=readFileSync('/proc/'+pid+'/cmdline','utf8').replaceAll('\0',' ');assert(!/apps\/(?:api|match-service|worker)\/(?:src|dist)\/(?:main|index)\.(?:ts|js)/.test(cmd),'Executable owned service remains');}
+  catch(error){if(error.code!=='ENOENT'&&error.code!=='EACCES')throw error;}
+}
+console.log('PASS private ignored0600 ownership, current/full-history secret scans ('+memberships.size+' unique blobs), '+logs+' immutable log digests, no executable owned services/listeners5173/3001/3002; source '+expected+'.');

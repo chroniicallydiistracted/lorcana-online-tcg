@@ -96,7 +96,7 @@ export interface LorcanaRuntimeMoveParams {
   putCardIntoInkwell: { cardId: CardInstanceId };
 
   // ===== Core Game Moves =====
-  playCard: { cardId: CardInstanceId; effectInkDropCounters?: number[]; inkDropCounters?: number } & PlayCardCost & PlayCardActionResolutionInput;
+  playCard: { cardId: CardInstanceId; effectInkDropCounters?: number[]; inkDrops?: number } & PlayCardCost & PlayCardActionResolutionInput;
   quest: { cardId: CardInstanceId };
   questWithAll: Record<string, never>;
   challenge: { attackerId: CardInstanceId; defenderId: CardInstanceId };
@@ -109,15 +109,17 @@ export interface LorcanaRuntimeMoveParams {
   moveCharacterToLocation: {
     characterId: CardInstanceId;
     locationId: CardInstanceId;
-    effectInkDropCounters?: number[]; inkDropCounters?: number;
+    effectInkDropCounters?: number[]; inkDrops?: number;
   };
 
   // ===== Ability Moves =====
   activateAbility: {
     cardId: CardInstanceId;
-    effectInkDropCounters?: number[]; inkDropCounters?: number;
+    effectInkDropCounters?: number[]; inkDrops?: number;
     abilityIndex?: number;
     abilityText?: string;
+    /** Pay part of the ability's ink cost with ink drops (Hyperia City). */
+    inkDrops?: number;
     targets?: TargetInput;
     /**
      * Structured selections for effect resolution (not printed `costs.*`).
@@ -132,6 +134,7 @@ export interface LorcanaRuntimeMoveParams {
       exertCharacters?: CardInstanceId[];
       exertItems?: CardInstanceId[];
       discardCards?: CardInstanceId[];
+      revealCards?: CardInstanceId[];
     };
   };
 
@@ -157,6 +160,7 @@ export interface LorcanaRuntimeMoveParams {
   manualDryCard: { cardId: CardInstanceId };
   manualSetDamage: { cardId: CardInstanceId; damage: number };
   manualSetLore: { playerId: PlayerId; amount: number };
+  manualSetInkDrops: { playerId: PlayerId; amount: number };
   manualShuffleDeck: { playerId: PlayerId };
   manualPassTurn: Record<string, never>;
 }

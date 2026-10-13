@@ -34,7 +34,7 @@ export function assertScenarioState(state, expectedIds) {
     }
     if (meta.stackParentId) assert(privateZones.cardMeta[meta.stackParentId]?.cardsUnder?.includes(parent), 'Orphan under-card');
   }
-  for (const amount of Object.values(state.G.inkDropCounters ?? {})) assert(Number.isSafeInteger(amount) && amount >= 0, 'Invalid counter pool');
+  for (const amount of Object.values(state.G.inkDrops ?? {})) assert(Number.isSafeInteger(amount) && amount >= 0, 'Invalid counter pool');
 }
 
 export function createScenarioRuntime(fixture) {
@@ -71,7 +71,7 @@ export function createScenarioRuntime(fixture) {
     state.ctx.zones.private.cardMeta[card.id] = { state: 'ready', damage: 0, ...(card.zone === 'play' ? { isDrying: false } : {}), ...card.meta };
   }
   state.G.lore = { p1: 0, p2: 0, ...fixture.lore };
-  if (fixture.inkDropCounters) state.G.inkDropCounters = copy(fixture.inkDropCounters);
+  if (fixture.inkDrops) state.G.inkDrops = copy(fixture.inkDrops);
   state.ctx.status = { ...state.ctx.status, turn: 1, phase: 'main', step: '', gameSegment: 'mainGame', otp: 'p1', choosingFirstPlayer: undefined, pendingMulligan: undefined };
   state.ctx.priority.holder = 'p1';
   state.ctx.priority.windowOpen = true;
@@ -79,6 +79,7 @@ export function createScenarioRuntime(fixture) {
   }
   return {
     snapshot: () => copy(runtime.getState()),
+    project: actor => copy(runtime.getProjectedBoardView({ role: "player", playerID: actor }, { serverTimestamp: now })),
     submit(actor, move, args, revision = runtime.getCurrentStateID(), role = 'player') {
       now += 1;
       const inputArgs = move === 'chooseWhoGoesFirst' ? args : { ...args, playerId: actor };

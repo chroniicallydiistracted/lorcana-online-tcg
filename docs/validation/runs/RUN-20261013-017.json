@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-017",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "a45ac4b3794192d560ab7edca23c4b23a27cc9c2",
+  "source_fingerprint": "83335cb5beff75cc6f39ec99ea4e8f95109356258dc2cdd00e28c81319c508f3",
+  "started_at": "2026-10-13T04:53:22.464Z",
+  "finished_at": "2026-10-13T04:53:25.347Z",
+  "recorded_at": "2026-10-13T04:53:25.347Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2883,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Expected red: new upstream gain-ink-drop effect is not supported by the old pinned runtime",
+  "log_path": "docs/validation/logs/RUN-20261013-017.txt",
+  "log_sha256": "d0b26cebe5a812744fc2f60411515422ef628a70feafeb727a9f31efafca872c",
+  "redactions": 0
+}

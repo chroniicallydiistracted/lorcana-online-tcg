@@ -1,6 +1,6 @@
 import { boundedText, closedRecord, copyInput } from './validation.js';
 export const ENGINE_QUALIFICATION = Object.freeze({
-  revision: '53a79413c58678b1c50dde57e71de5c123132716', catalog: 'synthetic-only', rewards: false,
+  revision: '6de59de1c203827edc1bc6faa1bc6184cd126a5f', catalog: 'synthetic-only', rewards: false,
   rules230EffectiveOn: '2026-10-16', set14PrereleaseOn: '2026-10-16', set14GeneralReleaseOn: '2026-10-23',
   randomQualification: 'server_crypto_v1', rulesCertification: 'pending_RULE-04', viewerProjection: 'pending_PLAY-02',
 });

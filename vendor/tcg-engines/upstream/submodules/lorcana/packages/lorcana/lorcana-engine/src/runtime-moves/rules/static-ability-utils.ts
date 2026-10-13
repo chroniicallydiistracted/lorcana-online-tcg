@@ -340,7 +340,7 @@ function staticEffectContainsRestriction(args: {
 
   if (effect.type === "sequence") {
     const steps = effect.steps ?? effect.effects ?? [];
-    return steps.some((step) =>
+    return steps.some((step: Effect) =>
       staticEffectContainsRestriction({ effect: step, restriction, target }),
     );
   }
@@ -376,7 +376,7 @@ function staticEffectContainsRestriction(args: {
 
   if (effect.type === "or") {
     const options = effect.options ?? effect.choices ?? [];
-    return options.some((option) =>
+    return options.some((option: Effect) =>
       staticEffectContainsRestriction({ effect: option, restriction, target }),
     );
   }
@@ -427,7 +427,7 @@ function staticEffectAppliesCardRestriction(args: {
 
   if (effect.type === "sequence") {
     const steps = effect.steps ?? effect.effects ?? [];
-    return steps.some((step) =>
+    return steps.some((step: Effect) =>
       staticEffectAppliesCardRestriction({
         effect: step,
         restriction,
@@ -483,7 +483,7 @@ function staticEffectAppliesCardRestriction(args: {
 
   if (effect.type === "or") {
     const options = effect.options ?? effect.choices ?? [];
-    return options.some((option) =>
+    return options.some((option: Effect) =>
       staticEffectAppliesCardRestriction({
         effect: option,
         restriction,
@@ -960,7 +960,7 @@ function extractBypassFromEffect(
  *
  * @example Angela - Night Warrior: "Your Gargoyle characters lose the Stone by Day ability."
  */
-function isAbilitySuppressed(args: {
+export function isAbilitySuppressed(args: {
   state: StaticAbilityState;
   targetCardId: CardInstanceId;
   abilityName: string;

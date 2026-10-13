@@ -100,3 +100,7 @@ Findings for later work (neither blocks the representative RULE-04 acceptance; b
 Isolated CI: timing qualification stays pending. RUN011 joins Codex's RUN089/091 as a third complete child pipeline rejected by the unchanged guard, and RUN012 shows the host wall clock is currently being stepped forward. Under the Director's leave-environment instruction no clock, tolerance, service or environment change was made. Hosted GitHub CI for the integrated main commit is the next CI observation.
 
 The D11 selection of Adventurous and ink-drop counters is recorded by Codex. It matches the backlog's new-keyword acceptance and ADR0011, but this auditor did not observe the original instruction.
+
+## Current upstream refresh — 2026-10-13 UTC
+
+The reported static Adventurous-loss end-turn defect is fixed with SCN092, passing under the current120-case suite. Upstream turn enumeration improvements are included. Manual/debug command authority remains unresolved (now including manualSetInkDrops) and must be refused by PLAY-01 server/Lab before any real match. Prior audit failures/results remain exact historical bytes. See [refresh qualification](upstream-engine-review.md) for current evidence and limits.

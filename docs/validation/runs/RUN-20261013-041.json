@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-041",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const args of [[\"db:health\",\"--\",\"--target\",\"local\"],[\"db:health\",\"--\",\"--target\",\"test\"]]){const r=spawnSync(\"pnpm\",args,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}await import(\"./.local/upstream-2026-10-13/closure.mjs\");"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "a45ac4b3794192d560ab7edca23c4b23a27cc9c2",
+  "source_fingerprint": "4ba45cc4ddaf904fe0d3b433ef7884dba981b0dcc10744bd0327e6a7d28a8b0c",
+  "started_at": "2026-10-13T06:05:01.467Z",
+  "finished_at": "2026-10-13T06:05:05.314Z",
+  "recorded_at": "2026-10-13T06:05:05.314Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3847,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Read-only eight restricted local/test identities, private file/scope/history/log integrity and no owned services/listeners at the final source",
+  "log_path": "docs/validation/logs/RUN-20261013-041.txt",
+  "log_sha256": "42e5bd5f65bfbf1e08cf9f7c822ee39c83bcf8498bdbf8b4370fbe5e1081c7c5",
+  "redactions": 0
+}

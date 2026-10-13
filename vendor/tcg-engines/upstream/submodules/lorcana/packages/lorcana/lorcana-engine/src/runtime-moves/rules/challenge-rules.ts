@@ -33,6 +33,7 @@ import {
   hasStaticSelfRestriction,
   getStaticSelfRestrictionBypass,
 } from "./static-ability-utils";
+import { preventsDamageWhileChallenging } from "./challenge-damage-prevention";
 import { getAvailableInk } from "./play-card-rules";
 import {
   getTemporaryAbilityPayload,
@@ -311,6 +312,9 @@ function takesNoDamageFromChallenges(
 ): boolean {
   const currentTurn = getCurrentTurn(ctx);
   const cardMeta = getCardMeta(ctx, cardId);
+
+  if (preventsDamageWhileChallenging(cardMeta, currentTurn, ctx.G.challengeState?.attacker, cardId))
+    return true;
 
   // Unconditional "takes no damage from challenges"
   if (hasTemporaryAbility(cardMeta, currentTurn, "takes-no-damage-from-challenges")) {
@@ -648,6 +652,23 @@ function violatesBodyguardIfAbleRestriction(
   return hasMandatoryBodyguardTarget(ctx, attackerId, defenderOwnerId, registry);
 }
 
+function isDefenderControllerRestricted(
+  ctx: ChallengeIntentContext,
+  attackerId: CardInstanceId,
+  defenderId: CardInstanceId,
+): boolean {
+  const controllerId = getCardsApi(ctx).get(defenderId)?.controllerID;
+  return (
+    controllerId !== undefined &&
+    hasTemporaryRestriction(
+      getCardMeta(ctx, attackerId),
+      getCurrentTurn(ctx),
+      `cant-challenge-player:${controllerId}`,
+      { isSourceInPlay: (sourceId) => isCardInPlayZone(ctx, sourceId) },
+    )
+  );
+}
+
 function isLegalDefenderForAttacker(
   ctx: ChallengeIntentContext,
   attackerId: CardInstanceId,
@@ -673,7 +694,10 @@ function isLegalDefenderForAttacker(
     return false;
   }
 
-  if (cantBeChallenged(ctx, defenderId, attackerId)) {
+  if (
+    isDefenderControllerRestricted(ctx, attackerId, defenderId) ||
+    cantBeChallenged(ctx, defenderId, attackerId)
+  ) {
     return false;
   }
 
@@ -876,6 +900,13 @@ export function validateChallengeAction(ctx: ChallengeValidationContext): Runtim
     return createFailure(
       "Defender must be an opposing character or location",
       "DEFENDER_INVALID_TYPE",
+    );
+  }
+
+  if (isDefenderControllerRestricted(ctx, attackerId, defenderId)) {
+    return createFailure(
+      "Attacker cannot challenge this player’s cards",
+      "ATTACKER_CANT_CHALLENGE",
     );
   }
 

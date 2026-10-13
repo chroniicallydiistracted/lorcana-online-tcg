@@ -13,6 +13,7 @@ import type {
 import type { LogTargetId, ScryDestinationEntry } from "../../types/log-messages";
 import { resolveActionEffect } from "./action-effects/composed-effect-resolver";
 import { isScryEffect, validateScrySelection } from "./action-effects/scry-effect";
+import { scopeResolutionToOpponent } from "./action-effects/for-each-opponent-effect";
 import { buildResolutionSelectionContext } from "./action-effects/selection-context";
 import { resolveRecordedVanishTargets } from "./action-effects/vanish";
 import {
@@ -27,6 +28,7 @@ import {
   flushTriggeredEventsToBag,
   hasPendingBagItems,
   removeBagItemMatchingPendingSource,
+  recordBagEffectResolution,
 } from "../effects/triggered-abilities";
 import { continuePendingChallengeResolution } from "../moves/core/challenge";
 import { continuePendingTurnTransition } from "../moves/turn/pass-turn";
@@ -238,11 +240,16 @@ function getScryDestinationLogLabel(zone: string): string {
 function buildRevealedZoneSet(pendingEffect: PendingActionEffect): Set<string> {
   const revealedZones = new Set<string>();
   const effect = pendingEffect.effect as
-    | { destinations?: Array<{ zone?: unknown; reveal?: unknown }> }
+    | { revealAll?: boolean; destinations?: Array<{ zone?: unknown; reveal?: unknown }> }
     | undefined;
   const effectDestinations = Array.isArray(effect?.destinations) ? effect.destinations : [];
   for (const dest of effectDestinations) {
-    if (dest && typeof dest === "object" && typeof dest.zone === "string" && dest.reveal === true) {
+    if (
+      dest &&
+      typeof dest === "object" &&
+      typeof dest.zone === "string" &&
+      (effect?.revealAll === true || dest.reveal === true)
+    ) {
       revealedZones.add(dest.zone);
     }
   }
@@ -351,8 +358,8 @@ function logResolveEffectMessage(
     // Build a public-only view of the selection, scoped to destinations whose
     // cards were revealed to all players (e.g. "reveal a Toy character and put
     // it into your hand"). Non-chooser viewers still get the revealed cards in
-    // the log; non-revealed destinations (e.g. cards put on the bottom of the
-    // deck) remain hidden.
+    // the log. A revealAll look exposes every destination; bottom destinations
+    // from a private look remain hidden.
     const publicDestinations = selection.destinations.filter((d) => d.revealed === true);
     const publicSelection =
       publicDestinations.length > 0
@@ -415,6 +422,18 @@ function logResolveEffectMessage(
   const projection = (() => {
     switch (pendingEffect.kind) {
       case "discard-choice":
+        if (abilityName) {
+          return createLorcanaLogProjection(
+            "lorcana.effect.resolve.discardChoice.named",
+            {
+              ...common,
+              abilityName,
+              targets: normalizeResolveEffectTargets(getCurrentSelectionInput(resolutionInput)),
+            },
+            visibility,
+            category,
+          );
+        }
         return createLorcanaLogProjection(
           "lorcana.effect.resolve.discardChoice",
           {
@@ -425,6 +444,19 @@ function logResolveEffectMessage(
           category,
         );
       case "target-selection":
+        if (abilityName) {
+          return createLorcanaLogProjection(
+            "lorcana.effect.resolve.targetSelection.named",
+            {
+              ...common,
+              abilityName,
+              targets: selectedTargets,
+              effectType: getPendingEffectLogEffectType(pendingEffect),
+            },
+            visibility,
+            category,
+          );
+        }
         return createLorcanaLogProjection(
           "lorcana.effect.resolve.targetSelection",
           {
@@ -468,7 +500,72 @@ function logResolveEffectMessage(
           category,
         );
       }
-      case "optional-selection":
+      case "optional-selection": {
+        let effect = pendingEffect.effect;
+        while (
+          effect &&
+          typeof effect === "object" &&
+          "type" in effect &&
+          effect.type === "optional" &&
+          "effect" in effect
+        )
+          effect = effect.effect;
+        if (
+          resolutionInput.resolveOptional &&
+          abilityName &&
+          effect &&
+          typeof effect === "object" &&
+          "type" in effect &&
+          effect.type === "play-card" &&
+          "cost" in effect &&
+          effect.cost === "free" &&
+          selectedTargets.length > 0 &&
+          resolutionInput.eventSnapshot?.lastEffectPerformed === true
+        ) {
+          return createLorcanaLogProjection(
+            "lorcana.effect.resolve.optionalSelection.freePlay.named",
+            { ...common, abilityName, targets: selectedTargets },
+            visibility,
+            category,
+          );
+        }
+        if (
+          resolutionInput.resolveOptional &&
+          selectedTargets.length > 0 &&
+          effect &&
+          typeof effect === "object" &&
+          "type" in effect &&
+          effect.type === "return-to-hand" &&
+          pendingEffect.selectionContext?.kind === "target-selection" &&
+          pendingEffect.selectionContext.allowedZones.length === 1 &&
+          pendingEffect.selectionContext.allowedZones[0] === "inkwell"
+        ) {
+          // Choosing facedown ink does not make its identity public, even after
+          // the owner accepted a private look. Keep the result owner-only.
+          for (const cardId of selectedTargets) {
+            ctx.framework.log(
+              createLorcanaLogProjection(
+                "lorcana.outcome.cardReturnedToHand",
+                { playerId: pendingEffect.chooserId, cardId: cardId as CardInstanceId },
+                { mode: "PRIVATE", visibleTo: [pendingEffect.chooserId] },
+                category,
+              ),
+            );
+          }
+          return abilityName
+            ? createLorcanaLogProjection(
+                "lorcana.effect.resolve.optionalSelection.accepted.named",
+                { ...common, abilityName },
+                visibility,
+                category,
+              )
+            : createLorcanaLogProjection(
+                "lorcana.effect.resolve.optionalSelection.accepted",
+                common,
+                visibility,
+                category,
+              );
+        }
         if (resolutionInput.resolveOptional && selectedTargets.length > 0) {
           return abilityName
             ? createLorcanaLogProjection(
@@ -493,6 +590,16 @@ function logResolveEffectMessage(
                 category,
               );
         }
+        if (abilityName) {
+          return createLorcanaLogProjection(
+            resolutionInput.resolveOptional
+              ? "lorcana.effect.resolve.optionalSelection.accepted.named"
+              : "lorcana.effect.resolve.optionalSelection.rejected.named",
+            { ...common, abilityName },
+            visibility,
+            category,
+          );
+        }
         return createLorcanaLogProjection(
           resolutionInput.resolveOptional
             ? "lorcana.effect.resolve.optionalSelection.accepted"
@@ -501,6 +608,7 @@ function logResolveEffectMessage(
           visibility,
           category,
         );
+      }
       case "name-card-selection":
         return createLorcanaLogProjection(
           "lorcana.effect.resolve.nameCardSelection",
@@ -520,7 +628,17 @@ function logResolveEffectMessage(
 }
 
 function getPendingEffectLogEffectType(pendingEffect: PendingActionEffect): string | undefined {
-  const effect = pendingEffect.effect;
+  let effect = pendingEffect.effect;
+  while (
+    effect &&
+    typeof effect === "object" &&
+    !Array.isArray(effect) &&
+    "type" in effect &&
+    effect.type === "optional" &&
+    "effect" in effect
+  ) {
+    effect = effect.effect;
+  }
   if (!effect || typeof effect !== "object" || Array.isArray(effect)) {
     return undefined;
   }
@@ -833,6 +951,11 @@ function validatePendingEffectParams(
         {
           currentPlayer: pendingEffect.chooserId,
           ctx,
+          sourceCardId: pendingEffect.sourceCardId,
+          movementTargetDsl:
+            targetSelectionContext?.expectedSlottedKind === "move-to-location"
+              ? targetSelectionContext.targetDsl
+              : undefined,
         },
       );
       if (!targetValidation.valid) {
@@ -846,6 +969,20 @@ function validatePendingEffectParams(
       valid: false,
       error: "resolveEffect requires choiceIndex for this pending effect",
       errorCode: "RESOLVE_EFFECT_CHOICE_REQUIRED",
+    };
+  }
+
+  if (
+    pendingEffect.kind === "choice-selection" &&
+    pendingEffect.selectionContext?.kind === "choice-selection" &&
+    !pendingEffect.selectionContext.options.some(
+      (option) => option.index === normalizedParams.choiceIndex,
+    )
+  ) {
+    return {
+      valid: false,
+      error: "resolveEffect choiceIndex must identify an existing choice",
+      errorCode: "INVALID_RESOLVE_EFFECT_CHOICE_INDEX",
     };
   }
 
@@ -868,6 +1005,21 @@ function validatePendingEffectParams(
     const optionalEffect = pendingEffect.effect as Record<string, unknown> | null | undefined;
     const innerEffect = optionalEffect?.effect;
     if (innerEffect) {
+      const innerRecord = innerEffect as { type?: unknown; chosen?: unknown };
+      if (
+        innerRecord.type === "discard" &&
+        innerRecord.chosen === true &&
+        normalizeResolveEffectTargets(normalizedTargets).some(
+          (id) =>
+            ctx.framework.zones.getCardOwner(id as CardInstanceId) !== pendingEffect.chooserId,
+        )
+      ) {
+        return {
+          valid: false,
+          error: "A player must choose their own card to discard",
+          errorCode: "INVALID_ACTION_TARGET" as const,
+        };
+      }
       const innerAnalysis = analyzeEffectTargets(
         innerEffect,
         pendingEffect.controllerId,
@@ -1073,6 +1225,11 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
       };
     }
 
+    ctx = scopeResolutionToOpponent(
+      ctx,
+      pendingEffect.cardPlayed,
+      pendingEffect.resolutionInput ?? {},
+    );
     const actorId = ctx.playerId;
     // Check only chooserId: for opponent-choice effects (e.g. Hades), pendingChoice.playerID
     // is the chooser (e.g. opponent P2), not the controller. The chooserId is authoritative.
@@ -1246,6 +1403,7 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
             originatesFromOptional: resolutionInput.resolveOptional === true,
           }),
         });
+        stagedPendingEffect.bagUsage = pendingEffect.bagUsage;
         enqueuePendingActionEffect(ctx, stagedPendingEffect);
         logResolveEffectMessage(ctx, pendingEffect, resolutionInput);
 
@@ -1311,6 +1469,7 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
     }
 
     if (result.status === "suspended") {
+      result.pendingEffect.bagUsage = pendingEffect.bagUsage;
       traceLorcanaRuntimeStep({
         kind: "effect.resolution.suspended",
         moveId: "resolveEffect",
@@ -1325,6 +1484,9 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
 
     const remainingEffects = pendingEffect.continuation?.remainingEffects ?? [];
     if (remainingEffects.length === 0) {
+      if (pendingEffect.bagUsage && resolutionInput.eventSnapshot?.abilityFullyResolved !== false) {
+        recordBagEffectResolution(ctx, pendingEffect.bagUsage);
+      }
       resolveRecordedVanishTargets(ctx, pendingEffect.cardPlayed, resolutionInput);
       finalizeResolvedActionCard(ctx, pendingEffect.cardPlayed);
       traceLorcanaRuntimeStep({
@@ -1347,6 +1509,10 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
       return;
     }
 
+    const continuationResolutionInput = buildContinuationResolutionInput(
+      pendingEffect,
+      resolutionInput,
+    );
     const continuationResult = resolveActionEffect(
       ctx,
       pendingEffect.cardPlayed,
@@ -1354,7 +1520,7 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
         type: "sequence",
         steps: remainingEffects,
       },
-      buildContinuationResolutionInput(pendingEffect, resolutionInput),
+      continuationResolutionInput,
       {
         allowPromptForExistingChosenTargets: true,
         sourceAbilityIndex: pendingEffect.abilityIndex,
@@ -1364,6 +1530,7 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
       },
     );
     if (continuationResult.status === "suspended") {
+      continuationResult.pendingEffect.bagUsage = pendingEffect.bagUsage;
       traceLorcanaRuntimeStep({
         kind: "effect.resolution.suspended",
         moveId: "resolveEffect",
@@ -1376,6 +1543,12 @@ export const resolveEffect: LorcanaMoveDefinition<"resolveEffect"> = {
       return;
     }
 
+    if (
+      pendingEffect.bagUsage &&
+      continuationResolutionInput.eventSnapshot?.abilityFullyResolved !== false
+    ) {
+      recordBagEffectResolution(ctx, pendingEffect.bagUsage);
+    }
     resolveRecordedVanishTargets(ctx, pendingEffect.cardPlayed, resolutionInput);
     finalizeResolvedActionCard(ctx, pendingEffect.cardPlayed);
     traceLorcanaRuntimeStep({

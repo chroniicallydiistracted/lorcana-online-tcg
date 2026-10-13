@@ -44,7 +44,11 @@ export const lorcanaRuntimeConfig: MatchRuntimeConfig = {
       throw new Error("Lorcana requires exactly 2 players");
     }
 
-    return createInitialLorcanaG(players[0].id as PlayerId, players[1].id as PlayerId);
+    return createInitialLorcanaG(
+      players[0].id as PlayerId,
+      players[1].id as PlayerId,
+      ...players.slice(2).map((player) => player.id as PlayerId),
+    );
   },
 
   boardSetup: (draft: Draft<MatchState>, ctx: BoardSetupContext) => {

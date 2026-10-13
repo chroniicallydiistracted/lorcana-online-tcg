@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Representative synthetic runtime certification; no admitted cards or complete-rules claim",
-  "engine_revision": "53a79413c58678b1c50dde57e71de5c123132716",
+  "engine_revision": "6de59de1c203827edc1bc6faa1bc6184cd126a5f",
   "scenarios": [
     {
       "id": "SCN-001",
@@ -3598,7 +3598,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 3
         },
         {
@@ -3629,7 +3629,7 @@
             "cost": 2
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 3,
           "p2": 0
         }
@@ -3648,7 +3648,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 1
         },
         {
@@ -3686,7 +3686,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 3,
           "p2": 0
         }
@@ -3705,7 +3705,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 1
         },
         {
@@ -3741,7 +3741,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2,
           "p2": 0
         }
@@ -3752,7 +3752,7 @@
           "args": {
             "cardId": "hero",
             "cost": "standard",
-            "inkDropCounters": 1
+            "inkDrops": 1
           },
           "accepted": true,
           "actor": "p1",
@@ -3761,7 +3761,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 1
         },
         {
@@ -3791,7 +3791,7 @@
             "cost": 1
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 0,
           "p2": 3
         }
@@ -3836,7 +3836,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 1,
           "p2": 0
         }
@@ -3890,7 +3890,7 @@
             ]
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2,
           "p2": 0
         }
@@ -3909,7 +3909,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 0
         },
         {
@@ -3959,7 +3959,7 @@
             ]
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2,
           "p2": 0
         }
@@ -3979,7 +3979,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 0
         },
         {
@@ -4020,7 +4020,7 @@
             "lore": 0
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2,
           "p2": 0
         }
@@ -4039,7 +4039,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 0
         },
         {
@@ -4075,7 +4075,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2,
           "p2": 0
         }
@@ -4086,7 +4086,7 @@
           "args": {
             "cardId": "hero",
             "cost": "standard",
-            "inkDropCounters": -1
+            "inkDrops": -1
           },
           "accepted": false,
           "actor": "p1",
@@ -4122,7 +4122,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2,
           "p2": 0
         }
@@ -4133,7 +4133,7 @@
           "args": {
             "cardId": "hero",
             "cost": "standard",
-            "inkDropCounters": 1.5
+            "inkDrops": 1.5
           },
           "accepted": false,
           "actor": "p1",
@@ -4169,7 +4169,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2,
           "p2": 0
         }
@@ -4180,7 +4180,7 @@
           "args": {
             "cardId": "hero",
             "cost": "standard",
-            "inkDropCounters": 3
+            "inkDrops": 3
           },
           "accepted": false,
           "actor": "p1",
@@ -4428,7 +4428,7 @@
             "cost": 2
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 3,
           "p2": 0
         }
@@ -4457,7 +4457,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 1
         },
         {
@@ -4490,7 +4490,7 @@
             "cost": 2
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 3,
           "p2": 0
         }
@@ -4506,7 +4506,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 3
         },
         {
@@ -5505,7 +5505,7 @@
             ]
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 3
         }
       },
@@ -5527,7 +5527,7 @@
           "equals": 0
         },
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 3
         }
       ]
@@ -5565,7 +5565,7 @@
             ]
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 9007199254740991
         }
       },
@@ -5583,7 +5583,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 9007199254740991
         }
       ]
@@ -5644,7 +5644,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 1
         },
         {
@@ -5692,7 +5692,7 @@
             ]
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2
         }
       },
@@ -5710,7 +5710,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 0
         },
         {
@@ -6042,7 +6042,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2
         }
       },
@@ -6063,7 +6063,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 0
         },
         {
@@ -6145,7 +6145,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2
         }
       },
@@ -6167,7 +6167,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 1
         },
         {
@@ -6311,7 +6311,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 2
         }
       },
@@ -6332,7 +6332,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 2
         }
       ]
@@ -6407,7 +6407,7 @@
             "zone": "inkwell"
           }
         ],
-        "inkDropCounters": {
+        "inkDrops": {
           "p1": 1
         }
       },
@@ -6428,7 +6428,7 @@
       ],
       "checks": [
         {
-          "path": "G.inkDropCounters.p1",
+          "path": "G.inkDrops.p1",
           "equals": 0
         },
         {
@@ -6438,6 +6438,2885 @@
         {
           "path": "ctx.zones.private.cardMeta.ink1.state",
           "equals": "ready"
+        }
+      ]
+    },
+    {
+      "id": "SCN-092",
+      "title": "A permanent static loss of Adventurous removes the quest obligation",
+      "expectation": "The active controller may end the turn when a static effect removes Adventurous from its otherwise eligible character.",
+      "category": "new_keyword",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "8.16.3"
+      ],
+      "keywords": [
+        "Adventurous"
+      ],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Adventurous"
+              },
+              {
+                "type": "static",
+                "effect": {
+                  "type": "lose-keyword",
+                  "keyword": "Adventurous",
+                  "target": "SELF"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "passTurn",
+          "args": {},
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.status.turnOwnerId",
+          "equals": "p2"
+        }
+      ]
+    },
+    {
+      "id": "SCN-093",
+      "title": "The upstream gain-ink-drop effect credits the controller without creating ink cards",
+      "expectation": "The native upstream effect uses the same safe counter pool as existing generation and payment.",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop",
+                  "amount": 3,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "actor": "p1",
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 3
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-094",
+      "title": "Mandatory activated ink-drop costs consume their own pool exactly once",
+      "expectation": "A mandatory two-drop activation pays both counters; repeating with no counters rejects without mutation.",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 2,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "activated",
+                "cost": {
+                  "inkDrops": 2
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.inkDrops.p1",
+              "equals": 0
+            },
+            {
+              "path": "G.lore.p1",
+              "equals": 1
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-095",
+      "title": "gain-ink-drop-counters updates turn metrics and queues its counter-gain observer",
+      "expectation": "gain-ink-drop-counters updates turn metrics and queues its counter-gain observer",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "watcher",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "triggered",
+                "trigger": {
+                  "event": "ink-drop-gained",
+                  "on": "YOU",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop-counters",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.turnMetadata.inkDropsGainedThisTurn.p1",
+              "equals": 1
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "watcher"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-096",
+      "title": "gain-ink-drop updates turn metrics and queues its counter-gain observer",
+      "expectation": "gain-ink-drop updates turn metrics and queues its counter-gain observer",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "watcher",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "triggered",
+                "trigger": {
+                  "event": "ink-drop-gained",
+                  "on": "YOU",
+                  "timing": "whenever"
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.turnMetadata.inkDropsGainedThisTurn.p1",
+              "equals": 1
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "watcher"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-097",
+      "title": "Default drop payment validates and executes the same conditional scry branch",
+      "expectation": "Default drop payment validates and executes the same conditional scry branch",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 1,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "conditional",
+                  "condition": {
+                    "type": "play-context",
+                    "context": "paid-with-ink-drop"
+                  },
+                  "then": {
+                    "type": "scry",
+                    "amount": 2,
+                    "destinations": [
+                      {
+                        "zone": "hand",
+                        "min": 1,
+                        "max": 1
+                      },
+                      {
+                        "zone": "deck-bottom",
+                        "remainder": true
+                      }
+                    ]
+                  },
+                  "else": {
+                    "type": "scry",
+                    "amount": 1,
+                    "destinations": [
+                      {
+                        "zone": "deck-bottom",
+                        "remainder": true
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "third",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "second",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "first",
+            "owner": "p1",
+            "zone": "deck"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "destinations": [
+              {
+                "zone": "hand",
+                "cards": [
+                  "first"
+                ]
+              },
+              {
+                "zone": "deck-bottom",
+                "cards": [
+                  "second"
+                ]
+              }
+            ]
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.hand:p1",
+          "equals": [
+            "first"
+          ]
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.deck:p1",
+          "equals": [
+            "second",
+            "third"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-098",
+      "title": "Explicit drop payment validates and executes the same conditional scry branch",
+      "expectation": "Explicit drop payment validates and executes the same conditional scry branch",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 1,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "conditional",
+                  "condition": {
+                    "type": "play-context",
+                    "context": "paid-with-ink-drop"
+                  },
+                  "then": {
+                    "type": "scry",
+                    "amount": 2,
+                    "destinations": [
+                      {
+                        "zone": "hand",
+                        "min": 1,
+                        "max": 1
+                      },
+                      {
+                        "zone": "deck-bottom",
+                        "remainder": true
+                      }
+                    ]
+                  },
+                  "else": {
+                    "type": "scry",
+                    "amount": 1,
+                    "destinations": [
+                      {
+                        "zone": "deck-bottom",
+                        "remainder": true
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "third",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "second",
+            "owner": "p1",
+            "zone": "deck"
+          },
+          {
+            "id": "first",
+            "owner": "p1",
+            "zone": "deck"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "destinations": [
+              {
+                "zone": "hand",
+                "cards": [
+                  "first"
+                ]
+              },
+              {
+                "zone": "deck-bottom",
+                "cards": [
+                  "second"
+                ]
+              }
+            ],
+            "inkDrops": 1
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.hand:p1",
+          "equals": [
+            "first"
+          ]
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.deck:p1",
+          "equals": [
+            "second",
+            "third"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCN-099",
+      "title": "Explicit nested drop payment preserves its played-card condition",
+      "expectation": "Explicit nested drop payment preserves its played-card condition",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "outer",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "play-card",
+                  "from": "hand",
+                  "cardType": "action",
+                  "cost": "standard"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nested",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 1,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "conditional",
+                  "condition": {
+                    "type": "play-context",
+                    "context": "paid-with-ink-drop"
+                  },
+                  "then": {
+                    "type": "gain-lore",
+                    "amount": 2,
+                    "target": "CONTROLLER"
+                  },
+                  "else": {
+                    "type": "gain-lore",
+                    "amount": 1,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "outer",
+            "cost": "standard",
+            "targets": [
+              "nested"
+            ],
+            "effectInkDropCounters": [
+              1
+            ]
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        },
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-100",
+      "title": "Default nested drop payment preserves its played-card condition",
+      "expectation": "Default nested drop payment preserves its played-card condition",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "outer",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "play-card",
+                  "from": "hand",
+                  "cardType": "action",
+                  "cost": "standard"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nested",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 1,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "conditional",
+                  "condition": {
+                    "type": "play-context",
+                    "context": "paid-with-ink-drop"
+                  },
+                  "then": {
+                    "type": "gain-lore",
+                    "amount": 2,
+                    "target": "CONTROLLER"
+                  },
+                  "else": {
+                    "type": "gain-lore",
+                    "amount": 1,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "outer",
+            "cost": "standard",
+            "targets": [
+              "nested"
+            ]
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        },
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-101",
+      "title": "Effect replay starts a fresh once-per-turn source lifetime",
+      "expectation": "Effect replay starts a fresh once-per-turn source lifetime",
+      "category": "effect_bag",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "7.1.6",
+        "6.1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "id": "once",
+                "type": "triggered",
+                "trigger": {
+                  "event": "play",
+                  "on": {
+                    "cardType": "song",
+                    "controller": "you"
+                  },
+                  "timing": "whenever",
+                  "restrictions": [
+                    {
+                      "type": "once-per-turn"
+                    }
+                  ]
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ],
+            "name": "Replayed"
+          },
+          {
+            "id": "song1",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [],
+            "actionSubtype": "song"
+          },
+          {
+            "id": "song2",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [],
+            "actionSubtype": "song"
+          },
+          {
+            "id": "song3",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [],
+            "actionSubtype": "song"
+          },
+          {
+            "id": "bounce",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "return-to-hand",
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "replay",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "play-card",
+                  "from": "hand",
+                  "cardType": "character",
+                  "cost": "free"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song1",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.lore.p1",
+              "equals": 1
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "bounce",
+            "cost": "standard",
+            "targets": [
+              "hero"
+            ]
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "replay",
+            "cost": "standard",
+            "targets": [
+              "hero"
+            ]
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song2",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.lore.p1",
+              "equals": 2
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song3",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-102",
+      "title": "Effect Shift starts a fresh once-per-turn source lifetime",
+      "expectation": "Effect Shift starts a fresh once-per-turn source lifetime",
+      "category": "effect_bag",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "7.1.6",
+        "6.1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Shift",
+                "shiftTarget": "Replayed",
+                "cost": {
+                  "ink": 1
+                }
+              },
+              {
+                "id": "once",
+                "type": "triggered",
+                "trigger": {
+                  "event": "play",
+                  "on": {
+                    "cardType": "song",
+                    "controller": "you"
+                  },
+                  "timing": "whenever",
+                  "restrictions": [
+                    {
+                      "type": "once-per-turn"
+                    }
+                  ]
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ],
+            "name": "Replayed"
+          },
+          {
+            "id": "song1",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [],
+            "actionSubtype": "song"
+          },
+          {
+            "id": "song2",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [],
+            "actionSubtype": "song"
+          },
+          {
+            "id": "song3",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [],
+            "actionSubtype": "song"
+          },
+          {
+            "id": "bounce",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "banish",
+                  "target": "CHOSEN_CHARACTER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "replay",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "play-card",
+                  "from": "discard",
+                  "cardType": "character",
+                  "cost": "free",
+                  "playMethod": "shift"
+                }
+              }
+            ]
+          },
+          {
+            "id": "base",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [],
+            "name": "Replayed"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song1",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.lore.p1",
+              "equals": 1
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "bounce",
+            "cost": "standard",
+            "targets": [
+              "hero"
+            ]
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "replay",
+            "cost": "standard",
+            "targets": [
+              "hero"
+            ]
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song2",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "resolveBag",
+          "args": {
+            "bagId": {
+              "bag_source": "hero"
+            },
+            "params": {}
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.lore.p1",
+              "equals": 2
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "song3",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.triggeredAbilities.bag.items",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.base.stackParentId",
+          "equals": "hero"
+        }
+      ]
+    },
+    {
+      "id": "SCN-103",
+      "title": "suppressed entry aura respects effective ability state",
+      "expectation": "suppressed entry aura respects effective ability state",
+      "category": "effect_bag",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "aura",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "ENTRY TAX",
+                "effect": {
+                  "type": "enters-with-damage",
+                  "amount": 1,
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "opponent",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ],
+                    "filter": [
+                      {
+                        "type": "has-keyword",
+                        "keyword": "Singer"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "entrant",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Singer",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "suppressor",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "effect": {
+                  "type": "suppress-ability",
+                  "abilityName": "ENTRY TAX",
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "you",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "entrant",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.entrant.damage",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-104",
+      "title": "false-condition entry aura respects effective ability state",
+      "expectation": "false-condition entry aura respects effective ability state",
+      "category": "effect_bag",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "aura",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "ENTRY TAX",
+                "effect": {
+                  "type": "enters-with-damage",
+                  "amount": 1,
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "opponent",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ],
+                    "filter": [
+                      {
+                        "type": "has-keyword",
+                        "keyword": "Singer"
+                      }
+                    ]
+                  }
+                },
+                "condition": {
+                  "type": "resource-count",
+                  "what": "cards-in-hand",
+                  "controller": "you",
+                  "comparison": "greater-or-equal",
+                  "value": 99
+                }
+              }
+            ]
+          },
+          {
+            "id": "entrant",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Singer",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "entrant",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.entrant.damage",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-105",
+      "title": "active entry aura respects effective ability state",
+      "expectation": "active entry aura respects effective ability state",
+      "category": "effect_bag",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "aura",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "ENTRY TAX",
+                "effect": {
+                  "type": "enters-with-damage",
+                  "amount": 1,
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "opponent",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ],
+                    "filter": [
+                      {
+                        "type": "has-keyword",
+                        "keyword": "Singer"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "entrant",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Singer",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "entrant",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.entrant.damage",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-106",
+      "title": "suppressed drop replacement respects effective ability state",
+      "expectation": "suppressed drop replacement respects effective ability state",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2",
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "replacer",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "REPLACE DROP",
+                "effect": {
+                  "type": "restriction",
+                  "restriction": "would-gain-ink-drop-replacement",
+                  "target": "SELF"
+                }
+              }
+            ]
+          },
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          },
+          {
+            "id": "suppressor",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "effect": {
+                  "type": "suppress-ability",
+                  "abilityName": "REPLACE DROP",
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "you",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.pendingEffects",
+          "count": 0
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-107",
+      "title": "false-condition drop replacement respects effective ability state",
+      "expectation": "false-condition drop replacement respects effective ability state",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2",
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "replacer",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "REPLACE DROP",
+                "effect": {
+                  "type": "restriction",
+                  "restriction": "would-gain-ink-drop-replacement",
+                  "target": "SELF"
+                },
+                "condition": {
+                  "type": "resource-count",
+                  "what": "cards-in-hand",
+                  "controller": "you",
+                  "comparison": "greater-or-equal",
+                  "value": 99
+                }
+              }
+            ]
+          },
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.pendingEffects",
+          "count": 0
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-108",
+      "title": "active drop replacement respects effective ability state",
+      "expectation": "active drop replacement respects effective ability state",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2",
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "replacer",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "REPLACE DROP",
+                "effect": {
+                  "type": "restriction",
+                  "restriction": "would-gain-ink-drop-replacement",
+                  "target": "SELF"
+                }
+              }
+            ]
+          },
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        },
+        {
+          "actor": "p1",
+          "move": "resolveEffect",
+          "args": {
+            "effectId": {
+              "pending_index": 0
+            },
+            "params": {
+              "choiceIndex": 1
+            }
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.pendingEffects",
+          "count": 0
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-109",
+      "title": "Projected restrictions and quest payment agree on the controller-owned drop pool",
+      "expectation": "Projected restrictions and quest payment agree on the controller-owned drop pool",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 7
+        },
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "static",
+                "effect": {
+                  "type": "restriction",
+                  "target": "SELF",
+                  "restriction": "cant-quest-or-challenge",
+                  "bypass": {
+                    "cost": {
+                      "ink": 1
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.inkDrops.p2",
+          "equals": 7
+        }
+      ],
+      "projection_checks": [
+        {
+          "path": "cards.hero.hasQuestRestriction",
+          "equals": false
+        },
+        {
+          "path": "cards.hero.hasChallengeRestriction",
+          "equals": false
+        }
+      ]
+    },
+    {
+      "id": "SCN-110",
+      "title": "Projected restrictions and challenge payment agree on the controller-owned drop pool",
+      "expectation": "Projected restrictions and challenge payment agree on the controller-owned drop pool",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 7
+        },
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "static",
+                "effect": {
+                  "type": "restriction",
+                  "target": "SELF",
+                  "restriction": "cant-quest-or-challenge",
+                  "bypass": {
+                    "cost": {
+                      "ink": 1
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "challenge",
+          "args": {
+            "attackerId": "hero",
+            "defenderId": "enemy"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.inkDrops.p2",
+          "equals": 7
+        }
+      ],
+      "projection_checks": [
+        {
+          "path": "cards.hero.hasQuestRestriction",
+          "equals": false
+        },
+        {
+          "path": "cards.hero.hasChallengeRestriction",
+          "equals": false
+        }
+      ]
+    },
+    {
+      "id": "SCN-111",
+      "title": "Projected restrictions and quest payment agree on the controller-owned drop pool",
+      "expectation": "Projected restrictions and quest payment agree on the controller-owned drop pool",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 0,
+          "p2": 7
+        },
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "static",
+                "effect": {
+                  "type": "restriction",
+                  "target": "SELF",
+                  "restriction": "cant-quest-or-challenge",
+                  "bypass": {
+                    "cost": {
+                      "ink": 1
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "enemy",
+            "owner": "p2",
+            "zone": "play",
+            "meta": {
+              "state": "exerted"
+            }
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "quest",
+          "args": {
+            "cardId": "hero"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.inkDrops.p2",
+          "equals": 7
+        }
+      ],
+      "projection_checks": [
+        {
+          "path": "cards.hero.hasQuestRestriction",
+          "equals": true
+        },
+        {
+          "path": "cards.hero.hasChallengeRestriction",
+          "equals": true
+        }
+      ]
+    },
+    {
+      "id": "SCN-112",
+      "title": "Native counter overflow rejects without partially committing the pool",
+      "expectation": "Native counter overflow rejects without partially committing the pool",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 9007199254740991,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "SCN-113",
+      "title": "Mandatory and ordinary ink payments cannot reuse a single counter (pool 1)",
+      "expectation": "Mandatory and ordinary ink payments cannot reuse a single counter (pool 1)",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "activated",
+                "cost": {
+                  "ink": 1,
+                  "inkDrops": 1
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 2,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0
+          },
+          "accepted": false,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-114",
+      "title": "Mandatory and ordinary ink payments cannot reuse a single counter (pool 2)",
+      "expectation": "Mandatory and ordinary ink payments cannot reuse a single counter (pool 2)",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 2,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "hero",
+            "owner": "p1",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "activated",
+                "cost": {
+                  "ink": 1,
+                  "inkDrops": 1
+                },
+                "effect": {
+                  "type": "gain-lore",
+                  "amount": 2,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "activateAbility",
+          "args": {
+            "cardId": "hero",
+            "abilityIndex": 0
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        },
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        }
+      ]
+    },
+    {
+      "id": "SCN-115",
+      "title": "Default payment includes static cost increase in both validation and execution",
+      "expectation": "Default payment includes static cost increase in both validation and execution",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.3.2.4",
+        "1.13.1.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 1,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "conditional",
+                  "condition": {
+                    "type": "play-context",
+                    "context": "paid-with-ink-drop"
+                  },
+                  "then": {
+                    "type": "gain-lore",
+                    "amount": 2,
+                    "target": "CONTROLLER"
+                  },
+                  "else": {
+                    "type": "gain-lore",
+                    "amount": 1,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          },
+          {
+            "id": "tax",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "static",
+                "effect": {
+                  "type": "cost-increase",
+                  "amount": 1,
+                  "cardType": "action"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        },
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink.state",
+          "equals": "exerted"
+        }
+      ]
+    },
+    {
+      "id": "SCN-116",
+      "title": "Explicit payment includes static cost increase in both validation and execution",
+      "expectation": "Explicit payment includes static cost increase in both validation and execution",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "4.3.2.4",
+        "1.13.1.2"
+      ],
+      "keywords": [],
+      "fixture": {
+        "inkDrops": {
+          "p1": 1,
+          "p2": 0
+        },
+        "cards": [
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 1,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "conditional",
+                  "condition": {
+                    "type": "play-context",
+                    "context": "paid-with-ink-drop"
+                  },
+                  "then": {
+                    "type": "gain-lore",
+                    "amount": 2,
+                    "target": "CONTROLLER"
+                  },
+                  "else": {
+                    "type": "gain-lore",
+                    "amount": 1,
+                    "target": "CONTROLLER"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "ink",
+            "owner": "p1",
+            "zone": "inkwell"
+          },
+          {
+            "id": "tax",
+            "owner": "p2",
+            "zone": "play",
+            "abilities": [
+              {
+                "type": "static",
+                "effect": {
+                  "type": "cost-increase",
+                  "amount": 1,
+                  "cardType": "action"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard",
+            "inkDrops": 1
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.lore.p1",
+          "equals": 2
+        },
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 0
+        },
+        {
+          "path": "ctx.zones.private.cardMeta.ink.state",
+          "equals": "exerted"
+        }
+      ]
+    },
+    {
+      "id": "SCN-117",
+      "title": "Entry aura evaluates its source-owned G counter condition (pool 1)",
+      "expectation": "Entry aura evaluates its source-owned G counter condition (pool 1)",
+      "category": "effect_bag",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "aura",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "ENTRY TAX",
+                "effect": {
+                  "type": "enters-with-damage",
+                  "amount": 1,
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "opponent",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ],
+                    "filter": [
+                      {
+                        "type": "has-keyword",
+                        "keyword": "Singer"
+                      }
+                    ]
+                  }
+                },
+                "condition": {
+                  "type": "resource-count",
+                  "what": "ink-drops",
+                  "controller": "you",
+                  "comparison": "greater-or-equal",
+                  "value": 1
+                }
+              }
+            ]
+          },
+          {
+            "id": "entrant",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Singer",
+                "value": 1
+              }
+            ]
+          }
+        ],
+        "inkDrops": {
+          "p1": 7,
+          "p2": 1
+        }
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "entrant",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.entrant.damage",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "id": "SCN-118",
+      "title": "Entry aura evaluates its source-owned G counter condition (pool 0)",
+      "expectation": "Entry aura evaluates its source-owned G counter condition (pool 0)",
+      "category": "effect_bag",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "aura",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "ENTRY TAX",
+                "effect": {
+                  "type": "enters-with-damage",
+                  "amount": 1,
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "opponent",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ],
+                    "filter": [
+                      {
+                        "type": "has-keyword",
+                        "keyword": "Singer"
+                      }
+                    ]
+                  }
+                },
+                "condition": {
+                  "type": "resource-count",
+                  "what": "ink-drops",
+                  "controller": "you",
+                  "comparison": "greater-or-equal",
+                  "value": 1
+                }
+              }
+            ]
+          },
+          {
+            "id": "entrant",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Singer",
+                "value": 1
+              }
+            ]
+          }
+        ],
+        "inkDrops": {
+          "p1": 7,
+          "p2": 0
+        }
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "entrant",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.entrant.damage",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-119",
+      "title": "A counter-conditioned suppressor uses complete source G state",
+      "expectation": "A counter-conditioned suppressor uses complete source G state",
+      "category": "effect_bag",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "aura",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "ENTRY TAX",
+                "effect": {
+                  "type": "enters-with-damage",
+                  "amount": 1,
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "opponent",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ],
+                    "filter": [
+                      {
+                        "type": "has-keyword",
+                        "keyword": "Singer"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "entrant",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "keyword",
+                "keyword": "Singer",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "suppressor",
+            "owner": "p2",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "effect": {
+                  "type": "suppress-ability",
+                  "abilityName": "ENTRY TAX",
+                  "target": {
+                    "selector": "all",
+                    "count": "all",
+                    "owner": "you",
+                    "zones": [
+                      "play"
+                    ],
+                    "cardTypes": [
+                      "character"
+                    ]
+                  }
+                },
+                "condition": {
+                  "type": "resource-count",
+                  "what": "ink-drops",
+                  "controller": "you",
+                  "comparison": "greater-or-equal",
+                  "value": 1
+                }
+              }
+            ]
+          }
+        ],
+        "inkDrops": {
+          "p1": 0,
+          "p2": 1
+        }
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "entrant",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "ctx.zones.private.cardMeta.entrant.damage",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "SCN-120",
+      "title": "Legacy counter generation offers the same active replacement choice",
+      "expectation": "Legacy counter generation offers the same active replacement choice",
+      "category": "counters",
+      "rules_versions": [
+        "2.3.0"
+      ],
+      "rule_references": [
+        "1.13.1.2",
+        "1.13.2",
+        "6.4.1"
+      ],
+      "keywords": [],
+      "fixture": {
+        "cards": [
+          {
+            "id": "replacer",
+            "owner": "p1",
+            "zone": "play",
+            "cardType": "character",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "static",
+                "name": "REPLACE DROP",
+                "effect": {
+                  "type": "restriction",
+                  "restriction": "would-gain-ink-drop-replacement",
+                  "target": "SELF"
+                }
+              }
+            ]
+          },
+          {
+            "id": "spell",
+            "owner": "p1",
+            "zone": "hand",
+            "cardType": "action",
+            "cost": 0,
+            "abilities": [
+              {
+                "type": "action",
+                "effect": {
+                  "type": "gain-ink-drop-counters",
+                  "amount": 1,
+                  "target": "CONTROLLER"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "actor": "p1",
+          "move": "playCard",
+          "args": {
+            "cardId": "spell",
+            "cost": "standard"
+          },
+          "accepted": true,
+          "checks": [
+            {
+              "path": "G.pendingEffects",
+              "count": 1
+            },
+            {
+              "path": "G.inkDrops.p1",
+              "equals": 0
+            }
+          ]
+        },
+        {
+          "actor": "p1",
+          "move": "resolveEffect",
+          "args": {
+            "effectId": {
+              "pending_index": 0
+            },
+            "params": {
+              "choiceIndex": 1
+            }
+          },
+          "accepted": true,
+          "checks": []
+        }
+      ],
+      "checks": [
+        {
+          "path": "G.inkDrops.p1",
+          "equals": 1
+        },
+        {
+          "path": "G.pendingEffects",
+          "count": 0
+        },
+        {
+          "path": "ctx.zones.private.zoneCards.inkwell:p1",
+          "count": 0
         }
       ]
     }

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-045",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from \"node:assert/strict\";const r=await fetch(\"https://api.github.com/repos/TheCardGoat/tcg-engines/commits/main\",{headers:{Accept:\"application/vnd.github+json\",\"User-Agent\":\"lorcana-online-tcg-source-review\"},signal:AbortSignal.timeout(15000)});assert.equal(r.status,200);const d=await r.json();assert.equal(d.sha,\"6de59de1c203827edc1bc6faa1bc6184cd126a5f\");console.log(\"PASS fresh public upstream main matches reviewed6de59de1 pin at \"+new Date().toISOString());await import(\"./.local/upstream-2026-10-13/closure.mjs\");"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "a45ac4b3794192d560ab7edca23c4b23a27cc9c2",
+  "source_fingerprint": "4ba45cc4ddaf904fe0d3b433ef7884dba981b0dcc10744bd0327e6a7d28a8b0c",
+  "started_at": "2026-10-13T06:13:33.300Z",
+  "finished_at": "2026-10-13T06:13:35.372Z",
+  "recorded_at": "2026-10-13T06:13:35.372Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2072,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Fresh public upstream main still matches the reviewed pin and final private/history/log/scope/listener closure",
+  "log_path": "docs/validation/logs/RUN-20261013-045.txt",
+  "log_sha256": "1cb65b388a3aaee8385f87a17ec9bb5866bc1efdfe9f3c92a097ddbdb10e682a",
+  "redactions": 0
+}

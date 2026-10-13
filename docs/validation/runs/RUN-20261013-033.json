@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-033",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "engine:test-upstream"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "a45ac4b3794192d560ab7edca23c4b23a27cc9c2",
+  "source_fingerprint": "7aa2be3816896b220e854612ec30506c88df95ccbfb54ee1295ef08c2e8e244d",
+  "started_at": "2026-10-13T05:31:30.793Z",
+  "finished_at": "2026-10-13T05:31:33.641Z",
+  "recorded_at": "2026-10-13T05:31:33.641Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2848,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final-pin unchanged selected upstream assertions, independent short stage",
+  "log_path": "docs/validation/logs/RUN-20261013-033.txt",
+  "log_sha256": "ebb6bebbb1250d46ad58f262f7448d3d562802ca1e0f03806e7b7b6a4180fc7d",
+  "redactions": 0
+}

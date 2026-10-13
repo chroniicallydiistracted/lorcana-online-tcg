@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-027",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "a45ac4b3794192d560ab7edca23c4b23a27cc9c2",
+  "source_fingerprint": "c7b9a480fb7899b8769dfc1fa13a1bfd6039ec48f57c4394b63a52f05bc49b5e",
+  "started_at": "2026-10-13T05:17:28.462Z",
+  "finished_at": "2026-10-13T05:17:31.461Z",
+  "recorded_at": "2026-10-13T05:17:31.461Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2999,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Correct raw bag ID and bottom-to-top deck fixtures; isolate legacy event/default paid-branch regressions",
+  "log_path": "docs/validation/logs/RUN-20261013-027.txt",
+  "log_sha256": "984427ac6971e6359909806d726003b981560137c57ea63ab443ceccc693323d",
+  "redactions": 0
+}

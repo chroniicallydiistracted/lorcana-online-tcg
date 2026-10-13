@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-034",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:rules"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "a45ac4b3794192d560ab7edca23c4b23a27cc9c2",
+  "source_fingerprint": "480cb3fab62073f41fe5cb3af864746f03f573a6a07d5b526f2506fd56c43ea4",
+  "started_at": "2026-10-13T05:37:44.145Z",
+  "finished_at": "2026-10-13T05:37:47.267Z",
+  "recorded_at": "2026-10-13T05:37:47.267Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3122,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Expected red: cost increase execution, complete static G conditions and legacy replacement parity",
+  "log_path": "docs/validation/logs/RUN-20261013-034.txt",
+  "log_sha256": "f79fd0c90a3f784883c04d1fb6d2418d3caa1f98853fb2d3ef650891e4fa4e72",
+  "redactions": 0
+}

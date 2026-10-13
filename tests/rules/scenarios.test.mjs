@@ -58,6 +58,7 @@ test('RULE-04 representative sourced runtime scenarios', async t => {
       const match = createScenarioRuntime(fixture);
       const ids = fixture.cards.map(card => card.id);
       assertScenarioState(match.snapshot(), ids);
+      if (scenario.projection_checks) checks(match.project("p1"), scenario.projection_checks);
       for (const step of scenario.steps) {
         const prior = match.snapshot();
         const result = match.submit(step.actor, step.move, resolveArguments(step.args, prior), step.revision, step.role);
@@ -80,7 +81,7 @@ test('RULE-04 representative sourced runtime scenarios', async t => {
       corrupt(state => state.ctx.zones.private.zoneCards['hand:p1'].push('hero'));
       corrupt(state => state.ctx.zones.private.cardIndex.hero.zoneKey = 'hand:p1');
       corrupt(state => state.ctx.zones.private.cardMeta.hero.cardsUnder = ['hero']);
-      corrupt(state => state.G.inkDropCounters = { p1: -1 });
+      corrupt(state => state.G.inkDrops = { p1: -1 });
       corrupt(state => state.ctx.zones.private.zoneCards['play:p1'].pop());
     });
     await t.test('Choice grouping scopes prior slots and never fabricates a missing choice', () => {

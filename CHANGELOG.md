@@ -2,6 +2,125 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261013-002 — Refresh reviewed upstream kernel before PLAY-01
+
+- Status: finalized
+- Actor: Codex architect/developer/source reviewer
+- Recorded (UTC): 2026-10-13T04:42:13.716Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: a45ac4b3794192d560ab7edca23c4b23a27cc9c2
+- Tasks: RULE-01, RULE-02, RULE-03, RULE-04, DOC-01, DOC-02
+- Features: F-ENGINE, F-RULE-CERTIFICATION, F-DOCS, F-CI
+- Requirements: R01.005, R01.006, R29.005
+
+### Changes
+
+- **review:** Director-authorized complete upstream comparison and compatible update review before PLAY-01. Intake main a45ac4b is clean and records both reported play follow-ups; baseline passed inside the existing container.
+- **revision:** Full inert repository/Git blob/path/AST audit; advance bounded closure to6de59de1, reconcile59 exact patches, select37 unchanged upstream test files. No product catalog or dependency/toolchain import.
+- **fix:** Correct static Adventurous loss and native counter/payment/event/predicate/lifetime/effective-state/cost-increase compatibility with29 new sourced scenarios.
+- **function:** Retain private provider-only RNG/replay and test-only fixture ownership; add actual projection assertion probe without production exports.
+- **test:** Preserve all red/reconciliation/fixture/timing failures; RUN035 final128 rules checks pass at4ba45cc4. Final full/frozen/browser/clean/canonical checks remain checkpoint work.
+- **documentation:** Record ADR0012/current operation/source inventories; preserve historical Director CI and source-specific evidence, all548 original requirements/optional dispositions and PLAY gates.
+- **review:** Final source reviewer reports no remaining bounded blockers; full270-project/406-upstream/build/browser assertions pass but037/038/039/042 receipts fail unchanged clock guard. Complete actual adapter files pass043;040 absent operand coverage clarified.
+- **documentation:** Seal exact current source/native map/feature/handoff/backlog/changelog coverage. RUN044 clean canonical assertions pass but timed receipt fails; final045/046 source/preservation/documentation receipts pass. Local review commit only; current hosted/long timing/play gates explicitly pending.
+
+### Verification
+
+- **passed:** Existing-container doctor, complete static verification, bootstrap tests and authenticated original PostgreSQL baseline, before substantive changes. ([evidence](docs/validation/runs/RUN-20261013-014.json))
+- **passed:** Acquire inert full upstream Git history and checkout current public main without installing or running its code ([evidence](docs/validation/runs/RUN-20261013-015.json))
+- **failed:** Expected red: permanent static Adventurous loss removes the end-turn obligation ([evidence](docs/validation/runs/RUN-20261013-016.json))
+- **failed:** Expected red: new upstream gain-ink-drop effect is not supported by the old pinned runtime ([evidence](docs/validation/runs/RUN-20261013-017.json))
+- **failed:** Expected red: mandatory activated ink-drop costs are not charged by the old engine ([evidence](docs/validation/runs/RUN-20261013-018.json))
+- **failed:** First reconciled pin: exact vendor reproduction, entropy boundaries, rules scenarios and selected upstream suites ([evidence](docs/validation/runs/RUN-20261013-019.json))
+- **failed:** Movement consumption correction: rules scenarios and unchanged new-pin upstream suites ([evidence](docs/validation/runs/RUN-20261013-020.json))
+- **failed:** Two-seat setup, explicit Shift UI choices and no duplicate counter availability; original selected upstream assertions ([evidence](docs/validation/runs/RUN-20261013-021.json))
+- **passed:** Explicit zero choice at Shift UI discovery matches unchanged upstream assertions without changing core default payment ([evidence](docs/validation/runs/RUN-20261013-022.json))
+- **failed:** Complete upstream tree/blob identity, changed-path dispositions, fresh hosted RULE04 metadata and static Lorcana definition/test inventory ([evidence](docs/validation/runs/RUN-20261013-023.json))
+- **passed:** Complete source inventory with component-safe paths, fresh public hosted metadata and candidate Lorcana definitions/tests ([evidence](docs/validation/runs/RUN-20261013-024.json))
+- **failed:** Expected red: generation alias event parity and default payment conditional validation before correction ([evidence](docs/validation/runs/RUN-20261013-025.json))
+- **passed:** Inspect exact conditional scry rejection before altering payment logic ([evidence](docs/validation/runs/RUN-20261013-026.json))
+- **failed:** Correct raw bag ID and bottom-to-top deck fixtures; isolate legacy event/default paid-branch regressions ([evidence](docs/validation/runs/RUN-20261013-027.json))
+- **failed:** Expected red: reviewed native effect payment/lifetime and suppression/condition branches with active controls ([evidence](docs/validation/runs/RUN-20261013-028.json))
+- **passed:** Reviewed default/nested payment facts, generation events, effect source lifetime and effective ability regressions ([evidence](docs/validation/runs/RUN-20261013-029.json))
+- **failed:** Expected red: real derived restriction projections and payments agree on the owning counter pool; native overflow and reserved costs ([evidence](docs/validation/runs/RUN-20261013-030.json))
+- **failed:** Reconciled counter-aware derived projections, all 114 sourced scenarios, selected original tests and reproduction ([evidence](docs/validation/runs/RUN-20261013-031.json))
+- **failed:** Final-pin representative sourced rules and certification tests, independent short stage ([evidence](docs/validation/runs/RUN-20261013-032.json))
+- **passed:** Final-pin unchanged selected upstream assertions, independent short stage ([evidence](docs/validation/runs/RUN-20261013-033.json))
+- **failed:** Expected red: cost increase execution, complete static G conditions and legacy replacement parity ([evidence](docs/validation/runs/RUN-20261013-034.json))
+- **passed:** All 120 source-backed cases after cost-increase, complete static G and generation replacement parity fixes ([evidence](docs/validation/runs/RUN-20261013-035.json))
+- **passed:** Final-source exact vendor reproduction, entropy guard, official source-leaf bytes and unchanged selected upstream/injection regressions ([evidence](docs/validation/runs/RUN-20261013-036.json))
+- **failed:** Final-source frozen install, doctor, complete foundation build/type/lint/test/replay checks and continued bootstrap PostgreSQL baseline ([evidence](docs/validation/runs/RUN-20261013-037.json))
+- **failed:** Final-source actual Linux Chromium web diagnostics and two built engine worker lifecycle/privacy checks ([evidence](docs/validation/runs/RUN-20261013-038.json))
+- **failed:** Final-source frozen install, exact doctor and real type/lint/build stages separately from the timing-rejected monolithic run ([evidence](docs/validation/runs/RUN-20261013-039.json))
+- **passed:** Final-source secure RNG/private replay/Lab and production bundle regressions; short executed stage with unchanged timing contract ([evidence](docs/validation/runs/RUN-20261013-040.json))
+- **passed:** Read-only eight restricted local/test identities, private file/scope/history/log integrity and no owned services/listeners at the final source ([evidence](docs/validation/runs/RUN-20261013-041.json))
+- **failed:** Final-source complete actual adapter RNG/identity/replay test files, Lab, foundation boundaries, documentation, CI and inventory/tooling regressions ([evidence](docs/validation/runs/RUN-20261013-042.json))
+- **passed:** Final-source complete adapter identity, secure random method, private deterministic replay and Lab regression files ([evidence](docs/validation/runs/RUN-20261013-043.json))
+- **failed:** Canonical staged Git-byte clean source copy, frozen install and complete foundation validation; original credentials/data excluded ([evidence](docs/validation/runs/RUN-20261013-044.json))
+- **passed:** Fresh public upstream main still matches the reviewed pin and final private/history/log/scope/listener closure ([evidence](docs/validation/runs/RUN-20261013-045.json))
+- **passed:** Final native documentation drift/coverage/fingerprint/callable/changelog/evidence gate before sealing; unchanged timing guard ([evidence](docs/validation/runs/RUN-20261013-046.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — The authorized upstream maintenance now pins6de59de1 with361 selected files/308 runtime files/59 reproduced patches/37 unchanged test files and120 sourced scenarios. Permanent static Adventurous loss is corrected. Keep every play/card gate closed; PLAY-01 must refuse all manual/debug moves (including manualSetInkDrops) in server and Lab. Hosted RULE-04 maina45ac4b passed run38329018576, freshly observed in RUN024; this does not qualify the refresh branch. Preserve the unchanged clock/environment instruction.
+- **updated:** [README.md](README.md) — The reviewed upstream kernel now pins6de59de1 (361 selected/308 runtime/59 patches/37 unchanged test files), with120 sourced synthetic scenarios. Permanent static Adventurous loss is corrected; the next PLAY-01 scope still begins with legitimate server/Lab move filtering and durable receipts. No official cards or ordinary games are enabled. Merged RULE-04 GitHub run38329018576 passed at maina45ac4b; this branch requires its own hosted qualification.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Current callable ownership retains the private server RNG/replay boundary and adds native counter event/payment parity, effective keyword/lifetime/condition corrections and a test-only projection probe. F-ENGINE now owns361 selected/308 runtime files/59 patches/37 unchanged test files; F-RULE-CERTIFICATION owns120 cases. The authoritative machine register records evidence status; earlier result rows retain their source dates.
+- **updated:** [docs/README.md](docs/README.md) — Read ADR0012, upstream-engine-review validation and the dated full upstream inventories for the pre-PLAY refresh. Operational current pins come from the lock/runbooks; dated research and executed evidence remain source-specific.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — The refresh changes engine source only; toolchain/container/lock/database remain the committed baseline. RUN014 executes the pre-change container checks. Final source evidence and any timing rejections are owned by the refresh validation; no Windows/device/production acceptance is inferred.
+- **updated:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No environment or toolchain decision changes. The existing Dev Container remains the application execution boundary; preserve original data/private files and the Director leave-environment choice during this source refresh.
+- **updated:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Foundation diagnostics and ports remain unchanged. The sole engine owners remain server engine-adapter and browser engine-lab; the new pin changes compiled identity, not app admission or UI scope.
+- **updated:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated bootstrap audit remains historical evidence. Current source now includes the reviewed6de59de1 kernel maintenance and120 synthetic cases; all play/card/device gates remain explicit in the current handoff.
+- **updated:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — The universal governance contract is unchanged. This refresh uses a native CHG, full source-impact reviews, immutable intermediate failures, current callable/file inventory and separate dated upstream evidence.
+- **updated:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Existing setup/ports/toolchain remain. Engine reproduction now uses the separately retained inert6de59de1 checkout; use the owning engine operation, not the original53a79413 cache, for current vendor verification.
+- **updated:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Prior foundation execution/Windows history remains source-specific. The refresh adds no product UI or service integration; current source build/type/lint/browser/clean results are recorded in the refresh validation.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — The original vision and 548 requirements/20 optional dispositions are unchanged. Dated upstream catalog presence is research; new set014 source definitions do not select D04 or admit cards.
+- **updated:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Current upstream revision is6de59de1; server-owned RNG/completed private replay contracts and D10 restrictions remain. New compiled source changes replay identity. No transport/receipt/deduplication is introduced; manual/debug move filtering remains PLAY-01 before any real match.
+- **updated:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — Current synthetic kernel revision is6de59de1. Lab keeps noncompetitive seedrandom and rewardEligible:false; native counters and test-only probes grant no private server exports. PLAY-01 must restrict legitimate Lab move names before ordinary use.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Hosted RULE-04 run38329018576 succeeded at maina45ac4b (public metadata observed RUN024). The new refresh branch is not covered by that run. Local isolated timing remains pending under the Director leave-environment choice; no repeated long isolated retry or guard change.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Fresh RUN024 corroborates merged RULE-04 GitHub success at maina45ac4b. Current refresh source requires its own hosted result; original accepted artifact/pipeline records remain historical. Clock-rejected receipts stay failed.
+- **updated:** [docs/contracts/release.md](docs/contracts/release.md) — The kernel source pin is6de59de1 with59 patches; compiled engine/adaptor and release hashes change naturally. Old private replays bind the old compiled identity and cannot silently pass current verification. No retained durable game loader or activation is implemented.
+- **updated:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — The approved isomorphic placement and dependency baseline are unchanged. ADR0012 records the bounded source refresh; it imports no upstream app/toolchain/dependency graph and keeps server authority/private replay gates.
+- **updated:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — The OVHcloud US/Cloudflare decision, $25 ceiling and provider scope remain unchanged. This source maintenance adds no purchase/deploy/provisioning authorization or capacity claim.
+- **updated:** [docs/rules/README.md](docs/rules/README.md) — Additional dated inventories at6de59de1 cover the entire repository change range and current Lorcana catalog/test source. They do not replace or rewrite the October10 source acquisition/count snapshots. Set014 source presence207 definitions is not certification or release admission.
+- **updated:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Original dated inventories/source gaps remain. RUN024 records the new complete raw-tree/AST inventory at6de59de1;3,374 definition objects/3,565 test files/13,393 static declarations are new static denominators, not runtime or card acceptance.
+- **updated:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — Current vendor moves to6de59de1:361 selected/308 runtime/59 reproduced patches/37 unchanged tests. Prior RULE-02 results remain bound to53a79413. All compatible selected source updates are reconciled, while other games/UI/catalog remain outside product ownership.
+- **updated:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — ADR0012 advances the explicit bounded pin to6de59de1 and records the comparative full-tree evidence. Existing synthetic-only qualification, exact importer/provenance and all play gates are retained.
+- **updated:** [docs/adr/0010-secure-randomness-replay.md](docs/adr/0010-secure-randomness-replay.md) — The secure random/clock injection and D10 private replay decision are unchanged. Rebased provider patches retain their behavior; compiled replay identity changes with6de59de1. Current-source regression results live in refresh validation.
+- **updated:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — Current refresh retains server secure RNG and deterministic completed verification while rebasing to6de59de1. Prior source-matched replay/CI records are immutable history; new code needs fresh checks. Private delivery/durability/wire privacy remain later tasks.
+- **updated:** [docs/adr/0011-sourced-rule-scenarios.md](docs/adr/0011-sourced-rule-scenarios.md) — The representative oracle extends from91 to120 cases at6de59de1, adding static Adventurous loss and native payment/event/lifetime/effective-state controls. Card promotion remains refused; test-only projection probes do not widen product exports.
+- **updated:** [docs/validation/rule-04.md](docs/validation/rule-04.md) — The reported static Adventurous-loss end-turn defect is fixed with SCN092, passing under the current120-case suite. Upstream turn enumeration improvements are included. Manual/debug command authority remains unresolved (now including manualSetInkDrops) and must be refused by PLAY-01 server/Lab before any real match. Prior audit failures/results remain exact historical bytes.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No scope/status change to X06/X07 or researched optional products; refresh is an existing RULE prerequisite maintenance.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — All Director decisions including D07/D10/D11 remain identical; no Director-owned choice changed.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Native schema-v1 record format and authoring placeholders remain unchanged.
+- **reviewed_unchanged:** [docs/templates/card-certification.json](docs/templates/card-certification.json) — Empty per-card authoring template remains intentionally unexecuted; no fabricated pins/promotions/evidence.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — Retained dated official/source acquisition identities remain historical research inputs, not the new current vendor pin.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — Retained supplemental source profiles/hashes remain applicable and unchanged; no reacquisition bytes rewritten.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/features.json](docs/features.json) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/runbooks/rules-certification.md](docs/runbooks/rules-certification.md) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/plans/2026-10-13-upstream-engine-review.md](docs/plans/2026-10-13-upstream-engine-review.md) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/adr/0012-upstream-kernel-refresh.md](docs/adr/0012-upstream-kernel-refresh.md) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [docs/validation/upstream-engine-review.md](docs/validation/upstream-engine-review.md) — Records exact current pin/compatibility/authority/task/evidence ownership with historical source-specific results retained and play gates closed.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Native synchronization regenerates exact changed-file/callable/status/evidence views; prose truth separately reviewed.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Native synchronization regenerates exact changed-file/callable/status/evidence views; prose truth separately reviewed.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — D07 fan-content/provenance/notice/neutral fallback contract is unchanged. The new raw catalog is inert research; no official card definitions or assets enter the product closure.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261013-002.json).
+
+### Limits and next actions
+
+- All ordinary/official/private/reward/card gates remain closed; PLAY-01 server/Lab debug authority and durable transitions remain pending.
+- Local isolated timing and current-branch hosted/image/artifact qualification remain pending; no environment changes or futile isolated retries.
+- Full rules/card/Windows/touch/GPU/load/production and D10 recipient delivery remain separate.
+- Final-source full build/test/browser assertions pass, but local whole-run timing receipts fail; preserve failures and prior feature acceptance as historical, with bounded engine/rules verified separately.
+- Independent review/current-source hosted CI qualification before integration; preserve local clock failures under the leave-environment instruction.
+- Director-assigned PLAY-01: legitimate server/Lab move allowlists refusing manual/debug commands, then durable receipts/journal/outbox/CAS; all later card/privacy/auth/reward gates remain.
+
 ## CHG-20261013-001 — Independent audit of RULE-04 and Director-authorized integration into main
 
 - Status: finalized

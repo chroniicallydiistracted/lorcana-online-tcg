@@ -55,3 +55,7 @@ Every developer/agent must read `docs/README.md`, `docs/DEVELOPMENT_WORKFLOW.md`
 - Before stopping/transferring work, update `docs/HANDOFF.md` using its template, including exact evidence categories/results, dirty work, owned listeners, limitations and next actions. Finalize only the completed scope with evidence. Do not infer real Windows/device/production acceptance.
 
 Committed non-draft changes and execution records/logs are append-only; use a new correction record. Keep `.env.local` and credentials out of records/logs. The BOOT-03 workflow enforces local gates when executed; the first hosted run is verified in RUN061; repository required-check/cancellation settings remain unqualified. Director authorization and scope take precedence over workflow conventions.
+
+## Current upstream refresh — 2026-10-13 UTC
+
+The authorized upstream maintenance now pins6de59de1 with361 selected files/308 runtime files/59 reproduced patches/37 unchanged test files and120 sourced scenarios. Permanent static Adventurous loss is corrected. Keep every play/card gate closed; PLAY-01 must refuse all manual/debug moves (including manualSetInkDrops) in server and Lab. Hosted RULE-04 maina45ac4b passed run38329018576, freshly observed in RUN024; this does not qualify the refresh branch. Preserve the unchanged clock/environment instruction. See [refresh qualification](docs/validation/upstream-engine-review.md) for current evidence and limits.

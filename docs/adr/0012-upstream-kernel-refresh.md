@@ -1,0 +1,23 @@
+# ADR0012 — Reviewed upstream kernel refresh
+
+Recorded at: 2026-10-13T05:53:26.668Z. Status: accepted for the Director-authorized local source refresh before PLAY-01. Affected prerequisites: RULE-01/02/03/04, R01.005, R01.006 and R29.005. No product requirement acceptance or hosting decision changes.
+
+## Decision and comparative evidence
+
+Advance the bounded engine/type/shared closure from `53a79413c58678b1c50dde57e71de5c123132716` to `6de59de1c203827edc1bc6faa1bc6184cd126a5f`, Public sync 2026-W41 (#232), authored/committed 2026-10-09T17:52:00Z. Retain MIT notices, the isomorphic kernel boundary, server-owned randomness, private deterministic replay and the separate noncompetitive Lab. Reconcile every affected local patch against the new original bytes; extend the ledger to59 patches rather than blindly replacing local behavior.
+
+RUN-20261013-024 checks all51,113 current Git blobs and records11,012 changed-path dispositions. The directory called submodules/lorcana is an ordinary Git tree (`3c901f13b89337917121089de891d301832f7a54`), not a gitlink. The raw tree is inert; neither its dependency graph nor any upstream application is installed. The selected closure is361 files,308 runtime source/type/data files and37 unchanged selected test files. The earlier full inventories remain source-specific history. New upstream definitions include207 set014 objects; none are imported or certified for product play.
+
+Remaining on the old pin would omit relevant end-turn/zone, bag-use/lifetime, last-known Support, structured-choice/private-log and ink-drop changes. Importing the whole workspace would inherit unrelated games/UI/tooling, dependencies and uncertified official cards. The bounded reviewed refresh incorporates every changed runtime dependency in our selected closure, adds ten relevant original test files and inventories excluded paths with reasons. Full-tree byte/path inspection does not claim semantic certification of other games or all Lorcana cards.
+
+## Compatibility choices
+
+Use native `inkDrops` for state and root payment input. Preserve the fork's ordered nested `effectInkDropCounters` queue and cards-first default. Reserve mandatory ink-drop costs before ordinary payment; validate claims strictly and record actual consumption. The legacy synthetic `gain-ink-drop-counters` spelling validates strictly and then calls the native resolver, retaining event/metric/cache/replacement/continuation semantics. No public protocol changes or persisted match migration are introduced.
+
+Upstream overlapping code retains provider-only random/clock paths and private replay rollback. Sourced regressions correct permanent static Adventurous loss, cost increases, effective aura/suppression/replacement conditions, effect-driven entry lifetimes, paid-drop predicates and controller-owned restrictions. These are compatibility corrections within the authorized mechanics, not card admission. Original upstream assertions and card definitions are unchanged. The synthetic test bridge adds a private test-only projection probe without widening production exports.
+
+## Gates and evidence
+
+Use [refresh validation](../validation/upstream-engine-review.md), [source review](../rules/2026-10-13-upstream-review.json) and [dated catalog inventory](../rules/2026-10-13-upstream-inventory.json). RUN035 passes120 sourced cases/128 rule checks at final fingerprint4ba45cc4. Full build/clean/browser/replay closure is recorded separately as it executes. Reviewer recheck found no remaining scoped source blockers; it was read-only inspection, not independent execution.
+
+Compiled/replay/release identities change with the source; old archives remain bound to their original retained identity and are not silently verified by this kernel. Retain prior source evidence and implement durable retained loaders in the appropriate PLAY/release work. All ordinary/official/private/reward/card gates remain closed. PLAY-01 must allow only legitimate server moves and refuse manual/debug commands, including the newly upstream manualSetInkDrops; the Lab needs the same restriction. D10 recipient delivery and PLAY-02 wire privacy remain pending. No local clock repair/tolerance change, isolated CI retry, Windows/device/production claim, purchase, deploy, publication or main merge is included.
