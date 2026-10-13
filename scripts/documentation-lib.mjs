@@ -7,7 +7,7 @@ import Ajv from 'ajv';
 import ts from 'typescript';
 
 export const repository = fileURLToPath(new URL('../', import.meta.url));
-const excluded = new Set(['.DS_Store','Thumbs.db','.git','node_modules','.pnpm-store','dist','coverage','test-results','playwright-report','__pycache__','.local']);
+const excluded = new Set(['.DS_Store','Thumbs.db','.git','node_modules','.pnpm-store','dist','coverage','test-results','playwright-report','.playwright-mcp','__pycache__','.local']);
 const generated = new Set(['docs/current-state.json','CHANGELOG.md']);
 const evidenceOrHistory = path => /^(?:docs\/validation\/(?:runs|logs)\/|docs\/changes\/)/.test(path);
 export const sha256 = value => createHash('sha256').update(value).digest('hex');
@@ -30,6 +30,7 @@ export function inventory(root=repository) {
     for (const entry of readdirSync(folder,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name))) {
       if (excluded.has(entry.name) || /^(?:\.env(?:\..*)?|.*\.(?:pem|key|pyc|log))$/.test(entry.name) && entry.name!=='.env.example') continue;
       const absolute=join(folder,entry.name),path=relative(root,absolute).replaceAll('\\','/');
+      if(path==='inkspire-interface-typography.png')continue;
       if (entry.isSymbolicLink()) throw new Error('Project inventory refuses symlink: '+path);
       if (entry.isDirectory()) walk(absolute); else paths.push(path);
     }
@@ -96,6 +97,7 @@ export function renderChangelog(changes) {
 }
 function load(root) {
   const paths=inventory(root);
+  const fingerprint=sourceFingerprint(root);
   const map=validateData(root,'documentation-map',json(root,'docs/documentation-map.json'));
   const features=validateData(root,'features',json(root,'docs/features.json')).features;
   if(new Set(features.map(feature=>feature.id)).size!==features.length)throw new Error('Duplicate feature ID');
@@ -112,7 +114,7 @@ function load(root) {
   for(const feature of features) {
     for(const path of [...feature.sources,...feature.documents,...feature.evidence])if(!paths.some(candidate=>matches(candidate,path)))throw new Error('Missing feature reference: '+path);
     if(feature.implementation!=='implemented' && feature.verification==='verified')throw new Error('Unimplemented feature cannot be verified');
-    if(feature.verification==='verified' && !feature.evidence.some(path=>runs.some(run=>'docs/validation/runs/'+run.id+'.json'===path && run.result==='passed' && run.clock_discontinuity===false && run.elapsed_ms!==undefined && run.source_fingerprint===sourceFingerprint(root))))throw new Error('Verified feature lacks matching executed evidence: '+feature.id);
+    if(feature.verification==='verified' && !feature.evidence.some(path=>runs.some(run=>'docs/validation/runs/'+run.id+'.json'===path && run.result==='passed' && run.clock_discontinuity===false && run.elapsed_ms!==undefined && run.source_fingerprint===fingerprint)))throw new Error('Verified feature lacks matching executed evidence: '+feature.id);
   }
   for(const change of changes) {
     for(const feature of change.feature_ids)if(!features.some(row=>row.id===feature))throw new Error('Unknown feature: '+feature);
@@ -139,7 +141,7 @@ function load(root) {
     if(event.status!==0||Date.parse(event.stdout.trim())!==Date.parse(change.occurred_at))throw new Error('Git event timestamp does not match commit: '+change.id);
   }
   for(const run of runs) {
-    if(run.result==='passed'&&run.source_fingerprint===sourceFingerprint(root)&&(run.elapsed_ms===undefined||run.clock_discontinuity===undefined))throw new Error('Current source passing evidence needs monotonic capture');
+    if(run.result==='passed'&&run.source_fingerprint===fingerprint&&(run.elapsed_ms===undefined||run.clock_discontinuity===undefined))throw new Error('Current source passing evidence needs monotonic capture');
     if((run.elapsed_ms===undefined)!==(run.clock_discontinuity===undefined))throw new Error('Monotonic timing fields must be paired');
     if(run.elapsed_ms!==undefined&&run.started_at&&run.finished_at&&clockDiscontinuous(run.started_at,run.finished_at,run.elapsed_ms)!==run.clock_discontinuity)throw new Error('Clock samples contradict monotonic timing flag');
     if(run.time_precision==='clock_discontinuous'&&(!run.clock_discontinuity||run.elapsed_ms===undefined||run.failure_reason!=='clock_changed'||run.result!=='failed'))throw new Error('Discontinuous clock cannot supply passing evidence');
@@ -164,6 +166,7 @@ function load(root) {
     }
   }
   checkSealedRecords(root,paths);
+  if(sourceFingerprint(root)!==fingerprint)throw new Error('Source changed during documentation validation');
   return {paths,map,features,changes,runs};
 }
 function hashes(root,paths) {

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-13T22:34:43Z",
+  "category": "reported_incident_and_host_inspection",
+  "actor": "Project Director incident report; Codex read-only WSL/Windows recovery inspection",
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "event_at": "2026-10-13T18:15:50.511Z",
+  "event_time_basis": "Windows System Event2004 TimeCreated",
+  "windows_resource_exhaustion": {
+    "provider": "Microsoft-Windows-Resource-Exhaustion-Detector",
+    "event_id": 2004,
+    "message": "Windows successfully diagnosed a low virtual memory condition.",
+    "largest_consumers": [
+      {
+        "name": "vmmemWSL",
+        "pid": 20544,
+        "committed_bytes": 12448866304
+      },
+      {
+        "name": "ChatGPT.exe",
+        "pid": 4704,
+        "committed_bytes": 1233797120
+      },
+      {
+        "name": "ChatGPT.exe",
+        "pid": 32036,
+        "committed_bytes": 1051799552
+      }
+    ]
+  },
+  "later_host_sample": {
+    "total_physical_kib": 33289396,
+    "free_physical_kib": 12343432,
+    "available_mib": 11680,
+    "committed_bytes": 28287639552,
+    "commit_limit_bytes": 35308281856,
+    "percent_committed": 80,
+    "samples_are_separate": true
+  },
+  "overlap": [
+    "RUN086 full foundation in original workspace",
+    "RUN087 full disposable CI with another foundation suite",
+    "RUN088 disposable recreation printed PASS; both receipt/log later found zero bytes and quarantined; no qualified acceptance"
+  ],
+  "interrupted_attempts": [
+    {
+      "reserved_id": "RUN-20261013-086",
+      "result": "unknown_after_host_crash",
+      "qualified_execution_times": null,
+      "receipt_present": false
+    },
+    {
+      "reserved_id": "RUN-20261013-087",
+      "result": "unknown_after_host_crash",
+      "qualified_execution_times": null,
+      "receipt_present": false
+    },
+    {
+      "reserved_id": "RUN-20261013-088",
+      "result": "crash_truncated",
+      "qualified_execution_times": null,
+      "receipt_present": false,
+      "correction": "docs/validation/runs/RUN-20261013-090.json"
+    },
+    {
+      "reserved_id": "RUN-20261013-108",
+      "result": "controlled_resource_cancellation",
+      "qualified_execution_times": null,
+      "receipt_present": false,
+      "correction": "docs/validation/runs/RUN-20261013-109.json"
+    },
+    {
+      "reserved_id": "RUN-20261013-110",
+      "result": "controlled_resource_cancellation_Slack_first",
+      "qualified_execution_times": null,
+      "receipt_present": false,
+      "correction": "docs/validation/runs/RUN-20261013-111.json"
+    }
+  ],
+  "reconnect_failure": {
+    "evidence_source": "Director-supplied VS Code transcript",
+    "execution_times": null,
+    "failure": "Bun archive retrieval timed out at119.652s,4,020,663 of36,646,985 bytes,exit28; apt stage1750.9s",
+    "distinct_from_memory_crash": true
+  },
+  "observations": [
+    "Source and private files remain on codex/play-01-durable-commands; original PostgreSQL volume remains.",
+    "Original workspace3e5816dff0be unavailable; Docker API lists no containers at inspection.",
+    "Orphan CI volume has exact lorcana-ci-ec0921c754f94b69bf7a8600a3cff33c ownership label; no success/artifact invented.",
+    "Retained Bun x64 archive36,646,985bytes matches committed36368fae... pin; BuildKit cache seed build succeeds.",
+    "First recovery CLI refused unsupported log-levelerror; corrected to supportedinfo.",
+    "Installed VS Code CLI restored original project: workspace7c66830a7dd0 and healthy PGc7cd58258c19, original pg18_data volume mounted; no reset.",
+    "RUN089 pinned doctor/bootstrap/eight identities/bootstrapPG passes after recovery.",
+    "Generic static JSON parsing rejected the intentionally zero-byte archive in RUN091. It is now labeled RUN-20261013-088-crash-truncated.json.bytes; byte content unchanged. Historical correction090 retains its original event description.",
+    "Director supplied the complete729-line VSCode transcript after usage reset: repaired image build and container25a15ddfb714 started; frozen install passed; post-create then refused stale documentation fingerprint. Raw transcript contains private connection material and is not imported.",
+    "RUN094 refused incomplete removed-path coverage for the renamed crash archive. Draft coverage now retains the old snapshot path; synchronization passes.",
+    "RUN095 reruns the actual post-create command in25a15ddfb714: doctor, frozen install, verify, five bootstrap checks and original PostgreSQL connection pass with exact paired timing.",
+    "Seven cache branches101, full final foundation102, actual matches103, eight roles/database104, Chromium install105, actual browser106 and disposable recreation107 pass with source-matched exact timing.",
+    "RUN108 single isolated CI cancelled through its owned handler when Windows commit reached98.7percent; all temporary resources removed, no result published.109 reports the observation without invented execution times.",
+    "Director requests retry with Slack closed first. Fresh headroom after cancellation/response is about4.4GiB; Windows commit limit increased between samples; cause unconfirmed. No setting was changed by the agent.",
+    "Crash-owned oldCIec0921c754f94b69bf7a8600a3cff33c had no containers; exact labeled abandoned volume/network removed.",
+    "Workspace cumulative cgroup peak observed4,488,667,136bytes after browser qualification, including VSCode; per-process/host-crash peak attribution remains unknown.",
+    "Slack-first retry110 cancelled at94.7percent Windows commit before its browser phase;111 reports it. Browser-close request pending; no code/test scope narrowed.",
+    "Director confirms Browser closed. During the single source-only clean check, fresh Windows sample: committed28,984,823,808bytes /limit35,510,886,400bytes; available11,554MiB. About6.1GiB commit headroom; no agent setting change.",
+    "RUN110 controlled cleanup removed only d411ca6ece484ea492609968b7e97e8f resources and its image; existing workspace/PG remained running.",
+    "Browser-closed RUN113 completed14 stages and artifact validation without an observed memory crash. Child exit0, receipt failedclock_changed by1,256ms; no result published, UUID18cf436c46c341d681806b825f0bd36b owned cleanup completed. Existing leave-clock/environment decision honored.",
+    "Canonical114, preservation115 and final actual post-create116 pass with exact paired timing. Unused recovery-only image tag removed; standard verified cache/original running images retained."
+  ],
+  "decisions": [
+    "Run one heavy verification workload at a time.",
+    "Node test file concurrency1; all selected tests and deliberate race concurrency retained.",
+    "Use checksum-verified persistent Bun cache with bounded resumable download; no pin change.",
+    "No WSL/Windows memory/clock/pagefile settings changed; no original database-volume reset.",
+    "Explicitly flush completed evidence files and directories before reporting success; preserve incomplete bytes and add correction records.",
+    "Documentation validation computes one stable source fingerprint per load and verifies it again before returning. RUN092 preserves repeated-read regression red; RUN093 passes all26 governance checks. This removes repeated source reads without weakening drift checks."
+  ],
+  "limitations": [
+    "Windows event identifies WSL aggregate, not the individual test/compiler process.",
+    "Post-crash memory samples cannot reconstruct peak usage.",
+    "Interrupted attempts have no completed native receipt and cannot supply acceptance.",
+    "Local implementation/full/clean/canonical/browser/recreation/setup acceptance passed. Isolated CI timing remains pending after113 clock rejection; no hosted/device/production or general memory guarantee."
+  ]
+}

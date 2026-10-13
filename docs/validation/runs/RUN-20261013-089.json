@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-089",
+  "category": "container",
+  "command": [
+    "bash",
+    "-c",
+    "pnpm run doctor && pnpm test:bootstrap && pnpm db:health -- --target local && pnpm db:health -- --target test && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "7c66830a7dd0"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "24760aea90649ef8854b614d3297ccd3ce78f03762972b63c34c5944d2b2553b",
+  "started_at": "2026-10-13T19:37:55.319Z",
+  "finished_at": "2026-10-13T19:38:00.432Z",
+  "recorded_at": "2026-10-13T19:38:00.432Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5113,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Post-crash restored original Compose project: pinned doctor bootstrap tests restricted local/test identities and existing database",
+  "log_path": "docs/validation/logs/RUN-20261013-089.txt",
+  "log_sha256": "34d3f84827dc1748d16189e5b4f579764367cfa573b311121608b82fddfaf3a2",
+  "redactions": 0
+}

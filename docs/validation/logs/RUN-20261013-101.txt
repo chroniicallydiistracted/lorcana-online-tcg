@@ -1,0 +1,8 @@
+PASS simulated Dockerfile cache branch: valid_cache attempts 0
+PASS simulated Dockerfile cache branch: corrupt_complete attempts 2
+PASS simulated Dockerfile cache branch: range_rejected attempts 2
+PASS simulated Dockerfile cache branch: resume_range33 attempts 2
+PASS simulated Dockerfile cache branch: resume_bad36 attempts 2
+PASS simulated Dockerfile cache branch: timeout attempts 1
+PASS simulated Dockerfile cache branch: repeated_corruption attempts 2
+Simulation only: exact checked-in shell branch, mocked network; no cache/image/network mutated.

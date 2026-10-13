@@ -1,4 +1,5 @@
 import { createHash, timingSafeEqual } from 'node:crypto';
+import { isPlayerMove } from '@lorcana/contracts/player-moves';
 import { createSyntheticKernel, type SyntheticKernel } from '@lorcana/vendor-engine';
 import { ENGINE_REPLAY_IDENTITY } from './code-identity.js';
 import { createRandomSource, RANDOM_VERSION, type RandomOutcome } from './random.js';
@@ -16,6 +17,7 @@ interface PrivateReplay {
 }
 export interface PrivateCompletedReplay { archive: string; digest: string }
 export interface QualificationMatch { status(): ServerStatus; submit(command: unknown): Result; exportReplay(): PrivateCompletedReplay; dispose(): void }
+export interface RecordedCore { facade: QualificationMatch; privateArchive(): string }
 
 export function canonical(value: unknown): string {
   const normalized: unknown = JSON.parse(JSON.stringify(value));
@@ -32,8 +34,12 @@ function same(a: unknown, b: unknown): boolean { return canonical(a) === canonic
 
 /** Internal construction for new secret-seeded matches and completed verification only. */
 export function createRecordedMatch(setup: { players: [string, string]; startTimestamp: number }, privateSeed: Uint8Array): QualificationMatch {
-  const seed = Buffer.from(privateSeed), source = createRandomSource(seed, ENGINE_REPLAY_IDENTITY);
-  const seedCommitment = createHash('sha256').update('server-match-seed-v1\0').update(ENGINE_REPLAY_IDENTITY).update(seed).digest('hex');
+  return createRecordedCore(setup, privateSeed).facade;
+}
+/** Server-internal friend interface; only the persistence wrapper obtains a live private archive. */
+export function createRecordedCore(setup: { players: [string, string]; startTimestamp: number }, privateSeed: Uint8Array, context = ENGINE_REPLAY_IDENTITY): RecordedCore {
+  const seed = Buffer.from(privateSeed), source = createRandomSource(seed, context);
+  const seedCommitment = createHash('sha256').update('server-match-seed-v1\0').update(context).update(seed).digest('hex');
   let kernel: SyntheticKernel | undefined;
   try { kernel = createSyntheticKernel({ players: setup.players, startTimestamp: setup.startTimestamp, randomSource: source }); }
   catch { source.dispose(); seed.fill(0); throw new Error('Qualification initialization failed'); }
@@ -42,12 +48,19 @@ export function createRecordedMatch(setup: { players: [string, string]; startTim
   const commands: CommandCheckpoint[] = [];
   let lastTimestamp = setup.startTimestamp, journalBytes = Buffer.byteLength(canonical(initial));
   function status(): ServerStatus { return { mode: 'qualification', ...active().status(), rewardEligible: false, seedCommitment }; }
-  return Object.freeze({
+  function privateArchive(): string {
+    const replay: PrivateReplay = { version: 1, purpose: 'synthetic-rule03', engineIdentity: ENGINE_REPLAY_IDENTITY, rngVersion: RANDOM_VERSION, setup: { players: [...setup.players], startTimestamp: setup.startTimestamp }, seed: seed.toString('hex'), seedCommitment, initial, commands, final: { stateHash: hash(active().snapshot()), status: status() } };
+    const archive = canonical(replay);
+    if (Buffer.byteLength(archive) > MAX_BYTES) throw new Error('Qualification journal limit');
+    return archive;
+  }
+  const facade: QualificationMatch = Object.freeze({
     status,
     submit(value: unknown): Result {
       const engine = active(), command = validateCommand(value), current = engine.status();
       // Completion freezes the private history; late receipts do not revise it.
       if (current.ended) return { accepted: false, code: !setup.players.includes(command.actor) ? 'INVALID_ACTOR' : command.expectedRevision !== current.revision ? 'STALE_REVISION' : 'MATCH_ENDED' };
+      if (!isPlayerMove(command.move)) return { accepted: false, code: 'MOVE_FORBIDDEN' };
       const before = engine.snapshot();
       if (command.timestamp < lastTimestamp) throw new Error('Invalid timestamp ordering');
       if (commands.length >= MAX_COMMANDS) throw new Error('Qualification journal limit');
@@ -66,16 +79,15 @@ export function createRecordedMatch(setup: { players: [string, string]; startTim
     exportReplay(): PrivateCompletedReplay {
       const engine = active();
       if (!engine.status().ended) throw new Error('Replay requires completed match');
-      const replay: PrivateReplay = { version: 1, purpose: 'synthetic-rule03', engineIdentity: ENGINE_REPLAY_IDENTITY, rngVersion: RANDOM_VERSION, setup: { players: [...setup.players], startTimestamp: setup.startTimestamp }, seed: seed.toString('hex'), seedCommitment, initial, commands, final: { stateHash: hash(engine.snapshot()), status: status() } };
-      const archive = canonical(replay);
-      if (Buffer.byteLength(archive) > MAX_BYTES) throw new Error('Qualification journal limit');
+      const archive = privateArchive();
       return Object.freeze({ archive, digest: archiveDigest(archive) });
     },
     dispose(): void { kernel = undefined; source.dispose(); seed.fill(0); commands.length = 0; },
   });
+  return Object.freeze({ facade, privateArchive });
 }
 
-function boundedTree(value: unknown, depth = 0, counter = { nodes: 0 }): void {
+export function boundedTree(value: unknown, depth = 0, counter = { nodes: 0 }): void {
   if (++counter.nodes > 200000 || depth > 24) throw new Error('Replay input limit');
   if (Array.isArray(value)) { if (value.length > 4096) throw new Error('Replay input limit'); for (const item of value) boundedTree(item, depth + 1, counter); }
   else if (value && typeof value === 'object') for (const [key, item] of Object.entries(value)) { if (key.length > 128 || ['__proto__', 'constructor', 'prototype'].includes(key)) throw new Error('Replay input invalid'); boundedTree(item, depth + 1, counter); }

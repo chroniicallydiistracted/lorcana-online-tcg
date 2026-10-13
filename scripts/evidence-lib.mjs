@@ -1,6 +1,6 @@
 import { spawn, spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, writeFileSync, readFileSync, lstatSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, mkdirSync, writeFileSync, readFileSync, lstatSync, openSync, fsyncSync, closeSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 import { sha256, sourceFingerprint, clockDiscontinuous } from './documentation-lib.mjs';
 export function redact(text,env=process.env) {
   let redactions=0;
@@ -70,6 +70,10 @@ export async function recordCommand({root,id,category,command,env=process.env,su
   if(failureReason)sanitized.text+='\n[Recorder failure: '+failureReason+']\n';
   const record={schema_version:1,id,category,command,cwd:root,environment:{node:process.versions.node,pnpm:pnpm.status===0?pnpm.stdout.trim():'unavailable',platform:process.platform,architecture:process.arch,user_id:process.getuid?.()??null,hostname:env.HOSTNAME??null},source_commit:git.status===0?git.stdout.trim():null,source_fingerprint:fingerprint,started_at:startedAt,finished_at:finishedAt,recorded_at:finishedAt,time_precision:discontinuity?'clock_discontinuous':'exact',elapsed_ms:elapsedMs,clock_discontinuity:discontinuity,expected_exit_code:expectedExitCode,exit_code:observed.code,signal:observed.signal,result:observed.code===expectedExitCode&&observed.signal===null&&failureReason===null?'passed':'failed',failure_reason:failureReason,summary,log_path:logPath,log_sha256:sha256(sanitized.text),redactions:sanitized.redactions};
   mkdirSync(join(root,'docs/validation/runs'),{recursive:true});mkdirSync(join(root,'docs/validation/logs'),{recursive:true});
-  writeFileSync(join(root,logPath),sanitized.text,{flag:'wx'});writeFileSync(recordPath,JSON.stringify(record,null,2)+'\n',{flag:'wx'});
+  writeFileSync(join(root,logPath),sanitized.text,{flag:'wx',flush:true});writeFileSync(recordPath,JSON.stringify(record,null,2)+'\n',{flag:'wx',flush:true});
+  // A completed receipt must reach the filesystem before success is reported.
+  for(const folder of [dirname(join(root,logPath)),dirname(recordPath)]) {
+    const descriptor=openSync(folder,'r');try{fsyncSync(descriptor);}finally{closeSync(descriptor);}
+  }
   return record;
 }

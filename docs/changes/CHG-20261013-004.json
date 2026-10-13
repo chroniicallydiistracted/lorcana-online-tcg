@@ -1,0 +1,933 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261013-004",
+  "title": "PLAY-01 durable synthetic match commands and player authority",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-13T22:34:43Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "task_ids": [
+    "PLAY-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R02.032",
+    "R02.033",
+    "R02.034",
+    "R15.009",
+    "R29.001",
+    "R29.005",
+    "R30.015"
+  ],
+  "feature_ids": [
+    "F-MATCH-COMMANDS",
+    "F-ENGINE",
+    "F-DB",
+    "F-CONTRACTS",
+    "F-CI",
+    "F-DOCS",
+    "F-EVIDENCE"
+  ],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "Internal two-player synthetic durable command service is locally verified: actor-scoped stable receipts, private deterministic recovery, row-fenced CAS and atomic checkpoint/accepted journal/metadata outbox after COMMIT. Server and Lab refuse all manual/debug moves. Full/clean/canonical/browser/database/setup evidence passes; isolated113 completes14 child stages but timing receipt failsclock_changed. Authenticated transport, privacy/publication/clocks/multiplayer and all ordinary/official/private/reward/card admission stay gated."
+    },
+    {
+      "kind": "function",
+      "description": "Private match checkpoint/restore, restricted repository and bounded worker/service create/submit/close; compiled player policy joins executable identity."
+    },
+    {
+      "kind": "test",
+      "description": "Actual debug win red/guard green, private replay edits, independent CAS races, stable scoped receipts, SQL rollback and SIGKILL before/afterCOMMIT; worker timing/cancellation and original DB migration history regressions."
+    },
+    {
+      "kind": "fix",
+      "description": "Append0003 after real0002 execution for NULL-safe receipt constraints. Shared worker finishing, source export conditions, full migration probes, symmetric checkpoint bounds and accessor-safe creation."
+    },
+    {
+      "kind": "edit",
+      "description": "Preserve/exclude provider browser cache and unowned external reference image; retain all real source/assets and native evidence failures."
+    },
+    {
+      "kind": "documentation",
+      "description": "Current owning ADR/plan/runbook/validation/map/features/handoff/backlog and requirement prerequisite evidence synchronized; original product acceptance and Director choices unchanged."
+    },
+    {
+      "kind": "review",
+      "description": "Fresh bounded read-only review confirms CAS/commit/rollback/receipt/private-worker logic; findings fixed with discriminating evidence."
+    },
+    {
+      "kind": "fix",
+      "description": "After the host memory crash, serialize heavy verification and Node test files while retaining all scenarios and deliberate races. Reuse only hash-verified pinned Bun cache with bounded resumable download. Evidence files and directories are flushed before success. Documentation validation reuses one fingerprint with a final drift check; repeated-read red/green proof retained."
+    },
+    {
+      "kind": "revision",
+      "description": "Preserve incomplete RUN086/087 as unknown and zero-byte RUN088 under raw archive names with separate historical correction090. Full Director reconnect log shows successful startup followed by stale documentation guard; removed archive path coverage corrected and actual post-create095 passes. Original private data and environment settings unchanged."
+    },
+    {
+      "kind": "fix",
+      "description": "Supplemental review found corrupt resumable Bun cache lockout. Exact shell branch now discards checksum/HTTP22 failures and permits at most two fetches, preserves interrupted transfer bytes and mandates final pin hash. RUN098 red and099 green include five mocked branches. Old DB policy oracle now verifies all0001/0002/0003 SQL bytes and hashes; RUN096 failure preserved."
+    },
+    {
+      "kind": "fix",
+      "description": "Supplemental cache review extends non-resumable recovery to curl22/33/36; strict retry mock requires absent partial. RUN100 red and101 seven-branch green preserve timeout resume and repeated-corruption refusal."
+    },
+    {
+      "kind": "test",
+      "description": "Final102/103/104/106/107/112/114/115/116 pass source-matched local acceptance, actual race/rollback/SIGKILL cases, original roles/data, browser, source/canonical clean and full-history/private/log/scope preservation.113 child completes14 stages/artifact validation but clock guard rejects its receipt; no CI result published. All failed/interrupted attempts retained."
+    }
+  ],
+  "files": [
+    ".devcontainer/Dockerfile",
+    ".gitignore",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "apps/match-service/README.md",
+    "apps/match-service/package.json",
+    "apps/match-service/src/engine-executor.ts",
+    "apps/match-service/src/service.ts",
+    "apps/match-service/src/transition-worker.ts",
+    "apps/match-service/src/validation.ts",
+    "apps/match-service/tests/fault-child.mjs",
+    "apps/match-service/tests/fixtures.mjs",
+    "apps/match-service/tests/integration.test.mjs",
+    "apps/match-service/tests/unit.test.mjs",
+    "docs/CHANGELOG_FORMAT.md",
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0008-engine-placement-dependency-baseline.md",
+    "docs/adr/0009-pinned-engine-qualification.md",
+    "docs/adr/0010-secure-randomness-replay.md",
+    "docs/adr/0012-upstream-kernel-refresh.md",
+    "docs/adr/0013-durable-synthetic-match-commands.md",
+    "docs/audits/2026-10-06-project-audit.md",
+    "docs/changes/CHG-20261013-004.json",
+    "docs/contracts/protocol.md",
+    "docs/contracts/release.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-13-play-01-durable-commands.md",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/database.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/match-commands.md",
+    "docs/runbooks/workspace-setup.md",
+    "docs/validation/archive/RUN-20261013-088-crash-truncated.json",
+    "docs/validation/archive/RUN-20261013-088-crash-truncated.json.bytes",
+    "docs/validation/archive/RUN-20261013-088-crash-truncated.txt",
+    "docs/validation/boot-01.md",
+    "docs/validation/boot-02.md",
+    "docs/validation/boot-03.md",
+    "docs/validation/boot-05.md",
+    "docs/validation/logs/RUN-20261013-060.txt",
+    "docs/validation/logs/RUN-20261013-061.txt",
+    "docs/validation/logs/RUN-20261013-062.txt",
+    "docs/validation/logs/RUN-20261013-063.txt",
+    "docs/validation/logs/RUN-20261013-064.txt",
+    "docs/validation/logs/RUN-20261013-065.txt",
+    "docs/validation/logs/RUN-20261013-066.txt",
+    "docs/validation/logs/RUN-20261013-067.txt",
+    "docs/validation/logs/RUN-20261013-068.txt",
+    "docs/validation/logs/RUN-20261013-069.txt",
+    "docs/validation/logs/RUN-20261013-070.txt",
+    "docs/validation/logs/RUN-20261013-071.txt",
+    "docs/validation/logs/RUN-20261013-072.txt",
+    "docs/validation/logs/RUN-20261013-073.txt",
+    "docs/validation/logs/RUN-20261013-074.txt",
+    "docs/validation/logs/RUN-20261013-075.txt",
+    "docs/validation/logs/RUN-20261013-076.txt",
+    "docs/validation/logs/RUN-20261013-077.txt",
+    "docs/validation/logs/RUN-20261013-078.txt",
+    "docs/validation/logs/RUN-20261013-079.txt",
+    "docs/validation/logs/RUN-20261013-080.txt",
+    "docs/validation/logs/RUN-20261013-081.txt",
+    "docs/validation/logs/RUN-20261013-082.txt",
+    "docs/validation/logs/RUN-20261013-083.txt",
+    "docs/validation/logs/RUN-20261013-084.txt",
+    "docs/validation/logs/RUN-20261013-085.txt",
+    "docs/validation/logs/RUN-20261013-089.txt",
+    "docs/validation/logs/RUN-20261013-090.txt",
+    "docs/validation/logs/RUN-20261013-091.txt",
+    "docs/validation/logs/RUN-20261013-092.txt",
+    "docs/validation/logs/RUN-20261013-093.txt",
+    "docs/validation/logs/RUN-20261013-094.txt",
+    "docs/validation/logs/RUN-20261013-095.txt",
+    "docs/validation/logs/RUN-20261013-096.txt",
+    "docs/validation/logs/RUN-20261013-097.txt",
+    "docs/validation/logs/RUN-20261013-098.txt",
+    "docs/validation/logs/RUN-20261013-099.txt",
+    "docs/validation/logs/RUN-20261013-100.txt",
+    "docs/validation/logs/RUN-20261013-101.txt",
+    "docs/validation/logs/RUN-20261013-102.txt",
+    "docs/validation/logs/RUN-20261013-103.txt",
+    "docs/validation/logs/RUN-20261013-104.txt",
+    "docs/validation/logs/RUN-20261013-105.txt",
+    "docs/validation/logs/RUN-20261013-106.txt",
+    "docs/validation/logs/RUN-20261013-107.txt",
+    "docs/validation/logs/RUN-20261013-109.txt",
+    "docs/validation/logs/RUN-20261013-111.txt",
+    "docs/validation/logs/RUN-20261013-112.txt",
+    "docs/validation/logs/RUN-20261013-113.txt",
+    "docs/validation/logs/RUN-20261013-114.txt",
+    "docs/validation/logs/RUN-20261013-115.txt",
+    "docs/validation/logs/RUN-20261013-116.txt",
+    "docs/validation/play-01-hosted-baseline.json",
+    "docs/validation/play-01-interruption.json",
+    "docs/validation/play-01.md",
+    "docs/validation/rule-02.md",
+    "docs/validation/rule-03.md",
+    "docs/validation/rule-04.md",
+    "docs/validation/runs/RUN-20261013-060.json",
+    "docs/validation/runs/RUN-20261013-061.json",
+    "docs/validation/runs/RUN-20261013-062.json",
+    "docs/validation/runs/RUN-20261013-063.json",
+    "docs/validation/runs/RUN-20261013-064.json",
+    "docs/validation/runs/RUN-20261013-065.json",
+    "docs/validation/runs/RUN-20261013-066.json",
+    "docs/validation/runs/RUN-20261013-067.json",
+    "docs/validation/runs/RUN-20261013-068.json",
+    "docs/validation/runs/RUN-20261013-069.json",
+    "docs/validation/runs/RUN-20261013-070.json",
+    "docs/validation/runs/RUN-20261013-071.json",
+    "docs/validation/runs/RUN-20261013-072.json",
+    "docs/validation/runs/RUN-20261013-073.json",
+    "docs/validation/runs/RUN-20261013-074.json",
+    "docs/validation/runs/RUN-20261013-075.json",
+    "docs/validation/runs/RUN-20261013-076.json",
+    "docs/validation/runs/RUN-20261013-077.json",
+    "docs/validation/runs/RUN-20261013-078.json",
+    "docs/validation/runs/RUN-20261013-079.json",
+    "docs/validation/runs/RUN-20261013-080.json",
+    "docs/validation/runs/RUN-20261013-081.json",
+    "docs/validation/runs/RUN-20261013-082.json",
+    "docs/validation/runs/RUN-20261013-083.json",
+    "docs/validation/runs/RUN-20261013-084.json",
+    "docs/validation/runs/RUN-20261013-085.json",
+    "docs/validation/runs/RUN-20261013-089.json",
+    "docs/validation/runs/RUN-20261013-090.json",
+    "docs/validation/runs/RUN-20261013-091.json",
+    "docs/validation/runs/RUN-20261013-092.json",
+    "docs/validation/runs/RUN-20261013-093.json",
+    "docs/validation/runs/RUN-20261013-094.json",
+    "docs/validation/runs/RUN-20261013-095.json",
+    "docs/validation/runs/RUN-20261013-096.json",
+    "docs/validation/runs/RUN-20261013-097.json",
+    "docs/validation/runs/RUN-20261013-098.json",
+    "docs/validation/runs/RUN-20261013-099.json",
+    "docs/validation/runs/RUN-20261013-100.json",
+    "docs/validation/runs/RUN-20261013-101.json",
+    "docs/validation/runs/RUN-20261013-102.json",
+    "docs/validation/runs/RUN-20261013-103.json",
+    "docs/validation/runs/RUN-20261013-104.json",
+    "docs/validation/runs/RUN-20261013-105.json",
+    "docs/validation/runs/RUN-20261013-106.json",
+    "docs/validation/runs/RUN-20261013-107.json",
+    "docs/validation/runs/RUN-20261013-109.json",
+    "docs/validation/runs/RUN-20261013-111.json",
+    "docs/validation/runs/RUN-20261013-112.json",
+    "docs/validation/runs/RUN-20261013-113.json",
+    "docs/validation/runs/RUN-20261013-114.json",
+    "docs/validation/runs/RUN-20261013-115.json",
+    "docs/validation/runs/RUN-20261013-116.json",
+    "docs/validation/upstream-engine-review.md",
+    "docs/vision/README.md",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "package.json",
+    "packages/contracts/README.md",
+    "packages/contracts/package.json",
+    "packages/contracts/src/player-moves.ts",
+    "packages/db/README.md",
+    "packages/db/migrations/0002-match-commands.sql",
+    "packages/db/migrations/0003-match-receipt-invariants.sql",
+    "packages/db/package.json",
+    "packages/db/src/index.ts",
+    "packages/db/src/match-store.ts",
+    "packages/db/src/persistence-probe.ts",
+    "packages/db/tests/integration.test.mjs",
+    "packages/db/tests/policy.test.mjs",
+    "packages/engine-adapter/README.md",
+    "packages/engine-adapter/package.json",
+    "packages/engine-adapter/src/code-identity.ts",
+    "packages/engine-adapter/src/index.ts",
+    "packages/engine-adapter/src/persistence.ts",
+    "packages/engine-adapter/src/replay.ts",
+    "packages/engine-adapter/tests/identity.test.mjs",
+    "packages/engine-adapter/tests/persistence.test.mjs",
+    "packages/engine-adapter/tests/replay.test.mjs",
+    "packages/engine-lab/README.md",
+    "packages/engine-lab/package.json",
+    "packages/engine-lab/src/index.ts",
+    "packages/engine-lab/tests/browser.mjs",
+    "packages/presentation/package.json",
+    "packages/service-runtime/package.json",
+    "pnpm-lock.yaml",
+    "scripts/ci/pipeline.mjs",
+    "scripts/db-persistence-proof.py",
+    "scripts/documentation-lib.mjs",
+    "scripts/evidence-lib.mjs",
+    "tests/documentation/browser-cache.test.mjs",
+    "tests/documentation/governance.test.mjs",
+    "tests/foundation/bun-cache.test.mjs",
+    "tests/foundation/bun-cache.test.py",
+    "tests/play/move-policy.test.mjs",
+    "tests/play/storage-contract.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "PLAY-01 evidence is prerequisite-only;548 original requirements,33 groups,20 optional flags, other task prerequisites and Director-owned decisions stay unchanged."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "PLAY-01 evidence is prerequisite-only;548 original requirements,33 groups,20 optional flags, other task prerequisites and Director-owned decisions stay unchanged."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "packages/db/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "packages/presentation/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "packages/service-runtime/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/templates/card-certification.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/adr/0011-sourced-rule-scenarios.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites."
+    },
+    {
+      "path": "docs/runbooks/rules-certification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites."
+    },
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/adr/0012-upstream-kernel-refresh.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/validation/upstream-engine-review.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/plans/2026-10-13-upstream-engine-review.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "updated",
+      "reason": "Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain."
+    },
+    {
+      "path": "docs/schemas/card-certification.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-060.json",
+      "outcome": "passed",
+      "scope": "PLAY-01 intake merged9b9c8ac existing-container doctor/static/bootstrap/original PostgreSQL baseline"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-061.json",
+      "outcome": "passed",
+      "scope": "Fresh prior upstream-audit and main hosted CI metadata, before PLAY-01 source changes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-062.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 RED: actual server and both Lab facades must refuse all debug/server-only/unknown move names"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-063.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 discriminating RED: manualSetLore actually wins in main phase in server and both Lab modes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-064.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 RED: executable replay identity must bind shared policy bytes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-065.json",
+      "outcome": "passed",
+      "scope": "PLAY-01 GREEN: frozen workspace links, compiled guards/policy identity and existing secure adapter/Lab regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-066.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 RED: new private live checkpoint/restore must reproduce current source and reject tampering and foreign match binding"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-067.json",
+      "outcome": "passed",
+      "scope": "PLAY-01 GREEN: built server-only live checkpoint/restore, tamper/foreign-match rejection and preserved RNG/replay/player-policy regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-068.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 RED: restricted test schema, typed repository, command validation and actual bounded engine executor missing"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-069.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 first actual store/executor build, additive test migration and green schema/worker validation checks"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-070.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 discriminating RED: in-flight worker close ownership and real PostgreSQL NULL-reason constraint"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-071.json",
+      "outcome": "passed",
+      "scope": "PLAY-01 GREEN: shared worker termination ownership and appended receipt invariant correction on the restricted test database"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-072.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 real PostgreSQL independent CAS/retry/rollback/role/process-death integration characterization"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-073.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 corrected actual process harness: explicit child runtime flags, full CAS/rollback/role/before-after-COMMIT kill and retry evidence"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-074.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 RED: prior live DB proof must validate the complete appended migration history, not a fixed one-row denominator"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-075.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 RED: private worker identity must match the gateway under supported source conditions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-076.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 DOC RED: generated provider screenshots must not enter source, evidence or clean-copy identity"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-077.json",
+      "outcome": "passed",
+      "scope": "PLAY-01 corrected dependency ownership, worker identity conditions, full migration denominator and real CAS/process-boundary integration"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-078.json",
+      "outcome": "passed",
+      "scope": "PLAY-01 complete restricted storage and ten actual integration cases including pin/corruption/worker failures, independent races and process deaths"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-079.json",
+      "outcome": "failed",
+      "scope": "Reviewer checkpoint emission versus restore-bound regression: discriminating red"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-080.json",
+      "outcome": "passed",
+      "scope": "Checkpoint emission and restore share cumulative bounds; existing private replay and input lifecycle regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-081.json",
+      "outcome": "passed",
+      "scope": "Fresh private checkpoint, actual worker queue expiry/cancellation, generated artifact exclusion and real durable match regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-082.json",
+      "outcome": "passed",
+      "scope": "Reviewed creation input rejects nested accessors without invoking them; local additive migration and both restricted identity sets"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-083.json",
+      "outcome": "failed",
+      "scope": "PLAY-01 complete frozen foundation: doctor documentation types lint build project/upstream/injection tests and original PostgreSQL checks"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-084.json",
+      "outcome": "failed",
+      "scope": "Final PLAY-01 frozen doctor complete foundation and original bootstrap database"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-085.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-089.json",
+      "outcome": "passed",
+      "scope": "Post-crash restored original Compose project: pinned doctor bootstrap tests restricted local/test identities and existing database"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-090.json",
+      "outcome": "historical",
+      "scope": "Correction/quarantine of crash-truncated RUN088; no qualified pass claimed"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-091.json",
+      "outcome": "failed",
+      "scope": "Serial post-crash full frozen foundation; explicit single-file test scheduling and durable evidence writes; no overlapping CI"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-092.json",
+      "outcome": "failed",
+      "scope": "Discriminating documentation scalability regression: sixteen actual ephemeral receipts must not trigger repeated whole-source hashes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-093.json",
+      "outcome": "passed",
+      "scope": "Documentation hash scaling corrected with start/end source guard; complete negative governance and evidence-capture regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-094.json",
+      "outcome": "failed",
+      "scope": "Serial full frozen foundation after crash quarantine and documentation hashing optimization; all tests retained"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-095.json",
+      "outcome": "passed",
+      "scope": "Fresh restored Dev Container post-create validation after synchronized documentation coverage"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-096.json",
+      "outcome": "failed",
+      "scope": "Sequential full foundation validation after resource and documentation recovery corrections"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-097.json",
+      "outcome": "failed",
+      "scope": "Exact Dockerfile download branch with mocked valid/corrupt/range-failed/interrupted network caches"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-098.json",
+      "outcome": "failed",
+      "scope": "Cache regression red on exact pre-review Dockerfile: corrupt completed prefix prevents recovery"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-099.json",
+      "outcome": "passed",
+      "scope": "Corrected migration history and five simulated pinned Bun cache branches, plus governance regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-100.json",
+      "outcome": "failed",
+      "scope": "Cache resume regression red: curl33/36 must discard partial bytes and retry from an absent target"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-101.json",
+      "outcome": "passed",
+      "scope": "Seven exact Dockerfile cache branches: corruption and curl22/33/36 retry fresh; timeout preserves partial; repeated corruption fails closed"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-102.json",
+      "outcome": "passed",
+      "scope": "Full final-source foundation: ordered build/typecheck/lint, all project and unchanged selected upstream tests"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-103.json",
+      "outcome": "passed",
+      "scope": "Final-source actual restricted PostgreSQL match constraints, independent races, rollback and SIGKILL acknowledgement recovery"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-104.json",
+      "outcome": "passed",
+      "scope": "Final-source five live database regressions, all eight restricted identities and original bootstrap PostgreSQL connection"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-105.json",
+      "outcome": "passed",
+      "scope": "Install project-pinned Linux Chromium into restored container for actual browser and Web Worker qualification"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-106.json",
+      "outcome": "passed",
+      "scope": "Final-source actual Linux Chromium: six web/software-WebGL checks and two isolated Lab workers rejecting debug moves"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-107.json",
+      "outcome": "passed",
+      "scope": "Actual host-orchestrated disposable PostgreSQL recreation: typed rows/journals and role/transaction checks; existing VS Code project/volume untouched"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-109.json",
+      "outcome": "historical",
+      "scope": "Reported controlled RUN108 cancellation at98.7percent Windows commit; owned cleanup and Director Slack-first retry"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-111.json",
+      "outcome": "historical",
+      "scope": "Reported Slack-first RUN110 resource cancellation at94.7percent Windows commit; browser-close request pending"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-112.json",
+      "outcome": "passed",
+      "scope": "Source-only clean checkout frozen install and complete foundation; no local credentials/Git/database input copied"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-113.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-114.json",
+      "outcome": "passed",
+      "scope": "Canonical staged Git byte equality, clean frozen install/full foundation and owned temporary cleanup"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-115.json",
+      "outcome": "passed",
+      "scope": "Final preservation: private ignored0600 files, current/full-history secrets, immutable logs, original scope/decisions/pins and owned listener cleanup"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-116.json",
+      "outcome": "passed",
+      "scope": "Final source post-create: exact doctor, frozen install, static/docs verification, bootstrap and preserved original PostgreSQL"
+    }
+  ],
+  "limitations": [
+    "Isolated113 child completes14 stages/artifact validation but receipt fails clock_changed; no qualified/published CI artifact or hosted execution for this source. Leave-environment choice honored; no unsupported retry.",
+    "Windows/touch/GPU/load/production unperformed. Ordinary/official/private/reward/card admission, authenticated transport, PLAY-02 viewer/log privacy, PLAY-03 publication, PLAY-04 clocks, AUTH/REPLAY D10 delivery and X01 multiplayer remain gated.",
+    "108/110 controlled resource cancellations and086/087 unknown/088 truncated supply no acceptance; original data/private files/settings preserved. No spend/deploy/publication/main merge."
+  ],
+  "next_actions": [
+    "Director audit and authorized branch publication/integration with clean hosted CI; local isolated timing remains pending under leave-environment decision.",
+    "PLAY-02 viewer/structured-log noninterference follows PLAY-01; preserve AUTH/REPLAY D10, PLAY-03/04, X01 and ordinary/card/reward/device gates."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-067",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";const b=spawnSync(\"pnpm\",[\"--filter\",\"@lorcana/engine-adapter\",\"build\"],{stdio:\"inherit\"});if(b.status!==0)process.exit(b.status??1);const r=spawnSync(\"node\",[\"--test\",\"packages/engine-adapter/tests/*.test.mjs\",\"tests/play/move-policy.test.mjs\"],{stdio:\"inherit\"});process.exitCode=r.status??1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "e7d22d0198a723445a78b15a4f0d5e27aaf9e7faa8180da7d2ad5ed31f64f60c",
+  "started_at": "2026-10-13T16:56:57.206Z",
+  "finished_at": "2026-10-13T16:56:58.774Z",
+  "recorded_at": "2026-10-13T16:56:58.774Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1568,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-01 GREEN: built server-only live checkpoint/restore, tamper/foreign-match rejection and preserved RNG/replay/player-policy regressions",
+  "log_path": "docs/validation/logs/RUN-20261013-067.txt",
+  "log_sha256": "bd2bfbaef333b3eda09af481583bc6cbbe483739db4da9e0b80a2302709efb68",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-092",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "tests/documentation/governance.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "7c66830a7dd0"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "424c454fff6c13a9f27f9bcb674c4277b0cd2ccc5fe5bd1d10effc5003ba479b",
+  "started_at": "2026-10-13T20:09:22.453Z",
+  "finished_at": "2026-10-13T20:09:29.398Z",
+  "recorded_at": "2026-10-13T20:09:29.398Z",
+  "time_precision": "exact",
+  "elapsed_ms": 6872,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Discriminating documentation scalability regression: sixteen actual ephemeral receipts must not trigger repeated whole-source hashes",
+  "log_path": "docs/validation/logs/RUN-20261013-092.txt",
+  "log_sha256": "b648a705d5a4aa7700aff109eedd1e8c2c50d95245f63a958a569b9b6391e51c",
+  "redactions": 0
+}

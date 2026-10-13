@@ -1,0 +1,24 @@
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+✔ match command validation separates trusted actor and binds exact semantic intent (2.147568ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (324.854865ms)
+✔ close waits for an already completing actual worker (deferred termination simulation) (55.357509ms)
+✔ worker uses the same executable-policy identity as its current server conditions (56.117122ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (41.071689ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (36.866856ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (1.950879ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (483.381167ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 636.711411

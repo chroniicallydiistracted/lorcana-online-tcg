@@ -37,13 +37,13 @@ test('cross-environment logins cannot connect to either other managed database',
 });
 test('migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work',async()=>{
  assert.equal((await migrate('test')).applied,0);
- const concurrent=await Promise.all([migrate('test'),migrate('test')]);assert.ok(concurrent.every(r=>r.applied===0&&r.total===1));
+ const concurrent=await Promise.all([migrate('test'),migrate('test')]);assert.ok(concurrent.every(r=>r.applied===0&&r.total===migrationFiles().length));
  const files=migrationFiles();await assert.rejects(migrate('test',workspaceRoot,[{...files[0],sha256:'0'.repeat(64)}]),/history differs/);
  await assert.rejects(migrate('local',workspaceRoot,files),/isolated test/);
- await assert.rejects(migrate('test',workspaceRoot,[...files,{id:'0002',sha256:'f'.repeat(64),sql:'CREATE TABLE api.rollback_probe (id int); SELECT * FROM foundation.deliberately_missing;'}]));
+ await assert.rejects(migrate('test',workspaceRoot,[...files,{id:String(files.length+1).padStart(4,'0'),sha256:'f'.repeat(64),sql:'CREATE TABLE api.rollback_probe (id int); SELECT * FROM foundation.deliberately_missing;'}]));
  await using('migrator',async db=>{
   assert.equal((await db.query("SELECT to_regclass('api.rollback_probe') AS found")).rows[0].found,null);
-  assert.equal((await db.query('SELECT count(*)::int AS count FROM foundation.migrations')).rows[0].count,1);
+  assert.equal((await db.query('SELECT count(*)::int AS count FROM foundation.migrations')).rows[0].count,files.length);
   for(const service of services){
    const rows=(await db.query('SELECT column_name,data_type,is_nullable,column_default FROM information_schema.columns WHERE table_schema=$1 AND table_name=$2 ORDER BY ordinal_position',[service,'foundation_probes'])).rows;
    assert.deepEqual(rows.map(r=>[r.column_name,r.data_type,r.is_nullable]),[['id','uuid','NO'],['label','character varying','NO'],['created_at','timestamp with time zone','NO']]);assert.match(rows[0].column_default,/gen_random_uuid/);assert.match(rows[2].column_default,/now/);

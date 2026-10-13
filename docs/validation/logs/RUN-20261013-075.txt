@@ -1,0 +1,31 @@
+✖ worker uses the same executable-policy identity as its current server conditions (65.38381ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 154.940253
+
+✖ failing tests:
+
+test at apps/match-service/tests/unit.test.mjs:54:1
+✖ worker uses the same executable-policy identity as its current server conditions (65.38381ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '66a233286408ac464d30e3ad48909ab2892a0f1bc2b05091bcebb99d43b4192c'
+  - 'e83185672fe21fa3ce37a245a861e42b2426dc2992cfcfa3d0f547a4494f6706'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/unit.test.mjs:58:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '66a233286408ac464d30e3ad48909ab2892a0f1bc2b05091bcebb99d43b4192c',
+    expected: 'e83185672fe21fa3ce37a245a861e42b2426dc2992cfcfa3d0f547a4494f6706',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

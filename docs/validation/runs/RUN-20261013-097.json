@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-097",
+  "category": "simulated",
+  "command": [
+    "python3",
+    ".local/play-01/cache-check.py"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "25a15ddfb714"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "b671882740768e2314b32f839ffdf01504de716de1d538cbe195fd840d695bd6",
+  "started_at": "2026-10-13T21:42:55.367Z",
+  "finished_at": "2026-10-13T21:42:55.458Z",
+  "recorded_at": "2026-10-13T21:42:55.458Z",
+  "time_precision": "exact",
+  "elapsed_ms": 91,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Exact Dockerfile download branch with mocked valid/corrupt/range-failed/interrupted network caches",
+  "log_path": "docs/validation/logs/RUN-20261013-097.txt",
+  "log_sha256": "fbab2f6d4f7e4cc6be00e57d25b434e173b4e483860904fe2c984fee3188f969",
+  "redactions": 0
+}

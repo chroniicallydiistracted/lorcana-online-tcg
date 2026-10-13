@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-094",
+  "category": "container",
+  "command": [
+    "bash",
+    "-c",
+    "pnpm install --frozen-lockfile && pnpm run doctor && pnpm verify:foundation && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "7c66830a7dd0"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "096c2e969796328941f9ee67b0f5e441317fc2da9b27775989a85f336d201745",
+  "started_at": "2026-10-13T20:15:33.698Z",
+  "finished_at": "2026-10-13T20:15:48.918Z",
+  "recorded_at": "2026-10-13T20:15:48.918Z",
+  "time_precision": "exact",
+  "elapsed_ms": 15220,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Serial full frozen foundation after crash quarantine and documentation hashing optimization; all tests retained",
+  "log_path": "docs/validation/logs/RUN-20261013-094.txt",
+  "log_sha256": "b486d0087b1fc4e7eaf9660f465e0da6acce33f9966b0031b38e8241cb70ab02",
+  "redactions": 0
+}

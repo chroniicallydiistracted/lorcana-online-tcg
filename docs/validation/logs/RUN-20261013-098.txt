@@ -1,0 +1,6 @@
+PASS simulated Dockerfile cache branch: valid_cache attempts 0
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/foundation/bun-cache.test.py", line 24, in <module>
+    assert result.returncode==0,(scenario,result.stderr);assert cache.read_bytes()==good;assert n==(0 if scenario=='valid_cache' else 2)
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('corrupt_complete', 'sha256sum: /tmp/lorcana-bun-cache-proof-odpbqkyq/archive.zip: No such file or directory\nsha256sum: WARNING: 1 computed checksum did NOT match\n')

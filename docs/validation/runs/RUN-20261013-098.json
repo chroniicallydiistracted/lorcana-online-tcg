@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-098",
+  "category": "simulated",
+  "command": [
+    "python3",
+    "tests/foundation/bun-cache.test.py",
+    ".local/play-01/bun-before-review.Dockerfile"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "25a15ddfb714"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "981a57b67753d1314278620882bcb2cc89bf9dc9019c28e557a1492a060ac666",
+  "started_at": "2026-10-13T21:43:41.073Z",
+  "finished_at": "2026-10-13T21:43:41.197Z",
+  "recorded_at": "2026-10-13T21:43:41.197Z",
+  "time_precision": "exact",
+  "elapsed_ms": 124,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Cache regression red on exact pre-review Dockerfile: corrupt completed prefix prevents recovery",
+  "log_path": "docs/validation/logs/RUN-20261013-098.txt",
+  "log_sha256": "daf0c3913a89e77b1fae903e54b1a6b7ba7ac414c1d30e2d147bd7a2e0ef6b50",
+  "redactions": 0
+}

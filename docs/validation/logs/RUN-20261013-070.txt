@@ -1,0 +1,47 @@
+✔ match command validation separates trusted actor and binds exact semantic intent (38.4772ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (462.363956ms)
+✖ close waits for an already completing actual worker (deferred termination simulation) (66.003042ms)
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (27.935451ms)
+✔ server-only database exports the bounded match repository (0.352353ms)
+✖ real receipt constraint refuses a rejected result with a null reason (50.600194ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 4
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 644.854393
+
+✖ failing tests:
+
+test at apps/match-service/tests/unit.test.mjs:40:1
+✖ close waits for an already completing actual worker (deferred termination simulation) (66.003042ms)
+  AssertionError [ERR_ASSERTION]: close returned before owned termination completed
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/unit.test.mjs:49:48)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/play/storage-contract.test.mjs:14:1
+✖ real receipt constraint refuses a rejected result with a null reason (50.600194ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/play/storage-contract.test.mjs:20:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }

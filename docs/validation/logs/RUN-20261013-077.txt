@@ -1,0 +1,69 @@
+Scope: all 13 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 481ms using pnpm v10.33.0
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (110.598777ms)
+✔ cross-environment logins cannot connect to either other managed database (48.357267ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (55.121935ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (274.956132ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (967.657137ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1893.870117
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (598.087161ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (563.034247ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (468.352759ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (366.25413ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (523.075016ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (502.777254ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (60.631233ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2198.556833ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2085.285041ms)
+✔ match command validation separates trusted actor and binds exact semantic intent (2.657702ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (389.713934ms)
+✔ close waits for an already completing actual worker (deferred termination simulation) (57.271185ms)
+✔ worker uses the same executable-policy identity as its current server conditions (58.969101ms)
+✔ provider-owned browser screenshots never enter source fingerprints or clean copies (10.445011ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8335.056764
+✔ worker uses the same executable-policy identity as its current server conditions (93.490141ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 204.026503

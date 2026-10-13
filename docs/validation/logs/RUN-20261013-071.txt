@@ -1,0 +1,27 @@
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 db:migrate /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js migrate -- --target test
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+{"target":"test","applied":1,"total":3}
+✔ match command validation separates trusted actor and binds exact semantic intent (36.193344ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (393.926662ms)
+✔ close waits for an already completing actual worker (deferred termination simulation) (64.069688ms)
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (22.776129ms)
+✔ server-only database exports the bounded match repository (0.26425ms)
+✔ real receipt constraint refuses a rejected result with a null reason (40.825753ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 546.653683

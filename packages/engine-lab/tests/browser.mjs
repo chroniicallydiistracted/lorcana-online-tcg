@@ -34,6 +34,14 @@ try {
         messages.push(await send({ type: 'init', options: { mode: 'advanced-sandbox', fixture: 'synthetic', seed: 'worker-proof', players: ['p1', 'p2'] } }));
         let revision = messages[1].result.revision;
         for (const [actor, move, input] of [['p1', 'chooseWhoGoesFirst', { playerId: 'p1' }], ['p1', 'alterHand', { playerId: 'p1', cardsToMulligan: [] }], ['p2', 'alterHand', { playerId: 'p2', cardsToMulligan: [] }], ['p1', 'concede', {}]]) {
+          if(move==='concede') {
+            const before=JSON.stringify(await send({type:'status'}));
+            for(const forbidden of ['manualSetLore','manualSetInkDrops','forfeitGame','sing','singTogether','unknown','__proto__']) {
+              const response=await send({type:'submit',command:{actor:'p1',expectedRevision:revision,timestamp:0,commandId:'blocked-'+forbidden,move:forbidden,input:{playerId:'p1',amount:20}}});
+              if(response.ok!==true||response.result.accepted!==false||response.result.code!=='MOVE_FORBIDDEN')throw new Error('Player policy was bypassed');
+              if(JSON.stringify(await send({type:'status'}))!==before)throw new Error('Forbidden worker move changed state');
+            }
+          }
           messages.push(await send({ type: 'submit', command: { actor, expectedRevision: revision, timestamp: 0, commandId: actor + move, move, input } }));
           const status = await send({ type: 'status' }); revision = status.result.revision;
         }
@@ -57,6 +65,6 @@ try {
     assert.deepEqual(Object.keys(messages[6].result).sort(), ['ended', 'mode', 'revision', 'rewardEligible', 'winner']);
   }
   assert.equal(result.environment.node, 'undefined'); assert.equal(result.environment.bun, 'undefined'); assert.deepEqual(errors, []);
-  console.log(JSON.stringify({ environment: result.environment, isolatedWorkers: 2, checks: ['unqualified mode rejection', 'synthetic opening/mulligan/concession', 'terminal winner', 'bounded summaries', 'dispose and fresh worker', 'no Node/Bun/page errors'], workerBytes: bytes.length }));
+  console.log(JSON.stringify({ environment: result.environment, isolatedWorkers: 2, checks: ['unqualified mode rejection', 'synthetic opening/mulligan/concession', 'debug/server/unknown moves refused before concession', 'terminal winner', 'bounded summaries', 'dispose and fresh worker', 'no Node/Bun/page errors'], workerBytes: bytes.length }));
   console.log('PASS actual Linux Chromium Web Workers; no Windows, GPU, live multiplayer or determinism certification');
 } finally { await browser?.close(); await new Promise(resolve => server.close(resolve)); }

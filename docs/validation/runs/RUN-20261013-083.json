@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-083",
+  "category": "container",
+  "command": [
+    "bash",
+    "-c",
+    "pnpm install --frozen-lockfile && pnpm run doctor && pnpm verify:foundation && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "d2a81ca8a70a278baef5781c49f0fcf980089248754f38c59c7f35fe56a6cd7b",
+  "started_at": "2026-10-13T18:08:14.710Z",
+  "finished_at": "2026-10-13T18:08:40.802Z",
+  "recorded_at": "2026-10-13T18:08:40.802Z",
+  "time_precision": "exact",
+  "elapsed_ms": 26091,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 complete frozen foundation: doctor documentation types lint build project/upstream/injection tests and original PostgreSQL checks",
+  "log_path": "docs/validation/logs/RUN-20261013-083.txt",
+  "log_sha256": "d157b10c0611d0bb6b2a5d96f28099c6bc1202e470faadf05472dc6fe5158cda",
+  "redactions": 0
+}

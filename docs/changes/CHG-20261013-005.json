@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261013-005",
+  "title": "Clarify final PLAY-01 handoff next actions",
+  "actor": "Codex documentation reviewer",
+  "status": "finalized",
+  "recorded_at": "2026-10-13T22:39:05Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "task_ids": [
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "revision",
+      "description": "Remove an accidental duplicated phrase from the handoff next-action paragraph. Preserve core CHG004 and every execution record; implementation, acceptance, pending CI timing and Director decisions unchanged."
+    }
+  ],
+  "files": [
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261013-005.json",
+    "docs/current-state.json",
+    "CHANGELOG.md",
+    "docs/validation/runs/RUN-20261013-117.json",
+    "docs/validation/logs/RUN-20261013-117.txt"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Clarifies Director audit/publication/hosted-CI next steps while retaining all pending privacy/admission/device/clock gates."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261013-117.json",
+      "outcome": "passed",
+      "scope": "Final native documentation/evidence validation, unchanged executable fingerprint and corrected handoff."
+    }
+  ],
+  "limitations": [
+    "Documentation wording only; no new executable or game/device/CI acceptance."
+  ],
+  "next_actions": [
+    "Director audit/publication with hosted CI; preserve core CHG004 limits and follow PLAY-02 prerequisites."
+  ]
+}

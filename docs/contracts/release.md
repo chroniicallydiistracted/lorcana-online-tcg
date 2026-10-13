@@ -41,3 +41,7 @@ Rollback is allowed only after explicit proof that old code understands the curr
 ## Current upstream refresh — 2026-10-13 UTC
 
 The kernel source pin is6de59de1 with59 patches; compiled engine/adaptor and release hashes change naturally. Old private replays bind the old compiled identity and cannot silently pass current verification. No retained durable game loader or activation is implemented. See [refresh qualification](../validation/upstream-engine-review.md) for current evidence and limits.
+
+## PLAY-01 continuation — 2026-10-13 UTC
+
+PLAY-01 implements the internal two-player synthetic durable command service with participant-scoped idempotent receipts, row-fenced CAS, private deterministic recovery, atomic accepted journal and metadata-only outbox. Both server and Lab refuse every manual/debug move. Fastify remains diagnostics-only; authenticated transport, viewer/structured-log privacy (PLAY-02), publication (PLAY-03), game clocks (PLAY-04), X01 multiplayer and ordinary/official/private/reward/card admission remain gated. See [PLAY-01 operation](../runbooks/match-commands.md) and [validation](../validation/play-01.md); local core/full/browser/database/clean acceptance is verified; isolated CI timing remains pending after RUN113 clock rejection.

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-116",
+  "category": "container",
+  "command": [
+    "node",
+    "scripts/post-create.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "25a15ddfb714"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-13T22:31:21.857Z",
+  "finished_at": "2026-10-13T22:31:37.723Z",
+  "recorded_at": "2026-10-13T22:31:37.723Z",
+  "time_precision": "exact",
+  "elapsed_ms": 15747,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final source post-create: exact doctor, frozen install, static/docs verification, bootstrap and preserved original PostgreSQL",
+  "log_path": "docs/validation/logs/RUN-20261013-116.txt",
+  "log_sha256": "12f13dba2106125d0c37e5afa5554f159ddbc52fc6594b1d1f33a1d83935112f",
+  "redactions": 0
+}

@@ -1,5 +1,7 @@
 # Workspace setup on Andre's PC
 
+After a host crash, rediscover containers/project and preserve existing credentials and the PostgreSQL volume before recovery. Run one heavyweight verification at a time; see the [workflow](../DEVELOPMENT_WORKFLOW.md). The Dev Container's Bun1.4.2 build uses a persistent BuildKit cache, checks the exact architecture-specific archive hash before extraction, and permits a bounded30-minute resumable network attempt instead of the former two-minute timeout. A verified retained archive can seed that cache without changing the pin; the cache itself is ignored machine state. A corrupted completed archive is never executed. A partial archive must pass the same checksum before it becomes usable. The build always checks Bun's version. See the [incident record](../validation/play-01-interruption.json) for the observed Windows low-memory event and distinct network failure. Restored application/data health needs fresh actual evidence; surviving files alone do not prove it.
+
 ## Existing workspace and evidence
 
 The Director confirmed the initial Dev Container build, post-create pipeline, authenticated bootstrap database check and Windows connectivity diagnostic on 5 October 2026. Git main was published at `335da7e`; the repository was public at that observation. Repository visibility remains the Director's decision. Current application evidence and pending checks are in [workspace qualification](../WORKSPACE_QUALIFICATION.md) and [BOOT-01 validation](../validation/boot-01.md).
@@ -98,3 +100,9 @@ The server-only adapter now supplies private crypto randomness and completed syn
 ## Current upstream refresh — 2026-10-13 UTC
 
 Existing setup/ports/toolchain remain. Engine reproduction now uses the separately retained inert6de59de1 checkout; use the owning engine operation, not the original53a79413 cache, for current vendor verification. See [refresh qualification](../validation/upstream-engine-review.md) for current evidence and limits.
+
+## PLAY-01 continuation — 2026-10-13 UTC
+
+PLAY-01 implements the internal two-player synthetic durable command service with participant-scoped idempotent receipts, row-fenced CAS, private deterministic recovery, atomic accepted journal and metadata-only outbox. Both server and Lab refuse every manual/debug move. Fastify remains diagnostics-only; authenticated transport, viewer/structured-log privacy (PLAY-02), publication (PLAY-03), game clocks (PLAY-04), X01 multiplayer and ordinary/official/private/reward/card admission remain gated. See [PLAY-01 operation](match-commands.md) and [validation](../validation/play-01.md); prior source-specific evidence remains historical, and final broad verification is in progress.
+
+The pinned Bun archive uses a locked persistent BuildKit cache. Every final archive is verified before extraction. Interrupted transfers keep resumable partial bytes; completed checksum or HTTP/range/resume failures discard invalid partials and allow at most two outer download attempts, each with curl’s bounded retry policy. A recovered container may start successfully while post-create refuses stale documentation: synchronize the authorized draft coverage first, inspect a successful sync, then rerun post-create. Preserve failed receipts; do not bypass the documentation guard.

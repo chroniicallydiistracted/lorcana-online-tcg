@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-079",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "packages/engine-adapter/tests/persistence.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "a20ee92bf0ef91c28dd37a1c7f7b3a0cf05ed2313e5babb8a1066805406a2754",
+  "started_at": "2026-10-13T18:00:58.667Z",
+  "finished_at": "2026-10-13T18:00:59.563Z",
+  "recorded_at": "2026-10-13T18:00:59.563Z",
+  "time_precision": "exact",
+  "elapsed_ms": 896,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Reviewer checkpoint emission versus restore-bound regression: discriminating red",
+  "log_path": "docs/validation/logs/RUN-20261013-079.txt",
+  "log_sha256": "aa2472210d21d7c8584c9d7ff36ddfd6e197b736811aa9a03ccdac8cac3ee6fc",
+  "redactions": 0
+}

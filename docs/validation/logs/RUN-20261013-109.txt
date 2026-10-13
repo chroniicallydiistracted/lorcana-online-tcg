@@ -1,0 +1,5 @@
+Reported controlled cancellation of RUN108 (not a reconstructed execution receipt).
+Windows counters immediately before cancellation: committed35,327,623,168bytes /limit35,810,197,504bytes; available8,145MiB.
+Only the owned CI launcher received SIGTERM; its handler removed UUID60fadecf35b848e480dd3ab52d649f4a containers,volume,network and image. No passing artifacts or native receipt were published. RUN108 is reserved.
+Existing workspace25a15ddfb714/PostgreSQLc7cd58258c19 remain running; original volume untouched.
+Director authorizes retry with Slack closed first. Later counters after cancellation/Director response: committed32,190,717,952bytes /limit36,901,978,112bytes; available9,709MiB. Samples do not isolate the contribution of Slack or CI.

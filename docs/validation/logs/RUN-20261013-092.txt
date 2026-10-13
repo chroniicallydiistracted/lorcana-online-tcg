@@ -1,0 +1,42 @@
+✔ new documentation governance exposes real validation and sync operations (0.901429ms)
+✖ many captured receipts do not repeatedly rehash the complete source tree (4988.578053ms)
+✔ source drift requires a covering change and review of impacted documentation (212.092763ms)
+✔ unclassified and missing documents fail rather than disappear from the audit (76.443866ms)
+✔ change records reject unqualified timestamps and historical execution inventions (12.817504ms)
+✔ a newly changed source cannot be refreshed by replaying an old finalized record (64.316526ms)
+✔ documentation edits and newly added source files require recorded coverage (95.672461ms)
+✔ claimed passing evidence requires a real run and unchanged log digest (15.63533ms)
+✔ committed finalized history cannot be changed or deleted (114.732036ms)
+✔ log tampering and exit status contradictions invalidate execution evidence (191.480847ms)
+✔ deleting a snapshot cannot reset the review ledger or replay finalized history (69.039292ms)
+✔ removing old source-impact edges cannot erase required documentation reviews (76.839353ms)
+✔ committing a rewrite does not make sealed history valid (136.267832ms)
+✔ executed passing evidence needs a log and consistent execution/recording times (47.983402ms)
+✔ isolated branches are not required to contain unrelated scope history (124.887056ms)
+✔ a misspelled documentation impact path cannot silently disable reviews (15.100095ms)
+✔ human device reports preserve verdict without inventing process exit or machine verification (165.249991ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 16
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6689.037046
+
+✖ failing tests:
+
+test at tests/documentation/governance.test.mjs:36:1
+✖ many captured receipts do not repeatedly rehash the complete source tree (4988.578053ms)
+  AssertionError [ERR_ASSERTION]: source reads scaled with receipt count: 19
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/governance.test.mjs:51:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

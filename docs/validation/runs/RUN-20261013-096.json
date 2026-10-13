@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-096",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "25a15ddfb714"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "096c2e969796328941f9ee67b0f5e441317fc2da9b27775989a85f336d201745",
+  "started_at": "2026-10-13T21:40:03.418Z",
+  "finished_at": "2026-10-13T21:40:58.879Z",
+  "recorded_at": "2026-10-13T21:40:58.879Z",
+  "time_precision": "exact",
+  "elapsed_ms": 55252,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Sequential full foundation validation after resource and documentation recovery corrections",
+  "log_path": "docs/validation/logs/RUN-20261013-096.txt",
+  "log_sha256": "16bc0832a59653b1acb41eea09b6b4bae5808bfeae81f40779e627d78a65f676",
+  "redactions": 0
+}

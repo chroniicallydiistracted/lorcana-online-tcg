@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-074",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "db:test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "3c63258e61db70e4037070fa020f28b41756d531b53e66a2943079d00e560416",
+  "started_at": "2026-10-13T17:41:42.646Z",
+  "finished_at": "2026-10-13T17:41:46.419Z",
+  "recorded_at": "2026-10-13T17:41:46.419Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3773,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 RED: prior live DB proof must validate the complete appended migration history, not a fixed one-row denominator",
+  "log_path": "docs/validation/logs/RUN-20261013-074.txt",
+  "log_sha256": "99e1280bc5fc072fb307674311b9fb106b7f93f7cac4b769eb6d7ad106dbe471",
+  "redactions": 0
+}

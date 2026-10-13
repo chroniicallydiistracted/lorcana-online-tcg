@@ -16,10 +16,11 @@
   "scripts": {
     "build": "tsc -p tsconfig.json && node build-worker.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "node --test tests/*.test.mjs",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
     "test:browser": "node tests/browser.mjs"
   },
   "dependencies": {
+    "@lorcana/contracts": "workspace:*",
     "@lorcana/vendor-engine": "workspace:*",
     "seedrandom": "3.0.5"
   },

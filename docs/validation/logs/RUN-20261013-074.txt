@@ -1,0 +1,49 @@
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (101.45754ms)
+✔ cross-environment logins cannot connect to either other managed database (40.108182ms)
+✖ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (17.433366ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (254.669921ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (873.108746ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1669.005591
+
+✖ failing tests:
+
+test at tests/integration.test.mjs:38:1
+✖ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (17.433366ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(concurrent.every(r=>r.applied===0&&r.total===1))
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/db/tests/integration.test.mjs:40:79)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+/workspaces/lorcana-online-tcg/packages/db:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/db@0.0.0 test:integration: `node --test tests/integration.test.mjs`
+Exit status 1
+ ELIFECYCLE  Command failed with exit code 1.

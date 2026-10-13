@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-076",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/documentation/browser-cache.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "e643684acb61ce17c1d88a58f46b79c694596904415b5cc0a33509fa854975a8",
+  "started_at": "2026-10-13T17:47:04.133Z",
+  "finished_at": "2026-10-13T17:47:04.528Z",
+  "recorded_at": "2026-10-13T17:47:04.528Z",
+  "time_precision": "exact",
+  "elapsed_ms": 395,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 DOC RED: generated provider screenshots must not enter source, evidence or clean-copy identity",
+  "log_path": "docs/validation/logs/RUN-20261013-076.txt",
+  "log_sha256": "fc94fb2aa1d79f673ffcdc0b925980d01dd9b65b7ba460ccd127452ab478b5a4",
+  "redactions": 0
+}

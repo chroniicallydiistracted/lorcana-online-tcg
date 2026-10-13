@@ -1,0 +1,32 @@
+✖ provider-owned browser screenshots never enter source fingerprints or clean copies (8.468195ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 216.590254
+
+✖ failing tests:
+
+test at tests/documentation/browser-cache.test.mjs:7:1
+✖ provider-owned browser screenshots never enter source fingerprints or clean copies (8.468195ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'e06d8d57a838dba2d6e019d95075dfd35ae9fced7deb27fcdf02387a0fd6431c'
+  - 'd31043d9f0544c3e0f158e1a65679602e24f249e7ac271ad5002dc73dbf798b5'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/documentation/browser-cache.test.mjs:12:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'e06d8d57a838dba2d6e019d95075dfd35ae9fced7deb27fcdf02387a0fd6431c',
+    expected: 'd31043d9f0544c3e0f158e1a65679602e24f249e7ac271ad5002dc73dbf798b5',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

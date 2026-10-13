@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-077",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const a of [[\"install\",\"--frozen-lockfile\"],[\"--filter\",\"@lorcana/db\",\"build\"],[\"--filter\",\"@lorcana/match-service\",\"build\"],[\"db:test\"]]){const r=spawnSync(\"pnpm\",a,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}for(const a of [[\"--test\",\"tests/documentation/browser-cache.test.mjs\",\"apps/match-service/tests/unit.test.mjs\",\"apps/match-service/tests/integration.test.mjs\"],[\"--conditions=lorcana-source\",\"--test\",\"--test-name-pattern\",\"same executable-policy identity\",\"apps/match-service/tests/unit.test.mjs\"]]){const r=spawnSync(\"node\",a,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "49a908af1e7bc27afed2a822de6a98211f9518d61175cb58f1b20420db74a60d",
+  "started_at": "2026-10-13T17:49:21.936Z",
+  "finished_at": "2026-10-13T17:49:37.916Z",
+  "recorded_at": "2026-10-13T17:49:37.916Z",
+  "time_precision": "exact",
+  "elapsed_ms": 15980,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-01 corrected dependency ownership, worker identity conditions, full migration denominator and real CAS/process-boundary integration",
+  "log_path": "docs/validation/logs/RUN-20261013-077.txt",
+  "log_sha256": "b0958144cb49e4a6188d1eddd00e84f9d0530d17d8d9dac0bedf65b03e6b58c7",
+  "redactions": 0
+}

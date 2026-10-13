@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/.local/play-01/cache-check.py", line 24, in <module>
+    assert result.returncode==0,(scenario,result.stderr);assert cache.read_bytes()==good;assert n==(0 if scenario=='valid_cache' else 2)
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('valid_cache', 'sh: 3: Syntax error: "&&" unexpected\n')

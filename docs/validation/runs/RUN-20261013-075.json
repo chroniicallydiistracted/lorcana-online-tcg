@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-075",
+  "category": "container",
+  "command": [
+    "node",
+    "--conditions=lorcana-source",
+    "--test",
+    "--test-name-pattern",
+    "same executable-policy identity",
+    "apps/match-service/tests/unit.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "3c63258e61db70e4037070fa020f28b41756d531b53e66a2943079d00e560416",
+  "started_at": "2026-10-13T17:41:46.403Z",
+  "finished_at": "2026-10-13T17:41:46.644Z",
+  "recorded_at": "2026-10-13T17:41:46.644Z",
+  "time_precision": "exact",
+  "elapsed_ms": 241,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 RED: private worker identity must match the gateway under supported source conditions",
+  "log_path": "docs/validation/logs/RUN-20261013-075.txt",
+  "log_sha256": "faa6fc898ae825e9deab5c57a4a21c6c3b9747782f25bb8ab9c9577dfc006490",
+  "redactions": 0
+}

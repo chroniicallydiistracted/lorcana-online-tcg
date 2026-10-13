@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-106",
+  "category": "headless_browser",
+  "command": [
+    "node",
+    ".local/play-01/browser-checks.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "25a15ddfb714"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-13T21:51:58.443Z",
+  "finished_at": "2026-10-13T21:52:19.671Z",
+  "recorded_at": "2026-10-13T21:52:19.671Z",
+  "time_precision": "exact",
+  "elapsed_ms": 21105,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final-source actual Linux Chromium: six web/software-WebGL checks and two isolated Lab workers rejecting debug moves",
+  "log_path": "docs/validation/logs/RUN-20261013-106.txt",
+  "log_sha256": "bd577cd5e1c85277e241c54bda7ed0442fea9159aff0c7f5df740305da054328",
+  "redactions": 0
+}

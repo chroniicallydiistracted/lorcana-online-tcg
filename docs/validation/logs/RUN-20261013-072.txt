@@ -1,0 +1,33 @@
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (487.509394ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (462.786255ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (406.546913ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (322.35572ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (450.019172ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (445.391371ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (43.291483ms)
+✖ real process kill before COMMIT and fresh-process retry prove receipt durability (15304.305017ms)
+✖ real process kill after COMMIT and fresh-process retry prove receipt durability (15317.535569ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 7
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34107.706974
+
+✖ failing tests:
+
+test at apps/match-service/tests/integration.test.mjs:97:39
+✖ real process kill before COMMIT and fresh-process retry prove receipt durability (15304.305017ms)
+  Error: Owned child did not report
+      at Timeout._onTimeout (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/integration.test.mjs:92:60)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at apps/match-service/tests/integration.test.mjs:97:39
+✖ real process kill after COMMIT and fresh-process retry prove receipt durability (15317.535569ms)
+  Error: Owned child did not report
+      at Timeout._onTimeout (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/integration.test.mjs:92:60)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)

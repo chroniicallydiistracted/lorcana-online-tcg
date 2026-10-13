@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-100",
+  "category": "simulated",
+  "command": [
+    "python3",
+    "tests/foundation/bun-cache.test.py"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "25a15ddfb714"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "0ef2b31d9a995ec0d48fb3295af11d60a9d530c558d7408ccc48c736ec8714c7",
+  "started_at": "2026-10-13T21:45:41.597Z",
+  "finished_at": "2026-10-13T21:45:41.697Z",
+  "recorded_at": "2026-10-13T21:45:41.697Z",
+  "time_precision": "exact",
+  "elapsed_ms": 101,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Cache resume regression red: curl33/36 must discard partial bytes and retry from an absent target",
+  "log_path": "docs/validation/logs/RUN-20261013-100.txt",
+  "log_sha256": "8f57b17b73e1eb4c027bcf04d297fc68c6b0146fd86c56b4dac2123c5e67fefb",
+  "redactions": 0
+}

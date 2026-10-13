@@ -5,8 +5,8 @@
       "id": "F-WORKSPACE",
       "name": "Reproducible local workspace",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Pinned container, private credential preservation and real baseline checks; BOOT-02 local roles/persistence are owned by F-DB. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Pinned container, private credential preservation and real baseline checks; BOOT-02 local roles/persistence are owned by F-DB.",
       "sources": [
         ".devcontainer/**",
         "toolchain.json",
@@ -48,15 +48,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-CONNECTIVITY",
       "name": "Bootstrap connectivity diagnostic",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Independent diagnostic HTTP only. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Independent diagnostic HTTP only.",
       "sources": [
         "scripts/serve-smoke.mjs",
         "tests/smoke.test.mjs"
@@ -87,15 +93,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-CONTRACTS",
       "name": "Public foundation schemas",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Typed health/readiness and closed own-data protocol/release schemas/parsers; browser-safe metadata only. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Typed health/readiness and closed own-data protocol/release schemas/parsers; browser-safe metadata only.",
       "sources": [
         "packages/contracts/**"
       ],
@@ -126,15 +138,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-HTTP",
       "name": "Separate API and match diagnostics",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Local Fastify liveness/readiness and strict bounded correlated application-version negotiation; no gameplay/auth/database integration. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Local Fastify diagnostics/negotiation remain; F-MATCH-COMMANDS owns internal synthetic durable commands separately.",
       "sources": [
         "apps/api/**",
         "apps/match-service/**",
@@ -169,15 +187,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-LIFECYCLE",
       "name": "Cancellable server lifecycle",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Signal-first cancellable startup and bounded graceful cleanup. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Signal-first cancellable startup and bounded graceful cleanup.",
       "sources": [
         "packages/service-runtime/**"
       ],
@@ -207,15 +231,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-WORKER",
       "name": "Idle worker foundation",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Executable idle worker without ingress or jobs. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Executable idle worker without ingress or jobs.",
       "sources": [
         "apps/worker/**"
       ],
@@ -245,15 +275,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-WEB",
       "name": "Semantic foundation client",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Semantic React diagnostics, fail-closed protocol compatibility and opt-in synthetic rendering; no engine worker/game control integration. Headless/Windows/device/art-direction qualification is separate. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Semantic React diagnostics, fail-closed protocol compatibility and opt-in synthetic rendering; no engine worker/game control integration. Headless/Windows/device/art-direction qualification is separate.",
       "sources": [
         "apps/web/**",
         "packages/design-system/**"
@@ -287,15 +323,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-RENDERER",
       "name": "Synthetic Babylon lifecycle",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Synthetic scene resize/dispose; simulation/software WebGL evidence only. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Synthetic scene resize/dispose; simulation/software WebGL evidence only.",
       "sources": [
         "packages/presentation/**"
       ],
@@ -327,15 +369,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-BOUNDARIES",
       "name": "Browser/public ownership enforcement",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Resolved dependency/module/HTML/CSS/asset boundaries with negative proofs. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Resolved dependency/module/HTML/CSS/asset boundaries with negative proofs.",
       "sources": [
         "scripts/check-boundaries.mjs",
         "scripts/browser-boundary-plugin.mjs",
@@ -370,15 +418,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-SUPERVISOR",
       "name": "Local development supervision",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Retained group ownership, idempotent cleanup, live descendant verification, sanitized source processes and fail-fast stack. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Retained group ownership, idempotent cleanup, live descendant verification, sanitized source processes and fail-fast stack.",
       "sources": [
         "scripts/dev.mjs",
         "tests/foundation/processes.test.mjs",
@@ -411,7 +465,13 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
@@ -454,15 +514,21 @@
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
         "docs/validation/runs/RUN-20261012-090.json",
-        "docs/validation/runs/RUN-20261013-046.json"
+        "docs/validation/runs/RUN-20261013-046.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-EVIDENCE",
       "name": "Timestamped execution evidence",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Actual result/timestamps, source/log identity, failure/signal and supported secret redaction. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Actual result/timestamps, source/log identity, failure/signal and supported secret redaction.",
       "sources": [
         "scripts/evidence-lib.mjs",
         "scripts/record-evidence.mjs",
@@ -495,7 +561,13 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
@@ -525,8 +597,8 @@
       "id": "F-DB",
       "name": "Local restricted PostgreSQL foundation",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Verified local managed app databases, restricted service identities, typed synthetic probes, reviewed locked/transactional/checksummed migrations and disposable recreation proof; domain/app/production acceptance remains separate. Current-source live isolated checks (eight managed identities, local/test migrations, five live checks) passed with exact timing in RUN-20261012-043 after the timing-rejected RUN028/029; historical scoped recreation/role acceptance remains preserved. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Restricted local/test roles and reviewed0001/0002/0003 history, actual role checks and disposable recreation verified. F-MATCH-COMMANDS owns private match storage/CAS; no production/backup acceptance.",
       "sources": [
         "packages/db/**",
         "infra/**",
@@ -565,7 +637,16 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-103.json",
+        "docs/validation/runs/RUN-20261013-104.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-107.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
@@ -573,7 +654,7 @@
       "name": "Reproducible CI and qualified build artifacts",
       "implementation": "implemented",
       "verification": "historical_verified",
-      "description": "Current13-stage source includes secure Node RNG/replay, unchanged upstream plus owned injection and actual worker/privacy-boundary tests, and v3 two-root engine artifact identity. RUN028/029 completed all child stages but failed clock_changed and published no result. Independent audit RUN-20261012-043 then passed the unchanged guard (exact timing, 13 stages, scans, artifact) at the final RULE-03 fingerprint, and RUN044 re-verified its artifact. Hosted RULE-02 main f61aad8 run 38183090003 succeeded (observed through the GitHub API by the audit; its artifact was not downloaded). Hosted RULE-03 and required-check settings remain separate. RULE-04 audit RUN-20261013-011 completed all 13 child stages at fingerprint 5f405778 but was clock-rejected (1,554 ms) like RUN089/091; read-only RUN-20261013-012 shows the host wall clock stepping forward about 343 ms per minute. No artifact published; no environment change. Fresh RUN-20261013-024 confirms hosted RULE-04 maina45ac4b success (38329018576); the source refresh branch is not covered. Local stepped-clock qualification remains pending, unchanged guard/environment. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred. Refresh audit: isolated CI RUN-20261013-058 passed its first ten stages (foundation, databases, identities, live database) then failed at pinned-chromium on a browser-download network timeout; no clock discontinuity, no artifact.",
+      "description": "Guarded14-stage pipeline adds live durable matches.113 completes every child stage and artifact validation but receipt fails clock_changed; no new qualified/published artifact. Prior hosted source evidence retained; this source needs hosted or timing-qualified CI.",
       "sources": [
         "scripts/ci/**",
         "scripts/ci-local.py",
@@ -622,15 +703,16 @@
         "docs/validation/runs/RUN-20261013-011.json",
         "docs/validation/runs/RUN-20261013-012.json",
         "docs/validation/runs/RUN-20261013-024.json",
-        "docs/validation/runs/RUN-20261013-058.json"
+        "docs/validation/runs/RUN-20261013-058.json",
+        "docs/validation/runs/RUN-20261013-113.json"
       ]
     },
     {
       "id": "F-PROTOCOL",
       "name": "Bounded public protocol and version negotiation",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Verified local closed revision-1 frames, bounded/correlated strict HTTP negotiation and semantic client status; gameplay/authenticated transport remains separate. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Verified local closed revision-1 frames, bounded/correlated strict HTTP negotiation and semantic client status; gameplay/authenticated transport remains separate.",
       "sources": [
         "packages/contracts/src/protocol.ts",
         "packages/service-runtime/**",
@@ -662,15 +744,21 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
       "id": "F-RELEASE",
       "name": "Release artifact identity and immutable retained pins",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Public release/retained pins and v3 archive binding identify built apps/SQL plus separate server-adapter/Lab runtime roots and compiled kernel/provenance; rules/content/products/rewards remain reserved. No admission/activation or match-secret input. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Public release/retained pins and v3 archive binding identify built apps/SQL plus separate server-adapter/Lab runtime roots and compiled kernel/provenance; rules/content/products/rewards remain reserved. No admission/activation or match-secret input.",
       "sources": [
         "packages/contracts/src/release.ts",
         "packages/service-runtime/**",
@@ -705,7 +793,13 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
@@ -740,8 +834,8 @@
       "id": "F-RULE-INVENTORY",
       "name": "Dated rules/catalog and upstream source inventory",
       "implementation": "implemented",
-      "verification": "historical_verified",
-      "description": "Research-only public acquisition and inert AST inventory, offline metadata/date/denominator/certification guards and exact acquired-source regeneration. Explicit missing-document/identity/localization gates; no product integration or upstream execution. Refresh checkpoint: full source4ba45cc4 assertions passed in RUN037, but its receipt and RUN038/039/042 fail clock_changed. Prior acceptance remains historical; no new whole-feature timed acceptance inferred.",
+      "verification": "verified",
+      "description": "Research-only public acquisition and inert AST inventory, offline metadata/date/denominator/certification guards and exact acquired-source regeneration. Explicit missing-document/identity/localization gates; no product integration or upstream execution.",
       "sources": [
         "scripts/rules/**",
         "tests/rules/**"
@@ -778,7 +872,13 @@
         "docs/validation/runs/RUN-20261012-086.json",
         "docs/validation/runs/RUN-20261012-087.json",
         "docs/validation/runs/RUN-20261012-088.json",
-        "docs/validation/runs/RUN-20261012-090.json"
+        "docs/validation/runs/RUN-20261012-090.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
@@ -786,7 +886,7 @@
       "name": "Pinned synthetic engine, secure server RNG and private deterministic verification",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "361 selected/308 runtime files at6de59de1,59 reproduced patches/MIT notices,37 unchanged upstream test files. Provider-only pure kernel; private server RNG/completed deterministic replay and noncompetitive Lab retained. Native inkDrops/event/payment/effective-state compatibility,120 synthetic sourced cases. All ordinary/official/private/reward/card gates closed; PLAY-01 server/Lab must refuse manual/debug moves including manualSetInkDrops. Independent refresh audit CHG-20261013-003: pin confirmed against GitHub (363 blob ids), timing-valid full foundation RUN-20261013-047, RULE-03 adapter/HMAC/bundle probes pass on the refreshed kernel; debug moves (now incl. manualSetInkDrops) still reach the engine (RUN054).",
+      "description": "Pinned6de59de1/59 patches, secure RNG/private completed replay, server/Lab13-move policy and private live reconstruction. Ordinary/official/private/reward admission closed; PLAY-02 wire/log privacy pending.",
       "sources": [
         "scripts/engine/**",
         "vendor/tcg-engines/**",
@@ -849,7 +949,16 @@
         "docs/validation/runs/RUN-20261013-047.json",
         "docs/validation/runs/RUN-20261013-049.json",
         "docs/validation/runs/RUN-20261013-052.json",
-        "docs/validation/runs/RUN-20261013-054.json"
+        "docs/validation/runs/RUN-20261013-054.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-103.json",
+        "docs/validation/runs/RUN-20261013-104.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-107.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     },
     {
@@ -905,7 +1014,61 @@
         "docs/validation/runs/RUN-20261013-005.json",
         "docs/validation/runs/RUN-20261013-035.json",
         "docs/validation/runs/RUN-20261013-036.json",
-        "docs/validation/runs/RUN-20261013-051.json"
+        "docs/validation/runs/RUN-20261013-051.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
+      ]
+    },
+    {
+      "id": "F-MATCH-COMMANDS",
+      "name": "Durable synthetic match commands",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Internal two-player synthetic command service: trusted actor,13-move policy, private deterministic recovery, restricted row-fenced CAS, atomic accepted journal/receipts/metadata outbox and process-death retry. Local core acceptance verified; authenticated transport, viewer/log privacy, publication, clocks, multiplayer and all ordinary/official/private/reward/card admission remain gated.",
+      "sources": [
+        "apps/match-service/**",
+        "packages/db/**",
+        "packages/engine-adapter/**",
+        "packages/engine-lab/**",
+        "packages/contracts/**",
+        "tests/play/**",
+        "scripts/ci/pipeline.mjs",
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "documents": [
+        "docs/runbooks/match-commands.md",
+        "docs/validation/play-01.md",
+        "apps/match-service/README.md"
+      ],
+      "task_ids": [
+        "PLAY-01"
+      ],
+      "requirement_ids": [
+        "R02.032",
+        "R02.033",
+        "R02.034",
+        "R15.009",
+        "R29.001",
+        "R29.005",
+        "R30.015"
+      ],
+      "evidence": [
+        "docs/validation/runs/RUN-20261013-078.json",
+        "docs/validation/runs/RUN-20261013-081.json",
+        "docs/validation/runs/RUN-20261013-102.json",
+        "docs/validation/runs/RUN-20261013-103.json",
+        "docs/validation/runs/RUN-20261013-104.json",
+        "docs/validation/runs/RUN-20261013-106.json",
+        "docs/validation/runs/RUN-20261013-107.json",
+        "docs/validation/runs/RUN-20261013-112.json",
+        "docs/validation/runs/RUN-20261013-114.json",
+        "docs/validation/runs/RUN-20261013-115.json",
+        "docs/validation/runs/RUN-20261013-116.json"
       ]
     }
   ]

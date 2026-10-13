@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-063",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/play/move-policy.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "ed3609aebc9624b63c8e65b8565907cd5fa4afdd5f50e894a74075d7cf6ab2cd",
+  "started_at": "2026-10-13T16:46:55.513Z",
+  "finished_at": "2026-10-13T16:46:55.799Z",
+  "recorded_at": "2026-10-13T16:46:55.799Z",
+  "time_precision": "exact",
+  "elapsed_ms": 286,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 discriminating RED: manualSetLore actually wins in main phase in server and both Lab modes",
+  "log_path": "docs/validation/logs/RUN-20261013-063.txt",
+  "log_sha256": "3a0ba437c746bdbe0f82cb2dae819b6301887177d322f74489b46b05dd5eeb8f",
+  "redactions": 0
+}

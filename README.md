@@ -111,3 +111,7 @@ The reviewed upstream kernel now pins6de59de1 (361 selected/308 runtime/59 patch
 ## Upstream refresh independent audit — 2026-10-13 UTC
 
 An independent audit confirmed the refresh to upstream 6de59de1 (checked against GitHub), re-ran the earlier RULE-03/RULE-04 audit probes on the new kernel and confirmed the Adventurous static-loss fix. RUN-20261013-047 is a timing-valid full foundation receipt for this source. Debug moves still need PLAY-01's server allowlist, and the new exactly-two-player guard (P056) must be revisited for X01 multiplayer. See [refresh validation](docs/validation/upstream-engine-review.md).
+
+## PLAY-01 continuation — 2026-10-13 UTC
+
+PLAY-01 implements the internal two-player synthetic durable command service with participant-scoped idempotent receipts, row-fenced CAS, private deterministic recovery, atomic accepted journal and metadata-only outbox. Both server and Lab refuse every manual/debug move. Fastify remains diagnostics-only; authenticated transport, viewer/structured-log privacy (PLAY-02), publication (PLAY-03), game clocks (PLAY-04), X01 multiplayer and ordinary/official/private/reward/card admission remain gated. See [PLAY-01 operation](docs/runbooks/match-commands.md) and [validation](docs/validation/play-01.md); local core/full/browser/database/clean acceptance is verified; isolated CI timing remains pending after RUN113 clock rejection.

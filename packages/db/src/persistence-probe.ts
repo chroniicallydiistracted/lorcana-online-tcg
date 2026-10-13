@@ -25,7 +25,8 @@ async function main() {
     const journal = client(target, 'migrator'); await journal.connect();
     try {
       const rows = (await journal.query('SELECT id,sha256,applied_at FROM foundation.migrations ORDER BY id')).rows;
-      if (rows.length !== 1 || rows[0].sha256 !== migrationFiles()[0]?.sha256 || !(rows[0].applied_at instanceof Date)) throw new Error('Migration checksum/time did not persist');
+      const files=migrationFiles();
+      if (rows.length !== files.length || rows.some((row,index)=>row.id!==files[index]?.id||row.sha256!==files[index]?.sha256||!(row.applied_at instanceof Date))) throw new Error('Migration checksum/time did not persist');
     } finally { await journal.end(); }
     console.log(`PASS ${command} ${target} typed UUID row, UTC timestamp and migration checksum`);
   }

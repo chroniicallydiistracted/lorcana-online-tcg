@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-062",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/play/move-policy.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "c85c068cbe2728f945afa3d5ed84ba4b5d45a89db21caf621ac2cd94c28e5b4e",
+  "started_at": "2026-10-13T16:45:43.947Z",
+  "finished_at": "2026-10-13T16:45:44.232Z",
+  "recorded_at": "2026-10-13T16:45:44.232Z",
+  "time_precision": "exact",
+  "elapsed_ms": 285,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 RED: actual server and both Lab facades must refuse all debug/server-only/unknown move names",
+  "log_path": "docs/validation/logs/RUN-20261013-062.txt",
+  "log_sha256": "9eeeaceb75484674170b6deba4fb0e8db537b9b60c852edce2b7b965faf45d70",
+  "redactions": 0
+}

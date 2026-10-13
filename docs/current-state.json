@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-13T15:45:22.903Z",
+  "observed_at": "2026-10-13T22:39:13.388Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -1854,6 +1854,66 @@
       "path": "docs/validation/upstream-engine-review-host-preservation.json",
       "classification": "evidence",
       "sources": []
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "classification": "current",
+      "sources": [
+        "apps/match-service/**",
+        "packages/db/**",
+        "packages/engine-adapter/**",
+        "packages/engine-lab/**",
+        "packages/contracts/**",
+        "tests/play/**",
+        "scripts/ci/pipeline.mjs",
+        "package.json",
+        "pnpm-lock.yaml"
+      ]
+    },
+    {
+      "path": "docs/plans/2026-10-13-play-01-durable-commands.md",
+      "classification": "planning",
+      "sources": []
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "classification": "current",
+      "sources": [
+        "apps/match-service/**",
+        "packages/db/**",
+        "packages/engine-adapter/**",
+        "packages/engine-lab/**",
+        "packages/contracts/**",
+        "tests/play/**",
+        "scripts/ci/pipeline.mjs",
+        "package.json",
+        "pnpm-lock.yaml"
+      ]
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "classification": "current",
+      "sources": [
+        "apps/match-service/**",
+        "packages/db/**",
+        "packages/engine-adapter/**",
+        "packages/engine-lab/**",
+        "packages/contracts/**",
+        "tests/play/**",
+        "scripts/ci/pipeline.mjs",
+        "package.json",
+        "pnpm-lock.yaml"
+      ]
+    },
+    {
+      "path": "docs/validation/play-01-hosted-baseline.json",
+      "classification": "evidence",
+      "sources": []
+    },
+    {
+      "path": "docs/validation/play-01-interruption.json",
+      "classification": "evidence",
+      "sources": []
     }
   ],
   "change_ids": [
@@ -1888,7 +1948,9 @@
     "CHG-20261012-005",
     "CHG-20261013-001",
     "CHG-20261013-002",
-    "CHG-20261013-003"
+    "CHG-20261013-003",
+    "CHG-20261013-004",
+    "CHG-20261013-005"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -1922,11 +1984,13 @@
     "CHG-20261012-005": "finalized",
     "CHG-20261013-001": "finalized",
     "CHG-20261013-002": "finalized",
-    "CHG-20261013-003": "finalized"
+    "CHG-20261013-003": "finalized",
+    "CHG-20261013-004": "finalized",
+    "CHG-20261013-005": "finalized"
   },
-  "source_fingerprint": "4ba45cc4ddaf904fe0d3b433ef7884dba981b0dcc10744bd0327e6a7d28a8b0c",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
   "files": {
-    ".devcontainer/Dockerfile": "a66796ba4398f17b2bcd6386f1128e28f5ceabeae44ac3b0d203565f959c9f88",
+    ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
     ".devcontainer/devcontainer.json": "24c804171e577bb160e1b337e4616b9e0fc81b620d5120d7c3d8ee09cfe97c12",
     ".dockerignore": "fd70e1831083fee4b88c9f2a9c93452200972571d02d879e5b3b96c66eeea3a8",
@@ -1934,23 +1998,31 @@
     ".env.example": "43e517338c01706991b278852fcdc5a3955ba9bf4fdabf8f10c06a5776e15bc2",
     ".gitattributes": "da64f818dd6748cd5fa2efed9e87a48b8166206794681210aafaf9a6c29e0778",
     ".github/workflows/foundation.yml": "db39cc93063690120c5769bde03c9dec3e3e321d3d086e2a33df754db12c2088",
-    ".gitignore": "cedcb92ec45e2b6945c719a2e45afc0c908b47f09b6bf9891a9097761b7ab38b",
+    ".gitignore": "3d2a70050bb78cf61df267999145fb4debd9672d6358a9c596d8a9fe6e82724b",
     ".node-version": "73fb1b615e2043a933be1c0895cde4358036acc28d785692509b822aa53c761f",
     ".vscode/extensions.json": "646c8376b43d619bf6cdb318b554052a09e29934d61ad6cc594f9d472338d733",
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "b0b942ee07995377bc11957b717ee389cf1ce5547a6db4c3a54f02e4e49777db",
-    "README.md": "bc4e1fd95baf9e62523e70c0ad0e798aa57c21f861a8b622f3f43ea58adf5e0a",
+    "AGENTS.md": "785f8ce812be9108729707468dcf67e170f4906841e1ebc123dd4a46272a1103",
+    "README.md": "3e7cc02e60db92c17e5899b7e2bc89942dcc33252d33c7465cf36214e4c5b933",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
     "apps/api/package.json": "e59616d0612a193cca2ed185742c43020a9d3d9d151bfd0cd055ff0875d50ebf",
     "apps/api/src/main.ts": "585053572b46b58a98fb14f9f904a10d2da052bae624e869c80a3183ace58606",
     "apps/api/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
-    "apps/match-service/README.md": "dc570628d366edeb2849462e3e052cb0ac2138aae52275681056539c4937b2be",
-    "apps/match-service/package.json": "3eddf1c48e21ef7651d17edae3220b5c65730043d01e13931d935bbc6df93144",
+    "apps/match-service/README.md": "f1b2b3f725afce1cc3b01afb15df4fe139244267955aaca64feafa82f6043bcc",
+    "apps/match-service/package.json": "8138291913f118795e3d9052be1de2576b21d4bb77371d5bed4bda4849fdc381",
+    "apps/match-service/src/engine-executor.ts": "3aad4d3645198461ee914b0fa1da744eada456e654485878c84bc870fed23ede",
     "apps/match-service/src/main.ts": "d13333ddaeee69407963916bf3b80fb31578b73ef896b7ad468e7f469d30a1f4",
+    "apps/match-service/src/service.ts": "4c44769b9eb3693363067836ce7c9c858e6a6df8dc4b9015ff48c80b89e4af00",
+    "apps/match-service/src/transition-worker.ts": "7c439055f3442db960efad189eb7e0e2d171cbba717c2e30534c6536be17b72b",
+    "apps/match-service/src/validation.ts": "ad41fe208087271302c427e6815f7f564a554bdbb64d1adc613852fd2937c35f",
+    "apps/match-service/tests/fault-child.mjs": "c45acf2cd8b44f673e66a9a26a34b9c3cd76874075fe721c4a0358400a0a4550",
+    "apps/match-service/tests/fixtures.mjs": "e8753f22f94d0a8ee73fcb59d509058af7a5a0a7b4ef6eeae06a8dd43f31ae51",
+    "apps/match-service/tests/integration.test.mjs": "5902798212e8dc028f9f9cca278dc233c56e11abb0a660dcac6a1ec2c94e3ff5",
+    "apps/match-service/tests/unit.test.mjs": "a417b980249601943536970328a1dc1d4fce6355c1846f2ad0dc361b7be8ec6a",
     "apps/match-service/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "apps/web/README.md": "28f9aa2ccea5ffb33a91e12e33f85db2b396cc6c7363d1f25eec03cadfb7bb53",
     "apps/web/index.html": "5f6d04e152072716c16a6ef1f4f45bb5e65eaeb61a800c66f8d8060181775e26",
@@ -1968,12 +2040,12 @@
     "apps/worker/src/main.ts": "48f226ac4b06c316c19ccc45328a37cb4df49b8520326b2293dc0cc3069ac223",
     "apps/worker/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "docs/ARCHIVE_PROVENANCE.md": "e77e3909b03bae735287e3176fcab76c5418ee87cde40b972beb9631cb6bedda",
-    "docs/CHANGELOG_FORMAT.md": "a617db9067abc87a4f0ae15cd56c90e29cc4e3eaa1f42e3c92d62c6af73be9e7",
-    "docs/DEVELOPMENT_WORKFLOW.md": "69f81d0a9abaffbbc1bcf5b8371276983ebf83d86105e545208d923651104858",
-    "docs/FEATURES.md": "80902fb9459aac9b1a992b5e3ad9f31f939af73eebd652add0e5f433189371d1",
-    "docs/HANDOFF.md": "673a70aa5204b34dbcd3e295af8b1c498562772d7128e3e123158608ef14c155",
-    "docs/README.md": "e6e25d1e447760e27d650f10d04e900c60c648f1b2340fd717f9e1e6f9c9c3f1",
-    "docs/WORKSPACE_QUALIFICATION.md": "1329d7abc8bbb38d31f0a1ee2125b350d385ca0f10f059f0825c91da5f2b9133",
+    "docs/CHANGELOG_FORMAT.md": "6499a0609175b876a29f3d0cc4863967c3d7a5137852b83ba75070f9d0b02417",
+    "docs/DEVELOPMENT_WORKFLOW.md": "1225237a8cb27ba923fc1138e7aa35875d2cb9f443cce22575a5a72763f5b880",
+    "docs/FEATURES.md": "22b02a9913f4e113f65d394182e32bd744529e5852e6c98b0d8d7b9f85287835",
+    "docs/HANDOFF.md": "d53b78d3d8698d600ae33964ec4c5afa42af68d5434bed7c9e64ab81c0661856",
+    "docs/README.md": "ef7bbf4c417a8657a3c5b9526c1fc748e963a82a6c0ae29d5cd0b25a2a313d11",
+    "docs/WORKSPACE_QUALIFICATION.md": "49211d43d9f19d30f80599d5c2007bc93b32cfc396ded25cc5222ba445c4ab7e",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "b214b90422f991ed45fdb306cfb04601819ae796ed3f34a099ac8fdc77508862",
     "docs/adr/0003-documentation-evidence.md": "71a56e217ba1fa49a3a9fd070996a65d9dd967f7ebc51ab4a7f25e73620c5385",
@@ -1982,16 +2054,17 @@
     "docs/adr/0006-protocol-release-contracts.md": "04f563ef035c87691bc7d197bade6d53b45fd30af0c759c87f027ca59d27dfb3",
     "docs/adr/0007-hosting-provider-baseline.md": "9d4c3de99c73e9c88cd8e708e69a9eafcc1bc6fb8b55919ec1050b0a268db800",
     "docs/adr/0007-single-host-beta-proposal.md": "13ee0af57f98d4dcc67319e1e4b1558622e24b123f2d8ed4fa16b693fac70ccf",
-    "docs/adr/0008-engine-placement-dependency-baseline.md": "81241cba5960d7b3e8bd5d716e1f9350ab9179fa43b2bbfbb5f4810a810f6aff",
-    "docs/adr/0009-pinned-engine-qualification.md": "d69bea233f80d7088ab5449bb963f58f07127485bb053b39f35773e24c991718",
-    "docs/adr/0010-secure-randomness-replay.md": "fe7c28106eacd8dc804a5fff7add3c1475933a2afd92122335573c4fd7a8b524",
+    "docs/adr/0008-engine-placement-dependency-baseline.md": "53b6dc196654a4bddd60738308bb513121df5b326085bb22f877e1061dfa9b30",
+    "docs/adr/0009-pinned-engine-qualification.md": "089dac87fee431d2ff3cf3d085097d53c27d97cc68894bf42753f5c5f8b77037",
+    "docs/adr/0010-secure-randomness-replay.md": "d3c17e2665216e179944abd968607841d7d0cee5cc275d1e314a67192d0ad42b",
     "docs/adr/0011-sourced-rule-scenarios.md": "ab25c748101924d7cd339d0b05ba3b1ee8ef9691a8da462b8c058779e15b0399",
-    "docs/adr/0012-upstream-kernel-refresh.md": "b28e0fc1fbf69dbf3c6ef753e6829f9dda6546d5f20df02196e8bd3d76d1692e",
-    "docs/audits/2026-10-06-project-audit.md": "55359329b0aea4682b01b71ebf3536b118520b8d7a5d7e6ef802691170bf11a9",
-    "docs/contracts/protocol.md": "6482f9ef5e06dfed03aad9c2936027cada33771757f34504dbc491160423041d",
-    "docs/contracts/release.md": "0cb14bfe07e18b27bfaed3b1f23c47420f24d59e1858b6e04c971488d2277296",
-    "docs/documentation-map.json": "868baafd048ae27486751121757b76cda8a2f411ccd9a62038d1411d8eead5eb",
-    "docs/features.json": "edd1ef0277f9aac805c347812d2c7bb00316167907f87d19ad1f16e6d9b91792",
+    "docs/adr/0012-upstream-kernel-refresh.md": "6570a286d13931c4c077990b3176609763a72d707e0f685ee1dd4ed0f683f9ae",
+    "docs/adr/0013-durable-synthetic-match-commands.md": "89b623a1913174e9643118f48cb4dc286de6582aca3f8925f84d0a6ed651238e",
+    "docs/audits/2026-10-06-project-audit.md": "8f2af5b04e524bcb18aea4471aecc3bef0e1c2414c512ae27e2dab14c1820b60",
+    "docs/contracts/protocol.md": "c8052a551af230d5cd98e529feee3272657afcff84049d2e938107960d6263d9",
+    "docs/contracts/release.md": "83334fde48d969266d5d82f10e5d47a2633fd2150603aef4cae3122cc8dc2976",
+    "docs/documentation-map.json": "868acd197e41c0162772a358bb727a0f1b2f187699b27dceaaa73b3942a95d52",
+    "docs/features.json": "80083763cc3447c7a496bb298dabb5a7c33fa5883f81fd8791de9567bd31dcd1",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "66b91822242f8ad1f400910d49dc3d71ad5f606f96af06ccb3d4dfed0ceefa93",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2003,6 +2076,7 @@
     "docs/plans/2026-10-11-rule-02-engine-vendor.md": "a2a8b0acbc6aef02d0a917a03b3ac7879f3e22c6d3d16df46aabc1a60a9781c0",
     "docs/plans/2026-10-12-rule-03-randomness-replay.md": "a49ad5e0fe48c0157472f6539fac4cc0112669f1ebcd892b2085c7fa0474e054",
     "docs/plans/2026-10-12-rule-04-certification.md": "07de2c18cded070ce9c375a1d109e77962908421e17f555b2355cfc54920857d",
+    "docs/plans/2026-10-13-play-01-durable-commands.md": "7c3e5aee0754d58eeba2c372d28b8da787c7efd24087c00f6bb75f772de253d2",
     "docs/plans/2026-10-13-upstream-engine-review.md": "8836e00bfcb63625798f5bb3cf038be8924b927b008c93ec7952fd3d86b8832e",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
     "docs/plans/boot-04-costs.json": "db38b14c7d22fce7fbf18c88f29062beb9462732cc578e09b744d4170f2ebda5",
@@ -2028,11 +2102,12 @@
     "docs/rules/README.md": "00ee9328b18484b3d1d30e31181920a5c0208a39cf10bd7d7d05360e367bb9d4",
     "docs/rules/source-specs-supplement.json": "0efe5f0d481ed436bfb196005dc3d7fad574b2f1040e7d4eaba95b9f39939e0a",
     "docs/rules/source-specs.json": "03207c3e5692ba63735df07e7cb2333ffa38b4146382fb987f2cc46c5b220a0e",
-    "docs/runbooks/ci.md": "44a753cefe7fc60c342246135968ea6bf92eece818d85eed0f9434d8c7b0efae",
-    "docs/runbooks/database.md": "71294a6c009d3a3df49960aebfef963483b1ee1a3c376fc51648d895128fc1ea",
-    "docs/runbooks/engine.md": "f85f7e644bc7143f4f14baca48f99e1a8394e0a7e4131bf0d01bad1150e6a7d6",
+    "docs/runbooks/ci.md": "a6cbf3edd0a128065254865ee131e8439b73d59ba1ffde203615fc417913720d",
+    "docs/runbooks/database.md": "7cda86248e2ffb46aeb4d7f4b47c9c12e05f9e5d433f9a2683b9b23fe4850a08",
+    "docs/runbooks/engine.md": "44598c8c5d411a77cbddc026565255c7c19d8a307ff3c5461cbed1a015bd24d9",
+    "docs/runbooks/match-commands.md": "331c79dd7169e5e6076f7d2861b83953186a972732a38f688c1e1bcdf2147760",
     "docs/runbooks/rules-certification.md": "300cdbbca09cd631cc52775e4b43926ed945d6313b1c6022de881197caf7ac03",
-    "docs/runbooks/workspace-setup.md": "786448c0c53c919c98a5109bae92122eebe0d239dd51c64e766020d026bb1002",
+    "docs/runbooks/workspace-setup.md": "3a5071402fdfa1116bedf8f6c398a08fd524086aeee364b20b7758b29769a749",
     "docs/schemas/card-certification.schema.json": "213a7c5a2aafbe69fa800774e9a21197b7a4fd76479637be543289db6c6ee18d",
     "docs/schemas/change.schema.json": "11a2de343d65b08be1efc45203d98f0a078cafafee2275b9972a482c32dfb2de",
     "docs/schemas/documentation-map.schema.json": "071c80437ab170e6a7b6c3ca7c75b37e600ef4a95b3c2a8ed930263adec54c6d",
@@ -2046,49 +2121,55 @@
     "docs/validation/archive/2026-10-06-wsl-interruption/RUN-20261006-072.json.bytes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "docs/validation/archive/2026-10-06-wsl-interruption/RUN-20261006-072.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "docs/validation/archive/RUN-20261006-017-original.json": "30250d26ce512d9d37327b6c9f257a8b144143ab0dd3e22947fe8e5d5b02be2a",
+    "docs/validation/archive/RUN-20261013-088-crash-truncated.json.bytes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/validation/archive/RUN-20261013-088-crash-truncated.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "docs/validation/boot-01-source-manifest.json": "b9780fcd1618e54aebffda71b3afce2502575bb1fb6e0ae37ef2f16397cb8082",
-    "docs/validation/boot-01.md": "5574f744b0cfaee84aea2e2c04ad5841a9ca7ee4df221185a0c5afb1323b1857",
-    "docs/validation/boot-02.md": "3e35425436e9085ea4c8417d3583b8c9e9066ec24a5ebbc6100b04914a294dd2",
-    "docs/validation/boot-03.md": "4789b47c8023a20ed9d075666023068c179504ba3f4a23f2a92479f542ac1e46",
+    "docs/validation/boot-01.md": "8894ca33094ffee615a5914727749196ca94faf71dfff291132e2b1d2c72dd50",
+    "docs/validation/boot-02.md": "5845827b9ff9050f287d50b38cfbe5e4f1e04cdafdde9c6bc195948d167259a8",
+    "docs/validation/boot-03.md": "7abd46f68398815610df93ef286b9d4177980658010f2db787bebda3fddc42df",
     "docs/validation/boot-04.md": "3b4b01e87581e52b50d20b02485082239b02535127c758de62f0cdd0eaa84b4f",
-    "docs/validation/boot-05.md": "c7291b35dca6335affc02355f59da31a657ddffc3eaafabf16bdf54bcbe0ee5a",
+    "docs/validation/boot-05.md": "57e3f5461c802aed0ed403da34b4f8e9c5e141c0e61ffc518d70c6ff157869fc",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
+    "docs/validation/play-01-hosted-baseline.json": "4b04a297bb0d17c56eef75fae7fc0ba725dbab4679d7dab931c176cb6c08373a",
+    "docs/validation/play-01-interruption.json": "d582f8c78804b693b605466f433fefb928307e48a3cb21c4a191eb62f5581c40",
+    "docs/validation/play-01.md": "b859d55382a03020d931cba8f9206568ff8f47f48378ef6597c2305ded274c42",
     "docs/validation/rule-01.md": "2179eed327700ea1feb4de0b5d22beaad569e64a7c2c92d5f97a0f503eaae8b5",
     "docs/validation/rule-02-canonical-check.mjs.txt": "801cff8cf4d82a478922ec6204024a3a321e804afd91eefeaad049cc26c33d68",
     "docs/validation/rule-02-host-closure.json": "82cb130e1aa7353efb6f1bba289cffb595f15653dabe42af797a3a6f8f3d6cda",
-    "docs/validation/rule-02.md": "4a39fb14c7a7a684d5410391f46b9ff92070c230561c91896f04b4928d48d01a",
+    "docs/validation/rule-02.md": "76fe9f709673b4b003f25d2fad1c4fd36aee342b137d3e46e68002d73f4a14a2",
     "docs/validation/rule-03-canonical-check.mjs.txt": "cf9d865a075824ccbc245c69dc204df08734cb77c21da321aba3301863ddb3ee",
     "docs/validation/rule-03-host-closure.json": "3980919ababfccae41ca97dcdc6e853345f4c9e2567d2f73b6cb48dda1a58a0c",
-    "docs/validation/rule-03.md": "65776716f60e6476c7a59dd07eb0d988ce334b443dc821aaf451707dcf929896",
+    "docs/validation/rule-03.md": "dca286ac29fa2cb83ab019a2659dd3140aa0980795a3fc17c99c469f0ab3e956",
     "docs/validation/rule-04-canonical-check.mjs.txt": "b6f42cb866b2090b4c9c3e317c0ea17c650052b510ac0e1128c4ae467c9196c7",
     "docs/validation/rule-04-closure-check.mjs.txt": "b32d50b435c5b9caae1ec2879d149349b98054def669910b8b5bd1cbaa0b8aca",
     "docs/validation/rule-04-host-closure.json": "fc7f6ec63b22fec3019c8ea872fb67ee2de1697526230a72f12ebaf89af1c967",
-    "docs/validation/rule-04.md": "dde239c7cec8fa61d8691659cddd59f7e45733b976ad88ba12fbaa05da19319f",
+    "docs/validation/rule-04.md": "434c230395a756cca52e70d47fd7b9242794ec2047ec5a2aa269d2b23098dc4d",
     "docs/validation/upstream-engine-review-canonical.mjs.txt": "9f978397adf8078562b81b31c9484edbeaa9ba19569bdc0d5ec1f68226814495",
     "docs/validation/upstream-engine-review-closure.mjs.txt": "88901cfd8fc1e75367f7836cbd11e3a1393bd7469694660786219f84097fa787",
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
-    "docs/validation/upstream-engine-review.md": "ac67d1df806255d9e844fbcc74525d35691b0356da73c66201e25dbada0018b3",
+    "docs/validation/upstream-engine-review.md": "9276c880220c89653e72b4fcb5fa5d1544c89a25d3ba58ad889eeca69e2760fb",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
-    "docs/vision/README.md": "7bb59ee1bb514c298d7d6712f40f6e54a3e4e09d06f2c1499602e92083a5da5c",
+    "docs/vision/README.md": "1978df214064f5eb4f89c42674899317749ac8a8779a362879c50fc4963669e7",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
     "docs/vision/decision_register.csv": "dfb614a7fa8273d3a53a8d9a4f9b2caebad9ebcfc95e38fdb418d9ea94301f62",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "4a03a34de2d13d004fa805e5650c22b8da756006faad1028ace7079dadb831a2",
+    "docs/vision/initial_backlog.csv": "2aac3d9528f080bbfe223fb62cfc11f41e63d8fd7f44b9acc08162431bb8fce2",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
-    "docs/vision/requirements.csv": "38c57bcea49ccddd6c3ca9eabaeae36ec2eafef40cdf1153ceb8b177db605733",
+    "docs/vision/requirements.csv": "fdc28850b2856b864859edfc7d83dc35c3d8a42dab7b41787e04ee07c849e37a",
     "docs/vision/rules_certification_template.csv": "5ff136b9900020eb10306e47c4df455b98bbe376ac4640a077c191c9063fc56b",
     "docs/vision/source_register.json": "32e54839404cbcdb809411eddddbd3ad5fc1c74da2060090b822a16e05250ea7",
     "eslint.config.mjs": "027322d5be4e59871b192b7331fa38fbce8a2c2e56bd7bbc95ec56d70cd2fb97",
     "infra/README.md": "69d8d72eb0a04377a0dc5857ec4ed2d351080f146f74da6500bd721e271edda7",
     "infra/compose.ci.yaml": "cfc81e5cd72a717a2a5fe02d9649853a25ce5bc708bc8b33be66589b9728b208",
     "infra/compose.persistence.yaml": "21a987cefd5d5db3b19fb213a197f560b1bb3da9e111852ee9f619cec55e57f2",
-    "package.json": "d45db9556e098e33410c9b16d344089cc75f587960017ad442c16c3dccc06064",
-    "packages/contracts/README.md": "69b71915ebabbb6272a21e304c81b6db9737d484639ee252d2118bb978a803c7",
-    "packages/contracts/package.json": "a2da6ae3bb628ece0f305657aee9017a659012feafd7bc1cd3c1b95933ad2889",
+    "package.json": "0639052d783e0d8b938e732ddf11c48b80c2ba1cf3b05c8862b73e98c0adfd47",
+    "packages/contracts/README.md": "0f3f47d04140d0ea337267d1d3a61b954c4c582d747624838e4de8b20411f301",
+    "packages/contracts/package.json": "88c2132bab2a7c3a2cc5c89ee6e2849e399a35180d542c13b8ec088c6f084970",
     "packages/contracts/src/index.ts": "612013cdf7bd705b7701f58f81f0ed8a7e8d1a4640d1e88b5aa542a53845901c",
+    "packages/contracts/src/player-moves.ts": "1814b124be43cba33baca517488349a03c8905bd05a8f01838784ee4dd32d5db",
     "packages/contracts/src/protocol.ts": "425ff36a38e6ab40486ace2553037ed955c172c33ec32c66c3acdc34c8ac0e6f",
     "packages/contracts/src/release.ts": "e6492e5c3b9bfbfdbc4dc973802a4975e867cf693854e6e86441edaeca466dd9",
     "packages/contracts/tests/fixtures.mjs": "6bf41c966b7f429bd776e147fdf24773be388fbd7a19a5a7f92b8a2b1548949f",
@@ -2096,56 +2177,61 @@
     "packages/contracts/tests/protocol.test.mjs": "5db2009dff631350092c8406f15da9b2600bcaa4bfb209a464e4d70d5ade93ca",
     "packages/contracts/tests/release.test.mjs": "4a4cc24fd6ef0fe37d3aa2a1969d8b8eff9da55458f9d83e5f6e71d4c7e25f03",
     "packages/contracts/tsconfig.json": "1bd86ae5eb4bccac21a9d29caaa9dd80718bef7b447126708b40cbdaa8d0e769",
-    "packages/db/README.md": "7d7e2df3c15e27ad4411121517d11cddbe9bd4db794daf4de514e6f0c0edf59e",
+    "packages/db/README.md": "7a033f00d4d0db33a4cd2113ac5238871caf364846d2e77824dbcc99e0dcb44a",
     "packages/db/migrations/0001-foundation-probes.sql": "6f8d66f0637aec7872bce8f9a1d7e9462d7f441d63d7bc034d136e4549dc45ce",
-    "packages/db/package.json": "d24102e225be34d94911c451192a29c9f1d21ff05358c7dbb164f85d572506fe",
+    "packages/db/migrations/0002-match-commands.sql": "8e632c5ba2c094901b9310290ae585c2c5b3f863c2e5d01ffc60cdf6cac5db39",
+    "packages/db/migrations/0003-match-receipt-invariants.sql": "246fdc89b14dd56d951f0856be4e36a048a69c92fc80128705c3ecabba7bbdfd",
+    "packages/db/package.json": "4b337a95232baea66f20aad3fde5545a16b0dbf02bccedd546c55ff797edbec6",
     "packages/db/src/cli.ts": "473326e4d9fbb538f5f63634caded19e172819ae65c8a53132b904c41895cec6",
     "packages/db/src/config.ts": "f7d54351ce9ef8e067adc1936e277f1eb4e46a93496a3391110991206ab3a588",
-    "packages/db/src/index.ts": "5ac73ea178bddc07d4c52c37e85c05499e40954099f15e47214b88d31032d532",
+    "packages/db/src/index.ts": "2144d42e93b023ab617a4195da0fbb2ea35e12ba80eb215b2daf12d9e2563e72",
+    "packages/db/src/match-store.ts": "008c4985cbe7a459dc2179d7ffa32cd05ae898fc4c828878b0da3252020cd7b0",
     "packages/db/src/migrate.ts": "447d9bb0e18e76b5c9891cca7df4487c4f88188fb4a709efcb6ea813ac6a01ed",
-    "packages/db/src/persistence-probe.ts": "ceb71e37fe07bd7b9a69b6e2e0d44a6796fbb9d5dcc7d97305ffee7b5a3c5340",
+    "packages/db/src/persistence-probe.ts": "80834d57a401fbb7a159e3ff0ef9378914ae0250f059c19a00ecfa3c02b6ca45",
     "packages/db/src/policy.ts": "ea8e8a78a0158a4dda096983deb185b3e6bcdeb195b41e3d5bee9268f5826f9a",
     "packages/db/src/provision.ts": "d8db14fa6ea0c3d680184ddcddbd1b854879c4a9147dd486c1168acc64cde4b4",
     "packages/db/src/schema.ts": "9773bcfe0f6fc933458c93cc46911aede19ec7d2795404b46363cd45b0b06eaf",
     "packages/db/tests/config.test.mjs": "df9a2ae3a365ef736a52c59554f1b21218bdc46996cf7debd729d364b5837b95",
-    "packages/db/tests/integration.test.mjs": "76e7f23981a6f3db3e24a64673345fee7b03c41b0572b326ab51850280ef61ad",
-    "packages/db/tests/policy.test.mjs": "eb0625b0c6bf8269a60ff1d583e6051a019279dee82ea28fdcc94dd8a0be51fb",
+    "packages/db/tests/integration.test.mjs": "ee21a37ab6748d1de675915706995c1b8ab2989d77139d991cbe75e744b88478",
+    "packages/db/tests/policy.test.mjs": "8eefc9d43dbf731dc07774c290b195575737712ece8dffaaa62bf0ffa7ac3100",
     "packages/db/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "packages/design-system/README.md": "ba5cd57355fcef8c5871112261c1eb636531c0601cf85e31d9d87d9546db7329",
     "packages/design-system/package.json": "5a884fd1d716cad0eeac7db471bedc2f0fd4299a001de209a69ddf15e03a8602",
     "packages/design-system/src/index.tsx": "2cbec4e2cc0a63d09d356d04a51f422586f51849b132219b7eed89d7ff6d3bcf",
     "packages/design-system/tsconfig.json": "8cc0484e9292c072e0dfe6599d022ec7f3394b144cd03e34e206c6cf80ddb944",
     "packages/domain/README.md": "80a93c01a4ca4695d43497653c062a96bcedf97aea1c3c73796d2b82d51fbaed",
-    "packages/engine-adapter/README.md": "1ae5420f7a3f925853f91c70c3aa270a4038f56cef983c595e5c0fdbd847e945",
-    "packages/engine-adapter/package.json": "7fa1c6914d2e9d3cecaa308562605ea647915912be3ac21b2c9bbe6c683aa2a8",
+    "packages/engine-adapter/README.md": "06aabb974bb2c41c8c16f5de9a4d1a6bc845bae9ce3d63e823dbeb321c51180a",
+    "packages/engine-adapter/package.json": "9bcff08addbb53bd3ddfb347f883fd0bc0ca0788aa9575a63b7e323b512ca965",
     "packages/engine-adapter/src/admission.ts": "e13a7ce8f924de586eb68cebf54a32334df59a6736cb8bbfc33009de170dc8bb",
-    "packages/engine-adapter/src/code-identity.ts": "fc5213bb2d0b0108559a6140517653d8d66d01dd34a7291be41ba64f11090335",
-    "packages/engine-adapter/src/index.ts": "a542b69bf66a55292701f1758cc13f12c0ab726e98846747a5dceac165b90379",
+    "packages/engine-adapter/src/code-identity.ts": "efe26fd029a1ba1aadfc05b391a7b7c0f77e4b963a5407471dbf29bf23d16726",
+    "packages/engine-adapter/src/index.ts": "9230bcac0c9e961c570afaa901513684ede47ae1caf856f786c020c6a10df54f",
+    "packages/engine-adapter/src/persistence.ts": "6b1b8835424c567c26de7c83f408502f47b9dbb5ce685d1404068a60ab73a352",
     "packages/engine-adapter/src/random.ts": "cdd1af9d94fb049e9d36e8a8c380c4b41966fcacf04215d7dd46362eb3c42937",
-    "packages/engine-adapter/src/replay.ts": "0b1f9b753154cc9585e8523b17528d9efe49083de5bef91e3bd546e5721918c8",
+    "packages/engine-adapter/src/replay.ts": "efc945aa01080006a0ce77c7c923bd5b0b03cc6aa1ff42c1a1b94eee86e350f1",
     "packages/engine-adapter/src/validation.ts": "613473fca072abc60b646fb23fa9dbeb6fb4f59eaef56dad2a996894c2374164",
-    "packages/engine-adapter/tests/identity.test.mjs": "bb3467b2ea732e9ffb1f57045537985120755b5c51491047dfc97a3e07508902",
+    "packages/engine-adapter/tests/identity.test.mjs": "7231484cbd658226e552911eff452e5b75454782811169c6b9fbed1bdfc6c991",
     "packages/engine-adapter/tests/node.test.mjs": "707c86a8baad9c380392ee63d7c2ae6e6c7b106e66a5482d4c0335f2a39988f9",
+    "packages/engine-adapter/tests/persistence.test.mjs": "dc7054c8382c78b2ade578758dd57bc3979529cb1f9368c93ea17599eae2b1ab",
     "packages/engine-adapter/tests/random.test.mjs": "2a59e1e9610464b5a873206d1da039369f23d54ffb3d665502a6b31fa3d3ab9a",
-    "packages/engine-adapter/tests/replay.test.mjs": "cf27c879868411c5490ba5cf4f9a92c510a24661c143e4828c0fafd1911a263e",
+    "packages/engine-adapter/tests/replay.test.mjs": "f26f65d399a572d8e1cf2c5d91f21d759d7d4ed536fc263e1f1b974ed5567036",
     "packages/engine-adapter/tsconfig.json": "bb94e3dbdd72cc3920e02e96ecf41acb8452867abc94d9fa11e17ca1ffb7944c",
-    "packages/engine-lab/README.md": "372bf2aa02232fad01b4eacc46cd2429920bed86119c81dd212e12b44520ff70",
+    "packages/engine-lab/README.md": "0ad8308d560e5cef6125e6eec0f5ab606166b6b1c1bdf581a2b6b2abe7195cd9",
     "packages/engine-lab/build-worker.mjs": "47ed0d3f3774f2438960ffb3bb59e34f707a5b7a9a7007db97b57dacdec4785f",
-    "packages/engine-lab/package.json": "31faf86df24697314e95456b41091ab336f61dace358898d1fdab3c4b14b4d8a",
-    "packages/engine-lab/src/index.ts": "b03c128e36e8131d5d33a4fc15f1ad31aa26a5648f539a222e32fb0d46356958",
+    "packages/engine-lab/package.json": "9c22fb755351341642fe06e2cf04e71810c7f2952fbc344322bae2e00cf770ac",
+    "packages/engine-lab/src/index.ts": "2c436c0dc23ba528672846fca4638f94ac5d4472aeca6bfcda9c88f47ef9968c",
     "packages/engine-lab/src/seedrandom.d.ts": "aec65c28c760e08c4c219389b624e3664c4607ab21e3984da7aeac42f1eab709",
     "packages/engine-lab/src/worker.ts": "3d02f8b1f273e52b0656dd2c9d372044d073b5eab09ee5991909b3e772cf980e",
     "packages/engine-lab/tests/adapter.test.mjs": "a60c6ff3c1a8273fa2575c5ae1ff52e1d877f52704ad713a952d01a975290afc",
-    "packages/engine-lab/tests/browser.mjs": "5a45f2406d97c0746b398bc1363b651f0d1aa80b3d1dcbd9ae35e9419675b115",
+    "packages/engine-lab/tests/browser.mjs": "a2e853784f0c3838edeef1bdface37785654722dcf35e93fa7dd54814d520802",
     "packages/engine-lab/tsconfig.json": "083b1520f82ed24f20c1afdce826378753cf0a5eb478ab8d87b9a96a640d7fef",
     "packages/presentation/README.md": "f0b692972ed274d3ada82d9e61d35e0689459d33d6f4077111e573314c6e87fa",
-    "packages/presentation/package.json": "75e9b101245d1191a08d7df1637f6caf88619cbc90b26e1ffa3a70ced89a9244",
+    "packages/presentation/package.json": "0297d2cb8601e7838e9a2b0444f4f8fad6eba20b5ca6fcf024a51cecaa96fdb8",
     "packages/presentation/src/index.ts": "a1a5664f60c594b8928c9accd8515e4f0c2e39fa44ed2ec5d4c7994dc7f08e2e",
     "packages/presentation/tests/scene.test.mjs": "62844f35ef89891d64bc063034ec2b56654198ce0feb4f99fc0433332e9e1d8a",
     "packages/presentation/tsconfig.json": "8cc0484e9292c072e0dfe6599d022ec7f3394b144cd03e34e206c6cf80ddb944",
     "packages/rules-data/README.md": "a872b6237ba3deeccf0dff194a91c15a8f71454a256c67be229f62a7e6800dbb",
     "packages/service-runtime/README.md": "8fdbec9a772eb55f010eb8b0b191eaa1a2586e2059141d90e413d63076a4a2dd",
-    "packages/service-runtime/package.json": "9eedc801801a23139eb84aa57b9db6962eaebe5b8965ecd40547275794e13c99",
+    "packages/service-runtime/package.json": "4d968f453caa138291f5957410a5764425d8f413010865fdf84af15167bb1697",
     "packages/service-runtime/src/index.ts": "aad9960095eb39c9d14a1190026e857591d7d98010bf99f0dd25d434de5f21d9",
     "packages/service-runtime/src/lifecycle.ts": "72530c623a87ac4cf10a969482dd9583478bc9291838be904a188021ffe1e7bc",
     "packages/service-runtime/src/release.ts": "060c34a3ce01c665515db996988f67b95d5c9ea180baa8fa48a593a1b7245df1",
@@ -2155,7 +2241,7 @@
     "packages/service-runtime/tests/service.test.mjs": "bc3e4bfb8ec6a0bbfb4fc552c60b5dce0e1b3fc07e4b2d52a8f47b2b582f4565",
     "packages/service-runtime/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "packages/testkit/README.md": "59995194f19edfb1f488b74882df1c09918ab51a7166e6c197cd405929e55c8c",
-    "pnpm-lock.yaml": "de3917167939b8e1c6da9fb3ca320b72e61d5ef0151728b3616b8e089329be6d",
+    "pnpm-lock.yaml": "8537d6ae403431155b063c1c8fbd2d14e8e3ef748499dc214abe284c8f95944a",
     "pnpm-workspace.yaml": "7b8b484a5fe1a21d5c021ba9ca6cbe29f1ec705a3217992a4adda8c48708346f",
     "scripts/browser-boundary-plugin.mjs": "3ae3d2a153479ab161ab2919b33433f4ab5eb7140a6208bf05b07d95a291fc3f",
     "scripts/check-boundaries.mjs": "7667a22110f6b740b3254f46f1aac4632443403e7a80d09cd05a3a1842d7cb00",
@@ -2163,14 +2249,14 @@
     "scripts/ci-local.py": "3a4bc360b36b70c708afaa20b2e6ea3b7dc5e34dc86253a77c41cf9973b4c858",
     "scripts/ci/artifacts.mjs": "d13b89bb153f83ede4a3f5345f26b879960c0d58fdb4c0cf59eaab428d64293b",
     "scripts/ci/check-config.py": "d5e40560338bc1e1f8a07dc8fbd76552ed8cb0d35dcbb0694fbd06a3a928eb6a",
-    "scripts/ci/pipeline.mjs": "33dc5d9aed165a2c26f7df037dc8f33fe612741371cdc3a0f2d70eae71b1bd4f",
+    "scripts/ci/pipeline.mjs": "4772ff6ec757b4cfef2581dde7460fbda3ab7d23949f466dde9d2d4b5b56b2ea",
     "scripts/ci/policy.json": "d0e8a30e934ee44abe529dacf2e24ac506740823036ee041cb9349ee64358fec",
     "scripts/ci/security.mjs": "ad2bf28d187142836de7950059f9df9f9de9f99ab1bbc527ed9bdcb354c46314",
     "scripts/db-check.mjs": "2420d9710c111f64884a705fbb38696a951eaca5038ab7bf4a71020ea69ed1f5",
-    "scripts/db-persistence-proof.py": "32f2074d975b2b78a2abfa788813447f8bd04382be162aaa84d2ba4dba4eb202",
+    "scripts/db-persistence-proof.py": "dde0cee44f04a1aaaadd476d026bafee965ee3ef312b77b2b41be21fcd8edafa",
     "scripts/dev.mjs": "0f6a930be0c65429d300a69c7c3ac62924717db9a3ff96363b016191a63fea41",
     "scripts/doctor.mjs": "6af4220c40b24786a26a15e30af0906e6c4c149af9a54f8679e821e730508213",
-    "scripts/documentation-lib.mjs": "d029c2dc40860d33f76e550d5b1b8fcc908535e0ff0d0895e86866a1b0472f53",
+    "scripts/documentation-lib.mjs": "f836c5d0e12b2b4461945047592d781c839ec77642650969b5544a4a01ad6988",
     "scripts/engine/bun.mjs": "e30381fe2d85965d28a2413c398d6ac0341c5a407664dc101345513a8e517173",
     "scripts/engine/check-randomness.mjs": "389c58446f31ab1c0d760cbfdff50da2df2338cfa15fdb81d1078c1a4cac5061",
     "scripts/engine/closure.mjs": "51b662a771bed7ff18a10cbca9fcb8d57540673160667d709248265ef6b12005",
@@ -2179,7 +2265,7 @@
     "scripts/engine/test-injection.mjs": "ed162acc5dec23604c565c45c76ca8f46972e346f8a1d66a87fbd126a91374cf",
     "scripts/engine/test-upstream.mjs": "f94a5dceb70fa5bbc9a8e71cafe45de2cf2e9b62711bdbf0b3b00625ca70c039",
     "scripts/engine/vendor.mjs": "aeb802c0531bd022a6c77e86a37315356e0c7250a4bf4db65417579538ec0861",
-    "scripts/evidence-lib.mjs": "d1dfe5b81a30f8d46f013e7ba81920515a05a290f0aa0b7585fa9e3653f4e752",
+    "scripts/evidence-lib.mjs": "e3f41eee63a66bded1a28c83e53dea03f551f28fc732261ace2bfe09ec7d3aa5",
     "scripts/function-inventory.py": "f46fd8e51383f414dd4daee5c7a2718c6f397e3491d6ef094ec0a74c85f3ef44",
     "scripts/init-local-env.py": "baefe4a5c25df8c0c50a222d946ea26123ab685a7439d0e476a7498ed3311ddf",
     "scripts/post-create.mjs": "7370759fb4ca8183f87268aaa50b20578496c484e8503ad9b0207b91c4026561",
@@ -2202,15 +2288,20 @@
     "tests/ci/gates.test.mjs": "3179b59198b520cdb3cd24829e5098b3ccd67321e43e57bd684fc7c58cfedff6",
     "tests/ci/launcher.test.py": "fff3c486ed15db9e6e46ada3121dfa98c7ddbaae43d1f62a593a1529c1988400",
     "tests/database/persistence-proof.test.py": "d854939765c1f221448273aa7566405597d10b4c275b2e679ebe05dfde1cf9c9",
+    "tests/documentation/browser-cache.test.mjs": "fd28ac4a378eda50b15e3a991a748138d52e7a63745fb434ced75b067b476536",
     "tests/documentation/evidence.test.mjs": "f6a15cbc1c3d9f44c5cb1945b7b8a1d8d24663edeeb1277ca7b8d1cc72e63309",
-    "tests/documentation/governance.test.mjs": "946d23faad726a16c403705c7d0237c5526a8b6b24b5911a5b94d675eab74536",
+    "tests/documentation/governance.test.mjs": "a35b9b7fb4b5b9faa321f9515a17654782fa055560439448dcfeea20923977ee",
     "tests/engine/closure.test.mjs": "91a31560361607b11b678f03466bc94b23db24124f87099a8003d2ecdcacbaa2",
     "tests/engine/randomness.test.mjs": "5000773e7bece5152e8247e38fd153d5d297185e40d4d5c3209dbc00078c6b61",
     "tests/env_test.py": "abd54711919f3934d5ceeaa45503c098058a1fc52897ebe35670f137588f9d9f",
     "tests/foundation/boundaries.test.mjs": "506639cd150b80daa47f85da60cc59e49938ad5ff2a79774f75769a930ee1c49",
     "tests/foundation/browser-bundle.test.mjs": "eb22bbe976e2ebcd20858e0a0af29022ccc3875b31590bcadb4e3af4adcd8b07",
+    "tests/foundation/bun-cache.test.mjs": "81b9485f1904aecdf55d58343a0ed80830b9c459da7d287522be2d05c406e18b",
+    "tests/foundation/bun-cache.test.py": "1916c675e2b18ff231732aab04a0b0a4027719f6c3d5a3bf536edd082ff2dba4",
     "tests/foundation/process-groups.test.mjs": "2a8cd2b8f038d72474610a6b62b2507520fded1b7858f73837875885cd682262",
     "tests/foundation/processes.test.mjs": "85705a954dd920ebf3f9eef924a250d9a2b5232937a56886195622742632bfd4",
+    "tests/play/move-policy.test.mjs": "7f8472f9f13fcaf0e47ce74d7fd205924d0a4ce5032ae8f9eb1993a0e0e05167",
+    "tests/play/storage-contract.test.mjs": "bab984f438395cdcd8930733992dd093c339fa024271328c069235c9f1635d60",
     "tests/rules/certification.test.mjs": "74fadcfb35f2a4cbd816d7fc12e728e08dab3b85423f314a220b056044fceed1",
     "tests/rules/check-inventory.test.mjs": "8336b8feefbca1868e2657b090e557ba9342ab24cd228c5fee4fb4d57f25a795",
     "tests/rules/fixtures/rule-sources.json": "ca175bdea9d4d29e1a0948fe5d498385bd03d37a09cff91723d03d8b2a601b29",
@@ -2654,6 +2745,1059 @@
   },
   "functions": [
     {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "createEngineExecutor",
+      "line": 8,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "options:{concurrency?:number;maxQueue?:number;executionTimeoutMs?:number;queueTimeoutMs?:number}={}",
+      "sha256": "e5ddfb6dc774740a1316e40277e27375bc385230346fae5f6b8a52822f105a7f"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 13,
+      "column": 67,
+      "kind": "ArrowFunction",
+      "signature": "[key]",
+      "sha256": "3d9a108c7e79c7a9a9499f3c621e2c5ec4777c40d0bd2e4c1e8d16cf44c7fb9b"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "drain",
+      "line": 20,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "c7723fcb6b1b12080bcc4af6056e458d838609f62c4ec7a240fb7499680f5baf"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "start",
+      "line": 21,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "p:Pending",
+      "sha256": "4b82f6c08aff6d6867e97c5ef5c5cc3f5b2df4c5a12334f67637304d08c03a7c"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 28,
+      "column": 28,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "476463b7974f4e9b649c754a7ba29b2e93311c3225820e28822aecb89a93d99e"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "finish",
+      "line": 29,
+      "column": 5,
+      "kind": "FunctionDeclaration",
+      "signature": "value?:EngineResult, error?:Error",
+      "sha256": "121f37fcf60ae231d08a54b19dc8e0538253c34bd8d3598338bc8bef309a43aa"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 31,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2448ac96762a9f71184e81547afd2529e4686c970da5d7c8b59bd3521b12a8cd"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 37,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "6c6daae3d0c30ede9fd4ead7725494cdf5949ce46ac414c3bca2a192607e79b7"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 38,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "reply:unknown",
+      "sha256": "297f81ab6d4cf0751fd77fc206239e6b5f240943876dbf9b1f353ae37842ce65"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 42,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5be2d7b8950de8d8744ee4658d5ab037e3cb561b01c45aa180130bf9c53c658e"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 43,
+      "column": 24,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b107b3b795808258f24e9053ab87e86c967e23cf2a0873397aa0e2b9cdfa2d3c"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "execute",
+      "line": 46,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "job",
+      "sha256": "7f11ea9539fb7368dd12e25ed7a2b16fbaf25bf509b07dc9fc3d5d9586caf039"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 49,
+      "column": 40,
+      "kind": "ArrowFunction",
+      "signature": "resolve, reject",
+      "sha256": "dce489f571973fa40543ddfa8e7f3a255977bef2c3827371a9eda0558453b8cd"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 52,
+      "column": 34,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "91d2ac824000e5b6e2f820de7ccce2c8bda221f91932c2e04121f9fef9f7e2f9"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "close",
+      "line": 55,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "",
+      "sha256": "8a0fe52b62a1e58738d17cb690723856a742a35eba0dc561d33f59717cac0dc0"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 58,
+      "column": 52,
+      "kind": "ArrowFunction",
+      "signature": "cancel",
+      "sha256": "048e2d1ae4c1347e22672d02e44dccd8e6a4e9b546f4098ca6c4655b3fcc8f40"
+    },
+    {
+      "file": "apps/match-service/src/engine-executor.ts",
+      "name": "<callback>",
+      "line": 58,
+      "column": 76,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "<callback>",
+      "line": 11,
+      "column": 3,
+      "kind": "Constructor",
+      "signature": "readonly code:'FORBIDDEN'|'INVALID_REQUEST'|'ID_CONFLICT'|'PIN_UNAVAILABLE'|'UNAVAILABLE'",
+      "sha256": "41c8d4d915d836ff18029bcb93e6027cc5b4abe7b7df3902015b4b83fe6b952f"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "createMatchService",
+      "line": 14,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "options:{repository:MatchRepository;releases:ReleaseRegistry;executor?:EngineExecutor;now?:()=>number}",
+      "sha256": "af3251b22822ccba51491c7c25323e21f62b1b3bf5cd723e7d01264be17254c7"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "available",
+      "line": 19,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "6fd2d335d447d19d46c5f9f4cd6043b10f8b361c7276f4246484ec177c748ab5"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "pins",
+      "line": 20,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "match:StoredMatch",
+      "sha256": "f3f208642b7561b5905874ff0a289821b8e015fd26ba1f1409e2cd73558f3583"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "failure",
+      "line": 26,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "error:unknown",
+      "sha256": "1588dafd756ee0a4ec0a678ec424660c19cd583b58cf578d6ca490af60132676"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "create",
+      "line": 32,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "value:unknown",
+      "sha256": "1a49c3071e43273ad5deb6c616538ed011f842670c5ca36d54059ae62e8dd62f"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "submit",
+      "line": 49,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "trustedActor:unknown, value:unknown",
+      "sha256": "bfeebcf0488a8e8989e0422021b4e043c1d2f72a8ec4864b216b7e4a68385d1c"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "close",
+      "line": 64,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "",
+      "sha256": "c517c51be0888c105b5315a22423e01a984b079a9420a9a17043a00aa30f6df3"
+    },
+    {
+      "file": "apps/match-service/src/service.ts",
+      "name": "<callback>",
+      "line": 64,
+      "column": 85,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "605ec91a372b4a29eaf3f6d57ef678001958644021a4847e41b136d62c3eaf8d"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "identifier",
+      "line": 5,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value:unknown",
+      "sha256": "a249b12d354159779b69ec4f67e617c49b902b94f032acfd8db1c4e5011ec9a9"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "unsigned",
+      "line": 8,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value:unknown",
+      "sha256": "a33b3e98ac7456686ec1a57542deeb786bff555e6449a9b94572646fbdd7ca2b"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "closed",
+      "line": 11,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value:unknown, fields:readonly string[]",
+      "sha256": "f69adabaf384852afb4fb18f7e7257540b6dfdb2901be09bd73fd22bb731f382"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "canonical",
+      "line": 19,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value:unknown",
+      "sha256": "23566a85ce0dbc5b88d9b4bce26772796c461c100ba4a47b447006a32ba558e1"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "order",
+      "line": 20,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "x:unknown",
+      "sha256": "b09e895f6f21a8307ec54bf76a1f2e54b7c167a6013c87617c6bbc1a3bf659a0"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "<callback>",
+      "line": 20,
+      "column": 131,
+      "kind": "ArrowFunction",
+      "signature": "[a], [b]",
+      "sha256": "9cb12170b0d1cd74621e7e886240b0115fb87a996a9cfa73469fc40cc3a12f8a"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "<callback>",
+      "line": 20,
+      "column": 162,
+      "kind": "ArrowFunction",
+      "signature": "[k,v]",
+      "sha256": "8e54d917f9d0323e9d797d478095323530ab91f7fcc21ab23c6d8f4dd7169da8"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "validateSubmission",
+      "line": 24,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "actor:unknown, value:unknown",
+      "sha256": "74366d7ec7321ca14f3cdb36992f92c2d10e59ef969177f31611fec71821c924"
+    },
+    {
+      "file": "apps/match-service/src/validation.ts",
+      "name": "<callback>",
+      "line": 28,
+      "column": 100,
+      "kind": "ArrowFunction",
+      "signature": "character",
+      "sha256": "bb85d7a2bac124571be4165a448acd9217cd87809969279950987e89932ee3fa"
+    },
+    {
+      "file": "apps/match-service/tests/fault-child.mjs",
+      "name": "pause",
+      "line": 5,
+      "column": 13,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "ea445545f6f4c2d7fe0bff7e829f7edead0608b3edc4b12f1e29a6ee0bb4c3a7"
+    },
+    {
+      "file": "apps/match-service/tests/fault-child.mjs",
+      "name": "<callback>",
+      "line": 5,
+      "column": 66,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "apps/match-service/tests/fault-child.mjs",
+      "name": "<callback>",
+      "line": 6,
+      "column": 27,
+      "kind": "FunctionExpression",
+      "signature": "...args",
+      "sha256": "67ccd8c480f3c4db353f2b4cea6dcd6249bb9b5b863c61df65d8018bfd746d2a"
+    },
+    {
+      "file": "apps/match-service/tests/fault-child.mjs",
+      "name": "<callback>",
+      "line": 10,
+      "column": 63,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "d24dc906f0ce4114cb405a56f8a4aa3309d2ad627b03ede3268bb3abc554e72c"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "releases",
+      "line": 11,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "f1cf0cc06a8d0b28b1d6a517df6944beefe2936921cb02af9be143245b70e324"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "service",
+      "line": 16,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "repository=createMatchRepository('test'), other={}",
+      "sha256": "ccaf1042b6133be41c112f05b22eb0949c0574a802ab30f70eeb6e4d9178a8c5"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "<callback>",
+      "line": 16,
+      "column": 139,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c6d13eb002c2bbfe3a34709832d3cc689de72737ae1ce22041878157f91c7079"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "fixtureId",
+      "line": 17,
+      "column": 24,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "52f750b1fe2720a308ef1c29fd35e188c1fef32dcc267c5b51678421e7e2224a"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "command",
+      "line": 18,
+      "column": 22,
+      "kind": "ArrowFunction",
+      "signature": "matchId, commandId, expectedVersion, move='concede', input={}",
+      "sha256": "9a94148fd45894cca5a1d7a25b4843e56f44004cf91a5125efbfd5105755d0c2"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "using",
+      "line": 19,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "identity, fn",
+      "sha256": "90f0640a3cabe7634cbf99fd20c8ec4aec4a18d160734a1d7719936445150f63"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "cleanup",
+      "line": 20,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "id",
+      "sha256": "a88ba1a097724520ba9e5599267e2ec632316c6c8fb57bc3ee9df0a361ebbbd5"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "<callback>",
+      "line": 21,
+      "column": 22,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "5caceda0a679b37a53a7b2368c64092501d79df92c5e2054f9267a1a1a3fb787"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "open",
+      "line": 23,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "s, id",
+      "sha256": "f4147061acd9faf04a81ff8f246c3bbeb0b94d7104ec68c029d62553cf7d57fb"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "<callback>",
+      "line": 25,
+      "column": 32,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "38dfc37ed14b0dae4ca0c62ecebb975a5e0159ba8f175b07872dc1bc779c7b13"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "counts",
+      "line": 34,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "id",
+      "sha256": "5cc38d0f6e69918a70f833ba62b5b6d7978ad15100c87e22d6994a3fbfcfb036"
+    },
+    {
+      "file": "apps/match-service/tests/fixtures.mjs",
+      "name": "<callback>",
+      "line": 35,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "82732f55dd1be7deafd1d9d6598f834bd0ea3c7f9c595b76ae70509f9240051d"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 8,
+      "column": 96,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "83fa38380713ce947105d6f544bed99fb818ca0d18b7928e82bf5c62bc6a3dfb"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "get",
+      "line": 11,
+      "column": 94,
+      "kind": "MethodDeclaration",
+      "signature": "",
+      "sha256": "e262cf35ca8f3e8c2ae83646536473cd9a99a92fddedc111d542c757b616fb2f"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 12,
+      "column": 55,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "28c1b0a4fa50fdb2b47ebfb1e908942f0a11b0439e4026382efdf788bb5d4cc4"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 17,
+      "column": 67,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "e3c9b648fc055318dd9c1c55d803030bf8b03b1fb8c404d61b6210ba72f2c578"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 24,
+      "column": 87,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "24b556e3cbe803565a92207ff36d57ee734ea484e246bd22ea10a3c8b869c7c7"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 27,
+      "column": 28,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "f730bfe84c96eb5cae8fa4df6a5cfd5d4ed82e3a22df9a4b7f023ac94fb7a284"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "wrap",
+      "line": 28,
+      "column": 13,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "473600fa44d1eab3570f3f336726cfa3340180fa0081b7f03bb242fea2a573c6"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 28,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "job",
+      "sha256": "e005f596fee0332553732ae19ac48effc835315365f665f05dc8b2c4b97492bd"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 28,
+      "column": 164,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "ff80824e4a99a583adf5d95618639069d19738ea4e07848f73b26e301bb82b95"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 32,
+      "column": 32,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "3b89a6a9cb24cca28d7a82e498278ece1fcec7f904bc920f9e588a716881c32d"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 34,
+      "column": 39,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "8e6c2bfe931da3678771771713cb1046b9bf1fc79c9ec5973a4eb2d7dcf1bef0"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 38,
+      "column": 105,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "864bc172c16efdb7123cab1ee13e2e059e243a0a9664adb4c5770e4ef9707840"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 43,
+      "column": 87,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "2e604e05ce10924908afcf5be5db22ae781e2743516a69f5cafe4545e4ce855a"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 45,
+      "column": 47,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "87a89ddf51b22d6254aa9bb1bb87499d0c7592791095c68161eca0722f411283"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 46,
+      "column": 66,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "e3c9b648fc055318dd9c1c55d803030bf8b03b1fb8c404d61b6210ba72f2c578"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 51,
+      "column": 108,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "90063ed98a4f108085458f4d6cf3192b37fb384e14a952a1af34e2090bf2f3d7"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 61,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "28c1b0a4fa50fdb2b47ebfb1e908942f0a11b0439e4026382efdf788bb5d4cc4"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 66,
+      "column": 128,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "81b843603612635530cbdf15c3ded97f48ea2f7767a176d21f8f9c38d45109cf"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 70,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "ac2749a678e0d441135a69346a724c0b6b40b9b2668b19289b1e6f1e9fe22b10"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 74,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "cba12e128c35bf76866538295559e9ef0b9b53068bea45186404a6764ce151e2"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 76,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "2c2ad8cb031116ec0b0a4002e4e7e0990f125532798a89ccbef24934c473c8ea"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 79,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "a625ff5eaad377a454cf09a7e4d65c799961e449edc4f1961fe568a1ad87388a"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 84,
+      "column": 108,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "da81f8c9f3bedd9b12907e2247f2256aeeead3ceabcc7c6b7622d279f207ca54"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 86,
+      "column": 112,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "0ddc187844eb01ce6f15747f062f9170ae7931a578e9afaf5c44a98230b85bd3"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 90,
+      "column": 110,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "ded039a9f2ae5d915d79ddce1d402c5ed08c131634905b025d41a5ab387a6361"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 94,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "805aaddfbf9c3809444de557d134c8ef5e7585e0ff73d20121f9f2076fa21c0e"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 95,
+      "column": 63,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "802046d7d3d1a3e839c1aa40b6e0aed97df6ac18f62872fb8d17e16447b3cb21"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 97,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "d9f0830058cd321345676878451c2d2438c35d24b54ac39bb47b1ba255592062"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 98,
+      "column": 40,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "30c59c356415411caf68fcc0efed859acdf9809ebd58eb9b36d074010bf04f47"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 99,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "59edeaca65f029c2aa808ab5ad9fdb1774d587c0ef5ab3dc3b65977fc00e4944"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 100,
+      "column": 70,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "cba12e128c35bf76866538295559e9ef0b9b53068bea45186404a6764ce151e2"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 101,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "26ee47b6922c29f85b041d388baecd26ac8f0ef368d8e7fe743f3af0bc58085b"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 102,
+      "column": 67,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "0e2023284e84a8a20974c1b9a34675ec805c4fc36821b832bb95e54ef67b9c1c"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 102,
+      "column": 135,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "42b9ed8cab5e6a61f0e822e5a17da21cb540b19cd6aee65b77cf0b51e3ac7566"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 103,
+      "column": 75,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "e8b07406de162da070a36b046743f5d1dc64e23711d3e350cd61b1ed391dc9a4"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "child",
+      "line": 109,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "mode, id, c",
+      "sha256": "92f944409ada137bfb970eee32254a6623ef29b5b80d1fc8b3c5281796f694fa"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 110,
+      "column": 66,
+      "kind": "ArrowFunction",
+      "signature": "[key]",
+      "sha256": "5ac5ca534c2aad1806f301035e0a4f361850d9bbcf9e195e4f66cf47b5555a97"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 113,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "6e56edd9817eceb4c9d4121dda670a985dbb58215cbb80bd3226bf9a8979c770"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 113,
+      "column": 48,
+      "kind": "ArrowFunction",
+      "signature": "code, signal",
+      "sha256": "8e19f11cf9b010d97cf458e6374aa593c1e4e7bd55075e43302dce0b383c346a"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 114,
+      "column": 28,
+      "kind": "ArrowFunction",
+      "signature": "resolve, reject",
+      "sha256": "1ff83dcb8768cea288f243b7ad31130dbfd6e2b4b082ce876efb35538b31e594"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 115,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8d36905744d5b3bc9d5bcbcdd2d7b6f7fa5a24e7e889ebb2195de9c25e96a82a"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 116,
+      "column": 24,
+      "kind": "ArrowFunction",
+      "signature": "m",
+      "sha256": "9489bdbb46940cf100556aaeab30356e1d903e72563a35eaf49912e914aeeaea"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 116,
+      "column": 137,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "92b2fe9e501930ea1942aa1f719fb92970dabc7d439a9b5300a4f8c08e1a0e9a"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 117,
+      "column": 21,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1775e1e7182be1dce0628e59f40c2f40a09f1f9b74cc6d86641900b66f151558"
+    },
+    {
+      "file": "apps/match-service/tests/integration.test.mjs",
+      "name": "<callback>",
+      "line": 121,
+      "column": 130,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "248a429bb3864d5a8736dd0fa13da58f6d22b5c36b47171a477c0bf5b5f8eb3d"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 8,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "737e63ebedd6f1e9620dc5dcc76fedbe036c8596fa1f6fde97a8bb7cc00eda3a"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "hidden",
+      "line": 15,
+      "column": 179,
+      "kind": "GetAccessor",
+      "signature": "",
+      "sha256": "ca9f14cb83830210167cfe1baeec66363d3877cb51673d8a1ba283d510c5a41b"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 15,
+      "column": 333,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "9b08851cd06a6a0f5f25c5676d8e6af83da02f0ee7b762cc7fa49630b5373663"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 19,
+      "column": 99,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "94c5c9251146edb68e1b2739116cdef1f1026ec419a7ad740b608c34aecb5b02"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 36,
+      "column": 120,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 42,
+      "column": 94,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1ec98370570721ff50629d58ea3e8009f250d72bae8790d775b0e503b3b0f140"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 45,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "f730bfe84c96eb5cae8fa4df6a5cfd5d4ed82e3a22df9a4b7f023ac94fb7a284"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 45,
+      "column": 61,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "c6dc29ad06725ac28de1a8cb2bb3bb0769a3fdf991c809acc6a500a92702cc37"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 46,
+      "column": 29,
+      "kind": "FunctionExpression",
+      "signature": "",
+      "sha256": "f795709a0c2e516c053238250585186e4afa9e8ab0b94e47148a6dae765f551c"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 46,
+      "column": 122,
+      "kind": "ArrowFunction",
+      "signature": "[code]",
+      "sha256": "d1f1f79aff74c5364828b44961a8a5ddd85c4d0f5b0ba46e41d5084d72e2f652"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 49,
+      "column": 119,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 50,
+      "column": 60,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "21f798926ae334aabd9408b18ef8ec29ad3258ffa7531b22f789054afa7cf0a4"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 51,
+      "column": 21,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "bf2d1a700d4967545a8a6cc6aec5d60d7f2cfb509e5535181b00def6f9afca7f"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 52,
+      "column": 42,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 55,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "760dc4750ad3ec5f4fb94274c1645816a258553c03ed77ba35f98b95844b0e5a"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 63,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "9fa8b403f24a84161a755c0f5165c6c58d3d5b1246e7682d564daca77f0d9f70"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "job",
+      "line": 65,
+      "column": 12,
+      "kind": "ArrowFunction",
+      "signature": "id",
+      "sha256": "8badf736904671f5f89a4041b35bbdec4bac65490349fba3cce24e5f2d8e6e69"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 67,
+      "column": 62,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 73,
+      "column": 60,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 74,
+      "column": 59,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "apps/match-service/tests/unit.test.mjs",
+      "name": "<callback>",
+      "line": 76,
+      "column": 64,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
       "file": "apps/web/src/App.tsx",
       "name": "ServiceStatus",
       "line": 7,
@@ -3057,6 +4201,24 @@
       "kind": "FunctionDeclaration",
       "signature": "value: unknown",
       "sha256": "c6f18e4130681d600f4eea01004e3406770770a6f5f3928ef0303b8d7d9583fb"
+    },
+    {
+      "file": "packages/contracts/src/player-moves.ts",
+      "name": "isPlayerMove",
+      "line": 8,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown",
+      "sha256": "b52167053eb65790ab9fa6bc6cb550020f272df63c734723e651f85d6d3fcd0a"
+    },
+    {
+      "file": "packages/contracts/src/player-moves.ts",
+      "name": "<callback>",
+      "line": 9,
+      "column": 57,
+      "kind": "ArrowFunction",
+      "signature": "move",
+      "sha256": "235c68160b53f81b52b3a49a970c7247effca383e85d1ecc3d5e6d402dee59f4"
     },
     {
       "file": "packages/contracts/src/protocol.ts",
@@ -3482,6 +4644,186 @@
       "sha256": "ade997a74beee3396c61abedf98bf4550911e49a2f1e58ac663ebb82fa9164b0"
     },
     {
+      "file": "packages/db/src/match-store.ts",
+      "name": "<callback>",
+      "line": 28,
+      "column": 3,
+      "kind": "Constructor",
+      "signature": "readonly code:'FORBIDDEN'|'ID_CONFLICT'|'PIN_UNAVAILABLE'|'UNAVAILABLE'",
+      "sha256": "44fdfec227e3e0756a5543da1acd1d826107941d3cc9ff8dccde9233c7f929ef"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "integer",
+      "line": 30,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown",
+      "sha256": "c894d8159815fd037b63a810f8bea37587a34b0243f69dc30b48d6c571179e2c"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "decode",
+      "line": 34,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "row: Record<string,unknown>",
+      "sha256": "3e77a120e9526e3d4428ccf111d89db3333a3490d7c58ac98bf95fee5c4f811c"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "receipt",
+      "line": 39,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "row: Record<string,unknown>, releaseId:string",
+      "sha256": "3899adb4702497930c78ae644124738c904da2fba88ff4b9a5ac143c010189c9"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "key",
+      "line": 44,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "c:DurableCommand",
+      "sha256": "bb469c8b8c0fee841d7a92967814801eab7a792a896644a7508b7734fc7da74d"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "checkedReceipt",
+      "line": 45,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "row:Record<string,unknown>, command:DurableCommand",
+      "sha256": "254ab9ea39395da896b13fec19771693f4c4183a7230a5889bbc48186176d4b5"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "manifestText",
+      "line": 48,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value:unknown",
+      "sha256": "0bd5d6cb5e8aaed4bfb77b87a75f3158ec70e016e26788bf411a537f3456df78"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "order",
+      "line": 49,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "v:unknown",
+      "sha256": "f11909d68d582cae1ead13ae1692df8b59a87fc0b87bc8baa6b0658ed68d7952"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "<callback>",
+      "line": 49,
+      "column": 140,
+      "kind": "ArrowFunction",
+      "signature": "[a], [b]",
+      "sha256": "9cb12170b0d1cd74621e7e886240b0115fb87a996a9cfa73469fc40cc3a12f8a"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "<callback>",
+      "line": 49,
+      "column": 171,
+      "kind": "ArrowFunction",
+      "signature": "[k,x]",
+      "sha256": "06e45f50b6e1e6d756df409c1eb612cfdf28616d8544ccfa7baae2036cf11ed0"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "createMatchRepository",
+      "line": 53,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "target:Target, root=workspaceRoot",
+      "sha256": "8a9869afaf241c1e927953ee5040d73f10ab77ad0c25cfa98dfd55ed8a8f3117"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "transaction",
+      "line": 56,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "work:(c:pg.PoolClient)=>Promise<T>",
+      "sha256": "59d65c15ee6c577940d1bc4c387f7bd75cd13f3ad937fd39d51600f62fcdb272"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "<callback>",
+      "line": 60,
+      "column": 50,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "create",
+      "line": 64,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "value",
+      "sha256": "79efef696f204fbc2124171084d3e0e227fada3dfe93dcd4bde966923289594c"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "<callback>",
+      "line": 65,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "54da51bfd55df2159f59d40593939e90cc3464ae15351974f534408da0d5551e"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "load",
+      "line": 79,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "matchId, actorId",
+      "sha256": "779d3ed9a38de2793aab6ab9cce15fcf591d42c13f6ab301145e53f5316a0d20"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "findReceipt",
+      "line": 83,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "command",
+      "sha256": "3d72bc7e4ebf800a9f3a5b957752c8201dbf924b33728cf11972b1bda328dea4"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "commit",
+      "line": 87,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "command, before, candidate, rejection",
+      "sha256": "a71126c1ade3d8e80bd91d177733c7847a7a046dc641fd884461dcb66c24e43b"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "<callback>",
+      "line": 88,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "f3e00a18b0e5b28871946d0b5c387d90e29568ebac7cb652549875de56a22f81"
+    },
+    {
+      "file": "packages/db/src/match-store.ts",
+      "name": "close",
+      "line": 112,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "",
+      "sha256": "fd555db3cb353a354de0dc9c7c2f43ef2cff079353fb804a7489e2100abfebcd"
+    },
+    {
       "file": "packages/db/src/migrate.ts",
       "name": "migrate",
       "line": 4,
@@ -3497,7 +4839,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "",
-      "sha256": "ba1e5f004319e2a2f7e97d7785663cf5a3f540b270c0d13d56a96f5600cb20db"
+      "sha256": "d1cdd30700c1aab3bf97c53d673e35fe6a66650c521998c6b9a23a8f905e6ffa"
     },
     {
       "file": "packages/db/src/persistence-probe.ts",
@@ -3520,7 +4862,16 @@
     {
       "file": "packages/db/src/persistence-probe.ts",
       "name": "<callback>",
-      "line": 33,
+      "line": 29,
+      "column": 53,
+      "kind": "ArrowFunction",
+      "signature": "row, index",
+      "sha256": "c72bd7f385c05a05fccc72601fe8cc47e19661c2793e9823029eb95504ad8b49"
+    },
+    {
+      "file": "packages/db/src/persistence-probe.ts",
+      "name": "<callback>",
+      "line": 34,
       "column": 14,
       "kind": "ArrowFunction",
       "signature": "",
@@ -3821,7 +5172,7 @@
       "column": 112,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "0e43543c0516483381a3063e419be010c6aa2e3d0b2b3fb8f9c1bbb01ff5c1c1"
+      "sha256": "7d5f9748139ac40646984e90199f7facb096bf57aed5c4e344db048e41f22df8"
     },
     {
       "file": "packages/db/tests/integration.test.mjs",
@@ -3830,7 +5181,7 @@
       "column": 99,
       "kind": "ArrowFunction",
       "signature": "r",
-      "sha256": "9d6f3d0e5d0db76f18bf7fdcf1ecd5b56c745c49ba32b7f9628a72bcc7a6a2c7"
+      "sha256": "3f92272cc52dda6eea33128b6921f0c365f3daea480f16383646672af761d922"
     },
     {
       "file": "packages/db/tests/integration.test.mjs",
@@ -3839,7 +5190,7 @@
       "column": 25,
       "kind": "ArrowFunction",
       "signature": "db",
-      "sha256": "bb1082d91bc4b4558f24979a142d0acf7680ca9cc85f3544ff9ab0f8557fc5aa"
+      "sha256": "4ec2be56ceebac7a8d66ff6016215f4cb94df5a43ce8fd6d77acedd12b3227d2"
     },
     {
       "file": "packages/db/tests/integration.test.mjs",
@@ -3907,7 +5258,7 @@
     {
       "file": "packages/db/tests/policy.test.mjs",
       "name": "<callback>",
-      "line": 4,
+      "line": 6,
       "column": 78,
       "kind": "ArrowFunction",
       "signature": "",
@@ -3916,7 +5267,7 @@
     {
       "file": "packages/db/tests/policy.test.mjs",
       "name": "<callback>",
-      "line": 7,
+      "line": 9,
       "column": 89,
       "kind": "ArrowFunction",
       "signature": "",
@@ -3925,7 +5276,7 @@
     {
       "file": "packages/db/tests/policy.test.mjs",
       "name": "<callback>",
-      "line": 9,
+      "line": 11,
       "column": 65,
       "kind": "ArrowFunction",
       "signature": "",
@@ -3934,7 +5285,7 @@
     {
       "file": "packages/db/tests/policy.test.mjs",
       "name": "<callback>",
-      "line": 12,
+      "line": 14,
       "column": 113,
       "kind": "ArrowFunction",
       "signature": "",
@@ -3943,11 +5294,20 @@
     {
       "file": "packages/db/tests/policy.test.mjs",
       "name": "<callback>",
-      "line": 14,
+      "line": 16,
       "column": 71,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "36b5d138e0355aee5c7f39c5b0d2783476596e8decb56e6c544160a9574f4d52"
+      "sha256": "02247f67a61981d1f62aa49405cf9d8179e53bd57ec5eee1a852046e61875eef"
+    },
+    {
+      "file": "packages/db/tests/policy.test.mjs",
+      "name": "<callback>",
+      "line": 18,
+      "column": 59,
+      "kind": "ArrowFunction",
+      "signature": "f",
+      "sha256": "8d199940c03b09fbe8b815b3136e6bbcf428b51469c7d3daf84b240c0d9e20da"
     },
     {
       "file": "packages/design-system/src/index.tsx",
@@ -3991,8 +5351,8 @@
       "line": 7,
       "column": 1,
       "kind": "FunctionDeclaration",
-      "signature": "folder: URL, kernel: URL, provenance: string",
-      "sha256": "2c5803acef5effb40c404de9b776e853a68f933ef9874b2432d84ce6b85892e2"
+      "signature": "folder: URL, kernel: URL, provenance: string, playerPolicy?: URL",
+      "sha256": "32ba666cd8be51c5eeb71fdf4e56a43dd63917f8825f23cad271dd718e115027"
     },
     {
       "file": "packages/engine-adapter/src/code-identity.ts",
@@ -4024,11 +5384,74 @@
     {
       "file": "packages/engine-adapter/src/index.ts",
       "name": "createQualificationMatch",
-      "line": 9,
+      "line": 12,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "options: unknown",
       "sha256": "5d59af55690b12a9756073fc73ed816a9201df34655252ad849049d00239f89b"
+    },
+    {
+      "file": "packages/engine-adapter/src/persistence.ts",
+      "name": "matchId",
+      "line": 16,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown",
+      "sha256": "8930731b8355157c66f7c5d8d9feb5a38ef598be548be5b49911cc86483f8115"
+    },
+    {
+      "file": "packages/engine-adapter/src/persistence.ts",
+      "name": "context",
+      "line": 20,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "id: string",
+      "sha256": "e3ee45082ac43117979a1d6a8c1bc1193dd983e3e36e20da1c3897bad26a755d"
+    },
+    {
+      "file": "packages/engine-adapter/src/persistence.ts",
+      "name": "digest",
+      "line": 21,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "archive: string",
+      "sha256": "e102f9ee614b1c827a1be527bfbed95e367284c8670f55fb4aef215d6dbd125b"
+    },
+    {
+      "file": "packages/engine-adapter/src/persistence.ts",
+      "name": "wrap",
+      "line": 22,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "core: RecordedCore, id: string",
+      "sha256": "b1f4e32aaf30ea5a43b067d190594df4ccace0d4a4a951343df8ad9767e18f2c"
+    },
+    {
+      "file": "packages/engine-adapter/src/persistence.ts",
+      "name": "checkpoint",
+      "line": 25,
+      "column": 5,
+      "kind": "MethodDeclaration",
+      "signature": "",
+      "sha256": "5cc38d55c0c5547bff3f0076245fa7a13ee1a9d0d3441249ce4ff9a454c22386"
+    },
+    {
+      "file": "packages/engine-adapter/src/persistence.ts",
+      "name": "createPrivateMatch",
+      "line": 35,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "options: unknown",
+      "sha256": "a0a29e6152a6bf939f1e36dfc63ef7d70d0ce79cb1455bfaa1695ef2e7abafb8"
+    },
+    {
+      "file": "packages/engine-adapter/src/persistence.ts",
+      "name": "restorePrivateMatch",
+      "line": 43,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "value: unknown, expectedMatchId: unknown",
+      "sha256": "41ab82f45a8fd078519c337a595451b6c433c5985cd9c07334bd620881bb0927"
     },
     {
       "file": "packages/engine-adapter/src/random.ts",
@@ -4150,7 +5573,7 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "canonical",
-      "line": 20,
+      "line": 22,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown",
@@ -4159,7 +5582,7 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "order",
-      "line": 22,
+      "line": 24,
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "item: unknown",
@@ -4168,7 +5591,7 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "<callback>",
-      "line": 24,
+      "line": 26,
       "column": 95,
       "kind": "ArrowFunction",
       "signature": "[a], [b]",
@@ -4177,7 +5600,7 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "<callback>",
-      "line": 24,
+      "line": 26,
       "column": 141,
       "kind": "ArrowFunction",
       "signature": "[key, val]",
@@ -4186,7 +5609,7 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "hash",
-      "line": 29,
+      "line": 31,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown",
@@ -4195,7 +5618,7 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "archiveDigest",
-      "line": 30,
+      "line": 32,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "archive: string",
@@ -4204,7 +5627,7 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "same",
-      "line": 31,
+      "line": 33,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "a: unknown, b: unknown",
@@ -4213,16 +5636,25 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "createRecordedMatch",
-      "line": 34,
+      "line": 36,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "setup: { players: [string, string]; startTimestamp: number }, privateSeed: Uint8Array",
-      "sha256": "a30e27887e7b5e6ffb9a0a4975b85e9eb320b17ee6747d51b28bf383331100aa"
+      "sha256": "f4d4a1740c38210f2123c8cd7c7f13ff8cd43e435259e80e362eaea2ce292743"
+    },
+    {
+      "file": "packages/engine-adapter/src/replay.ts",
+      "name": "createRecordedCore",
+      "line": 40,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "setup: { players: [string, string]; startTimestamp: number }, privateSeed: Uint8Array, context = ENGINE_REPLAY_IDENTITY",
+      "sha256": "ca6f8598fc0394f63ccd5361e55a1ddefe8a54a3b2100371d270fc569e137c84"
     },
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "active",
-      "line": 40,
+      "line": 46,
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "",
@@ -4231,7 +5663,7 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "status",
-      "line": 44,
+      "line": 50,
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "",
@@ -4239,26 +5671,35 @@
     },
     {
       "file": "packages/engine-adapter/src/replay.ts",
+      "name": "privateArchive",
+      "line": 51,
+      "column": 3,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "66afe706f7d007c2f22f4d10d5faa2a493bc548b03007a2e736c8272886461f3"
+    },
+    {
+      "file": "packages/engine-adapter/src/replay.ts",
       "name": "submit",
-      "line": 47,
+      "line": 59,
       "column": 5,
       "kind": "MethodDeclaration",
       "signature": "value: unknown",
-      "sha256": "207d2ec64164b556834b7e2227cc2bef6078689c6f23663cd10d458e8b890909"
+      "sha256": "194651afef87b263101950f116b38c9439ff725978bd2bb36c7b81bfa4825437"
     },
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "exportReplay",
-      "line": 66,
+      "line": 79,
       "column": 5,
       "kind": "MethodDeclaration",
       "signature": "",
-      "sha256": "45606bb9594c78c77e057257e0850a7f1e0a4e7af26c2c3b75a27b34c7157648"
+      "sha256": "20635725a12faf6158e20b64890bcd0ea3624f842570cc3298a22e9e068c4c7f"
     },
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "dispose",
-      "line": 74,
+      "line": 85,
       "column": 5,
       "kind": "MethodDeclaration",
       "signature": "",
@@ -4267,16 +5708,16 @@
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "boundedTree",
-      "line": 78,
+      "line": 90,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown, depth = 0, counter = { nodes: 0 }",
-      "sha256": "ba8631ae6f2b94cf1380efdc40854714246bcb4950a6c77589ee867d742a0d1d"
+      "sha256": "cd9fd34989bf0db0aa8b98dacff5482721dc5f9ae4fbab537ad0c7234a7023eb"
     },
     {
       "file": "packages/engine-adapter/src/replay.ts",
       "name": "verifyCompletedReplay",
-      "line": 84,
+      "line": 96,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown, expectedDigest: unknown",
@@ -4400,6 +5841,24 @@
       "sha256": "ca0d904e3f7bc040f3fb29adbfc068b62967ed8a832bf788270bc3faa8c965f6"
     },
     {
+      "file": "packages/engine-adapter/tests/identity.test.mjs",
+      "name": "<callback>",
+      "line": 36,
+      "column": 67,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7703f0b4a2ac88f5829ceca8662e78d563ccf94292b73b503a43da24cd2ff137"
+    },
+    {
+      "file": "packages/engine-adapter/tests/identity.test.mjs",
+      "name": "hash",
+      "line": 41,
+      "column": 14,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "88a7558556b1f72f8e8d9a769e0b4cdd8103ef99aa002fd4006eb10f591f17aa"
+    },
+    {
       "file": "packages/engine-adapter/tests/node.test.mjs",
       "name": "<callback>",
       "line": 5,
@@ -4416,6 +5875,231 @@
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "25fd8b904e79321254fb449d98b5f200eebc1f1c4de3992f702101e1956d2739"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "digest",
+      "line": 7,
+      "column": 14,
+      "kind": "ArrowFunction",
+      "signature": "archive",
+      "sha256": "57e1798d5713bbd7643ff96ee9b4aa6803eeb5a332b98540e65e89b6c9131387"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "command",
+      "line": 8,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "m, actor, move, input={}",
+      "sha256": "e66fa429f207b03a8c42a165abe08057c4d2f7a7508bbc2eb75de0e5822dd563"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 10,
+      "column": 100,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "002a2bb42000d6cd181a97e541e7a72f9f877c6761052e8e88fd927e2d0adf19"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 29,
+      "column": 92,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "4bab0e888cde27e495a4c8166cd1ab15fd168081e95934b85f79bb7244e71e4d"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 35,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e353df2904efdf2b1a5263e90a8bc91b32d3401a7154841fa13f471c58394d63"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 36,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "37a637d9d301a8ace1ea3ff2b8b6e236f26e4b3c102659bb918d15b4239cc2a0"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "5c52483c1dcb8aaf95e6e36a85cfab71667f69abd9ff80d465a85c5bc004155d"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 37,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "097af8708cc22170c0fb70080210d647fa7b2dda833af2b7a059263d2ee3d1d1"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 73,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "db0de0bf1ecccd411728aa3e6448a6d58279a24cc8c97d3a2ce8f145ae10117b"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 119,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "2ca9b4a482f007616588b100c12c44d9c3c83566a281da44375f00841357568a"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 168,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "fc0c4d9f5d9198bc494a9ae21e52bd36bbb467fca1291b9d5e4a6580e645c626"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 224,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "81d99217bd381e201c1054c299fd0d7c627d84d53e51d3af18be162e70253a53"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 274,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "389b6c75b892b01335f03d7f82694de68378d4fac295ef01ce031373b17a5614"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 327,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "5d72caaf6d5647a2479b45f67a71b94b853b3c8d30cf5a6a98ec56e0e21ab409"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 358,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "985df97dca09fd409393f82370460748965a646ac386c6306f0f080760a004dc"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 37,
+      "column": 398,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "7ff483275da40baaacc14a592f6344b6c917195df3a0a036323f38a111a037a8"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 40,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "9d08dc01ed83ffbdc3bedcb2e50c5433a465d3328b1ccf7b2db6ad675759ccc5"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 42,
+      "column": 148,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "3bfb591eedf391216ab489e0d1f6b2cd91b971a9ab5987895423b05177647de2"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 43,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5623c61faadd2db3b9e05eeec1d9725dcf04809a4edaa820e52174eff7e79922"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 44,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "be257aa013160506ec00d264cf218e5c723bc917812afadcbc915bcae9404166"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 45,
+      "column": 41,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "da415e6e80c80abb48c043a8b6495c7609a9d339a1d4e2026bdbc39e2bccd1b6"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 49,
+      "column": 87,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5b648ba8fa3128696a12e6df85096ee87866a281b4b75f91beada7b1a44b0ab4"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 51,
+      "column": 100,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c15c3f15958cf2fd051dec74d97f3dc59cb8cc263731fc785fe85b99eb33f371"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 55,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "fe439512f9a3c089ee494b8373e800b6ad98145c59a681446a55007c9d0e850c"
+    },
+    {
+      "file": "packages/engine-adapter/tests/persistence.test.mjs",
+      "name": "<callback>",
+      "line": 59,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "da415e6e80c80abb48c043a8b6495c7609a9d339a1d4e2026bdbc39e2bccd1b6"
     },
     {
       "file": "packages/engine-adapter/tests/random.test.mjs",
@@ -4757,7 +6441,7 @@
       "column": 108,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "50545c3744e5f02fc7891179143375083be839d18d3b93bcac4d2fd797f91e64"
+      "sha256": "fc3eed41f8e0f3c0c67d9f63c7481b2e02b8019d9e19d846b1fe006db600fa72"
     },
     {
       "file": "packages/engine-adapter/tests/replay.test.mjs",
@@ -4766,7 +6450,7 @@
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "input",
-      "sha256": "82bce0f64e3857ec97aaf436f935c3ca44f7f811b629a1eeafbc4c3387647f6e"
+      "sha256": "b695aa864e198741a5b0188b6e9cdfd0a2f578bb05ac90d034bb7dd2b7f65b68"
     },
     {
       "file": "packages/engine-adapter/tests/replay.test.mjs",
@@ -4870,7 +6554,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "record",
-      "line": 14,
+      "line": 15,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown, keys: string[]",
@@ -4879,7 +6563,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "<callback>",
-      "line": 15,
+      "line": 16,
       "column": 147,
       "kind": "ArrowFunction",
       "signature": "key",
@@ -4888,7 +6572,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "<callback>",
-      "line": 16,
+      "line": 17,
       "column": 35,
       "kind": "ArrowFunction",
       "signature": "key",
@@ -4897,7 +6581,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "text",
-      "line": 19,
+      "line": 20,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown, field: string, max = 128",
@@ -4906,7 +6590,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "<callback>",
-      "line": 20,
+      "line": 21,
       "column": 91,
       "kind": "ArrowFunction",
       "signature": "char",
@@ -4915,7 +6599,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "integer",
-      "line": 23,
+      "line": 24,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown, field: string",
@@ -4924,7 +6608,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "copyInput",
-      "line": 27,
+      "line": 28,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "value: unknown",
@@ -4933,7 +6617,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "charge",
-      "line": 30,
+      "line": 31,
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "size: number",
@@ -4942,7 +6626,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "copy",
-      "line": 31,
+      "line": 32,
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "item: unknown, depth: number",
@@ -4951,16 +6635,16 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "createLabMatch",
-      "line": 54,
+      "line": 55,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "options: unknown",
-      "sha256": "ea79fecefcd9cd0f36fea71d2358a6e3600072543b4a5645fb08606549df99aa"
+      "sha256": "e9cc86ff77daa0f4ddc2cfb87b4b22fb6945a8d0925bc54dd51d1827c588bd5a"
     },
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "random",
-      "line": 62,
+      "line": 63,
       "column": 18,
       "kind": "ArrowFunction",
       "signature": "index: number",
@@ -4969,7 +6653,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "<callback>",
-      "line": 65,
+      "line": 66,
       "column": 14,
       "kind": "ArrowFunction",
       "signature": "index, bound",
@@ -4978,7 +6662,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "identifier",
-      "line": 66,
+      "line": 67,
       "column": 5,
       "kind": "MethodDeclaration",
       "signature": "domain, index",
@@ -4987,7 +6671,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "<callback>",
-      "line": 66,
+      "line": 67,
       "column": 133,
       "kind": "ArrowFunction",
       "signature": "",
@@ -4996,7 +6680,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "active",
-      "line": 68,
+      "line": 69,
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "",
@@ -5005,7 +6689,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "<callback>",
-      "line": 70,
+      "line": 71,
       "column": 13,
       "kind": "ArrowFunction",
       "signature": "",
@@ -5014,16 +6698,16 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "submit",
-      "line": 71,
+      "line": 72,
       "column": 5,
       "kind": "MethodDeclaration",
       "signature": "command: unknown",
-      "sha256": "8beaef9f07ae0ce85a1250e3ff9d2891445a4cb76ccecce675b8ca94caa1e98f"
+      "sha256": "cfc42baa005b0fae633c40befdaa9456501072cbfe3bbe3dc3db6b342f3beb0a"
     },
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "dispose",
-      "line": 80,
+      "line": 82,
       "column": 5,
       "kind": "MethodDeclaration",
       "signature": "",
@@ -5032,7 +6716,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "assessEngineAdmission",
-      "line": 83,
+      "line": 85,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "request: unknown",
@@ -5041,7 +6725,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "<callback>",
-      "line": 88,
+      "line": 90,
       "column": 101,
       "kind": "ArrowFunction",
       "signature": "set",
@@ -5050,7 +6734,7 @@
     {
       "file": "packages/engine-lab/src/index.ts",
       "name": "<callback>",
-      "line": 93,
+      "line": 95,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "set",
@@ -5243,7 +6927,7 @@
       "column": 38,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "39ca1f45d02a5cb7c3ac316f59f49509362deba105ff39b8fdafa27f8b5b0a42"
+      "sha256": "71a020caa8356539b7cacc124e0a2ac1c12d3f7d069b1460d10cbfe42f919f20"
     },
     {
       "file": "packages/engine-lab/tests/browser.mjs",
@@ -5252,7 +6936,7 @@
       "column": 5,
       "kind": "FunctionDeclaration",
       "signature": "",
-      "sha256": "d3c2bb841d6cd7f05315088d97bad8bfaf940eaa7cc609b73f94cf7a7913ef96"
+      "sha256": "b9e9c34c170b40e536dccc3ddd4d2df9c9fbd1010eceb8d973e9f7ed2fa8c4a0"
     },
     {
       "file": "packages/engine-lab/tests/browser.mjs",
@@ -5302,7 +6986,7 @@
     {
       "file": "packages/engine-lab/tests/browser.mjs",
       "name": "<callback>",
-      "line": 62,
+      "line": 70,
       "column": 55,
       "kind": "ArrowFunction",
       "signature": "resolve",
@@ -6449,12 +8133,12 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, env=process.env",
-      "sha256": "73fdacbec258d7de5a0e269dc69979e9e8c3345ab17ace47c4db2ff9058a7557"
+      "sha256": "4d6127068d7434d6b0d43886ef29f6df5b4a488655f80c1ed6447eae5942207b"
     },
     {
       "file": "scripts/ci/pipeline.mjs",
       "name": "<callback>",
-      "line": 39,
+      "line": 40,
       "column": 34,
       "kind": "ArrowFunction",
       "signature": "command, name",
@@ -6463,7 +8147,7 @@
     {
       "file": "scripts/ci/pipeline.mjs",
       "name": "<callback>",
-      "line": 44,
+      "line": 45,
       "column": 166,
       "kind": "ArrowFunction",
       "signature": "roles",
@@ -6954,7 +8638,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root=repository",
-      "sha256": "9be7d097ce9b245af9b10d14bc1185678f5379a0e1d9419916dbe3a6b60a9306"
+      "sha256": "14758ef1f16992967aac42eca4e3831275b04e8da879fcb738ace4439ca1f412"
     },
     {
       "file": "scripts/documentation-lib.mjs",
@@ -6963,7 +8647,7 @@
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "folder",
-      "sha256": "5989e48c4fa9e785a40ac8d72a2babf003c523bb8f12fc614f90469208aab423"
+      "sha256": "445c1ba0de6f6cfd98de22c5d272b7854c2fbf91c5c31c7aae656957533cde82"
     },
     {
       "file": "scripts/documentation-lib.mjs",
@@ -6977,7 +8661,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "validateData",
-      "line": 39,
+      "line": 40,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, kind, value",
@@ -6986,7 +8670,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 41,
+      "line": 42,
       "column": 34,
       "kind": "ArrowFunction",
       "signature": "value",
@@ -6995,7 +8679,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "sourceFingerprint",
-      "line": 49,
+      "line": 50,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root=repository",
@@ -7004,7 +8688,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 50,
+      "line": 51,
       "column": 38,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7013,7 +8697,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 51,
+      "line": 52,
       "column": 27,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7022,7 +8706,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "functionInventory",
-      "line": 53,
+      "line": 54,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, paths",
@@ -7031,7 +8715,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "visit",
-      "line": 58,
+      "line": 59,
       "column": 7,
       "kind": "FunctionDeclaration",
       "signature": "node",
@@ -7040,7 +8724,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 62,
+      "line": 63,
       "column": 47,
       "kind": "ArrowFunction",
       "signature": "parameter",
@@ -7049,7 +8733,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "records",
-      "line": 77,
+      "line": 78,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, folder, kind",
@@ -7058,7 +8742,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 79,
+      "line": 80,
       "column": 48,
       "kind": "ArrowFunction",
       "signature": "file",
@@ -7067,7 +8751,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 79,
+      "line": 80,
       "column": 89,
       "kind": "ArrowFunction",
       "signature": "file",
@@ -7076,7 +8760,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "renderChangelog",
-      "line": 85,
+      "line": 86,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "changes",
@@ -7085,7 +8769,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 87,
+      "line": 88,
       "column": 41,
       "kind": "ArrowFunction",
       "signature": "a, b",
@@ -7094,7 +8778,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 89,
+      "line": 90,
       "column": 30,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7103,7 +8787,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 90,
+      "line": 91,
       "column": 64,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7112,7 +8796,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 91,
+      "line": 92,
       "column": 80,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7121,7 +8805,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 93,
+      "line": 94,
       "column": 62,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7130,16 +8814,16 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "load",
-      "line": 97,
+      "line": 98,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root",
-      "sha256": "277df4d9785b84dc3ab7ef6ab074880bd798518ae02c474eaf29bf9a35f55913"
+      "sha256": "e84816ac142cbbc603ad669b2ce0bfc04951cbf23d381590a1a6bb350a2c20d3"
     },
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 101,
+      "line": 103,
       "column": 27,
       "kind": "ArrowFunction",
       "signature": "feature",
@@ -7148,7 +8832,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 103,
+      "line": 105,
       "column": 64,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7157,7 +8841,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 104,
+      "line": 106,
       "column": 81,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7166,7 +8850,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 106,
+      "line": 108,
       "column": 176,
       "kind": "ArrowFunction",
       "signature": "line",
@@ -7175,7 +8859,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 107,
+      "line": 109,
       "column": 177,
       "kind": "ArrowFunction",
       "signature": "line",
@@ -7184,7 +8868,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 113,
+      "line": 115,
       "column": 100,
       "kind": "ArrowFunction",
       "signature": "candidate",
@@ -7193,25 +8877,25 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 115,
+      "line": 117,
       "column": 68,
       "kind": "ArrowFunction",
       "signature": "path",
-      "sha256": "fe0f62caae7dde381067c66d49401a7608c1ac69a6302d385cf35e312a4a5fd7"
+      "sha256": "82bfa4a8aa482d54e80cbb56c348c79861deb1ba91c47117cc23f664ba20c582"
     },
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 115,
+      "line": 117,
       "column": 84,
       "kind": "ArrowFunction",
       "signature": "run",
-      "sha256": "229578a0309dc44867307cf0a3fb69990cda5775a8ce21e08467fe5ed7b83989"
+      "sha256": "2d8d0f219ec9ba2eb8f62a028d428d1e99b520b1cb307941929fe8caf365fc7c"
     },
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 118,
+      "line": 120,
       "column": 63,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7220,7 +8904,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 121,
+      "line": 123,
       "column": 27,
       "kind": "ArrowFunction",
       "signature": "value",
@@ -7229,7 +8913,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "hashes",
-      "line": 169,
+      "line": 172,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, paths",
@@ -7238,7 +8922,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 170,
+      "line": 173,
       "column": 42,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7247,7 +8931,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 170,
+      "line": 173,
       "column": 100,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7256,7 +8940,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "checkLinks",
-      "line": 172,
+      "line": 175,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, paths, map",
@@ -7265,7 +8949,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 173,
+      "line": 176,
       "column": 34,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7274,7 +8958,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 174,
+      "line": 177,
       "column": 45,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7283,7 +8967,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "checkSealedRecords",
-      "line": 184,
+      "line": 187,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, paths",
@@ -7292,7 +8976,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "checkDocumentation",
-      "line": 201,
+      "line": 204,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root=repository",
@@ -7301,7 +8985,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 203,
+      "line": 206,
       "column": 73,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7310,7 +8994,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 203,
+      "line": 206,
       "column": 179,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7319,7 +9003,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "syncDocumentation",
-      "line": 212,
+      "line": 215,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root=repository, changeId, {initialize=false}={}",
@@ -7328,7 +9012,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 213,
+      "line": 216,
       "column": 50,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7337,7 +9021,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 221,
+      "line": 224,
       "column": 66,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7346,7 +9030,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 223,
+      "line": 226,
       "column": 74,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7355,7 +9039,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 224,
+      "line": 227,
       "column": 60,
       "kind": "ArrowFunction",
       "signature": "record",
@@ -7364,7 +9048,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 227,
+      "line": 230,
       "column": 40,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7373,7 +9057,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 229,
+      "line": 232,
       "column": 83,
       "kind": "ArrowFunction",
       "signature": "entry",
@@ -7382,7 +9066,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 230,
+      "line": 233,
       "column": 20,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7391,7 +9075,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 230,
+      "line": 233,
       "column": 76,
       "kind": "ArrowFunction",
       "signature": "pattern",
@@ -7400,7 +9084,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 230,
+      "line": 233,
       "column": 104,
       "kind": "ArrowFunction",
       "signature": "path",
@@ -7409,7 +9093,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 230,
+      "line": 233,
       "column": 173,
       "kind": "ArrowFunction",
       "signature": "review",
@@ -7418,7 +9102,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 235,
+      "line": 238,
       "column": 189,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7427,7 +9111,7 @@
     {
       "file": "scripts/documentation-lib.mjs",
       "name": "<callback>",
-      "line": 235,
+      "line": 238,
       "column": 254,
       "kind": "ArrowFunction",
       "signature": "row",
@@ -7917,7 +9601,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{root,id,category,command,env=process.env,summary='Recorded command outcome',expectedExitCode=0,timeoutMs=900_000}",
-      "sha256": "d1f7a5d05323ac2cb0ec585d240745acaeec415175ace3e4426002db673b6727"
+      "sha256": "fa8e612d5f2a2e1662df17d9ae10c1348a3c904865e4289bcddda928af8dcf43"
     },
     {
       "file": "scripts/evidence-lib.mjs",
@@ -10077,6 +11761,15 @@
       "signature": "self, mode=mode"
     },
     {
+      "file": "tests/documentation/browser-cache.test.mjs",
+      "name": "<callback>",
+      "line": 7,
+      "column": 91,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b51788f83bc6ca1b6d22cbb839e0b29623bf89e013fb6e1b92a65c5bba772f5d"
+    },
+    {
       "file": "tests/documentation/evidence.test.mjs",
       "name": "<callback>",
       "line": 9,
@@ -10160,7 +11853,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "fixture",
-      "line": 11,
+      "line": 13,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "",
@@ -10169,7 +11862,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "write",
-      "line": 19,
+      "line": 21,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "path, value",
@@ -10178,7 +11871,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 25,
+      "line": 27,
       "column": 524,
       "kind": "ArrowFunction",
       "signature": "name",
@@ -10187,7 +11880,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 27,
+      "line": 29,
       "column": 37,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10196,7 +11889,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 29,
+      "line": 31,
       "column": 81,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10205,7 +11898,25 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 33,
+      "line": 36,
+      "column": 81,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "198559249be6ffa3bb8170d006dbec36f2ce7f84ee3e422ef3dfa02d0ce7e724"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 49,
+      "column": 19,
+      "kind": "FunctionExpression",
+      "signature": "path, ...args",
+      "sha256": "6ac843414f9bdc005761b6e7b88f7791a11a89d40f435a0560a2cd1536d75fc2"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 54,
       "column": 85,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10214,74 +11925,11 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 38,
+      "line": 59,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 41,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "e9b1d15ec9ac18065fae99a7a312990e992784ada4005429948bb9ac180fef49"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 42,
-      "column": 71,
-      "kind": "ArrowFunction",
-      "signature": "row",
-      "sha256": "a7be966f840728d8de09ff57d7aa8c1541a243787b2b5c118f47c630d0e3021e"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 47,
-      "column": 36,
-      "kind": "ArrowFunction",
-      "signature": "fn",
-      "sha256": "7fe6c7b51cdb5a37fd4ae414e9e4be1447452f16f717ac220c72fb2b5ad90be2"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 50,
-      "column": 85,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "3e963b7289f4def24fe1afe8cadd200edd3346bfcdcd7608a9aebdc2f050f7d1"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 54,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 57,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 60,
-      "column": 89,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "e630aac7634692c04836515694282b4709a1791025a6fb2b49e8c66ef7455b96"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
@@ -10290,48 +11938,48 @@
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "aef395638f1072d0983d63bb023543cc42f0481a87ec9a8fdc129251aa9fa100"
+      "sha256": "e9b1d15ec9ac18065fae99a7a312990e992784ada4005429948bb9ac180fef49"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
       "line": 63,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "row",
+      "sha256": "a7be966f840728d8de09ff57d7aa8c1541a243787b2b5c118f47c630d0e3021e"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 68,
+      "column": 36,
+      "kind": "ArrowFunction",
+      "signature": "fn",
+      "sha256": "7fe6c7b51cdb5a37fd4ae414e9e4be1447452f16f717ac220c72fb2b5ad90be2"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 71,
+      "column": 85,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "3e963b7289f4def24fe1afe8cadd200edd3346bfcdcd7608a9aebdc2f050f7d1"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 75,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "2d820fd034108f2b56135b59e608864fcca617bfa5f1274f70ba7ec278cae7b1"
+      "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 66,
-      "column": 88,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "bc979715c64eccffcd6f8dc630a9097039ad64542f7188a82c0a23139423d035"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 70,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 73,
-      "column": 83,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "be247d0802eb2f69b84386a14976c6f6a8f8741200e0b6eddcc59f30d9a25588"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 77,
+      "line": 78,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10341,24 +11989,42 @@
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
       "line": 81,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e630aac7634692c04836515694282b4709a1791025a6fb2b49e8c66ef7455b96"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 83,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "e9b1d15ec9ac18065fae99a7a312990e992784ada4005429948bb9ac180fef49"
+      "sha256": "aef395638f1072d0983d63bb023543cc42f0481a87ec9a8fdc129251aa9fa100"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
       "line": 84,
-      "column": 78,
+      "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "08e44036830e38cee35f68224109ece1cdf8f35603ab5e60fdc597ac761a6d68"
+      "sha256": "2d820fd034108f2b56135b59e608864fcca617bfa5f1274f70ba7ec278cae7b1"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 88,
+      "line": 87,
+      "column": 88,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "bc979715c64eccffcd6f8dc630a9097039ad64542f7188a82c0a23139423d035"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 91,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10367,20 +12033,11 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 92,
-      "column": 65,
+      "line": 94,
+      "column": 83,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "10fcf3eff5a505d4b9ec0719b6e4135c90a0d3d6aa5ab0e4a58cf05d5c704eb5"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "run",
-      "line": 95,
-      "column": 15,
-      "kind": "ArrowFunction",
-      "signature": "args",
-      "sha256": "3223a27ff9daa47dfb25c513222d5a6ed3f63c86093490c7dad7b006eb7ecb49"
+      "sha256": "be247d0802eb2f69b84386a14976c6f6a8f8741200e0b6eddcc59f30d9a25588"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
@@ -10394,34 +12051,25 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 100,
+      "line": 102,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
+      "sha256": "e9b1d15ec9ac18065fae99a7a312990e992784ada4005429948bb9ac180fef49"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 103,
-      "column": 83,
+      "line": 105,
+      "column": 78,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "e74f60350cf3a9b1857679d1ca71188bcd16dc80396fe43c32a7a28deb301f07"
+      "sha256": "08e44036830e38cee35f68224109ece1cdf8f35603ab5e60fdc597ac761a6d68"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
       "line": 109,
-      "column": 178,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 111,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10431,78 +12079,15 @@
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
       "line": 113,
-      "column": 19,
+      "column": 65,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 115,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 116,
-      "column": 382,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 121,
-      "column": 87,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "c38fbb0edf15590198fadf44bf66c30049a27247300ac6ffbd81a909f8a435f1"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 125,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 128,
-      "column": 85,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "b2b34a713b1e724bbec017a5b19ed57d070c141687fb3bf1039710e7c6c9cb59"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 135,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "e9b1d15ec9ac18065fae99a7a312990e992784ada4005429948bb9ac180fef49"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 138,
-      "column": 64,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "ec9d0e01723a8e909d6941508eb7d3bcbca7ad7bd79c4e00ff32856597a17881"
+      "sha256": "10fcf3eff5a505d4b9ec0719b6e4135c90a0d3d6aa5ab0e4a58cf05d5c704eb5"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "run",
-      "line": 141,
+      "line": 116,
       "column": 15,
       "kind": "ArrowFunction",
       "signature": "args",
@@ -10511,7 +12096,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 145,
+      "line": 119,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10520,7 +12105,133 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 148,
+      "line": 121,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 124,
+      "column": 83,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e74f60350cf3a9b1857679d1ca71188bcd16dc80396fe43c32a7a28deb301f07"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 130,
+      "column": 178,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 132,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 134,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 136,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 137,
+      "column": 382,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 142,
+      "column": 87,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c38fbb0edf15590198fadf44bf66c30049a27247300ac6ffbd81a909f8a435f1"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 146,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1a2ad2e0f50fcfd342fffe331d6dcdf0a592e2dd48cdaf215d537147593dfbff"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 149,
+      "column": 85,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b2b34a713b1e724bbec017a5b19ed57d070c141687fb3bf1039710e7c6c9cb59"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 156,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e9b1d15ec9ac18065fae99a7a312990e992784ada4005429948bb9ac180fef49"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 159,
+      "column": 64,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "ec9d0e01723a8e909d6941508eb7d3bcbca7ad7bd79c4e00ff32856597a17881"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "run",
+      "line": 162,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "args",
+      "sha256": "3223a27ff9daa47dfb25c513222d5a6ed3f63c86093490c7dad7b006eb7ecb49"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 166,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 169,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10529,7 +12240,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 151,
+      "line": 172,
       "column": 87,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10538,56 +12249,11 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 157,
+      "line": 178,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "70706bcce59724b66f2730634d78cb540128d43cb339413be2981b89d8a43359"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 159,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "70706bcce59724b66f2730634d78cb540128d43cb339413be2981b89d8a43359"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 163,
-      "column": 78,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "6ed74d8315b2e793e8b1df710dd34b14a9dfe12451c0980909c0989dc1bd89fd"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "run",
-      "line": 166,
-      "column": 15,
-      "kind": "ArrowFunction",
-      "signature": "args",
-      "sha256": "e6efbf997948d11182c92c37bbf888a328cc289ac3438f4805b8f2bbbf9bc02e"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 173,
-      "column": 19,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
-    },
-    {
-      "file": "tests/documentation/governance.test.mjs",
-      "name": "<callback>",
-      "line": 177,
-      "column": 79,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "e3462dab77ce475a953a8219c6932eaa89d8e137e0988d4e704372f956493fc8"
     },
     {
       "file": "tests/documentation/governance.test.mjs",
@@ -10602,6 +12268,51 @@
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
       "line": 184,
+      "column": 78,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "6ed74d8315b2e793e8b1df710dd34b14a9dfe12451c0980909c0989dc1bd89fd"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "run",
+      "line": 187,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "args",
+      "sha256": "e6efbf997948d11182c92c37bbf888a328cc289ac3438f4805b8f2bbbf9bc02e"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 194,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "465cfff9ad73b0c317bd99fd2b12da6641c8e59b8edc45773fd9ef750e8bbbb4"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 198,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e3462dab77ce475a953a8219c6932eaa89d8e137e0988d4e704372f956493fc8"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 201,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "70706bcce59724b66f2730634d78cb540128d43cb339413be2981b89d8a43359"
+    },
+    {
+      "file": "tests/documentation/governance.test.mjs",
+      "name": "<callback>",
+      "line": 205,
       "column": 101,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10610,7 +12321,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 192,
+      "line": 213,
       "column": 76,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10619,7 +12330,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 193,
+      "line": 214,
       "column": 176,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10628,7 +12339,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 195,
+      "line": 216,
       "column": 53,
       "kind": "ArrowFunction",
       "signature": "",
@@ -10637,7 +12348,7 @@
     {
       "file": "tests/documentation/governance.test.mjs",
       "name": "<callback>",
-      "line": 196,
+      "line": 217,
       "column": 259,
       "kind": "ArrowFunction",
       "signature": "",
@@ -11206,6 +12917,15 @@
       "sha256": "eb12b86ed540ba280b530a40efd6b4e8fac23cb035e519d0e1f1b8e63fd89a30"
     },
     {
+      "file": "tests/foundation/bun-cache.test.mjs",
+      "name": "<callback>",
+      "line": 4,
+      "column": 102,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "05cab92c2c21c4505b5e044c85bed1e27ea3e331c6374d338d3ff70db700d060"
+    },
+    {
       "file": "tests/foundation/process-groups.test.mjs",
       "name": "<callback>",
       "line": 8,
@@ -11294,6 +13014,96 @@
       "kind": "ArrowFunction",
       "signature": "resolve",
       "sha256": "388d8a159cacccf80cb590cfd325615677e6c4d29d583c7047f06d52ee71994e"
+    },
+    {
+      "file": "tests/play/move-policy.test.mjs",
+      "name": "<callback>",
+      "line": 8,
+      "column": 12,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b1ced5664251e4ef3249f8af66d7f02d365571c4abef194ea3dd96b0d93c7664"
+    },
+    {
+      "file": "tests/play/move-policy.test.mjs",
+      "name": "<callback>",
+      "line": 9,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "76f4f673e87a2752439b2fd21fbac6cf4dca5eace93011f4900af3a0b591aead"
+    },
+    {
+      "file": "tests/play/move-policy.test.mjs",
+      "name": "<callback>",
+      "line": 10,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "9ce98a152e7c1825965623fc16b109a3c32141ca3fd82d46e3f834b4d54fc56d"
+    },
+    {
+      "file": "tests/play/move-policy.test.mjs",
+      "name": "<callback>",
+      "line": 13,
+      "column": 94,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "69a1db3f8b2df5c0f3768e40627845711c30d62824485d8573fb3af6c30c5a36"
+    },
+    {
+      "file": "tests/play/storage-contract.test.mjs",
+      "name": "<callback>",
+      "line": 6,
+      "column": 101,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5874c2a7b3a1023e878ede01ec64b1f734262409441fb5751003bfe41d7e164a"
+    },
+    {
+      "file": "tests/play/storage-contract.test.mjs",
+      "name": "<callback>",
+      "line": 12,
+      "column": 66,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "635b955cd1d2a96aee8a1235f587016756dfe3622cfd904e5706cbaebca0ca9f"
+    },
+    {
+      "file": "tests/play/storage-contract.test.mjs",
+      "name": "<callback>",
+      "line": 14,
+      "column": 77,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "13508fc113cb27532a42aa5017afae53fefa1ea19219e8453c491c78d45a5b16"
+    },
+    {
+      "file": "tests/play/storage-contract.test.mjs",
+      "name": "<callback>",
+      "line": 20,
+      "column": 221,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "b891ef7a7517766d5b0d5a0ef411b2dd6488210f9c8ceab58412cf99df7b9b4e"
+    },
+    {
+      "file": "tests/play/storage-contract.test.mjs",
+      "name": "<callback>",
+      "line": 22,
+      "column": 92,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
+    },
+    {
+      "file": "tests/play/storage-contract.test.mjs",
+      "name": "<callback>",
+      "line": 22,
+      "column": 182,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dec7a076dec41531da7f2d40bd4b896e27d45dd09ecd541190941bf88e6de894"
     },
     {
       "file": "tests/rules/certification.test.mjs",

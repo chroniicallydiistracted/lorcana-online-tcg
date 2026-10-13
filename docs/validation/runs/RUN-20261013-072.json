@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-072",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "apps/match-service/tests/integration.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "7010510dfccfe0c93e0ca79dbbb771c2eed9a30f43428a44f4dde278602ac982",
+  "started_at": "2026-10-13T17:32:55.659Z",
+  "finished_at": "2026-10-13T17:33:29.983Z",
+  "recorded_at": "2026-10-13T17:33:29.983Z",
+  "time_precision": "exact",
+  "elapsed_ms": 34277,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 real PostgreSQL independent CAS/retry/rollback/role/process-death integration characterization",
+  "log_path": "docs/validation/logs/RUN-20261013-072.txt",
+  "log_sha256": "9a9856174a1d7d0090c6a2e568087652699611d04d0ed81ec9ad2e7061013867",
+  "redactions": 0
+}

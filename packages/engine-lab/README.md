@@ -16,4 +16,8 @@ See [the runbook](../../docs/runbooks/engine.md) for fields/limits, [ADR0010](..
 
 ## Current upstream refresh — 2026-10-13 UTC
 
-Current synthetic kernel revision is6de59de1. Lab keeps noncompetitive seedrandom and rewardEligible:false; native counters and test-only probes grant no private server exports. PLAY-01 must restrict legitimate Lab move names before ordinary use. See [refresh qualification](../../docs/validation/upstream-engine-review.md) for current evidence and limits.
+Current synthetic kernel revision is6de59de1. Lab keeps noncompetitive seedrandom and rewardEligible:false; native counters and test-only probes grant no private server exports. PLAY-01 now restricts Lab to the shared13-name player policy, including Advanced Sandbox; ordinary admission remains closed. See [refresh qualification](../../docs/validation/upstream-engine-review.md) for current evidence and limits.
+
+## PLAY-01 continuation — 2026-10-13 UTC
+
+PLAY-01 implements the internal two-player synthetic durable command service with participant-scoped idempotent receipts, row-fenced CAS, private deterministic recovery, atomic accepted journal and metadata-only outbox. Both server and Lab refuse every manual/debug move. Fastify remains diagnostics-only; authenticated transport, viewer/structured-log privacy (PLAY-02), publication (PLAY-03), game clocks (PLAY-04), X01 multiplayer and ordinary/official/private/reward/card admission remain gated. See [PLAY-01 operation](../../docs/runbooks/match-commands.md) and [validation](../../docs/validation/play-01.md); local core/full/browser/database/clean acceptance is verified; isolated CI timing remains pending after RUN113 clock rejection.

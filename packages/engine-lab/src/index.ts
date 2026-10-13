@@ -1,5 +1,6 @@
 import { createSyntheticKernel, type SyntheticKernel } from '@lorcana/vendor-engine';
 import seedrandom from 'seedrandom';
+import { isPlayerMove } from '@lorcana/contracts/player-moves';
 
 export const ENGINE_QUALIFICATION = Object.freeze({
   revision: '6de59de1c203827edc1bc6faa1bc6184cd126a5f',
@@ -75,6 +76,7 @@ export function createLabMatch(options: unknown): LabMatch {
       if (!players.includes(actor)) return { accepted: false, code: 'INVALID_ACTOR' };
       if (revision !== status.revision) return { accepted: false, code: 'STALE_REVISION' };
       if (status.ended) return { accepted: false, code: 'MATCH_ENDED' };
+      if (!isPlayerMove(move)) return { accepted: false, code: 'MOVE_FORBIDDEN' };
       return engine.submit(actor, revision, timestamp, commandId, move, args);
     },
     dispose() { kernel = undefined; },

@@ -1,0 +1,63 @@
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+✔ match command validation separates trusted actor and binds exact semantic intent (2.467237ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (374.675514ms)
+✔ close waits for an already completing actual worker (deferred termination simulation) (55.391332ms)
+✔ worker uses the same executable-policy identity as its current server conditions (60.018707ms)
+✔ actual executor times out queued work and rejects queued work on close (62.701047ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (42.530867ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (44.909044ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (2.13462ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (508.895986ms)
+✔ provider-owned browser screenshots never enter source fingerprints or clean copies (10.069552ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 681.997316
+
+> lorcana-online-tcg@0.0.0 test:match-integration /workspaces/lorcana-online-tcg
+> node --test tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration
+
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (22.929765ms)
+✔ server-only database exports the bounded match repository (0.323792ms)
+✔ real receipt constraint refuses a rejected result with a null reason (45.050135ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 554.000269
+
+> @lorcana/match-service@0.0.0 test:integration /workspaces/lorcana-online-tcg/apps/match-service
+> node --test tests/integration.test.mjs
+
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (560.030921ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (577.811786ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (484.780957ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (346.908012ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (528.216977ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (524.828669ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (51.309068ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (573.826064ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2206.512456ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2167.221559ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8919.836442

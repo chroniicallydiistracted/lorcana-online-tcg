@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-068",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "tests/play/storage-contract.test.mjs",
+    "apps/match-service/tests/unit.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "8e0def90988c5e1b227c6075e3d28ed97dfe1b0f6ccd5597deef3a10bc1167a3",
+  "started_at": "2026-10-13T17:01:51.324Z",
+  "finished_at": "2026-10-13T17:01:51.920Z",
+  "recorded_at": "2026-10-13T17:01:51.920Z",
+  "time_precision": "exact",
+  "elapsed_ms": 596,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 RED: restricted test schema, typed repository, command validation and actual bounded engine executor missing",
+  "log_path": "docs/validation/logs/RUN-20261013-068.txt",
+  "log_sha256": "80ee3468445d985f729a6bc13326f30f01e886b7b7c78f74d75792a4fee3c9b4",
+  "redactions": 0
+}

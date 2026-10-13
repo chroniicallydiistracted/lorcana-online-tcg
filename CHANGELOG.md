@@ -2,6 +2,205 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261013-005 — Clarify final PLAY-01 handoff next actions
+
+- Status: finalized
+- Actor: Codex documentation reviewer
+- Recorded (UTC): 2026-10-13T22:39:05Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8
+- Tasks: DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **revision:** Remove an accidental duplicated phrase from the handoff next-action paragraph. Preserve core CHG004 and every execution record; implementation, acceptance, pending CI timing and Director decisions unchanged.
+
+### Verification
+
+- **passed:** Final native documentation/evidence validation, unchanged executable fingerprint and corrected handoff. ([evidence](docs/validation/runs/RUN-20261013-117.json))
+
+### Documentation and files
+
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Clarifies Director audit/publication/hosted-CI next steps while retaining all pending privacy/admission/device/clock gates.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261013-005.json).
+
+### Limits and next actions
+
+- Documentation wording only; no new executable or game/device/CI acceptance.
+- Director audit/publication with hosted CI; preserve core CHG004 limits and follow PLAY-02 prerequisites.
+
+## CHG-20261013-004 — PLAY-01 durable synthetic match commands and player authority
+
+- Status: finalized
+- Actor: Codex architect/developer/QA collaborator
+- Recorded (UTC): 2026-10-13T22:34:43Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8
+- Tasks: PLAY-01, DOC-01, DOC-02
+- Features: F-MATCH-COMMANDS, F-ENGINE, F-DB, F-CONTRACTS, F-CI, F-DOCS, F-EVIDENCE
+- Requirements: R02.032, R02.033, R02.034, R15.009, R29.001, R29.005, R30.015
+
+### Changes
+
+- **implementation:** Internal two-player synthetic durable command service is locally verified: actor-scoped stable receipts, private deterministic recovery, row-fenced CAS and atomic checkpoint/accepted journal/metadata outbox after COMMIT. Server and Lab refuse all manual/debug moves. Full/clean/canonical/browser/database/setup evidence passes; isolated113 completes14 child stages but timing receipt failsclock_changed. Authenticated transport, privacy/publication/clocks/multiplayer and all ordinary/official/private/reward/card admission stay gated.
+- **function:** Private match checkpoint/restore, restricted repository and bounded worker/service create/submit/close; compiled player policy joins executable identity.
+- **test:** Actual debug win red/guard green, private replay edits, independent CAS races, stable scoped receipts, SQL rollback and SIGKILL before/afterCOMMIT; worker timing/cancellation and original DB migration history regressions.
+- **fix:** Append0003 after real0002 execution for NULL-safe receipt constraints. Shared worker finishing, source export conditions, full migration probes, symmetric checkpoint bounds and accessor-safe creation.
+- **edit:** Preserve/exclude provider browser cache and unowned external reference image; retain all real source/assets and native evidence failures.
+- **documentation:** Current owning ADR/plan/runbook/validation/map/features/handoff/backlog and requirement prerequisite evidence synchronized; original product acceptance and Director choices unchanged.
+- **review:** Fresh bounded read-only review confirms CAS/commit/rollback/receipt/private-worker logic; findings fixed with discriminating evidence.
+- **fix:** After the host memory crash, serialize heavy verification and Node test files while retaining all scenarios and deliberate races. Reuse only hash-verified pinned Bun cache with bounded resumable download. Evidence files and directories are flushed before success. Documentation validation reuses one fingerprint with a final drift check; repeated-read red/green proof retained.
+- **revision:** Preserve incomplete RUN086/087 as unknown and zero-byte RUN088 under raw archive names with separate historical correction090. Full Director reconnect log shows successful startup followed by stale documentation guard; removed archive path coverage corrected and actual post-create095 passes. Original private data and environment settings unchanged.
+- **fix:** Supplemental review found corrupt resumable Bun cache lockout. Exact shell branch now discards checksum/HTTP22 failures and permits at most two fetches, preserves interrupted transfer bytes and mandates final pin hash. RUN098 red and099 green include five mocked branches. Old DB policy oracle now verifies all0001/0002/0003 SQL bytes and hashes; RUN096 failure preserved.
+- **fix:** Supplemental cache review extends non-resumable recovery to curl22/33/36; strict retry mock requires absent partial. RUN100 red and101 seven-branch green preserve timeout resume and repeated-corruption refusal.
+- **test:** Final102/103/104/106/107/112/114/115/116 pass source-matched local acceptance, actual race/rollback/SIGKILL cases, original roles/data, browser, source/canonical clean and full-history/private/log/scope preservation.113 child completes14 stages/artifact validation but clock guard rejects its receipt; no CI result published. All failed/interrupted attempts retained.
+
+### Verification
+
+- **passed:** PLAY-01 intake merged9b9c8ac existing-container doctor/static/bootstrap/original PostgreSQL baseline ([evidence](docs/validation/runs/RUN-20261013-060.json))
+- **passed:** Fresh prior upstream-audit and main hosted CI metadata, before PLAY-01 source changes ([evidence](docs/validation/runs/RUN-20261013-061.json))
+- **failed:** PLAY-01 RED: actual server and both Lab facades must refuse all debug/server-only/unknown move names ([evidence](docs/validation/runs/RUN-20261013-062.json))
+- **failed:** PLAY-01 discriminating RED: manualSetLore actually wins in main phase in server and both Lab modes ([evidence](docs/validation/runs/RUN-20261013-063.json))
+- **failed:** PLAY-01 RED: executable replay identity must bind shared policy bytes ([evidence](docs/validation/runs/RUN-20261013-064.json))
+- **passed:** PLAY-01 GREEN: frozen workspace links, compiled guards/policy identity and existing secure adapter/Lab regressions ([evidence](docs/validation/runs/RUN-20261013-065.json))
+- **failed:** PLAY-01 RED: new private live checkpoint/restore must reproduce current source and reject tampering and foreign match binding ([evidence](docs/validation/runs/RUN-20261013-066.json))
+- **passed:** PLAY-01 GREEN: built server-only live checkpoint/restore, tamper/foreign-match rejection and preserved RNG/replay/player-policy regressions ([evidence](docs/validation/runs/RUN-20261013-067.json))
+- **failed:** PLAY-01 RED: restricted test schema, typed repository, command validation and actual bounded engine executor missing ([evidence](docs/validation/runs/RUN-20261013-068.json))
+- **failed:** PLAY-01 first actual store/executor build, additive test migration and green schema/worker validation checks ([evidence](docs/validation/runs/RUN-20261013-069.json))
+- **failed:** PLAY-01 discriminating RED: in-flight worker close ownership and real PostgreSQL NULL-reason constraint ([evidence](docs/validation/runs/RUN-20261013-070.json))
+- **passed:** PLAY-01 GREEN: shared worker termination ownership and appended receipt invariant correction on the restricted test database ([evidence](docs/validation/runs/RUN-20261013-071.json))
+- **failed:** PLAY-01 real PostgreSQL independent CAS/retry/rollback/role/process-death integration characterization ([evidence](docs/validation/runs/RUN-20261013-072.json))
+- **failed:** PLAY-01 corrected actual process harness: explicit child runtime flags, full CAS/rollback/role/before-after-COMMIT kill and retry evidence ([evidence](docs/validation/runs/RUN-20261013-073.json))
+- **failed:** PLAY-01 RED: prior live DB proof must validate the complete appended migration history, not a fixed one-row denominator ([evidence](docs/validation/runs/RUN-20261013-074.json))
+- **failed:** PLAY-01 RED: private worker identity must match the gateway under supported source conditions ([evidence](docs/validation/runs/RUN-20261013-075.json))
+- **failed:** PLAY-01 DOC RED: generated provider screenshots must not enter source, evidence or clean-copy identity ([evidence](docs/validation/runs/RUN-20261013-076.json))
+- **passed:** PLAY-01 corrected dependency ownership, worker identity conditions, full migration denominator and real CAS/process-boundary integration ([evidence](docs/validation/runs/RUN-20261013-077.json))
+- **passed:** PLAY-01 complete restricted storage and ten actual integration cases including pin/corruption/worker failures, independent races and process deaths ([evidence](docs/validation/runs/RUN-20261013-078.json))
+- **failed:** Reviewer checkpoint emission versus restore-bound regression: discriminating red ([evidence](docs/validation/runs/RUN-20261013-079.json))
+- **passed:** Checkpoint emission and restore share cumulative bounds; existing private replay and input lifecycle regressions ([evidence](docs/validation/runs/RUN-20261013-080.json))
+- **passed:** Fresh private checkpoint, actual worker queue expiry/cancellation, generated artifact exclusion and real durable match regressions ([evidence](docs/validation/runs/RUN-20261013-081.json))
+- **passed:** Reviewed creation input rejects nested accessors without invoking them; local additive migration and both restricted identity sets ([evidence](docs/validation/runs/RUN-20261013-082.json))
+- **failed:** PLAY-01 complete frozen foundation: doctor documentation types lint build project/upstream/injection tests and original PostgreSQL checks ([evidence](docs/validation/runs/RUN-20261013-083.json))
+- **failed:** Final PLAY-01 frozen doctor complete foundation and original bootstrap database ([evidence](docs/validation/runs/RUN-20261013-084.json))
+- **failed:** Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts ([evidence](docs/validation/runs/RUN-20261013-085.json))
+- **passed:** Post-crash restored original Compose project: pinned doctor bootstrap tests restricted local/test identities and existing database ([evidence](docs/validation/runs/RUN-20261013-089.json))
+- **historical:** Correction/quarantine of crash-truncated RUN088; no qualified pass claimed ([evidence](docs/validation/runs/RUN-20261013-090.json))
+- **failed:** Serial post-crash full frozen foundation; explicit single-file test scheduling and durable evidence writes; no overlapping CI ([evidence](docs/validation/runs/RUN-20261013-091.json))
+- **failed:** Discriminating documentation scalability regression: sixteen actual ephemeral receipts must not trigger repeated whole-source hashes ([evidence](docs/validation/runs/RUN-20261013-092.json))
+- **passed:** Documentation hash scaling corrected with start/end source guard; complete negative governance and evidence-capture regressions ([evidence](docs/validation/runs/RUN-20261013-093.json))
+- **failed:** Serial full frozen foundation after crash quarantine and documentation hashing optimization; all tests retained ([evidence](docs/validation/runs/RUN-20261013-094.json))
+- **passed:** Fresh restored Dev Container post-create validation after synchronized documentation coverage ([evidence](docs/validation/runs/RUN-20261013-095.json))
+- **failed:** Sequential full foundation validation after resource and documentation recovery corrections ([evidence](docs/validation/runs/RUN-20261013-096.json))
+- **failed:** Exact Dockerfile download branch with mocked valid/corrupt/range-failed/interrupted network caches ([evidence](docs/validation/runs/RUN-20261013-097.json))
+- **failed:** Cache regression red on exact pre-review Dockerfile: corrupt completed prefix prevents recovery ([evidence](docs/validation/runs/RUN-20261013-098.json))
+- **passed:** Corrected migration history and five simulated pinned Bun cache branches, plus governance regressions ([evidence](docs/validation/runs/RUN-20261013-099.json))
+- **failed:** Cache resume regression red: curl33/36 must discard partial bytes and retry from an absent target ([evidence](docs/validation/runs/RUN-20261013-100.json))
+- **passed:** Seven exact Dockerfile cache branches: corruption and curl22/33/36 retry fresh; timeout preserves partial; repeated corruption fails closed ([evidence](docs/validation/runs/RUN-20261013-101.json))
+- **passed:** Full final-source foundation: ordered build/typecheck/lint, all project and unchanged selected upstream tests ([evidence](docs/validation/runs/RUN-20261013-102.json))
+- **passed:** Final-source actual restricted PostgreSQL match constraints, independent races, rollback and SIGKILL acknowledgement recovery ([evidence](docs/validation/runs/RUN-20261013-103.json))
+- **passed:** Final-source five live database regressions, all eight restricted identities and original bootstrap PostgreSQL connection ([evidence](docs/validation/runs/RUN-20261013-104.json))
+- **passed:** Install project-pinned Linux Chromium into restored container for actual browser and Web Worker qualification ([evidence](docs/validation/runs/RUN-20261013-105.json))
+- **passed:** Final-source actual Linux Chromium: six web/software-WebGL checks and two isolated Lab workers rejecting debug moves ([evidence](docs/validation/runs/RUN-20261013-106.json))
+- **passed:** Actual host-orchestrated disposable PostgreSQL recreation: typed rows/journals and role/transaction checks; existing VS Code project/volume untouched ([evidence](docs/validation/runs/RUN-20261013-107.json))
+- **historical:** Reported controlled RUN108 cancellation at98.7percent Windows commit; owned cleanup and Director Slack-first retry ([evidence](docs/validation/runs/RUN-20261013-109.json))
+- **historical:** Reported Slack-first RUN110 resource cancellation at94.7percent Windows commit; browser-close request pending ([evidence](docs/validation/runs/RUN-20261013-111.json))
+- **passed:** Source-only clean checkout frozen install and complete foundation; no local credentials/Git/database input copied ([evidence](docs/validation/runs/RUN-20261013-112.json))
+- **failed:** Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts ([evidence](docs/validation/runs/RUN-20261013-113.json))
+- **passed:** Canonical staged Git byte equality, clean frozen install/full foundation and owned temporary cleanup ([evidence](docs/validation/runs/RUN-20261013-114.json))
+- **passed:** Final preservation: private ignored0600 files, current/full-history secrets, immutable logs, original scope/decisions/pins and owned listener cleanup ([evidence](docs/validation/runs/RUN-20261013-115.json))
+- **passed:** Final source post-create: exact doctor, frozen install, static/docs verification, bootstrap and preserved original PostgreSQL ([evidence](docs/validation/runs/RUN-20261013-116.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [README.md](README.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [apps/match-service/README.md](apps/match-service/README.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/README.md](docs/README.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates.
+- **reviewed_unchanged:** [docs/adr/0003-documentation-evidence.md](docs/adr/0003-documentation-evidence.md) — Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates.
+- **updated:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/features.json](docs/features.json) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **updated:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [docs/templates/handoff.md](docs/templates/handoff.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **updated:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/vision/README.md](docs/vision/README.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — PLAY-01 evidence is prerequisite-only;548 original requirements,33 groups,20 optional flags, other task prerequisites and Director-owned decisions stay unchanged.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — PLAY-01 evidence is prerequisite-only;548 original requirements,33 groups,20 optional flags, other task prerequisites and Director-owned decisions stay unchanged.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [infra/README.md](infra/README.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **updated:** [packages/contracts/README.md](packages/contracts/README.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [packages/db/README.md](packages/db/README.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [packages/presentation/README.md](packages/presentation/README.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [packages/service-runtime/README.md](packages/service-runtime/README.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates.
+- **updated:** [docs/runbooks/database.md](docs/runbooks/database.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-05-contracts.md](docs/plans/2026-10-07-boot-05-contracts.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **updated:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/contracts/release.md](docs/contracts/release.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates.
+- **reviewed_unchanged:** [docs/adr/0007-hosting-provider-baseline.md](docs/adr/0007-hosting-provider-baseline.md) — Existing decision remains authoritative at its dated scope; ADR0013 documents this additive internal synthetic transaction/recovery implementation and preserves later admission/privacy/hosting gates.
+- **updated:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites.
+- **updated:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/adr/0010-secure-randomness-replay.md](docs/adr/0010-secure-randomness-replay.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/templates/card-certification.json](docs/templates/card-certification.json) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **reviewed_unchanged:** [docs/adr/0011-sourced-rule-scenarios.md](docs/adr/0011-sourced-rule-scenarios.md) — Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites.
+- **reviewed_unchanged:** [docs/runbooks/rules-certification.md](docs/runbooks/rules-certification.md) — Sourced120 scenarios, official inventory/certification and59-patch upstream provenance unchanged; player authority/private recovery are separate PLAY-01 prerequisites.
+- **updated:** [docs/validation/rule-04.md](docs/validation/rule-04.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/adr/0012-upstream-kernel-refresh.md](docs/adr/0012-upstream-kernel-refresh.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/validation/upstream-engine-review.md](docs/validation/upstream-engine-review.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/plans/2026-10-13-upstream-engine-review.md](docs/plans/2026-10-13-upstream-engine-review.md) — Reviewed native schema1/history/UTC, private-data and qualification contracts against the scoped changes; format, Director decisions and previously executed evidence remain unchanged.
+- **updated:** [docs/adr/0013-durable-synthetic-match-commands.md](docs/adr/0013-durable-synthetic-match-commands.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **updated:** [docs/validation/play-01.md](docs/validation/play-01.md) — Updated current behavior/operation/status with internal durable commands, explicit later gates and source-specific evidence; historical result bytes retained.
+- **reviewed_unchanged:** [docs/schemas/change.schema.json](docs/schemas/change.schema.json) — Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain.
+- **reviewed_unchanged:** [docs/schemas/documentation-map.schema.json](docs/schemas/documentation-map.schema.json) — Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain.
+- **reviewed_unchanged:** [docs/schemas/state.schema.json](docs/schemas/state.schema.json) — Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain.
+- **reviewed_unchanged:** [docs/schemas/features.schema.json](docs/schemas/features.schema.json) — Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain.
+- **reviewed_unchanged:** [docs/schemas/run.schema.json](docs/schemas/run.schema.json) — Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain.
+- **reviewed_unchanged:** [docs/schemas/card-certification.schema.json](docs/schemas/card-certification.schema.json) — Existing schemas compared with PLAY-01: no new public/private DTO or evidence format; internal service/store remain server-only and native schema1/v3 contracts remain.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261013-004.json).
+
+### Limits and next actions
+
+- Isolated113 child completes14 stages/artifact validation but receipt fails clock_changed; no qualified/published CI artifact or hosted execution for this source. Leave-environment choice honored; no unsupported retry.
+- Windows/touch/GPU/load/production unperformed. Ordinary/official/private/reward/card admission, authenticated transport, PLAY-02 viewer/log privacy, PLAY-03 publication, PLAY-04 clocks, AUTH/REPLAY D10 delivery and X01 multiplayer remain gated.
+- 108/110 controlled resource cancellations and086/087 unknown/088 truncated supply no acceptance; original data/private files/settings preserved. No spend/deploy/publication/main merge.
+- Director audit and authorized branch publication/integration with clean hosted CI; local isolated timing remains pending under leave-environment decision.
+- PLAY-02 viewer/structured-log noninterference follows PLAY-01; preserve AUTH/REPLAY D10, PLAY-03/04, X01 and ordinary/card/reward/device gates.
+
 ## CHG-20261013-003 — Independent audit of the upstream engine refresh and Director-authorized integration into main
 
 - Status: finalized

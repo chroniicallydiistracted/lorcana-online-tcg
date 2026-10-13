@@ -150,9 +150,19 @@ def main():
     record = dict(schema_version=1, id=run_id, category='container', command=['python3', 'scripts/db-persistence-proof.py', '--id', run_id], cwd=str(ROOT), environment=environment, source_commit=commit, source_fingerprint=before, started_at=started, finished_at=finished, recorded_at=finished, time_precision='clock_discontinuous' if discontinuity else 'exact', elapsed_ms=elapsed, clock_discontinuity=discontinuity, expected_exit_code=0, exit_code=code, signal=observed_signal, result='passed' if code == 0 else 'failed', failure_reason=reason, summary='Actual host-orchestrated disposable PostgreSQL recreation: typed rows/journals and role/transaction checks; existing VS Code project/volume untouched', log_path=log_relative, log_sha256=hashlib.sha256(text.encode()).hexdigest(), redactions=redactions)
     with (ROOT / log_relative).open('x') as stream:
         stream.write(text)
+        stream.flush()
+        os.fsync(stream.fileno())
     with record_path.open('x') as stream:
         json.dump(record, stream, indent=2)
         stream.write('\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+    for folder in (record_path.parent, (ROOT / log_relative).parent):
+        descriptor = os.open(folder, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
     for sig, handler in previous.items():
         signal.signal(sig, handler)
     print(record['result'].upper() + ' ' + run_id + ' disposable project ' + project)

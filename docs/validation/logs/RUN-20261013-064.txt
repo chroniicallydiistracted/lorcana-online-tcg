@@ -1,0 +1,33 @@
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (3.874719ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (1.406067ms)
+✖ identity binds the compiled shared player-operation policy (1.348995ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73.708668
+
+✖ failing tests:
+
+test at packages/engine-adapter/tests/identity.test.mjs:36:1
+✖ identity binds the compiled shared player-operation policy (1.348995ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+  
+  'a93f9864055e3044345b83f44db0337df08de9cf9849df134d6ba251113e824e'
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/identity.test.mjs:42:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'a93f9864055e3044345b83f44db0337df08de9cf9849df134d6ba251113e824e',
+    expected: 'a93f9864055e3044345b83f44db0337df08de9cf9849df134d6ba251113e824e',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }

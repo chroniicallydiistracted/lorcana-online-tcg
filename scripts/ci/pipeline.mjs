@@ -32,6 +32,7 @@ export function pipeline(root,env=process.env) {
     ['local-identities',['pnpm','db:health','--','--target','local']],
     ['test-identities',['pnpm','db:health','--','--target','test']],
     ['live-database',['pnpm','db:test']],
+    ['live-matches',['pnpm','test:match-integration']],
     ['pinned-chromium',['pnpm','--filter','@lorcana/web','exec','playwright','install','chromium']],
     ['browser',['pnpm','test:e2e:smoke']],
     ['engine-browser',['pnpm','test:engine-browser']],

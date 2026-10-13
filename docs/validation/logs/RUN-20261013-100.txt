@@ -1,0 +1,8 @@
+PASS simulated Dockerfile cache branch: valid_cache attempts 0
+PASS simulated Dockerfile cache branch: corrupt_complete attempts 2
+PASS simulated Dockerfile cache branch: range_rejected attempts 2
+Traceback (most recent call last):
+  File "/workspaces/lorcana-online-tcg/tests/foundation/bun-cache.test.py", line 27, in <module>
+    assert result.returncode==0,(scenario,result.stderr);assert cache.read_bytes()==good;assert n==(0 if scenario=='valid_cache' else 2)
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('resume_range33', 'sha256sum: /tmp/lorcana-bun-cache-proof-s8ujp8t1/archive.zip: No such file or directory\n')

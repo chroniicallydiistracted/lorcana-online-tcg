@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-112",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:clean"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "25a15ddfb714"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-13T22:08:33.670Z",
+  "finished_at": "2026-10-13T22:10:17.312Z",
+  "recorded_at": "2026-10-13T22:10:17.312Z",
+  "time_precision": "exact",
+  "elapsed_ms": 103303,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Source-only clean checkout frozen install and complete foundation; no local credentials/Git/database input copied",
+  "log_path": "docs/validation/logs/RUN-20261013-112.txt",
+  "log_sha256": "216bba511f9fc736795899e717a554f1cf0d1f38d936854326496465ce9e5e50",
+  "redactions": 0
+}

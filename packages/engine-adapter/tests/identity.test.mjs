@@ -32,3 +32,13 @@ test('identity frames file bytes so moving header-like text between files cannot
     assert.notEqual(hash('first'),hash('second'));
   }finally{rmSync(root,{recursive:true,force:true});}
 });
+
+test('identity binds the compiled shared player-operation policy',()=>{
+ const root=mkdtempSync(join(tmpdir(),'lorcana-policy-identity-'));
+ try {
+  const adapter=join(root,'adapter');mkdirSync(adapter);writeFileSync(join(adapter,'index.js'),'// fixed');
+  const kernel=join(root,'kernel.js'),policy=join(root,'policy.js');writeFileSync(kernel,'// fixed kernel');writeFileSync(policy,'// policy one');
+  const hash=()=>identity.fingerprintExecutableIdentity(pathToFileURL(adapter+'/'),pathToFileURL(kernel),'same',pathToFileURL(policy));
+  const before=hash();writeFileSync(policy,'// policy two');assert.notEqual(hash(),before);
+ }finally{rmSync(root,{recursive:true,force:true});}
+});

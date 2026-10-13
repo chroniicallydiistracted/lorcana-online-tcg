@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-091",
+  "category": "container",
+  "command": [
+    "bash",
+    "-c",
+    "pnpm install --frozen-lockfile && pnpm run doctor && pnpm verify:foundation && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "7c66830a7dd0"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "12a5290ffd93ee7421753d97a1cb5fa6ffdcf96c86d6d7d183a860982a45924d",
+  "started_at": "2026-10-13T19:54:59.860Z",
+  "finished_at": "2026-10-13T19:55:02.691Z",
+  "recorded_at": "2026-10-13T19:55:02.691Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2830,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Serial post-crash full frozen foundation; explicit single-file test scheduling and durable evidence writes; no overlapping CI",
+  "log_path": "docs/validation/logs/RUN-20261013-091.txt",
+  "log_sha256": "cdfcd8c67ce1de9e4088877462477f8599a4ab421466eb8555546c6fb8917b3b",
+  "redactions": 0
+}

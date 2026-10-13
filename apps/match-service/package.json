@@ -10,12 +10,18 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "dev": "node --conditions=lorcana-source --watch src/main.ts",
-    "start": "node dist/main.js"
+    "start": "node dist/main.js",
+    "test": "node --test --test-concurrency=1 tests/unit.test.mjs",
+    "test:integration": "node --test --test-concurrency=1 tests/integration.test.mjs"
   },
   "dependencies": {
+    "@lorcana/contracts": "workspace:*",
+    "@lorcana/db": "workspace:*",
+    "@lorcana/engine-adapter": "workspace:*",
     "@lorcana/service-runtime": "workspace:*"
   },
   "devDependencies": {
+    "pg": "8.23.1",
     "@types/node": "24.19.1"
   }
 }

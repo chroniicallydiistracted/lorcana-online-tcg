@@ -63,3 +63,9 @@ The BOOT-03 host launcher optionally invokes this recorder inside the disposable
 `private_redaction_unavailable` is a schema-v1 compatible failure outcome: an unsafe/incomplete generated private configuration causes all captured output to be withheld and the run to fail, even if the child exits0. Initial private configuration must be safely owned; secret-bearing arguments are refused before execution.
 
 RULE-04 scenario fixtures and their source-leaf index are executable evidence inputs under tests/rules/fixtures and therefore enter the source fingerprint. The card template/schema separately describe unexecuted authoring, without fabricated card execution timestamps or admission. See [the owning operation](runbooks/rules-certification.md).
+
+## PLAY-01 continuation — 2026-10-13 UTC
+
+Generated provider browser artifacts under `.playwright-mcp/` and the external unowned root reference `inkspire-interface-typography.png` are preserved but excluded from inventory/fingerprints/source-only clean copies. All other source/shipped assets remain inventoried. The matching ignore rules keep them out of host CI copies. PLAY-01 uses the unchanged native schema1 timestamp/history/evidence contract; its owning validation records successes and failures rather than rewriting prior executed evidence.
+
+Completed recorder logs/JSON and their parent directories are explicitly flushed before reporting success. A host crash can still interrupt an unfinished write: quarantine incomplete bytes, reserve the ID and add a separate correction; never reconstruct a passing receipt from console output.

@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "node --conditions=lorcana-source --test tests/*.test.mjs"
+    "test": "node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs"
   },
   "dependencies": {
     "@lorcana/contracts": "workspace:*",

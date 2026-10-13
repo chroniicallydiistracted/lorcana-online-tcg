@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-084",
+  "category": "container",
+  "command": [
+    "bash",
+    "-c",
+    "pnpm install --frozen-lockfile && pnpm run doctor && pnpm verify:foundation && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "ade5725ed565b1e74fdc9aebf56ff2fb1a832614588b5aa7f9c5942f7f054eda",
+  "started_at": "2026-10-13T18:11:26.343Z",
+  "finished_at": "2026-10-13T18:12:18.465Z",
+  "recorded_at": "2026-10-13T18:12:18.465Z",
+  "time_precision": "exact",
+  "elapsed_ms": 52052,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Final PLAY-01 frozen doctor complete foundation and original bootstrap database",
+  "log_path": "docs/validation/logs/RUN-20261013-084.txt",
+  "log_sha256": "af2ab7224489646298415abfd12bc25ad5e2ab93d9dd4142c3742333533b5662",
+  "redactions": 0
+}

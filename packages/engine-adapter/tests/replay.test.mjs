@@ -62,7 +62,7 @@ test('private journal capacity rolls back a speculative accepted transition rath
   const match=createQualificationMatch({players:['p1','p2'],startTimestamp:0});
   function fill(input){
     for(let i=0;i<2048;i++){
-      try{match.submit(command(match,'p1','unknown',input));}
+      try{match.submit(command(match,'p1','chooseWhoGoesFirst',input));}
       catch(error){assert.match(error.message,/journal limit/);return;}
     }
     assert.fail('Expected bounded journal capacity');

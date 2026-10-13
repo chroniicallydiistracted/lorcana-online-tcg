@@ -120,3 +120,7 @@ RULE-03 supersedes the linked RULE-02 engine/RNG baseline; prior executed tables
 ## Current upstream refresh — 2026-10-13 UTC
 
 The refresh changes engine source only; toolchain/container/lock/database remain the committed baseline. RUN014 executes the pre-change container checks. Final source evidence and any timing rejections are owned by the refresh validation; no Windows/device/production acceptance is inferred. See [refresh qualification](validation/upstream-engine-review.md) for current evidence and limits.
+
+## PLAY-01 continuation — 2026-10-13 UTC
+
+PLAY-01 implements the internal two-player synthetic durable command service with participant-scoped idempotent receipts, row-fenced CAS, private deterministic recovery, atomic accepted journal and metadata-only outbox. Both server and Lab refuse every manual/debug move. Fastify remains diagnostics-only; authenticated transport, viewer/structured-log privacy (PLAY-02), publication (PLAY-03), game clocks (PLAY-04), X01 multiplayer and ordinary/official/private/reward/card admission remain gated. See [PLAY-01 operation](runbooks/match-commands.md) and [validation](validation/play-01.md); local core/full/browser/database/clean acceptance is verified; isolated CI timing remains pending after RUN113 clock rejection.

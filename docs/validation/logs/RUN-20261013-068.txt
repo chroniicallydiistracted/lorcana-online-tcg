@@ -1,0 +1,92 @@
+✖ match command validation separates trusted actor and binds exact semantic intent (1.149751ms)
+✖ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (0.238727ms)
+✖ real restricted test database has match, receipt, accepted journal and private outbox tables (19.297214ms)
+✖ server-only database exports the bounded match repository (0.308138ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 425.025011
+
+✖ failing tests:
+
+test at apps/match-service/tests/unit.test.mjs:5:1
+✖ match command validation separates trusted actor and binds exact semantic intent (1.149751ms)
+  AssertionError [ERR_ASSERTION]: PLAY-01 validation module required
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/unit.test.mjs:6:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/unit.test.mjs:16:1
+✖ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (0.238727ms)
+  AssertionError [ERR_ASSERTION]: PLAY-01 engine executor required
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/unit.test.mjs:17:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/play/storage-contract.test.mjs:4:1
+✖ real restricted test database has match, receipt, accepted journal and private outbox tables (19.297214ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - 'match.matches'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/play/storage-contract.test.mjs:7:89)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'match.matches',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/play/storage-contract.test.mjs:10:1
+✖ server-only database exports the bounded match repository (0.308138ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/play/storage-contract.test.mjs:10:77)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

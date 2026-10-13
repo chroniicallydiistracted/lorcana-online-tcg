@@ -5,6 +5,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import fs from 'node:fs';
+import { syncBuiltinESMExports } from 'node:module';
 const repo = fileURLToPath(new URL('../../', import.meta.url));
 let governance;
 try { governance = await import('../../scripts/documentation-lib.mjs'); } catch { governance = {}; }
@@ -29,6 +31,25 @@ function fixture() {
 test('new documentation governance exposes real validation and sync operations',()=>{
   assert.equal(typeof governance.checkDocumentation,'function');
   assert.equal(typeof governance.syncDocumentation,'function');
+});
+
+test('many captured receipts do not repeatedly rehash the complete source tree',async()=>{
+ const f=fixture();const original=fs.readFileSync;
+ try {
+  const map=JSON.parse(readFileSync(join(f.root,'docs/documentation-map.json'),'utf8'));
+  map.documents.push({path:'docs/validation/runs/**',classification:'evidence',sources:[]},{path:'docs/validation/logs/**',classification:'evidence',sources:[]});
+  f.write('docs/documentation-map.json',map);
+  const {recordCommand}=await import('../../scripts/evidence-lib.mjs');
+  for(let i=0;i<16;i++) {
+   const run=await recordCommand({root:f.root,id:'RUN-20261013-'+(600+i),category:'container',command:[process.execPath,'-e','process.exit(0)'],summary:'Ephemeral documentation scaling fixture'});
+   assert.equal(run.result,'passed');
+  }
+  governance.syncDocumentation(f.root,f.change.id,{initialize:true});
+  let reads=0;
+  fs.readFileSync=function(path,...args){if(path===join(f.root,'scripts/app.mjs'))reads++;return original.call(this,path,...args);};syncBuiltinESMExports();
+  governance.checkDocumentation(f.root);
+  assert.ok(reads<10,'source reads scaled with receipt count: '+reads);
+ }finally{fs.readFileSync=original;syncBuiltinESMExports();f.cleanup();}
 });
 test('source drift requires a covering change and review of impacted documentation',()=>{
   const f=fixture();try {

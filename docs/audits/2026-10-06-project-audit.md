@@ -110,3 +110,7 @@ RULE-03 supersedes the linked RULE-02 engine/RNG baseline; prior executed tables
 ## Current upstream refresh — 2026-10-13 UTC
 
 The dated bootstrap audit remains historical evidence. Current source now includes the reviewed6de59de1 kernel maintenance and120 synthetic cases; all play/card/device gates remain explicit in the current handoff. See [refresh qualification](../validation/upstream-engine-review.md) for current evidence and limits.
+
+## PLAY-01 continuation — 2026-10-13 UTC
+
+Generated provider browser artifacts under `.playwright-mcp/` and the external unowned root reference `inkspire-interface-typography.png` are preserved but excluded from inventory/fingerprints/source-only clean copies. All other source/shipped assets remain inventoried. The matching ignore rules keep them out of host CI copies. PLAY-01 uses the unchanged native schema1 timestamp/history/evidence contract; its owning validation records successes and failures rather than rewriting prior executed evidence.

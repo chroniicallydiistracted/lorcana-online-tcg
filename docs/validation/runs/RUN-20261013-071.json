@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-071",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from \"node:child_process\";for(const a of [[\"--filter\",\"@lorcana/match-service\",\"build\"],[\"db:migrate\",\"--\",\"--target\",\"test\"]]){const r=spawnSync(\"pnpm\",a,{stdio:\"inherit\"});if(r.status!==0)process.exit(r.status??1)}const r=spawnSync(\"node\",[\"--test\",\"apps/match-service/tests/unit.test.mjs\",\"tests/play/storage-contract.test.mjs\"],{stdio:\"inherit\"});process.exitCode=r.status??1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "01a76ab6c3bff7617a0e6a546142256df072ed6594937ec077b1614de8f21022",
+  "started_at": "2026-10-13T17:24:43.269Z",
+  "finished_at": "2026-10-13T17:24:47.165Z",
+  "recorded_at": "2026-10-13T17:24:47.165Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3896,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-01 GREEN: shared worker termination ownership and appended receipt invariant correction on the restricted test database",
+  "log_path": "docs/validation/logs/RUN-20261013-071.txt",
+  "log_sha256": "5d26da4c038992452f42f347ff3a700d3eeb36f320895b42df13ff81e410f446",
+  "redactions": 0
+}

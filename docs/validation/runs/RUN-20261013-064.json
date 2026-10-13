@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261013-064",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "packages/engine-adapter/tests/identity.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "3e5816dff0be"
+  },
+  "source_commit": "9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8",
+  "source_fingerprint": "749f205815641337deef11bd6e5e6800e61851be48092bdf98aa760be01079b8",
+  "started_at": "2026-10-13T16:52:44.762Z",
+  "finished_at": "2026-10-13T16:52:45.024Z",
+  "recorded_at": "2026-10-13T16:52:45.024Z",
+  "time_precision": "exact",
+  "elapsed_ms": 262,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-01 RED: executable replay identity must bind shared policy bytes",
+  "log_path": "docs/validation/logs/RUN-20261013-064.txt",
+  "log_sha256": "346f8ae406a0efbd4c0be345576105afb75e11f7e26ee542c4cea12f8d5ae197",
+  "redactions": 0
+}

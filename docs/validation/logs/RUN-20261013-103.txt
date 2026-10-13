@@ -1,0 +1,37 @@
+
+> lorcana-online-tcg@0.0.0 test:match-integration /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration
+
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (23.074155ms)
+✔ server-only database exports the bounded match repository (0.261012ms)
+✔ real receipt constraint refuses a rejected result with a null reason (130.762596ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 591.698107
+
+> @lorcana/match-service@0.0.0 test:integration /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/integration.test.mjs
+
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (510.614914ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (526.398042ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (442.633242ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (359.227947ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (532.813158ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (513.458358ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (67.947863ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (574.078232ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2197.941253ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2049.711144ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8476.904352
