@@ -1,0 +1,99 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ public diagnostics reject private data and malformed service responses (2.378774ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (2.304241ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (2.037697ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.375404ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.461252ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (6.692364ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.18204ms)
+✔ viewer snapshot codec refuses private fields, malformed refs, accessors and oversize bytes (6.610384ms)
+✔ every viewer delivery surface has a closed browser codec and refuses secret-bearing diagnostics (6.550158ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 720.899162
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (2.477116ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (1.505221ms)
+✔ identity binds the compiled shared player-operation policy (1.306243ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (21.3925ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (36.174761ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (36.773111ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (1.56326ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (416.279541ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (6.409616ms)
+✔ new server match fails closed when operating-system entropy is unavailable (148.367461ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.643636ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (29.649794ms)
+✔ completed private archive is immutable across late rejected submissions (9.83525ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (50.800334ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (63.889967ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (32.635791ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (1.967465ms)
+✖ actual private engine projects and resolves only current references without changing its journal or random stream (80.778967ms)
+✔ actual engine exports no opponent instances/seed and no privilege in viewer input (12.455856ms)
+✔ untrusted viewer accessors cannot execute before closed input validation (1.836706ms)
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (8.479494ms)
+✔ public observer and second player have separate outputs and no role escalation (3.80425ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (100.340115ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (3.457115ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (1.538163ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (3.707725ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (2.204089ms)
+✔ face-down under-card default requires an explicit face-up grant (1.726357ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 27
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2001.183088
+
+✖ failing tests:
+
+test at tests/viewer-integration.test.mjs:10:1
+✖ actual private engine projects and resolves only current references without changing its journal or random stream (80.778967ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer-integration.test.mjs:25:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+/workspaces/lorcana-online-tcg/packages/engine-adapter:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/engine-adapter@0.0.0 test: `node --test --test-concurrency=1 tests/*.test.mjs`
+Exit status 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<string>", line 1, in <listcomp>
+  File "/usr/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['pnpm', '--filter', '@lorcana/engine-adapter', 'test']' returned non-zero exit status 1.

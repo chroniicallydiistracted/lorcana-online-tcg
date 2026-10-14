@@ -1,9 +1,13 @@
-import { createHash, timingSafeEqual } from 'node:crypto';
+import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
 import { isPlayerMove } from '@lorcana/contracts/player-moves';
 import { createSyntheticKernel, type SyntheticKernel } from '@lorcana/vendor-engine';
 import { ENGINE_REPLAY_IDENTITY } from './code-identity.js';
 import { createRandomSource, RANDOM_VERSION, type RandomOutcome } from './random.js';
 import { closedRecord, copyInput, validateSetup, validateCommand, type ServerCommand } from './validation.js';
+
+import { createViewerProjection } from './viewer.js';
+import { resolveViewerIntent } from './viewer-intent.js';
+import type { ViewerProjection, Viewer } from '@lorcana/contracts';
 
 const MAX_BYTES = 2 * 1024 * 1024, MAX_COMMANDS = 2048;
 type Result = { accepted: boolean; code: string | null };
@@ -17,7 +21,7 @@ interface PrivateReplay {
 }
 export interface PrivateCompletedReplay { archive: string; digest: string }
 export interface QualificationMatch { status(): ServerStatus; submit(command: unknown): Result; exportReplay(): PrivateCompletedReplay; dispose(): void }
-export interface RecordedCore { facade: QualificationMatch; privateArchive(): string }
+export interface RecordedCore { facade: QualificationMatch; privateArchive(): string; project(viewer:unknown,matchId:string):ViewerProjection; resolveIntent(actor:string,move:unknown,input:unknown,matchId:string):Record<string,unknown> }
 
 export function canonical(value: unknown): string {
   const normalized: unknown = JSON.parse(JSON.stringify(value));
@@ -40,6 +44,7 @@ export function createRecordedMatch(setup: { players: [string, string]; startTim
 export function createRecordedCore(setup: { players: [string, string]; startTimestamp: number }, privateSeed: Uint8Array, context = ENGINE_REPLAY_IDENTITY): RecordedCore {
   const seed = Buffer.from(privateSeed), source = createRandomSource(seed, context);
   const seedCommitment = createHash('sha256').update('server-match-seed-v1\0').update(context).update(seed).digest('hex');
+  const viewerKey = createHmac('sha256',seed).update('private-viewer-key-v1\0').update(context).digest();
   let kernel: SyntheticKernel | undefined;
   try { kernel = createSyntheticKernel({ players: setup.players, startTimestamp: setup.startTimestamp, randomSource: source }); }
   catch { source.dispose(); seed.fill(0); throw new Error('Qualification initialization failed'); }
@@ -82,9 +87,19 @@ export function createRecordedCore(setup: { players: [string, string]; startTime
       const archive = privateArchive();
       return Object.freeze({ archive, digest: archiveDigest(archive) });
     },
-    dispose(): void { kernel = undefined; source.dispose(); seed.fill(0); commands.length = 0; },
+    dispose(): void { kernel = undefined; source.dispose(); seed.fill(0); viewerKey.fill(0); commands.length = 0; },
   });
-  return Object.freeze({ facade, privateArchive });
+  function projection(viewer:unknown,matchId:string) {
+    let scoped:Viewer;
+    try {
+      const v=closedRecord(viewer,['kind','playerId']);
+      if(v.kind==='participant'&&typeof v.playerId==='string'&&setup.players.includes(v.playerId))scoped={kind:'participant',playerId:v.playerId};
+      else if(v.kind==='public'&&!Object.hasOwn(v,'playerId'))scoped={kind:'public'};
+      else throw new Error();
+    }catch{throw new Error('Viewer unavailable');}
+    return createViewerProjection(active().inspect(scoped.kind==='participant'?scoped.playerId:undefined),{matchId,viewer:scoped,key:viewerKey});
+  }
+  return Object.freeze({ facade, privateArchive, project(viewer:unknown,matchId:string){return projection(viewer,matchId).snapshot;}, resolveIntent(actor:string,move:unknown,input:unknown,matchId:string){const view=projection({kind:'participant',playerId:actor},matchId);return resolveViewerIntent(actor,setup.players,move,input,view.resolve);} });
 }
 
 export function boundedTree(value: unknown, depth = 0, counter = { nodes: 0 }): void {

@@ -1,0 +1,841 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261014-004",
+  "title": "PLAY-02 viewer projections and noninterference",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-14T18:41:50.827Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "task_ids": [
+    "PLAY-02",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R01.020",
+    "R02.025",
+    "R02.026",
+    "R02.032",
+    "R02.033",
+    "R15.015",
+    "R15.016",
+    "R15.017",
+    "R17.004",
+    "R17.009",
+    "R29.005"
+  ],
+  "feature_ids": [
+    "F-DOCS",
+    "F-CONTRACTS",
+    "F-ENGINE",
+    "F-MATCH-COMMANDS",
+    "F-VIEWER-PRIVACY",
+    "F-BOUNDARIES"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Director assigns PLAY-02 and ends clock work. Intake clean3983e1c; existing clock diagnosis/history retained without further environment maintenance. Review approved blueprint/ADR0008, current command persistence/protocol and every viewer/resource/log/export boundary before implementation."
+    },
+    {
+      "kind": "implementation",
+      "description": "Closed independent synthetic viewer/surface/diagnostic contracts; fresh authorized card/resource/semantic/reveal DTOs, revision-bound HMAC refs/resolver and private engine/checkpoint friends. Pure bridge inspection stays behind Lab/server facades; all upstream361 files/59patches unchanged."
+    },
+    {
+      "kind": "function",
+      "description": "EngineExecutor.project returns a validated DTO-only worker reply; createMatchService.view uses participant-restricted committed load, exact pins/version/terminal correlation and existing bounded worker lifecycle without durable writes. Synthetic admission metadata acknowledges projection but still blocks hidden play pending recipient/transport qualification."
+    },
+    {
+      "kind": "test",
+      "description": "Discriminating red-to-green mixed visibility, public/participant roles, deck/private effect/log noninterference, exclusive reveal expiry, face-down/under/ink policy, refs/raw-ID/crossmatch/crossviewer rejection, no RNG/journal change, real DB recovery/roles, actual independent HTTP/WS output bytes, browser source/bundle negatives. Root test includes wire proof in existing CI foundation."
+    },
+    {
+      "kind": "fix",
+      "description": "Tests exposed dynamic-union typing, default under-card front disclosure, upstream inking UI reveal duration/SYSTEM provenance, viewer getter evaluation and shared reveal/animation arrays. Narrow first-single-card window matching preserves independent same-state effects; authorized unlinked historical reveals preserve public normal-inking evidence."
+    },
+    {
+      "kind": "revision",
+      "description": "Wire fixture HTTP_HEADERS_SENT was reproduced and its owned hung child alone terminated in RUN034. Validate route before headers; RUN035 passes actualbytes. No product or environment service was stopped."
+    },
+    {
+      "kind": "documentation",
+      "description": "Native ADR0014/plan/contract/runbook/validation, feature register/source-impact map, handoff, current primary docs and task/requirement evidence are synchronized; prior dated source results and original requirement/device/optional flags remain unchanged."
+    },
+    {
+      "kind": "fix",
+      "description": "Independent review follow-ups reproduced in RUN037: preserve unrelated same-state reveal windows and retain authorized historical normal-inking definitions without current object links. RUN038 rejected aliased notice arrays; RUN039 uses separate arrays and passes. RUN041 caught explicit-type/global/test-import lint style; RUN042 fixes and passes without weakening rules."
+    },
+    {
+      "kind": "test",
+      "description": "Add actual single-worker Chromium execution of the public viewer/surface codec, UTF8/role/private/getter refusal; private projector/RNG remains outside browser module boundaries."
+    },
+    {
+      "kind": "review",
+      "description": "Independent read-only code review found no synthetic-scope blocker; owner-doc pass corrected adapter/service recipient wording and RUN047-vs049 bundle evidence attribution. Reviewer ran no tests. Parent review follow-ups are discriminating red/green tests with full final-source suite."
+    },
+    {
+      "kind": "test",
+      "description": "Final matching source: RUN047 full foundation306project/406upstream+1skip/2injection; RUN048DB/connectivity/roles/5DB+3storage+11matches; RUN0497Chromium+2Labworkers. RUN051 all14 isolated child stages/artifact generation exit0 but immutable receipt failed clock_changed; original services preserved and disposable resources cleaned. No retry/repair or timing waiver."
+    },
+    {
+      "kind": "fix",
+      "description": "Final front-only permission review: RUN053 reproduced hidden orientation/damage/drying copying alongside a revealed hand/deck front. Canonicalize outside-play fields and controller while preserving actual top-level play state and public ink orientation. RUN05431adapter checks pass; separate narrow static reviewer confirms correction and controller variation coverage. Earlier full/isolated receipts become prior-source evidence; refresh current broad checks without repeating known clock rejection."
+    },
+    {
+      "kind": "test",
+      "description": "After final front-only/controller coverage, matching fingerprint e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b: RUN056full307project/406upstream+1skip/2injection, RUN057originalDB+8roles+5DB+3storage+11matches, RUN0587Chromium+2Labworkers and RUN059clean source-only frozen install/full foundation all pass with valid timing. RUN051 remains prior-source failed clock receipt; no isolated retry or clock mutation."
+    },
+    {
+      "kind": "documentation",
+      "description": "Final semantic closure updates the current feature table and AGENTS boundary, labels earlier qualification as historical, and records native synchronization/preservation. RUN061 helper failed on its default1MiB Git output buffer; RUN062 corrected only the proof helper with a bounded16MiB read and passed canonical/private-file/original548+20/listener/provenance/full-history-secret/immutable-record checks. No executable source, clock settings or failed receipt was changed."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "apps/match-service/README.md",
+    "apps/match-service/src/engine-executor.ts",
+    "apps/match-service/src/service.ts",
+    "apps/match-service/src/transition-worker.ts",
+    "apps/match-service/tests/integration.test.mjs",
+    "apps/match-service/tests/unit.test.mjs",
+    "apps/web/README.md",
+    "apps/web/tests/foundation.spec.ts",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0008-engine-placement-dependency-baseline.md",
+    "docs/adr/0010-secure-randomness-replay.md",
+    "docs/adr/0013-durable-synthetic-match-commands.md",
+    "docs/adr/0014-viewer-projection-privacy.md",
+    "docs/changes/CHG-20261014-004.json",
+    "docs/contracts/protocol.md",
+    "docs/contracts/release.md",
+    "docs/contracts/viewer.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-14-play-02-viewer-privacy.md",
+    "docs/reviews/2026-10-14-play-02-privacy.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/match-commands.md",
+    "docs/runbooks/viewer-privacy.md",
+    "docs/validation/logs/RUN-20261014-022.txt",
+    "docs/validation/logs/RUN-20261014-023.txt",
+    "docs/validation/logs/RUN-20261014-024.txt",
+    "docs/validation/logs/RUN-20261014-025.txt",
+    "docs/validation/logs/RUN-20261014-026.txt",
+    "docs/validation/logs/RUN-20261014-027.txt",
+    "docs/validation/logs/RUN-20261014-028.txt",
+    "docs/validation/logs/RUN-20261014-029.txt",
+    "docs/validation/logs/RUN-20261014-030.txt",
+    "docs/validation/logs/RUN-20261014-031.txt",
+    "docs/validation/logs/RUN-20261014-032.txt",
+    "docs/validation/logs/RUN-20261014-033.txt",
+    "docs/validation/logs/RUN-20261014-034.txt",
+    "docs/validation/logs/RUN-20261014-035.txt",
+    "docs/validation/logs/RUN-20261014-036.txt",
+    "docs/validation/logs/RUN-20261014-037.txt",
+    "docs/validation/logs/RUN-20261014-038.txt",
+    "docs/validation/logs/RUN-20261014-039.txt",
+    "docs/validation/logs/RUN-20261014-040.txt",
+    "docs/validation/logs/RUN-20261014-041.txt",
+    "docs/validation/logs/RUN-20261014-042.txt",
+    "docs/validation/logs/RUN-20261014-043.txt",
+    "docs/validation/logs/RUN-20261014-044.txt",
+    "docs/validation/logs/RUN-20261014-045.txt",
+    "docs/validation/logs/RUN-20261014-046.txt",
+    "docs/validation/logs/RUN-20261014-047.txt",
+    "docs/validation/logs/RUN-20261014-048.txt",
+    "docs/validation/logs/RUN-20261014-049.txt",
+    "docs/validation/logs/RUN-20261014-050.txt",
+    "docs/validation/logs/RUN-20261014-051.txt",
+    "docs/validation/logs/RUN-20261014-052.txt",
+    "docs/validation/logs/RUN-20261014-053.txt",
+    "docs/validation/logs/RUN-20261014-054.txt",
+    "docs/validation/logs/RUN-20261014-055.txt",
+    "docs/validation/logs/RUN-20261014-056.txt",
+    "docs/validation/logs/RUN-20261014-057.txt",
+    "docs/validation/logs/RUN-20261014-058.txt",
+    "docs/validation/logs/RUN-20261014-059.txt",
+    "docs/validation/logs/RUN-20261014-060.txt",
+    "docs/validation/logs/RUN-20261014-061.txt",
+    "docs/validation/logs/RUN-20261014-062.txt",
+    "docs/validation/logs/RUN-20261014-063.txt",
+    "docs/validation/play-01.md",
+    "docs/validation/play-02.md",
+    "docs/validation/runs/RUN-20261014-022.json",
+    "docs/validation/runs/RUN-20261014-023.json",
+    "docs/validation/runs/RUN-20261014-024.json",
+    "docs/validation/runs/RUN-20261014-025.json",
+    "docs/validation/runs/RUN-20261014-026.json",
+    "docs/validation/runs/RUN-20261014-027.json",
+    "docs/validation/runs/RUN-20261014-028.json",
+    "docs/validation/runs/RUN-20261014-029.json",
+    "docs/validation/runs/RUN-20261014-030.json",
+    "docs/validation/runs/RUN-20261014-031.json",
+    "docs/validation/runs/RUN-20261014-032.json",
+    "docs/validation/runs/RUN-20261014-033.json",
+    "docs/validation/runs/RUN-20261014-034.json",
+    "docs/validation/runs/RUN-20261014-035.json",
+    "docs/validation/runs/RUN-20261014-036.json",
+    "docs/validation/runs/RUN-20261014-037.json",
+    "docs/validation/runs/RUN-20261014-038.json",
+    "docs/validation/runs/RUN-20261014-039.json",
+    "docs/validation/runs/RUN-20261014-040.json",
+    "docs/validation/runs/RUN-20261014-041.json",
+    "docs/validation/runs/RUN-20261014-042.json",
+    "docs/validation/runs/RUN-20261014-043.json",
+    "docs/validation/runs/RUN-20261014-044.json",
+    "docs/validation/runs/RUN-20261014-045.json",
+    "docs/validation/runs/RUN-20261014-046.json",
+    "docs/validation/runs/RUN-20261014-047.json",
+    "docs/validation/runs/RUN-20261014-048.json",
+    "docs/validation/runs/RUN-20261014-049.json",
+    "docs/validation/runs/RUN-20261014-050.json",
+    "docs/validation/runs/RUN-20261014-051.json",
+    "docs/validation/runs/RUN-20261014-052.json",
+    "docs/validation/runs/RUN-20261014-053.json",
+    "docs/validation/runs/RUN-20261014-054.json",
+    "docs/validation/runs/RUN-20261014-055.json",
+    "docs/validation/runs/RUN-20261014-056.json",
+    "docs/validation/runs/RUN-20261014-057.json",
+    "docs/validation/runs/RUN-20261014-058.json",
+    "docs/validation/runs/RUN-20261014-059.json",
+    "docs/validation/runs/RUN-20261014-060.json",
+    "docs/validation/runs/RUN-20261014-061.json",
+    "docs/validation/runs/RUN-20261014-062.json",
+    "docs/validation/runs/RUN-20261014-063.json",
+    "docs/vision/README.md",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "package.json",
+    "packages/contracts/README.md",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/viewer.ts",
+    "packages/contracts/tests/viewer.test.mjs",
+    "packages/engine-adapter/README.md",
+    "packages/engine-adapter/src/admission.ts",
+    "packages/engine-adapter/src/persistence.ts",
+    "packages/engine-adapter/src/replay.ts",
+    "packages/engine-adapter/src/viewer-intent.ts",
+    "packages/engine-adapter/src/viewer.ts",
+    "packages/engine-adapter/tests/viewer-fixtures.mjs",
+    "packages/engine-adapter/tests/viewer-integration.test.mjs",
+    "packages/engine-adapter/tests/viewer.test.mjs",
+    "tests/foundation/boundaries.test.mjs",
+    "tests/foundation/browser-bundle.test.mjs",
+    "tests/play/privacy-wire.test.mjs",
+    "vendor/tcg-engines/README.md",
+    "vendor/tcg-engines/src/kernel.d.ts",
+    "vendor/tcg-engines/src/kernel.ts"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred. Final closure corrects current summary/table, explicitly labels prior-source evidence and records measured RUN062 preservation rather than expected cleanup."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred. Final closure corrects current summary/table, explicitly labels prior-source evidence and records measured RUN062 preservation rather than expected cleanup."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred. Final closure corrects current summary/table, explicitly labels prior-source evidence and records measured RUN062 preservation rather than expected cleanup."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing workspace/bootstrap/full-vision/governance contract is retained. New scoped viewer evidence is recorded separately; no reserved gameplay/auth/economic/mobile/production requirement is accepted from this synthetic implementation."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing workspace/bootstrap/full-vision/governance contract is retained. New scoped viewer evidence is recorded separately; no reserved gameplay/auth/economic/mobile/production requirement is accepted from this synthetic implementation."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing workspace/bootstrap/full-vision/governance contract is retained. New scoped viewer evidence is recorded separately; no reserved gameplay/auth/economic/mobile/production requirement is accepted from this synthetic implementation."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing workspace/bootstrap/full-vision/governance contract is retained. New scoped viewer evidence is recorded separately; no reserved gameplay/auth/economic/mobile/production requirement is accepted from this synthetic implementation."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing workspace/bootstrap/full-vision/governance contract is retained. New scoped viewer evidence is recorded separately; no reserved gameplay/auth/economic/mobile/production requirement is accepted from this synthetic implementation."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing workspace/bootstrap/full-vision/governance contract is retained. New scoped viewer evidence is recorded separately; no reserved gameplay/auth/economic/mobile/production requirement is accepted from this synthetic implementation."
+    },
+    {
+      "path": "docs/schemas/card-certification.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing workspace/bootstrap/full-vision/governance contract is retained. New scoped viewer evidence is recorded separately; no reserved gameplay/auth/economic/mobile/production requirement is accepted from this synthetic implementation."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing workspace/bootstrap/full-vision/governance contract is retained. New scoped viewer evidence is recorded separately; no reserved gameplay/auth/economic/mobile/production requirement is accepted from this synthetic implementation."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Root test includes new actual-wire checks and existing live-match entry includes new DB reads. Existing fourteen pipeline stages, isolation/artifact/clock gates and hosted-versus-local evidence definitions remain unchanged; no fresh CI acceptance inferred."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Participant projection reuses existing restricted match repository and read-only checkpoint load; roles, migrations, credentials, original local/test data and recreation procedures are unchanged. New read evidence belongs to PLAY-02."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Participant projection reuses existing restricted match repository and read-only checkpoint load; roles, migrations, credentials, original local/test data and recreation procedures are unchanged. New read evidence belongs to PLAY-02."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Participant projection reuses existing restricted match repository and read-only checkpoint load; roles, migrations, credentials, original local/test data and recreation procedures are unchanged. New read evidence belongs to PLAY-02."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Participant projection reuses existing restricted match repository and read-only checkpoint load; roles, migrations, credentials, original local/test data and recreation procedures are unchanged. New read evidence belongs to PLAY-02."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Root test includes new actual-wire checks and existing live-match entry includes new DB reads. Existing fourteen pipeline stages, isolation/artifact/clock gates and hosted-versus-local evidence definitions remain unchanged; no fresh CI acceptance inferred."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Root test includes new actual-wire checks and existing live-match entry includes new DB reads. Existing fourteen pipeline stages, isolation/artifact/clock gates and hosted-versus-local evidence definitions remain unchanged; no fresh CI acceptance inferred."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Root test includes new actual-wire checks and existing live-match entry includes new DB reads. Existing fourteen pipeline stages, isolation/artifact/clock gates and hosted-versus-local evidence definitions remain unchanged; no fresh CI acceptance inferred."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Root test includes new actual-wire checks and existing live-match entry includes new DB reads. Existing fourteen pipeline stages, isolation/artifact/clock gates and hosted-versus-local evidence definitions remain unchanged; no fresh CI acceptance inferred."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "BOOT-05 transport protocol1 and its counts-only diagnostic shape remain unchanged. Separate viewer DTO revision1 is documented in the owning contract; no negotiation range/retained manifest handler is widened."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "BOOT-05 transport protocol1 and its counts-only diagnostic shape remain unchanged. Separate viewer DTO revision1 is documented in the owning contract; no negotiation range/retained manifest handler is widened."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "BOOT-05 transport protocol1 and its counts-only diagnostic shape remain unchanged. Separate viewer DTO revision1 is documented in the owning contract; no negotiation range/retained manifest handler is widened."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Synthetic privacy code adds no dependency/provider/deployment/asset/budget decision and retains D10 completed private recipients. OVHcloud/Cloudflare/$25, existing D07 and unprovisioned hosting obligations remain."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Root test includes new actual-wire checks and existing live-match entry includes new DB reads. Existing fourteen pipeline stages, isolation/artifact/clock gates and hosted-versus-local evidence definitions remain unchanged; no fresh CI acceptance inferred."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Root test includes new actual-wire checks and existing live-match entry includes new DB reads. Existing fourteen pipeline stages, isolation/artifact/clock gates and hosted-versus-local evidence definitions remain unchanged; no fresh CI acceptance inferred."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Synthetic privacy code adds no dependency/provider/deployment/asset/budget decision and retains D10 completed private recipients. OVHcloud/Cloudflare/$25, existing D07 and unprovisioned hosting obligations remain."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/templates/card-certification.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native schema1 change/run fields, timestamp/append-only/file coverage, task/register and single-heavycheck contracts remain applicable; new viewer DTO is a public TypeBox contract, not a native evidence/schema format change."
+    },
+    {
+      "path": "docs/adr/0011-sourced-rule-scenarios.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/runbooks/rules-certification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/adr/0012-upstream-kernel-refresh.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/validation/upstream-engine-review.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/plans/2026-10-13-upstream-engine-review.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Upstream361 selected files/59patches and120 representative scenarios remain unchanged; current privacy implementation lives only in the project-owned bridge/server facade/contracts. Official source hashes/effective dates, per-card/template gates and prior executed proof stay source-specific."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/adr/0014-viewer-projection-privacy.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/contracts/viewer.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/runbooks/viewer-privacy.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred."
+    },
+    {
+      "path": "docs/validation/play-02.md",
+      "disposition": "updated",
+      "reason": "Current PLAY-02 ownership/status/contracts, synthetic gates and source-specific evidence updated; earlier dated execution remains historical and no auth/official/device or clock repair acceptance is inferred. Final closure corrects current summary/table, explicitly labels prior-source evidence and records measured RUN062 preservation rather than expected cleanup."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "updated",
+      "reason": "New single-worker Chromium public-codec execution is explicit; synthetic schema verification does not implement approved game UI, recipient auth or physical devices."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-022.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 intake metadata synchronization before initial application baseline; no game code changes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-023.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 initial unchanged application baseline: project doctor, static verification, five bootstrap tests and authenticated existing PostgreSQL"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-024.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 red regression: mixed hidden-state projector is absent"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-025.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 initial projector implementation compile and mixed hidden-state regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-026.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 projector typed literal correction and seven visibility regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-027.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 red integration and face-down under-card regression before private engine wiring"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-028.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 kernel friend, private projection/ref resolver compile and adapter regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-029.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 red closed output-path codecs and non-invoked viewer accessor tests"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-030.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 all adapter/contract tests after reveal-provenance and closed viewer/input/output fixes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-031.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 red bounded worker projection; committed read test added to existing integration entry"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-032.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 red participant-only committed projection; test uses the existing isolated test database"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-033.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 compile contracts/adapter/service, all adapter/service unit and real database regressions sequentially"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-034.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 actual independent loopback HTTP/WebSocket bytes across five privacy surfaces and paired hidden worlds"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-035.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 wire fixture correction: validate route before sending headers; HTTP/WebSocket privacy and forbidden role response"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-036.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 red qualification metadata while maintaining hidden-state transport/recipient admission gate"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-037.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 reviewer follow-up red: independent same-state effect reveal and unlinked public normal-inking evidence"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-038.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 review corrections: narrow normal-inking window correlation, authorized unlinked reveal notices and retained admission gates"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-039.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 reveal notice correction: independent animation arrays satisfy closed plain-data codec; review regressions and scopes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-040.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 implementation checkpoint native source/file/callable/changelog/doc impact synchronization before broad verification"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-041.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 final-source frozen install, exact toolchain and complete foundation verification sequentially"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-042.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 lint corrections: explicit type imports and Node globals/test-local boundary import; all source boundaries"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-043.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 review/lint correction native documentation synchronization for final unchanged source qualification"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-044.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 current doc/file coverage after explicit Chromium public viewer codec test"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-045.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 final complete foundation: static/docs, package typechecks, lint/boundaries, all project/upstream/injection/wire tests"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-046.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 native coverage correction includes new web README/test before qualification"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-047.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 full foundation after native source/doc correction; complete project/upstream/injection/output privacy suite"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-048.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 final-source original DB connectivity, local/test role health, live DB restrictions and durable matches/projection reads"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-049.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 Linux single-worker Chromium: foundation renderer/protocol and actual public viewer codec, followed by two isolated Lab workers"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-050.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 source-matched foundation/database/Chromium native feature evidence and independent review checkpoint synchronization"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-051.json",
+      "outcome": "failed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-052.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 technical acceptance documentation closure; failed isolated timing preserved and all current/task/feature/callable evidence synchronized"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-053.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 final-review red: a card-front reveal must not widen permission to hidden-zone state metadata"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-054.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 front-only permission correction; all31 adapter regressions including private metadata paired worlds"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-055.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 final front-only correction: mark earlier evidence historical and synchronize current source before fresh broad qualification"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-056.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 final current source after front-only correction: full foundation builds/types/lint/boundaries and all project/upstream/injection/wire regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-057.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 final front-only source: original DB connectivity/eight managed identities,5DB+3storage+11match projection/transaction/recovery checks"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-058.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 final front-only source: seven actual Chromium foundation/public codec cases and two Lab worker checks, sequential"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-059.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 final source-only clean copy: private files/Git/build output absent, frozen install and entire current foundation; owned temporary cleanup"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-060.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 final e3a9578b source-matched full/DB/Chromium/clean evidence, owner docs and task/feature native closure"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-061.json",
+      "outcome": "failed",
+      "scope": "PLAY-02 final preservation: exact source/canonical bytes, ignored0600 private files, original548/20 scope, unchanged vendor, no owned listeners, immutable docs/logs and full-history secrets"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-062.json",
+      "outcome": "passed",
+      "scope": "PLAY-02 final preservation correction: bounded16MiB Git read for generated inventory; canonical/scope/private files/listeners/provenance/immutable history and secrets"
+    }
+  ],
+  "limitations": [
+    "Prior-source isolated RUN051 failed clock_changed despite all14 child stages/artifact generation exit0; final-source isolated/hosted/retained/promoted artifact acceptance remains pending. No clock repair or guard change inferred.",
+    "Current internal two-player synthetic view/refs are distinct from authenticated publication, full-card/private-choice policy, delayed/privileged delivery, physical devices and production.",
+    "Refs rotate each revision; no stable presentation identity is promised.",
+    "Original all-card/game/reward gates remain closed; D10 completed full private recipients need later AUTH/REPLAY enforcement."
+  ],
+  "next_actions": [
+    "Director audit/review and publish/integrate local scope with fresh hosted CI evidence.",
+    "PLAY-03: bind authenticated participants, qualified protocol/releases, committed views/receipts, current refs and bounded reconnect/publication; preserve all privacy and later card/delay/privilege gates."
+  ]
+}

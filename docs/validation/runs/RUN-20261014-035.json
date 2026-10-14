@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-035",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:viewer-privacy"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "f63eb493674dbe12d224b09182480a62ae6939ff51d678766bc7c57a250f26a3",
+  "started_at": "2026-10-14T17:41:50.936Z",
+  "finished_at": "2026-10-14T17:41:51.624Z",
+  "recorded_at": "2026-10-14T17:41:51.624Z",
+  "time_precision": "exact",
+  "elapsed_ms": 688,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 wire fixture correction: validate route before sending headers; HTTP/WebSocket privacy and forbidden role response",
+  "log_path": "docs/validation/logs/RUN-20261014-035.txt",
+  "log_sha256": "dbf9eedf60fbb32b166af3399852f473b12117fce773be901ff11aabc516a765",
+  "redactions": 0
+}

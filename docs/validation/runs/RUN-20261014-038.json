@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-038",
+  "category": "container",
+  "command": [
+    "python3",
+    "-c",
+    "import subprocess; [subprocess.run(c,check=True) for c in [['pnpm','--filter','@lorcana/contracts','build'],['pnpm','--filter','@lorcana/engine-adapter','build'],['pnpm','--filter','@lorcana/match-service','build'],['pnpm','--filter','@lorcana/contracts','test'],['pnpm','--filter','@lorcana/engine-adapter','test'],['pnpm','--filter','@lorcana/match-service','test'],['pnpm','test:viewer-privacy']]]"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "ca6a3b862fb089320d63ad313b7d21c2e42bead1ad36ce8bd50874e43645bea7",
+  "started_at": "2026-10-14T17:48:20.732Z",
+  "finished_at": "2026-10-14T17:48:29.619Z",
+  "recorded_at": "2026-10-14T17:48:29.619Z",
+  "time_precision": "exact",
+  "elapsed_ms": 9025,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-02 review corrections: narrow normal-inking window correlation, authorized unlinked reveal notices and retained admission gates",
+  "log_path": "docs/validation/logs/RUN-20261014-038.txt",
+  "log_sha256": "d603742b950a030e8412dabadabd8f8e8b679c30ea44b8d33043afb57e79197f",
+  "redactions": 0
+}

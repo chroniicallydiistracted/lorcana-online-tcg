@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-053",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "--test-name-pattern=revealing a hand/deck",
+    "packages/engine-adapter/tests/viewer.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "f62a39bf3ef3b99cfe5640d3d8815a91467e0e93098f2276dd4046b7d4ab6858",
+  "started_at": "2026-10-14T18:16:27.789Z",
+  "finished_at": "2026-10-14T18:16:28.058Z",
+  "recorded_at": "2026-10-14T18:16:28.058Z",
+  "time_precision": "exact",
+  "elapsed_ms": 269,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-02 final-review red: a card-front reveal must not widen permission to hidden-zone state metadata",
+  "log_path": "docs/validation/logs/RUN-20261014-053.txt",
+  "log_sha256": "92d2440f93919ad6fdeb0d1941c71473e649fd865290085bf88ca3d8fdd24664",
+  "redactions": 0
+}

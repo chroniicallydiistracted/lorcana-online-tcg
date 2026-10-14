@@ -1,0 +1,23 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+src/viewer.ts(59,66): error TS2322: Type '"action"' is not assignable to type 'undefined'.
+src/viewer.ts(60,72): error TS2322: Type '"draw" | "mill"' is not assignable to type 'undefined'.
+  Type '"draw"' is not assignable to type 'undefined'.
+src/viewer.ts(61,50): error TS2322: Type '"mulligan"' is not assignable to type 'undefined'.
+src/viewer.ts(62,43): error TS2322: Type '"turn"' is not assignable to type 'undefined'.
+src/viewer.ts(63,41): error TS2322: Type '"end"' is not assignable to type 'undefined'.
+/workspaces/lorcana-online-tcg/packages/engine-adapter:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/engine-adapter@0.0.0 build: `tsc -p tsconfig.json`
+Exit status 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<string>", line 1, in <listcomp>
+  File "/usr/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['pnpm', '--filter', '@lorcana/engine-adapter', 'build']' returned non-zero exit status 1.

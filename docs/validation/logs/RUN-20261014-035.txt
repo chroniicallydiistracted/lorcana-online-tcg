@@ -1,0 +1,14 @@
+
+> lorcana-online-tcg@0.0.0 test:viewer-privacy /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/privacy-wire.test.mjs
+
+✔ independent HTTP and WebSocket clients receive identical privacy-safe bytes on every output surface (136.561752ms)
+✔ hidden-state paired worlds have identical real wire/resource/log/export bytes and fixed diagnostic output (32.049262ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 341.660345

@@ -34,6 +34,8 @@ export function createSyntheticKernel(options: { randomSource: KernelRandomSourc
     // Only the server facade uses this internal snapshot to hash reconstruction.
     // Browser Lab does not export it; this is never a live viewer projection.
     snapshot(): unknown { return JSON.parse(JSON.stringify(runtime.getState())); },
+    // Server friend only; Lab's facade/RPC does not expose authoritative inspection.
+    inspect(viewerId?: string) { return { state: this.snapshot(), instances: { ...cardInstances }, events: JSON.parse(JSON.stringify(runtime.getPublishedGameEvents())), moves: viewerId ? [...runtime.enumerateMovesForPlayer(viewerId, 'player')] : [] }; },
     restore(snapshot: unknown): void { runtime.loadState(snapshot as ReturnType<typeof runtime.getState>); },
     submit(actor: string, revision: number, timestamp: number, commandId: string, move: string, input: Record<string, unknown>) {
       // Upstream defaults to judge. Explicit player authority is mandatory.

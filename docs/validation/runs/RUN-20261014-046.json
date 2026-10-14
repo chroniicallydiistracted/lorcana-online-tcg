@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-046",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "docs:sync",
+    "--change",
+    "CHG-20261014-004"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "c13e366e66fdb1d94cace4f266c236ae0135476927ea4e16e588fdff1c6b896d",
+  "started_at": "2026-10-14T17:57:41.342Z",
+  "finished_at": "2026-10-14T17:58:03.631Z",
+  "recorded_at": "2026-10-14T17:58:03.631Z",
+  "time_precision": "exact",
+  "elapsed_ms": 22405,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 native coverage correction includes new web README/test before qualification",
+  "log_path": "docs/validation/logs/RUN-20261014-046.txt",
+  "log_sha256": "6782c7f2742c26741958626e4df894cc6b762f500664248646ef99ba486490f2",
+  "redactions": 0
+}

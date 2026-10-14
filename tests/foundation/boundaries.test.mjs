@@ -142,3 +142,8 @@ test('HTML entry assets and inline modules cannot embed server-owned files', asy
     } finally { await rm(root, { recursive: true, force: true }); }
   }
 });
+
+test('public/browser modules refuse viewer projection and reference resolver server paths',async()=>{
+ const {checkSource}=await import('../../scripts/check-boundaries.mjs');
+ for(const path of ['apps/web/src/probe.ts','packages/contracts/src/probe.ts','packages/engine-lab/src/probe.ts'])for(const code of ["import { createViewerProjection } from '../../../packages/engine-adapter/src/viewer.ts';","export * from '../../../packages/engine-adapter/src/viewer-intent.ts';","const privateProjection = import('@lorcana/engine-adapter/viewer');"]){assert.throws(()=>checkSource(join(process.cwd(),path),undefined,code),/Forbidden/);}
+});

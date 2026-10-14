@@ -20,7 +20,7 @@
     "typecheck": "pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck",
     "lint": "eslint . && pnpm boundaries",
     "boundaries": "node scripts/check-boundaries.mjs",
-    "test": "pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test --test-concurrency=1 tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci && pnpm test:rules-inventory && pnpm test:rules && pnpm test:engine-tooling && pnpm test:player-moves",
+    "test": "pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test --test-concurrency=1 tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci && pnpm test:rules-inventory && pnpm test:rules && pnpm test:engine-tooling && pnpm test:player-moves && pnpm test:viewer-privacy",
     "test:e2e:smoke": "pnpm --filter @lorcana/web test:e2e",
     "verify:foundation": "pnpm verify && pnpm typecheck && pnpm lint && pnpm test",
     "docs:check": "node scripts/check-documentation.mjs",
@@ -52,7 +52,8 @@
     "rules:check-scenarios": "node scripts/rules/certification.mjs",
     "rules:verify-scenario-bytes": "node scripts/rules/certification.mjs --bytes",
     "test:player-moves": "node --test --test-concurrency=1 tests/play/move-policy.test.mjs",
-    "test:match-integration": "node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration"
+    "test:match-integration": "node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration",
+    "test:viewer-privacy": "node --test --test-concurrency=1 tests/play/privacy-wire.test.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

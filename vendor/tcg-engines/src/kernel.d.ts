@@ -1,6 +1,7 @@
 export interface SyntheticKernel {
   status(): { revision: number; ended: boolean; winner: string | null; choosingFirstPlayer: string | null };
   snapshot(): unknown;
+  inspect(viewerId?: string): {state:unknown;instances:Record<string,string>;events:unknown[];moves:string[]};
   restore(snapshot: unknown): void;
   submit(actor: string, revision: number, timestamp: number, commandId: string, move: string, input: Record<string, unknown>): { accepted: boolean; code: string | null };
 }

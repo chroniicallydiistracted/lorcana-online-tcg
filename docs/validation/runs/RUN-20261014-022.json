@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-022",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "docs:sync",
+    "--change",
+    "CHG-20261014-004"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-14T04:54:54.237Z",
+  "finished_at": "2026-10-14T04:55:16.700Z",
+  "recorded_at": "2026-10-14T04:55:16.700Z",
+  "time_precision": "exact",
+  "elapsed_ms": 21501,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 intake metadata synchronization before initial application baseline; no game code changes",
+  "log_path": "docs/validation/logs/RUN-20261014-022.txt",
+  "log_sha256": "7cdf325771ff5a94e344e829bb15f9cafacafb3c5033662a88f8d993eb109bbf",
+  "redactions": 0
+}

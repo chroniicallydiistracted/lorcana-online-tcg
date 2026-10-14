@@ -1,0 +1,129 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ public diagnostics reject private data and malformed service responses (2.250274ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (2.715937ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (2.211226ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.379275ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.565611ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (6.986693ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.166583ms)
+✔ viewer snapshot codec refuses private fields, malformed refs, accessors and oversize bytes (5.867166ms)
+✔ every viewer delivery surface has a closed browser codec and refuses secret-bearing diagnostics (7.126533ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 688.89001
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (2.151043ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (0.916183ms)
+✔ identity binds the compiled shared player-operation policy (0.787095ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (20.289185ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (37.413831ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (38.174478ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (1.772581ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (439.066659ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (6.796793ms)
+✔ new server match fails closed when operating-system entropy is unavailable (148.552499ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.61578ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (31.043867ms)
+✔ completed private archive is immutable across late rejected submissions (7.015066ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (46.584564ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (60.781476ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (28.194843ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (1.830172ms)
+✔ actual private engine projects and resolves only current references without changing its journal or random stream (82.287925ms)
+✔ actual engine exports no opponent instances/seed and no privilege in viewer input (12.445363ms)
+✔ untrusted viewer accessors cannot execute before closed input validation (1.877955ms)
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (7.329301ms)
+✔ public observer and second player have separate outputs and no role escalation (3.696898ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (96.639798ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (3.394879ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (1.384114ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (3.801552ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (1.967052ms)
+✔ face-down under-card default requires an explicit face-up grant (1.238524ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1981.579756
+
+> @lorcana/match-service@0.0.0 test /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/unit.test.mjs
+
+✔ match command validation separates trusted actor and binds exact semantic intent (6.726408ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (838.219408ms)
+✔ close waits for an already completing actual worker (deferred termination simulation) (150.62887ms)
+✔ worker uses the same executable-policy identity as its current server conditions (151.5497ms)
+✔ actual executor times out queued work and rejects queued work on close (153.145992ms)
+✔ actual projection worker returns only a closed DTO, no checkpoint or server status (471.582685ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1929.694658
+
+> lorcana-online-tcg@0.0.0 test:match-integration /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration
+
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (19.379204ms)
+✔ server-only database exports the bounded match repository (0.217333ms)
+✔ real receipt constraint refuses a rejected result with a null reason (36.458257ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 502.151162
+
+> @lorcana/match-service@0.0.0 test:integration /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/integration.test.mjs
+
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (972.346585ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (987.611478ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (914.829521ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (737.970769ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (1090.630128ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (1065.970771ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (44.479895ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (1106.569977ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2540.348512ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2423.991057ms)
+✔ committed participant projections are read-only, recover exactly and deny role/identity escalation (1727.684784ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14290.135372

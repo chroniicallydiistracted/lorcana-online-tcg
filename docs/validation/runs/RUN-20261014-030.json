@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-030",
+  "category": "container",
+  "command": [
+    "python3",
+    "-c",
+    "import subprocess; [subprocess.run(c,check=True) for c in [['pnpm','--filter','@lorcana/contracts','build'],['pnpm','--filter','@lorcana/engine-adapter','build'],['pnpm','--filter','@lorcana/contracts','test'],['pnpm','--filter','@lorcana/engine-adapter','test']]]"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "ffdb712a5e002d8f1b1e50df15c389511d1daf8649901243f3e992dda2ac154f",
+  "started_at": "2026-10-14T05:32:48.017Z",
+  "finished_at": "2026-10-14T05:32:56.066Z",
+  "recorded_at": "2026-10-14T05:32:56.066Z",
+  "time_precision": "exact",
+  "elapsed_ms": 7061,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-02 all adapter/contract tests after reveal-provenance and closed viewer/input/output fixes",
+  "log_path": "docs/validation/logs/RUN-20261014-030.txt",
+  "log_sha256": "70da955409e4931c19e74a13ce091388ee2b5b93e788bdd1762795fed00f1867",
+  "redactions": 0
+}

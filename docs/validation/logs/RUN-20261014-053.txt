@@ -1,0 +1,68 @@
+✖ revealing a hand/deck front does not disclose its otherwise private state metadata (12.705045ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 181.562356
+
+✖ failing tests:
+
+test at packages/engine-adapter/tests/viewer.test.mjs:86:1
+✖ revealing a hand/deck front does not disclose its otherwise private state metadata (12.705045ms)
+  AssertionError [ERR_ASSERTION]: card-front permission must not widen to hidden state metadata
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      animations: [
+        {
+          actorId: null,
+          count: 0,
+  ...
+                  controllerId: 'p2',
+  +               damage: 0,
+  -               damage: 77,
+                  definitionId: 'secret-ruby',
+  +               drying: false,
+  -               drying: true,
+                  ownerId: 'p2',
+                  ref: 'vr_2d009a0c2dc20c7b6c100341a7b990b3c74226dc72ceb7f106661b0eeee66334',
+  +               state: 'ready'
+  -               state: 'exerted'
+                }
+              ],
+              count: 1,
+              kind: 'hand'
+            },
+  ...
+                  controllerId: 'p2',
+  +               damage: 0,
+  -               damage: 99,
+                  definitionId: 'deck-ruby',
+  +               drying: false,
+  -               drying: true,
+                  ownerId: 'p2',
+                  ref: 'vr_0d04397e16ba91ec6fa01935cd5efe266354d9457c18db5b8f0a8451e4e3ba04',
+  +               state: 'ready'
+  -               state: 'exerted'
+                }
+              ],
+              count: 1,
+              kind: 'deck'
+            },
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer.test.mjs:90:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { schemaVersion: 1, scope: 'synthetic', matchId: 'match-a', stateVersion: 4, viewer: { kind: 'participant', playerId: 'p1' }, ended: false, winner: null, turn: 1, turnOwnerId: 'p1', priorityId: 'p1', players: [ [Object], [Object] ], resources: [ [Object], [Object], [Object], [Object] ], commands: [ 'concede' ], logs: [ [Object], [Object] ], animations: [ [Object], [Object] ] },
+    expected: { schemaVersion: 1, scope: 'synthetic', matchId: 'match-a', stateVersion: 4, viewer: { kind: 'participant', playerId: 'p1' }, ended: false, winner: null, turn: 1, turnOwnerId: 'p1', priorityId: 'p1', players: [ [Object], [Object] ], resources: [ [Object], [Object], [Object], [Object] ], commands: [ 'concede' ], logs: [ [Object], [Object] ], animations: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

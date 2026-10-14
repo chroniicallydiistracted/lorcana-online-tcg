@@ -76,3 +76,15 @@ test('actual executor times out queued work and rejects queued work on close',as
  await assert.rejects(queued,/unavailable/);await active.catch(()=>{});await closing;
  await assert.rejects(c.execute(job('closed')),/unavailable/);
 });
+
+test('actual projection worker returns only a closed DTO, no checkpoint or server status',async()=>{
+ const {createEngineExecutor}=await import('../dist/engine-executor.js'),e=createEngineExecutor();
+ try {
+  assert.equal(typeof e.project,'function','bounded projection executor is missing');
+  const first=await e.execute({kind:'create',setup:{matchId:'project-worker',players:['p1','p2'],startTimestamp:100}});
+  const job={kind:'project',matchId:'project-worker',checkpoint:first.checkpoint,viewer:{kind:'participant',playerId:'p1'}};
+  const view=await e.project(job);assert.equal(view.matchId,job.matchId);assert.equal(view.stateVersion,0);
+  for(const key of ['checkpoint','status','seed','seedCommitment','randomOutcomes','G','ctx'])assert.equal(key in view,false,key);
+  await assert.rejects(e.project({...job,viewer:{kind:'judge'}}),/unavailable/);
+ }finally{await e.close();}
+});

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-052",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "docs:sync",
+    "--change",
+    "CHG-20261014-004"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "c13e366e66fdb1d94cace4f266c236ae0135476927ea4e16e588fdff1c6b896d",
+  "started_at": "2026-10-14T18:14:48.156Z",
+  "finished_at": "2026-10-14T18:15:10.367Z",
+  "recorded_at": "2026-10-14T18:15:10.367Z",
+  "time_precision": "exact",
+  "elapsed_ms": 22337,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 technical acceptance documentation closure; failed isolated timing preserved and all current/task/feature/callable evidence synchronized",
+  "log_path": "docs/validation/logs/RUN-20261014-052.txt",
+  "log_sha256": "efd303c4ec08693ac294391d62688663d25a184ad843bbc4c10f3e826359d064",
+  "redactions": 0
+}

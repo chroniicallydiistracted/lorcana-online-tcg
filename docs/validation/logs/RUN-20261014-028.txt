@@ -1,0 +1,88 @@
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  896.07 kB │ gzip: 194.99 kB
+
+✓ built in 182ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (3.199256ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (0.866338ms)
+✔ identity binds the compiled shared player-operation policy (0.770246ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (22.392757ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (38.82636ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (40.500888ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (1.751404ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (442.669068ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (7.820439ms)
+✔ new server match fails closed when operating-system entropy is unavailable (159.770183ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.641532ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (33.805659ms)
+✔ completed private archive is immutable across late rejected submissions (6.729945ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (49.335318ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (65.248924ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (28.369684ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (1.75779ms)
+✖ actual private engine projects and resolves only current references without changing its journal or random stream (80.248897ms)
+✔ actual engine exports no opponent instances/seed and no privilege in viewer input (12.121847ms)
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (7.421311ms)
+✔ public observer and second player have separate outputs and no role escalation (3.799477ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (95.926716ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (3.098148ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (1.599244ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (3.71489ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (2.201002ms)
+✔ face-down under-card default requires an explicit face-up grant (1.19461ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 26
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2056.417699
+
+✖ failing tests:
+
+test at tests/viewer-integration.test.mjs:10:1
+✖ actual private engine projects and resolves only current references without changing its journal or random stream (80.248897ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer-integration.test.mjs:25:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+/workspaces/lorcana-online-tcg/packages/engine-adapter:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/engine-adapter@0.0.0 test: `node --test --test-concurrency=1 tests/*.test.mjs`
+Exit status 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<string>", line 1, in <listcomp>
+  File "/usr/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['pnpm', '--filter', '@lorcana/engine-adapter', 'test']' returned non-zero exit status 1.
+
+[Recorder failure: clock_changed]

@@ -1,0 +1,86 @@
+
+> lorcana-online-tcg@0.0.0 db:check /workspaces/lorcana-online-tcg
+> node scripts/db-check.mjs
+
+PASS authenticated PostgreSQL 18 connection to the local bootstrap database.
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target local
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 local: four authenticated managed identities
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target test
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 test: four authenticated managed identities
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test --test-concurrency=1 tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (91.730958ms)
+✔ cross-environment logins cannot connect to either other managed database (36.116483ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (42.13972ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (243.403291ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (823.881332ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1587.905403
+
+> lorcana-online-tcg@0.0.0 test:match-integration /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration
+
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (18.337988ms)
+✔ server-only database exports the bounded match repository (0.264237ms)
+✔ real receipt constraint refuses a rejected result with a null reason (34.811499ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 498.887354
+
+> @lorcana/match-service@0.0.0 test:integration /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/integration.test.mjs
+
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (1058.916002ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (1049.543289ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (1019.053026ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (809.250649ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (1189.250752ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (1182.66766ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (53.167695ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (1238.215661ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2664.398005ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2529.484133ms)
+✔ committed participant projections are read-only, recover exactly and deny role/identity escalation (1756.381923ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15220.123192

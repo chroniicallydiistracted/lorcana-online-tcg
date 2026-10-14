@@ -1,0 +1,78 @@
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (1.762872ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (1.155852ms)
+✔ identity binds the compiled shared player-operation policy (0.920361ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (21.530244ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (38.641607ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (37.884683ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (1.739403ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (473.37587ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (7.204241ms)
+✔ new server match fails closed when operating-system entropy is unavailable (168.591867ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.789651ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (30.375284ms)
+✔ completed private archive is immutable across late rejected submissions (6.542061ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (51.802754ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (66.197958ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (31.637333ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (1.824396ms)
+✔ actual private engine projects and resolves only current references without changing its journal or random stream (77.454108ms)
+✔ actual engine exports no opponent instances/seed and no privilege in viewer input (14.427504ms)
+✔ untrusted viewer accessors cannot execute before closed input validation (2.211275ms)
+✔ projection qualification does not admit ordinary hidden-state, rewards or official cards (0.575678ms)
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (7.746948ms)
+✔ public observer and second player have separate outputs and no role escalation (4.236213ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (101.134036ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (4.211776ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (1.650385ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (4.131565ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (2.238745ms)
+✔ face-down under-card default requires an explicit face-up grant (1.732593ms)
+✔ normal ink reveal becomes unlinked public history; independent effect reveal at the same revision survives (1.981088ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2127.301893
+
+> @lorcana/match-service@0.0.0 test /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/unit.test.mjs
+
+✔ match command validation separates trusted actor and binds exact semantic intent (5.335778ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (946.879916ms)
+✔ close waits for an already completing actual worker (deferred termination simulation) (157.177501ms)
+✔ worker uses the same executable-policy identity as its current server conditions (169.002168ms)
+✔ actual executor times out queued work and rejects queued work on close (162.4608ms)
+✔ actual projection worker returns only a closed DTO, no checkpoint or server status (466.256096ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2082.566787
+
+> lorcana-online-tcg@0.0.0 test:viewer-privacy /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/privacy-wire.test.mjs
+
+✔ independent HTTP and WebSocket clients receive identical privacy-safe bytes on every output surface (158.085826ms)
+✔ hidden-state paired worlds have identical real wire/resource/log/export bytes and fixed diagnostic output (33.678462ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 366.843742

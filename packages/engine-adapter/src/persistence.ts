@@ -1,3 +1,4 @@
+import type { ViewerProjection } from '@lorcana/contracts';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { ENGINE_REPLAY_IDENTITY } from './code-identity.js';
 import { RANDOM_VERSION } from './random.js';
@@ -10,6 +11,8 @@ export interface PrivateMatchCheckpoint { readonly archive: string; readonly dig
 export interface PrivateMatch {
   status(): ServerStatus;
   submit(command: unknown): { accepted: boolean; code: string | null };
+  project(viewer:unknown):ViewerProjection;
+  resolveIntent(actor:string,move:unknown,input:unknown):Record<string,unknown>;
   checkpoint(): PrivateMatchCheckpoint;
   dispose(): void;
 }
@@ -22,6 +25,8 @@ function digest(archive: string): string { return createHash('sha256').update('p
 function wrap(core: RecordedCore, id: string): PrivateMatch {
   return Object.freeze({
     status: core.facade.status, submit: core.facade.submit, dispose: core.facade.dispose,
+    project(viewer:unknown){return core.project(viewer,id);},
+    resolveIntent(actor:string,move:unknown,input:unknown){return core.resolveIntent(actor,move,input,id);},
     checkpoint(): PrivateMatchCheckpoint {
       const envelope = { version: 1, purpose: 'synthetic-play01', matchId: id, transcript: JSON.parse(core.privateArchive()) };
       boundedTree(envelope);

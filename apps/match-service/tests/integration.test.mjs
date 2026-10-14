@@ -135,3 +135,22 @@ for(const phase of ['before','after'])test('real process kill '+phase+' COMMIT a
   await s.close();await cleanup(id);
  }
 });
+
+test('committed participant projections are read-only, recover exactly and deny role/identity escalation',async()=>{
+ const id=fixtureId(),s=service();let recovered;
+ try {
+  assert.equal(typeof s.view,'function','committed viewer read is missing');
+  const version=await open(s,id),before=await counts(id),a=await s.view('p1',{matchId:id}),b=await s.view('p2',{matchId:id});
+  assert.equal(a.stateVersion,version);assert.equal(a.viewer.playerId,'p1');assert.equal(b.viewer.playerId,'p2');
+  const own=a.players.find(p=>p.playerId==='p1').zones.find(z=>z.kind==='hand');assert.equal(own.cards.length,7);
+  assert.deepEqual(a.players.find(p=>p.playerId==='p2').zones.find(z=>z.kind==='hand').cards,[]);
+  for(const request of [{matchId:id,viewer:{kind:'judge'}},{matchId:id,playerId:'p2'},{matchId:id,allowPrivate:true}])await assert.rejects(s.view('p1',request),e=>e.code==='INVALID_REQUEST');
+  await assert.rejects(s.view('outsider',{matchId:id}),e=>e.code==='FORBIDDEN');
+  await assert.rejects(s.view('p1',{matchId:'missing-'+id}),e=>e.code==='FORBIDDEN');
+  assert.deepEqual(await counts(id),before,'views changed durable storage');
+  await s.close();recovered=service();assert.deepEqual(await recovered.view('p1',{matchId:id}),a);
+  const raw=JSON.stringify(a),archive=await using('match',async c=>JSON.parse((await c.query('SELECT checkpoint FROM match.matches WHERE match_id=$1',[id])).rows[0].checkpoint));
+  assert.equal(raw.includes(archive.transcript.seed),false);assert.equal(raw.includes('randomOutcomes'),false);
+  await recovered.submit('p1',command(id,'visible-concede',version));assert.equal((await recovered.view('p1',{matchId:id})).ended,true);
+ }finally{await s.close();await recovered?.close();await cleanup(id);}
+});

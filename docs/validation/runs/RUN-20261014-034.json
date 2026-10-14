@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-034",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:viewer-privacy"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "2db10ee99ef570538b211ff90af48a5d94db72c9ba54e60e5b7b824876eb3b02",
+  "started_at": "2026-10-14T17:39:20.521Z",
+  "finished_at": "2026-10-14T17:41:20.961Z",
+  "recorded_at": "2026-10-14T17:41:20.961Z",
+  "time_precision": "exact",
+  "elapsed_ms": 120984,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-02 actual independent loopback HTTP/WebSocket bytes across five privacy surfaces and paired hidden worlds",
+  "log_path": "docs/validation/logs/RUN-20261014-034.txt",
+  "log_sha256": "48c5f93bd2c36358a382b6e115ed6024396fcacd4638ef5c62486289aa33e65b",
+  "redactions": 0
+}

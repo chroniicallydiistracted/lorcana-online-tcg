@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-041",
+  "category": "container",
+  "command": [
+    "python3",
+    "-c",
+    "import subprocess; [subprocess.run(c,check=True) for c in [['pnpm','install','--frozen-lockfile'],['pnpm','run','doctor'],['pnpm','verify:foundation']]]"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "f60911f1c1c68b223c9cb7cda30114a3339a26c2386921f20bf29b44e741a83e",
+  "started_at": "2026-10-14T17:53:11.760Z",
+  "finished_at": "2026-10-14T17:53:56.845Z",
+  "recorded_at": "2026-10-14T17:53:56.845Z",
+  "time_precision": "exact",
+  "elapsed_ms": 45356,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-02 final-source frozen install, exact toolchain and complete foundation verification sequentially",
+  "log_path": "docs/validation/logs/RUN-20261014-041.txt",
+  "log_sha256": "6a09e6fb99d70d1cf9b0d86e2b144b421b205e6f45001bd34b936d0fac2eeec3",
+  "redactions": 0
+}

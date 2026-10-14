@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-062",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "\nimport assert from 'node:assert/strict';\nimport {readFileSync,lstatSync,existsSync} from 'node:fs';\nimport {execFileSync,spawnSync} from 'node:child_process';\nimport {sourceSecretScan} from './scripts/ci/security.mjs';\nimport {checkDocumentation,sourceFingerprint} from './scripts/documentation-lib.mjs';\nimport {checkVendor} from './scripts/engine/vendor.mjs';\nconst root=process.cwd(),expected='e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b';\nassert.equal(sourceFingerprint(root),expected);\nconst known=[];\nfor(const path of ['.env.local','.local/database.json']){\n const stat=lstatSync(path);assert(stat.isFile()&&!stat.isSymbolicLink());assert.equal(stat.mode&0o777,0o600);assert.equal(stat.uid,process.getuid());\n assert.equal(spawnSync('git',['check-ignore','--quiet','--',path]).status,0);\n assert.equal(execFileSync('git',['ls-files','--',path],{encoding:'utf8'}).trim(),'');\n if(path==='.env.local'){const value=readFileSync(path,'utf8').split(/\\r?\\n/).find(x=>x.startsWith('POSTGRES_PASSWORD='))?.slice('POSTGRES_PASSWORD='.length);assert(value);known.push(value);}\n else known.push(...Object.values(JSON.parse(readFileSync(path,'utf8')).passwords).flatMap(Object.values));\n}\nconsole.log('PASS original ignored private-file ownership/mode; values are never printed');\nconst changed=execFileSync('git',['diff','--cached','--name-only','-z','--diff-filter=ACM'],{encoding:'utf8'}).split('\\0').filter(Boolean);\nfor(const path of changed)assert(execFileSync('git',['show',':'+path],{maxBuffer:16*1024*1024}).equals(readFileSync(path)),'Canonical staged/current bytes differ: '+path);\nassert(changed.length>0);console.log('PASS canonical staged/current equality for '+changed.length+' files; final clean full suite uses these executable bytes');\nconst py=\"import csv,io,subprocess\\na=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show','HEAD:docs/vision/requirements.csv'],text=True))));b=list(csv.DictReader(open('docs/vision/requirements.csv',newline='')));assert len(a)==len(b)==548\\nfor before,after in zip(a,b):\\n assert all(before[k]==after[k] for k in before if k not in ['ticket_ids','evidence_links'])\\nassert sum(r['source_optional']=='True' or r['source_optional']=='true' for r in b)==20\\nprint('PASS548 original requirement rows,20 optional flags, scope/device states and source text preserved')\\n\";\nexecFileSync('python3',['-c',py],{stdio:'inherit'});\ncheckVendor();\nfor(const file of ['/proc/net/tcp','/proc/net/tcp6'])if(existsSync(file)){\n const ports=new Set([5173,3001,3002]);\n for(const line of readFileSync(file,'utf8').trim().split('\\n').slice(1)){const fields=line.trim().split(/\\s+/);if(fields[3]==='0A')assert(!ports.has(parseInt(fields[1].split(':').at(-1),16)),'Owned foundation listener remains');}\n}\nconsole.log('PASS original workspace has no owned5173/3001/3002 foundation listener');\nsourceSecretScan(root,known);\ncheckDocumentation(root);\nconsole.log('PASS final source, immutable records/log hashes, current docs, boundaries/provenance and complete Git history privacy');\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b",
+  "started_at": "2026-10-14T18:34:42.278Z",
+  "finished_at": "2026-10-14T18:36:56.231Z",
+  "recorded_at": "2026-10-14T18:36:56.231Z",
+  "time_precision": "exact",
+  "elapsed_ms": 134577,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 final preservation correction: bounded16MiB Git read for generated inventory; canonical/scope/private files/listeners/provenance/immutable history and secrets",
+  "log_path": "docs/validation/logs/RUN-20261014-062.txt",
+  "log_sha256": "7d2ac355b2b1210667fa1a4e95a143adf08e0b34701bcdf4c84e3978b7850eb2",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-063",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";execFileSync(\"pnpm\",[\"docs:sync\",\"--change\",\"CHG-20261014-004\"],{stdio:\"inherit\"});execFileSync(\"pnpm\",[\"docs:check\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b",
+  "started_at": "2026-10-14T18:42:03.748Z",
+  "finished_at": "2026-10-14T18:42:38.138Z",
+  "recorded_at": "2026-10-14T18:42:38.138Z",
+  "time_precision": "exact",
+  "elapsed_ms": 34519,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 finalized native closure: current feature/authority/handoff summaries, complete change ledger, append-only evidence and documentation synchronization/check",
+  "log_path": "docs/validation/logs/RUN-20261014-063.txt",
+  "log_sha256": "f6df6a3d2e004e686effd7b983fd04887e70c30713cfce6f0644fc3e62a7106a",
+  "redactions": 0
+}

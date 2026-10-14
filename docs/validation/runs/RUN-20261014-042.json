@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-042",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "lint"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "f16822f33783018f7ef14087e040baed42767b6a89532722796756ae4ddf2ed3",
+  "started_at": "2026-10-14T17:54:42.698Z",
+  "finished_at": "2026-10-14T17:54:46.268Z",
+  "recorded_at": "2026-10-14T17:54:46.268Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3571,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 lint corrections: explicit type imports and Node globals/test-local boundary import; all source boundaries",
+  "log_path": "docs/validation/logs/RUN-20261014-042.txt",
+  "log_sha256": "f5ade994f69f4b934dc7514127d8f75266862c806bbe726ea35c7db4cb41d532",
+  "redactions": 0
+}

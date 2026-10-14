@@ -1,0 +1,85 @@
+✖ actual private engine projects and resolves only current references without changing its journal or random stream (11.624021ms)
+✖ actual engine exports no opponent instances/seed and no privilege in viewer input (2.382438ms)
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (9.676002ms)
+✔ public observer and second player have separate outputs and no role escalation (4.295122ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (108.32179ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (3.808659ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (1.421609ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (4.123382ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (2.050782ms)
+✖ face-down under-card default requires an explicit face-up grant (1.317991ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 7
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 497.321871
+
+✖ failing tests:
+
+test at packages/engine-adapter/tests/viewer-integration.test.mjs:10:1
+✖ actual private engine projects and resolves only current references without changing its journal or random stream (11.624021ms)
+  AssertionError [ERR_ASSERTION]: private match projection is missing
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer-integration.test.mjs:13:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/viewer-integration.test.mjs:29:1
+✖ actual engine exports no opponent instances/seed and no privilege in viewer input (2.382438ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer-integration.test.mjs:32:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/viewer.test.mjs:66:1
+✖ face-down under-card default requires an explicit face-up grant (1.317991ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer.test.mjs:68:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

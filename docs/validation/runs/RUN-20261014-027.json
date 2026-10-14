@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-027",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "packages/engine-adapter/tests/viewer.test.mjs",
+    "packages/engine-adapter/tests/viewer-integration.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "e1ef7eaabb0c989e59ae2d02e014d785b66ce46250154299f012447681538492",
+  "started_at": "2026-10-14T05:28:37.208Z",
+  "finished_at": "2026-10-14T05:28:37.795Z",
+  "recorded_at": "2026-10-14T05:28:37.795Z",
+  "time_precision": "exact",
+  "elapsed_ms": 587,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-02 red integration and face-down under-card regression before private engine wiring",
+  "log_path": "docs/validation/logs/RUN-20261014-027.txt",
+  "log_sha256": "8e64388a6ff5704d930a028bf4446bada0d3e5b40310066d9b23853210a0e70b",
+  "redactions": 0
+}

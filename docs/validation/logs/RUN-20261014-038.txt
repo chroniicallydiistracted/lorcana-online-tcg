@@ -1,0 +1,128 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ public diagnostics reject private data and malformed service responses (2.321754ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (3.349961ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (2.23497ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.610099ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.674529ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (7.382074ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.204255ms)
+✔ viewer snapshot codec refuses private fields, malformed refs, accessors and oversize bytes (7.168089ms)
+✔ every viewer delivery surface has a closed browser codec and refuses secret-bearing diagnostics (6.351187ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 865.292123
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (3.177614ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (0.92394ms)
+✔ identity binds the compiled shared player-operation policy (0.881985ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (21.775379ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (38.229935ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (38.620586ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (1.799951ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (456.775887ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (6.633672ms)
+✔ new server match fails closed when operating-system entropy is unavailable (154.794453ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.6659ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (31.484565ms)
+✔ completed private archive is immutable across late rejected submissions (6.74042ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (49.995034ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (66.191926ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (31.472332ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (1.998251ms)
+✖ actual private engine projects and resolves only current references without changing its journal or random stream (80.341511ms)
+✔ actual engine exports no opponent instances/seed and no privilege in viewer input (13.092435ms)
+✔ untrusted viewer accessors cannot execute before closed input validation (1.799276ms)
+✔ projection qualification does not admit ordinary hidden-state, rewards or official cards (0.655069ms)
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (9.345427ms)
+✔ public observer and second player have separate outputs and no role escalation (4.036349ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (103.076847ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (4.014607ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (1.451072ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (3.760485ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (1.907565ms)
+✔ face-down under-card default requires an explicit face-up grant (1.288518ms)
+✖ normal ink reveal becomes unlinked public history; independent effect reveal at the same revision survives (0.59296ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 28
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2080.917364
+
+✖ failing tests:
+
+test at tests/viewer-integration.test.mjs:10:1
+✖ actual private engine projects and resolves only current references without changing its journal or random stream (80.341511ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Reference/. Input:
+  
+  'Error: Viewer unavailable'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer-integration.test.mjs:24:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Viewer unavailable
+        at createViewerProjection (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/viewer.js:139:15)
+        at projection (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/replay.js:115:16)
+        at Object.resolveIntent (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/replay.js:117:185)
+        at Object.resolveIntent (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:18:57)
+        at file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer-integration.test.mjs:24:23
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer-integration.test.mjs:24:10)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25),
+    expected: /Reference/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/viewer.test.mjs:72:1
+✖ normal ink reveal becomes unlinked public history; independent effect reveal at the same revision survives (0.59296ms)
+  Error: Viewer unavailable
+      at Module.createViewerProjection (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/viewer.js:139:15)
+      at project (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer.test.mjs:5:155)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/viewer.test.mjs:79:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+/workspaces/lorcana-online-tcg/packages/engine-adapter:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/engine-adapter@0.0.0 test: `node --test --test-concurrency=1 tests/*.test.mjs`
+Exit status 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<string>", line 1, in <listcomp>
+  File "/usr/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['pnpm', '--filter', '@lorcana/engine-adapter', 'test']' returned non-zero exit status 1.

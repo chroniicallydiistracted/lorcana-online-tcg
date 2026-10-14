@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-060",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "docs:sync",
+    "--change",
+    "CHG-20261014-004"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b",
+  "started_at": "2026-10-14T18:31:17.892Z",
+  "finished_at": "2026-10-14T18:31:41.590Z",
+  "recorded_at": "2026-10-14T18:31:41.590Z",
+  "time_precision": "exact",
+  "elapsed_ms": 23698,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 final e3a9578b source-matched full/DB/Chromium/clean evidence, owner docs and task/feature native closure",
+  "log_path": "docs/validation/logs/RUN-20261014-060.txt",
+  "log_sha256": "b0a62edd83a6084c8b01a7c15e6d7ee49d684be9dcb007fb69c1baa37b642477",
+  "redactions": 0
+}

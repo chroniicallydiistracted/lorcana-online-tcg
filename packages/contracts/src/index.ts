@@ -3,6 +3,7 @@ import type { Static } from 'typebox';
 import { Value } from 'typebox/value';
 export * from './protocol.ts';
 export * from './release.ts';
+export * from './viewer.ts';
 
 const ServiceSchema = Type.Union([Type.Literal('api'), Type.Literal('match-service')]);
 export const HealthSchema = Type.Object({

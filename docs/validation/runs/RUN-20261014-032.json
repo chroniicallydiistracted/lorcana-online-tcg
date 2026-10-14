@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-032",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-name-pattern=committed participant projections",
+    "apps/match-service/tests/integration.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "c856535d418c65cf3bcd7215cf0034e44ecbc851d86342bc5d7261c4fd29b51c",
+  "started_at": "2026-10-14T17:36:16.769Z",
+  "finished_at": "2026-10-14T17:36:18.105Z",
+  "recorded_at": "2026-10-14T17:36:18.105Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1336,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-02 red participant-only committed projection; test uses the existing isolated test database",
+  "log_path": "docs/validation/logs/RUN-20261014-032.txt",
+  "log_sha256": "7847c44f8beb89f1fd3cd0e32e42071cd5ba8285e8571c823e9ccf87dc15cced",
+  "redactions": 0
+}

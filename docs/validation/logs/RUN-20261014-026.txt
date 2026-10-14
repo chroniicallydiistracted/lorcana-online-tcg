@@ -1,0 +1,23 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (7.955373ms)
+✔ public observer and second player have separate outputs and no role escalation (4.256538ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (93.411198ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (3.160369ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (1.582399ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (3.538232ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (1.906271ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 403.783035

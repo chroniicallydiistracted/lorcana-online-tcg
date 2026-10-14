@@ -1,0 +1,25 @@
+# ADR0014 — Explicit viewer projections and private object references
+
+Status: implemented architecture refinement; scoped synthetic technical acceptance verified. Recorded 2026-10-14 UTC. Scope PLAY-02; R01.020, R02.025/026/032/033, R15.015/016/017, R17.003/004/006/007/009, R29.005/012; DOC-01/02.
+
+The approved blueprint §§6.2, 6.4, 7.5 and 13 and ADR0008 require server projections rather than serialization of authoritative engine state. PLAY-01 has no game transport. Its private checkpoint and completed RULE-03 replay remain privileged server objects.
+
+## Decision
+
+Build a separately versioned, closed, bounded browser-safe viewer DTO without changing BOOT-05 protocol revision 1. PLAY-03 must qualify its transport envelope and authorization before publication. Construct fresh objects from an allowlist; never spread upstream G, ctx, resources, command input or move logs. Players see their own hand; public observers see no private hand. Decks expose counts, with only actively authorized reveal/look cards visible. The inkwell exposes backs and ready/exerted status even to its owner. Face-down play/under-card fronts remain hidden. Active engine reveal recipients and expiry determine exceptions. Unknown roles are refused. Judge/caster/private-observer delivery and delayed observation remain gated behind authentication, consent and delayed committed-state selection.
+
+Source authority: current CR2.2.0 and scheduled CR2.3.0, §§7.1–7.6 and 8.4.2. Official byte hashes and effective dates are retained in docs/rules/2026-10-12-rule-04-sources.json. Published CR2.3 takes effect October16; publication does not admit official cards. Upstream's public/faceDown inkwell classification alone is insufficient. Its view helpers preserve raw state fields and its event/log history can include command inputs.
+
+Command references are HMAC-derived from a separate seed-derived domain, match, viewer, state version and authorized object. Anonymous backs use public zone/slot, never private instance identity. All references rotate each committed revision; they are not persistent animation identities. Resolution accepts only current references belonging to that match and participant. The random stream is not consumed. Recovery reproduces references. PLAY-03 must discard old references after rejection/stale recovery; continuity across revisions is a later presentation concern. This conservative policy avoids maintaining a second durable identity ledger and covers intermediate movement/shuffle even when the same physical card returns during one command.
+
+Resources contain only visible definition identifiers, never the private instance registry. Logs and animation notices include selected public semantic counts/actions and historically authorized reveal definitions without an object/reference link, with contiguous viewer sequence numbers; raw events, hidden targets, internal sequence gaps and raw error strings are excluded. Current-view exports use the same serializer. Completed full private replays remain internal and subject to D10 participant/authorized-auditor recipient enforcement in AUTH/REPLAY. Operational logging accepts fixed outcome codes and counters, with no free-text error/input channel.
+
+Participant read-only projection is restored from the committed, pinned checkpoint in bounded workers, using existing participant-restricted repository access. No migration, public ingress, auth bypass, clock change or stored-history rewrite is introduced. Public-observer projection is adapter qualification only; delivery is disabled. Unsupported private choice mechanics remain absent from the wire and card/play admission stays closed.
+
+## Alternatives and limits
+
+Serializing the upstream filtered view fails because G/context and effect payloads remain private. Removing a blacklist of secret keys fails for new fields. Stable private IDs allow hidden object tracking after shuffle. Persisting lifetime alias maps adds transactional/recovery complexity before PLAY-03. Revision-scoped references trade animation continuity for a small, reproducible privacy boundary.
+
+Prove mixed hidden-state noninterference, positive authorized visibility, active reveal/expiry, face-down/under-card handling, reference rotation/cross-viewer/cross-match rejection, actual encoded transport/resource/log/export bytes, raw-ID rejection and committed database recovery. Synthetic qualification does not certify all cards or recipient authentication. Source and bundle checks supplement behavioral proof.
+
+Final policy correction: card-front permission does not include hidden-zone state metadata. Hand/deck/discard/under fronts use canonical inactive values; current controller/damage/drying are meaningful only in top-level play. Inkwell orientation remains public. Paired-world RUN053 reproduced the over-disclosure before correction; RUN054 passes31 adapter checks, and a narrow independent static review confirms the correction. Final-source RUN056/057/058/059 provide fresh full/database/Chromium/clean qualification after this correction; earlier CI/source receipts stay historical.

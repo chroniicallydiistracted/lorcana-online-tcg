@@ -7,3 +7,6 @@ Current behavior and callable contracts: [F-WEB](../../docs/FEATURES.md). Exact 
 Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for changes, documentation impact review and timestamped test evidence. Runtime/build/test dependencies belong to this workspace; root tasks follow the dependency graph.
 
 `ProtocolStatus` sends a revision-1 hello to the same-origin match proxy, validates the response against its request and HTTP outcome, and displays compatible/update-required/unavailable status. Requests time out after five seconds and are aborted on cleanup. See [protocol](../../docs/contracts/protocol.md); actual Windows/device acceptance remains pending.
+
+
+PLAY-02 adds a single-worker Chromium check of the browser-safe viewer/surface codec and private/getter refusal. The server projector/ref resolver stays outside the browser. This is headless codec evidence; no game UI/auth/device acceptance is inferred. See [viewer contract](../../docs/contracts/viewer.md).

@@ -1,3 +1,5 @@
+import { decodeViewerProjection, encodeViewerProjection } from '@lorcana/contracts';
+import type { ViewerProjection } from '@lorcana/contracts';
 import { isPlayerMove } from '@lorcana/contracts/player-moves';
 import { PERSISTENT_ENGINE_IDENTITY, copyPlayerInput } from '@lorcana/engine-adapter';
 import { MatchStoreError } from '@lorcana/db';
@@ -44,6 +46,17 @@ export function createMatchService(options:{repository:MatchRepository;releases:
           stateVersion:0,lastTimestamp:startTimestamp,checkpoint:result.checkpoint,ended:false,winner:null};
         const stored=await repository.create(match);pins(stored);
         return {matchId:stored.matchId,stateVersion:stored.stateVersion,releaseId:stored.releaseId};
+      }catch(error){return failure(error);}
+    },
+    async view(trustedActor:unknown,value:unknown):Promise<ViewerProjection> {
+      available();let matchId:string,actorId:string;
+      try {const request=closed(value,['matchId']);matchId=identifier(request.matchId);actorId=identifier(trustedActor);}
+      catch{throw new MatchServiceError('INVALID_REQUEST');}
+      try {
+        const committed=await repository.load(matchId,actorId);if(!committed)throw new MatchServiceError('FORBIDDEN');pins(committed);
+        const view=decodeViewerProjection(encodeViewerProjection(await executor.project({kind:'project',matchId,checkpoint:committed.checkpoint,viewer:{kind:'participant',playerId:actorId}})));
+        if(view.matchId!==matchId||view.stateVersion!==committed.stateVersion||view.viewer.kind!=='participant'||view.viewer.playerId!==actorId||view.ended!==committed.ended||view.winner!==committed.winner)throw new Error();
+        return view;
       }catch(error){return failure(error);}
     },
     async submit(trustedActor:unknown,value:unknown):Promise<ReceiptResult> {

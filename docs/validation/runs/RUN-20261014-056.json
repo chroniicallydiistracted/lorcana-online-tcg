@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-056",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b",
+  "started_at": "2026-10-14T18:19:32.229Z",
+  "finished_at": "2026-10-14T18:21:24.975Z",
+  "recorded_at": "2026-10-14T18:21:24.975Z",
+  "time_precision": "exact",
+  "elapsed_ms": 113274,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 final current source after front-only correction: full foundation builds/types/lint/boundaries and all project/upstream/injection/wire regressions",
+  "log_path": "docs/validation/logs/RUN-20261014-056.txt",
+  "log_sha256": "0d63e7f0d92917f73f0191ac5ab0e8118473f9fca9b365a61c738ac8faaa46db",
+  "redactions": 0
+}

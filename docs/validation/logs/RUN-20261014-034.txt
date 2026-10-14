@@ -1,0 +1,28 @@
+
+> lorcana-online-tcg@0.0.0 test:viewer-privacy /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/privacy-wire.test.mjs
+
+✔ independent HTTP and WebSocket clients receive identical privacy-safe bytes on every output surface (129.805067ms)
+✖ hidden-state paired worlds have identical real wire/resource/log/export bytes and fixed diagnostic output (29.18536ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 120612.23703
+
+✖ failing tests:
+
+test at tests/play/privacy-wire.test.mjs:33:1
+✖ hidden-state paired worlds have identical real wire/resource/log/export bytes and fixed diagnostic output (29.18536ms)
+  Error [ERR_HTTP_HEADERS_SENT]: Cannot write headers after they are sent to the client
+      at ServerResponse.writeHead (node:_http_server:411:11)
+      at Server.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/play/privacy-wire.test.mjs:15:162)
+      at Server.emit (node:events:514:28)
+      at parserOnIncoming (node:_http_server:1293:12)
+      at HTTPParser.parserOnHeadersComplete (node:_http_common:125:17) {
+    code: 'ERR_HTTP_HEADERS_SENT'
+  }
+ ELIFECYCLE  Command failed with exit code 1.

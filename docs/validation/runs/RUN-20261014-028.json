@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-028",
+  "category": "container",
+  "command": [
+    "python3",
+    "-c",
+    "import subprocess; [subprocess.run(c,check=True) for c in [['pnpm','--filter','@lorcana/vendor-engine','build'],['pnpm','--filter','@lorcana/engine-adapter','build'],['pnpm','--filter','@lorcana/engine-adapter','test']]]"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "b665c5d8f859c6d9c1b98321be6b60f796a515e7ec666932027419c32e78c7d0",
+  "started_at": "2026-10-14T05:29:44.154Z",
+  "finished_at": "2026-10-14T05:29:50.497Z",
+  "recorded_at": "2026-10-14T05:29:50.497Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 5335,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "PLAY-02 kernel friend, private projection/ref resolver compile and adapter regressions",
+  "log_path": "docs/validation/logs/RUN-20261014-028.txt",
+  "log_sha256": "84deef5a3fce8e09e382b82cfae35a75ad237ae787921e33914742fc4faba782",
+  "redactions": 0
+}

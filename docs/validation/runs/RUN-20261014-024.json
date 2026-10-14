@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-024",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "packages/engine-adapter/tests/viewer.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "5af9bd92cdd96e154b8151a7fb0413d09f456fa76f8d8c747dae5c85f8263daf",
+  "started_at": "2026-10-14T05:23:55.869Z",
+  "finished_at": "2026-10-14T05:23:56.096Z",
+  "recorded_at": "2026-10-14T05:23:56.096Z",
+  "time_precision": "exact",
+  "elapsed_ms": 227,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-02 red regression: mixed hidden-state projector is absent",
+  "log_path": "docs/validation/logs/RUN-20261014-024.txt",
+  "log_sha256": "332e4ee5c13fa8642e304fb2f260294148331d792e6a949c9af1134f231fba67",
+  "redactions": 0
+}

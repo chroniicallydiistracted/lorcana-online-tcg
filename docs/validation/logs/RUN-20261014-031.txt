@@ -1,0 +1,36 @@
+✔ match command validation separates trusted actor and binds exact semantic intent (5.882164ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (893.144527ms)
+✔ close waits for an already completing actual worker (deferred termination simulation) (159.278211ms)
+✔ worker uses the same executable-policy identity as its current server conditions (163.469108ms)
+✔ actual executor times out queued work and rejects queued work on close (164.634084ms)
+✖ actual projection worker returns only a closed DTO, no checkpoint or server status (1.086535ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1564.900748
+
+✖ failing tests:
+
+test at apps/match-service/tests/unit.test.mjs:80:1
+✖ actual projection worker returns only a closed DTO, no checkpoint or server status (1.086535ms)
+  AssertionError [ERR_ASSERTION]: bounded projection executor is missing
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/unit.test.mjs:83:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { test, expect } from '@playwright/test';
 
 test('real client reaches both services, mounts WebGL, resizes and releases repeated scenes', async ({ page }) => {
@@ -82,4 +83,18 @@ test('protocol compatibility shows update and rejects malformed or uncorrelated 
   await page.route('**/match/protocol/negotiate', route => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ type: 'hello_result', outcome: 'accepted', requestId: 'unrelated', serverReleaseId: 'local-foundation', protocolVersion: 1 }) }));
   await page.reload();
   await expect(page.getByText('Protocol unavailable', { exact: true })).toBeVisible();
+});
+
+test('browser executes the closed viewer codec and refuses private fields without evaluating accessors',async({page})=>{
+ await page.goto('/');
+ const url='/@fs'+fileURLToPath(new URL('../../../packages/contracts/src/viewer.ts',import.meta.url));
+ const result=await page.evaluate(async moduleUrl=>{
+  const contracts=await import(moduleUrl);
+  const view={schemaVersion:1,scope:'synthetic',matchId:'browser-view',stateVersion:4,viewer:{kind:'public'},ended:false,winner:null,turn:1,turnOwnerId:null,priorityId:null,players:['p1','p2'].map(playerId=>({playerId,lore:0,inkDrops:0,zones:['hand','deck','play','discard','inkwell'].map(kind=>({kind,count:0,cards:[]}))})),resources:[],commands:[],logs:[],animations:[]};
+  let called=0,rejected=0;
+  for(const bad of [{...view,seed:'synthetic-private'},{...view,get hidden(){called++;return 'private';}}])try{contracts.encodeViewerProjection(bad);}catch{rejected++;}
+  const surfaces=['snapshot','resources','logs','animations','export'].map(surface=>contracts.decodeViewerSurface(contracts.encodeViewerSurface(view,surface)).surface);
+  return {rejected,called,surfaces,matchId:contracts.decodeViewerProjection(contracts.encodeViewerProjection(view)).matchId};
+ },url);
+ expect(result).toEqual({rejected:2,called:0,surfaces:['snapshot','resources','logs','animations','export'],matchId:'browser-view'});
 });

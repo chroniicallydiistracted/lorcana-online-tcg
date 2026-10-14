@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-058",
+  "category": "headless_browser",
+  "command": [
+    "python3",
+    "-c",
+    "import subprocess; [subprocess.run(c,check=True) for c in [['pnpm','test:e2e:smoke'],['pnpm','test:engine-browser']]]"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3983e1c5907e2a1141de1c3d2484944236e257a8",
+  "source_fingerprint": "e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b",
+  "started_at": "2026-10-14T18:24:19.762Z",
+  "finished_at": "2026-10-14T18:24:43.667Z",
+  "recorded_at": "2026-10-14T18:24:43.667Z",
+  "time_precision": "exact",
+  "elapsed_ms": 23905,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-02 final front-only source: seven actual Chromium foundation/public codec cases and two Lab worker checks, sequential",
+  "log_path": "docs/validation/logs/RUN-20261014-058.txt",
+  "log_sha256": "041d27871085754fd1333c18cd47628d4c4e7a4b152566f32fafd8627f899768",
+  "redactions": 0
+}
