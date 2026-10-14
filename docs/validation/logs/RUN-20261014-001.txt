@@ -1,0 +1,9 @@
+Imported ad hoc clock diagnostics at clean main6e9acf1.
+The native recorder was not used during these host experiments. Qualified historical execution times and process exits remain null; raw samples/lifecycle are preserved in the archive manifest.
+Director approved administrator traces and a five-minute temporary Ubuntu time-sync pause with restoration.
+Windows/WSL/container clocks show Linux calendar steps; Docker installed-code/log evidence identifies deliberate 30-second backend synchronization.
+Paused comparison: +2429.729064ms calendar-minus-monotonic across300s; service restored active/enabled, safety timer removed.
+Cross-reference indices2..30: Windows28399.5132ms, raw28399.481576ms, PHC28399.477450ms, monotonic28021.416426ms. IPC windows<=1.039582ms.
+A subsequent bounded kernel trace confirms chronyd ADJ_TICK|ADJ_FREQUENCY changes with success returns; sanitized mode-selected fields retained.
+Initial trace-setup failure and mapping correction are preserved. No permanent fix, absolute UTC certification, application test rerun or real-device acceptance is claimed.
+Archive manifest: docs/validation/archive/clock-20261014/manifest.json

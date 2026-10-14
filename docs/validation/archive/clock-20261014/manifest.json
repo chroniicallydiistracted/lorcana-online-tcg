@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-14T01:09:25.288Z",
+  "source_commit": "6e9acf1ec2130386e6687f48513a30aaf32b397d",
+  "evidence_kind": "Imported ad hoc diagnostics; not native passing RUN receipts",
+  "time_basis": "Raw UTC and monotonic samples retained; qualified historical execution times remain null",
+  "artifacts": [
+    {
+      "path": "docs/validation/archive/clock-20261014/windows.jsonl.b64.txt",
+      "source": "/tmp/lorcana-clock-windows.jsonl",
+      "bytes": 28077,
+      "sha256": "64d89abe4acdfc4f4a08730f0616ea3bbd0402eb6d850fa6812c7deeebf578d4",
+      "scope": "Base64 preserves exact CRLF-containing Windows output across Git LF normalization. This is encoded original data, not changed timestamps.",
+      "encoding": "base64",
+      "decoded_bytes": 21055,
+      "decoded_sha256": "71d62f221d7c24cc6f2c0e2811ed08ccfebccfd3064924e58945689cdd7d7bd4"
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/wsl.jsonl",
+      "source": "/tmp/lorcana-clock-wsl.jsonl",
+      "bytes": 28854,
+      "sha256": "dbd14dd7eab03b7b06a8f9ce19ecb762dae20b5e392c36f6c055108f0c417d11",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/container-python.jsonl",
+      "source": "/tmp/lorcana-clock-container-python.jsonl",
+      "bytes": 28874,
+      "sha256": "1f02a88c0d7f858d18f44aab460d08475c108c7c693bce7025cdfbcf10649103",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/container-node.jsonl",
+      "source": "/tmp/lorcana-clock-container-node.jsonl",
+      "bytes": 19818,
+      "sha256": "53104b1c089ac5b19b21bbc378341a7f6d4fc65f985a977608b41802fa65f442",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/kernel-trace.txt",
+      "source": "/tmp/lorcana-clock-kernel-20261014.txt",
+      "bytes": 21079,
+      "sha256": "6a0f63ce84587d20f2d8070b5fb31e5828d0088962eedef142b5f401fd94f3a9",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/ubuntu-timecalls.txt",
+      "source": "/tmp/lorcana-ubuntu-timecalls-20261014.txt",
+      "bytes": 417,
+      "sha256": "6c49ce596cd13709b83b1fd94578d1c30e64059b4bea4ff0cd02d97a105ceabb",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/docker-time.json",
+      "source": "/tmp/lorcana-docker-time-excerpts-20261014.json",
+      "bytes": 885,
+      "sha256": "e291c7fb80d77dc19f0272ea16d7696f3fc49bff725de5b6bc7abc1ddc81b6ec",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/comparison.jsonl",
+      "source": "/tmp/lorcana-clock-ab-20261014.jsonl",
+      "bytes": 259057,
+      "sha256": "fc90ef68d8ac8f005ddc12026b539eb311078f9b3de4849cff51545f0209f4a2",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/hyperv.jsonl",
+      "source": "/tmp/lorcana-clock-phc-20261014.jsonl",
+      "bytes": 34824,
+      "sha256": "b694bcb421885cb6f49632a2107c6e4c32df093535eb9eff1e471e058c665996",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/windows-hyperv.jsonl.b64.txt",
+      "source": "/tmp/lorcana-clock-windows-phc-20261014.jsonl",
+      "bytes": 20097,
+      "sha256": "617b50877610522a3896c0e395ebdd369193a568ea45581957113a4a7e347cb5",
+      "scope": "Base64 preserves exact CRLF-containing Windows output across Git LF normalization. This is encoded original data, not changed timestamps.",
+      "encoding": "base64",
+      "decoded_bytes": 15070,
+      "decoded_sha256": "9448c9814358233a76489a6483ccc9ee4f62c6db28e93c1a13200ee16514215f"
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/cross-reference.jsonl",
+      "source": "/tmp/lorcana-clock-cross-reference-20261014.jsonl",
+      "bytes": 11430,
+      "sha256": "e7e9a3274bd5097750e620838d1df45ea05136880d0a1f0475e3bac8c0be22d9",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/rate-trace-first-attempt.txt",
+      "source": "/tmp/lorcana-clock-rate-trace-20261014.txt",
+      "bytes": 355,
+      "sha256": "2a585273605278ef65163ec4a649626a128158194a8c262076f063edcfa3f563",
+      "scope": "Unmodified ad hoc observation bytes; timestamps are raw samples, not qualified native execution times."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/lorcana-clock-probe.py.txt",
+      "source": "/tmp/lorcana-clock-probe.py",
+      "bytes": 1141,
+      "sha256": "e88c54c1bb95bedd71099c01004836871ead26bb3eca56b8a718a51556347abb",
+      "scope": "Archived diagnostic script as text, not an installed tool or ordinary application command. Administrative traces and service-pausing experiments require Director authorization."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/lorcana-clock-probe.mjs.txt",
+      "source": "/tmp/lorcana-clock-probe.mjs",
+      "bytes": 598,
+      "sha256": "2fa0d396b79148e6d85cd4eb66356c68af162ec07a07ab6deba3028217c4933b",
+      "scope": "Archived diagnostic script as text, not an installed tool or ordinary application command. Administrative traces and service-pausing experiments require Director authorization."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/lorcana-clock-kernel-trace.py.txt",
+      "source": "/tmp/lorcana-clock-kernel-trace.py",
+      "bytes": 2219,
+      "sha256": "e6e73b5524dbba8f44d6e041e339ef8040027b2d4181022e2dd657a2b48efc17",
+      "scope": "Archived diagnostic script as text, not an installed tool or ordinary application command. Administrative traces and service-pausing experiments require Director authorization."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/lorcana-clock-ab-collector.py.txt",
+      "source": "/tmp/lorcana-clock-ab-collector.py",
+      "bytes": 5597,
+      "sha256": "1561fdbd05a8a5b9670cd8516ea6d4eb21ff74663a2fc0009b80036ed03c513d",
+      "scope": "Archived diagnostic script as text, not an installed tool or ordinary application command. Administrative traces and service-pausing experiments require Director authorization."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/lorcana-clock-phc-probe.py.txt",
+      "source": "/tmp/lorcana-clock-phc-probe.py",
+      "bytes": 1093,
+      "sha256": "44c203d8d541d4b6928f132cacd1f7797c5cba0f00ae06f4d4548590af3096ee",
+      "scope": "Archived diagnostic script as text, not an installed tool or ordinary application command. Administrative traces and service-pausing experiments require Director authorization."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/lorcana-clock-cross-reference.py.txt",
+      "source": "/tmp/lorcana-clock-cross-reference.py",
+      "bytes": 2190,
+      "sha256": "df0c81dc2201e7b73e3b5cfd39425c097a74d63ef6f7c3dc333d912b5283f252",
+      "scope": "Archived diagnostic script as text, not an installed tool or ordinary application command. Administrative traces and service-pausing experiments require Director authorization."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/lorcana-clock-rate-trace.py.txt",
+      "source": "/tmp/lorcana-clock-rate-trace.py",
+      "bytes": 2750,
+      "sha256": "33dd45a2e21bd1f0d1eba881915656639aaa7b619726edb93579e33bbcce9e40",
+      "scope": "Archived diagnostic script as text, not an installed tool or ordinary application command. Administrative traces and service-pausing experiments require Director authorization."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/rate-adjustments.jsonl",
+      "source": "/tmp/lorcana-clock-rate-trace-retry-20261014.txt",
+      "bytes": 4829,
+      "sha256": "e6ebcfd555b948a0f5ba2e2878aebeef20f3cea7fffa3c1e08d91f5bba6c27d0",
+      "scope": "Derived sanitized trace: only mode-selected fields, matched entry/return pairs, calendar-set calls and trace lifecycle. Raw local trace SHA-256 e619aa5fe71a463953ceb6718c361a5b7b05bfe2a332afe13bfccf43cf2bdc64. Unused timex members and stack addresses are deliberately excluded; this file is not claimed byte-identical to the raw trace."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/initd-observations.json",
+      "source": "/tmp/lorcana-initd-clock-code-summary.txt",
+      "bytes": 1090,
+      "sha256": "56433f7934afa95308faed73dddc2603c51538fcdf5052ebda31fb04107974ae",
+      "scope": "Recorded installed-code observations; source binary itself is not a project dependency or evidence payload."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/verify.py.txt",
+      "source": "Codex capsule consistency checker prepared after diagnosis",
+      "bytes": 4439,
+      "sha256": "5b68f300e0c8fe1f522c9252511e6d617dadc0410e4f116c4c54ec1b422651e9",
+      "scope": "Diagnostic evidence consistency only; inputs are archived as text and never enter product runtime."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/manifest-pre-portability.json",
+      "source": "CHG-20261014-001 checkpoint before Git portability correction",
+      "bytes": 10230,
+      "sha256": "2fd98f8f7a8afaf71644340d247b2c81839ebbdbe7447f976a755dfefa0398f0",
+      "scope": "Preserved prior manifest/checker inputs; exact raw Windows payloads remain recoverable from base64 in the current capsule."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/verify-pre-portability.py.txt",
+      "source": "CHG-20261014-001 checkpoint before Git portability correction",
+      "bytes": 4026,
+      "sha256": "60b8e9febd01a1cc5b5eaa6cbaba82dad2f335ac44bbccaa208d4ff2ffedfef9",
+      "scope": "Preserved prior manifest/checker inputs; exact raw Windows payloads remain recoverable from base64 in the current capsule."
+    }
+  ],
+  "failures_preserved": [
+    "Initial normal-user trace refused for administrator access; no trace ran.",
+    "Windows VM debug shell refused for Windows Administrator access; no elevation or settings change.",
+    "Initial rate-trace setup exited1: Python text append seeks are unsupported by virtual kprobe_events (OSError errno22); owned instance cleaned. Retry used unbuffered OS writes and completed with cleanup.",
+    "Initial Go-address mapping was off by 0x100; corrected observation record supersedes it.",
+    "Read-only discovery probes encountered absent rg/grep/strace in minimal system/Docker roots; narrower available commands supplied the observations."
+  ],
+  "authority": "Director explicitly approved administrator clock tracing and one temporary five-minute Ubuntu systemd-timesyncd pause with restoration; no permanent repair authorized.",
+  "portability_correction": "CHG-20261014-002: two Windows captures had CRLF; exact decoded originals preserved as base64 without changing .gitattributes or executable fingerprint. Prior22-payload manifest/checker preserved as two additional payloads."
+}

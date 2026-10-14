@@ -1,0 +1,37 @@
+import datetime,json,time,uuid
+from pathlib import Path
+tracing=Path('/sys/kernel/tracing')
+original={name:(tracing/name).read_text().strip() for name in ['current_tracer','tracing_on']}
+instance=tracing/'instances'/('lorcana-clock-'+uuid.uuid4().hex[:12])
+selected=['do_settimeofday64','do_adjtimex','hv_set_host_time']
+created=False
+trace_text=''
+print(json.dumps({'kind':'trace_start','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'45-second clock callers only','original_global_controls':original}),flush=True)
+try:
+    instance.mkdir();created=True
+    (instance/'tracing_on').write_text('0')
+    (instance/'buffer_size_kb').write_text('128')
+    (instance/'set_ftrace_filter').write_text('\n'.join(selected)+'\n')
+    (instance/'current_tracer').write_text('function')
+    enabled=[]
+    for name in ['sys_enter_clock_settime','sys_enter_clock_adjtime','sys_enter_adjtimex','sys_enter_settimeofday']:
+        event=instance/'events'/'syscalls'/name/'enable'
+        if event.exists():event.write_text('1');enabled.append(name)
+    (instance/'trace').write_text('')
+    (instance/'tracing_on').write_text('1')
+    start=time.monotonic()
+    while time.monotonic()-start<45:
+        marker={'utc_ns':time.time_ns(),'monotonic_ns':time.monotonic_ns(),'raw_ns':time.clock_gettime_ns(time.CLOCK_MONOTONIC_RAW)}
+        (instance/'trace_marker').write_text('LORCANA_CLOCK '+json.dumps(marker,separators=(',',':'))+'\n')
+        time.sleep(.5)
+    (instance/'tracing_on').write_text('0')
+    trace_text=(instance/'trace').read_text()
+    print(json.dumps({'kind':'trace_finished','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'elapsed_ms':round((time.monotonic()-start)*1000),'enabled_events':enabled,'trace_bytes':len(trace_text.encode())}),flush=True)
+    print(trace_text,flush=True)
+finally:
+    if created:
+        (instance/'tracing_on').write_text('0')
+        (instance/'current_tracer').write_text('nop')
+        instance.rmdir()
+    after={name:(tracing/name).read_text().strip() for name in original}
+    print(json.dumps({'kind':'trace_cleanup','instance_removed':not instance.exists(),'global_controls_unchanged':after==original,'global_controls':after}),flush=True)

@@ -1,0 +1,154 @@
+{"kind": "trace_start", "at": "2026-10-14T00:17:56.758570+00:00", "scope": "45-second clock callers only", "original_global_controls": {"current_tracer": "nop", "tracing_on": "1"}}
+{"kind": "trace_finished", "at": "2026-10-14T00:18:42.271607+00:00", "elapsed_ms": 45033, "enabled_events": ["sys_enter_clock_settime", "sys_enter_clock_adjtime", "sys_enter_adjtimex", "sys_enter_settimeofday"], "trace_bytes": 20511}
+# tracer: function
+#
+# entries-in-buffer/entries-written: 138/138   #P:16
+#
+#                                _-----=> irqs-off/BH-disabled
+#                               / _----=> need-resched
+#                              | / _---=> hardirq/softirq
+#                              || / _--=> preempt-depth
+#                              ||| / _-=> migrate-disable
+#                              |||| /     delay
+#           TASK-PID     CPU#  |||||  TIMESTAMP  FUNCTION
+#              | |         |   |||||     |         |
+         python3-15233   [014] ...1. 20876.732827: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937076938303742,"monotonic_ns":20806584085508,"raw_ns":20876660187731}
+         python3-15233   [014] ...1. 20877.240967: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937077438858283,"monotonic_ns":20807084640023,"raw_ns":20877168535319}
+         python3-15233   [014] ...1. 20877.749244: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937077939151285,"monotonic_ns":20807584932929,"raw_ns":20877676628323}
+           initd-1506    [000] ..... 20877.880272: sys_settimeofday(tv: 0x1f007cf5c38, tz: 0)
+           initd-1506    [000] ..... 20877.880293: do_settimeofday64 <-do_sys_settimeofday64
+ systemd-timesyn-381     [005] ..... 20878.044170: sys_clock_adjtime(which_clock: 0, utx: 0x7ffdaba16620)
+ systemd-timesyn-381     [005] ..... 20878.044197: do_adjtimex <-posix_clock_realtime_adj
+         python3-15233   [014] ...1. 20878.257799: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937078590642069,"monotonic_ns":20808085493392,"raw_ns":20878185401124}
+         python3-15233   [014] ...1. 20878.762590: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937079091025789,"monotonic_ns":20808585876313,"raw_ns":20878690240898}
+         python3-15233   [014] ...1. 20879.249488: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937079591878273,"monotonic_ns":20809086728760,"raw_ns":20879177141899}
+         python3-15233   [014] ...1. 20879.736892: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937080092751126,"monotonic_ns":20809587601907,"raw_ns":20879664532760}
+         python3-15233   [014] ...1. 20880.226075: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937080593185046,"monotonic_ns":20810088035496,"raw_ns":20880153705390}
+         python3-15233   [014] ...1. 20880.715464: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937081093426684,"monotonic_ns":20810588277092,"raw_ns":20880643126590}
+         python3-15233   [014] ...1. 20881.206999: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937081593847523,"monotonic_ns":20811088697993,"raw_ns":20881134655021}
+         python3-15233   [014] ...1. 20881.699260: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937082094632503,"monotonic_ns":20811589483080,"raw_ns":20881626915714}
+         chronyd-181     [014] ..... 20881.803959: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9f90)
+         chronyd-181     [014] ..... 20881.803961: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20881.803968: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c10)
+         chronyd-181     [014] ..... 20881.803968: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20881.803971: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c20)
+         chronyd-181     [014] ..... 20881.803971: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20881.803974: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9d10)
+         chronyd-181     [014] ..... 20881.803974: do_adjtimex <-posix_clock_realtime_adj
+         python3-15233   [014] ...1. 20882.192456: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937082594874668,"monotonic_ns":20812089725409,"raw_ns":20882120098939}
+         python3-15233   [014] ...1. 20882.686171: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937083095373181,"monotonic_ns":20812590223682,"raw_ns":20882613801192}
+         python3-15233   [014] ...1. 20883.181268: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937083595780096,"monotonic_ns":20813090630803,"raw_ns":20883108918525}
+         python3-15233   [014] ...1. 20883.677390: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937084096895979,"monotonic_ns":20813591746473,"raw_ns":20883605034678}
+         python3-15233   [014] ...1. 20884.174434: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937084597503850,"monotonic_ns":20814092354210,"raw_ns":20884101973355}
+         python3-15233   [014] ...1. 20884.673111: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937085099702808,"monotonic_ns":20814594553675,"raw_ns":20884600754032}
+         python3-15233   [014] ...1. 20885.171519: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937085600353368,"monotonic_ns":20815095203715,"raw_ns":20885099164904}
+         python3-15233   [014] ...1. 20885.670122: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937086100959718,"monotonic_ns":20815595810225,"raw_ns":20885597772332}
+         python3-15233   [014] ...1. 20886.169389: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937086601208827,"monotonic_ns":20816096059257,"raw_ns":20886097040067}
+         python3-15233   [014] ...1. 20886.668898: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937087101485557,"monotonic_ns":20816596336029,"raw_ns":20886596550216}
+         python3-15233   [014] ...1. 20887.169337: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937087601793768,"monotonic_ns":20817096649628,"raw_ns":20887096988944}
+         python3-15233   [014] ...1. 20887.669876: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937088102022944,"monotonic_ns":20817596873598,"raw_ns":20887597522854}
+         python3-15233   [014] ...1. 20888.171221: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937088602273610,"monotonic_ns":20818097124380,"raw_ns":20888098867507}
+         python3-15233   [014] ...1. 20888.672722: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937089102521750,"monotonic_ns":20818597372222,"raw_ns":20888600375273}
+         python3-15233   [014] ...1. 20889.174896: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937089602737326,"monotonic_ns":20819097587680,"raw_ns":20889102537157}
+         python3-15233   [014] ...1. 20889.677213: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937090102974410,"monotonic_ns":20819597824909,"raw_ns":20889604864776}
+         chronyd-181     [014] ..... 20889.794233: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9f90)
+         chronyd-181     [014] ..... 20889.794235: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20889.794242: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c10)
+         chronyd-181     [014] ..... 20889.794242: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20889.794244: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c20)
+         chronyd-181     [014] ..... 20889.794244: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20889.794247: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9d10)
+         chronyd-181     [014] ..... 20889.794247: do_adjtimex <-posix_clock_realtime_adj
+         python3-15233   [014] ...1. 20890.180403: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937090603189815,"monotonic_ns":20820098040225,"raw_ns":20890108057338}
+         python3-15233   [014] ...1. 20890.683889: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937091103473841,"monotonic_ns":20820598324271,"raw_ns":20890611540077}
+         python3-15233   [014] ...1. 20891.187813: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937091603684850,"monotonic_ns":20821098535305,"raw_ns":20891115471822}
+         python3-15233   [014] ...1. 20891.691868: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937092103900155,"monotonic_ns":20821598750599,"raw_ns":20891619519369}
+         python3-15233   [014] ...1. 20892.196391: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937092604131491,"monotonic_ns":20822098982028,"raw_ns":20892124048509}
+         python3-15233   [014] ...1. 20892.700959: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937093104307874,"monotonic_ns":20822599158273,"raw_ns":20892628626264}
+         python3-15233   [014] ...1. 20893.205953: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937093604497709,"monotonic_ns":20823099348387,"raw_ns":20893133619228}
+         python3-15233   [014] ...1. 20893.711017: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937094104665954,"monotonic_ns":20823599516390,"raw_ns":20893638678678}
+         python3-15233   [014] ...1. 20894.216435: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937094604837572,"monotonic_ns":20824099688116,"raw_ns":20894144096771}
+         python3-15233   [014] ...1. 20894.721986: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937095105041124,"monotonic_ns":20824599891523,"raw_ns":20894649626350}
+         python3-15233   [014] ...1. 20895.227783: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937095605222138,"monotonic_ns":20825100072595,"raw_ns":20895155442190}
+         python3-15233   [014] ...1. 20895.733688: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937096105429990,"monotonic_ns":20825600280579,"raw_ns":20895661353329}
+         python3-15233   [014] ...1. 20896.239894: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937096605657590,"monotonic_ns":20826100508087,"raw_ns":20896167556395}
+         python3-15233   [014] ...1. 20896.746145: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937097105871487,"monotonic_ns":20826600722067,"raw_ns":20896673805957}
+         python3-15233   [014] ...1. 20897.252586: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937097606063742,"monotonic_ns":20827100913892,"raw_ns":20897180270608}
+         python3-15233   [014] ...1. 20897.759119: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937098106241867,"monotonic_ns":20827601092213,"raw_ns":20897686777415}
+         chronyd-181     [014] ..... 20897.881828: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9f90)
+         chronyd-181     [014] ..... 20897.881830: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20897.881837: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c10)
+         chronyd-181     [014] ..... 20897.881837: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20897.881840: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c20)
+         chronyd-181     [014] ..... 20897.881840: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20897.881843: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9d10)
+         chronyd-181     [014] ..... 20897.881843: do_adjtimex <-posix_clock_realtime_adj
+         python3-15233   [014] ...1. 20898.266257: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937098606428412,"monotonic_ns":20828101278739,"raw_ns":20898193931898}
+         python3-15233   [014] ...1. 20898.773609: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937099106609061,"monotonic_ns":20828601459650,"raw_ns":20898701266867}
+         python3-15233   [014] ...1. 20899.281140: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937099606804463,"monotonic_ns":20829101654880,"raw_ns":20899208798115}
+         python3-15233   [014] ...1. 20899.788702: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937100106986514,"monotonic_ns":20829601836983,"raw_ns":20899716359524}
+         python3-15233   [014] ...1. 20900.296444: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937100607196366,"monotonic_ns":20830102046704,"raw_ns":20900224106127}
+         python3-15233   [014] ...1. 20900.804186: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937101107367551,"monotonic_ns":20830602217982,"raw_ns":20900731850196}
+         python3-15233   [014] ...1. 20901.312066: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937101607538090,"monotonic_ns":20831102388514,"raw_ns":20901239733402}
+         python3-15233   [014] ...1. 20901.819996: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937102107718975,"monotonic_ns":20831602569430,"raw_ns":20901747659335}
+         python3-15233   [014] ...1. 20902.328145: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937102607926170,"monotonic_ns":20832102776776,"raw_ns":20902255733627}
+         python3-15233   [014] ...1. 20902.836235: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937103108195093,"monotonic_ns":20832603045977,"raw_ns":20902763899103}
+         python3-15233   [014] ...1. 20903.344467: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937103608406906,"monotonic_ns":20833103257587,"raw_ns":20903272112835}
+         python3-15233   [014] ...1. 20903.852692: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937104108620531,"monotonic_ns":20833603470901,"raw_ns":20903780352557}
+         python3-15233   [014] ...1. 20904.360976: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937104608782834,"monotonic_ns":20834103633308,"raw_ns":20904288634630}
+         python3-15233   [014] ...1. 20904.869299: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937105108966011,"monotonic_ns":20834603816817,"raw_ns":20904796958922}
+         python3-15233   [014] ...1. 20905.377743: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937105609182213,"monotonic_ns":20835104032973,"raw_ns":20905305398839}
+         python3-15233   [014] ...1. 20905.886187: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937106109390150,"monotonic_ns":20835604240598,"raw_ns":20905813848840}
+         chronyd-181     [014] ..... 20906.014606: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9f90)
+         chronyd-181     [014] ..... 20906.014608: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20906.014615: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c10)
+         chronyd-181     [014] ..... 20906.014615: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20906.014617: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c20)
+         chronyd-181     [014] ..... 20906.014617: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20906.014620: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9d10)
+         chronyd-181     [014] ..... 20906.014620: do_adjtimex <-posix_clock_realtime_adj
+         python3-15233   [014] ...1. 20906.394191: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937106609542220,"monotonic_ns":20836104392785,"raw_ns":20906321850871}
+         python3-15233   [014] ...1. 20906.902094: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937107109758067,"monotonic_ns":20836604609030,"raw_ns":20906829757202}
+         python3-15233   [014] ...1. 20907.410064: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937107609964865,"monotonic_ns":20837104815164,"raw_ns":20907337724592}
+         python3-15233   [014] ...1. 20907.918028: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937108110166536,"monotonic_ns":20837605016812,"raw_ns":20907845701850}
+           initd-1518    [013] ..... 20908.030404: sys_settimeofday(tv: 0x1f007cf5c38, tz: 0)
+           initd-1518    [013] ..... 20908.030449: do_settimeofday64 <-do_sys_settimeofday64
+ systemd-timesyn-381     [005] ..... 20908.195210: sys_clock_adjtime(which_clock: 0, utx: 0x7ffdaba16620)
+ systemd-timesyn-381     [005] ..... 20908.195211: do_adjtimex <-posix_clock_realtime_adj
+         python3-15233   [004] ...1. 20908.426565: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937108759487338,"monotonic_ns":20838105221753,"raw_ns":20908354110174}
+         python3-15233   [004] ...1. 20908.924320: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937109259940495,"monotonic_ns":20838605674481,"raw_ns":20908851932965}
+         python3-15233   [004] ...1. 20909.411319: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937109760258505,"monotonic_ns":20839105992942,"raw_ns":20909338972526}
+         python3-15233   [004] ...1. 20909.899643: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937110260530790,"monotonic_ns":20839606264772,"raw_ns":20909827307387}
+         python3-15233   [004] ...1. 20910.390228: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937110761804107,"monotonic_ns":20840107537990,"raw_ns":20910317880240}
+         python3-15233   [004] ...1. 20910.880990: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937111262088962,"monotonic_ns":20840607823035,"raw_ns":20910808659370}
+         python3-15233   [004] ...1. 20911.373249: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937111762718106,"monotonic_ns":20841108452159,"raw_ns":20911300899878}
+         python3-15233   [004] ...1. 20911.866893: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937112263713851,"monotonic_ns":20841609447715,"raw_ns":20911794559651}
+         python3-15233   [004] ...1. 20912.361137: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937112764310597,"monotonic_ns":20842110044663,"raw_ns":20912288796502}
+         python3-15233   [004] ...1. 20912.857269: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937113265879688,"monotonic_ns":20842611614230,"raw_ns":20912784935922}
+         python3-15233   [004] ...1. 20913.352936: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937113766118102,"monotonic_ns":20843111851965,"raw_ns":20913280605245}
+         python3-15233   [004] ...1. 20913.849791: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937114266692480,"monotonic_ns":20843612427030,"raw_ns":20913777441579}
+         chronyd-181     [014] ..... 20913.979117: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9f90)
+         chronyd-181     [014] ..... 20913.979119: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20913.979126: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c10)
+         chronyd-181     [014] ..... 20913.979126: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20913.979128: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9c20)
+         chronyd-181     [014] ..... 20913.979128: do_adjtimex <-posix_clock_realtime_adj
+         chronyd-181     [014] ..... 20913.979131: sys_clock_adjtime(which_clock: 0, utx: 0x7ffd4b1b9d10)
+         chronyd-181     [014] ..... 20913.979131: do_adjtimex <-posix_clock_realtime_adj
+         python3-15233   [004] ...1. 20914.347176: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937114767091434,"monotonic_ns":20844112825199,"raw_ns":20914274847777}
+         python3-15233   [004] ...1. 20914.845686: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937115267847623,"monotonic_ns":20844613581628,"raw_ns":20914773335052}
+         python3-15233   [004] ...1. 20915.344300: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937115768083902,"monotonic_ns":20845113817706,"raw_ns":20915271966312}
+         python3-15233   [004] ...1. 20915.843591: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937116268337253,"monotonic_ns":20845614071101,"raw_ns":20915771254064}
+         python3-15233   [004] ...1. 20916.343437: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937116768574619,"monotonic_ns":20846114308479,"raw_ns":20916271105675}
+         python3-15233   [004] ...1. 20916.843835: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937117268778025,"monotonic_ns":20846614512054,"raw_ns":20916771485751}
+         python3-15233   [004] ...1. 20917.344693: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937117768970965,"monotonic_ns":20847114704664,"raw_ns":20917272364259}
+         python3-15233   [004] ...1. 20917.846077: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937118269170495,"monotonic_ns":20847614904400,"raw_ns":20917773744916}
+         python3-15233   [004] ...1. 20918.347920: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937118769388365,"monotonic_ns":20848115122085,"raw_ns":20918275590001}
+         python3-15233   [004] ...1. 20918.850193: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937119269587361,"monotonic_ns":20848615321602,"raw_ns":20918777852300}
+         python3-15233   [006] ...1. 20919.352910: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937119769855639,"monotonic_ns":20849115589365,"raw_ns":20919280574844}
+         python3-15233   [006] ...1. 20919.856069: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937120270142933,"monotonic_ns":20849615876721,"raw_ns":20919783699226}
+         python3-15233   [006] ...1. 20920.359455: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937120770388918,"monotonic_ns":20850116122693,"raw_ns":20920287124607}
+         python3-15233   [006] ...1. 20920.863203: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937121270586896,"monotonic_ns":20850616320663,"raw_ns":20920790843920}
+         python3-15233   [006] ...1. 20921.367230: tracing_mark_write: LORCANA_CLOCK {"utc_ns":1791937121770819036,"monotonic_ns":20851116552958,"raw_ns":20921294892363}
+
+{"kind": "trace_cleanup", "instance_removed": true, "global_controls_unchanged": true, "global_controls": {"current_tracer": "nop", "tracing_on": "1"}}

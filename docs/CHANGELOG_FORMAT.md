@@ -69,3 +69,7 @@ RULE-04 scenario fixtures and their source-leaf index are executable evidence in
 Generated provider browser artifacts under `.playwright-mcp/` and the external unowned root reference `inkspire-interface-typography.png` are preserved but excluded from inventory/fingerprints/source-only clean copies. All other source/shipped assets remain inventoried. The matching ignore rules keep them out of host CI copies. PLAY-01 uses the unchanged native schema1 timestamp/history/evidence contract; its owning validation records successes and failures rather than rewriting prior executed evidence.
 
 Completed recorder logs/JSON and their parent directories are explicitly flushed before reporting success. A host crash can still interrupt an unfinished write: quarantine incomplete bytes, reserve the ID and add a separate correction; never reconstruct a passing receipt from console output.
+
+## Dated clock diagnosis — 2026-10-14 UTC
+
+[The local investigation](validation/clock-investigation.md) explains the observed recent Linux clock discontinuities and preserves the approved experiment as a historical import with raw samples, not a reconstructed native pass. RUN017's original cause remains unqualified. The1,000ms rule, raw UTC/monotonic fields, failed outcomes and schema1 remain unchanged. Short native static/documentation runs record their own timing; they do not certify a permanent clock repair.

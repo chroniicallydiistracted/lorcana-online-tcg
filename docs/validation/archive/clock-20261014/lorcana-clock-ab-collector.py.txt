@@ -1,0 +1,72 @@
+import ctypes,datetime,json,os,signal,subprocess,sys,time,uuid
+UNIT='systemd-timesyncd.service'
+SYSTEMCTL='/usr/bin/systemctl'
+def emit(kind,**values):
+    print(json.dumps({'kind':kind,'recorded_utc_sample':datetime.datetime.now(datetime.timezone.utc).isoformat(),**values}),flush=True)
+def command(args,check=True):
+    result=subprocess.run(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,timeout=20)
+    if check and result.returncode:raise RuntimeError('Command failed: '+args[0]+' '+str(result.returncode)+' '+result.stderr.strip())
+    return result
+
+def state():
+    result=command([SYSTEMCTL,'show',UNIT,'--property=ActiveState','--property=UnitFileState','--property=MainPID'])
+    return dict(line.split('=',1) for line in result.stdout.splitlines() if '=' in line)
+class Timeval(ctypes.Structure):
+    _fields_=[('tv_sec',ctypes.c_long),('tv_usec',ctypes.c_long)]
+class Timex(ctypes.Structure):
+    _fields_=[('modes',ctypes.c_uint),('offset',ctypes.c_long),('freq',ctypes.c_long),('maxerror',ctypes.c_long),('esterror',ctypes.c_long),('status',ctypes.c_int),('constant',ctypes.c_long),('precision',ctypes.c_long),('tolerance',ctypes.c_long),('time',Timeval),('tick',ctypes.c_long),('ppsfreq',ctypes.c_long),('jitter',ctypes.c_long),('shift',ctypes.c_int),('stabil',ctypes.c_long),('jitcnt',ctypes.c_long),('calcnt',ctypes.c_long),('errcnt',ctypes.c_long),('stbcnt',ctypes.c_long),('tai',ctypes.c_int),('reserved',ctypes.c_int*11)]
+libc=ctypes.CDLL(None,use_errno=True);libc.adjtimex.argtypes=[ctypes.POINTER(Timex)];libc.adjtimex.restype=ctypes.c_int
+
+def kernel():
+    value=Timex();value.modes=0
+    code=libc.adjtimex(ctypes.byref(value))
+    if code<0:raise RuntimeError('Read-only kernel timing query failed')
+    return {'state':code,'offset':value.offset,'frequency_ppm':value.freq/65536,'tick_us':value.tick,'status':value.status}
+def sample():
+    before=time.monotonic_ns()
+    utc=time.time_ns();raw=time.clock_gettime_ns(time.CLOCK_MONOTONIC_RAW)
+    after=time.monotonic_ns()
+    return {'utc_ns':utc,'monotonic_ns':(before+after)//2,'raw_ns':raw,'query_span_ns':after-before}
+def phase(name,seconds):
+    initial=sample();rows=[];next_status=0
+    emit('phase_start',phase=name,target_monotonic_seconds=seconds,service=state())
+    while True:
+        row=sample();elapsed=(row['monotonic_ns']-initial['monotonic_ns'])/1e9
+        difference=((row['utc_ns']-initial['utc_ns'])-(row['monotonic_ns']-initial['monotonic_ns']))/1e6
+        rows.append((elapsed,difference));emit('sample',phase=name,elapsed_monotonic_seconds=round(elapsed,6),utc_ns=str(row['utc_ns']),monotonic_ns=str(row['monotonic_ns']),raw_ns=str(row['raw_ns']),calendar_minus_elapsed_ms=round(difference,6),query_span_ns=row['query_span_ns'])
+        if elapsed>=next_status:
+            emit('progress',phase=name,elapsed_seconds=round(elapsed,3),calendar_minus_elapsed_ms=round(difference,6),kernel=kernel());next_status+=30
+        if elapsed>=seconds:break
+        time.sleep(min(.5,seconds-elapsed))
+    steps=[{'elapsed_seconds':round(current[0],3),'step_ms':round(current[1]-previous[1],3)} for previous,current in zip(rows,rows[1:]) if abs(current[1]-previous[1])>10]
+    emit('phase_summary',phase=name,elapsed_seconds=round(rows[-1][0],3),calendar_minus_elapsed_ms=round(rows[-1][1],6),difference_range_ms=round(max(v for _,v in rows)-min(v for _,v in rows),6),steps_over_10ms=steps)
+
+def interrupted(signum,_frame):raise InterruptedError('Clock comparison interrupted: '+str(signum))
+for signum in [signal.SIGINT,signal.SIGTERM,signal.SIGHUP]:signal.signal(signum,interrupted)
+if os.getuid()!=0 or os.environ.get('WSL_DISTRO_NAME')!='Ubuntu':raise RuntimeError('Approved comparison must execute as root in Ubuntu')
+original=state()
+if original['ActiveState']!='active':raise RuntimeError('Original service is not active; refuse to change unexpected state')
+watchdog='lorcana-clock-restore-'+uuid.uuid4().hex[:12]
+armed=False;restore_needed=False;success=False
+emit('experiment_start',authority='Director approved five-minute temporary Ubuntu-only pause; restore original state',original_service=original,watchdog_unit=watchdog,kernel=os.uname().release)
+try:
+    phase('baseline',45)
+    command(['/usr/bin/systemd-run','--quiet','--collect','--unit='+watchdog,'--on-active=360s',SYSTEMCTL,'start',UNIT]);armed=True
+    if command([SYSTEMCTL,'is-active',watchdog+'.timer'],check=False).stdout.strip()!='active':raise RuntimeError('Independent restore timer did not arm')
+    emit('watchdog_armed',unit=watchdog+'.timer',restore_after_seconds=360)
+    restore_needed=True;command([SYSTEMCTL,'stop',UNIT])
+    if state()['ActiveState']!='inactive':raise RuntimeError('Time-sync service did not pause')
+    phase('ubuntu_timesync_paused',300)
+finally:
+    if restore_needed:
+        command([SYSTEMCTL,'start',UNIT]);restored=state()
+        if restored['ActiveState']!='active' or restored['UnitFileState']!=original['UnitFileState']:raise RuntimeError('Restoration not confirmed; independent restore timer remains armed')
+        emit('service_restored',service=restored,enabled_configuration_unchanged=True)
+    if armed:
+        command([SYSTEMCTL,'stop',watchdog+'.timer'])
+        remaining=command([SYSTEMCTL,'is-active',watchdog+'.timer'],check=False).stdout.strip()
+        if remaining=='active':raise RuntimeError('Owned restore timer still active')
+        emit('watchdog_removed',unit=watchdog+'.timer',active=False)
+if restore_needed:
+    phase('restored',60);success=True
+emit('experiment_finished',completed=success,final_service=state(),clock_guard_unchanged=True)

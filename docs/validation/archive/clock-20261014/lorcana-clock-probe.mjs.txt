@@ -1,0 +1,5 @@
+const initial={utc:Date.now(),perf:performance.now(),hr:process.hrtime.bigint()};
+console.log(JSON.stringify({kind:'start',layer:'container-node',node:process.versions.node,utc:new Date().toISOString()}));
+let sample=0;
+const read=()=>{const utc=Date.now(),perf=performance.now(),hr=process.hrtime.bigint(); console.log(JSON.stringify({kind:'sample',sample,utc_ms:utc,elapsed_ms:{utc:utc-initial.utc,perf:perf-initial.perf,hr:Number(hr-initial.hr)/1e6},utc_minus_monotonic_ms:utc-initial.utc-(perf-initial.perf)}));if(sample++>=120)clearInterval(timer);};
+const timer=setInterval(read,500);read();

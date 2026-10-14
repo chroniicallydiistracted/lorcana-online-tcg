@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-004",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "docs:sync",
+    "--change",
+    "CHG-20261014-001"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6e9acf1ec2130386e6687f48513a30aaf32b397d",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-14T01:15:20.286Z",
+  "finished_at": "2026-10-14T01:15:45.589Z",
+  "recorded_at": "2026-10-14T01:15:45.589Z",
+  "time_precision": "exact",
+  "elapsed_ms": 24435,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Synchronize documented clock investigation and current hosted integration; unchanged executable fingerprint",
+  "log_path": "docs/validation/logs/RUN-20261014-004.txt",
+  "log_sha256": "fcc1899246b2a3482e90acee4bb4d63ba1820675d514e42f6237dd96d1418d3d",
+  "redactions": 0
+}

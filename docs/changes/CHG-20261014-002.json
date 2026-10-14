@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261014-002",
+  "title": "Preserve clock evidence bytes through Git line-ending normalization",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-14T01:29:26.758Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "6e9acf1ec2130386e6687f48513a30aaf32b397d",
+  "task_ids": [
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "revision",
+      "description": "Correct CHG-20261014-001 archive portability before commit: Git would normalize CRLF in two Windows outputs and invalidate captured-byte hashes. Preserve exact originals as base64 with decoded byte/digest checks; keep original manifest/checker checkpoint and all native run bytes. Application code, .gitattributes, clock guard and executable fingerprint unchanged."
+    },
+    {
+      "kind": "test",
+      "description": "Fresh static capsule check compares24 payload digests and staged Git bytes, validates decoded original Windows hashes and retains all comparison/restoration assertions; native documentation closure remains separate."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261014-002.json",
+    "docs/current-state.json",
+    "docs/validation/archive/clock-20261014/manifest-pre-portability.json",
+    "docs/validation/archive/clock-20261014/manifest.json",
+    "docs/validation/archive/clock-20261014/verify-pre-portability.py.txt",
+    "docs/validation/archive/clock-20261014/verify.py.txt",
+    "docs/validation/archive/clock-20261014/windows-hyperv.jsonl",
+    "docs/validation/archive/clock-20261014/windows-hyperv.jsonl.b64.txt",
+    "docs/validation/archive/clock-20261014/windows.jsonl",
+    "docs/validation/archive/clock-20261014/windows.jsonl.b64.txt",
+    "docs/validation/clock-investigation.md",
+    "docs/validation/logs/RUN-20261014-008.txt",
+    "docs/validation/logs/RUN-20261014-009.txt",
+    "docs/validation/runs/RUN-20261014-008.json",
+    "docs/validation/runs/RUN-20261014-009.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/validation/clock-investigation.md",
+      "disposition": "updated",
+      "reason": "Explain exact-byte encoding, retained checkpoint and final24-payload capsule instead of implying CRLF raw text survives Git unchanged."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Identify the corrective archive record and staged-byte proof, with no change to diagnosed mechanism or repair/privacy gates."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/manifest.json",
+      "disposition": "updated",
+      "reason": "Record encoded and decoded digests and retain prior manifest/checker; no timestamp rewriting or evidence result promotion."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/verify.py.txt",
+      "disposition": "updated",
+      "reason": "Add decoded-byte checks and explicit staged-index equality for each archived payload."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-008.json",
+      "outcome": "passed",
+      "scope": "Static container final24-payload capsule: all digests, exact decoded original Windows bytes, staged Git equality, comparison arithmetic, mode-selected clock adjustments/cleanup and unchanged executable/configuration/requirement bytes."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-009.json",
+      "outcome": "passed",
+      "scope": "Final static docs:check after capsule portability correction, covering generated views, classified current docs, links and unchanged sealed history with timing-valid receipt."
+    }
+  ],
+  "limitations": [
+    "This is archive portability, not clock repair or additional application/CI/device acceptance.",
+    "RUN003 checked the original22-payload capsule before this correction; the staged-byte check supplies current capsule qualification."
+  ],
+  "next_actions": [
+    "Retain encoded original Windows bytes and all earlier receipts; obtain Director authorization before further clock-manager changes."
+  ]
+}

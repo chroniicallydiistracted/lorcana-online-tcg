@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261014-001",
+  "title": "Diagnose local WSL clock rejection and record PLAY-01 hosted integration",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-14T01:21:32.457Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "6e9acf1ec2130386e6687f48513a30aaf32b397d",
+  "task_ids": [
+    "DOC-01",
+    "DOC-02",
+    "BOOT-03",
+    "PLAY-01"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS",
+    "F-CI"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Investigate wall/monotonic discrepancy across Windows, WSL and the existing Dev Container; attribute periodic resets to Docker initd and trace actual clock-rate controllers."
+    },
+    {
+      "kind": "test",
+      "description": "Director-approved five-minute temporary pause/restoration of Ubuntu time sync; read-only cross-reference comparisons and bounded administrator traces. Raw observations are imported historical diagnostics, never reconstructed passing native receipts."
+    },
+    {
+      "kind": "documentation",
+      "description": "Preserve evidence, cleanup, exact limits and current operating handoff. Guard, game code, clock configuration and old failed receipts remain unchanged."
+    },
+    {
+      "kind": "documentation",
+      "description": "Record freshly observed successful audit/main GitHub workflow metadata at merged6e9acf1, update current handoff/CI descriptions and preserve all local failed clock receipts. No hosted artifact or test-count revalidation is inferred."
+    },
+    {
+      "kind": "test",
+      "description": "Native container metadata002, capsule consistency003, draft synchronization004, public-source privacy005 and documentation gate006 passed with matching executable fingerprint and valid timing; final closure is separately captured in007. These short checks do not infer full CI timing or a stable repair. Normal documentation synchronization regenerates the unchanged schema1 views at each documented checkpoint."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/CHANGELOG_FORMAT.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/changes/CHG-20261014-001.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/runbooks/ci.md",
+    "docs/validation/archive/clock-20261014/comparison.jsonl",
+    "docs/validation/archive/clock-20261014/container-node.jsonl",
+    "docs/validation/archive/clock-20261014/container-python.jsonl",
+    "docs/validation/archive/clock-20261014/cross-reference.jsonl",
+    "docs/validation/archive/clock-20261014/docker-time.json",
+    "docs/validation/archive/clock-20261014/hyperv.jsonl",
+    "docs/validation/archive/clock-20261014/initd-observations.json",
+    "docs/validation/archive/clock-20261014/kernel-trace.txt",
+    "docs/validation/archive/clock-20261014/lorcana-clock-ab-collector.py.txt",
+    "docs/validation/archive/clock-20261014/lorcana-clock-cross-reference.py.txt",
+    "docs/validation/archive/clock-20261014/lorcana-clock-kernel-trace.py.txt",
+    "docs/validation/archive/clock-20261014/lorcana-clock-phc-probe.py.txt",
+    "docs/validation/archive/clock-20261014/lorcana-clock-probe.mjs.txt",
+    "docs/validation/archive/clock-20261014/lorcana-clock-probe.py.txt",
+    "docs/validation/archive/clock-20261014/lorcana-clock-rate-trace.py.txt",
+    "docs/validation/archive/clock-20261014/manifest.json",
+    "docs/validation/archive/clock-20261014/rate-adjustments.jsonl",
+    "docs/validation/archive/clock-20261014/rate-trace-first-attempt.txt",
+    "docs/validation/archive/clock-20261014/ubuntu-timecalls.txt",
+    "docs/validation/archive/clock-20261014/verify.py.txt",
+    "docs/validation/archive/clock-20261014/windows-hyperv.jsonl",
+    "docs/validation/archive/clock-20261014/windows.jsonl",
+    "docs/validation/archive/clock-20261014/wsl.jsonl",
+    "docs/validation/boot-03.md",
+    "docs/validation/clock-investigation.md",
+    "docs/validation/logs/RUN-20261014-001.txt",
+    "docs/validation/logs/RUN-20261014-002.txt",
+    "docs/validation/logs/RUN-20261014-003.txt",
+    "docs/validation/logs/RUN-20261014-004.txt",
+    "docs/validation/logs/RUN-20261014-005.txt",
+    "docs/validation/logs/RUN-20261014-006.txt",
+    "docs/validation/logs/RUN-20261014-007.txt",
+    "docs/validation/play-01.md",
+    "docs/validation/runs/RUN-20261014-001.json",
+    "docs/validation/runs/RUN-20261014-002.json",
+    "docs/validation/runs/RUN-20261014-003.json",
+    "docs/validation/runs/RUN-20261014-004.json",
+    "docs/validation/runs/RUN-20261014-005.json",
+    "docs/validation/runs/RUN-20261014-006.json",
+    "docs/validation/runs/RUN-20261014-007.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Add current clock authority/diagnosis and freshly observed merged PLAY-01 CI; permanent repair remains unauthorized."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Direct intake to measured clock diagnosis and successful merged hosted metadata; earlier dated checkpoints preserved."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Index current investigation and supersede publication-pending checkpoint with observed success."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Replace historical active-branch assumptions with main6e9acf1 intake, documentation branch, explicit approved trial/restoration, measured facts, proof categories and remaining maintenance/privacy gates."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Append separately categorized diagnostics and hosted metadata without accepting Windows product, timing repair, database or load gates."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "updated",
+      "reason": "Clarify historical diagnostic imports and link current diagnosis while retaining schema1, 1000ms threshold and original failed receipts."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Update F-CI current description from hosted-pending to successful observed workflow metadata, retaining artifact and local timing limits."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Match F-CI description/evidence/doc link to fresh metadata; verification remains historical_verified because hosted artifact contents were not reverified."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Add current diagnosis, guard/authorization limits and successful main/audit metadata; existing executed pipeline histories preserved."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Append current hosted successes and diagnosed recent rejection, preserving all earlier source-specific failures/results."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "updated",
+      "reason": "Append current merged workflow observation and diagnostic limits; audited acceptance/debug closure and follow-ups unchanged."
+    },
+    {
+      "path": "docs/validation/clock-investigation.md",
+      "disposition": "updated",
+      "reason": "Own the detailed clock guard purpose, measurement method, Docker routine attribution, chronyd adjustment proof, approved pause/cleanup, limits and qualified next actions."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Classify the owning current diagnosis with guard/configuration/capsule impact edges; existing archive wildcard covers retained raw observations."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Generated uniform change view; update only through native synchronization."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Generated file/callable/status snapshot; executable fingerprint remains unchanged."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/manifest.json",
+      "disposition": "updated",
+      "reason": "Classify imported host diagnostics and archived scripts; byte identity, provenance, sanitized-vs-raw distinction, failed trace setup and corrected Go mapping are explicit."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-001.json",
+      "outcome": "historical",
+      "scope": "Imported ad hoc host diagnostics and approved temporary service trial; raw discontinuous samples retained, no reconstructed native pass or qualified historical duration."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-002.json",
+      "outcome": "passed",
+      "scope": "Fresh public GitHub workflow/job metadata: audit38482253396/main38483130685 successful at6e9acf1; no hosted artifact, internal-stage recount or product/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-003.json",
+      "outcome": "passed",
+      "scope": "Static container capsule validation:22 payload digests, paired clock arithmetic, successful mode-selected trace calls/cleanup and protected source/configuration/requirement bytes."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-004.json",
+      "outcome": "passed",
+      "scope": "Native draft synchronization and embedded documentation validation; executable fingerprint unchanged. Map ordering later restored for a smaller review diff."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-005.json",
+      "outcome": "passed",
+      "scope": "Static container current-public-source secret-pattern and all known local credential-value scan; unchanged executable fingerprint. No full-history rescan or absolute secrecy proof."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-006.json",
+      "outcome": "passed",
+      "scope": "Native static docs:check over classified current docs, file/callable snapshot, links, change history and sealed evidence; no app or clock-repair acceptance."
+    }
+  ],
+  "limitations": [
+    "No permanent clock repair or altered acceptance threshold is authorized.",
+    "Ad hoc host diagnostics are not native passing test receipts or absolute UTC certification.",
+    "The chronyd adjustment mechanism is captured, but its learned estimate/effective system process configuration and a durable single-controller repair remain unqualified.",
+    "No full application/browser/database or heavy isolated CI rerun for this documentation-only change; original source-matched evidence is preserved.",
+    "Initial normal-user/Windows debug-shell traces were refused; a narrow rate-trace setup failed and cleaned up before a successful corrected retry.",
+    "Original October6 reversed evidence is not retrospectively attributed to the current traces."
+  ],
+  "next_actions": [
+    "Use recorded causal evidence before proposing further clock-manager experiments or evidence-policy changes; PLAY-02 remains unassigned."
+  ]
+}

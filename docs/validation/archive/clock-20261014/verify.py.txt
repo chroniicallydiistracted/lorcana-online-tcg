@@ -1,0 +1,65 @@
+"""Validate this archived diagnostic capsule; this does not certify clock repair or gameplay."""
+import base64,hashlib,json,subprocess,sys
+from pathlib import Path
+root=Path(__file__).resolve().parents[4]
+folder=Path(__file__).resolve().parent
+manifest=json.loads((folder/'manifest.json').read_text())
+for row in manifest['artifacts']:
+    data=(root/row['path']).read_bytes()
+    assert len(data)==row['bytes'],row['path']
+    assert hashlib.sha256(data).hexdigest()==row['sha256'],row['path']
+    if row.get('encoding')=='base64':
+        decoded=base64.b64decode(data,validate=False)
+        assert len(decoded)==row['decoded_bytes']
+        assert hashlib.sha256(decoded).hexdigest()==row['decoded_sha256']
+    if '--index' in sys.argv:
+        staged=subprocess.check_output(['git','show',':'+row['path']],cwd=root)
+        assert staged==data,'Git index changed archive bytes: '+row['path']
+
+def rows(name):return [json.loads(x) for x in (folder/name).read_text().splitlines()]
+ab=rows('comparison.jsonl')
+phases={x['phase']:x for x in ab if x['kind']=='phase_summary'}
+assert set(phases)=={'baseline','ubuntu_timesync_paused','restored'}
+assert [len(phases[x]['steps_over_10ms']) for x in ('baseline','ubuntu_timesync_paused','restored')]==[2,10,3]
+assert abs(phases['ubuntu_timesync_paused']['calendar_minus_elapsed_ms']-2429.729064)<1e-6
+finish=ab[-1]
+assert finish['kind']=='experiment_finished' and finish['completed'] and finish['clock_guard_unchanged']
+assert finish['final_service']['ActiveState']=='active' and finish['final_service']['UnitFileState']=='enabled'
+assert any(x['kind']=='watchdog_removed' for x in ab)
+assert any(x['kind']=='phase_start' and x['phase']=='ubuntu_timesync_paused' and x['service']['ActiveState']=='inactive' for x in ab)
+
+cross=rows('cross-reference.jsonl')
+samples=[x for x in cross if x.get('kind')=='sample']
+assert len(samples)==31
+stable=[x for x in samples if x['index']>=2 and x['window_ms']<10]
+f,l=stable[0],stable[-1]
+assert (f['index'],l['index'])==(2,30)
+w=l['windows_counter_ms']-f['windows_counter_ms']
+span={k:(int(l['linux_midpoint_ns'][k])-int(f['linux_midpoint_ns'][k]))/1e6 for k in f['linux_midpoint_ns']}
+assert abs(w-28399.5132)<1e-6
+assert abs(span['raw']-w)<.05 and abs(span['hyperv_phc']-w)<.05
+assert abs(span['monotonic']-28021.416426)<1e-6
+assert max(x['window_ms'] for x in stable)<1.04
+assert cross[-1]=={'kind':'cleanup','windows_sampler_exit':0,'clock_device_closed':True}
+
+trace=rows('rate-adjustments.jsonl')
+adjustments=[x for x in trace if x['kind']=='clock_adjustment']
+rate=[x for x in adjustments if x['modes']==16386]
+assert len(rate)==12 and all(x['task']=='chronyd' and x['return_code']==0 for x in rate)
+assert min(x['tick_microseconds'] for x in rate)==9806
+assert max(x['tick_microseconds'] for x in rate)==9822
+assert any(x['task']=='systemd-timesyn' and x['modes']==8253 and x['return_code']==0 for x in adjustments)
+assert trace[-1]=={'kind':'cleanup','instance_removed':True,'owned_probe_names_absent':True,'global_controls_unchanged':True}
+assert any(x['kind']=='calendar_set' and x['task']=='initd' for x in trace)
+for row in adjustments:
+    assert ('offset' in row)==bool(row['modes']&1)
+    assert ('frequency_scaled_ppm' in row)==bool(row['modes']&2)
+    assert ('tick_microseconds' in row)==bool(row['modes']&16384)
+
+for path in ['toolchain.json','package.json','pnpm-lock.yaml','.devcontainer/Dockerfile','.devcontainer/compose.yaml','docs/vision/requirements.csv','docs/vision/initial_backlog.csv','scripts/documentation-lib.mjs','scripts/evidence-lib.mjs','scripts/ci-local.py']:
+    expected=subprocess.check_output(['git','show','6e9acf1:'+path],cwd=root)
+    assert expected==(root/path).read_bytes(),path
+changed=subprocess.check_output(['git','diff','--name-only','6e9acf1'],cwd=root,text=True).splitlines()
+assert all(x.startswith('docs/') or x.endswith('.md') for x in changed)
+print(json.dumps({'artifact_digests_verified':len(manifest['artifacts']),'comparison_phases':list(phases),'paused_discrepancy_ms':phases['ubuntu_timesync_paused']['calendar_minus_elapsed_ms'],'cross_reference_elapsed_ms':span,'windows_elapsed_ms':w,'successful_chronyd_rate_changes':len(rate),'service_restore_and_trace_cleanup_recorded':True,'executable_configuration_and_requirement_bytes_unchanged':True}))
+print('Diagnostic capsule consistency passed; no repaired clock, absolute UTC accuracy, full CI rerun or gameplay acceptance is inferred.')

@@ -1913,6 +1913,19 @@
       "path": "docs/validation/play-01-interruption.json",
       "classification": "evidence",
       "sources": []
+    },
+    {
+      "path": "docs/validation/clock-investigation.md",
+      "classification": "current",
+      "sources": [
+        "scripts/documentation-lib.mjs",
+        "scripts/evidence-lib.mjs",
+        "scripts/record-evidence.mjs",
+        "scripts/ci-local.py",
+        "scripts/ci/**",
+        ".devcontainer/**",
+        "docs/validation/archive/clock-20261014/**"
+      ]
     }
   ]
 }

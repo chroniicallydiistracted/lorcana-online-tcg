@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-10-14T01:09:25.288Z",
+  "source": "Read-only running docker-desktop /proc/41/exe inspection",
+  "sha256": "ec9a99250040d8fd14ccab324faa2d107f64f9bf5f411af78a8c7492d53540fb",
+  "elf_build_id": "cad18e60b7d31a6ba314f674e39735e50ae8c49b",
+  "function": "github.com/docker/pinata/linuxkit/pkg/desktop/rootfs/cmd/initd/desktop.runBackendTimeSync",
+  "routine_address": "0x1fd6d20",
+  "successful_path_settimeofday_call": "0x1fd7078",
+  "settimeofday_function": "0x8b54a0",
+  "linux_syscall_number": 164,
+  "next_timer_nanoseconds": 30000000000,
+  "timer_literal_address": "0x1fd7145",
+  "drift_magnitude_condition_found_on_successful_path": false,
+  "mapping_correction": "Go code begins after a 0x100-byte C-runtime prefix. Initial section-base-only address mapping is superseded; corrected mapping cross-checks named syscall and timer targets.",
+  "limitations": "Installed binary inspection, not a fetched Docker source tree or complete control-flow audit. No binary or full disassembly redistributed. Historical ftrace PID-to-namespace translation is unrecorded."
+}

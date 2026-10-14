@@ -654,7 +654,7 @@
       "name": "Reproducible CI and qualified build artifacts",
       "implementation": "implemented",
       "verification": "historical_verified",
-      "description": "Guarded14-stage pipeline adds live durable matches.113 completes every child stage and artifact validation but receipt fails clock_changed; no new qualified/published artifact. Prior hosted source evidence retained; this source needs hosted or timing-qualified CI.",
+      "description": "Guarded14-stage pipeline: local113 completed child stages/artifact validation but failed clock_changed, preserved unchanged. RUN-20261014-002 freshly observes successful hosted audit38482253396/main38483130685 at merged6e9acf1; metadata only, hosted artifacts/logs not downloaded/reverified. Prior full artifact qualification remains historical; local timing repair unqualified. See the dated clock investigation.",
       "sources": [
         "scripts/ci/**",
         "scripts/ci-local.py",
@@ -667,7 +667,8 @@
       "documents": [
         "docs/runbooks/ci.md",
         "docs/validation/boot-03.md",
-        "docs/contracts/release.md"
+        "docs/contracts/release.md",
+        "docs/validation/clock-investigation.md"
       ],
       "task_ids": [
         "BOOT-03",
@@ -704,7 +705,8 @@
         "docs/validation/runs/RUN-20261013-012.json",
         "docs/validation/runs/RUN-20261013-024.json",
         "docs/validation/runs/RUN-20261013-058.json",
-        "docs/validation/runs/RUN-20261013-113.json"
+        "docs/validation/runs/RUN-20261013-113.json",
+        "docs/validation/runs/RUN-20261014-002.json"
       ]
     },
     {

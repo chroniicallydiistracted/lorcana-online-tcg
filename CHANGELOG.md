@@ -2,6 +2,101 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261014-002 — Preserve clock evidence bytes through Git line-ending normalization
+
+- Status: finalized
+- Actor: Codex architect/developer/QA collaborator
+- Recorded (UTC): 2026-10-14T01:29:26.758Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 6e9acf1ec2130386e6687f48513a30aaf32b397d
+- Tasks: DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **revision:** Correct CHG-20261014-001 archive portability before commit: Git would normalize CRLF in two Windows outputs and invalidate captured-byte hashes. Preserve exact originals as base64 with decoded byte/digest checks; keep original manifest/checker checkpoint and all native run bytes. Application code, .gitattributes, clock guard and executable fingerprint unchanged.
+- **test:** Fresh static capsule check compares24 payload digests and staged Git bytes, validates decoded original Windows hashes and retains all comparison/restoration assertions; native documentation closure remains separate.
+
+### Verification
+
+- **passed:** Static container final24-payload capsule: all digests, exact decoded original Windows bytes, staged Git equality, comparison arithmetic, mode-selected clock adjustments/cleanup and unchanged executable/configuration/requirement bytes. ([evidence](docs/validation/runs/RUN-20261014-008.json))
+- **passed:** Final static docs:check after capsule portability correction, covering generated views, classified current docs, links and unchanged sealed history with timing-valid receipt. ([evidence](docs/validation/runs/RUN-20261014-009.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/clock-investigation.md](docs/validation/clock-investigation.md) — Explain exact-byte encoding, retained checkpoint and final24-payload capsule instead of implying CRLF raw text survives Git unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Identify the corrective archive record and staged-byte proof, with no change to diagnosed mechanism or repair/privacy gates.
+- **updated:** [docs/validation/archive/clock-20261014/manifest.json](docs/validation/archive/clock-20261014/manifest.json) — Record encoded and decoded digests and retain prior manifest/checker; no timestamp rewriting or evidence result promotion.
+- **updated:** [docs/validation/archive/clock-20261014/verify.py.txt](docs/validation/archive/clock-20261014/verify.py.txt) — Add decoded-byte checks and explicit staged-index equality for each archived payload.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261014-002.json).
+
+### Limits and next actions
+
+- This is archive portability, not clock repair or additional application/CI/device acceptance.
+- RUN003 checked the original22-payload capsule before this correction; the staged-byte check supplies current capsule qualification.
+- Retain encoded original Windows bytes and all earlier receipts; obtain Director authorization before further clock-manager changes.
+
+## CHG-20261014-001 — Diagnose local WSL clock rejection and record PLAY-01 hosted integration
+
+- Status: finalized
+- Actor: Codex architect/developer/QA collaborator
+- Recorded (UTC): 2026-10-14T01:21:32.457Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 6e9acf1ec2130386e6687f48513a30aaf32b397d
+- Tasks: DOC-01, DOC-02, BOOT-03, PLAY-01
+- Features: F-DOCS, F-CI
+- Requirements: none
+
+### Changes
+
+- **review:** Investigate wall/monotonic discrepancy across Windows, WSL and the existing Dev Container; attribute periodic resets to Docker initd and trace actual clock-rate controllers.
+- **test:** Director-approved five-minute temporary pause/restoration of Ubuntu time sync; read-only cross-reference comparisons and bounded administrator traces. Raw observations are imported historical diagnostics, never reconstructed passing native receipts.
+- **documentation:** Preserve evidence, cleanup, exact limits and current operating handoff. Guard, game code, clock configuration and old failed receipts remain unchanged.
+- **documentation:** Record freshly observed successful audit/main GitHub workflow metadata at merged6e9acf1, update current handoff/CI descriptions and preserve all local failed clock receipts. No hosted artifact or test-count revalidation is inferred.
+- **test:** Native container metadata002, capsule consistency003, draft synchronization004, public-source privacy005 and documentation gate006 passed with matching executable fingerprint and valid timing; final closure is separately captured in007. These short checks do not infer full CI timing or a stable repair. Normal documentation synchronization regenerates the unchanged schema1 views at each documented checkpoint.
+
+### Verification
+
+- **historical:** Imported ad hoc host diagnostics and approved temporary service trial; raw discontinuous samples retained, no reconstructed native pass or qualified historical duration. ([evidence](docs/validation/runs/RUN-20261014-001.json))
+- **passed:** Fresh public GitHub workflow/job metadata: audit38482253396/main38483130685 successful at6e9acf1; no hosted artifact, internal-stage recount or product/device acceptance. ([evidence](docs/validation/runs/RUN-20261014-002.json))
+- **passed:** Static container capsule validation:22 payload digests, paired clock arithmetic, successful mode-selected trace calls/cleanup and protected source/configuration/requirement bytes. ([evidence](docs/validation/runs/RUN-20261014-003.json))
+- **passed:** Native draft synchronization and embedded documentation validation; executable fingerprint unchanged. Map ordering later restored for a smaller review diff. ([evidence](docs/validation/runs/RUN-20261014-004.json))
+- **passed:** Static container current-public-source secret-pattern and all known local credential-value scan; unchanged executable fingerprint. No full-history rescan or absolute secrecy proof. ([evidence](docs/validation/runs/RUN-20261014-005.json))
+- **passed:** Native static docs:check over classified current docs, file/callable snapshot, links, change history and sealed evidence; no app or clock-repair acceptance. ([evidence](docs/validation/runs/RUN-20261014-006.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Add current clock authority/diagnosis and freshly observed merged PLAY-01 CI; permanent repair remains unauthorized.
+- **updated:** [README.md](README.md) — Direct intake to measured clock diagnosis and successful merged hosted metadata; earlier dated checkpoints preserved.
+- **updated:** [docs/README.md](docs/README.md) — Index current investigation and supersede publication-pending checkpoint with observed success.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Replace historical active-branch assumptions with main6e9acf1 intake, documentation branch, explicit approved trial/restoration, measured facts, proof categories and remaining maintenance/privacy gates.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Append separately categorized diagnostics and hosted metadata without accepting Windows product, timing repair, database or load gates.
+- **updated:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Clarify historical diagnostic imports and link current diagnosis while retaining schema1, 1000ms threshold and original failed receipts.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Update F-CI current description from hosted-pending to successful observed workflow metadata, retaining artifact and local timing limits.
+- **updated:** [docs/features.json](docs/features.json) — Match F-CI description/evidence/doc link to fresh metadata; verification remains historical_verified because hosted artifact contents were not reverified.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Add current diagnosis, guard/authorization limits and successful main/audit metadata; existing executed pipeline histories preserved.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Append current hosted successes and diagnosed recent rejection, preserving all earlier source-specific failures/results.
+- **updated:** [docs/validation/play-01.md](docs/validation/play-01.md) — Append current merged workflow observation and diagnostic limits; audited acceptance/debug closure and follow-ups unchanged.
+- **updated:** [docs/validation/clock-investigation.md](docs/validation/clock-investigation.md) — Own the detailed clock guard purpose, measurement method, Docker routine attribution, chronyd adjustment proof, approved pause/cleanup, limits and qualified next actions.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classify the owning current diagnosis with guard/configuration/capsule impact edges; existing archive wildcard covers retained raw observations.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Generated uniform change view; update only through native synchronization.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Generated file/callable/status snapshot; executable fingerprint remains unchanged.
+- **updated:** [docs/validation/archive/clock-20261014/manifest.json](docs/validation/archive/clock-20261014/manifest.json) — Classify imported host diagnostics and archived scripts; byte identity, provenance, sanitized-vs-raw distinction, failed trace setup and corrected Go mapping are explicit.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261014-001.json).
+
+### Limits and next actions
+
+- No permanent clock repair or altered acceptance threshold is authorized.
+- Ad hoc host diagnostics are not native passing test receipts or absolute UTC certification.
+- The chronyd adjustment mechanism is captured, but its learned estimate/effective system process configuration and a durable single-controller repair remain unqualified.
+- No full application/browser/database or heavy isolated CI rerun for this documentation-only change; original source-matched evidence is preserved.
+- Initial normal-user/Windows debug-shell traces were refused; a narrow rate-trace setup failed and cleaned up before a successful corrected retry.
+- Original October6 reversed evidence is not retrospectively attributed to the current traces.
+- Use recorded causal evidence before proposing further clock-manager experiments or evidence-policy changes; PLAY-02 remains unassigned.
+
 ## CHG-20261013-006 — Independent audit of PLAY-01 durable synthetic match commands and Director-authorized integration into main
 
 - Status: finalized

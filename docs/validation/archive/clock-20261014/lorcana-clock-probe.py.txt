@@ -1,0 +1,15 @@
+import datetime,json,os,time
+clocks={'utc':time.CLOCK_REALTIME,'monotonic':time.CLOCK_MONOTONIC,'raw':time.CLOCK_MONOTONIC_RAW,'boottime':time.CLOCK_BOOTTIME}
+def snapshot():
+    before=time.clock_gettime_ns(time.CLOCK_MONOTONIC)
+    values={name:time.clock_gettime_ns(clock) for name,clock in clocks.items()}
+    after=time.clock_gettime_ns(time.CLOCK_MONOTONIC)
+    values['query_span_ns']=after-before
+    return values
+start=snapshot()
+print(json.dumps({'kind':'start','layer':os.environ.get('LORCANA_CLOCK_LAYER','unknown'),'kernel':os.uname().release,'utc':datetime.datetime.fromtimestamp(start['utc']/1e9,datetime.timezone.utc).isoformat(),'clocks':{name:time.get_clock_info(name).implementation for name in ['time','monotonic']}}),flush=True)
+for sample in range(121):
+    current=snapshot()
+    elapsed={name:round((current[name]-start[name])/1e6,6) for name in clocks}
+    print(json.dumps({'kind':'sample','sample':sample,'utc_ns':str(current['utc']),'elapsed_ms':elapsed,'utc_minus_monotonic_ms':round(elapsed['utc']-elapsed['monotonic'],6),'query_span_ns':current['query_span_ns']}),flush=True)
+    if sample<120:time.sleep(.5)

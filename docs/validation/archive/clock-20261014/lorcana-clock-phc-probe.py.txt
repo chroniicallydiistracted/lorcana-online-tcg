@@ -1,0 +1,13 @@
+import datetime,json,os,time
+fd=os.open('/dev/ptp0',os.O_RDONLY)
+clock=(~fd<<3)|3
+clocks={'calendar':time.CLOCK_REALTIME,'monotonic':time.CLOCK_MONOTONIC,'raw':time.CLOCK_MONOTONIC_RAW,'hyperv_phc':clock}
+def sample():return {name:time.clock_gettime_ns(source) for name,source in clocks.items()}
+try:
+    initial=sample()
+    print(json.dumps({'kind':'start','utc_sample':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'Read-only Hyper-V physical clock versus Linux clocks; no clock adjustment','clock_device':'/dev/ptp0','values_ns':{key:str(value) for key,value in initial.items()}}),flush=True)
+    for index in range(91):
+        values=sample();elapsed={key:(value-initial[key])/1e6 for key,value in values.items()}
+        print(json.dumps({'kind':'sample','index':index,'values_ns':{key:str(value) for key,value in values.items()},'elapsed_ms':elapsed,'phc_minus_calendar_ms':(values['hyperv_phc']-values['calendar'])/1e6,'phc_minus_monotonic_elapsed_ms':elapsed['hyperv_phc']-elapsed['monotonic']}),flush=True)
+        if index<90:time.sleep(.5)
+finally:os.close(fd)

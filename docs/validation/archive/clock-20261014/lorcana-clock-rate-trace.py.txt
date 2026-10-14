@@ -1,0 +1,50 @@
+import datetime,json,os,signal,time,uuid
+from pathlib import Path
+
+def interrupted(signum,frame):
+    raise KeyboardInterrupt('trace interrupted')
+for sig in (signal.SIGINT,signal.SIGTERM,signal.SIGHUP):
+    signal.signal(sig,interrupted)
+tracing=Path('/sys/kernel/tracing')
+original={n:(tracing/n).read_text().strip() for n in ('current_tracer','tracing_on')}
+name='lorcana_rate_'+uuid.uuid4().hex[:12]
+instance=tracing/'instances'/name
+controls=tracing/'kprobe_events'
+def write_control(value):
+    fd=os.open(controls,os.O_WRONLY)
+    try:os.write(fd,(value+'\n').encode())
+    finally:os.close(fd)
+owned=[]
+created=False
+print(json.dumps({'kind':'start','utc_sample':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'45-second administrator trace of clock adjustment modes and returns; no clock changes','original_global_controls':original}),flush=True)
+try:
+    instance.mkdir();created=True
+    (instance/'tracing_on').write_text('0')
+    (instance/'buffer_size_kb').write_text('128')
+    (instance/'set_ftrace_filter').write_text('do_settimeofday64\n')
+    (instance/'current_tracer').write_text('function')
+    for event,definition in [
+      ('adjust',f'p:{name}/adjust do_adjtimex modes=+0($arg1):u32 offset=+8($arg1):s64 freq=+16($arg1):s64 status=+40($arg1):s32 tick=+88($arg1):s64'),
+      ('adjust_result',f'r:{name}/adjust_result do_adjtimex retval=$retval:s32')]:
+        write_control(definition)
+        owned.append(event)
+        (instance/'events'/name/event/'enable').write_text('1')
+    (instance/'trace').write_text('')
+    (instance/'tracing_on').write_text('1')
+    start=time.monotonic()
+    while time.monotonic()-start<45:
+        (instance/'trace_marker').write_text('LORCANA_CLOCK '+json.dumps({'utc_ns':time.time_ns(),'mono_ns':time.monotonic_ns(),'raw_ns':time.clock_gettime_ns(time.CLOCK_MONOTONIC_RAW)},separators=(',',':'))+'\n')
+        time.sleep(.5)
+    (instance/'tracing_on').write_text('0')
+    print(json.dumps({'kind':'finished','elapsed_ms':round((time.monotonic()-start)*1000),'utc_sample':datetime.datetime.now(datetime.timezone.utc).isoformat()}),flush=True)
+    print((instance/'trace').read_text(),flush=True)
+finally:
+    if created:
+        (instance/'tracing_on').write_text('0')
+        for event in owned:(instance/'events'/name/event/'enable').write_text('0')
+        (instance/'current_tracer').write_text('nop')
+        instance.rmdir()
+    for event in reversed(owned):
+        write_control(f'-:{name}/{event}')
+    after={n:(tracing/n).read_text().strip() for n in original}
+    print(json.dumps({'kind':'cleanup','instance_removed':not instance.exists(),'owned_probe_names_absent':name not in controls.read_text(),'global_controls_unchanged':after==original}),flush=True)
