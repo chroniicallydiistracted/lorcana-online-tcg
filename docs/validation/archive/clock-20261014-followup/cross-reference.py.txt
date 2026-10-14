@@ -1,0 +1,22 @@
+import datetime,json,os,subprocess,time
+fd=os.open('/dev/ptp0',os.O_RDONLY);clock=(~fd<<3)|3
+clocks={'calendar':time.CLOCK_REALTIME,'monotonic':time.CLOCK_MONOTONIC,'raw':time.CLOCK_MONOTONIC_RAW,'hyperv_phc':clock}
+def sample():return {name:time.clock_gettime_ns(value) for name,value in clocks.items()}
+script='$ErrorActionPreference="Stop"; $watch=[System.Diagnostics.Stopwatch]::StartNew(); while(($line=[Console]::ReadLine()) -ne $null){$ticks=[DateTime]::UtcNow.Ticks; $counter=$watch.Elapsed.TotalMilliseconds; [Console]::WriteLine(([ordered]@{utc_ticks=[string]$ticks;counter_ms=$counter}|ConvertTo-Json -Compress)); [Console]::Out.Flush()}'
+process=subprocess.Popen(['/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe','-NoProfile','-NonInteractive','-Command',script],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+print(json.dumps({'kind':'start','scope':'Read-only synchronized Windows/Hyper-V/Linux reference comparison','utc_sample':datetime.datetime.now(datetime.timezone.utc).isoformat()}),flush=True)
+try:
+    for index in range(31):
+        before=sample();process.stdin.write('sample\n');process.stdin.flush();line=process.stdout.readline();after=sample()
+        if not line:raise RuntimeError('Windows sampler exited before supplying a sample')
+        windows=json.loads(line)
+        midpoint={name:(before[name]+after[name])//2 for name in clocks}
+        windows_ns=(int(windows['utc_ticks'])-621355968000000000)*100
+        print(json.dumps({'kind':'sample','index':index,'linux_midpoint_ns':{key:str(value) for key,value in midpoint.items()},'windows_utc_ns':str(windows_ns),'windows_counter_ms':windows['counter_ms'],'window_ms':(after['raw']-before['raw'])/1e6,'phc_minus_windows_ms':(midpoint['hyperv_phc']-windows_ns)/1e6,'linux_calendar_minus_windows_ms':(midpoint['calendar']-windows_ns)/1e6}),flush=True)
+        if index<30:time.sleep(1)
+finally:
+    process.stdin.close()
+    try:process.wait(timeout=8)
+    except subprocess.TimeoutExpired:process.kill();process.wait()
+    os.close(fd)
+    print(json.dumps({'kind':'cleanup','windows_sampler_exit':process.returncode,'clock_device_closed':True}),flush=True)

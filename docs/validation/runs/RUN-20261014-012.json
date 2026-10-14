@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-012",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e36d223848dbee4f456bb65fcc08f07c3891168a",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-14T03:59:37.752Z",
+  "finished_at": "2026-10-14T03:59:38.175Z",
+  "recorded_at": "2026-10-14T03:59:38.175Z",
+  "time_precision": "exact",
+  "elapsed_ms": 423,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Authenticated existing bootstrap PostgreSQL connectivity after temporary clock comparison; no data recreation",
+  "log_path": "docs/validation/logs/RUN-20261014-012.txt",
+  "log_sha256": "26140bd8ff92ea3ca7677f335523ceade9cd655d8818f41d155f3f81c42813af",
+  "redactions": 0
+}

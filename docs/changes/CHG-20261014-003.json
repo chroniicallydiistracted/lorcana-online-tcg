@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261014-003",
+  "title": "Complete clock-controller root-cause investigation",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-14T04:22:45.900Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "e36d223848dbee4f456bb65fcc08f07c3891168a",
+  "task_ids": [
+    "DOC-01",
+    "DOC-02",
+    "BOOT-03"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS",
+    "F-CI"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Director requests complete investigation: identify effective chronyd owner/configuration, diagnose learned rate bias, evaluate supported repair and qualify timestamp accuracy with lightweight measurements. Retain existing guard and all earlier evidence."
+    },
+    {
+      "kind": "review",
+      "description": "Read-only approved elevated VM inspection identifies mini_init-owned chronyd181, actual startup-generated PHC configuration and biased saved/live frequency; pinned WSL and Chrony sources explain controller interference with explicitly limited binary/history inference."
+    },
+    {
+      "kind": "test",
+      "description": "Execute explicitly approved four-phase inherited/neutral/restored rate trial with independent watchdog: five-minute neutral clock tracks raw/Windows; saved tick/frequency restored, same daemon resumed, original workspace/database/Ubuntu service retained. Host observations are retrospective, not native CI success."
+    },
+    {
+      "kind": "documentation",
+      "description": "Add exact-byte follow-up capsule, historical import, current diagnosis/maintenance candidate and universal handoff/index/qualification/CI/feature descriptions. Keep original guard, game source, all old evidence and play/device/economic gates unchanged."
+    },
+    {
+      "kind": "revision",
+      "description": "Review and improve readability of the current report/index paragraphs; preserve actual captured bytes and all native records. Post-trial static verification and five bootstrap tests pass."
+    },
+    {
+      "kind": "test",
+      "description": "Native doctor, authenticated existing PostgreSQL, exact/staged capsule consistency, known-private-value scan, reviewed snapshot synchronization, static workspace verify and all five bootstrap tests pass. Final sealing/staged-file scan and documentation closure receive their own receipts; no permanent repair or full CI pass inferred."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/changes/CHG-20261014-003.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/runbooks/ci.md",
+    "docs/validation/archive/clock-20261014-followup/admin-inspection.json.b64.txt",
+    "docs/validation/archive/clock-20261014-followup/admin-inspection.ps1.txt",
+    "docs/validation/archive/clock-20261014-followup/controlled-report.json.b64.txt",
+    "docs/validation/archive/clock-20261014-followup/controlled-transcript.txt.b64.txt",
+    "docs/validation/archive/clock-20261014-followup/controlled-trial.ps1.txt",
+    "docs/validation/archive/clock-20261014-followup/cross-current.jsonl",
+    "docs/validation/archive/clock-20261014-followup/cross-neutral.jsonl",
+    "docs/validation/archive/clock-20261014-followup/cross-reference.py.txt",
+    "docs/validation/archive/clock-20261014-followup/cross-restored.jsonl",
+    "docs/validation/archive/clock-20261014-followup/external-reference-first-attempt.txt.b64.txt",
+    "docs/validation/archive/clock-20261014-followup/external-reference.txt.b64.txt",
+    "docs/validation/archive/clock-20261014-followup/manifest.json",
+    "docs/validation/archive/clock-20261014-followup/post-environment.json",
+    "docs/validation/archive/clock-20261014-followup/post-windows.json.b64.txt",
+    "docs/validation/archive/clock-20261014-followup/rate-comparison.c.txt",
+    "docs/validation/archive/clock-20261014-followup/scan.mjs.txt",
+    "docs/validation/archive/clock-20261014-followup/source-review.json",
+    "docs/validation/archive/clock-20261014-followup/trial-summary.json",
+    "docs/validation/archive/clock-20261014-followup/verify.py.txt",
+    "docs/validation/archive/clock-20261014-followup/windows-reference.ps1.txt",
+    "docs/validation/clock-investigation.md",
+    "docs/validation/logs/RUN-20261014-010.txt",
+    "docs/validation/logs/RUN-20261014-011.txt",
+    "docs/validation/logs/RUN-20261014-012.txt",
+    "docs/validation/logs/RUN-20261014-013.txt",
+    "docs/validation/logs/RUN-20261014-014.txt",
+    "docs/validation/logs/RUN-20261014-015.txt",
+    "docs/validation/logs/RUN-20261014-016.txt",
+    "docs/validation/logs/RUN-20261014-017.txt",
+    "docs/validation/logs/RUN-20261014-018.txt",
+    "docs/validation/logs/RUN-20261014-019.txt",
+    "docs/validation/logs/RUN-20261014-020.txt",
+    "docs/validation/logs/RUN-20261014-021.txt",
+    "docs/validation/runs/RUN-20261014-010.json",
+    "docs/validation/runs/RUN-20261014-011.json",
+    "docs/validation/runs/RUN-20261014-012.json",
+    "docs/validation/runs/RUN-20261014-013.json",
+    "docs/validation/runs/RUN-20261014-014.json",
+    "docs/validation/runs/RUN-20261014-015.json",
+    "docs/validation/runs/RUN-20261014-016.json",
+    "docs/validation/runs/RUN-20261014-017.json",
+    "docs/validation/runs/RUN-20261014-018.json",
+    "docs/validation/runs/RUN-20261014-019.json",
+    "docs/validation/runs/RUN-20261014-020.json",
+    "docs/validation/runs/RUN-20261014-021.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Record newly approved trial scope and proved root-rate mechanism, with restored resources and no lasting repair or additional play gates."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Provide current diagnosis and maintenance link without changing executable foundation or acceptance."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Index the completed rate-isolation result and distinguish it from permanent repair/CI qualification."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Record actual root/host observations, valid native toolchain/database checks and remaining absolute/long-term/device gates."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Explain real clock discrepancy and keep guard/old failed receipts; link supported maintenance candidate instead of treating neutral trial as a pipeline pass."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Update exact authorization, branch/source, diagnostics/native categories, resources, limitations and next steps."
+    },
+    {
+      "path": "docs/validation/clock-investigation.md",
+      "disposition": "updated",
+      "reason": "Update unresolved owner/rate checkpoint with proved current causality, raw results/restoration, source-based inference limits and a concrete unapplied repair plan."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Extend current investigation impact edge to its new archive capsule; existing archive/evidence wildcard classification retained."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-CI records new rate causality without promoting artifact/repair acceptance; F-DOCS links actual current-source native18 review/synchronization proof."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing null-time historical import and native paired-timing schema apply unchanged; no threshold/result policy change."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Existing scoped evidence, source-matched checks and single heavy workload rules remain; current diagnostic scope does not start new product work."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "WSL source/Dev Container/host orchestration and protected PostgreSQL ownership are unchanged; temporary approved diagnosis is not an architecture decision."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Merged source/hosted result and current clock-report link remain correct; diagnosis does not change durability or privacy acceptance."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014/manifest.json",
+      "disposition": "historical_preserved",
+      "reason": "Earlier24-payload capsule and all sealed RUN/CHG bytes retained; no corrected timestamps or retroactive pass."
+    },
+    {
+      "path": "docs/validation/archive/clock-20261014-followup/manifest.json",
+      "disposition": "updated",
+      "reason": "New classified archive records19 original/derived/script payloads with decoded-byte digests, explicit authority/rejection/failed-capture provenance, runtime-history/fault-test and UTC limitations; no binary distribution."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-010.json",
+      "outcome": "historical",
+      "scope": "Reported root inspection, four-phase approved temporary trial and external references; null qualified times/exits; includes rejection/failed capture and restoration."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-011.json",
+      "outcome": "passed",
+      "scope": "Post-trial container doctor7 environment checks."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-012.json",
+      "outcome": "passed",
+      "scope": "Authenticated existing bootstrap PostgreSQL connectivity; no recreation."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-013.json",
+      "outcome": "passed",
+      "scope": "Static capsule19 digests/decoded/staged bytes, phase and paired-clock arithmetic/restoration/protected source checks."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-014.json",
+      "outcome": "passed",
+      "scope": "Static changed public-file and6 decoded payload supported private-value/pattern scan; not full-history/arbitrary secrecy."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-015.json",
+      "outcome": "passed",
+      "scope": "Draft documentation synchronization passes classified coverage, callable/source snapshots, links and sealed evidence history."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-016.json",
+      "outcome": "passed",
+      "scope": "Workspace static verify passes configuration/CI policy, offline rules/vendor/entropy checks, documentation and JSON/JS syntax; no full build/browser suite."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-017.json",
+      "outcome": "passed",
+      "scope": "Bootstrap1 live HTTP and4 credential generation/preservation tests pass; no new game/device acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-018.json",
+      "outcome": "passed",
+      "scope": "Reviewed current prose, impact map, full file/callable snapshot, links, changelog and sealed history pass draft synchronization; app fingerprint unchanged."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-019.json",
+      "outcome": "passed",
+      "scope": "Finalized current report/handoff/features and generated snapshot pass synchronization, semantic review dispositions, source/callable/link/changelog/evidence gates; valid paired timing."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-020.json",
+      "outcome": "passed",
+      "scope": "Final known-private-value and token/URI-pattern scan of changed public files and decoded captures after sealing; no arbitrary-secret/full-history claim."
+    }
+  ],
+  "limitations": [
+    "Investigation establishes present inherited-rate cause; no lasting clock repair or absolute UTC certification.",
+    "Chrony source supports a controller feedback hypothesis; exact packaged scheduler/binary source equivalence and initial learning history are not reconstructed.",
+    "Approved trial restores original daemon/saved rate; normal live drift/history updates continue and forced watchdog fallback was not separately tested.",
+    "No heavy CI/build/browser/production suite or product source changes; all old failed receipts remain failed.",
+    "No further pause/persistent settings/restart/publishing authorization; maintenance candidate is documented, not applied."
+  ],
+  "next_actions": [
+    "Review local diagnosis/evidence commit; publishing/main integration not authorized by this scope.",
+    "Obtain focused Director authorization for separately scoped supported clock maintenance; preserve original guard/history/data.",
+    "PLAY-02 remains unassigned; no game/privacy/economic gate acceptance from this investigation."
+  ]
+}

@@ -479,7 +479,7 @@
       "name": "Universal documentation governance",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Classified impact map, exact source/callable/file snapshots, links/changelog and immutable evidence consistency. Current-source native gate passed RUN046 with valid timing. Tool checks require explicit semantic review; whole build/browser timing qualification remains separate.",
+      "description": "Classified impact map, exact source/callable/file snapshots, links/changelog and immutable evidence consistency. Current source native synchronization/gate passed RUN-20261014-018 with valid paired timing; semantic review and long-term clock/CI/device qualification remain separate.",
       "sources": [
         "scripts/documentation-lib.mjs",
         "scripts/check-documentation.mjs",
@@ -520,7 +520,8 @@
         "docs/validation/runs/RUN-20261013-112.json",
         "docs/validation/runs/RUN-20261013-114.json",
         "docs/validation/runs/RUN-20261013-115.json",
-        "docs/validation/runs/RUN-20261013-116.json"
+        "docs/validation/runs/RUN-20261013-116.json",
+        "docs/validation/runs/RUN-20261014-018.json"
       ]
     },
     {
@@ -654,7 +655,7 @@
       "name": "Reproducible CI and qualified build artifacts",
       "implementation": "implemented",
       "verification": "historical_verified",
-      "description": "Guarded14-stage pipeline: local113 completed child stages/artifact validation but failed clock_changed, preserved unchanged. RUN-20261014-002 freshly observes successful hosted audit38482253396/main38483130685 at merged6e9acf1; metadata only, hosted artifacts/logs not downloaded/reverified. Prior full artifact qualification remains historical; local timing repair unqualified. See the dated clock investigation.",
+      "description": "Guarded14-stage pipeline: local113 completed child stages/artifact validation but failed clock_changed, preserved unchanged. RUN-20261014-002 freshly observes successful hosted audit38482253396/main38483130685 at merged6e9acf1; metadata only, hosted artifacts/logs not downloaded/reverified. Prior full artifact qualification remains historical; local timing repair unqualified. See the dated clock investigation. CHG-20261014-003 identifies the root chronyd/configuration and proves inherited rate causality in an approved temporary trial; original services restored. Permanent clock repair and absolute UTC certification remain unqualified; guard and application bytes unchanged.",
       "sources": [
         "scripts/ci/**",
         "scripts/ci-local.py",

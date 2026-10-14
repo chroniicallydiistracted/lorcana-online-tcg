@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-14T01:29:37.507Z",
+  "observed_at": "2026-10-14T04:22:56.603Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -1925,7 +1925,8 @@
         "scripts/ci-local.py",
         "scripts/ci/**",
         ".devcontainer/**",
-        "docs/validation/archive/clock-20261014/**"
+        "docs/validation/archive/clock-20261014/**",
+        "docs/validation/archive/clock-20261014-followup/**"
       ]
     }
   ],
@@ -1966,7 +1967,8 @@
     "CHG-20261013-005",
     "CHG-20261013-006",
     "CHG-20261014-001",
-    "CHG-20261014-002"
+    "CHG-20261014-002",
+    "CHG-20261014-003"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2005,7 +2007,8 @@
     "CHG-20261013-005": "finalized",
     "CHG-20261013-006": "finalized",
     "CHG-20261014-001": "finalized",
-    "CHG-20261014-002": "finalized"
+    "CHG-20261014-002": "finalized",
+    "CHG-20261014-003": "finalized"
   },
   "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
   "files": {
@@ -2023,8 +2026,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "ac1144b542309bb8aa58f167ae801a6c4972fe495755b9f7a5ce5b31cff6db2d",
-    "README.md": "965f8f79f965f8014f6609833316af48d8b2700d41c1009386fa05fedd6b8601",
+    "AGENTS.md": "2da56d27e283c026135b5df270d27fa8b94d0e6bd165d49d33e8ba2c7a33d659",
+    "README.md": "8da8e3063632f4c6df266142d5042d744d0a4e95f9e646031df6c1772d721b76",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2062,9 +2065,9 @@
     "docs/CHANGELOG_FORMAT.md": "de002a3a7f5df4525782d6cabce8bf5d03fbfa626df0b4255cb7c5dddf046efd",
     "docs/DEVELOPMENT_WORKFLOW.md": "1225237a8cb27ba923fc1138e7aa35875d2cb9f443cce22575a5a72763f5b880",
     "docs/FEATURES.md": "5ea3bbe95931ebbf720eebd7f6eb2e7c136f7aaa7e2ec931275509743af78747",
-    "docs/HANDOFF.md": "c12ef269def5be787a0ea8c94dda78b77f942ce0bad9006e8c0a62a393ab186a",
-    "docs/README.md": "1adc2253f0a3dbbd418ac0e7a228ae448aca43cb9685a29f79b521e2e9562037",
-    "docs/WORKSPACE_QUALIFICATION.md": "59cc87393c33fe79331efc7b61fe11359ab2321560d822c33aafc195be667473",
+    "docs/HANDOFF.md": "b667f4782dc4e2393dfc14cb37b7c051f89ead2f5460de24906f3cc06820f191",
+    "docs/README.md": "a41d82a1c33120146dc6ac6fc95147ad2ee0d20efba4e484a6d5fd31a7ed9cff",
+    "docs/WORKSPACE_QUALIFICATION.md": "95a2bad2c7c58c2a69a66b7abbd944bc260ada6e928345803f68bf797bf56d31",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "b214b90422f991ed45fdb306cfb04601819ae796ed3f34a099ac8fdc77508862",
     "docs/adr/0003-documentation-evidence.md": "71a56e217ba1fa49a3a9fd070996a65d9dd967f7ebc51ab4a7f25e73620c5385",
@@ -2082,8 +2085,8 @@
     "docs/audits/2026-10-06-project-audit.md": "8f2af5b04e524bcb18aea4471aecc3bef0e1c2414c512ae27e2dab14c1820b60",
     "docs/contracts/protocol.md": "c8052a551af230d5cd98e529feee3272657afcff84049d2e938107960d6263d9",
     "docs/contracts/release.md": "83334fde48d969266d5d82f10e5d47a2633fd2150603aef4cae3122cc8dc2976",
-    "docs/documentation-map.json": "ec5961b921dae91f9e20da9868e28d0576abaf3a45a894c595b6747d096e09f1",
-    "docs/features.json": "6395cfc364a39f83e9fceb7c157a4e31461c5746117eb6f7e6f26af1e7f58d6e",
+    "docs/documentation-map.json": "9ba54f56b095abb2488976f0f36041efff91a77f5a2f37a283fd4780e43fa8b6",
+    "docs/features.json": "2df0b7a96b9d5215bf326b0b2c464bdaddc143585230f91dcb955cf921ed73cc",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "66b91822242f8ad1f400910d49dc3d71ad5f606f96af06ccb3d4dfed0ceefa93",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2121,7 +2124,7 @@
     "docs/rules/README.md": "00ee9328b18484b3d1d30e31181920a5c0208a39cf10bd7d7d05360e367bb9d4",
     "docs/rules/source-specs-supplement.json": "0efe5f0d481ed436bfb196005dc3d7fad574b2f1040e7d4eaba95b9f39939e0a",
     "docs/rules/source-specs.json": "03207c3e5692ba63735df07e7cb2333ffa38b4146382fb987f2cc46c5b220a0e",
-    "docs/runbooks/ci.md": "ecb39a385154a727d20852b19188062076d142ff28c0df529510bd2c84ec73e9",
+    "docs/runbooks/ci.md": "f692d94a9b3bbc36c5dd12351d2739eedf18801b3fb99643cf4101e179b0c4ea",
     "docs/runbooks/database.md": "7cda86248e2ffb46aeb4d7f4b47c9c12e05f9e5d433f9a2683b9b23fe4850a08",
     "docs/runbooks/engine.md": "44598c8c5d411a77cbddc026565255c7c19d8a307ff3c5461cbed1a015bd24d9",
     "docs/runbooks/match-commands.md": "2490d6b00e62350595c6d9d6ca81474eee5f3bf6f1e67a65c01e5e60ce219bf1",
@@ -2142,6 +2145,26 @@
     "docs/validation/archive/RUN-20261006-017-original.json": "30250d26ce512d9d37327b6c9f257a8b144143ab0dd3e22947fe8e5d5b02be2a",
     "docs/validation/archive/RUN-20261013-088-crash-truncated.json.bytes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "docs/validation/archive/RUN-20261013-088-crash-truncated.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/validation/archive/clock-20261014-followup/admin-inspection.json.b64.txt": "f47ad474faca6831e7a2f2d4f7aec4e28cb57f30519825e8947b28150fd58dcc",
+    "docs/validation/archive/clock-20261014-followup/admin-inspection.ps1.txt": "800ac89170a6422f81be3f7c017391f30dac6586da360650f358cf4d95026a58",
+    "docs/validation/archive/clock-20261014-followup/controlled-report.json.b64.txt": "80b496cd1cdab2c6a6f3f790fc5e0745d5147be33d057f69705ccef5b197e799",
+    "docs/validation/archive/clock-20261014-followup/controlled-transcript.txt.b64.txt": "4e234f74d950e62277c267059c69c98355292f49648be43649c909583e1d619d",
+    "docs/validation/archive/clock-20261014-followup/controlled-trial.ps1.txt": "e9056f292f8305f82b84489b726f40f8c3e90c4ea54a90dfdd3f308f5120b5ce",
+    "docs/validation/archive/clock-20261014-followup/cross-current.jsonl": "348c0c9a4371e283d903530b5ecd3c469c81155133553dd767fb66d378e8936f",
+    "docs/validation/archive/clock-20261014-followup/cross-neutral.jsonl": "8588cf9dbd8e80d1ed0ea25bddc97ba44eac7f2a41ce9bd5a28d1a0714b54915",
+    "docs/validation/archive/clock-20261014-followup/cross-reference.py.txt": "df0c81dc2201e7b73e3b5cfd39425c097a74d63ef6f7c3dc333d912b5283f252",
+    "docs/validation/archive/clock-20261014-followup/cross-restored.jsonl": "8c84cb83db10f893f871fab94c77cc96f0afb20be56613731f3e9c6d6755019d",
+    "docs/validation/archive/clock-20261014-followup/external-reference-first-attempt.txt.b64.txt": "620b37b8469c157ed27742c0063143675f4ce934f7e522d92efef663d794e2ef",
+    "docs/validation/archive/clock-20261014-followup/external-reference.txt.b64.txt": "a9620f2ff75b2c3809214283dc68e6a3d0c0a29885f5410521a07ccb7d2c7007",
+    "docs/validation/archive/clock-20261014-followup/manifest.json": "3f1f20891cece270cbb601fb7f6ff27a0e31e6591cc775cdac112d9e2f7f512e",
+    "docs/validation/archive/clock-20261014-followup/post-environment.json": "7d19a2090e3e0e2658b208ef2c95065d9d3f9997132b820723e2908980bbb679",
+    "docs/validation/archive/clock-20261014-followup/post-windows.json.b64.txt": "88fb38b488b04e80a767db71633c794df5f487b088d83e97578df6adf201a83b",
+    "docs/validation/archive/clock-20261014-followup/rate-comparison.c.txt": "bd04b37a07ccadd04e1ec3ad3b9daf822ac3d792e4330c2634659d7277df8c0a",
+    "docs/validation/archive/clock-20261014-followup/scan.mjs.txt": "0d6729df65afecd57d8dd084641aed6583fe5c83ac7f780f7bd056e40828d83f",
+    "docs/validation/archive/clock-20261014-followup/source-review.json": "160f7c0acf8de031444365a3c400b7c7b6d703af78da9992ef1bbe3d29957917",
+    "docs/validation/archive/clock-20261014-followup/trial-summary.json": "1d3d68f2088500b6cba6d8ecf76408e1275d622c0870560070a03363b070a424",
+    "docs/validation/archive/clock-20261014-followup/verify.py.txt": "a7e34b5946c557854564beff697016bcfcfde7ed133c851d88006b92330d7a8c",
+    "docs/validation/archive/clock-20261014-followup/windows-reference.ps1.txt": "7f05fe4e323fd336c7998edb2387bcac703ee7b5badd0438d76d6d86e9229fb9",
     "docs/validation/archive/clock-20261014/comparison.jsonl": "fc90ef68d8ac8f005ddc12026b539eb311078f9b3de4849cff51545f0209f4a2",
     "docs/validation/archive/clock-20261014/container-node.jsonl": "53104b1c089ac5b19b21bbc378341a7f6d4fc65f985a977608b41802fa65f442",
     "docs/validation/archive/clock-20261014/container-python.jsonl": "1f02a88c0d7f858d18f44aab460d08475c108c7c693bce7025cdfbcf10649103",
@@ -2173,7 +2196,7 @@
     "docs/validation/boot-03.md": "1f2737fe5516eff21cc7a27e727084f606e70ab36852c305f49854626cc41148",
     "docs/validation/boot-04.md": "3b4b01e87581e52b50d20b02485082239b02535127c758de62f0cdd0eaa84b4f",
     "docs/validation/boot-05.md": "57e3f5461c802aed0ed403da34b4f8e9c5e141c0e61ffc518d70c6ff157869fc",
-    "docs/validation/clock-investigation.md": "3d60c45456d9b5d02e1df3fa9aedb607d13faa95c6871164e6c6465f48a5a94f",
+    "docs/validation/clock-investigation.md": "479ba1022bcf43451b537583090f0edf6e849dd5ab059f960eeb92cc22e5fa56",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
     "docs/validation/play-01-hosted-baseline.json": "4b04a297bb0d17c56eef75fae7fc0ba725dbab4679d7dab931c176cb6c08373a",
     "docs/validation/play-01-interruption.json": "d582f8c78804b693b605466f433fefb928307e48a3cb21c4a191eb62f5581c40",

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-021",
+  "category": "static",
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path\nimport subprocess\npaths=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()\nfor path in paths:\n    assert subprocess.check_output(['git','show',':'+path])==Path(path).read_bytes(), 'Canonical Git bytes differ: '+path\nsubprocess.run(['git','diff','--cached','--check','--','.',':(exclude)docs/validation/logs/**'],check=True)\nprotected=['docs/changes/CHG-20261014-001.json','docs/changes/CHG-20261014-002.json','docs/validation/archive/clock-20261014']\nassert not subprocess.check_output(['git','diff','--name-only','e36d223','--',*protected],text=True).strip(), 'Earlier sealed diagnosis bytes changed'\nprint('PASS canonical staged bytes for '+str(len(paths))+' files; captured-log formatting preserved; earlier sealed diagnosis unchanged.',flush=True)\nraise SystemExit(subprocess.run(['pnpm','docs:check']).returncode)\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e36d223848dbee4f456bb65fcc08f07c3891168a",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-14T04:24:18.664Z",
+  "finished_at": "2026-10-14T04:24:30.084Z",
+  "recorded_at": "2026-10-14T04:24:30.084Z",
+  "time_precision": "exact",
+  "elapsed_ms": 11420,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final canonical staged-file equality and documentation closure for finalized CHG-20261014-003, with unchanged sealed earlier evidence and source fingerprint",
+  "log_path": "docs/validation/logs/RUN-20261014-021.txt",
+  "log_sha256": "aaf629a411f938fbd47a6f083d62c77429a2db0fe305aa0bb8e7e545bf7e51e6",
+  "redactions": 0
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-011",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "run",
+    "doctor"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e36d223848dbee4f456bb65fcc08f07c3891168a",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-14T03:58:35.874Z",
+  "finished_at": "2026-10-14T03:58:36.620Z",
+  "recorded_at": "2026-10-14T03:58:36.620Z",
+  "time_precision": "exact",
+  "elapsed_ms": 746,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Post-trial Dev Container toolchain and private environment doctor; no permanent clock repair claimed",
+  "log_path": "docs/validation/logs/RUN-20261014-011.txt",
+  "log_sha256": "eadcd07d924b6bef8a145b80bcf83588d3ba1ebecffeee44671b672d55c84c01",
+  "redactions": 0
+}

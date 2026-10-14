@@ -1,12 +1,12 @@
 # Local clock rejection investigation
 
-Recorded October 14, 2026 UTC (October 13, America/Phoenix). Intake was clean `main` at `6e9acf1ec2130386e6687f48513a30aaf32b397d`; documentation work uses `codex/clock-investigation`, CHG-20261014-001. Executable fingerprint remains `2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9`. These are dated observations of this PC, not a claim that future clock behavior is unchanged.
+Recorded October 14, 2026 UTC (October 13, America/Phoenix). Intake was clean `main` at `6e9acf1ec2130386e6687f48513a30aaf32b397d`; documentation work uses `codex/clock-investigation`, CHG-20261014-001. Executable fingerprint remains `2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9`. These are dated observations of this PC, not a claim that future clock behavior is unchanged. CHG-20261014-003 continues at e36d223 with an approved root-namespace inspection and temporary rate-isolation test; the follow-up below is the current finding.
 
 ## Finding and scope
 
 Docker Desktop's `initd` deliberately obtains Windows backend time and sets Linux calendar time every 30 seconds. A kernel trace catches those calls at the calendar jumps. A second trace identifies `chronyd` applying successful tick/frequency changes that slow the shared Linux clock; Ubuntu's `systemd-timesyncd` also adjusts that clock. Windows, Hyper-V's reference and Linux's unadjusted timer agree closely in the paired comparison. The adjusted Linux elapsed timer runs slower during that observation. This explains how calendar corrections accumulate enough difference against the elapsed timer to reject otherwise completed local CI.
 
-The immediate mechanism and active controllers are established. Why chronyd acquired its large correction estimate, the exact ownership/configuration of its hidden system process, and a durable single-controller repair remain unqualified. Interaction between controllers is a supported explanation; no isolated trial has established the complete feedback chain or a CPU/firmware defect. The first October 6 reversed receipt is historical and is not retrospectively attributed to this trace.
+The immediate mechanism and active controllers are established. The follow-up below now identifies mini_init as the owner of the hidden daemon, records its effective PHC configuration and proves that its inherited kernel-rate correction distorts the elapsed timer. How its estimate first became biased remains a source-supported controller-interference explanation, rather than a complete reconstruction of historical learning. A lasting repair and a CPU/firmware defect are not established. The first October 6 reversed receipt is historical and is not retrospectively attributed to this trace.
 
 The Director authorized bounded administrator clock traces and a five-minute pause of **only Ubuntu's** time-sync service, followed by restoration. No permanent settings, guard threshold, Windows service, Docker service, kernel parameter, credential or application behavior changed. No heavyweight CI was rerun. The pause/restoration changed live timing behavior temporarily; it was not wholly read-only.
 
@@ -27,7 +27,7 @@ The [capsule manifest](archive/clock-20261014/manifest.json) identifies 24 retai
 - A 45-second read-only Ubuntu trace confirms an actual `clock_adjtime` mutation with `ADJ_OFFSET` and a +389,052,151 ns offset, returning `TIME_OK`. Its deliberate observation timeout124 detached the tracer. This was an observation window, not a failed application test.
 - A later 45-second kernel trace captures 12 successful `chronyd` calls with modes16386 (`ADJ_TICK | ADJ_FREQUENCY`), tick values9806–9822 microseconds versus nominal10000, plus a successful Ubuntu offset adjustment and another `initd` calendar-set call. Only mode-selected fields and matched returns are retained in the [sanitized trace](archive/clock-20261014/rate-adjustments.jsonl); unused structure members contained indeterminate values and are not evidence. The private instance and both probes were removed, global controls unchanged. The first setup attempt failed because Python text append sought on the virtual control file; cleanup succeeded and the retry used OS-level writes. This failure is retained in the manifest and first-attempt transcript.
 
-The WSL system `chronyc` reports PHC0 as selected, with large variable frequency estimates (roughly16,000–18,000 ppm fast across observations). Its process does not appear in the default Ubuntu/Docker namespace listings, so the system-root `/etc/chrony.conf` is **not** certified as the running daemon's effective configuration. A daemon's estimate is not an independent measurement of faulty hardware.
+The WSL system `chronyc` reports PHC0 as selected, with large variable frequency estimates (roughly16,000–18,000 ppm fast across observations). Its process does not appear in the default Ubuntu/Docker namespace listings, so that first child-namespace inspection did **not** certify its `/etc/chrony.conf` as the running daemon's effective configuration. The approved follow-up resolves the true parent namespace/configuration below. A daemon's estimate is not an independent measurement of faulty hardware.
 
 ## Approved pause and restoration
 
@@ -63,7 +63,7 @@ The first three agree within sampling uncertainty; the adjusted timer is about1.
 
 The workspace `01ccec184b44` and healthy original PostgreSQL `c7cd58258c19`, Compose project`lorcana-online-tcg_devcontainer`, remain available. Node24.21.0/pnpm10.33.0/Bun1.4.2 and source/configuration/requirement bytes are unchanged. Application checks run in that container; administrator host traces are separately categorized. No game listener was started by the investigation. All owned samplers, tracer instances/probes and restore timers completed or were removed; no database reset/recreation or global cleanup occurred.
 
-Before another maintenance trial, establish the running system chronyd's actual service/configuration/namespace and a supported way to isolate it from other clock controllers. Any pause of it, persistent setting, manual clock reset or WSL/Docker restart needs new Director authorization. Measure a lightweight paired-clock window before considering another heavy CI run. Ubuntu's general guidance on avoiding competing synchronization services is useful context; this PC's unsuccessful Ubuntu-only trial overrides treating that as a proven fix.
+The first checkpoint required identifying the running chronyd's actual owner/configuration/namespace before another trial. CHG-20261014-003 completes that identification and the specifically approved temporary isolation below. Additional pauses, persistent settings, manual calendar resets or WSL/Docker restarts still need new Director authorization. Measure a lightweight paired-clock window before considering another heavy CI run. Ubuntu's general guidance on avoiding competing synchronization services is useful context; this PC's unsuccessful Ubuntu-only trial overrides treating that as a proven fix.
 
 PLAY-01 remains complete at the unchanged source. RUN-20261014-002 freshly observes successful public GitHub workflow/job metadata for audit run38482253396 and main run38483130685, both at6e9acf1. Hosted test counts/all14 internal stages were supplied by the Director; this metadata probe does not independently recount those tests or verify downloaded artifacts. PLAY-02 privacy, PLAY-03 transport/recovery, PLAY-04 clocks, authenticated delivery, real-device/performance and ordinary/official/reward admission remain gated. This diagnostic work adds no gameplay acceptance.
 
@@ -84,3 +84,85 @@ The archived consistency checker recomputes all capsule digests (including decod
 ## Git portability correction — CHG-20261014-002
 
 The initial22-payload capsule passed RUN003. Staging review found two Windows captures contain CRLF, which the unchanged Git attributes would normalize. Their exact original bytes now use base64 text with both encoded and decoded byte counts/digests; no calendar sample is edited. The original manifest/checker are preserved as two additional payloads, making24. RUN-20261014-008 passes the final checker against staged Git bytes, so a canonical checkout retains the same evidence. [CHG-20261014-002](../changes/CHG-20261014-002.json) records this correction and its closure. Earlier native records/logs stay unchanged. This corrects archive representation only; it adds no clock repair or application acceptance.
+
+## Root-namespace and rate-isolation follow-up — CHG-20261014-003
+
+This completes the authorized investigation of the **current rejection mechanism**. It does not implement a lasting environment repair. The [follow-up capsule](archive/clock-20261014-followup/manifest.json) retains 19 payloads, including raw admin captures, all four phases, three paired cross-system observations, source-review digests, failed first external-reference capture, helper/script snapshots and read-only consistency/privacy checkers. Windows CRLF/console bytes are encoded with decoded digests before staging. RUN-20261014-010 is a historical import with null qualified execution times, not a passing seven-minute CI receipt. Native checks qualify capsule/document consistency and retained environment access separately.
+
+### Actual daemon and source
+
+The Director-approved elevated Windows console reaches the real VM root namespaces, unlike Ubuntu root or `wsl --system`'s child namespace. It observes mini_init PID 1 and chronyd PID 181, PPID 1, PID namespace `4026531836` / mount namespace `4026531832`, running `/sbin/chronyd`. Its ELF SHA-256 is `53c4cff03448e1f9be758a95eccd40a351ee1d5fd8a9d36ee9448a814c7b3b1b`. The Azure Linux package is `chrony-4.5-1.azl3.x86_64`; the client reports DEVELOPMENT, so upstream 4.5 source is a qualified explanatory baseline, not a claim that the packaged ELF is byte-identical to unpatched upstream.
+
+WSL release 2.7.14 resolves to commit `372dd3499231809730b551fddb58ce50baff6ee5`. Its StartTimeSyncAgent writes the six-line PHC configuration and launches chronyd from mini_init; the live parent/configuration match that implementation. Actual daemon configuration:
+
+```text
+driftfile /var/lib/chrony/drift
+makestep 1.0 3
+rtcsync
+leapsectz right/UTC
+logdir /var/log/chrony
+refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
+```
+
+The saved estimate was 23,697.905598 ppm with error 724.667591 ppm; the live tracking estimate was 27,016.688 ppm fast. The later trial used a kernel correction near 27,600 ppm. These estimates are software state. Read-only pairing shows the unadjusted Linux timer and Hyper-V reference agree with Windows, rather than a measured oscillator running 2.7% fast. Editing Ubuntu's chrony configuration would not change this parent daemon. WSL generates the parent configuration at startup, so a live edit is not a demonstrated persistent control.
+
+### Controlled test and restoration
+
+The Director expressly approved pausing only WSL chronyd for about six minutes, neutralizing inherited tick/frequency correction for five minutes, then restoring the saved rate and resuming the same daemon. Automatic review had rejected the original trial proposal under read-only authority; that command did not execute. Compilation/read-only preparation proceeded safely, then the approved trial ran. No additional pause or persistent repair is inferred from this authorization.
+
+The static helper pins PID 181 using a pidfd, arms a separate pipe/deadline watchdog before pausing it, samples calendar/adjusted/raw clocks and uses the unadjusted clock to bound phases. Only ADJ_TICK/FREQUENCY are changed; it never sets calendar time. Ubuntu's time service and Docker continue throughout. A 40-second paused phase first retains the old rate, then a 300-second phase uses nominal tick 10000/frequency 0. Exact source and launch script are archived text; they are not installed development commands.
+
+| Phase | Raw elapsed | Calendar minus adjusted elapsed | Adjusted rate versus raw |
+|---|---:|---:|---:|
+| Original daemon running |40.347164 s |+854.087973 ms |−27707.557982 ppm |
+| Daemon paused, inherited correction |40.477551 s |+848.631973 ms |−27595.836356 ppm |
+| Daemon paused, neutral correction |300.448200 s |+658.302580 ms |+0.001035 ppm |
+| Saved correction restored, daemon resumed |40.500991 s |+798.396585 ms |−21907.562064 ppm |
+
+The neutral phase includes transition corrections; its 658 ms difference is below the existing 1,000 ms criterion for that observation only. No CI workload ran during it. The restored phase includes resumption/relearning transients; sampled kernel state temporarily reports unsynchronized, and final chrony tracking reports Normal. These windows are not long-term stability or capacity proof.
+
+The helper successfully reapplied saved tick 9724/frequency 272890 (kernel return 0), resumed the same PID 181 (return 0), reaped its watchdog and exited 0. Final tracking identifies PHC0 with 27,611.703 ppm fast, and the six-line configuration is unchanged. Windows captured 422,191 ms elapsed. The console client does not terminate on root logout; the adapter killed only its owned Windows client after the Linux result marker, giving that client exit −1. This is not a failed helper. The owned administrator launcher subsequently exited. Forced watchdog fallback was not separately fault-injected; normal arming/reaping is observed.
+
+No persistent settings were edited. Chronyd can continue writing its drift estimate as part of ordinary operation; the test restores saved kernel fields and the original process, not byte-identical learned history. Ubuntu remains active/enabled with its existing PID 178796. Original workspace `01ccec184b44` and healthy PostgreSQL `c7cd58258c19` remain running. No credential/volume recreation, game listener, Windows resync, global clock reset, Docker/WSL restart or heavy CI was performed.
+
+### Independent paired comparison
+
+Each observation discards warm-up indices 0–1 and retains indices 2–30, with before/after IPC bounds below 1 ms. Owned Windows samplers exit0 and close the read-only PHC descriptor.
+
+| Observation | Windows elapsed | Linux adjusted elapsed | Adjusted minus Windows |
+|---|---:|---:|---:|
+| Before trial |28805.423400 ms |28019.241419 ms |−786.181981 ms |
+| During neutral correction |28024.771800 ms |28024.780875 ms |+0.009075 ms |
+| After restoration |28701.272800 ms |28021.598070 ms |−679.674730 ms |
+
+Linux raw and Hyper-V elapsed readings remain within 0.1 ms of Windows at these endpoints, inside query uncertainty. Changing the kernel correction removes the large elapsed-rate discrepancy and restoring it brings the discrepancy back. This establishes rate causality on this PC, without treating a daemon's hardware-drift estimate as independent hardware evidence.
+
+### Why the competing controllers matter
+
+Docker initd's measured subsecond calendar corrections, WSL chronyd's PHC rate discipline and Ubuntu's external NTP adjustments act on one shared kernel clock. Chrony upstream 4.5 recognizes unexpected external jumps only beyond its 10-second detection threshold. The much smaller Docker corrections can remain in measurement history and be interpreted as drift; Ubuntu also targets external UTC while the other controllers follow Windows. This explains a plausible feedback path toward a biased frequency estimate. The installed ELF's exact scheduler constant and the complete initial estimator history were not independently reconstructed, so that learning explanation remains an inference. The actual slowing correction and its effect are directly tested.
+
+Stopping Ubuntu alone previously failed. Stopping chronyd alone retains the bad rate. A calendar-only resync does not remove inherited tick/frequency state. Repeatedly setting Linux time, widening/removing the guard or patching vendor binaries would not establish accurate timekeeping. The current clock guard correctly detects a real discrepancy; its logic, threshold and earlier failed receipts remain unchanged.
+
+### Absolute UTC is a separate issue
+
+The read-only Windows stripchart obtained successful samples from time.windows.com, time.cloudflare.com and ntp.ubuntu.com. Before the trial their offsets were typically +0.46 s, one +0.409496 s. Afterward offsets were +0.484323–+0.497304 s, with round-trip delays 0.030308–0.166681 s. Positive reference offsets indicate Windows is behind those references. W32Time remains Stopped/Manual. No Windows service change or resynchronization occurred.
+
+These independent, unauthenticated network references suggest a roughly half-second Windows UTC error; round-trip delay/path asymmetry and source trust bound the conclusion. They do not certify absolute UTC. A constant error can pass the project duration guard. Aligning Windows UTC is therefore worthwhile, but fixing only that offset does not neutralize Linux's existing 2.7% correction.
+
+### Repair recommendation and acceptance plan
+
+Retain the guard and hosted passing PLAY-01 evidence. A lasting repair is a separate maintenance change requiring Director authorization; the temporary proof is complete and all paused resources are restored. The reviewable candidate is:
+
+1. Save current Windows time policy, Ubuntu service/configuration and WSL/Docker versions; preserve source, credentials and the original database volume. Confirm whether Windows policy is managed before changing it.
+2. Restore supported Windows automatic time synchronization and measure external offsets with round-trip bounds. Remove Ubuntu's overlapping Internet time controller only as an explicitly authorized service decision. The earlier Ubuntu-only test prevents claiming that action alone solves the problem.
+3. Reset/relearn the biased WSL chronyd state through a supported maintenance path while Windows and the remaining controllers share the same reference. Chrony's documented `reset sources` discards measurements, but alone does not prove removal of inherited rate or prevention of renewed interference. No reset command was executed. WSL's documented configuration table and pinned startup source provide no qualified persistent toggle for this root daemon; do not install a boot-time kill loop or rewrite vendor images as an incidental repair. If the same bias returns, this capsule is ready for authorized Microsoft/Docker support review.
+4. Measure at least 20 minutes at low load and repeat after sleep/wake and any authorized restart. Require paired calendar/elapsed difference within the existing 1 s criterion throughout the qualification window, raw/Windows/reference agreement within sampling bounds and separately assessed external UTC. Record restored services/roles/mounts and every unsuccessful attempt. The 20-minute window is this proposed maintenance qualification, not an accepted new product requirement.
+5. Once stable and host memory permits, execute one fresh 14-stage native isolated pipeline. Preserve old failed records and keep physical Windows/browser/device/production acceptance separate. Do not reuse the controlled five-minute window to claim that pipeline passed.
+
+This recommendation is prepared, not applied. Persistent controller coordination, restart/sleep stability, exact initial learning history and absolute UTC certification remain pending. PLAY-02 is not assigned by this investigation, and no privacy/play/reward admission gate changes.
+
+### Follow-up documentation qualification
+
+The new consistency checker recomputes 19 payload digests and decoded originals, phase arithmetic, all three bounded comparisons, saved-field restoration/helper exit, existing service/container observations, and protected source/configuration/requirement bytes. Its index mode additionally compares every payload against staged Git bytes. A separate changed-file scan checks known private values and token/URI patterns in both plain and decoded captures. Native doctor and authenticated bootstrap database checks pass after restoration; the project/source fingerprint remains `2c343976`. Uniform change history and final documentation/verification commands are linked from CHG-20261014-003. No full foundation/browser/image/production suite was rerun for this documentation-only scope.
+
+Additional primary references: [pinned WSL startup](https://raw.githubusercontent.com/microsoft/WSL/372dd3499231809730b551fddb58ce50baff6ee5/src/linux/init/main.cpp), [WSL maintainer on the root daemon](https://github.com/microsoft/WSL/issues/10024#issuecomment-1522426963), [Chrony 4.5 jump detection](https://raw.githubusercontent.com/mlichvar/chrony/4.5/sched.c), [Chrony 4.5 tick/frequency implementation](https://raw.githubusercontent.com/mlichvar/chrony/4.5/sys_linux.c), [Chrony 4.5 commands](https://chrony-project.org/doc/4.5/chronyc.html) and [supported WSL settings](https://learn.microsoft.com/en-us/windows/wsl/wsl-config). Source-review payloads retain exact downloaded digests; source excerpts/binaries are not redistributed.

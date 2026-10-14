@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-14T03:56:27.915Z",
+  "wsl_release": "2.7.14",
+  "wsl_source_commit": "372dd3499231809730b551fddb58ce50baff6ee5",
+  "live_chronyd_sha256": "53c4cff03448e1f9be758a95eccd40a351ee1d5fd8a9d36ee9448a814c7b3b1b",
+  "packaging": "chrony-4.5-1.azl3.x86_64; client reports DEVELOPMENT; exact RPM patch/source equivalence not certified",
+  "sources": [
+    {
+      "title": "WSL 2.7.14 startup",
+      "url": "https://raw.githubusercontent.com/microsoft/WSL/372dd3499231809730b551fddb58ce50baff6ee5/src/linux/init/main.cpp",
+      "observed_source_bytes": 118736,
+      "observed_source_sha256": "079d012fb9e01d67d029daa5448dcf06fab743d1cd38866bcb22851363d6ac42",
+      "observation": "StartTimeSyncAgent writes PHC configuration and launches /sbin/chronyd from mini_init; live config and parent PID match. Source review supports observed ownership."
+    },
+    {
+      "title": "WSL 2.7.14 namespace helper",
+      "url": "https://raw.githubusercontent.com/microsoft/WSL/372dd3499231809730b551fddb58ce50baff6ee5/src/linux/init/util.h",
+      "observed_source_bytes": 9088,
+      "observed_source_sha256": "bdcc14c478e61fc1d67b12445c89835843c97bd02399ae47f13079fe57b7cfb3",
+      "observation": "Default child-process helper uses fork; distro creation uses separate namespaces. Explains ancestor daemon visibility."
+    },
+    {
+      "title": "WSL 2.7.14 debug client",
+      "url": "https://raw.githubusercontent.com/microsoft/WSL/372dd3499231809730b551fddb58ce50baff6ee5/src/windows/common/WslClient.cpp",
+      "observed_source_bytes": 71317,
+      "observed_source_sha256": "7a5ed360faf5bfebe8180d19f9051df5f613a1f3ca0dccba3c61f74a68932f92",
+      "observation": "Debug console requires elevated Windows token; streams console input/output without restarting VM."
+    },
+    {
+      "title": "Chrony upstream 4.5 scheduler",
+      "url": "https://raw.githubusercontent.com/mlichvar/chrony/4.5/sched.c",
+      "observed_source_bytes": 23562,
+      "observed_source_sha256": "7f0c2f26b024f0aae882d16a638f4b4f2983b5e65c8c6fe1b0f29ce8de84d2f0",
+      "observation": "External-step detection uses a 10-second threshold; subsecond Docker steps may evade it. This is source-supported inference, not reproduced complete estimator feedback or binary/source certification."
+    },
+    {
+      "title": "Chrony upstream 4.5 kernel adjustment",
+      "url": "https://raw.githubusercontent.com/mlichvar/chrony/4.5/sys_linux.c",
+      "observed_source_bytes": 27065,
+      "observed_source_sha256": "3aedf0e2b7468d15d99464a27a6b151f571d0a3a5b7c2bfe4d35dc00475067e8",
+      "observation": "Frequency driver changes tick and frequency; retained estimate slows adjusted clocks. The controlled trial independently tests rate causality."
+    },
+    {
+      "title": "Chrony upstream 4.5 shutdown",
+      "url": "https://raw.githubusercontent.com/mlichvar/chrony/4.5/sys_generic.c",
+      "observed_source_bytes": 13859,
+      "observed_source_sha256": "961b0bf15a8bf4ec64cd401abcdd4753e67158705e2ef4f2384c02295e31b780",
+      "observation": "Finalisation preserves base frequency while cancelling fast slew. Stopping a daemon alone does not guarantee neutral kernel rate."
+    },
+    {
+      "title": "WSL configuration reference",
+      "url": "https://learn.microsoft.com/en-us/windows/wsl/wsl-config",
+      "observed_source_bytes": 92476,
+      "observed_source_sha256": "492693a35091535a06b95e8ee5e2cd1b0273c3770880911da10e66f041f0f5c3",
+      "observation": "Reviewed configuration table offers no documented toggle for this mini_init chronyd. Timezone selection is not clock-rate repair; restart applies persistent WSL settings."
+    },
+    {
+      "title": "Chrony 4.5 command reference",
+      "url": "https://chrony-project.org/doc/4.5/chronyc.html",
+      "observed_source_bytes": 92097,
+      "observed_source_sha256": "403c5b908df392634f693b0bb243351f667fd8199855393f32904e1596f3effe",
+      "observation": "reset sources discards measurement history; alone it is not proven prevention of repeated controller interference. No reset sources or makestep was run."
+    }
+  ],
+  "maintainer_context": {
+    "url": "https://github.com/microsoft/WSL/issues/10024#issuecomment-1522426963",
+    "scope": "WSL collaborator confirms root-namespace chrony; 2023 report, not a current repair guarantee. Issue later closed automatically without a documented resolution."
+  },
+  "repair_status": "No persistent changes authorized or performed; supported lasting controller-coordination repair remains unqualified. Temporary rate proof does not prevent renewed learned bias."
+}

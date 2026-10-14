@@ -2,6 +2,71 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261014-003 — Complete clock-controller root-cause investigation
+
+- Status: finalized
+- Actor: Codex architect/developer/QA collaborator
+- Recorded (UTC): 2026-10-14T04:22:45.900Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: e36d223848dbee4f456bb65fcc08f07c3891168a
+- Tasks: DOC-01, DOC-02, BOOT-03
+- Features: F-DOCS, F-CI
+- Requirements: none
+
+### Changes
+
+- **review:** Director requests complete investigation: identify effective chronyd owner/configuration, diagnose learned rate bias, evaluate supported repair and qualify timestamp accuracy with lightweight measurements. Retain existing guard and all earlier evidence.
+- **review:** Read-only approved elevated VM inspection identifies mini_init-owned chronyd181, actual startup-generated PHC configuration and biased saved/live frequency; pinned WSL and Chrony sources explain controller interference with explicitly limited binary/history inference.
+- **test:** Execute explicitly approved four-phase inherited/neutral/restored rate trial with independent watchdog: five-minute neutral clock tracks raw/Windows; saved tick/frequency restored, same daemon resumed, original workspace/database/Ubuntu service retained. Host observations are retrospective, not native CI success.
+- **documentation:** Add exact-byte follow-up capsule, historical import, current diagnosis/maintenance candidate and universal handoff/index/qualification/CI/feature descriptions. Keep original guard, game source, all old evidence and play/device/economic gates unchanged.
+- **revision:** Review and improve readability of the current report/index paragraphs; preserve actual captured bytes and all native records. Post-trial static verification and five bootstrap tests pass.
+- **test:** Native doctor, authenticated existing PostgreSQL, exact/staged capsule consistency, known-private-value scan, reviewed snapshot synchronization, static workspace verify and all five bootstrap tests pass. Final sealing/staged-file scan and documentation closure receive their own receipts; no permanent repair or full CI pass inferred.
+
+### Verification
+
+- **historical:** Reported root inspection, four-phase approved temporary trial and external references; null qualified times/exits; includes rejection/failed capture and restoration. ([evidence](docs/validation/runs/RUN-20261014-010.json))
+- **passed:** Post-trial container doctor7 environment checks. ([evidence](docs/validation/runs/RUN-20261014-011.json))
+- **passed:** Authenticated existing bootstrap PostgreSQL connectivity; no recreation. ([evidence](docs/validation/runs/RUN-20261014-012.json))
+- **passed:** Static capsule19 digests/decoded/staged bytes, phase and paired-clock arithmetic/restoration/protected source checks. ([evidence](docs/validation/runs/RUN-20261014-013.json))
+- **passed:** Static changed public-file and6 decoded payload supported private-value/pattern scan; not full-history/arbitrary secrecy. ([evidence](docs/validation/runs/RUN-20261014-014.json))
+- **passed:** Draft documentation synchronization passes classified coverage, callable/source snapshots, links and sealed evidence history. ([evidence](docs/validation/runs/RUN-20261014-015.json))
+- **passed:** Workspace static verify passes configuration/CI policy, offline rules/vendor/entropy checks, documentation and JSON/JS syntax; no full build/browser suite. ([evidence](docs/validation/runs/RUN-20261014-016.json))
+- **passed:** Bootstrap1 live HTTP and4 credential generation/preservation tests pass; no new game/device acceptance. ([evidence](docs/validation/runs/RUN-20261014-017.json))
+- **passed:** Reviewed current prose, impact map, full file/callable snapshot, links, changelog and sealed history pass draft synchronization; app fingerprint unchanged. ([evidence](docs/validation/runs/RUN-20261014-018.json))
+- **passed:** Finalized current report/handoff/features and generated snapshot pass synchronization, semantic review dispositions, source/callable/link/changelog/evidence gates; valid paired timing. ([evidence](docs/validation/runs/RUN-20261014-019.json))
+- **passed:** Final known-private-value and token/URI-pattern scan of changed public files and decoded captures after sealing; no arbitrary-secret/full-history claim. ([evidence](docs/validation/runs/RUN-20261014-020.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Record newly approved trial scope and proved root-rate mechanism, with restored resources and no lasting repair or additional play gates.
+- **updated:** [README.md](README.md) — Provide current diagnosis and maintenance link without changing executable foundation or acceptance.
+- **updated:** [docs/README.md](docs/README.md) — Index the completed rate-isolation result and distinguish it from permanent repair/CI qualification.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Record actual root/host observations, valid native toolchain/database checks and remaining absolute/long-term/device gates.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Explain real clock discrepancy and keep guard/old failed receipts; link supported maintenance candidate instead of treating neutral trial as a pipeline pass.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Update exact authorization, branch/source, diagnostics/native categories, resources, limitations and next steps.
+- **updated:** [docs/validation/clock-investigation.md](docs/validation/clock-investigation.md) — Update unresolved owner/rate checkpoint with proved current causality, raw results/restoration, source-based inference limits and a concrete unapplied repair plan.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Extend current investigation impact edge to its new archive capsule; existing archive/evidence wildcard classification retained.
+- **updated:** [docs/features.json](docs/features.json) — F-CI records new rate causality without promoting artifact/repair acceptance; F-DOCS links actual current-source native18 review/synchronization proof.
+- **reviewed_unchanged:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Existing null-time historical import and native paired-timing schema apply unchanged; no threshold/result policy change.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Existing scoped evidence, source-matched checks and single heavy workload rules remain; current diagnostic scope does not start new product work.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — WSL source/Dev Container/host orchestration and protected PostgreSQL ownership are unchanged; temporary approved diagnosis is not an architecture decision.
+- **reviewed_unchanged:** [docs/validation/play-01.md](docs/validation/play-01.md) — Merged source/hosted result and current clock-report link remain correct; diagnosis does not change durability or privacy acceptance.
+- **historical_preserved:** [docs/validation/archive/clock-20261014/manifest.json](docs/validation/archive/clock-20261014/manifest.json) — Earlier24-payload capsule and all sealed RUN/CHG bytes retained; no corrected timestamps or retroactive pass.
+- **updated:** [docs/validation/archive/clock-20261014-followup/manifest.json](docs/validation/archive/clock-20261014-followup/manifest.json) — New classified archive records19 original/derived/script payloads with decoded-byte digests, explicit authority/rejection/failed-capture provenance, runtime-history/fault-test and UTC limitations; no binary distribution.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261014-003.json).
+
+### Limits and next actions
+
+- Investigation establishes present inherited-rate cause; no lasting clock repair or absolute UTC certification.
+- Chrony source supports a controller feedback hypothesis; exact packaged scheduler/binary source equivalence and initial learning history are not reconstructed.
+- Approved trial restores original daemon/saved rate; normal live drift/history updates continue and forced watchdog fallback was not separately tested.
+- No heavy CI/build/browser/production suite or product source changes; all old failed receipts remain failed.
+- No further pause/persistent settings/restart/publishing authorization; maintenance candidate is documented, not applied.
+- Review local diagnosis/evidence commit; publishing/main integration not authorized by this scope.
+- Obtain focused Director authorization for separately scoped supported clock maintenance; preserve original guard/history/data.
+- PLAY-02 remains unassigned; no game/privacy/economic gate acceptance from this investigation.
+
 ## CHG-20261014-002 — Preserve clock evidence bytes through Git line-ending normalization
 
 - Status: finalized

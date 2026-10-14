@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-014",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import fs from 'node:fs';\nimport { execFileSync } from 'node:child_process';\nimport { privateRedactionValues, redact } from './scripts/evidence-lib.mjs';\nconst root=process.cwd();\nconst files=[...new Set([...execFileSync('git',['diff','--name-only','e36d223'],{encoding:'utf8'}).trim().split('\\n'),...execFileSync('git',['ls-files','--others','--exclude-standard'],{encoding:'utf8'}).trim().split('\\n')].filter(Boolean))];\nlet checked=0, decoded=0;\nfor(const path of files){\n if(!fs.existsSync(path)||!fs.statSync(path).isFile())continue;\n const raw=fs.readFileSync(path,'utf8');\n const texts=[raw];\n if(path.endsWith('.b64.txt')){texts.push(Buffer.from(raw,'base64').toString('utf8'));decoded++;}\n for(const text of texts){\n  if(redact(text,{...process.env,...privateRedactionValues(root)}).redactions)throw new Error('Private-value/pattern match in '+path+'; content withheld');\n  if(/gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[A-Z0-9]{16}/.test(text))throw new Error('Token-pattern match in '+path+'; content withheld');\n }\n checked++;\n}\nconsole.log(JSON.stringify({changed_public_files_checked:checked,decoded_payloads_checked:decoded,known_values_and_patterns_absent:true,limits:'Changed-file source scan only; not arbitrary-secret or full-history certification'}));\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e36d223848dbee4f456bb65fcc08f07c3891168a",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-14T04:08:58.802Z",
+  "finished_at": "2026-10-14T04:08:59.061Z",
+  "recorded_at": "2026-10-14T04:08:59.061Z",
+  "time_precision": "exact",
+  "elapsed_ms": 260,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Changed public-file and decoded diagnostic-capture scan for known private values and token patterns; no full-history secrecy claim",
+  "log_path": "docs/validation/logs/RUN-20261014-014.txt",
+  "log_sha256": "9707ff8844258b78a64ac6f6a54cf0612a649843076e844f999faf8ff389fe1b",
+  "redactions": 0
+}

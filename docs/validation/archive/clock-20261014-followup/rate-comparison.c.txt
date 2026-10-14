@@ -1,0 +1,64 @@
+#define _GNU_SOURCE
+#include <errno.h>
+#include <fcntl.h>
+#include <poll.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/timex.h>
+#include <sys/types.h>
+#include <sys/syscall.h>
+#include <sys/wait.h>
+#include <time.h>
+#include <unistd.h>
+
+static volatile sig_atomic_t cancelled=0;
+static void on_signal(int sig){(void)sig;cancelled=1;}
+static long long clock_ns(clockid_t id){struct timespec t;if(clock_gettime(id,&t)<0){perror("clock_gettime");exit(2);}return (long long)t.tv_sec*1000000000LL+t.tv_nsec;}
+static int read_rate(struct timex *t){memset(t,0,sizeof(*t));return adjtimex(t);}
+static int apply_rate(long tick,long freq){struct timex t={0};t.modes=ADJ_TICK|ADJ_FREQUENCY;t.tick=tick;t.freq=freq;return adjtimex(&t);}
+static int target_valid(pid_t pid){char p[80],name[80]={0};snprintf(p,sizeof(p),"/proc/%d/comm",pid);FILE *f=fopen(p,"r");if(!f)return 0;int ok=fgets(name,sizeof(name),f)!=NULL;fclose(f);return ok&&!strcmp(name,"chronyd\n");}
+static void sample(const char *phase){struct timex t;int state=read_rate(&t);printf("{\"kind\":\"sample\",\"phase\":\"%s\",\"utc_ns\":\"%lld\",\"monotonic_ns\":\"%lld\",\"raw_ns\":\"%lld\",\"tick_us\":%ld,\"frequency_scaled_ppm\":%ld,\"kernel_state\":%d}\n",phase,clock_ns(CLOCK_REALTIME),clock_ns(CLOCK_MONOTONIC),clock_ns(CLOCK_MONOTONIC_RAW),t.tick,t.freq,state);}
+static void observe(const char *phase,int seconds){long long until=clock_ns(CLOCK_MONOTONIC_RAW)+(long long)seconds*1000000000LL;do{sample(phase);struct timespec t={0,500000000};while(nanosleep(&t,&t)<0&&errno==EINTR&&!cancelled){} }while(!cancelled&&clock_ns(CLOCK_MONOTONIC_RAW)<until);sample(phase);}
+static int restore(int daemon_fd,long tick,long freq,int verbose){int rate=apply_rate(tick,freq);int resumed=syscall(SYS_pidfd_send_signal,daemon_fd,SIGCONT,NULL,0);if(verbose)printf("{\"kind\":\"restoration\",\"tick_us\":%ld,\"frequency_scaled_ppm\":%ld,\"rate_return\":%d,\"resume_return\":%d}\n",tick,freq,rate,resumed);return rate>=0&&resumed==0;}
+int main(int argc,char **argv){
+ setvbuf(stdout,NULL,_IOLBF,0);
+ if(argc==2&&!strcmp(argv[1],"--read-only")){sample("read_only");return 0;}
+ if(argc!=3||strcmp(argv[1],"--director-approved-temporary-trial")){fprintf(stderr,"Only --read-only or the expressly approved temporary trial is supported.\n");return 2;}
+ if(getuid()!=0){fprintf(stderr,"Approved trial requires administrator.\n");return 2;}
+ char *end;long value=strtol(argv[2],&end,10);if(*end||value<2||value>10000000){return 2;}pid_t daemon=(pid_t)value;
+ if(!target_valid(daemon)){fprintf(stderr,"Expected chronyd process missing; no mutation.\n");return 2;}
+ int daemon_fd=syscall(SYS_pidfd_open,daemon,0);if(daemon_fd<0){perror("pidfd_open; no mutation");return 2;}
+ signal(SIGTERM,on_signal);signal(SIGINT,on_signal);signal(SIGHUP,on_signal);signal(SIGPIPE,on_signal);
+ observe("original",40);if(cancelled)return 130;
+ struct timex saved;if(read_rate(&saved)<0)return 2;
+ int pipefd[2];if(pipe(pipefd)<0)return 2;
+ pid_t watchdog=fork();if(watchdog<0)return 2;
+ if(watchdog==0){
+  close(pipefd[1]);signal(SIGTERM,SIG_IGN);signal(SIGINT,SIG_IGN);signal(SIGHUP,SIG_IGN);signal(SIGPIPE,SIG_IGN);
+  long long deadline=clock_ns(CLOCK_MONOTONIC_RAW)+420000000000LL;
+  for(;;){struct pollfd p={pipefd[0],POLLIN|POLLHUP,0};int r=poll(&p,1,1000);char done=0;
+   if(r>0&&read(pipefd[0],&done,1)==1&&done=='D'){close(pipefd[0]);_exit(0);}
+   if(r<0&&errno==EINTR)continue;
+   if((r>0&&(p.revents&POLLHUP))||clock_ns(CLOCK_MONOTONIC_RAW)>=deadline){int ok=restore(daemon_fd,saved.tick,saved.freq,0);close(pipefd[0]);_exit(ok?0:2);}
+  }
+ }
+ close(pipefd[0]);int result=2;int stopped=0;
+ printf("{\"kind\":\"watchdog_armed\",\"watchdog_pid\":%d,\"daemon_pid\":%d,\"deadline_raw_seconds\":420}\n",watchdog,daemon);
+ if(syscall(SYS_pidfd_send_signal,daemon_fd,SIGSTOP,NULL,0)<0)goto cleanup;
+ stopped=1;
+ printf("{\"kind\":\"daemon_temporarily_paused\",\"daemon_pid\":%d}\n",daemon);
+ observe("paused_inherited_rate",40);if(cancelled)goto cleanup;
+ long nominal=1000000L/sysconf(_SC_CLK_TCK);
+ if(apply_rate(nominal,0)<0)goto cleanup;
+ printf("{\"kind\":\"temporary_neutral_rate\",\"tick_us\":%ld,\"frequency_scaled_ppm\":0,\"calendar_not_set\":true}\n",nominal);
+ observe("paused_neutral_rate",300);if(cancelled)goto cleanup;result=0;
+ cleanup:
+ if(stopped&&!restore(daemon_fd,saved.tick,saved.freq,1))result=2;
+ if(!stopped)printf("{\"kind\":\"no_daemon_pause_applied\"}\n");
+ if(write(pipefd[1],"D",1)!=1)result=2;
+ close(pipefd[1]);int status=0;if(waitpid(watchdog,&status,0)<0||!WIFEXITED(status)||WEXITSTATUS(status)!=0)result=2;
+ printf("{\"kind\":\"watchdog_reaped\",\"success\":%s}\n",result==0?"true":"false");
+ observe("restored",40);close(daemon_fd);return cancelled?130:result;
+}

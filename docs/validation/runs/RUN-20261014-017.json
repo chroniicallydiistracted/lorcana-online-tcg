@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-017",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "test:bootstrap"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e36d223848dbee4f456bb65fcc08f07c3891168a",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-14T04:14:16.930Z",
+  "finished_at": "2026-10-14T04:14:17.435Z",
+  "recorded_at": "2026-10-14T04:14:17.435Z",
+  "time_precision": "exact",
+  "elapsed_ms": 505,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Continued bootstrap HTTP and credential generation/preservation checks after approved clock trial; no new product qualification",
+  "log_path": "docs/validation/logs/RUN-20261014-017.txt",
+  "log_sha256": "41bc0eab04d1250bda1f8a7c938983ffc7e35406c0cfe1f512440b5260f62a34",
+  "redactions": 0
+}

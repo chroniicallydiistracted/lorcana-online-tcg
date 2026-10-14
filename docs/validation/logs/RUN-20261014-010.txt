@@ -1,0 +1,11 @@
+Historical import of Director-approved follow-up clock diagnostics, performed outside the native container recorder.
+Source at intake: e36d223; executable fingerprint unchanged2c343976.
+Read-only elevated VM inspection identifies mini_init1 -> chronyd181 and the actual PHC configuration, saved23697.905598ppm/live27016.688ppm estimate.
+Controlled helper exits0; original/paused-inherited/neutral/restored raw windows40.347164/40.477551/300.448200/40.500991s. Calendar minus adjusted elapsed854.087973/848.631973/658.302580/798.396585ms.
+Saved tick9724/frequency272890 restored successfully, same daemon resumed, watchdog reaped. The force-interruption watchdog path was not separately fault-injected.
+Paired Windows/Linux observations independently confirm inherited-rate discrepancy disappears with neutral correction and returns after restoration; raw/PHC endpoints agree within sampling uncertainty.
+Three read-only external references suggest Windows approximately0.49s behind; roundtrip/asymmetry and unauthenticated sources limit absolute UTC qualification. Windows Time service remains Stopped/Manual.
+Original workspace/PostgreSQL retain the same IDs; Ubuntu time service remains active/enabledPID178796. No permanent settings/clock reset/restart, credential/volume mutation, heavy CI or game source change.
+The original proposed trial was automatically rejected under read-only authority and did not execute; the Director explicitly approved the bounded mutation before it ran. Initial blank w32tm output retained with no fabricated exit.
+Raw captures/scripts/derived arithmetic and digests are in docs/validation/archive/clock-20261014-followup/manifest.json. Qualified historical execution times/exits remain null; helper0 is reported observation, not a reconstructed native pass.
+The complete historical learning feedback is source-supported inference. A supported lasting maintenance repair and long-term/absolute UTC qualification remain pending.

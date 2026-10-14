@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-14T04:03:42.503Z",
+  "source_commit": "e36d223848dbee4f456bb65fcc08f07c3891168a",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "evidence_kind": "Retrospective ad hoc host observations; raw Windows/Linux samples retained, no reconstructed native pass",
+  "time_basis": "Qualified historical execution times remain null. Actual raw samples and Windows stopwatch are retained without timestamp repair.",
+  "authority": "Director approved read-only Windows administrator inspection and this bounded chronyd pause/neutral-rate/restoration test after the automatic review rejection. No further pause or persistent clock/service/settings/restart change authorized.",
+  "helper_binary_metadata": {
+    "sha256": "0bb52e98d28b180067abef24add1bc2afdf112d2c1b2eb6674f1ce561fde5fd8",
+    "bytes": 835016,
+    "compiler_command": [
+      "gcc",
+      "-std=c11",
+      "-O2",
+      "-static",
+      "-Wall",
+      "-Wextra",
+      "-Werror"
+    ],
+    "binary_distributed": false
+  },
+  "artifacts": [
+    {
+      "label": "admin-inspection",
+      "path": "docs/validation/archive/clock-20261014-followup/admin-inspection.json.b64.txt",
+      "source": "/tmp/lorcana-clock-admin-inspection-20261014.json",
+      "bytes": 4349,
+      "sha256": "f47ad474faca6831e7a2f2d4f7aec4e28cb57f30519825e8947b28150fd58dcc",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times.",
+      "encoding": "base64",
+      "decoded_bytes": 3260,
+      "decoded_sha256": "c5b66cef99da1ea9181cff01e688ef9e079133567f75d542bafe03121ab41625"
+    },
+    {
+      "label": "admin-script",
+      "path": "docs/validation/archive/clock-20261014-followup/admin-inspection.ps1.txt",
+      "source": "/tmp/lorcana-clock-admin-inspection.ps1",
+      "bytes": 2573,
+      "sha256": "800ac89170a6422f81be3f7c017391f30dac6586da360650f358cf4d95026a58",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "controlled-report",
+      "path": "docs/validation/archive/clock-20261014-followup/controlled-report.json.b64.txt",
+      "source": "/tmp/lorcana-clock-controlled-trial-20261014.json",
+      "bytes": 657,
+      "sha256": "80b496cd1cdab2c6a6f3f790fc5e0745d5147be33d057f69705ccef5b197e799",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times.",
+      "encoding": "base64",
+      "decoded_bytes": 490,
+      "decoded_sha256": "cd78964b4596f9cab78ad7be7bfd7bccb18ed3d7c1fb9f13097024fbccbe8389"
+    },
+    {
+      "label": "controlled-transcript",
+      "path": "docs/validation/archive/clock-20261014-followup/controlled-transcript.txt.b64.txt",
+      "source": "/tmp/lorcana-clock-controlled-trial-20261014.txt",
+      "bytes": 222153,
+      "sha256": "4e234f74d950e62277c267059c69c98355292f49648be43649c909583e1d619d",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times.",
+      "encoding": "base64",
+      "decoded_bytes": 166613,
+      "decoded_sha256": "d2999d1ac6e99beb5005daf904550145aa153ac343b1da89681ac88f5d1a939b"
+    },
+    {
+      "label": "trial-script",
+      "path": "docs/validation/archive/clock-20261014-followup/controlled-trial.ps1.txt",
+      "source": "/tmp/lorcana-clock-controlled-trial.ps1",
+      "bytes": 3875,
+      "sha256": "e9056f292f8305f82b84489b726f40f8c3e90c4ea54a90dfdd3f308f5120b5ce",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "rate-helper",
+      "path": "docs/validation/archive/clock-20261014-followup/rate-comparison.c.txt",
+      "source": "/tmp/lorcana-clock-rate-comparison.c",
+      "bytes": 4767,
+      "sha256": "bd04b37a07ccadd04e1ec3ad3b9daf822ac3d792e4330c2634659d7277df8c0a",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "cross-current",
+      "path": "docs/validation/archive/clock-20261014-followup/cross-current.jsonl",
+      "source": "/tmp/lorcana-clock-cross-current-20261014.jsonl",
+      "bytes": 11432,
+      "sha256": "348c0c9a4371e283d903530b5ecd3c469c81155133553dd767fb66d378e8936f",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "cross-neutral",
+      "path": "docs/validation/archive/clock-20261014-followup/cross-neutral.jsonl",
+      "source": "/tmp/lorcana-clock-cross-neutral-20261014.jsonl",
+      "bytes": 11472,
+      "sha256": "8588cf9dbd8e80d1ed0ea25bddc97ba44eac7f2a41ce9bd5a28d1a0714b54915",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "cross-restored",
+      "path": "docs/validation/archive/clock-20261014-followup/cross-restored.jsonl",
+      "source": "/tmp/lorcana-clock-cross-restored-20261014.jsonl",
+      "bytes": 11459,
+      "sha256": "8c84cb83db10f893f871fab94c77cc96f0afb20be56613731f3e9c6d6755019d",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "cross-script",
+      "path": "docs/validation/archive/clock-20261014-followup/cross-reference.py.txt",
+      "source": "/tmp/lorcana-clock-cross-reference.py",
+      "bytes": 2190,
+      "sha256": "df0c81dc2201e7b73e3b5cfd39425c097a74d63ef6f7c3dc333d912b5283f252",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "external-reference-first-attempt",
+      "path": "docs/validation/archive/clock-20261014-followup/external-reference-first-attempt.txt.b64.txt",
+      "source": "/tmp/lorcana-clock-external-utc-20261014.txt",
+      "bytes": 145,
+      "sha256": "620b37b8469c157ed27742c0063143675f4ce934f7e522d92efef663d794e2ef",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times.",
+      "encoding": "base64",
+      "decoded_bytes": 106,
+      "decoded_sha256": "a6d7899fb342dfa98e5c99ae3adf0557c0114be8e0642777c7ba3f75cc736b89"
+    },
+    {
+      "label": "external-reference",
+      "path": "docs/validation/archive/clock-20261014-followup/external-reference.txt.b64.txt",
+      "source": "/tmp/lorcana-clock-external-utc-captured-20261014.txt",
+      "bytes": 1117,
+      "sha256": "a9620f2ff75b2c3809214283dc68e6a3d0c0a29885f5410521a07ccb7d2c7007",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times.",
+      "encoding": "base64",
+      "decoded_bytes": 837,
+      "decoded_sha256": "774e737583c66a668299485d47ee52b9c27507aba7c0edfc6f0d79f357c3fdbe"
+    },
+    {
+      "label": "windows-script",
+      "path": "docs/validation/archive/clock-20261014-followup/windows-reference.ps1.txt",
+      "source": "/tmp/lorcana-clock-windows-reference.ps1",
+      "bytes": 1696,
+      "sha256": "7f05fe4e323fd336c7998edb2387bcac703ee7b5badd0438d76d6d86e9229fb9",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "post-windows",
+      "path": "docs/validation/archive/clock-20261014-followup/post-windows.json.b64.txt",
+      "source": "/tmp/lorcana-clock-post-windows-20261014.json",
+      "bytes": 3757,
+      "sha256": "88fb38b488b04e80a767db71633c794df5f487b088d83e97578df6adf201a83b",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times.",
+      "encoding": "base64",
+      "decoded_bytes": 2816,
+      "decoded_sha256": "ebf9009cdbf3f7addea21ee8ce69820370594575e947e42d7137c2ce8e174251"
+    },
+    {
+      "label": "post-environment",
+      "path": "docs/validation/archive/clock-20261014-followup/post-environment.json",
+      "source": "/tmp/lorcana-clock-post-environment-20261014.json",
+      "bytes": 1101,
+      "sha256": "7d19a2090e3e0e2658b208ef2c95065d9d3f9997132b820723e2908980bbb679",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "source-review",
+      "path": "docs/validation/archive/clock-20261014-followup/source-review.json",
+      "source": "/tmp/lorcana-clock-source-review-20261014.json",
+      "bytes": 4602,
+      "sha256": "160f7c0acf8de031444365a3c400b7c7b6d703af78da9992ef1bbe3d29957917",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "trial-summary",
+      "path": "docs/validation/archive/clock-20261014-followup/trial-summary.json",
+      "source": "/tmp/lorcana-clock-trial-summary-20261014.json",
+      "bytes": 6276,
+      "sha256": "1d3d68f2088500b6cba6d8ecf76408e1275d622c0870560070a03363b070a424",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "consistency-checker",
+      "path": "docs/validation/archive/clock-20261014-followup/verify.py.txt",
+      "source": "/tmp/lorcana-clock-followup-verify.py",
+      "bytes": 6347,
+      "sha256": "a7e34b5946c557854564beff697016bcfcfde7ed133c851d88006b92330d7a8c",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    },
+    {
+      "label": "private-source-checker",
+      "path": "docs/validation/archive/clock-20261014-followup/scan.mjs.txt",
+      "source": "/tmp/lorcana-clock-followup-scan.mjs",
+      "bytes": 1290,
+      "sha256": "0d6729df65afecd57d8dd084641aed6583fe5c83ac7f780f7bd056e40828d83f",
+      "scope": "Exact original diagnostic bytes; administrative scripts are archived text, not application commands. Observations are retrospectively imported; do not infer qualified native execution times."
+    }
+  ],
+  "failures_preserved": [
+    "Normal Ubuntu root cannot inspect ancestor PID namespace: NS_GET_PARENT ioctl EPERM; inspection used explicitly approved Windows administrator debug console.",
+    "Initial external w32tm capture supplied no native output or usable exit; retained. Corrected ProcessStartInfo capture succeeded against three references.",
+    "Automatic approval review rejected the original proposed trial invocation because authorization was read-only; that command did not run. Safe preparation proceeded and the Director explicitly approved the controlled mutation before it ran.",
+    "Initial helper compilation warnings were corrected in preparation; the retained helper compiled with -Werror. No mutation occurred during compilation/read-only checking."
+  ],
+  "restoration": "Linux helper exits0; saved tick9724/frequency272890 applied with return0; same chronyd181 resumed with return0; watchdog reaped. Original containers and Ubuntu time service observed active afterward. Live estimator/drift-file updates may continue; no claim of byte-identical runtime history.",
+  "limits": [
+    "No permanent fix, unsupported platform toggle or hardware defect established.",
+    "Chrony upstream4.5 source explains a plausible feedback mechanism; exact packaged ELF source equivalence and complete initial learned-bias history are not certified.",
+    "Five-minute neutral window is an ad hoc diagnosis, not full CI qualification.",
+    "Unauthenticated external NTP and network delay limit absolute UTC accuracy.",
+    "Forced watchdog interruption path was not separately executed."
+  ]
+}

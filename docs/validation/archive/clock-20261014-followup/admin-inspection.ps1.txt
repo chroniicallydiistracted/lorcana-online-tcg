@@ -1,0 +1,34 @@
+$ErrorActionPreference = 'Stop'
+$clockOutputPath = '\\wsl.localhost\Ubuntu\tmp\lorcana-clock-admin-inspection-20261014.json'
+$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = New-Object Security.Principal.WindowsPrincipal($identity)
+if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) { throw 'Administrator token required for the expressly approved read-only inspection.' }
+$linuxReadOnly = @'
+printf '\nLORCANA_CLOCK_DIAG_BEGIN\n'; uname -r; ps -eo pid,ppid,comm | awk '$3 == "chronyd" || $3 == "initd" || $1 == 1'; for clockProc in /proc/[0-9]*; do if [ "$(cat "$clockProc/comm" 2>/dev/null)" = chronyd ]; then printf '\nCHRONYD_PID %s\n' "${clockProc##*/}"; printf 'COMMAND '; tr '\000' ' ' < "$clockProc/cmdline"; printf '\n'; printf 'NAMESPACES\n'; readlink "$clockProc/ns/pid" "$clockProc/ns/mnt"; printf 'CONFIGURATION\n'; cat "$clockProc/root/etc/chrony.conf"; printf 'DRIFT_ESTIMATE\n'; cat "$clockProc/root/var/lib/chrony/drift"; printf 'EXECUTABLE_HASH\n'; sha256sum "$clockProc/exe"; printf 'PRIVATE_CLOCK_FILES\n'; ls -l "$clockProc/root/run/chrony" "$clockProc/root/var/run/chrony" 2>/dev/null; printf 'TRACKING\n'; chronyc tracking; fi; done; printf '\nLORCANA_CLOCK_DIAG_END\n'
+exit
+'@
+$start = New-Object System.Diagnostics.ProcessStartInfo
+$start.FileName = Join-Path $env:SystemRoot 'System32\wsl.exe'
+$start.Arguments = '--debug-shell'
+$start.UseShellExecute = $false
+$start.CreateNoWindow = $true
+$start.RedirectStandardInput = $true
+$start.RedirectStandardOutput = $true
+$start.RedirectStandardError = $true
+$p = New-Object System.Diagnostics.Process
+$p.StartInfo = $start
+$watch = [Diagnostics.Stopwatch]::StartNew()
+try {
+    [void]$p.Start()
+    $outTask = $p.StandardOutput.ReadToEndAsync()
+    $errorTask = $p.StandardError.ReadToEndAsync()
+    $p.StandardInput.WriteLine($linuxReadOnly)
+    $p.StandardInput.Flush()
+    $exited = $p.WaitForExit(12000)
+    if (-not $exited) { $p.Kill(); $p.WaitForExit() }
+    $report = [ordered]@{scope='Director-approved read-only WSL VM clock-daemon inspection; only the owned Windows client may be terminated';administrator=$true;elapsed_ms=$watch.ElapsedMilliseconds;client_exited_without_timeout=$exited;client_exit=$p.ExitCode;stdout=$outTask.Result;stderr=$errorTask.Result;utc_recording_sample=[DateTime]::UtcNow.ToString('o')}
+    [IO.File]::WriteAllText($clockOutputPath,($report|ConvertTo-Json -Depth 5),[Text.UTF8Encoding]::new($false))
+} finally {
+    if ($p.Id -and -not $p.HasExited) { $p.Kill(); $p.WaitForExit() }
+    $p.Dispose()
+}

@@ -1,0 +1,90 @@
+"""Read-only capsule consistency; not permanent clock or application acceptance."""
+import base64, hashlib, json, subprocess, sys
+from pathlib import Path
+root=Path(__file__).resolve().parents[4]
+folder=Path(__file__).resolve().parent
+manifest=json.loads((folder/'manifest.json').read_text())
+for item in manifest['artifacts']:
+    data=(root/item['path']).read_bytes()
+    assert len(data)==item['bytes'] and hashlib.sha256(data).hexdigest()==item['sha256'],item['path']
+    if item.get('encoding')=='base64':
+        raw=base64.b64decode(data)
+        assert len(raw)==item['decoded_bytes'] and hashlib.sha256(raw).hexdigest()==item['decoded_sha256']
+    if '--index' in sys.argv:
+        assert subprocess.check_output(['git','show',':'+item['path']],cwd=root)==data,item['path']
+
+def raw(name):
+    item=next(x for x in manifest['artifacts'] if x['label']==name)
+    data=(root/item['path']).read_bytes()
+    return base64.b64decode(data) if item.get('encoding')=='base64' else data
+
+def data(name): return json.loads(raw(name))
+inspection=data('admin-inspection')
+assert inspection['administrator'] and '    1     0 mini_init' in inspection['stdout']
+assert '  181     1 chronyd' in inspection['stdout']
+assert 'pid:[4026531836]' in inspection['stdout']
+assert '23697.905598' in inspection['stdout'] and '27016.688 ppm fast' in inspection['stdout']
+assert '53c4cff03448e1f9be758a95eccd40a351ee1d5fd8a9d36ee9448a814c7b3b1b' in inspection['stdout']
+expected_config='driftfile /var/lib/chrony/drift\nmakestep 1.0 3\nrtcsync\nleapsectz right/UTC\nlogdir /var/log/chrony\nrefclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0'
+assert expected_config in inspection['stdout'].replace('\r','')
+transcript=raw('controlled-transcript').decode()
+observed=[]
+for line in transcript.splitlines():
+    try: value=json.loads(line)
+    except ValueError: continue
+    if isinstance(value,dict): observed.append(value)
+summary=data('trial-summary')
+assert len(summary['phases'])==4
+expected_counts=[79,79,599,80]
+for phase,count in zip(summary['phases'],expected_counts):
+    p=[x for x in observed if x.get('phase')==phase['phase']]
+    assert len(p)==count==phase['sample_count']
+    first,last=p[0],p[-1]
+    elapsed={key:(int(last[key])-int(first[key]))/1e6 for key in ['utc_ns','monotonic_ns','raw_ns']}
+    for key in elapsed: assert abs(elapsed[key]-phase['elapsed_ms'][key])<1e-6
+    assert abs(elapsed['utc_ns']-elapsed['monotonic_ns']-phase['calendar_minus_monotonic_ms'])<1e-6
+    assert abs((elapsed['monotonic_ns']/elapsed['raw_ns']-1)*1e6-phase['adjusted_rate_ppm'])<1e-6
+neutral=summary['phases'][2]
+assert neutral['elapsed_ms']['raw_ns']>=300000
+assert abs(neutral['adjusted_rate_ppm'])<.01
+assert abs(neutral['calendar_minus_monotonic_ms']-658.30258)<1e-6
+assert all(x['tick_us']==10000 and x['frequency_scaled_ppm']==0 for x in observed if x.get('phase')=='paused_neutral_rate')
+restoration=next(x for x in observed if x['kind']=='restoration')
+assert restoration=={'kind':'restoration','tick_us':9724,'frequency_scaled_ppm':272890,'rate_return':0,'resume_return':0}
+assert any(x['kind']=='watchdog_reaped' and x['success'] for x in observed)
+assert 'LORCANA_CLOCK_TRIAL_RESULT 0' in transcript
+assert 'State:\tS (sleeping)' in transcript
+assert expected_config in transcript.replace('\r','')
+trial=data('controlled-report')
+assert trial['helper_exit']==0 and trial['administrator'] and not trial['client_exited_without_owned_termination']
+for comparison in summary['cross_references']:
+    samples=[json.loads(x) for x in raw('cross-'+comparison['phase']).decode().splitlines()]
+    p=[x for x in samples if x.get('kind')=='sample' and x['index']>=2]
+    assert (p[0]['index'],p[-1]['index'])==(2,30)
+    windows=p[-1]['windows_counter_ms']-p[0]['windows_counter_ms']
+    assert abs(windows-comparison['windows_elapsed_ms'])<1e-6
+    for key in comparison['linux_elapsed_ms']:
+        elapsed=(int(p[-1]['linux_midpoint_ns'][key])-int(p[0]['linux_midpoint_ns'][key]))/1e6
+        assert abs(elapsed-comparison['linux_elapsed_ms'][key])<1e-6
+    assert max(x['window_ms'] for x in p)<1.0
+    assert samples[-1]=={'kind':'cleanup','windows_sampler_exit':0,'clock_device_closed':True}
+    assert abs(comparison['linux_elapsed_ms']['raw']-windows)<.1
+    assert abs(comparison['linux_elapsed_ms']['hyperv_phc']-windows)<.1
+assert abs(summary['cross_references'][1]['adjusted_minus_windows_ms'])<.02
+assert summary['cross_references'][0]['adjusted_minus_windows_ms']<-700
+assert summary['cross_references'][2]['adjusted_minus_windows_ms']<-600
+post=data('post-environment')
+assert post['ubuntu_time_service']=={'MainPID':'178796','ActiveState':'active','UnitFileState':'enabled'}
+assert len(post['docker_services'])==2
+assert any('01ccec184b44' in x for x in post['docker_services'])
+assert any('c7cd58258c19' in x and '(healthy)' in x for x in post['docker_services'])
+windows=data('post-windows')
+assert not windows['owned_admin_launcher_still_running']
+assert windows['windows_time_service']=={'status':'Stopped','start_type':'Manual'}
+assert len(windows['references'])==3 and all(x['completed'] and x['exit']==0 for x in windows['references'])
+for path in ['toolchain.json','package.json','pnpm-lock.yaml','.devcontainer/Dockerfile','.devcontainer/compose.yaml','docs/vision/requirements.csv','docs/vision/initial_backlog.csv','scripts/documentation-lib.mjs','scripts/evidence-lib.mjs','scripts/ci-local.py']:
+    assert subprocess.check_output(['git','show','6e9acf1:'+path],cwd=root)==(root/path).read_bytes(),path
+changed=subprocess.check_output(['git','diff','--name-only','6e9acf1'],cwd=root,text=True).splitlines()
+assert all(x.startswith('docs/') or x.endswith('.md') for x in changed)
+print(json.dumps({'artifacts_verified':len(manifest['artifacts']),'phase_samples':expected_counts,'neutral_window_ms':neutral['elapsed_ms']['raw_ns'],'neutral_calendar_minus_monotonic_ms':neutral['calendar_minus_monotonic_ms'],'restoration_recorded':True,'stable_cross_samples':'2..30; each IPC bound below1ms','original_workspace_database_and_ubuntu_service_observed':True,'guard_configuration_requirement_bytes_unchanged':True,'staged_bytes_checked':'--index' in sys.argv}))
+print('Clock follow-up capsule consistency passed. No lasting repair, complete estimator-history reconstruction, absolute UTC certification or full CI acceptance is inferred.')

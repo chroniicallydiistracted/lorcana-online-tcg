@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-14T04:01:31.989Z",
+  "evidence_kind": "Derived arithmetic from retained raw observations; not a native passing CI receipt",
+  "phases": [
+    {
+      "phase": "original",
+      "sample_count": 79,
+      "elapsed_ms": {
+        "utc_ns": 40083.33066,
+        "monotonic_ns": 39229.242687,
+        "raw_ns": 40347.164075
+      },
+      "calendar_minus_monotonic_ms": 854.0879730000015,
+      "adjusted_rate_ppm": -27707.557981570542,
+      "steps_over_10ms": [
+        {
+          "after_sample_index": 52,
+          "calendar_minus_monotonic_ms": 854.088022
+        }
+      ],
+      "tick_values": [
+        9720,
+        9724,
+        9726
+      ],
+      "frequency_scaled_ppm_range": [
+        -176313,
+        2326128
+      ]
+    },
+    {
+      "phase": "paused_inherited_rate",
+      "sample_count": 79,
+      "elapsed_ms": {
+        "utc_ns": 40209.17147,
+        "monotonic_ns": 39360.539497,
+        "raw_ns": 40477.551381
+      },
+      "calendar_minus_monotonic_ms": 848.6319730000032,
+      "adjusted_rate_ppm": -27595.83635595908,
+      "steps_over_10ms": [
+        {
+          "after_sample_index": 33,
+          "calendar_minus_monotonic_ms": 848.631986
+        }
+      ],
+      "tick_values": [
+        9724
+      ],
+      "frequency_scaled_ppm_range": [
+        272890,
+        272890
+      ]
+    },
+    {
+      "phase": "paused_neutral_rate",
+      "sample_count": 599,
+      "elapsed_ms": {
+        "utc_ns": 301106.502501,
+        "monotonic_ns": 300448.199921,
+        "raw_ns": 300448.19961
+      },
+      "calendar_minus_monotonic_ms": 658.3025800000178,
+      "adjusted_rate_ppm": 0.0010351202117675484,
+      "steps_over_10ms": [
+        {
+          "after_sample_index": 15,
+          "calendar_minus_monotonic_ms": 648.400639
+        },
+        {
+          "after_sample_index": 74,
+          "calendar_minus_monotonic_ms": -485.797254
+        },
+        {
+          "after_sample_index": 75,
+          "calendar_minus_monotonic_ms": 489.643327
+        },
+        {
+          "after_sample_index": 313,
+          "calendar_minus_monotonic_ms": -488.023087
+        },
+        {
+          "after_sample_index": 314,
+          "calendar_minus_monotonic_ms": 492.874154
+        },
+        {
+          "after_sample_index": 492,
+          "calendar_minus_monotonic_ms": -496.530567
+        },
+        {
+          "after_sample_index": 493,
+          "calendar_minus_monotonic_ms": 487.403953
+        },
+        {
+          "after_sample_index": 552,
+          "calendar_minus_monotonic_ms": -487.664791
+        },
+        {
+          "after_sample_index": 553,
+          "calendar_minus_monotonic_ms": 495.861066
+        }
+      ],
+      "tick_values": [
+        10000
+      ],
+      "frequency_scaled_ppm_range": [
+        0,
+        0
+      ]
+    },
+    {
+      "phase": "restored",
+      "sample_count": 80,
+      "elapsed_ms": {
+        "utc_ns": 40412.109389,
+        "monotonic_ns": 39613.712804,
+        "raw_ns": 40500.990773
+      },
+      "calendar_minus_monotonic_ms": 798.396584999995,
+      "adjusted_rate_ppm": -21907.562063679165,
+      "steps_over_10ms": [
+        {
+          "after_sample_index": 14,
+          "calendar_minus_monotonic_ms": 186.950772
+        },
+        {
+          "after_sample_index": 74,
+          "calendar_minus_monotonic_ms": 611.445834
+        }
+      ],
+      "tick_values": [
+        9000,
+        9724,
+        10534
+      ],
+      "frequency_scaled_ppm_range": [
+        -767150,
+        1353650
+      ]
+    }
+  ],
+  "cross_references": [
+    {
+      "phase": "current",
+      "stable_indices": [
+        2,
+        30
+      ],
+      "maximum_sampling_window_ms": 0.75695,
+      "windows_elapsed_ms": 28805.4234,
+      "linux_elapsed_ms": {
+        "calendar": 28370.79284,
+        "monotonic": 28019.241419,
+        "raw": 28805.338104,
+        "hyperv_phc": 28805.32605
+      },
+      "adjusted_minus_windows_ms": -786.1819809999979,
+      "cleanup": {
+        "kind": "cleanup",
+        "windows_sampler_exit": 0,
+        "clock_device_closed": true
+      }
+    },
+    {
+      "phase": "neutral",
+      "stable_indices": [
+        2,
+        30
+      ],
+      "maximum_sampling_window_ms": 0.995922,
+      "windows_elapsed_ms": 28024.771800000002,
+      "linux_elapsed_ms": {
+        "calendar": 28028.626988,
+        "monotonic": 28024.780875,
+        "raw": 28024.781111,
+        "hyperv_phc": 28024.7633
+      },
+      "adjusted_minus_windows_ms": 0.009074999998119893,
+      "cleanup": {
+        "kind": "cleanup",
+        "windows_sampler_exit": 0,
+        "clock_device_closed": true
+      }
+    },
+    {
+      "phase": "restored",
+      "stable_indices": [
+        2,
+        30
+      ],
+      "maximum_sampling_window_ms": 0.860783,
+      "windows_elapsed_ms": 28701.2728,
+      "linux_elapsed_ms": {
+        "calendar": 28866.547671,
+        "monotonic": 28021.59807,
+        "raw": 28701.256221,
+        "hyperv_phc": 28701.24385
+      },
+      "adjusted_minus_windows_ms": -679.6747299999988,
+      "cleanup": {
+        "kind": "cleanup",
+        "windows_sampler_exit": 0,
+        "clock_device_closed": true
+      }
+    }
+  ],
+  "trial_lifecycle": [
+    {
+      "kind": "watchdog_armed",
+      "watchdog_pid": 30001,
+      "daemon_pid": 181,
+      "deadline_raw_seconds": 420
+    },
+    {
+      "kind": "daemon_temporarily_paused",
+      "daemon_pid": 181
+    },
+    {
+      "kind": "temporary_neutral_rate",
+      "tick_us": 10000,
+      "frequency_scaled_ppm": 0,
+      "calendar_not_set": true
+    },
+    {
+      "kind": "restoration",
+      "tick_us": 9724,
+      "frequency_scaled_ppm": 272890,
+      "rate_return": 0,
+      "resume_return": 0
+    },
+    {
+      "kind": "watchdog_reaped",
+      "success": true
+    }
+  ],
+  "limits": [
+    "Cold transition and restored observations include real controller transients; neither is a steady-state capacity test.",
+    "Neutral five-minute total is compared with the existing guard criterion only; no actual CI was run during it.",
+    "Rate causality is established; the complete historical estimator feedback is source-supported inference, not a replay of how bias first arose.",
+    "Watchdog armed/reaped normally; forced parent-kill fallback was not separately fault-injected."
+  ]
+}

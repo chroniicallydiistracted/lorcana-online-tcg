@@ -1,0 +1,48 @@
+$ErrorActionPreference = 'Stop'
+$clockOutputPath = '\\wsl.localhost\Ubuntu\tmp\lorcana-clock-controlled-trial-20261014.json'
+$clockTranscriptPath = '\\wsl.localhost\Ubuntu\tmp\lorcana-clock-controlled-trial-20261014.txt'
+$principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) { throw 'Administrator token required for Director-approved temporary clock trial.' }
+$linuxTrial = @'
+printf '\nLORCANA_CLOCK_TRIAL_BEGIN\n'; clockHelper=''; for clockProc in /proc/[0-9]*; do if [ "$(cat "$clockProc/comm" 2>/dev/null)" = systemd ] && [ -f "$clockProc/root/tmp/lorcana-clock-rate-comparison" ]; then clockHelper="$clockProc/root/tmp/lorcana-clock-rate-comparison"; break; fi; done; clockResult=2; if [ -n "$clockHelper" ] && [ "$(sha256sum "$clockHelper" | cut -d ' ' -f 1)" = 0bb52e98d28b180067abef24add1bc2afdf112d2c1b2eb6674f1ce561fde5fd8 ] && [ "$(cat /proc/181/comm 2>/dev/null)" = chronyd ] && [ "$(awk '/^PPid:/ {print $2}' /proc/181/status)" = 1 ]; then printf 'VERIFIED_HELPER %s\n' "$clockHelper"; printf 'PRE_TRIAL_TRACKING\n'; chronyc tracking; "$clockHelper" --director-approved-temporary-trial 181; clockResult=$?; printf '\nPOST_TRIAL_DAEMON\n'; awk '/^(Name|State|Pid|PPid):/ {print}' /proc/181/status; printf 'POST_TRIAL_TRACKING\n'; chronyc tracking; printf 'POST_TRIAL_CONFIGURATION\n'; cat /etc/chrony.conf; else printf 'IDENTITY_GUARD_REFUSED_NO_MUTATION\n'; fi; printf '\nLORCANA_CLOCK_TRIAL_RESULT %s\n' "$clockResult"
+exit
+'@
+$start = New-Object System.Diagnostics.ProcessStartInfo
+$start.FileName = Join-Path $env:SystemRoot 'System32\wsl.exe'
+$start.Arguments = '--debug-shell'
+$start.UseShellExecute = $false
+$start.CreateNoWindow = $true
+$start.RedirectStandardInput = $true
+$start.RedirectStandardOutput = $true
+$start.RedirectStandardError = $true
+$p = New-Object System.Diagnostics.Process
+$p.StartInfo = $start
+$watch = [Diagnostics.Stopwatch]::StartNew()
+$writer = [IO.StreamWriter]::new($clockTranscriptPath,$false,[Text.UTF8Encoding]::new($false))
+$completion = $null
+try {
+    [void]$p.Start()
+    $lineTask = $p.StandardOutput.ReadLineAsync()
+    $errorTask = $p.StandardError.ReadToEndAsync()
+    $p.StandardInput.WriteLine($linuxTrial)
+    $p.StandardInput.Flush()
+    while ($watch.ElapsedMilliseconds -lt 500000 -and -not $p.HasExited) {
+        if ($lineTask.IsCompleted) {
+            $line = $lineTask.Result
+            if ($null -eq $line) { break }
+            $writer.WriteLine($line); $writer.Flush()
+            if ($line.Trim() -match '^LORCANA_CLOCK_TRIAL_RESULT ([0-9]+)$') { $completion = [int]$Matches[1]; break }
+            $lineTask = $p.StandardOutput.ReadLineAsync()
+        } else { Start-Sleep -Milliseconds 100 }
+    }
+    $exited = $p.HasExited
+    if (-not $exited) { $p.Kill(); $p.WaitForExit() }
+    if (-not $lineTask.IsCompleted) { [void]$lineTask.Wait(3000) }
+    if ($lineTask.IsCompleted -and $null -ne $lineTask.Result) { $writer.WriteLine($lineTask.Result) }
+    $remainder = $p.StandardOutput.ReadToEnd(); $writer.Write($remainder); $writer.Flush()
+    $report = [ordered]@{scope='Director-approved bounded pause of WSL chronyd and neutral-rate comparison with independent restoration watchdog; no persistent settings or calendar set';administrator=$true;elapsed_ms=$watch.ElapsedMilliseconds;helper_exit=$completion;client_exited_without_owned_termination=$exited;client_exit=$p.ExitCode;stderr=$errorTask.Result;utc_recording_sample=[DateTime]::UtcNow.ToString('o');transcript_file='lorcana-clock-controlled-trial-20261014.txt'}
+    [IO.File]::WriteAllText($clockOutputPath,($report|ConvertTo-Json -Depth 5),[Text.UTF8Encoding]::new($false))
+} finally {
+    if ($p.Id -and -not $p.HasExited) { $p.Kill(); $p.WaitForExit() }
+    $writer.Dispose(); $p.Dispose()
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-018",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "docs:sync",
+    "--change",
+    "CHG-20261014-003"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e36d223848dbee4f456bb65fcc08f07c3891168a",
+  "source_fingerprint": "2c3439767b30e3c65877269dfcfae8f11da59bb57389188a1e6083147a141fc9",
+  "started_at": "2026-10-14T04:18:44.235Z",
+  "finished_at": "2026-10-14T04:19:08.624Z",
+  "recorded_at": "2026-10-14T04:19:08.624Z",
+  "time_precision": "exact",
+  "elapsed_ms": 23511,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Reviewed current follow-up report and draft metadata synchronization after actual workspace/bootstrap checks",
+  "log_path": "docs/validation/logs/RUN-20261014-018.txt",
+  "log_sha256": "45963bd2515b4b5920d23afd84c938164fd4b812dc104a570ed474841ffd8ccf",
+  "redactions": 0
+}

@@ -1,0 +1,21 @@
+$ErrorActionPreference = 'Stop'
+$clockReports = @()
+foreach ($clockServer in @('time.windows.com','time.cloudflare.com','ntp.ubuntu.com')) {
+    $info = New-Object Diagnostics.ProcessStartInfo
+    $info.FileName = Join-Path $env:SystemRoot 'System32\w32tm.exe'
+    $info.Arguments = "/stripchart /computer:$clockServer /samples:4 /period:1 /dataonly /rdtsc"
+    $info.UseShellExecute = $false; $info.CreateNoWindow = $true
+    $info.RedirectStandardOutput = $true; $info.RedirectStandardError = $true
+    $clockProcess = New-Object Diagnostics.Process; $clockProcess.StartInfo = $info
+    try {
+        [void]$clockProcess.Start()
+        $stdout = $clockProcess.StandardOutput.ReadToEndAsync(); $stderr = $clockProcess.StandardError.ReadToEndAsync()
+        $completed = $clockProcess.WaitForExit(15000)
+        if (-not $completed) { $clockProcess.Kill(); $clockProcess.WaitForExit() }
+        $clockReports += [ordered]@{server=$clockServer;completed=$completed;exit=$clockProcess.ExitCode;stdout=$stdout.Result;stderr=$stderr.Result}
+    } finally { $clockProcess.Dispose() }
+}
+$svc = Get-Service -Name W32Time
+$ownedLauncher = Get-Process -Id 41664 -ErrorAction SilentlyContinue
+$report = [ordered]@{scope='Read-only external time reference and Windows service/client observation after approved trial';recorded_at=[DateTime]::UtcNow.ToString('o');windows_time_service=[ordered]@{status=[string]$svc.Status;start_type=[string]$svc.StartType};owned_admin_launcher_still_running=($null -ne $ownedLauncher);references=$clockReports}
+[IO.File]::WriteAllText('\\wsl.localhost\Ubuntu\tmp\lorcana-clock-post-windows-20261014.json',($report|ConvertTo-Json -Depth 7),[Text.UTF8Encoding]::new($false))
