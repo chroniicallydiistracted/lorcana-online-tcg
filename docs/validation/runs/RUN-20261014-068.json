@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-068",
+  "category": "container",
+  "command": [
+    "bash",
+    "-c",
+    "pnpm db:check && pnpm db:health -- --target local && pnpm db:health -- --target test && pnpm db:test && pnpm test:match-integration"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "780c26e69c027b6a2afffa5fa43b2df8294cfcf1",
+  "source_fingerprint": "e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b",
+  "started_at": "2026-10-14T20:13:26.840Z",
+  "finished_at": "2026-10-14T20:13:49.358Z",
+  "recorded_at": "2026-10-14T20:13:49.358Z",
+  "time_precision": "exact",
+  "elapsed_ms": 22518,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Independent PLAY-02 audit: rerun Codex database suites (db:check, local/test health, db:test, storage contract and match-service integration including committed projection reads)",
+  "log_path": "docs/validation/logs/RUN-20261014-068.txt",
+  "log_sha256": "39dda6d7b792bd35b082da18e26e036f4e95a69e9bf94d10e18fee9ea3eab313",
+  "redactions": 0
+}

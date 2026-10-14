@@ -2,6 +2,68 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261014-005 — Independent audit of PLAY-02 synthetic viewer projection privacy and Director-requested integration into main
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-14T20:21:33.000Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 780c26e69c027b6a2afffa5fa43b2df8294cfcf1
+- Tasks: PLAY-02, DOC-01, DOC-02
+- Features: F-DOCS, F-VIEWER-PRIVACY, F-ENGINE
+- Requirements: none
+
+### Changes
+
+- **review:** Audited Codex commit 780c26e (PLAY-02, CHG-20261014-004) against ADR0014, the viewer contract, blueprint §§6.2/6.4/7.5/13 and the backlog acceptance (opponent hand/deck identity absent from every transport/resource/log/export path). The review covered: the closed TypeBox DTO and surface/diagnostic codecs (bounded bytes, no accessor evaluation, fixed outcomes); the projector's allowlist (fronts for play/discard/own hand/authorized reveals, backs elsewhere, normal-inking reveal correlated by state ID to the actual inked card, front-only metadata normalization, slot-derived back references, ref-sorted private zones, recipient-scoped reveal history without object links); the resolver's per-move field profile; the two-line kernel bridge `inspect` and its absence from Lab RPC; HMAC viewer-key domain separation from the RNG stream, with zeroing on dispose; the projection-only worker reply; and the participant-only read-only committed `view` with pin and post-condition checks. Verdict: PLAY-02 acceptance is met for the supported two-player synthetic scope; no blocking finding.
+- **test:** Independent runs RUN-20261014-064..069 all passed at Codex's final fingerprint e3a9578b with exact timing and 0 redactions. RUN064: full verify:foundation (307 project checks = 283 Node + 24 Python; 406 upstream passes/1 inherited skip; 2 injection). RUN065: auditor real-engine probe. Each instance was relabelled with a unique definition so hidden identity is meaningful. Paired hidden worlds differed by renamed/reshuffled hidden instances, hidden definitions, metadata/controller and raw G/ctx/event noise; they gave 495 byte-identical encodings across three viewers at every revision of a complete game, with 369 positive controls. A second complete game was driven only through references: 55 read-only/restored revisions; 4,834 stale, 1,746 cross-viewer, 1,480 public and 432 raw references rejected. RUN066: auditor live PostgreSQL view probe. Adapter equality held at 13 committed versions under 16-way concurrency; 24 views racing a commit each saw the old or new state; 16 INVALID_REQUEST without accessors; FORBIDDEN for outsider/missing; PIN_UNAVAILABLE; six checkpoint forgeries failed closed; a 48-view burst served 34 and refused 14; restart reproduced; terminal hands stayed private. RUN067: boundary/bundle/migration probe (340 browser and 60 server imports refused; Lab never calls inspect; no server markers in bundles; vendor diff is the bridge only, kernel 896,076 bytes; migrations and privileges unchanged). RUN068: Codex database suites (5 + 3 + 11, eight identities). RUN069: Chromium 7 scenarios + 2 Lab workers. RUN070: docs:check covers this record.
+- **review:** Publication review of the two unpublished clock-documentation commits carried by the branch (e36d223, 3983e1c; CHG-20261014-001..003): documentation and evidence only, with no source change. Decoded Windows/WSL archives contain no hostname, hardware/account identifier, email or credential. The only identifiers are two public time.windows.com NTP addresses and the Windows account path segment already present in the published handoff. No private .env.local/database credential value appears in the branch diff; the three token-pattern matches are the scanner's own regular expression.
+- **review:** Follow-ups recorded, none blocking: (1) PLAY-03 must route every client command through the current-reference resolver; the internal service submit still accepts raw engine identities, which is safe only while no client ingress exists. (2) References include the opponent's anonymous ink backs and resolve server-side; today the engine rejects uniformly (DEFENDER_NOT_IN_PLAY) and the service stores only invalid_intent, but real-card outcomes must stay independent of hidden identity, or resolvable references must be restricted per field. (3) Each view restores by full re-execution in a fresh worker, sharing the 2-active/32-queued capacity: about 205-256 ms per concurrent pair for a 16-version game. PLAY-03 needs per-version caching and request limits (extends the PLAY-01 restore-cost follow-up). (4) The projector fails closed above 4,096 raw engine events; synthetic play uses about 7.2 per accepted move, so real-card matches must be measured. (5) The participant move list and the conservative under-card/inkwell visibility defaults must be rechecked during real-card certification. (6) Naming only: the Lab and upstream.lock.json still say pending_PLAY-02; the Lab's hidden-state refusal is correct.
+- **documentation:** Appended a dated independent-audit section to docs/validation/play-02.md and dated audit notes to ADR0014, the PLAY-02 plan and the viewer-privacy runbook. Added the audit sentence to the PLAY-02 paragraph of AGENTS.md, README.md and docs/README.md. Rewrote HANDOFF for the audit state. Added the audit to the F-VIEWER-PRIVACY description and RUN064..069 evidence. Corrected the stale F-ENGINE 'PLAY-02 wire/log privacy pending' to point to F-VIEWER-PRIVACY. Updated the F-VIEWER-PRIVACY table cell and added the PLAY-02 backlog evidence link to this record (status unchanged).
+- **review:** Local isolated CI was not rerun. During the audit the container clock stepped about 91 ms every 30 s (about 1.1 s over the six-minute pipeline, consistent with Codex's clock-rejected RUN051), and the Director declined environment repair; the PLAY-01 host memory incident also argues for one heavy run at a time. Hosted Foundation qualification is dispatched on the published audit branch before main is fast-forwarded and observed again on main; both run IDs are recorded in a later change.
+
+### Verification
+
+- **passed:** Timing-valid pnpm verify:foundation: 307 project checks (283 Node + 24 Python), 406 upstream passes/1 inherited skip/1,362 expectations, 2 injection tests, viewer wire tests. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261014-064.json))
+- **passed:** Auditor real-engine noninterference and reference probe across two complete synthetic games. ([evidence](docs/validation/runs/RUN-20261014-065.json))
+- **passed:** Auditor live PostgreSQL probe of committed participant views. ([evidence](docs/validation/runs/RUN-20261014-066.json))
+- **passed:** Auditor boundary, bundle, vendor-diff and migration/privilege probe on local and test databases. ([evidence](docs/validation/runs/RUN-20261014-067.json))
+- **passed:** Codex database suites: db:check, local/test health, db:test 5, storage 3, match integration 11. ([evidence](docs/validation/runs/RUN-20261014-068.json))
+- **passed:** Linux headless Chromium: 7 foundation/viewer-codec scenarios and 2 isolated Lab workers. ([evidence](docs/validation/runs/RUN-20261014-069.json))
+- **passed:** docs:check over the completed audit documentation and evidence (static). ([evidence](docs/validation/runs/RUN-20261014-070.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-02.md](docs/validation/play-02.md) — Appended a dated independent-audit section: run outcomes, review scope, verdict, clock-commit publication review, follow-ups and the isolated-CI decision; Codex text unchanged.
+- **updated:** [docs/adr/0014-viewer-projection-privacy.md](docs/adr/0014-viewer-projection-privacy.md) — Dated audit note: decision unchanged and consistent with the source; PLAY-03 follow-ups.
+- **updated:** [docs/plans/2026-10-14-play-02-viewer-privacy.md](docs/plans/2026-10-14-play-02-viewer-privacy.md) — Execution note recording the independent audit and hosted-CI-before-merge sequence.
+- **updated:** [docs/runbooks/viewer-privacy.md](docs/runbooks/viewer-privacy.md) — Audit cautions: resolver-only commands, back-reference outcomes, view cost/caching, event bound.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Audit state, verification, follow-ups and the publication/integration sequence; Codex implementation summary retained.
+- **updated:** [AGENTS.md](AGENTS.md) — PLAY-02 paragraph notes the independent audit, hosted-CI-before-merge sequence and the PLAY-03 resolver/caching follow-ups.
+- **updated:** [README.md](README.md) — Same PLAY-02 audit sentence as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same PLAY-02 audit sentence as AGENTS.md.
+- **updated:** [docs/features.json](docs/features.json) — F-VIEWER-PRIVACY notes the audit and adds RUN-20261014-064..069 evidence; F-ENGINE's stale PLAY-02-pending clause now points to F-VIEWER-PRIVACY.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-VIEWER-PRIVACY acceptance-limit cell references the independent audit runs.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-02 evidence link to this audit record only; status and every other row unchanged.
+- **reviewed_unchanged:** [docs/contracts/viewer.md](docs/contracts/viewer.md) — Matches the audited DTO, codecs, reference and visibility policy; follow-ups belong to PLAY-03/card certification.
+- **reviewed_unchanged:** [docs/reviews/2026-10-14-play-02-privacy.md](docs/reviews/2026-10-14-play-02-privacy.md) — Codex's commissioned review is consistent with the source; this audit adds independent execution it did not perform.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — PLAY-02 evidence-link edits reviewed; 548 dispositions and 20 optional flags unchanged.
+- **reviewed_unchanged:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — PLAY-02 note consistent with the added view method and unchanged command path.
+- **reviewed_unchanged:** [docs/validation/clock-investigation.md](docs/validation/clock-investigation.md) — Reviewed for publication with its archives; no personal or credential data; the audit's clock-step observation is consistent with it.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Sequential heavy-workload rule followed; no change needed.
+- **historical_preserved:** [docs/changes/CHG-20261014-004.json](docs/changes/CHG-20261014-004.json) — Finalized Codex record; audited, not modified.
+- **historical_preserved:** [docs/changes/CHG-20261014-003.json](docs/changes/CHG-20261014-003.json) — Finalized clock record carried by the branch; reviewed for publication, not modified.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261014-005.json).
+
+### Limits and next actions
+
+- Audit evidence is local Linux Dev Container and headless Chromium only; no Windows, touch, GPU, load or production observation.
+- Local isolated CI was not rerun (clock stepping and the unchanged guard); hosted CI results are observed after publication and recorded in a later change.
+- Probes characterize the two-player synthetic catalog with relabelled definitions; real-card effects, private choices, authenticated transport, publication, delayed/privileged observers, clocks and multiplayer remain gated.
+- Push the Codex and audit branches, run hosted Foundation qualification on claude/play-02-audit, fast-forward main only after it passes, observe the main run and record both run IDs in the next change.
+- PLAY-03 next; carry the resolver-only command, back-reference outcome, projection caching/limits and event-bound measurement follow-ups into its plan.
+
 ## CHG-20261014-004 — PLAY-02 viewer projections and noninterference
 
 - Status: finalized

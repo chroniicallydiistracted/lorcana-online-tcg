@@ -945,7 +945,7 @@
       "name": "Pinned synthetic engine, secure server RNG and private deterministic verification",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Pinned6de59de1/59 patches, secure RNG/private completed replay, server/Lab13-move policy and private live reconstruction. Ordinary/official/private/reward admission closed; PLAY-02 wire/log privacy pending.",
+      "description": "Pinned6de59de1/59 patches, secure RNG/private completed replay, server/Lab13-move policy and private live reconstruction. Ordinary/official/private/reward admission closed; synthetic viewer/wire privacy is owned by F-VIEWER-PRIVACY.",
       "sources": [
         "scripts/engine/**",
         "vendor/tcg-engines/**",
@@ -1155,7 +1155,7 @@
       "name": "Synthetic viewer projection and output privacy",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Closed participant/public DTOs, authorized resources/semantic notices/current exports, opaque revision references, private recovery and participant-only committed reads; recipient transport and all-card/private-choice admission stay gated.",
+      "description": "Closed participant/public DTOs, authorized resources/semantic notices/current exports, opaque revision references, private recovery and participant-only committed reads; recipient transport and all-card/private-choice admission stay gated. Independently audited in CHG-20261014-005 (RUN-20261014-064..069).",
       "sources": [
         "packages/contracts/**",
         "packages/engine-adapter/**",
@@ -1196,7 +1196,13 @@
         "docs/validation/runs/RUN-20261014-056.json",
         "docs/validation/runs/RUN-20261014-059.json",
         "docs/validation/runs/RUN-20261014-057.json",
-        "docs/validation/runs/RUN-20261014-058.json"
+        "docs/validation/runs/RUN-20261014-058.json",
+        "docs/validation/runs/RUN-20261014-064.json",
+        "docs/validation/runs/RUN-20261014-065.json",
+        "docs/validation/runs/RUN-20261014-066.json",
+        "docs/validation/runs/RUN-20261014-067.json",
+        "docs/validation/runs/RUN-20261014-068.json",
+        "docs/validation/runs/RUN-20261014-069.json"
       ]
     }
   ]

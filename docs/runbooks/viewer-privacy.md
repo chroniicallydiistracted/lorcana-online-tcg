@@ -13,3 +13,9 @@ Run `pnpm test:viewer-privacy` after builds for two independent HTTP/WebSocket c
 Before adding a card/prompt/log field, construct paired states with identical public facts and differing private definitions/order/IDs/candidates/log payloads. Compare every encoded viewer surface, with public consequences explicitly distinguished. Assert positive permitted visibility as well as absent forbidden values. Never let homogeneous test decks make secrecy tests vacuous. Actual supported gameplay and general private prompt certification remain gated by card/rules admission.
 
 PLAY-03 owns authenticated publication, sequence/version/release envelope, reconnect, receipt retries, current-ref refresh and two real clients. AUTH/REPLAY own privileged completed archive delivery; spectators/casters/judges need scoped access/consent and uniform delay. PLAY-04 owns clocks; X01 multiplayer revisits P056. Current ordinary Lab/Collection/official/private/reward/device/production gates remain closed.
+
+Audit cautions (2026-10-14 UTC, CHG-20261014-005):
+- Client commands must enter only through `resolveIntent` with current references. Never expose the raw-identity `submit`.
+- A participant's references include the opponent's anonymous backs. Keep any client-visible rejection outcome independent of the hidden card.
+- Each `view` restores in a fresh worker by full re-execution: about 0.2 s for a 16-version synthetic game, shared with command capacity (2 active/32 queued). Cache per committed version and rate-limit before clients poll.
+- A projection fails closed above 4,096 raw engine events (synthetic play ≈7.2 per move). Measure real-card matches before publication.
