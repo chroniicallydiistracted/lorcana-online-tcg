@@ -19,3 +19,7 @@ PLAY-03 links the browser-owned match-client workspace and explicitly permits it
 ## PLAY-04 timed qualification
 
 The product page remains a foundation diagnostic. A test-only two-context Chromium harness exercises distinct live3 estimates, clock-only pause, suspension and gateway-hop recovery for both opening chooser seats. Historical RUN059 exposed a database revision rewind, reproduced and repaired by RED062→GREEN063; cold-cache RUN064 passes both seats. Final-source browser qualification follows the independent review repairs; see [current evidence](../../docs/validation/play-04.md). No final game UI, real Windows/device, ordinary/card/reward or production acceptance is implied.
+
+## PLAY-04 audit repair — 2026-10-15 UTC
+
+The audit-fix Chromium regression holds an actual PostgreSQL clock reservation, observes a transient retry, releases it and confirms native client recovery on one socket with the same command ID and one concession result. Its database/validator imports run only in the Node test harness; no browser product module imports them. See the current validation for the actual result and limits.

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-115",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';import fs from 'node:fs';import {spawnSync} from 'node:child_process';import {inventory,isDoc,sourceFingerprint} from './scripts/documentation-lib.mjs';import {scanSecrets} from './scripts/ci/security.mjs';import {privateRedactionValues} from './scripts/evidence-lib.mjs';\nconst run=(cmd,args)=>{const r=spawnSync(cmd,args,{stdio:'inherit'});assert.equal(r.status,0,'Final command failed: '+cmd);},git=args=>{const r=spawnSync('git',args,{maxBuffer:20000000});assert.equal(r.status,0);return r.stdout;};\nrun('pnpm',['docs:sync','--change','CHG-20261015-007']);run('pnpm',['docs:check']);\nassert.equal(sourceFingerprint(),'0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff');\nassert.equal(scanSecrets(inventory().map(path=>({path,bytes:fs.readFileSync(path)})),{knownSecrets:Object.values(privateRedactionValues(process.cwd()))}).length,0,'Final source/log secret policy');\nrun('git',['add','-A','--','.']);run('git',['diff','--cached','--check','--','.',':(exclude)docs/validation/logs/**']);\nlet count=0;for(const path of inventory().filter(p=>!isDoc(p)||p.startsWith('docs/schemas/'))){assert(fs.readFileSync(path).equals(git(['show',':'+path])),'Canonical staged executable differs');count++;}\nconst c=JSON.parse(fs.readFileSync('docs/changes/CHG-20261015-007.json')),actual=new Set([...git(['diff','--name-only','775994a']).toString().trim().split('\\n').filter(Boolean),...git(['ls-files','--others','--exclude-standard']).toString().trim().split('\\n').filter(Boolean),'docs/validation/runs/RUN-20261015-115.json','docs/validation/logs/RUN-20261015-115.txt']);assert.deepEqual([...actual].sort(),c.files);assert.equal(c.status,'finalized');assert.equal(count,667);assert.equal(c.files.length,293);\nconsole.log('PASS final repair docs/change/callable/status inventory and source/log secrets,667canonical staged executable/config/test/schema files,293cumulative branch files including this recorder pair. Fix-only base3753069; main unchanged775994a; source0249c5a5.');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "37530699a332376320e2b0f03b22d3eddbd2d763",
+  "source_fingerprint": "0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff",
+  "started_at": "2026-10-15T19:03:31.373Z",
+  "finished_at": "2026-10-15T19:04:33.498Z",
+  "recorded_at": "2026-10-15T19:04:33.498Z",
+  "time_precision": "exact",
+  "elapsed_ms": 61963,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final PLAY-04 audit repair documentation and canonical cumulative packaging",
+  "log_path": "docs/validation/logs/RUN-20261015-115.txt",
+  "log_sha256": "1333541e416264167f61fc9c1ca16cfe80e722cb81a99af210bb9987b360e5b2",
+  "redactions": 0
+}

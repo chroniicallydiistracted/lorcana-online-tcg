@@ -10,11 +10,11 @@ import type {EngineClockState,ClockProjection} from '@lorcana/contracts/clocks';
 
 export interface ClockAuditRequest {kind:'pause'|'resume';matchId:string;expectedStateVersion:number;expectedClockRevision:number;operationId:string;auditId:string;reason?:ClockProjection['pauseReason'];reset?:{playerId:string;remainingMs:number}}
 export type ClockControlResult=ReceiptResult&{clockRevision:number};
-export type ReserveResult={kind:'reserved';reservation:ClockReservation;before:StoredMatch}|{kind:'duplicate';result:ReceiptResult&{clockRevision?:number}}|{kind:'busy'|'stale'|'paused'|'expired'};
+export type ReserveResult={kind:'reserved';reservation:ClockReservation;before:StoredMatch}|{kind:'duplicate';result:ReceiptResult&{clockRevision?:number}}|{kind:'rejected';result:ReceiptResult}|{kind:'busy'|'stale'|'paused'|'expired'};
 export interface ClockRepository extends MatchRepository {
   sample():Promise<number>;
   createTimed(value:StoredMatch):Promise<{match:StoredMatch;created:boolean}>;
-  reservePlayer(command:DurableCommand):Promise<ReserveResult>;
+  reservePlayer(command:DurableCommand&{move:string}):Promise<ReserveResult>;
   reserveTimeout(matchId:string,expectedStateVersion:number,expectedClockRevision:number):Promise<ReserveResult>;
   commitPlayer(reservation:ClockReservation,command:DurableCommand,candidate:CommitCandidate,clock:EngineClockState):Promise<ReceiptResult>;
   commitTimeout(reservation:ClockReservation,candidate:CommitCandidate,clock:EngineClockState):Promise<ReceiptResult>;
@@ -67,7 +67,7 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
     // trustworthy pending interval before resuming; the outage itself is never charged.
     await write(c,match,clock,null);await event(c,match,clock,'paused','system-pause-'+clock.revision,at,systemClockActor(match.players),reason);
   }
-  async function reserve(c:pg.PoolClient,kind:'player'|'timeout',matchId:string,version:number,clockRevision?:number,command?:DurableCommand):Promise<ReserveResult>{
+  async function reserve(c:pg.PoolClient,kind:'player'|'timeout',matchId:string,version:number,clockRevision?:number,command?:DurableCommand&{move:string}):Promise<ReserveResult>{
     const {match,reservation}=await locked(c,matchId,command?.actorId),clock=match.clock!,now=await sample(c);
     if(command){
       const prior=await c.query('SELECT c.*,m.release_id FROM match.command_receipts c JOIN match.matches m USING(match_id) WHERE c.match_id=$1 AND c.actor_id=$2 AND c.command_id=$3',[matchId,command.actorId,command.commandId]);
@@ -75,6 +75,13 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
         if(prior.rows[0].intent_hash!==command.intentHash)throw new MatchStoreError('ID_CONFLICT');
         const r=prior.rows[0];return {kind:'duplicate',result:{duplicate:true,receipt:{matchId,actorId:r.actor_id,commandId:r.command_id,intentHash:r.intent_hash,releaseId:match.releaseId,outcome:r.outcome,reason:r.reason,stateVersion:clockInteger(r.state_version)}}};
       }
+    }
+    // The service supplies a validated move. Refuse waiting-player actions
+    // against the current locked row, without a lease, proof replay or clock
+    // mutation. A concession still goes through normal fenced engine work.
+    if(command&&command.actorId!==clock.activePlayerId&&command.move!=='concede'){
+      if(match.stateVersion!==version||match.ended)return {kind:'stale'};
+      return {kind:'rejected',result:await commitMatchOnClient(c,command,match,null,{outcome:'rejected',reason:'invalid_intent'})};
     }
     if(clock.status==='paused')return {kind:'paused'};
     if(reservation){
@@ -84,7 +91,8 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
     if(match.stateVersion!==version||clockRevision!==undefined&&clock.revision!==clockRevision||match.ended)return {kind:'stale'};
     if(now<clock.anchorUtcMs||now<clock.lastHealthyUtcMs){await pauseUnsafe(c,match,now,'time_unreliable');return {kind:'paused'};}
     if(now-clock.lastHealthyUtcMs>maxGap){await pauseUnsafe(c,match,now,'recovery');return {kind:'paused'};}
-    if(kind==='player'&&now>=clock.deadlineUtcMs!){
+    const waitingConcession=command?.move==='concede'&&command.actorId!==clock.activePlayerId;
+    if(kind==='player'&&!waitingConcession&&now>=clock.deadlineUtcMs!){
       if(command)await commitMatchOnClient(c,command,match,null,{outcome:'rejected',reason:'clock_expired'});
       return {kind:'expired'};
     }

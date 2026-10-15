@@ -19,6 +19,32 @@ async function fixture(open=true){
   return {...f,s,async close(){await s.close();await f.close();}};
  }catch(error){await s?.close();await f.close();throw error;}
 }
+test('a waiting move is refused before cold proof work and cannot delay the active player',async()=>{
+ const f=await clockFixture(),{createClockService}=await import('../dist/clock-service.js'),{createClockHealth}=await import('../dist/clock-health.js'),{createEngineExecutor}=await import('../dist/engine-executor.js'),executor=createEngineExecutor();let inspections=0;
+ const clocks=createClockService({repository:f.a,pins:()=>{},health:createClockHealth({monotonicNow:f.now}),executor:{...executor,execute:async job=>{if(job.kind==='clock-inspect')inspections++;return executor.execute(job);}}});
+ try{
+  await f.open();clocks.recordCreated(f.id);const before=await f.a.load(f.id,'p1'),waiting=f.command('p2');
+  const refused=await clocks.submit(waiting,false);assert.equal(refused.receipt.reason,'invalid_intent');assert.equal(inspections,0);
+  assert.deepEqual((await f.a.load(f.id,'p1')).clock,before.clock);
+  assert.equal((await clocks.submit(f.command('p1'),false)).receipt.outcome,'accepted');
+ }finally{await clocks.close();await executor.close();await f.close();}
+});
+test('busy reservations are transient and the identical waiting concession succeeds after release',async()=>{
+ const f=await fixture();try{
+  const {validateSubmission}=await import('../dist/validation.js'),active=validateSubmission('p1',command(f.id,'held-active',3,'passTurn')),owner=await f.a.reservePlayer(active);assert.equal(owner.kind,'reserved');
+  const waiting=command(f.id,'busy-concession',3,'concede');
+  await assert.rejects(f.s.submitRefs('p2',waiting),e=>e.code==='BUSY');
+  assert.equal(await f.using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.command_receipts WHERE match_id=$1 AND command_id=$2',[f.id,waiting.commandId])).rows[0].n),0);
+  await f.a.abort(owner.reservation);const result=await f.s.submitRefs('p2',waiting);assert.equal(result.receipt.outcome,'accepted');assert.equal((await f.s.view('p1',{matchId:f.id})).winner,'p1');
+ }finally{await f.close();}
+});
+test('waiting-player reference concession at the exact deadline ends once without a timeout pass',async()=>{
+ const f=await fixture();try{
+  f.advance(1000);const c=command(f.id,'deadline-concession',3,'concede'),result=await f.s.submitRefs('p2',c);assert.equal(result.receipt.outcome,'accepted');
+  await f.s.tickClocks();const again=await f.s.submitRefs('p2',c);assert.equal(again.duplicate,true);assert.deepEqual(again.receipt,result.receipt);
+  assert.equal((await f.s.view('p1',{matchId:f.id})).winner,'p1');assert.equal((await f.s.readClock('p1',{matchId:f.id})).status,'ended');
+ }finally{await f.close();}
+});
 test('timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads',async()=>{
  const f=await fixture();try{
   const start=await f.s.readClock('p1',{matchId:f.id});assert.equal(start.players.find(p=>p.playerId==='p1').remainingMs,1000);

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-112",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm install --frozen-lockfile --offline && pnpm run doctor && pnpm verify:foundation && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "37530699a332376320e2b0f03b22d3eddbd2d763",
+  "source_fingerprint": "0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff",
+  "started_at": "2026-10-15T18:57:04.543Z",
+  "finished_at": "2026-10-15T18:59:24.292Z",
+  "recorded_at": "2026-10-15T18:59:24.292Z",
+  "time_precision": "exact",
+  "elapsed_ms": 139366,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final repaired source frozen install, complete foundation and original database baseline",
+  "log_path": "docs/validation/logs/RUN-20261015-112.txt",
+  "log_sha256": "04cbd583d27aafa1cadb050da82f6d16190f75a18119baf65deab5185df2892c",
+  "redactions": 0
+}

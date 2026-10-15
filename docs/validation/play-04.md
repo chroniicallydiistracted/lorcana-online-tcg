@@ -142,3 +142,43 @@ Local isolated CI was not rerun: receipts show the wall clock gaining 1.3–1.7 
 ## Director decision and hosted audit-branch run — 2026-10-15 UTC
 
 Recorded 2026-10-15T17:35:31.544Z (CHG-20261015-006). The Director chose to fix finding 1 before integration, rather than merge now with a follow-up; main stays at 775994a. RUN-20261015-101 observes public GitHub metadata for Foundation run [38776275959](https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/38776275959): attempt 1, workflow_dispatch on `claude/play-04-audit` at 926846d, job `foundation` success 17:18:50–17:31:10Z, every step successful. Logs and artifacts were not downloaded, so this is metadata, not a fresh hosted test count. Next: a fix change for findings 1 and 2 with regressions and fresh affected suites, then re-audit, publication and main integration. The four policy points remain open for the Director.
+
+## Audit fixes — 2026-10-15 UTC
+
+CHG-20261015-007 implements the Director's four requested fix steps on `codex/play-04-audit-fixes`, based on audited3753069. Main remains775994a. The preceding a41c1374 proof, independent findings and hosted38776275959 are preserved historical checkpoints; they do not qualify the repaired source. Re-audit and fresh hosted CI remain Director actions.
+
+Admission now refuses a waiting participant's non-concession command inside the short authoritative transaction, before any timed lease, clock mutation or engine proof/transition. It writes an idempotent invalid_intent receipt only. It rereads current state under the existing match→clock locks, so short SQL locking remains; no lock is held for engine computation. A concurrent active reservation stays intact. The move name is supplied by the trusted service's validated Submission, alongside its canonical durable intent; this is an internal repository interface, not a new client-controlled authority.
+
+A waiting participant may concede before, exactly at, or briefly after the active participant's deadline, before timeout admission. Version, active reservation, unhealthy time, recovery pause, lease and engine checks still apply. The active player's own exact-deadline commands remain clock_expired. A competing automatic pass still serializes under the same fence; expired owners cannot be revived, and a stale concession must be reconsidered against the new state. This adds no grace, clock bonus, timeout choice or forfeit policy.
+
+Only a live reservation conflict becomes internal MatchServiceError BUSY. The gateway reuses the existing closed live2/3 `rate_limited`/`rate_limit` receipt with100ms retryAfterMs: no new wire variant, maintenance control, durable command receipt, socket closure or changed client implementation. The client retries the same pending bytes/ID on its existing socket with the existing bounded retry/quota behavior. Genuine unavailable, unhealthy, corrupt or incompatible state still follows the existing maintenance/fail-closed path. Persistent overload is not qualified by this brief-contention fix.
+
+Tests reproduce: no waiting-command proof work/clock revision/events, even alongside an active reservation; waiting concessions at0/1000/1001ms; exact-deadline reference concession and idempotency; BUSY without a durable receipt; actual PostgreSQL plus WebSocket retry on the same connection and ID with one final receipt/journal/outbox effect; Chromium with native cookies, actual gateway and held database reservation, one socket and same pending ID. Injected UTC cases are simulated time over actual storage, not host-clock qualification.
+
+| Run | Outcome and exact scope |
+|---|---|
+|103|Pass unchanged intake doctor/static/bootstrap/original DB.|
+|104|Expected RED:1pass/6fail. Five failures reproduce actor/deadline defects; busy test initially used an old fixture-engine revision and failed stale before reaching contention. No repair inferred.|
+|105|Expected RED actual WebSocket: maintenance instead of same-connection retry.|
+|106|Corrected busy fixture RED: UNAVAILABLE instead of BUSY.|
+|107|Expected RED actual Chromium: no same-socket retry receipt.|
+|108|21pass/5fail: actor/busy repairs work, but moving the shared version check changed timeout busy/dead-lease ordering. Existing and new regressions catch this; no acceptance.|
+|109|26clock/database/live checks, web types and scoped strict lint pass after restoring timeout reservation ordering. A subsequent test-only cleanup sequences three queries on one PG client; final-source proof follows below.|
+
+No dependencies, package manifests, public schemas, engine bridge/runtime/rules, Lab, applied SQL, host settings or production choices change. The latent non-priority real-card resolveBag chooser and four audit policy points remain separate and gated; this task does not settle them. Original credentials and database volume/data remain; cleanup targets only fixtures created by these tests. The earlier interrupted fixture and expired quota rows are not removed.
+
+### Final repaired-source proof
+
+Recorded 2026-10-15T19:02:29.111Z. Passing receipts110/111/112/114 share executable/config/test/schema fingerprint `0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff`, valid paired UTC/monotonic samples, exit0 and no redactions. Failed113 is retained separately below. This does not qualify absolute UTC accuracy or a permanent host fix.
+
+| Run | Category | Result and limits |
+|---|---|---|
+|110|container|Both local/test role-health sets;5DB integration+3storage contract+66match/service/live/process tests=74. Includes actual PostgreSQL and independent process races/deaths; designated UTC scenarios use injected simulated time. Original bootstrap connection passes.|
+|111|headless_browser|All11Linux Chromium foundation/live/clock tests, including both chooser seats and new actual-cookie/socket/DB-contention regression;2Lab Web Workers. Software WebGL, not a Windows/device observation.|
+|112|container|Frozen offline install, doctor, verify/docs, types, strict lint, builds,350project checks (326Node+24Python),406upstream passes/1inherited skip,2injection and original bootstrap DB. No test removed.|
+|113|container|Failed packaging assertion: the broad preservation query counted an intentionally updated engine-adapter README as runtime drift. App tests were not rerun or changed; the failure is retained.|
+|114|container|Corrected preservation distinguishes current documentation from runtime: exact four runtime/four test file delta, matching110/111/112source, original ignored0600private bytes, engine/SQL/dependencies/public schemas/client/decisions/requirements/archive/main unchanged,727existing log digests, current source/log secret scan and no owned app/test children or5173/3001/3002listeners.|
+
+CHG007 is finalized for this local repair scope, not Director acceptance. Its cumulative inventory is based on main775994a, while3753069 is the precise fix-only review base. RUN115 is the final documentation/changelog/callable inventory, source-secret, staged-byte and cumulative-coverage packaging record; its immutable JSON/log supply the executed outcome. No self-referencing advance passing claim or amended sealed record is used. No fresh source-only clean checkout, long isolated pipeline, fix-source hosted CI, promoted artifact, Windows/device/load/production or required-check settings qualification is claimed. Earlier clean/audit/hosted proofs remain explicitly source-specific.
+
+The Director will re-check the fix and run hosted CI before merging. All nine requested regression cases pass through their owning suites (eight database/service/live cases and one Chromium case); the original two audit findings are repaired, pending that re-audit. No fresh independent reviewer or final integration approval is implied. The separate real-card chooser finding and four policy points remain open with the existing approved behavior unchanged.

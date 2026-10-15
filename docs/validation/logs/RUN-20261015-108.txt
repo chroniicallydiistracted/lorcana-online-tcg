@@ -1,0 +1,162 @@
+Scope: 6 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  898.96 kB │ gzip: 195.75 kB
+
+✓ built in 186ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+(node:686204) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ live3 busy contention retries the same concession on the same socket without maintenance or duplicate effects (4381.170827ms)
+✔ live3 publishes clock-only pause, disconnect continues time and another host reconnects to the committed pass (7236.850266ms)
+✔ timed tickets cannot downgrade to live2 or exchange an authentication frame across versions (1149.501417ms)
+✔ a waiting move is refused before cold proof work and cannot delay the active player (593.071821ms)
+✔ busy reservations are transient and the identical waiting concession succeeds after release (3069.445671ms)
+✔ waiting-player reference concession at the exact deadline ends once without a timeout pass (2786.82712ms)
+✔ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (2705.048646ms)
+✔ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (3194.355228ms)
+✔ unresolved opening timeout pauses for a legal decision and audited reset cannot choose the winner (1489.126311ms)
+✔ clock storage tampering cannot extend a deadline or alter a native remaining allowance (2388.661276ms)
+✔ an already-running owner that stalls cannot pause a second healthy owner through tick, submit or timeout (2005.812598ms)
+✔ a cold proof reconstruction crossing the deadline happens after authoritative admission (527.346102ms)
+✔ an illegal service result returning after a short lease pauses before any competing sweep (558.396965ms)
+✔ waiting-player refusals never reserve or revise the active clock, even with an admitted active move (257.58257ms)
+✖ waiting concession remains admissible 0ms after the turn anchor (143.01193ms)
+✖ waiting concession remains admissible 1000ms after the turn anchor (145.789808ms)
+✖ waiting concession remains admissible 1001ms after the turn anchor (142.511096ms)
+✖ real database admits an early action before a timeout and excludes accepted engine-processing time (131.706904ms)
+✔ the exact deadline refuses player admission and duplicate timeout servers can commit only once (158.781116ms)
+✖ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (136.979667ms)
+✔ aborted illegal calculations retain elapsed time and a forged system actor cannot obtain a player reservation (134.022811ms)
+✔ new clock state and audit tables remain inaccessible to API and worker roles (87.269697ms)
+✔ a heartbeat blocked behind reservation admission rereads the clock after acquiring its row lock (141.72797ms)
+✔ six independent timeout repositories admit one owner and system-like participant names cannot preclaim its receipt (173.377578ms)
+✔ a expired rejected calculation cannot resurrect its fenced clock reservation (126.07098ms)
+✔ a backward rejected calculation cannot resurrect its fenced clock reservation (128.109217ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 21
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36211.84885
+
+✖ failing tests:
+
+test at apps/match-service/tests/clock-storage.test.mjs:19:36
+✖ waiting concession remains admissible 0ms after the turn anchor (143.01193ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'stale' !== 'busy'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:23:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'stale',
+    expected: 'busy',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:19:36
+✖ waiting concession remains admissible 1000ms after the turn anchor (145.789808ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'stale' !== 'busy'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:23:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'stale',
+    expected: 'busy',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:19:36
+✖ waiting concession remains admissible 1001ms after the turn anchor (142.511096ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'stale' !== 'busy'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:23:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'stale',
+    expected: 'busy',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:31:1
+✖ real database admits an early action before a timeout and excludes accepted engine-processing time (131.706904ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'stale' !== 'busy'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:35:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'stale',
+    expected: 'busy',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:56:1
+✖ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (136.979667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'stale' !== 'paused'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:62:27)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'stale',
+    expected: 'paused',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

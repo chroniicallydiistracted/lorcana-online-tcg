@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-107",
+  "category": "headless_browser",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/web",
+    "test:e2e",
+    "--grep",
+    "busy clock reservation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "37530699a332376320e2b0f03b22d3eddbd2d763",
+  "source_fingerprint": "60c74d4850f0f5eea5c201ce09adb7fba83535372c6b012f3fe093e2632eff68",
+  "started_at": "2026-10-15T18:48:24.053Z",
+  "finished_at": "2026-10-15T18:48:59.203Z",
+  "recorded_at": "2026-10-15T18:48:59.203Z",
+  "time_precision": "exact",
+  "elapsed_ms": 35080,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED Chromium same-socket retry regression against real database reservation",
+  "log_path": "docs/validation/logs/RUN-20261015-107.txt",
+  "log_sha256": "a1247ce709b96faf1a8aee207381a6818716dd5709f35b6a3cf8734507225df1",
+  "redactions": 0
+}

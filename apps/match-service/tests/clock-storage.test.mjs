@@ -4,6 +4,30 @@ import {clockFixture} from './clock-fixtures.mjs';
 import pg from 'pg';
 import {createClockRepository} from '../../../packages/db/dist/index.js';
 
+test('waiting-player refusals never reserve or revise the active clock, even with an admitted active move',async()=>{
+ const f=await clockFixture();try{
+  await f.open();const before=await f.a.load(f.id,'p1'),waiting=f.command('p2'),events=()=>f.using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1',[f.id])).rows[0].n),count=await events();
+  const refused=await f.b.reservePlayer(waiting);assert.equal(refused.kind,'rejected');assert.equal(refused.result.receipt.reason,'invalid_intent');
+  assert.deepEqual((await f.a.load(f.id,'p1')).clock,before.clock);assert.equal(await events(),count);
+  const duplicate=await f.a.reservePlayer(waiting);assert.equal(duplicate.kind,'duplicate');assert.deepEqual(duplicate.result.receipt,refused.result.receipt);
+  const active=f.command('p1'),owner=await f.a.reservePlayer(active);assert.equal(owner.kind,'reserved');
+  const processing=await f.a.load(f.id,'p1'),again=await f.b.reservePlayer(f.command('p2'));
+  assert.equal(again.kind,'rejected');assert.deepEqual((await f.a.load(f.id,'p1')).clock,processing.clock);
+  const next=f.apply(owner.reservation,'p1','passTurn');assert.equal((await f.a.commitPlayer(owner.reservation,active,next,f.m.clock())).receipt.outcome,'accepted');
+ }finally{await f.close();}
+});
+for(const elapsed of [0,1000,1001])test('waiting concession remains admissible '+elapsed+'ms after the turn anchor',async()=>{
+ const f=await clockFixture();try{
+  await f.open();const before=await f.a.load(f.id,'p1');f.advance(elapsed);
+  const command=f.command('p2','concede'),owner=await f.b.reservePlayer(command);assert.equal(owner.kind,'reserved');
+  assert.equal((await f.a.reserveTimeout(f.id,before.stateVersion,before.clock.revision)).kind,'busy');
+  const next=f.apply(owner.reservation,'p2','concede'),result=await f.b.commitPlayer(owner.reservation,command,next,f.m.clock());assert.equal(result.receipt.outcome,'accepted');
+  const after=await f.a.load(f.id,'p1');assert.equal(after.ended,true);assert.equal(after.winner,'p1');assert.equal(after.clock.status,'ended');
+  const duplicate=await f.a.reservePlayer(command);assert.equal(duplicate.kind,'duplicate');assert.deepEqual(duplicate.result.receipt,result.receipt);
+  assert.equal((await f.a.reserveTimeout(f.id,after.stateVersion,after.clock.revision)).kind,'stale');
+ }finally{await f.close();}
+});
+
 test('real database admits an early action before a timeout and excludes accepted engine-processing time',async()=>{
  const f=await clockFixture();try{
   await f.open();const before=await f.a.load(f.id,'p1'),clock=before.clock;f.advance(999);

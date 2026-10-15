@@ -54,3 +54,7 @@ Full committed snapshots avoid delta-base ambiguity. Metadata-only PostgreSQL NO
 Clock/estimate callbacks are defensive copies. The client anchors the latest authorized allowance to performance.now, clamps its display at zero and clears clock/view on suspend/retry/sign-out/close. Displaying zero sends no move and declares no outcome. Clock-only revisions cannot rewind; server snapshots remain authority. Production clock durations are unselected.
 
 Observers/casters/judges, delayed streams, full private replay delivery, official cards, production proxy/TLS/admission, user-facing game UI and real devices remain gated.
+
+## PLAY-04 audit repair — 2026-10-15 UTC
+
+Reservation contention does not introduce a new wire variant: internal BUSY maps to the existing rate_limited/rate_limit receipt with100ms retryAfterMs and no maintenance control or socket close. The existing client preserves its view and original pending bytes/ID and retries on that socket. There is no durable busy receipt. Real UNAVAILABLE remains maintenance; bounded retry and shared quotas remain in force. Live2/3 schemas and clients are unchanged.

@@ -84,6 +84,8 @@ export function createClockService(options:{repository:ClockRepository;executor:
       if(!await continuous(before,reading.utcMs))throw new MatchServiceError('UNAVAILABLE');
       const admission=await repository.reservePlayer(command);
       if(admission.kind==='duplicate')return admission.result;
+      if(admission.kind==='rejected')return admission.result;
+      if(admission.kind==='busy')throw new MatchServiceError('BUSY');
       if(admission.kind==='expired'){const receipt=await repository.findReceipt(command);if(!receipt)throw new Error();return {receipt,duplicate:false};}
       if(admission.kind==='stale')return await repository.commit(command,before,null,{outcome:'stale',reason:'stale_state'});
       if(admission.kind!=='reserved')throw new MatchServiceError('UNAVAILABLE');

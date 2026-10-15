@@ -1,0 +1,716 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261015-007",
+  "title": "PLAY-04 audit fixes: admission without reservation and retryable live contention",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-15T19:02:29.111Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "37530699a332376320e2b0f03b22d3eddbd2d763",
+  "task_ids": [
+    "PLAY-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R02.030",
+    "R02.031",
+    "R29.006",
+    "R29.007",
+    "R30.010"
+  ],
+  "feature_ids": [
+    "F-MATCH-CLOCKS",
+    "F-LIVE-TRANSPORT",
+    "F-DB",
+    "F-DOCS",
+    "F-EVIDENCE"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Director assigns fixes for audit findings1/2 before integration. Verify clean audit3753069, unchanged main775994a and original running workspace/database. Confirm waiting-player reservation before actor check, busy converted to UNAVAILABLE then socket1012, and blanket deadline rejection including the waiting concession. Keep the four unassigned policy points and real-card chooser gate unchanged."
+    },
+    {
+      "kind": "test",
+      "description": "RUN103 passes existing doctor/static/bootstrap/original database intake inside original Dev Container. Capture private preservation hashes/modes only in ignored0600 metadata. Mark obsolete whole-source verified feature entries pending before new tests/source."
+    },
+    {
+      "kind": "test",
+      "description": "RED104/105/106/107 reproduce reservation/proof, BUSY versus UNAVAILABLE, waiting concession at cutoff and browser disconnect.104 busy fixture initially uses stale revision and is corrected before106. Preserve all outcomes."
+    },
+    {
+      "kind": "fix",
+      "description": "Refuse waiting non-concession transactionally without timed lease/clock mutation; permit waiting concession across other deadline under unchanged fences; service BUSY maps to unchanged100ms rate_limited wire receipt without socket closure/durable receipt. No schemas, client, engine, SQL, dependency or host setting changes."
+    },
+    {
+      "kind": "test",
+      "description": "RUN108 has21pass/5fail exposing changed system timeout busy/dead-lease ordering. Restore original ordering for normal reservations; RUN109 passes26checks, web types and scoped lint. Sequence three test-only PG queries afterward; final-source suites remain separate."
+    },
+    {
+      "kind": "documentation",
+      "description": "Update current owning docs, audit status, backlog and handoff; preserve all historical records. Ruling: use existing live2/3 backpressure shape for internal BUSY, not a new wire outcome; this preserves closed version schemas and existing same-ID/same-socket client retry. Cost if wrong: separately version and qualify a new busy wire outcome. Director re-audit/hosted CI remain required."
+    },
+    {
+      "kind": "test",
+      "description": "Final-source RUN110passes74DB/storage/match/live checks;111passes11Linux Chromium plus2Lab workers;112passes350project/406engine/1skip/2injection and frozen install/doctor/verify/types/lint/build/bootstrap DB. Valid timing pairs, identical0249c5a5fingerprint. No fresh fix-source hosted/isolated/clean-checkout/device/load/production acceptance inferred."
+    },
+    {
+      "kind": "test",
+      "description": "RUN113 preserves failed overly broad runtime-drift assertion for an intentionally updated README. RUN114 corrects that inspection only and passes final source/private bytes/scope/policy/log-digest/current-secret/owned-process/listener preservation. No application change or suite rerun required."
+    },
+    {
+      "kind": "documentation",
+      "description": "Finalize local repair scope and current owning docs/backlog/feature evidence/handoff; retain all historical audit and failure bytes. Main stays775994a. The full cumulative inventory is from main; fix-only review base3753069. Final RUN115 executes docs/staged/cumulative packaging, reporting its own actual outcome; no advance pass or finalized-history amendment."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "apps/match-service/README.md",
+    "apps/match-service/package.json",
+    "apps/match-service/src/clock-health.ts",
+    "apps/match-service/src/clock-runner.ts",
+    "apps/match-service/src/clock-service.ts",
+    "apps/match-service/src/engine-executor.ts",
+    "apps/match-service/src/errors.ts",
+    "apps/match-service/src/gateway.ts",
+    "apps/match-service/src/live-connection.ts",
+    "apps/match-service/src/service.ts",
+    "apps/match-service/src/transition-worker.ts",
+    "apps/match-service/tests/client-fixtures.mjs",
+    "apps/match-service/tests/clock-child.mjs",
+    "apps/match-service/tests/clock-fixtures.mjs",
+    "apps/match-service/tests/clock-live.test.mjs",
+    "apps/match-service/tests/clock-process.test.mjs",
+    "apps/match-service/tests/clock-service.test.mjs",
+    "apps/match-service/tests/clock-storage.test.mjs",
+    "apps/match-service/tests/clocks.test.mjs",
+    "apps/match-service/tests/gateway-child.mjs",
+    "apps/match-service/tests/transport-store.test.mjs",
+    "apps/web/README.md",
+    "apps/web/tests/clock-client.spec.ts",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0016-durable-engine-clocks.md",
+    "docs/changes/CHG-20261015-003.json",
+    "docs/changes/CHG-20261015-004.json",
+    "docs/changes/CHG-20261015-005.json",
+    "docs/changes/CHG-20261015-006.json",
+    "docs/changes/CHG-20261015-007.json",
+    "docs/contracts/live.md",
+    "docs/contracts/protocol.md",
+    "docs/contracts/release.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-15-play-04-design.md",
+    "docs/plans/2026-10-15-play-04-implementation.md",
+    "docs/plans/2026-10-15-play-04-intake.md",
+    "docs/reviews/2026-10-15-play-04-clocks.md",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/database.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/game-clocks.md",
+    "docs/runbooks/live-matches.md",
+    "docs/runbooks/match-commands.md",
+    "docs/validation/boot-02.md",
+    "docs/validation/inputs/play04-hosted-metadata.mjs",
+    "docs/validation/logs/RUN-20261015-019.txt",
+    "docs/validation/logs/RUN-20261015-020.txt",
+    "docs/validation/logs/RUN-20261015-021.txt",
+    "docs/validation/logs/RUN-20261015-022.txt",
+    "docs/validation/logs/RUN-20261015-023.txt",
+    "docs/validation/logs/RUN-20261015-024.txt",
+    "docs/validation/logs/RUN-20261015-025.txt",
+    "docs/validation/logs/RUN-20261015-026.txt",
+    "docs/validation/logs/RUN-20261015-027.txt",
+    "docs/validation/logs/RUN-20261015-028.txt",
+    "docs/validation/logs/RUN-20261015-029.txt",
+    "docs/validation/logs/RUN-20261015-030.txt",
+    "docs/validation/logs/RUN-20261015-031.txt",
+    "docs/validation/logs/RUN-20261015-032.txt",
+    "docs/validation/logs/RUN-20261015-033.txt",
+    "docs/validation/logs/RUN-20261015-034.txt",
+    "docs/validation/logs/RUN-20261015-035.txt",
+    "docs/validation/logs/RUN-20261015-036.txt",
+    "docs/validation/logs/RUN-20261015-037.txt",
+    "docs/validation/logs/RUN-20261015-038.txt",
+    "docs/validation/logs/RUN-20261015-039.txt",
+    "docs/validation/logs/RUN-20261015-040.txt",
+    "docs/validation/logs/RUN-20261015-041.txt",
+    "docs/validation/logs/RUN-20261015-042.txt",
+    "docs/validation/logs/RUN-20261015-043.txt",
+    "docs/validation/logs/RUN-20261015-044.txt",
+    "docs/validation/logs/RUN-20261015-045.txt",
+    "docs/validation/logs/RUN-20261015-046.txt",
+    "docs/validation/logs/RUN-20261015-047.txt",
+    "docs/validation/logs/RUN-20261015-048.txt",
+    "docs/validation/logs/RUN-20261015-049.txt",
+    "docs/validation/logs/RUN-20261015-050.txt",
+    "docs/validation/logs/RUN-20261015-051.txt",
+    "docs/validation/logs/RUN-20261015-052.txt",
+    "docs/validation/logs/RUN-20261015-053.txt",
+    "docs/validation/logs/RUN-20261015-054.txt",
+    "docs/validation/logs/RUN-20261015-055.txt",
+    "docs/validation/logs/RUN-20261015-056.txt",
+    "docs/validation/logs/RUN-20261015-057.txt",
+    "docs/validation/logs/RUN-20261015-058.txt",
+    "docs/validation/logs/RUN-20261015-059.txt",
+    "docs/validation/logs/RUN-20261015-061.txt",
+    "docs/validation/logs/RUN-20261015-062.txt",
+    "docs/validation/logs/RUN-20261015-063.txt",
+    "docs/validation/logs/RUN-20261015-064.txt",
+    "docs/validation/logs/RUN-20261015-065.txt",
+    "docs/validation/logs/RUN-20261015-066.txt",
+    "docs/validation/logs/RUN-20261015-067.txt",
+    "docs/validation/logs/RUN-20261015-068.txt",
+    "docs/validation/logs/RUN-20261015-069.txt",
+    "docs/validation/logs/RUN-20261015-070.txt",
+    "docs/validation/logs/RUN-20261015-071.txt",
+    "docs/validation/logs/RUN-20261015-072.txt",
+    "docs/validation/logs/RUN-20261015-073.txt",
+    "docs/validation/logs/RUN-20261015-074.txt",
+    "docs/validation/logs/RUN-20261015-075.txt",
+    "docs/validation/logs/RUN-20261015-076.txt",
+    "docs/validation/logs/RUN-20261015-077.txt",
+    "docs/validation/logs/RUN-20261015-078.txt",
+    "docs/validation/logs/RUN-20261015-079.txt",
+    "docs/validation/logs/RUN-20261015-080.txt",
+    "docs/validation/logs/RUN-20261015-081.txt",
+    "docs/validation/logs/RUN-20261015-082.txt",
+    "docs/validation/logs/RUN-20261015-083.txt",
+    "docs/validation/logs/RUN-20261015-084.txt",
+    "docs/validation/logs/RUN-20261015-085.txt",
+    "docs/validation/logs/RUN-20261015-086.txt",
+    "docs/validation/logs/RUN-20261015-087.txt",
+    "docs/validation/logs/RUN-20261015-088.txt",
+    "docs/validation/logs/RUN-20261015-089.txt",
+    "docs/validation/logs/RUN-20261015-090.txt",
+    "docs/validation/logs/RUN-20261015-091.txt",
+    "docs/validation/logs/RUN-20261015-092.txt",
+    "docs/validation/logs/RUN-20261015-093.txt",
+    "docs/validation/logs/RUN-20261015-094.txt",
+    "docs/validation/logs/RUN-20261015-095.txt",
+    "docs/validation/logs/RUN-20261015-096.txt",
+    "docs/validation/logs/RUN-20261015-097.txt",
+    "docs/validation/logs/RUN-20261015-098.txt",
+    "docs/validation/logs/RUN-20261015-099.txt",
+    "docs/validation/logs/RUN-20261015-100.txt",
+    "docs/validation/logs/RUN-20261015-101.txt",
+    "docs/validation/logs/RUN-20261015-102.txt",
+    "docs/validation/logs/RUN-20261015-103.txt",
+    "docs/validation/logs/RUN-20261015-104.txt",
+    "docs/validation/logs/RUN-20261015-105.txt",
+    "docs/validation/logs/RUN-20261015-106.txt",
+    "docs/validation/logs/RUN-20261015-107.txt",
+    "docs/validation/logs/RUN-20261015-108.txt",
+    "docs/validation/logs/RUN-20261015-109.txt",
+    "docs/validation/logs/RUN-20261015-110.txt",
+    "docs/validation/logs/RUN-20261015-111.txt",
+    "docs/validation/logs/RUN-20261015-112.txt",
+    "docs/validation/logs/RUN-20261015-113.txt",
+    "docs/validation/logs/RUN-20261015-114.txt",
+    "docs/validation/logs/RUN-20261015-115.txt",
+    "docs/validation/play-01.md",
+    "docs/validation/play-02.md",
+    "docs/validation/play-03-hosted-baseline.json",
+    "docs/validation/play-03.md",
+    "docs/validation/play-04.md",
+    "docs/validation/rule-03.md",
+    "docs/validation/runs/RUN-20261015-019.json",
+    "docs/validation/runs/RUN-20261015-020.json",
+    "docs/validation/runs/RUN-20261015-021.json",
+    "docs/validation/runs/RUN-20261015-022.json",
+    "docs/validation/runs/RUN-20261015-023.json",
+    "docs/validation/runs/RUN-20261015-024.json",
+    "docs/validation/runs/RUN-20261015-025.json",
+    "docs/validation/runs/RUN-20261015-026.json",
+    "docs/validation/runs/RUN-20261015-027.json",
+    "docs/validation/runs/RUN-20261015-028.json",
+    "docs/validation/runs/RUN-20261015-029.json",
+    "docs/validation/runs/RUN-20261015-030.json",
+    "docs/validation/runs/RUN-20261015-031.json",
+    "docs/validation/runs/RUN-20261015-032.json",
+    "docs/validation/runs/RUN-20261015-033.json",
+    "docs/validation/runs/RUN-20261015-034.json",
+    "docs/validation/runs/RUN-20261015-035.json",
+    "docs/validation/runs/RUN-20261015-036.json",
+    "docs/validation/runs/RUN-20261015-037.json",
+    "docs/validation/runs/RUN-20261015-038.json",
+    "docs/validation/runs/RUN-20261015-039.json",
+    "docs/validation/runs/RUN-20261015-040.json",
+    "docs/validation/runs/RUN-20261015-041.json",
+    "docs/validation/runs/RUN-20261015-042.json",
+    "docs/validation/runs/RUN-20261015-043.json",
+    "docs/validation/runs/RUN-20261015-044.json",
+    "docs/validation/runs/RUN-20261015-045.json",
+    "docs/validation/runs/RUN-20261015-046.json",
+    "docs/validation/runs/RUN-20261015-047.json",
+    "docs/validation/runs/RUN-20261015-048.json",
+    "docs/validation/runs/RUN-20261015-049.json",
+    "docs/validation/runs/RUN-20261015-050.json",
+    "docs/validation/runs/RUN-20261015-051.json",
+    "docs/validation/runs/RUN-20261015-052.json",
+    "docs/validation/runs/RUN-20261015-053.json",
+    "docs/validation/runs/RUN-20261015-054.json",
+    "docs/validation/runs/RUN-20261015-055.json",
+    "docs/validation/runs/RUN-20261015-056.json",
+    "docs/validation/runs/RUN-20261015-057.json",
+    "docs/validation/runs/RUN-20261015-058.json",
+    "docs/validation/runs/RUN-20261015-059.json",
+    "docs/validation/runs/RUN-20261015-061.json",
+    "docs/validation/runs/RUN-20261015-062.json",
+    "docs/validation/runs/RUN-20261015-063.json",
+    "docs/validation/runs/RUN-20261015-064.json",
+    "docs/validation/runs/RUN-20261015-065.json",
+    "docs/validation/runs/RUN-20261015-066.json",
+    "docs/validation/runs/RUN-20261015-067.json",
+    "docs/validation/runs/RUN-20261015-068.json",
+    "docs/validation/runs/RUN-20261015-069.json",
+    "docs/validation/runs/RUN-20261015-070.json",
+    "docs/validation/runs/RUN-20261015-071.json",
+    "docs/validation/runs/RUN-20261015-072.json",
+    "docs/validation/runs/RUN-20261015-073.json",
+    "docs/validation/runs/RUN-20261015-074.json",
+    "docs/validation/runs/RUN-20261015-075.json",
+    "docs/validation/runs/RUN-20261015-076.json",
+    "docs/validation/runs/RUN-20261015-077.json",
+    "docs/validation/runs/RUN-20261015-078.json",
+    "docs/validation/runs/RUN-20261015-079.json",
+    "docs/validation/runs/RUN-20261015-080.json",
+    "docs/validation/runs/RUN-20261015-081.json",
+    "docs/validation/runs/RUN-20261015-082.json",
+    "docs/validation/runs/RUN-20261015-083.json",
+    "docs/validation/runs/RUN-20261015-084.json",
+    "docs/validation/runs/RUN-20261015-085.json",
+    "docs/validation/runs/RUN-20261015-086.json",
+    "docs/validation/runs/RUN-20261015-087.json",
+    "docs/validation/runs/RUN-20261015-088.json",
+    "docs/validation/runs/RUN-20261015-089.json",
+    "docs/validation/runs/RUN-20261015-090.json",
+    "docs/validation/runs/RUN-20261015-091.json",
+    "docs/validation/runs/RUN-20261015-092.json",
+    "docs/validation/runs/RUN-20261015-093.json",
+    "docs/validation/runs/RUN-20261015-094.json",
+    "docs/validation/runs/RUN-20261015-095.json",
+    "docs/validation/runs/RUN-20261015-096.json",
+    "docs/validation/runs/RUN-20261015-097.json",
+    "docs/validation/runs/RUN-20261015-098.json",
+    "docs/validation/runs/RUN-20261015-099.json",
+    "docs/validation/runs/RUN-20261015-100.json",
+    "docs/validation/runs/RUN-20261015-101.json",
+    "docs/validation/runs/RUN-20261015-102.json",
+    "docs/validation/runs/RUN-20261015-103.json",
+    "docs/validation/runs/RUN-20261015-104.json",
+    "docs/validation/runs/RUN-20261015-105.json",
+    "docs/validation/runs/RUN-20261015-106.json",
+    "docs/validation/runs/RUN-20261015-107.json",
+    "docs/validation/runs/RUN-20261015-108.json",
+    "docs/validation/runs/RUN-20261015-109.json",
+    "docs/validation/runs/RUN-20261015-110.json",
+    "docs/validation/runs/RUN-20261015-111.json",
+    "docs/validation/runs/RUN-20261015-112.json",
+    "docs/validation/runs/RUN-20261015-113.json",
+    "docs/validation/runs/RUN-20261015-114.json",
+    "docs/validation/runs/RUN-20261015-115.json",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "package.json",
+    "packages/contracts/README.md",
+    "packages/contracts/package.json",
+    "packages/contracts/src/clocks.ts",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/live.ts",
+    "packages/contracts/src/protocol.ts",
+    "packages/contracts/tests/clocks.test.mjs",
+    "packages/contracts/tests/live-clock.test.mjs",
+    "packages/contracts/tests/protocol.test.mjs",
+    "packages/contracts/tests/release.test.mjs",
+    "packages/db/README.md",
+    "packages/db/migrations/0005-match-clocks.sql",
+    "packages/db/package.json",
+    "packages/db/src/clock-store.ts",
+    "packages/db/src/clock-types.ts",
+    "packages/db/src/index.ts",
+    "packages/db/src/match-store.ts",
+    "packages/db/src/transport-store.ts",
+    "packages/db/tests/policy.test.mjs",
+    "packages/engine-adapter/README.md",
+    "packages/engine-adapter/src/clocks.ts",
+    "packages/engine-adapter/src/code-identity.ts",
+    "packages/engine-adapter/src/index.ts",
+    "packages/engine-adapter/src/persistence.ts",
+    "packages/engine-adapter/src/replay.ts",
+    "packages/engine-adapter/src/validation.ts",
+    "packages/engine-adapter/tests/clocks.test.mjs",
+    "packages/match-client/README.md",
+    "packages/match-client/src/clocks.ts",
+    "packages/match-client/src/index.ts",
+    "packages/match-client/tests/clocks.test.mjs",
+    "packages/service-runtime/README.md",
+    "packages/service-runtime/tests/protocol.test.mjs",
+    "pnpm-lock.yaml",
+    "vendor/tcg-engines/README.md",
+    "vendor/tcg-engines/src/kernel.d.ts",
+    "vendor/tcg-engines/src/kernel.ts"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/adr/0014-viewer-projection-privacy.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/adr/0015-live-synthetic-transport.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/adr/0016-durable-engine-clocks.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/contracts/live.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/contracts/viewer.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/runbooks/game-clocks.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/runbooks/live-matches.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/runbooks/viewer-privacy.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/validation/play-02.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/validation/play-03.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/validation/play-04.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared with the scoped four-file repair: package/toolchain/engine/SQL/public-codec/identity/ownership/retention and admission policy remain unchanged; detailed admission/retry correction is owned by current clock/live documentation. Preserve this document and its dated evidence."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "packages/db/README.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Current admission/retry/fix status compared with source; update scoped behavior/evidence without changing historical proof or product gates."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Regenerate uniform finalized repair history and current source/file/function/status snapshot through final docs synchronization."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Regenerate uniform finalized repair history and current source/file/function/status snapshot through final docs synchronization."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-103.json",
+      "outcome": "passed",
+      "scope": "Unchanged audit-source intake: doctor, verify including docs, bootstrap and original authenticated database connection. Not fix acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-104.json",
+      "outcome": "failed",
+      "scope": "Expected RED actor/deadline defects, plus initially stale busy fixture."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-105.json",
+      "outcome": "failed",
+      "scope": "Expected RED real WebSocket maintenance/connection behavior."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-106.json",
+      "outcome": "failed",
+      "scope": "Corrected fixture RED: BUSY incorrectly UNAVAILABLE."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-107.json",
+      "outcome": "failed",
+      "scope": "Expected RED real Chromium same-socket retry."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-108.json",
+      "outcome": "failed",
+      "scope": "21pass/5fail after initial repair; detects system timeout ordering regression."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-109.json",
+      "outcome": "passed",
+      "scope": "26clock/storage/live checks plus web typecheck and scoped lint; later test-only sequential-query cleanup needs final-source suite."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-110.json",
+      "outcome": "passed",
+      "scope": "Final executable source: both role-health sets,5DB integration+3storage contract+66match/service/live/process checks=74; original bootstrap DB. Actual PostgreSQL/process/races, simulated UTC where declared."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-111.json",
+      "outcome": "passed",
+      "scope": "Final source:11actual Linux Chromium checks plus2Lab Web Workers; no Windows/device observation."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-112.json",
+      "outcome": "passed",
+      "scope": "Final source full foundation:350project=326Node+24Python,406upstream/1skip/2injection, frozen install/doctor/docs/types/lint/build/original DB."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-113.json",
+      "outcome": "failed",
+      "scope": "Packaging assertion mistakenly treats intentionally updated owning README as runtime drift; no application failure or source edit."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-114.json",
+      "outcome": "passed",
+      "scope": "Corrected scope proof: four runtime/four test files only, matching final source, private0600bytes, engine/SQL/lock/schemas/client/decisions/requirements/archive/main preserved,727log digests/current source secret scan/owned cleanup."
+    }
+  ],
+  "limitations": [
+    "Fix scope is waiting-player non-concession admission, brief reservation contention and waiting-player concession across the deadline. No core engine, SQL, duration/default/outage policy, host settings or deployment change.",
+    "Main remains775994a. Director performs re-audit and hosted CI before integration; current prior hosted result qualifies the audit source only.",
+    "Final proof fingerprint0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff. No fresh clean-checkout/isolated/hosted/device/load/absoluteUTC or promoted-artifact claim; unchanged-source prior evidence remains historical."
+  ],
+  "next_actions": [
+    "Read final RUN115 packaging result, then keep the coherent committed local codex/play-04-audit-fixes branch ready for Director re-audit.",
+    "Director re-checks and runs hosted CI before deciding publication/integration; main remains775994a. Four policy points and real-card chooser/production gates stay separate."
+  ]
+}

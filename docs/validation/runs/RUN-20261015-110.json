@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-110",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm db:health -- --target local && pnpm db:health -- --target test && pnpm db:test && pnpm test:match-integration && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "37530699a332376320e2b0f03b22d3eddbd2d763",
+  "source_fingerprint": "0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff",
+  "started_at": "2026-10-15T18:52:37.759Z",
+  "finished_at": "2026-10-15T18:55:21.263Z",
+  "recorded_at": "2026-10-15T18:55:21.263Z",
+  "time_precision": "exact",
+  "elapsed_ms": 163045,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Full actual database and live suites after PLAY-04 audit repairs",
+  "log_path": "docs/validation/logs/RUN-20261015-110.txt",
+  "log_sha256": "ea7bb20de7b1692ebf13238e2350a634d528c9eb2dd36b9e3f0628288ba2a6fb",
+  "redactions": 0
+}

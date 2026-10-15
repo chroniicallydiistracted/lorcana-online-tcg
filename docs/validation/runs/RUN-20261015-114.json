@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-114",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';\nimport fs from 'node:fs';import {spawnSync} from 'node:child_process';\nimport {inventory,isDoc,sourceFingerprint,sha256} from './scripts/documentation-lib.mjs';\nimport {privateRedactionValues} from './scripts/evidence-lib.mjs';import {scanSecrets} from './scripts/ci/security.mjs';\nconst git=args=>{const r=spawnSync('git',args,{maxBuffer:20000000});assert.equal(r.status,0);return r.stdout;};\nconst expected='0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff';\nassert.equal(sourceFingerprint(),expected);for(const n of ['110','111','112']){const r=JSON.parse(fs.readFileSync('docs/validation/runs/RUN-20261015-'+n+'.json'));assert.equal(r.result,'passed');assert.equal(r.clock_discontinuity,false);assert.equal(r.source_fingerprint,expected);}\nconst baseline=JSON.parse(fs.readFileSync('.local/play04-fix-preservation.json'));for(const [path,saved]of Object.entries(baseline)){const s=fs.lstatSync(path);assert(s.isFile()&&!s.isSymbolicLink()&&s.uid===process.getuid());assert.equal(s.mode&0o777,0o600);assert.equal(sha256(fs.readFileSync(path)),saved.sha256);assert.equal(saved.mode,0o600);git(['check-ignore','-q',path]);assert.equal(git(['ls-files','--',path]).length,0);}\nconst changes=git(['diff','--name-only','3753069']).toString().trim().split('\\n').filter(p=>p&&!isDoc(p));assert.deepEqual(changes.sort(),['apps/match-service/src/clock-service.ts','apps/match-service/src/errors.ts','apps/match-service/src/live-connection.ts','apps/match-service/tests/clock-live.test.mjs','apps/match-service/tests/clock-service.test.mjs','apps/match-service/tests/clock-storage.test.mjs','apps/web/tests/clock-client.spec.ts','packages/db/src/clock-store.ts'].sort());\nfor(const path of ['pnpm-lock.yaml','toolchain.json','.devcontainer','packages/db/migrations','vendor/tcg-engines','packages/engine-adapter','packages/engine-lab','packages/contracts/src','packages/match-client/src','docs/vision/decision_register.csv','docs/vision/requirements.csv','docs/vision/Development_Blueprint_2026-10-05.md','docs/vision/original_action_items.md','SHA256SUMS.txt','VALIDATION_RESULTS.json']){const changed=git(['diff','--name-only','3753069','--',path]).toString().trim().split('\\n').filter(Boolean);assert.deepEqual(path.startsWith('packages/')||path.startsWith('vendor/')?changed.filter(p=>!isDoc(p)):changed,[],'Unassigned source/policy changed: '+path);}\nassert.equal(git(['rev-parse','main']).toString().trim(),'775994a82f5f003c4c4831a20791d5e904ff3d6b');\nconst knownSecrets=Object.values(privateRedactionValues(process.cwd()));assert.equal(scanSecrets(inventory().map(path=>({path,bytes:fs.readFileSync(path)})),{knownSecrets}).length,0,'Current source/log secret policy');\nlet logs=0;for(const file of fs.readdirSync('docs/validation/runs').filter(p=>p.endsWith('.json'))){const r=JSON.parse(fs.readFileSync('docs/validation/runs/'+file));if(r.log_path){assert.equal(sha256(fs.readFileSync(r.log_path)),r.log_sha256);logs++;}}\nfor(const pid of fs.readdirSync('/proc').filter(p=>/^\\d+$/.test(p)))try{const args=fs.readFileSync('/proc/'+pid+'/cmdline','utf8').split('\\0');assert(!args.some(a=>/(?:^|\\/)apps\\/(?:api|match-service|worker)\\/(?:src|dist)\\/(?:main|index)\\.(?:ts|js)$|(?:^|\\/)apps\\/match-service\\/tests\\/(?:clock-child|gateway-child)\\.mjs$/.test(a)),'Owned application/test child remains');}catch(e){if(!['ENOENT','EACCES'].includes(e.code))throw e;}\nfor(const path of ['/proc/net/tcp','/proc/net/tcp6'])if(fs.existsSync(path))for(const row of fs.readFileSync(path,'utf8').split('\\n').slice(1)){const f=row.trim().split(/\\s+/);if(f[3]==='0A')assert(![5173,3001,3002].includes(parseInt(f[1].split(':')[1],16)),'Owned foundation listener remains');}\nconsole.log('PASS final source110/111/112 equal '+expected+'; exactly four runtime/four test files changed; original private bytes0600ignored, engine/SQL/dependencies/schemas/client/decisions/requirements/archive/main preserved; current source/log secrets clean; '+logs+' log digests; no owned child/foundation listener remains.');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "37530699a332376320e2b0f03b22d3eddbd2d763",
+  "source_fingerprint": "0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff",
+  "started_at": "2026-10-15T19:01:09.758Z",
+  "finished_at": "2026-10-15T19:01:10.306Z",
+  "recorded_at": "2026-10-15T19:01:10.306Z",
+  "time_precision": "exact",
+  "elapsed_ms": 549,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final source and cleanup scope proof distinguishes updated owning READMEs from preserved runtime",
+  "log_path": "docs/validation/logs/RUN-20261015-114.txt",
+  "log_sha256": "a937bb0f2c03d360cba397bc40c84434a36ffd4ce8b5d84b09ed4a36b691b3c4",
+  "redactions": 0
+}

@@ -58,6 +58,11 @@ export function createLiveConnection(ws:WebSocket,options:{service:MatchService;
     }catch(error){
       const code=error&&typeof error==='object'&&'code'in error?error.code:null;
       if(code==='ID_CONFLICT'||code==='INVALID_REQUEST'||code==='FORBIDDEN'){stop(1008);return;}
+      if(code==='BUSY'){
+        // Existing live2/3 backpressure receipt: retry the same pending intent
+        // on this connection. No durable receipt or maintenance transition.
+        send({...envelope(command.correlationId),type:'receipt',commandId:command.commandId,duplicate:false,outcome:'rate_limited',reason:'rate_limit',retryAfterMs:100});return;
+      }
       send({...envelope(command.correlationId),type:'receipt',commandId:command.commandId,duplicate:false,outcome:'maintenance',reason:'maintenance',retryAfterMs:1000});
       control('maintenance');stop(1012);
     }

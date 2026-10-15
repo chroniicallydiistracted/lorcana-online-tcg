@@ -1,0 +1,41 @@
+
+> @lorcana/web@0.0.0 test:e2e /workspaces/lorcana-online-tcg/apps/web
+> playwright test --grep 'busy clock reservation'
+
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 1 test using 1 worker
+
+  ✘  1 tests/clock-client.spec.ts:16:1 › Chromium preserves its live connection and pending ID through a busy clock reservation (10.2s)
+
+
+  1) tests/clock-client.spec.ts:16:1 › Chromium preserves its live connection and pending ID through a busy clock reservation 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      32 |   const reserved=await repository.reservePlayer(validateSubmission(f.players[0],{matchId:f.id,commandId:'held-browser-action',expectedVersion:3,move:'passTurn',input:{}}));if(reserved.kind!=='reserved')throw Error('Missing owned browser reservation');owner=reserved.reservation;
+      33 |   await page.evaluate(()=>{void window.qualificationClient.submit({kind:'concede',input:{}}).then(r=>window.qualificationClockNotes.push('result:'+r.outcome+':'+r.commandId),()=>window.qualificationClockNotes.push('result:error'));});
+    > 34 |   await expect.poll(()=>page.evaluate(()=>window.qualificationClockNotes.some(n=>n.startsWith('receipt:rate_limited:')))).toBe(true);
+         |                                                                                                                           ^
+      35 |   expect(await page.evaluate(()=>window.qualificationClockNotes.filter(n=>n==='socket').length)).toBe(1);expect(await page.evaluate(()=>window.qualificationClient.view?.stateVersion)).toBe(3);
+      36 |   await repository.abort(owner);owner=undefined;
+      37 |   await expect.poll(()=>page.evaluate(()=>window.qualificationClockNotes.some(n=>n.startsWith('result:accepted:')))).toBe(true);await ready([page],4);
+        at /workspaces/lorcana-online-tcg/apps/web/tests/clock-client.spec.ts:34:123
+
+    Error Context: test-results/clock-client-Chromium-pres-63dc8-gh-a-busy-clock-reservation/error-context.md
+
+  1 failed
+    tests/clock-client.spec.ts:16:1 › Chromium preserves its live connection and pending ID through a busy clock reservation 
+/workspaces/lorcana-online-tcg/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/web@0.0.0 test:e2e: `playwright test --grep 'busy clock reservation'`
+Exit status 1

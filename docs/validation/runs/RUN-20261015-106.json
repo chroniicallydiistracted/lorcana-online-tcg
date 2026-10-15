@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-106",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern=busy reservations",
+    "apps/match-service/tests/clock-service.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "37530699a332376320e2b0f03b22d3eddbd2d763",
+  "source_fingerprint": "60c74d4850f0f5eea5c201ce09adb7fba83535372c6b012f3fe093e2632eff68",
+  "started_at": "2026-10-15T18:48:07.900Z",
+  "finished_at": "2026-10-15T18:48:11.118Z",
+  "recorded_at": "2026-10-15T18:48:11.118Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3219,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED corrected fixture confirms busy admission is incorrectly UNAVAILABLE",
+  "log_path": "docs/validation/logs/RUN-20261015-106.txt",
+  "log_sha256": "ff7dc9a7f086b022caa5589daea7b0d463a3f8ade1842d93111a87af574fcefc",
+  "redactions": 0
+}

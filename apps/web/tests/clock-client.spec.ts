@@ -5,11 +5,40 @@ import type {LiveIntent} from '@lorcana/contracts';
 // This imports only into the Node test runner, never the browser application.
 // @ts-expect-error Test-only JavaScript fixture has no product declaration.
 import {qualification} from '../../match-service/tests/client-fixtures.mjs';
+// Node-only qualification validator, never a browser import.
+import {validateSubmission} from '../../match-service/dist/validation.js';
+import {createClockRepository} from '../../../packages/db/dist/index.js';
 declare global {interface Window {qualificationClockNotes:string[]}}
 
 const origin='http://127.0.0.1:5173';
 const clock={schemaVersion:1,id:'chromium-clock-proof',profile:'qualification',mode:'dynamic',initialReserveMs:30000,reserveCapMs:30000,perActionBonusMs:0,perTurnPassBonusMs:0,resetTimeOnSkipMs:30000,graceMs:0};
 async function ready(pages:Page[],version:number){for(const page of pages)await expect.poll(()=>page.evaluate(()=>window.qualificationClient.status==='ready'&&window.qualificationClient.view?.stateVersion),{timeout:15000}).toBe(version);}
+test('Chromium preserves its live connection and pending ID through a busy clock reservation',async({browser})=>{
+ test.setTimeout(90000);const f=await qualification(origin,{clock}),repository=createClockRepository('test'),context=await browser.newContext(),page=await context.newPage();let owner;
+ const moduleUrl='/@fs'+fileURLToPath(new URL('../../../packages/match-client/src/index.ts',import.meta.url));
+ try{
+  const host=await f.host(),active=f.client(0,host.url);await active.connect();
+  await context.addCookies([{name:'qualification_session',value:f.sessions[1].cookie.split('=')[1],url:origin,httpOnly:true,sameSite:'Strict'}]);await page.goto('/');
+  await page.evaluate(async({moduleUrl,matchId,endpoint})=>{
+   const {createMatchClient}=await import(moduleUrl);window.qualificationClockNotes=[];
+   window.qualificationClient=createMatchClient({matchId,endpoint,clientReleaseId:'chromium-busy-proof',retryBaseMs:20,
+    onReceipt:(r:{outcome:string;commandId:string})=>window.qualificationClockNotes.push('receipt:'+r.outcome+':'+r.commandId),
+    socketFactory:(url:string)=>{window.qualificationClockNotes.push('socket');return new WebSocket(url);}});await window.qualificationClient.connect();
+  },{moduleUrl,matchId:f.id,endpoint:host.url});await ready([page],0);
+  if(active.view!.priorityId===f.players[0])await active.submit({kind:'chooseWhoGoesFirst',input:{playerId:f.players[0]}});
+  else await page.evaluate(playerId=>window.qualificationClient.submit({kind:'chooseWhoGoesFirst',input:{playerId}}),f.players[0]);
+  await ready([page],1);await active.submit({kind:'alterHand',input:{cardsToMulligan:[]}});await ready([page],2);
+  await page.evaluate(()=>window.qualificationClient.submit({kind:'alterHand',input:{cardsToMulligan:[]}}));await ready([page],3);
+  const reserved=await repository.reservePlayer(validateSubmission(f.players[0],{matchId:f.id,commandId:'held-browser-action',expectedVersion:3,move:'passTurn',input:{}}));if(reserved.kind!=='reserved')throw Error('Missing owned browser reservation');owner=reserved.reservation;
+  await page.evaluate(()=>{void window.qualificationClient.submit({kind:'concede',input:{}}).then(r=>window.qualificationClockNotes.push('result:'+r.outcome+':'+r.commandId),()=>window.qualificationClockNotes.push('result:error'));});
+  await expect.poll(()=>page.evaluate(()=>window.qualificationClockNotes.some(n=>n.startsWith('receipt:rate_limited:')))).toBe(true);
+  expect(await page.evaluate(()=>window.qualificationClockNotes.filter(n=>n==='socket').length)).toBe(1);expect(await page.evaluate(()=>window.qualificationClient.view?.stateVersion)).toBe(3);
+  await repository.abort(owner);owner=undefined;
+  await expect.poll(()=>page.evaluate(()=>window.qualificationClockNotes.some(n=>n.startsWith('result:accepted:')))).toBe(true);await ready([page],4);
+  const notes=await page.evaluate(()=>window.qualificationClockNotes),busy=notes.find(n=>n.startsWith('receipt:rate_limited:'))!,accepted=notes.find(n=>n.startsWith('result:accepted:'))!;
+  expect(accepted.split(':')[2]).toBe(busy.split(':')[2]);expect(notes.filter(n=>n==='socket')).toHaveLength(1);expect(await page.evaluate(()=>window.qualificationClient.view?.winner)).toBe(f.players[0]);
+ }finally{if(owner)await repository.abort(owner);await page.evaluate(()=>window.qualificationClient?.close()).catch(()=>{});await context.close();await f.close();await repository.close();}
+});
 for(const choosingSeat of [0,1])test('Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat '+choosingSeat,async({browser})=>{
  test.setTimeout(120000);let f=await qualification(origin,{clock});
  // Both legal randomized opening responsibilities must be exercised. Only owned
