@@ -1,0 +1,105 @@
+{"target":"local","applied":1,"total":5}
+PASS PostgreSQL 18 local: four authenticated managed identities
+PASS PostgreSQL 18 test: four authenticated managed identities
+
+> @lorcana/db@0.0.0 test /workspaces/lorcana-online-tcg/packages/db
+> node --test --test-concurrency=1 tests/policy.test.mjs tests/config.test.mjs
+
+✔ credentials are private, distinct and byte-preserved across provisioning retries (2.604708ms)
+✔ tooling fails closed outside the private local container network (0.171402ms)
+✔ unsafe parent directory is rejected before generating any credential file (0.767989ms)
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (1.591154ms)
+✔ migration history must be an unchanged contiguous prefix (0.17533ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (1.839786ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 162.219764
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test --test-concurrency=1 tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (96.854529ms)
+✔ cross-environment logins cannot connect to either other managed database (38.074121ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (47.694311ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (259.796637ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (877.34782ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1671.119012
+
+> lorcana-online-tcg@0.0.0 test:match-integration /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration
+
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (20.467518ms)
+✔ server-only database exports the bounded match repository (0.242472ms)
+✔ real receipt constraint refuses a rejected result with a null reason (36.534344ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 524.367995
+
+> @lorcana/match-service@0.0.0 test:integration /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/integration.test.mjs tests/transport-store.test.mjs tests/gateway.test.mjs tests/live-client.test.mjs tests/clock-storage.test.mjs
+
+✔ real database admits an early action before a timeout and excludes accepted engine-processing time (214.003878ms)
+✔ the exact deadline refuses player admission and duplicate timeout servers can commit only once (149.842429ms)
+✔ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (158.263636ms)
+✔ aborted illegal calculations retain elapsed time and a forged system actor cannot obtain a player reservation (129.043742ms)
+✔ new clock state and audit tables remain inaccessible to API and worker roles (79.211431ms)
+✔ PLAY-03 gateway requires bounded injected session/origin authority and never registers ordinary login (710.306649ms)
+✔ PLAY-03 two sockets recover on another gateway and retry a committed reference command once (3072.097464ms)
+✔ PLAY-03 revocation and drain withhold further private views and do not concede (753.448751ms)
+✔ PLAY-03 parallel ticket authentication reserves the per-actor connection cap before asynchronous work (546.024324ms)
+✔ PLAY-03 unauthenticated deadlines, binary/oversized frames and outbound budgets fail closed (842.405726ms)
+✔ PLAY-03 direct Fastify close owns gateway timers, hint subscription, service and store cleanup (290.252547ms)
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (1123.496252ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (1134.208061ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (1035.436608ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (861.745461ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (1211.550511ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (1219.486136ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (55.777341ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (1274.081212ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (3225.025545ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (3152.537123ms)
+✔ committed participant projections are read-only, recover exactly and deny role/identity escalation (2316.125639ms)
+✔ PLAY-03 current-reference submissions keep their original durable identity across retries and host recreation (1599.170145ms)
+✔ PLAY-03 48 committed reads coalesce by exact private bytes and actor, without sharing mutable views or hiding corruption (1423.505438ms)
+✔ PLAY-03 two real clients on different processes complete a natural reference-only synthetic game (32971.248097ms)
+✔ PLAY-03 killed gateway loses acknowledgement; same pending old refs recover once on another process (4853.222505ms)
+✔ PLAY-03 qualification host reaps itself when its controlling parent IPC disappears (1213.369185ms)
+✔ PLAY-03 built release pins both qualified decoders and new domain matches pin live2 (345.92897ms)
+✔ PLAY-03 tickets are participant bound, hashed, single use across connections and expire before session authority (925.160646ms)
+✔ PLAY-03 quotas are shared, atomic and bounded across gateway stores (50.81039ms)
+✔ PLAY-03 committed metadata and hints reveal no speculative state or private fields (1067.52036ms)
+✔ PLAY-03 hints close before initial connect completes without leaving a pending owned lifecycle (4.948554ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 71701.385076

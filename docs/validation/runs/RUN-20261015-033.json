@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-033",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "node packages/db/dist/cli.js migrate --target local && node packages/db/dist/cli.js health --target local && node packages/db/dist/cli.js health --target test && pnpm --filter @lorcana/db test && pnpm db:test && pnpm test:match-integration"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "8ba9158cace69e3f9718091caa6c93ab3c12c3004f32a4771c4c04b1a29d813b",
+  "started_at": "2026-10-15T05:48:10.443Z",
+  "finished_at": "2026-10-15T05:49:27.962Z",
+  "recorded_at": "2026-10-15T05:49:27.962Z",
+  "time_precision": "exact",
+  "elapsed_ms": 77323,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 task2 local additive migration, managed role/migration regressions and complete real match integration including clock-storage scenarios; no browser/service timer admission",
+  "log_path": "docs/validation/logs/RUN-20261015-033.txt",
+  "log_sha256": "1eeb5273ba43673d3f062adc02611fb612a4eedb9bde90aa7f1b7429bd82ef40",
+  "redactions": 0
+}

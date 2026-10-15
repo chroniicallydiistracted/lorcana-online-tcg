@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-031",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm install --offline --frozen-lockfile && pnpm --filter @lorcana/db build && node packages/db/dist/cli.js migrate --target test && node --test --test-concurrency=1 apps/match-service/tests/clock-storage.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "c51d9108ed95c15f7cdc232d3f08b044a9394055ffc89fc864ea613c6972edac",
+  "started_at": "2026-10-15T05:45:00.856Z",
+  "finished_at": "2026-10-15T05:45:03.038Z",
+  "recorded_at": "2026-10-15T05:45:03.038Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2182,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 task2 frozen offline workspace-edge install, DB compilation, additive test migration and actual storage-clock scenarios with injected time",
+  "log_path": "docs/validation/logs/RUN-20261015-031.txt",
+  "log_sha256": "53a3700c278b3771728254fd62558a8d13c022b66800fa1f0d24b6623c4d89fe",
+  "redactions": 0
+}

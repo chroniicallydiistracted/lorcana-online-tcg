@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-078",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "apps/match-service/tests/clocks.test.mjs",
+    "apps/match-service/tests/clock-storage.test.mjs",
+    "apps/match-service/tests/clock-service.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "959abc963003a0ab2e8aa7d8553a1f775fccea2500db7eb85c960a482b0535a2",
+  "started_at": "2026-10-15T15:31:50.658Z",
+  "finished_at": "2026-10-15T15:32:08.031Z",
+  "recorded_at": "2026-10-15T15:32:08.031Z",
+  "time_precision": "exact",
+  "elapsed_ms": 17347,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 independent review expected negative: healthy owner isolation, cold admission, expired rejection and bounded lifetime creation",
+  "log_path": "docs/validation/logs/RUN-20261015-078.txt",
+  "log_sha256": "65d3e69ad82fcddc11f739c4df2817709f6f868a2b8d6dcd061d302068d464a0",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-092",
+  "category": "static",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';import fs from 'node:fs';import {spawnSync} from 'node:child_process';import {inventory,isDoc,sourceFingerprint} from './scripts/documentation-lib.mjs';import {scanSecrets} from './scripts/ci/security.mjs';import {privateRedactionValues} from './scripts/evidence-lib.mjs';const run=(cmd,args)=>{const r=spawnSync(cmd,args,{stdio:'inherit'});assert.equal(r.status,0,'Final command failed: '+cmd+' '+args[0]);},git=args=>{const r=spawnSync('git',args,{maxBuffer:20000000});assert.equal(r.status,0);return r.stdout;};run('pnpm',['docs:sync','--change','CHG-20261015-003']);run('pnpm',['docs:check']);const expected=JSON.parse(fs.readFileSync('docs/validation/runs/RUN-20261015-084.json')).source_fingerprint;assert.equal(sourceFingerprint(),expected);const knownSecrets=Object.values(privateRedactionValues(process.cwd()));assert.equal(scanSecrets(inventory().map(path=>({path,bytes:fs.readFileSync(path)})),{knownSecrets}).length,0,'Final current source/log secret policy');run('git',['add','-A','--','.']);run('git',['diff','--cached','--check','--','.',':(exclude)docs/validation/logs/**']);let count=0;for(const path of inventory().filter(p=>!isDoc(p)||p.startsWith('docs/schemas/'))){assert(fs.readFileSync(path).equals(git(['show',':'+path])),'Staged executable differs');count++;}const c=JSON.parse(fs.readFileSync('docs/changes/CHG-20261015-003.json')),actual=new Set([...git(['diff','--name-only','775994a']).toString().trim().split('\\n').filter(Boolean),...git(['ls-files','--others','--exclude-standard']).toString().trim().split('\\n').filter(Boolean),'docs/validation/runs/RUN-20261015-092.json','docs/validation/logs/RUN-20261015-092.txt']);assert.deepEqual([...actual].sort(),c.files);assert.equal(c.status,'finalized');console.log('PASS final docs/current semantic record gates, source/log secret scan, canonical staged equality '+count+' executable/config/test/schema files, exact cumulative '+c.files.length+'file coverage including this recorder pair; source '+expected);"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "a41c1374759fa3beb265e5944189a638184305b181f21518bdda6ae795620d59",
+  "started_at": "2026-10-15T16:08:23.533Z",
+  "finished_at": "2026-10-15T16:09:16.662Z",
+  "recorded_at": "2026-10-15T16:09:16.662Z",
+  "time_precision": "exact",
+  "elapsed_ms": 53061,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 final sealed-scope documentation inventory changelog current-source secret scan canonical staged identity complete cumulative coverage and whitespace before local commit",
+  "log_path": "docs/validation/logs/RUN-20261015-092.txt",
+  "log_sha256": "dda894096194b3f8689001abd956b02c08990bc8ab68cc950e8fd436064b4493",
+  "redactions": 0
+}

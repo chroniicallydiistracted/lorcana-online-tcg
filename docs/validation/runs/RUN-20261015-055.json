@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-055",
+  "category": "container",
+  "command": [
+    "node",
+    "--conditions=lorcana-source",
+    "--test",
+    "--test-concurrency=1",
+    "packages/contracts/tests/live-clock.test.mjs",
+    "packages/engine-adapter/tests/clocks.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "2359fc1bad5fc0385ff0a3c5b9e91747f72d4a7b730c9cb5df7b68f3f6e5c1dd",
+  "started_at": "2026-10-15T06:53:06.458Z",
+  "finished_at": "2026-10-15T06:53:07.081Z",
+  "recorded_at": "2026-10-15T06:53:07.081Z",
+  "time_precision": "exact",
+  "elapsed_ms": 623,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 expected negative completed-view clock consistency and epoch-zero native sentinel admission regressions; independent private clock worlds",
+  "log_path": "docs/validation/logs/RUN-20261015-055.txt",
+  "log_sha256": "83ac18f97c3c30e733c7d1e4ded7aacff050997f064bb44b7dc136601f3c6e7e",
+  "redactions": 0
+}

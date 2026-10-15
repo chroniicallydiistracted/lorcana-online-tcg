@@ -31,7 +31,7 @@ export function readContract<T extends TSchema>(schema: T, value: unknown, label
 }
 export function parseProtocolRange(value: unknown): ProtocolRange {
   const range = readContract(ProtocolRangeSchema, value, 'protocol range');
-  if (range.min > range.max || range.max - range.min > 1) throw new Error('Invalid protocol range');
+  if (range.min > range.max || range.max - range.min > 2) throw new Error('Invalid protocol range');
   return range;
 }
 export function negotiateProtocol(client: unknown, server: unknown): number | null {

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-052",
+  "category": "headless_browser",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/web",
+    "exec",
+    "playwright",
+    "test",
+    "clock-client.spec.ts"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "caa895f5557a560369b33c2b6a0edc921978019137e13ec32c4b2ab2e3807f80",
+  "started_at": "2026-10-15T06:46:55.985Z",
+  "finished_at": "2026-10-15T06:47:48.742Z",
+  "recorded_at": "2026-10-15T06:47:48.742Z",
+  "time_precision": "exact",
+  "elapsed_ms": 52660,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 actual two-context Chromium timed live3, clock-only pause, disconnect expiry and gateway-hop recovery qualification",
+  "log_path": "docs/validation/logs/RUN-20261015-052.txt",
+  "log_sha256": "bc0b2cdca400fe4d156e2090a45263ed8c7e906ea6a4f05e63c5cb38bf85c62b",
+  "redactions": 0
+}

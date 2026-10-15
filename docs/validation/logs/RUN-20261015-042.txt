@@ -1,0 +1,33 @@
+✔ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.392629ms)
+✔ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (0.833804ms)
+✔ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (1188.141438ms)
+✔ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (540.86897ms)
+✔ clock runner never overlaps owned sweeps and close waits for a pending sweep (82.570493ms)
+✖ overlapping time samples cannot manufacture backward-clock evidence from reordered query responses (16.702339ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1987.592148
+
+✖ failing tests:
+
+test at apps/match-service/tests/clocks.test.mjs:58:1
+✖ overlapping time samples cannot manufacture backward-clock evidence from reordered query responses (16.702339ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:63:48)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

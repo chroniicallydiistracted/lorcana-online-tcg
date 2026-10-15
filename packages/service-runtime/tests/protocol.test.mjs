@@ -15,7 +15,10 @@ test('actual HTTP negotiation is typed, rejects unknown/coerced/oversized input 
       const incompatible = await send({ ...hello, supportedProtocol: { min: 2, max: 2 } });
       assert.equal(incompatible.status, 409);
       assert.equal((await incompatible.json()).action, 'upgrade_required');
-      for (const bad of [{ ...hello, privateState: 'synthetic-sensitive-value' }, { ...hello, supportedProtocol: { min: '1', max: 1 } }, { ...hello, supportedProtocol: { min: 1, max: 3 } }]) {
+      const threeVersionOffer = await send({ ...hello, supportedProtocol: { min: 1, max: 3 } });
+      assert.equal(threeVersionOffer.status, 200);
+      assert.equal((await threeVersionOffer.json()).protocolVersion, 1, 'diagnostic handler remains pinned to revision1');
+      for (const bad of [{ ...hello, privateState: 'synthetic-sensitive-value' }, { ...hello, supportedProtocol: { min: '1', max: 1 } }, { ...hello, supportedProtocol: { min: 1, max: 4 } }]) {
         const rejected = await send(bad); assert.equal(rejected.status, 400); assert.deepEqual(await rejected.json(), { code: 'invalid_request' });
       }
       const oversized = await fetch(service.app.listeningOrigin + '/protocol/negotiate', { method: 'POST', headers: { 'content-type': 'application/json' }, body: ' '.repeat(16385) });

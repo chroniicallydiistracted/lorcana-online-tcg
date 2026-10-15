@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-035",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/vendor-engine build && pnpm --filter @lorcana/engine-adapter build && pnpm --filter @lorcana/db build && pnpm exec eslint packages/contracts/src/clocks.ts packages/contracts/tests/clocks.test.mjs packages/engine-adapter/src packages/engine-adapter/tests/clocks.test.mjs vendor/tcg-engines/src/kernel.ts vendor/tcg-engines/src/kernel.d.ts packages/db/src packages/db/tests/policy.test.mjs apps/match-service/tests/clock-fixtures.mjs apps/match-service/tests/clock-storage.test.mjs && pnpm --filter @lorcana/contracts typecheck && pnpm --filter @lorcana/engine-adapter typecheck && pnpm --filter @lorcana/db typecheck && node --test --test-concurrency=1 packages/contracts/tests/clocks.test.mjs packages/engine-adapter/tests/clocks.test.mjs apps/match-service/tests/clock-storage.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "2d0d5973cbc4f18cbe04008224a4a8e2db7d4ea305d5ac874fb57c29b2b76620",
+  "started_at": "2026-10-15T05:53:23.932Z",
+  "finished_at": "2026-10-15T05:53:37.576Z",
+  "recorded_at": "2026-10-15T05:53:37.576Z",
+  "time_precision": "exact",
+  "elapsed_ms": 13643,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 adapter/storage checkpoint strict lint, owning type checks and13 targeted clock tests after removing unused initializer; actual DB storage uses simulated time",
+  "log_path": "docs/validation/logs/RUN-20261015-035.txt",
+  "log_sha256": "7c372fc6d6218afbe6b479aaacce93a0587f48d5255b715ea2ec30ab2a547ad5",
+  "redactions": 0
+}

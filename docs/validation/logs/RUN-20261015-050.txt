@@ -1,0 +1,48 @@
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+✔ actual runner continues with zero clients and a fresh process joins a healthy owner without pausing (3632.280576ms)
+✔ loss of all runners creates an audited recovery pause without charging the outage (5027.615048ms)
+✔ an engine calculation outliving its lease is fenced and durably paused (3742.938974ms)
+✔ a timely action completes across the deadline within its lease and beats the later timeout (4556.692755ms)
+✔ six independent server processes race the same timed command and recover one identical durable receipt (8318.319348ms)
+✔ timed process death before COMMIT preserves clock, receipt and journal atomicity (4097.464971ms)
+✖ timed process death after COMMIT preserves clock, receipt and journal atomicity (3206.737987ms)
+✔ clock commit rollback at matches leaves no partial accepted state (2943.376194ms)
+✔ clock commit rollback at command_receipts leaves no partial accepted state (2888.468564ms)
+✔ clock commit rollback at journal leaves no partial accepted state (2592.473594ms)
+✔ clock commit rollback at outbox leaves no partial accepted state (2370.434106ms)
+✔ clock commit rollback at clocks leaves no partial accepted state (2519.208152ms)
+✔ clock commit rollback at clock_events leaves no partial accepted state (2559.950097ms)
+
+Interrupted while running:
+
+⚠ apps/match-service/tests/clock-process.test.mjs (apps/match-service/tests/clock-process.test.mjs:1:1)
+✖ apps/match-service/tests/clock-process.test.mjs (231687.271349ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 231693.771319
+
+✖ failing tests:
+
+test at apps/match-service/tests/clock-process.test.mjs:79:39
+✖ timed process death after COMMIT preserves clock, receipt and journal atomicity (3206.737987ms)
+  Error: Owned child refusal
+      at ChildProcess.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-process.test.mjs:30:154)
+      at ChildProcess.emit (node:events:526:24)
+      at emit (node:internal/child_process:989:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:91:21) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-process.test.mjs:1:1
+✖ apps/match-service/tests/clock-process.test.mjs (231687.271349ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+
+[Recorder failure: clock_changed]

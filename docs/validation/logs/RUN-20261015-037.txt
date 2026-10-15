@@ -1,0 +1,153 @@
+✖ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (1.561713ms)
+✖ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (0.29015ms)
+✖ unresolved opening timeout pauses for a legal decision and audited reset cannot choose the winner (0.211012ms)
+✖ clock storage tampering cannot extend a deadline or alter a native remaining allowance (0.218754ms)
+✖ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.097138ms)
+✖ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (0.25649ms)
+✖ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (196.572624ms)
+✖ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (337.928581ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 0
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1425.391456
+
+✖ failing tests:
+
+test at apps/match-service/tests/clock-service.test.mjs:20:1
+✖ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (1.561713ms)
+  AssertionError [ERR_ASSERTION]: clock orchestration is missing
+      at fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:10:9)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:21:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:33:1
+✖ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (0.29015ms)
+  AssertionError [ERR_ASSERTION]: clock orchestration is missing
+      at fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:10:9)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:34:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:48:1
+✖ unresolved opening timeout pauses for a legal decision and audited reset cannot choose the winner (0.211012ms)
+  AssertionError [ERR_ASSERTION]: clock orchestration is missing
+      at fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:10:9)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:49:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:56:1
+✖ clock storage tampering cannot extend a deadline or alter a native remaining allowance (0.218754ms)
+  AssertionError [ERR_ASSERTION]: clock orchestration is missing
+      at fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:10:9)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:57:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clocks.test.mjs:8:1
+✖ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.097138ms)
+  AssertionError [ERR_ASSERTION]: bounded clock-health sampler is missing
+      at healthFactory (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:6:39)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:9:21)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clocks.test.mjs:18:1
+✖ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (0.25649ms)
+  AssertionError [ERR_ASSERTION]: bounded clock-health sampler is missing
+      at healthFactory (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:6:39)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:19:21)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clocks.test.mjs:28:1
+✖ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (196.572624ms)
+  AssertionError [ERR_ASSERTION]: worker clock result is missing
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:31:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clocks.test.mjs:38:1
+✖ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (337.928581ms)
+  Error: engine unavailable
+      at Worker.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/engine-executor.js:66:40)
+      at Worker.wrapper (node:events:639:12)
+      at Worker.emit (node:events:514:28)
+      at MessagePort.<anonymous> (node:internal/worker:350:14)
+      at [nodejs.internal.kHybridDispatch] (node:internal/event_target:848:20)
+      at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)

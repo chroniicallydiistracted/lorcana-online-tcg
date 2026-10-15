@@ -11,8 +11,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "dev": "node --conditions=lorcana-source --watch src/main.ts",
     "start": "node dist/main.js",
-    "test": "node --test --test-concurrency=1 tests/unit.test.mjs tests/cache.test.mjs tests/references.test.mjs",
-    "test:integration": "node --test --test-concurrency=1 tests/integration.test.mjs tests/transport-store.test.mjs tests/gateway.test.mjs tests/live-client.test.mjs"
+    "test": "node --test --test-concurrency=1 tests/unit.test.mjs tests/cache.test.mjs tests/references.test.mjs tests/clocks.test.mjs",
+    "test:integration": "node --test --test-concurrency=1 tests/integration.test.mjs tests/transport-store.test.mjs tests/gateway.test.mjs tests/live-client.test.mjs tests/clock-storage.test.mjs tests/clock-service.test.mjs tests/clock-process.test.mjs tests/clock-live.test.mjs"
   },
   "dependencies": {
     "@fastify/websocket": "11.3.3",

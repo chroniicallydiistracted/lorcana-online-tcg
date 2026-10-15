@@ -1,0 +1,19 @@
+✔ actual runner continues with zero clients and a fresh process joins a healthy owner without pausing (3778.746586ms)
+✔ loss of all runners creates an audited recovery pause without charging the outage (4696.703952ms)
+✔ a timely action crossing its deadline owns the result while invalid calculations grant no time (3312.792422ms)
+✔ timed process death before COMMIT preserves clock, receipt and journal atomicity (4372.252931ms)
+✔ timed process death after COMMIT preserves clock, receipt and journal atomicity (2902.081509ms)
+✔ clock commit rollback at matches leaves no partial accepted state (2426.387265ms)
+✔ clock commit rollback at command_receipts leaves no partial accepted state (2351.250762ms)
+✔ clock commit rollback at journal leaves no partial accepted state (2589.573056ms)
+✔ clock commit rollback at outbox leaves no partial accepted state (2515.388831ms)
+✔ clock commit rollback at clocks leaves no partial accepted state (2341.23851ms)
+✔ clock commit rollback at clock_events leaves no partial accepted state (2305.098371ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34304.659385

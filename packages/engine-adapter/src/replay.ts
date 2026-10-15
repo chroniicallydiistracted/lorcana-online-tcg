@@ -3,7 +3,10 @@ import { isPlayerMove } from '@lorcana/contracts/player-moves';
 import { createSyntheticKernel, type SyntheticKernel } from '@lorcana/vendor-engine';
 import { ENGINE_REPLAY_IDENTITY } from './code-identity.js';
 import { createRandomSource, RANDOM_VERSION, type RandomOutcome } from './random.js';
-import { closedRecord, copyInput, validateSetup, validateCommand, type ServerCommand } from './validation.js';
+import { closedRecord, copyInput, validateSetup, validateCommand, type ServerCommand,type EngineSetup } from './validation.js';
+import {readEngineClock,validateClockControl} from './clocks.js';
+import type {ClockControl} from './clocks.js';
+import type {EngineClockState} from '@lorcana/contracts/clocks';
 
 import { createViewerProjection } from './viewer.js';
 import { resolveViewerIntent } from './viewer-intent.js';
@@ -14,14 +17,15 @@ type Result = { accepted: boolean; code: string | null };
 export interface ServerStatus { mode: 'qualification'; revision: number; ended: boolean; winner: string | null; choosingFirstPlayer: string | null; rewardEligible: false; seedCommitment: string }
 interface Checkpoint { stateHash: string; randomOutcomes: RandomOutcome[] }
 interface CommandCheckpoint extends Checkpoint { command: ServerCommand; result: Result }
+interface ClockCheckpoint extends Checkpoint {control:ClockControl}
 interface PrivateReplay {
-  version: 1; purpose: 'synthetic-rule03'; engineIdentity: string; rngVersion: string;
-  setup: { players: [string, string]; startTimestamp: number }; seed: string; seedCommitment: string;
-  initial: Checkpoint; commands: CommandCheckpoint[]; final: { stateHash: string; status: ServerStatus };
+  version: 1|2; purpose: 'synthetic-rule03'; engineIdentity: string; rngVersion: string;
+  setup: EngineSetup; seed: string; seedCommitment: string;
+  initial: Checkpoint; commands: (CommandCheckpoint|ClockCheckpoint)[]; final: { stateHash: string; status: ServerStatus };
 }
 export interface PrivateCompletedReplay { archive: string; digest: string }
 export interface QualificationMatch { status(): ServerStatus; submit(command: unknown): Result; exportReplay(): PrivateCompletedReplay; dispose(): void }
-export interface RecordedCore { facade: QualificationMatch; privateArchive(): string; project(viewer:unknown,matchId:string):ViewerProjection; resolveIntent(actor:string,move:unknown,input:unknown,matchId:string):Record<string,unknown> }
+export interface RecordedCore { facade: QualificationMatch; privateArchive(): string; project(viewer:unknown,matchId:string):ViewerProjection; resolveIntent(actor:string,move:unknown,input:unknown,matchId:string):Record<string,unknown>;clock():EngineClockState|null;controlClock(value:unknown):void }
 
 export function canonical(value: unknown): string {
   const normalized: unknown = JSON.parse(JSON.stringify(value));
@@ -37,24 +41,24 @@ function archiveDigest(archive: string): string { return createHash('sha256').up
 function same(a: unknown, b: unknown): boolean { return canonical(a) === canonical(b); }
 
 /** Internal construction for new secret-seeded matches and completed verification only. */
-export function createRecordedMatch(setup: { players: [string, string]; startTimestamp: number }, privateSeed: Uint8Array): QualificationMatch {
+export function createRecordedMatch(setup: EngineSetup, privateSeed: Uint8Array): QualificationMatch {
   return createRecordedCore(setup, privateSeed).facade;
 }
 /** Server-internal friend interface; only the persistence wrapper obtains a live private archive. */
-export function createRecordedCore(setup: { players: [string, string]; startTimestamp: number }, privateSeed: Uint8Array, context = ENGINE_REPLAY_IDENTITY): RecordedCore {
+export function createRecordedCore(setup: EngineSetup, privateSeed: Uint8Array, context = ENGINE_REPLAY_IDENTITY): RecordedCore {
   const seed = Buffer.from(privateSeed), source = createRandomSource(seed, context);
   const seedCommitment = createHash('sha256').update('server-match-seed-v1\0').update(context).update(seed).digest('hex');
   const viewerKey = createHmac('sha256',seed).update('private-viewer-key-v1\0').update(context).digest();
   let kernel: SyntheticKernel | undefined;
-  try { kernel = createSyntheticKernel({ players: setup.players, startTimestamp: setup.startTimestamp, randomSource: source }); }
+  try { kernel = createSyntheticKernel({ players: setup.players, startTimestamp: setup.startTimestamp, randomSource: source,...(setup.clock?{clock:setup.clock}:{}) }); }
   catch { source.dispose(); seed.fill(0); throw new Error('Qualification initialization failed'); }
   function active(): SyntheticKernel { if (!kernel) throw new Error('Match disposed'); return kernel; }
   const initial: Checkpoint = { stateHash: hash(active().snapshot()), randomOutcomes: source.takeOutcomes() };
-  const commands: CommandCheckpoint[] = [];
+  const commands: (CommandCheckpoint|ClockCheckpoint)[] = [];
   let lastTimestamp = setup.startTimestamp, journalBytes = Buffer.byteLength(canonical(initial));
   function status(): ServerStatus { return { mode: 'qualification', ...active().status(), rewardEligible: false, seedCommitment }; }
   function privateArchive(): string {
-    const replay: PrivateReplay = { version: 1, purpose: 'synthetic-rule03', engineIdentity: ENGINE_REPLAY_IDENTITY, rngVersion: RANDOM_VERSION, setup: { players: [...setup.players], startTimestamp: setup.startTimestamp }, seed: seed.toString('hex'), seedCommitment, initial, commands, final: { stateHash: hash(active().snapshot()), status: status() } };
+    const replay: PrivateReplay = { version: setup.clock?2:1, purpose: 'synthetic-rule03', engineIdentity: ENGINE_REPLAY_IDENTITY, rngVersion: RANDOM_VERSION, setup: { players: [...setup.players], startTimestamp: setup.startTimestamp,...(setup.clock?{clock:setup.clock}:{}) }, seed: seed.toString('hex'), seedCommitment, initial, commands, final: { stateHash: hash(active().snapshot()), status: status() } };
     const archive = canonical(replay);
     if (Buffer.byteLength(archive) > MAX_BYTES) throw new Error('Qualification journal limit');
     return archive;
@@ -99,7 +103,16 @@ export function createRecordedCore(setup: { players: [string, string]; startTime
     }catch{throw new Error('Viewer unavailable');}
     return createViewerProjection(active().inspect(scoped.kind==='participant'?scoped.playerId:undefined),{matchId,viewer:scoped,key:viewerKey});
   }
-  return Object.freeze({ facade, privateArchive, project(viewer:unknown,matchId:string){return projection(viewer,matchId).snapshot;}, resolveIntent(actor:string,move:unknown,input:unknown,matchId:string){const view=projection({kind:'participant',playerId:actor},matchId);return resolveViewerIntent(actor,setup.players,move,input,view.resolve);} });
+  function controlClock(value:unknown):void {
+    const engine=active(),control=validateClockControl(value);
+    if(!setup.clock||engine.status().ended||control.timestamp<lastTimestamp||commands.length>=MAX_COMMANDS)throw new Error('Clock control rejected');
+    const before=engine.snapshot();
+    engine.controlClock(control);
+    const row:ClockCheckpoint={control,stateHash:hash(engine.snapshot()),randomOutcomes:source.takeOutcomes()},bytes=Buffer.byteLength(canonical(row));
+    if(journalBytes+bytes>MAX_BYTES-16384){engine.restore(before);throw new Error('Qualification journal limit');}
+    commands.push(row);journalBytes+=bytes;lastTimestamp=control.timestamp;
+  }
+  return Object.freeze({ facade, privateArchive,clock(){return readEngineClock(active(),setup.clock);},controlClock, project(viewer:unknown,matchId:string){return projection(viewer,matchId).snapshot;}, resolveIntent(actor:string,move:unknown,input:unknown,matchId:string){const view=projection({kind:'participant',playerId:actor},matchId);return resolveViewerIntent(actor,setup.players,move,input,view.resolve);} });
 }
 
 export function boundedTree(value: unknown, depth = 0, counter = { nodes: 0 }): void {
@@ -115,10 +128,13 @@ export function verifyCompletedReplay(value: unknown, expectedDigest: unknown): 
     if (!timingSafeEqual(Buffer.from(archiveDigest(value), 'hex'), Buffer.from(expectedDigest, 'hex'))) throw new Error('Replay integrity mismatch');
     const data: unknown = JSON.parse(value); boundedTree(data);
     const row = closedRecord(data, ['version', 'purpose', 'engineIdentity', 'rngVersion', 'setup', 'seed', 'seedCommitment', 'initial', 'commands', 'final']);
-    if (row.version !== 1 || row.purpose !== 'synthetic-rule03' || row.engineIdentity !== ENGINE_REPLAY_IDENTITY || row.rngVersion !== RANDOM_VERSION || typeof row.seed !== 'string' || !/^[a-f0-9]{64}$/.test(row.seed) || !Array.isArray(row.commands) || row.commands.length > MAX_COMMANDS) throw new Error('Replay version/input invalid');
-    match = createRecordedMatch(validateSetup(row.setup), Buffer.from(row.seed, 'hex'));
+    if (![1,2].includes(Number(row.version)) || row.purpose !== 'synthetic-rule03' || row.engineIdentity !== ENGINE_REPLAY_IDENTITY || row.rngVersion !== RANDOM_VERSION || typeof row.seed !== 'string' || !/^[a-f0-9]{64}$/.test(row.seed) || !Array.isArray(row.commands) || row.commands.length > MAX_COMMANDS) throw new Error('Replay version/input invalid');
+    const core=createRecordedCore(validateSetup(row.setup),Buffer.from(row.seed,'hex'));match=core.facade;
     if (row.seedCommitment !== match.status().seedCommitment) throw new Error('Replay seed mismatch');
-    for (const command of row.commands) { const checkpoint = closedRecord(command, ['command', 'result', 'stateHash', 'randomOutcomes']); match.submit(checkpoint.command); }
+    for (const command of row.commands) {
+      if(row.version===2&&command&&typeof command==='object'&&Object.hasOwn(command,'control')){const checkpoint=closedRecord(command,['control','stateHash','randomOutcomes']);core.controlClock(checkpoint.control);}
+      else { const checkpoint = closedRecord(command, ['command', 'result', 'stateHash', 'randomOutcomes']); match.submit(checkpoint.command); }
+    }
     if (!match.status().ended) throw new Error('Replay incomplete');
     const actual: PrivateReplay = JSON.parse(match.exportReplay().archive);
     if (!same(actual, data)) throw new Error('Replay reconstruction mismatch');

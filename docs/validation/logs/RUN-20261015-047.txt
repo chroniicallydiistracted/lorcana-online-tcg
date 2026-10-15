@@ -1,0 +1,66 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ clock policy refuses impossible budgets, unqualified profiles and executable input (3.259786ms)
+✔ public clock projection binds two distinct players, active responsibility and safe paused deadlines (2.520246ms)
+✔ public diagnostics reject private data and malformed service responses (2.240382ms)
+✔ live3 is a separate closed clocked codec while diagnostic1 and live2 remain exact (9.244882ms)
+✔ three-version release ranges stay bounded and tickets pin the saved match version (1.44225ms)
+✔ live protocol2 accepts only current-ref synthetic move shapes and bounded control frames (4.010072ms)
+✔ live snapshots correlate the exact viewer/match/state and carry no private escape fields (5.331931ms)
+✔ ticket contracts carry credentials only in bounded HTTP reply and first-frame authentication (0.870745ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (2.479391ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (1.91119ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.438811ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.428459ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (5.456455ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.158191ms)
+✔ viewer snapshot codec refuses private fields, malformed refs, accessors and oversize bytes (6.382505ms)
+✔ every viewer delivery surface has a closed browser codec and refuses secret-bearing diagnostics (7.392231ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1203.231386
+
+> @lorcana/match-client@0.0.0 test /workspaces/lorcana-online-tcg/packages/match-client
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ client waits for correlated authorized snapshot, copies views and rejects raw-ID or overlapping moves (155.623524ms)
+✔ pending bytes and IDs survive suspension/host hop and duplicate receipt, while stale results are final (12.454703ms)
+✔ server sequence gaps, incompatible pins and changed account never replay a pending intent (11.859238ms)
+✔ transient receipts preserve pending identity; expiry stops retries and retains explicit recovery data (4.683835ms)
+✔ unrelated snapshots do not resend a pending command or hide its acknowledgement deadline (47.466088ms)
+✔ application receipt callbacks cannot overwrite terminal transport state or undo an accepted result (4.253497ms)
+✔ replacing an incomplete connection rejects its waiter rather than leaking a pending promise (0.84438ms)
+✔ status callbacks that dispose transport cannot leave a subsequently scheduled retry timer (7.142659ms)
+✔ view clearing callbacks preserve disposal and settle connect and suspend callers (3.975091ms)
+✔ browser countdown is a clamped monotonic estimate and cannot submit a move or change a result (3.900126ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 473.681492

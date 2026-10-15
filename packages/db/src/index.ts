@@ -6,3 +6,6 @@ export type { MatchRepository, StoredMatch, DurableCommand, DurableReceipt, Rece
 
 export {createTransportStore,createMatchHints} from './transport-store.ts';
 export type {TicketGrant,TransportStore} from './transport-store.ts';
+export {createClockRepository,systemClockActor} from './clock-store.ts';
+export type {ClockRepository,ReserveResult,ClockAuditRequest,ClockControlResult} from './clock-store.ts';
+export type {StoredClock,ClockReservation} from './clock-types.ts';

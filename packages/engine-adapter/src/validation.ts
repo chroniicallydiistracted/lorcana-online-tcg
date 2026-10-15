@@ -1,3 +1,6 @@
+import {parseClockPolicy} from '@lorcana/contracts/clocks';
+import type {ClockPolicy} from '@lorcana/contracts/clocks';
+export interface EngineSetup {players:[string,string];startTimestamp:number;clock?:ClockPolicy}
 export interface ServerCommand { actor: string; expectedRevision: number; timestamp: number; commandId: string; move: string; input: Record<string, unknown> }
 export function closedRecord(value: unknown, keys: string[]): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value) || Object.getPrototypeOf(value) !== Object.prototype) throw new Error('Invalid closed object');
@@ -45,11 +48,18 @@ export function validateCommand(value: unknown): ServerCommand {
   const row = closedRecord(value, ['actor', 'expectedRevision', 'timestamp', 'commandId', 'move', 'input']);
   return { actor: boundedText(row.actor), expectedRevision: unsigned(row.expectedRevision), timestamp: unsigned(row.timestamp), commandId: boundedText(row.commandId), move: boundedText(row.move, 64), input: copyInput(row.input) };
 }
-export function validateSetup(value: unknown): { players: [string, string]; startTimestamp: number } {
-  const row = closedRecord(value, ['players', 'startTimestamp']);
+export function validateSetup(value: unknown): EngineSetup {
+  const row = closedRecord(value, ['players', 'startTimestamp','clock']);
   const p = copyInput({ players: row.players }).players;
   if (!Array.isArray(p) || p.length !== 2) throw new Error('Invalid players');
   const players: [string, string] = [boundedText(p[0]), boundedText(p[1])];
   if (players[0] === players[1]) throw new Error('Invalid players');
-  return { players, startTimestamp: unsigned(row.startTimestamp) };
+  const startTimestamp=unsigned(row.startTimestamp);
+  if(Object.hasOwn(row,'clock')){
+    // Native clocks use zero as an unset-start sentinel. Do not admit a timed
+    // fixture whose first thinking interval the native helper would ignore.
+    if(startTimestamp===0)throw new Error('Invalid timed start');
+    return {players,startTimestamp,clock:parseClockPolicy(row.clock)};
+  }
+  return { players, startTimestamp };
 }

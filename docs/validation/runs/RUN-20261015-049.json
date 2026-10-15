@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-049",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/web typecheck && pnpm exec eslint apps/match-service packages/contracts packages/match-client apps/web/tests/clock-client.spec.ts && pnpm --filter @lorcana/contracts test && pnpm --filter @lorcana/match-client test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "8b503e8065147660aec5c4a65c59edc43e0b91791db620860ef47d2cbb5e684c",
+  "started_at": "2026-10-15T06:39:31.811Z",
+  "finished_at": "2026-10-15T06:39:38.170Z",
+  "recorded_at": "2026-10-15T06:39:38.170Z",
+  "time_precision": "exact",
+  "elapsed_ms": 6358,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 strict types lint and full current contract client unit checks after real live3 gateway proof RUN048",
+  "log_path": "docs/validation/logs/RUN-20261015-049.txt",
+  "log_sha256": "0945578652e0a4c05c85ca8842859b49f5d5bcc4edb797ef248d973f8efe1960",
+  "redactions": 0
+}

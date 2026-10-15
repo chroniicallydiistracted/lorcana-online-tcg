@@ -1,0 +1,34 @@
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+✔ actual runner continues with zero clients and a fresh process joins a healthy owner without pausing (3875.676917ms)
+✔ loss of all runners creates an audited recovery pause without charging the outage (4440.981502ms)
+✔ an engine calculation outliving its lease is fenced and durably paused (2909.759528ms)
+✔ a timely action completes across the deadline within its lease and beats the later timeout (4337.829673ms)
+✔ timed process death before COMMIT preserves clock, receipt and journal atomicity (3710.377492ms)
+✔ timed process death after COMMIT preserves clock, receipt and journal atomicity (2874.868403ms)
+✔ clock commit rollback at matches leaves no partial accepted state (2499.127011ms)
+✔ clock commit rollback at command_receipts leaves no partial accepted state (2521.047526ms)
+✔ clock commit rollback at journal leaves no partial accepted state (2297.972951ms)
+✔ clock commit rollback at outbox leaves no partial accepted state (2514.292406ms)
+✔ clock commit rollback at clocks leaves no partial accepted state (2420.894129ms)
+✔ clock commit rollback at clock_events leaves no partial accepted state (2270.606221ms)
+✔ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (2595.276303ms)
+✔ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (3101.89867ms)
+✔ unresolved opening timeout pauses for a legal decision and audited reset cannot choose the winner (1429.932328ms)
+✔ clock storage tampering cannot extend a deadline or alter a native remaining allowance (2227.336028ms)
+✔ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.475153ms)
+✔ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (0.982593ms)
+✔ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (1090.768276ms)
+✔ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (523.442408ms)
+✔ clock runner never overlaps owned sweeps and close waits for a pending sweep (81.379364ms)
+✔ overlapping time samples cannot manufacture backward-clock evidence from reordered query responses (15.898366ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49269.947612

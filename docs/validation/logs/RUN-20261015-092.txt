@@ -1,0 +1,11 @@
+
+> lorcana-online-tcg@0.0.0 docs:sync /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs --sync --change CHG-20261015-003
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2331,"documents":1670,"functions":10187,"changes":44,"runs":705}
+
+> lorcana-online-tcg@0.0.0 docs:check /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2331,"documents":1670,"functions":10187,"changes":44,"runs":705}
+PASS final docs/current semantic record gates, source/log secret scan, canonical staged equality 667 executable/config/test/schema files, exact cumulative 243file coverage including this recorder pair; source a41c1374759fa3beb265e5944189a638184305b181f21518bdda6ae795620d59

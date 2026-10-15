@@ -8,7 +8,7 @@ Read [contract](../contracts/live.md), [ADR0015](../adr/0015-live-synthetic-tran
 
 Ordinary `main.ts` stays diagnostics-only on3002. Web5173/API3001 and worker without ingress are unchanged. Qualification hosts bind ephemeral loopback ports with injected test sessions only; they are not dev login endpoints. AUTH-01 must supply actual sessions, audience/cookies, production TLS/origins/reverse-proxy trust and admission before registering live routes in real startup. Current proxy trust is disabled; multiple clients behind an unconfigured proxy share an IP budget. Do not enable arbitrary forwarded-address trust.
 
-Append-only migration0004 widens retained match protocol1/2 and adds match-role-only socket ticket/shared quota tables. It was tested before applying to local. Keep0001..0004 immutable after application. Follow [database operation](database.md) for provision/migrate/health, never delete/recreate the Director's original volume. Private checkpoints/backups contain match secrets and need secret storage/access controls. No backup provisioning is claimed.
+Migration0004 added live2 ticket/quota storage; additive0005 admits timed3, clock state/audits and clock_expired. Both are applied to local/test. Keep0001..0005 immutable after application. Follow [database operation](database.md) for provision/migrate/health, never delete/recreate the Director's original volume. Private checkpoints/backups contain match secrets and need secret storage/access controls. No backup provisioning is claimed.
 
 ## Bounds and reconciliation
 
@@ -30,7 +30,7 @@ Append-only migration0004 widens retained match protocol1/2 and adds match-role-
 
 Connection caps are process-local; authenticated quotas are shared in PostgreSQL. No Redis/sticky affinity is required. Fixed-window quota rows store only hashed scope keys/count/expiry; expired ticket cleanup is bounded per issue. Quota-row lifetime pruning/operational retention and global connection admission need production sizing; current code reuses expired quota buckets but does not prune abandoned keys. These infrastructure bounds do not certify50-player production capacity. Real-card full-length restore cost and the4096-engine-event projection limit remain measurement gates; current cache reduces repeated identical-view work, not per-move replay cost.
 
-Each process uses a transport pool max2 plus the match repository/engine bounds and one optional LISTEN connection. Notifications carry only bounded match IDs after COMMIT, never hidden state. Missed notifications cannot be authority: polling compares participant-visible durable version/release then builds a fresh authorized view. Cached payloads are serialized defensive copies, keyed to exact committed private bytes and participant. Seed/checkpoint/digest never enters receipts, logs, snapshots or hints. Corrupt pins/archives fail closed.
+Each process uses a transport pool max2 plus the match repository/engine bounds and one optional LISTEN connection. Notifications carry only bounded match IDs after COMMIT, never hidden state. Missed notifications cannot be authority: polling compares participant-visible engine version, separate clock revision and release then builds a fresh authorized view. Cached payloads are serialized defensive copies, keyed to exact committed private bytes and participant. Seed/checkpoint/digest never enters receipts, logs, snapshots or hints. Corrupt pins/archives fail closed.
 
 ## Verification and cleanup
 
@@ -43,3 +43,9 @@ Audit cautions (2026-10-15 UTC, CHG-20261015-002):
 - PostgreSQL lets any role LISTEN on any channel; the api role can subscribe to `lorcana_match_changed`. Keep NOTIFY payloads to bounded match IDs sent after COMMIT.
 - Expired quota rows are reused but never pruned. The test database already holds expired rows from development runs. Plan retention with OPS-01 before production.
 - A client that stops reading is closed by the heartbeat (1013). A burst beyond two pending frames is closed (1013) rather than queued. Clients should send one command at a time and await its receipt, as `createMatchClient` does.
+
+## PLAY-04 timing extension
+
+See [clock operation](game-clocks.md) and [current PLAY-04 validation](../validation/play-04.md). Optional clock-enabled service factories use the identical primary clock repository; ordinary main remains diagnostics-only. Exact live2 and separately closed3 are dispatched by saved match/ticket version, never global highest version. Timed3 cannot admit an old2-only client. Its snapshots add a separate clock projection while viewer DTO1/card refs stay unchanged on clock-only updates.
+
+Default clock runner interval250ms, batch32, health gap/lease15s, uncertainty tolerance1s. One sweep runs at a time with bounded backoff and drained close. Independent progress is required to join saved timed state; all-owner loss/dead reservation pauses for audited recovery. Player disconnect does not pause time. Pause/resume/reset has no public route and requires a trusted recovery authority, exact revisions and independent operation/audit IDs. Qualification-only policy durations are not launch choices. The browser estimates elapsed with performance.now, clears estimates with views and never sends an expiry/result. Timed factory starts must be positive because native zero is an unset-start sentinel; untimed zero fixtures remain valid.

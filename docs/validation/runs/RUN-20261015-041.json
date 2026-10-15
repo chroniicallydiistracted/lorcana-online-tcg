@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-041",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "apps/match-service/tests/clock-process.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "eb99fa59306fb630c3bcef41008fd7c3b71dc9ba2a45332140fb60597eab4865",
+  "started_at": "2026-10-15T06:28:09.155Z",
+  "finished_at": "2026-10-15T06:28:43.651Z",
+  "recorded_at": "2026-10-15T06:28:43.651Z",
+  "time_precision": "exact",
+  "elapsed_ms": 34391,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 real-time process runner continuity, owner death and six SQL rollback points",
+  "log_path": "docs/validation/logs/RUN-20261015-041.txt",
+  "log_sha256": "b676ae486ccb35bf386ae5e56a28417198e216c959a1557f9bbcc4e4baf1bc87",
+  "redactions": 0
+}

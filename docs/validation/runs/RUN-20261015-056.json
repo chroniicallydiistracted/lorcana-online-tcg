@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-056",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/contracts build && pnpm --filter @lorcana/engine-adapter build && pnpm --filter @lorcana/match-client build && pnpm --filter @lorcana/match-service build && node --conditions=lorcana-source --test --test-concurrency=1 packages/contracts/tests/live-clock.test.mjs packages/engine-adapter/tests/clocks.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "138a49adff235de88bfc9aef4103237ba6bab1fb0d9d68f53e61a97539df34e8",
+  "started_at": "2026-10-15T06:53:59.368Z",
+  "finished_at": "2026-10-15T06:54:06.732Z",
+  "recorded_at": "2026-10-15T06:54:06.732Z",
+  "time_precision": "exact",
+  "elapsed_ms": 7364,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 completed-view clock consistency and native sentinel refusal after RED055; independent private clock worlds and owning builds",
+  "log_path": "docs/validation/logs/RUN-20261015-056.txt",
+  "log_sha256": "a66d835021eff4387546bd9bcfc061be1cfec5aa43b07ce52061bcc27f9e3ba7",
+  "redactions": 0
+}

@@ -6,8 +6,8 @@ import {service,fixtureId,open,cleanup,using,releases} from './fixtures.mjs';
 function factory(){assert.equal(typeof db.createTransportStore,'function','shared ticket/quota storage is missing');return db.createTransportStore;}
 const origin='http://localhost:5173';
 
-test('PLAY-03 built release pins both qualified decoders and new domain matches pin live2',async()=>{
- const registry=releases();assert.deepEqual(registry.active.protocol,{min:1,max:2});
+test('PLAY-03 built release pins all three qualified decoders and new domain matches pin live2',async()=>{
+ const registry=releases();assert.deepEqual(registry.active.protocol,{min:1,max:3});
  const id=fixtureId(),s=service();try{await s.create({matchId:id,players:['p1','p2']});assert.equal((await s.describe('p1',{matchId:id})).protocolVersion,2);}finally{await s.close();await cleanup(id);}
 });
 

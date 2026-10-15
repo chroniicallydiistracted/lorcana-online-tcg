@@ -7,7 +7,7 @@ test('bounded protocol negotiation selects the highest mutual revision or an exp
   assert.equal(typeof contracts.negotiateProtocol, 'function');
   assert.equal(contracts.negotiateProtocol({ min: 1, max: 2 }, { min: 2, max: 3 }), 2);
   assert.equal(contracts.negotiateProtocol({ min: 1, max: 1 }, { min: 2, max: 2 }), null);
-  for (const range of [{ min: 0, max: 1 }, { min: 2, max: 1 }, { min: 1, max: 3 }, { min: 1.5, max: 2 }, { min: 1, max: Infinity }, { min: '1', max: 1 }, { min: 1, max: 1, hidden: true }]) assert.throws(() => contracts.parseProtocolRange(range), /Invalid/);
+  for (const range of [{ min: 0, max: 1 }, { min: 2, max: 1 }, { min: 1, max: 4 }, { min: 1.5, max: 2 }, { min: 1, max: Infinity }, { min: '1', max: 1 }, { min: 1, max: 1, hidden: true }]) assert.throws(() => contracts.parseProtocolRange(range), /Invalid/);
 });
 test('hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies', () => {
   assert.equal(typeof contracts.parseHelloRequest, 'function');

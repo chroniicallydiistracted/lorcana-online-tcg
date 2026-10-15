@@ -1,0 +1,21 @@
+✔ actual runner continues with zero clients and a fresh process joins a healthy owner without pausing (3983.223222ms)
+✔ loss of all runners creates an audited recovery pause without charging the outage (4500.402568ms)
+✔ an engine calculation outliving its lease is fenced and durably paused (3211.092588ms)
+✔ a timely action completes across the deadline within its lease and beats the later timeout (4879.176672ms)
+✔ six independent server processes race the same timed command and recover one identical durable receipt (7428.687038ms)
+✔ timed process death before COMMIT preserves clock, receipt and journal atomicity (8030.870827ms)
+✔ timed process death after COMMIT preserves clock, receipt and journal atomicity (2975.857171ms)
+✔ clock commit rollback at matches leaves no partial accepted state (2317.054901ms)
+✔ clock commit rollback at command_receipts leaves no partial accepted state (2382.296522ms)
+✔ clock commit rollback at journal leaves no partial accepted state (2597.697257ms)
+✔ clock commit rollback at outbox leaves no partial accepted state (2513.093053ms)
+✔ clock commit rollback at clocks leaves no partial accepted state (2372.531863ms)
+✔ clock commit rollback at clock_events leaves no partial accepted state (2486.85718ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50488.089583

@@ -1,0 +1,530 @@
+
+> lorcana-online-tcg@0.0.0 docs:sync /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs --sync --change CHG-20261015-003
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2296,"documents":1635,"functions":10131,"changes":44,"runs":688}
+Scope: all 14 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 426ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 doctor /workspaces/lorcana-online-tcg
+> node scripts/doctor.mjs
+
+PASS Node 24.21.0
+PASS pnpm 10.33.0
+PASS Linux development environment
+PASS .env.local exists with owner-only access
+PASS Local environment loaded into container
+PASS Container database address
+PASS Generated database bootstrap configuration
+Workspace toolchain ready. Run pnpm db:check to verify authenticated database access.
+
+> lorcana-online-tcg@0.0.0 verify:foundation /workspaces/lorcana-online-tcg
+> pnpm verify && pnpm typecheck && pnpm lint && pnpm test
+
+
+> lorcana-online-tcg@0.0.0 verify /workspaces/lorcana-online-tcg
+> node scripts/verify.mjs
+
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+PASS RULE-01 offline metadata, denominators, dated release/effective status and uncertified boundaries
+PASS representative rule sources/template; no card admission {"scenarios":120,"versions":["2.2.0","2.3.0"]}
+PASS pinned vendor integrity {"revision":"6de59de1c203827edc1bc6faa1bc6184cd126a5f","files":361,"patches":59}
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 361 selected source files
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2296,"documents":1635,"functions":10131,"changes":44,"runs":688}
+PASS JSON parsing and JavaScript syntax checks
+
+> lorcana-online-tcg@0.0.0 typecheck /workspaces/lorcana-online-tcg
+> pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck
+
+Scope: 9 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  898.96 kB │ gzip: 195.75 kB
+
+✓ built in 162ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 14 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  902.19 kB │ gzip: 198.70 kB
+
+✓ built in 156ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+Scope: 13 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/design-system@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/presentation@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/db@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-adapter@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-lab@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-client@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/service-runtime@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/api@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-service@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/worker@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+
+> lorcana-online-tcg@0.0.0 test /workspaces/lorcana-online-tcg
+> pnpm build && pnpm test:bootstrap && pnpm -r --workspace-concurrency=1 test && node --test --test-concurrency=1 tests/foundation/*.test.mjs && pnpm test:documentation && pnpm test:database-tooling && pnpm test:ci && pnpm test:rules-inventory && pnpm test:rules && pnpm test:engine-tooling && pnpm test:player-moves && pnpm test:viewer-privacy
+
+
+> lorcana-online-tcg@0.0.0 build /workspaces/lorcana-online-tcg
+> pnpm boundaries && pnpm -r --workspace-concurrency=1 build
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+Scope: 13 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  898.96 kB │ gzip: 195.75 kB
+
+✓ built in 167ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 14 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  902.19 kB │ gzip: 198.70 kB
+
+✓ built in 142ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+
+> @lorcana/api@0.0.0 build /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/web@0.0.0 build /workspaces/lorcana-online-tcg/apps/web
+> tsc --noEmit && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 2514 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           0.38 kB │ gzip:   0.28 kB
+dist/assets/index-Cs1RDOyn.css                            0.96 kB │ gzip:   0.54 kB
+dist/assets/postprocess.vertex-DJCmMhI8.js                0.46 kB │ gzip:   0.30 kB
+dist/assets/shaderStore-D-XQlhUT.js                       0.46 kB │ gzip:   0.17 kB
+dist/assets/rgbdDecode.fragment-Cdz2Tveq.js               0.52 kB │ gzip:   0.34 kB
+dist/assets/postprocess.vertex-CmVXXq2T.js                0.58 kB │ gzip:   0.35 kB
+dist/assets/rgbdDecode.fragment-DXl2fYur.js               0.66 kB │ gzip:   0.38 kB
+dist/assets/math.scalar.functions-lnL7TJ7T.js             0.76 kB │ gzip:   0.41 kB
+dist/assets/color.fragment-SH3AKoaS.js                    0.87 kB │ gzip:   0.42 kB
+dist/assets/mesh.vertexData.functions-CD4JOR2q.js         0.93 kB │ gzip:   0.48 kB
+dist/assets/color.fragment-DVaYbzXa.js                    0.98 kB │ gzip:   0.45 kB
+dist/assets/ddsTextureLoader-T7zSyJRk.js                  1.25 kB │ gzip:   0.62 kB
+dist/assets/color.vertex-UAuK67V9.js                      1.35 kB │ gzip:   0.61 kB
+dist/assets/color.vertex-BYaj1Jpp.js                      1.41 kB │ gzip:   0.61 kB
+dist/assets/logger-CuBYPcDK.js                            1.88 kB │ gzip:   0.82 kB
+dist/assets/logDepthDeclaration-BKcd_JEL.js               2.16 kB │ gzip:   0.85 kB
+dist/assets/fogFragment-WPqtYpyX.js                       2.20 kB │ gzip:   0.70 kB
+dist/assets/hdrTextureLoader-BQVwkxK1.js                  2.31 kB │ gzip:   1.13 kB
+dist/assets/fogFragment-NFgubt9V.js                       2.43 kB │ gzip:   0.76 kB
+dist/assets/iesTextureLoader-3O5bSkSd.js                  2.47 kB │ gzip:   1.07 kB
+dist/assets/logDepthDeclaration-CLGvI4QS.js               2.54 kB │ gzip:   0.84 kB
+dist/assets/tgaTextureLoader-CqhhocF6.js                  3.40 kB │ gzip:   1.35 kB
+dist/assets/cubemapToSphericalPolynomial-DEBCy7Z7.js      3.65 kB │ gzip:   1.61 kB
+dist/assets/typeStore-CuqQeP4D.js                         4.87 kB │ gzip:   1.80 kB
+dist/assets/helperFunctions-BH8P-eyq.js                   6.48 kB │ gzip:   2.18 kB
+dist/assets/helperFunctions-gEnZbjN3.js                   6.81 kB │ gzip:   2.31 kB
+dist/assets/dds.pure-CsVHQ3pA.js                          6.93 kB │ gzip:   2.54 kB
+dist/assets/vertexColorMixing-HinktY3n.js                10.39 kB │ gzip:   2.14 kB
+dist/assets/vertexColorMixing-CBmtHj8r.js                11.72 kB │ gzip:   2.17 kB
+dist/assets/exrTextureLoader-CoNpHp9d.js                 13.14 kB │ gzip:   4.81 kB
+dist/assets/ktxTextureLoader-BlGhD6ut.js                 16.40 kB │ gzip:   4.78 kB
+dist/assets/guid-BN1U1Zos.js                             17.72 kB │ gzip:   6.15 kB
+dist/assets/default.vertex-CF_7OiRp.js                   19.62 kB │ gzip:   4.39 kB
+dist/assets/basisTextureLoader-CKthueIm.js               27.22 kB │ gzip:   8.16 kB
+dist/assets/envTextureLoader-DApRqVK2.js                 31.54 kB │ gzip:   8.88 kB
+dist/assets/default.vertex-uAWj3KN-.js                   38.03 kB │ gzip:   6.28 kB
+dist/assets/math.color.pure-DQiG_7Jy.js                  77.34 kB │ gzip:  18.33 kB
+dist/assets/default.fragment-DOpJD8Rt.js                110.44 kB │ gzip:  22.56 kB
+dist/assets/default.fragment-JYy_LTJ1.js                115.22 kB │ gzip:  22.38 kB
+dist/assets/index-B4cfdIiQ.js                           313.21 kB │ gzip:  97.57 kB
+dist/assets/src-B9XaZdXO.js                           1,084.54 kB │ gzip: 261.57 kB
+
+✓ built in 987ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+> @lorcana/worker@0.0.0 build /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 test:bootstrap /workspaces/lorcana-online-tcg
+> node scripts/test-bootstrap.mjs
+
+✔ browser connectivity contract serves readiness and rejects other routes/methods (29.77772ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 112.724226
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK
+Scope: 13 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ clock policy refuses impossible budgets, unqualified profiles and executable input (3.928779ms)
+✔ public clock projection binds two distinct players, active responsibility and safe paused deadlines (2.96691ms)
+✔ public diagnostics reject private data and malformed service responses (2.442534ms)
+✔ live3 is a separate closed clocked codec while diagnostic1 and live2 remain exact (10.908494ms)
+✔ three-version release ranges stay bounded and tickets pin the saved match version (1.667651ms)
+✔ live protocol2 accepts only current-ref synthetic move shapes and bounded control frames (4.62058ms)
+✔ live snapshots correlate the exact viewer/match/state and carry no private escape fields (6.747997ms)
+✔ ticket contracts carry credentials only in bounded HTTP reply and first-frame authentication (0.963624ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (2.393566ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (2.203994ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.516054ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.705203ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (6.157923ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.186115ms)
+✔ viewer snapshot codec refuses private fields, malformed refs, accessors and oversize bytes (5.666125ms)
+✔ every viewer delivery surface has a closed browser codec and refuses secret-bearing diagnostics (6.694677ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1293.859516
+
+> @lorcana/presentation@0.0.0 test /workspaces/lorcana-online-tcg/packages/presentation
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+BJS - [15:23:06]: Babylon.js v9.29.0 - Null engine
+BJS - [15:23:06]: Babylon.js v9.29.0 - Null engine
+BJS - [15:23:06]: Babylon.js v9.29.0 - Null engine
+✔ synthetic scene renders and releases meshes and engine through repeatable mount/dispose (404.930266ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 571.515733
+
+> @lorcana/vendor-engine@0.0.0 test /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node ../../scripts/engine/test-upstream.mjs && node ../../scripts/engine/test-injection.mjs
+
+Selected 37 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+ 406 pass
+ 1 skip
+ 0 fail
+ 1362 expect() calls
+Ran 407 tests across 37 files. [1472.00ms]
+bun test v1.4.2 (744846f84)
+
+src/injection.test.ts:
+(pass) injected initialization/first chooser and active clock resume ignore ambient wall time [3.58ms]
+(pass) invalid injected results cannot advance a committed random cursor [0.12ms]
+
+ 2 pass
+ 0 fail
+ 9 expect() calls
+Ran 2 tests across 1 file. [43.00ms]
+
+> @lorcana/db@0.0.0 test /workspaces/lorcana-online-tcg/packages/db
+> node --test --test-concurrency=1 tests/policy.test.mjs tests/config.test.mjs
+
+✔ credentials are private, distinct and byte-preserved across provisioning retries (2.654953ms)
+✔ tooling fails closed outside the private local container network (0.148943ms)
+✔ unsafe parent directory is rejected before generating any credential file (0.50376ms)
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (1.378071ms)
+✔ migration history must be an unchanged contiguous prefix (0.252429ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (1.473385ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 151.261068
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ untimed private matches remain untimed and cannot receive clock controls (11.163778ms)
+✔ timed setup refuses the native zero-timestamp sentinel while untimed epoch-zero fixtures remain supported (2.132823ms)
+✔ independent private random worlds have identical native clocks under the same thinking-time schedule (29.436304ms)
+✔ native dynamic timeout pass restores 125 seconds through actual engine bonuses without changing ink rules (37.891474ms)
+✔ clock-only pause/resume preserves game logs, card refs, RNG and exact private reconstruction (27.251899ms)
+✔ invalid timed moves neither mutate clocks nor grant time and later settlement charges the complete interval (10.699478ms)
+✔ audited clock reset requires a paused enrolled player and cannot unfreeze completed games (9.097115ms)
+✔ timed replay rejects policy/control/time edits even with a recomputed checkpoint checksum (26.46943ms)
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (1.952415ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (0.960889ms)
+✔ identity binds the compiled shared player-operation policy (0.869939ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (22.430274ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (37.574171ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (41.055305ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (1.911948ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (467.885559ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (6.52977ms)
+✔ new server match fails closed when operating-system entropy is unavailable (172.595294ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.687709ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (35.95545ms)
+✔ completed private archive is immutable across late rejected submissions (7.470458ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (50.422554ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (66.222261ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (32.040633ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (2.538257ms)
+✔ actual private engine projects and resolves only current references without changing its journal or random stream (78.267595ms)
+✔ actual engine exports no opponent instances/seed and no privilege in viewer input (11.89182ms)
+✔ untrusted viewer accessors cannot execute before closed input validation (1.970209ms)
+✔ projection qualification does not admit ordinary hidden-state, rewards or official cards (0.486094ms)
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (7.173692ms)
+✔ public observer and second player have separate outputs and no role escalation (4.174966ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (101.260775ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (3.822189ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (2.017782ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (3.896363ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (1.961452ms)
+✔ face-down under-card default requires an explicit face-up grant (1.610471ms)
+✔ normal ink reveal becomes unlinked public history; independent effect reveal at the same revision survives (1.860409ms)
+✔ revealing a hand/deck front does not disclose its otherwise private state metadata (2.410422ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2441.173991
+
+> @lorcana/engine-lab@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-lab
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ qualification input bounds sparse arrays, aggregate size, keys and accessors before engine execution (11.27762ms)
+✔ synthetic match commands run on Node with player authority, stale rejection, terminal winner and idempotent disposal (11.904501ms)
+✔ October rules and set dates never grant unqualified rules/catalog or hidden/economic admission (0.708305ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 114.529755
+
+> @lorcana/match-client@0.0.0 test /workspaces/lorcana-online-tcg/packages/match-client
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ client waits for correlated authorized snapshot, copies views and rejects raw-ID or overlapping moves (159.566129ms)
+✔ pending bytes and IDs survive suspension/host hop and duplicate receipt, while stale results are final (11.52482ms)
+✔ server sequence gaps, incompatible pins and changed account never replay a pending intent (11.232091ms)
+✔ transient receipts preserve pending identity; expiry stops retries and retains explicit recovery data (6.004601ms)
+✔ unrelated snapshots do not resend a pending command or hide its acknowledgement deadline (51.979391ms)
+✔ application receipt callbacks cannot overwrite terminal transport state or undo an accepted result (4.127815ms)
+✔ replacing an incomplete connection rejects its waiter rather than leaking a pending promise (0.850011ms)
+✔ status callbacks that dispose transport cannot leave a subsequently scheduled retry timer (8.805238ms)
+✔ view clearing callbacks preserve disposal and settle connect and suspend callers (4.204529ms)
+✔ browser countdown is a clamped monotonic estimate and cannot submit a move or change a result (5.196114ms)
+✔ live3 clock-only revisions preserve views, defensive callbacks and monotonic estimates, then clear on suspension (29.484493ms)
+✔ live3 pending commands retain schema2 and exact bytes across reconnect; old schema1 offers only its original live2 pin (14.852563ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 535.651714
+
+> @lorcana/service-runtime@0.0.0 test /workspaces/lorcana-online-tcg/packages/service-runtime
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ shutdown interrupts pending initialization and calls cleanup: async () =>  (48.110776ms)
+✔ shutdown interrupts pending initialization and calls cleanup: signal => {  (48.073279ms)
+✖ actual HTTP negotiation is typed, rejects unknown/coerced/oversized input and drains (128.913409ms)
+✔ HTTP service cannot advertise a revision without an implemented foundation codec (1.115699ms)
+✔ release registry defensively freezes source and never silently replaces an unavailable pinned release (8.236215ms)
+✔ release transition proof rejects dropped or changed pins but accepts canonical field reordering (8.133176ms)
+✔ release registry cannot expose empty cloned data from inherited manifest fields (0.179603ms)
+✔ HTTP service serves scoped diagnostics, rejects unknown routes, and drains readiness (143.965704ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1078.176067
+
+✖ failing tests:
+
+test at tests/protocol.test.mjs:6:1
+✖ actual HTTP negotiation is typed, rejects unknown/coerced/oversized input and drains (128.913409ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/service-runtime/tests/protocol.test.mjs:19:50)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+/workspaces/lorcana-online-tcg/packages/service-runtime:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/service-runtime@0.0.0 test: `node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs`
+Exit status 1
+ ELIFECYCLE  Test failed. See above for more details.
+ ELIFECYCLE  Command failed with exit code 1.

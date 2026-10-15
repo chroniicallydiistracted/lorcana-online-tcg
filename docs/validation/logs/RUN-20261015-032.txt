@@ -1,0 +1,18 @@
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+{"target":"test","applied":1,"total":5}
+✔ real database admits an early action before a timeout and excludes accepted engine-processing time (265.58815ms)
+✔ the exact deadline refuses player admission and duplicate timeout servers can commit only once (145.645399ms)
+✔ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (152.195618ms)
+✔ aborted illegal calculations retain elapsed time and a forged system actor cannot obtain a player reservation (116.266491ms)
+✔ new clock state and audit tables remain inaccessible to API and worker roles (75.515476ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1458.09154

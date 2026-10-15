@@ -1,0 +1,58 @@
+✔ real database admits an early action before a timeout and excludes accepted engine-processing time (209.600484ms)
+✔ the exact deadline refuses player admission and duplicate timeout servers can commit only once (132.594687ms)
+✔ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (147.111065ms)
+✔ aborted illegal calculations retain elapsed time and a forged system actor cannot obtain a player reservation (107.464669ms)
+✔ new clock state and audit tables remain inaccessible to API and worker roles (68.943993ms)
+✖ a heartbeat blocked behind reservation admission rereads the clock after acquiring its row lock (138.479581ms)
+✔ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.383478ms)
+✔ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (0.933734ms)
+✔ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (1001.722288ms)
+✔ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (456.545344ms)
+✔ clock runner never overlaps owned sweeps and close waits for a pending sweep (80.967982ms)
+✔ overlapping time samples cannot manufacture backward-clock evidence from reordered query responses (15.876953ms)
+✖ simulated service shutdown stops a running sweep before it starts another stored match (307.395341ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 11
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3678.609992
+
+✖ failing tests:
+
+test at apps/match-service/tests/clock-storage.test.mjs:52:1
+✖ a heartbeat blocked behind reservation admission rereads the clock after acquiring its row lock (138.479581ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  6 !== 7
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:65:48)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 6,
+    expected: 7,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clocks.test.mjs:65:1
+✖ simulated service shutdown stops a running sweep before it starts another stored match (307.395341ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:70:120)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

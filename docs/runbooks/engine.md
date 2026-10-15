@@ -1,5 +1,9 @@
 # Engine vendoring and qualification operation
 
+<!-- PLAY04-CURRENT-START -->
+PLAY-04 is implemented and locally verified for the approved two-player synthetic scope, recorded 2026-10-15T16:07:29.227Z. RUN084 passes350project/406upstream/2injection checks (one inherited upstream skip);085 passes66DB/storage/match checks;086 passes10foundation/live Chromium and2Lab worker checks;087/088 pass clean frozen source and canonical Git builds/full suites. Four independent review findings have RED→GREEN repairs;089–091 verify dependency policy, secret/private-data/provenance preservation and owned cleanup. [Current scope/evidence](../validation/play-04.md) governs acceptance and exact limits. Normal startup stays diagnostics-only; AUTH-01, ordinary/card/reward/device/load/production and fresh isolated/hosted artifact qualification remain gated. No upstream runtime, applied SQL or host setting changed. Dated checkpoints below remain historical.
+<!-- PLAY04-CURRENT-END -->
+
 Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](../validation/play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
 
 Start with [ADR0010](../adr/0010-secure-randomness-replay.md), [RULE-03 evidence](../validation/rule-03.md), [pinned engine evidence](../validation/rule-02.md), [RULE-01 sources](../rules/README.md) and the universal workflow. This is synthetic qualification infrastructure. No real-game ingress, rewards, official cards or hidden-state transport is enabled.

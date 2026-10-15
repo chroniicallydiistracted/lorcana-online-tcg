@@ -1,0 +1,37 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  898.89 kB │ gzip: 195.73 kB
+
+✓ built in 216ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+✔ clock policy refuses impossible budgets, unqualified profiles and executable input (4.100625ms)
+✔ public clock projection binds two distinct players, active responsibility and safe paused deadlines (1.908108ms)
+✔ untimed private matches remain untimed and cannot receive clock controls (12.1619ms)
+✔ native dynamic timeout pass restores 125 seconds through actual engine bonuses without changing ink rules (55.076275ms)
+✔ clock-only pause/resume preserves game logs, card refs, RNG and exact private reconstruction (31.072686ms)
+✔ invalid timed moves neither mutate clocks nor grant time and later settlement charges the complete interval (9.54803ms)
+✔ audited clock reset requires a paused enrolled player and cannot unfreeze completed games (8.50353ms)
+✔ timed replay rejects policy/control/time edits even with a recomputed checkpoint checksum (25.979724ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 481.287081

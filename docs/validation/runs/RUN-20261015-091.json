@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-091",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import fs from 'node:fs';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';const root=process.cwd();for(const pid of fs.readdirSync('/proc').filter(p=>/^\\d+$/.test(p)))try{const args=fs.readFileSync('/proc/'+pid+'/cmdline','utf8').split('\\0');assert(!args.some(a=>/(?:^|\\/)apps\\/(?:api|match-service|worker)\\/(?:src|dist)\\/(?:main|index)\\.(?:ts|js)$|(?:^|\\/)apps\\/match-service\\/tests\\/(?:clock-child|gateway-child)\\.mjs$/.test(a)),'Owned application/clock/gateway child remains');}catch(e){if(!['ENOENT','EACCES'].includes(e.code))throw e;}for(const p of ['.env.local','.local/database.json','.local/play04-private-checkpoint.json']){assert.equal(fs.statSync(p).mode&0o777,0o600);execFileSync('git',['check-ignore','-q',p]);}for(const p of ['/proc/net/tcp','/proc/net/tcp6'])if(fs.existsSync(p))for(const row of fs.readFileSync(p,'utf8').split('\\n').slice(1)){const f=row.trim().split(/\\s+/);if(f[3]==='0A')assert(![5173,3001,3002].includes(parseInt(f[1].split(':')[1],16)));}assert(root==='/workspaces/lorcana-online-tcg');console.log('PASS owned main/clock-child/gateway-child processes and foundation listeners absent; original private files and ignored local preservation metadata0600; no processes stopped or host settings changed');"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "a41c1374759fa3beb265e5944189a638184305b181f21518bdda6ae795620d59",
+  "started_at": "2026-10-15T16:00:30.492Z",
+  "finished_at": "2026-10-15T16:00:30.584Z",
+  "recorded_at": "2026-10-15T16:00:30.584Z",
+  "time_precision": "exact",
+  "elapsed_ms": 92,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 final owned clock/gateway/main process and port cleanup; ignored owner-only original credentials and private preservation metadata",
+  "log_path": "docs/validation/logs/RUN-20261015-091.txt",
+  "log_sha256": "389f52b9ad9654cbcf8294f2ef3e75a710f3906c6657d71743b1fb903e4f5430",
+  "redactions": 0
+}

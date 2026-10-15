@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-027",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "packages/contracts/tests/clocks.test.mjs",
+    "packages/engine-adapter/tests/clocks.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "2a27e93bc578c1754faa314ad203ebe9490edef8f585bfea932c778b30c8b46f",
+  "started_at": "2026-10-15T05:30:07.783Z",
+  "finished_at": "2026-10-15T05:30:08.380Z",
+  "recorded_at": "2026-10-15T05:30:08.380Z",
+  "time_precision": "exact",
+  "elapsed_ms": 597,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 task1 expected negative contracts and actual engine-clock tests before implementation",
+  "log_path": "docs/validation/logs/RUN-20261015-027.txt",
+  "log_sha256": "9c0d3c60ad3c58652b70217abbf5cf836992385e7eeb4627901c53507f49eb2f",
+  "redactions": 0
+}

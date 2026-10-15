@@ -1,0 +1,25 @@
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+✔ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (3024.255885ms)
+✔ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (3287.489007ms)
+✔ unresolved opening timeout pauses for a legal decision and audited reset cannot choose the winner (1607.478167ms)
+✔ clock storage tampering cannot extend a deadline or alter a native remaining allowance (2442.974946ms)
+✔ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.604345ms)
+✔ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (0.909494ms)
+✔ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (1135.970397ms)
+✔ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (504.322859ms)
+✔ clock runner never overlaps owned sweeps and close waits for a pending sweep (82.306023ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13147.480341

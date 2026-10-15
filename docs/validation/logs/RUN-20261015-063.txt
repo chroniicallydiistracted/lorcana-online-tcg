@@ -1,0 +1,29 @@
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+✔ real database admits an early action before a timeout and excludes accepted engine-processing time (220.183722ms)
+✔ the exact deadline refuses player admission and duplicate timeout servers can commit only once (149.304382ms)
+✔ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (153.509722ms)
+✔ aborted illegal calculations retain elapsed time and a forged system actor cannot obtain a player reservation (124.335939ms)
+✔ new clock state and audit tables remain inaccessible to API and worker roles (80.433421ms)
+✔ a heartbeat blocked behind reservation admission rereads the clock after acquiring its row lock (145.291639ms)
+✔ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.528606ms)
+✔ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (1.021518ms)
+✔ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (1120.199921ms)
+✔ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (531.48792ms)
+✔ clock runner never overlaps owned sweeps and close waits for a pending sweep (82.552082ms)
+✔ overlapping time samples cannot manufacture backward-clock evidence from reordered query responses (15.95045ms)
+✔ simulated service shutdown stops a running sweep before it starts another stored match (315.777257ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3809.262211

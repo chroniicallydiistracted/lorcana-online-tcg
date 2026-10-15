@@ -1,8 +1,12 @@
 # @lorcana/db
 
+<!-- PLAY04-CURRENT-START -->
+PLAY-04 is implemented and locally verified for the approved two-player synthetic scope, recorded 2026-10-15T16:07:29.227Z. RUN084 passes350project/406upstream/2injection checks (one inherited upstream skip);085 passes66DB/storage/match checks;086 passes10foundation/live Chromium and2Lab worker checks;087/088 pass clean frozen source and canonical Git builds/full suites. Four independent review findings have RED→GREEN repairs;089–091 verify dependency policy, secret/private-data/provenance preservation and owned cleanup. [Current scope/evidence](../../docs/validation/play-04.md) governs acceptance and exact limits. Normal startup stays diagnostics-only; AUTH-01, ordinary/card/reward/device/load/production and fresh isolated/hosted artifact qualification remain gated. No upstream runtime, applied SQL or host setting changed. Dated checkpoints below remain historical.
+<!-- PLAY04-CURRENT-END -->
+
 Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](../../docs/validation/play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
 
-Server-only BOOT-02 owner of pg connections, reviewed SQL migrations and typed Drizzle synthetic probes. Browser/public imports are rejected by the existing resolver/Vite boundaries. Runtime dependencies are pg8.23.1 and Drizzle0.45.3; no schema generator or dependency build scripts are added.
+Server-only BOOT-02 owner of pg connections, reviewed SQL migrations and typed Drizzle synthetic probes. Browser/public imports are rejected by the existing resolver/Vite boundaries. Runtime dependencies are the existing workspace contracts plus pg8.23.1 and Drizzle0.45.3; no schema generator or dependency build scripts are added.
 
 `connection(target, identity, root?)` validates the private local environment and explicit local/test target, then returns credential-bearing pg configuration. `client(...)` creates an unconnected pg Client; caller connects/ends it in a bounded operation. Default `workspaceRoot` derives from this module, so package-cwd tooling resolves the same ignored mode600 config. These are private server APIs; never serialize them into public contracts or logs.
 
@@ -18,3 +22,15 @@ PLAY-01 implements the internal two-player synthetic durable command service wit
 
 
 PLAY-03 adds createTransportStore(issue/consume/quota/close) and createMatchHints with metadata-only COMMIT hints. Socket capabilities are hashed, shared quotas use fixed DB-clock windows and only the match role can access them. See live operation for pool ownership, expiry/retention limits and additive0004.
+
+`createClockRepository(target,root?,options?)` extends match storage with database-clock sampling, participant admission, system-only timeout reservations, fenced commitPlayer/commitTimeout and abort/close. It uses the match role, defaults to15s leases/health gaps, and refuses sampleForTest outside the test target. Its paired migration0005 creates match.clocks and metadata-only clock_events, allows saved protocol3 and clock_expired rejection without changing old wire decoders. Untimed candidate commits cannot bypass an existing clock reservation. Durable phase-pauses after a dead owner preserve the private checkpoint; service recovery/private clock settlement is the next task, not implemented by this repository alone.
+
+## PLAY-04 clock repository controls
+
+createClockRepository extends the participant repository with atomic createTimed, UTC sample, short player/timeout/control reservations, fenced accepted commits, reject/abort, metadata-only audit events, fair bounded scan, heartbeat, system load and unsafePause. createWithOutcome is an internal new-row indicator; only a genuine new row can establish creator continuity. Stores are trusted server surfaces, not client codecs. The test-only DB time reader is refused outside targettest.
+
+Control receipts use a namespace disjoint from both participants. Clock revision is separate from unchanged engine stateVersion. Dead owners and unhealthy elapsed samples pause; recovery settles only the last healthy pending interval. Actual API/worker roles cannot read clocks/events. Migration0005 extends protocols/receipts additively;0001–0004 hashes are retained. Backups contain shuffle secrets and require secret-file handling. No host setting or data recreation is part of these APIs.
+
+Clock writes lock match then clock, then reread the complete current row in a fresh SQL statement. A subquery captured before a SELECT FOR UPDATE wait must not be used to decide/write clock state. RUN062→063 exercises that exact wait with actual PostgreSQL and prevents revision rewind; applied migrations stay unchanged.
+
+Clock activeClockIds accepts at most256bounded IDs, querying only running/processing nonterminal matches for server continuity cleanup. Clock reject validates lease/authority time under both locks; late/backward results commit recovery/time-unreliable pause before UNAVAILABLE, without checkpoint or invalid-intent receipt. See the [clock runbook](../../docs/runbooks/game-clocks.md).

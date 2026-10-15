@@ -1,0 +1,13 @@
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 2 tests using 1 worker
+
+  ✓  1 tests/clock-client.spec.ts:13:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 0 (10.2s)
+  ✓  2 tests/clock-client.spec.ts:13:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 1 (9.5s)
+
+  2 passed (41.7s)
+PASS both chooser-seat cold-cache Chromium clock proofs; original cache restored in finally

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-074",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm install --frozen-lockfile --offline && pnpm run doctor && pnpm verify:foundation && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "b7f9e468c019e474cbdcd93a0b9cdf7f724d146fcc3e7a13b33b00bed88ac0a1",
+  "started_at": "2026-10-15T15:20:38.275Z",
+  "finished_at": "2026-10-15T15:20:59.811Z",
+  "recorded_at": "2026-10-15T15:20:59.811Z",
+  "time_precision": "exact",
+  "elapsed_ms": 21525,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 complete final-source foundation after explicit test-global lint correction; original database baseline",
+  "log_path": "docs/validation/logs/RUN-20261015-074.txt",
+  "log_sha256": "cac7cfc325edb38b72567cfe90f5c41b4235a17c7ab05d2883b447caa502cd00",
+  "redactions": 0
+}

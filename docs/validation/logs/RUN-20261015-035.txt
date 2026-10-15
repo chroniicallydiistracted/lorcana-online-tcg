@@ -1,0 +1,54 @@
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  898.96 kB │ gzip: 195.75 kB
+
+✓ built in 192ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/contracts@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-adapter@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/db@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json --noEmit
+
+✔ real database admits an early action before a timeout and excludes accepted engine-processing time (226.388325ms)
+✔ the exact deadline refuses player admission and duplicate timeout servers can commit only once (170.464404ms)
+✔ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (178.678504ms)
+✔ aborted illegal calculations retain elapsed time and a forged system actor cannot obtain a player reservation (153.164363ms)
+✔ new clock state and audit tables remain inaccessible to API and worker roles (89.941836ms)
+✔ clock policy refuses impossible budgets, unqualified profiles and executable input (7.927556ms)
+✔ public clock projection binds two distinct players, active responsibility and safe paused deadlines (5.517971ms)
+✔ untimed private matches remain untimed and cannot receive clock controls (11.46439ms)
+✔ native dynamic timeout pass restores 125 seconds through actual engine bonuses without changing ink rules (57.201865ms)
+✔ clock-only pause/resume preserves game logs, card refs, RNG and exact private reconstruction (30.275651ms)
+✔ invalid timed moves neither mutate clocks nor grant time and later settlement charges the complete interval (10.717652ms)
+✔ audited clock reset requires a paused enrolled player and cannot unfreeze completed games (10.145571ms)
+✔ timed replay rejects policy/control/time edits even with a recomputed checkpoint checksum (29.679144ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2154.261292

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-059",
+  "category": "headless_browser",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/web typecheck && pnpm --filter @lorcana/web exec playwright test clock-client.spec.ts"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "82f48f7670c0572be1fe5dd08bdc315fb0828af636b0291c3184a43225a2162b",
+  "started_at": "2026-10-15T07:02:17.332Z",
+  "finished_at": "2026-10-15T07:03:30.501Z",
+  "recorded_at": "2026-10-15T07:03:30.501Z",
+  "time_precision": "exact",
+  "elapsed_ms": 72847,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 Chromium opening responsibility coverage for both randomized chooser seats with safe phase/version diagnosis",
+  "log_path": "docs/validation/logs/RUN-20261015-059.txt",
+  "log_sha256": "af9018978241c6e090c6c2fbb1d7df94ba7697b9ab66cfc8e98c1a4e96f9994d",
+  "redactions": 0
+}

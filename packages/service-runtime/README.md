@@ -6,3 +6,5 @@ The `./release` subpath exposes `createReleaseRegistry` and `assertRetainedPins`
 
 
 Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for scoped dependencies, semantic documentation review and timestamped evidence. Full gameplay/device/production acceptance remains separate.
+
+The shared hello offer can cover three adjacent versions (for example1..3), but these diagnostic HTTP handlers still advertise/select only1. A wider1..4 offer is malformed; a2-only offer is incompatible. Separate live2/3 handlers belong to the optional match gateway, not this diagnostic service.

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-028",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/contracts build && pnpm --filter @lorcana/vendor-engine build && pnpm --filter @lorcana/engine-adapter build && node --test --test-concurrency=1 packages/contracts/tests/clocks.test.mjs packages/engine-adapter/tests/clocks.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "eff25ce5686c217d84ea4e43ea57e85bd8a9ec93ffd6a9ae794b5904102726dd",
+  "started_at": "2026-10-15T05:32:55.446Z",
+  "finished_at": "2026-10-15T05:33:02.484Z",
+  "recorded_at": "2026-10-15T05:33:02.484Z",
+  "time_precision": "exact",
+  "elapsed_ms": 7038,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 task1 targeted owning builds and new contracts/actual engine-clock regressions after implementation",
+  "log_path": "docs/validation/logs/RUN-20261015-028.txt",
+  "log_sha256": "c20c549ad610e23f0b197a8631fa841383cba22706dc32bf134fbacba628acb6",
+  "redactions": 0
+}

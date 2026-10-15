@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-048",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "apps/match-service/tests/clock-live.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "5616fa9c8aaf8ed24354249780aed08152172d3ba4c1ca3cf25a8273b97b469b",
+  "started_at": "2026-10-15T06:37:49.829Z",
+  "finished_at": "2026-10-15T06:37:58.742Z",
+  "recorded_at": "2026-10-15T06:37:58.742Z",
+  "time_precision": "exact",
+  "elapsed_ms": 8913,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 actual live3 gateway clock-only updates, disconnect expiry, host-hop and version-bound ticket checks",
+  "log_path": "docs/validation/logs/RUN-20261015-048.txt",
+  "log_sha256": "a2834ebe807a11c0f94249d49aba06a64765241d3fc0c7f22793f23aba9803cc",
+  "redactions": 0
+}

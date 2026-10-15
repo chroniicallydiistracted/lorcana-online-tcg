@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-063",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/db build && pnpm --filter @lorcana/match-service build && node --test --test-concurrency=1 apps/match-service/tests/clock-storage.test.mjs apps/match-service/tests/clocks.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "fa416d5aa96eb203d88f70398b7b5a211e9185a39f07e85d614fd2ac0618ef00",
+  "started_at": "2026-10-15T14:58:32.438Z",
+  "finished_at": "2026-10-15T14:58:39.983Z",
+  "recorded_at": "2026-10-15T14:58:39.983Z",
+  "time_precision": "exact",
+  "elapsed_ms": 7545,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 fresh locked clock snapshot and concurrent shutdown signaling after RED062; actual storage and simulated lifecycle regressions",
+  "log_path": "docs/validation/logs/RUN-20261015-063.txt",
+  "log_sha256": "72e6cc8d8749304746d22edae6268c3d6e4d4b5eb11e78037060f73db8645fa2",
+  "redactions": 0
+}

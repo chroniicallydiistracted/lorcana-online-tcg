@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-045",
+  "category": "container",
+  "command": [
+    "node",
+    "--conditions=lorcana-source",
+    "--test",
+    "--test-concurrency=1",
+    "packages/contracts/tests/live-clock.test.mjs",
+    "packages/match-client/tests/clocks.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "c6df2f54ce82136616b31040cbd20121e2b65b230227940da89aab2efb7d7a32",
+  "started_at": "2026-10-15T06:33:40.064Z",
+  "finished_at": "2026-10-15T06:33:40.543Z",
+  "recorded_at": "2026-10-15T06:33:40.543Z",
+  "time_precision": "exact",
+  "elapsed_ms": 479,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 Task4 expected negative separate live3 codecs and pure browser countdown estimate regressions",
+  "log_path": "docs/validation/logs/RUN-20261015-045.txt",
+  "log_sha256": "1bbe5ede2c43a15f5a7938a6846532fc71b83c8c03ca88a6203e26c48b920ac3",
+  "redactions": 0
+}

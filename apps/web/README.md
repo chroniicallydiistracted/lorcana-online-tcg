@@ -15,3 +15,7 @@ PLAY-02 adds a single-worker Chromium check of the browser-safe viewer/surface c
 
 
 PLAY-03 links the browser-owned match-client workspace and explicitly permits it through Vite browser filesystem ownership. A Node-only qualification test creates isolated gateway processes/sessions; native Chromium imports the client, uses HttpOnly cookies and real WebSockets and reconnects across processes. The ordinary diagnostic page has no live game/login controls.
+
+## PLAY-04 timed qualification
+
+The product page remains a foundation diagnostic. A test-only two-context Chromium harness exercises distinct live3 estimates, clock-only pause, suspension and gateway-hop recovery for both opening chooser seats. Historical RUN059 exposed a database revision rewind, reproduced and repaired by RED062→GREEN063; cold-cache RUN064 passes both seats. Final-source browser qualification follows the independent review repairs; see [current evidence](../../docs/validation/play-04.md). No final game UI, real Windows/device, ordinary/card/reward or production acceptance is implied.

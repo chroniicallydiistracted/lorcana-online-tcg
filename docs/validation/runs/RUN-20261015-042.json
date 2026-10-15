@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-042",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "apps/match-service/tests/clocks.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "a18ae5c87fa009b9703f2f725a83d7da61907055c843d6a3b3872fccb5b9a11a",
+  "started_at": "2026-10-15T06:29:28.394Z",
+  "finished_at": "2026-10-15T06:29:30.468Z",
+  "recorded_at": "2026-10-15T06:29:30.468Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2074,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 expected negative overlapping time-sample ordering regression",
+  "log_path": "docs/validation/logs/RUN-20261015-042.txt",
+  "log_sha256": "a8cc9368a89b8ea2f58692adfe1098fbcaf7bc3134dde1b1576a0cc0af71f1f3",
+  "redactions": 0
+}

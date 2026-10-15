@@ -1,0 +1,53 @@
+Scope: 2 of 14 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+packages/contracts build: Done
+packages/db build$ tsc -p tsconfig.json
+packages/db build: Done
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries
+✔ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (2815.649869ms)
+✔ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (3349.2218ms)
+✔ unresolved opening timeout pauses for a legal decision and audited reset cannot choose the winner (1501.86663ms)
+✔ clock storage tampering cannot extend a deadline or alter a native remaining allowance (2185.808039ms)
+✔ an already-running owner that stalls cannot pause a second healthy owner through tick, submit or timeout (1943.644623ms)
+✔ a cold proof reconstruction crossing the deadline happens after authoritative admission (481.234676ms)
+✔ an illegal service result returning after a short lease pauses before any competing sweep (480.900976ms)
+✔ real database admits an early action before a timeout and excludes accepted engine-processing time (215.401785ms)
+✔ the exact deadline refuses player admission and duplicate timeout servers can commit only once (147.536606ms)
+✔ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (150.965426ms)
+✔ aborted illegal calculations retain elapsed time and a forged system actor cannot obtain a player reservation (126.478237ms)
+✔ new clock state and audit tables remain inaccessible to API and worker roles (72.448453ms)
+✔ a heartbeat blocked behind reservation admission rereads the clock after acquiring its row lock (131.619169ms)
+✔ six independent timeout repositories admit one owner and system-like participant names cannot preclaim its receipt (156.252423ms)
+✔ a expired rejected calculation cannot resurrect its fenced clock reservation (117.441228ms)
+✔ a backward rejected calculation cannot resurrect its fenced clock reservation (116.898495ms)
+✔ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.655084ms)
+✔ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (1.75306ms)
+✔ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (1108.532403ms)
+✔ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (510.016379ms)
+✔ clock runner never overlaps owned sweeps and close waits for a pending sweep (82.134598ms)
+✔ overlapping time samples cannot manufacture backward-clock evidence from reordered query responses (14.802305ms)
+✔ simulated service shutdown stops a running sweep before it starts another stored match (290.922524ms)
+✔ continuity capacity is reclaimed over more than128 sequential remotely completed matches (14.87115ms)
+✔ parallel creation reserves continuity capacity before saving a row and reports no false creation failure (9.821491ms)
+✔ terminal continuity probes are reclaimed without granting a new row continuity before independent progress (3.07775ms)
+✔ untimed creation on a live3-only release is refused before any durable row is saved (0.432064ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17551.720671

@@ -1,0 +1,34 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+✔ live3 is a separate closed clocked codec while diagnostic1 and live2 remain exact (9.653493ms)
+✔ three-version release ranges stay bounded and tickets pin the saved match version (1.586758ms)
+✔ untimed private matches remain untimed and cannot receive clock controls (10.743738ms)
+✔ timed setup refuses the native zero-timestamp sentinel while untimed epoch-zero fixtures remain supported (2.083713ms)
+✔ independent private random worlds have identical native clocks under the same thinking-time schedule (24.482325ms)
+✔ native dynamic timeout pass restores 125 seconds through actual engine bonuses without changing ink rules (36.433997ms)
+✔ clock-only pause/resume preserves game logs, card refs, RNG and exact private reconstruction (25.797497ms)
+✔ invalid timed moves neither mutate clocks nor grant time and later settlement charges the complete interval (9.260802ms)
+✔ audited clock reset requires a paused enrolled player and cannot unfreeze completed games (8.424255ms)
+✔ timed replay rejects policy/control/time edits even with a recomputed checkpoint checksum (24.471346ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 519.574789

@@ -1,4 +1,5 @@
 import type { ViewerProjection } from '@lorcana/contracts';
+import type {EngineClockState} from '@lorcana/contracts/clocks';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { ENGINE_REPLAY_IDENTITY } from './code-identity.js';
 import { RANDOM_VERSION } from './random.js';
@@ -14,6 +15,8 @@ export interface PrivateMatch {
   project(viewer:unknown):ViewerProjection;
   resolveIntent(actor:string,move:unknown,input:unknown):Record<string,unknown>;
   checkpoint(): PrivateMatchCheckpoint;
+  clock():EngineClockState|null;
+  controlClock(control:unknown):void;
   dispose(): void;
 }
 function matchId(value: unknown): string {
@@ -25,6 +28,7 @@ function digest(archive: string): string { return createHash('sha256').update('p
 function wrap(core: RecordedCore, id: string): PrivateMatch {
   return Object.freeze({
     status: core.facade.status, submit: core.facade.submit, dispose: core.facade.dispose,
+    clock:core.clock,controlClock:core.controlClock,
     project(viewer:unknown){return core.project(viewer,id);},
     resolveIntent(actor:string,move:unknown,input:unknown){return core.resolveIntent(actor,move,input,id);},
     checkpoint(): PrivateMatchCheckpoint {
@@ -38,8 +42,8 @@ function wrap(core: RecordedCore, id: string): PrivateMatch {
 }
 /** Trusted server/storage only. No client-provided seed or snapshot is accepted. */
 export function createPrivateMatch(options: unknown): PrivateMatch {
-  const row = closedRecord(options, ['matchId', 'players', 'startTimestamp']);
-  const id = matchId(row.matchId), setup = validateSetup({ players: row.players, startTimestamp: row.startTimestamp });
+  const row = closedRecord(options, ['matchId', 'players', 'startTimestamp','clock']);
+  const id = matchId(row.matchId), setup = validateSetup({ players: row.players, startTimestamp: row.startTimestamp,...(Object.hasOwn(row,'clock')?{clock:row.clock}:{}) });
   const seed = randomBytes(32);
   try { return wrap(createRecordedCore(setup, seed, context(id)), id); }
   finally { seed.fill(0); }
@@ -56,13 +60,17 @@ export function restorePrivateMatch(value: unknown, expectedMatchId: unknown): P
     const envelope = closedRecord(data, ['version', 'purpose', 'matchId', 'transcript']);
     if (envelope.version !== 1 || envelope.purpose !== 'synthetic-play01' || envelope.matchId !== id) throw new Error();
     const row = closedRecord(envelope.transcript, ['version', 'purpose', 'engineIdentity', 'rngVersion', 'setup', 'seed', 'seedCommitment', 'initial', 'commands', 'final']);
-    if (row.version !== 1 || row.purpose !== 'synthetic-rule03' || row.engineIdentity !== ENGINE_REPLAY_IDENTITY || row.rngVersion !== RANDOM_VERSION || typeof row.seed !== 'string' || !/^[a-f0-9]{64}$/.test(row.seed) || !Array.isArray(row.commands) || row.commands.length > 2048) throw new Error();
+    if (![1,2].includes(Number(row.version)) || row.purpose !== 'synthetic-rule03' || row.engineIdentity !== ENGINE_REPLAY_IDENTITY || row.rngVersion !== RANDOM_VERSION || typeof row.seed !== 'string' || !/^[a-f0-9]{64}$/.test(row.seed) || !Array.isArray(row.commands) || row.commands.length > 2048) throw new Error();
     const seed = Buffer.from(row.seed, 'hex');
     try { core = createRecordedCore(validateSetup(row.setup), seed, context(id)); }
     finally { seed.fill(0); }
     for (const command of row.commands) {
-      const checkpointRow = closedRecord(command, ['command', 'result', 'stateHash', 'randomOutcomes']);
-      core.facade.submit(checkpointRow.command);
+      if(row.version===2&&command&&typeof command==='object'&&Object.hasOwn(command,'control')){
+        const checkpointRow=closedRecord(command,['control','stateHash','randomOutcomes']);core.controlClock(checkpointRow.control);
+      }else {
+        const checkpointRow = closedRecord(command, ['command', 'result', 'stateHash', 'randomOutcomes']);
+        core.facade.submit(checkpointRow.command);
+      }
     }
     if (core.privateArchive() !== canonical(row)) throw new Error();
     return wrap(core, id);

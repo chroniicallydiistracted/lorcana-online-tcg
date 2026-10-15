@@ -1,0 +1,9 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+src/live.ts(137,186): error TS2339: Property 'playerId' does not exist on type '{ kind: "participant"; playerId: string; } | { kind: "public"; }'.
+  Property 'playerId' does not exist on type '{ kind: "public"; }'.
+/workspaces/lorcana-online-tcg/packages/contracts:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/contracts@0.0.0 build: `tsc -p tsconfig.json`
+Exit status 1

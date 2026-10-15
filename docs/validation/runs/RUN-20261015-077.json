@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-077",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm db:health -- --target local && pnpm db:health -- --target test && pnpm db:test && pnpm test:match-integration && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "76d3e8ff6d0d49a36ded796507eac9acf57ccf704b2dc4cbe4717d40b7cb6f8e",
+  "started_at": "2026-10-15T15:25:16.545Z",
+  "finished_at": "2026-10-15T15:27:40.859Z",
+  "recorded_at": "2026-10-15T15:27:40.859Z",
+  "time_precision": "exact",
+  "elapsed_ms": 144204,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 complete actual PostgreSQL role, migration and match integration checkpoint; simulated clock scenarios and actual process races",
+  "log_path": "docs/validation/logs/RUN-20261015-077.txt",
+  "log_sha256": "5c89742fe4ecd2fbc394f2ae176fb0c0f647bf2594c4b720c0bea5e6e78094e5",
+  "redactions": 0
+}

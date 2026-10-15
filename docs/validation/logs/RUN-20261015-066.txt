@@ -1,0 +1,48 @@
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +125
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 125, reused 125, downloaded 0, added 125, done
+
+devDependencies:
++ @eslint/js 10.0.1
++ ajv 8.20.0
++ eslint 10.12.0
++ parse5 8.0.0
++ pdfjs-dist 6.4.299
++ postcss-value-parser 4.2.0
++ typescript 6.0.3
++ typescript-eslint 8.71.1
+
+Done in 609ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 db:health /tmp/play04-db-build-69a7cb
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target invalid
+
+
+> @lorcana/db@0.0.0 build /tmp/play04-db-build-69a7cb/packages/db
+> tsc -p tsconfig.json
+
+src/clock-store.ts(9,53): error TS2307: Cannot find module '@lorcana/contracts/clocks' or its corresponding type declarations.
+src/clock-store.ts(123,214): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/clock-store.ts(126,63): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/clock-store.ts(175,63): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/clock-types.ts(2,32): error TS2307: Cannot find module '@lorcana/contracts/clocks' or its corresponding type declarations.
+src/clock-types.ts(3,48): error TS2307: Cannot find module '@lorcana/contracts/clocks' or its corresponding type declarations.
+/tmp/play04-db-build-69a7cb/packages/db:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/db@0.0.0 build: `tsc -p tsconfig.json`
+Exit status 1
+ ELIFECYCLE  Command failed with exit code 1.
+file:///workspaces/lorcana-online-tcg/[eval1]:1
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';const root=process.cwd(),copy=fs.mkdtempSync(path.join(os.tmpdir(),'play04-db-build-'));const env=Object.fromEntries(Object.entries(process.env).filter(([k])=>!/(password|secret|token|credential|private_key)|^(PG|POSTGRES|DATABASE)/i.test(k)));try{for(const p of ['package.json','pnpm-lock.yaml','pnpm-workspace.yaml','tsconfig.base.json','packages/contracts/package.json','packages/contracts/tsconfig.json','packages/contracts/src','packages/db/package.json','packages/db/tsconfig.json','packages/db/src','packages/db/migrations']){fs.mkdirSync(path.dirname(path.join(copy,p)),{recursive:true});fs.cpSync(path.join(root,p),path.join(copy,p),{recursive:true});}let r=spawnSync('pnpm',['install','--frozen-lockfile','--offline','--ignore-scripts'],{cwd:copy,env,stdio:'inherit'});if(r.status!==0)throw Error('Clean owning install failed');r=spawnSync('pnpm',['db:health','--','--target','invalid'],{cwd:copy,env,stdio:'inherit'});if(r.status!==1||!fs.existsSync(path.join(copy,'packages/contracts/dist/clocks.js'))||!fs.existsSync(path.join(copy,'packages/db/dist/cli.js')))throw Error('Standalone database command did not build its owning dependency closure');console.log('PASS standalone clean DB dependency build; invalid target refused before any DB connection; no credentials copied');}finally{fs.rmSync(copy,{recursive:true,force:true});}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+Error: Standalone database command did not build its owning dependency closure
+    at file:///workspaces/lorcana-online-tcg/[eval1]:1:1204
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:223:26
+    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:220:20)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.21.0

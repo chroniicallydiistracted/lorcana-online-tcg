@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-050",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/web typecheck && pnpm exec eslint apps/match-service packages/contracts packages/match-client apps/web/tests/clock-client.spec.ts && node --test --test-concurrency=1 apps/match-service/tests/clock-process.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "38df33740ddc1d0a34b5123b7d07472aa8fd05158d0ec54f788fe1e92aee3692",
+  "started_at": "2026-10-15T06:40:33.349Z",
+  "finished_at": "2026-10-15T06:44:34.326Z",
+  "recorded_at": "2026-10-15T06:44:34.326Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 239921,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "PLAY-04 current strict owning lint and types plus real process six-server duplicate race and clock failure proofs",
+  "log_path": "docs/validation/logs/RUN-20261015-050.txt",
+  "log_sha256": "96ca38ea9d620b5cce0a37a4fe9462eae0352fbb79294e4ba3272dde70bfe240",
+  "redactions": 0
+}

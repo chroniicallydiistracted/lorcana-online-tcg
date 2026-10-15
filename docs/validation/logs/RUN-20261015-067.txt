@@ -1,0 +1,30 @@
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +125
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 125, reused 125, downloaded 0, added 125, done
+
+devDependencies:
++ @eslint/js 10.0.1
++ ajv 8.20.0
++ eslint 10.12.0
++ parse5 8.0.0
++ pdfjs-dist 6.4.299
++ postcss-value-parser 4.2.0
++ typescript 6.0.3
++ typescript-eslint 8.71.1
+
+Done in 583ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 db:health /tmp/play04-db-build-BJmjNn
+> pnpm --filter @lorcana/db... build && node packages/db/dist/cli.js health -- --target invalid
+
+Scope: 2 of 3 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+packages/contracts build: Done
+packages/db build$ tsc -p tsconfig.json
+packages/db build: Done
+Database command failed; verify local access, managed ownership and migration history. Private errors are not logged.
+ ELIFECYCLE  Command failed with exit code 1.
+PASS standalone clean DB dependency build; invalid target refused before any DB connection; no credentials copied

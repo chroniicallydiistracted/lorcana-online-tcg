@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-061",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm run doctor && pnpm test:bootstrap && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "f0cd0f3331a497c1c3ad74598e7066ef618e93f2e8a6e1fb43a81244343f21c6",
+  "started_at": "2026-10-15T14:56:38.650Z",
+  "finished_at": "2026-10-15T14:56:40.225Z",
+  "recorded_at": "2026-10-15T14:56:40.225Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1575,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 resumed original-container runtime bootstrap and authenticated original PostgreSQL baseline after Director restart",
+  "log_path": "docs/validation/logs/RUN-20261015-061.txt",
+  "log_sha256": "b9d5d5e7e344f381f62a8b9e4a80dbd34ad9d0d8604a04f79579a7299223b5d2",
+  "redactions": 0
+}

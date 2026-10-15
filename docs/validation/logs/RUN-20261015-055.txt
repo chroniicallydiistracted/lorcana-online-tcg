@@ -1,0 +1,54 @@
+✖ live3 is a separate closed clocked codec while diagnostic1 and live2 remain exact (9.430563ms)
+✔ three-version release ranges stay bounded and tickets pin the saved match version (1.978957ms)
+✔ untimed private matches remain untimed and cannot receive clock controls (12.212496ms)
+✖ timed setup refuses the native zero-timestamp sentinel while untimed epoch-zero fixtures remain supported (4.400876ms)
+✔ independent private random worlds have identical native clocks under the same thinking-time schedule (26.426899ms)
+✔ native dynamic timeout pass restores 125 seconds through actual engine bonuses without changing ink rules (38.298834ms)
+✔ clock-only pause/resume preserves game logs, card refs, RNG and exact private reconstruction (28.482069ms)
+✔ invalid timed moves neither mutate clocks nor grant time and later settlement charges the complete interval (10.253198ms)
+✔ audited clock reset requires a paused enrolled player and cannot unfreeze completed games (8.708054ms)
+✔ timed replay rejects policy/control/time edits even with a recomputed checkpoint checksum (26.250552ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 8
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 537.682111
+
+✖ failing tests:
+
+test at packages/contracts/tests/live-clock.test.mjs:7:1
+✖ live3 is a separate closed clocked codec while diagnostic1 and live2 remain exact (9.430563ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception: a running clock contradicts a completed viewer
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/contracts/tests/live-clock.test.mjs:11:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/clocks.test.mjs:18:1
+✖ timed setup refuses the native zero-timestamp sentinel while untimed epoch-zero fixtures remain supported (4.400876ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/clocks.test.mjs:19:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

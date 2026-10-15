@@ -1,0 +1,66 @@
+✔ clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset (1.430423ms)
+✔ clock-health accepts network timing uncertainty but rejects backward/invalid samples without exposing reader errors (0.907888ms)
+✔ actual timed worker automatically uses a legal pass and exposes only internal constructed clock data (1070.551457ms)
+✔ actual timeout worker pauses instead of inventing an opening choice or forcing a winner (475.469305ms)
+✔ clock runner never overlaps owned sweeps and close waits for a pending sweep (81.991628ms)
+✔ overlapping time samples cannot manufacture backward-clock evidence from reordered query responses (15.699502ms)
+✔ simulated service shutdown stops a running sweep before it starts another stored match (289.683211ms)
+✖ continuity capacity is reclaimed over more than128 sequential remotely completed matches (12.599856ms)
+✖ parallel creation reserves continuity capacity before saving a row and reports no false creation failure (7.453413ms)
+✖ terminal continuity probes are reclaimed without granting a new row continuity before independent progress (2.331545ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 7
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2125.779507
+
+✖ failing tests:
+
+test at apps/match-service/tests/clocks.test.mjs:83:1
+✖ continuity capacity is reclaimed over more than128 sequential remotely completed matches (12.599856ms)
+  Error: Match service UNAVAILABLE
+      at remember (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:18:15)
+      at Object.recordCreated (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:287:47)
+      at Object.create (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:164:32)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:84:93)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clocks.test.mjs:86:1
+✖ parallel creation reserves continuity capacity before saving a row and reports no false creation failure (7.453413ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  129 !== 128
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:89:260)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 129,
+    expected: 128,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clocks.test.mjs:92:1
+✖ terminal continuity probes are reclaimed without granting a new row continuity before independent progress (2.331545ms)
+  AssertionError [ERR_ASSERTION]: the129th row must acquire continuity only after independent progress
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clocks.test.mjs:99:83)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

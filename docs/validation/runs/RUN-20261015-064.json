@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-064",
+  "category": "headless_browser",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';const cache='apps/web/node_modules/.vite',temp=fs.mkdtempSync(path.join(os.tmpdir(),'play04-vite-cold-')),saved=path.join(temp,'saved'),existed=fs.existsSync(cache);try{if(existed)fs.cpSync(cache,saved,{recursive:true});fs.rmSync(cache,{recursive:true,force:true});const r=spawnSync('pnpm',['--filter','@lorcana/web','exec','playwright','test','clock-client.spec.ts'],{stdio:'inherit'});if(r.error||r.status!==0)throw Error('Cold Chromium proof failed');console.log('PASS both chooser-seat cold-cache Chromium clock proofs; original cache restored in finally');}finally{fs.rmSync(cache,{recursive:true,force:true});if(existed)fs.cpSync(saved,cache,{recursive:true});fs.rmSync(temp,{recursive:true,force:true});}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "fa416d5aa96eb203d88f70398b7b5a211e9185a39f07e85d614fd2ac0618ef00",
+  "started_at": "2026-10-15T15:00:08.797Z",
+  "finished_at": "2026-10-15T15:00:51.298Z",
+  "recorded_at": "2026-10-15T15:00:51.298Z",
+  "time_precision": "exact",
+  "elapsed_ms": 42473,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 both chooser-seat cold-cache Chromium clock and reconnect regressions after actual stale-lock repair",
+  "log_path": "docs/validation/logs/RUN-20261015-064.txt",
+  "log_sha256": "de2dfb3175f7df7bd22b6dbaa0d073cc5bf902c80ff08cec0075448620c9ea91",
+  "redactions": 0
+}

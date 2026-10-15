@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-058",
+  "category": "headless_browser",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/web typecheck && pnpm --filter @lorcana/web exec playwright test clock-client.spec.ts"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "0fc50c14f1408daa525bf3af3fa246fe25680ba4dbacb023203ef7ed2230e2e6",
+  "started_at": "2026-10-15T06:59:07.959Z",
+  "finished_at": "2026-10-15T06:59:43.327Z",
+  "recorded_at": "2026-10-15T06:59:43.327Z",
+  "time_precision": "exact",
+  "elapsed_ms": 35258,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 diagnose reproducible Chromium opening command receive failure with bounded public phase/version notes only",
+  "log_path": "docs/validation/logs/RUN-20261015-058.txt",
+  "log_sha256": "57fbfc1ebf1f200cbe4beabc1d34bc69b5e3f239a4fe572959e77b8e958a32cd",
+  "redactions": 0
+}

@@ -1,0 +1,132 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  898.96 kB │ gzip: 195.75 kB
+
+✓ built in 181ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ clock policy refuses impossible budgets, unqualified profiles and executable input (5.519668ms)
+✔ public clock projection binds two distinct players, active responsibility and safe paused deadlines (3.767264ms)
+✔ public diagnostics reject private data and malformed service responses (2.179295ms)
+✔ live protocol2 accepts only current-ref synthetic move shapes and bounded control frames (4.716171ms)
+✔ live snapshots correlate the exact viewer/match/state and carry no private escape fields (5.328296ms)
+✔ ticket contracts carry credentials only in bounded HTTP reply and first-frame authentication (1.072783ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (2.532785ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (2.183235ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.63917ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.844379ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (5.927448ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.176698ms)
+✔ viewer snapshot codec refuses private fields, malformed refs, accessors and oversize bytes (6.13302ms)
+✔ every viewer delivery surface has a closed browser codec and refuses secret-bearing diagnostics (7.267252ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1176.26466
+
+> @lorcana/engine-adapter@0.0.0 test /workspaces/lorcana-online-tcg/packages/engine-adapter
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ untimed private matches remain untimed and cannot receive clock controls (11.792309ms)
+✔ native dynamic timeout pass restores 125 seconds through actual engine bonuses without changing ink rules (55.715286ms)
+✔ clock-only pause/resume preserves game logs, card refs, RNG and exact private reconstruction (31.776261ms)
+✔ invalid timed moves neither mutate clocks nor grant time and later settlement charges the complete interval (10.567465ms)
+✔ audited clock reset requires a paused enrolled player and cannot unfreeze completed games (8.569908ms)
+✔ timed replay rejects policy/control/time edits even with a recomputed checkpoint checksum (28.655053ms)
+✔ private replay identity changes with actual compiled kernel bytes even when source provenance is unchanged (2.325901ms)
+✔ identity frames file bytes so moving header-like text between files cannot preserve a digest (0.995206ms)
+✔ identity binds the compiled shared player-operation policy (0.743827ms)
+✔ Node executes precompiled server adapter without Bun or source loaders and returns no private upstream resources (23.736982ms)
+✔ private live checkpoint restores exact current source, controlled outcomes and continuation (40.116522ms)
+✔ live restore refuses different match binding, pins and ten private transcript edits (40.511197ms)
+✔ ordinary qualification facade still has no live persistence or seed disclosure (1.75697ms)
+✔ private checkpoints cannot emit archives beyond the restore tree limit (454.731224ms)
+✔ indexed server stream is deterministic, isolated, bounded and privately disposable (7.212102ms)
+✔ new server match fails closed when operating-system entropy is unavailable (156.324513ms)
+✔ bounded integers reject biased words and fail closed after finite retries (0.696213ms)
+✔ real secure server match ignores ambient RNG/clocks, keeps live seed private and verifies completed reconstruction (30.614958ms)
+✔ completed private archive is immutable across late rejected submissions (7.244573ms)
+✔ reconstruction rejects semantic tampering even when the caller recomputes an outer archive hash (50.569892ms)
+✔ private journal capacity rolls back a speculative accepted transition rather than losing its replay (64.989145ms)
+✔ concurrent independent matches and rejected attempts preserve their own committed random streams (31.467358ms)
+✔ an injected failure after shuffle draws rolls back state and reuses the same stream on retry (2.014463ms)
+✔ actual private engine projects and resolves only current references without changing its journal or random stream (83.6235ms)
+✔ actual engine exports no opponent instances/seed and no privilege in viewer input (12.159555ms)
+✔ untrusted viewer accessors cannot execute before closed input validation (2.175876ms)
+✔ projection qualification does not admit ordinary hidden-state, rewards or official cards (0.56386ms)
+✔ authorized hand/public fronts and anonymous ink status use fresh closed DTOs (7.121013ms)
+✔ public observer and second player have separate outputs and no role escalation (4.43623ms)
+✔ hidden identities, orders, private payloads and metadata cannot affect any output surface (104.499969ms)
+✔ reveal/look recipients and expiry are explicit, including normally hidden ink fronts (3.870951ms)
+✔ face-down play and cards under other cards hide their fronts even from their owner (1.823236ms)
+✔ current object references bind match, viewer and revision; anonymous backs do not bind private IDs (4.111024ms)
+✔ raw event inputs, hidden choices and internal sequence gaps never reach logs or animations (2.07768ms)
+✔ face-down under-card default requires an explicit face-up grant (1.752544ms)
+✔ normal ink reveal becomes unlinked public history; independent effect reveal at the same revision survives (2.18684ms)
+✔ revealing a hand/deck front does not disclose its otherwise private state metadata (6.021941ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2433.430927
+
+> lorcana-online-tcg@0.0.0 engine:test-upstream /workspaces/lorcana-online-tcg
+> node scripts/engine/test-upstream.mjs
+
+Selected 37 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+ 406 pass
+ 1 skip
+ 0 fail
+ 1362 expect() calls
+Ran 407 tests across 37 files. [1490.00ms]
+
+> lorcana-online-tcg@0.0.0 engine:test-injection /workspaces/lorcana-online-tcg
+> node scripts/engine/test-injection.mjs
+
+bun test v1.4.2 (744846f84)
+
+src/injection.test.ts:
+(pass) injected initialization/first chooser and active clock resume ignore ambient wall time [4.51ms]
+(pass) invalid injected results cannot advance a committed random cursor [0.14ms]
+
+ 2 pass
+ 0 fail
+ 9 expect() calls
+Ran 2 tests across 1 file. [49.00ms]
+
+> lorcana-online-tcg@0.0.0 engine:check-randomness /workspaces/lorcana-online-tcg
+> node scripts/engine/check-randomness.mjs
+
+PASS AST ambient entropy/alias checks and server/browser RNG ownership across 361 selected source files
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries

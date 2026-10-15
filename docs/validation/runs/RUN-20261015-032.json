@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-032",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/db build && node packages/db/dist/cli.js migrate --target test && node --test --test-concurrency=1 apps/match-service/tests/clock-storage.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "23958999dccb26c57dce7f5658d1ada82f249da7ec185881544446b6e688c9b5",
+  "started_at": "2026-10-15T05:46:20.466Z",
+  "finished_at": "2026-10-15T05:46:23.621Z",
+  "recorded_at": "2026-10-15T05:46:23.621Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3155,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 task2 DB build and additive test migration/storage-clock scenarios after correcting SQL literal quoting; actual storage with injected time",
+  "log_path": "docs/validation/logs/RUN-20261015-032.txt",
+  "log_sha256": "694899e621b577c002b691bf1f1a6f9f085c527addaf53acace555a79fe14e05",
+  "redactions": 0
+}

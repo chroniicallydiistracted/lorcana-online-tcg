@@ -1,0 +1,44 @@
+
+> @lorcana/service-runtime@0.0.0 test /workspaces/lorcana-online-tcg/packages/service-runtime
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ shutdown interrupts pending initialization and calls cleanup: async () =>  (53.849398ms)
+✔ shutdown interrupts pending initialization and calls cleanup: signal => {  (45.023795ms)
+✔ actual HTTP negotiation is typed, rejects unknown/coerced/oversized input and drains (192.384992ms)
+✔ HTTP service cannot advertise a revision without an implemented foundation codec (0.776287ms)
+✔ release registry defensively freezes source and never silently replaces an unavailable pinned release (7.535194ms)
+✔ release transition proof rejects dropped or changed pins but accepts canonical field reordering (8.735086ms)
+✔ release registry cannot expose empty cloned data from inherited manifest fields (0.195296ms)
+✔ HTTP service serves scoped diagnostics, rejects unknown routes, and drains readiness (144.231264ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1136.98686
+
+> @lorcana/match-client@0.0.0 test /workspaces/lorcana-online-tcg/packages/match-client
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ client waits for correlated authorized snapshot, copies views and rejects raw-ID or overlapping moves (160.60824ms)
+✔ pending bytes and IDs survive suspension/host hop and duplicate receipt, while stale results are final (11.240247ms)
+✔ server sequence gaps, incompatible pins and changed account never replay a pending intent (12.262282ms)
+✔ transient receipts preserve pending identity; expiry stops retries and retains explicit recovery data (5.147806ms)
+✔ unrelated snapshots do not resend a pending command or hide its acknowledgement deadline (50.27471ms)
+✔ application receipt callbacks cannot overwrite terminal transport state or undo an accepted result (4.776343ms)
+✔ replacing an incomplete connection rejects its waiter rather than leaking a pending promise (0.871489ms)
+✔ status callbacks that dispose transport cannot leave a subsequently scheduled retry timer (8.895085ms)
+✔ view clearing callbacks preserve disposal and settle connect and suspend callers (4.385589ms)
+✔ browser countdown is a clamped monotonic estimate and cannot submit a move or change a result (4.14712ms)
+✔ live3 clock-only revisions preserve views, defensive callbacks and monotonic estimates, then clear on suspension (30.584885ms)
+✔ live3 pending commands retain schema2 and exact bytes across reconnect; old schema1 offers only its original live2 pin (13.379434ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 526.343421

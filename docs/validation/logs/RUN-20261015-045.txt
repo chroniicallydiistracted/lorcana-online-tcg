@@ -1,0 +1,67 @@
+✖ live3 is a separate closed clocked codec while diagnostic1 and live2 remain exact (1.106694ms)
+✖ three-version release ranges stay bounded and tickets pin the saved match version (1.276022ms)
+✖ browser countdown is a clamped monotonic estimate and cannot submit a move or change a result (0.999934ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 387.566357
+
+✖ failing tests:
+
+test at packages/contracts/tests/live-clock.test.mjs:7:1
+✖ live3 is a separate closed clocked codec while diagnostic1 and live2 remain exact (1.106694ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/contracts/tests/live-clock.test.mjs:8:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/contracts/tests/live-clock.test.mjs:14:1
+✖ three-version release ranges stay bounded and tickets pin the saved match version (1.276022ms)
+  Error: Invalid protocol range
+      at Module.parseProtocolRange (file:///workspaces/lorcana-online-tcg/packages/contracts/src/protocol.ts:34:65)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/contracts/tests/live-clock.test.mjs:15:21)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at packages/match-client/tests/clocks.test.mjs:5:1
+✖ browser countdown is a clamped monotonic estimate and cannot submit a move or change a result (0.999934ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/tests/clocks.test.mjs:6:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

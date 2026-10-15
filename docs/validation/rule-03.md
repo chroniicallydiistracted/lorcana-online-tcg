@@ -1,5 +1,9 @@
 # RULE-03 secure randomness and deterministic private verification
 
+<!-- PLAY04-CURRENT-START -->
+PLAY-04 is implemented and locally verified for the approved two-player synthetic scope, recorded 2026-10-15T16:07:29.227Z. RUN084 passes350project/406upstream/2injection checks (one inherited upstream skip);085 passes66DB/storage/match checks;086 passes10foundation/live Chromium and2Lab worker checks;087/088 pass clean frozen source and canonical Git builds/full suites. Four independent review findings have RED→GREEN repairs;089–091 verify dependency policy, secret/private-data/provenance preservation and owned cleanup. [Current scope/evidence](play-04.md) governs acceptance and exact limits. Normal startup stays diagnostics-only; AUTH-01, ordinary/card/reward/device/load/production and fresh isolated/hosted artifact qualification remain gated. No upstream runtime, applied SQL or host setting changed. Dated checkpoints below remain historical.
+<!-- PLAY04-CURRENT-END -->
+
 Branch codex/rule-03-secure-rng; clean main intake/source commit f61aad853e80135827ec45ba815f9da79c9eebb0. Director reports RULE-02 audited/merged/passing on GitHub; that is prior reported evidence, not a new hosted check. Director D10 limits completed seed/full private replay to participants and authorized auditors. [ADR0010](../adr/0010-secure-randomness-replay.md), [runbook](../runbooks/engine.md), [plan](../plans/2026-10-12-rule-03-randomness-replay.md) and [CHG](../changes/CHG-20261012-001.json) define scope and timestamped history. Status: implemented; secure RNG/reconstruction acceptance verified locally. Isolated CI timing qualification remains pending under the Director's explicit instruction to leave the environment unchanged.
 
 ## Implemented boundary

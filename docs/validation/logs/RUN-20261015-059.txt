@@ -1,0 +1,52 @@
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 2 tests using 1 worker
+
+  ✘  1 tests/clock-client.spec.ts:13:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 0 (22.2s)
+  ✘  2 tests/clock-client.spec.ts:13:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 1 (23.5s)
+
+
+  1) tests/clock-client.spec.ts:13:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 0 
+
+    Error: Clock opening chooseWhoGoesFirst: status:ready,status:resyncing,snapshot:3:0:3:processing:1::,status:resyncing,snapshot:3:0:4:running:0::,status:reconnecting,ready:3:0:1::::,snapshot:3:0:2:running:0::,status:reconnecting,ready:3:0:1::::,snapshot:3:0:2:running:0::,status:reconnecting,ready:3:0:1::::,snapshot:3:0:2:running:0::,status:reconnecting,ready:3:0:1::::,snapshot:3:0:2:running:0::,status:reconnecting,ready:3:0:1::::,snapshot:3:0:2:running:0::,status:reconnecting,ready:3:0:1::::,snapshot:3:0:2:running:0::,status:reconnecting,ready:3:0:1::::,snapshot:3:0:2:running:0::,status:reconnecting,ready:3:0:1::::,snapshot:3:0:2:running:0::,status:closed
+
+      35 |   for(const [i,intent]of [[chooser,{kind:'chooseWhoGoesFirst',input:{playerId:f.players[0]}}],[0,{kind:'alterHand',input:{cardsToMulligan:[]}}],[1,{kind:'alterHand',input:{cardsToMulligan:[]}}]] as [number,LiveIntent][]){
+      36 |    const result=await pages[i]!.evaluate(async intent=>{try{return {receipt:await window.qualificationClient.submit(intent)};}catch{return {diagnostic:window.qualificationClockNotes.slice(-30)}}},intent);
+    > 37 |    if(!result.receipt)throw Error('Clock opening '+intent.kind+': '+result.diagnostic?.join(','));
+         |                             ^
+      38 |    expect(result.receipt.outcome).toBe('accepted');await ready(pages,result.receipt.stateVersion);
+      39 |   }
+      40 |   const before=await pages[1]!.evaluate(()=>window.qualificationClient.view),c=await f.creator.readClock(f.players[0],{matchId:f.id});
+        at /workspaces/lorcana-online-tcg/apps/web/tests/clock-client.spec.ts:37:29
+
+    Error Context: test-results/clock-client-Chromium-cloc-d6b27-rver-timeout-chooser-seat-0/error-context.md
+
+  2) tests/clock-client.spec.ts:13:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 1 
+
+    Error: Clock opening alterHand: status:ready,status:resyncing,snapshot:3:1:5:processing:3::,status:resyncing,snapshot:3:1:6:running:2::,status:reconnecting,ready:3:1:1::::,snapshot:3:1:2:running:2::,status:reconnecting,ready:3:1:1::::,snapshot:3:1:2:running:2::,status:reconnecting,ready:3:1:1::::,snapshot:3:1:2:running:2::,status:reconnecting,ready:3:1:1::::,snapshot:3:1:2:running:2::,status:reconnecting,ready:3:1:1::::,snapshot:3:1:2:running:2::,status:reconnecting,ready:3:1:1::::,snapshot:3:1:2:running:2::,status:reconnecting,ready:3:1:1::::,snapshot:3:1:2:running:2::,status:reconnecting,ready:3:1:1::::,snapshot:3:1:2:running:2::,status:closed
+
+      35 |   for(const [i,intent]of [[chooser,{kind:'chooseWhoGoesFirst',input:{playerId:f.players[0]}}],[0,{kind:'alterHand',input:{cardsToMulligan:[]}}],[1,{kind:'alterHand',input:{cardsToMulligan:[]}}]] as [number,LiveIntent][]){
+      36 |    const result=await pages[i]!.evaluate(async intent=>{try{return {receipt:await window.qualificationClient.submit(intent)};}catch{return {diagnostic:window.qualificationClockNotes.slice(-30)}}},intent);
+    > 37 |    if(!result.receipt)throw Error('Clock opening '+intent.kind+': '+result.diagnostic?.join(','));
+         |                             ^
+      38 |    expect(result.receipt.outcome).toBe('accepted');await ready(pages,result.receipt.stateVersion);
+      39 |   }
+      40 |   const before=await pages[1]!.evaluate(()=>window.qualificationClient.view),c=await f.creator.readClock(f.players[0],{matchId:f.id});
+        at /workspaces/lorcana-online-tcg/apps/web/tests/clock-client.spec.ts:37:29
+
+    Error Context: test-results/clock-client-Chromium-cloc-4aeac-rver-timeout-chooser-seat-1/error-context.md
+
+  2 failed
+    tests/clock-client.spec.ts:13:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 0 
+    tests/clock-client.spec.ts:13:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 1 
+undefined
+/workspaces/lorcana-online-tcg/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: playwright test clock-client.spec.ts

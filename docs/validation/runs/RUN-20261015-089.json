@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-089",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import fs from 'node:fs';import {dependencyReports} from './scripts/ci/security.mjs';const reports=dependencyReports(process.cwd()),directory='.local/play04-dependency-qualification';fs.mkdirSync(directory,{recursive:true});for(const [name,value]of Object.entries(reports))fs.writeFileSync(directory+'/'+name,typeof value==='string'?value:JSON.stringify(value,null,2)+'\\n');const audit=reports['dependency-audit.json'];console.log(JSON.stringify({result:audit.result,components:reports['sbom.cdx.json'].components.length,vulnerabilities:audit.response.metadata.vulnerabilities,licenseFileGaps:audit.license_file_gaps.length,scope:'installed Linux package graph and pinned vendored closure; no published deployment artifact'}));"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "a41c1374759fa3beb265e5944189a638184305b181f21518bdda6ae795620d59",
+  "started_at": "2026-10-15T15:56:50.341Z",
+  "finished_at": "2026-10-15T15:56:52.769Z",
+  "recorded_at": "2026-10-15T15:56:52.769Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2428,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 installed dependency lock/license/advisory policy and pinned vendor provenance; no deployed artifact",
+  "log_path": "docs/validation/logs/RUN-20261015-089.txt",
+  "log_sha256": "76207e28bd46cc32c1294224e86e945b393fc0d2814764266133efb3860376a3",
+  "redactions": 0
+}

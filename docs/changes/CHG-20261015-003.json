@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "id": "CHG-20261015-003",
-  "title": "PLAY-04 durable game-clock intake and merged PLAY-03 hosted evidence",
+  "title": "PLAY-04 durable native game clocks, reviewed repairs and full synthetic qualification",
   "actor": "Codex architect/developer/QA collaborator",
-  "status": "draft",
-  "recorded_at": "2026-10-15T05:21:36.105Z",
+  "status": "finalized",
+  "recorded_at": "2026-10-15T16:07:29.227Z",
   "occurred_at": null,
   "event_time_basis": "recorded_only",
   "source_commit": "775994a82f5f003c4c4831a20791d5e904ff3d6b",
@@ -23,7 +23,18 @@
   "feature_ids": [
     "F-DOCS",
     "F-CI",
-    "F-MATCH-CLOCKS"
+    "F-MATCH-CLOCKS",
+    "F-CONTRACTS",
+    "F-DB",
+    "F-MATCH-COMMANDS",
+    "F-ENGINE",
+    "F-PROTOCOL",
+    "F-RELEASE",
+    "F-HTTP",
+    "F-LIVE-TRANSPORT",
+    "F-MATCH-CLIENT",
+    "F-VIEWER-PRIVACY",
+    "F-EVIDENCE"
   ],
   "changes": [
     {
@@ -61,23 +72,174 @@
     {
       "kind": "review",
       "description": "Director explicitly approves the written PLAY-04 clock design after it is presented. Preserve the earlier proposal/review checkpoint and advance to implementation planning; no product implementation or new clock acceptance yet. RUN025 passes unchanged application/upstream-source assertion, configured source secret-pattern scan and native docs consistency."
+    },
+    {
+      "kind": "documentation",
+      "description": "Commit approved written design/intake as2033396, then prepare the five-task implementation plan with native engine reuse, typed clock controls/audited reset, fenced storage, server health/timeout runner, distinct live3 and browser estimates, precise checks and final review. Self-review fixes mismatched reset/disconnect interfaces. Plan review and execution-method selection remain pending; application source unchanged."
+    },
+    {
+      "kind": "test",
+      "description": "RUN026 passes native documentation consistency after approved written design and prepared five-task implementation plan. Final source whitespace/application-preservation review passes; all app/upstream/config/dependency/test bytes remain unchanged. Plan review/execution-method choice remains pending."
+    },
+    {
+      "kind": "review",
+      "description": "Director approves implementation plan and explicitly selects native execution. Apply executing-plans/TDD with one final independent reviewer, existing scoped branch/container and sequential heavy checks. Scratch ledger /tmp/play04-native-ledger.md is supplementary; repository CHG/HANDOFF remain universal authority. Current verified feature entries marked pending as new executable test/source work begins."
+    },
+    {
+      "kind": "test",
+      "description": "Task1 writes closed policy/projection and actual adapter-clock tests before implementation: native125-second timeout pass arithmetic, pause/history/ref/replay preservation, invalid-command charging, audited reset/completion freeze and replay tampering. Capture expected negative run next."
+    },
+    {
+      "kind": "implementation",
+      "description": "Implement qualification clock policy/projection codecs, optional native dynamic kernel clock and preserved runtime-history controls, private-v2 deterministic control reconstruction and compiled clock-policy identity. No upstream runtime/rules patch or player/Lab system authority added."
+    },
+    {
+      "kind": "implementation",
+      "description": "Append migration0005 and fenced match-role clock/reservation/event repository with atomic creation/commits, deadline ordering, disjoint system receipts and legacy raw-candidate bypass refusal. Add owning workspace contracts edge only; offline frozen install. Service runner/recovery/live3/client integration and full acceptance remain pending."
+    },
+    {
+      "kind": "test",
+      "description": "Preserve RED027/030 expected missing-feature failures,031 SQL-literal compile failure before migration and034 unused-initializer lint failure. Targeted028/032, broader029/033 and current lint/types/13targeted035 pass their exact sources. Both managed targets upgraded to0005 without changing old migrations; role and original match integration regressions pass."
+    },
+    {
+      "kind": "review",
+      "description": "Record native execution rulings in current handoff: preserve original checkout/container; native recorder replaces generic skill test wrappers/scratch inventory; qualify three-version range explicitly at Task4; workspace-only dependency; crash phase-pause defers deterministic healthy-interval settlement; legal timeout pass may naturally satisfy existing engine win rules without timeout forfeiture."
+    },
+    {
+      "kind": "documentation",
+      "description": "Maintain partial current function/package/runbook/ADR/validation ownership, planned/unaccepted clock feature, source verification pending, unchanged548 requirements/optional/disposition gates with scoped prerequisite links, and complete cumulative branch coverage."
+    },
+    {
+      "kind": "implementation",
+      "description": "Task3 connects native timed jobs, monotonic-bracketed serialized database time health, short-reservation clock service, bounded non-overlapping runner, participant-only readClock and explicitly audited pause/reset/resume. Exact new-row creation ownership and observed independent heartbeat progress distinguish new/healthy servers from all-owner loss. Clock-only controls preserve engine version/card refs. Fair rotating storage scan avoids first-batch starvation. No host settings, upstream engine file or ordinary startup routes change."
+    },
+    {
+      "kind": "fix",
+      "description": "Overlapping DB sample responses could falsely report calendar reversal. Added failing ordering regression RUN042, then serialized only time sampling; RUN043 passes. RUN041 test title overstated timely crossing: that original third case actually proves expired-lease fencing. Corrected its mutable test title and added a separate real timely-action/deadline-crossing test; RUN043 proves both."
+    },
+    {
+      "kind": "implementation",
+      "description": "Task4 implements a separately closed live3 family, version-bound tickets/gateway/reference commands, clock-only revision publication and a browser monotonic estimate with defensive lifecycle clearing. Diagnostic1/live2 remain exact. Shared bounded range deliberately expands to3adjacent revisions; manifests now bind1..3 only after handlers exist. Pending schema1 pins2 and schema2 pins3; retry never relabels commands. RUN045 expected negative precedes implementation;046 catches type narrowing;04716contract/10client checks and0482real live3 gateway tests pass.049 retains a fixture lint failure; corrected without changing policies."
+    },
+    {
+      "kind": "fix",
+      "description": "Bound process boundary waits and retain deliberate short gap/lease only in explicit failure scenarios. RUN050 passes six-way duplicate race but fails one after-COMMIT child admission then is interrupted because its boundary wait is unbounded; the long receipt also fails unchanged clock guard. RUN051 passes all13 real process/fault checks with normal15-second health limits and a5-second COMMIT fixture lease. No production timing limit or host setting is relaxed."
+    },
+    {
+      "kind": "test",
+      "description": "RUN052 initial Chromium connection test fails;053 diagnostic test has a dynamic module typing startup error;054 passes after fixing that test URL. The initial receive failure remains undiagnosed, so a cold-cache proof without the extra diagnostic contract import is required. Preserve all outcomes; do not infer a fixed product bug from a retry."
+    },
+    {
+      "kind": "fix",
+      "description": "Self-review adds RED055 then GREEN056 for completed-view versus running-clock consistency and native zero-start sentinel refusal. Clocked starts must be positive; untimed epoch-zero fixtures remain supported. This avoids native unset-start semantics without an upstream repair. Two independent private random worlds produce identical native clocks under the same time schedule."
+    },
+    {
+      "kind": "review",
+      "description": "RUN057 cold-cache Chromium reproduces an opening-command failure; original Vite cache restored. RUN058 passes with additional safe public frame/status diagnostics, which alone does not establish a fix. RUN059 explicitly exercises both chooser seats and fails both: processing revision1 is followed by running revision0 (and3\u21922 on the next opening move), then the client correctly refuses the rewind. The failure occurs during opening submission, not initial connection; this corrects earlier informal localization."
+    },
+    {
+      "kind": "test",
+      "description": "Write deterministic actual PostgreSQL blocked-heartbeat/read-snapshot regression and a simulated root-service shutdown sweep regression. Requested RUN060 is rejected before launch by automatic approval review after the Director instructs stop; no command result/log/receipt is fabricated. These new tests have not run. No production fix has been applied."
+    },
+    {
+      "kind": "documentation",
+      "description": "Director explicitly stops work until tomorrow. Preserve dirty scoped branch, immutable prior results, original container/database/private files and all admission gates. Save exact suspected stale-lock snapshot mechanism, proposed next proof/fix steps, unexecuted tests and full remaining qualification/review/commit tasks."
+    },
+    {
+      "kind": "documentation",
+      "description": "Stop-checkpoint documentation synchronization initially refuses missing apps/web README impact review. Add the explicit owning-browser review and stopped/unqualified harness note before regenerating the inventory; no development/test command is resumed. A second synchronization refuses the newly edited README missing from cumulative file coverage; refresh that coverage before the final documentation-only synchronization."
+    },
+    {
+      "kind": "review",
+      "description": "Director explicitly resumes PLAY-04 the next day, superseding the stop instruction. Reinspect actual branch codex/play-04-game-clocks HEAD2033396, cumulative dirty source, original healthy Compose containers01ccec184b44/c7cd58258c19, source mount and Node24.21.0/pnpm10.33.0/nodeUID1000. No new container/host/clock/memory setting or publication change. Continue approved native plan, starting with the previously unexecuted deterministic regressions; no new implementation approval is required."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN062 deterministically reproduces both prior blockers: a real lock-wait heartbeat rewinds7\u21926, and simulated root shutdown starts two rows instead of one. Fix clock-store.locked by rereading a fresh SQL snapshot after both row locks; do not reuse pre-wait sidecar values. Signal runner and clock-service shutdown concurrently and drain both with allSettled before executor/storage close. RUN063 owning DB/service builds and13targeted regressions pass. No upstream or applied migration change."
+    },
+    {
+      "kind": "test",
+      "description": "RUN064 passes both chooser seats in cold-cache Chromium after deterministic lock repair;065 passes six independent timeout repositories with participant/system namespace collisions and defensive client clock/pending-version tests. RUN066 demonstrates standalone clean DB dependency build failure,067 passes after root database scripts build their contracts dependency closure. No credentials copied or database contacted in the clean standalone probe."
+    },
+    {
+      "kind": "revision",
+      "description": "Full-source073 install/doctor/static/types pass then strict lint rejects four unqualified browser globals in new client tests. Use explicit globalThis references as adjacent existing tests;074 detects stale generated source inventory before full suite. Both failures retained; refresh inventory before broad rerun. No runtime logic change."
+    },
+    {
+      "kind": "revision",
+      "description": "Update owning HTTP negotiation regression for approved three-adjacent-version shared offer:1..3 is valid and diagnostic handler still chooses1,1..4 remains malformed400. RUN075 preserves the old expectation failure; no HTTP runtime codec or advertised diagnostic version changes."
+    },
+    {
+      "kind": "review",
+      "description": "One fresh gpt-6-astra read-only independent review finds four Important and no Critical/Minor issues. Re-grade all four as important and fix in one pass; explicit excluded identity/card/production/retained-loader/final-evidence scopes retain their gates. No second review claimed."
+    },
+    {
+      "kind": "fix",
+      "description": "RED078/079\u2192GREEN080/082: quarantine locally unhealthy actors instead of globally pausing healthy owners; reserve before expensive proof replay; validate expired/backward rejected results under locks and commit safety pause before refusal; reclaim terminal continuity with generation-safe bounded active-ID batch and reserve enrollment capacity before durable creation. Add actual two-owner/cold-proof/short-lease/storage and simulated130completion/129probe/concurrent-final-slot regressions."
+    },
+    {
+      "kind": "fix",
+      "description": "RED081\u2192GREEN082 additionally refuses untimed setup under a live3-only release before persisting unsupported live2 rows. RUN077 retains a stale built-manifest range expectation failure; correct the test to1..3 while untimed matches still pin2. No selected test is removed."
+    },
+    {
+      "kind": "test",
+      "description": "Final matching a41c1374 source passes084complete350project/406upstream+1skip/2injection;08566DB/storage/match;08610cold Chromium+2Lab;087clean and088canonical complete frozen foundation;089installed222components/0advisories/12notice gaps;090known/pattern/history2988blobs,703log digests, private-byte/mode/scope/upstream/earlierSQL preservation;091owned process/listener cleanup. All valid paired timing, one heavy workload at a time; no fresh isolated/hosted artifact/device or host repair inferred."
+    },
+    {
+      "kind": "documentation",
+      "description": "Finalize synthetic task/feature evidence, five requirement prerequisite links without accepting original/device scope, complete chronological failure/correction table,20engineering rulings with costs, review exclusions, current runbook/ADR/package/current docs and universal handoff. Preserve old receipts and original548requirements/33groups/20optional. No new product workstream/publish/merge/deploy."
     }
   ],
   "files": [
     "AGENTS.md",
     "CHANGELOG.md",
     "README.md",
+    "apps/match-service/README.md",
+    "apps/match-service/package.json",
+    "apps/match-service/src/clock-health.ts",
+    "apps/match-service/src/clock-runner.ts",
+    "apps/match-service/src/clock-service.ts",
+    "apps/match-service/src/engine-executor.ts",
+    "apps/match-service/src/errors.ts",
+    "apps/match-service/src/gateway.ts",
+    "apps/match-service/src/live-connection.ts",
+    "apps/match-service/src/service.ts",
+    "apps/match-service/src/transition-worker.ts",
+    "apps/match-service/tests/client-fixtures.mjs",
+    "apps/match-service/tests/clock-child.mjs",
+    "apps/match-service/tests/clock-fixtures.mjs",
+    "apps/match-service/tests/clock-live.test.mjs",
+    "apps/match-service/tests/clock-process.test.mjs",
+    "apps/match-service/tests/clock-service.test.mjs",
+    "apps/match-service/tests/clock-storage.test.mjs",
+    "apps/match-service/tests/clocks.test.mjs",
+    "apps/match-service/tests/gateway-child.mjs",
+    "apps/match-service/tests/transport-store.test.mjs",
+    "apps/web/README.md",
+    "apps/web/tests/clock-client.spec.ts",
     "docs/FEATURES.md",
     "docs/HANDOFF.md",
     "docs/README.md",
     "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0016-durable-engine-clocks.md",
     "docs/changes/CHG-20261015-003.json",
+    "docs/contracts/live.md",
+    "docs/contracts/protocol.md",
+    "docs/contracts/release.md",
     "docs/current-state.json",
     "docs/documentation-map.json",
     "docs/features.json",
     "docs/plans/2026-10-15-play-04-design.md",
+    "docs/plans/2026-10-15-play-04-implementation.md",
     "docs/plans/2026-10-15-play-04-intake.md",
+    "docs/reviews/2026-10-15-play-04-clocks.md",
     "docs/runbooks/ci.md",
+    "docs/runbooks/database.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/game-clocks.md",
+    "docs/runbooks/live-matches.md",
+    "docs/runbooks/match-commands.md",
+    "docs/validation/boot-02.md",
     "docs/validation/inputs/play04-hosted-metadata.mjs",
     "docs/validation/logs/RUN-20261015-019.txt",
     "docs/validation/logs/RUN-20261015-020.txt",
@@ -86,8 +248,78 @@
     "docs/validation/logs/RUN-20261015-023.txt",
     "docs/validation/logs/RUN-20261015-024.txt",
     "docs/validation/logs/RUN-20261015-025.txt",
+    "docs/validation/logs/RUN-20261015-026.txt",
+    "docs/validation/logs/RUN-20261015-027.txt",
+    "docs/validation/logs/RUN-20261015-028.txt",
+    "docs/validation/logs/RUN-20261015-029.txt",
+    "docs/validation/logs/RUN-20261015-030.txt",
+    "docs/validation/logs/RUN-20261015-031.txt",
+    "docs/validation/logs/RUN-20261015-032.txt",
+    "docs/validation/logs/RUN-20261015-033.txt",
+    "docs/validation/logs/RUN-20261015-034.txt",
+    "docs/validation/logs/RUN-20261015-035.txt",
+    "docs/validation/logs/RUN-20261015-036.txt",
+    "docs/validation/logs/RUN-20261015-037.txt",
+    "docs/validation/logs/RUN-20261015-038.txt",
+    "docs/validation/logs/RUN-20261015-039.txt",
+    "docs/validation/logs/RUN-20261015-040.txt",
+    "docs/validation/logs/RUN-20261015-041.txt",
+    "docs/validation/logs/RUN-20261015-042.txt",
+    "docs/validation/logs/RUN-20261015-043.txt",
+    "docs/validation/logs/RUN-20261015-044.txt",
+    "docs/validation/logs/RUN-20261015-045.txt",
+    "docs/validation/logs/RUN-20261015-046.txt",
+    "docs/validation/logs/RUN-20261015-047.txt",
+    "docs/validation/logs/RUN-20261015-048.txt",
+    "docs/validation/logs/RUN-20261015-049.txt",
+    "docs/validation/logs/RUN-20261015-050.txt",
+    "docs/validation/logs/RUN-20261015-051.txt",
+    "docs/validation/logs/RUN-20261015-052.txt",
+    "docs/validation/logs/RUN-20261015-053.txt",
+    "docs/validation/logs/RUN-20261015-054.txt",
+    "docs/validation/logs/RUN-20261015-055.txt",
+    "docs/validation/logs/RUN-20261015-056.txt",
+    "docs/validation/logs/RUN-20261015-057.txt",
+    "docs/validation/logs/RUN-20261015-058.txt",
+    "docs/validation/logs/RUN-20261015-059.txt",
+    "docs/validation/logs/RUN-20261015-061.txt",
+    "docs/validation/logs/RUN-20261015-062.txt",
+    "docs/validation/logs/RUN-20261015-063.txt",
+    "docs/validation/logs/RUN-20261015-064.txt",
+    "docs/validation/logs/RUN-20261015-065.txt",
+    "docs/validation/logs/RUN-20261015-066.txt",
+    "docs/validation/logs/RUN-20261015-067.txt",
+    "docs/validation/logs/RUN-20261015-068.txt",
+    "docs/validation/logs/RUN-20261015-069.txt",
+    "docs/validation/logs/RUN-20261015-070.txt",
+    "docs/validation/logs/RUN-20261015-071.txt",
+    "docs/validation/logs/RUN-20261015-072.txt",
+    "docs/validation/logs/RUN-20261015-073.txt",
+    "docs/validation/logs/RUN-20261015-074.txt",
+    "docs/validation/logs/RUN-20261015-075.txt",
+    "docs/validation/logs/RUN-20261015-076.txt",
+    "docs/validation/logs/RUN-20261015-077.txt",
+    "docs/validation/logs/RUN-20261015-078.txt",
+    "docs/validation/logs/RUN-20261015-079.txt",
+    "docs/validation/logs/RUN-20261015-080.txt",
+    "docs/validation/logs/RUN-20261015-081.txt",
+    "docs/validation/logs/RUN-20261015-082.txt",
+    "docs/validation/logs/RUN-20261015-083.txt",
+    "docs/validation/logs/RUN-20261015-084.txt",
+    "docs/validation/logs/RUN-20261015-085.txt",
+    "docs/validation/logs/RUN-20261015-086.txt",
+    "docs/validation/logs/RUN-20261015-087.txt",
+    "docs/validation/logs/RUN-20261015-088.txt",
+    "docs/validation/logs/RUN-20261015-089.txt",
+    "docs/validation/logs/RUN-20261015-090.txt",
+    "docs/validation/logs/RUN-20261015-091.txt",
+    "docs/validation/logs/RUN-20261015-092.txt",
+    "docs/validation/play-01.md",
+    "docs/validation/play-02.md",
     "docs/validation/play-03-hosted-baseline.json",
     "docs/validation/play-03.md",
+    "docs/validation/play-04.md",
+    "docs/validation/rule-03.md",
     "docs/validation/runs/RUN-20261015-019.json",
     "docs/validation/runs/RUN-20261015-020.json",
     "docs/validation/runs/RUN-20261015-021.json",
@@ -95,69 +327,294 @@
     "docs/validation/runs/RUN-20261015-023.json",
     "docs/validation/runs/RUN-20261015-024.json",
     "docs/validation/runs/RUN-20261015-025.json",
+    "docs/validation/runs/RUN-20261015-026.json",
+    "docs/validation/runs/RUN-20261015-027.json",
+    "docs/validation/runs/RUN-20261015-028.json",
+    "docs/validation/runs/RUN-20261015-029.json",
+    "docs/validation/runs/RUN-20261015-030.json",
+    "docs/validation/runs/RUN-20261015-031.json",
+    "docs/validation/runs/RUN-20261015-032.json",
+    "docs/validation/runs/RUN-20261015-033.json",
+    "docs/validation/runs/RUN-20261015-034.json",
+    "docs/validation/runs/RUN-20261015-035.json",
+    "docs/validation/runs/RUN-20261015-036.json",
+    "docs/validation/runs/RUN-20261015-037.json",
+    "docs/validation/runs/RUN-20261015-038.json",
+    "docs/validation/runs/RUN-20261015-039.json",
+    "docs/validation/runs/RUN-20261015-040.json",
+    "docs/validation/runs/RUN-20261015-041.json",
+    "docs/validation/runs/RUN-20261015-042.json",
+    "docs/validation/runs/RUN-20261015-043.json",
+    "docs/validation/runs/RUN-20261015-044.json",
+    "docs/validation/runs/RUN-20261015-045.json",
+    "docs/validation/runs/RUN-20261015-046.json",
+    "docs/validation/runs/RUN-20261015-047.json",
+    "docs/validation/runs/RUN-20261015-048.json",
+    "docs/validation/runs/RUN-20261015-049.json",
+    "docs/validation/runs/RUN-20261015-050.json",
+    "docs/validation/runs/RUN-20261015-051.json",
+    "docs/validation/runs/RUN-20261015-052.json",
+    "docs/validation/runs/RUN-20261015-053.json",
+    "docs/validation/runs/RUN-20261015-054.json",
+    "docs/validation/runs/RUN-20261015-055.json",
+    "docs/validation/runs/RUN-20261015-056.json",
+    "docs/validation/runs/RUN-20261015-057.json",
+    "docs/validation/runs/RUN-20261015-058.json",
+    "docs/validation/runs/RUN-20261015-059.json",
+    "docs/validation/runs/RUN-20261015-061.json",
+    "docs/validation/runs/RUN-20261015-062.json",
+    "docs/validation/runs/RUN-20261015-063.json",
+    "docs/validation/runs/RUN-20261015-064.json",
+    "docs/validation/runs/RUN-20261015-065.json",
+    "docs/validation/runs/RUN-20261015-066.json",
+    "docs/validation/runs/RUN-20261015-067.json",
+    "docs/validation/runs/RUN-20261015-068.json",
+    "docs/validation/runs/RUN-20261015-069.json",
+    "docs/validation/runs/RUN-20261015-070.json",
+    "docs/validation/runs/RUN-20261015-071.json",
+    "docs/validation/runs/RUN-20261015-072.json",
+    "docs/validation/runs/RUN-20261015-073.json",
+    "docs/validation/runs/RUN-20261015-074.json",
+    "docs/validation/runs/RUN-20261015-075.json",
+    "docs/validation/runs/RUN-20261015-076.json",
+    "docs/validation/runs/RUN-20261015-077.json",
+    "docs/validation/runs/RUN-20261015-078.json",
+    "docs/validation/runs/RUN-20261015-079.json",
+    "docs/validation/runs/RUN-20261015-080.json",
+    "docs/validation/runs/RUN-20261015-081.json",
+    "docs/validation/runs/RUN-20261015-082.json",
+    "docs/validation/runs/RUN-20261015-083.json",
+    "docs/validation/runs/RUN-20261015-084.json",
+    "docs/validation/runs/RUN-20261015-085.json",
+    "docs/validation/runs/RUN-20261015-086.json",
+    "docs/validation/runs/RUN-20261015-087.json",
+    "docs/validation/runs/RUN-20261015-088.json",
+    "docs/validation/runs/RUN-20261015-089.json",
+    "docs/validation/runs/RUN-20261015-090.json",
+    "docs/validation/runs/RUN-20261015-091.json",
+    "docs/validation/runs/RUN-20261015-092.json",
     "docs/vision/decision_register.csv",
-    "docs/vision/initial_backlog.csv"
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "package.json",
+    "packages/contracts/README.md",
+    "packages/contracts/package.json",
+    "packages/contracts/src/clocks.ts",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/live.ts",
+    "packages/contracts/src/protocol.ts",
+    "packages/contracts/tests/clocks.test.mjs",
+    "packages/contracts/tests/live-clock.test.mjs",
+    "packages/contracts/tests/protocol.test.mjs",
+    "packages/contracts/tests/release.test.mjs",
+    "packages/db/README.md",
+    "packages/db/migrations/0005-match-clocks.sql",
+    "packages/db/package.json",
+    "packages/db/src/clock-store.ts",
+    "packages/db/src/clock-types.ts",
+    "packages/db/src/index.ts",
+    "packages/db/src/match-store.ts",
+    "packages/db/src/transport-store.ts",
+    "packages/db/tests/policy.test.mjs",
+    "packages/engine-adapter/README.md",
+    "packages/engine-adapter/src/clocks.ts",
+    "packages/engine-adapter/src/code-identity.ts",
+    "packages/engine-adapter/src/index.ts",
+    "packages/engine-adapter/src/persistence.ts",
+    "packages/engine-adapter/src/replay.ts",
+    "packages/engine-adapter/src/validation.ts",
+    "packages/engine-adapter/tests/clocks.test.mjs",
+    "packages/match-client/README.md",
+    "packages/match-client/src/clocks.ts",
+    "packages/match-client/src/index.ts",
+    "packages/match-client/tests/clocks.test.mjs",
+    "packages/service-runtime/README.md",
+    "packages/service-runtime/tests/protocol.test.mjs",
+    "pnpm-lock.yaml",
+    "vendor/tcg-engines/README.md",
+    "vendor/tcg-engines/src/kernel.d.ts",
+    "vendor/tcg-engines/src/kernel.ts"
   ],
   "documentation_reviews": [
     {
       "path": "AGENTS.md",
       "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
     },
     {
       "path": "README.md",
       "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
     },
     {
-      "path": "docs/README.md",
+      "path": "apps/match-service/README.md",
       "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
-    },
-    {
-      "path": "docs/WORKSPACE_QUALIFICATION.md",
-      "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "reason": "Document current PLAY-04 function signatures, authority, protocol dispatch, lifecycle and scoped qualification limits; preserve prior dated evidence."
     },
     {
       "path": "docs/FEATURES.md",
       "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "reason": "Update actual PLAY-04 service/live3/estimate implementation and explicit pending full-source/browser acceptance; retain dated checks, failures and untouched host/upstream/admission limits."
     },
     {
       "path": "docs/HANDOFF.md",
       "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
     },
     {
-      "path": "docs/features.json",
+      "path": "docs/README.md",
       "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0011-sourced-rule-scenarios.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0012-upstream-kernel-refresh.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0014-viewer-projection-privacy.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0015-live-synthetic-transport.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. The original decision remains valid; ADR0016 adds the clock integration without changing provider/runtime/privacy/rules/role principles or historical acceptance."
+    },
+    {
+      "path": "docs/adr/0016-durable-engine-clocks.md",
+      "disposition": "updated",
+      "reason": "Update actual PLAY-04 service/live3/estimate implementation and explicit pending full-source/browser acceptance; retain dated checks, failures and untouched host/upstream/admission limits."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/contracts/live.md",
+      "disposition": "updated",
+      "reason": "Document exact retained live2 versus separately closed live3, pinned tickets, pending schemas and non-authoritative browser estimates."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/contracts/viewer.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
     },
     {
       "path": "docs/documentation-map.json",
       "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
     },
     {
-      "path": "docs/vision/initial_backlog.csv",
+      "path": "docs/features.json",
       "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "reason": "Update actual PLAY-04 service/live3/estimate implementation and explicit pending full-source/browser acceptance; retain dated checks, failures and untouched host/upstream/admission limits."
     },
     {
-      "path": "docs/validation/play-03.md",
-      "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
     },
     {
-      "path": "docs/runbooks/ci.md",
-      "disposition": "updated",
-      "reason": "Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates."
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
     },
     {
-      "path": "docs/vision/decision_register.csv",
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/plans/2026-10-13-upstream-engine-review.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/plans/2026-10-15-play-04-design.md",
       "disposition": "updated",
       "reason": "Record the final clarified thinking-time policy without changing ink/rules, distinguish existing upstream timer proof from pending durable integration, and make the concrete design/review gate available to any developer."
+    },
+    {
+      "path": "docs/plans/2026-10-15-play-04-implementation.md",
+      "disposition": "updated",
+      "reason": "Provide implementation-ready task/interfaces, exact checks and current review/execution-method boundary from the approved design, without claiming executed implementation or acceptance."
     },
     {
       "path": "docs/plans/2026-10-15-play-04-intake.md",
@@ -165,9 +622,274 @@
       "reason": "Record the final clarified thinking-time policy without changing ink/rules, distinguish existing upstream timer proof from pending durable integration, and make the concrete design/review gate available to any developer."
     },
     {
-      "path": "docs/plans/2026-10-15-play-04-design.md",
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Structured baseline/template source semantics and schema1 are unchanged; no card-source inventory, optional/disposition or new automatic acceptance is authorized."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Structured baseline/template source semantics and schema1 are unchanged; no card-source inventory, optional/disposition or new automatic acceptance is authorized."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
       "disposition": "updated",
-      "reason": "Record the final clarified thinking-time policy without changing ink/rules, distinguish existing upstream timer proof from pending durable integration, and make the concrete design/review gate available to any developer."
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "updated",
+      "reason": "Document migration0005, match-role clock authority, fresh locked reads and root DB commands building their new shared contracts dependency."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/runbooks/game-clocks.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/runbooks/live-matches.md",
+      "disposition": "updated",
+      "reason": "Update actual PLAY-04 service/live3/estimate implementation and explicit pending full-source/browser acceptance; retain dated checks, failures and untouched host/upstream/admission limits."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/runbooks/rules-certification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/runbooks/viewer-privacy.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/templates/card-certification.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Structured baseline/template source semantics and schema1 are unchanged; no card-source inventory, optional/disposition or new automatic acceptance is authorized."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Structured baseline/template source semantics and schema1 are unchanged; no card-source inventory, optional/disposition or new automatic acceptance is authorized."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/validation/play-02.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/validation/play-03.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/validation/play-04.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/validation/upstream-engine-review.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Structured baseline/template source semantics and schema1 are unchanged; no card-source inventory, optional/disposition or new automatic acceptance is authorized."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "packages/db/README.md",
+      "disposition": "updated",
+      "reason": "Document current PLAY-04 function signatures, authority, protocol dispatch, lifecycle and scoped qualification limits; preserve prior dated evidence."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Owning existing behavior/source inventory or prior-source result stays valid as a dated checkpoint; new-clock acceptance is explicitly governed by current PLAY-04 validation, not inferred from it."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "updated",
+      "reason": "Review scope-relevant authority/ownership and dated evidence against optional adapter clocks and additive fenced storage. Update actual partial source/functions, schema0005, pending full verification and unchanged admission/device/host boundaries; prior executed results remain dated."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "updated",
+      "reason": "Document synthetic timed Chromium qualification for both chooser seats after demonstrated DB lock repair; no final product/device acceptance."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Root DB build selectors now include contracts dependency closure; native evidence schema, cumulative coverage, immutable runs and timing contract remain unchanged."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Native evidence, sequential workloads and full final-source qualification remain required; DB selector fix introduces no workflow exception."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No documentation/evidence schema or architectural governance change; root DB dependency build correction uses the same recorded checks."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Current handoff rewritten with the same universal fields; template unchanged."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No provider, service, expenditure or capacity decision changes from root DB build ordering; hosting remains unprovisioned."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review root build-order impact against schema required fields and consumers: no schema or certification/evidence format changes. New game-clock codecs live in contracts, not governance schemas."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review root build-order impact against schema required fields and consumers: no schema or certification/evidence format changes. New game-clock codecs live in contracts, not governance schemas."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review root build-order impact against schema required fields and consumers: no schema or certification/evidence format changes. New game-clock codecs live in contracts, not governance schemas."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review root build-order impact against schema required fields and consumers: no schema or certification/evidence format changes. New game-clock codecs live in contracts, not governance schemas."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review root build-order impact against schema required fields and consumers: no schema or certification/evidence format changes. New game-clock codecs live in contracts, not governance schemas."
+    },
+    {
+      "path": "docs/schemas/card-certification.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Review root build-order impact against schema required fields and consumers: no schema or certification/evidence format changes. New game-clock codecs live in contracts, not governance schemas."
+    },
+    {
+      "path": "packages/match-client/README.md",
+      "disposition": "updated",
+      "reason": "Describe actual protocols2/3, onClock defensive lifecycle, monotonic estimate ownership and exact restored pending command version; real sign-in and game UI remain separate."
+    },
+    {
+      "path": "docs/reviews/2026-10-15-play-04-clocks.md",
+      "disposition": "historical_preserved",
+      "reason": "Record the independent read-only report and author RED\u2192GREEN dispositions, explicit declined scopes and no second-review claim."
+    },
+    {
+      "path": "packages/service-runtime/README.md",
+      "disposition": "updated",
+      "reason": "Owning HTTP compatibility regression accepts bounded1..3 offers but retains literal1 diagnostic handler and refuses1..4; document exact unchanged runtime behavior."
     }
   ],
   "verification": [
@@ -205,14 +927,341 @@
       "evidence": "docs/validation/runs/RUN-20261015-025.json",
       "outcome": "passed",
       "scope": "Proposed design package: unchanged application/upstream source, configured source secret-pattern scan and docs consistency; no integrated timer proof"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-026.json",
+      "outcome": "passed",
+      "scope": "Approved written design/prepared five-task implementation plan: native docs consistency; no product clock implementation accepted"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-027.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 task1 expected negative contracts and actual engine-clock tests before implementation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-028.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 task1 targeted owning builds and new contracts/actual engine-clock regressions after implementation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-029.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 task1 current owning builds and full contracts/adapter/upstream/injection/randomness/boundary regressions; later durable/service/client acceptance remains pending"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-030.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 task2 expected negative actual database-clock tests before durable repository implementation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-031.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 task2 frozen offline workspace-edge install, DB compilation, additive test migration and actual storage-clock scenarios with injected time"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-032.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 task2 DB build and additive test migration/storage-clock scenarios after correcting SQL literal quoting; actual storage with injected time"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-033.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 task2 local additive migration, managed role/migration regressions and complete real match integration including clock-storage scenarios; no browser/service timer admission"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-034.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 adapter/storage checkpoint strict lint and owning TypeScript checks before server orchestration"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-035.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 adapter/storage checkpoint strict lint, owning type checks and13 targeted clock tests after removing unused initializer; actual DB storage uses simulated time"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-036.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 in-progress adapter/storage documentation, requirements gates, cumulative change coverage and native success/failure consistency"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-037.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 task3 expected negative clock-health, actual timeout/control-worker and timed-service tests before orchestration implementation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-038.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 task3 owning DB/service build and clock-health/native timeout-worker checks after implementation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-039.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 task3 expected negative owned-runner scheduling regression before runner implementation; previous four clock worker/health cases retained"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-040.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 task3 owning builds and health runner worker plus actual PostgreSQL service clock checks"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-041.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 real-time process runner continuity, owner death and six SQL rollback points"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-042.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 expected negative overlapping time-sample ordering regression"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-043.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 serialized health samples and real timed process deadline, recovery and transaction failure regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-044.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 Task3 native source documentation synchronization and strict owning lint"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-045.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 Task4 expected negative separate live3 codecs and pure browser countdown estimate regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-046.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 distinct live3 codec, transport and countdown client owning builds and contract/client regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-047.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 separate live3 dispatch and browser estimate contract/client checks after type narrowing fix"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-048.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 actual live3 gateway clock-only updates, disconnect expiry, host-hop and version-bound ticket checks"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-049.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 strict types lint and full current contract client unit checks after real live3 gateway proof RUN048"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-050.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 current strict owning lint and types plus real process six-server duplicate race and clock failure proofs"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-051.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 bounded real-process crash harness with production health limits except explicit outage/lease scenarios; six-way duplicate race retained"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-052.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 actual two-context Chromium timed live3, clock-only pause, disconnect expiry and gateway-hop recovery qualification"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-053.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 Chromium connection failure diagnosis with public-frame shape-only notes; no ticket or private payload logging"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-054.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 Chromium connection diagnosis after fixing test-only dynamic module URL typing"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-055.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 expected negative completed-view clock consistency and epoch-zero native sentinel admission regressions; independent private clock worlds"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-056.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 completed-view clock consistency and native sentinel refusal after RED055; independent private clock worlds and owning builds"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-057.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 cold-cache Chromium clock proof without extra diagnostic contract imports; original cache preserved"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-058.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 diagnose reproducible Chromium opening command receive failure with bounded public phase/version notes only"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-059.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 Chromium opening responsibility coverage for both randomized chooser seats with safe phase/version diagnosis"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-061.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 resumed original-container runtime bootstrap and authenticated original PostgreSQL baseline after Director restart"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-062.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 resumed expected negative actual blocked-heartbeat stale-snapshot and simulated stop-before-next-row regressions before repair"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-063.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 fresh locked clock snapshot and concurrent shutdown signaling after RED062; actual storage and simulated lifecycle regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-064.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 both chooser-seat cold-cache Chromium clock and reconnect regressions after actual stale-lock repair"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-065.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 six independent timeout/namespace collision and live3 clock-copy/lifecycle/pending-version adversarial coverage"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-066.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 clean standalone database command dependency-order regression before correcting root selectors; invalid target prevents DB access"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-067.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 standalone clean database dependency closure after root selector fix; no credentials or DB connection"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-068.json",
+      "outcome": "failed",
+      "scope": "Documentation sync requires explicit review of root package impact on the universal change format; no application failure."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-069.json",
+      "outcome": "failed",
+      "scope": "Document sync requests explicit root-package workflow review; no application failure."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-070.json",
+      "outcome": "failed",
+      "scope": "Documentation sync requires explicit root-package schema impact review; governance schemas remain unchanged."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-071.json",
+      "outcome": "failed",
+      "scope": "Documentation sync requests explicit owning match-client review after live3 implementation."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-072.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 complete current documentation synchronization and consistency"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-073.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 final-source frozen install, toolchain, complete ordered foundation, original bootstrap and database checks; sequential workload"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-074.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 complete final-source foundation after explicit test-global lint correction; original database baseline"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-075.json",
+      "outcome": "failed",
+      "scope": "Full source passes install/doctor/static/type/lint/build and preceding workspace suites; older HTTP test still treats approved three-version offer as malformed. Update its bounded-range expectation and retain revision1 diagnostic response."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-076.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 HTTP negotiation compatibility after three-version range expectation update and client test lint correction"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-077.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 complete actual PostgreSQL role, migration and match integration checkpoint; simulated clock scenarios and actual process races"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-078.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 independent review expected negative: healthy owner isolation, cold admission, expired rejection and bounded lifetime creation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-079.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 expected negative terminal probe reclamation and concurrent creation capacity regressions before review repair"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-080.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 independent review repairs: owning builds and complete clock unit/storage/service regressions after RED078 and079"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-081.json",
+      "outcome": "failed",
+      "scope": "PLAY-04 expected negative: untimed creation must not persist an unsupported live2 row under a live3-only retained release"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-082.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 review fix pass complete: owning builds strict lint and all clock unit/storage/service checks including early retained-pin refusal"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-083.json",
+      "outcome": "failed",
+      "scope": "Final sync requires explicit service-runtime owning documentation review after its compatibility test changed; no full suite ran."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-084.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 final reviewed source complete foundation: docs frozen install doctor static types lint builds all project upstream injection checks and original DB"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-085.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 final reviewed source complete actual PostgreSQL role/migration/storage/match/clock/gateway/process integration; simulated time labeled"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-086.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 final reviewed source cold Chromium all foundation live clock chooser-seat reconnect and Lab suites; Linux software WebGL"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-087.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 final reviewed source-only clean frozen install and entire foundation; no Git credentials dependencies built output or DB copied"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-088.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 final reviewed canonical Git-staged bytes exported to clean source copy frozen install and complete foundation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-089.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 installed dependency lock/license/advisory policy and pinned vendor provenance; no deployed artifact"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-090.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 final source matching current full runs; unchanged private bytes/modes and scope, migrations, upstream, full-history secret/log integrity and owned resource cleanup"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-091.json",
+      "outcome": "passed",
+      "scope": "PLAY-04 final owned clock/gateway/main process and port cleanup; ignored owner-only original credentials and private preservation metadata"
     }
   ],
   "limitations": [
-    "Director clock policies and written design are approved; implementation plan/review next. No integrated game-clock or new wire/schema/runtime implementation yet; no PLAY-04 acceptance.",
-    "Hosted observation is prior-source metadata only. Startup-test cause is Director-reported; local clock guard and all prior failed receipts remain unchanged. No service/environment adjustment or incidental startup-test change.",
-    "Existing engine defaults are source facts and qualification examples, not selected production durations. Keep official/card/private/reward/device/production gates closed."
+    "Synthetic two-player technical qualification only; normal startup remains diagnostics-only. AUTH/admin/official cards/choices/rules/ordinary Lab/Collection/rewards/observers/private replay/multiplayer/device/load/production and launch durations remain gated.",
+    "No fresh isolated/hosted14-stage CI/artifact promotion, required-check settings or absolute UTC qualification. Preserve prior clock-rejected receipts; no host service/clock/memory/pagefile/evidence-guard change.",
+    "Dependency report covers installed Linux graph/vendor only;12packages lack root notice files. OS/Bun/Chromium and redistribution/legal qualification remain separate.",
+    "Full-length real-card replay/event-cap, per-tick AUTH cost, quota retention, backup secrecy, retained loaders and operational health recovery need their documented later evidence. Memory peaks unknown; private-byte preservation starts at the recorded later checkpoint."
   ],
   "next_actions": [
-    "Create concrete implementation plan from approved design, obtain plan review and execution-method selection, then implement with fake-time/real-process/native evidence, full cumulative documentation, independent critical review and final-source qualification."
+    "Director independently audits the local PLAY-04 branch, then decides publication and main integration.",
+    "Select the next documented UX/AUTH/WEB workstream after review; preserve all prerequisite/admission/device/production gates."
   ]
 }

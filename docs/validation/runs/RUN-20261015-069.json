@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-069",
+  "category": "static",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm docs:sync --change CHG-20261015-003 && pnpm docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "afeb6dcd13105029282e7f319ddfe5cfb7d8b4b1d7025f9fb13a094e514d6f9f",
+  "started_at": "2026-10-15T15:15:21.294Z",
+  "finished_at": "2026-10-15T15:15:35.170Z",
+  "recorded_at": "2026-10-15T15:15:35.170Z",
+  "time_precision": "exact",
+  "elapsed_ms": 13857,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 current documentation synchronization with root database dependency review",
+  "log_path": "docs/validation/logs/RUN-20261015-069.txt",
+  "log_sha256": "e4b7865259ecd4ff5f3771546ff7b484d0bb465294ce4ff1bcd7e9e41ca9637c",
+  "redactions": 0
+}

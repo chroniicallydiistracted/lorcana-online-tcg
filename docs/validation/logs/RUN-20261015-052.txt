@@ -1,0 +1,31 @@
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 1 test using 1 worker
+
+  ✘  1 tests/clock-client.spec.ts:12:1 › Chromium clock estimates pause, clear on suspension and recover a server timeout on another gateway (23.2s)
+
+
+  1) tests/clock-client.spec.ts:12:1 › Chromium clock estimates pause, clear on suspension and recover a server timeout on another gateway 
+
+    Error: page.evaluate: MatchClientError: Match client closed
+        at terminal (http://127.0.0.1:5173/@fs/workspaces/lorcana-online-tcg/packages/match-client/src/index.ts:94:17)
+        at retry (http://127.0.0.1:5173/@fs/workspaces/lorcana-online-tcg/packages/match-client/src/index.ts:107:4)
+        at receive (http://127.0.0.1:5173/@fs/workspaces/lorcana-online-tcg/packages/match-client/src/index.ts:264:4)
+        at WebSocket.<anonymous> (http://127.0.0.1:5173/@fs/workspaces/lorcana-online-tcg/packages/match-client/src/index.ts:346:46)
+        at terminal (http://127.0.0.1:5173/@fs/workspaces/lorcana-online-tcg/packages/match-client/src/index.ts:94:17)
+        at retry (http://127.0.0.1:5173/@fs/workspaces/lorcana-online-tcg/packages/match-client/src/index.ts:107:4)
+        at receive (http://127.0.0.1:5173/@fs/workspaces/lorcana-online-tcg/packages/match-client/src/index.ts:264:4)
+        at WebSocket.<anonymous> (http://127.0.0.1:5173/@fs/workspaces/lorcana-online-tcg/packages/match-client/src/index.ts:346:46)
+        at /workspaces/lorcana-online-tcg/apps/web/tests/clock-client.spec.ts:24:252
+
+    Error Context: test-results/clock-client-Chromium-cloc-39e4c--timeout-on-another-gateway/error-context.md
+
+  1 failed
+    tests/clock-client.spec.ts:12:1 › Chromium clock estimates pause, clear on suspension and recover a server timeout on another gateway 
+undefined
+/workspaces/lorcana-online-tcg/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: playwright test clock-client.spec.ts

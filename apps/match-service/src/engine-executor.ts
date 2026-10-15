@@ -2,11 +2,16 @@ import { decodeViewerProjection, encodeViewerProjection } from '@lorcana/contrac
 import type { ViewerProjection, Viewer } from '@lorcana/contracts';
 import { Worker } from 'node:worker_threads';
 import type { PrivateMatchCheckpoint, ServerStatus } from '@lorcana/engine-adapter';
-export type EngineJob = {kind:'create';setup:{matchId:string;players:[string,string];startTimestamp:number}} |
-  {kind:'transition';references?:boolean;matchId:string;checkpoint:PrivateMatchCheckpoint;command:{actor:string;expectedRevision:number;timestamp:number;commandId:string;move:string;input:Record<string,unknown>}};
+import type {ClockControl} from '@lorcana/engine-adapter';
+import type {ClockPolicy,EngineClockState} from '@lorcana/contracts/clocks';
+export type EngineJob = {kind:'create';setup:{matchId:string;players:[string,string];startTimestamp:number;clock?:ClockPolicy}} |
+  {kind:'transition';references?:boolean;matchId:string;checkpoint:PrivateMatchCheckpoint;command:{actor:string;expectedRevision:number;timestamp:number;commandId:string;move:string;input:Record<string,unknown>}} |
+  {kind:'clock-inspect';matchId:string;checkpoint:PrivateMatchCheckpoint} |
+  {kind:'clock-control';matchId:string;checkpoint:PrivateMatchCheckpoint;controls:ClockControl[]} |
+  {kind:'timeout';matchId:string;checkpoint:PrivateMatchCheckpoint;timestamp:number;commandId:string};
 export type ProjectionJob = {kind:'project';matchId:string;checkpoint:PrivateMatchCheckpoint;viewer:Viewer};
 export type EngineWork = EngineJob | ProjectionJob;
-export interface EngineResult {status:ServerStatus;checkpoint:PrivateMatchCheckpoint;result:{accepted:boolean;code:string|null}|null}
+export interface EngineResult {status:ServerStatus;checkpoint:PrivateMatchCheckpoint;result:{accepted:boolean;code:string|null}|null;clock:EngineClockState|null}
 export interface EngineExecutor {execute(job:EngineJob):Promise<EngineResult>;project(job:ProjectionJob):Promise<ViewerProjection>;close():Promise<void>}
 interface Pending {job:EngineWork;resolve:(value:unknown)=>void;reject:(error:Error)=>void;timer?:ReturnType<typeof setTimeout>}
 export function createEngineExecutor(options:{concurrency?:number;maxQueue?:number;executionTimeoutMs?:number;queueTimeoutMs?:number}={}):EngineExecutor {

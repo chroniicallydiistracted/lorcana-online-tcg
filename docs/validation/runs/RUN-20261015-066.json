@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-066",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';const root=process.cwd(),copy=fs.mkdtempSync(path.join(os.tmpdir(),'play04-db-build-'));const env=Object.fromEntries(Object.entries(process.env).filter(([k])=>!/(password|secret|token|credential|private_key)|^(PG|POSTGRES|DATABASE)/i.test(k)));try{for(const p of ['package.json','pnpm-lock.yaml','pnpm-workspace.yaml','tsconfig.base.json','packages/contracts/package.json','packages/contracts/tsconfig.json','packages/contracts/src','packages/db/package.json','packages/db/tsconfig.json','packages/db/src','packages/db/migrations']){fs.mkdirSync(path.dirname(path.join(copy,p)),{recursive:true});fs.cpSync(path.join(root,p),path.join(copy,p),{recursive:true});}let r=spawnSync('pnpm',['install','--frozen-lockfile','--offline','--ignore-scripts'],{cwd:copy,env,stdio:'inherit'});if(r.status!==0)throw Error('Clean owning install failed');r=spawnSync('pnpm',['db:health','--','--target','invalid'],{cwd:copy,env,stdio:'inherit'});if(r.status!==1||!fs.existsSync(path.join(copy,'packages/contracts/dist/clocks.js'))||!fs.existsSync(path.join(copy,'packages/db/dist/cli.js')))throw Error('Standalone database command did not build its owning dependency closure');console.log('PASS standalone clean DB dependency build; invalid target refused before any DB connection; no credentials copied');}finally{fs.rmSync(copy,{recursive:true,force:true});}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "0ff2341977c7b524dd2107544bf03af232948c7095f05ad13397cc17992c5f73",
+  "started_at": "2026-10-15T15:07:31.164Z",
+  "finished_at": "2026-10-15T15:07:33.465Z",
+  "recorded_at": "2026-10-15T15:07:33.465Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2300,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-04 clean standalone database command dependency-order regression before correcting root selectors; invalid target prevents DB access",
+  "log_path": "docs/validation/logs/RUN-20261015-066.txt",
+  "log_sha256": "4e5bfc694c7fae96992bd2a1bd7e771e8c69ee08db5f67f29ea2bf6f0ea61b38",
+  "redactions": 0
+}

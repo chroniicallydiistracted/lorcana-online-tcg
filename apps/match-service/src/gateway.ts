@@ -1,7 +1,7 @@
 import websocket from '@fastify/websocket';
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import { createHttpService } from '@lorcana/service-runtime';
-import { LIVE_PROTOCOL_RANGE, MAX_FRAME_BYTES, parseTicketRequest, parseTicketResponse, negotiateProtocol } from '@lorcana/contracts';
+import { TRANSPORT_PROTOCOL_RANGE, MAX_FRAME_BYTES, parseTicketRequest, parseTransportTicketResponse, negotiateProtocol } from '@lorcana/contracts';
 import type { TransportStore } from '@lorcana/db';
 import { parseSession, sessionWork } from './session.ts';
 import type { SessionAuthority } from './session.ts';
@@ -45,13 +45,12 @@ export async function createMatchGateway(options:{service:MatchService;store:Tra
       const session=parseSession(await sessionWork(signal=>sessions.authenticate(request.headers,signal)));
       if(!session)return reply.code(401).send({code:'auth_expired'});
       let body;try{body=parseTicketRequest(request.body);}catch{return reply.code(400).send({code:'invalid_request'});}
-      if(negotiateProtocol(body.supportedProtocol,LIVE_PROTOCOL_RANGE)!==2)return reply.code(409).send({code:'unsupported_version',supportedProtocol:LIVE_PROTOCOL_RANGE});
       const quota=await store.quota('ticket',session.actorId,12,60000);
       if(!quota.allowed)return reply.code(429).send({code:'rate_limited',retryAfterMs:quota.retryAfterMs});
       const info=await service.describe(session.actorId,{matchId:body.matchId});
-      if(info.protocolVersion!==2)return reply.code(409).send({code:'unsupported_version',supportedProtocol:LIVE_PROTOCOL_RANGE});
-      const issued=await store.issue({actorId:session.actorId,sessionId:session.sessionId,sessionExpiresAt:session.expiresAt,matchId:body.matchId,releaseId:info.releaseId,protocolVersion:2,origin:originOf(request)!});
-      return parseTicketResponse({type:'ticket',protocolVersion:2,requestId:body.requestId,matchId:body.matchId,playerId:session.actorId,releaseId:info.releaseId,ticket:issued.ticket,expiresAt:issued.expiresAt,sessionExpiresAt:session.expiresAt},body);
+      if(![2,3].includes(info.protocolVersion)||negotiateProtocol(body.supportedProtocol,{min:info.protocolVersion,max:info.protocolVersion})!==info.protocolVersion)return reply.code(409).send({code:'unsupported_version',supportedProtocol:TRANSPORT_PROTOCOL_RANGE});
+      const issued=await store.issue({actorId:session.actorId,sessionId:session.sessionId,sessionExpiresAt:session.expiresAt,matchId:body.matchId,releaseId:info.releaseId,protocolVersion:info.protocolVersion as 2|3,origin:originOf(request)!});
+      return parseTransportTicketResponse({type:'ticket',protocolVersion:info.protocolVersion,requestId:body.requestId,matchId:body.matchId,playerId:session.actorId,releaseId:info.releaseId,ticket:issued.ticket,expiresAt:issued.expiresAt,sessionExpiresAt:session.expiresAt},body);
     }catch(error){
       const code=error&&typeof error==='object'&&'code'in error?error.code:null;
       return reply.code(code==='FORBIDDEN'?403:503).send({code:code==='FORBIDDEN'?'forbidden':'unavailable'});
@@ -78,7 +77,7 @@ export async function createMatchGateway(options:{service:MatchService;store:Tra
           await Promise.all(group.map(c=>c.authorized()));const first=group.find(c=>!c.closed);if(!first)continue;
           const current=await first.observe();
           if(!current){for(const c of group)c.drain();continue;}
-          await Promise.all(group.filter(c=>!c.closed&&(c.stateVersion!==current.stateVersion||c.releaseId!==current.releaseId)).map(c=>c.refresh()));
+          await Promise.all(group.filter(c=>!c.closed&&(c.stateVersion!==current.stateVersion||c.releaseId!==current.releaseId||c.clockRevision!==current.clockRevision)).map(c=>c.refresh()));
         }catch{for(const c of group)c.drain();}
       }
     })();polling=owned;

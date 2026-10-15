@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-087",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:clean"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "2033396e6058a7eb97aece2605668b9e237a7ab7",
+  "source_fingerprint": "a41c1374759fa3beb265e5944189a638184305b181f21518bdda6ae795620d59",
+  "started_at": "2026-10-15T15:49:32.759Z",
+  "finished_at": "2026-10-15T15:51:36.726Z",
+  "recorded_at": "2026-10-15T15:51:36.726Z",
+  "time_precision": "exact",
+  "elapsed_ms": 123853,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 final reviewed source-only clean frozen install and entire foundation; no Git credentials dependencies built output or DB copied",
+  "log_path": "docs/validation/logs/RUN-20261015-087.txt",
+  "log_sha256": "2ccdc794a7059af6259ea4cc77040cd25eed1855e60ffd427c31b8a133e23d59",
+  "redactions": 0
+}

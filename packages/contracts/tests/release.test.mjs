@@ -10,7 +10,7 @@ test('release manifests bind complete bounded identities while explicitly distin
     assert.deepEqual(contracts.parseReleaseManifest(fixture), fixture);
   }
   const fixture = releaseFixture();
-  const bad = [null, {}, { ...fixture, schemaVersion: 2 }, { ...fixture, purpose: 'game' }, { ...fixture, createdAt: '2026-02-30T12:00:00.000Z' }, { ...fixture, source: { ...fixture.source, commit: 'main' } }, { ...fixture, privateBundlePath: '/private/engine' }, { ...fixture, components: { ...fixture.components, web: { status: 'reserved' } } }, { ...fixture, components: { ...fixture.components, engine: { status: 'reserved', seed: 'synthetic' } } }, { ...fixture, components: { ...fixture.components, api: { status: 'built', version: 'v1', sha256: 'bad' } } }, { ...fixture, protocol: { min: 1, max: 3 } }];
+  const bad = [null, {}, { ...fixture, schemaVersion: 2 }, { ...fixture, purpose: 'game' }, { ...fixture, createdAt: '2026-02-30T12:00:00.000Z' }, { ...fixture, source: { ...fixture.source, commit: 'main' } }, { ...fixture, privateBundlePath: '/private/engine' }, { ...fixture, components: { ...fixture.components, web: { status: 'reserved' } } }, { ...fixture, components: { ...fixture.components, engine: { status: 'reserved', seed: 'synthetic' } } }, { ...fixture, components: { ...fixture.components, api: { status: 'built', version: 'v1', sha256: 'bad' } } }, { ...fixture, protocol: { min: 1, max: 4 } }];
   for (const value of bad) assert.throws(() => contracts.parseReleaseManifest(value), /Invalid/);
 });
 
