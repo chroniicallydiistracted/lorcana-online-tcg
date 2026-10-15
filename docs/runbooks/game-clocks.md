@@ -33,3 +33,12 @@ Internal `pauseClock`/`resumeClock` require recoveryAuthority approval of auditI
 Distinct live3 binds ticket/auth/command/snapshot to the saved protocol. Untimed matches remain2; diagnostic1 is unchanged. A live3-only release refuses untimed setup before persistence. Clock-only revision changes publish after COMMIT without changing viewer DTO1/card refs; display ticks never cause server replays. `estimateClock` and client estimate use local monotonic elapsed time only, clamp zero and send no timeout/result. Clock/view/callback state clears on suspend/retry/sign-out/dispose; pending command IDs and original2/3version survive explicitly restored recovery.
 
 Use original Dev Container and native evidence recorder, one heavyweight command at a time. Root foundation checks include all unit/contract/privacy/upstream suites; `test:match-integration` adds actual DB/process/gateway/race/fault proofs; `test:e2e:smoke` includes both chooser-seat Chromium clock cases; `test:engine-browser` retains Lab checks. Preserve failed receipts and cleanup only owned fixtures/processes. Headless Chromium is not a Windows/device observation. Full-length real-card replay cost,4096event limit, general choices, load, production proxy/session authority and host UTC accuracy remain separate gates.
+
+## Audit cautions — 2026-10-15 UTC
+
+From the [independent audit](../validation/play-04.md#independent-audit--2026-10-15-utc) (CHG-20261015-005); these stay in force until a fix change says otherwise:
+
+- A waiting opponent's command briefly puts the clock in `processing`. An active player's move in that window returns `UNAVAILABLE`, and the live gateway closes their socket (1012) while their time keeps running. Treat this as an open time-abuse defect, not a transient fault.
+- Between a deadline and the committed timeout pass, every command, including the opponent's concession, receives a permanent `clock_expired` receipt. Resend a concession with a new command ID after the pass.
+- An opening timeout (first-player choice or mulligan) always pauses. Resuming without an explicit reset reopens at zero and pauses again on the next sweep. Use a bounded reset in the audited resume.
+- A process whose own health sample fails stops adjudicating and does not pause games. On a single host, restart it and then audit-resume each affected match. A sweep longer than the 15 s healthy gap can cause this, so measure sweep duration under load before raising match counts.

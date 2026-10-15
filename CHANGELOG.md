@@ -2,6 +2,72 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261015-005 — Independent audit of PLAY-04 durable engine thinking-time clocks, with rules-parity focus
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-15T17:15:50.719Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 24d3990356ee95b626a34ce189f56c9cea003438
+- Tasks: PLAY-04, DOC-01, DOC-02
+- Features: F-DOCS, F-MATCH-CLOCKS
+- Requirements: none
+
+### Changes
+
+- **review:** Audited Codex commit 24d3990 (PLAY-04, CHG-20261015-003/004) against D12, the approved design, ADR0016, the runbook and the backlog acceptance (fake-clock and real process tests; no disconnect/time abuse or duplicate terminal result). The review covered: the project bridge (pre-validation, CLOCK_PAUSED, restoreState with preserved history, controls built on upstream settle/pause/resume/reset helpers) against the upstream time-control and command pipeline; adapter policy validation, the positive timed start and private transcript v2 replay; migration 0005; clock-store reservation, commit, reject, abort, heartbeat, unsafe pause and audited control transactions; clock-service charge mapping (engine time = checkpoint engine time + UTC elapsed since anchor), timeout and recovery orchestration; health and runner; the live3 contracts, gateway and client estimate.
+- **test:** Independent runs RUN-20261015-094..099 all passed at Codex's final fingerprint a41c1374 with exact timing, no clock discontinuity and 0 redactions. RUN094 full verify:foundation (350 project = 326 Node + 24 Python; 406 upstream/1 skip/1,362 expectations; 2 injection). RUN095 rules-parity probe: compiled timed bridge equals a raw unchanged-upstream MatchRuntime after all 918 accepted commands of 24 complete games (5,012 commands). Refusals differ only by time-neutral settlement, converging 587 of 587 times. Timed and untimed rules state, events (5,012) and legal moves (10,024) are identical. 168 exhausted passes restore exactly 125,000 ms. Boundaries are exact at 1 ms before zero, at zero and far past it; opening passes are flow-disallowed; pause, reset and backward controls behave as specified. RUN096 actual PostgreSQL/engine-worker service probe with simulated UTC and native values: an independent model matches every step, covering exact deadlines, the exact-deadline refusal, a single system timeout restoring 125 s, the opening pause, audited resume (forged, stale, retry, conflict, reset) and outage exclusion. RUN097 boundary/bundle/startup/upstream/public-clock/migration probe. RUN098 Codex database suites (66 plus role health). RUN099 Codex Chromium suites (10) plus 2 Lab workers.
+- **review:** Findings. (1) Important: clock-service takes the timed reservation (status processing) before refusing a non-active participant, so the active player's concurrent move gets busy -> UNAVAILABLE and the live gateway closes their socket (1012) while their clock runs. The client backs off to 5 s and stops after 8 attempts. Reproduced at the service level in RUN096; this does not fully meet the backlog criterion 'no disconnect/time abuse' (R29.007). (2) Minor: between a deadline and the timeout commit, the waiting opponent's concession receives a permanent clock_expired receipt. Reproduced in RUN096. (3) Latent real-card gate: the active-player pre-check refuses the engine's resolveBag direct-chooser move. Unreachable with synthetic cards.
+- **review:** Director policy points (behaviour matches the approved native design): a timeout pass can make the timed-out player lose by the CR 3.4.2 deck-out rule (16 occurrences in RUN095); an exhausted pass restores 125 s while a pass with 1 s left gives 66 s; opening timeouts always pause and audited resume needs an explicit reset; a process whose own health sample fails, including from a sweep longer than 15 s, stops adjudicating without pausing games, so on a single host every timed game needs a restart plus audited resume. Housekeeping: one running timed fixture from interrupted RUN050 and 31 expired quota rows remain in the test database.
+- **review:** Verdict: rules parity correct and timing exact for the synthetic scope; all reported counts reproduced; PLAY-04 not accepted until finding 1 is fixed. Main integration awaits the Director's decision; main unchanged at 775994a.
+- **documentation:** Validation audit section, ADR0016 audit note, runbook audit cautions, F-MATCH-CLOCKS register entry and a new FEATURES.md row (the stale mid-implementation paragraph is labeled historical), backlog status and link, dated audit line in AGENTS.md/README.md/docs/README.md, and the handoff.
+
+### Verification
+
+- **passed:** Timing-valid pnpm verify:foundation: 350 project checks (326 Node + 24 Python), 406 upstream passes/1 inherited skip/1,362 expectations, 2 injection tests. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261015-094.json))
+- **passed:** Auditor rules-parity probe (Bun): timed bridge vs raw unchanged upstream vs untimed bridge over 24 complete games; exact native boundaries and controls. Synthetic logical time. ([evidence](docs/validation/runs/RUN-20261015-095.json))
+- **passed:** Auditor service probe on the actual test database and engine worker with simulated UTC and native values: charging, deadlines, timeout, recovery, outage; reproduces findings 1 and 2 (asserted as observations). ([evidence](docs/validation/runs/RUN-20261015-096.json))
+- **passed:** Auditor boundary/bundle/startup/upstream/public-clock/migration and role probe on both databases. ([evidence](docs/validation/runs/RUN-20261015-097.json))
+- **passed:** Codex database suites: role health on both targets, db:test 5, storage contract 3, match integration 58, db:check. ([evidence](docs/validation/runs/RUN-20261015-098.json))
+- **passed:** Codex Chromium smoke (10 checks, one worker, including both clock chooser seats) and 2 Lab Web Worker checks. Linux headless Chromium only. ([evidence](docs/validation/runs/RUN-20261015-099.json))
+- **passed:** docs:check over the completed audit documentation and evidence (static). ([evidence](docs/validation/runs/RUN-20261015-100.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-04.md](docs/validation/play-04.md) — Appended a dated independent-audit section: runs, rules-parity results, findings, Director policy points, housekeeping, verdict and the isolated-CI decision; Codex text unchanged.
+- **updated:** [docs/adr/0016-durable-engine-clocks.md](docs/adr/0016-durable-engine-clocks.md) — Dated audit note: decision unchanged; parity confirmed; open finding and policy points linked.
+- **updated:** [docs/runbooks/game-clocks.md](docs/runbooks/game-clocks.md) — Audit cautions: the busy window, concession refusal across the deadline window, the opening timeout reset and single-process quarantine recovery.
+- **updated:** [docs/features.json](docs/features.json) — F-MATCH-CLOCKS description notes the audit result and open finding; audit runs added as evidence.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Added the missing F-MATCH-CLOCKS row with the audit limit; labeled the stale mid-implementation paragraph as historical rather than deleting it.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-04 status now records the open audit finding; CHG link added.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Audit state, verification, findings, pending Director decision and next actions.
+- **updated:** [AGENTS.md](AGENTS.md) — Dated audit line after the PLAY-04 current block; Codex block text unchanged.
+- **updated:** [README.md](README.md) — Same dated audit line as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same dated audit line as AGENTS.md.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification steps unaffected; follows the PLAY-02/PLAY-03 audit precedent.
+- **reviewed_unchanged:** [docs/contracts/live.md](docs/contracts/live.md) — live3 contract matches the source and the RUN097 contract checks.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Three-version range and diagnostic protocol 1 confirmed by RUN097.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — Migration 0005 operation matches RUN097; leftover test fixture recorded in validation instead.
+- **reviewed_unchanged:** [docs/runbooks/live-matches.md](docs/runbooks/live-matches.md) — Live operation unchanged; the clock-specific socket closure caution is in the game-clock runbook.
+- **historical_preserved:** [docs/plans/2026-10-15-play-04-design.md](docs/plans/2026-10-15-play-04-design.md) — Approved design kept as written; audit results live in validation.
+- **historical_preserved:** [docs/plans/2026-10-15-play-04-implementation.md](docs/plans/2026-10-15-play-04-implementation.md) — Executed plan kept as written.
+- **historical_preserved:** [docs/reviews/2026-10-15-play-04-clocks.md](docs/reviews/2026-10-15-play-04-clocks.md) — Codex's independent review report preserved; this audit is recorded separately.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Requirement statuses remain pending; no acceptance change.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs sync.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs sync.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261015-005.json).
+
+### Limits and next actions
+
+- Audit evidence is local Linux Dev Container and headless Chromium only; simulated UTC in the service probe; no Windows, device, GPU, load, remote network or production observation.
+- Finding 1 is reproduced at the service level with a 0.4 s cold-proof delay injected through the executor; the gateway socket closure and client backoff are established by code reading, not by an end-to-end wire test.
+- Local isolated CI was not rerun (wall clock gains 1.3-1.7 ms/s against monotonic, near the unchanged 1 s guard); hosted CI is observed after publication and recorded in a later change.
+- Probes are inline scripts recorded in the run commands; they are not committed test files.
+- Director decides whether to integrate into main now with finding 1 as a must-fix follow-up or after a fix, and decides the four policy points.
+- Fix finding 1 (refuse a non-active participant's non-concession command without taking the reservation; a retryable busy receipt without closing the socket) and finding 2 (concession across the deadline window), with regressions and fresh affected suites.
+- Publish the branches, run hosted Foundation qualification on claude/play-04-audit and record the run IDs in the next change.
+
 ## CHG-20261015-004 — PLAY-04 closing receipt index and append-only packaging correction
 
 - Status: finalized

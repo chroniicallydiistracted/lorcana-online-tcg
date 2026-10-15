@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-098",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm db:health -- --target local && pnpm db:health -- --target test && pnpm db:test && pnpm test:match-integration && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "24d3990356ee95b626a34ce189f56c9cea003438",
+  "source_fingerprint": "a41c1374759fa3beb265e5944189a638184305b181f21518bdda6ae795620d59",
+  "started_at": "2026-10-15T17:07:28.710Z",
+  "finished_at": "2026-10-15T17:10:00.422Z",
+  "recorded_at": "2026-10-15T17:10:00.422Z",
+  "time_precision": "exact",
+  "elapsed_ms": 151461,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 audit: Codex database suites at final source (role health both targets, db:test, match/storage/clock integration, db:check)",
+  "log_path": "docs/validation/logs/RUN-20261015-098.txt",
+  "log_sha256": "b12eb6cdd4f901429f518ec47b16ff3da40ceb43e4ee58a33affe0bf17d546df",
+  "redactions": 0
+}

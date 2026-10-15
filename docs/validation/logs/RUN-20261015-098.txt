@@ -1,0 +1,136 @@
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db... build && node packages/db/dist/cli.js health -- --target local
+
+Scope: 2 of 14 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+packages/contracts build: Done
+packages/db build$ tsc -p tsconfig.json
+packages/db build: Done
+PASS PostgreSQL 18 local: four authenticated managed identities
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db... build && node packages/db/dist/cli.js health -- --target test
+
+Scope: 2 of 14 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+packages/contracts build: Done
+packages/db build$ tsc -p tsconfig.json
+packages/db build: Done
+PASS PostgreSQL 18 test: four authenticated managed identities
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db... build && pnpm --filter @lorcana/db test:integration
+
+Scope: 2 of 14 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+packages/contracts build: Done
+packages/db build$ tsc -p tsconfig.json
+packages/db build: Done
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test --test-concurrency=1 tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (100.76111ms)
+✔ cross-environment logins cannot connect to either other managed database (38.873717ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (48.406022ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (277.698156ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (904.016717ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1753.170455
+
+> lorcana-online-tcg@0.0.0 test:match-integration /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration
+
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (21.092631ms)
+✔ server-only database exports the bounded match repository (0.265976ms)
+✔ real receipt constraint refuses a rejected result with a null reason (37.764283ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 551.221409
+
+> @lorcana/match-service@0.0.0 test:integration /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/integration.test.mjs tests/transport-store.test.mjs tests/gateway.test.mjs tests/live-client.test.mjs tests/clock-storage.test.mjs tests/clock-service.test.mjs tests/clock-process.test.mjs tests/clock-live.test.mjs
+
+✔ live3 publishes clock-only pause, disconnect continues time and another host reconnects to the committed pass (7164.73557ms)
+✔ timed tickets cannot downgrade to live2 or exchange an authentication frame across versions (1188.191019ms)
+✔ actual runner continues with zero clients and a fresh process joins a healthy owner without pausing (3331.684433ms)
+✔ loss of all runners creates an audited recovery pause without charging the outage (4555.046664ms)
+✔ an engine calculation outliving its lease is fenced and durably paused (3019.011436ms)
+✔ a timely action completes across the deadline within its lease and beats the later timeout (4367.630284ms)
+✔ six independent server processes race the same timed command and recover one identical durable receipt (6991.732875ms)
+✔ timed process death before COMMIT preserves clock, receipt and journal atomicity (7718.694134ms)
+✔ timed process death after COMMIT preserves clock, receipt and journal atomicity (2628.00156ms)
+✔ clock commit rollback at matches leaves no partial accepted state (2395.30367ms)
+✔ clock commit rollback at command_receipts leaves no partial accepted state (2301.759282ms)
+✔ clock commit rollback at journal leaves no partial accepted state (2297.546105ms)
+✔ clock commit rollback at outbox leaves no partial accepted state (2427.721325ms)
+✔ clock commit rollback at clocks leaves no partial accepted state (2349.529148ms)
+✔ clock commit rollback at clock_events leaves no partial accepted state (2386.845491ms)
+✔ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (2781.147189ms)
+✔ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (3231.150334ms)
+✔ unresolved opening timeout pauses for a legal decision and audited reset cannot choose the winner (1492.998684ms)
+✔ clock storage tampering cannot extend a deadline or alter a native remaining allowance (2181.513035ms)
+✔ an already-running owner that stalls cannot pause a second healthy owner through tick, submit or timeout (1921.272459ms)
+✔ a cold proof reconstruction crossing the deadline happens after authoritative admission (488.680585ms)
+✔ an illegal service result returning after a short lease pauses before any competing sweep (517.421819ms)
+✔ real database admits an early action before a timeout and excludes accepted engine-processing time (203.132391ms)
+✔ the exact deadline refuses player admission and duplicate timeout servers can commit only once (143.561976ms)
+✔ a dead reservation pauses for recovery and neither a wrong owner nor legacy raw commit can bypass the fence (151.994837ms)
+✔ aborted illegal calculations retain elapsed time and a forged system actor cannot obtain a player reservation (127.529174ms)
+✔ new clock state and audit tables remain inaccessible to API and worker roles (80.81465ms)
+✔ a heartbeat blocked behind reservation admission rereads the clock after acquiring its row lock (137.757405ms)
+✔ six independent timeout repositories admit one owner and system-like participant names cannot preclaim its receipt (162.601205ms)
+✔ a expired rejected calculation cannot resurrect its fenced clock reservation (120.558498ms)
+✔ a backward rejected calculation cannot resurrect its fenced clock reservation (117.383373ms)
+✔ PLAY-03 gateway requires bounded injected session/origin authority and never registers ordinary login (614.44739ms)
+✔ PLAY-03 two sockets recover on another gateway and retry a committed reference command once (2559.460798ms)
+✔ PLAY-03 revocation and drain withhold further private views and do not concede (692.2746ms)
+✔ PLAY-03 parallel ticket authentication reserves the per-actor connection cap before asynchronous work (532.082021ms)
+✔ PLAY-03 unauthenticated deadlines, binary/oversized frames and outbound budgets fail closed (808.945865ms)
+✔ PLAY-03 direct Fastify close owns gateway timers, hint subscription, service and store cleanup (289.304841ms)
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (1122.133312ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (1165.857415ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (1046.400501ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (802.551549ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (1223.591797ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (1199.282562ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (49.763513ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (1241.375892ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2597.455186ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2420.439493ms)
+✔ committed participant projections are read-only, recover exactly and deny role/identity escalation (1692.143786ms)
+✔ PLAY-03 current-reference submissions keep their original durable identity across retries and host recreation (1344.956159ms)
+✔ PLAY-03 48 committed reads coalesce by exact private bytes and actor, without sharing mutable views or hiding corruption (1315.988662ms)
+✔ PLAY-03 two real clients on different processes complete a natural reference-only synthetic game (29878.999301ms)
+✔ PLAY-03 killed gateway loses acknowledgement; same pending old refs recover once on another process (4255.4287ms)
+✔ PLAY-03 qualification host reaps itself when its controlling parent IPC disappears (1064.84229ms)
+✔ PLAY-03 built release pins all three qualified decoders and new domain matches pin live2 (291.792632ms)
+✔ PLAY-03 tickets are participant bound, hashed, single use across connections and expire before session authority (822.165278ms)
+✔ PLAY-03 quotas are shared, atomic and bounded across gateway stores (44.107261ms)
+✔ PLAY-03 committed metadata and hints reveal no speculative state or private fields (985.77284ms)
+✔ PLAY-03 hints close before initial connect completes without leaving a pending owned lifecycle (5.10601ms)
+ℹ tests 58
+ℹ suites 0
+ℹ pass 58
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 134458.026005
+
+> lorcana-online-tcg@0.0.0 db:check /workspaces/lorcana-online-tcg
+> node scripts/db-check.mjs
+
+PASS authenticated PostgreSQL 18 connection to the local bootstrap database.
