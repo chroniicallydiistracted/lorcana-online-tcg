@@ -1,0 +1,35 @@
+Scope: all 14 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 424ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 test:ci /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/ci/*.test.mjs && python3 tests/ci/launcher.test.py
+
+✔ secret findings contain paths/rules, never credential values; narrow exceptions cannot hide changed credentials (1.551312ms)
+✔ license and advisory gates reject unknown policy and unavailable/malformed responses (0.407113ms)
+✔ experimental engine and provenance are carried and release-bound; calendar metadata does not make a game release (87.610712ms)
+✔ artifact verification rejects tampered bytes, missing/extra/private paths and symlinks (32.488124ms)
+✔ manifest traversal, duplicate and missing entries are rejected (16.007865ms)
+✔ artifact manifest needs source identity and matching lock hash; metadata secrets are scanned (15.965275ms)
+✔ documented artifact command accepts the pnpm argument separator (617.145586ms)
+✔ pipeline rejects ordinary local database and propagates failing stages without running later stages (0.404278ms)
+✔ version3 artifacts carry a release bound to app, engine and actual SQL migration bytes (20.865679ms)
+✔ release binding rejects modified inner metadata or build/SQL bytes even with recomputed outer hashes (44.540717ms)
+✔ a shallow repository cannot bypass full-history qualification (43.786176ms)
+✔ release identity binds transitive executable workspace bytes and package resolution metadata (69.856156ms)
+✔ reconnect client is shipped and release-bound even when outer artifact hashes are refreshed (16.322139ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1316.64303
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.033s
+
+OK

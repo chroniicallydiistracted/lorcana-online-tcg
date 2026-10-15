@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-099",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/match-service\",\"build\"],{stdio:\"inherit\"});execFileSync(process.execPath,[\"--test\",\"--test-concurrency=1\",\"apps/match-service/tests/gateway.test.mjs\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "11046773f2086b6c1fbec1aa77d1421541d67f2624e0ab1372dd3fb185ae4a2d",
+  "started_at": "2026-10-14T23:41:29.604Z",
+  "finished_at": "2026-10-14T23:41:46.825Z",
+  "recorded_at": "2026-10-14T23:41:46.825Z",
+  "time_precision": "exact",
+  "elapsed_ms": 17222,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 lifecycle correction: register private cleanup before plugin close hook; direct Fastify.close and explicit gateway.close own all pools/hints/timers; six real gateway regressions",
+  "log_path": "docs/validation/logs/RUN-20261014-099.txt",
+  "log_sha256": "1071442029671791caacfc88cbf0092708f4a4f5c087a95ea8c05bee0d474d04",
+  "redactions": 0
+}

@@ -1,0 +1,46 @@
+✖ PLAY-03 current-reference submissions keep their original durable identity across retries and host recreation (97.586028ms)
+✖ PLAY-03 48 committed reads coalesce by exact private bytes and actor, without sharing mutable views or hiding corruption (761.460033ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1617.321808
+
+✖ failing tests:
+
+test at apps/match-service/tests/integration.test.mjs:158:1
+✖ PLAY-03 current-reference submissions keep their original durable identity across retries and host recreation (97.586028ms)
+  AssertionError [ERR_ASSERTION]: reference-only durable submission is missing
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/integration.test.mjs:161:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/integration.test.mjs:176:1
+✖ PLAY-03 48 committed reads coalesce by exact private bytes and actor, without sharing mutable views or hiding corruption (761.460033ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:38:15)
+      at Object.view (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:94:24)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Promise.all (index 35)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/integration.test.mjs:181:15)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }

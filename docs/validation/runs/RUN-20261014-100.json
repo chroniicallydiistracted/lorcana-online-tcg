@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-100",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern",
+    "hints close before initial",
+    "apps/match-service/tests/transport-store.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "b74ea2c84c751fd8f17d275350e16a7a93d590a65808905aa2a5688703f518b0",
+  "started_at": "2026-10-14T23:43:37.139Z",
+  "finished_at": "2026-10-14T23:43:39.385Z",
+  "recorded_at": "2026-10-14T23:43:39.385Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2245,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 red root cause behind direct-close timeout: PostgreSQL hint close must not end its client before initial connect settles",
+  "log_path": "docs/validation/logs/RUN-20261014-100.txt",
+  "log_sha256": "334099c9b65ee2818e41808c5d0e22565c5fd04a3e1b41eb749cd59d842a2a04",
+  "redactions": 0
+}

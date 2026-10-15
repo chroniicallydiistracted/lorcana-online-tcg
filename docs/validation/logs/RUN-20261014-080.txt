@@ -1,0 +1,28 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/contracts@0.0.0 test /workspaces/lorcana-online-tcg/packages/contracts
+> node --conditions=lorcana-source --test --test-concurrency=1 tests/*.test.mjs
+
+✔ public diagnostics reject private data and malformed service responses (2.164729ms)
+✔ live protocol2 accepts only current-ref synthetic move shapes and bounded control frames (4.48708ms)
+✔ live snapshots correlate the exact viewer/match/state and carry no private escape fields (5.134634ms)
+✔ ticket contracts carry credentials only in bounded HTTP reply and first-frame authentication (0.925735ms)
+✔ bounded protocol negotiation selects the highest mutual revision or an explicit incompatibility (2.528281ms)
+✔ hello contracts reject unknown and private fields, malformed IDs and uncorrelated/out-of-offer replies (2.449354ms)
+✔ client frames allow only bounded intents and safe state counters without leaking parser input (1.516613ms)
+✔ server snapshots and all outcome variants are closed, counts-only and bounded (2.970779ms)
+✔ release manifests bind complete bounded identities while explicitly distinguishing reserved game work (6.006809ms)
+✔ public manifest parsers reject prototype-only and accessor DTOs (0.184175ms)
+✔ viewer snapshot codec refuses private fields, malformed refs, accessors and oversize bytes (6.976619ms)
+✔ every viewer delivery surface has a closed browser codec and refuses secret-bearing diagnostics (6.66419ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 945.178098

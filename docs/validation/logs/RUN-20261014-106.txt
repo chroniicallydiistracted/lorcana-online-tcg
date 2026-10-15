@@ -1,0 +1,17 @@
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+> lorcana-online-tcg@0.0.0 boundaries /workspaces/lorcana-online-tcg
+> node scripts/check-boundaries.mjs
+
+PASS browser/public dependency and source import boundaries

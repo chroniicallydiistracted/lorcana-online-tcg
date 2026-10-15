@@ -1,0 +1,66 @@
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 test /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/unit.test.mjs tests/cache.test.mjs tests/references.test.mjs
+
+✔ projection cache coalesces a burst into one producer and stores immutable serialized bytes (2.972016ms)
+✔ cache isolates identity keys, expires monotonically and evicts by entry and byte bounds (0.429739ms)
+✔ failed and pending producers cannot poison entries or create an unbounded queue (0.907188ms)
+✔ reference transition resolves only current viewer refs inside the same actual checkpoint (1547.43039ms)
+✔ match command validation separates trusted actor and binds exact semantic intent (6.037707ms)
+✔ actual worker executor creates/continues private engine and bounds deadline/queue/disposal (919.196164ms)
+✔ close waits for an already completing actual worker (deferred termination simulation) (166.681618ms)
+✔ worker uses the same executable-policy identity as its current server conditions (159.465324ms)
+✔ actual executor times out queued work and rejects queued work on close (167.614451ms)
+✔ actual projection worker returns only a closed DTO, no checkpoint or server status (509.870365ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3862.133319
+
+> lorcana-online-tcg@0.0.0 test:match-integration /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration
+
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (19.504873ms)
+✔ server-only database exports the bounded match repository (0.291782ms)
+✔ real receipt constraint refuses a rejected result with a null reason (36.524169ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 533.373477
+
+> @lorcana/match-service@0.0.0 test:integration /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/integration.test.mjs
+
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (992.506005ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (1098.869603ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (1007.324915ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (792.637182ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (1132.937613ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (1128.396456ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (49.915469ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (1155.90977ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2724.423716ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2399.759741ms)
+✔ committed participant projections are read-only, recover exactly and deny role/identity escalation (1826.606029ms)
+✔ PLAY-03 current-reference submissions keep their original durable identity across retries and host recreation (1402.621048ms)
+✔ PLAY-03 48 committed reads coalesce by exact private bytes and actor, without sharing mutable views or hiding corruption (1356.910839ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17734.283059

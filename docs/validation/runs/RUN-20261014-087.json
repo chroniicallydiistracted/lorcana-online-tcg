@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-087",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";for(const args of [[\"install\",\"--frozen-lockfile\"],[\"db:migrate\",\"--\",\"--target\",\"local\"],[\"db:health\",\"--\",\"--target\",\"local\"],[\"db:health\",\"--\",\"--target\",\"test\"]])execFileSync(\"pnpm\",args,{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "26dc4ae6774c369f8ea2a90dd5fad5fb8c2b6e63bf445d02826b1ad61be378cd",
+  "started_at": "2026-10-14T23:19:52.983Z",
+  "finished_at": "2026-10-14T23:19:58.069Z",
+  "recorded_at": "2026-10-14T23:19:58.069Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5086,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 unchanged frozen install and strict peers after deliberate dependency mutation; apply reviewed0004 to original local target after test proof and check both restricted-role sets",
+  "log_path": "docs/validation/logs/RUN-20261014-087.txt",
+  "log_sha256": "097d3b676cf3883fe0c33150e042daf150c82f66cbd4e5c52ac6a546c3d3657f",
+  "redactions": 0
+}

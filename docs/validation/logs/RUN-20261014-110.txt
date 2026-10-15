@@ -1,0 +1,28 @@
+✖ status callbacks that dispose transport cannot leave a subsequently scheduled retry timer (136.351589ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 176.890009
+
+✖ failing tests:
+
+test at packages/match-client/tests/client.test.mjs:101:1
+✖ status callbacks that dispose transport cannot leave a subsequently scheduled retry timer (136.351589ms)
+  AssertionError [ERR_ASSERTION]: reconnecting installed a timer after close
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/tests/client.test.mjs:113:65)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

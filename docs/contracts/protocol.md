@@ -1,6 +1,8 @@
 # Foundation protocol contract
 
-BOOT-05 implements the public TypeBox contracts in `packages/contracts/src/protocol.ts`. [Acceptance evidence](../validation/boot-05.md) distinguishes executed checks from pending product gates. These are foundation revision1 shapes; PLAY/RULE own real engine actions, authorized viewer projections, durable receipts and authenticated WebSocket transport.
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](../validation/play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
+BOOT-05 implements the public TypeBox contracts in `packages/contracts/src/protocol.ts`. [Acceptance evidence](../validation/boot-05.md) distinguishes executed checks from pending product gates. The sections below describe the retained diagnostic revision1. PLAY-03 adds distinct closed synthetic live revision2, documented in [live contract](live.md); it does not reinterpret revision1 or enable ordinary startup.
 
 ## Fields and bounds
 
@@ -20,7 +22,7 @@ Client wire frames are at most16384 UTF8 bytes. `decodeClientFrame(raw)` checks 
 | Synthetic snapshot | Envelope plus `type:snapshot`, `projectionType:viewer`, `payload:{scope:synthetic,viewerId,zones}`;1–64 zones, each `{zoneId,count}` with count0–1000 |
 | Receipt | Envelope plus `type:receipt`, `commandId` and one closed outcome variant below |
 
-State/sequence counters are integers0–9007199254740991. Retry delay is an integer1–300000 milliseconds. Receipt outcomes: `accepted` has no reason; `rejected` has `invalid_intent` or `forbidden`; `stale` has `stale_state`; `rate_limited` has `rate_limit` and retry delay; `auth_expired` has the same reason; `maintenance` has the same reason and retry delay; `unsupported_version` has the same reason, server range and `upgrade_required`. Fields from another variant fail. A receipt contract does not prove commit/idempotency; PLAY-01 now persists internal synthetic acceptance before acknowledgement; authenticated transport mapping remains separate.
+State/sequence counters are integers0–9007199254740991. Retry delay is an integer1–300000 milliseconds. Receipt outcomes: `accepted` has no reason; `rejected` has `invalid_intent` or `forbidden`; `stale` has `stale_state`; `rate_limited` has `rate_limit` and retry delay; `auth_expired` has the same reason; `maintenance` has the same reason and retry delay; `unsupported_version` has the same reason, server range and `upgrade_required`. Fields from another variant fail. A receipt contract does not prove commit/idempotency; PLAY-01 now persists internal synthetic acceptance before acknowledgement; PLAY-03 maps durable outcomes through the separate live2 contract.
 
 Snapshots have counts and opaque/public references only. No private card-instance mapping, candidate list, private RNG or authoritative state is admitted by this shape. These synthetic tests do not establish real-game noninterference: IDs/order/counts still require viewer-policy certification in PLAY-02. No deltas, card actions or effect prompts are defined yet; add sourced schemas under their owning tasks and bump the protocol when incompatible.
 
@@ -36,7 +38,7 @@ Runtime defaults are the explicit development label `local-foundation` and revis
 
 Changes to required fields, units, intent/outcome semantics or secrecy rules require a new integer revision and reviewed fixtures. Active admission offers cover at most the current and immediately previous qualified adjacent revision; retained running-match decoders cannot be removed while their pins remain live. Each supported revision must have its own decoder/handlers. Do not advertise unsupported future code or widen a range to make an old client pass. A matching revision never overrides release/format/ownership/queue policy.
 
-PLAY-03 must authenticate before viewer state, bind commands to authenticated participants and pinned releases, enforce UTF8 size/rate/connection bounds and resync on any version gap. Duplicate command IDs bind actor/match/payload hashes and return durable receipts; stale choices require reconsideration. Disconnect is not concession. Heartbeats, bounded backpressure/reconnect, cross-host recovery, delayed spectators and private logs remain pending. Acceptance of this foundation does not accept those features or R30.015 in full.
+The separate [live2 contract](live.md) and optional gateway authenticate before viewer state; future real-session/admission integration must bind commands to authenticated participants and pinned releases, enforce UTF8 size/rate/connection bounds and resync on any version gap. Duplicate command IDs bind actor/match/payload hashes and return durable receipts; stale choices require reconsideration. Disconnect is not concession. Heartbeats, bounded backpressure/reconnect, cross-host recovery, delayed spectators and private logs remain pending. Acceptance of this foundation does not accept those features or R30.015 in full.
 
 ## PLAY-01 continuation — 2026-10-13 UTC
 

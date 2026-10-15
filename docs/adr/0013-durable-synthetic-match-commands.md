@@ -1,5 +1,7 @@
 # ADR0013 — Durable synthetic match commands
 
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](../validation/play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
 Status: accepted implementation of the Director-assigned PLAY-01 and blueprint §7.1; recorded2026-10-13 UTC. Requirements: R02.032/.033/.034, R15.009, R29.001/.005 and R30.015 prerequisites only. Initial scope remains synthetic qualification, with all ordinary/official/private/reward admission closed.
 
 ## Design and authority

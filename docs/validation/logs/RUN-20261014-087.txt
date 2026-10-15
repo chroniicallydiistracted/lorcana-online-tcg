@@ -1,0 +1,32 @@
+Scope: all 13 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 457ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 db:migrate /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js migrate -- --target local
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+{"target":"local","applied":1,"total":4}
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target local
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 local: four authenticated managed identities
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target test
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 test: four authenticated managed identities

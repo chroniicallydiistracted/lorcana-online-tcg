@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-098",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern",
+    "direct Fastify close",
+    "apps/match-service/tests/gateway.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "adfe1ba847a3c83d7b2653836c3d5fbf51e27fd3ca41d21877077827cda57cec",
+  "started_at": "2026-10-14T23:40:35.144Z",
+  "finished_at": "2026-10-14T23:40:36.254Z",
+  "recorded_at": "2026-10-14T23:40:36.254Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1110,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 red lifecycle: calling exposed Fastify.close directly must own private pools, hints and reconciliation cleanup",
+  "log_path": "docs/validation/logs/RUN-20261014-098.txt",
+  "log_sha256": "e8cf813bee032ab8901a434fcc4c09ceb830990556f4e9b6882a3aba75f51603",
+  "redactions": 0
+}

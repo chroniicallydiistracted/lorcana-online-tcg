@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-095",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/match-client\",\"build\"],{stdio:\"inherit\"});execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/match-client\",\"test\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "652861b6bcc2f27c1d03b6c9bcd71923d9bd537ea1a7c1f21ed0126dc60b5273",
+  "started_at": "2026-10-14T23:35:03.481Z",
+  "finished_at": "2026-10-14T23:35:05.102Z",
+  "recorded_at": "2026-10-14T23:35:05.102Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1621,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 client fixes from red regressions: send once per connection, preserve ack deadline, settle receipts before app callbacks, reject replaced-ready waiter and isolate fetch cancellation",
+  "log_path": "docs/validation/logs/RUN-20261014-095.txt",
+  "log_sha256": "0a4ed46c0cd8459a82fc000655b30d8d218fe7c3d7bf50ba3db7ec41dc777864",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-102",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "apps/match-service/tests/live-client.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "3ff418bd049099f3657732826a4923cb9cbdaa9c2dce89366deba382029f208a",
+  "started_at": "2026-10-14T23:46:16.669Z",
+  "finished_at": "2026-10-14T23:46:50.168Z",
+  "recorded_at": "2026-10-14T23:46:50.168Z",
+  "time_precision": "exact",
+  "elapsed_ms": 33495,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 actual client/protocol/DB qualification: two separate gateway processes finish natural reference-only play; SIGKILL after COMMIT with unread ACK recovers same pending old refs once on other host",
+  "log_path": "docs/validation/logs/RUN-20261014-102.txt",
+  "log_sha256": "678bdcbb03aa1d13945c60a6092f70b545de299569ffe4cf7114f229d9f028d7",
+  "redactions": 0
+}

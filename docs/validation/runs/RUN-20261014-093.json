@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-093",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";for(const name of [\"@lorcana/contracts\",\"@lorcana/match-client\"])execFileSync(\"pnpm\",[\"--filter\",name,\"build\"],{stdio:\"inherit\"});execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/match-client\",\"test\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "7f21e031e7170e714b6f4ec403cb636eb2beadcc321c3ad0439fa6cfe41d6da5",
+  "started_at": "2026-10-14T23:32:07.070Z",
+  "finished_at": "2026-10-14T23:32:11.166Z",
+  "recorded_at": "2026-10-14T23:32:11.166Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4095,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 browser-safe reconnect/pending client compile and four simulated protocol-state regressions; no real browser claim",
+  "log_path": "docs/validation/logs/RUN-20261014-093.txt",
+  "log_sha256": "60917c52301b5def0ea7f163b3e52904d3efce49cb7f12dbb492ec8583de9aa9",
+  "redactions": 0
+}

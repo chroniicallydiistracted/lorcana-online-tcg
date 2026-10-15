@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-101",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/db\",\"build\"],{stdio:\"inherit\"});execFileSync(process.execPath,[\"--test\",\"--test-concurrency=1\",\"apps/match-service/tests/transport-store.test.mjs\",\"apps/match-service/tests/gateway.test.mjs\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "88209ba190730d93a4c2be9f5aa1a6b87e1ebe3547fb1d0c5ab7def0460e52f1",
+  "started_at": "2026-10-14T23:44:19.143Z",
+  "finished_at": "2026-10-14T23:44:28.950Z",
+  "recorded_at": "2026-10-14T23:44:28.950Z",
+  "time_precision": "exact",
+  "elapsed_ms": 9806,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 listener lifecycle fix: await owned initial/reconnect before ending pg client; direct/explicit gateway shutdown, five shared-store cases and all six socket cases",
+  "log_path": "docs/validation/logs/RUN-20261014-101.txt",
+  "log_sha256": "2e020c2b3335f358dfbdd5be6a8a189ccf71ed65f7831f9b3c55f6160379c9f8",
+  "redactions": 0
+}

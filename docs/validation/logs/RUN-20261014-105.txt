@@ -1,0 +1,126 @@
+
+> lorcana-online-tcg@0.0.0 typecheck /workspaces/lorcana-online-tcg
+> pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck
+
+Scope: 9 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  896.07 kB │ gzip: 194.99 kB
+
+✓ built in 186ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 14 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  899.31 kB │ gzip: 197.96 kB
+
+✓ built in 144ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/service-runtime@0.0.0 build /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json
+
+Scope: 13 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/db@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/design-system@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/design-system
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/presentation@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/presentation
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-adapter@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-lab@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-client@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/service-runtime@0.0.0 typecheck /workspaces/lorcana-online-tcg/packages/service-runtime
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/api@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/api
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-service@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/worker@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/worker
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 lint /workspaces/lorcana-online-tcg
+> eslint . && pnpm boundaries
+
+
+/workspaces/lorcana-online-tcg/apps/match-service/src/gateway.ts
+  23:54  error  'hint' is never reassigned. Use 'const' instead        prefer-const
+  68:5   error  'connection' is never reassigned. Use 'const' instead  prefer-const
+  89:3   error  'timer' is never reassigned. Use 'const' instead       prefer-const
+
+/workspaces/lorcana-online-tcg/packages/match-client/tests/client.test.mjs
+   6:22  error  'EventTarget' is not defined  no-undef
+  10:43  error  'Event' is not defined        no-undef
+  17:71  error  'Response' is not defined     no-undef
+
+✖ 6 problems (6 errors, 0 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.

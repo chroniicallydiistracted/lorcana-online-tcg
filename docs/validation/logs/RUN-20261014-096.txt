@@ -1,0 +1,25 @@
+✖ reconnect client is shipped and release-bound even when outer artifact hashes are refreshed (16.605081ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 392.810517
+
+✖ failing tests:
+
+test at tests/ci/gates.test.mjs:148:1
+✖ reconnect client is shipped and release-bound even when outer artifact hashes are refreshed (16.605081ms)
+  Error: Missing runtime workspace
+      at visit (file:///workspaces/lorcana-online-tcg/scripts/release-manifest.mjs:37:21)
+      at visit (file:///workspaces/lorcana-online-tcg/scripts/release-manifest.mjs:47:91)
+      at digestClosure (file:///workspaces/lorcana-online-tcg/scripts/release-manifest.mjs:50:3)
+      at buildFoundationRelease (file:///workspaces/lorcana-online-tcg/scripts/release-manifest.mjs:58:20)
+      at createArtifacts (file:///workspaces/lorcana-online-tcg/scripts/ci/artifacts.mjs:48:49)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/tests/ci/gates.test.mjs:149:47)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)

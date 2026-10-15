@@ -1,5 +1,7 @@
 # BOOT-02 validation
 
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
 Status: BOOT-02 local acceptance verified on `codex/boot-02-database`, based on82e2273. Current change [CHG-20261006-006](../changes/CHG-20261006-006.json) records exact UTC timestamps, sources, outcomes and limits. Final-source actual clean/persistence and independent review passed; the active record contains canonical checkout/documentation closure.
 
 Intake RUN049–052 passed actual Dev Container doctor7, configuration/documentation, bootstrap5 and authenticated bootstrap connectivity. RUN053 retains the expected preimplementation missing-module failure. RUN054 installed pinned pg/Drizzle successfully but changed the lockfile, so the recorder correctly marks it failed source-identity proof; final frozen install is required. RUN055 was a successful package build only. RUN056 passed the initial five unit checks.

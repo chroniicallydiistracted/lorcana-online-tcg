@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-071",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";for(const args of [[\"run\",\"doctor\"],[\"verify\"],[\"test:bootstrap\"],[\"db:check\"]])execFileSync(\"pnpm\",args,{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "e3a9578be616125963591d956509c85eb2b2581912648baed88a62ad2c8d4d6b",
+  "started_at": "2026-10-14T22:41:43.391Z",
+  "finished_at": "2026-10-14T22:42:03.367Z",
+  "recorded_at": "2026-10-14T22:42:03.367Z",
+  "time_precision": "exact",
+  "elapsed_ms": 19976,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 intake on merged main6f2659e: exact doctor, static documentation/configuration checks, unchanged bootstrap and original authenticated database connection",
+  "log_path": "docs/validation/logs/RUN-20261014-071.txt",
+  "log_sha256": "9ecbb99127c57404b1a93eab87d19987b7d028815ac285d80a89fe00ebcec94e",
+  "redactions": 0
+}

@@ -1,0 +1,57 @@
+// PLAY-03 new closure evidence input. Historical milestone inputs are never edited.
+import assert from 'node:assert/strict';
+import {readFileSync,readdirSync,lstatSync,existsSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {join} from 'node:path';
+import {inventory,repository,sourceFingerprint,sha256} from '../../scripts/documentation-lib.mjs';
+import {privateRedactionValues} from '../../scripts/evidence-lib.mjs';
+import {scanSecrets} from '../../scripts/ci/security.mjs';
+const git=(args,input)=>{const r=spawnSync('git',args,{cwd:repository,input,maxBuffer:200_000_000});assert.equal(r.status,0,'Git inspection failed');return r.stdout;};
+const expected=JSON.parse(readFileSync(join(repository,'docs/validation/runs/RUN-20261015-002.json'))).source_fingerprint;
+assert.equal(sourceFingerprint(repository),expected,'Final source must match complete foundation');
+for(const id of ['002','003','004','007']) {
+ const r=JSON.parse(readFileSync(join(repository,'docs/validation/runs/RUN-20261015-'+id+'.json')));
+ assert.equal(r.result,'passed');assert.equal(r.clock_discontinuity,false);assert.equal(r.source_fingerprint,expected);
+}
+for(const path of ['.env.local','.local/database.json']) {
+ const s=lstatSync(join(repository,path));assert(s.isFile()&&!s.isSymbolicLink()&&s.uid===process.getuid()&&(s.mode&0o777)===0o600,'Private owned regular0600 file');
+ assert.equal(spawnSync('git',['check-ignore','-q',path],{cwd:repository}).status,0,'Private file ignored');assert.equal(git(['ls-files','--',path]).length,0,'Private file untracked');
+}
+const knownSecrets=Object.values(privateRedactionValues(repository));
+assert.equal(scanSecrets(inventory().map(path=>({path,bytes:readFileSync(join(repository,path))})),{knownSecrets}).length,0,'Current public known/pattern secret scan');
+assert.equal(git(['rev-parse','--is-shallow-repository']).toString().trim(),'false');
+const membership=new Map();
+for(const revision of git(['rev-list','--all']).toString().trim().split('\n'))for(const entry of git(['ls-tree','-rz',revision]).toString().split('\0').filter(Boolean)) {
+ const [metadata,path]=entry.split('\t'),[mode,type,hash]=metadata.split(' ');assert(type==='blob'&&mode!=='120000');
+ if(!membership.has(hash))membership.set(hash,new Set());membership.get(hash).add(path);
+}
+const batch=git(['cat-file','--batch'],Buffer.from([...membership.keys()].join('\n')+'\n'));let offset=0;
+for(const [hash,paths] of membership) {
+ const end=batch.indexOf(10,offset),[observed,type,sizeText]=batch.subarray(offset,end).toString().split(' '),size=Number(sizeText);
+ assert(observed===hash&&type==='blob');const bytes=batch.subarray(end+1,end+1+size);offset=end+size+2;
+ assert.equal(scanSecrets([...paths].map(path=>({path,bytes})),{knownSecrets}).length,0,'Full history known/pattern secret scan');
+}
+let logs=0;
+for(const file of readdirSync(join(repository,'docs/validation/runs')).filter(p=>p.endsWith('.json'))) {
+ const r=JSON.parse(readFileSync(join(repository,'docs/validation/runs',file)));if(r.log_path){assert.equal(sha256(readFileSync(join(repository,r.log_path))),r.log_sha256);logs++;}
+}
+const scope=spawnSync('python3',['-c',`import csv,subprocess,pathlib,io
+old=list(csv.DictReader(io.StringIO(subprocess.check_output(['git','show','HEAD:docs/vision/requirements.csv'],text=True))))
+new=list(csv.DictReader(open('docs/vision/requirements.csv')))
+assert len(old)==len(new)==548 and len({r['group_id'] for r in new})==33
+assert sum(r['source_optional']=='true' for r in new)==20
+for a,b in zip(old,new): assert all(a[k]==b[k] for k in a if k not in ['ticket_ids','evidence_links'])
+for path in ['docs/vision/decision_register.csv','SHA256SUMS.txt','VALIDATION_RESULTS.json','toolchain.json','.devcontainer/Dockerfile','.devcontainer/compose.yaml','.devcontainer/devcontainer.json']:
+ assert pathlib.Path(path).read_bytes()==subprocess.check_output(['git','show','HEAD:'+path])
+for path in pathlib.Path('packages/db/migrations').glob('000[123]-*.sql'):
+ assert path.read_bytes()==subprocess.check_output(['git','show','HEAD:'+str(path)])
+assert subprocess.run(['git','diff','--quiet','HEAD','--','vendor/tcg-engines','packages/engine-adapter','packages/engine-lab']).returncode==0
+print('PASS548 requirements/33 groups/20 optional, requirement and device/disposition fields, Director decisions, archive provenance, earlier SQL, toolchain/container and engine/Lab bytes retained.')`],{cwd:repository,stdio:'inherit'});assert.equal(scope.status,0);
+for(const path of ['/proc/net/tcp','/proc/net/tcp6'])if(existsSync(path))for(const row of readFileSync(path,'utf8').split('\n').slice(1)) {
+ const f=row.trim().split(/\s+/);if(f[3]==='0A')assert(![5173,3001,3002].includes(parseInt(f[1].split(':')[1],16)),'Owned foundation listener remains');
+}
+for(const pid of readdirSync('/proc').filter(s=>/^\d+$/.test(s)))try {
+ const command=readFileSync('/proc/'+pid+'/cmdline','utf8').replaceAll('\0',' ');
+ assert(!/apps\/(?:api|match-service|worker)\/(?:src|dist)\/(?:main|index)\.(?:ts|js)|tests\/gateway-child\.mjs/.test(command),'Owned executable or qualification child remains');
+}catch(error){if(!['ENOENT','EACCES'].includes(error.code))throw error;}
+console.log('PASS matching final source '+expected+', ignored private0600 files, current/full-history secret scans ('+membership.size+' unique blobs), '+logs+' log digests and no owned application/gateway listeners or children.');

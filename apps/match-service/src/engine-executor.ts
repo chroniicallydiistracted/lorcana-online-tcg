@@ -3,7 +3,7 @@ import type { ViewerProjection, Viewer } from '@lorcana/contracts';
 import { Worker } from 'node:worker_threads';
 import type { PrivateMatchCheckpoint, ServerStatus } from '@lorcana/engine-adapter';
 export type EngineJob = {kind:'create';setup:{matchId:string;players:[string,string];startTimestamp:number}} |
-  {kind:'transition';matchId:string;checkpoint:PrivateMatchCheckpoint;command:{actor:string;expectedRevision:number;timestamp:number;commandId:string;move:string;input:Record<string,unknown>}};
+  {kind:'transition';references?:boolean;matchId:string;checkpoint:PrivateMatchCheckpoint;command:{actor:string;expectedRevision:number;timestamp:number;commandId:string;move:string;input:Record<string,unknown>}};
 export type ProjectionJob = {kind:'project';matchId:string;checkpoint:PrivateMatchCheckpoint;viewer:Viewer};
 export type EngineWork = EngineJob | ProjectionJob;
 export interface EngineResult {status:ServerStatus;checkpoint:PrivateMatchCheckpoint;result:{accepted:boolean;code:string|null}|null}

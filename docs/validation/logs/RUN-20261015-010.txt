@@ -1,0 +1,11 @@
+
+> lorcana-online-tcg@0.0.0 docs:sync /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs --sync --change CHG-20261014-006
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2135,"documents":1496,"functions":9709,"changes":41,"runs":624}
+
+> lorcana-online-tcg@0.0.0 docs:check /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2135,"documents":1496,"functions":9709,"changes":41,"runs":624}
+PASS 645 staged executable/config/test/schema files match tested source 64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286; history/prose generation is separately checked by native documentation gate.

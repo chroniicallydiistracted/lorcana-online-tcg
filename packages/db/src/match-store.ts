@@ -22,6 +22,7 @@ export interface MatchRepository {
   load(matchId: string, actorId: string): Promise<StoredMatch|undefined>;
   findReceipt(command: DurableCommand): Promise<DurableReceipt|undefined>;
   commit(command: DurableCommand, before: StoredMatch, candidate: CommitCandidate|null, rejection?: Rejection): Promise<ReceiptResult>;
+  observe(matchId:string,actorId:string):Promise<{stateVersion:number;releaseId:string;protocolVersion:number;eventId:string|null}|null>;
   close(): Promise<void>;
 }
 export class MatchStoreError extends Error {
@@ -80,6 +81,12 @@ export function createMatchRepository(target:Target, root=workspaceRoot):MatchRe
       try {const r=await pool.query(select+' WHERE m.match_id=$1 AND ($2=m.player_one OR $2=m.player_two)',[matchId,actorId]);return r.rows[0]?decode(r.rows[0]):undefined;}
       catch{throw new MatchStoreError('UNAVAILABLE');}
     },
+    async observe(matchId,actorId) {
+      try {
+        const result=await pool.query('SELECT m.state_version,m.release_id,m.protocol_version,o.event_id FROM match.matches m LEFT JOIN match.outbox o ON o.match_id=m.match_id AND o.state_version=m.state_version WHERE m.match_id=$1 AND ($2=m.player_one OR $2=m.player_two)',[matchId,actorId]);
+        const row=result.rows[0];return row?{stateVersion:integer(row.state_version),releaseId:row.release_id,protocolVersion:integer(row.protocol_version),eventId:row.event_id??null}:null;
+      }catch{throw new MatchStoreError('UNAVAILABLE');}
+    },
     async findReceipt(command) {
       try {const r=await pool.query(receiptQuery,key(command));return r.rows[0]?checkedReceipt(r.rows[0],command):undefined;}
       catch(error){throw error instanceof MatchStoreError?error:new MatchStoreError('UNAVAILABLE');}
@@ -105,6 +112,7 @@ export function createMatchRepository(target:Target, root=workspaceRoot):MatchRe
         if(outcome==='accepted'&&candidate) {
           await c.query('INSERT INTO match.journal(match_id,state_version,actor_id,command_id,intent_hash,checkpoint_digest) VALUES($1,$2,$3,$4,$5,$6)',[command.matchId,version,command.actorId,command.commandId,command.intentHash,candidate.checkpoint.digest]);
           await c.query('INSERT INTO match.outbox(event_id,match_id,state_version,kind) VALUES($1,$2,$3,$4)',[randomUUID(),command.matchId,version,candidate.ended?'match_completed':'match_changed']);
+          await c.query("SELECT pg_notify('lorcana_match_changed',$1)",[command.matchId]);
         }
         return {receipt:receipt(saved.rows[0],current.releaseId),duplicate:false};
       });

@@ -1,0 +1,102 @@
+
+> lorcana-online-tcg@0.0.0 db:check /workspaces/lorcana-online-tcg
+> node scripts/db-check.mjs
+
+PASS authenticated PostgreSQL 18 connection to the local bootstrap database.
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target local
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 local: four authenticated managed identities
+
+> lorcana-online-tcg@0.0.0 db:health /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && node packages/db/dist/cli.js health -- --target test
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+PASS PostgreSQL 18 test: four authenticated managed identities
+
+> lorcana-online-tcg@0.0.0 db:test /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db build && pnpm --filter @lorcana/db test:integration
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 test:integration /workspaces/lorcana-online-tcg/packages/db
+> node --test --test-concurrency=1 tests/integration.test.mjs
+
+✔ real runtime identities own no objects, can CRUD only their own probes, and cannot escalate (93.681182ms)
+✔ cross-environment logins cannot connect to either other managed database (34.301498ms)
+✔ migrations are idempotent/concurrent, reject changed history, and roll back all failed DDL/journal work (40.449201ms)
+✔ future object defaults preserve service isolation; reprovisioning rejects unexpected CREATE grants (243.011242ms)
+✔ provisioning rejects explicit TRUNCATE, cross-environment CONNECT and future default ACL drift (861.717039ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1595.973144
+
+> lorcana-online-tcg@0.0.0 test:match-integration /workspaces/lorcana-online-tcg
+> node --test --test-concurrency=1 tests/play/storage-contract.test.mjs && pnpm --filter @lorcana/match-service test:integration
+
+✔ real restricted test database has match, receipt, accepted journal and private outbox tables (17.38485ms)
+✔ server-only database exports the bounded match repository (0.219663ms)
+✔ real receipt constraint refuses a rejected result with a null reason (33.706306ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 505.063308
+
+> @lorcana/match-service@0.0.0 test:integration /workspaces/lorcana-online-tcg/apps/match-service
+> node --test --test-concurrency=1 tests/integration.test.mjs tests/transport-store.test.mjs tests/gateway.test.mjs tests/live-client.test.mjs
+
+✔ PLAY-03 gateway requires bounded injected session/origin authority and never registers ordinary login (586.753717ms)
+✔ PLAY-03 two sockets recover on another gateway and retry a committed reference command once (2510.298105ms)
+✔ PLAY-03 revocation and drain withhold further private views and do not concede (648.698008ms)
+✔ PLAY-03 parallel ticket authentication reserves the per-actor connection cap before asynchronous work (491.99107ms)
+✔ PLAY-03 unauthenticated deadlines, binary/oversized frames and outbound budgets fail closed (783.940902ms)
+✔ PLAY-03 direct Fastify close owns gateway timers, hint subscription, service and store cleanup (284.611601ms)
+✔ real committed receipt is stable after retry, reconnect and release-registry recreation (980.428043ms)
+✔ two independent actual candidates race; only one CAS and terminal event commit (1120.561155ms)
+✔ identical concurrent intents commit once; actor scope and altered content cannot steal a receipt (993.838956ms)
+✔ debug/unknown/stale rejections are durable, expose no private state and never mutate the checkpoint (805.093965ms)
+✔ actual journal SQL failure rolls back state, receipt and every durable record (1133.745832ms)
+✔ actual outbox SQL failure rolls back state, receipt and every durable record (1160.497208ms)
+✔ API and worker roles cannot read private match seed/journal/outbox or cross the test/local boundary (49.459504ms)
+✔ unavailable pins, corrupt private checkpoint and worker failure cannot create a receipt or transition (1160.334705ms)
+✔ real process kill before COMMIT and fresh-process retry prove receipt durability (2658.974548ms)
+✔ real process kill after COMMIT and fresh-process retry prove receipt durability (2531.957999ms)
+✔ committed participant projections are read-only, recover exactly and deny role/identity escalation (1818.203955ms)
+✔ PLAY-03 current-reference submissions keep their original durable identity across retries and host recreation (1421.250622ms)
+✔ PLAY-03 48 committed reads coalesce by exact private bytes and actor, without sharing mutable views or hiding corruption (1351.43727ms)
+✔ PLAY-03 two real clients on different processes complete a natural reference-only synthetic game (29567.258793ms)
+✔ PLAY-03 killed gateway loses acknowledgement; same pending old refs recover once on another process (4211.015677ms)
+✔ PLAY-03 qualification host reaps itself when its controlling parent IPC disappears (1003.441112ms)
+✔ PLAY-03 built release pins both qualified decoders and new domain matches pin live2 (289.899588ms)
+✔ PLAY-03 tickets are participant bound, hashed, single use across connections and expire before session authority (769.746805ms)
+✔ PLAY-03 quotas are shared, atomic and bounded across gateway stores (44.559733ms)
+✔ PLAY-03 committed metadata and hints reveal no speculative state or private fields (947.373606ms)
+✔ PLAY-03 hints close before initial connect completes without leaving a pending owned lifecycle (4.712744ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 61969.97484

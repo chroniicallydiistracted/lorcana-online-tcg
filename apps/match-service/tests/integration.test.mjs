@@ -154,3 +154,39 @@ test('committed participant projections are read-only, recover exactly and deny 
   await recovered.submit('p1',command(id,'visible-concede',version));assert.equal((await recovered.view('p1',{matchId:id})).ended,true);
  }finally{await s.close();await recovered?.close();await cleanup(id);}
 });
+
+test('PLAY-03 current-reference submissions keep their original durable identity across retries and host recreation',async()=>{
+ const id=fixtureId(),s=service();let other;
+ try {
+  assert.equal(typeof s.submitRefs,'function','reference-only durable submission is missing');
+  const v=await open(s,id),view=await s.view('p1',{matchId:id});
+  const ref=view.players.find(p=>p.playerId==='p1').zones.find(z=>z.kind==='hand').cards[0].ref;
+  const request=command(id,'reference-durable',v,'putCardIntoInkwell',{cardId:ref});
+  const first=await s.submitRefs('p1',request);assert.equal(first.receipt.outcome,'accepted');
+  assert.deepEqual((await s.submitRefs('p1',request)).receipt,first.receipt);
+  await s.close();other=service();const duplicate=await other.submitRefs('p1',request);
+  assert.equal(duplicate.duplicate,true);assert.deepEqual(duplicate.receipt,first.receipt);
+  const stale=await other.submitRefs('p1',{...request,commandId:'stale-reference',expectedVersion:v+1});assert.equal(stale.receipt.outcome,'rejected');
+  await assert.rejects(other.submitRefs('p1',{...request,input:{cardId:'raw-private-id'}}),e=>e.code==='ID_CONFLICT');
+  await assert.rejects(other.submit('p1',request),e=>e.code==='ID_CONFLICT','raw/reference namespaces must not alias');
+  assert.equal((await counts(id)).stateVersion,v+1);
+ }finally{await s.close();await other?.close();await cleanup(id);}
+});
+
+test('PLAY-03 48 committed reads coalesce by exact private bytes and actor, without sharing mutable views or hiding corruption',async()=>{
+ const id=fixtureId(),executor=createEngineExecutor();let projections=0;
+ const s=service(createMatchRepository('test'),{executor:{execute:j=>executor.execute(j),project:async j=>{projections++;return executor.project(j)},close:()=>executor.close()}});
+ try {
+  await open(s,id);
+  const views=await Promise.all(Array.from({length:48},()=>s.view('p1',{matchId:id})));
+  assert.equal(projections,1,'same committed identity must coalesce');
+  views[0].players[0].lore=999;assert.notEqual(views[1].players[0].lore,999);
+  await s.view('p2',{matchId:id});assert.equal(projections,2,'another actor needs an independent projection');
+  const checkpoint=await using('match',async c=>(await c.query('SELECT checkpoint FROM match.matches WHERE match_id=$1',[id])).rows[0].checkpoint);
+  await using('match',c=>c.query('UPDATE match.matches SET checkpoint=$2 WHERE match_id=$1',[id,checkpoint+' ']));
+  await assert.rejects(s.view('p1',{matchId:id}),e=>e.code==='UNAVAILABLE','changed bytes must not hit a valid cached view');
+  await using('match',c=>c.query('UPDATE match.matches SET checkpoint=$2 WHERE match_id=$1',[id,checkpoint]));
+  const recovered=await s.view('p1',{matchId:id});assert.equal(recovered.stateVersion,3);
+  await assert.rejects(s.view('outsider',{matchId:id}),e=>e.code==='FORBIDDEN');
+ }finally{await s.close();await cleanup(id);}
+});

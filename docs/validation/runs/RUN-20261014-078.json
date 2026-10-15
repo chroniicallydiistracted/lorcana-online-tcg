@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-078",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";for(const args of [[\"--filter\",\"@lorcana/match-service\",\"build\"],[\"--filter\",\"@lorcana/match-service\",\"test\"],[\"test:match-integration\"]])execFileSync(\"pnpm\",args,{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "4f12c6103f8ee4d0fe4d437f01fd4016a5d4d217435b8bc5dd1226947664112d",
+  "started_at": "2026-10-14T23:07:21.785Z",
+  "finished_at": "2026-10-14T23:07:46.228Z",
+  "recorded_at": "2026-10-14T23:07:46.228Z",
+  "time_precision": "exact",
+  "elapsed_ms": 24470,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 Task1: same-checkpoint refs, original durable semantic retry identity and 48-read exact-view cache with tamper/actor isolation; prior unit/live DB regressions",
+  "log_path": "docs/validation/logs/RUN-20261014-078.txt",
+  "log_sha256": "1ba860f5afc30f4f9eb49fa7b5ad1bcdc1002a76c66f5affa6d0f4d1e6b507bc",
+  "redactions": 0
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-077",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern",
+    "PLAY-03",
+    "apps/match-service/tests/integration.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "03c37e626a8b8399437dc511d49fd93b152fba7366e8d0f1c5ad697f13a1b829",
+  "started_at": "2026-10-14T23:06:36.977Z",
+  "finished_at": "2026-10-14T23:06:38.676Z",
+  "recorded_at": "2026-10-14T23:06:38.676Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1699,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 red live DB: reference-only durable service is absent and 48 same-version views are not coalesced",
+  "log_path": "docs/validation/logs/RUN-20261014-077.txt",
+  "log_sha256": "f3d9bc73e65b37152b08f3fdd19a3d31d8a02dffa052e22ec4d62a330eb5783d",
+  "redactions": 0
+}

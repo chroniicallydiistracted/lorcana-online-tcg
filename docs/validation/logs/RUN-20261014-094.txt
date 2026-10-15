@@ -1,0 +1,67 @@
+✔ client waits for correlated authorized snapshot, copies views and rejects raw-ID or overlapping moves (162.320727ms)
+✔ pending bytes and IDs survive suspension/host hop and duplicate receipt, while stale results are final (9.592054ms)
+✔ server sequence gaps, incompatible pins and changed account never replay a pending intent (12.404534ms)
+✔ transient receipts preserve pending identity; expiry stops retries and retains explicit recovery data (5.244578ms)
+✖ unrelated snapshots do not resend a pending command or hide its acknowledgement deadline (6.7691ms)
+✖ application receipt callbacks cannot overwrite terminal transport state or undo an accepted result (5.401688ms)
+✖ replacing an incomplete connection rejects its waiter rather than leaking a pending promise (52.613295ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 4
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 295.834043
+
+✖ failing tests:
+
+test at packages/match-client/tests/client.test.mjs:74:1
+✖ unrelated snapshots do not resend a pending command or hide its acknowledgement deadline (6.7691ms)
+  AssertionError [ERR_ASSERTION]: a publication is not a retry request
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/tests/client.test.mjs:79:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/match-client/tests/client.test.mjs:85:1
+✖ application receipt callbacks cannot overwrite terminal transport state or undo an accepted result (5.401688ms)
+  Error: Match client closed
+      at terminal (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:55:23)
+      at Object.close (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:326:38)
+      at onReceipt (file:///workspaces/lorcana-online-tcg/packages/match-client/tests/client.test.mjs:86:41)
+      at callback (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:22:13)
+      at receive (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:186:13)
+      at Socket.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:259:53)
+      at [nodejs.internal.kHybridDispatch] (node:internal/event_target:848:20)
+      at Socket.dispatchEvent (node:internal/event_target:789:26)
+      at Socket.fire (file:///workspaces/lorcana-online-tcg/packages/match-client/tests/client.test.mjs:10:92)
+      at Socket.server (file:///workspaces/lorcana-online-tcg/packages/match-client/tests/client.test.mjs:11:21) {
+    code: 'closed'
+  }
+
+test at packages/match-client/tests/client.test.mjs:94:1
+✖ replacing an incomplete connection rejects its waiter rather than leaking a pending promise (52.613295ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/tests/client.test.mjs:97:119)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

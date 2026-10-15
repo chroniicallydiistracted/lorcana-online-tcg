@@ -1,0 +1,109 @@
+✖ PLAY-03 built release pins both qualified decoders and new domain matches pin live2 (59.770988ms)
+✖ PLAY-03 tickets are participant bound, hashed, single use across connections and expire before session authority (0.418829ms)
+✖ PLAY-03 quotas are shared, atomic and bounded across gateway stores (0.268666ms)
+✖ PLAY-03 committed metadata and hints reveal no speculative state or private fields (0.259588ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 731.831346
+
+✖ failing tests:
+
+test at apps/match-service/tests/transport-store.test.mjs:9:1
+✖ PLAY-03 built release pins both qualified decoders and new domain matches pin live2 (59.770988ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   max: 1,
+  -   max: 2,
+      min: 1
+    }
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/transport-store.test.mjs:10:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { min: 1, max: 1 },
+    expected: { min: 1, max: 2 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/transport-store.test.mjs:14:1
+✖ PLAY-03 tickets are participant bound, hashed, single use across connections and expire before session authority (0.418829ms)
+  AssertionError [ERR_ASSERTION]: shared ticket/quota storage is missing
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/transport-store.test.mjs:6:27)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/transport-store.test.mjs:15:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/transport-store.test.mjs:33:1
+✖ PLAY-03 quotas are shared, atomic and bounded across gateway stores (0.268666ms)
+  AssertionError [ERR_ASSERTION]: shared ticket/quota storage is missing
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at factory (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/transport-store.test.mjs:6:27)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/transport-store.test.mjs:34:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/transport-store.test.mjs:43:1
+✖ PLAY-03 committed metadata and hints reveal no speculative state or private fields (0.259588ms)
+  AssertionError [ERR_ASSERTION]: metadata-only hints are missing
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/transport-store.test.mjs:44:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

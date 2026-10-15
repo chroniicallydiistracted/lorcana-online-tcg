@@ -1,0 +1,25 @@
+# ADR0015 — Qualified live synthetic transport and reconnect
+
+Recorded 2026-10-14T23:03:55.758Z. Status: implemented, independently reviewed and locally qualified for synthetic/test-session technical acceptance; see docs/validation/play-03.md. Tasks PLAY-03/DOC-01/02. Requirements R02.001/029/031/032/034, R29.001/002/005, R30.007/009/010/011/015/016. Director retains AUTH-01 separately, using isolated authenticated test sessions; normal admission remains closed.
+
+## Decision
+
+Keep the approved Fastify/Node/PostgreSQL architecture. Add closed protocol2 live schemas and handlers, retaining the unchanged diagnostic protocol1. New built releases identify both qualified decoders after validation; new synthetic matches pin2, while retained protocol1 matches remain internally readable and are never reinterpreted as live2. Append migration0004; never rewrite already-applied SQL or old manifests. Retained compiled-engine loading remains a future release gate.
+
+A factory registers optional ticket/WS routes only with an explicit session verifier and allowed origins; ordinary application startup stays diagnostics-only until AUTH-01 wires actual sessions/admission. The verifier maps trusted HTTP headers to a bounded principal/session/expiry and revalidates sessions during socket activity/publication. No actor/role is accepted from a client. Qualification sessions live only in test fixtures and are not a fallback authenticator.
+
+Issue a 256-bit random single-use ticket over authenticated HTTP, bind its digest to session/principal/match/origin/release/protocol, expire after at most30 seconds and consume atomically in PostgreSQL. Send it in the first socket frame, never a URL or logs. Wrong/expired/replayed ticket, origin, role or session fails closed before private state. Future AUTH-01 owns actual cookies/recovery, API routing and production audience/TLS configuration.
+
+Public moves carry current viewer refs only. The reference transition restores the same private checkpoint, resolves refs and applies the move in its bounded worker. Durable idempotency binds the original reference intent under a separate semantic namespace; an identical retry checks the receipt before resolving now-expired refs. Reconsidered/rejected/stale intents need new IDs. Raw submit remains explicitly trusted internal API.
+
+Committed projection caching uses exact checkpoint bytes/digest, release/engine/policy/viewer/version and outcome metadata. Every read still checks participant-restricted committed storage and retained pins. Byte/count/TTL and in-flight limits, coalesced misses and defensive serialization bound memory and prevent viewer sharing or stale authority. Corrupt replacement bytes cannot hit a valid cache key.
+
+Publish full snapshots after COMMIT. PostgreSQL NOTIFY is a metadata-only hint; reconciliation reads durable version/outbox identity and periodically covers lost hints or listener restart. Connection sequence is local to each socket; match stateVersion is durable. Reconnect always obtains current committed pins/view and resubmits identical pending commands for their durable receipt. No speculative state, raw private logs or seed enters a socket.
+
+Bound connection/IP/principal/match rates, auth deadline, UTF8 frames, pending work, outbound bytes, cache and engine queues. Database quotas cover multi-instance authenticated work; process-local connection limits are an additional bound, not global enforcement. Coalesce obsolete snapshots; disconnect/resync slow consumers. Heartbeats, session expiry, graceful drain and owned shutdown do not concede or mutate match results. Browser transport has jittered retry ceilings, pending intent/receipt handling and explicit suspension/resume/disposal.
+
+## Alternatives and evidence
+
+In-memory-only receipts/tickets or sticky rooms fail cross-host retries and ticket replay. Redis introduces an unneeded service under the approved single-host budget. Forwarding raw engine IDs defeats PLAY-02. Re-executing a projection for every refresh exhausted14of48 audit requests; exact-version cache coalescing and request bounds address that measured source bottleneck. Deltas add base-version complexity before a measured need; use full snapshots. Increasing the4096-event limit without real-card evidence would hide an unqualified capacity change; keep fail-closed behavior and measure separately.
+
+Qualify actual two-client games, host/process change and lost acknowledgement against PostgreSQL; refs/forgeries and hidden-world byte equality; ticket replay/origin/session expiry; cache poisoning/eviction/coalescing; quotas/slow readers/drain and lost notifications; shipped browser boundaries, clean installation and native evidence. Synthetic qualification does not certify AUTH-01, clocks, official cards, private prompts, observers, devices, production load or general timings.

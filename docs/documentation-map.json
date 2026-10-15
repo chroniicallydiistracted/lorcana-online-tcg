@@ -112,7 +112,11 @@
       "path": "apps/web/README.md",
       "classification": "current",
       "sources": [
-        "apps/web/**"
+        "apps/web/**",
+        "packages/match-client/**",
+        "packages/contracts/src/live.ts",
+        "apps/match-service/src/gateway.ts",
+        "packages/db/src/transport-store.ts"
       ]
     },
     {
@@ -203,7 +207,11 @@
         "packages/engine-lab/**",
         "tests/engine/**",
         "scripts/rules/**",
-        "tests/rules/**"
+        "tests/rules/**",
+        "packages/match-client/**",
+        "packages/contracts/src/live.ts",
+        "apps/match-service/src/gateway.ts",
+        "packages/db/src/transport-store.ts"
       ]
     },
     {
@@ -240,7 +248,11 @@
         "vendor/tcg-engines/**",
         "packages/engine-adapter/**",
         "packages/engine-lab/**",
-        "tests/engine/**"
+        "tests/engine/**",
+        "packages/match-client/**",
+        "packages/contracts/src/live.ts",
+        "apps/match-service/src/gateway.ts",
+        "packages/db/src/transport-store.ts"
       ]
     },
     {
@@ -523,7 +535,11 @@
         "packages/engine-lab/**",
         "tests/engine/**",
         "scripts/rules/**",
-        "tests/rules/**"
+        "tests/rules/**",
+        "packages/match-client/**",
+        "packages/contracts/src/live.ts",
+        "apps/match-service/src/gateway.ts",
+        "packages/db/src/transport-store.ts"
       ]
     },
     {
@@ -1261,7 +1277,11 @@
         "scripts/release-manifest.mjs",
         "scripts/ci/**",
         "tests/foundation/**",
-        "tests/ci/**"
+        "tests/ci/**",
+        "packages/match-client/**",
+        "packages/contracts/src/live.ts",
+        "apps/match-service/src/gateway.ts",
+        "packages/db/src/transport-store.ts"
       ]
     },
     {
@@ -1281,7 +1301,11 @@
         "packages/engine-lab/**",
         "tests/engine/**",
         "scripts/rules/**",
-        "tests/rules/**"
+        "tests/rules/**",
+        "packages/match-client/**",
+        "packages/contracts/src/live.ts",
+        "apps/match-service/src/gateway.ts",
+        "packages/db/src/transport-store.ts"
       ]
     },
     {
@@ -1985,6 +2009,84 @@
     },
     {
       "path": "docs/reviews/2026-10-14-play-02-privacy.md",
+      "classification": "evidence",
+      "sources": []
+    },
+    {
+      "path": "docs/plans/2026-10-14-play-03-intake.md",
+      "classification": "planning",
+      "sources": []
+    },
+    {
+      "path": "docs/adr/0015-live-synthetic-transport.md",
+      "classification": "current",
+      "sources": [
+        "apps/match-service/**",
+        "packages/contracts/**",
+        "packages/db/**",
+        "scripts/release-manifest.mjs"
+      ]
+    },
+    {
+      "path": "docs/plans/2026-10-14-play-03-live-reconnect.md",
+      "classification": "planning",
+      "sources": []
+    },
+    {
+      "path": "docs/validation/inputs/play03-package-metadata.mjs",
+      "classification": "evidence",
+      "sources": []
+    },
+    {
+      "path": "packages/match-client/README.md",
+      "classification": "current",
+      "sources": [
+        "packages/match-client/**",
+        "apps/web/tests/live-client.spec.ts"
+      ]
+    },
+    {
+      "path": "docs/contracts/live.md",
+      "classification": "current",
+      "sources": [
+        "packages/contracts/src/live.ts",
+        "packages/match-client/**",
+        "apps/match-service/**",
+        "packages/db/src/transport-store.ts",
+        "packages/db/migrations/0004-live-transport.sql"
+      ]
+    },
+    {
+      "path": "docs/runbooks/live-matches.md",
+      "classification": "current",
+      "sources": [
+        "apps/match-service/**",
+        "packages/match-client/**",
+        "packages/db/**",
+        "apps/web/tests/live-client.spec.ts"
+      ]
+    },
+    {
+      "path": "docs/validation/play-03.md",
+      "classification": "current",
+      "sources": [
+        "apps/match-service/**",
+        "packages/match-client/**",
+        "packages/contracts/src/live.ts",
+        "packages/db/**",
+        "apps/web/**",
+        "scripts/release-manifest.mjs",
+        "scripts/ci/artifacts.mjs",
+        "tests/ci/**"
+      ]
+    },
+    {
+      "path": "docs/reviews/2026-10-15-play-03-live.md",
+      "classification": "evidence",
+      "sources": []
+    },
+    {
+      "path": "docs/validation/play-03-closure-check.mjs.txt",
       "classification": "evidence",
       "sources": []
     }

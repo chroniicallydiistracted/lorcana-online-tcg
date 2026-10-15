@@ -1,0 +1,23 @@
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-client@0.0.0 test /workspaces/lorcana-online-tcg/packages/match-client
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ client waits for correlated authorized snapshot, copies views and rejects raw-ID or overlapping moves (148.472289ms)
+✔ pending bytes and IDs survive suspension/host hop and duplicate receipt, while stale results are final (10.534285ms)
+✔ server sequence gaps, incompatible pins and changed account never replay a pending intent (10.594982ms)
+✔ transient receipts preserve pending identity; expiry stops retries and retains explicit recovery data (5.265807ms)
+✔ unrelated snapshots do not resend a pending command or hide its acknowledgement deadline (47.544458ms)
+✔ application receipt callbacks cannot overwrite terminal transport state or undo an accepted result (4.514734ms)
+✔ replacing an incomplete connection rejects its waiter rather than leaking a pending promise (0.717762ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 316.64164

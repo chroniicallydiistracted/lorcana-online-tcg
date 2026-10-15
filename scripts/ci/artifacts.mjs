@@ -4,7 +4,7 @@ import { sha256 } from '../documentation-lib.mjs';
 import { scanSecrets } from './security.mjs';
 import { buildFoundationRelease, verifyFoundationRelease, engineProvenanceFiles } from '../release-manifest.mjs';
 
-export const workspaces=['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db','packages/engine-adapter','packages/engine-lab','vendor/tcg-engines'];
+export const workspaces=['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/match-client','packages/service-runtime','packages/db','packages/engine-adapter','packages/engine-lab','vendor/tcg-engines'];
 const metadata=['package.json','pnpm-lock.yaml','pnpm-workspace.yaml','toolchain.json'];
 const reportNames=['sbom.cdx.json','dependency-audit.json','THIRD_PARTY_NOTICES.txt','pipeline.json','release-manifest.json'];
 const purpose='foundation build evidence with BOOT-05 release identity and RULE-02 experimental engine; not a deployment';

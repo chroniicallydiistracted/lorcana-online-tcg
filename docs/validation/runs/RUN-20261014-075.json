@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-075",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "apps/match-service/tests/cache.test.mjs",
+    "apps/match-service/tests/references.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "a80b7b330eba5bc6bda913eb5825549cedec5007d37faee4aac1743849f127b6",
+  "started_at": "2026-10-14T23:05:03.071Z",
+  "finished_at": "2026-10-14T23:05:04.473Z",
+  "recorded_at": "2026-10-14T23:05:04.473Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1402,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 red fixture correction: hand zone uses kind; cache absent and raw identities are incorrectly accepted by reference worker mode",
+  "log_path": "docs/validation/logs/RUN-20261014-075.txt",
+  "log_sha256": "e0a91b9468c6c2dab3b7ce117d6dcc4b952ca1f2d4ccf479d16b0deac426f8d3",
+  "redactions": 0
+}

@@ -1,5 +1,7 @@
 # BOOT-05 protocol/release acceptance evidence
 
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
 Completed scoped local acceptance on `codex/boot-05-contracts`, from clean `1c2580cac2dd8bafb66d45b26e79ce97c86cce80`. BOOT-05 accepts valid/invalid fixture tests, a bounded version-negotiation contract and proven browser/server separation. Full gameplay, authenticated sockets, qualified engine/content, real-device/Windows/hosted execution and production remain their independent tasks.
 
 Intake RUN20261007-035…038 passed actual existing-container doctor, static/documentation, five original bootstrap checks and authenticated read-only bootstrap database connectivity. No source/private credential/data/volume changes were made by those checks. Current-source proofs, review findings and closure will be appended before acceptance; no prior BOOT-03 result is claimed for changed source.

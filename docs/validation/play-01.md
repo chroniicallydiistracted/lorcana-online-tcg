@@ -1,5 +1,7 @@
 # PLAY-01 qualification
 
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
 Scope: Director-assigned durable match schema/receipts/journal/outbox/CAS foundation, plus server and Lab player-move filtering. Intake clean main9b9c8ac09bf1024f629e47eb3fb2a1adf729d9b8; working branch `codex/play-01-durable-commands`. Status: core local acceptance and staged Git-byte checks verified; review-ready with final native documentation closure. Isolated CI timing qualification remains pending under the Director’s leave-environment instruction. [Operation](../runbooks/match-commands.md), [ADR0013](../adr/0013-durable-synthetic-match-commands.md), [plan](../plans/2026-10-13-play-01-durable-commands.md) and CHG-20261013-004 own this scope.
 
 ## Source and environment

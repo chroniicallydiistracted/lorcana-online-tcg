@@ -1,5 +1,7 @@
 # Engine vendoring and qualification operation
 
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](../validation/play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
 Start with [ADR0010](../adr/0010-secure-randomness-replay.md), [RULE-03 evidence](../validation/rule-03.md), [pinned engine evidence](../validation/rule-02.md), [RULE-01 sources](../rules/README.md) and the universal workflow. This is synthetic qualification infrastructure. No real-game ingress, rewards, official cards or hidden-state transport is enabled.
 
 ## Container commands

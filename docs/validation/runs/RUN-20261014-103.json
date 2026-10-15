@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-103",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern",
+    "controlling parent IPC",
+    "apps/match-service/tests/live-client.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "62feb43516516825f13ffa1f47a73313aab718a97433e481732bf0fe12f3d179",
+  "started_at": "2026-10-14T23:49:11.541Z",
+  "finished_at": "2026-10-14T23:49:14.972Z",
+  "recorded_at": "2026-10-14T23:49:14.972Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3431,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 red qualification lifecycle: parent IPC loss must not orphan an owned gateway process after a host/editor interruption",
+  "log_path": "docs/validation/logs/RUN-20261014-103.txt",
+  "log_sha256": "f2876b9928d114e7e00b30919bc3816fae9dfb695f04e034f2eb1c96ae39ef96",
+  "redactions": 0
+}

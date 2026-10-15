@@ -1,5 +1,7 @@
 # PLAY-02 validation
 
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
 Current checkpoint: supported synthetic technical acceptance verified, independently reviewed; isolated timing/hosted/device gates remain pending. Change CHG-20261014-004. Branch codex/play-02-viewer-privacy from3983e1c, preserving the prior unpublished clock documentation. Director ended clock work. No clock/service/settings change, deployment or publication is performed.
 
 Backlog acceptance: opponent hand/deck identity absent from every transport/resource/log/export path. ADR0014 and docs/contracts/viewer.md define the bounded synthetic implementation and limitations. Mixed private fixtures vary hidden definitions/order/metadata/logs/effects; real engine and real database tests separately prove adapter/recovery integration. Current transport is an isolated test fixture, not authenticated game ingress. All cards/private choices and recipient delivery must keep their admission gates.
@@ -76,3 +78,7 @@ Follow-ups, none blocking:
 6. Naming only: the browser Lab still reports `viewerProjection: 'pending_PLAY-02'`/`VIEWER_PROJECTION_PENDING`, and `upstream.lock.json` keeps `pending_PLAY-02`. Lab hidden-state refusal is the correct behavior because the Lab runs the whole kernel locally; rename when that code is next changed.
 
 Local isolated CI was not rerun. The clock stepped about 91 ms every 30 s during this audit (≈1.1 s over the six-minute pipeline, consistent with RUN051), and the Director declined environment repair. Hosted Foundation qualification runs on the published audit branch before any main fast-forward. Its run IDs are recorded in a later change.
+
+## Merged hosted evidence observed during PLAY-03 intake
+
+Recorded at 2026-10-14T22:44:23.128Z. RUN-20261014-072 freshly observes successful Foundation job/step metadata for audit run38631667354 and main run38633232168, both at `6f2659eac632fdec92f7af5296505331782b638d`. The audit foundation job ran2026-10-14T20:23:39Z–20:33:59Z; main ran20:34:38Z–20:44:40Z. These are GitHub-reported job execution times, distinct from the local observation receipt. Hosted logs/artifacts were not downloaded; no count or artifact validation is inferred from metadata. The Director reports all14 stages and independent audit acceptance. This supersedes publication-pending notes above for PLAY-02; historical local timing failures and device/ordinary-play gates remain.

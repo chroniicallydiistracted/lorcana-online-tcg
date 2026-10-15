@@ -1,0 +1,19 @@
+✖ PLAY-03 qualification host reaps itself when its controlling parent IPC disappears (2614.086726ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3342.912597
+
+✖ failing tests:
+
+test at apps/match-service/tests/live-client.test.mjs:46:1
+✖ PLAY-03 qualification host reaps itself when its controlling parent IPC disappears (2614.086726ms)
+  Error: qualification condition deadline
+      at until (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/client-fixtures.mjs:10:8)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/live-client.test.mjs:49:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)

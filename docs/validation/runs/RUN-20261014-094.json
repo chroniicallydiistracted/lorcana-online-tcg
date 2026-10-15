@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-094",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "packages/match-client/tests/client.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "fe318c9526098eaf4a3d3de621fc9fff1a173ffdc80830b540bee5ac293b3092",
+  "started_at": "2026-10-14T23:33:28.570Z",
+  "finished_at": "2026-10-14T23:33:28.954Z",
+  "recorded_at": "2026-10-14T23:33:28.954Z",
+  "time_precision": "exact",
+  "elapsed_ms": 384,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 client adversarial red: unrelated snapshots must not retransmit/reset acknowledgement deadline; callback reentrancy and replaced-ready waiter remain safe",
+  "log_path": "docs/validation/logs/RUN-20261014-094.txt",
+  "log_sha256": "55049fe8e64d221926cb1cd93a8124151cd0beccb105958c2605a243b2cd6003",
+  "redactions": 0
+}

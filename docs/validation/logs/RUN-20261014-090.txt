@@ -1,0 +1,33 @@
+✔ PLAY-03 gateway requires bounded injected session/origin authority and never registers ordinary login (612.2414ms)
+✔ PLAY-03 two sockets recover on another gateway and retry a committed reference command once (2513.515373ms)
+✔ PLAY-03 revocation and drain withhold further private views and do not concede (612.188277ms)
+✖ PLAY-03 parallel ticket authentication reserves the per-actor connection cap before asynchronous work (476.712849ms)
+✔ PLAY-03 unauthenticated deadlines, binary/oversized frames and outbound budgets fail closed (767.671755ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5660.849932
+
+✖ failing tests:
+
+test at apps/match-service/tests/gateway.test.mjs:88:1
+✖ PLAY-03 parallel ticket authentication reserves the per-actor connection cap before asynchronous work (476.712849ms)
+  AssertionError [ERR_ASSERTION]: no more than four authenticated sockets per actor
+  
+  5 !== 4
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/gateway.test.mjs:100:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

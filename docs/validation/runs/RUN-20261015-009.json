@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-009",
+  "category": "static",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm docs:sync --change CHG-20261014-006 && pnpm docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286",
+  "started_at": "2026-10-15T00:13:02.486Z",
+  "finished_at": "2026-10-15T00:13:42.640Z",
+  "recorded_at": "2026-10-15T00:13:42.640Z",
+  "time_precision": "exact",
+  "elapsed_ms": 40148,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 final acceptance documentation, semantic map/feature/backlog/requirement/handoff and native changelog/callable closure",
+  "log_path": "docs/validation/logs/RUN-20261015-009.txt",
+  "log_sha256": "a04906807822d20b471a79b2ddda935e270abfd989814d5732235da48b9a2c45",
+  "redactions": 0
+}

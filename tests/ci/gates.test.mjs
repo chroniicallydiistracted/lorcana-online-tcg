@@ -30,10 +30,10 @@ test('license and advisory gates reject unknown policy and unavailable/malformed
 });
 function fixture(t) {
   const root=mkdtempSync(join(tmpdir(),'ci-artifact-')),out=join(root,'.local/artifacts');t.after(()=>rmSync(root,{recursive:true,force:true}));
-  for(const file of ['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db'].flatMap(workspace=>[workspace+'/package.json',workspace+'/dist/index.js'])) {mkdirSync(join(root,file,'..'),{recursive:true});writeFileSync(join(root,file),'synthetic');}
-  for (const workspace of ['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db']) {
+  for(const file of ['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db','packages/match-client'].flatMap(workspace=>[workspace+'/package.json',workspace+'/dist/index.js'])) {mkdirSync(join(root,file,'..'),{recursive:true});writeFileSync(join(root,file),'synthetic');}
+  for (const workspace of ['apps/web','apps/api','apps/match-service','apps/worker','packages/contracts','packages/design-system','packages/presentation','packages/service-runtime','packages/db','packages/match-client']) {
     const name='@lorcana/'+workspace.split('/')[1];
-    const dependencies=workspace.startsWith('apps/') && workspace!=='apps/web' ? {'@lorcana/service-runtime':'workspace:*'} : workspace==='packages/service-runtime' ? {'@lorcana/contracts':'workspace:*'} : {};
+    const dependencies=workspace==='apps/web'?{'@lorcana/match-client':'workspace:*'}:workspace==='packages/match-client'?{'@lorcana/contracts':'workspace:*'}:workspace.startsWith('apps/') && workspace!=='apps/web' ? {'@lorcana/service-runtime':'workspace:*'} : workspace==='packages/service-runtime' ? {'@lorcana/contracts':'workspace:*'} : {};
     writeFileSync(join(root,workspace,'package.json'),JSON.stringify({name,dependencies}));
   }
   mkdirSync(join(root,'packages/db/migrations'),{recursive:true});writeFileSync(join(root,'packages/db/migrations/0001-foundation-probes.sql'),'SELECT 1;');
@@ -142,4 +142,13 @@ test('release identity binds transitive executable workspace bytes and package r
     const row=manifest.files.find(row=>row.path==='build/'+file),changed=readFileSync(path);row.bytes=changed.length;row.sha256=sha256(changed);writeFileSync(manifestPath,JSON.stringify(manifest));
     assert.throws(()=>verifyArtifacts(out),file);
   }
+});
+
+
+test('reconnect client is shipped and release-bound even when outer artifact hashes are refreshed',t=>{
+ const {root,out,reports,identity}=fixture(t);createArtifacts(root,out,reports,identity);
+ const path='build/packages/match-client/dist/index.js';assert.ok(existsSync(join(out,path)),'browser transport executable omitted');
+ writeFileSync(join(out,path),'modified reconnect executable');
+ const manifest=JSON.parse(readFileSync(join(out,'manifest.json'))),row=manifest.files.find(x=>x.path===path),bytes=readFileSync(join(out,path));row.bytes=bytes.length;row.sha256=sha256(bytes);
+ writeFileSync(join(out,'manifest.json'),JSON.stringify(manifest));assert.throws(()=>verifyArtifacts(out),/release|Release/);
 });

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-003",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm db:check && pnpm db:health -- --target local && pnpm db:health -- --target test && pnpm db:test && pnpm test:match-integration"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286",
+  "started_at": "2026-10-15T00:04:00.507Z",
+  "finished_at": "2026-10-15T00:05:09.044Z",
+  "recorded_at": "2026-10-15T00:05:09.044Z",
+  "time_precision": "exact",
+  "elapsed_ms": 68531,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 final-source real PostgreSQL match storage, gateway, ticket/quota and separate-process client recovery suite after review corrections",
+  "log_path": "docs/validation/logs/RUN-20261015-003.txt",
+  "log_sha256": "d1dd2a38c180b746a1ef1e60650d0fc098d11918a556fc91545f45a799548900",
+  "redactions": 0
+}

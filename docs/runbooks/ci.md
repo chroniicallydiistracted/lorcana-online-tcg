@@ -1,5 +1,7 @@
 # Foundation CI and artifact operation
 
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](../validation/play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
 BOOT-03 owns the checked Actions definition and the same local pipeline. Current execution evidence is in [BOOT-03 validation](../validation/boot-03.md); [ADR0005](../adr/0005-ci-artifact-qualification.md) records policies and limitations. No deployment credentials or production publishing are used.
 
 ## Run from WSL/Linux host
@@ -69,3 +71,6 @@ Fresh RUN-20261014-002 observes successful GitHub audit run 38482253396 and main
 ## Completed rate-isolation investigation — 2026-10-14 UTC
 
 CHG-20261014-003 resolves the hidden daemon's owner/configuration and proves rate causality: mini_init-owned chronyd inherits a roughly 2.76% slowing correction; pausing it leaves the correction active, neutralizing it brings Linux/Windows elapsed readings into agreement, and restoring it brings the discrepancy back. The approved 300-second neutral window differs 658.302580 ms between calendar/adjusted elapsed; this is diagnostic proof, not a CI pass or lasting fix. Same daemon resumed, watchdog reaped, Ubuntu active/enabled and original workspace/database retained. Windows remains roughly 0.49 s behind three unauthenticated external references, a separate UTC accuracy issue. The [updated investigation](../validation/clock-investigation.md) contains raw evidence, precise inference limits and a reviewable maintenance plan. No permanent repair or further service pause/restart is authorized; clock guard/old failed receipts and all PLAY-02/03/04, AUTH/REPLAY, device and play/reward gates remain unchanged.
+
+
+PLAY-03 retains the same14 stages: live-match integration now includes ticket/quota/gateway and actual separate-process clients; foundation Chromium adds native-cookie live clients. Artifact v3 includes13 runtime workspace builds, with match-client recursively release-bound. Frozen installs/strict peers/allowBuilds remain unchanged. No current hosted run or new isolated CI timing pass is inferred from these definitions.

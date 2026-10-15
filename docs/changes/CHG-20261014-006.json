@@ -1,0 +1,804 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261014-006",
+  "title": "PLAY-03 reference-only live transport and reconnect",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-15T00:15:32.793Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "task_ids": [
+    "PLAY-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R02.031",
+    "R02.032",
+    "R02.034",
+    "R29.005",
+    "R30.010",
+    "R30.015"
+  ],
+  "feature_ids": [
+    "F-DOCS",
+    "F-CI",
+    "F-VIEWER-PRIVACY",
+    "F-MATCH-COMMANDS",
+    "F-PROTOCOL",
+    "F-RELEASE",
+    "F-DB",
+    "F-BOUNDARIES",
+    "F-LIVE-TRANSPORT",
+    "F-MATCH-CLIENT"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Inspect clean merged main6f2659e, existing committed Dev Container/database, full checklist/requirement/backlog scope and authority/protocol/release/viewer/service boundaries. Open the explicit AUTH-01 dependency question with the Director before dependent implementation."
+    },
+    {
+      "kind": "test",
+      "description": "RUN071 passes unchanged doctor/static/docs/bootstrap5/originalDB inside container; RUN072 observes public successful PLAY-02 audit/main hosted job/step metadata at6f2659e, without hosted log/artifact download or new PLAY-03 acceptance. Earlier recorder ID070 collision refused execution and preserved audit record."
+    },
+    {
+      "kind": "documentation",
+      "description": "Record merged hosted evidence, current scoped branch/intake constraints, reference-only commands/caching/limits/event-bound audit follow-ups, source ownership and pending authentication decision in native plan/map/backlog/features/qualification/handoff. No application code or database/environment configuration changes."
+    },
+    {
+      "kind": "review",
+      "description": "Director keeps AUTH-01 separate and authorizes isolated authenticated test sessions for PLAY-03. ADR0015/inline implementation plan define protocol2, same-checkpoint reference transitions, bounded committed views, shared single-use tickets/quotas, metadata hints/reconciliation, optional gateway and browser-safe reconnect client. Ordinary startup/admission remains closed."
+    },
+    {
+      "kind": "implementation",
+      "description": "Task1 exact-checkpoint worker ref resolution and separate durable reference semantic namespace, cached committed participant projections with48-reader coalescing, byte/count/TTL/in-flight bounds and archive/pin/viewer/outcome keying. Existing trusted raw submit remains internal."
+    },
+    {
+      "kind": "implementation",
+      "description": "Task2/3 closed protocol2 intents/envelopes/ticket schemas, retained diagnostic1 and new release range1..2; immutable additive0004 permits new match pin2 and adds hashed single-use tickets/shared DB quotas. Participant metadata observer and COMMIT-only NOTIFY hints support reconciliation."
+    },
+    {
+      "kind": "implementation",
+      "description": "Task4 optional Fastify gateway requires injected AUTH-01 interface and exact origins, bounded first-frame ticket authentication, private session rechecks, refs-only commands, durable receipt mapping and full committed snapshot refresh, hint-independent polling, heartbeat and drain. Ordinary main stays diagnostic-only."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN074 used wrong zone field in test; RUN075 corrects kind and reproduces actual raw-ID acceptance before worker fix. RUN083 preserves PostgreSQL42P08 query inference error after0004 test application; explicit actor varchar casts fix it in RUN084 without rewriting SQL."
+    },
+    {
+      "kind": "revision",
+      "description": "Selected exact Fastify/WebSocket baseline plus compatible ws8.22.0/@types/ws8.18.2 metadata. RUN085 input archived byte-for-byte under validation/inputs. RUN086 deliberately changes manifest/lock, child0 but receipt source_changed remains failed; RUN087 frozen install and both DB role-health checks pass."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN090 reproduces five concurrent actor admissions bypassing the four-slot cap; reserve actor synchronously before asynchronous describe and RUN091 passes all actual gateway negatives."
+    },
+    {
+      "kind": "implementation",
+      "description": "New browser-owned match-client workspace links contracts with pnpm; wire-only public client has bounded jitter/retry/deadlines, actor-bound pending export/restore, exact request IDs/refs across suspension/hops, strict sequence/pin/viewer checks and separate transient/durable outcomes. No auth cookie, server state or login implementation enters its source."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN094 reproduces duplicate pending retransmission on unrelated snapshots, application callback reentrancy invalidating accepted receipts and a replaced-ready promise left pending. RUN095 passes seven client cases after per-connection send tracking, preserved acknowledgement deadlines and internal-state-before-callback ordering."
+    },
+    {
+      "kind": "revision",
+      "description": "Link match-client to web with package manager; include its compiled bytes and package metadata in actual release/artifact closure. RUN096 omission red/RUN097 all CI tooling green includes tamper rejection even after refreshing outer hashes. Web dev filesystem explicitly permits only this browser-owned workspace."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN098 direct Fastify.close leaves owned resources open; RUN099 exposes test-helper export typo and a pg listener initial-close hang. RUN100 isolates end-before-connect behavior; await each owned connection attempt before ending, including reconnect attempts, and bind cleanup before plugin close. RUN101 passes all11 actual lifecycle/ticket/socket cases."
+    },
+    {
+      "kind": "test",
+      "description": "RUN102 uses actual WebSocket clients against separate OS gateway processes and PostgreSQL to finish a natural reference-only synthetic game. Pausing a client read, waiting for COMMIT, SIGKILLing the owning gateway and reconnecting elsewhere recovers the original old-ref pending intent as one duplicate accepted receipt; journal/outbox stay once."
+    },
+    {
+      "kind": "fix",
+      "description": "RUN103 reproduces orphan qualification gateway after controlling parent IPC loss; RUN104 adds parent-loss cleanup and guards disconnect ownership. RUN105 passes all types but fails lint const/test-global rules; RUN106 fixes code without weakening lint."
+    },
+    {
+      "kind": "test",
+      "description": "RUN107 passes all8 Chromium cases, including native HttpOnly cookies, real HTTP/WebSockets, two isolated participants, rotating refs and reconnect to another process. RUN108 passes original bootstrap/role health, real DB/storage/gateway/process-client suite. AUTH-01 remains separate."
+    },
+    {
+      "kind": "documentation",
+      "description": "Add exact live wire and browser lifecycle contract, optional gateway operation/limits, package API and native validation ledger; update additive0004/protocol1..2/client artifact closure and partial requirement links. Preserve all548 requirement definitions/20 optional/device/status fields and historical evidence."
+    },
+    {
+      "kind": "fix",
+      "description": "Independent read-only review finds no important privacy/authority/idempotency defects; two minor callback cleanup findings reproduced in RUN110/RUN113, fixed and all9 client cases pass RUN114. RUN109 documents missing individual schema review; RUN112 detects a wildcard review rendered as a broken link. Expand review paths to actual files; no gate bypass."
+    },
+    {
+      "kind": "review",
+      "description": "Independent static whole-scope review finds no critical/important issues; both minor callback disposal findings are reproduced/fixed/confirmed closed. Review runs no tests or listeners. Current RUN-20261015-002 passes frozen install and whole foundation324 project/406 upstream/2 injection checks with valid timing; no old-source hosted acceptance inferred."
+    },
+    {
+      "kind": "test",
+      "description": "Final executable64bef2e3 passes full frozen foundation324 project/406 upstream/2 injection,35actual DB checks,8foundation+2Lab Chromium, installed license/integrity/advisory222 components, native docs and fresh source-only frozen full suite. Final closure verifies361vendor/59patches,0600private/ignored,2729unique historical blobs,622log digests, original548/33/20 and unchanged prior SQL/engine/container, with no owned listeners/children."
+    },
+    {
+      "kind": "documentation",
+      "description": "Finalize synthetic PLAY-03 acceptance, exact live/API/operations/contracts/ADR, independent review, feature/backlog/partial requirement links and handoff. Current docs/Git packaging remains checked separately; no ordinary AUTH/card/reward/device/production/remote-host performance or fresh hosted/isolated artifact qualification inferred. Automatic approval review declined deriving a new checker from prior evidence before execution; a new PLAY-03 input was authored directly and historical RULE-04 bytes remain unchanged."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/current-state.json",
+    "docs/validation/logs/RUN-20261015-010.txt",
+    "docs/validation/runs/RUN-20261015-010.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/validation/play-02.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Native schema1, closed evidence/device/history contracts and authoring templates remain unchanged; only owning map/feature/source snapshots are refreshed where applicable."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Native schema1, closed evidence/device/history contracts and authoring templates remain unchanged; only owning map/feature/source snapshots are refreshed where applicable."
+    },
+    {
+      "path": "docs/plans/2026-10-14-play-03-intake.md",
+      "disposition": "updated",
+      "reason": "Reflect actual clean merged source, freshly observed hosted PLAY-02 metadata and explicit PLAY-03 intake/authentication dependency; distinguish pending product implementation, local checks and downloaded-artifact/device acceptance."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/contracts/viewer.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/adr/0014-viewer-projection-privacy.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/runbooks/viewer-privacy.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Native schema1, closed evidence/device/history contracts and authoring templates remain unchanged; only owning map/feature/source snapshots are refreshed where applicable."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Native schema1, closed evidence/device/history contracts and authoring templates remain unchanged; only owning map/feature/source snapshots are refreshed where applicable."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Existing vision/provider/budget/D10 and documentation scopes are unchanged; AUTH-01 separation is recorded in owning task/ADR, not an invented Director launch decision."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Existing vision/provider/budget/D10 and documentation scopes are unchanged; AUTH-01 separation is recorded in owning task/ADR, not an invented Director launch decision."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Added partial PLAY-03 ticket/evidence only; all548 source definitions,20 optional flags and status/device/disposition fields retained."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "packages/db/README.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Native schema1, closed evidence/device/history contracts and authoring templates remain unchanged; only owning map/feature/source snapshots are refreshed where applicable."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Native schema1, closed evidence/device/history contracts and authoring templates remain unchanged; only owning map/feature/source snapshots are refreshed where applicable."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/validation/clock-investigation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. No owned code/policy is altered: retain the dated milestone evidence and its source-specific limits, universal workflow, synthetic card/fan-content and provider/rules/engine gates. Current transport is documented in ADR0015/live operation rather than claiming broader acceptance."
+    },
+    {
+      "path": "docs/adr/0015-live-synthetic-transport.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "packages/match-client/README.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/contracts/live.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/runbooks/live-matches.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/validation/play-03.md",
+      "disposition": "updated",
+      "reason": "Compared source ownership and current milestone/contract statements with PLAY-03. Update current checkpoint or owning behavior for distinct live2/diagnostic1, additive0004,13-workspace closure and explicit AUTH/admission/qualification limits; preserve dated executed results."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed unchanged native schema/authoring contracts or owning current source policy against PLAY-03. Keep schema1 append-only evidence, certification and all unrelated product/device/provider gates. New transport behavior belongs to ADR0015/live contract; no prior execution record is rewritten."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed unchanged native schema/authoring contracts or owning current source policy against PLAY-03. Keep schema1 append-only evidence, certification and all unrelated product/device/provider gates. New transport behavior belongs to ADR0015/live contract; no prior execution record is rewritten."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed unchanged native schema/authoring contracts or owning current source policy against PLAY-03. Keep schema1 append-only evidence, certification and all unrelated product/device/provider gates. New transport behavior belongs to ADR0015/live contract; no prior execution record is rewritten."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed unchanged native schema/authoring contracts or owning current source policy against PLAY-03. Keep schema1 append-only evidence, certification and all unrelated product/device/provider gates. New transport behavior belongs to ADR0015/live contract; no prior execution record is rewritten."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed unchanged native schema/authoring contracts or owning current source policy against PLAY-03. Keep schema1 append-only evidence, certification and all unrelated product/device/provider gates. New transport behavior belongs to ADR0015/live contract; no prior execution record is rewritten."
+    },
+    {
+      "path": "docs/schemas/card-certification.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed unchanged native schema/authoring contracts or owning current source policy against PLAY-03. Keep schema1 append-only evidence, certification and all unrelated product/device/provider gates. New transport behavior belongs to ADR0015/live contract; no prior execution record is rewritten."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-071.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 intake on merged main6f2659e: exact doctor, static documentation/configuration checks, unchanged bootstrap and original authenticated database connection"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-072.json",
+      "outcome": "passed",
+      "scope": "Fresh public PLAY-02 audit38631667354 and merged main38633232168 CI metadata; no downloaded hosted logs/artifact or new PLAY-03 acceptance"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-073.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 intake native documentation synchronization: merged PLAY-02 hosted metadata, actual branch/baseline, scoped audit follow-ups and pending Director AUTH-01 boundary"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-074.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red: bounded committed projection cache absent and actual worker reference transition must reject raw identities"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-075.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red fixture correction: hand zone uses kind; cache absent and raw identities are incorrectly accepted by reference worker mode"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-076.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 bounded cache and same-checkpoint reference transition: scoped compile and red-to-green worker/cache behavior"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-077.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red live DB: reference-only durable service is absent and 48 same-version views are not coalesced"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-078.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 Task1: same-checkpoint refs, original durable semantic retry identity and 48-read exact-view cache with tamper/actor isolation; prior unit/live DB regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-079.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red closed protocol2: reference-only frames, viewer envelope correlation and ticket/authentication contracts are absent"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-080.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 protocol2 closed schemas and reference-only/ticket/viewer envelope negatives; contracts compile and all contract regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-081.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red live DB: protocol2 release/match pins, atomic shared ticket/quotas, committed metadata and transaction hints are absent"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-082.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 Task2/3 scoped contracts/database/match builds before applying additive live-transport migration"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-083.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 additive migration0004 test-first: preserve protocol1 data, qualify protocol2 pins/ticket race/shared quotas/COMMIT-only metadata hints plus existing database/match regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-084.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 SQL parameter inference correction: explicit actor varchar casts at SELECT and authorization predicate; all actual ticket/quota/commit-hint and pin cases"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-085.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 exact owning-workspace WebSocket dependency qualification against registry metadata; no installs or build-script allowances yet"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-086.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 install scoped exact Fastify5.12.5/WebSocket11.3.3 and ws8.22.0/types8.18.2 test/types dependencies; strict peers and build allowances retained"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-087.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 unchanged frozen install and strict peers after deliberate dependency mutation; apply reviewed0004 to original local target after test proof and check both restricted-role sets"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-088.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red actual optional WebSocket gateway: injected sessions/origins, single-use auth, cross-host refs/duplicate receipt, revocation/drain absent"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-089.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 optional live gateway scoped compile and actual socket/session/origin/replay/host-change/duplicate/revocation/drain regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-090.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 adversarial gateway admission: concurrent same-actor cap race plus actual auth deadline, binary/oversize and output-budget closures"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-091.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 gateway cap race correction: reserve actor slot before asynchronous describe; all five actual gateway/session/admission/size/buffer tests"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-092.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red browser-safe client state machine: correlated snapshot, stable pending refs/IDs, host hop, gap/account switch and transient-vs-durable receipts absent"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-093.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 browser-safe reconnect/pending client compile and four simulated protocol-state regressions; no real browser claim"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-094.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 client adversarial red: unrelated snapshots must not retransmit/reset acknowledgement deadline; callback reentrancy and replaced-ready waiter remain safe"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-095.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 client fixes from red regressions: send once per connection, preserve ack deadline, settle receipts before app callbacks, reject replaced-ready waiter and isolate fetch cancellation"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-096.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red actual artifact builder: owning reconnect client must be shipped and release-bound, including refreshed outer hashes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-097.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 public reconnect workspace linking/frozen install and release/artifact ownership; all CI tooling regressions including inner-client tampering with refreshed outer hashes"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-098.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red lifecycle: calling exposed Fastify.close directly must own private pools, hints and reconciliation cleanup"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-099.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 lifecycle correction: register private cleanup before plugin close hook; direct Fastify.close and explicit gateway.close own all pools/hints/timers; six real gateway regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-100.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red root cause behind direct-close timeout: PostgreSQL hint close must not end its client before initial connect settles"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-101.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 listener lifecycle fix: await owned initial/reconnect before ending pg client; direct/explicit gateway shutdown, five shared-store cases and all six socket cases"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-102.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 actual client/protocol/DB qualification: two separate gateway processes finish natural reference-only play; SIGKILL after COMMIT with unread ACK recovers same pending old refs once on other host"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-103.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 red qualification lifecycle: parent IPC loss must not orphan an owned gateway process after a host/editor interruption"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-104.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 qualification child parent-IPC cleanup regression"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-105.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 final-owner TypeScript and lint integration"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-106.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 scoped typecheck/lint correction without weakening rules"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-107.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 real Chromium native-cookie WebSocket clients across separate gateway processes plus retained foundation browser suite"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-108.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 current real PostgreSQL roles/bootstrap/storage/ticket/quota/gateway/process-client suite"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-109.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 current docs source-impact review and native callable/changelog synchronization"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-110.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 independent-review timer cleanup red: synchronous status disposal must not schedule later retries"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-111.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 independent-review correction: generation checks after callbacks prevent orphan retry timers; eight simulated client regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-112.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 expanded individual schema documentation reviews and native synchronization"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-113.json",
+      "outcome": "failed",
+      "scope": "PLAY-03 review red: onView disposal must settle resume and preserve closed suspension state"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261014-114.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 review callback disposal fixes and all nine simulated lifecycle/pending regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-001.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 corrected exact-file semantic documentation reviews and native synchronization"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-002.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 final-source frozen install and complete foundation checks, retaining all existing project/engine/injection tests"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-003.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 final-source real PostgreSQL match storage, gateway, ticket/quota and separate-process client recovery suite after review corrections"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-004.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 final-source Chromium foundation8 and Lab2 browser boundary/lifecycle proofs"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-005.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 installed dependency license/integrity/advisory qualification for exact frozen graph and vendored provenance"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-006.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 reviewed current documentation and source-matched feature evidence before clean installation proof"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-007.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 final source-only clean frozen install and full foundation without credentials, Git checkout or prebuilt artifacts"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-008.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 final matched-source, private-file preservation, full-history secret/log/scope/provenance and owned-process closure checks"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-009.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 final acceptance documentation, semantic map/feature/backlog/requirement/handoff and native changelog/callable closure"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261015-010.json",
+      "outcome": "passed",
+      "scope": "PLAY-03 final documentation gate and canonical staged executable/config/test/schema byte identity against tested source"
+    }
+  ],
+  "limitations": [
+    "AUTH-01 deliberately remains separate; optional injected test-session transport does not enable ordinary/card/reward/observer/private-choice admission or supply actual login/recovery, clocks, game UI, device/load/production acceptance.",
+    "Separate gateway processes run inside one existing container; no remote-machine/network fault or50-player capacity proof. Real-card restore/event bounds, abandoned quota-key retention/global connection sizing and production proxy/TLS need later evidence.",
+    "No clock/environment repair or guard change; no new isolated/hosted PLAY-03 artifact/timing qualification. RUN072 observes prior hosted PLAY-02 metadata only. All scoped failures and earlier clock-rejected receipts remain immutable."
+  ],
+  "next_actions": [
+    "Director review/audit/publication and hosted CI on this prepared local branch before any merge; next documented implementation PLAY-04 requires its own intake and policy decisions."
+  ]
+}

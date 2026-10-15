@@ -1,0 +1,18 @@
+✖ PLAY-03 hints close before initial connect completes without leaving a pending owned lifecycle (1507.237919ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2161.741409
+
+✖ failing tests:
+
+test at apps/match-service/tests/transport-store.test.mjs:58:1
+✖ PLAY-03 hints close before initial connect completes without leaving a pending owned lifecycle (1507.237919ms)
+  Error: hint close hung during initial connection
+      at Timeout.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/transport-store.test.mjs:60:99)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)

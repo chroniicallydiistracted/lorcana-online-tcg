@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-081",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "apps/match-service/tests/transport-store.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "da5f4c23b9561f96b6dd01f7901750ee017b22e48ead10e00091f880fc6857a5",
+  "started_at": "2026-10-14T23:11:13.729Z",
+  "finished_at": "2026-10-14T23:11:14.546Z",
+  "recorded_at": "2026-10-14T23:11:14.546Z",
+  "time_precision": "exact",
+  "elapsed_ms": 817,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 red live DB: protocol2 release/match pins, atomic shared ticket/quotas, committed metadata and transaction hints are absent",
+  "log_path": "docs/validation/logs/RUN-20261014-081.txt",
+  "log_sha256": "199701846af7d02ebd80532eca3b08ed70ad5eb44211d6cb00c7e70cdcf51895",
+  "redactions": 0
+}

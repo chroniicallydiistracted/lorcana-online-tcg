@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-089",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/match-service\",\"build\"],{stdio:\"inherit\"});execFileSync(process.execPath,[\"--test\",\"--test-concurrency=1\",\"apps/match-service/tests/gateway.test.mjs\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "980383326778bd20dca879fd882f68eccf4846378719d0a9bb1c020991466cf2",
+  "started_at": "2026-10-14T23:23:52.499Z",
+  "finished_at": "2026-10-14T23:23:58.977Z",
+  "recorded_at": "2026-10-14T23:23:58.977Z",
+  "time_precision": "exact",
+  "elapsed_ms": 6477,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 optional live gateway scoped compile and actual socket/session/origin/replay/host-change/duplicate/revocation/drain regressions",
+  "log_path": "docs/validation/logs/RUN-20261014-089.txt",
+  "log_sha256": "3c5ea087c1dcb0bacc61d704e5d0c1cbec5192ef3af92748a69ebf3ff007cb8f",
+  "redactions": 0
+}

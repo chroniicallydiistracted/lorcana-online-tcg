@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-096",
+  "category": "simulated",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern",
+    "reconnect client",
+    "tests/ci/gates.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "bb961df685bf88c301dc88c310e551090ae9b04c3928a108e8fd5e278819220b",
+  "started_at": "2026-10-14T23:36:23.891Z",
+  "finished_at": "2026-10-14T23:36:24.371Z",
+  "recorded_at": "2026-10-14T23:36:24.371Z",
+  "time_precision": "exact",
+  "elapsed_ms": 479,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 red actual artifact builder: owning reconnect client must be shipped and release-bound, including refreshed outer hashes",
+  "log_path": "docs/validation/logs/RUN-20261014-096.txt",
+  "log_sha256": "a5fe338674fe859ff32eb99433c4f99a406ff1c6d294b04f306ae115d88a58fb",
+  "redactions": 0
+}

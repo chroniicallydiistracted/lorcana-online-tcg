@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-084",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/db\",\"build\"],{stdio:\"inherit\"});execFileSync(process.execPath,[\"--test\",\"--test-concurrency=1\",\"apps/match-service/tests/transport-store.test.mjs\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "3f062e17954c2ec991586e2f655f525603b9d11594d815bb60a0de8cb1fc8103",
+  "started_at": "2026-10-14T23:14:55.872Z",
+  "finished_at": "2026-10-14T23:14:59.884Z",
+  "recorded_at": "2026-10-14T23:14:59.884Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4012,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 SQL parameter inference correction: explicit actor varchar casts at SELECT and authorization predicate; all actual ticket/quota/commit-hint and pin cases",
+  "log_path": "docs/validation/logs/RUN-20261014-084.txt",
+  "log_sha256": "265901b94a3e9ce3aff07804a485611267356fc99bee220ffd93f2c9bcbd83af",
+  "redactions": 0
+}

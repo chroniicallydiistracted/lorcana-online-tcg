@@ -1,0 +1,77 @@
+✖ projection cache coalesces a burst into one producer and stores immutable serialized bytes (1.480935ms)
+✖ cache isolates identity keys, expires monotonically and evicts by entry and byte bounds (0.354447ms)
+✖ failed and pending producers cannot poison entries or create an unbounded queue (0.215466ms)
+✖ reference transition resolves only current viewer refs inside the same actual checkpoint (971.380816ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1367.637001
+
+✖ failing tests:
+
+test at apps/match-service/tests/cache.test.mjs:10:1
+✖ projection cache coalesces a burst into one producer and stores immutable serialized bytes (1.480935ms)
+  AssertionError [ERR_ASSERTION]: bounded committed projection cache is missing
+      at cache (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/cache.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/cache.test.mjs:11:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/cache.test.mjs:20:1
+✖ cache isolates identity keys, expires monotonically and evicts by entry and byte bounds (0.354447ms)
+  AssertionError [ERR_ASSERTION]: bounded committed projection cache is missing
+      at cache (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/cache.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/cache.test.mjs:21:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/cache.test.mjs:32:1
+✖ failed and pending producers cannot poison entries or create an unbounded queue (0.215466ms)
+  AssertionError [ERR_ASSERTION]: bounded committed projection cache is missing
+      at cache (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/cache.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/cache.test.mjs:33:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/references.test.mjs:6:1
+✖ reference transition resolves only current viewer refs inside the same actual checkpoint (971.380816ms)
+  TypeError: Cannot read properties of undefined (reading 'cards')
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/references.test.mjs:14:59)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)

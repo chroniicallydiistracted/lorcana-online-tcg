@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-086",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/match-service\",\"add\",\"fastify@5.12.5\",\"@fastify/websocket@11.3.3\"],{stdio:\"inherit\"});execFileSync(\"pnpm\",[\"--filter\",\"@lorcana/match-service\",\"add\",\"-D\",\"ws@8.22.0\",\"@types/ws@8.18.2\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "3f062e17954c2ec991586e2f655f525603b9d11594d815bb60a0de8cb1fc8103",
+  "started_at": "2026-10-14T23:17:56.851Z",
+  "finished_at": "2026-10-14T23:18:00.808Z",
+  "recorded_at": "2026-10-14T23:18:00.808Z",
+  "time_precision": "exact",
+  "elapsed_ms": 3957,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "source_changed",
+  "summary": "PLAY-03 install scoped exact Fastify5.12.5/WebSocket11.3.3 and ws8.22.0/types8.18.2 test/types dependencies; strict peers and build allowances retained",
+  "log_path": "docs/validation/logs/RUN-20261014-086.txt",
+  "log_sha256": "919daed9995ee2baa549303577aba25cdeaad98d552403f0df28a2584a677bf5",
+  "redactions": 0
+}

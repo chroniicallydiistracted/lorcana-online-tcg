@@ -1,7 +1,7 @@
 import { existsSync, lstatSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { sha256 } from './documentation-lib.mjs';
-import { parseReleaseManifest, FOUNDATION_PROTOCOL } from '../packages/contracts/src/index.ts';
+import { parseReleaseManifest, IMPLEMENTED_PROTOCOL_RANGE } from '../packages/contracts/src/index.ts';
 
 function digestTree(root) {
   if (!existsSync(root) || lstatSync(root).isSymbolicLink() || !lstatSync(root).isDirectory()) throw new Error('Missing or unsafe release build');
@@ -19,7 +19,7 @@ function digestTree(root) {
   return sha256(JSON.stringify(rows));
 }
 
-const releaseWorkspaces = ['apps/web', 'apps/api', 'apps/match-service', 'apps/worker', 'packages/contracts', 'packages/design-system', 'packages/presentation', 'packages/service-runtime', 'packages/db', 'packages/engine-adapter', 'packages/engine-lab', 'vendor/tcg-engines'];
+const releaseWorkspaces = ['apps/web', 'apps/api', 'apps/match-service', 'apps/worker', 'packages/contracts', 'packages/design-system', 'packages/presentation', 'packages/match-client', 'packages/service-runtime', 'packages/db', 'packages/engine-adapter', 'packages/engine-lab', 'vendor/tcg-engines'];
 export const engineProvenanceFiles = ['vendor/tcg-engines/upstream.lock.json', 'vendor/tcg-engines/LICENSE', 'vendor/tcg-engines/provenance/LORCANA_LICENSE.txt'];
 function digestClosure(root, owner, includeMigrations = false) {
   const packages = new Map(releaseWorkspaces.map(path => {
@@ -63,7 +63,7 @@ export function buildFoundationRelease(root, identity, createdAt = new Date().to
   const engineDigest = sha256(JSON.stringify({ server: digestClosure(root, 'packages/engine-adapter'), lab: digestClosure(root, 'packages/engine-lab') }));
   components.engine = { status: 'built', version: 'engine-' + engineDigest, sha256: engineDigest };
   for (const name of ['content', 'rules', 'products', 'rewards']) components[name] = { status: 'reserved' };
-  const fields = { schemaVersion: 1, purpose: 'foundation', createdAt, source: { commit: identity.source_commit, fingerprint: identity.source_fingerprint, lockSha256: identity.lock_sha256 }, protocol: FOUNDATION_PROTOCOL, components };
+  const fields = { schemaVersion: 1, purpose: 'foundation', createdAt, source: { commit: identity.source_commit, fingerprint: identity.source_fingerprint, lockSha256: identity.lock_sha256 }, protocol: IMPLEMENTED_PROTOCOL_RANGE, components };
   return parseReleaseManifest({ ...fields, releaseId: 'foundation-' + sha256(JSON.stringify(fields)) });
 }
 export function verifyFoundationRelease(root, value, identity) {

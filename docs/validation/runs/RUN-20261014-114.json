@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-114",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/match-client build && pnpm --filter @lorcana/match-client test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286",
+  "started_at": "2026-10-14T23:59:58.385Z",
+  "finished_at": "2026-10-15T00:00:00.248Z",
+  "recorded_at": "2026-10-15T00:00:00.248Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1863,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 review callback disposal fixes and all nine simulated lifecycle/pending regressions",
+  "log_path": "docs/validation/logs/RUN-20261014-114.txt",
+  "log_sha256": "56f52c00b09d6f3f747e595d314056a3a6722f723b2c9bb4838cc6713b71e8f8",
+  "redactions": 0
+}

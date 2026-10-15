@@ -10,7 +10,14 @@ try {
   else throw new Error('Invalid job');
   if(job.kind==='project')parentPort?.postMessage({ok:true,value:match.project(job.viewer)});
   else {
-    const result=job.kind==='transition'?match.submit(job.command):null;
+    let result:{accepted:boolean;code:string|null}|null=null;
+    if(job.kind==='transition') {
+      if(job.references) {
+        let input:Record<string,unknown>|undefined;
+        try {input=match.resolveIntent(job.command.actor,job.command.move,job.command.input);}catch{result={accepted:false,code:'INVALID_INTENT'};}
+        if(input)result=match.submit({...job.command,input});
+      }else result=match.submit(job.command);
+    }
     parentPort?.postMessage({ok:true,value:{status:match.status(),checkpoint:match.checkpoint(),result}});
   }
 }catch{parentPort?.postMessage({ok:false});}

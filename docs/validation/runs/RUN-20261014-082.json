@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-082",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {execFileSync} from \"node:child_process\";for(const name of [\"@lorcana/contracts\",\"@lorcana/db\",\"@lorcana/match-service\"])execFileSync(\"pnpm\",[\"--filter\",name,\"build\"],{stdio:\"inherit\"});"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "1f0471b370d6eec0f3e6d615e4c9fb01f17ee89bf8b74230e3b6eddcd09a24f6",
+  "started_at": "2026-10-14T23:12:58.254Z",
+  "finished_at": "2026-10-14T23:13:03.345Z",
+  "recorded_at": "2026-10-14T23:13:03.345Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5090,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 Task2/3 scoped contracts/database/match builds before applying additive live-transport migration",
+  "log_path": "docs/validation/logs/RUN-20261014-082.txt",
+  "log_sha256": "7188431f5ab480c14e1db9a8eb4ad816ba3d1d3f1c9f1360725a0644bed776d4",
+  "redactions": 0
+}

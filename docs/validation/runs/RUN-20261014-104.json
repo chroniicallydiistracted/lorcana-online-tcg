@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-104",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern",
+    "controlling parent IPC",
+    "apps/match-service/tests/live-client.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "45a653cd15cb4dc020ffa6abe7aa28026ac323346c10a8269b87b10ed687c411",
+  "started_at": "2026-10-14T23:52:02.104Z",
+  "finished_at": "2026-10-14T23:52:03.992Z",
+  "recorded_at": "2026-10-14T23:52:03.992Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1888,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 qualification child parent-IPC cleanup regression",
+  "log_path": "docs/validation/logs/RUN-20261014-104.txt",
+  "log_sha256": "ea8489e230d924fe4406fea85853506ac5626c93664f75cc56b2784512fd89ee",
+  "redactions": 0
+}

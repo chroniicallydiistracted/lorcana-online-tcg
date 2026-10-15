@@ -1,5 +1,7 @@
 # BOOT-01 validation evidence
 
+Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+
 Current continuation: BOOT-02 local acceptance is verified on `codex/boot-02-database`; [its validation record](boot-02.md) and ADR0004 supersede the earlier database-pending observations below. This document retains explicitly dated BOOT-01/governance evidence; BOOT-03 local CI/artifact acceptance is now verified in its [validation](boot-03.md); Windows, full product/device, hosted CI and production acceptance remain pending.
 
 Director assignment: 2026-10-05 America/Phoenix. Agent execution: 2026-10-06 UTC / 2026-10-05 local. Baseline main `335da7edffea40294b8dcf60ae256524432c350b`, clean at takeover; implementation branch `codex/boot-01-foundation`.

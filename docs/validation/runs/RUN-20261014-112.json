@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261014-112",
+  "category": "static",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm docs:sync --change CHG-20261014-006 && pnpm docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f2659eac632fdec92f7af5296505331782b638d",
+  "source_fingerprint": "978b2f6a57263b7d8f9502a43b2fdb3c4f2e590d4db6de99488edb4aa3653c72",
+  "started_at": "2026-10-14T23:59:03.719Z",
+  "finished_at": "2026-10-14T23:59:36.913Z",
+  "recorded_at": "2026-10-14T23:59:36.913Z",
+  "time_precision": "exact",
+  "elapsed_ms": 33192,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "PLAY-03 expanded individual schema documentation reviews and native synchronization",
+  "log_path": "docs/validation/logs/RUN-20261014-112.txt",
+  "log_sha256": "82889f0ee134bb5e3056d5d9da5ffd80947227ebb5c791fcfd05e4cf6b71c029",
+  "redactions": 0
+}
