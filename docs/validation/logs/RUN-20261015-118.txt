@@ -1,0 +1,47 @@
+{
+ "D1_waitingOpeningConcessionAdmission": "reserved",
+ "D1_activeClientWhileLeaseHeld": {
+  "outcome": "rejected closed",
+  "elapsedMs": 1838,
+  "busyReceipts": 8,
+  "maintenanceReceipts": 0,
+  "newSockets": 0,
+  "clientStatus": "closed"
+ },
+ "D1_afterRelease": {
+  "stateVersion": 0,
+  "clockStatus": "running"
+ },
+ "D2_openingSteps": [
+  {
+   "step": 0,
+   "outcome": "accepted",
+   "elapsedMs": 197,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "step": 1,
+   "outcome": "accepted",
+   "elapsedMs": 206,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "step": 2,
+   "outcome": "accepted",
+   "elapsedMs": 196,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 1
+   }
+  }
+ ]
+}

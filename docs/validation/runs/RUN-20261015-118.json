@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-118",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Independent PLAY-04 fix re-audit: real gateway child process, real PostgreSQL, real match client and real time.\n// D1: an opening-phase waiting concession lease held while the active client uses its default retry settings.\n// D2: the waiting client repeatedly concedes (stock client) during each opening step; count active-client busy receipts.\nimport { qualification, until } from './apps/match-service/tests/client-fixtures.mjs';\nimport { createClockRepository } from './packages/db/dist/index.js';\nimport { validateSubmission } from './apps/match-service/dist/validation.js';\n\nconst clock = { schemaVersion: 1, id: 'audit-budget', profile: 'qualification', mode: 'dynamic', initialReserveMs: 150000, reserveCapMs: 150000, perActionBonusMs: 5000, perTurnPassBonusMs: 60000, resetTimeOnSkipMs: 60000, graceMs: 0 };\nconst out = {};\nconst tryRun = async (name, work) => { try { await work(); } catch (error) { out[name + 'Error'] = String(error && error.stack || error); } };\n\nawait tryRun('D1', async () => {\n  const f = await qualification('http://localhost:5173', { clock }), repo = createClockRepository('test'); let owner;\n  try {\n    const host = await f.host(), clients = f.players.map((_, i) => f.client(i, host.url, { retryBaseMs: 250 }));\n    await Promise.all(clients.map(c => c.connect()));\n    const chooser = f.players.indexOf(clients[0].view.priorityId), waiting = 1 - chooser;\n    const held = await repo.reservePlayer(validateSubmission(f.players[waiting], { matchId: f.id, commandId: 'audit-held-opening-concession', expectedVersion: 0, move: 'concede', input: {} }));\n    out.D1_waitingOpeningConcessionAdmission = held.kind; owner = held.reservation;\n    const sockets = f.sockets[chooser].length, start = f.receipts[chooser].length, t0 = performance.now();\n    const outcome = await clients[chooser].submit({ kind: 'chooseWhoGoesFirst', input: { playerId: f.players[0] } }).then(r => 'resolved ' + r.outcome, e => 'rejected ' + (e.code ?? e.message));\n    out.D1_activeClientWhileLeaseHeld = { outcome, elapsedMs: Math.round(performance.now() - t0), busyReceipts: f.receipts[chooser].slice(start).filter(r => r.outcome === 'rate_limited').length, maintenanceReceipts: f.receipts[chooser].slice(start).filter(r => r.outcome === 'maintenance').length, newSockets: f.sockets[chooser].length - sockets, clientStatus: clients[chooser].status };\n    await repo.abort(owner); owner = undefined;\n    const served = await f.creator.view(f.players[chooser], { matchId: f.id });\n    out.D1_afterRelease = { stateVersion: served.stateVersion, clockStatus: (await f.creator.readClock(f.players[chooser], { matchId: f.id })).status };\n  } finally { if (owner) await repo.abort(owner).catch(() => {}); await f.close(); await repo.close(); }\n});\n\nawait tryRun('D2', async () => {\n  const f = await qualification('http://localhost:5173', { clock });\n  try {\n    const host = await f.host(), clients = f.players.map((_, i) => f.client(i, host.url, { retryBaseMs: 250 }));\n    await Promise.all(clients.map(c => c.connect()));\n    const steps = [];\n    for (let step = 0; step < 3; step++) {\n      const view = clients[0].view, activeId = view.priorityId, active = f.players.indexOf(activeId), waiting = 1 - active;\n      const intent = step === 0 ? { kind: 'chooseWhoGoesFirst', input: { playerId: f.players[0] } } : { kind: 'alterHand', input: { cardsToMulligan: [] } };\n      let stop = false; const spam = {};\n      const attacker = (async () => {\n        while (!stop) {\n          try { await until(() => stop || clients[waiting].status === 'ready', 5000); } catch { spam.notReady = (spam.notReady ?? 0) + 1; break; }\n          if (stop) break;\n          const x = await clients[waiting].submit({ kind: 'concede', input: {} }).then(r => r.outcome + '/' + r.reason, e => 'client ' + e.code);\n          spam[x] = (spam[x] ?? 0) + 1; if (x.startsWith('client closed')) break;\n        }\n      })();\n      await new Promise(r => setTimeout(r, 400));\n      const start = f.receipts[active].length, t0 = performance.now();\n      await until(() => clients[active].status === 'ready', 5000);\n      const outcome = await clients[active].submit(intent).then(r => r.outcome, e => 'client ' + e.code);\n      const elapsedMs = Math.round(performance.now() - t0); stop = true; await attacker;\n      steps.push({ step, outcome, elapsedMs, activeBusyReceipts: f.receipts[active].slice(start).filter(r => r.outcome === 'rate_limited').length, waitingConcessions: spam });\n      if (outcome !== 'accepted') break;\n      await until(() => clients.every(c => c.status === 'ready' && c.view?.stateVersion >= step + 1), 10000);\n    }\n    out.D2_openingSteps = steps;\n  } finally { await f.close(); }\n});\nconsole.log(JSON.stringify(out, null, 1));"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "bcaee093a538bfaef778cd61a48ee5a8f081d20c",
+  "source_fingerprint": "0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff",
+  "started_at": "2026-10-15T22:39:45.275Z",
+  "finished_at": "2026-10-15T22:39:53.932Z",
+  "recorded_at": "2026-10-15T22:39:53.932Z",
+  "time_precision": "exact",
+  "elapsed_ms": 8657,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 fix re-audit live probe: stock client gives up after 8 busy retries while a waiting opening concession holds the lease (real gateway, DB, time)",
+  "log_path": "docs/validation/logs/RUN-20261015-118.txt",
+  "log_sha256": "39a78361acbb76be5318883da364d3c5b1b72fad7edb179339d74e01fca31134",
+  "redactions": 0
+}

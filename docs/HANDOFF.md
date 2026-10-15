@@ -1,13 +1,36 @@
 # Developer handoff
 
-Observed at: 2026-10-15T19:02:29.111Z; display timezone America/Phoenix. Actor: Codex architect/developer/QA. Active change CHG-20261015-007 finalized for the local audit-repair scope.
+Observed at: 2026-10-15T22:47:28.281Z; display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active change: CHG-20261015-008, finalized (independent re-audit of the CHG-20261015-007 PLAY-04 fix).
 
-- Objective/authority: Director assigns PLAY-04 audit findings1/2 repairs, reproducing tests and fresh database/live/browser suites before re-audit/hosted CI/main integration. Four policy points and real-card chooser remain separate; no new decision is needed for the scoped repair.
-- Repository: /home/andre/lorcana-online-tcg, codex/play-04-audit-fixes from audited37530699a332376320e2b0f03b22d3eddbd2d763. Main remains775994a. Whole coherent PLAY-04 branch coverage is compared to main775994a; fix-only diff is against3753069. No push/merge/deploy authorized/performed.
-- Execution: original Compose lorcana-online-tcg_devcontainer workspace01ccec184b44/postgresc7cd58258c19 running; rediscover IDs on intake. App commands inside /workspaces/lorcana-online-tcg; one heavy qualification at a time. Read-only Windows counters show about7.56GiBcommit headroom before qualification; peak unknown. No settings change.
-- Implemented: early waiting-player invalid_intent receipt without lease/proof/clock mutation, waiting concession deadline exception under existing fences, service BUSY mapped to existing100ms rate_limited/rate_limit without socket close or new wire variant/client change. Eight new integration regressions plus one Chromium regression cover the repair. Timeout expired-owner ordering retained.
-- Verification: RUN103 intake passes. RED104/105/106/107 reproduce defects (104 busy fixture initially stale, corrected106). RUN108 exposes an ordering regression; corrected RUN109 passes26clock/storage/live checks, web types and scoped lint. Final identical source 0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff:110passes74actual DB/storage/match/live checks;111passes11Linux Chromium plus2Lab workers;112passes350project/406engine/1skip/2injection and frozen install/doctor/verify/types/lint/build/bootstrap DB. RUN113 preservation assertion mistakenly included an updated README; corrected114passes unchanged executable/policy/private bytes,727log digests, current secrets and owned cleanup. All final timing pairs valid; no absolute UTC claim. Final packaging is RUN115; read its actual receipt.
-- Documentation: owning packages, clock/live/command runbooks, live contract and ADR0016 updated; source-impact reviews and generated changelog/inventory are synchronized at checkpoints. Historical audit and all failed receipts remain append-only. Current implemented feature entries reference matching new proof; F-CI remains historical_verified and reserved/planned entries remain pending. Every older failed receipt/audit record stays unchanged.
-- Resources: only owned test fixtures/children/listeners are created/cleaned. Original credentials and database volume retained; ignored0600 preservation hashes at .local/play04-fix-preservation.json. Historical interrupted RUN050 fixture/31quota rows are not removed. RUN114 confirms no owned main/clock/gateway child or5173/3001/3002listener remains; none was killed and no settings changed.
-- Remaining gates: Director re-audit and new hosted CI; no fix-source hosted/isolated acceptance, Windows/device/load/production/absoluteUTC claim. AUTH/admin, official-card choices including non-priority resolveBag, ordinary/reward/private/observer/multiplayer/sandbox and production stay closed. The four policy points retain approved behavior, pending Director disposition, not silently changed.
-- Next: All application qualification is complete. Final docs/staged identity/cumulative coverage are recorded in RUN115. Package the coherent local fix commit only after that receipt passes; Git supplies its resulting hash and current status. Keep the branch local. Director then re-checks and runs hosted CI before deciding main integration. Do not start another task automatically.
+- Objective and authorized scope: the Director asked for a re-check of Codex's PLAY-04 fix for audit findings 1 and 2, then publication and main integration as before. The re-audit confirms both findings are repaired and all of Codex's counts reproduce. One Important residual, R1, remains. In the opening the engine refuses every concession, yet a waiting player's concession still takes the timed reservation, so repeated concessions can stop the active player's client while their opening clock runs. Main integration waits for the Director's decision on R1. The four audit policy points remain open for the Director.
+- Repository: /home/andre/lorcana-online-tcg, branch `claude/play-04-fix-audit` from Codex commit bcaee093a538bfaef778cd61a48ee5a8f081d20c (`codex/play-04-audit-fixes`, fix-only base 3753069, main 775994a). The re-audit adds only documentation and evidence; the executable fingerprint stays 0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff. Main is unchanged at 775994a. Git supplies the resulting commit and dirty state at intake.
+- Execution: original Compose project lorcana-online-tcg_devcontainer (workspace 01ccec184b44, PostgreSQL c7cd58258c19, both observed running); Node 24.21.0, pnpm 10.33.0. Rediscover IDs before reuse. All application commands ran inside the container, one heavy check at a time.
+- Implemented behavior: no product change. The re-audited source is described in the [fix section](validation/play-04.md#audit-fixes--2026-10-15-utc) and the [re-audit](validation/play-04.md#independent-fix-re-audit--2026-10-15-utc).
+- Documentation: updated the validation re-audit section, the ADR0016 re-audit note, a runbook caution for R1, the F-MATCH-CLOCKS description and evidence in features.json, its FEATURES.md row, the backlog PLAY-04 status, a dated re-audit line in AGENTS.md, README.md and docs/README.md, and this handoff. The changelog and current-state snapshot are regenerated by docs sync. Codex's records, executed evidence and the shared current block are unchanged.
+- Verification: all at fingerprint 0249c5a5, exact timing, no discontinuity, 0 redactions.
+  - RUN-20261015-116, container `verify:foundation`: 350 project checks (326 Node + 24 Python); upstream 406 passed, 1 skipped, 1,362 expectations; 2 injection tests.
+  - RUN117, simulated: service probe on the real test database and engine with injected UTC.
+    - Findings 1 and 2 are repaired, with exact clock arithmetic.
+    - R1: 20 refused opening concessions each took the reservation for about 170 ms and added 2 clock revisions and 2 events. The active player's choice got BUSY during one.
+  - RUN118, container (real gateway, database and time): while an opening concession held the reservation, the stock client closed after 8 busy replies in 1.8 s.
+  - RUN119, container (real gateway): repeated stock-client concessions in the opening; the active client closed in 6 of 8 matches.
+  - RUN120, container: boundary, startup, bridge, public clock and migration probe; all unchanged.
+  - RUN121, container: role health on both targets and 74 database checks, plus `db:check`.
+  - RUN122, headless Chromium: 11 checks plus 2 Lab workers.
+  - RUN123, static: `docs:check`.
+  - Not run: local isolated CI (the wall clock still drifts against monotonic) and hosted CI on this source, which follows publication.
+- Listeners/resources: no owned processes or listeners remain; probe fixtures were deleted. The test database still holds the earlier interrupted RUN050 fixture and the expired quota rows; neither was removed. `.env.local`, `.local/database.json` and the database volume are untouched.
+- Pending gates:
+  - The Director decides R1 and the four policy points.
+  - AUTH-01, real cards and rules certification (including finding 3, which now also sits in the store's early refusal).
+  - WEB-02, observers, X01 and sandbox operations.
+  - OPS-01: clock-health recovery, quota retention and backups.
+  - Device, load and production acceptance; isolated CI timing; required-check settings.
+- Next actions:
+  1. **Director decides R1.** Either assign a small fix or accept R1 as a known limit and merge.
+     - Suggested fix: a waiting player's command never holds the timed reservation. Evaluate a waiting concession without the lease. Write an engine refusal without touching the clock, or commit an accepted concession in one short fenced transaction (unchanged state version and clock revision, otherwise stale).
+     - Optionally, stop counting server-busy retries toward the client's 8-attempt limit.
+     - Add an opening-phase regression with repeated waiting concessions.
+  2. After the fix, or the decision to accept: re-check, run hosted CI, then publish and fast-forward main.
+  3. **Director policy points.** These include whether players may leave during the opening, since the engine accepts only `forfeitGame` there.
+  4. The 30-second startup-supervisor test flake still needs its own assigned change.

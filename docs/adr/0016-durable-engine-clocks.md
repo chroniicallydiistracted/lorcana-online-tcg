@@ -25,3 +25,7 @@ CHG-20261015-005 (RUN-20261015-094..099 at fingerprint a41c1374) confirms the de
 ## PLAY-04 audit repair — 2026-10-15 UTC
 
 CHG007 fixes audit findings1/2 within the approved design: transactionally refuse waiting non-concession commands without a timed lease; retain concessions across the other player's deadline; treat only reservation BUSY as same-socket retry using the existing wire envelope. Native arithmetic, exact active deadline, immutable SQL, host settings and all four unassigned policy points are unchanged. This is a repair, not a new architecture/policy decision; Director re-audit/hosted CI remain required.
+
+## Independent fix re-audit note — 2026-10-15 UTC
+
+CHG-20261015-008 (RUN-20261015-116..123 at fingerprint 0249c5a5) confirms that CHG007 repairs findings 1 and 2 and leaves the engine, bridge, migrations and public schemas unchanged. One Important residual remains. In the opening the engine refuses every concession, yet a waiting player's concession still takes the timed reservation. Repeating it with the stock client makes the active player's opening decision busy, and the stock client stops after 8 busy replies while the opening clock runs. The suggested direction is that a waiting player's command never holds the timed reservation. Details are in [validation](../validation/play-04.md#independent-fix-re-audit--2026-10-15-utc). The decision itself is unchanged.

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-119",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Independent PLAY-04 fix re-audit: real gateway child, real PostgreSQL, real stock match clients and real time.\n// In each opening step the waiting player repeatedly presses the ordinary concede intent (stock client, sequential);\n// the active player submits its opening decision after a randomized 300-700 ms delay. Repeated over 8 matches.\nimport { qualification, until } from './apps/match-service/tests/client-fixtures.mjs';\n\nconst clock = { schemaVersion: 1, id: 'audit-spam', profile: 'qualification', mode: 'dynamic', initialReserveMs: 150000, reserveCapMs: 150000, perActionBonusMs: 5000, perTurnPassBonusMs: 60000, resetTimeOnSkipMs: 60000, graceMs: 0 };\nconst trials = [];\nconst errors = [];\nfor (let match = 0; match < 8; match++) {\n  let f;\n  try {\n    f = await qualification('http://localhost:5173', { clock });\n    const host = await f.host(), clients = f.players.map((_, i) => f.client(i, host.url, { retryBaseMs: 250 }));\n    await Promise.all(clients.map(c => c.connect()));\n    for (let step = 0; step < 3; step++) {\n      const active = f.players.indexOf(clients[0].view.priorityId), waiting = 1 - active;\n      const intent = step === 0 ? { kind: 'chooseWhoGoesFirst', input: { playerId: f.players[0] } } : { kind: 'alterHand', input: { cardsToMulligan: [] } };\n      let stop = false; const spam = {};\n      const attacker = (async () => {\n        while (!stop) {\n          try { await until(() => stop || clients[waiting].status === 'ready', 5000); } catch { spam.notReady = (spam.notReady ?? 0) + 1; break; }\n          if (stop) break;\n          const x = await clients[waiting].submit({ kind: 'concede', input: {} }).then(r => r.outcome + '/' + r.reason, e => 'client ' + e.code);\n          spam[x] = (spam[x] ?? 0) + 1; if (x.startsWith('client closed')) break;\n        }\n      })();\n      const startDelay = 300 + Math.floor(Math.random() * 400);\n      await new Promise(r => setTimeout(r, startDelay));\n      await until(() => clients[active].status === 'ready', 5000);\n      const start = f.receipts[active].length, t0 = performance.now();\n      const outcome = await clients[active].submit(intent).then(r => r.outcome, e => 'client ' + e.code);\n      const elapsedMs = Math.round(performance.now() - t0); stop = true; await attacker;\n      trials.push({ match, step, startDelay, outcome, elapsedMs, activeBusyReceipts: f.receipts[active].slice(start).filter(r => r.outcome === 'rate_limited').length, waitingConcessions: spam });\n      if (outcome !== 'accepted') break;\n      await until(() => clients.every(c => c.status === 'ready' && c.view?.stateVersion >= step + 1), 10000);\n    }\n  } catch (error) { errors.push(String(error && error.stack || error)); } finally { if (f) await f.close().catch(e => errors.push('close ' + e)); }\n}\nconst busy = trials.map(t => t.activeBusyReceipts);\nconsole.log(JSON.stringify({\n  steps: trials.length,\n  stepsWithBusy: busy.filter(b => b > 0).length,\n  totalActiveBusyReceipts: busy.reduce((a, b) => a + b, 0),\n  activeClientClosed: trials.filter(t => t.outcome !== 'accepted').length,\n  maxActiveDelayMs: Math.max(...trials.map(t => t.elapsedMs)),\n  waitingConcessionReceipts: trials.reduce((acc, t) => { for (const [k, v] of Object.entries(t.waitingConcessions)) acc[k] = (acc[k] ?? 0) + v; return acc; }, {}),\n  trials, errors,\n}, null, 1));"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "bcaee093a538bfaef778cd61a48ee5a8f081d20c",
+  "source_fingerprint": "0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff",
+  "started_at": "2026-10-15T22:41:17.941Z",
+  "finished_at": "2026-10-15T22:42:09.348Z",
+  "recorded_at": "2026-10-15T22:42:09.348Z",
+  "time_precision": "exact",
+  "elapsed_ms": 51248,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 fix re-audit: repeated ordinary concessions by the waiting player during the opening, 8 real-gateway matches with stock clients",
+  "log_path": "docs/validation/logs/RUN-20261015-119.txt",
+  "log_sha256": "7cefcfd4e9b8cb72ceba7718975c23e79fd24d5c62960cc6645806f97e21984d",
+  "redactions": 0
+}

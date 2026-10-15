@@ -2,6 +2,72 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261015-008 — Independent re-audit of the PLAY-04 audit fixes (findings 1/2 repaired; opening-phase residual R1)
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-15T22:47:28.281Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: bcaee093a538bfaef778cd61a48ee5a8f081d20c
+- Tasks: PLAY-04, DOC-01, DOC-02
+- Features: F-DOCS, F-MATCH-CLOCKS
+- Requirements: R29.006, R29.007
+
+### Changes
+
+- **review:** Re-audited Codex commit bcaee09 (CHG-20261015-007) against the Director's four fix steps, audit findings 1 and 2, and the backlog acceptance (no disconnect/time abuse or duplicate terminal result). Reviewed the fix-only diff from 3753069: the early waiting-player refusal and waiting-concession deadline exemption in clock-store reserve, the BUSY service error, the gateway's rate_limited mapping, the stock client's retry handling, the nine regressions and the evidence runs RUN103-115 (failures 104-108 and 113 preserved and explained). Confirmed that the engine, bridge, migrations, public schemas and match client are unchanged.
+- **test:** Independent runs RUN-20261015-116..122 all passed at Codex's final fingerprint 0249c5a5 with exact timing, no clock discontinuity and 0 redactions. RUN116 full verify:foundation (350 project = 326 Node + 24 Python; 406 upstream/1 skip/1,362 expectations; 2 injection). RUN117 service probe on the real test database and engine with injected UTC: finding 1 repaired (waiting refusals do no engine work and change no clock revision or event; 8 turns with 24 concurrent waiting commands, every active pass accepted and the clock matching an independent model), busy contention retryable with no durable receipt, finding 2 repaired at and 3 s past the deadline with no timeout pass. RUN118/119 real gateway, database and time with stock clients. RUN120 boundary probe unchanged. RUN121 role health plus 74 database checks and db:check. RUN122 11 Chromium checks plus 2 Lab workers.
+- **review:** Finding R1 (Important, residual of finding 1): every waiting concession is exempt from the early refusal (clock-store.ts:82) and the deadline check (clock-store.ts:94-95), but the upstream opening flow accepts only chooseWhoGoesFirst/alterHand and forfeitGame (runtime-flow-config.ts:42,61), so the engine refuses every opening concession after it has taken the timed reservation. RUN117: 20 refused opening concessions, each about 170 ms of reservation, 2 clock revisions and 2 clock events; the active player's choice gets BUSY meanwhile. RUN118: with an opening concession holding the reservation, the stock client closes itself after 8 busy replies in 1.8 s (match-client index.ts:54). RUN119: repeated stock-client concessions in the opening, 18 steps over 8 matches, 15 with busy replies, active client closed in 6 of 8. Effect: the opening decision is blocked while the opening clock runs; expiry pauses the match for audited resume; no win or loss. Suggested fix: a waiting player's command never holds the timed reservation.
+- **review:** Observations: each refused opening concession writes one receipt and two clock events (about 11 events per second per waiting player at the measured speed); players cannot concede in the opening because the engine accepts only forfeitGame there (product question); finding 3 (real-card chooser) now also exists in the store's early refusal, still unreachable with synthetic cards; the four Director policy points remain open.
+- **documentation:** Validation re-audit section; ADR0016 re-audit note; runbook caution for R1; F-MATCH-CLOCKS description and evidence; FEATURES.md row; backlog PLAY-04 status implemented_audit_fixes_reaudited_residual_fix_required_before_merge; dated re-audit line after the shared PLAY-04 block in AGENTS.md, README.md and docs/README.md; handoff rewritten. Codex's records, executed evidence and the shared current block are unchanged.
+
+### Verification
+
+- **passed:** Timing-valid pnpm verify:foundation: 350 project checks (326 Node + 24 Python), 406 upstream passes/1 inherited skip/1,362 expectations, 2 injection tests. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261015-116.json))
+- **passed:** Auditor service probe on the actual test database and engine worker with injected UTC and native values: findings 1 and 2 repaired with exact clock arithmetic; measures R1 (opening concessions take the reservation; BUSY for the active player). ([evidence](docs/validation/runs/RUN-20261015-117.json))
+- **passed:** Real gateway child, database, stock match client and real time: with an opening concession holding the reservation, the active client closes after 8 busy replies in 1.8 s, without a new socket or maintenance receipt. ([evidence](docs/validation/runs/RUN-20261015-118.json))
+- **passed:** Real gateway: repeated stock-client concessions by the waiting player during the opening, 18 steps over 8 matches; 15 steps with busy replies (91), active client closed in 6 of 8 matches. ([evidence](docs/validation/runs/RUN-20261015-119.json))
+- **passed:** Boundary, NOTIFY, startup route, protocol negotiation, upstream bridge, kernel hash, public clock field and migration/role probe; unchanged from the audited source. ([evidence](docs/validation/runs/RUN-20261015-120.json))
+- **passed:** Role health on both targets, db:test 5, storage 3, match integration 66 (74 total) and db:check. ([evidence](docs/validation/runs/RUN-20261015-121.json))
+- **passed:** 11 Linux headless Chromium checks (including both chooser seats and the busy-retry regression) plus 2 Lab Web Workers. Not a Windows or device observation. ([evidence](docs/validation/runs/RUN-20261015-122.json))
+- **passed:** docs:check over the re-audit record and updated documents (static). ([evidence](docs/validation/runs/RUN-20261015-123.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-04.md](docs/validation/play-04.md) — New dated re-audit section with verdict, confirmations, finding R1, observations and runs; earlier sections preserved.
+- **updated:** [docs/adr/0016-durable-engine-clocks.md](docs/adr/0016-durable-engine-clocks.md) — Dated re-audit note; the decision itself is unchanged.
+- **updated:** [docs/runbooks/game-clocks.md](docs/runbooks/game-clocks.md) — Caution for the open opening-phase residual R1 alongside Codex's updated cautions.
+- **updated:** [docs/features.json](docs/features.json) — F-MATCH-CLOCKS description states the re-audit result and the open residual; re-audit runs added as evidence.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-MATCH-CLOCKS row states the re-audit result and links the re-audit section.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-04 status records that the fix is re-audited and a residual fix is required before merge; links this record.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the re-audit state, evidence and next actions.
+- **updated:** [AGENTS.md](AGENTS.md) — Dated re-audit line after the shared PLAY-04 block; the block itself is Codex's and unchanged.
+- **updated:** [README.md](README.md) — Same re-audit line as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same re-audit line as AGENTS.md, with a relative link.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs sync.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs sync.
+- **reviewed_unchanged:** [docs/contracts/live.md](docs/contracts/live.md) — The rate_limited busy receipt description matches the reviewed gateway code; R1 needs no contract change.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — No protocol change in the fix or the re-audit.
+- **reviewed_unchanged:** [docs/runbooks/live-matches.md](docs/runbooks/live-matches.md) — Codex's busy-retry description matches the reviewed code; R1 is recorded in the game-clock runbook.
+- **reviewed_unchanged:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — Command admission description matches the reviewed code.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — No migration or role change.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — No workspace or toolchain change.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Requirement text unchanged; R29.007 acceptance is tracked in the backlog status.
+- **historical_preserved:** [docs/plans/2026-10-15-play-04-design.md](docs/plans/2026-10-15-play-04-design.md) — Approved design preserved as written.
+- **historical_preserved:** [docs/plans/2026-10-15-play-04-implementation.md](docs/plans/2026-10-15-play-04-implementation.md) — Implementation plan preserved as written.
+- **historical_preserved:** [docs/reviews/2026-10-15-play-04-clocks.md](docs/reviews/2026-10-15-play-04-clocks.md) — Codex's independent review record preserved.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261015-008.json).
+
+### Limits and next actions
+
+- Evidence is local Linux Dev Container and headless Chromium only; injected UTC in the service probe; no Windows, device, GPU, load, remote network or production observation.
+- RUN119 uses the stock client in a sequential loop; a custom client could hold the reservation more often. The closure rate depends on timing: RUN118's three-step repeated-concession section recorded no busy replies, while RUN119 closed the active client in 6 of 8 matches.
+- Local isolated CI was not rerun (wall clock drifts against monotonic); hosted CI on the fix source follows publication and is recorded in a later change.
+- Director decides R1: assign a small fix (a waiting player's command never holds the timed reservation, plus an opening regression) or accept it as a known limit and merge.
+- After that decision: re-check any fix, run hosted CI, then publish and fast-forward main.
+- Director decides the four audit policy points, including whether players may leave during the opening.
+
 ## CHG-20261015-007 — PLAY-04 audit fixes: admission without reservation and retryable live contention
 
 - Status: finalized

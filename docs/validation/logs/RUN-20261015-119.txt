@@ -1,0 +1,224 @@
+{
+ "steps": 18,
+ "stepsWithBusy": 15,
+ "totalActiveBusyReceipts": 91,
+ "activeClientClosed": 6,
+ "maxActiveDelayMs": 2165,
+ "waitingConcessionReceipts": {
+  "rejected/invalid_intent": 150,
+  "stale/stale_state": 12
+ },
+ "trials": [
+  {
+   "match": 0,
+   "step": 0,
+   "startDelay": 665,
+   "outcome": "accepted",
+   "elapsedMs": 672,
+   "activeBusyReceipts": 2,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 5,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 0,
+   "step": 1,
+   "startDelay": 565,
+   "outcome": "client closed",
+   "elapsedMs": 1534,
+   "activeBusyReceipts": 8,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 10
+   }
+  },
+  {
+   "match": 1,
+   "step": 0,
+   "startDelay": 627,
+   "outcome": "client closed",
+   "elapsedMs": 2165,
+   "activeBusyReceipts": 8,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 14
+   }
+  },
+  {
+   "match": 2,
+   "step": 0,
+   "startDelay": 310,
+   "outcome": "accepted",
+   "elapsedMs": 1545,
+   "activeBusyReceipts": 6,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 8,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 2,
+   "step": 1,
+   "startDelay": 630,
+   "outcome": "accepted",
+   "elapsedMs": 213,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 3,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 2,
+   "step": 2,
+   "startDelay": 642,
+   "outcome": "client closed",
+   "elapsedMs": 2100,
+   "activeBusyReceipts": 8,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 13
+   }
+  },
+  {
+   "match": 3,
+   "step": 0,
+   "startDelay": 624,
+   "outcome": "accepted",
+   "elapsedMs": 220,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 3,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 3,
+   "step": 1,
+   "startDelay": 396,
+   "outcome": "client closed",
+   "elapsedMs": 1897,
+   "activeBusyReceipts": 8,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 11
+   }
+  },
+  {
+   "match": 4,
+   "step": 0,
+   "startDelay": 526,
+   "outcome": "accepted",
+   "elapsedMs": 1816,
+   "activeBusyReceipts": 7,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 10,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 4,
+   "step": 1,
+   "startDelay": 566,
+   "outcome": "accepted",
+   "elapsedMs": 1569,
+   "activeBusyReceipts": 5,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 9,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 4,
+   "step": 2,
+   "startDelay": 526,
+   "outcome": "client closed",
+   "elapsedMs": 1955,
+   "activeBusyReceipts": 8,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 11
+   }
+  },
+  {
+   "match": 5,
+   "step": 0,
+   "startDelay": 450,
+   "outcome": "accepted",
+   "elapsedMs": 1181,
+   "activeBusyReceipts": 5,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 7,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 5,
+   "step": 1,
+   "startDelay": 642,
+   "outcome": "accepted",
+   "elapsedMs": 1373,
+   "activeBusyReceipts": 5,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 9,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 5,
+   "step": 2,
+   "startDelay": 399,
+   "outcome": "accepted",
+   "elapsedMs": 199,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 6,
+   "step": 0,
+   "startDelay": 550,
+   "outcome": "client closed",
+   "elapsedMs": 1825,
+   "activeBusyReceipts": 8,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 13
+   }
+  },
+  {
+   "match": 7,
+   "step": 0,
+   "startDelay": 465,
+   "outcome": "accepted",
+   "elapsedMs": 1297,
+   "activeBusyReceipts": 5,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 8,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 7,
+   "step": 1,
+   "startDelay": 325,
+   "outcome": "accepted",
+   "elapsedMs": 1961,
+   "activeBusyReceipts": 7,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 10,
+    "stale/stale_state": 1
+   }
+  },
+  {
+   "match": 7,
+   "step": 2,
+   "startDelay": 507,
+   "outcome": "accepted",
+   "elapsedMs": 563,
+   "activeBusyReceipts": 1,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 4,
+    "stale/stale_state": 1
+   }
+  }
+ ],
+ "errors": []
+}

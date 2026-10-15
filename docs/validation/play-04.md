@@ -182,3 +182,59 @@ Recorded 2026-10-15T19:02:29.111Z. Passing receipts110/111/112/114 share executa
 CHG007 is finalized for this local repair scope, not Director acceptance. Its cumulative inventory is based on main775994a, while3753069 is the precise fix-only review base. RUN115 is the final documentation/changelog/callable inventory, source-secret, staged-byte and cumulative-coverage packaging record; its immutable JSON/log supply the executed outcome. No self-referencing advance passing claim or amended sealed record is used. No fresh source-only clean checkout, long isolated pipeline, fix-source hosted CI, promoted artifact, Windows/device/load/production or required-check settings qualification is claimed. Earlier clean/audit/hosted proofs remain explicitly source-specific.
 
 The Director will re-check the fix and run hosted CI before merging. All nine requested regression cases pass through their owning suites (eight database/service/live cases and one Chromium case); the original two audit findings are repaired, pending that re-audit. No fresh independent reviewer or final integration approval is implied. The separate real-card chooser finding and four policy points remain open with the existing approved behavior unchanged.
+
+## Independent fix re-audit — 2026-10-15 UTC
+
+Recorded 2026-10-15T22:47:28.281Z (CHG-20261015-008) by the Claude Code agent (architect/QA reviewer role) on Director request. Source: `codex/play-04-audit-fixes` at bcaee09, fingerprint `0249c5a5269b879224b4c6125a95147051aea7bdf556fa5da62b00e59808eaff`. Fix-only base 3753069; main is unchanged at 775994a. All runs below are at that fingerprint with exact timing, no clock discontinuity and no redactions.
+
+### Verdict
+
+Both audit findings are repaired as described. A narrower form of finding 1 remains (R1 below). During the opening, a waiting player's ordinary concession still takes the timed reservation, because the engine refuses every concession until the main game starts. The waiting player can repeat it with the stock client. The active player's opening decision then gets busy replies, and the stock client stops after 8 of them (about 2 s) while the opening clock keeps running. PLAY-04 still does not meet "no disconnect/time abuse" until R1 is fixed or the Director accepts it.
+
+### Confirmed
+
+- **Rules and engine unchanged.** The vendored engine, the three bridge files, kernel sha256 `a3d93ec9…`, migrations 0001–0005, public schemas and the match client are byte-identical to the audited source (RUN120 and `git diff 3753069 bcaee09`). The RUN095 rules-parity results therefore still apply.
+- **Finding 1 repaired.** A waiting player's non-concession command gets a durable `invalid_intent` receipt. It causes no engine work, no clock revision and no clock event. Over 8 turns, each with 3 waiting commands sent alongside the active player's pass (24 in total), every pass was accepted. After each turn the clock matched the independent model exactly (RUN117 A).
+- **Busy contention.** While a reservation is held, the active player's command gets `BUSY` with no durable receipt, and the identical retry with the same command ID is accepted (RUN117 C). Through the real gateway the socket stays open and no maintenance receipt is sent (RUN118).
+- **Finding 2 repaired.** At the exact deadline, the waiting player's non-concession move is refused (`invalid_intent`) and the clock is unchanged. The active player's own concession is still `clock_expired`, as documented. The waiting player's concession is accepted and the active player wins. Two concurrent sweeps then commit no timeout, and the retry returns the same receipt. Three seconds past the deadline, before any sweep, the waiting concession is also accepted with no timeout pass (RUN117 B).
+- **Codex's counts reproduce.**
+  - RUN116: 350 project checks (326 Node + 24 Python); upstream 406 passed, 1 skipped, 1,362 expectations; 2 injection tests.
+  - RUN121: 74 database checks (5 + 3 + 66), with role health on both targets and `db:check`.
+  - RUN122: 11 Chromium checks and 2 Lab workers.
+
+### Finding R1 — Important (residual of finding 1)
+
+**Cause.** Every waiting concession is exempt from the early refusal (`packages/db/src/clock-store.ts:82`) and from the deadline check (`clock-store.ts:94-95`). In the opening, the upstream flow allows only `chooseWhoGoesFirst` or `alterHand`, plus `forfeitGame` (`runtime-flow-config.ts:42,61`). So the engine refuses every concession there. Each refused concession still takes the timed reservation, runs the engine and is rolled back.
+
+**Evidence.**
+- **Service level (RUN117 C).** 20 opening concessions were all rejected `invalid_intent`. Each one added 2 clock revisions and 2 clock events, and each call took 167–187 ms (median 174). While one was in progress, the active player's genuine choice got `BUSY`. That step used an emulated 300 ms worker delay; natural holds are about 170 ms.
+- **Client retry limit (RUN118).** The stock client counts each busy reply against its 8-attempt limit (`packages/match-client/src/index.ts:54`). It retries after 100 ms plus up to 250 ms of jitter. While an opening concession held the reservation, the active client closed itself after 8 busy replies in 1.8 s, without opening a new socket.
+- **Realistic use (RUN119).** The waiting player pressed concede repeatedly with the stock client during each opening step: 18 steps across 8 matches, using the real gateway, database and time.
+  - 15 of the 18 steps produced busy replies (91 in total).
+  - The active client closed itself in 6 of the 8 matches.
+  - The longest wait before acceptance or closure was 2.2 s.
+  - 150 refused concessions were written.
+
+**Effect.** The active player cannot make the opening decision, and their client stops while their opening clock keeps running. When that clock runs out, the match pauses (`no_legal_default`) and needs an audited resume. No win or loss results. In the main game a concession is always legal and ends the game. So R1 is limited to the three opening decisions (first-player choice and the two mulligans).
+
+**Suggested fix.** A waiting player's command should never hold the timed reservation. For example, evaluate a waiting concession without the lease. If the engine refuses it, write the refusal receipt without touching the clock. If it accepts, commit it in one short fenced transaction that requires an unchanged state version and clock revision, otherwise returning stale. Separately, consider not counting server-busy retries toward the client's 8-attempt limit, or making that limit cover at least the 15 s lease. On its own that would not stop the opening clock from running.
+
+### Observations
+
+- Each refused opening concession writes one receipt and two clock events, so one waiting player can write about 11 clock events per second at the measured speed (up to 16 within the 8-command quota). Fixing R1 removes this.
+- Players cannot concede during the opening at all: the live contract offers `concede`, but there the engine accepts only `forfeitGame`. Whether a player may leave during the opening is a product question for the Director.
+- Finding 3 (the real-card chooser) now also exists in the store. The early refusal compares against `clock.activePlayerId`, so a waiting player's real-card `resolveBag` choice would be refused there as well as in the service. It is still unreachable with synthetic cards. The four Director policy points remain open.
+- Not run: local isolated CI (wall clock still drifts against monotonic), hosted CI on the fix source (follows publication), and Windows, device, load or production checks.
+
+### Runs
+
+| Run | Category | Result |
+|---|---|---|
+|RUN-20261015-116|container|`verify:foundation` passed, 137,303 ms: counts above.|
+|RUN-20261015-117|simulated|Service probe on the real test database and engine with injected UTC: sections A (finding 1), B (finding 2) and C (R1).|
+|RUN-20261015-118|container|Real gateway, database and time: held opening concession; the stock client closes after 8 busy replies in 1.8 s.|
+|RUN-20261015-119|container|Real gateway: repeated stock-client concessions in the opening across 8 matches; 6 active clients closed.|
+|RUN-20261015-120|container|Boundary probe: 480 browser imports refused; NOTIFY carries the match ID only; no play, login or clock route at startup; bridge, kernel, public clock fields and migrations unchanged.|
+|RUN-20261015-121|container|Role health on both targets, `db:test`, storage and match integration (74 checks), `db:check`.|
+|RUN-20261015-122|headless_browser|11 Linux Chromium checks and 2 Lab workers.|
+|RUN-20261015-123|static|`docs:check` over this re-audit.|
