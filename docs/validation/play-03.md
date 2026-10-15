@@ -131,3 +131,7 @@ Follow-ups, none blocking:
    - The Lab/lock-file `pending_PLAY-02` naming.
 
 Local isolated CI was not rerun. During these runs the container wall clock gained 1.8–2.6 ms per second against the monotonic clock (327 ms over RUN012's 127 s). Over the six-to-seven-minute pipeline that is about 0.7–1.0 s, at or near the unchanged 1 s guard, and the Director keeps the environment unchanged. Hosted Foundation qualification runs on the published audit branch before any main fast-forward. Its run IDs are recorded in a later change.
+
+## Merged PLAY-03 hosted evidence and PLAY-04 intake — 2026-10-15 UTC
+
+Recorded 2026-10-15T05:00:31.268Z. RUN-20261015-020 observes public GitHub job/step metadata at775994a82f5f003c4c4831a20791d5e904ff3d6b: audit38681078184 attempt1 success; main38682066872 attempt1 failure and attempt2 success. All three refer to identical source. Hosted logs/artifacts were not downloaded; the Director supplies the324/406/2,35DB and8+2browser counts and reports all14 stages passing on the successful attempts. The first main failure is Director-attributed to the existing30-second development-supervisor rebuild test; metadata does not independently prove that inner assertion. Retain both outcomes rather than labeling main an uninterrupted first-attempt pass. No PLAY-04, real-device or local isolated timing acceptance is inferred. RUN019 separately passes unchanged local intake checks. PLAY-04 design questions are pending in docs/plans/2026-10-15-play-04-intake.md. No clock/environment repair or startup-test edit is performed.

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-025",
+  "category": "static",
+  "command": [
+    "sh",
+    "-c",
+    "node --input-type=module -e 'import {readFileSync} from '\\''node:fs'\\''; import {execFileSync} from '\\''node:child_process'\\''; import {inventory} from '\\''./scripts/documentation-lib.mjs'\\''; import {scanSecrets} from '\\''./scripts/ci/security.mjs'\\''; const changed=execFileSync('\\''git'\\'',['\\''diff'\\'','\\''--name-only'\\'','\\''775994a82f5f003c4c4831a20791d5e904ff3d6b'\\'','\\''--'\\'','\\''apps'\\'','\\''packages'\\'','\\''vendor'\\'','\\''scripts'\\'','\\''tests'\\'','\\''toolchain.json'\\'','\\''pnpm-lock.yaml'\\'','\\''.devcontainer'\\''],{encoding:'\\''utf8'\\''}).trim(); if(changed)throw new Error('\\''Unexpected application/source change'\\''); const found=scanSecrets(inventory(process.cwd()).map(path=>({path,bytes:readFileSync(path)}))); if(found.length)throw new Error('\\''Source pattern scan refused'\\''); console.log('\\''PASS unchanged application/upstream source and configured source secret-pattern scan; not a whole-program secrecy proof'\\'');' && pnpm docs:sync --change CHG-20261015-003 && pnpm docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "775994a82f5f003c4c4831a20791d5e904ff3d6b",
+  "source_fingerprint": "64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286",
+  "started_at": "2026-10-15T05:20:11.828Z",
+  "finished_at": "2026-10-15T05:20:57.952Z",
+  "recorded_at": "2026-10-15T05:20:57.952Z",
+  "time_precision": "exact",
+  "elapsed_ms": 46056,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 proposed design review package: unchanged application/upstream source, configured secret-pattern scan and documentation consistency; no timer integration acceptance",
+  "log_path": "docs/validation/logs/RUN-20261015-025.txt",
+  "log_sha256": "f832242898fdee1220bbfa3e7e83aae96719fc1475ed6dbbacdf164d5a21b7bb",
+  "redactions": 0
+}

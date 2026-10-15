@@ -1,0 +1,11 @@
+PASS unchanged application/upstream source and configured source secret-pattern scan; not a whole-program secrecy proof
+
+> lorcana-online-tcg@0.0.0 docs:sync /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs --sync --change CHG-20261015-003
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2172,"documents":1533,"functions":9712,"changes":44,"runs":639}
+
+> lorcana-online-tcg@0.0.0 docs:check /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2172,"documents":1533,"functions":9712,"changes":44,"runs":639}

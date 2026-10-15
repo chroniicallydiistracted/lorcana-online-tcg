@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-15T04:20:57.180Z",
+  "observed_at": "2026-10-15T05:21:49.970Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2090,6 +2090,26 @@
       "path": "docs/validation/play-03-closure-check.mjs.txt",
       "classification": "evidence",
       "sources": []
+    },
+    {
+      "path": "docs/plans/2026-10-15-play-04-intake.md",
+      "classification": "planning",
+      "sources": []
+    },
+    {
+      "path": "docs/validation/inputs/play04-hosted-metadata.mjs",
+      "classification": "evidence",
+      "sources": []
+    },
+    {
+      "path": "docs/validation/play-03-hosted-baseline.json",
+      "classification": "evidence",
+      "sources": []
+    },
+    {
+      "path": "docs/plans/2026-10-15-play-04-design.md",
+      "classification": "planning",
+      "sources": []
     }
   ],
   "change_ids": [
@@ -2135,7 +2155,8 @@
     "CHG-20261014-005",
     "CHG-20261014-006",
     "CHG-20261015-001",
-    "CHG-20261015-002"
+    "CHG-20261015-002",
+    "CHG-20261015-003"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2180,7 +2201,8 @@
     "CHG-20261014-005": "finalized",
     "CHG-20261014-006": "finalized",
     "CHG-20261015-001": "finalized",
-    "CHG-20261015-002": "finalized"
+    "CHG-20261015-002": "finalized",
+    "CHG-20261015-003": "draft"
   },
   "source_fingerprint": "64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286",
   "files": {
@@ -2198,8 +2220,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "1e37585c023d3916ea12eab822480f5cd50d68ec51e3b318d247247cd668bf26",
-    "README.md": "cf6411cf9e086c94af5b13f54376942b2e341c3354b45c3b99abc62dc5aa314b",
+    "AGENTS.md": "39a2c285bf76ce571f6e515f64fc44de322c05ab0e1fefed836ab8aff967a6c0",
+    "README.md": "3e244aea324c07318345bf5bf906b65b745e1d2025a25880ca744a2fa08ea4c3",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2249,10 +2271,10 @@
     "docs/ARCHIVE_PROVENANCE.md": "e77e3909b03bae735287e3176fcab76c5418ee87cde40b972beb9631cb6bedda",
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "6cc4ede60fb5ae4b65deed0cc88f7885c72e707d53bddac09ffd89bf318780de",
-    "docs/FEATURES.md": "60c8df911aa90cd86025df9d67c4fae1434dcc02890abcf600646d30ecb527e0",
-    "docs/HANDOFF.md": "02530ff111a09262457e64dd86e22212d8fc3dd93efcc848f937417e54c15f39",
-    "docs/README.md": "bb581e4b2cb05d5d4bfb4811c4b3c4a989968dc541f22150c25fdce23c927e32",
-    "docs/WORKSPACE_QUALIFICATION.md": "6dd2823165cc10553feb3b1061154bd087525276f664cfebba205f25c6fff338",
+    "docs/FEATURES.md": "f1b1e176b58f6e23f4f0fc265c5eb70490ae3ca98938966ba249ee86dcc22a60",
+    "docs/HANDOFF.md": "d2b0bac8a2e3e2a46fee598f2c4c895cf608359d971cc2f9a43d7eac673fcd3c",
+    "docs/README.md": "4847e5c6e5e7fb4b0e61a232f59217d1e3cc39e526988a442672a7e0f91b286c",
+    "docs/WORKSPACE_QUALIFICATION.md": "175f176f783bd46756c2834483f363106252cff0eb28ada0d6edac839971f2db",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "b214b90422f991ed45fdb306cfb04601819ae796ed3f34a099ac8fdc77508862",
     "docs/adr/0003-documentation-evidence.md": "71a56e217ba1fa49a3a9fd070996a65d9dd967f7ebc51ab4a7f25e73620c5385",
@@ -2274,8 +2296,8 @@
     "docs/contracts/protocol.md": "7e37c95f2bf9e4d5749f9579965a74873bd75362f277ab7f404fc9199664d642",
     "docs/contracts/release.md": "5dda3d5514a403d966fa22f87f67d1f838b9a63cbd96593a0031704cca6b3545",
     "docs/contracts/viewer.md": "7e78caf0e01f3c3544341856d7d6d500c7f69aaf1a014a721cd19f79a2f91df5",
-    "docs/documentation-map.json": "425a44a5fc30ccba1672893a2373f0111e7830420c7e0636af577518113e88d7",
-    "docs/features.json": "c09aa1acb24fc8cf434644089ba9f608d864d4d177b20ff64df5c7eab82a20a8",
+    "docs/documentation-map.json": "1539cca2bcee49dc38d73a74e4650f04fe1f87c0e43e0961bef7f940668b77d5",
+    "docs/features.json": "506732613a5573e29d41857f1e130f91cb3485a8e46e828170ee073e5a355544",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "7c2f9c48229b7127e379b323e166cc3bc5742145933b9b4fbdc6b64352de56c5",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2292,6 +2314,8 @@
     "docs/plans/2026-10-14-play-02-viewer-privacy.md": "42e5bc93066ec92d1afcff384d1b67dee69e9e611dc36ad0fb059cb1ee41cea9",
     "docs/plans/2026-10-14-play-03-intake.md": "17b79fc48afea90aa2a4ee46e51d467ab276b7365b8d1632f4bc3fd8f0462f50",
     "docs/plans/2026-10-14-play-03-live-reconnect.md": "d0dd466cd47143fb566a718c48db4c8a637d6893a8c20839a1feb7449db711fd",
+    "docs/plans/2026-10-15-play-04-design.md": "bbcd267cb2fe21ee0e16726313a469ae2ef1374adffac2ea1a044c4407a6c6fb",
+    "docs/plans/2026-10-15-play-04-intake.md": "20969acc10c8b9e3367d4a18b1a401bb79e3aaf5599f0151b9ffd55b814c28a3",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
     "docs/plans/boot-04-costs.json": "db38b14c7d22fce7fbf18c88f29062beb9462732cc578e09b744d4170f2ebda5",
     "docs/plans/boot-04-single-host-costs.json": "f3fb2b6de8b9bb07522dbf753fb60daede3c2f8df8ec00c865718ead438018a7",
@@ -2318,7 +2342,7 @@
     "docs/rules/README.md": "00ee9328b18484b3d1d30e31181920a5c0208a39cf10bd7d7d05360e367bb9d4",
     "docs/rules/source-specs-supplement.json": "0efe5f0d481ed436bfb196005dc3d7fad574b2f1040e7d4eaba95b9f39939e0a",
     "docs/rules/source-specs.json": "03207c3e5692ba63735df07e7cb2333ffa38b4146382fb987f2cc46c5b220a0e",
-    "docs/runbooks/ci.md": "256ded8a11aca0a1dc02a989f723b7bd750655fa19a14845b7283a8f407c05e4",
+    "docs/runbooks/ci.md": "546ae07bd8818a69fe361e6b9c26333a075baa4083a759a0b9e0b45d48582c22",
     "docs/runbooks/database.md": "d2d44192368abdda537b83f577bca0ddcb3fc5400ccf17c2feb230e8eccfe402",
     "docs/runbooks/engine.md": "f40daf9325aaf986609ce187954e5c833ed359546c0bba306964d2bf23ea5472",
     "docs/runbooks/live-matches.md": "65ac515b71771c850864942e0aaeb6c560e80eb5c99f687c79022a6d055f6379",
@@ -2395,12 +2419,14 @@
     "docs/validation/clock-investigation.md": "479ba1022bcf43451b537583090f0edf6e849dd5ab059f960eeb92cc22e5fa56",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
     "docs/validation/inputs/play03-package-metadata.mjs": "36fa50be4b7e73341b6c7033693a44985d217107c77512b1168eba8d5dd780cf",
+    "docs/validation/inputs/play04-hosted-metadata.mjs": "43eda40cee39d0aa5c677e7cafc8c2680faf02e2390b51239e962b56cd701468",
     "docs/validation/play-01-hosted-baseline.json": "4b04a297bb0d17c56eef75fae7fc0ba725dbab4679d7dab931c176cb6c08373a",
     "docs/validation/play-01-interruption.json": "d582f8c78804b693b605466f433fefb928307e48a3cb21c4a191eb62f5581c40",
     "docs/validation/play-01.md": "9b9496fa074373982e4a83e6505d963fe0875a928d7666494d52db7f0a56f2a1",
     "docs/validation/play-02.md": "f61399e0559a8f2f3d0781257845c9f8fd3cd8a792655d45db685b87795cfbeb",
     "docs/validation/play-03-closure-check.mjs.txt": "7e6262ffb8316fa1b8a9dd4d851e838eb4a880e6ea4046718ab1923fce4a7273",
-    "docs/validation/play-03.md": "7c613167f32f2073e97e266683437d987804c977f6b2fde7a5ebf873aa4bafde",
+    "docs/validation/play-03-hosted-baseline.json": "002c0efda730d2c5c6e435653f636cdf6bbaa8d42a0a4ccba3cf664e001aed6c",
+    "docs/validation/play-03.md": "808f8a3c3751368a8c8d9c34ede26a902cc23313dd907ddf1176dd0dee33eeb6",
     "docs/validation/rule-01.md": "2179eed327700ea1feb4de0b5d22beaad569e64a7c2c92d5f97a0f503eaae8b5",
     "docs/validation/rule-02-canonical-check.mjs.txt": "801cff8cf4d82a478922ec6204024a3a321e804afd91eefeaad049cc26c33d68",
     "docs/validation/rule-02-host-closure.json": "82cb130e1aa7353efb6f1bba289cffb595f15653dabe42af797a3a6f8f3d6cda",
@@ -2421,9 +2447,9 @@
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "dfb614a7fa8273d3a53a8d9a4f9b2caebad9ebcfc95e38fdb418d9ea94301f62",
+    "docs/vision/decision_register.csv": "bcd9a7d7e6fe63d226d5dc3df2f07d7fd1cb1577f34746ff32519de633d29c49",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "37a338ad6a94fdd101cc894e7de379371fb5890ccdaa10a778177cc064e85657",
+    "docs/vision/initial_backlog.csv": "522ba6bfbbf02178a9c83b641c58a9c7e31a1675bd97ac48663e861231aafa2d",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "5ff31f10483c8aedd1e91402113bdd8445a93db80741685088b13d4f909ee9cd",
@@ -7231,6 +7257,33 @@
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "dea42962b6cf1c970fda83b84c68b77a0953265db0ef773227eef15a231e059b"
+    },
+    {
+      "file": "docs/validation/inputs/play04-hosted-metadata.mjs",
+      "name": "get",
+      "line": 4,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "path",
+      "sha256": "365bb5c56b548233e1ee08d9f25d405eef51b742016e6d315d28fbb1b7dc8295"
+    },
+    {
+      "file": "docs/validation/inputs/play04-hosted-metadata.mjs",
+      "name": "<callback>",
+      "line": 13,
+      "column": 308,
+      "kind": "ArrowFunction",
+      "signature": "j",
+      "sha256": "522cfdd48c2136f4d603f640989d7043a82234ea3a4d13c7a0160e50b748dd53"
+    },
+    {
+      "file": "docs/validation/inputs/play04-hosted-metadata.mjs",
+      "name": "<callback>",
+      "line": 13,
+      "column": 443,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "8dafa34ceb51fb107b0df1868266445d217f391dc73149c47634ba87e27ffa94"
     },
     {
       "file": "packages/contracts/src/index.ts",

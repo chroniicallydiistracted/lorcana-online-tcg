@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-021",
+  "category": "static",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm docs:sync --change CHG-20261015-003 && pnpm docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "775994a82f5f003c4c4831a20791d5e904ff3d6b",
+  "source_fingerprint": "64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286",
+  "started_at": "2026-10-15T05:00:32.105Z",
+  "finished_at": "2026-10-15T05:01:18.116Z",
+  "recorded_at": "2026-10-15T05:01:18.116Z",
+  "time_precision": "exact",
+  "elapsed_ms": 45934,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 intake documentation, merged hosted attempts and pending policy scope synchronization",
+  "log_path": "docs/validation/logs/RUN-20261015-021.txt",
+  "log_sha256": "0c4ec5120004b19ccf231214fa962f9af23922a53bd4dec0c3d0e34023e9e9ba",
+  "redactions": 0
+}

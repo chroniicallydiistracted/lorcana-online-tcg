@@ -2,6 +2,65 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261015-003 — PLAY-04 durable game-clock intake and merged PLAY-03 hosted evidence
+
+- Status: draft
+- Actor: Codex architect/developer/QA collaborator
+- Recorded (UTC): 2026-10-15T05:21:36.105Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 775994a82f5f003c4c4831a20791d5e904ff3d6b
+- Tasks: PLAY-04, DOC-01, DOC-02
+- Features: F-DOCS, F-CI, F-MATCH-CLOCKS
+- Requirements: R02.030, R02.031, R29.006, R29.007, R30.010
+
+### Changes
+
+- **review:** Inspect actual clean main775994a, original healthy Dev Container/database, current audit/authority/workflow and PLAY-04 blueprint/backlog/requirement/engine/replay/transport boundaries. Preserve unchanged source/private data, all548 requirements/20optional/device/disposition and admission gates. Open three material clock-policy questions before dependent implementation.
+- **test:** RUN019 passes unchanged doctor/static/bootstrap/original database baseline inside the committed container. RUN020 observes prior PLAY-03 audit success and main initial failure/retry success at identical775994a from public GitHub job/step metadata; no downloaded logs/artifacts, fresh hosted test count or PLAY-04 acceptance inferred.
+- **documentation:** Record both main attempts, Director-reported30-second startup-test flake and separate maintenance scope, PLAY-04 policy decisions pending, planned fake-time/process/race/privacy acceptance, architecture/clock investigation boundaries and current handoff. No application/dependency/schema/test logic change.
+- **test:** RUN021 passes native intake document/source/callable/changelog consistency; RUN022 separately checks the archived public metadata collector syntax and strict lint. These are intake/tooling checks, not game-clock acceptance. Pending Director choices remain explicit and application source stays unchanged.
+- **review:** Director explicitly selects configurable per-player banks, automatic turn passing on expiry and pause for audited infrastructure/time recovery. Initial loss recommendation is superseded; do not use forfeitGame for ordinary expiry. Ask targeted follow-ups on exhausted-bank refill/later turns and legal defaults versus pause when passing is not permitted. No dependent application code is implemented.
+- **review:** Correct thinking-time versus ink terminology; Director explicitly selects existing engine replenishing timer, defined legal defaults otherwise pause, automatic pass and audited infrastructure/time pause, with upstream core/rules unchanged except demonstrated repair. D12 records final policies. Read actual native timer modes/helpers/history APIs and preserve loss/drop helpers as unselected behavior. Produce concrete written integration design for required review; no product implementation or plan approval yet.
+- **test:** RUN023 freshly passes all37 unchanged selected upstream suites,406pass/1skip/0fail, including clock-view and time-control tests. Qualifies the existing pinned source only; not new timed-service acceptance.
+- **documentation:** RUN024 passes policy/design documentation consistency. Present the complete written design for Director review, as required by the applied architectural brainstorming skill; record exact review boundary and keep implementation/launch acceptance pending.
+- **review:** Director explicitly approves the written PLAY-04 clock design after it is presented. Preserve the earlier proposal/review checkpoint and advance to implementation planning; no product implementation or new clock acceptance yet. RUN025 passes unchanged application/upstream-source assertion, configured source secret-pattern scan and native docs consistency.
+
+### Verification
+
+- **passed:** PLAY-04 intake on merged PLAY-03 main775994a: unchanged doctor, static/docs, bootstrap and original database baseline ([evidence](docs/validation/runs/RUN-20261015-019.json))
+- **passed:** PLAY-04 intake observes prior PLAY-03 audit success and main failure then retry success at identical775994a; public metadata only ([evidence](docs/validation/runs/RUN-20261015-020.json))
+- **passed:** PLAY-04 intake documentation, merged hosted attempts and pending policy scope synchronization ([evidence](docs/validation/runs/RUN-20261015-021.json))
+- **passed:** PLAY-04 intake public metadata collector syntax and unchanged strict lint rules ([evidence](docs/validation/runs/RUN-20261015-022.json))
+- **passed:** Existing pinned upstream suites including timer/display support;406passed/1skip; no integrated PLAY-04 acceptance ([evidence](docs/validation/runs/RUN-20261015-023.json))
+- **passed:** Confirmed Director clock policies and proposed written design: native documentation synchronization/check; no integrated timer acceptance ([evidence](docs/validation/runs/RUN-20261015-024.json))
+- **passed:** Proposed design package: unchanged application/upstream source, configured source secret-pattern scan and docs consistency; no integrated timer proof ([evidence](docs/validation/runs/RUN-20261015-025.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [README.md](README.md) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/README.md](docs/README.md) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/features.json](docs/features.json) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/validation/play-03.md](docs/validation/play-03.md) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Reflect actual merged PLAY-03 hosted audit pass and both main attempts, distinguish Director-reported flake and metadata from downloaded/executed acceptance, and keep PLAY-04 intake/policy/dependent implementation pending without changing tested source or product/device gates.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Record the final clarified thinking-time policy without changing ink/rules, distinguish existing upstream timer proof from pending durable integration, and make the concrete design/review gate available to any developer.
+- **updated:** [docs/plans/2026-10-15-play-04-intake.md](docs/plans/2026-10-15-play-04-intake.md) — Record the final clarified thinking-time policy without changing ink/rules, distinguish existing upstream timer proof from pending durable integration, and make the concrete design/review gate available to any developer.
+- **updated:** [docs/plans/2026-10-15-play-04-design.md](docs/plans/2026-10-15-play-04-design.md) — Record the final clarified thinking-time policy without changing ink/rules, distinguish existing upstream timer proof from pending durable integration, and make the concrete design/review gate available to any developer.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261015-003.json).
+
+### Limits and next actions
+
+- Director clock policies and written design are approved; implementation plan/review next. No integrated game-clock or new wire/schema/runtime implementation yet; no PLAY-04 acceptance.
+- Hosted observation is prior-source metadata only. Startup-test cause is Director-reported; local clock guard and all prior failed receipts remain unchanged. No service/environment adjustment or incidental startup-test change.
+- Existing engine defaults are source facts and qualification examples, not selected production durations. Keep official/card/private/reward/device/production gates closed.
+- Create concrete implementation plan from approved design, obtain plan review and execution-method selection, then implement with fake-time/real-process/native evidence, full cumulative documentation, independent critical review and final-source qualification.
+
 ## CHG-20261015-002 — Independent audit of PLAY-03 live synthetic transport and reconnect and Director-requested integration into main
 
 - Status: finalized

@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-15T04:57:33.383Z",
+  "actor": "Codex public GitHub metadata inspection",
+  "scope": "PLAY-03 merged source only; job/step metadata, no downloaded logs/artifacts or fresh PLAY-04 qualification",
+  "observations": [
+    {
+      "id": "38681078184",
+      "attempt": 1,
+      "url": "https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/38681078184",
+      "observed_started_at": "2026-10-15T04:57:30.362Z",
+      "observed_finished_at": "2026-10-15T04:57:31.232Z",
+      "head_sha": "775994a82f5f003c4c4831a20791d5e904ff3d6b",
+      "head_branch": "claude/play-03-audit",
+      "status": "completed",
+      "conclusion": "success",
+      "run_started_at": "2026-10-15T04:22:00Z",
+      "updated_at": "2026-10-15T04:32:35Z",
+      "jobs": [
+        {
+          "id": 116245557645,
+          "name": "foundation",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-15T04:22:04Z",
+          "completed_at": "2026-10-15T04:32:34Z",
+          "steps": [
+            {
+              "number": 1,
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:22:05Z",
+              "completed_at": "2026-10-15T04:22:05Z"
+            },
+            {
+              "number": 2,
+              "name": "Checkout full evidence history",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:22:05Z",
+              "completed_at": "2026-10-15T04:22:08Z"
+            },
+            {
+              "number": 3,
+              "name": "Run the same isolated local pipeline",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:22:08Z",
+              "completed_at": "2026-10-15T04:32:31Z"
+            },
+            {
+              "number": 4,
+              "name": "Preserve identified foundation build evidence",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:32:31Z",
+              "completed_at": "2026-10-15T04:32:32Z"
+            },
+            {
+              "number": 8,
+              "name": "Post Checkout full evidence history",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:32:32Z",
+              "completed_at": "2026-10-15T04:32:32Z"
+            },
+            {
+              "number": 9,
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:32:32Z",
+              "completed_at": "2026-10-15T04:32:32Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "38682066872",
+      "attempt": 1,
+      "url": "https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/38682066872",
+      "observed_started_at": "2026-10-15T04:57:31.232Z",
+      "observed_finished_at": "2026-10-15T04:57:32.585Z",
+      "head_sha": "775994a82f5f003c4c4831a20791d5e904ff3d6b",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_started_at": "2026-10-15T04:33:13Z",
+      "updated_at": "2026-10-15T04:39:31Z",
+      "jobs": [
+        {
+          "id": 116248595354,
+          "name": "foundation",
+          "status": "completed",
+          "conclusion": "failure",
+          "started_at": "2026-10-15T04:33:16Z",
+          "completed_at": "2026-10-15T04:39:30Z",
+          "steps": [
+            {
+              "number": 1,
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:33:17Z",
+              "completed_at": "2026-10-15T04:33:17Z"
+            },
+            {
+              "number": 2,
+              "name": "Checkout full evidence history",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:33:17Z",
+              "completed_at": "2026-10-15T04:33:20Z"
+            },
+            {
+              "number": 3,
+              "name": "Run the same isolated local pipeline",
+              "status": "completed",
+              "conclusion": "failure",
+              "started_at": "2026-10-15T04:33:20Z",
+              "completed_at": "2026-10-15T04:39:27Z"
+            },
+            {
+              "number": 4,
+              "name": "Preserve identified foundation build evidence",
+              "status": "completed",
+              "conclusion": "skipped",
+              "started_at": "2026-10-15T04:39:27Z",
+              "completed_at": "2026-10-15T04:39:27Z"
+            },
+            {
+              "number": 8,
+              "name": "Post Checkout full evidence history",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:39:27Z",
+              "completed_at": "2026-10-15T04:39:28Z"
+            },
+            {
+              "number": 9,
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:39:28Z",
+              "completed_at": "2026-10-15T04:39:28Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "38682066872",
+      "attempt": 2,
+      "url": "https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/38682066872",
+      "observed_started_at": "2026-10-15T04:57:32.585Z",
+      "observed_finished_at": "2026-10-15T04:57:33.383Z",
+      "head_sha": "775994a82f5f003c4c4831a20791d5e904ff3d6b",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_started_at": "2026-10-15T04:40:37Z",
+      "updated_at": "2026-10-15T04:50:31Z",
+      "jobs": [
+        {
+          "id": 116250611949,
+          "name": "foundation",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-15T04:40:42Z",
+          "completed_at": "2026-10-15T04:50:30Z",
+          "steps": [
+            {
+              "number": 1,
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:40:42Z",
+              "completed_at": "2026-10-15T04:40:43Z"
+            },
+            {
+              "number": 2,
+              "name": "Checkout full evidence history",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:40:43Z",
+              "completed_at": "2026-10-15T04:40:46Z"
+            },
+            {
+              "number": 3,
+              "name": "Run the same isolated local pipeline",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:40:46Z",
+              "completed_at": "2026-10-15T04:50:27Z"
+            },
+            {
+              "number": 4,
+              "name": "Preserve identified foundation build evidence",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:50:27Z",
+              "completed_at": "2026-10-15T04:50:28Z"
+            },
+            {
+              "number": 8,
+              "name": "Post Checkout full evidence history",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:50:28Z",
+              "completed_at": "2026-10-15T04:50:28Z"
+            },
+            {
+              "number": 9,
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-15T04:50:28Z",
+              "completed_at": "2026-10-15T04:50:29Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
