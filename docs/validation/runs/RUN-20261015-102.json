@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-102",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "926846dc2331c68d80386236b2ccd6350732e37e",
+  "source_fingerprint": "a41c1374759fa3beb265e5944189a638184305b181f21518bdda6ae795620d59",
+  "started_at": "2026-10-15T17:36:52.482Z",
+  "finished_at": "2026-10-15T17:37:11.152Z",
+  "recorded_at": "2026-10-15T17:37:11.152Z",
+  "time_precision": "exact",
+  "elapsed_ms": 18621,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 audit decision record: docs:check after recording the Director fix-first decision and hosted run",
+  "log_path": "docs/validation/logs/RUN-20261015-102.txt",
+  "log_sha256": "ed0987233b7bbed5b097099015f5487537e8a4e2439f58b6f41da4437f34e4ea",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-101",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Read-only public GitHub metadata for the PLAY-04 audit branch run. No logs/artifacts downloaded.\nconst root = 'https://api.github.com/repos/chroniicallydiistracted/lorcana-online-tcg/actions/runs/';\nconst get = async path => { const r = await fetch(root + path, { headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }, signal: AbortSignal.timeout(15000) }); if (!r.ok) throw new Error('metadata unavailable ' + r.status); return r.json(); };\nconst id = '38776275959', run = await get(id), jobs = await get(id + '/jobs?per_page=100');\nif (run.id !== Number(id) || run.head_sha !== '926846dc2331c68d80386236b2ccd6350732e37e' || run.head_branch !== 'claude/play-04-audit' || run.status !== 'completed' || run.conclusion !== 'success') throw new Error('Unexpected hosted result');\nconst steps = jobs.jobs.flatMap(j => j.steps.map(s => s.conclusion));\nif (jobs.jobs.some(j => j.conclusion !== 'success') || steps.some(c => !['success', 'skipped'].includes(c))) throw new Error('Unexpected job/step result');\nconsole.log(JSON.stringify({ id, attempt: run.run_attempt, event: run.event, head_branch: run.head_branch, head_sha: run.head_sha, conclusion: run.conclusion, run_started_at: run.run_started_at, updated_at: run.updated_at, jobs: jobs.jobs.map(j => ({ name: j.name, conclusion: j.conclusion, started_at: j.started_at, completed_at: j.completed_at, steps: j.steps.map(s => s.name + ':' + s.conclusion) })) }));"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "926846dc2331c68d80386236b2ccd6350732e37e",
+  "source_fingerprint": "a41c1374759fa3beb265e5944189a638184305b181f21518bdda6ae795620d59",
+  "started_at": "2026-10-15T17:35:31.024Z",
+  "finished_at": "2026-10-15T17:35:31.504Z",
+  "recorded_at": "2026-10-15T17:35:31.504Z",
+  "time_precision": "exact",
+  "elapsed_ms": 480,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 audit: public GitHub metadata for hosted Foundation run 38776275959 on claude/play-04-audit at 926846d (no logs/artifacts downloaded)",
+  "log_path": "docs/validation/logs/RUN-20261015-101.txt",
+  "log_sha256": "021d2a32448a4fa62c83061ae829a7f0d34a3220e962884ada1209e11b037fb2",
+  "redactions": 0
+}
