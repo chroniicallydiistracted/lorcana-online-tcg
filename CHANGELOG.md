@@ -2,6 +2,44 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261015-001 — Correct PLAY-03 cumulative file inventory and review packaging
+
+- Status: finalized
+- Actor: Codex architect/developer/QA collaborator
+- Recorded (UTC): 2026-10-15T03:52:50.542Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 6f3b45e1c4f094ba83beb385a1f4cc7d26ec198a
+- Tasks: PLAY-03, DOC-01, DOC-02
+- Features: F-DOCS, F-EVIDENCE
+- Requirements: none
+
+### Changes
+
+- **fix:** The external ledger helper replaced cumulative files with only unstaged/untracked paths after staging. CHG006.files therefore committed four paths instead of the190 implementation paths. A non-native check detected this but the shell continued to commit. Preserve sealed CHG006 exactly; this correction supersedes its file inventory with the complete cumulative branch scope. No application code, tests, SQL, lock, configuration or test result is changed.
+- **documentation:** Clarify cumulative branch-base/staged/unstaged/untracked file coverage and failure-stopping commit sequencing in universal workflow/format; record exact packaging correction in PLAY-03 validation/handoff. The actual code remains qualified at64bef2e3 by native002/003/004/007/008/010.
+- **review:** The non-native whitespace check reported an extra EOF blank in newly added live-fixtures.mjs; retained tested bytes and preserve the cosmetic advisory rather than falsely calling the check passing. The code and strict ESLint/type/build/application checks remain unchanged and passing.
+- **test:** RUN011 passes native documentation plus exact193 cumulative branch/staged/dirty paths before its own receipt/log creation, with unchanged64bef2e3 source. Final inventory includes both new evidence files, for195 paths. Independent read-only review confirms no omissions/extras/duplicates and sealed CHG006 unchanged; no tests/listeners were run by the reviewer.
+
+### Verification
+
+- **passed:** Prior native documentation and645 staged executable/config/test/schema files match the tested64bef2e3 source; this correction changes only documentation/history. ([evidence](docs/validation/runs/RUN-20261015-010.json))
+- **passed:** PLAY-03 append-only cumulative inventory correction: unchanged executable and full branch/staged/dirty coverage plus native documentation ([evidence](docs/validation/runs/RUN-20261015-011.json))
+
+### Documentation and files
+
+- **updated:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Correct current cumulative packaging guidance or explicitly record the committed metadata error without changing sealed CHG006/evidence or tested source.
+- **updated:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Correct current cumulative packaging guidance or explicitly record the committed metadata error without changing sealed CHG006/evidence or tested source.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Correct current cumulative packaging guidance or explicitly record the committed metadata error without changing sealed CHG006/evidence or tested source.
+- **updated:** [docs/validation/play-03.md](docs/validation/play-03.md) — Correct current cumulative packaging guidance or explicitly record the committed metadata error without changing sealed CHG006/evidence or tested source.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261015-001.json).
+
+### Limits and next actions
+
+- CHG006.files remains historically incomplete; this explicit195-path cumulative correction supersedes it. Original application/engine/DB/browser/clean results and all AUTH/device/production/clock gates remain unchanged.
+- No application code changes or new application-suite claim accompany the correction. The cosmetic fixture EOF warning remains recorded and is not described as a passing whitespace check.
+- Director audit/publication and hosted CI for the local branch; no push, merge or deployment is performed. PLAY-04 is the next documented implementation task.
+
 ## CHG-20261014-006 — PLAY-03 reference-only live transport and reconnect
 
 - Status: finalized

@@ -1,0 +1,11 @@
+
+> lorcana-online-tcg@0.0.0 docs:sync /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs --sync --change CHG-20261015-001
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2138,"documents":1499,"functions":9709,"changes":42,"runs":625}
+
+> lorcana-online-tcg@0.0.0 docs:check /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2138,"documents":1499,"functions":9709,"changes":42,"runs":625}
+PASS 193 cumulative branch/staged/dirty paths covered; unchanged tested source 64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286; sealed original record is preserved.

@@ -73,3 +73,7 @@ Completed recorder logs/JSON and their parent directories are explicitly flushed
 ## Dated clock diagnosis — 2026-10-14 UTC
 
 [The local investigation](validation/clock-investigation.md) explains the observed recent Linux clock discontinuities and preserves the approved experiment as a historical import with raw samples, not a reconstructed native pass. RUN017's original cause remains unqualified. The1,000ms rule, raw UTC/monotonic fields, failed outcomes and schema1 remain unchanged. Short native static/documentation runs record their own timing; they do not certify a permanent clock repair.
+
+## Cumulative file coverage clarification — 2026-10-15 UTC
+
+`files` records the whole coherent branch scope, including already staged and earlier committed files. Union the branch-base-to-HEAD diff, staged/unstaged paths and non-ignored untracked files at finalization. Incremental dirty-only snapshots cannot replace this cumulative inventory. If a committed entry is incomplete, keep its bytes and add a correction entry carrying the complete inventory and explicit supersession; never silently rewrite the sealed field. See CHG-20261015-001 for the observed PLAY-03 packaging correction.

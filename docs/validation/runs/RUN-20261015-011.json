@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261015-011",
+  "category": "static",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm docs:sync --change CHG-20261015-001 && pnpm docs:check && node --input-type=module -e 'import assert from \"node:assert/strict\";import {readFileSync} from \"node:fs\";import {spawnSync} from \"node:child_process\";import {sourceFingerprint} from \"./scripts/documentation-lib.mjs\";const record=JSON.parse(readFileSync(\"docs/changes/CHG-20261015-001.json\"));const paths=new Set();for(const args of [[\"diff\",\"--name-only\",\"6f2659eac632fdec92f7af5296505331782b638d\",\"HEAD\"],[\"diff\",\"--name-only\"],[\"diff\",\"--cached\",\"--name-only\"],[\"ls-files\",\"--others\",\"--exclude-standard\"]]){const r=spawnSync(\"git\",args,{encoding:\"utf8\",maxBuffer:16000000});assert.equal(r.status,0);for(const p of r.stdout.trim().split(\"\\n\").filter(Boolean))paths.add(p);}for(const p of paths)assert(record.files.includes(p),\"Missing cumulative path: \"+p);const expected=JSON.parse(readFileSync(\"docs/validation/runs/RUN-20261015-002.json\")).source_fingerprint;assert.equal(sourceFingerprint(),expected);console.log(\"PASS \"+paths.size+\" cumulative branch/staged/dirty paths covered; unchanged tested source \"+expected+\"; sealed original record is preserved.\");'"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "6f3b45e1c4f094ba83beb385a1f4cc7d26ec198a",
+  "source_fingerprint": "64bef2e3b6a8787b2ad388c30106960a635bdd7ba61ad3735d92454f7a8e8286",
+  "started_at": "2026-10-15T00:18:35.393Z",
+  "finished_at": "2026-10-15T00:19:19.286Z",
+  "recorded_at": "2026-10-15T00:19:19.286Z",
+  "time_precision": "exact",
+  "elapsed_ms": 43881,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-03 append-only cumulative inventory correction: unchanged executable and full branch/staged/dirty coverage plus native documentation",
+  "log_path": "docs/validation/logs/RUN-20261015-011.txt",
+  "log_sha256": "de130164a5d645a0ff1e0c28efb82c494e5e2cefe6ff0e0e1912c45486ff9a72",
+  "redactions": 0
+}
