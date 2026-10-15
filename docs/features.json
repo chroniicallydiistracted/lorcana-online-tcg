@@ -1156,7 +1156,7 @@
       "name": "Durable synthetic match commands",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Two-player synthetic durable raw trusted and reference-only command service; exact-checkpoint worker resolution, actor-bound original-intent receipts/CAS/journal/outbox, participant read/describe/observe and bounded byte/version/viewer cache. Full admission remains gated.",
+      "description": "Two-player synthetic durable raw trusted and reference-only command service; exact-checkpoint worker resolution, actor-bound original-intent receipts/CAS/journal/outbox, participant read/describe/observe and bounded byte/version/viewer cache. Full admission remains gated. PLAY-03 reference/cache paths independently audited in CHG-20261015-002.",
       "sources": [
         "apps/match-service/**",
         "packages/db/**",
@@ -1213,7 +1213,9 @@
         "docs/validation/runs/RUN-20261015-003.json",
         "docs/validation/runs/RUN-20261015-004.json",
         "docs/validation/runs/RUN-20261015-007.json",
-        "docs/validation/runs/RUN-20261015-008.json"
+        "docs/validation/runs/RUN-20261015-008.json",
+        "docs/validation/runs/RUN-20261015-014.json",
+        "docs/validation/runs/RUN-20261015-016.json"
       ]
     },
     {
@@ -1281,7 +1283,7 @@
       "name": "Qualified synthetic live gateway",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Synthetic protocol2 infrastructure with isolated authenticated sessions; AUTH-01, ordinary/official/reward admission, game UI/device/load/production remain gated.",
+      "description": "Synthetic protocol2 infrastructure with isolated authenticated sessions; AUTH-01, ordinary/official/reward admission, game UI/device/load/production remain gated. Independently audited in CHG-20261015-002 (RUN-20261015-012..017).",
       "sources": [
         "apps/match-service/src/gateway.ts",
         "apps/match-service/src/live-connection.ts",
@@ -1311,7 +1313,13 @@
         "docs/validation/runs/RUN-20261015-003.json",
         "docs/validation/runs/RUN-20261015-004.json",
         "docs/validation/runs/RUN-20261015-007.json",
-        "docs/validation/runs/RUN-20261015-008.json"
+        "docs/validation/runs/RUN-20261015-008.json",
+        "docs/validation/runs/RUN-20261015-012.json",
+        "docs/validation/runs/RUN-20261015-013.json",
+        "docs/validation/runs/RUN-20261015-014.json",
+        "docs/validation/runs/RUN-20261015-015.json",
+        "docs/validation/runs/RUN-20261015-016.json",
+        "docs/validation/runs/RUN-20261015-017.json"
       ]
     },
     {
@@ -1319,7 +1327,7 @@
       "name": "Browser reconnect and pending intent transport",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Synthetic protocol2 infrastructure with isolated authenticated sessions; AUTH-01, ordinary/official/reward admission, game UI/device/load/production remain gated.",
+      "description": "Synthetic protocol2 infrastructure with isolated authenticated sessions; AUTH-01, ordinary/official/reward admission, game UI/device/load/production remain gated. Independently audited in CHG-20261015-002 (RUN-20261015-012/015/016/017).",
       "sources": [
         "packages/match-client/**",
         "apps/web/tests/live-client.spec.ts"
@@ -1345,7 +1353,11 @@
         "docs/validation/runs/RUN-20261015-003.json",
         "docs/validation/runs/RUN-20261015-004.json",
         "docs/validation/runs/RUN-20261015-007.json",
-        "docs/validation/runs/RUN-20261015-008.json"
+        "docs/validation/runs/RUN-20261015-008.json",
+        "docs/validation/runs/RUN-20261015-012.json",
+        "docs/validation/runs/RUN-20261015-015.json",
+        "docs/validation/runs/RUN-20261015-016.json",
+        "docs/validation/runs/RUN-20261015-017.json"
       ]
     }
   ]

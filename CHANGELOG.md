@@ -2,6 +2,71 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261015-002 — Independent audit of PLAY-03 live synthetic transport and reconnect and Director-requested integration into main
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-15T04:17:17.683Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 743f0b2072bde3b0c02bb99d9064804ffa51e59f
+- Tasks: PLAY-03, DOC-01, DOC-02
+- Features: F-DOCS, F-LIVE-TRANSPORT, F-MATCH-CLIENT, F-MATCH-COMMANDS
+- Requirements: none
+
+### Changes
+
+- **review:** Audited Codex commits 6f3b45e (PLAY-03, CHG-20261014-006) and 743f0b2 (packaging correction CHG-20261015-001) against ADR0015, the live contract, the runbook, the intake/plan and the backlog acceptance (two real clients complete a game, reconnect on a different host and resolve a duplicate pending command). Review covered: closed protocol 2 schemas and frame bounds beside unchanged diagnostic protocol 1; ticket issue/consume SQL (participant/release/protocol join, SHA-256 storage, atomic single-use DELETE bound to origin and expiry); gateway admission order, exact Origins and synchronous per-actor reservation; session rechecks before and after each projection; submitRefs hashing the original reference intent in its own namespace before resolution, with worker-side resolution against the same checkpoint; the projection cache key over the exact committed row plus viewer and policy, authorization before cache; COMMIT-only NOTIFY with polling reconciliation; heartbeat, backpressure and drain; the browser client's generation/disposal guards and pending-intent export/restore; additive migration 0004. PLAY-02 follow-ups 1 (resolver-only client commands) and 3 (per-version caching and limits) are closed for this scope. Verdict: PLAY-03 acceptance is met for the agreed synthetic/test-session scope; no blocking finding.
+- **test:** Independent runs RUN-20261015-012..017 all passed at Codex's final fingerprint 64bef2e3 with exact timing, no clock discontinuity and 0 redactions. RUN012: full verify:foundation (324 project checks = 300 Node + 24 Python; 406 upstream passes/1 inherited skip; 2 injection). RUN013: auditor live gateway probe on the real test database: ticket HTTP refusals (missing/wrong Origin, no session, query URL, extra field, oversize, protocol 1, identical outsider/missing-match 403), no-store exact-origin responses, hash-only storage and the 12-per-minute quota; WebSocket refusals (wrong Origin, URL ticket left unconsumed, replay, cross-origin ticket, expired, revoked session, non-authenticate first frame, malformed ticket, 301 ms auth deadline, re-authentication, other match) without durable writes; a complete 48-version two-host game across 8 move types driven only by current references with 92 byte-equal wire/adapter snapshot comparisons; durable invalid_intent for unknown, opponent, cross-viewer, previous-version and opponent-ink-back references and an out-of-turn move, stale for an old version; socket closure without receipt for raw engine identity, manual move, extra field, actor override and changed payload under a reused command ID; one commit for a concurrent identical command on two hosts; lost acknowledgement retried with old references after two later commits returns the saved receipt; revocation (4401), drain (1012) and heartbeat loss (1013) withhold frames without conceding; 6 of 14 rapid commands rate-limited without writes; 223 frames with closed envelopes, consecutive sequences and no seed/commitment/digest/engine identifier/session/cookie/ticket; 48 NOTIFY payloads carrying only the match ID. RUN014: auditor cache probe: warm and cold 48-way bursts use at most one projection (PLAY-02 audit: 34 served/14 refused), viewers never share entries, authorization precedes cache, cross-instance commits visible immediately, 80 concurrent reads serve 64 and refuse 16, four forged rows fail closed instead of hitting the cache, raw/reference namespaces conflict both ways, rejected retries are duplicates, raw identities via references are rejected, restart reproduces. RUN015: auditor boundary/startup/migration probe: six browser owners including match-client refuse 528 server/gateway/db/runtime/pg/Fastify/Node imports, client depends on and imports only contracts with no storage/cookies, 48 browser files free of 23 server markers, ordinary startup unchanged with no ticket/play/login routes and protocol 1 negotiation, engine/adapter/Lab/vendor/protocol/viewer contracts byte-identical to main, 0001-0003 unchanged and 0004 additive with match-only privileges in both databases. RUN016: Codex database suites (5 + 3 + 27, eight identities). RUN017: Chromium 8 scenarios + 2 Lab workers. RUN018: docs:check covers this record.
+- **review:** Verified the append-only packaging correction: sealed CHG-20261014-006 lists 4 files and CHG-20261015-001 lists exactly the 195 paths of git diff main..HEAD with none missing or extra. git diff --check reports only the disclosed extra blank line at the end of apps/match-service/tests/live-fixtures.mjs; it is cosmetic and left unchanged because editing it would alter the tested fingerprint. A scan of the branch diff and the new audit logs against private configuration values found no credential; the only match is the database name inside a role-name pattern on an unchanged context line already published on main.
+- **review:** Follow-ups recorded, none blocking: (1) AUTH-01 sizing: each 500 ms reconciliation tick calls SessionAuthority.verify for every connection plus once per match group, about three calls per second per socket (roughly 380/s at the 128-socket cap); verification must be cheap or cached within the accepted revocation delay. (2) PostgreSQL does not access-control LISTEN; the api role can subscribe to lorcana_match_changed, so NOTIFY payloads must stay metadata-only. (3) Abandoned quota keys are not pruned; the test database holds 31 expired rows from 2026-10-14 23:23-23:28 UTC development runs; OPS must add retention before production. (4) Carried from PLAY-02: per-move transcript replay (about 0.2-0.26 s per synthetic command), the 4,096-event projection bound, identity-independent outcomes for opponent ink-back references, card-certification visibility review and the Lab/lock-file pending_PLAY-02 labels.
+- **documentation:** Appended a dated independent-audit section to docs/validation/play-03.md and dated audit notes to ADR0015, the PLAY-03 plan and the live-matches runbook. Added the audit sentence to the PLAY-03 paragraph of AGENTS.md, README.md and docs/README.md. Rewrote HANDOFF for the audit and integration sequence. features.json and FEATURES.md note the audit for F-LIVE-TRANSPORT, F-MATCH-CLIENT and F-MATCH-COMMANDS with the audit evidence; the PLAY-03 backlog row links this record with status unchanged. CHANGELOG and current-state regenerated by docs:sync.
+
+### Verification
+
+- **passed:** Timing-valid pnpm verify:foundation: 324 project checks (300 Node + 24 Python), 406 upstream passes/1 inherited skip/1,362 expectations, 2 injection tests. Local Dev Container. ([evidence](docs/validation/runs/RUN-20261015-012.json))
+- **passed:** Auditor live gateway probe on the real test database: admission, two-host reference-only game with wire/adapter equality, refusals, recovery, rate limits, frame secret scan and NOTIFY payloads. ([evidence](docs/validation/runs/RUN-20261015-013.json))
+- **passed:** Auditor committed-projection cache and reference-command probe. ([evidence](docs/validation/runs/RUN-20261015-014.json))
+- **passed:** Auditor boundary, browser-bundle, ordinary-startup and migration/privilege probe on local and test databases. ([evidence](docs/validation/runs/RUN-20261015-015.json))
+- **passed:** Codex database suites: db:check, local/test health, db:test 5, storage 3, match integration 27. ([evidence](docs/validation/runs/RUN-20261015-016.json))
+- **passed:** Linux headless Chromium: 8 foundation/live scenarios and 2 isolated Lab workers. ([evidence](docs/validation/runs/RUN-20261015-017.json))
+- **passed:** docs:check over the completed audit documentation and evidence (static). ([evidence](docs/validation/runs/RUN-20261015-018.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-03.md](docs/validation/play-03.md) — Appended a dated independent-audit section: run outcomes, review scope, correction check, verdict, follow-ups and the isolated-CI decision; Codex text unchanged.
+- **updated:** [docs/adr/0015-live-synthetic-transport.md](docs/adr/0015-live-synthetic-transport.md) — Dated audit note: decision unchanged and consistent with the source; follow-ups.
+- **updated:** [docs/plans/2026-10-14-play-03-live-reconnect.md](docs/plans/2026-10-14-play-03-live-reconnect.md) — Execution note recording the independent audit and hosted-CI-before-merge sequence.
+- **updated:** [docs/runbooks/live-matches.md](docs/runbooks/live-matches.md) — Audit cautions: session verification cadence, unrestricted LISTEN, quota-row retention, heartbeat and pending-frame closure.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Audit state, verification, follow-ups and the publication/integration sequence; Codex implementation summary retained.
+- **updated:** [AGENTS.md](AGENTS.md) — PLAY-03 paragraph notes the independent audit, hosted-CI-before-merge sequence and the AUTH-01 session-verification follow-up.
+- **updated:** [README.md](README.md) — Same PLAY-03 audit sentence as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same PLAY-03 audit sentence as AGENTS.md.
+- **updated:** [docs/features.json](docs/features.json) — F-LIVE-TRANSPORT, F-MATCH-CLIENT and F-MATCH-COMMANDS note the audit and add the relevant RUN-20261015-012..017 evidence.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Acceptance-limit cells for the same three features reference the independent audit.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-03 evidence link to this audit record only; status and every other row unchanged.
+- **reviewed_unchanged:** [docs/contracts/live.md](docs/contracts/live.md) — Matches the audited schemas, ticket/admission rules, retry semantics and client lifecycle.
+- **reviewed_unchanged:** [docs/reviews/2026-10-15-play-03-live.md](docs/reviews/2026-10-15-play-03-live.md) — Codex's commissioned static review is consistent with the source; this audit adds independent execution it did not perform.
+- **reviewed_unchanged:** [docs/plans/2026-10-14-play-03-intake.md](docs/plans/2026-10-14-play-03-intake.md) — Intake constraints and the Director's AUTH-01 decision are reflected in the implementation.
+- **reviewed_unchanged:** [packages/match-client/README.md](packages/match-client/README.md) — Browser API description matches the audited client.
+- **reviewed_unchanged:** [apps/match-service/README.md](apps/match-service/README.md) — Gateway/service description consistent with the audited source.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — Migration 0004 note consistent with the audited additive migration and privileges.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — PLAY-03 evidence-link edits reviewed; 548 dispositions and 20 optional flags unchanged.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — PLAY-03 paragraph accurate; audit detail lives in docs/validation/play-03.md, following the PLAY-02 audit precedent.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Sequential heavy-workload and cumulative packaging rules followed; no change needed.
+- **reviewed_unchanged:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Cumulative file-coverage clarification followed for this record.
+- **historical_preserved:** [docs/changes/CHG-20261014-006.json](docs/changes/CHG-20261014-006.json) — Finalized Codex record; audited, not modified.
+- **historical_preserved:** [docs/changes/CHG-20261015-001.json](docs/changes/CHG-20261015-001.json) — Finalized Codex correction; coverage verified, not modified.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261015-002.json).
+
+### Limits and next actions
+
+- Audit evidence is local Linux Dev Container and headless Chromium only; gateway hosts ran in one container (separate Fastify instances in the probe, separate processes in Codex's suites); no remote network, Windows, touch, GPU, load or production observation.
+- Local isolated CI was not rerun (wall clock gained 1.8-2.6 ms/s against monotonic during the audit, near the unchanged 1 s guard over the pipeline); hosted CI results are observed after publication and recorded in a later change.
+- Probes use the two-player synthetic catalog and injected test sessions; AUTH-01 sessions, real cards, private choices, clocks, observers and multiplayer remain gated.
+- Push the Codex and audit branches, run hosted Foundation qualification on claude/play-03-audit, fast-forward main only after it passes, observe the main run and record both run IDs in the next change.
+- Carry the session-verification sizing, LISTEN metadata-only rule and quota-retention follow-ups into AUTH-01/OPS-01 planning; PLAY-04 or AUTH-01 next per Director.
+
 ## CHG-20261015-001 — Correct PLAY-03 cumulative file inventory and review packaging
 
 - Status: finalized
