@@ -62,7 +62,7 @@ export function createClockService(options:{repository:ClockRepository;executor:
     if(!prior){if(probes.size>=128)throw new MatchServiceError('UNAVAILABLE');probes.set(match.matchId,{utc,revision:c.revision});}
     return false;
   }
-  function candidate(result:EngineResult,reservation:ClockReservation):CommitCandidate {
+  function candidate(result:EngineResult,reservation:{engineTimestamp:number}):CommitCandidate {
     if(result.status.rewardEligible!==false||!result.clock)throw new MatchServiceError('UNAVAILABLE');
     return {stateVersion:result.status.revision,lastTimestamp:reservation.engineTimestamp,checkpoint:result.checkpoint,ended:result.status.ended,winner:result.status.winner};
   }
@@ -88,6 +88,14 @@ export function createClockService(options:{repository:ClockRepository;executor:
       if(admission.kind==='busy')throw new MatchServiceError('BUSY');
       if(admission.kind==='expired'){const receipt=await repository.findReceipt(command);if(!receipt)throw new Error();return {receipt,duplicate:false};}
       if(admission.kind==='stale')return await repository.commit(command,before,null,{outcome:'stale',reason:'stale_state'});
+      if(admission.kind==='waiting'){
+        const evaluation=admission.evaluation;await verify(evaluation.before);
+        const result=await executor.execute({kind:'transition',references,matchId:command.matchId,checkpoint:evaluation.before.checkpoint,command:{actor:command.actorId,expectedRevision:command.expectedVersion,timestamp:evaluation.engineTimestamp,commandId:command.commandId,move:command.move,input:command.input}});
+        if(!(await health.sample(()=>repository.sample())).healthy)throw new MatchServiceError('UNAVAILABLE');
+        if(!result.result?.accepted)return await repository.commitWaitingConcession(evaluation,command,null);
+        if(result.status.revision!==command.expectedVersion+1||!result.status.ended||!result.clock)throw new MatchServiceError('UNAVAILABLE');
+        const committed=await repository.commitWaitingConcession(evaluation,command,candidate(result,evaluation),result.clock);if(committed.receipt.outcome==='accepted')known.delete(command.matchId);return committed;
+      }
       if(admission.kind!=='reserved')throw new MatchServiceError('UNAVAILABLE');
       owned=admission.reservation;
       // Reserve before any proof-cache miss can queue a full engine replay.

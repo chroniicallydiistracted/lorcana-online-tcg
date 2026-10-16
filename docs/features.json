@@ -5,7 +5,7 @@
       "id": "F-WORKSPACE",
       "name": "Reproducible local workspace",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Pinned container, private credential preservation and real baseline checks; BOOT-02 local roles/persistence are owned by F-DB.",
       "sources": [
         ".devcontainer/**",
@@ -65,14 +65,18 @@
         "docs/validation/runs/RUN-20261015-087.json",
         "docs/validation/runs/RUN-20261015-088.json",
         "docs/validation/runs/RUN-20261015-090.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-CONNECTIVITY",
       "name": "Bootstrap connectivity diagnostic",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Independent diagnostic HTTP only.",
       "sources": [
         "scripts/serve-smoke.mjs",
@@ -118,14 +122,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-CONTRACTS",
       "name": "Public foundation schemas",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Typed health/readiness and closed own-data protocol/release schemas/parsers; browser-safe metadata only.",
       "sources": [
         "packages/contracts/**"
@@ -171,14 +179,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-HTTP",
       "name": "Separate API and match diagnostics",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Local Fastify diagnostics/negotiation remain; F-MATCH-COMMANDS owns internal synthetic durable commands separately.",
       "sources": [
         "apps/api/**",
@@ -228,14 +240,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-LIFECYCLE",
       "name": "Cancellable server lifecycle",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Signal-first cancellable startup and bounded graceful cleanup.",
       "sources": [
         "packages/service-runtime/**"
@@ -280,14 +296,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-WORKER",
       "name": "Idle worker foundation",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Executable idle worker without ingress or jobs.",
       "sources": [
         "apps/worker/**"
@@ -332,14 +352,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-WEB",
       "name": "Semantic foundation client",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Semantic React diagnostics, fail-closed protocol compatibility and opt-in synthetic rendering; no engine worker/game control integration. Headless/Windows/device/art-direction qualification is separate.",
       "sources": [
         "apps/web/**",
@@ -394,14 +418,18 @@
         "docs/validation/runs/RUN-20261015-086.json",
         "docs/validation/runs/RUN-20261015-112.json",
         "docs/validation/runs/RUN-20261015-110.json",
-        "docs/validation/runs/RUN-20261015-111.json"
+        "docs/validation/runs/RUN-20261015-111.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-RENDERER",
       "name": "Synthetic Babylon lifecycle",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Synthetic scene resize/dispose; simulation/software WebGL evidence only.",
       "sources": [
         "packages/presentation/**"
@@ -452,14 +480,18 @@
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
         "docs/validation/runs/RUN-20261015-086.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-BOUNDARIES",
       "name": "Browser/public ownership enforcement",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Resolved dependency/module/HTML/CSS/asset boundaries with negative proofs.",
       "sources": [
         "scripts/check-boundaries.mjs",
@@ -510,14 +542,18 @@
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
         "docs/validation/runs/RUN-20261015-086.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-SUPERVISOR",
       "name": "Local development supervision",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Retained group ownership, idempotent cleanup, live descendant verification, sanitized source processes and fail-fast stack.",
       "sources": [
         "scripts/dev.mjs",
@@ -565,14 +601,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-DOCS",
       "name": "Universal documentation governance",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Native schema1 classified impact map, exact file/callable/source inventory, uniform timestamped change/evidence history; semantic review and real device/hosted acceptance stay explicit.",
       "sources": [
         "scripts/documentation-lib.mjs",
@@ -626,14 +666,18 @@
         "docs/validation/runs/RUN-20261015-087.json",
         "docs/validation/runs/RUN-20261015-088.json",
         "docs/validation/runs/RUN-20261015-090.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-EVIDENCE",
       "name": "Timestamped execution evidence",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Actual result/timestamps, source/log identity, failure/signal and supported secret redaction.",
       "sources": [
         "scripts/evidence-lib.mjs",
@@ -684,7 +728,11 @@
         "docs/validation/runs/RUN-20261015-087.json",
         "docs/validation/runs/RUN-20261015-088.json",
         "docs/validation/runs/RUN-20261015-090.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
@@ -714,8 +762,8 @@
       "id": "F-DB",
       "name": "Local restricted PostgreSQL foundation",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Restricted local/test roles and immutable0001..0005 history with match-only private match/transport/clock storage. Current synthetic scope locally verified; prior role/migration/persistence results stay dated. Original data preserved and no fresh volume recreation or production/backup acceptance inferred.",
+      "verification": "pending",
+      "description": "Restricted local/test roles and immutable0001..0005 history with match-only private match/transport/clock storage. Current synthetic scope implemented; fresh complete child checks exit0 but native timing qualification pending; prior role/migration/persistence results stay dated. Original data preserved and no fresh volume recreation or production/backup acceptance inferred.",
       "sources": [
         "packages/db/**",
         "infra/**",
@@ -778,7 +826,11 @@
         "docs/validation/runs/RUN-20261015-085.json",
         "docs/validation/runs/RUN-20261015-112.json",
         "docs/validation/runs/RUN-20261015-110.json",
-        "docs/validation/runs/RUN-20261015-111.json"
+        "docs/validation/runs/RUN-20261015-111.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
@@ -848,8 +900,8 @@
       "id": "F-PROTOCOL",
       "name": "Bounded public protocol and version negotiation",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Retained diagnostic1, exact closed live2 and separate clocked live3 with pinned2/3 tickets/auth/intents/snapshots/receipts/controls. Browser-safe clock fields only. Normal startup stays diagnostics-only; current final-source proof locally verified.",
+      "verification": "pending",
+      "description": "Retained diagnostic1, exact closed live2 and separate clocked live3 with pinned2/3 tickets/auth/intents/snapshots/receipts/controls. Browser-safe clock fields only. Normal startup stays diagnostics-only; current final-source child checks exit0; native timing qualification pending.",
       "sources": [
         "packages/contracts/src/protocol.ts",
         "packages/service-runtime/**",
@@ -897,14 +949,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-RELEASE",
       "name": "Release artifact identity and immutable retained pins",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Public immutable release/retained pins and v3 archived-byte binding cover13 workspaces, including browser reconnect client, implemented protocol1..3, SQL and server/Lab engine roots. Rules/content/products/rewards remain reserved; no production activation or retained private-engine loader.",
       "sources": [
         "packages/contracts/src/release.ts",
@@ -955,7 +1011,11 @@
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
         "docs/validation/runs/RUN-20261015-085.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
@@ -990,7 +1050,7 @@
       "id": "F-RULE-INVENTORY",
       "name": "Dated rules/catalog and upstream source inventory",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Research-only public acquisition and inert AST inventory, offline metadata/date/denominator/certification guards and exact acquired-source regeneration. Explicit missing-document/identity/localization gates; no product integration or upstream execution.",
       "sources": [
         "scripts/rules/**",
@@ -1042,14 +1102,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-ENGINE",
       "name": "Pinned synthetic engine, secure server RNG and private deterministic verification",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Pinned6de59de1/59 patches, secure RNG/private completed replay, server/Lab13-move policy and private live reconstruction. Ordinary/official/private/reward admission closed; synthetic viewer/wire privacy is owned by F-VIEWER-PRIVACY.",
       "sources": [
         "scripts/engine/**",
@@ -1133,14 +1197,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-RULE-CERTIFICATION",
       "name": "Representative sourced rules and per-card authoring contract",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "120 synthetic sourced scenarios under actual6de59de1 runtime, source/leaf profiles, conservation/rejected-state/projection controls and native counter/payment/lifetime/effective-state regressions. Permanent static Adventurous-loss corrected; test-only fixture probes and authoring template cannot admit official cards/games. Full rules/card/privacy/authority gates remain. Independent audit RUN-20261013-051 re-ran the 16 earlier auditor cases on the refreshed kernel and confirmed the static-loss fix.",
       "sources": [
         "scripts/rules/certification.mjs",
@@ -1203,14 +1271,18 @@
         "docs/validation/runs/RUN-20261015-007.json",
         "docs/validation/runs/RUN-20261015-008.json",
         "docs/validation/runs/RUN-20261015-084.json",
-        "docs/validation/runs/RUN-20261015-112.json"
+        "docs/validation/runs/RUN-20261015-112.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-MATCH-COMMANDS",
       "name": "Durable synthetic match commands",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Two-player synthetic durable raw trusted and reference-only command service; exact-checkpoint worker resolution, actor-bound original-intent receipts/CAS/journal/outbox, participant read/describe/observe and bounded byte/version/viewer cache. Full admission remains gated. PLAY-03 reference/cache paths independently audited in CHG-20261015-002.",
       "sources": [
         "apps/match-service/**",
@@ -1275,14 +1347,18 @@
         "docs/validation/runs/RUN-20261015-085.json",
         "docs/validation/runs/RUN-20261015-112.json",
         "docs/validation/runs/RUN-20261015-110.json",
-        "docs/validation/runs/RUN-20261015-111.json"
+        "docs/validation/runs/RUN-20261015-111.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-VIEWER-PRIVACY",
       "name": "Synthetic viewer projection and output privacy",
       "implementation": "implemented",
-      "verification": "verified",
+      "verification": "pending",
       "description": "Closed participant/public DTOs, allowlisted resources/notices/exports and revision refs; committed participant cache and injected-session synthetic live publication retain privacy. Ordinary authentication, official cards/private choices and delayed/privileged delivery remain gated.",
       "sources": [
         "packages/contracts/**",
@@ -1341,15 +1417,19 @@
         "docs/validation/runs/RUN-20261015-085.json",
         "docs/validation/runs/RUN-20261015-112.json",
         "docs/validation/runs/RUN-20261015-110.json",
-        "docs/validation/runs/RUN-20261015-111.json"
+        "docs/validation/runs/RUN-20261015-111.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-LIVE-TRANSPORT",
       "name": "Qualified synthetic live gateway",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Synthetic live2 and clocked live3 infrastructure with isolated authenticated qualification sessions. Prior PLAY-03 audit is dated; current synthetic scope locally verified. Clock estimates have no command authority. AUTH-01, ordinary/official/reward admission, user game UI/device/load/production remain gated.",
+      "verification": "pending",
+      "description": "Synthetic live2 and clocked live3 infrastructure with isolated authenticated qualification sessions. Prior PLAY-03 audit is dated; current synthetic scope implemented; fresh complete child checks exit0 but native timing qualification pending. Clock estimates have no command authority. AUTH-01, ordinary/official/reward admission, user game UI/device/load/production remain gated.",
       "sources": [
         "apps/match-service/src/gateway.ts",
         "apps/match-service/src/live-connection.ts",
@@ -1391,18 +1471,23 @@
         "docs/validation/runs/RUN-20261015-085.json",
         "docs/validation/runs/RUN-20261015-112.json",
         "docs/validation/runs/RUN-20261015-110.json",
-        "docs/validation/runs/RUN-20261015-111.json"
+        "docs/validation/runs/RUN-20261015-111.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-MATCH-CLIENT",
       "name": "Browser reconnect and pending intent transport",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Synthetic live2 and clocked live3 infrastructure with isolated authenticated qualification sessions. Prior PLAY-03 audit is dated; current synthetic scope locally verified. Clock estimates have no command authority. AUTH-01, ordinary/official/reward admission, user game UI/device/load/production remain gated.",
+      "verification": "pending",
+      "description": "Synthetic live2 and clocked live3 infrastructure with isolated authenticated qualification sessions. Prior PLAY-03 audit is dated; current synthetic scope implemented; fresh complete child checks exit0 but native timing qualification pending. Clock estimates have no command authority. AUTH-01, ordinary/official/reward admission, user game UI/device/load/production remain gated.",
       "sources": [
         "packages/match-client/**",
-        "apps/web/tests/live-client.spec.ts"
+        "apps/web/tests/live-client.spec.ts",
+        "apps/web/tests/clock-client.spec.ts"
       ],
       "documents": [
         "docs/contracts/live.md",
@@ -1434,15 +1519,19 @@
         "docs/validation/runs/RUN-20261015-086.json",
         "docs/validation/runs/RUN-20261015-112.json",
         "docs/validation/runs/RUN-20261015-110.json",
-        "docs/validation/runs/RUN-20261015-111.json"
+        "docs/validation/runs/RUN-20261015-111.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     },
     {
       "id": "F-MATCH-CLOCKS",
       "name": "Durable authoritative game clocks",
       "implementation": "implemented",
-      "verification": "verified",
-      "description": "Native replenishing timer, fenced durable clocks, audited recovery, live3 and monotonic estimates. Audit findings 1/2 are repaired and independently re-audited (CHG-20261015-008): waiting invalid moves do not reserve, a waiting concession survives the other player's deadline and brief contention retries without disconnect. Open residual R1: an opening-phase waiting concession, always refused by the engine, still takes the timed reservation and can exhaust the active client's 8 retries. Hosted CI on the fix source failed at the web type check because a new test imports unbuilt app output (R2); the Director assigned one fix round for R1 and R2. Real-card chooser and policy gates remain separate.",
+      "verification": "pending",
+      "description": "Native replenishing timer, durable clocks/recovery/live3. R1/R2 repaired: waiting commands never reserve; native concessions evaluate outside locks and commit refused/terminal results only against unchanged healthy state/clock. Opening concessions stay refused. Web test no longer statically imports app dist; source-only typecheck RUN008 passes. Complete DB/live/browser/foundation child suites exit0, but009/010/011 native receipts fail clock_changed; current timed qualification/re-audit/hosted CI pending. Four policy points, real-card chooser and admission/device/production gates remain.",
       "sources": [
         "packages/contracts/src/clocks.ts",
         "packages/engine-adapter/src/clocks.ts",
@@ -1460,7 +1549,12 @@
         "apps/match-service/src/live-connection.ts",
         "packages/contracts/src/live.ts",
         "packages/match-client/src/**",
-        "apps/web/tests/clock-client.spec.ts"
+        "apps/web/tests/clock-client.spec.ts",
+        "packages/db/src/match-store.ts",
+        "packages/db/src/index.ts",
+        "apps/match-service/tests/clock-service.test.mjs",
+        "apps/match-service/tests/clock-live.test.mjs",
+        "apps/match-service/tests/client-fixtures.mjs"
       ],
       "documents": [
         "docs/plans/2026-10-15-play-04-intake.md",
@@ -1469,7 +1563,8 @@
         "docs/adr/0016-durable-engine-clocks.md",
         "docs/runbooks/game-clocks.md",
         "docs/validation/play-04.md",
-        "docs/reviews/2026-10-15-play-04-clocks.md"
+        "docs/reviews/2026-10-15-play-04-clocks.md",
+        "docs/reviews/2026-10-16-play-04-opening-fixes.md"
       ],
       "task_ids": [
         "PLAY-04"
@@ -1509,7 +1604,11 @@
         "docs/validation/runs/RUN-20261015-119.json",
         "docs/validation/runs/RUN-20261015-120.json",
         "docs/validation/runs/RUN-20261015-121.json",
-        "docs/validation/runs/RUN-20261015-122.json"
+        "docs/validation/runs/RUN-20261015-122.json",
+        "docs/validation/runs/RUN-20261016-008.json",
+        "docs/validation/runs/RUN-20261016-009.json",
+        "docs/validation/runs/RUN-20261016-010.json",
+        "docs/validation/runs/RUN-20261016-011.json"
       ]
     }
   ]

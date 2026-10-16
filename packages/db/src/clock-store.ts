@@ -10,13 +10,15 @@ import type {EngineClockState,ClockProjection} from '@lorcana/contracts/clocks';
 
 export interface ClockAuditRequest {kind:'pause'|'resume';matchId:string;expectedStateVersion:number;expectedClockRevision:number;operationId:string;auditId:string;reason?:ClockProjection['pauseReason'];reset?:{playerId:string;remainingMs:number}}
 export type ClockControlResult=ReceiptResult&{clockRevision:number};
-export type ReserveResult={kind:'reserved';reservation:ClockReservation;before:StoredMatch}|{kind:'duplicate';result:ReceiptResult&{clockRevision?:number}}|{kind:'rejected';result:ReceiptResult}|{kind:'busy'|'stale'|'paused'|'expired'};
+export interface WaitingConcessionEvaluation {before:StoredMatch;sampledAtMs:number;engineTimestamp:number}
+export type ReserveResult={kind:'reserved';reservation:ClockReservation;before:StoredMatch}|{kind:'waiting';evaluation:WaitingConcessionEvaluation}|{kind:'duplicate';result:ReceiptResult&{clockRevision?:number}}|{kind:'rejected';result:ReceiptResult}|{kind:'busy'|'stale'|'paused'|'expired'};
 export interface ClockRepository extends MatchRepository {
   sample():Promise<number>;
   createTimed(value:StoredMatch):Promise<{match:StoredMatch;created:boolean}>;
   reservePlayer(command:DurableCommand&{move:string}):Promise<ReserveResult>;
   reserveTimeout(matchId:string,expectedStateVersion:number,expectedClockRevision:number):Promise<ReserveResult>;
   commitPlayer(reservation:ClockReservation,command:DurableCommand,candidate:CommitCandidate,clock:EngineClockState):Promise<ReceiptResult>;
+  commitWaitingConcession(evaluation:WaitingConcessionEvaluation,command:DurableCommand&{move:string},candidate:CommitCandidate|null,clock?:EngineClockState):Promise<ReceiptResult>;
   commitTimeout(reservation:ClockReservation,candidate:CommitCandidate,clock:EngineClockState):Promise<ReceiptResult>;
   abort(reservation:ClockReservation):Promise<void>;
   reject(reservation:ClockReservation,command:DurableCommand):Promise<ReceiptResult>;
@@ -78,7 +80,7 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
     }
     // The service supplies a validated move. Refuse waiting-player actions
     // against the current locked row, without a lease, proof replay or clock
-    // mutation. A concession still goes through normal fenced engine work.
+    // mutation. Waiting concessions are evaluated without a timed lease too.
     if(command&&command.actorId!==clock.activePlayerId&&command.move!=='concede'){
       if(match.stateVersion!==version||match.ended)return {kind:'stale'};
       return {kind:'rejected',result:await commitMatchOnClient(c,command,match,null,{outcome:'rejected',reason:'invalid_intent'})};
@@ -92,6 +94,7 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
     if(now<clock.anchorUtcMs||now<clock.lastHealthyUtcMs){await pauseUnsafe(c,match,now,'time_unreliable');return {kind:'paused'};}
     if(now-clock.lastHealthyUtcMs>maxGap){await pauseUnsafe(c,match,now,'recovery');return {kind:'paused'};}
     const waitingConcession=command?.move==='concede'&&command.actorId!==clock.activePlayerId;
+    if(waitingConcession)return {kind:'waiting',evaluation:{before:match,sampledAtMs:now,engineTimestamp:clockInteger(clock.engineTimestamp+now-clock.anchorUtcMs)}};
     if(kind==='player'&&!waitingConcession&&now>=clock.deadlineUtcMs!){
       if(command)await commitMatchOnClient(c,command,match,null,{outcome:'rejected',reason:'clock_expired'});
       return {kind:'expired'};
@@ -144,6 +147,28 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
     reservePlayer(command){return transaction(c=>reserve(c,'player',command.matchId,command.expectedVersion,undefined,command));},
     reserveTimeout(matchId,version,revision){return transaction(c=>reserve(c,'timeout',matchId,version,revision));},
     commitPlayer(reservation,command,candidate,clock){return finish(reservation,candidate,clock,command);},
+    commitWaitingConcession(evaluation,command,candidate,engine){return transaction(async c=>{
+      const {match,reservation}=await locked(c,command.matchId,command.actorId),clock=match.clock!,before=evaluation.before;
+      const old=await c.query('SELECT * FROM match.command_receipts WHERE match_id=$1 AND actor_id=$2 AND command_id=$3',[match.matchId,command.actorId,command.commandId]);
+      if(old.rows[0]){
+        const r=old.rows[0];if(r.intent_hash!==command.intentHash)throw new MatchStoreError('ID_CONFLICT');
+        return {duplicate:true,receipt:{matchId:match.matchId,actorId:r.actor_id,commandId:r.command_id,intentHash:r.intent_hash,releaseId:match.releaseId,outcome:r.outcome,reason:r.reason,stateVersion:clockInteger(r.state_version)} as DurableReceipt};
+      }
+      if(command.move!=='concede'||before.matchId!==command.matchId||!before.clock||before.clock.activePlayerId===command.actorId||command.expectedVersion!==before.stateVersion)throw new MatchStoreError('UNAVAILABLE');
+      // A heartbeat may advance only lastHealthyUtcMs. All adjudication state,
+      // including clock-only revisions, must still be the evaluated snapshot.
+      if(match.stateVersion!==before.stateVersion||match.ended||match.checkpoint.archive!==before.checkpoint.archive||match.checkpoint.digest!==before.checkpoint.digest||JSON.stringify({...clock,lastHealthyUtcMs:0})!==JSON.stringify({...before.clock,lastHealthyUtcMs:0}))return commitMatchOnClient(c,command,before,null,{outcome:'stale',reason:'stale_state'});
+      if(reservation||clock.status!=='running'||clock.activePlayerId===command.actorId)throw new MatchStoreError('UNAVAILABLE');
+      const now=await sample(c),at=clockInteger(evaluation.sampledAtMs),timestamp=clockInteger(evaluation.engineTimestamp);
+      if(now<at||now<clock.lastHealthyUtcMs||now<clock.anchorUtcMs||now-at>=leaseMs||now-clock.lastHealthyUtcMs>maxGap||timestamp!==clock.engineTimestamp+at-clock.anchorUtcMs)throw new MatchStoreError('UNAVAILABLE');
+      if(!candidate)return commitMatchOnClient(c,command,before,null,{outcome:'rejected',reason:'invalid_intent'});
+      if(!engine||!candidate.ended||candidate.winner!==match.players.find(id=>id!==command.actorId)||candidate.lastTimestamp!==timestamp||engine.activePlayerId!==clock.activePlayerId||JSON.stringify(Object.entries(engine.policy).sort())!==JSON.stringify(Object.entries(clock.policy).sort())||engine.players.length!==2||new Set(engine.players.map(p=>p.playerId)).size!==2||engine.players.some(p=>!match.players.includes(p.playerId)))throw new MatchStoreError('UNAVAILABLE');
+      const result=await commitMatchOnClient(c,command,before,candidate,undefined,{kind:'waiting-concession',expectedStateVersion:match.stateVersion,expectedClockRevision:clock.revision,checkpointDigest:match.checkpoint.digest});
+      if(result.receipt.outcome!=='accepted')throw new MatchStoreError('UNAVAILABLE');
+      const remainingMs=Object.fromEntries(engine.players.map(p=>[p.playerId,clockInteger(p.remainingMs,-3_600_000,clock.policy.reserveCapMs)]));
+      const next:StoredClock={...clock,revision:clock.revision+1,stateVersion:candidate.stateVersion,engineTimestamp:timestamp,anchorUtcMs:now,lastHealthyUtcMs:now,remainingMs,checkpointDigest:candidate.checkpoint.digest,status:'ended',deadlineUtcMs:null,pauseReason:null};
+      await write(c,match,next,null);await event(c,match,next,'accepted',command.commandId,now);return result;
+    });},
     commitTimeout(reservation,candidate,clock){return finish(reservation,candidate,clock);},
     loadSystem(matchId){return transaction(async c=>{const r=await c.query(selectMatchSql+' WHERE m.match_id=$1',[matchId]);return r.rows[0]?decodeMatchRow(r.rows[0]):undefined;});},
     activeClockIds(matchIds){

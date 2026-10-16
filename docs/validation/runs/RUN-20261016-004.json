@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-004",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern=opening concession|waiting concession|waiting evaluation",
+    "apps/match-service/tests/clock-service.test.mjs",
+    "apps/match-service/tests/clock-storage.test.mjs",
+    "apps/match-service/tests/clock-live.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "33e9a7a5add3db19ba8327df7f56d8744f0e59f8",
+  "source_fingerprint": "7e6f38277f9942730e759291bb28d71863170e6d961cea3b3f5387362d223bed",
+  "started_at": "2026-10-16T03:57:03.380Z",
+  "finished_at": "2026-10-16T03:57:13.502Z",
+  "recorded_at": "2026-10-16T03:57:13.502Z",
+  "time_precision": "exact",
+  "elapsed_ms": 9189,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED no-lease waiting opening and optimistic terminal race regressions",
+  "log_path": "docs/validation/logs/RUN-20261016-004.txt",
+  "log_sha256": "259aa74f5e652aa7e1adae43ed70092e99d6d03d83d918887cf6642318a515d7",
+  "redactions": 0
+}

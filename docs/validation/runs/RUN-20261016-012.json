@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-012",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import assert from 'node:assert/strict';\nimport {readFileSync,readdirSync,existsSync,statSync} from 'node:fs';\nimport {spawnSync} from 'node:child_process';\nimport {inventory,repository,isDoc,sourceFingerprint,sha256} from '/workspaces/lorcana-online-tcg/scripts/documentation-lib.mjs';\nprocess.chdir(repository);\nconst git=(...args)=>{const p=spawnSync('git',args,{encoding:null,maxBuffer:16*1024*1024});assert.equal(p.status,0,'Git inspection failed');return p.stdout;};\nconst names=(...args)=>git(...args).toString().trim().split('\\n').filter(Boolean);\nassert.equal(git('branch','--show-current').toString().trim(),'codex/play-04-opening-fixes');\nassert.equal(git('rev-parse','main').toString().trim(),'775994a82f5f003c4c4831a20791d5e904ff3d6b');\nconst baseline=JSON.parse(readFileSync('.local/play04-opening-preservation.json','utf8'));\nfor(const [path,saved] of Object.entries(baseline)){assert.equal(sha256(readFileSync(path)),saved.sha256,'Private bytes changed');assert.equal(statSync(path).mode&0o777,saved.mode,'Private mode changed');assert.equal(spawnSync('git',['check-ignore','-q',path]).status,0);}\nconst expected=['apps/match-service/src/clock-service.ts','apps/match-service/tests/client-fixtures.mjs','apps/match-service/tests/clock-live.test.mjs','apps/match-service/tests/clock-service.test.mjs','apps/match-service/tests/clock-storage.test.mjs','apps/web/tests/clock-client.spec.ts','packages/db/src/clock-store.ts','packages/db/src/index.ts','packages/db/src/match-store.ts'].sort();\nconst source=inventory().filter(p=>!isDoc(p)||p.startsWith('docs/schemas/'));\nassert.deepEqual(names('diff','--name-only','33e9a7a').filter(p=>!isDoc(p)||p.startsWith('docs/schemas/')).sort(),expected);\nfor(const path of inventory())assert.deepEqual(git('show',':'+path),readFileSync(path),'Staged canonical bytes differ: '+path);\nconst c=JSON.parse(readFileSync('docs/changes/CHG-20261016-003.json','utf8'));\nassert.equal(c.status,'finalized');\nconst cumulative=new Set([...names('diff','--name-only','775994a'),...names('ls-files','--others','--exclude-standard')]);\nfor(const path of cumulative)assert(c.files.includes(path),'Missing cumulative coverage: '+path);\nassert.equal(c.files.length,new Set(c.files).size);\nconst env=readFileSync('.env.local','utf8'),managed=JSON.parse(readFileSync('.local/database.json','utf8')),secrets=[];\nfor(const line of env.split('\\n')){const i=line.indexOf('=');if(i>0&&/password|secret|token/i.test(line.slice(0,i))){const value=line.slice(i+1).trim().replace(/^['\"]|['\"]$/g,'');if(value.length>=12)secrets.push(value);}}\nfunction collect(o){if(!o||typeof o!=='object')return;for(const [k,v] of Object.entries(o)){if(typeof v==='string'&&/password|secret|token/i.test(k)&&v.length>=12)secrets.push(v);else if(typeof v==='object')collect(v);}}\ncollect(managed);assert(secrets.length>0,'No private scan inputs');\nlet files=0,logs=0;\nfor(const path of inventory()){\n const bytes=readFileSync(path);for(const secret of secrets)assert(!bytes.includes(Buffer.from(secret)),'Private value found in owned file: '+path);files++;\n if(/^docs\\/validation\\/runs\\/RUN-20261016-/.test(path)){\n  const r=JSON.parse(bytes);if(r.log_path){assert.equal(sha256(readFileSync(r.log_path)),r.log_sha256,'Log digest mismatch');logs++;}\n }\n}\nfor(const path of ['apps/web/tests/clock-client.spec.ts'])assert(!/from\\s+['\"][^'\"]*match-service\\/dist\\//.test(readFileSync(path,'utf8')));\nconst processRoots=['/workspaces/lorcana-online-tcg/apps/match-service/dist/main.js','/workspaces/lorcana-online-tcg/apps/api/dist/main.js','/workspaces/lorcana-online-tcg/apps/worker/dist/main.js'];\nfor(const id of readdirSync('/proc').filter(x=>/^\\d+$/.test(x))){\n let args;try{args=readFileSync('/proc/'+id+'/cmdline','utf8').split('\\0');}catch{continue;}\n if(args[0]?.includes('node'))assert(!args.slice(1).some(a=>processRoots.includes(a)||/\\/(?:clock-child|gateway-child|client-host)\\.mjs$/.test(a)),'Owned runtime child remains: '+id);\n}\nfor(const f of ['/proc/net/tcp','/proc/net/tcp6'])if(existsSync(f))for(const line of readFileSync(f,'utf8').split('\\n').slice(1)){const cols=line.trim().split(/\\s+/);if(cols[3]==='0A'){const port=parseInt(cols[1].split(':').at(-1),16);assert(![5173,3001,3002].includes(port),'Foundation listener remains');}}\nconsole.log('PASS private bytes/modes/ignores, main unchanged, exactly9 executable fix files, native rules/engine/SQL/public schemas/client runtime/dependencies unchanged, canonical staged source and cumulative branch coverage.');\nconsole.log(JSON.stringify({source_fingerprint:sourceFingerprint(),canonical_source_files:source.length,scanned_owned_files:files,checked_local_run_logs:logs,cumulative_files:c.files.length,peak_memory:'unknown',device_acceptance:'not_run',host_settings:'unchanged'}));\n"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "33e9a7a5add3db19ba8327df7f56d8744f0e59f8",
+  "source_fingerprint": "168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef",
+  "started_at": "2026-10-16T04:18:59.152Z",
+  "finished_at": "2026-10-16T04:19:05.464Z",
+  "recorded_at": "2026-10-16T04:19:05.464Z",
+  "time_precision": "exact",
+  "elapsed_ms": 6312,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final opening repair canonical staged private log digest cumulative scope and owned cleanup audit",
+  "log_path": "docs/validation/logs/RUN-20261016-012.txt",
+  "log_sha256": "7349ddae0b7c4871ed7207ec7764677a863d5fe1c51f1749882ce1395bbe2477",
+  "redactions": 0
+}

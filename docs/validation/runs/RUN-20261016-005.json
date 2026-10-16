@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-005",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/match-service... --workspace-concurrency=1 build && node --test --test-concurrency=1 apps/match-service/tests/clock-service.test.mjs apps/match-service/tests/clock-storage.test.mjs apps/match-service/tests/clock-live.test.mjs && pnpm --filter @lorcana/web typecheck"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "33e9a7a5add3db19ba8327df7f56d8744f0e59f8",
+  "source_fingerprint": "0512589f0c517b2269d3ba0313555006baf05a33ed1aaf2351d3e672157d8816",
+  "started_at": "2026-10-16T03:58:44.053Z",
+  "finished_at": "2026-10-16T03:59:52.722Z",
+  "recorded_at": "2026-10-16T03:59:52.722Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 66793,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 2,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "GREEN unreserved waiting concession and opening race checks with owning builds",
+  "log_path": "docs/validation/logs/RUN-20261016-005.txt",
+  "log_sha256": "41c83938be7da21b9cf5af117726954e7951ed8fdc4a0ab8b5d832094eab3d8e",
+  "redactions": 0
+}

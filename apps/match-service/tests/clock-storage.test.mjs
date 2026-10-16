@@ -19,12 +19,37 @@ test('waiting-player refusals never reserve or revise the active clock, even wit
 for(const elapsed of [0,1000,1001])test('waiting concession remains admissible '+elapsed+'ms after the turn anchor',async()=>{
  const f=await clockFixture();try{
   await f.open();const before=await f.a.load(f.id,'p1');f.advance(elapsed);
-  const command=f.command('p2','concede'),owner=await f.b.reservePlayer(command);assert.equal(owner.kind,'reserved');
-  assert.equal((await f.a.reserveTimeout(f.id,before.stateVersion,before.clock.revision)).kind,'busy');
-  const next=f.apply(owner.reservation,'p2','concede'),result=await f.b.commitPlayer(owner.reservation,command,next,f.m.clock());assert.equal(result.receipt.outcome,'accepted');
+  const command=f.command('p2','concede'),owner=await f.b.reservePlayer(command);assert.equal(owner.kind,'waiting');
+  assert.deepEqual((await f.a.load(f.id,'p1')).clock,before.clock);
+  const next=f.apply(owner.evaluation,'p2','concede'),result=await f.b.commitWaitingConcession(owner.evaluation,command,next,f.m.clock());assert.equal(result.receipt.outcome,'accepted');
   const after=await f.a.load(f.id,'p1');assert.equal(after.ended,true);assert.equal(after.winner,'p1');assert.equal(after.clock.status,'ended');
   const duplicate=await f.a.reservePlayer(command);assert.equal(duplicate.kind,'duplicate');assert.deepEqual(duplicate.result.receipt,result.receipt);
   assert.equal((await f.a.reserveTimeout(f.id,after.stateVersion,after.clock.revision)).kind,'stale');
+ }finally{await f.close();}
+});
+test('a waiting concession cannot fence a concurrent timeout or overwrite its clock-only revision',async()=>{
+ const f=await clockFixture();try{
+  await f.open();f.advance(1000);const before=await f.a.load(f.id,'p1'),command=f.command('p2','concede'),evaluation=await f.a.reservePlayer(command);assert.equal(evaluation.kind,'waiting');
+  const next=f.apply(evaluation.evaluation,'p2','concede'),owner=await f.b.reserveTimeout(f.id,before.stateVersion,before.clock.revision);assert.equal(owner.kind,'reserved');
+  const processing=await f.a.load(f.id,'p1'),r=await f.a.commitWaitingConcession(evaluation.evaluation,command,next,f.m.clock());assert.equal(r.receipt.outcome,'stale');
+  assert.deepEqual((await f.a.load(f.id,'p1')).clock,processing.clock);assert.equal((await f.a.load(f.id,'p1')).ended,false);await f.b.abort(owner.reservation);
+ }finally{await f.close();}
+});
+test('concurrent evaluated waiting concessions save one terminal result and duplicate retries recover it',async()=>{
+ const f=await clockFixture();try{
+  await f.open();const first=f.command('p2','concede'),second=f.command('p2','concede'),a=await f.a.reservePlayer(first),b=await f.b.reservePlayer(second);assert.equal(a.kind,'waiting');assert.equal(b.kind,'waiting');
+  const next=f.apply(a.evaluation,'p2','concede'),clock=f.m.clock();
+  await assert.rejects(f.a.commit(first,a.evaluation.before,next),'ordinary commit cannot bypass a clock');
+  const r=await Promise.all([f.a.commitWaitingConcession(a.evaluation,first,next,clock),f.b.commitWaitingConcession(b.evaluation,second,next,clock)]);assert.deepEqual(r.map(x=>x.receipt.outcome).sort(),['accepted','stale']);
+  const winner=r.find(x=>x.receipt.outcome==='accepted'),command=winner.receipt.commandId===first.commandId?first:second,evaluation=command===first?a.evaluation:b.evaluation;
+  const again=await f.a.commitWaitingConcession(evaluation,command,next,clock);assert.equal(again.duplicate,true);assert.deepEqual(again.receipt,winner.receipt);
+  const count=await f.using('match',async c=>{const result=[];for(const table of ['journal','outbox'])result.push((await c.query('SELECT count(*)::int AS n FROM match.'+table+' WHERE match_id=$1 AND state_version=4',[f.id])).rows[0].n);return result;});assert.deepEqual(count,[1,1]);
+ }finally{await f.close();}
+});
+for(const [name,change]of [['expired',f=>f.advance(15001)],['backward',f=>f.setTime(9999)]])test('an '+name+' waiting evaluation cannot change or pause the clock',async()=>{
+ const f=await clockFixture();try{
+  await f.open();const command=f.command('p2','concede'),r=await f.a.reservePlayer(command);assert.equal(r.kind,'waiting');const next=f.apply(r.evaluation,'p2','concede'),before=await f.a.load(f.id,'p1');change(f);
+  await assert.rejects(f.a.commitWaitingConcession(r.evaluation,command,next,f.m.clock()),e=>e.code==='UNAVAILABLE');assert.deepEqual((await f.a.load(f.id,'p1')).clock,before.clock);assert.equal(await f.a.findReceipt(command),undefined);
  }finally{await f.close();}
 });
 

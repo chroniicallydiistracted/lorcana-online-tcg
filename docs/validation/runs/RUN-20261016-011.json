@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-011",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm install --frozen-lockfile --offline && pnpm run doctor && pnpm verify:foundation && pnpm db:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "33e9a7a5add3db19ba8327df7f56d8744f0e59f8",
+  "source_fingerprint": "168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef",
+  "started_at": "2026-10-16T04:12:25.723Z",
+  "finished_at": "2026-10-16T04:14:47.175Z",
+  "recorded_at": "2026-10-16T04:14:47.175Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 136530,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "Final-source frozen offline install doctor full foundation types lint build bootstrap project and unchanged engine suites",
+  "log_path": "docs/validation/logs/RUN-20261016-011.txt",
+  "log_sha256": "1a8c6ffba4907f475e826f6a081afe0f3c6c70e1f606743841c40e0147d8f025",
+  "redactions": 0
+}

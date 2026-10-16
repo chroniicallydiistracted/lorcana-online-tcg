@@ -1,0 +1,9 @@
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+tests/clock-client.spec.ts(64,168): error TS2339: Property 'reason' does not exist on type 'TransportReceipt'.
+  Property 'reason' does not exist on type '{ type: "receipt"; outcome: "accepted"; protocolVersion: 2; matchId: string; commandId: string; correlationId: string; sequence: number; stateVersion: number; releaseId: string; duplicate: boolean; }'.
+/workspaces/lorcana-online-tcg/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/web@0.0.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2

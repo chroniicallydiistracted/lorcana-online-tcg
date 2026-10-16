@@ -53,3 +53,7 @@ Default clock runner interval250ms, batch32, health gap/lease15s, uncertainty to
 ## PLAY-04 audit repair — 2026-10-15 UTC
 
 For brief clock reservation contention, internal BUSY produces the existing rate_limited/rate_limit receipt with100ms retryAfterMs. Leave the socket and pending command ID intact; no durable receipt exists until final admission/refusal. Do not equate BUSY with infrastructure UNAVAILABLE, which retains maintenance/fail-closed behavior. See PLAY-04 audit-fix validation before integration.
+
+## PLAY-04 opening repair — 2026-10-16 UTC
+
+Waiting opening concessions now undergo unreserved native validation; refused attempts write no clock events or revision and cannot fence the active decision. Same-socket BUSY retry and its existing8-attempt budget remain unchanged. Stock-client regressions repeat all three opening phases; this is synthetic qualification, not an opening-leave policy or production load proof.

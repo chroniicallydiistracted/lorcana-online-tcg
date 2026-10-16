@@ -113,8 +113,9 @@ export function createMatchRepository(target:Target, root=workspaceRoot,clockSam
   };
 }
 
-/** Internal transaction friend: timed stores must prove their reservation before candidate writes. */
-export async function commitMatchOnClient(c:pg.PoolClient,command:DurableCommand,before:StoredMatch,candidate:CommitCandidate|null,rejection?:Rejection,permitClock?:ClockReservation):Promise<ReceiptResult> {
+type ClockCommitPermit=ClockReservation|{kind:'waiting-concession';expectedStateVersion:number;expectedClockRevision:number;checkpointDigest:string};
+/** Internal transaction friend: leased work or an unchanged, unreserved terminal concession only. */
+export async function commitMatchOnClient(c:pg.PoolClient,command:DurableCommand,before:StoredMatch,candidate:CommitCandidate|null,rejection?:Rejection,permitClock?:ClockCommitPermit):Promise<ReceiptResult> {
         const system=permitClock?.kind==='timeout';
         const match=await c.query(select+' WHERE m.match_id=$1'+(system?'':' AND ($2=m.player_one OR $2=m.player_two)')+' FOR UPDATE OF m',system?[command.matchId]:[command.matchId,command.actorId]);
         if(!match.rows[0])throw new MatchStoreError('FORBIDDEN');
@@ -128,7 +129,9 @@ export async function commitMatchOnClient(c:pg.PoolClient,command:DurableCommand
           if(current.clock){
             const guard=await c.query('SELECT reservation FROM match.clocks WHERE match_id=$1 FOR UPDATE',[command.matchId]);
             const owned=guard.rows[0]?.reservation;
-            if(!permitClock||!owned||owned.id!==permitClock.id||owned.kind!==permitClock.kind||owned.expectedStateVersion!==permitClock.expectedStateVersion||owned.expectedClockRevision!==permitClock.expectedClockRevision)throw new MatchStoreError('UNAVAILABLE');
+            if(permitClock?.kind==='waiting-concession'){
+              if(owned||current.clock.status!=='running'||current.clock.activePlayerId===command.actorId||current.stateVersion!==permitClock.expectedStateVersion||current.clock.revision!==permitClock.expectedClockRevision||current.checkpoint.digest!==permitClock.checkpointDigest||!candidate.ended||candidate.winner!==current.players.find(id=>id!==command.actorId))throw new MatchStoreError('UNAVAILABLE');
+            }else if(!permitClock||!owned||owned.id!==permitClock.id||owned.kind!==permitClock.kind||owned.expectedStateVersion!==permitClock.expectedStateVersion||owned.expectedClockRevision!==permitClock.expectedClockRevision)throw new MatchStoreError('UNAVAILABLE');
           }else if(permitClock)throw new MatchStoreError('UNAVAILABLE');
           if(current.checkpoint.digest!==before.checkpoint.digest||candidate.stateVersion!==version+1||candidate.lastTimestamp<current.lastTimestamp)throw new MatchStoreError('UNAVAILABLE');
           const update=await c.query('UPDATE match.matches SET state_version=$1,last_timestamp=$2,checkpoint=$3,checkpoint_digest=$4,ended=$5,winner=$6 WHERE match_id=$7 AND state_version=$8 AND checkpoint_digest=$9',

@@ -58,3 +58,7 @@ Observers/casters/judges, delayed streams, full private replay delivery, officia
 ## PLAY-04 audit repair — 2026-10-15 UTC
 
 Reservation contention does not introduce a new wire variant: internal BUSY maps to the existing rate_limited/rate_limit receipt with100ms retryAfterMs and no maintenance control or socket close. The existing client preserves its view and original pending bytes/ID and retries on that socket. There is no durable busy receipt. Real UNAVAILABLE remains maintenance; bounded retry and shared quotas remain in force. Live2/3 schemas and clients are unchanged.
+
+## PLAY-04 opening repair — 2026-10-16 UTC
+
+No wire variant, client retry rule or opening-leave permission changes. Waiting concessions use an internal unreserved evaluation; engine-refused opening attempts leave the clock untouched. A concurrent active decision or timeout can win and make the waiting result stale. Accepted terminal concessions retain original ID/duplicate semantics. See the current clock validation for executed proof.

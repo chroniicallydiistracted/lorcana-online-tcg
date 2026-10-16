@@ -266,3 +266,40 @@ The Director chose to fix both problems in one small Codex round: R2 (the CI imp
 |RUN-20261015-124|container|Expected failure: local reproduction of the hosted web type-check error (exit 2); the build folder was restored.|
 |RUN-20261015-125|container|Failed as observed: public metadata for hosted run 38820071834 (conclusion failure).|
 |RUN-20261016-001|static|`docs:check` over this record.|
+
+## Opening concession and clean typecheck repairs — 2026-10-16 UTC
+
+CHG-20261016-002 addresses Director-assigned residual R1 and R2 on `codex/play-04-opening-fixes`, based on published re-audit33e9a7a. Main stays775994a. The old hosted failure38820071834 and all earlier audit/repair evidence remain unchanged. Fresh Director re-audit and hosted CI govern integration; this local change claims neither.
+
+### Runtime and build-order repair
+
+- Waiting non-concession commands still receive durable `invalid_intent` without a timed reservation or engine work. A waiting concession now returns an unreserved `WaitingConcessionEvaluation` from the short admission transaction. Native proof reconstruction and transition run after the locks are released. This applies at first-player choice, both mulligans and main play, including the other player's exact deadline.
+- `commitWaitingConcession` reacquires match then clock locks and rereads current state. Receipt reuse/hash checks precede adjudication. State version, archive/digest and the complete decoded clock must still equal the evaluated snapshot, except an independently advanced `lastHealthyUtcMs`. A concurrent move/timeout/pause produces stale or unavailable without overwriting its clock; an active lease is never released by waiting work. Backward/unhealthy/expired evaluation is refused without pausing or mutating the active clock.
+- An unchanged native refusal writes only the idempotent invalid-intent receipt. An accepted concession must terminate the game with the other participant as winner. A narrow internal permit atomically commits the new checkpoint, ended clock, receipt, journal, outbox and one accepted event. Ordinary raw commits still cannot bypass a timed clock. No SQL transaction or clock reservation spans waiting-player engine work.
+- The unchanged engine refuses opening concessions. No `forfeitGame` substitution, opening leave policy, retry-limit change, native arithmetic/rule repair, public schema, migration, dependency or host-setting change is made. Existing active-player reservation/deadline and same-socket BUSY retry behavior remain.
+- The Chromium regression imports only the existing JavaScript Node qualification fixture. The fixture owns the DB reservation and validator import at execution time, after application build; the web TypeScript graph no longer imports the match-service build folder. Its owned reservation is released by explicit cleanup or fixture close.
+
+### Discriminating checks and review
+
+The new storage/service/live tests cover repeated refused concessions through all three opening phases, a deliberately suspended engine computation while the active decision commits, timeout priority without a waiting lease, competing concessions with exactly one terminal commit and duplicate receipts, and expired/backward proposals without shared-clock mutation. Both opening-seat Chromium cases send repeated refused concessions before each active opening decision and verify unchanged clock revision, then continue through pause/reconnect. Existing exact-deadline concession and same-socket busy tests are retained.
+
+A fresh read-only reviewer inspected the runtime/test diff and found no critical or important findings. Its optional isolated heartbeat-exception test is not an identified defect; all adjudication state remains fenced and full suites are still required. See [review disposition](../reviews/2026-10-16-play-04-opening-fixes.md). Review is source analysis, not execution or Director acceptance.
+
+| Run (2026-10-16 UTC) | Actual evidence and result |
+|---|---|
+|002|Passing unchanged-source doctor, verify, bootstrap and original authenticated DB intake.|
+|003|Expected RED: source-only frozen offline install then ordered root typecheck fails TS2307 on the direct app-output import. No app build folder exists. Additional worker diagnostics appear during failure cleanup; the exact web failure is independently present.|
+|004|Expected RED: 11 selected regressions, 1 pass/10 failures on old waiting reservation behavior.|
+|005|All33 focused clock cases and package builds pass, but strict web typecheck fails on an optional cleanup callback. The recorder also rejects the UTC/monotonic pair (`clock_changed`); raw failed receipt retained.|
+|006|Strict web typecheck exposes missing receipt-outcome narrowing; repaired explicitly, without weakening types.|
+|007|Passing strict web types and scoped lint after both type corrections.|
+|008|Passing source-only clean frozen offline install/root typecheck with no app output before or after; no Git, credentials, dependencies or old build output copied; temporary copy removed.|
+|009|Container: all81 actual DB/storage/match/live checks pass (5 DB +3 storage contracts +73 integration), including the7 new service/storage/live regressions. Both role/migration health targets and original bootstrap DB succeed; child exit0. Native receipt fails clock_changed (188535ms monotonic,194313ms raw UTC).|
+|010|Headless Linux Chromium153.0.8010.12: all11 smoke/live tests pass with one worker, including repeated concessions for both opening seats;2 Lab Web Workers pass. Child exit0; native receipt fails clock_changed. No Windows/device observation.|
+|011|Container: frozen offline install, doctor, verify/docs, root typecheck, strict lint/boundaries, builds,350project checks (326Node+24Python),406unchanged upstream passes/1inherited skip,2injection and original bootstrap DB all complete; child exit0. Native receipt fails clock_changed (136530ms monotonic,141452ms raw UTC).|
+
+All fresh final-source suites above share executable fingerprint168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef. The code checks have no failures; the timing rejections are retained failed outcomes, not converted to passing receipts. No redundant long rerun or environment repair is attempted. Current whole-source feature verification remains pending under the conservative governance rule; dated prior verifications remain in evidence arrays. Fresh valid source-only RUN008 closes R2's requested build-order proof, without certifying the rest of CI.
+
+Local repair scope is finalized for Director re-audit, with long-run native timing and hosted qualification explicitly pending. RUN012 records canonical staged source/private/log/cumulative-scope/owned-resource checks; RUN013 records final documentation validation. Their immutable receipts contain actual outcomes; this text makes no advance passing claim. The two run/log pairs are predeclared in the cumulative main775994a-to-branch inventory, while33e9a7a is the precise fix-only review base. No self-referencing future passing evidence or amendment of a sealed record is used. No long isolated CI, hosted fix-source run/artifact, Windows device, performance/load or production acceptance is inferred. Original private bytes/modes and volume must remain intact; fixtures clean only their own data. The interrupted earlier fixture and expired quota rows remain untouched. Clock/memory settings and evidence thresholds stay unchanged. Four Director policy points and the real-card non-priority chooser gate remain open.
+
+Pre-commit documentation correction CHG-20261016-003 joins the result-table continuation and removes stale draft wording from the handoff. The owned CHG002 synchronization was stopped with SIGTERM (exit143) after writing its final snapshot and before returning validation; no passing validation is inferred from that interrupted command. Final RUN012/013 cover the corrected package; runtime/test bytes and source fingerprint are unchanged.

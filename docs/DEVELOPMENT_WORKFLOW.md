@@ -53,3 +53,7 @@ Documentation validation shares one source fingerprint across feature and eviden
 ## Cumulative review packaging
 
 The change record must cover the complete branch change, including files already staged or committed during the task. At final packaging, combine the branch-base-to-HEAD file diff with staged, unstaged and non-ignored untracked paths; a dirty-only list after staging is incomplete. Compare the final staged/committed file set against the record before committing. Stop the commit sequence on any failed prerequisite; a later successful command must not mask an earlier failure. Preserve sealed records and use an explicit correction record for any committed metadata error. A cosmetic whitespace warning is not a passing whitespace check or a reason to misstate application test results.
+
+## PLAY-04 opening repair — 2026-10-16 UTC
+
+For changes to TypeScript tests that call Node qualification helpers, verify the root typecheck from a source-only copy before application builds. Do not statically import another app's `dist`: root typecheck builds shared packages first, while application output does not yet exist. Keep post-build Node fixture imports in the existing JavaScript harness. RUN-20261016-003 reproduces the warm-build blind spot and RUN-20261016-008 proves its repair. Preserve both outcomes; a warm local build cannot qualify fresh checkout order.

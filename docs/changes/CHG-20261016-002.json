@@ -1,0 +1,809 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261016-002",
+  "title": "PLAY-04 opening concession isolation and clean-checkout browser test repair",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-16T04:16:23.538Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "33e9a7a5add3db19ba8327df7f56d8744f0e59f8",
+  "task_ids": [
+    "PLAY-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R02.030",
+    "R02.031",
+    "R29.006",
+    "R29.007",
+    "R30.010"
+  ],
+  "feature_ids": [
+    "F-BOUNDARIES",
+    "F-CONNECTIVITY",
+    "F-CONTRACTS",
+    "F-DB",
+    "F-DOCS",
+    "F-ENGINE",
+    "F-EVIDENCE",
+    "F-HTTP",
+    "F-LIFECYCLE",
+    "F-LIVE-TRANSPORT",
+    "F-MATCH-CLIENT",
+    "F-MATCH-CLOCKS",
+    "F-MATCH-COMMANDS",
+    "F-PROTOCOL",
+    "F-RELEASE",
+    "F-RENDERER",
+    "F-RULE-CERTIFICATION",
+    "F-RULE-INVENTORY",
+    "F-SUPERVISOR",
+    "F-VIEWER-PRIVACY",
+    "F-WEB",
+    "F-WORKER",
+    "F-WORKSPACE"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Director assigns residual R1/R2 fixes on published re-audit33e9a7a. Verify clean branch/main775994a/original workspace and DB. Confirm opening concession is engine-refused yet leased; web test directly imports unbuilt app declaration output. Preserve opening refusal/core rules/client retry policy and all unassigned policy/card/device/production gates."
+    },
+    {
+      "kind": "test",
+      "description": "RUN-20261016-002 passes original doctor/static/bootstrap/DB intake. Read-only Windows commit headroom about7.55GiB; sequential heavy checks, peak unknown. Private preservation hashes/modes retained ignored0600. Mark old whole-source feature acceptance pending before executable changes."
+    },
+    {
+      "kind": "fix",
+      "description": "R1: remove timed reservation from every waiting concession; execute proof/native transition outside locks, atomically write refusal or terminal candidate only against unchanged state/clock/health/age; heartbeat-only health progress is allowed. Keep active leases/deadline/native opening refusal/client retry unchanged."
+    },
+    {
+      "kind": "fix",
+      "description": "R2: move validator/DB lease setup into existing post-build Node JavaScript fixture; web TypeScript test no longer imports app dist. Fixture close releases owned leases. Repair strict optional callback and outcome narrowing without weakening types."
+    },
+    {
+      "kind": "test",
+      "description": "RED003 reproduces cold TS2307;004 repeats opening lease/race faults.00533focused cases pass but strict types and clock guard fail;006 catches union narrowing.007strict types/lint and008source-only frozen install/typecheck pass. New storage/service/live/Chromium regressions preserve all prior checks."
+    },
+    {
+      "kind": "review",
+      "description": "Fresh scoped read-only reviewer reports no critical/important defects. Optional heartbeat-only isolation coverage is not a defect; review report retained with no invented execution."
+    },
+    {
+      "kind": "documentation",
+      "description": "Update current package/callable/ADR/runbook/live/build-order/backlog evidence and universal handoff; classify review/add test impact edges. Keep prior sealed history and Director policy/real-card/device/production gates."
+    },
+    {
+      "kind": "edit",
+      "description": "Draft docs sync reported an incorrect relative current-banner link in vendor README. Correct all current repair links relative to owning document before rerunning documentation validation; no source or run bytes changed."
+    },
+    {
+      "kind": "test",
+      "description": "Final-source RUN00981DB/storage/match/live,01011Linux Chromium plus2Lab workers,011350project/406upstream/2injection all complete with child exit0; one inherited engine skip retained. All three native receipts fail clock_changed and remain failed; no repeated long run or clock guard/environment change. Fresh source-only008 is a timing-valid pass at the same168d05d7 fingerprint."
+    },
+    {
+      "kind": "documentation",
+      "description": "Current feature verification remains conservatively pending because full timed receipts failed; retain all dated evidence, append exact raw/monotonic/result distinctions and update backlog/current banners/handoff. Four Director policy points, real-card chooser and external acceptance stay separate."
+    },
+    {
+      "kind": "review",
+      "description": "Local final packaging RUN012 will inspect exact9 source changes, canonical staged bytes, private values/modes/ignores, sanitized current owned files/log digests, cumulative main775994a coverage, untouched main and owned cleanup. RUN013 captures final docs:check. Their run/log pairs are predeclared; immutable receipts supply actual outcomes without a future passing assertion or sealed-record amendment."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "apps/match-service/README.md",
+    "apps/match-service/package.json",
+    "apps/match-service/src/clock-health.ts",
+    "apps/match-service/src/clock-runner.ts",
+    "apps/match-service/src/clock-service.ts",
+    "apps/match-service/src/engine-executor.ts",
+    "apps/match-service/src/errors.ts",
+    "apps/match-service/src/gateway.ts",
+    "apps/match-service/src/live-connection.ts",
+    "apps/match-service/src/service.ts",
+    "apps/match-service/src/transition-worker.ts",
+    "apps/match-service/tests/client-fixtures.mjs",
+    "apps/match-service/tests/clock-child.mjs",
+    "apps/match-service/tests/clock-fixtures.mjs",
+    "apps/match-service/tests/clock-live.test.mjs",
+    "apps/match-service/tests/clock-process.test.mjs",
+    "apps/match-service/tests/clock-service.test.mjs",
+    "apps/match-service/tests/clock-storage.test.mjs",
+    "apps/match-service/tests/clocks.test.mjs",
+    "apps/match-service/tests/gateway-child.mjs",
+    "apps/match-service/tests/transport-store.test.mjs",
+    "apps/web/README.md",
+    "apps/web/tests/clock-client.spec.ts",
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0016-durable-engine-clocks.md",
+    "docs/changes/CHG-20261015-003.json",
+    "docs/changes/CHG-20261015-004.json",
+    "docs/changes/CHG-20261015-005.json",
+    "docs/changes/CHG-20261015-006.json",
+    "docs/changes/CHG-20261015-007.json",
+    "docs/changes/CHG-20261015-008.json",
+    "docs/changes/CHG-20261016-001.json",
+    "docs/changes/CHG-20261016-002.json",
+    "docs/contracts/live.md",
+    "docs/contracts/protocol.md",
+    "docs/contracts/release.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-15-play-04-design.md",
+    "docs/plans/2026-10-15-play-04-implementation.md",
+    "docs/plans/2026-10-15-play-04-intake.md",
+    "docs/reviews/2026-10-15-play-04-clocks.md",
+    "docs/reviews/2026-10-16-play-04-opening-fixes.md",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/database.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/game-clocks.md",
+    "docs/runbooks/live-matches.md",
+    "docs/runbooks/match-commands.md",
+    "docs/validation/boot-02.md",
+    "docs/validation/inputs/play04-hosted-metadata.mjs",
+    "docs/validation/logs/RUN-20261015-019.txt",
+    "docs/validation/logs/RUN-20261015-020.txt",
+    "docs/validation/logs/RUN-20261015-021.txt",
+    "docs/validation/logs/RUN-20261015-022.txt",
+    "docs/validation/logs/RUN-20261015-023.txt",
+    "docs/validation/logs/RUN-20261015-024.txt",
+    "docs/validation/logs/RUN-20261015-025.txt",
+    "docs/validation/logs/RUN-20261015-026.txt",
+    "docs/validation/logs/RUN-20261015-027.txt",
+    "docs/validation/logs/RUN-20261015-028.txt",
+    "docs/validation/logs/RUN-20261015-029.txt",
+    "docs/validation/logs/RUN-20261015-030.txt",
+    "docs/validation/logs/RUN-20261015-031.txt",
+    "docs/validation/logs/RUN-20261015-032.txt",
+    "docs/validation/logs/RUN-20261015-033.txt",
+    "docs/validation/logs/RUN-20261015-034.txt",
+    "docs/validation/logs/RUN-20261015-035.txt",
+    "docs/validation/logs/RUN-20261015-036.txt",
+    "docs/validation/logs/RUN-20261015-037.txt",
+    "docs/validation/logs/RUN-20261015-038.txt",
+    "docs/validation/logs/RUN-20261015-039.txt",
+    "docs/validation/logs/RUN-20261015-040.txt",
+    "docs/validation/logs/RUN-20261015-041.txt",
+    "docs/validation/logs/RUN-20261015-042.txt",
+    "docs/validation/logs/RUN-20261015-043.txt",
+    "docs/validation/logs/RUN-20261015-044.txt",
+    "docs/validation/logs/RUN-20261015-045.txt",
+    "docs/validation/logs/RUN-20261015-046.txt",
+    "docs/validation/logs/RUN-20261015-047.txt",
+    "docs/validation/logs/RUN-20261015-048.txt",
+    "docs/validation/logs/RUN-20261015-049.txt",
+    "docs/validation/logs/RUN-20261015-050.txt",
+    "docs/validation/logs/RUN-20261015-051.txt",
+    "docs/validation/logs/RUN-20261015-052.txt",
+    "docs/validation/logs/RUN-20261015-053.txt",
+    "docs/validation/logs/RUN-20261015-054.txt",
+    "docs/validation/logs/RUN-20261015-055.txt",
+    "docs/validation/logs/RUN-20261015-056.txt",
+    "docs/validation/logs/RUN-20261015-057.txt",
+    "docs/validation/logs/RUN-20261015-058.txt",
+    "docs/validation/logs/RUN-20261015-059.txt",
+    "docs/validation/logs/RUN-20261015-061.txt",
+    "docs/validation/logs/RUN-20261015-062.txt",
+    "docs/validation/logs/RUN-20261015-063.txt",
+    "docs/validation/logs/RUN-20261015-064.txt",
+    "docs/validation/logs/RUN-20261015-065.txt",
+    "docs/validation/logs/RUN-20261015-066.txt",
+    "docs/validation/logs/RUN-20261015-067.txt",
+    "docs/validation/logs/RUN-20261015-068.txt",
+    "docs/validation/logs/RUN-20261015-069.txt",
+    "docs/validation/logs/RUN-20261015-070.txt",
+    "docs/validation/logs/RUN-20261015-071.txt",
+    "docs/validation/logs/RUN-20261015-072.txt",
+    "docs/validation/logs/RUN-20261015-073.txt",
+    "docs/validation/logs/RUN-20261015-074.txt",
+    "docs/validation/logs/RUN-20261015-075.txt",
+    "docs/validation/logs/RUN-20261015-076.txt",
+    "docs/validation/logs/RUN-20261015-077.txt",
+    "docs/validation/logs/RUN-20261015-078.txt",
+    "docs/validation/logs/RUN-20261015-079.txt",
+    "docs/validation/logs/RUN-20261015-080.txt",
+    "docs/validation/logs/RUN-20261015-081.txt",
+    "docs/validation/logs/RUN-20261015-082.txt",
+    "docs/validation/logs/RUN-20261015-083.txt",
+    "docs/validation/logs/RUN-20261015-084.txt",
+    "docs/validation/logs/RUN-20261015-085.txt",
+    "docs/validation/logs/RUN-20261015-086.txt",
+    "docs/validation/logs/RUN-20261015-087.txt",
+    "docs/validation/logs/RUN-20261015-088.txt",
+    "docs/validation/logs/RUN-20261015-089.txt",
+    "docs/validation/logs/RUN-20261015-090.txt",
+    "docs/validation/logs/RUN-20261015-091.txt",
+    "docs/validation/logs/RUN-20261015-092.txt",
+    "docs/validation/logs/RUN-20261015-093.txt",
+    "docs/validation/logs/RUN-20261015-094.txt",
+    "docs/validation/logs/RUN-20261015-095.txt",
+    "docs/validation/logs/RUN-20261015-096.txt",
+    "docs/validation/logs/RUN-20261015-097.txt",
+    "docs/validation/logs/RUN-20261015-098.txt",
+    "docs/validation/logs/RUN-20261015-099.txt",
+    "docs/validation/logs/RUN-20261015-100.txt",
+    "docs/validation/logs/RUN-20261015-101.txt",
+    "docs/validation/logs/RUN-20261015-102.txt",
+    "docs/validation/logs/RUN-20261015-103.txt",
+    "docs/validation/logs/RUN-20261015-104.txt",
+    "docs/validation/logs/RUN-20261015-105.txt",
+    "docs/validation/logs/RUN-20261015-106.txt",
+    "docs/validation/logs/RUN-20261015-107.txt",
+    "docs/validation/logs/RUN-20261015-108.txt",
+    "docs/validation/logs/RUN-20261015-109.txt",
+    "docs/validation/logs/RUN-20261015-110.txt",
+    "docs/validation/logs/RUN-20261015-111.txt",
+    "docs/validation/logs/RUN-20261015-112.txt",
+    "docs/validation/logs/RUN-20261015-113.txt",
+    "docs/validation/logs/RUN-20261015-114.txt",
+    "docs/validation/logs/RUN-20261015-115.txt",
+    "docs/validation/logs/RUN-20261015-116.txt",
+    "docs/validation/logs/RUN-20261015-117.txt",
+    "docs/validation/logs/RUN-20261015-118.txt",
+    "docs/validation/logs/RUN-20261015-119.txt",
+    "docs/validation/logs/RUN-20261015-120.txt",
+    "docs/validation/logs/RUN-20261015-121.txt",
+    "docs/validation/logs/RUN-20261015-122.txt",
+    "docs/validation/logs/RUN-20261015-123.txt",
+    "docs/validation/logs/RUN-20261015-124.txt",
+    "docs/validation/logs/RUN-20261015-125.txt",
+    "docs/validation/logs/RUN-20261016-001.txt",
+    "docs/validation/logs/RUN-20261016-002.txt",
+    "docs/validation/logs/RUN-20261016-003.txt",
+    "docs/validation/logs/RUN-20261016-004.txt",
+    "docs/validation/logs/RUN-20261016-005.txt",
+    "docs/validation/logs/RUN-20261016-006.txt",
+    "docs/validation/logs/RUN-20261016-007.txt",
+    "docs/validation/logs/RUN-20261016-008.txt",
+    "docs/validation/logs/RUN-20261016-009.txt",
+    "docs/validation/logs/RUN-20261016-010.txt",
+    "docs/validation/logs/RUN-20261016-011.txt",
+    "docs/validation/logs/RUN-20261016-012.txt",
+    "docs/validation/logs/RUN-20261016-013.txt",
+    "docs/validation/play-01.md",
+    "docs/validation/play-02.md",
+    "docs/validation/play-03-hosted-baseline.json",
+    "docs/validation/play-03.md",
+    "docs/validation/play-04.md",
+    "docs/validation/rule-03.md",
+    "docs/validation/runs/RUN-20261015-019.json",
+    "docs/validation/runs/RUN-20261015-020.json",
+    "docs/validation/runs/RUN-20261015-021.json",
+    "docs/validation/runs/RUN-20261015-022.json",
+    "docs/validation/runs/RUN-20261015-023.json",
+    "docs/validation/runs/RUN-20261015-024.json",
+    "docs/validation/runs/RUN-20261015-025.json",
+    "docs/validation/runs/RUN-20261015-026.json",
+    "docs/validation/runs/RUN-20261015-027.json",
+    "docs/validation/runs/RUN-20261015-028.json",
+    "docs/validation/runs/RUN-20261015-029.json",
+    "docs/validation/runs/RUN-20261015-030.json",
+    "docs/validation/runs/RUN-20261015-031.json",
+    "docs/validation/runs/RUN-20261015-032.json",
+    "docs/validation/runs/RUN-20261015-033.json",
+    "docs/validation/runs/RUN-20261015-034.json",
+    "docs/validation/runs/RUN-20261015-035.json",
+    "docs/validation/runs/RUN-20261015-036.json",
+    "docs/validation/runs/RUN-20261015-037.json",
+    "docs/validation/runs/RUN-20261015-038.json",
+    "docs/validation/runs/RUN-20261015-039.json",
+    "docs/validation/runs/RUN-20261015-040.json",
+    "docs/validation/runs/RUN-20261015-041.json",
+    "docs/validation/runs/RUN-20261015-042.json",
+    "docs/validation/runs/RUN-20261015-043.json",
+    "docs/validation/runs/RUN-20261015-044.json",
+    "docs/validation/runs/RUN-20261015-045.json",
+    "docs/validation/runs/RUN-20261015-046.json",
+    "docs/validation/runs/RUN-20261015-047.json",
+    "docs/validation/runs/RUN-20261015-048.json",
+    "docs/validation/runs/RUN-20261015-049.json",
+    "docs/validation/runs/RUN-20261015-050.json",
+    "docs/validation/runs/RUN-20261015-051.json",
+    "docs/validation/runs/RUN-20261015-052.json",
+    "docs/validation/runs/RUN-20261015-053.json",
+    "docs/validation/runs/RUN-20261015-054.json",
+    "docs/validation/runs/RUN-20261015-055.json",
+    "docs/validation/runs/RUN-20261015-056.json",
+    "docs/validation/runs/RUN-20261015-057.json",
+    "docs/validation/runs/RUN-20261015-058.json",
+    "docs/validation/runs/RUN-20261015-059.json",
+    "docs/validation/runs/RUN-20261015-061.json",
+    "docs/validation/runs/RUN-20261015-062.json",
+    "docs/validation/runs/RUN-20261015-063.json",
+    "docs/validation/runs/RUN-20261015-064.json",
+    "docs/validation/runs/RUN-20261015-065.json",
+    "docs/validation/runs/RUN-20261015-066.json",
+    "docs/validation/runs/RUN-20261015-067.json",
+    "docs/validation/runs/RUN-20261015-068.json",
+    "docs/validation/runs/RUN-20261015-069.json",
+    "docs/validation/runs/RUN-20261015-070.json",
+    "docs/validation/runs/RUN-20261015-071.json",
+    "docs/validation/runs/RUN-20261015-072.json",
+    "docs/validation/runs/RUN-20261015-073.json",
+    "docs/validation/runs/RUN-20261015-074.json",
+    "docs/validation/runs/RUN-20261015-075.json",
+    "docs/validation/runs/RUN-20261015-076.json",
+    "docs/validation/runs/RUN-20261015-077.json",
+    "docs/validation/runs/RUN-20261015-078.json",
+    "docs/validation/runs/RUN-20261015-079.json",
+    "docs/validation/runs/RUN-20261015-080.json",
+    "docs/validation/runs/RUN-20261015-081.json",
+    "docs/validation/runs/RUN-20261015-082.json",
+    "docs/validation/runs/RUN-20261015-083.json",
+    "docs/validation/runs/RUN-20261015-084.json",
+    "docs/validation/runs/RUN-20261015-085.json",
+    "docs/validation/runs/RUN-20261015-086.json",
+    "docs/validation/runs/RUN-20261015-087.json",
+    "docs/validation/runs/RUN-20261015-088.json",
+    "docs/validation/runs/RUN-20261015-089.json",
+    "docs/validation/runs/RUN-20261015-090.json",
+    "docs/validation/runs/RUN-20261015-091.json",
+    "docs/validation/runs/RUN-20261015-092.json",
+    "docs/validation/runs/RUN-20261015-093.json",
+    "docs/validation/runs/RUN-20261015-094.json",
+    "docs/validation/runs/RUN-20261015-095.json",
+    "docs/validation/runs/RUN-20261015-096.json",
+    "docs/validation/runs/RUN-20261015-097.json",
+    "docs/validation/runs/RUN-20261015-098.json",
+    "docs/validation/runs/RUN-20261015-099.json",
+    "docs/validation/runs/RUN-20261015-100.json",
+    "docs/validation/runs/RUN-20261015-101.json",
+    "docs/validation/runs/RUN-20261015-102.json",
+    "docs/validation/runs/RUN-20261015-103.json",
+    "docs/validation/runs/RUN-20261015-104.json",
+    "docs/validation/runs/RUN-20261015-105.json",
+    "docs/validation/runs/RUN-20261015-106.json",
+    "docs/validation/runs/RUN-20261015-107.json",
+    "docs/validation/runs/RUN-20261015-108.json",
+    "docs/validation/runs/RUN-20261015-109.json",
+    "docs/validation/runs/RUN-20261015-110.json",
+    "docs/validation/runs/RUN-20261015-111.json",
+    "docs/validation/runs/RUN-20261015-112.json",
+    "docs/validation/runs/RUN-20261015-113.json",
+    "docs/validation/runs/RUN-20261015-114.json",
+    "docs/validation/runs/RUN-20261015-115.json",
+    "docs/validation/runs/RUN-20261015-116.json",
+    "docs/validation/runs/RUN-20261015-117.json",
+    "docs/validation/runs/RUN-20261015-118.json",
+    "docs/validation/runs/RUN-20261015-119.json",
+    "docs/validation/runs/RUN-20261015-120.json",
+    "docs/validation/runs/RUN-20261015-121.json",
+    "docs/validation/runs/RUN-20261015-122.json",
+    "docs/validation/runs/RUN-20261015-123.json",
+    "docs/validation/runs/RUN-20261015-124.json",
+    "docs/validation/runs/RUN-20261015-125.json",
+    "docs/validation/runs/RUN-20261016-001.json",
+    "docs/validation/runs/RUN-20261016-002.json",
+    "docs/validation/runs/RUN-20261016-003.json",
+    "docs/validation/runs/RUN-20261016-004.json",
+    "docs/validation/runs/RUN-20261016-005.json",
+    "docs/validation/runs/RUN-20261016-006.json",
+    "docs/validation/runs/RUN-20261016-007.json",
+    "docs/validation/runs/RUN-20261016-008.json",
+    "docs/validation/runs/RUN-20261016-009.json",
+    "docs/validation/runs/RUN-20261016-010.json",
+    "docs/validation/runs/RUN-20261016-011.json",
+    "docs/validation/runs/RUN-20261016-012.json",
+    "docs/validation/runs/RUN-20261016-013.json",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv",
+    "docs/vision/requirements.csv",
+    "package.json",
+    "packages/contracts/README.md",
+    "packages/contracts/package.json",
+    "packages/contracts/src/clocks.ts",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/live.ts",
+    "packages/contracts/src/protocol.ts",
+    "packages/contracts/tests/clocks.test.mjs",
+    "packages/contracts/tests/live-clock.test.mjs",
+    "packages/contracts/tests/protocol.test.mjs",
+    "packages/contracts/tests/release.test.mjs",
+    "packages/db/README.md",
+    "packages/db/migrations/0005-match-clocks.sql",
+    "packages/db/package.json",
+    "packages/db/src/clock-store.ts",
+    "packages/db/src/clock-types.ts",
+    "packages/db/src/index.ts",
+    "packages/db/src/match-store.ts",
+    "packages/db/src/transport-store.ts",
+    "packages/db/tests/policy.test.mjs",
+    "packages/engine-adapter/README.md",
+    "packages/engine-adapter/src/clocks.ts",
+    "packages/engine-adapter/src/code-identity.ts",
+    "packages/engine-adapter/src/index.ts",
+    "packages/engine-adapter/src/persistence.ts",
+    "packages/engine-adapter/src/replay.ts",
+    "packages/engine-adapter/src/validation.ts",
+    "packages/engine-adapter/tests/clocks.test.mjs",
+    "packages/match-client/README.md",
+    "packages/match-client/src/clocks.ts",
+    "packages/match-client/src/index.ts",
+    "packages/match-client/tests/clocks.test.mjs",
+    "packages/service-runtime/README.md",
+    "packages/service-runtime/tests/protocol.test.mjs",
+    "pnpm-lock.yaml",
+    "vendor/tcg-engines/README.md",
+    "vendor/tcg-engines/src/kernel.d.ts",
+    "vendor/tcg-engines/src/kernel.ts"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "updated",
+      "reason": "Current repair summary and unreserved engine evaluation with final SQL fence; re-audit remains separate."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "updated",
+      "reason": "Document Node fixture boundary and fresh-source typecheck plus both opening-seat browser spam regressions."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "updated",
+      "reason": "Fresh-source app-import/typecheck build-order lesson added; sequential scheduling and evidence guard retained."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Replace audit intake with exact repair branch/source, actual checks/failures, preserved resources and next actions."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Transactional receipt/CAS/journal/outbox guarantees retained; narrow terminal permit still requires unchanged clock and receipt identity."
+    },
+    {
+      "path": "docs/adr/0014-viewer-projection-privacy.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Viewer/ref/recipient privacy contract unchanged; new waiting path uses existing worker and publishes unchanged closed DTOs only."
+    },
+    {
+      "path": "docs/adr/0015-live-synthetic-transport.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Session/ticket/hint/protocol/retry ownership unchanged; clock repair adds no wire or identity path."
+    },
+    {
+      "path": "docs/adr/0016-durable-engine-clocks.md",
+      "disposition": "updated",
+      "reason": "Compare optimistic waiting evaluation with lease/forfeit/retry alternatives and record same-scope R1 repair authority."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated audit remains labeled history; current runtime repair is recorded in PLAY-04 validation, no baseline findings rewritten."
+    },
+    {
+      "path": "docs/changes/CHG-20261016-002.json",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/contracts/live.md",
+      "disposition": "updated",
+      "reason": "Explain unchanged wire and retry semantics with waiting-concession race outcomes."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/contracts/viewer.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Viewer/ref/recipient privacy contract unchanged; new waiting path uses existing worker and publishes unchanged closed DTOs only."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Classify new scoped review and add clock-browser test impact edges for client/live docs."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Conservatively keep obsolete whole-source verification pending: final complete child suites exit0 but native timing receipts fail. Retain dated references and add exact repair/helper sources/evidence; no blanket passing promotion."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Prior plan/current scope remains applicable; this repairs wait admission/build-order without changing approved baseline or delivery scope."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Prior plan/current scope remains applicable; this repairs wait admission/build-order without changing approved baseline or delivery scope."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Prior plan/current scope remains applicable; this repairs wait admission/build-order without changing approved baseline or delivery scope."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Prior plan/current scope remains applicable; this repairs wait admission/build-order without changing approved baseline or delivery scope."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Synthetic fixtures only; no assets imported or fan-content policy changed."
+    },
+    {
+      "path": "docs/reviews/2026-10-16-play-04-opening-fixes.md",
+      "disposition": "updated",
+      "reason": "Persist fresh scoped read-only reviewer verdict and optional non-blocking coverage suggestion."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/runbooks/game-clocks.md",
+      "disposition": "updated",
+      "reason": "Document unreserved waiting concession admission/final fences, refusal/terminal outputs and no opening leave permission."
+    },
+    {
+      "path": "docs/runbooks/live-matches.md",
+      "disposition": "updated",
+      "reason": "Explain waiting opening regression/same-socket retry and retained limits."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/runbooks/viewer-privacy.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Viewer/ref/recipient privacy contract unchanged; new waiting path uses existing worker and publishes unchanged closed DTOs only."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Same existing container, private config and volume; no provisioning/restart/toolchain/port change needed."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema1 template/fields/timestamp/sealing workflow unchanged; new draft follows it."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated foundation acceptance remains source-specific; no workspace/database/protocol baseline or historical evidence altered."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated foundation acceptance remains source-specific; no workspace/database/protocol baseline or historical evidence altered."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated foundation acceptance remains source-specific; no workspace/database/protocol baseline or historical evidence altered."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/validation/play-02.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/validation/play-03.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/validation/play-04.md",
+      "disposition": "updated",
+      "reason": "Append repair semantics, RED/failed/GREEN evidence, full child success versus native timing failure, reviewer disposition and final packaging plan; prior sealed history unchanged."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Baseline548 requirements and planning/current authority distinction unchanged; backlog owns current repair status."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "X06/X07 documentation/evidence standards and X01 multiplayer/sandbox scope retained; two-player repair adds no scope reduction."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Four unassigned PLAY-04 policy points and D12 thinking-time policy unchanged; native opening refusal preserved."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "PLAY-04 residual repair checkpoint and latest evidence link; main/re-audit/hosted status explicit."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Original548 requirements/20optional flags and acceptance definitions remain unchanged; R29.007 infrastructure defect repaired without accepting full product behavior."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "packages/db/README.md",
+      "disposition": "updated",
+      "reason": "Document WaitingConcessionEvaluation/commitWaitingConcession authority, race/health rejection and atomic outputs."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    },
+    {
+      "path": "packages/match-client/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Client runtime/API/retry budget unchanged; only Node/Chromium qualification helper ownership and waiting-server admission repaired."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "updated",
+      "reason": "Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-002.json",
+      "outcome": "passed",
+      "scope": "Unchanged audited-source baseline; not new-fix acceptance."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-003.json",
+      "outcome": "failed",
+      "scope": "RED source-only frozen install typecheck reproduces unbuilt app output import"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-004.json",
+      "outcome": "failed",
+      "scope": "RED no-lease waiting opening and optimistic terminal race regressions"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-005.json",
+      "outcome": "failed",
+      "scope": "GREEN unreserved waiting concession and opening race checks with owning builds; child exit0 cannot supply timed acceptance"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-006.json",
+      "outcome": "failed",
+      "scope": "Unreserved opening repair targeted tests and replacement fixture strict types lint"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-007.json",
+      "outcome": "passed",
+      "scope": "Opening repair strict web types and scoped lint"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-008.json",
+      "outcome": "passed",
+      "scope": "GREEN source-only frozen offline install and ordered root typecheck with no app output"
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-009.json",
+      "outcome": "failed",
+      "scope": "81 DB/storage/match/live checks all pass (5+3+73), child exit0; full receipt rejected clock_changed, so no timed acceptance or permanent repair claimed."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-010.json",
+      "outcome": "failed",
+      "scope": "Complete Linux Chromium smoke live-clock opening spam both seats and Lab worker regression suites; all child checks succeed/exit0, native timing rejected clock_changed; no qualified full pass."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261016-011.json",
+      "outcome": "failed",
+      "scope": "Final-source frozen offline install doctor full foundation types lint build bootstrap project and unchanged engine suites; all child checks succeed/exit0, native timing rejected clock_changed; no qualified full pass."
+    }
+  ],
+  "limitations": [
+    "No engine/core rules, opening leave policy, applied SQL/public schemas/dependencies/host settings or normal admission changes. Director re-audit and hosted CI remain separate.",
+    "Main remains775994a. No publish/merge/deploy is authorized for this fix task.",
+    "Native005/009/010/011 clock_changed failures are preserved; fresh complete child checks exit0 does not constitute a timing-valid full receipt. Current feature verification stays pending; Director re-audit and hosted CI are separate.",
+    "No fresh long isolated CI/hosted artifact, real Windows/device, full-length real-card/load/production or retained-engine acceptance. Peak host memory unknown; sequential tests retained."
+  ],
+  "next_actions": [
+    "Finish native packaging012/013 and local coherent commit; Director independently re-audits this repair, runs hosted CI, then decides publication/main integration.",
+    "Keep four Director policy points, real-card chooser, AUTH/ordinary/card/private/reward/device/load/production and host-clock/isolated qualification gates explicit."
+  ]
+}

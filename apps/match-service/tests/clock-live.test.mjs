@@ -8,6 +8,25 @@ import {qualification,opening,synchronize,until} from './client-fixtures.mjs';
 import {using} from './fixtures.mjs';
 import {clockPolicy} from './clock-fixtures.mjs';
 export const liveClockPolicy={...clockPolicy,initialReserveMs:15000,reserveCapMs:15000,resetTimeOnSkipMs:15000};
+test('stock live clients complete all opening decisions amid repeated waiting concessions without busy or clock events',async()=>{
+ const f=await qualification('http://localhost:5173',{clock:{...liveClockPolicy,initialReserveMs:60000,reserveCapMs:60000,resetTimeOnSkipMs:60000}});
+ try{
+  const host=await f.host(),clients=f.players.map((_,i)=>f.client(i,host.url));await Promise.all(clients.map(c=>c.connect()));
+  for(let phase=0;phase<3;phase++){
+   await synchronize(clients,phase);const active=f.players.indexOf(clients[0].view.priorityId),waiting=1-active;
+   const before=await f.creator.readClock(f.players[active],{matchId:f.id}),events=await using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1',[f.id])).rows[0].n);
+   for(let n=0;n<7;n++){
+    const r=await clients[waiting].submit({kind:'concede',input:{}});assert.equal(r.reason,'invalid_intent');await synchronize(clients,phase);
+    assert.equal((await f.creator.readClock(f.players[active],{matchId:f.id})).clockRevision,before.clockRevision);
+   }
+   assert.equal(await using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1',[f.id])).rows[0].n),events);
+   const intent=phase===0?{kind:'chooseWhoGoesFirst',input:{playerId:f.players[0]}}:{kind:'alterHand',input:{cardsToMulligan:[]}};
+   const refused=clients[waiting].submit({kind:'concede',input:{}}),accepted=clients[active].submit(intent),r=await Promise.all([refused,accepted]);assert.ok(['rejected','stale'].includes(r[0].outcome));assert.equal(r[1].outcome,'accepted');await synchronize(clients,phase+1);
+   assert.equal(clients[active].status,'ready');assert.equal(f.sockets[active].length,1);
+  }
+  assert.equal(f.receipts.flat().some(r=>r.outcome==='maintenance'),false);assert.equal((await f.creator.view(f.players[0],{matchId:f.id})).ended,false);
+ }finally{await f.close();}
+});
 test('live3 busy contention retries the same concession on the same socket without maintenance or duplicate effects',async()=>{
  const f=await qualification('http://localhost:5173',{clock:liveClockPolicy}),repository=createClockRepository('test');let owner,pending;
  try{

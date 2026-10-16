@@ -2,6 +2,153 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261016-003 — Correct pre-commit PLAY-04 repair evidence table and handoff wording
+
+- Status: finalized
+- Actor: Codex architect/developer/QA collaborator
+- Recorded (UTC): 2026-10-16T04:17:43.496Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 33e9a7a5add3db19ba8327df7f56d8744f0e59f8
+- Tasks: PLAY-04, DOC-01, DOC-02
+- Features: F-DOCS, F-EVIDENCE
+- Requirements: R29.007
+
+### Changes
+
+- **documentation:** Correct a blank line splitting the final repair-results table and stale draft wording in HANDOFF. CHG002 snapshot had already been written when its owned synchronization was stopped for this prose review (SIGTERM/exit143); no validation success inferred. Keep CHG002 and every raw run unchanged. Runtime/tests remain exact168d05d7 source, so no unrelated suite repeated.
+- **review:** Carry complete coherent branch file coverage from main775994a, superseding CHG002 coverage only for this later documentation addition. Final native012 checks staged canonical source/private/log/coverage/cleanup;013 captures docs:check. Predeclare both run/log pairs with no advance passing assertion; their immutable receipts govern actual outcomes.
+
+### Verification
+
+- No execution evidence recorded for this entry.
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-04.md](docs/validation/play-04.md) — Join result-table continuation and record interrupted direct sync plus correction; all source/audit/raw execution evidence unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Remove stale draft phrasing and distinguish interrupted synchronization from actual final packaging evidence.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerate cumulative history including this correction without editing sealed CHG002.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerate current document hashes for corrected prose; executable fingerprint unchanged.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261016-003.json).
+
+### Limits and next actions
+
+- Documentation-only correction; no new product/source/test acceptance. Native012/013 receipts supply final packaging outcomes; long009/010/011 timing rejections and all Director/hosted/device/policy gates remain.
+- Finish native012/013 and local coherent commit; Director re-audit and hosted CI precede main integration.
+
+## CHG-20261016-002 — PLAY-04 opening concession isolation and clean-checkout browser test repair
+
+- Status: finalized
+- Actor: Codex architect/developer/QA collaborator
+- Recorded (UTC): 2026-10-16T04:16:23.538Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 33e9a7a5add3db19ba8327df7f56d8744f0e59f8
+- Tasks: PLAY-04, DOC-01, DOC-02
+- Features: F-BOUNDARIES, F-CONNECTIVITY, F-CONTRACTS, F-DB, F-DOCS, F-ENGINE, F-EVIDENCE, F-HTTP, F-LIFECYCLE, F-LIVE-TRANSPORT, F-MATCH-CLIENT, F-MATCH-CLOCKS, F-MATCH-COMMANDS, F-PROTOCOL, F-RELEASE, F-RENDERER, F-RULE-CERTIFICATION, F-RULE-INVENTORY, F-SUPERVISOR, F-VIEWER-PRIVACY, F-WEB, F-WORKER, F-WORKSPACE
+- Requirements: R02.030, R02.031, R29.006, R29.007, R30.010
+
+### Changes
+
+- **review:** Director assigns residual R1/R2 fixes on published re-audit33e9a7a. Verify clean branch/main775994a/original workspace and DB. Confirm opening concession is engine-refused yet leased; web test directly imports unbuilt app declaration output. Preserve opening refusal/core rules/client retry policy and all unassigned policy/card/device/production gates.
+- **test:** RUN-20261016-002 passes original doctor/static/bootstrap/DB intake. Read-only Windows commit headroom about7.55GiB; sequential heavy checks, peak unknown. Private preservation hashes/modes retained ignored0600. Mark old whole-source feature acceptance pending before executable changes.
+- **fix:** R1: remove timed reservation from every waiting concession; execute proof/native transition outside locks, atomically write refusal or terminal candidate only against unchanged state/clock/health/age; heartbeat-only health progress is allowed. Keep active leases/deadline/native opening refusal/client retry unchanged.
+- **fix:** R2: move validator/DB lease setup into existing post-build Node JavaScript fixture; web TypeScript test no longer imports app dist. Fixture close releases owned leases. Repair strict optional callback and outcome narrowing without weakening types.
+- **test:** RED003 reproduces cold TS2307;004 repeats opening lease/race faults.00533focused cases pass but strict types and clock guard fail;006 catches union narrowing.007strict types/lint and008source-only frozen install/typecheck pass. New storage/service/live/Chromium regressions preserve all prior checks.
+- **review:** Fresh scoped read-only reviewer reports no critical/important defects. Optional heartbeat-only isolation coverage is not a defect; review report retained with no invented execution.
+- **documentation:** Update current package/callable/ADR/runbook/live/build-order/backlog evidence and universal handoff; classify review/add test impact edges. Keep prior sealed history and Director policy/real-card/device/production gates.
+- **edit:** Draft docs sync reported an incorrect relative current-banner link in vendor README. Correct all current repair links relative to owning document before rerunning documentation validation; no source or run bytes changed.
+- **test:** Final-source RUN00981DB/storage/match/live,01011Linux Chromium plus2Lab workers,011350project/406upstream/2injection all complete with child exit0; one inherited engine skip retained. All three native receipts fail clock_changed and remain failed; no repeated long run or clock guard/environment change. Fresh source-only008 is a timing-valid pass at the same168d05d7 fingerprint.
+- **documentation:** Current feature verification remains conservatively pending because full timed receipts failed; retain all dated evidence, append exact raw/monotonic/result distinctions and update backlog/current banners/handoff. Four Director policy points, real-card chooser and external acceptance stay separate.
+- **review:** Local final packaging RUN012 will inspect exact9 source changes, canonical staged bytes, private values/modes/ignores, sanitized current owned files/log digests, cumulative main775994a coverage, untouched main and owned cleanup. RUN013 captures final docs:check. Their run/log pairs are predeclared; immutable receipts supply actual outcomes without a future passing assertion or sealed-record amendment.
+
+### Verification
+
+- **passed:** Unchanged audited-source baseline; not new-fix acceptance. ([evidence](docs/validation/runs/RUN-20261016-002.json))
+- **failed:** RED source-only frozen install typecheck reproduces unbuilt app output import ([evidence](docs/validation/runs/RUN-20261016-003.json))
+- **failed:** RED no-lease waiting opening and optimistic terminal race regressions ([evidence](docs/validation/runs/RUN-20261016-004.json))
+- **failed:** GREEN unreserved waiting concession and opening race checks with owning builds; child exit0 cannot supply timed acceptance ([evidence](docs/validation/runs/RUN-20261016-005.json))
+- **failed:** Unreserved opening repair targeted tests and replacement fixture strict types lint ([evidence](docs/validation/runs/RUN-20261016-006.json))
+- **passed:** Opening repair strict web types and scoped lint ([evidence](docs/validation/runs/RUN-20261016-007.json))
+- **passed:** GREEN source-only frozen offline install and ordered root typecheck with no app output ([evidence](docs/validation/runs/RUN-20261016-008.json))
+- **failed:** 81 DB/storage/match/live checks all pass (5+3+73), child exit0; full receipt rejected clock_changed, so no timed acceptance or permanent repair claimed. ([evidence](docs/validation/runs/RUN-20261016-009.json))
+- **failed:** Complete Linux Chromium smoke live-clock opening spam both seats and Lab worker regression suites; all child checks succeed/exit0, native timing rejected clock_changed; no qualified full pass. ([evidence](docs/validation/runs/RUN-20261016-010.json))
+- **failed:** Final-source frozen offline install doctor full foundation types lint build bootstrap project and unchanged engine suites; all child checks succeed/exit0, native timing rejected clock_changed; no qualified full pass. ([evidence](docs/validation/runs/RUN-20261016-011.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [README.md](README.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [apps/match-service/README.md](apps/match-service/README.md) — Current repair summary and unreserved engine evaluation with final SQL fence; re-audit remains separate.
+- **updated:** [apps/web/README.md](apps/web/README.md) — Document Node fixture boundary and fresh-source typecheck plus both opening-seat browser spam regressions.
+- **updated:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Fresh-source app-import/typecheck build-order lesson added; sequential scheduling and evidence guard retained.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Replace audit intake with exact repair branch/source, actual checks/failures, preserved resources and next actions.
+- **updated:** [docs/README.md](docs/README.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change.
+- **reviewed_unchanged:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Earlier workspace/database/dependency/protocol architecture remains exact: no toolchain, applied SQL, wire or package ownership change.
+- **reviewed_unchanged:** [docs/adr/0013-durable-synthetic-match-commands.md](docs/adr/0013-durable-synthetic-match-commands.md) — Transactional receipt/CAS/journal/outbox guarantees retained; narrow terminal permit still requires unchanged clock and receipt identity.
+- **reviewed_unchanged:** [docs/adr/0014-viewer-projection-privacy.md](docs/adr/0014-viewer-projection-privacy.md) — Viewer/ref/recipient privacy contract unchanged; new waiting path uses existing worker and publishes unchanged closed DTOs only.
+- **reviewed_unchanged:** [docs/adr/0015-live-synthetic-transport.md](docs/adr/0015-live-synthetic-transport.md) — Session/ticket/hint/protocol/retry ownership unchanged; clock repair adds no wire or identity path.
+- **updated:** [docs/adr/0016-durable-engine-clocks.md](docs/adr/0016-durable-engine-clocks.md) — Compare optimistic waiting evaluation with lease/forfeit/retry alternatives and record same-scope R1 repair authority.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Dated audit remains labeled history; current runtime repair is recorded in PLAY-04 validation, no baseline findings rewritten.
+- **updated:** [docs/changes/CHG-20261016-002.json](docs/changes/CHG-20261016-002.json) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/contracts/live.md](docs/contracts/live.md) — Explain unchanged wire and retry semantics with waiting-concession race outcomes.
+- **updated:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/contracts/release.md](docs/contracts/release.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **reviewed_unchanged:** [docs/contracts/viewer.md](docs/contracts/viewer.md) — Viewer/ref/recipient privacy contract unchanged; new waiting path uses existing worker and publishes unchanged closed DTOs only.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classify new scoped review and add clock-browser test impact edges for client/live docs.
+- **updated:** [docs/features.json](docs/features.json) — Conservatively keep obsolete whole-source verification pending: final complete child suites exit0 but native timing receipts fail. Retain dated references and add exact repair/helper sources/evidence; no blanket passing promotion.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — Prior plan/current scope remains applicable; this repairs wait admission/build-order without changing approved baseline or delivery scope.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Prior plan/current scope remains applicable; this repairs wait admission/build-order without changing approved baseline or delivery scope.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-05-contracts.md](docs/plans/2026-10-07-boot-05-contracts.md) — Prior plan/current scope remains applicable; this repairs wait admission/build-order without changing approved baseline or delivery scope.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Prior plan/current scope remains applicable; this repairs wait admission/build-order without changing approved baseline or delivery scope.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Synthetic fixtures only; no assets imported or fan-content policy changed.
+- **updated:** [docs/reviews/2026-10-16-play-04-opening-fixes.md](docs/reviews/2026-10-16-play-04-opening-fixes.md) — Persist fresh scoped read-only reviewer verdict and optional non-blocking coverage suggestion.
+- **updated:** [docs/runbooks/database.md](docs/runbooks/database.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/runbooks/game-clocks.md](docs/runbooks/game-clocks.md) — Document unreserved waiting concession admission/final fences, refusal/terminal outputs and no opening leave permission.
+- **updated:** [docs/runbooks/live-matches.md](docs/runbooks/live-matches.md) — Explain waiting opening regression/same-socket retry and retained limits.
+- **updated:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **reviewed_unchanged:** [docs/runbooks/viewer-privacy.md](docs/runbooks/viewer-privacy.md) — Viewer/ref/recipient privacy contract unchanged; new waiting path uses existing worker and publishes unchanged closed DTOs only.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Same existing container, private config and volume; no provisioning/restart/toolchain/port change needed.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Schema1 template/fields/timestamp/sealing workflow unchanged; new draft follows it.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated foundation acceptance remains source-specific; no workspace/database/protocol baseline or historical evidence altered.
+- **updated:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **reviewed_unchanged:** [docs/validation/boot-04.md](docs/validation/boot-04.md) — Dated foundation acceptance remains source-specific; no workspace/database/protocol baseline or historical evidence altered.
+- **reviewed_unchanged:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Dated foundation acceptance remains source-specific; no workspace/database/protocol baseline or historical evidence altered.
+- **updated:** [docs/validation/play-01.md](docs/validation/play-01.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/validation/play-02.md](docs/validation/play-02.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/validation/play-03.md](docs/validation/play-03.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [docs/validation/play-04.md](docs/validation/play-04.md) — Append repair semantics, RED/failed/GREEN evidence, full child success versus native timing failure, reviewer disposition and final packaging plan; prior sealed history unchanged.
+- **updated:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — Baseline548 requirements and planning/current authority distinction unchanged; backlog owns current repair status.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — X06/X07 documentation/evidence standards and X01 multiplayer/sandbox scope retained; two-player repair adds no scope reduction.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Four unassigned PLAY-04 policy points and D12 thinking-time policy unchanged; native opening refusal preserved.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-04 residual repair checkpoint and latest evidence link; main/re-audit/hosted status explicit.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Original548 requirements/20optional flags and acceptance definitions remain unchanged; R29.007 infrastructure defect repaired without accepting full product behavior.
+- **updated:** [packages/contracts/README.md](packages/contracts/README.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **updated:** [packages/db/README.md](packages/db/README.md) — Document WaitingConcessionEvaluation/commitWaitingConcession authority, race/health rejection and atomic outputs.
+- **updated:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+- **reviewed_unchanged:** [packages/match-client/README.md](packages/match-client/README.md) — Client runtime/API/retry budget unchanged; only Node/Chromium qualification helper ownership and waiting-server admission repaired.
+- **updated:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Refresh current PLAY-04 banner to residual R1/R2 implementation/evidence, preserving dated milestone history and unrelated gates.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261016-002.json).
+
+### Limits and next actions
+
+- No engine/core rules, opening leave policy, applied SQL/public schemas/dependencies/host settings or normal admission changes. Director re-audit and hosted CI remain separate.
+- Main remains775994a. No publish/merge/deploy is authorized for this fix task.
+- Native005/009/010/011 clock_changed failures are preserved; fresh complete child checks exit0 does not constitute a timing-valid full receipt. Current feature verification stays pending; Director re-audit and hosted CI are separate.
+- No fresh long isolated CI/hosted artifact, real Windows/device, full-length real-card/load/production or retained-engine acceptance. Peak host memory unknown; sequential tests retained.
+- Finish native packaging012/013 and local coherent commit; Director independently re-audits this repair, runs hosted CI, then decides publication/main integration.
+- Keep four Director policy points, real-card chooser, AUTH/ordinary/card/private/reward/device/load/production and host-clock/isolated qualification gates explicit.
+
 ## CHG-20261016-001 — Hosted fix-source run failure (finding R2) and Director decision to fix R1 and R2 before PLAY-04 main integration
 
 - Status: finalized

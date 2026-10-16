@@ -19,6 +19,34 @@ async function fixture(open=true){
   return {...f,s,async close(){await s.close();await f.close();}};
  }catch(error){await s?.close();await f.close();throw error;}
 }
+test('repeated waiting opening concessions never reserve or revise the clock in any opening phase',async()=>{
+ const f=await fixture(false);try{
+  for(let version=0;version<3;version++){
+   const view=await f.s.view('p1',{matchId:f.id}),actor=view.priorityId,waiting=f.players.find(p=>p!==actor),before=await f.a.load(f.id,actor);
+   const events=await f.using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1',[f.id])).rows[0].n);
+   for(let n=0;n<8;n++){
+    const result=await f.s.submitRefs(waiting,command(f.id,'opening-refusal-'+version+'-'+n,version,'concede'));
+    assert.equal(result.receipt.reason,'invalid_intent');assert.deepEqual((await f.a.load(f.id,actor)).clock,before.clock);
+   }
+   assert.equal(await f.using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1',[f.id])).rows[0].n),events);
+   const move=version===0?'chooseWhoGoesFirst':'alterHand',input=version===0?{playerId:'p1'}:{cardsToMulligan:[]};
+   assert.equal((await f.s.submitRefs(actor,command(f.id,'opening-progress-'+version,version,move,input))).receipt.outcome,'accepted');
+  }
+  assert.equal((await f.s.view('p1',{matchId:f.id})).stateVersion,3);
+ }finally{await f.close();}
+});
+test('a delayed waiting opening concession leaves the active decision unfenced and becomes stale after it',async()=>{
+ const f=await clockFixture(),{createClockService}=await import('../dist/clock-service.js'),{createClockHealth}=await import('../dist/clock-health.js'),{createEngineExecutor}=await import('../dist/engine-executor.js'),executor=createEngineExecutor();let release,entered,pending;
+ const gate=new Promise(r=>{release=r}),started=new Promise(r=>{entered=r});
+ const clocks=createClockService({repository:f.a,pins:()=>{},health:createClockHealth({monotonicNow:f.now}),executor:{...executor,execute:async job=>{if(job.kind==='transition'&&job.command.move==='concede'){entered();await gate;}return executor.execute(job);}}});
+ try{
+  clocks.recordCreated(f.id);const actor=f.m.status().choosingFirstPlayer,waiting=f.players.find(p=>p!==actor),before=await f.a.load(f.id,actor);
+  pending=clocks.submit(f.command(waiting,'concede'),false).then(result=>({result}),error=>({error}));await started;
+  assert.deepEqual((await f.a.load(f.id,actor)).clock,before.clock,'waiting work must never own the clock');
+  assert.equal((await clocks.submit(f.command(actor,'chooseWhoGoesFirst',{playerId:'p1'}),false)).receipt.outcome,'accepted');
+  const after=await f.a.load(f.id,actor);release();const r=await pending;assert.equal(r.error,undefined);assert.equal(r.result.receipt.outcome,'stale');assert.deepEqual((await f.a.load(f.id,actor)).clock,after.clock);
+ }finally{release();await pending;await clocks.close();await executor.close();await f.close();}
+});
 test('a waiting move is refused before cold proof work and cannot delay the active player',async()=>{
  const f=await clockFixture(),{createClockService}=await import('../dist/clock-service.js'),{createClockHealth}=await import('../dist/clock-health.js'),{createEngineExecutor}=await import('../dist/engine-executor.js'),executor=createEngineExecutor();let inspections=0;
  const clocks=createClockService({repository:f.a,pins:()=>{},health:createClockHealth({monotonicNow:f.now}),executor:{...executor,execute:async job=>{if(job.kind==='clock-inspect')inspections++;return executor.execute(job);}}});

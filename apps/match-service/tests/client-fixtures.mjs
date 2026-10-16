@@ -4,6 +4,7 @@ import Ws from 'ws';
 import {createClockRepository} from '../../../packages/db/dist/index.js';
 import {createMatchClient} from '../../../packages/match-client/dist/index.js';
 import {service,fixtureId,cleanup,using,counts} from './fixtures.mjs';
+import {validateSubmission} from '../dist/validation.js';
 export {counts};
 export async function until(check,timeout=10000) {
  const end=performance.now()+timeout;
@@ -32,16 +33,25 @@ export async function qualification(origin='http://localhost:5173',options={}) {
  const id=fixtureId(),players=['client-'+randomUUID(),'client-'+randomUUID()],repository=options.clock?createClockRepository('test'):undefined,creator=repository?service(repository,{clocks:{repository,runner:{intervalMs:50},recoveryAuthority:async r=>r.auditId==='qualification-auditor'?r.auditId:null}}):service();
  try{await creator.create({matchId:id,players,...(options.clock?{clock:options.clock}:{})});}catch(error){await creator.close();await cleanup(id);throw error;}
  const sessions=players.map(actorId=>({cookie:'qualification_session='+randomUUID(),session:{actorId,sessionId:'s-'+randomUUID(),expiresAt:Date.now()+300000}}));
- const hosts=[],clients=[],receipts=[[],[]],sockets=[[],[]];
+ const hosts=[],clients=[],receipts=[[],[]],sockets=[[],[]],held=new Set();
+ // Node-only setup for browser qualification. App output is loaded only when
+ // the fixture runs after builds, never through the web type-check graph.
+ async function holdActiveClock(commandId){
+  if(!repository)throw Error('Clock qualification is required');
+  const before=await repository.load(id,players[0]);
+  const r=await repository.reservePlayer(validateSubmission(before.clock.activePlayerId,{matchId:id,commandId,expectedVersion:before.stateVersion,move:'passTurn',input:{}}));
+  if(r.kind!=='reserved')throw Error('Missing owned qualification reservation');
+  const release=async()=>{await repository.abort(r.reservation);held.delete(release);};held.add(release);return release;
+ }
  async function host(hints=true){const h=await startChild(sessions,origin,hints,!!options.clock);hosts.push(h);return h;}
  function client(index,endpoint,other={}) {
   const c=createMatchClient({matchId:id,clientReleaseId:'qualification-client',endpoint,requestTimeoutMs:8000,retryBaseMs:20,
    fetcher:(url,init)=>fetch(url,{...init,headers:{...init.headers,Origin:origin,Cookie:sessions[index].cookie}}),
    socketFactory:url=>{const ws=new Ws(url,{origin});sockets[index].push(ws);return ws;},onReceipt:r=>receipts[index].push(r),...other});clients.push(c);return c;
  }
- return {id,players,sessions,creator,hosts,clients,receipts,sockets,host,client,async close(){
+ return {id,players,sessions,creator,hosts,clients,receipts,sockets,host,client,holdActiveClock,async close(){
   for(const c of clients)c.close();for(const group of sockets)for(const ws of group){ws._socket?.resume();ws.terminate();}
-  for(const h of hosts)await h.stop();await creator.close();await cleanup(id);
+  for(const h of hosts)await h.stop();for(const release of held)await release();await creator.close();await cleanup(id);
   const keys=[...players.flatMap(actor=>[['ticket',actor],['principal',actor],['command',actor+':'+id],['view',actor+':'+id]]),['match',id]].map(([scope,subject])=>createHash('sha256').update(scope+'\0'+subject).digest('hex'));
   await using('match',c=>c.query('DELETE FROM match.transport_limits WHERE key_hash=ANY($1::text[])',[keys]));
  }};

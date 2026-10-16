@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-006",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/web typecheck && pnpm exec eslint packages/db/src/clock-store.ts packages/db/src/match-store.ts packages/db/src/index.ts apps/match-service/src/clock-service.ts apps/match-service/tests/clock-storage.test.mjs apps/match-service/tests/clock-service.test.mjs apps/match-service/tests/clock-live.test.mjs apps/match-service/tests/client-fixtures.mjs apps/web/tests/clock-client.spec.ts && node --test --test-concurrency=1 apps/match-service/tests/clock-service.test.mjs apps/match-service/tests/clock-storage.test.mjs apps/match-service/tests/clock-live.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "33e9a7a5add3db19ba8327df7f56d8744f0e59f8",
+  "source_fingerprint": "f0253758960ccae80352a6c2704ad231d77a642d7976b04d7cdf92849bfafb6e",
+  "started_at": "2026-10-16T04:01:09.700Z",
+  "finished_at": "2026-10-16T04:01:14.786Z",
+  "recorded_at": "2026-10-16T04:01:14.786Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5086,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 2,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Unreserved opening repair targeted tests and replacement fixture strict types lint",
+  "log_path": "docs/validation/logs/RUN-20261016-006.txt",
+  "log_sha256": "680cdc25a2e4aaf34f018ef6e87592c7c0bfaa723b47b39811b6752d6f12bf8e",
+  "redactions": 0
+}

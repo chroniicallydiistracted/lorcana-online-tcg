@@ -1,0 +1,242 @@
+✖ stock live clients complete all opening decisions amid repeated waiting concessions without busy or clock events (1897.826135ms)
+✖ repeated waiting opening concessions never reserve or revise the clock in any opening phase (858.764868ms)
+✖ a delayed waiting opening concession leaves the active decision unfenced and becomes stale after it (422.860548ms)
+✔ busy reservations are transient and the identical waiting concession succeeds after release (2783.19234ms)
+✖ waiting concession remains admissible 0ms after the turn anchor (173.625926ms)
+✖ waiting concession remains admissible 1000ms after the turn anchor (117.229612ms)
+✖ waiting concession remains admissible 1001ms after the turn anchor (121.567925ms)
+✖ a waiting concession cannot fence a concurrent timeout or overwrite its clock-only revision (112.583234ms)
+✖ concurrent evaluated waiting concessions save one terminal result and duplicate retries recover it (114.174917ms)
+✖ an expired waiting evaluation cannot change or pause the clock (114.505566ms)
+✖ an backward waiting evaluation cannot change or pause the clock (113.947471ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 1
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9101.633339
+
+✖ failing tests:
+
+test at apps/match-service/tests/clock-live.test.mjs:11:1
+✖ stock live clients complete all opening decisions amid repeated waiting concessions without busy or clock events (1897.826135ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-live.test.mjs:20:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:22:1
+✖ repeated waiting opening concessions never reserve or revise the clock in any opening phase (858.764868ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      activePlayerId: 'p1',
+      anchorUtcMs: 10000,
+      checkpointDigest: '3bf0a5de86ee830905739e7f042cbdaf53582c3f58ff662e6cdd7cd8f6f12a7f',
+      deadlineUtcMs: 11000,
+  ...
+      },
+  +   revision: 2,
+  -   revision: 0,
+      stateVersion: 0,
+      status: 'running'
+    }
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:29:65)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { policy: { id: 'qualification-dynamic-v1', mode: 'dynamic', graceMs: 0, profile: 'qualification', reserveCapMs: 1000, schemaVersion: 1, initialReserveMs: 1000, perActionBonusMs: 0, resetTimeOnSkipMs: 1000, perTurnPassBonusMs: 0 }, revision: 2, stateVersion: 0, engineTimestamp: 10000, anchorUtcMs: 10000, deadlineUtcMs: 11000, status: 'running', activePlayerId: 'p1', remainingMs: { p1: 1000, p2: 1000 }, lastHealthyUtcMs: 10000, pauseReason: null, checkpointDigest: '3bf0a5de86ee830905739e7f042cbdaf53582c3f58ff662e6cdd7cd8f6f12a7f' },
+    expected: { policy: { id: 'qualification-dynamic-v1', mode: 'dynamic', graceMs: 0, profile: 'qualification', reserveCapMs: 1000, schemaVersion: 1, initialReserveMs: 1000, perActionBonusMs: 0, resetTimeOnSkipMs: 1000, perTurnPassBonusMs: 0 }, revision: 0, stateVersion: 0, engineTimestamp: 10000, anchorUtcMs: 10000, deadlineUtcMs: 11000, status: 'running', activePlayerId: 'p1', remainingMs: { p1: 1000, p2: 1000 }, lastHealthyUtcMs: 10000, pauseReason: null, checkpointDigest: '3bf0a5de86ee830905739e7f042cbdaf53582c3f58ff662e6cdd7cd8f6f12a7f' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:38:1
+✖ a delayed waiting opening concession leaves the active decision unfenced and becomes stale after it (422.860548ms)
+  AssertionError [ERR_ASSERTION]: waiting work must never own the clock
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      activePlayerId: 'p1',
+      anchorUtcMs: 10000,
+      checkpointDigest: 'dbe26789c33b25eb14d7b252de25fa3d970f1b57105264f37b879b33a56c0817',
+      deadlineUtcMs: 11000,
+  ...
+      },
+  +   revision: 1,
+  -   revision: 0,
+      stateVersion: 0,
+  +   status: 'processing'
+  -   status: 'running'
+    }
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:45:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { policy: { id: 'qualification-dynamic-v1', mode: 'dynamic', graceMs: 0, profile: 'qualification', reserveCapMs: 1000, schemaVersion: 1, initialReserveMs: 1000, perActionBonusMs: 0, resetTimeOnSkipMs: 1000, perTurnPassBonusMs: 0 }, revision: 1, stateVersion: 0, engineTimestamp: 100, anchorUtcMs: 10000, deadlineUtcMs: 11000, status: 'processing', activePlayerId: 'p1', remainingMs: { p1: 1000, p2: 1000 }, lastHealthyUtcMs: 10000, pauseReason: null, checkpointDigest: 'dbe26789c33b25eb14d7b252de25fa3d970f1b57105264f37b879b33a56c0817' },
+    expected: { policy: { id: 'qualification-dynamic-v1', mode: 'dynamic', graceMs: 0, profile: 'qualification', reserveCapMs: 1000, schemaVersion: 1, initialReserveMs: 1000, perActionBonusMs: 0, resetTimeOnSkipMs: 1000, perTurnPassBonusMs: 0 }, revision: 0, stateVersion: 0, engineTimestamp: 100, anchorUtcMs: 10000, deadlineUtcMs: 11000, status: 'running', activePlayerId: 'p1', remainingMs: { p1: 1000, p2: 1000 }, lastHealthyUtcMs: 10000, pauseReason: null, checkpointDigest: 'dbe26789c33b25eb14d7b252de25fa3d970f1b57105264f37b879b33a56c0817' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:19:36
+✖ waiting concession remains admissible 0ms after the turn anchor (173.625926ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'reserved'
+  - 'waiting'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:22:89)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'reserved',
+    expected: 'waiting',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:19:36
+✖ waiting concession remains admissible 1000ms after the turn anchor (117.229612ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'reserved'
+  - 'waiting'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:22:89)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'reserved',
+    expected: 'waiting',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:19:36
+✖ waiting concession remains admissible 1001ms after the turn anchor (121.567925ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'reserved'
+  - 'waiting'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:22:89)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'reserved',
+    expected: 'waiting',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:30:1
+✖ a waiting concession cannot fence a concurrent timeout or overwrite its clock-only revision (112.583234ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'reserved'
+  - 'waiting'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:32:158)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'reserved',
+    expected: 'waiting',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:38:1
+✖ concurrent evaluated waiting concessions save one terminal result and duplicate retries recover it (114.174917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'reserved'
+  - 'waiting'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:40:163)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'reserved',
+    expected: 'waiting',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:49:93
+✖ an expired waiting evaluation cannot change or pause the clock (114.505566ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'reserved'
+  - 'waiting'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:51:100)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'reserved',
+    expected: 'waiting',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-storage.test.mjs:49:93
+✖ an backward waiting evaluation cannot change or pause the clock (113.947471ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'reserved'
+  - 'waiting'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-storage.test.mjs:51:100)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'reserved',
+    expected: 'waiting',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

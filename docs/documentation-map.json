@@ -2042,7 +2042,8 @@
       "classification": "current",
       "sources": [
         "packages/match-client/**",
-        "apps/web/tests/live-client.spec.ts"
+        "apps/web/tests/live-client.spec.ts",
+        "apps/web/tests/clock-client.spec.ts"
       ]
     },
     {
@@ -2053,7 +2054,8 @@
         "packages/match-client/**",
         "apps/match-service/**",
         "packages/db/src/transport-store.ts",
-        "packages/db/migrations/0004-live-transport.sql"
+        "packages/db/migrations/0004-live-transport.sql",
+        "apps/web/tests/clock-client.spec.ts"
       ]
     },
     {
@@ -2063,7 +2065,8 @@
         "apps/match-service/**",
         "packages/match-client/**",
         "packages/db/**",
-        "apps/web/tests/live-client.spec.ts"
+        "apps/web/tests/live-client.spec.ts",
+        "apps/web/tests/clock-client.spec.ts"
       ]
     },
     {
@@ -2154,6 +2157,11 @@
     {
       "path": "docs/reviews/2026-10-15-play-04-clocks.md",
       "classification": "historical",
+      "sources": []
+    },
+    {
+      "path": "docs/reviews/2026-10-16-play-04-opening-fixes.md",
+      "classification": "evidence",
       "sources": []
     }
   ]

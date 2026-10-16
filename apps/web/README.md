@@ -23,3 +23,7 @@ The product page remains a foundation diagnostic. A test-only two-context Chromi
 ## PLAY-04 audit repair — 2026-10-15 UTC
 
 The audit-fix Chromium regression holds an actual PostgreSQL clock reservation, observes a transient retry, releases it and confirms native client recovery on one socket with the same command ID and one concession result. Its database/validator imports run only in the Node test harness; no browser product module imports them. See the current validation for the actual result and limits.
+
+## PLAY-04 opening repair — 2026-10-16 UTC
+
+The clock regression now calls `holdActiveClock` on the existing Node-only JavaScript fixture; TypeScript no longer imports match-service/db build output. Fixture setup/cleanup owns its real reservation after build. A source-only frozen install/typecheck with no application dist passes (RUN-20261016-008). Both chooser-seat browser cases also repeat waiting concessions in all opening phases before active progression. This proves build-order and synthetic browser behavior only.
