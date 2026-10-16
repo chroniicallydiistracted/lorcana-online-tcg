@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-017",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Independent PLAY-04 fix re-audit: real gateway child, real PostgreSQL, real stock match clients and real time.\n// In each opening step the waiting player repeatedly presses the ordinary concede intent (stock client, sequential);\n// the active player submits its opening decision after a randomized 300-700 ms delay. Repeated over 8 matches.\n// Diagnostics: wall-minus-monotonic offset per step (detects host calendar steps), receipt outcomes and stored clock state.\nimport { qualification, until } from './apps/match-service/tests/client-fixtures.mjs';\nimport { using } from './apps/match-service/tests/fixtures.mjs';\nconst offset = () => Date.now() - performance.timeOrigin - performance.now();\n\nconst clock = { schemaVersion: 1, id: 'audit-spam', profile: 'qualification', mode: 'dynamic', initialReserveMs: 150000, reserveCapMs: 150000, perActionBonusMs: 5000, perTurnPassBonusMs: 60000, resetTimeOnSkipMs: 60000, graceMs: 0 };\nconst trials = [];\nconst errors = [];\nfor (let match = 0; match < 8; match++) {\n  let f;\n  try {\n    f = await qualification('http://localhost:5173', { clock });\n    const host = await f.host(), clients = f.players.map((_, i) => f.client(i, host.url, { retryBaseMs: 250 }));\n    await Promise.all(clients.map(c => c.connect()));\n    for (let step = 0; step < 3; step++) {\n      const active = f.players.indexOf(clients[0].view.priorityId), waiting = 1 - active;\n      const intent = step === 0 ? { kind: 'chooseWhoGoesFirst', input: { playerId: f.players[0] } } : { kind: 'alterHand', input: { cardsToMulligan: [] } };\n      let stop = false; const spam = {};\n      const attacker = (async () => {\n        while (!stop) {\n          try { await until(() => stop || clients[waiting].status === 'ready', 5000); } catch { spam.notReady = (spam.notReady ?? 0) + 1; break; }\n          if (stop) break;\n          const x = await clients[waiting].submit({ kind: 'concede', input: {} }).then(r => r.outcome + '/' + r.reason, e => 'client ' + e.code);\n          spam[x] = (spam[x] ?? 0) + 1; if (x.startsWith('client closed')) break;\n        }\n      })();\n      const offsetBefore = offset(), receiptsBefore = f.receipts.map(x => x.length);\n      const startDelay = 300 + Math.floor(Math.random() * 400);\n      await new Promise(r => setTimeout(r, startDelay));\n      await until(() => clients[active].status === 'ready', 5000);\n      const start = f.receipts[active].length, t0 = performance.now();\n      const outcome = await clients[active].submit(intent).then(r => r.outcome, e => 'client ' + e.code);\n      const elapsedMs = Math.round(performance.now() - t0); stop = true; await attacker;\n      const wallStepMs = Math.round(offset() - offsetBefore), outcomes = {};\n      f.receipts.forEach((list, i) => list.slice(receiptsBefore[i]).forEach(r => { const k = (i === active ? 'active:' : 'waiting:') + r.outcome; outcomes[k] = (outcomes[k] ?? 0) + 1; }));\n      const clockRow = outcome === 'accepted' ? undefined : await using('match', async c => (await c.query('SELECT state FROM match.clocks WHERE match_id=$1', [f.id])).rows[0]?.state);\n      trials.push({ match, step, startDelay, outcome, elapsedMs, wallStepMs, activeBusyReceipts: f.receipts[active].slice(start).filter(r => r.outcome === 'rate_limited').length, waitingConcessions: spam, receiptOutcomes: outcomes, ...(clockRow ? { storedClock: { status: clockRow.status, pauseReason: clockRow.pauseReason, revision: clockRow.revision } } : {}) });\n      if (outcome !== 'accepted') break;\n      await until(() => clients.every(c => c.status === 'ready' && c.view?.stateVersion >= step + 1), 10000);\n    }\n  } catch (error) { errors.push(String(error && error.stack || error)); } finally { if (f) await f.close().catch(e => errors.push('close ' + e)); }\n}\nconst busy = trials.map(t => t.activeBusyReceipts);\nconsole.log(JSON.stringify({\n  steps: trials.length,\n  stepsWithBusy: busy.filter(b => b > 0).length,\n  totalActiveBusyReceipts: busy.reduce((a, b) => a + b, 0),\n  activeClientClosed: trials.filter(t => t.outcome !== 'accepted').length,\n  stepsWithWallStepOver1s: trials.filter(t => Math.abs(t.wallStepMs) > 1000).map(t => t.match + ':' + t.step + ':' + t.wallStepMs + ':' + t.outcome),\n  failedSteps: trials.filter(t => t.outcome !== 'accepted'),\n  maxActiveDelayMs: Math.max(...trials.map(t => t.elapsedMs)),\n  waitingConcessionReceipts: trials.reduce((acc, t) => { for (const [k, v] of Object.entries(t.waitingConcessions)) acc[k] = (acc[k] ?? 0) + v; return acc; }, {}),\n  trials, errors,\n}, null, 1));"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "da050d5fded198dbd8a62dad7663b71442e01107",
+  "source_fingerprint": "168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef",
+  "started_at": "2026-10-16T18:01:51.213Z",
+  "finished_at": "2026-10-16T18:03:03.225Z",
+  "recorded_at": "2026-10-16T18:03:03.225Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 77109,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "PLAY-04 opening-fix re-check: repeated waiting concessions over 8 real-gateway matches, with host calendar-step and stored clock diagnostics",
+  "log_path": "docs/validation/logs/RUN-20261016-017.txt",
+  "log_sha256": "4556f5a8f507d6e0d2d8d328747be060c632a846eae5cdde3a9adb9aa690f4c4",
+  "redactions": 0
+}

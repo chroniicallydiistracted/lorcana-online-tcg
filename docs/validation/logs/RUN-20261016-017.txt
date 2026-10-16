@@ -1,0 +1,465 @@
+{
+ "steps": 21,
+ "stepsWithBusy": 0,
+ "totalActiveBusyReceipts": 0,
+ "activeClientClosed": 2,
+ "stepsWithWallStepOver1s": [
+  "6:1:-1812:client closed"
+ ],
+ "failedSteps": [
+  {
+   "match": 4,
+   "step": 0,
+   "startDelay": 514,
+   "outcome": "client closed",
+   "elapsedMs": 16712,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "client closed": 1
+   },
+   "receiptOutcomes": {
+    "active:maintenance": 8,
+    "waiting:maintenance": 8
+   },
+   "storedClock": {
+    "status": "paused",
+    "pauseReason": "time_unreliable",
+    "revision": 1
+   }
+  },
+  {
+   "match": 6,
+   "step": 1,
+   "startDelay": 423,
+   "outcome": "client closed",
+   "elapsedMs": 19704,
+   "wallStepMs": -1812,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "client closed": 1
+   },
+   "receiptOutcomes": {
+    "active:maintenance": 8,
+    "waiting:maintenance": 8
+   },
+   "storedClock": {
+    "status": "paused",
+    "pauseReason": "time_unreliable",
+    "revision": 3
+   }
+  }
+ ],
+ "maxActiveDelayMs": 19704,
+ "waitingConcessionReceipts": {
+  "rejected/invalid_intent": 28,
+  "stale/stale_state": 38,
+  "client closed": 2
+ },
+ "trials": [
+  {
+   "match": 0,
+   "step": 0,
+   "startDelay": 343,
+   "outcome": "accepted",
+   "elapsedMs": 268,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1
+   }
+  },
+  {
+   "match": 0,
+   "step": 1,
+   "startDelay": 333,
+   "outcome": "accepted",
+   "elapsedMs": 241,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1
+   }
+  },
+  {
+   "match": 0,
+   "step": 2,
+   "startDelay": 337,
+   "outcome": "accepted",
+   "elapsedMs": 255,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 1,
+   "step": 0,
+   "startDelay": 468,
+   "outcome": "accepted",
+   "elapsedMs": 231,
+   "wallStepMs": -1,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 1,
+   "step": 1,
+   "startDelay": 426,
+   "outcome": "accepted",
+   "elapsedMs": 243,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1
+   }
+  },
+  {
+   "match": 1,
+   "step": 2,
+   "startDelay": 687,
+   "outcome": "accepted",
+   "elapsedMs": 239,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 2,
+   "step": 0,
+   "startDelay": 584,
+   "outcome": "accepted",
+   "elapsedMs": 253,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1
+   }
+  },
+  {
+   "match": 2,
+   "step": 1,
+   "startDelay": 309,
+   "outcome": "accepted",
+   "elapsedMs": 250,
+   "wallStepMs": -1,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1
+   }
+  },
+  {
+   "match": 2,
+   "step": 2,
+   "startDelay": 450,
+   "outcome": "accepted",
+   "elapsedMs": 254,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 3,
+   "step": 0,
+   "startDelay": 470,
+   "outcome": "accepted",
+   "elapsedMs": 281,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1
+   }
+  },
+  {
+   "match": 3,
+   "step": 1,
+   "startDelay": 511,
+   "outcome": "accepted",
+   "elapsedMs": 258,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 2
+   }
+  },
+  {
+   "match": 3,
+   "step": 2,
+   "startDelay": 642,
+   "outcome": "accepted",
+   "elapsedMs": 242,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 4,
+   "step": 0,
+   "startDelay": 514,
+   "outcome": "client closed",
+   "elapsedMs": 16712,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "client closed": 1
+   },
+   "receiptOutcomes": {
+    "active:maintenance": 8,
+    "waiting:maintenance": 8
+   },
+   "storedClock": {
+    "status": "paused",
+    "pauseReason": "time_unreliable",
+    "revision": 1
+   }
+  },
+  {
+   "match": 5,
+   "step": 0,
+   "startDelay": 602,
+   "outcome": "accepted",
+   "elapsedMs": 248,
+   "wallStepMs": -1,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 5,
+   "step": 1,
+   "startDelay": 366,
+   "outcome": "accepted",
+   "elapsedMs": 248,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1
+   }
+  },
+  {
+   "match": 5,
+   "step": 2,
+   "startDelay": 694,
+   "outcome": "accepted",
+   "elapsedMs": 237,
+   "wallStepMs": -1,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 6,
+   "step": 0,
+   "startDelay": 556,
+   "outcome": "accepted",
+   "elapsedMs": 245,
+   "wallStepMs": 1,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 6,
+   "step": 1,
+   "startDelay": 423,
+   "outcome": "client closed",
+   "elapsedMs": 19704,
+   "wallStepMs": -1812,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "client closed": 1
+   },
+   "receiptOutcomes": {
+    "active:maintenance": 8,
+    "waiting:maintenance": 8
+   },
+   "storedClock": {
+    "status": "paused",
+    "pauseReason": "time_unreliable",
+    "revision": 3
+   }
+  },
+  {
+   "match": 7,
+   "step": 0,
+   "startDelay": 493,
+   "outcome": "accepted",
+   "elapsedMs": 264,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "active:accepted": 1
+   }
+  },
+  {
+   "match": 7,
+   "step": 1,
+   "startDelay": 647,
+   "outcome": "accepted",
+   "elapsedMs": 248,
+   "wallStepMs": 0,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 2,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "active:accepted": 1,
+    "waiting:rejected": 2,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 2
+   }
+  },
+  {
+   "match": 7,
+   "step": 2,
+   "startDelay": 407,
+   "outcome": "accepted",
+   "elapsedMs": 226,
+   "wallStepMs": -1,
+   "activeBusyReceipts": 0,
+   "waitingConcessions": {
+    "rejected/invalid_intent": 1,
+    "stale/stale_state": 2
+   },
+   "receiptOutcomes": {
+    "waiting:rejected": 1,
+    "waiting:stale": 2,
+    "waiting:rate_limited": 1,
+    "active:accepted": 1
+   }
+  }
+ ],
+ "errors": []
+}
+
+[Recorder failure: clock_changed]

@@ -1,0 +1,68 @@
+
+> lorcana-online-tcg@0.0.0 test:e2e:smoke /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/web test:e2e
+
+
+> @lorcana/web@0.0.0 test:e2e /workspaces/lorcana-online-tcg/apps/web
+> playwright test
+
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 11 tests using 1 worker
+
+  ✓   1 tests/clock-client.spec.ts:13:1 › Chromium preserves its live connection and pending ID through a busy clock reservation (6.8s)
+  ✘   2 tests/clock-client.spec.ts:39:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 0 (8.7s)
+  ✓   3 tests/clock-client.spec.ts:39:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 1 (12.2s)
+  ✓   4 tests/foundation.spec.ts:4:1 › real client reaches both services, mounts WebGL, resizes and releases repeated scenes (1.4s)
+  ✓   5 tests/foundation.spec.ts:35:1 › unavailable service and renderer disposal remain usable from keyboard (587ms)
+[WebServer] The request id "/workspaces/lorcana-online-tcg/packages/db/README.md" is outside of Vite serving allow list.
+[WebServer] 
+[WebServer] - /workspaces/lorcana-online-tcg/apps/web
+[WebServer] - /workspaces/lorcana-online-tcg/packages/contracts
+[WebServer] - /workspaces/lorcana-online-tcg/packages/match-client
+[WebServer] - /workspaces/lorcana-online-tcg/packages/design-system
+[WebServer] - /workspaces/lorcana-online-tcg/packages/presentation
+[WebServer] - /workspaces/lorcana-online-tcg/node_modules
+[WebServer] 
+[WebServer] Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+[WebServer] 
+  ✓   6 tests/foundation.spec.ts:48:1 › development file serving rejects server-owned files outside the browser roots (14ms)
+  ✓   7 tests/foundation.spec.ts:55:1 › unavailable WebGL leaves a semantic stop control usable (575ms)
+  ✓   8 tests/foundation.spec.ts:70:1 › protocol compatibility reaches the actual local negotiation diagnostic (326ms)
+  ✓   9 tests/foundation.spec.ts:75:1 › protocol compatibility shows update and rejects malformed or uncorrelated server responses (552ms)
+  ✓  10 tests/foundation.spec.ts:88:1 › browser executes the closed viewer codec and refuses private fields without evaluating accessors (299ms)
+  ✓  11 tests/live-client.spec.ts:23:1 › native browser cookies, WebSockets and reference-only clients reconnect across processes and finish a game (6.5s)
+
+
+  1) tests/clock-client.spec.ts:39:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 0 
+
+    Error: Match service UNAVAILABLE
+
+       at ../../match-service/dist/clock-service.js:16
+
+      14 |     function failure(error) { if (error instanceof MatchServiceError)
+      15 |         throw error; if (error instanceof MatchStoreError)
+    > 16 |         throw new MatchServiceError(error.code); throw new MatchServiceError('UNAVAILABLE'); }
+         |               ^
+      17 |     function remember(matchId) { if (!known.has(matchId) && known.size + pendingCreations >= 128)
+      18 |         throw new MatchServiceError('UNAVAILABLE'); probes.delete(matchId); known.set(matchId, Symbol()); }
+      19 |     async function pruneContinuity() {
+        at failure (/workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+        at control (/workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:299:20)
+        at /workspaces/lorcana-online-tcg/apps/web/tests/clock-client.spec.ts:72:3
+
+    Error Context: test-results/clock-client-Chromium-cloc-d6b27-rver-timeout-chooser-seat-0/error-context.md
+
+  1 failed
+    tests/clock-client.spec.ts:39:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 0 
+  10 passed (1.1m)
+/workspaces/lorcana-online-tcg/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/web@0.0.0 test:e2e: `playwright test`
+Exit status 1
+ ELIFECYCLE  Command failed with exit code 1.
+
+[Recorder failure: clock_changed]

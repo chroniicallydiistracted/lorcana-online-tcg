@@ -2,6 +2,76 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261016-004 — Independent re-check of the PLAY-04 opening fixes (R1/R2 repaired; local clock steps)
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-16T18:17:56.633Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: da050d5fded198dbd8a62dad7663b71442e01107
+- Tasks: PLAY-04, DOC-01, DOC-02
+- Features: F-DOCS, F-MATCH-CLOCKS
+- Requirements: R29.006, R29.007
+
+### Changes
+
+- **review:** Re-checked Codex commit da050d5 (CHG-20261016-002/003) against R1/R2 from CHG-20261015-008 and CHG-20261016-001 and the backlog acceptance. Reviewed the fix-only diff from 33e9a7a: reserve returns an unreserved WaitingConcessionEvaluation for waiting concessions; the service runs proof and transition outside locks; commitWaitingConcession rereads under match->clock locks, checks duplicate identity, requires the evaluated state/checkpoint/clock (only lastHealthyUtcMs may advance; heartbeat changes nothing else), refuses reservation, non-running status, backward or expired evaluation, and commits refusals as receipts only and accepted concessions atomically with an ended clock through a narrow permit; the web test now reaches the reservation through the existing Node fixture. Codex's evidence RUN-20261016-002..013 and review note were read; failures are preserved and explained.
+- **test:** RUN-20261016-014..023 at fingerprint 168d05d7. RUN015 service probe (injected UTC): findings 1/2 stay repaired; 20 refused opening concessions add 0 clock revisions/events; during a delayed concession the clock stays running with no reservation and the active choice is accepted, the concession then stale; a heartbeat during evaluation keeps a main-game concession valid; a timeout during evaluation makes it stale with one timeout. RUN016/017 live trials with stock clients: 43 opening steps, 0 busy replies, accepted steps 0.22-0.28 s. RUN018 clean git archive: frozen install and typecheck exit 0 with no app output. RUN019 boundary probe passed. RUN020 77/81 database checks; RUN021 the four failing real-time tests pass unmodified in jump-free windows. RUN022 10/11 Chromium; RUN023 the failing test passes with no jump in it, plus 2 Lab workers.
+- **review:** Environment: the container calendar clock steps back about 1.8-2.5 s roughly every 30 s against monotonic (measured -2,459.5 ms in a 30 s sample), so receipts longer than about 20 s fail the unchanged clock_changed guard and real-time clock tests fail closed (UNAVAILABLE/time_unreliable) when a step lands in them. No clock setting was changed; all such receipts are preserved as failed. Hosted CI on the re-check branch is the qualifying full-suite run.
+- **review:** Verdict: R1 and R2 repaired; no new defect. Observations: a refused opening concession still costs about 0.2 s of engine-worker time (2 workers per process, queue 32, 5 s queue timeout; 8 commands per second per player), a load-gate matter; finding 3, the four policy points and the opening-leave question remain open. Per the Director's CHG-20261016-001 decision, hosted CI on this branch precedes the main fast-forward.
+- **documentation:** Validation re-check section; ADR0016 note; runbook R1 caution; F-MATCH-CLOCKS description and evidence; FEATURES.md row rewritten for the current state; backlog PLAY-04 status synthetic_acceptance_reaudited_hosted_ci_then_merge; dated re-check line in AGENTS.md/README.md/docs/README.md; handoff rewritten.
+
+### Verification
+
+- **failed:** verify:foundation child exit 0: 350 project checks (326 Node + 24 Python), 406 upstream/1 skip/1,362 expectations, 2 injection. Receipt failed clock_changed (host calendar step). ([evidence](docs/validation/runs/RUN-20261016-014.json))
+- **failed:** Service probe on the actual test database and engine with injected UTC, sections A-E, all assertions passed (child exit 0). Receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261016-015.json))
+- **failed:** Live trials, real gateway and stock clients: 22 opening steps, 0 busy replies, 1 uninstrumented client closure. Child exit 0; receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261016-016.json))
+- **failed:** Live trials with clock diagnostics: 21 steps, 0 busy replies; both failed steps paused time_unreliable, one with a -1,812 ms step measured during it. Child exit 0; receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261016-017.json))
+- **failed:** Clean git archive of da050d5: no app build output before or after; frozen offline install and root typecheck exit 0. Receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261016-018.json))
+- **passed:** Boundary, NOTIFY, startup route, negotiation, bridge, kernel hash, public clock field and migration/role probe; unchanged. ([evidence](docs/validation/runs/RUN-20261016-019.json))
+- **failed:** Role health and database suites: 77 of 81 checks passed; four real-time clock tests failed during host clock steps (exit 1). Receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261016-020.json))
+- **failed:** The four failed tests, unmodified, each passed when started just after a step with no step during the test (one test per invocation). Child exit 0; receipt failed clock_changed because steps occurred between tests. ([evidence](docs/validation/runs/RUN-20261016-021.json))
+- **failed:** Chromium suite: 10 of 11 passed; chooser-seat-0 clock test failed UNAVAILABLE (exit 1); Lab workers not reached. Receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261016-022.json))
+- **failed:** Chooser-seat-0 Chromium test passed with no step in its body; 2 Lab Web Workers passed. Child exit 0; receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261016-023.json))
+- **passed:** docs:check over the re-check record and updated documents (static). ([evidence](docs/validation/runs/RUN-20261016-024.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-04.md](docs/validation/play-04.md) — New dated re-check section: verdict, confirmations, local clock steps with exact receipt outcomes, observations and runs.
+- **updated:** [docs/adr/0016-durable-engine-clocks.md](docs/adr/0016-durable-engine-clocks.md) — Dated re-check note; the decision itself is unchanged.
+- **updated:** [docs/runbooks/game-clocks.md](docs/runbooks/game-clocks.md) — R1 caution now references the independent re-check and the hosted-CI-before-merge step.
+- **updated:** [docs/features.json](docs/features.json) — F-MATCH-CLOCKS description states the re-check result; the passing boundary receipt added as evidence; verification stays pending until hosted qualification is recorded.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-MATCH-CLOCKS row rewritten to the current repaired state and links the re-check.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-04 status records re-audited synthetic acceptance with hosted CI before merge; links this record.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the re-check state, evidence and next actions.
+- **updated:** [AGENTS.md](AGENTS.md) — Dated re-check line after the shared PLAY-04 block; the block itself is Codex's and unchanged.
+- **updated:** [README.md](README.md) — Same re-check line as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same re-check line as AGENTS.md, with a relative link.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs sync.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs sync.
+- **reviewed_unchanged:** [docs/contracts/live.md](docs/contracts/live.md) — No wire change; the busy receipt description matches the reviewed code.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — No protocol change.
+- **reviewed_unchanged:** [docs/runbooks/live-matches.md](docs/runbooks/live-matches.md) — Codex's description of waiting concessions matches the reviewed code.
+- **reviewed_unchanged:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — Command admission description matches the reviewed code.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — No migration or role change.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Pipeline unchanged; local timing limits are recorded in validation.
+- **reviewed_unchanged:** [docs/validation/clock-investigation.md](docs/validation/clock-investigation.md) — Linked as the explanation of the calendar steps; its executed evidence is not rewritten.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — No workspace or toolchain change.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Requirement text unchanged.
+- **historical_preserved:** [docs/reviews/2026-10-16-play-04-opening-fixes.md](docs/reviews/2026-10-16-play-04-opening-fixes.md) — Codex's scoped review record preserved.
+- **historical_preserved:** [docs/plans/2026-10-15-play-04-design.md](docs/plans/2026-10-15-play-04-design.md) — Approved design preserved as written.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261016-004.json).
+
+### Limits and next actions
+
+- Local receipts longer than about 20 s fail the unchanged clock guard on this machine; full-suite timing qualification relies on hosted CI, which is run after this record.
+- Evidence is local Linux Dev Container and headless Chromium only; injected UTC in the service probe; no Windows, device, GPU, load, remote network or production observation.
+- RUN016's single client closure was not instrumented; its cause is inferred only by analogy with RUN017.
+- Run hosted Foundation on claude/play-04-opening-fix-audit; if it passes, fast-forward main to this branch and push, then observe the main run; if it fails, preserve and report.
+- Next intake records the hosted run metadata and updates feature verification.
+- Director decides the four policy points, the opening-leave question and whether to authorize a local clock repair.
+
 ## CHG-20261016-003 — Correct pre-commit PLAY-04 repair evidence table and handoff wording
 
 - Status: finalized

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-023",
+  "category": "headless_browser",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Independent PLAY-04 re-check: rerun the Chromium clock test that failed in RUN-20261016-022 (chooser seat 0), unmodified,\n// up to 3 attempts. A sampler logs every host calendar step (wall-minus-monotonic shift > 1 s); Playwright's JSON report\n// gives each attempt's test start and duration, so each result shows whether a step landed in the test body (3 s margin).\n// Then run the Lab worker checks once.\nimport { spawn } from 'node:child_process';\nconst offset = () => Date.now() - performance.timeOrigin - performance.now();\nconst steps = []; let last = offset();\nconst sampler = setInterval(() => { const now = offset(); if (Math.abs(now - last) > 1000) steps.push({ wallAfter: Date.now(), shiftMs: Math.round(now - last) }); last = now; }, 50);\nfunction run(cmd, args, cwd) {\n  return new Promise(resolve => { let out = ''; const c = spawn(cmd, args, { cwd, stdio: ['ignore', 'pipe', 'pipe'] }); c.stdout.on('data', d => { out += d; }); c.on('exit', code => resolve({ code, out })); });\n}\nfunction results(node, acc = []) { if (node && typeof node === 'object') { if (Array.isArray(node.results) && node.title === undefined) for (const r of node.results) acc.push(r); for (const v of Object.values(node)) if (typeof v === 'object') results(v, acc); } return acc; }\nconst attempts = [];\nfor (let i = 0; i < 3; i++) {\n  const pw = await run('pnpm', ['exec', 'playwright', 'test', 'tests/clock-client.spec.ts', '-g', 'chooser seat 0', '--reporter=json'], 'apps/web');\n  let report; try { report = JSON.parse(pw.out.slice(pw.out.indexOf('{'))); } catch { report = null; }\n  const rs = report ? results(report).filter(r => r.startTime) : [];\n  const r = rs[rs.length - 1], start = r ? Date.parse(r.startTime) : NaN, end = start + (r?.duration ?? 0);\n  const overlapping = steps.filter(s => s.wallAfter >= start - 3000 && s.wallAfter <= end + 3000).map(s => s.shiftMs);\n  attempts.push({ attempt: i + 1, exitCode: pw.code, status: r?.status ?? 'no-report', testDurationMs: r?.duration ?? null, stepsInTestBody: overlapping, error: r?.error?.message?.split('\\n')[0] ?? null });\n  if (pw.code === 0 && r?.status === 'passed') break;\n}\nclearInterval(sampler);\nconst lab = await run('pnpm', ['test:engine-browser'], '.');\nconst pass = attempts.filter(a => a.status === 'passed'), fail = attempts.filter(a => a.status !== 'passed');\nconsole.log(JSON.stringify({ attempts, passedWithoutStep: pass.filter(a => !a.stepsInTestBody.length).length, failedWithStep: fail.filter(a => a.stepsInTestBody.length).length, failedWithoutStep: fail.filter(a => !a.stepsInTestBody.length).length, labWorkers: { exitCode: lab.code, pass: (lab.out.match(/^PASS .*$/m) || [''])[0], checks: (lab.out.match(/\"checks\":\\[[^\\]]*\\]/) || [''])[0] } }, null, 1));\nif (!pass.length || lab.code !== 0) process.exitCode = 1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "da050d5fded198dbd8a62dad7663b71442e01107",
+  "source_fingerprint": "168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef",
+  "started_at": "2026-10-16T18:16:06.059Z",
+  "finished_at": "2026-10-16T18:16:44.230Z",
+  "recorded_at": "2026-10-16T18:16:44.230Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 40596,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "PLAY-04 opening-fix re-check: Chromium chooser-seat-0 clock test from RUN-20261016-022 rerun unmodified with host calendar-step correlation (up to 3 attempts), plus 2 Lab workers",
+  "log_path": "docs/validation/logs/RUN-20261016-023.txt",
+  "log_sha256": "d9b675091d8445ef38b36db2dcb7ca7bd436fe14b78ccf5633101e28037eeb3f",
+  "redactions": 0
+}

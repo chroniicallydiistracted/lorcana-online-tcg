@@ -303,3 +303,56 @@ All fresh final-source suites above share executable fingerprint168d05d74f9bba68
 Local repair scope is finalized for Director re-audit, with long-run native timing and hosted qualification explicitly pending. RUN012 records canonical staged source/private/log/cumulative-scope/owned-resource checks; RUN013 records final documentation validation. Their immutable receipts contain actual outcomes; this text makes no advance passing claim. The two run/log pairs are predeclared in the cumulative main775994a-to-branch inventory, while33e9a7a is the precise fix-only review base. No self-referencing future passing evidence or amendment of a sealed record is used. No long isolated CI, hosted fix-source run/artifact, Windows device, performance/load or production acceptance is inferred. Original private bytes/modes and volume must remain intact; fixtures clean only their own data. The interrupted earlier fixture and expired quota rows remain untouched. Clock/memory settings and evidence thresholds stay unchanged. Four Director policy points and the real-card non-priority chooser gate remain open.
 
 Pre-commit documentation correction CHG-20261016-003 joins the result-table continuation and removes stale draft wording from the handoff. The owned CHG002 synchronization was stopped with SIGTERM (exit143) after writing its final snapshot and before returning validation; no passing validation is inferred from that interrupted command. Final RUN012/013 cover the corrected package; runtime/test bytes and source fingerprint are unchanged.
+
+## Independent opening-fix re-check — 2026-10-16 UTC
+
+Recorded 2026-10-16T18:17:56.633Z (CHG-20261016-004) by the Claude Code agent (architect/QA reviewer role) on Director request. Source: `codex/play-04-opening-fixes` at da050d5, fingerprint `168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef`; fix-only base 33e9a7a. Main is unchanged at 775994a.
+
+### Verdict
+
+R1 and R2 are repaired. Findings 1 and 2 stay repaired, and the engine, migrations, public schemas and match client are unchanged. No new defect was found. The agreed synthetic PLAY-04 scope meets the backlog acceptance ("no disconnect/time abuse or duplicate terminal result"), subject to hosted CI on this re-check branch. That run is the only full-suite run that is free of local clock jumps.
+
+### Confirmed
+
+- **R1 repaired.** A waiting player's opening concession is still refused by the engine, but it no longer takes or revises the clock: 20 in a row produced 0 clock revisions and 0 clock events. While one was being evaluated (with an emulated 300 ms engine delay), the clock stayed `running` with no reservation, the active player's genuine choice was accepted, and the delayed concession came back stale. The mulligan step behaves the same (RUN015 C).
+- **Live, real gateway and stock clients.** The waiting player pressed concede repeatedly during every opening step. Across 43 steps in RUN016 and RUN017 the active player received 0 busy replies. Every step that was not hit by a host clock jump was accepted in 0.22–0.28 s. In the same test on the previous source (RUN-20261015-119), the active client closed in 6 of 8 matches.
+- **Fences on the unleased concession.**
+  - A clock heartbeat during evaluation does not make a main-game concession stale: the concession is accepted and the active player wins (RUN015 D).
+  - A timeout committed during evaluation makes the concession stale, with exactly one timeout. A fresh concession by the same player, now active, is then accepted (RUN015 E).
+- **Findings 1 and 2 still repaired.** RUN015 A and B repeat the earlier checks, with exact clock arithmetic against the independent model.
+- **R2 repaired.** A `git archive` of da050d5 in an empty directory had no app build output before or after, and its frozen offline install and root `typecheck` exit 0 (RUN018).
+- **Unchanged scope.** The boundary probe matches the audited source: 480 browser imports refused, NOTIFY carries the match ID only, no play, login or clock route at startup, kernel sha256 `a3d93ec9…`, and migrations 0001–0005 (RUN019). `git diff 33e9a7a da050d5` shows no change to the engine bridge, upstream, public schemas, match client, adapter or migrations.
+
+### Local clock jumps
+
+During this re-check the container's calendar clock stepped back about 1.8–2.5 s roughly every 30 s against the monotonic clock: −2,459.5 ms within one 30 s sample. This is the Docker calendar synchronization described in the [clock investigation](clock-investigation.md), now with larger steps. No clock setting was changed. Consequences:
+
+- Every receipt in this re-check longer than about 20 s failed the unchanged `clock_changed` guard, even when the child exited 0. All such receipts are kept as failed.
+- RUN014 (`verify:foundation`): child exit 0. 350 project checks (326 Node + 24 Python); upstream 406 passed, 1 skipped, 1,362 expectations; 2 injection tests.
+- RUN020 (database suites): 77 of 81 passed (5 + 3 + 69 of 73). Four real-time clock tests failed with `UNAVAILABLE`, a closed client, or `processing` where `paused` was expected. These are the clock-safety responses to an unreliable clock.
+- RUN021: those four tests, unmodified, each passed when started just after a jump, with no jump during the test (exactly one test run per invocation).
+- RUN022 (browser suites): 10 of 11 Chromium checks passed. The chooser-seat-0 clock test failed with `UNAVAILABLE`, and the chain stopped before the Lab workers. RUN023: that test passed with no jump inside it, and both Lab workers passed.
+- The live trials show the same pattern. RUN017's two failed steps were both matches paused `time_unreliable`, one with a jump measured during the step. RUN016's one failed step was not instrumented. None of the failed steps involved a busy reply.
+
+Codex's RUN009–011 receipts on the same source also fail `clock_changed` with child exit 0. Local isolated CI cannot qualify timing on this machine until the clock is repaired, and any repair needs Director authorization.
+
+### Observations
+
+- A refused opening concession still costs about 0.2 s of engine-worker time. Each match-service process runs 2 workers with a queue of 32 and a 5 s queue timeout, and one player is limited to 8 commands per second. With one repeating player, the active decision stayed at 0.22–0.28 s. Hostile multi-player load belongs to the existing load gate.
+- Unchanged: finding 3 (the real-card chooser), the four Director policy points and whether players may leave during the opening.
+
+### Runs
+
+| Run | Category | Result |
+|---|---|---|
+|RUN-20261016-014|container|`verify:foundation`: child exit 0 with the counts above; receipt failed `clock_changed`.|
+|RUN-20261016-015|simulated|Service probe on the real test database and engine with injected UTC, sections A–E; all assertions passed (child exit 0); receipt failed `clock_changed`.|
+|RUN-20261016-016|container|Live trials: 22 steps, 0 busy replies, 1 client closure (cause not instrumented in this run); receipt failed `clock_changed`.|
+|RUN-20261016-017|container|Live trials with clock diagnostics: 21 steps, 0 busy replies; both failed steps were paused `time_unreliable`, one with a −1,812 ms jump measured during it; receipt failed `clock_changed`.|
+|RUN-20261016-018|container|Clean `git archive` of da050d5: frozen offline install and root typecheck exit 0, with no app build output; receipt failed `clock_changed`.|
+|RUN-20261016-019|container|Boundary probe passed.|
+|RUN-20261016-020|container|Role health and database suites: 77 of 81 passed; four real-time clock tests failed during clock jumps (exit 1); receipt failed `clock_changed`.|
+|RUN-20261016-021|container|The four failed tests, unmodified, each passed in a jump-free window; receipt failed `clock_changed` (jumps between tests).|
+|RUN-20261016-022|headless_browser|10 of 11 Chromium checks passed; the chooser-seat-0 clock test failed `UNAVAILABLE` (exit 1); receipt failed `clock_changed`.|
+|RUN-20261016-023|headless_browser|Chooser-seat-0 test passed with no jump inside it, plus 2 Lab workers; receipt failed `clock_changed`.|
+|RUN-20261016-024|static|`docs:check` over this re-check.|

@@ -1,0 +1,92 @@
+{
+ "A_waitingRefusal": {
+  "receipt": "rejected/invalid_intent",
+  "engineJobs": [],
+  "clockRevisionDelta": 0,
+  "clockEventsDelta": 0
+ },
+ "A_concurrentTurns": {
+  "activeAccepted": 8,
+  "activeOther": [],
+  "waiting": {
+   "rejected/invalid_intent": 24
+  }
+ },
+ "B_atExactDeadline": {
+  "waitingNonConcession": "rejected/invalid_intent",
+  "activeOwnConcession": "rejected/clock_expired",
+  "waitingConcession": "accepted/null",
+  "after": {
+   "ended": true,
+   "winner": "p1",
+   "expectedWinner": "p1",
+   "systemTimeoutReceipts": 0,
+   "duplicateSameReceipt": true,
+   "clockStatus": "ended",
+   "storedRemaining": {
+    "p1": 0,
+    "p2": 150000
+   }
+  }
+ },
+ "B_threeSecondsLate": {
+  "waitingConcession": "accepted/null",
+  "versionBefore": 3,
+  "receiptVersion": 4,
+  "winner": "p1",
+  "expectedWinner": "p1",
+  "systemTimeoutReceipts": 0,
+  "clockStatus": "ended"
+ },
+ "C_openingConcessions": {
+  "count": 20,
+  "receipts": {
+   "rejected/invalid_intent": 20
+  },
+  "clockRevisionDelta": 0,
+  "clockEventsDelta": 0,
+  "versionAfter": 0,
+  "submitMs": {
+   "min": 188.3,
+   "median": 198,
+   "max": 216.4
+  }
+ },
+ "C_overlap": {
+  "clockStatusWhileWaitingConcessionRuns": "running",
+  "reservationWhileWaitingConcessionRuns": null,
+  "revisionUnchangedDuring": true,
+  "chooserGenuineChoice": "accepted/null",
+  "chooserMs": 210.7,
+  "waitingConcession": "stale/stale_state"
+ },
+ "C_mulliganWaitingConcession": {
+  "receipt": "rejected/invalid_intent",
+  "clockRevisionDelta": 0,
+  "clockEventsDelta": 0
+ },
+ "D_heartbeatDuringEvaluation": {
+  "heartbeatAdvanced": true,
+  "revisionUnchangedByHeartbeat": true,
+  "concession": "accepted/null",
+  "winner": "p1",
+  "expectedWinner": "p1",
+  "clockStatus": "ended",
+  "storedRemaining": {
+   "p1": 150000,
+   "p2": 150000
+  }
+ },
+ "E_timeoutDuringEvaluation": {
+  "versionBefore": 3,
+  "versionAfterTimeout": 4,
+  "turnOwnerAfterTimeout": "p2",
+  "concessionDuringTimeout": "stale/stale_state",
+  "systemTimeoutReceipts": 1,
+  "freshConcessionAsActive": "accepted/null",
+  "winner": "p1",
+  "expectedWinner": "p1"
+ }
+}
+
+[Recorder failure: clock_changed]

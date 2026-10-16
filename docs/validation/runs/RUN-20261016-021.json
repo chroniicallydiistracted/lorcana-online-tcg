@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-021",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Independent PLAY-04 re-check: run each real-time clock test that failed in RUN-20261016-020 inside a window\n// free of host calendar steps. A sampler tracks (wall - monotonic); each test starts right after an observed\n// step and the result records whether another step landed during the test. Unmodified tests, no environment change.\nimport { spawn } from 'node:child_process';\nconst offset = () => Date.now() - performance.timeOrigin - performance.now();\nconst tests = [\n  ['tests/clock-live.test.mjs', 'stock live clients complete all opening decisions amid repeated waiting concessions without busy or clock events'],\n  ['tests/clock-live.test.mjs', 'live3 busy contention retries the same concession on the same socket without maintenance or duplicate effects'],\n  ['tests/clock-process.test.mjs', 'an engine calculation outliving its lease is fenced and durably paused'],\n  ['tests/clock-process.test.mjs', 'timed process death before COMMIT preserves clock, receipt and journal atomicity'],\n];\nconst escape = s => s.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');\nasync function nextStep(limitMs = 90000) {\n  const end = performance.now() + limitMs; let last = offset();\n  while (performance.now() < end) { await new Promise(r => setTimeout(r, 50)); const now = offset(); if (Math.abs(now - last) > 1000) return now - last; last = now; }\n  return null;\n}\nconst results = [];\nfor (const [file, name] of tests) {\n  const step = await nextStep();\n  const before = offset(), t0 = performance.now(); let maxShift = 0;\n  const sampler = setInterval(() => { maxShift = Math.max(maxShift, Math.abs(offset() - before)); }, 50);\n  let tap = '';\n  const code = await new Promise(resolve => {\n    const child = spawn('node', ['--test', '--test-concurrency=1', '--test-reporter=tap', '--test-name-pattern=^' + escape(name) + '$', file], { cwd: 'apps/match-service', stdio: ['ignore', 'pipe', 'ignore'] });\n    child.stdout.on('data', d => { tap += d; }); child.on('exit', c => resolve(c));\n  });\n  const count = k => Number((tap.match(new RegExp('^# ' + k + ' (\\\\d+)', 'm')) || [])[1] ?? NaN);\n  clearInterval(sampler);\n  results.push({ name, precedingStepMs: step === null ? null : Math.round(step), durationMs: Math.round(performance.now() - t0), stepDuringTestMs: Math.round(maxShift), exitCode: code, pass: count('pass'), fail: count('fail') });\n}\nconsole.log(JSON.stringify({ results, allPassed: results.every(r => r.exitCode === 0 && r.pass === 1 && r.fail === 0), anyStepDuringTest: results.some(r => r.stepDuringTestMs > 1000) }, null, 1));"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "da050d5fded198dbd8a62dad7663b71442e01107",
+  "source_fingerprint": "168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef",
+  "started_at": "2026-10-16T18:09:50.481Z",
+  "finished_at": "2026-10-16T18:11:30.140Z",
+  "recorded_at": "2026-10-16T18:11:30.140Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 109167,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "PLAY-04 opening-fix re-check: the four real-time clock tests that failed in RUN-20261016-020, each run unmodified in a window free of host calendar steps",
+  "log_path": "docs/validation/logs/RUN-20261016-021.txt",
+  "log_sha256": "2f3c4fb4f768c168cb4aa7a81a6d9d22c5a028f0d7e332ce8acba3a28024391d",
+  "redactions": 0
+}

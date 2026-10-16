@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-014",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "da050d5fded198dbd8a62dad7663b71442e01107",
+  "source_fingerprint": "168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef",
+  "started_at": "2026-10-16T17:53:44.483Z",
+  "finished_at": "2026-10-16T17:56:10.507Z",
+  "recorded_at": "2026-10-16T17:56:10.507Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 156427,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "Independent PLAY-04 opening-fix re-check: complete foundation verification at da050d5",
+  "log_path": "docs/validation/logs/RUN-20261016-014.txt",
+  "log_sha256": "5a62010c5966530e9d94d6e5f0be28c79815f3da1ec965778356202aa2819afe",
+  "redactions": 0
+}

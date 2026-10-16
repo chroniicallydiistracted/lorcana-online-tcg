@@ -1531,7 +1531,7 @@
       "name": "Durable authoritative game clocks",
       "implementation": "implemented",
       "verification": "pending",
-      "description": "Native replenishing timer, durable clocks/recovery/live3. R1/R2 repaired: waiting commands never reserve; native concessions evaluate outside locks and commit refused/terminal results only against unchanged healthy state/clock. Opening concessions stay refused. Web test no longer statically imports app dist; source-only typecheck RUN008 passes. Complete DB/live/browser/foundation child suites exit0, but009/010/011 native receipts fail clock_changed; current timed qualification/re-audit/hosted CI pending. Four policy points, real-card chooser and admission/device/production gates remain.",
+      "description": "Native replenishing timer, durable clocks/recovery/live3. R1/R2 repaired: waiting commands never reserve; native concessions evaluate outside locks and commit refused/terminal results only against unchanged healthy state/clock. Opening concessions stay refused. Web test no longer statically imports app dist; source-only typecheck RUN008 passes. Complete DB/live/browser/foundation child suites exit0, but009/010/011 native receipts fail clock_changed; current timed qualification/re-audit/hosted CI pending. Four policy points, real-card chooser and admission/device/production gates remain. Independently re-checked (CHG-20261016-004): R1 and R2 repaired, no new defect; local timing receipts fail on host clock steps, so hosted CI on the re-check branch is the qualifying full-suite run.",
       "sources": [
         "packages/contracts/src/clocks.ts",
         "packages/engine-adapter/src/clocks.ts",
@@ -1608,7 +1608,8 @@
         "docs/validation/runs/RUN-20261016-008.json",
         "docs/validation/runs/RUN-20261016-009.json",
         "docs/validation/runs/RUN-20261016-010.json",
-        "docs/validation/runs/RUN-20261016-011.json"
+        "docs/validation/runs/RUN-20261016-011.json",
+        "docs/validation/runs/RUN-20261016-019.json"
       ]
     }
   ]
