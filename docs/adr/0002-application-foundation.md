@@ -57,3 +57,7 @@ RULE-03 supersedes the linked RULE-02 engine/RNG baseline; prior executed tables
 ## Current upstream refresh — 2026-10-13 UTC
 
 Foundation diagnostics and ports remain unchanged. The sole engine owners remain server engine-adapter and browser engine-lab; the new pin changes compiled identity, not app admission or UI scope. See [refresh qualification](../validation/upstream-engine-review.md) for current evidence and limits.
+
+## Occupied-port regression note — 2026-10-16 UTC
+
+The occupied-port regression now also proves which failure it observed. It requires the API's own `api foundation startup failed` message, because a failed build also exits with code 1. It bounds supervisor cleanup to 15 s after that message, and its 120 s budget includes the supervisor's full workspace build (CHG-20261016-005). The decision is unchanged.

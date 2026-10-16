@@ -46,13 +46,27 @@ test('built application processes start, remain alive and stop on both signals w
   }
 });
 
-test('development supervisor rejects a busy service port and leaves the existing listener intact', { timeout: 30000 }, async () => {
+// scripts/dev.mjs runs the full workspace build before it starts any service, so most of this
+// budget is that build (17-19 s locally, 21-30 s on hosted runners and growing with the
+// workspace). The busy-port handling itself is bounded separately below.
+test('development supervisor rejects a busy service port and leaves the existing listener intact', { timeout: 120000 }, async () => {
   const { createServer } = await import('node:http');
   const server = createServer((_request, response) => response.end('existing-listener'));
   await new Promise(resolve => server.listen(3001, '0.0.0.0', resolve));
-  const child = spawn(process.execPath, ['scripts/dev.mjs'], { env: { PATH: process.env.PATH, HOME: process.env.HOME, APP_ENV: 'local' }, stdio: 'ignore' });
+  const child = spawn(process.execPath, ['scripts/dev.mjs'], { env: { PATH: process.env.PATH, HOME: process.env.HOME, APP_ENV: 'local' }, stdio: ['ignore', 'pipe', 'pipe'] });
+  let output = '', apiFailedAt;
+  const collect = chunk => {
+    output = (output + chunk).slice(-65536);
+    if (apiFailedAt === undefined && output.includes('api foundation startup failed')) apiFailedAt = performance.now();
+  };
+  child.stdout.on('data', collect);
+  child.stderr.on('data', collect);
   try {
-    assert.deepEqual(await once(child, 'exit'), [1, null]);
+    assert.deepEqual(await once(child, 'close'), [1, null]);
+    // Exit 1 must come from the API losing its port after a completed build, not from a failed build.
+    assert.notEqual(apiFailedAt, undefined, `API did not report its busy port: ${output.slice(-2000)}`);
+    // Cleanup allows SIGTERM, 12 s grace and 1 s after SIGKILL (scripts/process-groups.mjs).
+    assert.ok(performance.now() - apiFailedAt < 15000, 'supervisor did not stop within 15 s of the API failure');
     assert.equal(await (await fetch('http://127.0.0.1:3001')).text(), 'existing-listener');
     await assert.rejects(fetch('http://127.0.0.1:3002/healthz'));
     await assert.rejects(fetch('http://127.0.0.1:5173/'));

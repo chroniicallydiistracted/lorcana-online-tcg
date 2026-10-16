@@ -356,3 +356,48 @@ Codex's RUN009–011 receipts on the same source also fail `clock_changed` with 
 |RUN-20261016-022|headless_browser|10 of 11 Chromium checks passed; the chooser-seat-0 clock test failed `UNAVAILABLE` (exit 1); receipt failed `clock_changed`.|
 |RUN-20261016-023|headless_browser|Chooser-seat-0 test passed with no jump inside it, plus 2 Lab workers; receipt failed `clock_changed`.|
 |RUN-20261016-024|static|`docs:check` over this re-check.|
+
+## Hosted run and supervisor test repair — 2026-10-16 UTC
+
+Recorded 2026-10-16T18:51:09.439Z (CHG-20261016-005) by the Claude Code agent (architect/QA reviewer role) on Director request.
+
+### Hosted run
+
+Foundation run 38946897424 on `claude/play-04-opening-fix-audit` at 5347cc0 failed on both attempts, at 18:23:01–18:31:17Z and 18:32:08–18:40:21Z (RUN-20261016-025, public metadata). To diagnose it, the failed step's output was viewed with `gh run view --log-failed`. That output was not saved to the repository, and no artifacts were downloaded.
+
+- Both attempts failed on the same single test: `tests/foundation/processes.test.mjs`, "development supervisor rejects a busy service port and leaves the existing listener intact", which timed out after 30,000 ms.
+- In each attempt, every other test that ran before it passed. The pipeline stops at the first failed stage, so the later database and browser stages did not run.
+- Earlier passing hosted durations for this test were 21.1 s, 28.0 s and 29.5 s, and the PLAY-03 main run's first attempt had already timed out on it.
+
+### What the test checks
+
+`scripts/dev.mjs` is the `pnpm dev` supervisor. It runs the full workspace `pnpm build`, then starts the API, match service, worker and web dev server, and shuts every process group down if any of them exits unexpectedly. The test occupies the API's port 3001, runs the supervisor and expects three things:
+
+- the supervisor exits with code 1;
+- the existing listener still answers;
+- nothing is left listening on 3002 or 5173.
+
+This is the ADR0002 regression: "the direct-process supervisor's occupied-port regression exits the stack with failure while preserving the pre-existing listener".
+
+### Cause
+
+The 30 s limit covered the supervisor's own full build. `pnpm test` has just built everything, yet the supervisor builds everything again before any service starts. Measured locally (RUN-20261016-026), the build-and-start phase took 20.9 s and cleanup after the API failure took 45 ms. So the limit was really a build-time limit, and the build grows with every workspace. There was a second weakness: a failed build also makes the supervisor exit with code 1. With a stand-in `pnpm` that always fails, the previous test still passed without ever reaching the busy port.
+
+### Repair (Director instruction: fix the test directly)
+
+`tests/foundation/processes.test.mjs` is the only source change; the supervisor itself is unchanged.
+
+- **Prove the path.** The test now reads the supervisor's output and requires the API's own `api foundation startup failed` message. Services start only after a successful build, so this proves the exit came from the busy port.
+- **Bound the cleanup.** From that message, the supervisor must close within 15 s. Its own limits are SIGTERM, 12 s of grace, then 1 s after SIGKILL (`scripts/process-groups.mjs`).
+- **Fit the build.** The overall limit is now 120 s, because that budget has to include the build.
+- **Wait for the streams.** The test waits for the child's streams to close, so a surviving descendant that still holds the output would also fail it.
+
+RUN026 shows the repaired test failing a broken build with "API did not report its busy port", and passing normally. The other foundation tests are unchanged.
+
+| Run | Category | Result |
+|---|---|---|
+|RUN-20261016-025|container|Failed as observed: public metadata for both attempts of hosted run 38946897424 (conclusion failure); the receipt also failed `clock_changed`.|
+|RUN-20261016-026|container|Repair check: build 20.9 s and cleanup 45 ms; with a failing build the previous test passes and the repaired test fails; the repaired test passes normally (child exit 0). Receipt failed `clock_changed`.|
+|RUN-20261016-027|container|`verify:foundation` stopped at the documentation check ("Stale source fingerprint") because the test edit preceded its change record. Ordering error, preserved; no tests ran.|
+|RUN-20261016-028|container|`verify:foundation` on the repaired source: child exit 0. 350 project checks (326 Node + 24 Python); upstream 406 passed, 1 skipped, 1,362 expectations; 2 injection tests. The supervisor test passed in 28.6 s under full-suite load, 1.4 s inside the old limit. Receipt failed `clock_changed`.|
+|RUN-20261016-029|static|`docs:check` over this record: child exit 0; receipt failed `clock_changed` (30 s run).|

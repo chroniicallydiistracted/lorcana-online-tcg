@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-16T18:21:54.057Z",
+  "observed_at": "2026-10-16T19:05:15.836Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2219,7 +2219,8 @@
     "CHG-20261016-001",
     "CHG-20261016-002",
     "CHG-20261016-003",
-    "CHG-20261016-004"
+    "CHG-20261016-004",
+    "CHG-20261016-005"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2274,9 +2275,10 @@
     "CHG-20261016-001": "finalized",
     "CHG-20261016-002": "finalized",
     "CHG-20261016-003": "finalized",
-    "CHG-20261016-004": "finalized"
+    "CHG-20261016-004": "finalized",
+    "CHG-20261016-005": "finalized"
   },
-  "source_fingerprint": "168d05d74f9bba68200c53bf1fa9391bdfb296184be22a511a59c9381bdf23ef",
+  "source_fingerprint": "40d006fa036a78f29d532d1038a815227ed952e7141c4ec1522aae89c9f64272",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2292,8 +2294,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "2135020c2c0773966db3811398286eb5dc5fd7d62b7c33b70730c23e8384aa80",
-    "README.md": "3f7018deb0895d96a6938613674862b697205f30fecb1bd5ebe50fbbe5d9ef1d",
+    "AGENTS.md": "9fd2ca97efba1e4d1c54c1f1200339a7eda99f04829947d582b0419d3ee91132",
+    "README.md": "1e97e7fd29e948cea64aa0a5b794c38d3f9a3faf376fd4d1cfdde1864cd7d8da",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2355,12 +2357,12 @@
     "docs/ARCHIVE_PROVENANCE.md": "e77e3909b03bae735287e3176fcab76c5418ee87cde40b972beb9631cb6bedda",
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
-    "docs/FEATURES.md": "0abd2b6ecabb58770dc562d0a08b657ffe969feb702f36197e36cf5a9dfd8d06",
-    "docs/HANDOFF.md": "6e373945d9d9715640d30407b29e8d61e5ef45cebdec88b7e45fb894eaa0cbf7",
-    "docs/README.md": "7042df405c42a12ad9a0f128fce5ad549aa0596297700f23f7b989f6d41aae30",
+    "docs/FEATURES.md": "c840a282ee6ac60b3399177420e24f3d203c8f8f6fc0898f0374d9b4fa4fc45a",
+    "docs/HANDOFF.md": "eae27d9de01e094da3fbffab21c8f7a53536dba46a0733dcbb3e8cda53b58b6d",
+    "docs/README.md": "62027118a8edf019688ca4e7df05e34b63b70af604172ce507acf7a65894c892",
     "docs/WORKSPACE_QUALIFICATION.md": "f2c15246c1d64e79cbfba63c3fa41d3758c34cbd026bb906e5f8e80bcbf83688",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
-    "docs/adr/0002-application-foundation.md": "b214b90422f991ed45fdb306cfb04601819ae796ed3f34a099ac8fdc77508862",
+    "docs/adr/0002-application-foundation.md": "8ad6a20e3390b0b3dfd57d607391a96bb7723900979850747fedf7624d4792d9",
     "docs/adr/0003-documentation-evidence.md": "71a56e217ba1fa49a3a9fd070996a65d9dd967f7ebc51ab4a7f25e73620c5385",
     "docs/adr/0004-restricted-local-database.md": "6eef66050e5e11c8b3c2dc77a35576be7d48110af7fe546f33fb7d69cc836a7d",
     "docs/adr/0005-ci-artifact-qualification.md": "4eceeb25bfc152a57d98d139b8ed9082f35364bdab21e6cd007c4c3a237e34d8",
@@ -2382,7 +2384,7 @@
     "docs/contracts/release.md": "f66f509834ee28b644db3c550fc2aa429eeb30e0c8ec39ad58dffc3755fe438f",
     "docs/contracts/viewer.md": "7e78caf0e01f3c3544341856d7d6d500c7f69aaf1a014a721cd19f79a2f91df5",
     "docs/documentation-map.json": "d06d0f55c7c6facea284ecdfcce76c15fc0fbb529fac902f52953b763590c9ad",
-    "docs/features.json": "0195d2452d4c0cd15f35929499a39ab1b46ffb85a4ed7007927acbfe429ae842",
+    "docs/features.json": "fb651449cdb534646c1d64ed9d0a13b06451d1faf4478b7ac544c07d851f04c4",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "7c2f9c48229b7127e379b323e166cc3bc5742145933b9b4fbdc6b64352de56c5",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2430,7 +2432,7 @@
     "docs/rules/README.md": "00ee9328b18484b3d1d30e31181920a5c0208a39cf10bd7d7d05360e367bb9d4",
     "docs/rules/source-specs-supplement.json": "0efe5f0d481ed436bfb196005dc3d7fad574b2f1040e7d4eaba95b9f39939e0a",
     "docs/rules/source-specs.json": "03207c3e5692ba63735df07e7cb2333ffa38b4146382fb987f2cc46c5b220a0e",
-    "docs/runbooks/ci.md": "546ae07bd8818a69fe361e6b9c26333a075baa4083a759a0b9e0b45d48582c22",
+    "docs/runbooks/ci.md": "ef33ca067034fda528f881fd2a87419bcbfcc9e7e31af76c8426d2883b93651c",
     "docs/runbooks/database.md": "f39ca6c106de40719fbf16061f53eb06b9a8b974911211b99001938f833f626b",
     "docs/runbooks/engine.md": "a7c8eb37cba28144c4ba4d56dc6c57c2f178343e6062f76ad1a0dba1515afe12",
     "docs/runbooks/game-clocks.md": "8d56024fa72516ca997fc033e5b986b48f89e7bc282a925bdaaa3a0cac697335",
@@ -2500,7 +2502,7 @@
     "docs/validation/archive/clock-20261014/windows.jsonl.b64.txt": "64d89abe4acdfc4f4a08730f0616ea3bbd0402eb6d850fa6812c7deeebf578d4",
     "docs/validation/archive/clock-20261014/wsl.jsonl": "dbd14dd7eab03b7b06a8f9ce19ecb762dae20b5e392c36f6c055108f0c417d11",
     "docs/validation/boot-01-source-manifest.json": "b9780fcd1618e54aebffda71b3afce2502575bb1fb6e0ae37ef2f16397cb8082",
-    "docs/validation/boot-01.md": "ff287807287ea73f4f3be9b07e03605f3674ca3a351e24ffed21d50116c6338a",
+    "docs/validation/boot-01.md": "d9a68d425159263301822e5fece13567ebd613f389a26ddb4c62ec236a5d0b76",
     "docs/validation/boot-02.md": "db2d201aec0c590217e9fe4cd9d79d1f82b2d76fa38264e135b64702e9c97be0",
     "docs/validation/boot-03.md": "5ad7745f35b3743d9ee47ac065cbc3071e45a242dabafc2f3139d3858f2e6355",
     "docs/validation/boot-04.md": "3b4b01e87581e52b50d20b02485082239b02535127c758de62f0cdd0eaa84b4f",
@@ -2516,7 +2518,7 @@
     "docs/validation/play-03-closure-check.mjs.txt": "7e6262ffb8316fa1b8a9dd4d851e838eb4a880e6ea4046718ab1923fce4a7273",
     "docs/validation/play-03-hosted-baseline.json": "002c0efda730d2c5c6e435653f636cdf6bbaa8d42a0a4ccba3cf664e001aed6c",
     "docs/validation/play-03.md": "7b5bc0c0d74335a00e45e742119f9c37303ea50fc6780749d55da70abf0c7de1",
-    "docs/validation/play-04.md": "82dc5d0edc6dbe189b294063c6d42a1a1812db3f23dbf03560cfb7070d3f1e0f",
+    "docs/validation/play-04.md": "b832a46da7983472b563ee8496f591a9fb09b68045a40be241011dfa1dd08082",
     "docs/validation/rule-01.md": "2179eed327700ea1feb4de0b5d22beaad569e64a7c2c92d5f97a0f503eaae8b5",
     "docs/validation/rule-02-canonical-check.mjs.txt": "801cff8cf4d82a478922ec6204024a3a321e804afd91eefeaad049cc26c33d68",
     "docs/validation/rule-02-host-closure.json": "82cb130e1aa7353efb6f1bba289cffb595f15653dabe42af797a3a6f8f3d6cda",
@@ -2709,7 +2711,7 @@
     "tests/foundation/bun-cache.test.mjs": "81b9485f1904aecdf55d58343a0ed80830b9c459da7d287522be2d05c406e18b",
     "tests/foundation/bun-cache.test.py": "1916c675e2b18ff231732aab04a0b0a4027719f6c3d5a3bf536edd082ff2dba4",
     "tests/foundation/process-groups.test.mjs": "2a8cd2b8f038d72474610a6b62b2507520fded1b7858f73837875885cd682262",
-    "tests/foundation/processes.test.mjs": "85705a954dd920ebf3f9eef924a250d9a2b5232937a56886195622742632bfd4",
+    "tests/foundation/processes.test.mjs": "e1f884979030bfbad4e6ef06f2bea1b654b98bfce64fecfb0aa4fa1bdb698ca4",
     "tests/play/move-policy.test.mjs": "7f8472f9f13fcaf0e47ce74d7fd205924d0a4ce5032ae8f9eb1993a0e0e05167",
     "tests/play/privacy-wire.test.mjs": "8a680a93307e2aec9769cc753336f8a6d45bbf6811081c3fc4ffe36de08b3317",
     "tests/play/storage-contract.test.mjs": "bab984f438395cdcd8930733992dd093c339fa024271328c069235c9f1635d60",
@@ -23518,16 +23520,16 @@
     {
       "file": "tests/foundation/processes.test.mjs",
       "name": "<callback>",
-      "line": 49,
-      "column": 120,
+      "line": 52,
+      "column": 121,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "e75a7f81d9ffa9267aad670adcf8ddfc393ef3628a6cf38ec8ab470890cff958"
+      "sha256": "59ca823a8b0738c761aedc9a2e3fc0dddf43ee11ab97c7b3a8eab375095d3abb"
     },
     {
       "file": "tests/foundation/processes.test.mjs",
       "name": "<callback>",
-      "line": 51,
+      "line": 54,
       "column": 31,
       "kind": "ArrowFunction",
       "signature": "_request, response",
@@ -23536,7 +23538,7 @@
     {
       "file": "tests/foundation/processes.test.mjs",
       "name": "<callback>",
-      "line": 52,
+      "line": 55,
       "column": 21,
       "kind": "ArrowFunction",
       "signature": "resolve",
@@ -23544,8 +23546,17 @@
     },
     {
       "file": "tests/foundation/processes.test.mjs",
+      "name": "collect",
+      "line": 58,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "chunk",
+      "sha256": "bea07e67c3916c7ec8027c10c7ec9fb99fbb39a9ccd710ee6e1110f4e5a4606b"
+    },
+    {
+      "file": "tests/foundation/processes.test.mjs",
       "name": "<callback>",
-      "line": 61,
+      "line": 75,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "resolve",

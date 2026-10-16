@@ -83,3 +83,7 @@ Prior foundation execution/Windows history remains source-specific. The refresh 
 ## PLAY-01 continuation — 2026-10-13 UTC
 
 PLAY-01 implements the internal two-player synthetic durable command service with participant-scoped idempotent receipts, row-fenced CAS, private deterministic recovery, atomic accepted journal and metadata-only outbox. Both server and Lab refuse every manual/debug move. Fastify remains diagnostics-only; authenticated transport, viewer/structured-log privacy (PLAY-02), publication (PLAY-03), game clocks (PLAY-04), X01 multiplayer and ordinary/official/private/reward/card admission remain gated. See [PLAY-01 operation](../runbooks/match-commands.md) and [validation](play-01.md); local core/full/browser/database/clean acceptance is verified; isolated CI timing remains pending after RUN113 clock rejection.
+
+## Busy-port regression repair — 2026-10-16 UTC
+
+The busy API port test above now requires the API's own startup-failure message, so a failed build cannot pass it. It bounds supervisor cleanup to 15 s and allows 120 s in total, because the supervisor runs a full build first (CHG-20261016-005, [PLAY-04 validation](play-04.md#hosted-run-and-supervisor-test-repair--2026-10-16-utc)). The executed BOOT-01 evidence above is unchanged.

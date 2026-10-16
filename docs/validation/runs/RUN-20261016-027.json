@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-027",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "5347cc0e4c0ff28775865bec99177e2bc8d7c325",
+  "source_fingerprint": "40d006fa036a78f29d532d1038a815227ed952e7141c4ec1522aae89c9f64272",
+  "started_at": "2026-10-16T18:49:53.571Z",
+  "finished_at": "2026-10-16T18:50:22.803Z",
+  "recorded_at": "2026-10-16T18:50:22.803Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 31955,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "Complete foundation verification with the repaired supervisor busy-port test on the PLAY-04 re-check branch",
+  "log_path": "docs/validation/logs/RUN-20261016-027.txt",
+  "log_sha256": "ccf8f1ac9a2a4a3481b1a427f9b45e5a4257506991e6d350052603f219aebf49",
+  "redactions": 0
+}

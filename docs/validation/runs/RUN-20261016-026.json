@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261016-026",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Supervisor busy-port test repair check (run inside the Dev Container from the repo root).\n// A: time scripts/dev.mjs with port 3001 occupied: build phase until the API reports its busy port, then cleanup until close.\n// B/C: with a stub `pnpm` that always exits 1 (a failed build), the previous test version passes and the repaired one fails.\n// D: the repaired test passes normally.\nimport { spawn, spawnSync, execFileSync } from 'node:child_process';\nimport { once } from 'node:events';\nimport { createServer } from 'node:http';\nimport { mkdtempSync, writeFileSync, chmodSync, rmSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { join } from 'node:path';\nconst out = {};\n{\n  const server = createServer((_q, r) => r.end('existing-listener')); await new Promise(r => server.listen(3001, '0.0.0.0', r));\n  const t0 = performance.now(); let marker;\n  const child = spawn(process.execPath, ['scripts/dev.mjs'], { env: { PATH: process.env.PATH, HOME: process.env.HOME, APP_ENV: 'local' }, stdio: ['ignore', 'pipe', 'pipe'] });\n  let text = ''; const collect = c => { text = (text + c).slice(-65536); if (marker === undefined && text.includes('api foundation startup failed')) marker = performance.now(); };\n  child.stdout.on('data', collect); child.stderr.on('data', collect);\n  const [code, signal] = await once(child, 'close'); const end = performance.now();\n  out.A_measured = { exit: [code, signal], buildAndStartMs: Math.round(marker - t0), cleanupAfterApiFailureMs: Math.round(end - marker), totalMs: Math.round(end - t0) };\n  await new Promise(r => server.close(r));\n}\nconst dir = mkdtempSync(join(tmpdir(), 'audit-stub-pnpm-')), old = join(dir, 'previous-processes.test.mjs');\ntry {\n  writeFileSync(join(dir, 'pnpm'), '#!/bin/sh\\necho \"stub build failure\" >&2\\nexit 1\\n'); chmodSync(join(dir, 'pnpm'), 0o755);\n  writeFileSync(old, execFileSync('git', ['show', '5347cc0:tests/foundation/processes.test.mjs']));\n  const run = (file, path) => { const r = spawnSync(process.execPath, ['--test', '--test-reporter=tap', '--test-name-pattern=development supervisor', file], { env: { ...process.env, PATH: path }, encoding: 'utf8' });\n    return { exit: r.status, pass: Number((r.stdout.match(/^# pass (\\d+)/m) || [])[1]), fail: Number((r.stdout.match(/^# fail (\\d+)/m) || [])[1]), message: (r.stdout.match(/API did not report its busy port/) || [null])[0] }; };\n  out.B_previousTestWithFailedBuild = run(old, dir + ':' + process.env.PATH);\n  out.C_repairedTestWithFailedBuild = run('tests/foundation/processes.test.mjs', dir + ':' + process.env.PATH);\n  out.D_repairedTestNormal = run('tests/foundation/processes.test.mjs', process.env.PATH);\n} finally { rmSync(dir, { recursive: true, force: true }); }\nconsole.log(JSON.stringify(out, null, 1));\nconst ok = out.A_measured.exit[0] === 1 && out.B_previousTestWithFailedBuild.exit === 0 && out.C_repairedTestWithFailedBuild.exit !== 0 && out.C_repairedTestWithFailedBuild.message && out.D_repairedTestNormal.exit === 0 && out.D_repairedTestNormal.pass === 1;\nif (!ok) process.exitCode = 1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "5347cc0e4c0ff28775865bec99177e2bc8d7c325",
+  "source_fingerprint": "40d006fa036a78f29d532d1038a815227ed952e7141c4ec1522aae89c9f64272",
+  "started_at": "2026-10-16T18:49:08.873Z",
+  "finished_at": "2026-10-16T18:49:46.917Z",
+  "recorded_at": "2026-10-16T18:49:46.917Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 43428,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "Supervisor busy-port test repair: dev.mjs build/cleanup timing, previous test passes on a failed build while the repaired test fails it, repaired test passes normally",
+  "log_path": "docs/validation/logs/RUN-20261016-026.txt",
+  "log_sha256": "e87ca924575fb60f7c5010168c7a32cbdc557104add6b2af83d148416bcc9275",
+  "redactions": 0
+}

@@ -1,0 +1,31 @@
+{
+ "A_measured": {
+  "exit": [
+   1,
+   null
+  ],
+  "buildAndStartMs": 20923,
+  "cleanupAfterApiFailureMs": 45,
+  "totalMs": 20968
+ },
+ "B_previousTestWithFailedBuild": {
+  "exit": 0,
+  "pass": 1,
+  "fail": 0,
+  "message": null
+ },
+ "C_repairedTestWithFailedBuild": {
+  "exit": 1,
+  "pass": 0,
+  "fail": 1,
+  "message": "API did not report its busy port"
+ },
+ "D_repairedTestNormal": {
+  "exit": 0,
+  "pass": 1,
+  "fail": 0,
+  "message": null
+ }
+}
+
+[Recorder failure: clock_changed]

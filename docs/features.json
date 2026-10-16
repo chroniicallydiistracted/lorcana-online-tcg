@@ -554,7 +554,7 @@
       "name": "Local development supervision",
       "implementation": "implemented",
       "verification": "pending",
-      "description": "Retained group ownership, idempotent cleanup, live descendant verification, sanitized source processes and fail-fast stack.",
+      "description": "Retained group ownership, idempotent cleanup, live descendant verification, sanitized source processes and fail-fast stack. The occupied-port regression requires the API's own busy-port failure (not a failed build), bounds cleanup to 15 s and budgets 120 s including the supervisor's build (CHG-20261016-005).",
       "sources": [
         "scripts/dev.mjs",
         "tests/foundation/processes.test.mjs",

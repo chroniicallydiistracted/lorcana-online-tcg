@@ -2,6 +2,77 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261016-005 — Repair the development-supervisor busy-port test after hosted PLAY-04 re-check run failures
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-16T18:51:09.439Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 5347cc0e4c0ff28775865bec99177e2bc8d7c325
+- Tasks: BOOT-01, PLAY-04, DOC-01, DOC-02
+- Features: F-SUPERVISOR, F-DOCS
+- Requirements: none
+
+### Changes
+
+- **test:** RUN-20261016-025 observes public GitHub metadata for hosted Foundation run 38946897424 on claude/play-04-opening-fix-audit at 5347cc0: attempt 1 (18:23:01-18:31:17Z) and attempt 2 (18:32:08-18:40:21Z) both failure in 'Run the same isolated local pipeline'. The failed-step output, viewed with gh for diagnosis only (not saved), shows the single failing test tests/foundation/processes.test.mjs 'development supervisor rejects a busy service port and leaves the existing listener intact' timing out at 30,000 ms in both attempts.
+- **review:** Analysis per the Director's instruction. scripts/dev.mjs (pnpm dev) runs the full workspace pnpm build, then starts API/match/worker/web and stops all owned process groups if any child exits unexpectedly. The test occupies API port 3001 and expects exit 1, an intact foreign listener and nothing on 3002/5173 (ADR0002's occupied-port regression). Its 30 s limit was dominated by the supervisor's own rebuild (pnpm test has just built everything): locally build-and-start 20.9 s vs cleanup 45 ms; hosted 21.1/28.0/29.5 s passes, then timeouts. A failed build also exits 1, so the previous test passed without reaching the busy port (shown with a stub pnpm).
+- **implementation:** tests/foundation/processes.test.mjs only: pipe the supervisor's stdout/stderr and require the API's own 'api foundation startup failed' message; await 'close' (streams closed) and expect [1, null]; require close within 15 s of that message (supervisor limits: SIGTERM, 12 s grace, 1 s after SIGKILL); overall timeout 120 s with a comment explaining that it includes the full build. scripts/dev.mjs and all product code unchanged.
+- **test:** RUN-20261016-026: build-and-start 20.9 s, cleanup 45 ms; with a failing stub pnpm the previous test version passes and the repaired one fails with 'API did not report its busy port'; the repaired test passes normally (child exit 0; receipt clock_changed). RUN027: verify:foundation stopped at 'Stale source fingerprint' because the edit preceded this record (ordering error, preserved). RUN028 runs verify:foundation on the repaired source.
+- **documentation:** PLAY-04 validation section for the hosted run and repair; dated notes in docs/runbooks/ci.md, ADR0002 and BOOT-01 validation; F-SUPERVISOR description and FEATURES.md row; re-check lines in AGENTS.md/README.md/docs/README.md; handoff.
+
+### Verification
+
+- **failed:** Public GitHub job/step metadata for both attempts of hosted run 38946897424 at 5347cc0: conclusion failure. No saved logs or downloaded artifacts. ([evidence](docs/validation/runs/RUN-20261016-025.json))
+- **failed:** Supervisor test repair check: dev.mjs build-and-start 20.9 s, cleanup 45 ms; previous test passes and repaired test fails on a failing build; repaired test passes normally. Child exit 0; receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261016-026.json))
+- **failed:** verify:foundation stopped at the documentation check (stale source fingerprint) because the test edit preceded this record; no tests ran. ([evidence](docs/validation/runs/RUN-20261016-027.json))
+- **failed:** verify:foundation on the repaired source: child exit 0, 350 project checks (326 Node + 24 Python), 406 upstream/1 skip/1,362 expectations, 2 injection; supervisor test passed in 28.6 s. Receipt failed clock_changed (host calendar step). ([evidence](docs/validation/runs/RUN-20261016-028.json))
+- **failed:** docs:check over this record (static): child exit 0; receipt failed clock_changed (30 s run straddled a host calendar step). ([evidence](docs/validation/runs/RUN-20261016-029.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-04.md](docs/validation/play-04.md) — Dated section: hosted failures, what the test checks, cause, repair and runs.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Dated note on the busy-port test budget and what to check if it fails again.
+- **updated:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Dated note: the occupied-port regression now proves the busy-port path and bounds cleanup; decision unchanged.
+- **updated:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated note on the strengthened busy-port regression; executed BOOT-01 evidence unchanged.
+- **updated:** [docs/features.json](docs/features.json) — F-SUPERVISOR description records the strengthened regression.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-SUPERVISOR row records the strengthened regression.
+- **updated:** [AGENTS.md](AGENTS.md) — Re-check line records the hosted failure and the Director-instructed test repair.
+- **updated:** [README.md](README.md) — Same update as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same update as AGENTS.md.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the repair state and next actions.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs sync.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs sync.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — pnpm dev behaviour is unchanged.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Historical supervisor qualification evidence is unchanged; no toolchain change.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-04 status (hosted CI then merge) remains accurate; BOOT-01 status unchanged.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Dev Container and toolchain decision unaffected by a test budget/assertion change.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Dated audit; no statement about the supervisor test's budget.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — Source-impact edges already cover tests/**; no new document or edge needed.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Governance plan unaffected.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Change template unaffected.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — Vision index unaffected.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — Scope items unaffected.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — No Director decision recorded here; the instruction is recorded in this change and validation.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Requirement text unaffected.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-05-contracts.md](docs/plans/2026-10-07-boot-05-contracts.md) — Contract plan unaffected.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — No protocol change.
+- **reviewed_unchanged:** [docs/contracts/release.md](docs/contracts/release.md) — No release-identity change.
+- **reviewed_unchanged:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — BOOT-05 evidence unaffected.
+- **reviewed_unchanged:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — Contract decision unaffected.
+- **reviewed_unchanged:** [docs/contracts/viewer.md](docs/contracts/viewer.md) — No viewer contract change.
+- **reviewed_unchanged:** [docs/runbooks/viewer-privacy.md](docs/runbooks/viewer-privacy.md) — Viewer privacy operation unaffected.
+- **reviewed_unchanged:** [docs/validation/play-02.md](docs/validation/play-02.md) — PLAY-02 evidence unaffected.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261016-005.json).
+
+### Limits and next actions
+
+- The 120 s budget accommodates build growth; it does not remove the redundant rebuild inside the test, which would need a supervisor change.
+- Local receipts longer than about 20 s fail the unchanged clock guard on this machine; hosted CI is the qualifying run.
+- Run hosted Foundation on claude/play-04-opening-fix-audit; if it passes, fast-forward main and push, then observe the main run; if it fails, preserve and report.
+- Next intake records the hosted run metadata.
+
 ## CHG-20261016-004 — Independent re-check of the PLAY-04 opening fixes (R1/R2 repaired; local clock steps)
 
 - Status: finalized
