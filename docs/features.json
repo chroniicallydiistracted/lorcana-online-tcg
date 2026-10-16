@@ -1442,7 +1442,7 @@
       "name": "Durable authoritative game clocks",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "Native replenishing timer, fenced durable clocks, audited recovery, live3 and monotonic estimates. Audit findings 1/2 are repaired and independently re-audited (CHG-20261015-008): waiting invalid moves do not reserve, a waiting concession survives the other player's deadline and brief contention retries without disconnect. Open residual R1: an opening-phase waiting concession, always refused by the engine, still takes the timed reservation and can exhaust the active client's 8 retries. Real-card chooser and policy gates remain separate.",
+      "description": "Native replenishing timer, fenced durable clocks, audited recovery, live3 and monotonic estimates. Audit findings 1/2 are repaired and independently re-audited (CHG-20261015-008): waiting invalid moves do not reserve, a waiting concession survives the other player's deadline and brief contention retries without disconnect. Open residual R1: an opening-phase waiting concession, always refused by the engine, still takes the timed reservation and can exhaust the active client's 8 retries. Hosted CI on the fix source failed at the web type check because a new test imports unbuilt app output (R2); the Director assigned one fix round for R1 and R2. Real-card chooser and policy gates remain separate.",
       "sources": [
         "packages/contracts/src/clocks.ts",
         "packages/engine-adapter/src/clocks.ts",

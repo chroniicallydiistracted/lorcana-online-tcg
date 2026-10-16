@@ -238,3 +238,31 @@ Both audit findings are repaired as described. A narrower form of finding 1 rema
 |RUN-20261015-121|container|Role health on both targets, `db:test`, storage and match integration (74 checks), `db:check`.|
 |RUN-20261015-122|headless_browser|11 Linux Chromium checks and 2 Lab workers.|
 |RUN-20261015-123|static|`docs:check` over this re-audit.|
+
+## Hosted fix-source run and Director decision — 2026-10-16 UTC
+
+Recorded 2026-10-16T01:30:42.756Z (CHG-20261016-001).
+
+### Hosted run
+
+Foundation run 38820071834 on `claude/play-04-fix-audit` at 6062820 (attempt 1, workflow_dispatch) **failed**. Its job ran from 2026-10-15T22:53:04Z to 22:59:12Z. The step "Run the same isolated local pipeline" failed and the later evidence step was skipped (RUN125, public metadata). To diagnose it, the failed step's output was viewed with `gh run view --log-failed`. That output was not saved to the repository, and no artifacts were downloaded. The web type check reported `tests/clock-client.spec.ts(9,34): error TS2307: Cannot find module '../../match-service/dist/validation.js'`.
+
+### Finding R2 — Important (blocks merge)
+
+**Cause.** Codex's new Chromium regression imports app build output: `apps/web/tests/clock-client.spec.ts:9` imports `../../match-service/dist/validation.js`. The root `typecheck` script builds only `packages/**` and the engine before type-checking every workspace (`package.json:20`). So on a fresh checkout, `apps/match-service/dist` does not exist yet and the web type check fails. The `packages/db/dist` import on line 10 resolves, because packages are built first.
+
+**Why local runs passed.** Local suites, including Codex's RUN112 and this re-audit's RUN116, passed because earlier builds had left `apps/match-service/dist` in place. Codex's record states that no fresh source-only checkout was run.
+
+**Reproduction.** RUN124 sets that folder aside, runs `pnpm typecheck` and gets the same error (exit 2), then restores the folder. It is an expected failure, preserved as recorded.
+
+**Suggested fix.** Remove the web test's dependency on app build output, for example by following the file's existing test-fixture import pattern. Then confirm with a fresh-checkout type check or hosted CI before handing over.
+
+### Director decision
+
+The Director chose to fix both problems in one small Codex round: R2 (the CI import) and R1 (a waiting player's opening concession takes the timed reservation), with an opening-phase regression test. After that, this reviewer re-checks the fix, runs hosted CI, then publishes and fast-forwards main. Main stays at 775994a until then.
+
+| Run | Category | Result |
+|---|---|---|
+|RUN-20261015-124|container|Expected failure: local reproduction of the hosted web type-check error (exit 2); the build folder was restored.|
+|RUN-20261015-125|container|Failed as observed: public metadata for hosted run 38820071834 (conclusion failure).|
+|RUN-20261016-001|static|`docs:check` over this record.|
