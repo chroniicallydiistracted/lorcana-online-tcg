@@ -2,6 +2,100 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261018-001 — Deduplicate the CI history secret scan after hosted PLAY-04 re-check run overran its time limit
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-18T07:26:36.652Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: e2fe87de430833dea00135d0ae48ef235c86b6fd
+- Tasks: BOOT-03, PLAY-04, DOC-01, DOC-02
+- Features: F-CI, F-DOCS
+- Requirements: none
+
+### Changes
+
+- **test:** RUN-20261018-003 observes public GitHub metadata for hosted Foundation run 38952419789 on claude/play-04-opening-fix-audit at e2fe87d: failure, 2026-10-16 19:06:24-19:22:25Z. The failed-step output, viewed with gh for diagnosis only (not saved), shows all 14 stages passing (including the repaired supervisor test at 19.9 s, all database/live-match stages, 11 Chromium checks and engine-browser) and then the docker compose run of pnpm ci:verify timing out at 900 s with no further output.
+- **review:** Cause: sourceSecretScan runs before and after the stages; its history pass listed every commit's tree and spawned git cat-file for every blob, rescanning unchanged blobs per commit. First scan 4 min 25 s (19:07:18-19:11:43Z) versus 1 min 52 s on run 38681078184 (2026-10-15); stages 6.8 min; the second scan exceeded the 900 s limit. Locally 44 commits mean 60,974 reads per pass for 3,591 distinct path/version pairs.
+- **implementation:** scripts/ci/security.mjs: the history pass keeps a set of hash+path keys and reads each distinct path/version once; every entry of every revision is still type-checked (symlink/non-blob refused). scanSecrets, patterns, known values, exceptions, shallow refusal and errors unchanged. tests/ci/gates.test.mjs adds a regression: a credential present only in an older revision, beside a file unchanged across revisions, is still reported for that path without its value.
+- **test:** RUN-20261018-001 test:ci: 14 Node + 10 Python tests pass. RUN002 previous (e2fe87d) versus repaired scan on the full local history: 60,974 vs 3,591 reads; clean scans both pass (179.3 s vs 11.8 s); a known value present only in an older AGENTS.md is rejected by both with the identical finding. Child exit 0; receipt clock_changed.
+- **documentation:** PLAY-04 validation section; dated notes in docs/runbooks/ci.md, BOOT-03 validation and ADR0005; F-CI description/evidence and FEATURES.md row; re-check lines in AGENTS.md/README.md/docs/README.md; handoff.
+
+### Verification
+
+- **passed:** test:ci: 14 Node CI tests (including the older-revision history regression) and 10 Python launcher tests. ([evidence](docs/validation/runs/RUN-20261018-001.json))
+- **failed:** Previous versus repaired history secret scan on the full local history: same work set (60,974 vs 3,591 reads), same clean verdict, identical finding for a history-only known value. Child exit 0; receipt failed clock_changed. ([evidence](docs/validation/runs/RUN-20261018-002.json))
+- **failed:** Public GitHub job/step metadata for hosted run 38952419789 at e2fe87d: conclusion failure. No saved logs or downloaded artifacts. ([evidence](docs/validation/runs/RUN-20261018-003.json))
+- **failed:** verify:foundation on the repaired source: child exit 0, 351 project checks (327 Node + 24 Python), 406 upstream/1 skip/1,362 expectations, 2 injection. Receipt failed clock_changed (host calendar step). ([evidence](docs/validation/runs/RUN-20261018-004.json))
+- **passed:** docs:check over the scan repair record and updated documents (static). ([evidence](docs/validation/runs/RUN-20261018-005.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-04.md](docs/validation/play-04.md) — Dated section: hosted run 38952419789, cause, scan repair and equivalence evidence.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — Dated note on history secret-scan scaling and how to diagnose a silent overrun.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Dated note on the scan repair; executed BOOT-03 evidence unchanged.
+- **updated:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — Dated note: same full-history coverage, deduplicated reads; decision unchanged.
+- **updated:** [docs/features.json](docs/features.json) — F-CI description and evidence record the deduplicated history scan.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-CI row records the deduplicated history scan.
+- **updated:** [AGENTS.md](AGENTS.md) — Re-check line records hosted run 38952419789 and the Director-chosen scan repair.
+- **updated:** [README.md](README.md) — Same update as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same update as AGENTS.md.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the scan repair state and next actions.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs sync.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs sync.
+- **reviewed_unchanged:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/adr/0003-documentation-evidence.md](docs/adr/0003-documentation-evidence.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/contracts/release.md](docs/contracts/release.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-05-contracts.md](docs/plans/2026-10-07-boot-05-contracts.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/templates/handoff.md](docs/templates/handoff.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/validation/clock-investigation.md](docs/validation/clock-investigation.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/validation/play-03.md](docs/validation/play-03.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [infra/README.md](infra/README.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once.
+- **reviewed_unchanged:** [docs/schemas/card-certification.schema.json](docs/schemas/card-certification.schema.json) — Schema unaffected; the scan change alters no record, artifact or evidence format.
+- **reviewed_unchanged:** [docs/schemas/change.schema.json](docs/schemas/change.schema.json) — Schema unaffected; the scan change alters no record, artifact or evidence format.
+- **reviewed_unchanged:** [docs/schemas/documentation-map.schema.json](docs/schemas/documentation-map.schema.json) — Schema unaffected; the scan change alters no record, artifact or evidence format.
+- **reviewed_unchanged:** [docs/schemas/features.schema.json](docs/schemas/features.schema.json) — Schema unaffected; the scan change alters no record, artifact or evidence format.
+- **reviewed_unchanged:** [docs/schemas/run.schema.json](docs/schemas/run.schema.json) — Schema unaffected; the scan change alters no record, artifact or evidence format.
+- **reviewed_unchanged:** [docs/schemas/state.schema.json](docs/schemas/state.schema.json) — Schema unaffected; the scan change alters no record, artifact or evidence format.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261018-001.json).
+
+### Limits and next actions
+
+- The second scan still repeats the full-history pass; deduplication removes the per-commit repetition but not the second pass.
+- Local receipts longer than about 20 s fail the unchanged clock guard on this machine; hosted CI is the qualifying run.
+- Run hosted Foundation on claude/play-04-opening-fix-audit; if it passes, fast-forward main and push, then observe the main run; if it fails, preserve and report.
+- Next intake records the hosted run metadata.
+
 ## CHG-20261016-005 — Repair the development-supervisor busy-port test after hosted PLAY-04 re-check run failures
 
 - Status: finalized

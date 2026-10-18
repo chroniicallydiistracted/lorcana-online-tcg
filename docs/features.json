@@ -838,7 +838,7 @@
       "name": "Reproducible CI and qualified build artifacts",
       "implementation": "implemented",
       "verification": "historical_verified",
-      "description": "Guarded14-stage pipeline: local113 completed child stages/artifact validation but failed clock_changed, preserved unchanged. RUN-20261014-002 freshly observes successful hosted audit38482253396/main38483130685 at merged6e9acf1; metadata only, hosted artifacts/logs not downloaded/reverified. Prior full artifact qualification remains historical; local timing repair unqualified. See the dated clock investigation. CHG-20261014-003 identifies the root chronyd/configuration and proves inherited rate causality in an approved temporary trial; original services restored. Permanent clock repair and absolute UTC certification remain unqualified; guard and application bytes unchanged. PLAY-02 audit/main hosted workflow/job success at6f2659e is observed in RUN-20261014-072; metadata observation does not verify downloaded artifact contents or local clock repair. RUN-20261015-020 freshly observes merged PLAY-03 audit38681078184 attempt1 success and main38682066872 attempt1 failure/attempt2 success, all775994a. Public job/step metadata only, no downloaded logs/artifacts or new local isolated/PLAY-04 qualification. Startup-test flake cause is Director-reported and separately assigned.",
+      "description": "Guarded14-stage pipeline: local113 completed child stages/artifact validation but failed clock_changed, preserved unchanged. RUN-20261014-002 freshly observes successful hosted audit38482253396/main38483130685 at merged6e9acf1; metadata only, hosted artifacts/logs not downloaded/reverified. Prior full artifact qualification remains historical; local timing repair unqualified. See the dated clock investigation. CHG-20261014-003 identifies the root chronyd/configuration and proves inherited rate causality in an approved temporary trial; original services restored. Permanent clock repair and absolute UTC certification remain unqualified; guard and application bytes unchanged. PLAY-02 audit/main hosted workflow/job success at6f2659e is observed in RUN-20261014-072; metadata observation does not verify downloaded artifact contents or local clock repair. RUN-20261015-020 freshly observes merged PLAY-03 audit38681078184 attempt1 success and main38682066872 attempt1 failure/attempt2 success, all775994a. Public job/step metadata only, no downloaded logs/artifacts or new local isolated/PLAY-04 qualification. Startup-test flake cause is Director-reported and separately assigned. The history secret scan reads each distinct path/version once (identical findings; locally 60,974 reads became 3,591, CHG-20261018-001).",
       "sources": [
         "scripts/ci/**",
         "scripts/ci-local.py",
@@ -893,7 +893,8 @@
         "docs/validation/runs/RUN-20261014-002.json",
         "docs/validation/runs/RUN-20261014-072.json",
         "docs/validation/runs/RUN-20261015-002.json",
-        "docs/validation/runs/RUN-20261015-020.json"
+        "docs/validation/runs/RUN-20261015-020.json",
+        "docs/validation/runs/RUN-20261018-001.json"
       ]
     },
     {

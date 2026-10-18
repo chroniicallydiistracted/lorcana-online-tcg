@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261018-004",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e2fe87de430833dea00135d0ae48ef235c86b6fd",
+  "source_fingerprint": "9f2f2249c0a59d9492f990a17b750a3c3b728687318c63985cc3b5bdfb274f20",
+  "started_at": "2026-10-18T07:34:47.463Z",
+  "finished_at": "2026-10-18T07:37:05.744Z",
+  "recorded_at": "2026-10-18T07:37:05.744Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 134696,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "Complete foundation verification with the deduplicated history secret scan on the PLAY-04 re-check branch (CHG-20261018-001 draft)",
+  "log_path": "docs/validation/logs/RUN-20261018-004.txt",
+  "log_sha256": "85f2ddf90344ff4335c7b34c621e7f69ce8c08434eb5d66669d04ed8baea87f0",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261018-003",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Read-only public GitHub metadata for hosted Foundation run 38952419789 on the PLAY-04 opening re-check branch after the supervisor test repair.\n// Metadata only; no logs or artifacts downloaded by this command.\nconst root = 'https://api.github.com/repos/chroniicallydiistracted/lorcana-online-tcg/actions/runs/';\nconst get = async path => { const r = await fetch(root + path, { headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }, signal: AbortSignal.timeout(15000) }); if (!r.ok) throw new Error('metadata unavailable ' + r.status); return r.json(); };\nconst id = '38952419789', out = [];\nfor (const n of [1]) {\n  const run = await get(id + '/attempts/' + n), jobs = await get(id + '/attempts/' + n + '/jobs?per_page=100');\n  if (run.id !== Number(id) || run.head_sha !== 'e2fe87de430833dea00135d0ae48ef235c86b6fd' || run.head_branch !== 'claude/play-04-opening-fix-audit' || run.status !== 'completed') throw new Error('Unexpected hosted run identity');\n  out.push({ attempt: run.run_attempt, event: run.event, conclusion: run.conclusion, run_started_at: run.run_started_at, jobs: jobs.jobs.map(j => ({ name: j.name, conclusion: j.conclusion, started_at: j.started_at, completed_at: j.completed_at, steps: j.steps.map(s => s.name + ':' + s.conclusion) })) });\n}\nconsole.log(JSON.stringify({ id, head_branch: 'claude/play-04-opening-fix-audit', head_sha: 'e2fe87de430833dea00135d0ae48ef235c86b6fd', attempts: out }));\nif (out.some(a => a.conclusion !== 'success')) process.exitCode = 1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e2fe87de430833dea00135d0ae48ef235c86b6fd",
+  "source_fingerprint": "9f2f2249c0a59d9492f990a17b750a3c3b728687318c63985cc3b5bdfb274f20",
+  "started_at": "2026-10-18T07:26:19.549Z",
+  "finished_at": "2026-10-18T07:26:20.510Z",
+  "recorded_at": "2026-10-18T07:26:20.510Z",
+  "time_precision": "exact",
+  "elapsed_ms": 961,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Public GitHub metadata for hosted Foundation run 38952419789 at e2fe87d (failure: pipeline time limit after all 14 stages; no logs/artifacts downloaded)",
+  "log_path": "docs/validation/logs/RUN-20261018-003.txt",
+  "log_sha256": "f343dce0aa51da46b255d1f1327209024e14bcbf0f05454961613c1546ee0dae",
+  "redactions": 0
+}

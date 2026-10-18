@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261018-001",
+  "title": "Deduplicate the CI history secret scan after hosted PLAY-04 re-check run overran its time limit",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-18T07:26:36.652Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "e2fe87de430833dea00135d0ae48ef235c86b6fd",
+  "task_ids": [
+    "BOOT-03",
+    "PLAY-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-CI",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "test",
+      "description": "RUN-20261018-003 observes public GitHub metadata for hosted Foundation run 38952419789 on claude/play-04-opening-fix-audit at e2fe87d: failure, 2026-10-16 19:06:24-19:22:25Z. The failed-step output, viewed with gh for diagnosis only (not saved), shows all 14 stages passing (including the repaired supervisor test at 19.9 s, all database/live-match stages, 11 Chromium checks and engine-browser) and then the docker compose run of pnpm ci:verify timing out at 900 s with no further output."
+    },
+    {
+      "kind": "review",
+      "description": "Cause: sourceSecretScan runs before and after the stages; its history pass listed every commit's tree and spawned git cat-file for every blob, rescanning unchanged blobs per commit. First scan 4 min 25 s (19:07:18-19:11:43Z) versus 1 min 52 s on run 38681078184 (2026-10-15); stages 6.8 min; the second scan exceeded the 900 s limit. Locally 44 commits mean 60,974 reads per pass for 3,591 distinct path/version pairs."
+    },
+    {
+      "kind": "implementation",
+      "description": "scripts/ci/security.mjs: the history pass keeps a set of hash+path keys and reads each distinct path/version once; every entry of every revision is still type-checked (symlink/non-blob refused). scanSecrets, patterns, known values, exceptions, shallow refusal and errors unchanged. tests/ci/gates.test.mjs adds a regression: a credential present only in an older revision, beside a file unchanged across revisions, is still reported for that path without its value."
+    },
+    {
+      "kind": "test",
+      "description": "RUN-20261018-001 test:ci: 14 Node + 10 Python tests pass. RUN002 previous (e2fe87d) versus repaired scan on the full local history: 60,974 vs 3,591 reads; clean scans both pass (179.3 s vs 11.8 s); a known value present only in an older AGENTS.md is rejected by both with the identical finding. Child exit 0; receipt clock_changed."
+    },
+    {
+      "kind": "documentation",
+      "description": "PLAY-04 validation section; dated notes in docs/runbooks/ci.md, BOOT-03 validation and ADR0005; F-CI description/evidence and FEATURES.md row; re-check lines in AGENTS.md/README.md/docs/README.md; handoff."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/adr/0005-ci-artifact-qualification.md",
+    "docs/changes/CHG-20261018-001.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/ci.md",
+    "docs/validation/boot-03.md",
+    "docs/validation/logs/RUN-20261018-001.txt",
+    "docs/validation/logs/RUN-20261018-002.txt",
+    "docs/validation/logs/RUN-20261018-003.txt",
+    "docs/validation/logs/RUN-20261018-004.txt",
+    "docs/validation/logs/RUN-20261018-005.txt",
+    "docs/validation/play-04.md",
+    "docs/validation/runs/RUN-20261018-001.json",
+    "docs/validation/runs/RUN-20261018-002.json",
+    "docs/validation/runs/RUN-20261018-003.json",
+    "docs/validation/runs/RUN-20261018-004.json",
+    "docs/validation/runs/RUN-20261018-005.json",
+    "scripts/ci/security.mjs",
+    "tests/ci/gates.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/validation/play-04.md",
+      "disposition": "updated",
+      "reason": "Dated section: hosted run 38952419789, cause, scan repair and equivalence evidence."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Dated note on history secret-scan scaling and how to diagnose a silent overrun."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "updated",
+      "reason": "Dated note on the scan repair; executed BOOT-03 evidence unchanged."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "updated",
+      "reason": "Dated note: same full-history coverage, deduplicated reads; decision unchanged."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-CI description and evidence record the deduplicated history scan."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "F-CI row records the deduplicated history scan."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Re-check line records hosted run 38952419789 and the Director-chosen scan repair."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Same update as AGENTS.md."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Same update as AGENTS.md."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Rewritten for the scan repair state and next actions."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Regenerated by docs sync."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Regenerated by docs sync."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/validation/clock-investigation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/validation/play-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about the history secret scan's traversal or timing; unaffected by reading each path/version once."
+    },
+    {
+      "path": "docs/schemas/card-certification.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema unaffected; the scan change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema unaffected; the scan change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema unaffected; the scan change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema unaffected; the scan change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema unaffected; the scan change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema unaffected; the scan change alters no record, artifact or evidence format."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261018-001.json",
+      "outcome": "passed",
+      "scope": "test:ci: 14 Node CI tests (including the older-revision history regression) and 10 Python launcher tests."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261018-002.json",
+      "outcome": "failed",
+      "scope": "Previous versus repaired history secret scan on the full local history: same work set (60,974 vs 3,591 reads), same clean verdict, identical finding for a history-only known value. Child exit 0; receipt failed clock_changed."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261018-003.json",
+      "outcome": "failed",
+      "scope": "Public GitHub job/step metadata for hosted run 38952419789 at e2fe87d: conclusion failure. No saved logs or downloaded artifacts."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261018-004.json",
+      "outcome": "failed",
+      "scope": "verify:foundation on the repaired source: child exit 0, 351 project checks (327 Node + 24 Python), 406 upstream/1 skip/1,362 expectations, 2 injection. Receipt failed clock_changed (host calendar step)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261018-005.json",
+      "outcome": "passed",
+      "scope": "docs:check over the scan repair record and updated documents (static)."
+    }
+  ],
+  "limitations": [
+    "The second scan still repeats the full-history pass; deduplication removes the per-commit repetition but not the second pass.",
+    "Local receipts longer than about 20 s fail the unchanged clock guard on this machine; hosted CI is the qualifying run."
+  ],
+  "next_actions": [
+    "Run hosted Foundation on claude/play-04-opening-fix-audit; if it passes, fast-forward main and push, then observe the main run; if it fails, preserve and report.",
+    "Next intake records the hosted run metadata."
+  ]
+}

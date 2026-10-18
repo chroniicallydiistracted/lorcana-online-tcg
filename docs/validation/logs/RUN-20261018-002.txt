@@ -1,0 +1,31 @@
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+PASS current public source and complete Git history secret patterns; findings never contain credential values
+{
+ "workSet": {
+  "revisions": 44,
+  "previousBlobReads": 60974,
+  "repairedBlobReads": 3591
+ },
+ "cleanPrevious": {
+  "result": "passed",
+  "ms": 179268
+ },
+ "cleanRepaired": {
+  "result": "passed",
+  "ms": 11814
+ },
+ "historyOnlyValueFound": true,
+ "knownHistoricalPrevious": {
+  "result": "rejected",
+  "ms": 190983,
+  "findings": "[{\"path\":\"AGENTS.md\",\"rule\":\"known_credential\"}]"
+ },
+ "knownHistoricalRepaired": {
+  "result": "rejected",
+  "ms": 11747,
+  "findings": "[{\"path\":\"AGENTS.md\",\"rule\":\"known_credential\"}]"
+ },
+ "sameFindings": true
+}
+
+[Recorder failure: clock_changed]

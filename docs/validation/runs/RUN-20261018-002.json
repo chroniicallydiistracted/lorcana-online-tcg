@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261018-002",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// CI history secret-scan repair check (inside the Dev Container, repo root, full local history).\n// 1) Same work set: the (path, blob) pairs the repaired scan reads equal the distinct pairs the previous scan read.\n// 2) Same verdict and timing: previous (e2fe87d) and repaired sourceSecretScan on the real repository, both\n//    with no known secrets and with a known value that occurs only in history (must be rejected by both, same findings).\nimport { execFileSync, spawnSync } from 'node:child_process';\nimport { mkdtempSync, writeFileSync, rmSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { join, resolve } from 'node:path';\nconst root = process.cwd(), dir = mkdtempSync(join(tmpdir(), 'audit-scan-'));\nconst out = {};\ntry {\n  const previous = execFileSync('git', ['show', 'e2fe87d:scripts/ci/security.mjs'], { encoding: 'utf8' })\n    .replace(\"'../documentation-lib.mjs'\", JSON.stringify(resolve(root, 'scripts/documentation-lib.mjs')))\n    .replace(\"'../engine/vendor.mjs'\", JSON.stringify(resolve(root, 'scripts/engine/vendor.mjs')))\n    .replace(\"new URL('./policy.json',import.meta.url)\", JSON.stringify(resolve(root, 'scripts/ci/policy.json')));\n  writeFileSync(join(dir, 'previous.mjs'), previous);\n  const prev = await import(join(dir, 'previous.mjs')), next = await import(resolve(root, 'scripts/ci/security.mjs'));\n  // 1) work set\n  const revs = execFileSync('git', ['rev-list', '--all'], { encoding: 'utf8' }).trim().split('\\n');\n  let reads = 0; const pairs = new Set();\n  for (const r of revs) for (const e of execFileSync('git', ['ls-tree', '-r', '-z', r], { encoding: 'utf8', maxBuffer: 5e6 }).split('\\0').filter(Boolean)) { const [m, p] = e.split('\\t'); reads++; pairs.add(m.split(' ')[2] + '\\0' + p); }\n  out.workSet = { revisions: revs.length, previousBlobReads: reads, repairedBlobReads: pairs.size };\n  // a value present only in history: a line from an older AGENTS.md/README.md that no file at HEAD contains\n  let historical;\n  for (const r of revs.slice(Math.floor(revs.length / 2)).reverse()) {\n    for (const file of ['AGENTS.md', 'README.md', 'docs/README.md']) {\n      let text; try { text = execFileSync('git', ['show', r + ':' + file], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }); } catch { continue; }\n      for (const line of text.split('\\n').map(l => l.trim()).filter(l => l.length >= 24 && l.length <= 200 && !l.includes('\"'))) {\n        if (spawnSync('git', ['grep', '-qF', line, 'HEAD']).status === 1) { historical = line; break; }\n      }\n      if (historical) break;\n    }\n    if (historical) break;\n  }\n  const runScan = (mod, known) => { const t0 = performance.now(); try { mod.sourceSecretScan(root, known); return { result: 'passed', ms: Math.round(performance.now() - t0) }; } catch (e) { return { result: 'rejected', ms: Math.round(performance.now() - t0), findings: e.message.replace(/^Secret scan rejected safe findings: /, '') }; } };\n  out.cleanPrevious = runScan(prev, []); out.cleanRepaired = runScan(next, []);\n  out.historyOnlyValueFound = Boolean(historical);\n  if (historical) { out.knownHistoricalPrevious = runScan(prev, [historical]); out.knownHistoricalRepaired = runScan(next, [historical]); out.sameFindings = out.knownHistoricalPrevious.findings === out.knownHistoricalRepaired.findings; }\n} finally { rmSync(dir, { recursive: true, force: true }); }\nconsole.log(JSON.stringify(out, null, 1));\nconst ok = out.cleanPrevious.result === 'passed' && out.cleanRepaired.result === 'passed' && out.historyOnlyValueFound && out.knownHistoricalPrevious.result === 'rejected' && out.sameFindings && out.workSet.repairedBlobReads <= out.workSet.previousBlobReads;\nif (!ok) process.exitCode = 1;"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "e2fe87de430833dea00135d0ae48ef235c86b6fd",
+  "source_fingerprint": "9f2f2249c0a59d9492f990a17b750a3c3b728687318c63985cc3b5bdfb274f20",
+  "started_at": "2026-10-18T07:26:02.732Z",
+  "finished_at": "2026-10-18T07:32:48.848Z",
+  "recorded_at": "2026-10-18T07:32:48.848Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 394568,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "CI history secret-scan repair: previous (e2fe87d) versus repaired scan on the full local history; work set, clean verdict and a history-only known value",
+  "log_path": "docs/validation/logs/RUN-20261018-002.txt",
+  "log_sha256": "680bb43ca4aae79ec4696ae51a162629061435548ca4afc752033a9a12b912ef",
+  "redactions": 0
+}

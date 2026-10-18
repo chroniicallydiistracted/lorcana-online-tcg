@@ -101,12 +101,18 @@ export function sourceSecretScan(root,knownSecrets=[]) {
   const found=scanSecrets(files,{knownSecrets});
   const revisions=spawnSync('git',['rev-list','--all'],{cwd:root,encoding:'utf8'});
   if(revisions.status!==0||!revisions.stdout.trim())throw new Error('Secret history scan needs full Git history');
+  // Findings depend only on a blob's path and bytes, so each path/version pair is read once,
+  // however many revisions contain it. Every entry of every revision is still type-checked.
+  const scanned=new Set();
   for(const revision of revisions.stdout.trim().split('\n')) {
     const tree=spawnSync('git',['ls-tree','-r','-z',revision],{cwd:root,encoding:'utf8',maxBuffer:5_000_000});
     if(tree.status!==0)throw new Error('Unable to inspect Git paths');
     for(const entry of tree.stdout.split('\0').filter(Boolean)) {
       const [metadata,path]=entry.split('\t'),[mode,type,hash]=metadata.split(' ');
       if(mode==='120000'||type!=='blob')throw new Error('Unsupported Git source entry');
+      const key=hash+'\0'+path;
+      if(scanned.has(key))continue;
+      scanned.add(key);
       const blob=spawnSync('git',['cat-file','blob',hash],{cwd:root,maxBuffer:10_000_000});
       if(blob.status!==0)throw new Error('Unable to inspect Git bytes');
       found.push(...scanSecrets([{path,bytes:blob.stdout}],{knownSecrets}));

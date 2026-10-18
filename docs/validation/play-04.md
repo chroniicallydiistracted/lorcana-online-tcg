@@ -401,3 +401,53 @@ RUN026 shows the repaired test failing a broken build with "API did not report i
 |RUN-20261016-027|container|`verify:foundation` stopped at the documentation check ("Stale source fingerprint") because the test edit preceded its change record. Ordering error, preserved; no tests ran.|
 |RUN-20261016-028|container|`verify:foundation` on the repaired source: child exit 0. 350 project checks (326 Node + 24 Python); upstream 406 passed, 1 skipped, 1,362 expectations; 2 injection tests. The supervisor test passed in 28.6 s under full-suite load, 1.4 s inside the old limit. Receipt failed `clock_changed`.|
 |RUN-20261016-029|static|`docs:check` over this record: child exit 0; receipt failed `clock_changed` (30 s run).|
+
+## Hosted run and CI secret-scan repair — 2026-10-18 UTC
+
+Recorded 2026-10-18T07:26:36.652Z (CHG-20261018-001) by the Claude Code agent (architect/QA reviewer role) on Director request.
+
+### Hosted run
+
+Foundation run 38952419789 on `claude/play-04-opening-fix-audit` at e2fe87d ran from 19:06:24Z to 19:22:25Z on 2026-10-16 and failed (RUN-20261018-003, public metadata). To diagnose it, the failed step's output was viewed with `gh run view --log-failed`. That output was not saved to the repository, and no artifacts were downloaded.
+
+- **All 14 stages passed**, including every test that had failed before:
+  - foundation, including the repaired supervisor test (19.9 s);
+  - every database stage;
+  - live matches;
+  - 11 Chromium checks, including both chooser-seat clock tests and the busy-retry test;
+  - the engine browser checks.
+- **Then the time limit hit.** The log then went silent until the `pnpm ci:verify` command reached its 900 s limit (`scripts/ci-local.py`).
+
+### Cause
+
+The pipeline runs `sourceSecretScan` before and after the stages, and it is silent while running. Its history pass visited every commit and read every file of that commit's tree with a separate `git cat-file` call, including files that were unchanged across commits.
+
+- **This run.** The first scan took 4 min 25 s (19:07:18–19:11:43Z) and the stages 6.8 min, so the second scan pushed the total past 15 min.
+- **The same scan earlier.** On PLAY-03 audit run 38681078184 (2026-10-15) it took 1 min 52 s, and the whole command took 9 min 41 s.
+- **Locally.** 44 commits needed 60,974 file reads per pass, but only 3,591 of them were distinct path and version pairs. Every new commit or published branch adds a full tree of reads to both passes.
+
+### Repair (Director decision: fix the scan)
+
+In `scripts/ci/security.mjs`, the scan's result for a file depends only on its path and bytes. The history pass now reads each distinct path and version once, however many commits contain it. It still checks every entry of every commit for symlinks and non-file entries, and the current-file pass, patterns, known values, exceptions, shallow-clone refusal and error handling are unchanged.
+
+New regression in `tests/ci/gates.test.mjs`: a credential that exists only in an older commit, alongside a file unchanged across commits, is still reported, for the right file, without its value.
+
+### Equivalence evidence
+
+RUN-20261018-002 ran the previous (e2fe87d) and repaired scans side by side on the full local history:
+
+| Check | Previous | Repaired |
+|---|---|---|
+| File reads per pass | 60,974 | 3,591 |
+| Clean scan | passed, 179.8 s | passed, 11.8 s |
+| A known value that exists only in an older `AGENTS.md` | rejected `AGENTS.md`/`known_credential` | identical finding |
+
+RUN001 passes all 14 Node CI tests, including the new one, and the 10 Python launcher tests.
+
+| Run | Category | Result |
+|---|---|---|
+|RUN-20261018-001|container|`test:ci`: 14 Node and 10 Python tests passed, including the older-revision regression.|
+|RUN-20261018-002|container|Previous versus repaired scan on the full history: 60,974 versus 3,591 reads; both pass clean (179.3 s versus 11.8 s); both reject the history-only value with the identical finding. Child exit 0; receipt failed `clock_changed` (6.6 min run).|
+|RUN-20261018-003|container|Failed as observed: public metadata for hosted run 38952419789 (conclusion failure).|
+|RUN-20261018-004|container|`verify:foundation` on the repaired source: child exit 0. 351 project checks (327 Node, including the new history regression, + 24 Python); upstream 406 passed, 1 skipped, 1,362 expectations; 2 injection tests. Receipt failed `clock_changed`.|
+|RUN-20261018-005|static|`docs:check` over this record passed.|

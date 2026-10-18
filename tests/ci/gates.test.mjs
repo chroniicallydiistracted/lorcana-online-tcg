@@ -131,6 +131,15 @@ test('a shallow repository cannot bypass full-history qualification', t => {
   git(['clone','--depth','1','file://'+root,copy]);
   assert.throws(()=>sourceSecretScan(copy),/full Git history|shallow/);
 });
+test('the history scan still finds a credential that exists only in an older revision', t => {
+  const root=mkdtempSync(join(tmpdir(),'ci-history-'));t.after(()=>rmSync(root,{recursive:true,force:true}));
+  const git=args=>{const result=spawnSync('git',args,{cwd:root,encoding:'utf8'});assert.equal(result.status,0,result.stderr);};
+  git(['init']);git(['config','user.email','fixture@example.invalid']);git(['config','user.name','CI fixture']);
+  writeFileSync(join(root,'public.txt'),'public');writeFileSync(join(root,'old.txt'),'ghp_'+'z'.repeat(36));git(['add','.']);git(['commit','-m','leak']);
+  rmSync(join(root,'old.txt'));git(['add','-A']);git(['commit','-m','remove']);
+  // public.txt is unchanged across both revisions; the removed credential must still be reported once.
+  assert.throws(()=>sourceSecretScan(root),error=>/Secret scan rejected/.test(error.message)&&error.message.includes('old.txt')&&!error.message.includes('public.txt')&&!error.message.includes('z'.repeat(36)));
+});
 
 test('release identity binds transitive executable workspace bytes and package resolution metadata', t => {
   const {root,out,reports,identity}=fixture(t);

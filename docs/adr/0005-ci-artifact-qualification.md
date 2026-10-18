@@ -41,3 +41,7 @@ Earlier reserved-engine/no-upstream-execution and artifact-v2 statements above d
 ## Current RULE-03 continuation — 2026-10-12 UTC
 
 Earlier engine/RNG/patch statements describe their source checkpoints. [ADR0010](../adr/0010-secure-randomness-replay.md) and [RULE-03 validation](../validation/rule-03.md) govern current crypto server randomness/private completed reconstruction,28 patches and separate server/Lab engine-release roots. Selected upstream27 files remain unchanged; owned injection tests have their own denominator. Governance schema1, public protocol1 and artifact v3 are retained. No gameplay/delivery/auth/persistence or hosted/device/production result follows. D10 restricts completed seed/full private replay to participants/authorized auditors; RULE-04/PLAY-02 and other play gates remain.
+
+## History secret scan note — 2026-10-18 UTC
+
+The full-history secret scan keeps its coverage: every path and version reachable from any commit, with every entry type-checked. It now reads each distinct path and version once instead of once per commit, because the run otherwise exceeded the 900 s command limit as history grew (CHG-20261018-001; identical findings in RUN-20261018-002). The decision is unchanged.
