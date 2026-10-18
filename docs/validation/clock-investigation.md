@@ -166,3 +166,47 @@ This recommendation is prepared, not applied. Persistent controller coordination
 The new consistency checker recomputes 19 payload digests and decoded originals, phase arithmetic, all three bounded comparisons, saved-field restoration/helper exit, existing service/container observations, and protected source/configuration/requirement bytes. Its index mode additionally compares every payload against staged Git bytes. A separate changed-file scan checks known private values and token/URI patterns in both plain and decoded captures. Native doctor and authenticated bootstrap database checks pass after restoration; the project/source fingerprint remains `2c343976`. Uniform change history and final documentation/verification commands are linked from CHG-20261014-003. No full foundation/browser/image/production suite was rerun for this documentation-only scope.
 
 Additional primary references: [pinned WSL startup](https://raw.githubusercontent.com/microsoft/WSL/372dd3499231809730b551fddb58ce50baff6ee5/src/linux/init/main.cpp), [WSL maintainer on the root daemon](https://github.com/microsoft/WSL/issues/10024#issuecomment-1522426963), [Chrony 4.5 jump detection](https://raw.githubusercontent.com/mlichvar/chrony/4.5/sched.c), [Chrony 4.5 tick/frequency implementation](https://raw.githubusercontent.com/mlichvar/chrony/4.5/sys_linux.c), [Chrony 4.5 commands](https://chrony-project.org/doc/4.5/chronyc.html) and [supported WSL settings](https://learn.microsoft.com/en-us/windows/wsl/wsl-config). Source-review payloads retain exact downloaded digests; source excerpts/binaries are not redistributed.
+
+## Controller tug-of-war follow-up — 2026-10-18 UTC
+
+Recorded 2026-10-18T22:02:57.989Z (CHG-20261018-002) by the Claude Code agent (architect/QA reviewer role) on Director instruction. The Director assigned clock research and fixes as admin work to this reviewer. This section is read-only research. No clock, service or setting was changed.
+
+### What changed since 2026-10-14
+
+| Date (UTC) | Kernel rate correction | Calendar behaviour seen by receipts |
+|---|---|---|
+| 2026-10-14 | about −2.76% (saved tick 9724) | calendar gains about 0.85 s per 40 s against monotonic |
+| 2026-10-16 | about +8% (inferred) | calendar steps back about 2.46 s every 30 s |
+| 2026-10-18 | +3.4% to +3.8% (tick 10337–10384), monotonic +36,374 ppm against raw (RUN-20261018-007) | calendar steps back about 1.05 s every 29 s |
+
+The correction applied by the WSL root chronyd is not converging: it has changed sign and size within four days. `adjtimex` readings taken every 15 s show the tick and frequency fields being rewritten continuously, with chronyd's estimated error jumping between 0 and about 60 ms.
+
+### Two stepping controllers, one reacting to the other
+
+On WSL Ubuntu (same kernel), a 120 s correlation sampled realtime against `CLOCK_MONOTONIC_RAW` every 0.1 s, alongside `timedatectl show-timesync` (host observation; script retained in the reviewer's scratchpad, summarized here):
+
+- Every ~29 s there are two backward steps 0.1–0.2 s apart, about −0.50 to −0.53 s and then −0.53 to −0.54 s.
+- The second step coincides (within one 0.1 s sample) with each new NTP exchange of Ubuntu's `systemd-timesyncd`. That service is active and enabled, polls `ntp.ubuntu.com` at its 32 s minimum interval (5,875 packets so far), and keeps its own frequency of about −30 ppm.
+- At the same time, Windows' own `w32tm /stripchart` against time.cloudflare.com and time.windows.com showed Windows about 0.53–0.54 s away from those references. That is about the size of the second step. Windows Time (W32Time) is Stopped/Manual. On 2026-10-14 the reported offsets were about +0.46–0.50 s with the opposite sign, so an undisciplined Windows clock has moved by about 1 s in four days.
+
+The numbers fit this sequence:
+
+1. Chronyd's wrong rate makes Linux gain about 1.05 s per 29 s.
+2. Docker/WSL sets the calendar to Windows time; that is the first step.
+3. timesyncd, which reacts to the external clock change, immediately exchanges with `ntp.ubuntu.com` and steps the clock to Internet time, which disagrees with Windows by about 0.54 s; that is the second step.
+
+Both corrections are below chronyd's 10 s jump-detection threshold. Each one lands in its PHC offset history. With a correction every ~29 s that cancels the drift, chronyd's long-window regression sees little net trend, so its rate estimate is poorly constrained and wanders. This strengthens the earlier inference about competing controllers. It is still an inference about chronyd's estimator, not a reconstruction of its internal history.
+
+### Proposed controlled test
+
+Each step needs the Director: steps 1 and 3 need the Ubuntu password, and step 2 restarts WSL, Docker and the Dev Container.
+
+1. Stop Ubuntu's competing controller temporarily: `sudo systemctl stop systemd-timesyncd`. Measure 20 minutes with the same probes and check:
+   - Do the paired steps become single steps?
+   - Do chronyd's tick and frequency settle toward 10000 and 0?
+   - Do receipt durations agree?
+
+   It can be started again with `sudo systemctl start systemd-timesyncd`.
+2. If chronyd keeps its wrong rate, restart WSL with `wsl --shutdown` from Windows while timesyncd stays stopped, so the root chronyd relearns without the competing stepper. Then repeat the 20-minute measurement. Postgres data is on its volume, and the Dev Container is reopened afterwards.
+3. If stable, make the change persistent with `sudo systemctl disable systemd-timesyncd`. WSL already keeps Linux time aligned with Windows. Separately, restoring Windows automatic time synchronization would fix the ~0.5 s absolute UTC error; that needs administrator rights and does not by itself fix the rate.
+4. Acceptance follows the plan above: paired calendar and elapsed time within 1 s throughout a 20-minute window, a long receipt such as `verify:foundation` passing with exact timing, and a re-check after sleep/wake.

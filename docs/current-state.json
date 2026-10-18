@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-18T07:43:40.620Z",
+  "observed_at": "2026-10-18T22:10:36.823Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2221,7 +2221,8 @@
     "CHG-20261016-003",
     "CHG-20261016-004",
     "CHG-20261016-005",
-    "CHG-20261018-001"
+    "CHG-20261018-001",
+    "CHG-20261018-002"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2278,7 +2279,8 @@
     "CHG-20261016-003": "finalized",
     "CHG-20261016-004": "finalized",
     "CHG-20261016-005": "finalized",
-    "CHG-20261018-001": "finalized"
+    "CHG-20261018-001": "finalized",
+    "CHG-20261018-002": "finalized"
   },
   "source_fingerprint": "9f2f2249c0a59d9492f990a17b750a3c3b728687318c63985cc3b5bdfb274f20",
   "files": {
@@ -2360,7 +2362,7 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "80b8981d066bb1c184d7568941e96518fa502885107f628fac43fb78cfba678a",
-    "docs/HANDOFF.md": "9a8573ad6d479484a4aa8d0ae3004163f54fdee2feeb99b93ab693c16c30c22a",
+    "docs/HANDOFF.md": "7bdf418c1503ed26649621c4eaa5fb925a1e3f554a1140e34af1e3ecf502991a",
     "docs/README.md": "15ac470a56b6264d284baba110a405cb19eada60193ada8f67ec408e35a776fd",
     "docs/WORKSPACE_QUALIFICATION.md": "f2c15246c1d64e79cbfba63c3fa41d3758c34cbd026bb906e5f8e80bcbf83688",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
@@ -2509,7 +2511,7 @@
     "docs/validation/boot-03.md": "3eb959fd2300941893d56ee209416f8153257482728950e171bdf68a744ed4ac",
     "docs/validation/boot-04.md": "3b4b01e87581e52b50d20b02485082239b02535127c758de62f0cdd0eaa84b4f",
     "docs/validation/boot-05.md": "cfa7825be4730926cd58c41e8d0d12faafba765672c6ba860b901128cec467a9",
-    "docs/validation/clock-investigation.md": "479ba1022bcf43451b537583090f0edf6e849dd5ab059f960eeb92cc22e5fa56",
+    "docs/validation/clock-investigation.md": "1ed6e966c32fadde929e0f045e82eb69bd6d356b247a44082df27fe9fddd5962",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
     "docs/validation/inputs/play03-package-metadata.mjs": "36fa50be4b7e73341b6c7033693a44985d217107c77512b1168eba8d5dd780cf",
     "docs/validation/inputs/play04-hosted-metadata.mjs": "43eda40cee39d0aa5c677e7cafc8c2680faf02e2390b51239e962b56cd701468",
@@ -2520,7 +2522,7 @@
     "docs/validation/play-03-closure-check.mjs.txt": "7e6262ffb8316fa1b8a9dd4d851e838eb4a880e6ea4046718ab1923fce4a7273",
     "docs/validation/play-03-hosted-baseline.json": "002c0efda730d2c5c6e435653f636cdf6bbaa8d42a0a4ccba3cf664e001aed6c",
     "docs/validation/play-03.md": "7b5bc0c0d74335a00e45e742119f9c37303ea50fc6780749d55da70abf0c7de1",
-    "docs/validation/play-04.md": "043e6b8be60f68568c07be3fcc2ebd5b77fd34f0a34fe48e576a1cd59772883c",
+    "docs/validation/play-04.md": "a9c4f450f11880b1d253e996c37cdb1129a91e8d1a47ccd3730d0921945c96d1",
     "docs/validation/rule-01.md": "2179eed327700ea1feb4de0b5d22beaad569e64a7c2c92d5f97a0f503eaae8b5",
     "docs/validation/rule-02-canonical-check.mjs.txt": "801cff8cf4d82a478922ec6204024a3a321e804afd91eefeaad049cc26c33d68",
     "docs/validation/rule-02-host-closure.json": "82cb130e1aa7353efb6f1bba289cffb595f15653dabe42af797a3a6f8f3d6cda",
@@ -2541,7 +2543,7 @@
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "bcd9a7d7e6fe63d226d5dc3df2f07d7fd1cb1577f34746ff32519de633d29c49",
+    "docs/vision/decision_register.csv": "3f59ac970f7541788eb899b826f6a162103cf4c000c757d01a70a46e409833bd",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
     "docs/vision/initial_backlog.csv": "0fc018439d1378d857b0910eb66643688dea9bd2de505903de8cc36ea895ed8f",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",

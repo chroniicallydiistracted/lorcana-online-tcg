@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261018-007",
+  "category": "container",
+  "command": [
+    "python3",
+    "-c",
+    "# Read-only kernel clock probe (WSL Ubuntu, shared VM kernel). Samples REALTIME/MONOTONIC/MONOTONIC_RAW\n# every 0.25 s and reads adjtimex (modes=0, no privilege, changes nothing).\nimport ctypes, time, json, sys\nclass timeval(ctypes.Structure): _fields_=[('tv_sec',ctypes.c_long),('tv_usec',ctypes.c_long)]\nclass timex(ctypes.Structure):\n    _fields_=[('modes',ctypes.c_uint),('offset',ctypes.c_long),('freq',ctypes.c_long),('maxerror',ctypes.c_long),('esterror',ctypes.c_long),\n              ('status',ctypes.c_int),('constant',ctypes.c_long),('precision',ctypes.c_long),('tolerance',ctypes.c_long),('time',timeval),\n              ('tick',ctypes.c_long),('ppsfreq',ctypes.c_long),('jitter',ctypes.c_long),('shift',ctypes.c_int),('stabil',ctypes.c_long),\n              ('jitcnt',ctypes.c_long),('calcnt',ctypes.c_long),('errcnt',ctypes.c_long),('stbcnt',ctypes.c_long),('tai',ctypes.c_int),('pad',ctypes.c_int*11)]\nlibc=ctypes.CDLL('libc.so.6',use_errno=True)\ndef adj():\n    t=timex(); t.modes=0; state=libc.adjtimex(ctypes.byref(t))\n    return {'state':state,'tick':t.tick,'freq_ppm':round(t.freq/65536,3),'offset':t.offset,'status':t.status,'maxerror':t.maxerror,'esterror':t.esterror,\n            'applied_ppm':round((t.tick-10000)*100+t.freq/65536,1)}\nR,M,W=time.CLOCK_REALTIME,time.CLOCK_MONOTONIC,time.CLOCK_MONOTONIC_RAW\ndur=float(sys.argv[1]) if len(sys.argv)>1 else 95\nr0,m0,w0=time.clock_gettime(R),time.clock_gettime(M),time.clock_gettime(W)\nfirst=adj(); steps=[]; prev=(r0-m0); adjs=[first]\nwhile time.clock_gettime(W)-w0<dur:\n    time.sleep(0.25)\n    r,m,w=time.clock_gettime(R),time.clock_gettime(M),time.clock_gettime(W)\n    if abs((r-m)-prev)>0.05: steps.append({'at_raw_s':round(w-w0,2),'step_ms':round(((r-m)-prev)*1000,1)})\n    prev=r-m\n    if int(w-w0)%15==0 and (w-w0)%15<0.26: adjs.append(adj())\nr1,m1,w1=time.clock_gettime(R),time.clock_gettime(M),time.clock_gettime(W)\nout={'raw_elapsed_s':round(w1-w0,3),'monotonic_minus_raw_ppm':round(((m1-m0)-(w1-w0))/(w1-w0)*1e6,1),\n     'realtime_minus_monotonic_ms':round(((r1-r0)-(m1-m0))*1000,1),'steps':steps,'adjtimex_samples':adjs+[adj()]}\nprint(json.dumps(out,indent=1))",
+    "65"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "4dea392d382c950a7efa66a467a15018d3ec08a0",
+  "source_fingerprint": "9f2f2249c0a59d9492f990a17b750a3c3b728687318c63985cc3b5bdfb274f20",
+  "started_at": "2026-10-18T21:56:57.973Z",
+  "finished_at": "2026-10-18T21:58:02.473Z",
+  "recorded_at": "2026-10-18T21:58:02.473Z",
+  "time_precision": "clock_discontinuous",
+  "elapsed_ms": 67671,
+  "clock_discontinuity": true,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": "clock_changed",
+  "summary": "Read-only kernel clock probe: REALTIME/MONOTONIC/MONOTONIC_RAW rates, calendar steps and adjtimex tick/frequency (shared WSL kernel); expected clock_changed",
+  "log_path": "docs/validation/logs/RUN-20261018-007.txt",
+  "log_sha256": "fbb15dbacee8b7f3e5d3fa96ad5293b9d2ee596382bfb66cbf994925b3ca2585",
+  "redactions": 0
+}

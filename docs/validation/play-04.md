@@ -451,3 +451,19 @@ RUN001 passes all 14 Node CI tests, including the new one, and the 10 Python lau
 |RUN-20261018-003|container|Failed as observed: public metadata for hosted run 38952419789 (conclusion failure).|
 |RUN-20261018-004|container|`verify:foundation` on the repaired source: child exit 0. 351 project checks (327 Node, including the new history regression, + 24 Python); upstream 406 passed, 1 skipped, 1,362 expectations; 2 injection tests. Receipt failed `clock_changed`.|
 |RUN-20261018-005|static|`docs:check` over this record passed.|
+
+## Director decisions and test-database cleanup — 2026-10-18 UTC
+
+Recorded 2026-10-18T22:02:57.989Z (CHG-20261018-002).
+
+**Decision D13.** Players may concede at any point, including the opening, and a concession counts as a loss, as CR 2.2/2.3 rule 2.3.3.4 states. Repeated timeouts become a concession: after a configurable number in a row, the server concedes for the timed-out player and it counts as a loss. This replaces D12's "no timeout winner" and the opening pause for player timeouts. Infrastructure pauses and audited recovery are unchanged.
+
+What the upstream engine does today:
+
+- **`concede`** is allowed only in the main game. The opening phases allow only `chooseWhoGoesFirst`/`alterHand` and the server-only `forfeitGame` (`runtime-flow-config.ts:42,61`). So an opening concession is refused even though CR 2.3.3.4 allows it, and the opening flow needs a documented upstream repair.
+- **`forfeitGame`** is the server-only move upstream provides for timeout and disconnect forfeits. It takes a named winner and is legal in every phase.
+- **Mulligans** happen one player at a time, as CR 2.2.2 requires: the starting player first, then in turn order, with the priority check enforced. A timeout during the opening therefore always identifies exactly one player.
+
+Implementation is assigned to Codex, the main developer.
+
+**Test-database cleanup.** RUN-20261018-006 used the project's fixture helper, restricted to the test target, to remove the orphaned timed fixture `clock-process-a0f171f0…` left by Codex's interrupted RUN-20261015-050. It removed 1 match, its clock, 8 clock events, 3 receipts, 3 journal rows and 3 outbox rows, plus 31 transport quota rows that had expired on 2026-10-14. The test database now holds no match, clock or quota rows. The local database and its credentials were not touched.
