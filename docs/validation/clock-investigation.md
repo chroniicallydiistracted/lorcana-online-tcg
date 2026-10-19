@@ -210,3 +210,34 @@ Each step needs the Director: steps 1 and 3 need the Ubuntu password, and step 2
 2. If chronyd keeps its wrong rate, restart WSL with `wsl --shutdown` from Windows while timesyncd stays stopped, so the root chronyd relearns without the competing stepper. Then repeat the 20-minute measurement. Postgres data is on its volume, and the Dev Container is reopened afterwards.
 3. If stable, make the change persistent with `sudo systemctl disable systemd-timesyncd`. WSL already keeps Linux time aligned with Windows. Separately, restoring Windows automatic time synchronization would fix the ~0.5 s absolute UTC error; that needs administrator rights and does not by itself fix the rate.
 4. Acceptance follows the plan above: paired calendar and elapsed time within 1 s throughout a 20-minute window, a long receipt such as `verify:foundation` passing with exact timing, and a re-check after sleep/wake.
+
+## Controlled test step 1 — 2026-10-19 UTC
+
+Recorded 2026-10-19T01:54:56.958Z (CHG-20261019-001) by the Claude Code agent (architect/QA reviewer role), as admin work assigned by the Director. The only change was made by the Director: Ubuntu's `systemd-timesyncd` was stopped at 2026-10-19T00:58:41Z (systemd's inactive timestamp). It is still enabled, so it will start again the next time WSL starts. Chronyd, Docker, WSL and Windows were not touched.
+
+### Result
+
+The second step of each pair disappeared at once, and chronyd settled within about 15 minutes. No WSL restart was needed, so plan step 2 was skipped. The host settle logger read the same kernel clocks read-only (calendar, monotonic and raw every 0.1 s; `adjtimex` without changes every 15 s) for 1,200 s from 00:59:33Z:
+
+| Minutes after the stop | Measured correction (monotonic against raw, per 15 s) | chronyd tick | Calendar step at each Docker/WSL sync (every ~29.8 s) |
+|---|---|---|---|
+| 1–9 | swinging between −0.2% and +2.9% | mostly 10274, jumping between 9418 and 10372 | −660.6 ms, falling to about −200 ms |
+| 9–15 | −0.03% to +0.6% | 10001–10070 | −145.8 ms, falling to −5.4 ms |
+| 15–21 | −17 to +302 ppm; the last six intervals 42–55 ppm | 10000–10003, then steady at 10001 | none above 5 ms |
+
+All 29 recorded steps were single, backward and shrinking; none followed 0.1–0.2 s later, as timesyncd's step had. Chronyd's estimated error fell from 49,691 µs to 99 µs. This confirms the inferred cause: timesyncd kept stepping the clock to a second reference (Internet time, about 0.54 s from Windows time), and that kept chronyd's rate estimate wrong. With one reference, chronyd converged.
+
+Receipts:
+
+- **RUN-20261019-001** (container, 120 s): the read-only probe passed with exact timing. Tick 10001, applied correction +49 to +58 ppm, no step above 50 ms, calendar minus monotonic −6.4 ms.
+- **RUN-20261019-002** (local isolated BOOT-03 pipeline, `scripts/ci-local.py`): passed every stage in 461.7 s with exact timing. That covers frozen install, 408 Node tests in 20 suites, the upstream engine suite (406 passed, 1 skipped), 2 injection tests, Python tooling, disposable PostgreSQL 18 provisioning, 11 Chromium tests, both secret scans and cleanup. Its log contains no credential patterns. Earlier local isolated runs RUN-20261012-089/091, RUN-20261013-011/113 and RUN-20261014-051 failed `clock_changed`; the last local isolated pass with exact timing was RUN-20261012-043. This receipt covers the current source (main 4dea392 code plus documentation) and does not qualify earlier sources retroactively.
+
+A second 1,200 s window from 01:34:25Z, taken after the pipeline run, met the plan's 20-minute criterion. No calendar step exceeded 5 ms, calendar minus monotonic totalled −52.0 ms against the 1 s limit, the tick stayed at 10001, and the measured correction was 27–50 ppm (median 42). Two of the plan's three acceptance checks are now met: the 20-minute window and a long receipt with exact timing. The sleep/wake re-check is still open.
+
+### Still open
+
+1. **Persistence (Director, Ubuntu password):** `sudo systemctl disable systemd-timesyncd`. Until then, a WSL restart or PC reboot starts timesyncd again and the problem returns.
+2. **Sleep/wake re-check:** after the PC next sleeps, Docker/WSL should make one large step to Windows time while chronyd keeps its rate. Re-measure with the same logger.
+3. **Absolute UTC (optional, Windows administrator):** Linux now follows Windows, which is about 0.54 s from Internet time because Windows Time is Stopped/Manual. This does not affect elapsed times or receipts. Turning Windows automatic time synchronization back on would fix it; re-run the logger afterwards to confirm Windows' corrections do not disturb chronyd.
+
+The clock guard, the earlier failed receipts and the hosted-CI merge gate are unchanged.
