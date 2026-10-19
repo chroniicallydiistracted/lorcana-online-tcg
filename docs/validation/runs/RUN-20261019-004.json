@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-004",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Read-only public GitHub metadata for the PLAY-04 merge runs at 4dea392. No logs/artifacts downloaded.\nconst root = 'https://api.github.com/repos/chroniicallydiistracted/lorcana-online-tcg/actions/runs/';\nconst get = async path => { const r = await fetch(root + path, { headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }, signal: AbortSignal.timeout(15000) }); if (!r.ok) throw new Error('metadata unavailable ' + r.status); return r.json(); };\nconst sha = '4dea392d382c950a7efa66a467a15018d3ec08a0';\nfor (const [id, branch] of [['39108811073', 'claude/play-04-opening-fix-audit'], ['39109642662', 'main']]) {\n  const run = await get(id), jobs = await get(id + '/jobs?per_page=100');\n  if (run.id !== Number(id) || run.head_sha !== sha || run.head_branch !== branch || run.status !== 'completed' || run.conclusion !== 'success') throw new Error('Unexpected hosted result ' + id);\n  const steps = jobs.jobs.flatMap(j => j.steps.map(s => s.conclusion));\n  if (jobs.total_count !== jobs.jobs.length || jobs.jobs.some(j => j.conclusion !== 'success') || steps.some(c => !['success', 'skipped'].includes(c))) throw new Error('Unexpected job/step result ' + id);\n  console.log(JSON.stringify({ id, attempt: run.run_attempt, event: run.event, head_branch: run.head_branch, head_sha: run.head_sha, conclusion: run.conclusion, run_started_at: run.run_started_at, updated_at: run.updated_at, jobs: jobs.jobs.map(j => ({ name: j.name, conclusion: j.conclusion, started_at: j.started_at, completed_at: j.completed_at, steps: j.steps.map(s => s.name + ':' + s.conclusion) })) }));\n}"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "ea3a6b7e282aa2adb78be1dc003a82ac46478954",
+  "source_fingerprint": "9f2f2249c0a59d9492f990a17b750a3c3b728687318c63985cc3b5bdfb274f20",
+  "started_at": "2026-10-19T05:48:47.888Z",
+  "finished_at": "2026-10-19T05:48:49.612Z",
+  "recorded_at": "2026-10-19T05:48:49.612Z",
+  "time_precision": "exact",
+  "elapsed_ms": 1723,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "PLAY-04 merge: public GitHub metadata for hosted Foundation runs 39108811073 (claude/play-04-opening-fix-audit) and 39109642662 (main), both at 4dea392 (no logs/artifacts downloaded)",
+  "log_path": "docs/validation/logs/RUN-20261019-004.txt",
+  "log_sha256": "63df1ed562c979e7c4c9cfb1944465b24347c7624947fe5a01c57ad791c9d09e",
+  "redactions": 0
+}

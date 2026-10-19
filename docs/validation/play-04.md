@@ -467,3 +467,23 @@ What the upstream engine does today:
 Implementation is assigned to Codex, the main developer.
 
 **Test-database cleanup.** RUN-20261018-006 used the project's fixture helper, restricted to the test target, to remove the orphaned timed fixture `clock-process-a0f171f0…` left by Codex's interrupted RUN-20261015-050. It removed 1 match, its clock, 8 clock events, 3 receipts, 3 journal rows and 3 outbox rows, plus 31 transport quota rows that had expired on 2026-10-14. The test database now holds no match, clock or quota rows. The local database and its credentials were not touched.
+
+## Hosted merge runs and decision D14 — 2026-10-19 UTC
+
+Recorded 2026-10-19T05:49:12.691Z (CHG-20261019-002).
+
+**Hosted runs.** RUN-20261019-004 observes public GitHub metadata for both Foundation runs at 4dea392:
+
+| Run | Branch and event | Result |
+|---|---|---|
+| [39108811073](https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/39108811073) | `claude/play-04-opening-fix-audit`, workflow_dispatch | attempt 1 success, job 07:44:46–07:57:00Z on 2026-10-18 |
+| [39109642662](https://github.com/chroniicallydiistracted/lorcana-online-tcg/actions/runs/39109642662) | `main`, push | attempt 1 success, job 07:58:20–08:10:19Z on 2026-10-18 |
+
+Every step of both jobs succeeded. These are metadata observations; logs and artifacts were not downloaded. PLAY-04's synthetic scope is merged, and D13 is the remaining follow-up.
+
+**Decision D14.** The Director keeps the engine's existing time restore after a timeout and will revisit it if abuse appears in play. Status of the four audit policy points:
+
+1. **Timeout pass losing on an empty deck:** stays as engine behaviour. Under D13, repeated timeouts are a loss anyway.
+2. **Timeout restore larger than a late pass:** kept by D14.
+3. **Opening timeouts pause:** replaced by D13. A timeout in the opening now counts toward the timeout concession.
+4. **Single-host recovery after a failed health check:** open; it belongs to operations and load qualification before real play.

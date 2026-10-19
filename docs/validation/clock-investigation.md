@@ -241,3 +241,7 @@ A second 1,200 s window from 01:34:25Z, taken after the pipeline run, met the pl
 3. **Absolute UTC (optional, Windows administrator):** Linux now follows Windows, which is about 0.54 s from Internet time because Windows Time is Stopped/Manual. This does not affect elapsed times or receipts. Turning Windows automatic time synchronization back on would fix it; re-run the logger afterwards to confirm Windows' corrections do not disturb chronyd.
 
 The clock guard, the earlier failed receipts and the hosted-CI merge gate are unchanged.
+
+### Persistence — 2026-10-19 UTC
+
+Recorded 2026-10-19T05:49:12.691Z (CHG-20261019-002). The Director ran `sudo systemctl disable systemd-timesyncd` (plan step 3). At 2026-10-19T02:40:06Z the service was disabled and inactive. A 60 s read-only probe then showed tick 10001, a +35.6 ppm correction, no step and calendar minus monotonic −2.3 ms. At about 05:50Z, a second 60 s probe showed tick 10000, no step and −3.3 ms, with no suspend recorded by the kernel (boot time minus monotonic 0 s). The fix now survives a WSL restart or reboot. Still open: the sleep/wake re-check, and optionally re-enabling Windows time synchronization.
