@@ -66,6 +66,40 @@ class Safety(unittest.TestCase):
                 launcher.main()
         return root, commands, output.getvalue()
 
+    def test_design_system_suite_runs_its_own_pipeline_and_publishes_without_artifacts(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        root = Path(temporary.name)
+        (root / 'scripts').mkdir()
+        commands, compose_calls = [], []
+        def copy_source(_root, source):
+            source.mkdir()
+            (source / '.devcontainer').mkdir()
+            (source / '.devcontainer/Dockerfile').write_text('FROM fixture\n')
+        def run(command, cwd=None, **_options):
+            commands.append(command)
+            if command[0] == 'python3':
+                (cwd / '.env.local').write_text('POSTGRES_DB=lorcana_local\n')
+            return 'sha256:' + 'a' * 64 if command[:3] == ['docker', 'image', 'inspect'] else ''
+        def compose(_env, *args, **_options):
+            compose_calls.append(list(args))
+        output = io.StringIO()
+        with patch.object(launcher, '__file__', str(root / 'scripts/ci-local.py')), patch.object(launcher, 'copy_source', side_effect=copy_source), patch.object(launcher, 'run', side_effect=run), patch.object(launcher, 'compose', side_effect=compose), patch.object(launcher, 'cleanup'), patch.object(launcher.signal, 'signal', return_value=launcher.signal.SIG_DFL), patch.object(launcher.os, 'getuid', return_value=1000), patch.object(launcher.os, 'getgid', return_value=1000), patch.object(launcher.os, 'environ', {'PATH': '/fixture'}), patch('sys.argv', ['ci-local.py', '--suite', 'design-system']), contextlib.redirect_stdout(output):
+            launcher.main()
+        self.assertIn(['run', '--rm', 'runner', 'pnpm', 'ci:design-system'], compose_calls)
+        self.assertNotIn(['run', '--rm', 'runner', 'pnpm', 'ci:verify'], compose_calls)
+        results = list((root / '.local/ci-results').iterdir())
+        self.assertEqual(len(results), 1)
+        host = json.loads((results[0] / 'host.json').read_text())
+        self.assertEqual(host['suite'], 'design-system')
+        self.assertFalse((results[0] / 'artifacts').exists())
+        self.assertIn('PASS isolated pipeline', output.getvalue())
+
+    def test_design_system_suite_refuses_the_artifact_upload_directory(self):
+        with patch.object(launcher.os, 'environ', {'PATH': '/fixture', 'LORCANA_CI_ARTIFACT_DIR': '.local/ci-upload'}), patch.object(launcher.os, 'getuid', return_value=1000), patch.object(launcher.os, 'getgid', return_value=1000), patch('sys.argv', ['ci-local.py', '--suite', 'design-system']):
+            with self.assertRaisesRegex(RuntimeError, 'upload directory'):
+                launcher.main()
+
     def test_image_is_removed_after_post_build_setup_failure(self):
         _root, commands, _output = self.main_fixture('setup')
         self.assertTrue(any(command[:3] == ['docker', 'image', 'rm'] for command in commands))
@@ -152,7 +186,12 @@ class Safety(unittest.TestCase):
                      lambda w: w.update({'permissions': {'contents': 'write'}}),
                      lambda w: w['jobs']['foundation']['steps'][0].update({'uses': 'actions/checkout@v7'}),
                      lambda w: w['jobs']['foundation'].update({'permissions': {'contents': 'write'}}),
-                     lambda w: w['jobs']['foundation']['steps'][2].update({'if': 'always()'})]
+                     lambda w: w['jobs']['foundation']['steps'][2].update({'if': 'always()'}),
+                     lambda w: w['jobs']['design-system']['steps'][0]['with'].update({'fetch-depth': 1}),
+                     lambda w: w['jobs']['design-system']['steps'][0].update({'uses': 'actions/checkout@v7'}),
+                     lambda w: w['jobs']['design-system']['steps'][1].update({'run': 'python3 scripts/ci-local.py'}),
+                     lambda w: w['jobs']['design-system'].update({'permissions': {'contents': 'write'}}),
+                     lambda w: w['jobs'].pop('design-system')]
         for mutate in mutations:
             bad = copy.deepcopy(workflow)
             mutate(bad)

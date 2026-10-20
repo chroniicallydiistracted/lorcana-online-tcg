@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-033",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "python3 scripts/verify-config.py && python3 scripts/ci/check-config.py && pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3997557be5cf1083acd477ae73ac694403bf7483",
+  "source_fingerprint": "44591181ce2f28af5d51eda07bbfac437b8346522ce0359dd9df1d4fab7eb54b",
+  "started_at": "2026-10-20T18:22:47.835Z",
+  "finished_at": "2026-10-20T18:24:45.549Z",
+  "recorded_at": "2026-10-20T18:24:45.549Z",
+  "time_precision": "exact",
+  "elapsed_ms": 117719,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Final source with the parallel design-system CI job (D18): configuration contract, workflow config check, typecheck, ESLint plus boundaries and the full workspace suite including launcher and design-system tests",
+  "log_path": "docs/validation/logs/RUN-20261020-033.txt",
+  "log_sha256": "841cf0a1bbd1f0ca05373b8c8d6e7fce5016f7b0fec999e18d704e3be1e10894",
+  "redactions": 0
+}

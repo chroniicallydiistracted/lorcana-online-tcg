@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-20T16:54:12.612Z",
+  "observed_at": "2026-10-20T18:42:34.954Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2292,7 +2292,8 @@
     "CHG-20261020-002",
     "CHG-20261020-003",
     "CHG-20261020-004",
-    "CHG-20261020-005"
+    "CHG-20261020-005",
+    "CHG-20261020-006"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2358,9 +2359,10 @@
     "CHG-20261020-002": "finalized",
     "CHG-20261020-003": "finalized",
     "CHG-20261020-004": "finalized",
-    "CHG-20261020-005": "finalized"
+    "CHG-20261020-005": "finalized",
+    "CHG-20261020-006": "finalized"
   },
-  "source_fingerprint": "89f989ca1b7e4008084f0ecbf87e5628b3994725ed8b01e836d9893425c3c38c",
+  "source_fingerprint": "44591181ce2f28af5d51eda07bbfac437b8346522ce0359dd9df1d4fab7eb54b",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2369,15 +2371,15 @@
     ".editorconfig": "71589501b7a5dd84d122c08a34d94001034ec89843a90e2e790a65087c8a4fcc",
     ".env.example": "43e517338c01706991b278852fcdc5a3955ba9bf4fdabf8f10c06a5776e15bc2",
     ".gitattributes": "79fcb921efc6e3daf0044d669f3bc7a1a0be84ec0eca6694b50b349047bab26f",
-    ".github/workflows/foundation.yml": "db39cc93063690120c5769bde03c9dec3e3e321d3d086e2a33df754db12c2088",
+    ".github/workflows/foundation.yml": "2ee86a3afbc7b4e72b1e5f548e0901f65f474d6991fe12ca67a4a3d358b8beca",
     ".gitignore": "f336f1e8b124a560cf59f5fb86b6efc4f2b087753833de66d462baade77764c7",
     ".node-version": "73fb1b615e2043a933be1c0895cde4358036acc28d785692509b822aa53c761f",
     ".vscode/extensions.json": "646c8376b43d619bf6cdb318b554052a09e29934d61ad6cc594f9d472338d733",
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "2a2d5f1c74bb6c72d45d8823492e3244ee216b7804aa1c156de653ebfd918b40",
-    "README.md": "2cf91ebf6e406d039fe7b2b345af3394207021b9bfdc6a92cf001c825f3d1ca5",
+    "AGENTS.md": "cf614c020b0f980bc8b3186bbddcac190abfef7b3bec0ad3c463b44df2b72e6c",
+    "README.md": "22829bc3b12d0d3af2e9e1cd3e0405489c578216fdac85e913470cdea74c70cd",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2439,8 +2441,8 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "2cc6d65a6a4b827a1adead3d5fe2e00280ea0de02788b8359b1c9624abe54779",
-    "docs/HANDOFF.md": "43bba5464cf602e3dc9e92de644a23f666b0ca110628587a7ac21f2e2c7f8357",
-    "docs/README.md": "bd64678227b27f2614a2f906ed60d78c1d5323d5820ae0278b0466296cad7c94",
+    "docs/HANDOFF.md": "eb6bb708159d78c3f06c92c17f13a5472ea7b8c9ff7bfd5a9191b45bd2d73855",
+    "docs/README.md": "86f24f0c5c8f122f6c4510ad1e1a93fc901fef6888ddd5cb7add42386e03c6d0",
     "docs/WORKSPACE_QUALIFICATION.md": "706a87f555e7f3b13fada47137ca0a8acccb5ba39f308d89e2fb88b979e16364",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "8ad6a20e3390b0b3dfd57d607391a96bb7723900979850747fedf7624d4792d9",
@@ -2459,7 +2461,7 @@
     "docs/adr/0014-viewer-projection-privacy.md": "60748c6617aacf2559f56ffb309f29b67589b61a8977b2150a5ff6860d18d95e",
     "docs/adr/0015-live-synthetic-transport.md": "ed4928248d754453ecfa08d46ded80a933af787565043323080ecd74b9aa9fa9",
     "docs/adr/0016-durable-engine-clocks.md": "019cd83878df2bf058f64d6bc0f11a4cf005f0f8d63c1a80585b47dccd82123b",
-    "docs/adr/0017-technical-design-system.md": "79c3de578c8383d04871b6cf6e66692421bfc34d915af7de1594b5b0f8b6ec0f",
+    "docs/adr/0017-technical-design-system.md": "fd6301d4be69511b6a26fe73e80e69adb4f4b6fa3a4a4aedf01a690a869dd356",
     "docs/archive/design-system-2026-10-12/README.md": "e17c45b91107e049dd5be5e0b13cfb17183a3ee16ad87184fdb678454dc8041f",
     "docs/archive/design-system-2026-10-12/the-inkspire-design-system.zip": "add42af27f65ab577cd0e33941699cd3afc05a3e1ceca5c91e4962b94dc8647e",
     "docs/audits/2026-10-06-project-audit.md": "4cfc7149345929122bb379ccfc338c3f0ecc98276e7d9b7ce2e55a5f5e3f17d9",
@@ -2468,7 +2470,7 @@
     "docs/contracts/release.md": "b3f6451141a2a2ba0ce9b1d0b9411d4d08511501bfcec68179c246c7c4bd5dda",
     "docs/contracts/viewer.md": "8693ab93a002ac48425988fbde3ea902a50843627deba4cd466d456aaaabcd32",
     "docs/documentation-map.json": "9233c9f6910a781fe10d95397a9969a4336408b42f909b19481a30b3cc1e3c74",
-    "docs/features.json": "f768339738cc73992a1bf04efe5b5bd03f0993c46bb563446caf2b68c65708a0",
+    "docs/features.json": "c7bf8cc2ca549827a493c5a306d181b5f9af7539090841f2522205914feb8deb",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "7c2f9c48229b7127e379b323e166cc3bc5742145933b9b4fbdc6b64352de56c5",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2518,9 +2520,9 @@
     "docs/rules/README.md": "00ee9328b18484b3d1d30e31181920a5c0208a39cf10bd7d7d05360e367bb9d4",
     "docs/rules/source-specs-supplement.json": "0efe5f0d481ed436bfb196005dc3d7fad574b2f1040e7d4eaba95b9f39939e0a",
     "docs/rules/source-specs.json": "03207c3e5692ba63735df07e7cb2333ffa38b4146382fb987f2cc46c5b220a0e",
-    "docs/runbooks/ci.md": "c746d63d9ae0a3b550ffc0d66c0f5c6b66453ea4f0d6fa7d3a22a9efe3646f3d",
+    "docs/runbooks/ci.md": "13de776661ac8af8525d5bb1e0ff95b077169bc4e6b981a053ee69b5030041ff",
     "docs/runbooks/database.md": "f590f6eaa7d0de2178ef55b3325d1252e6ebdedcb5dda42583aa5c375af0ea83",
-    "docs/runbooks/design-system.md": "7f1c955404dcd6f075c8a8e0fedbd2d5b411f0e30b0dde3c737ef915e7638c92",
+    "docs/runbooks/design-system.md": "b7d17dd2f75671478f4a9594e4e60fb0facc4b3cf3d30d8047ab7c96648e1dbe",
     "docs/runbooks/engine.md": "1d4def6a7a7e50fe41dc34760b07d8f61ddcf647ec6254d103dc04ba4e92ea00",
     "docs/runbooks/game-clocks.md": "ccf0c0118c869330a034a81073822981dcc15cfc1061981e8eaaf45de8f7c9fc",
     "docs/runbooks/live-matches.md": "821226c33cf5b895b36701549db5eb4d2d0a9d755b6303912ddf8bd3c49af46c",
@@ -2624,13 +2626,13 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "e747f7d411dea499b1c0fcfc4dd0c45400313eafa4670093e9b271ee75f2aacf",
+    "docs/validation/ux-design-system.md": "fbe41a0bc2f6e0ef6ba2ea1c5975ff3ff5f6baa1ae4e863989d40c75e9f883a8",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "03676795517478a3a22797ae3a223cb128136d2aa3ee769c42adb8067697d159",
+    "docs/vision/decision_register.csv": "f0b3b3e18b46981d195045879699ac3746c2203ef7cad41d5313b8c28adb49a9",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
     "docs/vision/initial_backlog.csv": "a574c9755c692b0d29ef1ef7d7f4631ab1e974c0bb6dbf2124ccdf5862fd81ce",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
@@ -2642,7 +2644,7 @@
     "infra/README.md": "69d8d72eb0a04377a0dc5857ec4ed2d351080f146f74da6500bd721e271edda7",
     "infra/compose.ci.yaml": "cfc81e5cd72a717a2a5fe02d9649853a25ce5bc708bc8b33be66589b9728b208",
     "infra/compose.persistence.yaml": "21a987cefd5d5db3b19fb213a197f560b1bb3da9e111852ee9f619cec55e57f2",
-    "package.json": "44fd687644b5375feecef000e111651709391fcdcde6a21b04ace27506615b55",
+    "package.json": "76b68c2306eea74401179e92ce102f41f684e25c6e1adde61554a27ef8a357f4",
     "packages/contracts/README.md": "7afa269abe60d05a287d7d585a55807634f7283461bd4d1e51341cbdd17e49f9",
     "packages/contracts/package.json": "075d9c460d0ac7d4f2aee34d93a8aee03c262c615f4abcd3ef9cd01965fa2e50",
     "packages/contracts/src/clocks-v1.ts": "61cf2b721ec43d4637f67422990b9f7ffb5296fa06cada971d9b2028b867ec48",
@@ -2959,10 +2961,11 @@
     "scripts/browser-boundary-plugin.mjs": "3ae3d2a153479ab161ab2919b33433f4ab5eb7140a6208bf05b07d95a291fc3f",
     "scripts/check-boundaries.mjs": "7667a22110f6b740b3254f46f1aac4632443403e7a80d09cd05a3a1842d7cb00",
     "scripts/check-documentation.mjs": "f5054a69f72c2e57112b3983f941020957c86a7ee82eb890e0a3d3434a97df99",
-    "scripts/ci-local.py": "3a4bc360b36b70c708afaa20b2e6ea3b7dc5e34dc86253a77c41cf9973b4c858",
+    "scripts/ci-local.py": "5830ebbaf8edbf4d0e2c8369117a8b6a1ba8db5757fe7a858ad6154d49094cf5",
     "scripts/ci/artifacts.mjs": "d5b0eae7ef8f94eb424900f378e05f23a49ee24638e5fec5a079e51286785b8c",
-    "scripts/ci/check-config.py": "d5e40560338bc1e1f8a07dc8fbd76552ed8cb0d35dcbb0694fbd06a3a928eb6a",
-    "scripts/ci/pipeline.mjs": "3995750b50f3668366757221f9c97d6474f3e4026ddf85d6358fc320842742a1",
+    "scripts/ci/check-config.py": "e451b612b824bc937e66d9ffad0dc8b75f35530eacc44041849cbabb212f06f3",
+    "scripts/ci/design-system.mjs": "e4fd151c5a02c76cdfb0c0a0a430774cf62f0c39314f715bea2303ea2a3f93ea",
+    "scripts/ci/pipeline.mjs": "4772ff6ec757b4cfef2581dde7460fbda3ab7d23949f466dde9d2d4b5b56b2ea",
     "scripts/ci/policy.json": "e27aba66cf4c0592914080e51471091a34363722ba9eba97674075639f60ed13",
     "scripts/ci/security.mjs": "eac8795c0a1034509298fef0a04f1626935501fbad23305be54ddd4a9a9bc3b5",
     "scripts/db-check.mjs": "2420d9710c111f64884a705fbb38696a951eaca5038ab7bf4a71020ea69ed1f5",
@@ -2999,7 +3002,7 @@
     "scripts/verify-config.py": "51d0e63240991b0fa1187a3bc157bd166caf3a2e1ca17abeb271b56901728046",
     "scripts/verify.mjs": "c696673b52eb3e6fa97f6b1cb8016c480c2e0403eddd9777c5429bb152fd06df",
     "tests/ci/gates.test.mjs": "c46edd78c4f2395ddc111f9e6807b5ddec9844e9e217d479cdeb693aaad920bb",
-    "tests/ci/launcher.test.py": "fff3c486ed15db9e6e46ada3121dfa98c7ddbaae43d1f62a593a1529c1988400",
+    "tests/ci/launcher.test.py": "e9a0d0e9c8ee3d5fbf3e44255f96751b89cf50e313e57a4cc4b69cfa22a9b398",
     "tests/database/persistence-proof.test.py": "d854939765c1f221448273aa7566405597d10b4c275b2e679ebe05dfde1cf9c9",
     "tests/documentation/browser-cache.test.mjs": "fd28ac4a378eda50b15e3a991a748138d52e7a63745fb434ced75b067b476536",
     "tests/documentation/evidence.test.mjs": "f6a15cbc1c3d9f44c5cb1945b7b8a1d8d24663edeeb1277ca7b8d1cc72e63309",
@@ -24479,7 +24482,7 @@
     {
       "file": "scripts/ci-local.py",
       "name": "interrupted",
-      "line": 131,
+      "line": 133,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "_signal, _frame"
@@ -24682,6 +24685,33 @@
       "signature": "workflow, compose, toolchain"
     },
     {
+      "file": "scripts/ci/design-system.mjs",
+      "name": "designSystemPipeline",
+      "line": 14,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root, env = process.env",
+      "sha256": "7afe2861602b90e21447c87add6fe97825593741ad15cff553af107d63cf5e54"
+    },
+    {
+      "file": "scripts/ci/design-system.mjs",
+      "name": "<callback>",
+      "line": 16,
+      "column": 49,
+      "kind": "ArrowFunction",
+      "signature": "command, name",
+      "sha256": "6e54c46c952e051d973ba99c94a1df7e2aa435d8586bf669b1cb67870b97be46"
+    },
+    {
+      "file": "scripts/ci/design-system.mjs",
+      "name": "<callback>",
+      "line": 21,
+      "column": 61,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "1d281f7403e6cb9573c10d9bf8b8e703e18fcd819e1c6596ca84a4bc4ab0e85a"
+    },
+    {
       "file": "scripts/ci/pipeline.mjs",
       "name": "assertIsolation",
       "line": 9,
@@ -24706,12 +24736,12 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, env=process.env",
-      "sha256": "f5d83763c62ea531845c0f4de044284d740efc8647ed1989c4b99ac3c38d6b93"
+      "sha256": "4d6127068d7434d6b0d43886ef29f6df5b4a488655f80c1ed6447eae5942207b"
     },
     {
       "file": "scripts/ci/pipeline.mjs",
       "name": "<callback>",
-      "line": 41,
+      "line": 40,
       "column": 34,
       "kind": "ArrowFunction",
       "signature": "command, name",
@@ -24720,7 +24750,7 @@
     {
       "file": "scripts/ci/pipeline.mjs",
       "name": "<callback>",
-      "line": 46,
+      "line": 45,
       "column": 166,
       "kind": "ArrowFunction",
       "signature": "roles",
@@ -28239,7 +28269,7 @@
     },
     {
       "file": "tests/ci/launcher.test.py",
-      "name": "test_image_is_removed_after_post_build_setup_failure",
+      "name": "test_design_system_suite_runs_its_own_pipeline_and_publishes_without_artifacts",
       "line": 69,
       "column": 5,
       "kind": "FunctionDef",
@@ -28247,8 +28277,48 @@
     },
     {
       "file": "tests/ci/launcher.test.py",
+      "name": "copy_source",
+      "line": 75,
+      "column": 9,
+      "kind": "FunctionDef",
+      "signature": "_root, source"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "run",
+      "line": 79,
+      "column": 9,
+      "kind": "FunctionDef",
+      "signature": "command, cwd=None, **_options"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "compose",
+      "line": 84,
+      "column": 9,
+      "kind": "FunctionDef",
+      "signature": "_env, *args, **_options"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "test_design_system_suite_refuses_the_artifact_upload_directory",
+      "line": 98,
+      "column": 5,
+      "kind": "FunctionDef",
+      "signature": "self"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "test_image_is_removed_after_post_build_setup_failure",
+      "line": 103,
+      "column": 5,
+      "kind": "FunctionDef",
+      "signature": "self"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
       "name": "test_image_cleanup_failure_cannot_publish_or_print_pass",
-      "line": 73,
+      "line": 107,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28256,7 +28326,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "test_first_cancel_during_cleanup_cannot_publish",
-      "line": 78,
+      "line": 112,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28264,7 +28334,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "test_known_original_credential_is_rejected_in_removed_history",
-      "line": 83,
+      "line": 117,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28272,7 +28342,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "git",
-      "line": 87,
+      "line": 121,
       "column": 13,
       "kind": "FunctionDef",
       "signature": "*args"
@@ -28280,7 +28350,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "test_only_uuid_project_can_be_cleaned",
-      "line": 105,
+      "line": 139,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28288,7 +28358,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "test_cleanup_verifies_remaining_owned_resources",
-      "line": 111,
+      "line": 145,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28296,7 +28366,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "test_cleanup_checks_stopped_owned_containers",
-      "line": 120,
+      "line": 154,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28304,7 +28374,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "run",
-      "line": 122,
+      "line": 156,
       "column": 9,
       "kind": "FunctionDef",
       "signature": "command, **_kwargs"
@@ -28312,7 +28382,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "test_source_copy_rejects_private_paths_and_symlinks",
-      "line": 128,
+      "line": 162,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28320,7 +28390,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "test_command_failure_does_not_print_captured_private_output",
-      "line": 140,
+      "line": 174,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28328,7 +28398,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "test_workflow_guards_shallow_history_permissions_mutable_actions_and_failure_upload",
-      "line": 146,
+      "line": 180,
       "column": 5,
       "kind": "FunctionDef",
       "signature": "self"
@@ -28336,7 +28406,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "<lambda>",
-      "line": 151,
+      "line": 185,
       "column": 22,
       "kind": "Lambda",
       "signature": "w"
@@ -28344,7 +28414,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "<lambda>",
-      "line": 152,
+      "line": 186,
       "column": 22,
       "kind": "Lambda",
       "signature": "w"
@@ -28352,7 +28422,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "<lambda>",
-      "line": 153,
+      "line": 187,
       "column": 22,
       "kind": "Lambda",
       "signature": "w"
@@ -28360,7 +28430,7 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "<lambda>",
-      "line": 154,
+      "line": 188,
       "column": 22,
       "kind": "Lambda",
       "signature": "w"
@@ -28368,7 +28438,47 @@
     {
       "file": "tests/ci/launcher.test.py",
       "name": "<lambda>",
-      "line": 155,
+      "line": 189,
+      "column": 22,
+      "kind": "Lambda",
+      "signature": "w"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "<lambda>",
+      "line": 190,
+      "column": 22,
+      "kind": "Lambda",
+      "signature": "w"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "<lambda>",
+      "line": 191,
+      "column": 22,
+      "kind": "Lambda",
+      "signature": "w"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "<lambda>",
+      "line": 192,
+      "column": 22,
+      "kind": "Lambda",
+      "signature": "w"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "<lambda>",
+      "line": 193,
+      "column": 22,
+      "kind": "Lambda",
+      "signature": "w"
+    },
+    {
+      "file": "tests/ci/launcher.test.py",
+      "name": "<lambda>",
+      "line": 194,
       "column": 22,
       "kind": "Lambda",
       "signature": "w"

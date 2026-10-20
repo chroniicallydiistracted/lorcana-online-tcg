@@ -1,0 +1,500 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261020-006",
+  "title": "Run the design-system suite as a separate parallel CI job (decision D18)",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-20T18:28:42.254Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "3997557be5cf1083acd477ae73ac694403bf7483",
+  "task_ids": [
+    "UX-03",
+    "BOOT-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-CI",
+    "F-DESIGN-SYSTEM",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "fix",
+      "description": "Hosted Foundation run 39461681606 on pull request #3 (3997557) failed: ci:verify hit its 900 s limit during the in-pipeline design-system-browser stage after about 826 s of existing stages (foundation 240 s, live-matches 343 s, browser 186 s). Director decision D18: run the design-system suite as a separate parallel CI job."
+    },
+    {
+      "kind": "implementation",
+      "description": "scripts/ci/design-system.mjs (pnpm ci:design-system) asserts isolation and runs the design-system gates, the pinned Chromium install and the Storybook/Playwright/axe suite. scripts/ci-local.py gains --suite design-system, reusing the isolated copy, image, Compose project, credential checks and cleanup; that suite publishes host.json only and refuses the foundation upload directory. The workflow adds a parallel design-system job; scripts/ci/check-config.py validates both jobs; the foundation pipeline drops the design-system-browser stage (14 stages, unchanged budget)."
+    },
+    {
+      "kind": "test",
+      "description": "tests/ci/launcher.test.py adds the design-system suite success path, the upload refusal and five workflow mutations (12 tests). RUN-20261020-032 (isolated design-system suite) passed before a final-message fix; RUN-20261020-033 (configuration and workflow checks, typecheck, lint, full suite: 399 Node, 26 Python, upstream 406/1 skip, 2 injection) and RUN-20261020-034 (isolated design-system suite: 30 gates, Chromium install, 150/150) pass at fingerprint 44591181. RUN-20261020-035 failed at docs:check because the verified features had not yet been re-bound to the new fingerprint."
+    },
+    {
+      "kind": "test",
+      "description": "RUN-20261020-036: isolated foundation pipeline passed all 14 stages in 539 s (484 Node, 26 Python, upstream 406/1 skip, 2 injection, 13 web Chromium, Lab workers)."
+    }
+  ],
+  "files": [
+    ".github/workflows/foundation.yml",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/adr/0017-technical-design-system.md",
+    "docs/changes/CHG-20261020-006.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/ci.md",
+    "docs/runbooks/design-system.md",
+    "docs/validation/logs/RUN-20261020-032.txt",
+    "docs/validation/logs/RUN-20261020-033.txt",
+    "docs/validation/logs/RUN-20261020-034.txt",
+    "docs/validation/logs/RUN-20261020-035.txt",
+    "docs/validation/logs/RUN-20261020-036.txt",
+    "docs/validation/logs/RUN-20261020-037.txt",
+    "docs/validation/runs/RUN-20261020-032.json",
+    "docs/validation/runs/RUN-20261020-033.json",
+    "docs/validation/runs/RUN-20261020-034.json",
+    "docs/validation/runs/RUN-20261020-035.json",
+    "docs/validation/runs/RUN-20261020-036.json",
+    "docs/validation/runs/RUN-20261020-037.json",
+    "docs/validation/ux-design-system.md",
+    "docs/vision/decision_register.csv",
+    "package.json",
+    "scripts/ci-local.py",
+    "scripts/ci/check-config.py",
+    "scripts/ci/design-system.mjs",
+    "scripts/ci/pipeline.mjs",
+    "tests/ci/launcher.test.py"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Status line: the Playwright/axe suite runs as the parallel design-system CI job (D18)."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Same status-line correction as AGENTS.md."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Same status-line correction as AGENTS.md."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "updated",
+      "reason": "Dated amendment: browser evidence runs as a separate parallel CI job (D18)."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "updated",
+      "reason": "Dated section: parallel design-system job, launcher --suite option, suite stages, config checks; supersedes the in-pipeline stage note."
+    },
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "updated",
+      "reason": "Checks section: CI runs the gates and browser suite in the parallel design-system job."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "New D18: run the design-system suite as a separate parallel CI job."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Every verified feature also cites RUN-20261020-033; F-DESIGN-SYSTEM cites RUN-20261020-033/034."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Dated section: hosted timeout, decision D18, the parallel job and its receipts."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Updated for CHG-20261020-006 and the parallel job."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Regenerated by docs sync."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Regenerated by docs sync."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-03 plan; the current job layout is recorded in the CI runbook and D18."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Artifact qualification is unchanged: only the foundation job builds and uploads artifacts; the design-system job uploads none."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Historical BOOT-03 pipeline evidence; the current two-job layout is documented in docs/runbooks/ci.md."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/templates/card-certification.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0011-sourced-rule-scenarios.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/rules-certification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/clock-investigation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/contracts/viewer.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/viewer-privacy.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/play-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/validation/play-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about CI job layout, the launcher suite option or the design-system pipeline that this change contradicts."
+    },
+    {
+      "path": "docs/schemas/card-certification.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema/template unaffected: the CI job layout change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/change.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema/template unaffected: the CI job layout change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/documentation-map.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema/template unaffected: the CI job layout change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/features.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema/template unaffected: the CI job layout change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/run.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema/template unaffected: the CI job layout change alters no record, artifact or evidence format."
+    },
+    {
+      "path": "docs/schemas/state.schema.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema/template unaffected: the CI job layout change alters no record, artifact or evidence format."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261020-032.json",
+      "outcome": "passed",
+      "scope": "Isolated design-system suite at fingerprint 23e1687c, before the launcher's final-message fix."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261020-033.json",
+      "outcome": "passed",
+      "scope": "Configuration contract, workflow check, typecheck, lint and full suite at the final fingerprint."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261020-034.json",
+      "outcome": "passed",
+      "scope": "Isolated design-system suite at the final fingerprint: 30 gates, pinned Chromium, 150/150."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261020-035.json",
+      "outcome": "failed",
+      "scope": "Isolated foundation pipeline: docs:check refused before the verified features were re-bound to the new fingerprint (ordering)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261020-036.json",
+      "outcome": "passed",
+      "scope": "Isolated foundation pipeline at the final fingerprint: all 14 stages in 539 s."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261020-037.json",
+      "outcome": "passed",
+      "scope": "docs:check over this record and the updated documents (static)."
+    }
+  ],
+  "limitations": [
+    "Hosted execution of the new job is not yet observed at this checkpoint."
+  ],
+  "next_actions": [
+    "Run the isolated foundation pipeline at the final fingerprint, record docs:check and finalize; push and check both hosted jobs on pull request #3."
+  ]
+}

@@ -59,7 +59,7 @@ Only token variables are allowed. If a value genuinely cannot be a token (overla
   - the fan-content notice wording;
   - renderer colour spaces;
   - the no-Babylon/no-server import rule.
-- `pnpm --filter @lorcana/design-system test:browser` builds Storybook and serves it on 127.0.0.1:6007. It then runs the Playwright and axe Chromium suite. The CI stage `design-system-browser` runs the same suite.
+- `pnpm --filter @lorcana/design-system test:browser` builds Storybook and serves it on 127.0.0.1:6007. It then runs the Playwright and axe Chromium suite. In CI, the parallel `design-system` job runs the gates and this suite in the isolated container (`python3 scripts/ci-local.py --suite design-system`, decision D18).
 - `pnpm --filter @lorcana/design-system storybook` starts the development server on port 6006 with telemetry disabled.
 
 ## Fonts

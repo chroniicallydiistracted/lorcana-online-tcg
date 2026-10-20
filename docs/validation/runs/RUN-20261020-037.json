@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-037",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "-s",
+    "docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3997557be5cf1083acd477ae73ac694403bf7483",
+  "source_fingerprint": "44591181ce2f28af5d51eda07bbfac437b8346522ce0359dd9df1d4fab7eb54b",
+  "started_at": "2026-10-20T18:41:25.406Z",
+  "finished_at": "2026-10-20T18:41:54.883Z",
+  "recorded_at": "2026-10-20T18:41:54.883Z",
+  "time_precision": "exact",
+  "elapsed_ms": 29479,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "docs:check over the parallel design-system CI job change",
+  "log_path": "docs/validation/logs/RUN-20261020-037.txt",
+  "log_sha256": "e27d280c53bac82e1937cf66fbde655f96457b45847402be9456c729f5850f1e",
+  "redactions": 0
+}

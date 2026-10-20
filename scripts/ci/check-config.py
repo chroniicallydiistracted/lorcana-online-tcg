@@ -13,7 +13,7 @@ def validate(workflow, compose, toolchain):
     assert triggers['push']['branches'] == ['main']
     assert workflow['permissions'] == {'contents': 'read'}
     assert workflow['concurrency']['cancel-in-progress'] is True
-    assert set(workflow['jobs']) == {'foundation'}
+    assert set(workflow['jobs']) == {'foundation', 'design-system'}
     job = workflow['jobs']['foundation']
     assert set(job) == {'runs-on', 'timeout-minutes', 'steps'}
     assert job['runs-on'] == 'ubuntu-24.04' and job['timeout-minutes'] == 30
@@ -30,6 +30,14 @@ def validate(workflow, compose, toolchain):
     assert upload['with']['path'] == '.local/ci-upload/artifacts/'
     assert upload['with']['include-hidden-files'] is False
     assert upload['with']['if-no-files-found'] == 'error' and upload['with']['retention-days'] == 14
+    # Parallel design-system job (decision D18): same pinned checkout and isolated launcher, no upload.
+    design = workflow['jobs']['design-system']
+    assert set(design) == {'runs-on', 'timeout-minutes', 'steps'}
+    assert design['runs-on'] == 'ubuntu-24.04' and design['timeout-minutes'] == 30
+    design_checkout, design_pipeline = design['steps']
+    assert design_checkout == checkout
+    assert set(design_pipeline) == {'name', 'run'}
+    assert design_pipeline['run'] == 'python3 scripts/ci-local.py --suite design-system'
     assert '${{ secrets.' not in json.dumps(workflow)
     services = compose['services']
     assert set(services) == {'runner', 'postgres'}

@@ -34,6 +34,7 @@
     "db:test": "pnpm --filter @lorcana/db... build && pnpm --filter @lorcana/db test:integration",
     "test:database-tooling": "python3 tests/database/persistence-proof.test.py",
     "ci:verify": "node scripts/ci/pipeline.mjs",
+    "ci:design-system": "node scripts/ci/design-system.mjs",
     "ci:config": "python3 scripts/ci/check-config.py",
     "ci:artifacts": "node scripts/ci/artifacts.mjs",
     "test:ci": "node --test --test-concurrency=1 tests/ci/*.test.mjs && python3 tests/ci/launcher.test.py",

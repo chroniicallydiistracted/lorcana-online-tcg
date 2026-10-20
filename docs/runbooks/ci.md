@@ -92,3 +92,14 @@ The foundation test "development supervisor rejects a busy service port…" runs
 A fifteenth stage, `design-system-browser`, runs after `browser`. It executes `pnpm --filter @lorcana/design-system test:browser`, which builds Storybook statically, serves it on 127.0.0.1:6007 and runs the Playwright and axe Chromium suite. It reuses the Chromium installed by `pinned-chromium`, since both workspaces pin Playwright 1.63.0.
 
 Decision D16 (Director, 2026-10-20) adds `CC-BY-4.0` to `scripts/ci/policy.json` so that Storybook's build-time `caniuse-lite` data can pass the license gate; attribution is carried in the generated third-party notices. `pnpm-workspace.yaml` denies esbuild's postinstall (`allowBuilds: { esbuild: false }`), and the lockfile-pinned platform binary is used instead. See [ADR 0017](../adr/0017-technical-design-system.md) and CHG-20261020-004.
+
+## Parallel design-system job — 2026-10-20 UTC
+
+Decision D18 supersedes the in-pipeline `design-system-browser` stage described above. Hosted run 39461681606 hit the 900 s `ci:verify` limit while that stage was running.
+- **Workflow:** `.github/workflows/foundation.yml` now has two parallel jobs.
+  - `foundation`: unchanged, with 14 stages and the artifact upload.
+  - `design-system`: runs `python3 scripts/ci-local.py --suite design-system`.
+- **Design-system suite:** it reuses the launcher's isolated source copy, workspace image, disposable Compose project, credential checks and cleanup. Inside the container, `pnpm ci:design-system` (`scripts/ci/design-system.mjs`) asserts isolation and runs three stages: the design-system gates, the pinned Chromium install and the Storybook/Playwright/axe suite. It uploads no artifacts and refuses the foundation upload directory.
+- **Config checks:** `scripts/ci/check-config.py` validates both jobs, and `tests/ci/launcher.test.py` covers the new suite and the workflow mutations.
+
+Local equivalent: `python3 scripts/ci-local.py --suite design-system [--evidence-id RUN-…]`. See CHG-20261020-006.

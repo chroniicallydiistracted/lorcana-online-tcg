@@ -92,3 +92,7 @@ Recorded for the Director's review; none changes an established decision.
 - **Style Dictionary's built-in transforms.** Rejected: its documentation states incomplete DTCG 2025.10 support. Our formatters handle the subset's value objects explicitly, and resolution is cross-checked.
 - **A custom workbench instead of Storybook.** Rejected by the Director in favour of the planned Storybook baseline (D16).
 - **A Vitest/jsdom component suite.** jsdom is not in the baseline, and real-browser Playwright evidence is stronger for focus, layout and contrast.
+
+## Amendment — 2026-10-20 UTC (decision D18)
+
+The browser evidence of decision item 8 now runs as a separate parallel CI job, `design-system`, rather than a stage inside the foundation pipeline, which keeps its 900 s budget. Both use the same isolated launcher and container. See [the CI runbook](../runbooks/ci.md) and CHG-20261020-006.

@@ -65,3 +65,18 @@ Recorded 2026-10-20T16:51:24.232Z (CHG-20261020-005).
   - **RUN-20261020-028, passed:** configuration contract, typecheck, lint and full suite (399 Node, 24 Python, upstream 406/1 skip, 2 injection).
   - **RUN-20261020-029, passed:** Chromium suite, 150/150.
 - **Not re-run:** the local isolated pipeline (RUN-026 passed all 15 stages one fingerprint earlier, and the only source change is this attribute). The hosted run on a real checkout is the check that matters for this fix.
+
+## Parallel design-system CI job — 2026-10-20 UTC
+
+Recorded 2026-10-20T18:28:42.254Z (CHG-20261020-006).
+- **Hosted failure:** run 39461681606 on pull request #3 failed when `ci:verify` reached its 900 s limit. The in-pipeline design-system stage was running after about 826 s of existing stages: foundation 240 s, live-matches 343 s, browser 186 s.
+- **Decision D18:** the Director chose a separate parallel CI job.
+- **Implementation:** `python3 scripts/ci-local.py --suite design-system` runs `pnpm ci:design-system` in the same isolated container. Its three stages are the gates, the pinned Chromium install and the browser suite. The foundation pipeline is back to 14 stages.
+- **Evidence at the final fingerprint `44591181ce2f28af5d51eda07bbfac437b8346522ce0359dd9df1d4fab7eb54b`:**
+  - **RUN-20261020-033, passed:** configuration and workflow checks, typecheck, lint and full suite (399 Node, 26 Python, upstream 406/1 skip, 2 injection).
+  - **RUN-20261020-034, passed:** isolated design-system suite in 108 s (30 gates, Chromium install, 150/150).
+  - **RUN-20261020-036, passed:** isolated foundation pipeline, all 14 stages in 539 s (484 Node, 26 Python, 406/1 skip, 2 injection, 13 web Chromium, Lab workers).
+- **Earlier receipts:**
+  - **RUN-20261020-032, passed:** the same suite before a fix to the launcher's final message.
+  - **RUN-20261020-035, failed:** its `docs:check` ran before the verified features were re-bound to the new fingerprint.
+  - **RUN-20261020-037:** static `docs:check`.

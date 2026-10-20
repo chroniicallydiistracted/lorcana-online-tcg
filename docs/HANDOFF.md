@@ -1,6 +1,10 @@
 # Developer handoff
 
-Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes: CHG-20261020-004 (UX-01 technical design system, committed in 17b7b8f) and CHG-20261020-005 (font license line-ending correction), finalized with this checkpoint.
+Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes:
+
+- CHG-20261020-004 (UX-01 technical design system, 17b7b8f);
+- CHG-20261020-005 (font license line endings, 3997557);
+- CHG-20261020-006 (parallel design-system CI job, decision D18), finalized with this checkpoint.
 
 - **Objective and authorized scope:** the Director assigned UX-01 to this agent: build a full technical design system following `docs/vision/UX_UI_DESIGN_SYSTEM.md` and all repository requirements (decision D17). The Director also approved CC-BY-4.0 for Storybook's build-time data (D16).
 - **Repository:** /home/andre/lorcana-online-tcg, branch `claude/ux-design-system` from main 9081192. It holds d188387 (PLAY-04 closure, plus the draft committed byte-for-byte) and this checkpoint. Git supplies the resulting commit and dirty state.
@@ -30,7 +34,13 @@ Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display
   - dated notes in the CI runbook, the fan-content policy and the web README;
   - status lines and this handoff.
 - **Verification (exact timing):**
-  - **Final fingerprint `89f989ca1b7e4008084f0ecbf87e5628b3994725ed8b01e836d9893425c3c38c`:**
+  - **Final fingerprint `44591181ce2f28af5d51eda07bbfac437b8346522ce0359dd9df1d4fab7eb54b`:**
+    - RUN-20261020-033, passed: checks and full suite.
+    - RUN-20261020-034, passed: isolated design-system suite.
+    - RUN-20261020-036, passed: 14-stage foundation pipeline.
+    - RUN-20261020-037: docs check.
+  - **Earlier receipts:** RUN-032 (before the message fix) and RUN-035 (failed, ordering).
+  - **Fingerprint `89f989ca`:**
     - RUN-20261020-028, passed: configuration contract, typecheck, lint and full suite.
     - RUN-20261020-029, passed: Chromium 150/150.
     - RUN-20261020-030: failed (abbreviated commit SHA in the record).
@@ -54,6 +64,6 @@ Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display
   - PLAY-04 open items (point 4, finding 3, the D15 revisit, the lint and fingerprint scope follow-up);
   - AUTH-01.
 - **Next actions:**
-  1. **Agent:** push, open the pull request and check the hosted run.
+  1. **Agent:** push to PR #3 and check both hosted jobs (`foundation`, `design-system`).
   2. **Director:** review the interpretations and the card-font question; request the merge.
   3. **Then:** UX-01 reference screens (crowded match, practical deckbuilder, Collection binder, pack presentation).

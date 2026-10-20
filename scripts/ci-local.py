@@ -104,6 +104,8 @@ def cleanup(env):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evidence-id')
+    parser.add_argument('--suite', choices=('foundation', 'design-system'), default='foundation',
+                        help='foundation: the BOOT-03 pipeline; design-system: the parallel design-system job (decision D18)')
     options = parser.parse_args()
     if options.evidence_id and not re.fullmatch(r'RUN-\d{8}-\d{3}', options.evidence_id):
         raise RuntimeError('Invalid evidence ID')
@@ -119,7 +121,7 @@ def main():
     result = root / '.local/ci-results' / project
     upload = os.environ.get('LORCANA_CI_ARTIFACT_DIR')
     if upload:
-        if upload != '.local/ci-upload':
+        if upload != '.local/ci-upload' or options.suite != 'foundation':
             raise RuntimeError('Only the reviewed Actions upload directory is supported')
         result = root / upload
     if result.exists() or result.is_symlink():
@@ -161,9 +163,10 @@ def main():
             success = False
             try:
                 compose(env, 'up', '-d', '--wait', '--wait-timeout', '120', 'postgres', timeout=180)
-                command = ['pnpm', 'ci:verify']
+                command = ['pnpm', 'ci:verify'] if options.suite == 'foundation' else ['pnpm', 'ci:design-system']
+                summary = 'Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts' if options.suite == 'foundation' else 'Actual isolated design-system pipeline: frozen install, design-system gates, pinned Chromium and the Storybook/Playwright/axe suite'
                 if options.evidence_id:
-                    command = ['pnpm', 'evidence:run', '--id', options.evidence_id, '--category', 'container', '--summary', 'Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts', '--', *command]
+                    command = ['pnpm', 'evidence:run', '--id', options.evidence_id, '--category', 'container', '--summary', summary, '--', *command]
                 # Initial frozen install makes the recorder/schema tools available in a genuinely fresh copy.
                 compose(env, 'run', '--rm', 'runner', 'pnpm', 'install', '--frozen-lockfile')
                 compose(env, 'run', '--rm', 'runner', *command)
@@ -191,9 +194,10 @@ def main():
                 result.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
                 result.mkdir(mode=0o700)
                 result_created = True
-                shutil.copytree(local / 'ci-artifacts', result / 'artifacts')
-                (result / 'host.json').write_text(json.dumps({'project': project, 'workspace_image_id': image_id, 'owned_resources_remaining': 0, 'owned_image_removed': True, 'result': 'passed', 'source_copy': 'public working tree plus full Git ancestry'}, indent=2) + '\n')
-                print('PASS isolated pipeline and cleanup. Artifacts: ' + str(result / 'artifacts'))
+                if options.suite == 'foundation':
+                    shutil.copytree(local / 'ci-artifacts', result / 'artifacts')
+                (result / 'host.json').write_text(json.dumps({'project': project, 'suite': options.suite, 'workspace_image_id': image_id, 'owned_resources_remaining': 0, 'owned_image_removed': True, 'result': 'passed', 'source_copy': 'public working tree plus full Git ancestry'}, indent=2) + '\n')
+                print('PASS isolated pipeline and cleanup. ' + ('Artifacts: ' + str(result / 'artifacts') if options.suite == 'foundation' else 'Result: ' + str(result / 'host.json')))
     except BaseException:
         if result_created:
             shutil.rmtree(result)
