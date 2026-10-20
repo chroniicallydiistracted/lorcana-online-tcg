@@ -80,3 +80,15 @@ Recorded 2026-10-20T18:28:42.254Z (CHG-20261020-006).
   - **RUN-20261020-032, passed:** the same suite before a fix to the launcher's final message.
   - **RUN-20261020-035, failed:** its `docs:check` ran before the verified features were re-bound to the new fingerprint.
   - **RUN-20261020-037:** static `docs:check`.
+
+## Pipeline time limit — 2026-10-20 UTC
+
+Recorded 2026-10-20T20:42:22.503Z (CHG-20261020-007).
+- **Hosted failure:** in run 39477270644 on pull request #3, the new `design-system` job passed in about 3 minutes. The `foundation` job still hit the 900 s `ci:verify` limit after its 14 stages had taken 866 s (foundation 243 s, live-matches 347 s, browser 187 s, engine-browser 32 s). The same D13 source took 698 s and 888 s in earlier hosted runs, so this is runner variance, not the design system.
+- **Decision D19:** the Director chose to raise the isolated pipeline command limit to 1500 s. The Actions job limit stays at 30 minutes.
+- **Evidence at the final fingerprint `94cbd3d21520ad9c909b7de9245a216b6e666d3a8fa2be11b5daf3c16e309857`, all passed:**
+  - **RUN-20261020-038:** configuration and workflow checks, typecheck, lint and full suite (399 Node, 26 Python, upstream 406/1 skip, 2 injection).
+  - **RUN-20261020-039:** isolated design-system suite in 107 s (30 gates, Chromium install, 150/150).
+  - **RUN-20261020-040:** isolated foundation pipeline, all 14 stages in 545 s (484 Node, 26 Python, 406/1 skip, 2 injection, 13 web Chromium, Lab workers).
+  - **RUN-20261020-041:** static `docs:check`, passed.
+- **Limit:** a local run cannot reproduce the hosted runner's speed, so the hosted run is the real check of this fix.

@@ -96,3 +96,7 @@ Recorded for the Director's review; none changes an established decision.
 ## Amendment — 2026-10-20 UTC (decision D18)
 
 The browser evidence of decision item 8 now runs as a separate parallel CI job, `design-system`, rather than a stage inside the foundation pipeline, which keeps its 900 s budget. Both use the same isolated launcher and container. See [the CI runbook](../runbooks/ci.md) and CHG-20261020-006.
+
+## Amendment — 2026-10-20 UTC (decision D19)
+
+The previous amendment said the foundation pipeline keeps its 900 s budget. Hosted run 39477270644 then timed out without the design-system stage, so decision D19 raises the isolated pipeline command limit to 1500 s for both jobs. See CHG-20261020-007.

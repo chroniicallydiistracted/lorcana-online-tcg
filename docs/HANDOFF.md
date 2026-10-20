@@ -1,10 +1,11 @@
 # Developer handoff
 
-Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes:
+Observed at: 2026-10-20T20:42:22.503Z (record time of CHG-20261020-007); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes:
 
 - CHG-20261020-004 (UX-01 technical design system, 17b7b8f);
 - CHG-20261020-005 (font license line endings, 3997557);
-- CHG-20261020-006 (parallel design-system CI job, decision D18), finalized with this checkpoint.
+- CHG-20261020-006 (parallel design-system CI job, decision D18, b6a5b50);
+- CHG-20261020-007 (isolated pipeline command limit 1500 s, decision D19), finalized with this checkpoint.
 
 - **Objective and authorized scope:** the Director assigned UX-01 to this agent: build a full technical design system following `docs/vision/UX_UI_DESIGN_SYSTEM.md` and all repository requirements (decision D17). The Director also approved CC-BY-4.0 for Storybook's build-time data (D16).
 - **Repository:** /home/andre/lorcana-online-tcg, branch `claude/ux-design-system` from main 9081192. It holds d188387 (PLAY-04 closure, plus the draft committed byte-for-byte) and this checkpoint. Git supplies the resulting commit and dirty state.
@@ -19,7 +20,7 @@ Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display
   - **Foundation:** `DesignSystemProvider`, versioned preferences and externalized strings with a pseudolocale.
   - **Components:** 46 experimental components with §13 contracts and 190/190 state stories.
   - **Gates:** style ownership and component contracts.
-  - **Storybook and CI:** Storybook 10.6.1, plus the CI stage `design-system-browser` running Playwright and axe.
+  - **Storybook and CI:** Storybook 10.6.1. Playwright and axe run in the parallel CI job `design-system` (D18). The isolated pipeline command limit is 1500 s (D19).
   - **Web app:** `apps/web` uses the provider, components and tokens, and shows the fan-content notice.
   - **Policy and tooling:**
     - `allowBuilds: { esbuild: false }`, enforced by `scripts/verify-config.py`;
@@ -34,7 +35,12 @@ Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display
   - dated notes in the CI runbook, the fan-content policy and the web README;
   - status lines and this handoff.
 - **Verification (exact timing):**
-  - **Final fingerprint `44591181ce2f28af5d51eda07bbfac437b8346522ce0359dd9df1d4fab7eb54b`:**
+  - **Final fingerprint `94cbd3d21520ad9c909b7de9245a216b6e666d3a8fa2be11b5daf3c16e309857`:**
+    - RUN-20261020-038, passed: checks and full suite.
+    - RUN-20261020-039, passed: isolated design-system suite, 107 s.
+    - RUN-20261020-040, passed: 14-stage foundation pipeline, 545 s.
+    - RUN-20261020-041: docs check.
+  - **Fingerprint `44591181`:**
     - RUN-20261020-033, passed: checks and full suite.
     - RUN-20261020-034, passed: isolated design-system suite.
     - RUN-20261020-036, passed: 14-stage foundation pipeline.
@@ -53,7 +59,7 @@ Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display
   - **Earlier receipts:** RUN-018 (superseded), RUN-019 (failed `source_changed`), RUN-020 to RUN-022 (passed at the earlier fingerprint) and RUN-023 (failed at the configuration contract). All are retained and explained in the validation record.
 - **Listeners/resources:** no owned processes or listeners remain. `.env.local`, `.local/database.json`, the database volume and the Director's root file `inkspire-interface-typography.png` are untouched. No host setting changed.
 - **Pending gates:**
-  - the hosted Foundation run on this branch's pull request, then the main fast-forward, which needs the Director's explicit push request;
+  - a passing hosted run of both jobs on this branch's pull request, then the main fast-forward, which needs the Director's explicit push request;
   - the Director's review of the ADR 0017 interpretations;
   - a usage basis for the card fonts;
   - UX-01 reference screens and visual approval;
@@ -64,6 +70,6 @@ Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display
   - PLAY-04 open items (point 4, finding 3, the D15 revisit, the lint and fingerprint scope follow-up);
   - AUTH-01.
 - **Next actions:**
-  1. **Agent:** push to PR #3 and check both hosted jobs (`foundation`, `design-system`).
+  1. **Agent:** push to PR #3 and check both hosted jobs (`foundation`, `design-system`). Earlier hosted runs: 39461681606 failed (900 s limit, in-pipeline stage); 39477270644 passed `design-system` but `foundation` hit 900 s (runner variance, D19).
   2. **Director:** review the interpretations and the card-font question; request the merge.
   3. **Then:** UX-01 reference screens (crowded match, practical deckbuilder, Collection binder, pack presentation).

@@ -103,3 +103,7 @@ Decision D18 supersedes the in-pipeline `design-system-browser` stage described 
 - **Config checks:** `scripts/ci/check-config.py` validates both jobs, and `tests/ci/launcher.test.py` covers the new suite and the workflow mutations.
 
 Local equivalent: `python3 scripts/ci-local.py --suite design-system [--evidence-id RUN-…]`. See CHG-20261020-006.
+
+## Pipeline time limit — 2026-10-20 UTC
+
+Decision D19 raises the limit on the one isolated pipeline command (`pnpm ci:verify` or `pnpm ci:design-system`) from 900 s to 1500 s (`PIPELINE_TIMEOUT` in `scripts/ci-local.py`). The Actions job limit stays at 30 minutes. Hosted run 39477270644 timed out in the foundation job after its 14 stages had taken 866 s. Earlier hosted runs on the same D13 source took 698 s and 888 s for the whole pipeline step, so runner variance alone exceeded the old margin. Other commands keep their existing limits. See CHG-20261020-007.

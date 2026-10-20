@@ -81,13 +81,17 @@ class Safety(unittest.TestCase):
             if command[0] == 'python3':
                 (cwd / '.env.local').write_text('POSTGRES_DB=lorcana_local\n')
             return 'sha256:' + 'a' * 64 if command[:3] == ['docker', 'image', 'inspect'] else ''
-        def compose(_env, *args, **_options):
+        timeouts = {}
+        def compose(_env, *args, **options):
             compose_calls.append(list(args))
+            timeouts[tuple(args)] = options.get('timeout')
         output = io.StringIO()
         with patch.object(launcher, '__file__', str(root / 'scripts/ci-local.py')), patch.object(launcher, 'copy_source', side_effect=copy_source), patch.object(launcher, 'run', side_effect=run), patch.object(launcher, 'compose', side_effect=compose), patch.object(launcher, 'cleanup'), patch.object(launcher.signal, 'signal', return_value=launcher.signal.SIG_DFL), patch.object(launcher.os, 'getuid', return_value=1000), patch.object(launcher.os, 'getgid', return_value=1000), patch.object(launcher.os, 'environ', {'PATH': '/fixture'}), patch('sys.argv', ['ci-local.py', '--suite', 'design-system']), contextlib.redirect_stdout(output):
             launcher.main()
         self.assertIn(['run', '--rm', 'runner', 'pnpm', 'ci:design-system'], compose_calls)
         self.assertNotIn(['run', '--rm', 'runner', 'pnpm', 'ci:verify'], compose_calls)
+        self.assertEqual(timeouts[('run', '--rm', 'runner', 'pnpm', 'ci:design-system')], launcher.PIPELINE_TIMEOUT)
+        self.assertEqual(launcher.PIPELINE_TIMEOUT, 1500)
         results = list((root / '.local/ci-results').iterdir())
         self.assertEqual(len(results), 1)
         host = json.loads((results[0] / 'host.json').read_text())

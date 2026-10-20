@@ -12,6 +12,10 @@ import tempfile
 import uuid
 
 
+# Wall budget for one isolated pipeline command (decision D19: 25 minutes, inside the 30-minute Actions job).
+PIPELINE_TIMEOUT = 1500
+
+
 def run(command, cwd=None, env=None, capture=False, timeout=900):
     result = subprocess.run(command, cwd=cwd, env=env, text=True,
                             stdout=subprocess.PIPE if capture else None,
@@ -169,7 +173,7 @@ def main():
                     command = ['pnpm', 'evidence:run', '--id', options.evidence_id, '--category', 'container', '--summary', summary, '--', *command]
                 # Initial frozen install makes the recorder/schema tools available in a genuinely fresh copy.
                 compose(env, 'run', '--rm', 'runner', 'pnpm', 'install', '--frozen-lockfile')
-                compose(env, 'run', '--rm', 'runner', *command)
+                compose(env, 'run', '--rm', 'runner', *command, timeout=PIPELINE_TIMEOUT)
                 success = True
             finally:
                 cleanup_active = True
