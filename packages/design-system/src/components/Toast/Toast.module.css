@@ -1,0 +1,26 @@
+.region { position: fixed; inset-block-end: var(--is-space-4); inset-inline-end: var(--is-space-4); z-index: 110; /* token-exception: toast stacking above dialogs */ display: flex; flex-direction: column-reverse; gap: var(--is-space-2); outline: none; }
+.region[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--is-space-3);
+  inline-size: min(var(--is-component-tooltip-max-inline-size), calc(100vw - var(--is-space-8))); /* token-exception: viewport-relative cap */
+  padding: var(--is-space-3);
+  border: var(--is-border-width-1) solid var(--is-color-border-strong);
+  border-radius: var(--is-component-surface-radius);
+  background: var(--is-color-surface);
+  color: var(--is-color-text-primary);
+  box-shadow: var(--is-elevation-popover);
+  outline: none;
+}
+.toast[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.toast[data-tone="danger"] { border-color: var(--is-color-feedback-danger-border); }
+.toast[data-tone="warning"] { border-color: var(--is-color-feedback-warning-border); }
+.toast[data-tone="success"] { border-color: var(--is-color-feedback-success-border); }
+.content { display: flex; flex: 1; flex-direction: column; gap: var(--is-space-1); min-inline-size: 0; }
+.title { font: var(--is-typography-body-strong); overflow-wrap: anywhere; }
+.description { font: var(--is-typography-metadata); color: var(--is-color-text-supporting); overflow-wrap: anywhere; }
+.close { display: inline-flex; align-items: center; justify-content: center; inline-size: var(--is-component-control-min-size); block-size: var(--is-component-control-min-size); padding: 0; border: 0; border-radius: var(--is-component-control-radius); background: transparent; color: var(--is-color-text-primary); cursor: pointer; }
+.close[data-hovered] { background: var(--is-color-surface-state-hover); }
+.close[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: calc(var(--is-focus-width) * -1); }
+@media (forced-colors: active) { .toast { border-color: CanvasText; } }

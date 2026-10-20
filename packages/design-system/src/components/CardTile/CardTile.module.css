@@ -1,0 +1,11 @@
+.tile { display: flex; flex-direction: column; gap: var(--is-space-2); min-inline-size: 0; padding: var(--is-space-2); border: var(--is-border-width-1) solid var(--is-color-border-decorative); border-radius: var(--is-component-surface-radius); background: var(--is-color-surface); color: var(--is-color-text-primary); }
+.details { display: flex; flex-direction: column; gap: var(--is-space-1); min-inline-size: 0; }
+.name { display: flex; flex-direction: column; margin: 0; font: var(--is-typography-body-strong); overflow-wrap: anywhere; }
+.version { font: var(--is-typography-metadata); color: var(--is-color-text-supporting); }
+.meta { margin: 0; font: var(--is-typography-metadata); color: var(--is-color-text-supporting); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--is-space-1); }
+.ownership { display: flex; flex-direction: column; font: var(--is-typography-metadata); }
+.ownership[data-state="unavailable"], .ownership[data-state="unknown"] { color: var(--is-color-feedback-warning-foreground); }
+.ownership[data-state="unowned"], .ownership[data-state="loading"] { color: var(--is-color-text-supporting); }
+.counts { font-variant-numeric: tabular-nums; color: var(--is-color-text-supporting); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--is-space-1); margin-block-start: auto; }

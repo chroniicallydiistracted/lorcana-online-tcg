@@ -1,0 +1,176 @@
+{
+  "component": {
+    "$description": "Component contracts (standard §13). Components consume semantic or component tokens only.",
+    "control": {
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.4}",
+        "$description": "Control corner radius."
+      },
+      "min-size": {
+        "$type": "dimension",
+        "$value": "{size.target-min}",
+        "$description": "Minimum hit area for controls."
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.4}",
+        "$description": "Inline padding of text controls."
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "{space.2}",
+        "$description": "Gap between an icon and its label inside a control."
+      },
+      "border-width": {
+        "$type": "dimension",
+        "$value": "{border-width.1}",
+        "$description": "Control border width."
+      }
+    },
+    "surface": {
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.8}",
+        "$description": "Contained surface radius."
+      },
+      "padding": {
+        "$type": "dimension",
+        "$value": "{space.4}",
+        "$description": "Contained surface padding."
+      }
+    },
+    "field": {
+      "gap": {
+        "$type": "dimension",
+        "$value": "{space.2}",
+        "$description": "Label to field spacing."
+      }
+    },
+    "dialog": {
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.8}",
+        "$description": "Dialog radius."
+      },
+      "padding": {
+        "$type": "dimension",
+        "$value": "{space.6}",
+        "$description": "Dialog padding."
+      },
+      "inline-size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 32,
+          "unit": "rem"
+        },
+        "$description": "Default dialog width."
+      }
+    },
+    "sheet": {
+      "inline-size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 28,
+          "unit": "rem"
+        },
+        "$description": "Side sheet width in wide layouts."
+      }
+    },
+    "popover": {
+      "padding": {
+        "$type": "dimension",
+        "$value": "{space.2}",
+        "$description": "Popover padding."
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.8}",
+        "$description": "Popover radius."
+      }
+    },
+    "tooltip": {
+      "max-inline-size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 20,
+          "unit": "rem"
+        },
+        "$description": "Tooltip width cap."
+      }
+    },
+    "inspector": {
+      "gap": {
+        "$type": "dimension",
+        "$value": "{space.6}",
+        "$description": "Gap between inspector sections."
+      },
+      "reading": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.card-text}",
+          "fontSize": "{font.size.20}",
+          "lineHeight": "{font.line-height.28}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "$description": "Inspector reading presentation: rules text at 20/28 px (§7)."
+      }
+    },
+    "binder": {
+      "pocket": {
+        "$type": "dimension",
+        "$value": "{size.binder-pocket}",
+        "$description": "Preferred pocket width."
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "{size.binder-gap}",
+        "$description": "Pocket gap."
+      },
+      "face-padding": {
+        "$type": "dimension",
+        "$value": "{size.binder-face-padding}",
+        "$description": "Face padding."
+      }
+    },
+    "badge": {
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.4}",
+        "$description": "Badge radius."
+      },
+      "padding-inline": {
+        "$type": "dimension",
+        "$value": "{space.2}",
+        "$description": "Badge inline padding."
+      }
+    },
+    "icon": {
+      "size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "$description": "Standard interface icon optical size: 24 px at the default root on a 24 px grid."
+      },
+      "size-small": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.25,
+          "unit": "rem"
+        },
+        "$description": "Small interface icon size: 20 px at the default root."
+      },
+      "stroke": {
+        "$type": "number",
+        "$value": 2,
+        "$description": "Interface icon stroke width in grid units; one consistent stroke for the family (§12)."
+      }
+    }
+  }
+}

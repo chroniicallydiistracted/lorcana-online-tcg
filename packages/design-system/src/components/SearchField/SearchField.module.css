@@ -1,0 +1,23 @@
+.row { position: relative; display: flex; align-items: center; }
+.leading { position: absolute; inset-inline-start: var(--is-space-3); display: flex; color: var(--is-color-text-supporting); pointer-events: none; }
+.input { padding-inline-start: calc(var(--is-space-3) * 2 + var(--is-component-icon-size)); padding-inline-end: var(--is-component-control-min-size); }
+.input::-webkit-search-cancel-button { display: none; }
+.clear {
+  position: absolute;
+  inset-inline-end: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--is-component-control-min-size);
+  block-size: var(--is-component-control-min-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--is-component-control-radius);
+  background: transparent;
+  color: var(--is-color-text-primary);
+  cursor: pointer;
+}
+.clear[data-hovered] { background: var(--is-color-surface-state-hover); }
+.clear[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: calc(var(--is-focus-offset) * -1); }
+[data-empty] .clear { display: none; }
+.count { margin: 0; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); font-variant-numeric: tabular-nums; }

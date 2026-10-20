@@ -364,7 +364,7 @@
       "name": "Semantic foundation client",
       "implementation": "implemented",
       "verification": "pending",
-      "description": "Semantic React diagnostics, fail-closed protocol compatibility and opt-in synthetic rendering; no engine worker/game control integration. Headless/Windows/device/art-direction qualification is separate.",
+      "description": "Semantic React diagnostics, fail-closed protocol compatibility and opt-in synthetic rendering, wrapped in DesignSystemProvider with token-only styling and the fan-content notice; no engine worker/game control integration. Headless/Windows/device/art-direction qualification is separate.",
       "sources": [
         "apps/web/**",
         "packages/design-system/**"
@@ -423,6 +423,56 @@
         "docs/validation/runs/RUN-20261016-009.json",
         "docs/validation/runs/RUN-20261016-010.json",
         "docs/validation/runs/RUN-20261016-011.json"
+      ]
+    },
+    {
+      "id": "F-DESIGN-SYSTEM",
+      "name": "Technical design system",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "DTCG 2025.10 subset tokens (primitive/semantic Paper and Ink/component/card) validated for references, cycles, types, units, descriptions, theme mappings, achromatic neutrals and 76 contrast pairs; Style Dictionary 5.6.0 resolution cross-checked; deterministic CSS/TS/renderer/@value/font/manifest outputs with drift check. Self-hosted Source Sans 3 with measured fallback metrics; card-face roles without unlicensed font files. DesignSystemProvider, versioned preferences, externalized strings with pseudolocale. 46 experimental React Aria components with section 13 contracts and full state coverage; style-ownership and component-contract gates; Storybook 10.6.1 with Playwright and axe Chromium evidence. Reference screens, Firefox/WebKit/real devices and manual accessibility journeys pending.",
+      "sources": [
+        "packages/design-system/**",
+        "apps/web/src/**",
+        "scripts/ci/pipeline.mjs",
+        "scripts/ci/policy.json"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "docs/runbooks/design-system.md",
+        "docs/adr/0017-technical-design-system.md",
+        "docs/validation/ux-design-system.md",
+        "packages/design-system/README.md"
+      ],
+      "task_ids": [
+        "UX-01",
+        "UX-03"
+      ],
+      "requirement_ids": [
+        "R25.001",
+        "R25.002",
+        "R25.003",
+        "R25.004",
+        "R25.005",
+        "R25.006",
+        "R25.007",
+        "R25.008",
+        "R25.009",
+        "R25.010",
+        "R25.011",
+        "R25.012",
+        "R25.013",
+        "R25.014",
+        "R25.015",
+        "R25.016"
+      ],
+      "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-024.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-020.json",
+        "docs/validation/runs/RUN-20261020-021.json",
+        "docs/validation/runs/RUN-20261020-022.json"
       ]
     },
     {
@@ -510,6 +560,9 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -638,6 +691,9 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -711,6 +767,9 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -806,6 +865,9 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -896,6 +958,9 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -961,6 +1026,9 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -1031,6 +1099,9 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -1210,6 +1281,9 @@
         "R32.011"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -1380,6 +1454,9 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -1467,6 +1544,9 @@
         "R17.009"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -1538,6 +1618,9 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -1597,6 +1680,9 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",
         "docs/validation/runs/RUN-20261020-009.json",
@@ -1681,6 +1767,9 @@
         "R30.010"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-026.json",
+        "docs/validation/runs/RUN-20261020-025.json",
+        "docs/validation/runs/RUN-20261020-022.json",
         "docs/validation/runs/RUN-20261020-016.json",
         "docs/validation/runs/RUN-20261020-014.json",
         "docs/validation/runs/RUN-20261020-012.json",

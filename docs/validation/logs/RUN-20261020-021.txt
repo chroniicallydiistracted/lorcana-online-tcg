@@ -1,0 +1,226 @@
+
+┌  Building storybook v10.6.1
+│
+◇  Cleaning outputDir: ../../.local/design-system-storybook
+│
+◇  Loading presets
+│
+◇  Building manager..
+│
+●  Building open services..
+│
+●  Building preview..
+│  Vite vite v8.3.2 building client environment for production...
+transforming...
+✓ 1476 modules transformed.
+rendering chunks...
+computing gzip size...
+│  Vite ../../.local/design-system-storybook/iframe.html
+│  18.67 kB │ gzip:   5.27 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-Bold-gn7Db9ke.woff2
+│  108.64 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-Semibold-BQV5CVwD.woff2
+│  108.90 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-Regular-BqTI-3mA.woff2
+│  109.63 kB
+│  ../../.local/design-system-storybook/assets/iframe-D--ziRWt.css
+│  64.20 kB │ gzip:   9.02 kB
+│  ../../.local/design-system-storybook/assets/iframe-BFi6vhch.js
+│  0.04 kB │ gzip:   0.06 kB
+│  ../../.local/design-system-storybook/assets/rolldown-runtime-DkW27tQK.js
+│  1.19 kB │ gzip:   0.67 kB
+│  ../../.local/design-system-storybook/assets/DocPage-Dwkoc6Zz.js
+│  1.46 kB │ gzip:   0.77 kB
+│  ../../.local/design-system-storybook/assets/preload-helper-BVscJdOD.js
+│  1.50 kB │ gzip:   0.82 kB
+│  ../../.local/design-system-storybook/assets/fixtures-rJks4076.js
+│  1.57 kB │ gzip:   0.89 kB
+│  ../../.local/design-system-storybook/assets/Actions.stories-PzNxog44.js
+│  6.07 kB │ gzip:   2.19 kB
+│  ../../.local/design-system-storybook/assets/Foundations.stories-D2l-8s12.js
+│  8.32 kB │ gzip:   3.08 kB
+│  ../../.local/design-system-storybook/assets/Overlays.stories-BulWH5av.js
+│  10.53 kB │ gzip:   3.68 kB
+│  ../../.local/design-system-storybook/assets/Cards.stories-o6Z-l2W2.js
+│  11.55 kB │ gzip:   4.14 kB
+│  ../../.local/design-system-storybook/assets/Forms.stories-DUXvXQTD.js
+│  14.17 kB │ gzip:   4.07 kB
+│  ../../.local/design-system-storybook/assets/Status.stories-DkOLskXm.js
+│  15.44 kB │ gzip:   5.15 kB
+│  ../../.local/design-system-storybook/vite-inject-mocker-entry.js
+│  27.84 kB │ gzip:   9.66 kB
+│  ../../.local/design-system-storybook/assets/react-18-B1zMHyUO.js
+│  207.58 kB │ gzip:  65.11 kB
+│  ../../.local/design-system-storybook/assets/iframe-C962ecDU.js
+│  1,666.74 kB │ gzip: 478.13 kB
+
+│
+▲  Vite [plugin builtin:vite-reporter]
+│  (!) Some chunks are larger than 500 kB after minification. Consider:
+│  - Using dynamic import() to code-split the application
+│  - Use build.rolldownOptions.output.codeSplitting to improve chunking:
+│  ]8;;https://rolldown.rs/reference/OutputOptions.codeSplittinghttps://rolldown.rs/reference/OutputOptions.codeSplitting]8;;
+│  - Adjust chunk size limit for this warning via
+│  build.chunkSizeWarningLimit.
+│  Vite ✓ built in 1.41s
+│
+◇  Output directory:
+│  /workspaces/lorcana-online-tcg/.local/design-system-storybook
+│
+└  Storybook build completed successfully
+
+
+Running 150 tests using 1 worker
+
+  ✓    1 tests/browser/interactions.spec.ts:15:1 › keyboard focus shows a 2 px boundary with a 3 px offset and at least 3:1 contrast in both themes (429ms)
+  ✓    2 tests/browser/interactions.spec.ts:26:1 › hovering a control never moves or resizes its hit area (654ms)
+  ✓    3 tests/browser/interactions.spec.ts:32:1 › a pending button keeps its label, announces pending and ignores presses (260ms)
+  ✓    4 tests/browser/interactions.spec.ts:38:1 › dialogs contain focus, make the background inert and restore focus on Escape (534ms)
+  ✓    5 tests/browser/interactions.spec.ts:49:1 › a non-dismissable dialog ignores Escape and outside presses (453ms)
+  ✓    6 tests/browser/interactions.spec.ts:56:1 › end-turn confirmation uses concrete actions and cancelling returns focus to the trigger (805ms)
+  ✓    7 tests/browser/interactions.spec.ts:67:1 › menus open from the keyboard, move with arrows and return focus on Escape (435ms)
+  ✓    8 tests/browser/interactions.spec.ts:78:1 › select is fully keyboard operable and shows the chosen value (326ms)
+  ✓    9 tests/browser/interactions.spec.ts:85:1 › tabs move with arrow keys and keep the panel relationship (265ms)
+  ✓   10 tests/browser/interactions.spec.ts:92:1 › quantity fields keep exact integers within their bounds (263ms)
+  ✓   11 tests/browser/interactions.spec.ts:100:1 › reduced motion removes durations and spatial travel while keeping a brief dialog fade (229ms)
+  ✓   12 tests/browser/interactions.spec.ts:106:1 › the reduced-motion preference applies even when the system does not request it (224ms)
+  ✓   13 tests/browser/interactions.spec.ts:110:1 › forced colours keep control boundaries and focus visible (249ms)
+  ✓   14 tests/browser/interactions.spec.ts:118:1 › Ink and Paper resolve from preference; System follows the colour-scheme setting (450ms)
+  ✓   15 tests/browser/interactions.spec.ts:128:1 › Source Sans 3 and the metric-adjusted fallback load; line heights match; widths are recorded (252ms)
+  ✓   16 tests/browser/interactions.spec.ts:152:1 › component stories reflow at 320 CSS px without horizontal page scrolling (794ms)
+  ✓   17 tests/browser/interactions.spec.ts:159:1 › text enlarged to 200% keeps complete labels without clipping (305ms)
+  ✓   18 tests/browser/interactions.spec.ts:165:1 › inspection opens beside the work on wide layouts and returns focus to the card on close (289ms)
+  ✓   19 tests/browser/interactions.spec.ts:175:1 › inspection opens as a modal sheet on narrow layouts (333ms)
+  ✓   20 tests/browser/interactions.spec.ts:184:1 › a failed card image keeps the printing name and actions (354ms)
+  ✓   21 tests/browser/interactions.spec.ts:189:1 › unavailable ownership is never shown as zero (285ms)
+  ✓   22 tests/browser/interactions.spec.ts:193:1 › the quiet notification count states its count only in its accessible name (249ms)
+  ✓   23 tests/browser/interactions.spec.ts:198:1 › the pseudolocale lengthens component strings without breaking layout (232ms)
+  ✓   24 tests/browser/stories.spec.ts:17:1 › the static Storybook build contains every story (0ms)
+  ✓   25 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Documentation (paper) (707ms)
+  ✓   26 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Buttons (paper) (520ms)
+  ✓   27 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / States (paper) (507ms)
+  ✓   28 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Icon Buttons (paper) (501ms)
+  ✓   29 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Links (paper) (501ms)
+  ✓   30 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Tooltips (paper) (511ms)
+  ✓   31 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Documentation (paper) (823ms)
+  ✓   32 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inks (paper) (504ms)
+  ✓   33 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Tiles (paper) (711ms)
+  ✓   34 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Deck Entries (paper) (630ms)
+  ✓   35 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inspector (paper) (573ms)
+  ✓   36 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inspector Reading Mode (paper) (566ms)
+  ✓   37 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Host (paper) (512ms)
+  ✓   38 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Card Face (paper) (508ms)
+  ✓   39 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Documentation (paper) (1.0s)
+  ✓   40 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Text Fields (paper) (568ms)
+  ✓   41 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Search (paper) (574ms)
+  ✓   42 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Selects (paper) (556ms)
+  ✓   43 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Select Open (paper) (572ms)
+  ✓   44 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Combo Boxes (paper) (577ms)
+  ✓   45 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Choices (paper) (593ms)
+  ✓   46 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Quantities (paper) (585ms)
+  ✓   47 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Documentation (paper) (798ms)
+  ✓   48 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Type Roles (paper) (502ms)
+  ✓   49 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Long Content (paper) (477ms)
+  ✓   50 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Layout (paper) (506ms)
+  ✓   51 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Icons (paper) (584ms)
+  ✓   52 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Identity (paper) (508ms)
+  ✓   53 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Documentation (paper) (775ms)
+  ✓   54 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Tabs (paper) (532ms)
+  ✓   55 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Menus (paper) (485ms)
+  ✓   56 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Menu Open (paper) (528ms)
+  ✓   57 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Popovers (paper) (524ms)
+  ✓   58 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Dialogs (paper) (505ms)
+  ✓   59 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Confirmations (paper) (494ms)
+  ✓   60 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Documentation (paper) (1.1s)
+  ✓   61 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Lists (paper) (627ms)
+  ✓   62 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Tables (paper) (612ms)
+  ✓   63 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Badges And Status (paper) (505ms)
+  ✓   64 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Progress (paper) (585ms)
+  ✓   65 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Messages (paper) (570ms)
+  ✓   66 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Toasts (paper) (553ms)
+  ✓   67 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Notifications (paper) (504ms)
+  ✓   68 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Connection (paper) (519ms)
+  ✓   69 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Documentation (ink) (690ms)
+  ✓   70 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Buttons (ink) (509ms)
+  ✓   71 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / States (ink) (514ms)
+  ✓   72 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Icon Buttons (ink) (496ms)
+  ✓   73 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Links (ink) (505ms)
+  ✓   74 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Tooltips (ink) (516ms)
+  ✓   75 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Documentation (ink) (824ms)
+  ✓   76 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inks (ink) (502ms)
+  ✓   77 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Tiles (ink) (726ms)
+  ✓   78 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Deck Entries (ink) (648ms)
+  ✓   79 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inspector (ink) (570ms)
+  ✓   80 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inspector Reading Mode (ink) (561ms)
+  ✓   81 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Host (ink) (517ms)
+  ✓   82 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Card Face (ink) (510ms)
+  ✓   83 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Documentation (ink) (1.1s)
+  ✓   84 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Text Fields (ink) (570ms)
+  ✓   85 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Search (ink) (540ms)
+  ✓   86 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Selects (ink) (565ms)
+  ✓   87 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Select Open (ink) (573ms)
+  ✓   88 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Combo Boxes (ink) (574ms)
+  ✓   89 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Choices (ink) (594ms)
+  ✓   90 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Quantities (ink) (621ms)
+  ✓   91 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Documentation (ink) (819ms)
+  ✓   92 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Type Roles (ink) (500ms)
+  ✓   93 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Long Content (ink) (482ms)
+  ✓   94 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Layout (ink) (504ms)
+  ✓   95 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Icons (ink) (554ms)
+  ✓   96 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Identity (ink) (509ms)
+  ✓   97 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Documentation (ink) (821ms)
+  ✓   98 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Tabs (ink) (543ms)
+  ✓   99 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Menus (ink) (487ms)
+  ✓  100 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Menu Open (ink) (537ms)
+  ✓  101 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Popovers (ink) (531ms)
+  ✓  102 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Dialogs (ink) (498ms)
+  ✓  103 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Confirmations (ink) (505ms)
+  ✓  104 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Documentation (ink) (1.0s)
+  ✓  105 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Lists (ink) (571ms)
+  ✓  106 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Tables (ink) (591ms)
+  ✓  107 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Badges And Status (ink) (503ms)
+  ✓  108 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Progress (ink) (585ms)
+  ✓  109 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Messages (ink) (578ms)
+  ✓  110 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Toasts (ink) (555ms)
+  ✓  111 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Notifications (ink) (494ms)
+  ✓  112 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Connection (ink) (527ms)
+  ✓  113 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / Buttons (248ms)
+  ✓  114 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / States (218ms)
+  ✓  115 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / Icon Buttons (216ms)
+  ✓  116 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / Links (227ms)
+  ✓  117 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / Tooltips (225ms)
+  ✓  118 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Inks (223ms)
+  ✓  119 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Tiles (236ms)
+  ✓  120 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Deck Entries (298ms)
+  ✓  121 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Inspector (242ms)
+  ✓  122 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Inspector Reading Mode (234ms)
+  ✓  123 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Host (230ms)
+  ✓  124 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Card Face (235ms)
+  ✓  125 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Text Fields (232ms)
+  ✓  126 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Search (238ms)
+  ✓  127 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Selects (254ms)
+  ✓  128 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Select Open (254ms)
+  ✓  129 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Combo Boxes (263ms)
+  ✓  130 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Choices (255ms)
+  ✓  131 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Quantities (252ms)
+  ✓  132 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Type Roles (219ms)
+  ✓  133 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Long Content (219ms)
+  ✓  134 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Layout (250ms)
+  ✓  135 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Icons (226ms)
+  ✓  136 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Identity (237ms)
+  ✓  137 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Tabs (249ms)
+  ✓  138 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Menus (219ms)
+  ✓  139 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Menu Open (226ms)
+  ✓  140 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Popovers (231ms)
+  ✓  141 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Dialogs (220ms)
+  ✓  142 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Confirmations (224ms)
+  ✓  143 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Lists (236ms)
+  ✓  144 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Tables (247ms)
+  ✓  145 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Badges And Status (231ms)
+  ✓  146 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Progress (226ms)
+  ✓  147 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Messages (235ms)
+  ✓  148 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Toasts (276ms)
+  ✓  149 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Notifications (234ms)
+  ✓  150 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Connection (222ms)
+
+  150 passed (1.2m)

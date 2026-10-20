@@ -1,7 +1,23 @@
 # packages/design-system
 
-Browser-only ActionButton uses React Aria Components. Authored game tokens/components and complete interaction/accessibility acceptance remain later UX work.
+The Inkspire's technical design system, built from the adopted [UX/UI design system standard](../../docs/vision/UX_UI_DESIGN_SYSTEM.md) under [ADR 0017](../../docs/adr/0017-technical-design-system.md). It is browser-only and imports neither Babylon nor server code.
 
-Current behavior and callable contracts: [F-WEB](../../docs/FEATURES.md). Exact manifests/types and source define the interface; [BOOT-01 evidence](../../docs/validation/boot-01.md) records validation and limits. This is infrastructure foundation. Full game/device/production acceptance remains pending.
+- **Tokens:**
+  - DTCG 2025.10 subset sources in `tokens/` (primitive, semantic with the Paper and Ink themes, component, card);
+  - Style Dictionary 5.6.0 resolution;
+  - deterministic outputs in `src/generated/`: CSS custom properties, typed TypeScript, renderer colours, `@value` breakpoints, font faces and a manifest.
+- **Foundation:**
+  - `DesignSystemProvider` (theme, density, motion, locale, announcer);
+  - the versioned preference model;
+  - externalized strings, with the `en-XA` pseudolocale;
+  - self-hosted Source Sans 3 with measured fallback metrics.
+- **Components:** 46 documented Experimental components on React Aria Components 1.21.1 with CSS Modules: actions, fields, overlays, collections, status, notifications, connection and card presentation. Every component has a §13 documentation contract and stories for every documented state.
+- **Checks:**
+  - `pnpm --filter @lorcana/design-system test`: tokens, style ownership, component contracts, fonts, preferences and notice wording;
+  - `test:browser`: Storybook plus Playwright and axe in Chromium;
+  - `tokens:build` and `tokens:check`;
+  - `storybook` and `build-storybook`.
 
-Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for changes, documentation impact review and timestamped test evidence. Runtime/build/test dependencies belong to this workspace; root tasks follow the dependency graph.
+Operation and change rules: [design-system runbook](../../docs/runbooks/design-system.md). Evidence and limits: [validation](../../docs/validation/ux-design-system.md). Feature register: [F-DESIGN-SYSTEM](../../docs/FEATURES.md).
+
+Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for changes, documentation impact review and timestamped test evidence. Runtime, build and test dependencies belong to this workspace.

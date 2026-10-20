@@ -1,0 +1,218 @@
+{
+  "space": {
+    "$type": "dimension",
+    "$description": "Shared spacing scale (standard §11). Step names follow the standard.",
+    "0": {
+      "$value": {
+        "value": 0,
+        "unit": "px"
+      },
+      "$description": "Spacing step 0: 0 px."
+    },
+    "1": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
+      "$description": "Spacing step 1: 4 px."
+    },
+    "2": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      },
+      "$description": "Spacing step 2: 8 px."
+    },
+    "3": {
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$description": "Spacing step 3: 12 px."
+    },
+    "4": {
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
+      "$description": "Spacing step 4: 16 px."
+    },
+    "6": {
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      },
+      "$description": "Spacing step 6: 24 px."
+    },
+    "8": {
+      "$value": {
+        "value": 32,
+        "unit": "px"
+      },
+      "$description": "Spacing step 8: 32 px."
+    },
+    "12": {
+      "$value": {
+        "value": 48,
+        "unit": "px"
+      },
+      "$description": "Spacing step 12: 48 px."
+    },
+    "16": {
+      "$value": {
+        "value": 64,
+        "unit": "px"
+      },
+      "$description": "Spacing step 16: 64 px."
+    }
+  },
+  "border-width": {
+    "$type": "dimension",
+    "$description": "Explicit border and focus widths; not layout spacing (standard §11).",
+    "1": {
+      "$value": {
+        "value": 1,
+        "unit": "px"
+      },
+      "$description": "One-pixel border."
+    },
+    "2": {
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      },
+      "$description": "Two-pixel border or focus width."
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "$description": "Restrained geometry (standard §12).",
+    "4": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
+      "$description": "Control corner radius."
+    },
+    "8": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      },
+      "$description": "Contained surface and dialog radius."
+    },
+    "pill": {
+      "$value": {
+        "value": 9999,
+        "unit": "px"
+      },
+      "$description": "Pill shape; short tags or identity treatments only."
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "$description": "Sizes from the standard (§11).",
+    "target-min": {
+      "$value": {
+        "value": 44,
+        "unit": "px"
+      },
+      "$description": "Minimum primary control and icon-button hit area, 44 x 44 CSS px."
+    },
+    "row-comfortable": {
+      "$value": {
+        "value": 56,
+        "unit": "px"
+      },
+      "$description": "Comfortable single-line interactive row height."
+    },
+    "row-compact": {
+      "$value": {
+        "value": 44,
+        "unit": "px"
+      },
+      "$description": "Compact single-line interactive row height."
+    },
+    "gutter-compact": {
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
+      "$description": "Page gutter in compact layouts."
+    },
+    "gutter-intermediate": {
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      },
+      "$description": "Page gutter in intermediate layouts."
+    },
+    "gutter-wide": {
+      "$value": {
+        "value": 32,
+        "unit": "px"
+      },
+      "$description": "Page gutter in wide layouts."
+    },
+    "content-max": {
+      "$value": {
+        "value": 90,
+        "unit": "rem"
+      },
+      "$description": "Standard content width cap."
+    },
+    "binder-pocket": {
+      "$value": {
+        "value": 144,
+        "unit": "px"
+      },
+      "$description": "Preferred binder pocket width at comfortable density (§17)."
+    },
+    "binder-gap": {
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$description": "Binder pocket internal gap (§17)."
+    },
+    "binder-face-padding": {
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
+      "$description": "Binder face padding (§17)."
+    },
+    "focus-offset": {
+      "$value": {
+        "value": 3,
+        "unit": "px"
+      },
+      "$description": "Focus boundary offset (§25)."
+    }
+  },
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "Initial layout thresholds (standard §11). Emitted as stylesheet values, never runtime variables in media queries.",
+    "intermediate": {
+      "$value": {
+        "value": 40,
+        "unit": "rem"
+      },
+      "$description": "Intermediate layout from 40rem; compact below."
+    },
+    "wide": {
+      "$value": {
+        "value": 64,
+        "unit": "rem"
+      },
+      "$description": "Wide working layout from 64rem."
+    },
+    "expanded": {
+      "$value": {
+        "value": 80,
+        "unit": "rem"
+      },
+      "$description": "Expanded composition opportunities from 80rem."
+    }
+  }
+}

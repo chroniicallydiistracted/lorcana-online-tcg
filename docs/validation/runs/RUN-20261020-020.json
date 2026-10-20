@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-020",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/design-system",
+    "test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "d188387c5e6b19b4bc0ed73a492bb792cadcad76",
+  "source_fingerprint": "2255e8fb4a736378222f7b7341f768f31d0a96326bff0f7851c5bc12f9f6301e",
+  "started_at": "2026-10-20T05:42:24.855Z",
+  "finished_at": "2026-10-20T05:42:25.829Z",
+  "recorded_at": "2026-10-20T05:42:25.829Z",
+  "time_precision": "exact",
+  "elapsed_ms": 974,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Design-system gates (rerun after moving Storybook output out of the source tree): token validation with 10 negative fixtures, 76 contrast pairs, generated-output drift, style ownership, component contracts and state coverage, CSS module types, preferences, messages, font provenance, notice wording, renderer colour spaces and import boundaries",
+  "log_path": "docs/validation/logs/RUN-20261020-020.txt",
+  "log_sha256": "1ab55f7d7db068e71ae70782d334d25267237b0d933458500a7b3549bd9c5d22",
+  "redactions": 0
+}

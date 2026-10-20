@@ -1,0 +1,275 @@
+{
+  "color": {
+    "$type": "color",
+    "identity": {
+      "$description": "Ink identities (standard §9): each is always paired with its name or an equivalent non-colour cue.",
+      "amber": {
+        "$value": "{color.ink.amber}",
+        "$description": "Amber ink identity."
+      },
+      "amethyst": {
+        "$value": "{color.ink.amethyst}",
+        "$description": "Amethyst ink identity."
+      },
+      "emerald": {
+        "$value": "{color.ink.emerald}",
+        "$description": "Emerald ink identity."
+      },
+      "ruby": {
+        "$value": "{color.ink.ruby}",
+        "$description": "Ruby ink identity."
+      },
+      "sapphire": {
+        "$value": "{color.ink.sapphire}",
+        "$description": "Sapphire ink identity."
+      },
+      "steel": {
+        "$value": "{color.ink.steel}",
+        "$description": "Steel ink identity."
+      }
+    }
+  },
+  "typography": {
+    "$description": "Interface type roles (standard §6). Essential instructions never use the annotation role.",
+    "annotation": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.12}",
+        "lineHeight": "{font.line-height.16}",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Small annotation: nonessential supplementary information."
+    },
+    "metadata": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.14}",
+        "lineHeight": "{font.line-height.20}",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Metadata: set, printing, date and secondary details."
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.16}",
+        "lineHeight": "{font.line-height.24}",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Body and standard control text."
+    },
+    "body-strong": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.16}",
+        "lineHeight": "{font.line-height.24}",
+        "fontWeight": "{font.weight.semibold}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Standard control or emphasised body text."
+    },
+    "critical": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.18}",
+        "lineHeight": "{font.line-height.24}",
+        "fontWeight": "{font.weight.semibold}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Critical match information: important prompts and decisions."
+    },
+    "subsection": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.20}",
+        "lineHeight": "{font.line-height.28}",
+        "fontWeight": "{font.weight.semibold}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Subsection heading."
+    },
+    "section": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.24}",
+        "lineHeight": "{font.line-height.32}",
+        "fontWeight": "{font.weight.semibold}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Section heading."
+    },
+    "room": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.32}",
+        "lineHeight": "{font.line-height.36}",
+        "fontWeight": "{font.weight.semibold}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Room or page title."
+    },
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.interface}",
+        "fontSize": "{font.size.40}",
+        "lineHeight": "{font.line-height.44}",
+        "fontWeight": "{font.weight.semibold}",
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Selected introductory or celebratory moments."
+    }
+  },
+  "focus": {
+    "width": {
+      "$type": "dimension",
+      "$value": "{border-width.2}",
+      "$description": "Focus boundary width, about 2 px (§25)."
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{size.focus-offset}",
+      "$description": "Focus boundary offset, 3 px (§25)."
+    }
+  },
+  "density": {
+    "$description": "Density rows (standard §11). Compact density never reduces body text.",
+    "row": {
+      "comfortable": {
+        "$type": "dimension",
+        "$value": "{size.row-comfortable}",
+        "$description": "Comfortable row, about 56 px."
+      },
+      "compact": {
+        "$type": "dimension",
+        "$value": "{size.row-compact}",
+        "$description": "Compact row, about 44 px."
+      }
+    }
+  },
+  "layout": {
+    "gutter": {
+      "compact": {
+        "$type": "dimension",
+        "$value": "{size.gutter-compact}",
+        "$description": "Compact page gutter."
+      },
+      "intermediate": {
+        "$type": "dimension",
+        "$value": "{size.gutter-intermediate}",
+        "$description": "Intermediate page gutter."
+      },
+      "wide": {
+        "$type": "dimension",
+        "$value": "{size.gutter-wide}",
+        "$description": "Wide page gutter."
+      }
+    },
+    "content-max": {
+      "$type": "dimension",
+      "$value": "{size.content-max}",
+      "$description": "Standard content width cap, about 90rem."
+    },
+    "reading-measure": {
+      "$type": "number",
+      "$value": 75,
+      "$description": "Reading column upper bound in characters (standard: approximately 60-75).",
+      "$extensions": {
+        "org.theinkspire": {
+          "cssUnit": "ch"
+        }
+      }
+    }
+  },
+  "motion": {
+    "$description": "Motion roles (standard §26). Reduced motion resolves to immediate or a brief fade.",
+    "hover": {
+      "$type": "duration",
+      "$value": "{motion.duration.80}",
+      "$description": "Hover/pressed styling (80-120 ms)."
+    },
+    "menu": {
+      "$type": "duration",
+      "$value": "{motion.duration.120}",
+      "$description": "Menu/popover (120-180 ms)."
+    },
+    "dialog": {
+      "$type": "duration",
+      "$value": "{motion.duration.180}",
+      "$description": "Dialog/sheet (180-240 ms)."
+    },
+    "binder-page": {
+      "$type": "duration",
+      "$value": "{motion.duration.240}",
+      "$description": "Binder page change (about 240 ms)."
+    },
+    "card": {
+      "$type": "duration",
+      "$value": "{motion.duration.180}",
+      "$description": "Ordinary card movement (180-360 ms)."
+    },
+    "major": {
+      "$type": "duration",
+      "$value": "{motion.duration.360}",
+      "$description": "Major match event (360-600 ms)."
+    },
+    "reward-beat-max": {
+      "$type": "duration",
+      "$value": "{motion.duration.900}",
+      "$description": "Maximum per authored pack/reward beat (about 900 ms)."
+    },
+    "fade": {
+      "$type": "duration",
+      "$value": "{motion.duration.120}",
+      "$description": "Brief fade used by reduced-motion treatments."
+    },
+    "ease": {
+      "$type": "cubicBezier",
+      "$value": "{motion.easing.productive}",
+      "$description": "Productive easing."
+    },
+    "ease-exit": {
+      "$type": "cubicBezier",
+      "$value": "{motion.easing.exit}",
+      "$description": "Exit easing."
+    }
+  }
+}

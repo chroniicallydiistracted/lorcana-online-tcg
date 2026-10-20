@@ -1,0 +1,12 @@
+.face { container-type: inline-size; display: flex; flex-direction: column; aspect-ratio: 63 / 88; /* token-exception: physical card proportion */ padding: 6cqw; /* token-exception: printed card margin relative to the face */ border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-component-surface-radius); background: var(--is-color-surface); color: var(--is-color-text-primary); overflow: hidden; }
+.title { margin: 0; font-family: var(--is-card-title-family); font-weight: var(--is-card-title-weight); font-size: var(--is-card-title-size); line-height: 1.1; } /* token-exception: printed title line height */
+.version { margin: 0; font-family: var(--is-card-version-family); font-weight: var(--is-card-version-weight); font-size: var(--is-card-version-size); }
+.classification { margin: 0; font-family: var(--is-card-classification-family); font-weight: var(--is-card-classification-weight); font-style: italic; font-size: var(--is-card-classification-size); letter-spacing: 0.08em; } /* token-exception: preserved expanded tracking */
+.rules { display: flex; flex-direction: column; margin-block-start: auto; }
+.block { margin: 0; font-family: var(--is-card-rules-family); font-weight: var(--is-card-rules-weight); font-size: var(--is-card-rules-size-standard); line-height: var(--is-card-rules-line-height-standard); }
+.face[data-density="dense"] .block { font-size: var(--is-card-rules-size-dense); line-height: var(--is-card-rules-line-height-dense); }
+.face[data-density="denser"] .block { font-size: var(--is-card-rules-size-denser); line-height: var(--is-card-rules-line-height-dense); }
+.face[data-density="densest"] .block { font-size: var(--is-card-rules-size-densest); line-height: var(--is-card-rules-line-height-densest); }
+.heading { font-weight: var(--is-card-ability-heading-weight); font-size: calc(var(--is-card-ability-heading-scale) * 1em); text-transform: uppercase; }
+.block[data-kind="keyword"] .heading { font-weight: var(--is-card-keyword-heading-weight); text-transform: none; }
+.flavor { margin: 0; font-family: var(--is-card-rules-family); font-weight: var(--is-card-flavor-weight); font-style: italic; font-size: var(--is-card-rules-size-standard); line-height: var(--is-card-flavor-line-height); }

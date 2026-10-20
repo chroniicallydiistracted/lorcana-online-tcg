@@ -86,3 +86,9 @@ The foundation test "development supervisor rejects a busy service port…" runs
 ## History secret scan scaling — 2026-10-18 UTC
 
 `sourceSecretScan` runs before and after the pipeline stages and prints nothing while it works. Its history pass used to read every file of every commit, so the cost grew with commits × files and with every published branch. Hosted run 38952419789 passed all 14 stages, then hit the 900 s `ci:verify` limit during the second scan. CHG-20261018-001 reads each distinct path and version once, with identical findings: locally 60,974 reads became 3,591, and the clean scan dropped from 179.8 s to 11.8 s. If a hosted run goes silent after the last stage again, compare the time before `CI stage: frozen-install` with the stage durations before raising limits. See [PLAY-04 validation](../validation/play-04.md#hosted-run-and-ci-secret-scan-repair--2026-10-18-utc).
+
+## Design-system browser stage — 2026-10-20 UTC
+
+A fifteenth stage, `design-system-browser`, runs after `browser`. It executes `pnpm --filter @lorcana/design-system test:browser`, which builds Storybook statically, serves it on 127.0.0.1:6007 and runs the Playwright and axe Chromium suite. It reuses the Chromium installed by `pinned-chromium`, since both workspaces pin Playwright 1.63.0.
+
+Decision D16 (Director, 2026-10-20) adds `CC-BY-4.0` to `scripts/ci/policy.json` so that Storybook's build-time `caniuse-lite` data can pass the license gate; attribution is carried in the generated third-party notices. `pnpm-workspace.yaml` denies esbuild's postinstall (`allowBuilds: { esbuild: false }`), and the lockfile-pinned platform binary is used instead. See [ADR 0017](../adr/0017-technical-design-system.md) and CHG-20261020-004.

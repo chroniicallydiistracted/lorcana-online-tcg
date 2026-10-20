@@ -1,0 +1,5 @@
+.count { display: inline-flex; align-items: center; gap: var(--is-space-1); min-block-size: var(--is-component-control-min-size); min-inline-size: var(--is-component-control-min-size); padding-inline: var(--is-space-2); border: var(--is-border-width-1) solid transparent; border-radius: var(--is-component-control-radius); background: transparent; color: var(--is-color-text-primary); cursor: pointer; }
+.count[data-hovered] { background: var(--is-color-surface-state-hover); }
+.count[data-pressed] { background: var(--is-color-surface-state-pressed); }
+.count[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.number { font: var(--is-typography-metadata); font-variant-numeric: tabular-nums; }

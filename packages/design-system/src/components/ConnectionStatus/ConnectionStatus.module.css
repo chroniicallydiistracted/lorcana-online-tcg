@@ -1,0 +1,7 @@
+.status { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--is-space-2); padding: var(--is-space-1) var(--is-space-3); border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-component-control-radius); background: var(--is-color-surface); color: var(--is-color-text-primary); font: var(--is-typography-metadata); }
+.label { font: var(--is-typography-body-strong); }
+.detail { color: var(--is-color-text-supporting); }
+.status[data-state="offline"], .status[data-state="version-mismatch"] { border-color: var(--is-color-feedback-warning-border); background: var(--is-color-feedback-warning-background); color: var(--is-color-feedback-warning-foreground); }
+.status[data-state="offline"] .detail, .status[data-state="version-mismatch"] .detail { color: var(--is-color-feedback-warning-foreground); }
+.hidden { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (forced-colors: active) { .status { border-color: CanvasText; } }

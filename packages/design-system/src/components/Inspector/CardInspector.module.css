@@ -1,0 +1,22 @@
+.inspector { display: flex; flex-direction: column; gap: var(--is-component-inspector-gap); color: var(--is-color-text-primary); }
+.header { display: flex; flex-direction: column; gap: var(--is-space-2); }
+.name { display: flex; flex-direction: column; margin: 0; font: var(--is-typography-section); overflow-wrap: anywhere; }
+.version { font: var(--is-typography-subsection); color: var(--is-color-text-supporting); }
+.classification { margin: 0; font: var(--is-typography-metadata); color: var(--is-color-text-supporting); }
+.identity { display: flex; flex-wrap: wrap; align-items: center; gap: var(--is-space-2); }
+.viewer { display: flex; justify-content: center; }
+.section { display: flex; flex-direction: column; gap: var(--is-space-2); }
+.sectionTitle { margin: 0; font: var(--is-typography-body-strong); }
+.printed { display: flex; flex-direction: column; gap: var(--is-space-2); max-inline-size: var(--is-layout-reading-measure); }
+.block { margin: 0; font: var(--is-typography-body); }
+.blockHeading { font-weight: var(--is-typography-body-strong-font-weight); text-transform: uppercase; }
+.block[data-kind="keyword"] .blockHeading { text-transform: none; }
+.flavor { margin: 0; max-inline-size: var(--is-layout-reading-measure); font: var(--is-typography-body); color: var(--is-color-text-supporting); }
+.inspector[data-reading] .block, .inspector[data-reading] .flavor { font: var(--is-component-inspector-reading); }
+.list { margin: 0; padding-inline-start: var(--is-space-6); font: var(--is-typography-body); }
+.source { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: var(--is-space-1) var(--is-space-4); margin: 0; font: var(--is-typography-body); }
+.facts dt { color: var(--is-color-text-supporting); }
+.facts dd { margin: 0; overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; gap: var(--is-space-2); }
+.hidden { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

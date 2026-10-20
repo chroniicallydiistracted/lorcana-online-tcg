@@ -41,5 +41,7 @@ assert (root / ".devcontainer/Dockerfile").read_text().splitlines()[0] == "FROM 
 assert workspace["packages"] == ["apps/*", "packages/*", "vendor/tcg-engines"]
 for setting in ("saveExact", "engineStrict", "strictPeerDependencies", "packageManagerStrictVersion", "strictDepBuilds"):
     assert workspace[setting] is True, setting
-assert workspace["allowBuilds"] == {}
+# Every dependency build script is reviewed. esbuild's postinstall only verifies or downloads its platform
+# binary; the lockfile-pinned @esbuild/linux-x64 package is used instead (ADR 0017).
+assert workspace["allowBuilds"] == {"esbuild": False}
 print("PASS workspace configuration contract (static validation)")

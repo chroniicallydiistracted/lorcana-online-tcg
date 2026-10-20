@@ -1,0 +1,180 @@
+{
+  "card": {
+    "$description": "Preserved card-face typography (standard §7): applies only inside a card-face container, never to interface text.",
+    "title": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.card-title}",
+        "$description": "Title family."
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "$description": "Title weight."
+      },
+      "size": {
+        "$type": "number",
+        "$value": 5,
+        "$description": "Title size relative to the card face.",
+        "$extensions": {
+          "org.theinkspire": {
+            "cssUnit": "cqw"
+          }
+        }
+      }
+    },
+    "version": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.card-text}",
+        "$description": "Version/subtitle family."
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$value": 700,
+        "$description": "Version weight."
+      },
+      "size": {
+        "$type": "number",
+        "$value": 2.9,
+        "$description": "Version size.",
+        "$extensions": {
+          "org.theinkspire": {
+            "cssUnit": "cqw"
+          }
+        }
+      }
+    },
+    "classification": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.card-text}",
+        "$description": "Classification family."
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$value": 900,
+        "$description": "Classification weight (italic, expanded tracking)."
+      },
+      "size": {
+        "$type": "number",
+        "$value": 2.35,
+        "$description": "Classification size.",
+        "$extensions": {
+          "org.theinkspire": {
+            "cssUnit": "cqw"
+          }
+        }
+      }
+    },
+    "rules": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.card-text}",
+        "$description": "Rules body family."
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "$description": "Rules weight."
+      },
+      "size": {
+        "standard": {
+          "$type": "number",
+          "$value": 3.4,
+          "$description": "Rules size, standard density.",
+          "$extensions": {
+            "org.theinkspire": {
+              "cssUnit": "cqw"
+            }
+          }
+        },
+        "dense": {
+          "$type": "number",
+          "$value": 3.05,
+          "$description": "Rules size, dense.",
+          "$extensions": {
+            "org.theinkspire": {
+              "cssUnit": "cqw"
+            }
+          }
+        },
+        "denser": {
+          "$type": "number",
+          "$value": 2.7,
+          "$description": "Rules size, denser.",
+          "$extensions": {
+            "org.theinkspire": {
+              "cssUnit": "cqw"
+            }
+          }
+        },
+        "densest": {
+          "$type": "number",
+          "$value": 2.4,
+          "$description": "Rules size, densest.",
+          "$extensions": {
+            "org.theinkspire": {
+              "cssUnit": "cqw"
+            }
+          }
+        }
+      },
+      "line-height": {
+        "standard": {
+          "$type": "number",
+          "$value": 1.28,
+          "$description": "Rules line height, standard."
+        },
+        "dense": {
+          "$type": "number",
+          "$value": 1.22,
+          "$description": "Rules line height, denser treatments."
+        },
+        "densest": {
+          "$type": "number",
+          "$value": 1.2,
+          "$description": "Rules line height, densest treatment."
+        }
+      }
+    },
+    "ability-heading": {
+      "weight": {
+        "$type": "fontWeight",
+        "$value": 500,
+        "$description": "Ability heading weight (uppercase)."
+      },
+      "scale": {
+        "$type": "number",
+        "$value": 0.94,
+        "$description": "Ability heading size relative to rules text (em)."
+      }
+    },
+    "keyword-heading": {
+      "weight": {
+        "$type": "fontWeight",
+        "$value": 500,
+        "$description": "Keyword heading weight."
+      }
+    },
+    "flavor": {
+      "weight": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "$description": "Flavour weight (italic)."
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": 1.34,
+        "$description": "Flavour line height."
+      }
+    },
+    "number": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.card-number}",
+        "$description": "Numbers and stat glyphs family."
+      }
+    }
+  }
+}

@@ -42,3 +42,7 @@ Replace only the bracketed subject: use the product name once D01 settles it, or
 - **Before public launch,** open that page in a browser and record a dated copy or notes here.
 - **Revocation risk:** Ravensburger reserves sole discretion over whether an action violates its policies (Community Code, "Future-Proofing"). Pixelborn ended support in 2024 after Disney representatives asked for removal. The Director accepts this risk; takedown readiness is the mitigation.
 - This document records a project decision. It is not legal advice.
+
+## Implementation note — 2026-10-20 UTC
+
+The design system renders this notice word for word through `FanContentNotice`, with the subject replaced by the product name "The Inkspire" (decision D17). A test compares the component text against the quotation above. The diagnostic web page shows it in its footer. The required start/loading and every-screen placements remain acceptance gates for the UX and WEB tasks (CHG-20261020-004).

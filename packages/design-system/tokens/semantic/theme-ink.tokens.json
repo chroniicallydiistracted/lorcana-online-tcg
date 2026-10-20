@@ -1,0 +1,162 @@
+{
+  "color": {
+    "$type": "color",
+    "canvas": {
+      "$value": "{color.neutral.14}",
+      "$description": "Room canvas."
+    },
+    "surface": {
+      "$value": "{color.neutral.1e}",
+      "$description": "Ordinary contained surface."
+    },
+    "surface-raised": {
+      "$value": "{color.neutral.2b}",
+      "$description": "Raised surface."
+    },
+    "text": {
+      "primary": {
+        "$value": "{color.neutral.f5}",
+        "$description": "Primary text; 7:1 or more on every neutral surface."
+      },
+      "supporting": {
+        "$value": "{color.neutral.bb}",
+        "$description": "Supporting text; 4.5:1 or more on every neutral surface."
+      }
+    },
+    "border": {
+      "essential": {
+        "$value": "{color.neutral.8a}",
+        "$description": "Essential boundary of inputs and important controls; 3:1 or more."
+      },
+      "strong": {
+        "$value": "{color.neutral.bb}",
+        "$description": "Strong border."
+      },
+      "decorative": {
+        "$value": "{color.neutral.4f}",
+        "$description": "Decorative separator; never the sole boundary of an input or important control."
+      }
+    },
+    "surface-state": {
+      "hover": {
+        "$value": "{color.neutral.33}",
+        "$description": "Hovered neutral surface."
+      },
+      "pressed": {
+        "$value": "{color.neutral.38}",
+        "$description": "Pressed neutral surface."
+      },
+      "selected": {
+        "$value": "{color.neutral.38}",
+        "$description": "Selected neutral surface."
+      }
+    },
+    "action": {
+      "primary": {
+        "background": {
+          "$value": "{color.neutral.f5}",
+          "$description": "Primary button background."
+        },
+        "text": {
+          "$value": "{color.neutral.14}",
+          "$description": "Primary button text."
+        },
+        "hover": {
+          "$value": "{color.neutral.e0}",
+          "$description": "Primary button hover background."
+        },
+        "pressed": {
+          "$value": "{color.neutral.cf}",
+          "$description": "Primary button pressed background."
+        }
+      }
+    },
+    "focus": {
+      "outer": {
+        "$value": "{color.neutral.f5}",
+        "$description": "Focus outer boundary."
+      }
+    },
+    "disabled": {
+      "surface": {
+        "$value": "{color.neutral.2b}",
+        "$description": "Disabled surface."
+      },
+      "foreground": {
+        "$value": "{color.neutral.8a}",
+        "$description": "Disabled control foreground; always paired with a readable reason where it matters."
+      }
+    },
+    "feedback": {
+      "$description": "Feedback namespace, separate from ink identities (standard §9).",
+      "success": {
+        "foreground": {
+          "$value": "{color.green.a4ddb4}",
+          "$description": "Success feedback foreground."
+        },
+        "background": {
+          "$value": "{color.green.1d3023}",
+          "$description": "Success feedback background."
+        },
+        "border": {
+          "$value": "{color.green.6fa981}",
+          "$description": "Success feedback border."
+        }
+      },
+      "warning": {
+        "foreground": {
+          "$value": "{color.yellow.f3d68a}",
+          "$description": "Warning feedback foreground."
+        },
+        "background": {
+          "$value": "{color.yellow.342b17}",
+          "$description": "Warning feedback background."
+        },
+        "border": {
+          "$value": "{color.yellow.b79443}",
+          "$description": "Warning feedback border."
+        }
+      },
+      "danger": {
+        "foreground": {
+          "$value": "{color.red.f0aab5}",
+          "$description": "Danger feedback foreground."
+        },
+        "background": {
+          "$value": "{color.red.371e23}",
+          "$description": "Danger feedback background."
+        },
+        "border": {
+          "$value": "{color.red.c47b88}",
+          "$description": "Danger feedback border."
+        }
+      },
+      "information": {
+        "foreground": {
+          "$value": "{color.text.primary}",
+          "$description": "Information uses primary text."
+        },
+        "background": {
+          "$value": "{color.surface-raised}",
+          "$description": "Information uses the raised surface."
+        },
+        "border": {
+          "$value": "{color.border.essential}",
+          "$description": "Information uses the essential border."
+        }
+      }
+    }
+  },
+  "elevation": {
+    "$type": "shadow",
+    "$description": "Ink overlay elevation (standard §12). Shadows are decorative; never the only essential boundary.",
+    "popover": {
+      "$value": "{shadow.popover}",
+      "$description": "Ink popover: the standard's restrained dark shadow; the visible boundary is the strong border."
+    },
+    "dialog": {
+      "$value": "{shadow.dialog}",
+      "$description": "Ink dialog: the standard's restrained dark shadow; the visible boundary is the strong border."
+    }
+  }
+}

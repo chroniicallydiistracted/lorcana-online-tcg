@@ -1,0 +1,174 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "$description": "Font families (standard §6, §7).",
+      "interface": {
+        "$value": [
+          "Source Sans 3",
+          "Source Sans 3 Fallback",
+          "Arial",
+          "Liberation Sans",
+          "sans-serif"
+        ],
+        "$description": "Interface family: self-hosted Source Sans 3 with a measured metric-matched fallback."
+      },
+      "card-title": {
+        "$value": [
+          "The Bystander Collection Sans",
+          "Source Sans 3",
+          "Source Sans 3 Fallback",
+          "sans-serif"
+        ],
+        "$description": "Card-face title family (legacy CardFacePlate). Font files are not imported until their usage basis is recorded; the fallback applies."
+      },
+      "card-text": {
+        "$value": [
+          "Brandon Text Cond",
+          "Source Sans 3",
+          "Source Sans 3 Fallback",
+          "sans-serif"
+        ],
+        "$description": "Card-face rules, version, classification, ability and flavour family (legacy CardFacePlate). Font files are not imported until their usage basis is recorded; the fallback applies."
+      },
+      "card-number": {
+        "$value": [
+          "Century Gothic",
+          "Source Sans 3",
+          "Source Sans 3 Fallback",
+          "sans-serif"
+        ],
+        "$description": "Card-face numbers and stat glyphs (legacy CardFacePlate). Font files are not imported until their usage basis is recorded; the fallback applies."
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "$description": "Actual interface font weights only (standard §6).",
+      "regular": {
+        "$value": 400,
+        "$description": "Body text, ordinary labels and descriptions."
+      },
+      "semibold": {
+        "$value": 600,
+        "$description": "Headings, selected navigation and important controls."
+      },
+      "bold": {
+        "$value": 700,
+        "$description": "Limited emphasis where 600 is not distinct enough."
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "$description": "Interface sizes as scalable rem at a 16 px root (standard §6).",
+      "12": {
+        "$value": {
+          "value": 0.75,
+          "unit": "rem"
+        },
+        "$description": "12 px at the default root."
+      },
+      "14": {
+        "$value": {
+          "value": 0.875,
+          "unit": "rem"
+        },
+        "$description": "14 px at the default root."
+      },
+      "16": {
+        "$value": {
+          "value": 1.0,
+          "unit": "rem"
+        },
+        "$description": "16 px at the default root."
+      },
+      "18": {
+        "$value": {
+          "value": 1.125,
+          "unit": "rem"
+        },
+        "$description": "18 px at the default root."
+      },
+      "20": {
+        "$value": {
+          "value": 1.25,
+          "unit": "rem"
+        },
+        "$description": "20 px at the default root."
+      },
+      "24": {
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "$description": "24 px at the default root."
+      },
+      "32": {
+        "$value": {
+          "value": 2.0,
+          "unit": "rem"
+        },
+        "$description": "32 px at the default root."
+      },
+      "40": {
+        "$value": {
+          "value": 2.5,
+          "unit": "rem"
+        },
+        "$description": "40 px at the default root."
+      }
+    },
+    "line-height": {
+      "$type": "dimension",
+      "$description": "Interface line heights as rem at a 16 px root (standard §6).",
+      "16": {
+        "$value": {
+          "value": 1.0,
+          "unit": "rem"
+        },
+        "$description": "16 px at the default root."
+      },
+      "20": {
+        "$value": {
+          "value": 1.25,
+          "unit": "rem"
+        },
+        "$description": "20 px at the default root."
+      },
+      "24": {
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "$description": "24 px at the default root."
+      },
+      "28": {
+        "$value": {
+          "value": 1.75,
+          "unit": "rem"
+        },
+        "$description": "28 px at the default root."
+      },
+      "32": {
+        "$value": {
+          "value": 2.0,
+          "unit": "rem"
+        },
+        "$description": "32 px at the default root."
+      },
+      "36": {
+        "$value": {
+          "value": 2.25,
+          "unit": "rem"
+        },
+        "$description": "36 px at the default root."
+      },
+      "44": {
+        "$value": {
+          "value": 2.75,
+          "unit": "rem"
+        },
+        "$description": "44 px at the default root."
+      }
+    }
+  }
+}

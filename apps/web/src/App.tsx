@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { parseReadiness, parseHelloResponse, FOUNDATION_PROTOCOL } from '@lorcana/contracts';
 import type { HelloRequest } from '@lorcana/contracts';
-import { ActionButton } from '@lorcana/design-system';
+import { Button, FanContentNotice, Heading, Text } from '@lorcana/design-system';
 import styles from './App.module.css';
 
 function ServiceStatus({ path, name, expectedService }: { path: string; name: string; expectedService: 'api' | 'match-service' }) {
@@ -56,22 +56,23 @@ function ProtocolStatus() {
 export function App() {
   const [rendering, setRendering] = useState(false);
   return <main className={styles.page}>
-    <p className={styles.eyebrow}>Lorcana Online · Foundation preview</p>
-    <h1>Application foundation</h1>
-    <p className={styles.intro}>A local proof of the client, service connections and tabletop renderer.</p>
-    <section aria-labelledby="services-title">
-      <h2 id="services-title">Local services</h2>
-      <ul aria-live="polite">
+    <Text role="metadata" tone="supporting">The Inkspire · Foundation preview</Text>
+    <Heading level={1} role="room">Application foundation</Heading>
+    <Text>A local proof of the client, service connections and tabletop renderer.</Text>
+    <section className={styles.section} aria-labelledby="services-title">
+      <Heading level={2} role="subsection" id="services-title">Local services</Heading>
+      <ul className={styles.list} aria-live="polite">
         <ServiceStatus path="/api/readyz" name="API" expectedService="api" />
         <ServiceStatus path="/match/readyz" name="Match service" expectedService="match-service" />
         <ProtocolStatus />
       </ul>
     </section>
-    <section aria-labelledby="renderer-title">
-      <h2 id="renderer-title">Rendering check</h2>
-      <ActionButton onPress={() => setRendering(value => !value)}>{rendering ? 'Stop rendering check' : 'Start rendering check'}</ActionButton>
+    <section className={styles.section} aria-labelledby="renderer-title">
+      <Heading level={2} role="subsection" id="renderer-title">Rendering check</Heading>
+      <Button onPress={() => setRendering(value => !value)}>{rendering ? 'Stop rendering check' : 'Start rendering check'}</Button>
       {rendering && <RenderingCheck />}
     </section>
-    <p className={styles.note}>Infrastructure preview with synthetic shapes. The game and its art direction are still to come.</p>
+    <Text tone="supporting">Infrastructure preview with synthetic shapes. The game and its art direction are still to come.</Text>
+    <footer className={styles.footer}><FanContentNotice /></footer>
   </main>;
 }

@@ -1,0 +1,31 @@
+.popover {
+  min-inline-size: max(12rem, var(--trigger-width)); /* token-exception: menu minimum width */
+  padding: var(--is-component-popover-padding);
+  border: var(--is-border-width-1) solid var(--is-color-border-strong);
+  border-radius: var(--is-component-popover-radius);
+  background: var(--is-color-surface);
+  box-shadow: var(--is-elevation-popover);
+  transition: opacity var(--is-motion-menu) var(--is-motion-ease);
+}
+.popover[data-entering], .popover[data-exiting] { opacity: 0; }
+.menu { display: flex; flex-direction: column; outline: none; }
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--is-space-3);
+  min-block-size: var(--is-row-height);
+  padding-inline: var(--is-space-3);
+  border-radius: var(--is-component-control-radius);
+  color: var(--is-color-text-primary);
+  cursor: pointer;
+  outline: none;
+}
+.item[data-focused] { background: var(--is-color-surface-state-hover); }
+.item[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: calc(var(--is-focus-width) * -1); }
+.item[data-pressed] { background: var(--is-color-surface-state-pressed); }
+.item[data-tone="danger"] { color: var(--is-color-feedback-danger-foreground); }
+.item[data-disabled] { color: var(--is-color-disabled-foreground); cursor: not-allowed; }
+.text { display: flex; flex-direction: column; min-inline-size: 0; }
+.label { font: var(--is-typography-body); overflow-wrap: anywhere; }
+.description { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+@media (forced-colors: active) { .popover { border-color: CanvasText; } .item[data-focused] { forced-color-adjust: none; background: Highlight; color: HighlightText; } }

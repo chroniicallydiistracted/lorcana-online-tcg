@@ -35,6 +35,7 @@ export function pipeline(root,env=process.env) {
     ['live-matches',['pnpm','test:match-integration']],
     ['pinned-chromium',['pnpm','--filter','@lorcana/web','exec','playwright','install','chromium']],
     ['browser',['pnpm','test:e2e:smoke']],
+    ['design-system-browser',['pnpm','--filter','@lorcana/design-system','test:browser']],
     ['engine-browser',['pnpm','test:engine-browser']],
   ];
   const reports=runStages(stages,(command,name)=>{

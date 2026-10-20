@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-021",
+  "category": "headless_browser",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/design-system",
+    "test:browser"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "d188387c5e6b19b4bc0ed73a492bb792cadcad76",
+  "source_fingerprint": "2255e8fb4a736378222f7b7341f768f31d0a96326bff0f7851c5bc12f9f6301e",
+  "started_at": "2026-10-20T05:42:26.547Z",
+  "finished_at": "2026-10-20T05:43:41.081Z",
+  "recorded_at": "2026-10-20T05:43:41.081Z",
+  "time_precision": "exact",
+  "elapsed_ms": 74538,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Design-system Chromium suite: static Storybook build in .local, axe WCAG 2.2 A/AA on every story in Paper and Ink, 44 px targets, focus, dialogs, confirmations, keyboard operation, reduced motion, forced colours, theme resolution, fonts, 320 px reflow, 200% text and inspection placement",
+  "log_path": "docs/validation/logs/RUN-20261020-021.txt",
+  "log_sha256": "f19262b73a4d772c5b84e07816fa751b02784415fb0c14609fb553e1f0a18081",
+  "redactions": 0
+}

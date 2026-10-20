@@ -1,0 +1,13 @@
+.link {
+  display: inline;
+  color: var(--is-color-text-primary);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--is-border-width-1);
+  text-underline-offset: var(--is-space-1);
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.link svg { display: inline-block; vertical-align: text-bottom; margin-inline-start: var(--is-space-1); }
+.link[data-hovered] { text-decoration-thickness: var(--is-border-width-2); }
+.link[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); border-radius: var(--is-component-control-radius); }
+@media (forced-colors: active) { .link { color: LinkText; } .link[data-focus-visible] { outline-color: Highlight; } }

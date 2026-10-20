@@ -1,7 +1,7 @@
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
 export default [
-  { ignores: ['**/node_modules/**', '**/dist/**', '**/test-results/**', '**/playwright-report/**', '.local/**', 'vendor/tcg-engines/upstream/**', 'vendor/tcg-engines/provenance/**'] },
+  { ignores: ['**/node_modules/**', '**/dist/**', '**/test-results/**', '**/playwright-report/**', '**/storybook-static/**', '.local/**', 'vendor/tcg-engines/upstream/**', 'vendor/tcg-engines/provenance/**'] },
   js.configs.recommended,
   ...ts.configs.recommended,
   { files: ['**/*.{mjs,ts,tsx}'], languageOptions: { globals: { console: 'readonly', process: 'readonly', Buffer: 'readonly', URL: 'readonly', fetch: 'readonly', setTimeout: 'readonly', clearTimeout: 'readonly', setInterval: 'readonly', clearInterval: 'readonly', AbortController: 'readonly', performance: 'readonly' } } },

@@ -1,0 +1,28 @@
+/* Shared field anatomy (§13): persistent label, description, validation. */
+.field { display: flex; flex-direction: column; gap: var(--is-component-field-gap); min-inline-size: 0; }
+.label { color: var(--is-color-text-primary); font: var(--is-typography-body-strong); }
+.description { margin: 0; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.error { display: flex; gap: var(--is-space-1); align-items: flex-start; margin: 0; color: var(--is-color-feedback-danger-foreground); font: var(--is-typography-metadata); }
+.control {
+  inline-size: 100%;
+  min-block-size: var(--is-component-control-min-size);
+  padding: var(--is-space-2) var(--is-space-3);
+  border: var(--is-component-control-border-width) solid var(--is-color-border-essential);
+  border-radius: var(--is-component-control-radius);
+  background: var(--is-color-surface);
+  color: var(--is-color-text-primary);
+  font: var(--is-typography-body);
+  transition: border-color var(--is-motion-hover) var(--is-motion-ease);
+}
+.control::placeholder { color: var(--is-color-text-supporting); opacity: 1; }
+.control[data-hovered] { border-color: var(--is-color-border-strong); }
+.control[data-focus-visible], .control[data-focused] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.control[data-invalid] { border-color: var(--is-color-feedback-danger-border); }
+.control[data-disabled] { border-color: var(--is-color-disabled-foreground); background: var(--is-color-disabled-surface); color: var(--is-color-disabled-foreground); cursor: not-allowed; }
+.control[readonly] { background: var(--is-color-surface-raised); }
+textarea.control { resize: vertical; min-block-size: calc(var(--is-component-control-min-size) * 2); }
+@media (forced-colors: active) {
+  .control { border-color: FieldText; }
+  .control[data-invalid] { border-style: double; }
+  .control[data-disabled] { border-color: GrayText; color: GrayText; }
+}

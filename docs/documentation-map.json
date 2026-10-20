@@ -2188,6 +2188,43 @@
       "path": "docs/validation/inputs/play04-d13-closure.mjs",
       "classification": "evidence",
       "sources": []
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "classification": "current",
+      "sources": [
+        "packages/design-system/**",
+        "scripts/ci/pipeline.mjs",
+        "scripts/ci/policy.json",
+        "pnpm-workspace.yaml"
+      ]
+    },
+    {
+      "path": "docs/runbooks/design-system.md",
+      "classification": "current",
+      "sources": [
+        "packages/design-system/**",
+        "apps/web/src/**"
+      ]
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "classification": "current",
+      "sources": [
+        "packages/design-system/**",
+        "apps/web/src/**",
+        "scripts/ci/pipeline.mjs"
+      ]
+    },
+    {
+      "path": "docs/archive/**",
+      "classification": "archive",
+      "sources": []
+    },
+    {
+      "path": "packages/design-system/src/assets/fonts/source-sans-3/LICENSE.md",
+      "classification": "evidence",
+      "sources": []
     }
   ]
 }

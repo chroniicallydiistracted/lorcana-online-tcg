@@ -1,0 +1,12 @@
+.popover {
+  max-inline-size: min(var(--is-component-dialog-inline-size), calc(100vw - var(--is-layout-gutter-compact) * 2)); /* token-exception: viewport-relative cap */
+  border: var(--is-border-width-1) solid var(--is-color-border-strong);
+  border-radius: var(--is-component-popover-radius);
+  background: var(--is-color-surface);
+  box-shadow: var(--is-elevation-popover);
+  transition: opacity var(--is-motion-menu) var(--is-motion-ease);
+}
+.popover[data-entering], .popover[data-exiting] { opacity: 0; }
+.dialog { display: flex; flex-direction: column; gap: var(--is-space-3); padding: var(--is-space-4); outline: none; color: var(--is-color-text-primary); font: var(--is-typography-body); }
+.title { margin: 0; font: var(--is-typography-body-strong); }
+@media (forced-colors: active) { .popover { border-color: CanvasText; } }

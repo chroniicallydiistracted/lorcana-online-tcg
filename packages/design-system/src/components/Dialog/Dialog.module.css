@@ -1,0 +1,40 @@
+@value compact from "../../generated/layout.module.css";
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100; /* token-exception: overlay stacking above application content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--is-layout-gutter-compact);
+  background: color-mix(in srgb, var(--is-color-canvas) 70%, transparent); /* token-exception: scrim derived from the canvas token */
+  transition: opacity var(--is-motion-dialog) var(--is-motion-ease);
+}
+.overlay[data-entering], .overlay[data-exiting] { opacity: 0; }
+.modal {
+  display: flex;
+  max-inline-size: var(--is-component-dialog-inline-size);
+  inline-size: 100%;
+  max-block-size: 100%;
+  border: var(--is-border-width-1) solid var(--is-color-border-strong);
+  border-radius: var(--is-component-dialog-radius);
+  background: var(--is-color-surface);
+  box-shadow: var(--is-elevation-dialog);
+  transition: transform var(--is-motion-dialog) var(--is-motion-ease);
+}
+.overlay[data-entering] .modal { transform: translateY(calc(var(--is-space-2) * var(--is-motion-distance-scale))); }
+.modal[data-presentation="sheet"] { align-self: stretch; margin-inline-start: auto; max-inline-size: var(--is-component-sheet-inline-size); border-radius: var(--is-component-dialog-radius) 0 0 var(--is-component-dialog-radius); }
+.overlay:has(.modal[data-presentation="sheet"]) { padding: 0; justify-content: flex-end; }
+.overlay[data-entering] .modal[data-presentation="sheet"] { transform: translateX(calc(var(--is-space-6) * var(--is-motion-distance-scale))); }
+@media compact {
+  .modal[data-presentation="sheet"] { align-self: flex-end; margin-inline-start: 0; max-inline-size: none; max-block-size: 90%; border-radius: var(--is-component-dialog-radius) var(--is-component-dialog-radius) 0 0; }
+  .overlay:has(.modal[data-presentation="sheet"]) { align-items: flex-end; }
+  .overlay[data-entering] .modal[data-presentation="sheet"] { transform: translateY(calc(var(--is-space-6) * var(--is-motion-distance-scale))); }
+}
+.dialog { display: flex; flex-direction: column; inline-size: 100%; min-block-size: 0; outline: none; color: var(--is-color-text-primary); }
+.header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--is-space-3); padding: var(--is-component-dialog-padding) var(--is-component-dialog-padding) var(--is-space-3); }
+.title { margin: 0; font: var(--is-typography-subsection); overflow-wrap: anywhere; }
+.body { flex: 1; min-block-size: 0; overflow: auto; padding: 0 var(--is-component-dialog-padding) var(--is-component-dialog-padding); font: var(--is-typography-body); }
+.actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--is-space-3); padding: var(--is-space-4) var(--is-component-dialog-padding); border-block-start: var(--is-border-width-1) solid var(--is-color-border-decorative); }
+@media (forced-colors: active) { .modal { border-color: CanvasText; } }

@@ -1,0 +1,20 @@
+.group { display: inline-flex; align-items: stretch; gap: var(--is-space-1); }
+.input { inline-size: calc(var(--is-component-control-min-size) * 1.5); text-align: center; font-variant-numeric: tabular-nums; }
+.step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--is-component-control-min-size);
+  min-block-size: var(--is-component-control-min-size);
+  padding: 0;
+  border: var(--is-component-control-border-width) solid var(--is-color-border-essential);
+  border-radius: var(--is-component-control-radius);
+  background: var(--is-color-surface);
+  color: var(--is-color-text-primary);
+  cursor: pointer;
+}
+.step[data-hovered] { background: var(--is-color-surface-state-hover); }
+.step[data-pressed] { background: var(--is-color-surface-state-pressed); }
+.step[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.step[data-disabled] { border-color: var(--is-color-disabled-foreground); background: var(--is-color-disabled-surface); color: var(--is-color-disabled-foreground); cursor: not-allowed; }
+@media (forced-colors: active) { .step { border-color: ButtonText; } .step[data-disabled] { border-color: GrayText; color: GrayText; } }

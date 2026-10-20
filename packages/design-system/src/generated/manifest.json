@@ -1,0 +1,2734 @@
+{
+  "schema_version": 1,
+  "generator": "packages/design-system/scripts/build-tokens.mjs",
+  "format": "DTCG 2025.10 documented subset (see docs/runbooks/design-system.md)",
+  "resolver": "style-dictionary 5.6.0",
+  "sources": [
+    {
+      "file": "tokens/primitive/color.tokens.json",
+      "sha256": "deac48f7c1994d616f7dcedd1916438ab06ddf552826d4857c373c26aaf3118d"
+    },
+    {
+      "file": "tokens/primitive/dimension.tokens.json",
+      "sha256": "42037f37c68a10a7dc9711ea4d513856a52b0aa880d37f7ceb63857a7737a4bd"
+    },
+    {
+      "file": "tokens/primitive/motion.tokens.json",
+      "sha256": "73f3047d52eb65ee17bfa0c517ac461ecea299003cd0ccb7cd25342ed7e5d45d"
+    },
+    {
+      "file": "tokens/primitive/shadow.tokens.json",
+      "sha256": "a192599b45136a7e3f3563656d56f883c4995b2276b15224aba3d09f741047af"
+    },
+    {
+      "file": "tokens/primitive/typography.tokens.json",
+      "sha256": "5d86dd10c5730355ae3834976e486e73c4a7d0e82a5167964b03dcb897afa250"
+    },
+    {
+      "file": "tokens/semantic/base.tokens.json",
+      "sha256": "017128ac5b875e1a62f10c8ae33e1e9ff8c9fe7fc4c3c1d9380f51361f921bf3"
+    },
+    {
+      "file": "tokens/component/component.tokens.json",
+      "sha256": "61a638b65863a9e406c3aea952647d6aa8c327e6e331feab0404f541382641d0"
+    },
+    {
+      "file": "tokens/card/card.tokens.json",
+      "sha256": "a45b480c3e9f22d833362c7d7152c60a06d6cf057a119c70c575bc334601d2b9"
+    },
+    {
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "sha256": "e2499d5fcff33f700afecc1cd0e2950ace3a401ffd128552acd85429bceddc56"
+    },
+    {
+      "file": "tokens/semantic/theme-ink.tokens.json",
+      "sha256": "2df8a630df866a74addf4a305eef7c6bb02ffe3e0b5bda5678bfb96329963d66"
+    },
+    {
+      "file": "tokens/contrast-pairs.json",
+      "sha256": "3df739acecd91fab576d405469240f87b2ac5f6f7c6772dde609b0de8447ab7e"
+    },
+    {
+      "file": "src/assets/fonts/manifest.json",
+      "sha256": "2ad193cda80182d83ab65516d91064d34a61216e411e1d9f6000e203aa2fd76b"
+    }
+  ],
+  "tokens": [
+    {
+      "path": "border-width.1",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "One-pixel border.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-border-width-1",
+      "values": {
+        "paper": "1px",
+        "ink": "1px"
+      }
+    },
+    {
+      "path": "border-width.2",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Two-pixel border or focus width.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-border-width-2",
+      "values": {
+        "paper": "2px",
+        "ink": "2px"
+      }
+    },
+    {
+      "path": "breakpoint.expanded",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Expanded composition opportunities from 80rem.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "80rem",
+        "ink": "80rem"
+      }
+    },
+    {
+      "path": "breakpoint.intermediate",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Intermediate layout from 40rem; compact below.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "40rem",
+        "ink": "40rem"
+      }
+    },
+    {
+      "path": "breakpoint.wide",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Wide working layout from 64rem.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "64rem",
+        "ink": "64rem"
+      }
+    },
+    {
+      "path": "card.ability-heading.scale",
+      "layer": "card",
+      "type": "number",
+      "description": "Ability heading size relative to rules text (em).",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-ability-heading-scale",
+      "values": {
+        "paper": "0.94",
+        "ink": "0.94"
+      }
+    },
+    {
+      "path": "card.ability-heading.weight",
+      "layer": "card",
+      "type": "fontWeight",
+      "description": "Ability heading weight (uppercase).",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-ability-heading-weight",
+      "values": {
+        "paper": "500",
+        "ink": "500"
+      }
+    },
+    {
+      "path": "card.classification.family",
+      "layer": "card",
+      "type": "fontFamily",
+      "description": "Classification family.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-classification-family",
+      "values": {
+        "paper": "\"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "\"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "card.classification.size",
+      "layer": "card",
+      "type": "number",
+      "description": "Classification size.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-classification-size",
+      "values": {
+        "paper": "2.35cqw",
+        "ink": "2.35cqw"
+      }
+    },
+    {
+      "path": "card.classification.weight",
+      "layer": "card",
+      "type": "fontWeight",
+      "description": "Classification weight (italic, expanded tracking).",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-classification-weight",
+      "values": {
+        "paper": "900",
+        "ink": "900"
+      }
+    },
+    {
+      "path": "card.flavor.line-height",
+      "layer": "card",
+      "type": "number",
+      "description": "Flavour line height.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-flavor-line-height",
+      "values": {
+        "paper": "1.34",
+        "ink": "1.34"
+      }
+    },
+    {
+      "path": "card.flavor.weight",
+      "layer": "card",
+      "type": "fontWeight",
+      "description": "Flavour weight (italic).",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-flavor-weight",
+      "values": {
+        "paper": "400",
+        "ink": "400"
+      }
+    },
+    {
+      "path": "card.keyword-heading.weight",
+      "layer": "card",
+      "type": "fontWeight",
+      "description": "Keyword heading weight.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-keyword-heading-weight",
+      "values": {
+        "paper": "500",
+        "ink": "500"
+      }
+    },
+    {
+      "path": "card.number.family",
+      "layer": "card",
+      "type": "fontFamily",
+      "description": "Numbers and stat glyphs family.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-number-family",
+      "values": {
+        "paper": "\"Century Gothic\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "\"Century Gothic\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "card.rules.family",
+      "layer": "card",
+      "type": "fontFamily",
+      "description": "Rules body family.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-family",
+      "values": {
+        "paper": "\"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "\"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "card.rules.line-height.dense",
+      "layer": "card",
+      "type": "number",
+      "description": "Rules line height, denser treatments.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-line-height-dense",
+      "values": {
+        "paper": "1.22",
+        "ink": "1.22"
+      }
+    },
+    {
+      "path": "card.rules.line-height.densest",
+      "layer": "card",
+      "type": "number",
+      "description": "Rules line height, densest treatment.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-line-height-densest",
+      "values": {
+        "paper": "1.2",
+        "ink": "1.2"
+      }
+    },
+    {
+      "path": "card.rules.line-height.standard",
+      "layer": "card",
+      "type": "number",
+      "description": "Rules line height, standard.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-line-height-standard",
+      "values": {
+        "paper": "1.28",
+        "ink": "1.28"
+      }
+    },
+    {
+      "path": "card.rules.size.dense",
+      "layer": "card",
+      "type": "number",
+      "description": "Rules size, dense.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-size-dense",
+      "values": {
+        "paper": "3.05cqw",
+        "ink": "3.05cqw"
+      }
+    },
+    {
+      "path": "card.rules.size.denser",
+      "layer": "card",
+      "type": "number",
+      "description": "Rules size, denser.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-size-denser",
+      "values": {
+        "paper": "2.7cqw",
+        "ink": "2.7cqw"
+      }
+    },
+    {
+      "path": "card.rules.size.densest",
+      "layer": "card",
+      "type": "number",
+      "description": "Rules size, densest.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-size-densest",
+      "values": {
+        "paper": "2.4cqw",
+        "ink": "2.4cqw"
+      }
+    },
+    {
+      "path": "card.rules.size.standard",
+      "layer": "card",
+      "type": "number",
+      "description": "Rules size, standard density.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-size-standard",
+      "values": {
+        "paper": "3.4cqw",
+        "ink": "3.4cqw"
+      }
+    },
+    {
+      "path": "card.rules.weight",
+      "layer": "card",
+      "type": "fontWeight",
+      "description": "Rules weight.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-rules-weight",
+      "values": {
+        "paper": "400",
+        "ink": "400"
+      }
+    },
+    {
+      "path": "card.title.family",
+      "layer": "card",
+      "type": "fontFamily",
+      "description": "Title family.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-title-family",
+      "values": {
+        "paper": "\"The Bystander Collection Sans\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "\"The Bystander Collection Sans\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "card.title.size",
+      "layer": "card",
+      "type": "number",
+      "description": "Title size relative to the card face.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-title-size",
+      "values": {
+        "paper": "5cqw",
+        "ink": "5cqw"
+      }
+    },
+    {
+      "path": "card.title.weight",
+      "layer": "card",
+      "type": "fontWeight",
+      "description": "Title weight.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-title-weight",
+      "values": {
+        "paper": "400",
+        "ink": "400"
+      }
+    },
+    {
+      "path": "card.version.family",
+      "layer": "card",
+      "type": "fontFamily",
+      "description": "Version/subtitle family.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-version-family",
+      "values": {
+        "paper": "\"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "\"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "card.version.size",
+      "layer": "card",
+      "type": "number",
+      "description": "Version size.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-version-size",
+      "values": {
+        "paper": "2.9cqw",
+        "ink": "2.9cqw"
+      }
+    },
+    {
+      "path": "card.version.weight",
+      "layer": "card",
+      "type": "fontWeight",
+      "description": "Version weight.",
+      "file": "tokens/card/card.tokens.json",
+      "cssVariable": "--is-card-version-weight",
+      "values": {
+        "paper": "700",
+        "ink": "700"
+      }
+    },
+    {
+      "path": "color.action.primary.background",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Primary button background.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-action-primary-background",
+      "values": {
+        "paper": "#1b1b1b",
+        "ink": "#f5f5f5"
+      }
+    },
+    {
+      "path": "color.action.primary.hover",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Primary button hover background.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-action-primary-hover",
+      "values": {
+        "paper": "#333333",
+        "ink": "#e0e0e0"
+      }
+    },
+    {
+      "path": "color.action.primary.pressed",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Primary button pressed background.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-action-primary-pressed",
+      "values": {
+        "paper": "#000000",
+        "ink": "#cfcfcf"
+      }
+    },
+    {
+      "path": "color.action.primary.text",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Primary button text.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-action-primary-text",
+      "values": {
+        "paper": "#ffffff",
+        "ink": "#141414"
+      }
+    },
+    {
+      "path": "color.border.decorative",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Decorative separator; never the sole boundary of an input or important control.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-border-decorative",
+      "values": {
+        "paper": "#c7c7c7",
+        "ink": "#4f4f4f"
+      }
+    },
+    {
+      "path": "color.border.essential",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Essential boundary of inputs and important controls; 3:1 or more.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-border-essential",
+      "values": {
+        "paper": "#777777",
+        "ink": "#8a8a8a"
+      }
+    },
+    {
+      "path": "color.border.strong",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Strong border.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-border-strong",
+      "values": {
+        "paper": "#555555",
+        "ink": "#bbbbbb"
+      }
+    },
+    {
+      "path": "color.canvas",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Room canvas.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-canvas",
+      "values": {
+        "paper": "#f7f7f7",
+        "ink": "#141414"
+      }
+    },
+    {
+      "path": "color.disabled.foreground",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Disabled control foreground; always paired with a readable reason where it matters.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-disabled-foreground",
+      "values": {
+        "paper": "#777777",
+        "ink": "#8a8a8a"
+      }
+    },
+    {
+      "path": "color.disabled.surface",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Disabled surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-disabled-surface",
+      "values": {
+        "paper": "#eeeeee",
+        "ink": "#2b2b2b"
+      }
+    },
+    {
+      "path": "color.feedback.danger.background",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Danger feedback background.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-danger-background",
+      "values": {
+        "paper": "#fbeff1",
+        "ink": "#371e23"
+      }
+    },
+    {
+      "path": "color.feedback.danger.border",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Danger feedback border.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-danger-border",
+      "values": {
+        "paper": "#a44857",
+        "ink": "#c47b88"
+      }
+    },
+    {
+      "path": "color.feedback.danger.foreground",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Danger feedback foreground.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-danger-foreground",
+      "values": {
+        "paper": "#8a2433",
+        "ink": "#f0aab5"
+      }
+    },
+    {
+      "path": "color.feedback.information.background",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Information uses the raised surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-information-background",
+      "values": {
+        "paper": "#eeeeee",
+        "ink": "#2b2b2b"
+      }
+    },
+    {
+      "path": "color.feedback.information.border",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Information uses the essential border.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-information-border",
+      "values": {
+        "paper": "#777777",
+        "ink": "#8a8a8a"
+      }
+    },
+    {
+      "path": "color.feedback.information.foreground",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Information uses primary text.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-information-foreground",
+      "values": {
+        "paper": "#1b1b1b",
+        "ink": "#f5f5f5"
+      }
+    },
+    {
+      "path": "color.feedback.success.background",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Success feedback background.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-success-background",
+      "values": {
+        "paper": "#edf5ef",
+        "ink": "#1d3023"
+      }
+    },
+    {
+      "path": "color.feedback.success.border",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Success feedback border.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-success-border",
+      "values": {
+        "paper": "#38794b",
+        "ink": "#6fa981"
+      }
+    },
+    {
+      "path": "color.feedback.success.foreground",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Success feedback foreground.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-success-foreground",
+      "values": {
+        "paper": "#205d37",
+        "ink": "#a4ddb4"
+      }
+    },
+    {
+      "path": "color.feedback.warning.background",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Warning feedback background.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-warning-background",
+      "values": {
+        "paper": "#fff4d6",
+        "ink": "#342b17"
+      }
+    },
+    {
+      "path": "color.feedback.warning.border",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Warning feedback border.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-warning-border",
+      "values": {
+        "paper": "#8a6500",
+        "ink": "#b79443"
+      }
+    },
+    {
+      "path": "color.feedback.warning.foreground",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Warning feedback foreground.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-feedback-warning-foreground",
+      "values": {
+        "paper": "#694b00",
+        "ink": "#f3d68a"
+      }
+    },
+    {
+      "path": "color.focus.outer",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Focus outer boundary.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-focus-outer",
+      "values": {
+        "paper": "#1b1b1b",
+        "ink": "#f5f5f5"
+      }
+    },
+    {
+      "path": "color.green.1d3023",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Success feedback value #1D3023.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#1d3023",
+        "ink": "#1d3023"
+      }
+    },
+    {
+      "path": "color.green.205d37",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Success feedback value #205D37.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#205d37",
+        "ink": "#205d37"
+      }
+    },
+    {
+      "path": "color.green.38794b",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Success feedback value #38794B.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#38794b",
+        "ink": "#38794b"
+      }
+    },
+    {
+      "path": "color.green.6fa981",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Success feedback value #6FA981.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#6fa981",
+        "ink": "#6fa981"
+      }
+    },
+    {
+      "path": "color.green.a4ddb4",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Success feedback value #A4DDB4.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#a4ddb4",
+        "ink": "#a4ddb4"
+      }
+    },
+    {
+      "path": "color.green.edf5ef",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Success feedback value #EDF5EF.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#edf5ef",
+        "ink": "#edf5ef"
+      }
+    },
+    {
+      "path": "color.identity.amber",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Amber ink identity.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-color-identity-amber",
+      "values": {
+        "paper": "#f5b222",
+        "ink": "#f5b222"
+      }
+    },
+    {
+      "path": "color.identity.amethyst",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Amethyst ink identity.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-color-identity-amethyst",
+      "values": {
+        "paper": "#7c4182",
+        "ink": "#7c4182"
+      }
+    },
+    {
+      "path": "color.identity.emerald",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Emerald ink identity.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-color-identity-emerald",
+      "values": {
+        "paper": "#558c4f",
+        "ink": "#558c4f"
+      }
+    },
+    {
+      "path": "color.identity.ruby",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Ruby ink identity.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-color-identity-ruby",
+      "values": {
+        "paper": "#d60039",
+        "ink": "#d60039"
+      }
+    },
+    {
+      "path": "color.identity.sapphire",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Sapphire ink identity.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-color-identity-sapphire",
+      "values": {
+        "paper": "#0092c7",
+        "ink": "#0092c7"
+      }
+    },
+    {
+      "path": "color.identity.steel",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Steel ink identity.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-color-identity-steel",
+      "values": {
+        "paper": "#97a4b0",
+        "ink": "#97a4b0"
+      }
+    },
+    {
+      "path": "color.ink.amber",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Amber ink identity reference hue.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#f5b222",
+        "ink": "#f5b222"
+      }
+    },
+    {
+      "path": "color.ink.amethyst",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Amethyst ink identity reference hue.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#7c4182",
+        "ink": "#7c4182"
+      }
+    },
+    {
+      "path": "color.ink.emerald",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Emerald ink identity reference hue.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#558c4f",
+        "ink": "#558c4f"
+      }
+    },
+    {
+      "path": "color.ink.ruby",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Ruby ink identity reference hue.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#d60039",
+        "ink": "#d60039"
+      }
+    },
+    {
+      "path": "color.ink.sapphire",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Sapphire ink identity reference hue.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#0092c7",
+        "ink": "#0092c7"
+      }
+    },
+    {
+      "path": "color.ink.steel",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Steel ink identity reference hue.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#97a4b0",
+        "ink": "#97a4b0"
+      }
+    },
+    {
+      "path": "color.neutral.00",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #000000.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#000000",
+        "ink": "#000000"
+      }
+    },
+    {
+      "path": "color.neutral.14",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #141414.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#141414",
+        "ink": "#141414"
+      }
+    },
+    {
+      "path": "color.neutral.1b",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #1B1B1B.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#1b1b1b",
+        "ink": "#1b1b1b"
+      }
+    },
+    {
+      "path": "color.neutral.1e",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #1E1E1E.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#1e1e1e",
+        "ink": "#1e1e1e"
+      }
+    },
+    {
+      "path": "color.neutral.2b",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #2B2B2B.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#2b2b2b",
+        "ink": "#2b2b2b"
+      }
+    },
+    {
+      "path": "color.neutral.33",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #333333.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#333333",
+        "ink": "#333333"
+      }
+    },
+    {
+      "path": "color.neutral.38",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #383838.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#383838",
+        "ink": "#383838"
+      }
+    },
+    {
+      "path": "color.neutral.4f",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #4F4F4F.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#4f4f4f",
+        "ink": "#4f4f4f"
+      }
+    },
+    {
+      "path": "color.neutral.55",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #555555.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#555555",
+        "ink": "#555555"
+      }
+    },
+    {
+      "path": "color.neutral.77",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #777777.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#777777",
+        "ink": "#777777"
+      }
+    },
+    {
+      "path": "color.neutral.8a",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #8A8A8A.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#8a8a8a",
+        "ink": "#8a8a8a"
+      }
+    },
+    {
+      "path": "color.neutral.bb",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #BBBBBB.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#bbbbbb",
+        "ink": "#bbbbbb"
+      }
+    },
+    {
+      "path": "color.neutral.c7",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #C7C7C7.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#c7c7c7",
+        "ink": "#c7c7c7"
+      }
+    },
+    {
+      "path": "color.neutral.cf",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #CFCFCF.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#cfcfcf",
+        "ink": "#cfcfcf"
+      }
+    },
+    {
+      "path": "color.neutral.dc",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #DCDCDC.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#dcdcdc",
+        "ink": "#dcdcdc"
+      }
+    },
+    {
+      "path": "color.neutral.e0",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #E0E0E0.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#e0e0e0",
+        "ink": "#e0e0e0"
+      }
+    },
+    {
+      "path": "color.neutral.e6",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #E6E6E6.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#e6e6e6",
+        "ink": "#e6e6e6"
+      }
+    },
+    {
+      "path": "color.neutral.e9",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #E9E9E9.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#e9e9e9",
+        "ink": "#e9e9e9"
+      }
+    },
+    {
+      "path": "color.neutral.ee",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #EEEEEE.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#eeeeee",
+        "ink": "#eeeeee"
+      }
+    },
+    {
+      "path": "color.neutral.f5",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #F5F5F5.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#f5f5f5",
+        "ink": "#f5f5f5"
+      }
+    },
+    {
+      "path": "color.neutral.f7",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #F7F7F7.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#f7f7f7",
+        "ink": "#f7f7f7"
+      }
+    },
+    {
+      "path": "color.neutral.ff",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Achromatic neutral #FFFFFF.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#ffffff",
+        "ink": "#ffffff"
+      }
+    },
+    {
+      "path": "color.red.371e23",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Danger feedback value #371E23.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#371e23",
+        "ink": "#371e23"
+      }
+    },
+    {
+      "path": "color.red.8a2433",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Danger feedback value #8A2433.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#8a2433",
+        "ink": "#8a2433"
+      }
+    },
+    {
+      "path": "color.red.a44857",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Danger feedback value #A44857.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#a44857",
+        "ink": "#a44857"
+      }
+    },
+    {
+      "path": "color.red.c47b88",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Danger feedback value #C47B88.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#c47b88",
+        "ink": "#c47b88"
+      }
+    },
+    {
+      "path": "color.red.f0aab5",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Danger feedback value #F0AAB5.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#f0aab5",
+        "ink": "#f0aab5"
+      }
+    },
+    {
+      "path": "color.red.fbeff1",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Danger feedback value #FBEFF1.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#fbeff1",
+        "ink": "#fbeff1"
+      }
+    },
+    {
+      "path": "color.surface",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Ordinary contained surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-surface",
+      "values": {
+        "paper": "#ffffff",
+        "ink": "#1e1e1e"
+      }
+    },
+    {
+      "path": "color.surface-raised",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Raised surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-surface-raised",
+      "values": {
+        "paper": "#eeeeee",
+        "ink": "#2b2b2b"
+      }
+    },
+    {
+      "path": "color.surface-state.hover",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Hovered neutral surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-surface-state-hover",
+      "values": {
+        "paper": "#e9e9e9",
+        "ink": "#333333"
+      }
+    },
+    {
+      "path": "color.surface-state.pressed",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Pressed neutral surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-surface-state-pressed",
+      "values": {
+        "paper": "#dcdcdc",
+        "ink": "#383838"
+      }
+    },
+    {
+      "path": "color.surface-state.selected",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Selected neutral surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-surface-state-selected",
+      "values": {
+        "paper": "#e6e6e6",
+        "ink": "#383838"
+      }
+    },
+    {
+      "path": "color.text.primary",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Primary text; 7:1 or more on every neutral surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-text-primary",
+      "values": {
+        "paper": "#1b1b1b",
+        "ink": "#f5f5f5"
+      }
+    },
+    {
+      "path": "color.text.supporting",
+      "layer": "semantic",
+      "type": "color",
+      "description": "Supporting text; 4.5:1 or more on every neutral surface.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-color-text-supporting",
+      "values": {
+        "paper": "#555555",
+        "ink": "#bbbbbb"
+      }
+    },
+    {
+      "path": "color.yellow.342b17",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Warning feedback value #342B17.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#342b17",
+        "ink": "#342b17"
+      }
+    },
+    {
+      "path": "color.yellow.694b00",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Warning feedback value #694B00.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#694b00",
+        "ink": "#694b00"
+      }
+    },
+    {
+      "path": "color.yellow.8a6500",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Warning feedback value #8A6500.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#8a6500",
+        "ink": "#8a6500"
+      }
+    },
+    {
+      "path": "color.yellow.b79443",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Warning feedback value #B79443.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#b79443",
+        "ink": "#b79443"
+      }
+    },
+    {
+      "path": "color.yellow.f3d68a",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Warning feedback value #F3D68A.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#f3d68a",
+        "ink": "#f3d68a"
+      }
+    },
+    {
+      "path": "color.yellow.fff4d6",
+      "layer": "primitive",
+      "type": "color",
+      "description": "Warning feedback value #FFF4D6.",
+      "file": "tokens/primitive/color.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "#fff4d6",
+        "ink": "#fff4d6"
+      }
+    },
+    {
+      "path": "component.badge.padding-inline",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Badge inline padding.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-badge-padding-inline",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "component.badge.radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Badge radius.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-badge-radius",
+      "values": {
+        "paper": "4px",
+        "ink": "4px"
+      }
+    },
+    {
+      "path": "component.binder.face-padding",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Face padding.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-binder-face-padding",
+      "values": {
+        "paper": "16px",
+        "ink": "16px"
+      }
+    },
+    {
+      "path": "component.binder.gap",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Pocket gap.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-binder-gap",
+      "values": {
+        "paper": "12px",
+        "ink": "12px"
+      }
+    },
+    {
+      "path": "component.binder.pocket",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Preferred pocket width.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-binder-pocket",
+      "values": {
+        "paper": "144px",
+        "ink": "144px"
+      }
+    },
+    {
+      "path": "component.control.border-width",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Control border width.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-control-border-width",
+      "values": {
+        "paper": "1px",
+        "ink": "1px"
+      }
+    },
+    {
+      "path": "component.control.gap",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Gap between an icon and its label inside a control.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-control-gap",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "component.control.min-size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum hit area for controls.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-control-min-size",
+      "values": {
+        "paper": "44px",
+        "ink": "44px"
+      }
+    },
+    {
+      "path": "component.control.padding-inline",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Inline padding of text controls.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-control-padding-inline",
+      "values": {
+        "paper": "16px",
+        "ink": "16px"
+      }
+    },
+    {
+      "path": "component.control.radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Control corner radius.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-control-radius",
+      "values": {
+        "paper": "4px",
+        "ink": "4px"
+      }
+    },
+    {
+      "path": "component.dialog.inline-size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Default dialog width.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-dialog-inline-size",
+      "values": {
+        "paper": "32rem",
+        "ink": "32rem"
+      }
+    },
+    {
+      "path": "component.dialog.padding",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Dialog padding.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-dialog-padding",
+      "values": {
+        "paper": "24px",
+        "ink": "24px"
+      }
+    },
+    {
+      "path": "component.dialog.radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Dialog radius.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-dialog-radius",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "component.field.gap",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Label to field spacing.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-field-gap",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "component.icon.size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Standard interface icon optical size: 24 px at the default root on a 24 px grid.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-icon-size",
+      "values": {
+        "paper": "1.5rem",
+        "ink": "1.5rem"
+      }
+    },
+    {
+      "path": "component.icon.size-small",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Small interface icon size: 20 px at the default root.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-icon-size-small",
+      "values": {
+        "paper": "1.25rem",
+        "ink": "1.25rem"
+      }
+    },
+    {
+      "path": "component.icon.stroke",
+      "layer": "component",
+      "type": "number",
+      "description": "Interface icon stroke width in grid units; one consistent stroke for the family (§12).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-icon-stroke",
+      "values": {
+        "paper": "2",
+        "ink": "2"
+      }
+    },
+    {
+      "path": "component.inspector.gap",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Gap between inspector sections.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-inspector-gap",
+      "values": {
+        "paper": "24px",
+        "ink": "24px"
+      }
+    },
+    {
+      "path": "component.inspector.reading",
+      "layer": "component",
+      "type": "typography",
+      "description": "Inspector reading presentation: rules text at 20/28 px (§7).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-inspector-reading",
+      "values": {
+        "paper": "400 1.25rem/1.75rem \"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "400 1.25rem/1.75rem \"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "component.popover.padding",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Popover padding.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-popover-padding",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "component.popover.radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Popover radius.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-popover-radius",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "component.sheet.inline-size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Side sheet width in wide layouts.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-sheet-inline-size",
+      "values": {
+        "paper": "28rem",
+        "ink": "28rem"
+      }
+    },
+    {
+      "path": "component.surface.padding",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Contained surface padding.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-surface-padding",
+      "values": {
+        "paper": "16px",
+        "ink": "16px"
+      }
+    },
+    {
+      "path": "component.surface.radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Contained surface radius.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-surface-radius",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "component.tooltip.max-inline-size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Tooltip width cap.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-tooltip-max-inline-size",
+      "values": {
+        "paper": "20rem",
+        "ink": "20rem"
+      }
+    },
+    {
+      "path": "density.row.comfortable",
+      "layer": "semantic",
+      "type": "dimension",
+      "description": "Comfortable row, about 56 px.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-density-row-comfortable",
+      "values": {
+        "paper": "56px",
+        "ink": "56px"
+      }
+    },
+    {
+      "path": "density.row.compact",
+      "layer": "semantic",
+      "type": "dimension",
+      "description": "Compact row, about 44 px.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-density-row-compact",
+      "values": {
+        "paper": "44px",
+        "ink": "44px"
+      }
+    },
+    {
+      "path": "elevation.dialog",
+      "layer": "semantic",
+      "type": "shadow",
+      "description": "Dialog shadow.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-elevation-dialog",
+      "values": {
+        "paper": "0 16px 48px 0 rgba(0, 0, 0, 0.24)",
+        "ink": "0 16px 48px 0 rgba(0, 0, 0, 0.24)"
+      }
+    },
+    {
+      "path": "elevation.popover",
+      "layer": "semantic",
+      "type": "shadow",
+      "description": "Popover shadow.",
+      "file": "tokens/semantic/theme-paper.tokens.json",
+      "cssVariable": "--is-elevation-popover",
+      "values": {
+        "paper": "0 8px 24px 0 rgba(0, 0, 0, 0.16)",
+        "ink": "0 8px 24px 0 rgba(0, 0, 0, 0.16)"
+      }
+    },
+    {
+      "path": "focus.offset",
+      "layer": "semantic",
+      "type": "dimension",
+      "description": "Focus boundary offset, 3 px (§25).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-focus-offset",
+      "values": {
+        "paper": "3px",
+        "ink": "3px"
+      }
+    },
+    {
+      "path": "focus.width",
+      "layer": "semantic",
+      "type": "dimension",
+      "description": "Focus boundary width, about 2 px (§25).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-focus-width",
+      "values": {
+        "paper": "2px",
+        "ink": "2px"
+      }
+    },
+    {
+      "path": "font.family.card-number",
+      "layer": "primitive",
+      "type": "fontFamily",
+      "description": "Card-face numbers and stat glyphs (legacy CardFacePlate). Font files are not imported until their usage basis is recorded; the fallback applies.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "\"Century Gothic\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "\"Century Gothic\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "font.family.card-text",
+      "layer": "primitive",
+      "type": "fontFamily",
+      "description": "Card-face rules, version, classification, ability and flavour family (legacy CardFacePlate). Font files are not imported until their usage basis is recorded; the fallback applies.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "\"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "\"Brandon Text Cond\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "font.family.card-title",
+      "layer": "primitive",
+      "type": "fontFamily",
+      "description": "Card-face title family (legacy CardFacePlate). Font files are not imported until their usage basis is recorded; the fallback applies.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "\"The Bystander Collection Sans\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif",
+        "ink": "\"The Bystander Collection Sans\", \"Source Sans 3\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "font.family.interface",
+      "layer": "primitive",
+      "type": "fontFamily",
+      "description": "Interface family: self-hosted Source Sans 3 with a measured metric-matched fallback.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "\"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "\"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "font.line-height.16",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "16 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "1rem",
+        "ink": "1rem"
+      }
+    },
+    {
+      "path": "font.line-height.20",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "20 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "1.25rem",
+        "ink": "1.25rem"
+      }
+    },
+    {
+      "path": "font.line-height.24",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "24 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "1.5rem",
+        "ink": "1.5rem"
+      }
+    },
+    {
+      "path": "font.line-height.28",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "28 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "1.75rem",
+        "ink": "1.75rem"
+      }
+    },
+    {
+      "path": "font.line-height.32",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "32 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "2rem",
+        "ink": "2rem"
+      }
+    },
+    {
+      "path": "font.line-height.36",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "36 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "2.25rem",
+        "ink": "2.25rem"
+      }
+    },
+    {
+      "path": "font.line-height.44",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "44 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "2.75rem",
+        "ink": "2.75rem"
+      }
+    },
+    {
+      "path": "font.size.12",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "12 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "0.75rem",
+        "ink": "0.75rem"
+      }
+    },
+    {
+      "path": "font.size.14",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "14 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "0.875rem",
+        "ink": "0.875rem"
+      }
+    },
+    {
+      "path": "font.size.16",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "16 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "1rem",
+        "ink": "1rem"
+      }
+    },
+    {
+      "path": "font.size.18",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "18 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "1.125rem",
+        "ink": "1.125rem"
+      }
+    },
+    {
+      "path": "font.size.20",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "20 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "1.25rem",
+        "ink": "1.25rem"
+      }
+    },
+    {
+      "path": "font.size.24",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "24 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "1.5rem",
+        "ink": "1.5rem"
+      }
+    },
+    {
+      "path": "font.size.32",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "32 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "2rem",
+        "ink": "2rem"
+      }
+    },
+    {
+      "path": "font.size.40",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "40 px at the default root.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "2.5rem",
+        "ink": "2.5rem"
+      }
+    },
+    {
+      "path": "font.weight.bold",
+      "layer": "primitive",
+      "type": "fontWeight",
+      "description": "Limited emphasis where 600 is not distinct enough.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "700",
+        "ink": "700"
+      }
+    },
+    {
+      "path": "font.weight.regular",
+      "layer": "primitive",
+      "type": "fontWeight",
+      "description": "Body text, ordinary labels and descriptions.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "400",
+        "ink": "400"
+      }
+    },
+    {
+      "path": "font.weight.semibold",
+      "layer": "primitive",
+      "type": "fontWeight",
+      "description": "Headings, selected navigation and important controls.",
+      "file": "tokens/primitive/typography.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "600",
+        "ink": "600"
+      }
+    },
+    {
+      "path": "layout.content-max",
+      "layer": "semantic",
+      "type": "dimension",
+      "description": "Standard content width cap, about 90rem.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-layout-content-max",
+      "values": {
+        "paper": "90rem",
+        "ink": "90rem"
+      }
+    },
+    {
+      "path": "layout.gutter.compact",
+      "layer": "semantic",
+      "type": "dimension",
+      "description": "Compact page gutter.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-layout-gutter-compact",
+      "values": {
+        "paper": "16px",
+        "ink": "16px"
+      }
+    },
+    {
+      "path": "layout.gutter.intermediate",
+      "layer": "semantic",
+      "type": "dimension",
+      "description": "Intermediate page gutter.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-layout-gutter-intermediate",
+      "values": {
+        "paper": "24px",
+        "ink": "24px"
+      }
+    },
+    {
+      "path": "layout.gutter.wide",
+      "layer": "semantic",
+      "type": "dimension",
+      "description": "Wide page gutter.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-layout-gutter-wide",
+      "values": {
+        "paper": "32px",
+        "ink": "32px"
+      }
+    },
+    {
+      "path": "layout.reading-measure",
+      "layer": "semantic",
+      "type": "number",
+      "description": "Reading column upper bound in characters (standard: approximately 60-75).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-layout-reading-measure",
+      "values": {
+        "paper": "75ch",
+        "ink": "75ch"
+      }
+    },
+    {
+      "path": "motion.binder-page",
+      "layer": "semantic",
+      "type": "duration",
+      "description": "Binder page change (about 240 ms).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-binder-page",
+      "values": {
+        "paper": "240ms",
+        "ink": "240ms"
+      }
+    },
+    {
+      "path": "motion.card",
+      "layer": "semantic",
+      "type": "duration",
+      "description": "Ordinary card movement (180-360 ms).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-card",
+      "values": {
+        "paper": "180ms",
+        "ink": "180ms"
+      }
+    },
+    {
+      "path": "motion.dialog",
+      "layer": "semantic",
+      "type": "duration",
+      "description": "Dialog/sheet (180-240 ms).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-dialog",
+      "values": {
+        "paper": "180ms",
+        "ink": "180ms"
+      }
+    },
+    {
+      "path": "motion.duration.0",
+      "layer": "primitive",
+      "type": "duration",
+      "description": "Immediate.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "0ms",
+        "ink": "0ms"
+      }
+    },
+    {
+      "path": "motion.duration.120",
+      "layer": "primitive",
+      "type": "duration",
+      "description": "Upper bound of hover/pressed; lower bound of menu/popover.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "120ms",
+        "ink": "120ms"
+      }
+    },
+    {
+      "path": "motion.duration.180",
+      "layer": "primitive",
+      "type": "duration",
+      "description": "Upper bound of menu/popover; lower bound of dialog/sheet and ordinary card movement.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "180ms",
+        "ink": "180ms"
+      }
+    },
+    {
+      "path": "motion.duration.240",
+      "layer": "primitive",
+      "type": "duration",
+      "description": "Upper bound of dialog/sheet; binder page change.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "240ms",
+        "ink": "240ms"
+      }
+    },
+    {
+      "path": "motion.duration.360",
+      "layer": "primitive",
+      "type": "duration",
+      "description": "Upper bound of ordinary card movement; lower bound of a major match event.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "360ms",
+        "ink": "360ms"
+      }
+    },
+    {
+      "path": "motion.duration.600",
+      "layer": "primitive",
+      "type": "duration",
+      "description": "Upper bound of a major match event.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "600ms",
+        "ink": "600ms"
+      }
+    },
+    {
+      "path": "motion.duration.80",
+      "layer": "primitive",
+      "type": "duration",
+      "description": "Lower bound of hover/pressed styling.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "80ms",
+        "ink": "80ms"
+      }
+    },
+    {
+      "path": "motion.duration.900",
+      "layer": "primitive",
+      "type": "duration",
+      "description": "Approximate maximum per authored pack/reward beat.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "900ms",
+        "ink": "900ms"
+      }
+    },
+    {
+      "path": "motion.ease",
+      "layer": "semantic",
+      "type": "cubicBezier",
+      "description": "Productive easing.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-ease",
+      "values": {
+        "paper": "cubic-bezier(0.2, 0, 0, 1)",
+        "ink": "cubic-bezier(0.2, 0, 0, 1)"
+      }
+    },
+    {
+      "path": "motion.ease-exit",
+      "layer": "semantic",
+      "type": "cubicBezier",
+      "description": "Exit easing.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-ease-exit",
+      "values": {
+        "paper": "cubic-bezier(0.4, 0, 1, 1)",
+        "ink": "cubic-bezier(0.4, 0, 1, 1)"
+      }
+    },
+    {
+      "path": "motion.easing.exit",
+      "layer": "primitive",
+      "type": "cubicBezier",
+      "description": "Exit treatments.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "cubic-bezier(0.4, 0, 1, 1)",
+        "ink": "cubic-bezier(0.4, 0, 1, 1)"
+      }
+    },
+    {
+      "path": "motion.easing.productive",
+      "layer": "primitive",
+      "type": "cubicBezier",
+      "description": "Initial productive easing.",
+      "file": "tokens/primitive/motion.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "cubic-bezier(0.2, 0, 0, 1)",
+        "ink": "cubic-bezier(0.2, 0, 0, 1)"
+      }
+    },
+    {
+      "path": "motion.fade",
+      "layer": "semantic",
+      "type": "duration",
+      "description": "Brief fade used by reduced-motion treatments.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-fade",
+      "values": {
+        "paper": "120ms",
+        "ink": "120ms"
+      }
+    },
+    {
+      "path": "motion.hover",
+      "layer": "semantic",
+      "type": "duration",
+      "description": "Hover/pressed styling (80-120 ms).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-hover",
+      "values": {
+        "paper": "80ms",
+        "ink": "80ms"
+      }
+    },
+    {
+      "path": "motion.major",
+      "layer": "semantic",
+      "type": "duration",
+      "description": "Major match event (360-600 ms).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-major",
+      "values": {
+        "paper": "360ms",
+        "ink": "360ms"
+      }
+    },
+    {
+      "path": "motion.menu",
+      "layer": "semantic",
+      "type": "duration",
+      "description": "Menu/popover (120-180 ms).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-menu",
+      "values": {
+        "paper": "120ms",
+        "ink": "120ms"
+      }
+    },
+    {
+      "path": "motion.reward-beat-max",
+      "layer": "semantic",
+      "type": "duration",
+      "description": "Maximum per authored pack/reward beat (about 900 ms).",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-motion-reward-beat-max",
+      "values": {
+        "paper": "900ms",
+        "ink": "900ms"
+      }
+    },
+    {
+      "path": "radius.4",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Control corner radius.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-radius-4",
+      "values": {
+        "paper": "4px",
+        "ink": "4px"
+      }
+    },
+    {
+      "path": "radius.8",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Contained surface and dialog radius.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-radius-8",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "radius.pill",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Pill shape; short tags or identity treatments only.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-radius-pill",
+      "values": {
+        "paper": "9999px",
+        "ink": "9999px"
+      }
+    },
+    {
+      "path": "shadow.dialog",
+      "layer": "primitive",
+      "type": "shadow",
+      "description": "0 16px 48px rgba(0,0,0,0.24).",
+      "file": "tokens/primitive/shadow.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "0 16px 48px 0 rgba(0, 0, 0, 0.24)",
+        "ink": "0 16px 48px 0 rgba(0, 0, 0, 0.24)"
+      }
+    },
+    {
+      "path": "shadow.popover",
+      "layer": "primitive",
+      "type": "shadow",
+      "description": "0 8px 24px rgba(0,0,0,0.16).",
+      "file": "tokens/primitive/shadow.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "0 8px 24px 0 rgba(0, 0, 0, 0.16)",
+        "ink": "0 8px 24px 0 rgba(0, 0, 0, 0.16)"
+      }
+    },
+    {
+      "path": "size.binder-face-padding",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Binder face padding (§17).",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "16px",
+        "ink": "16px"
+      }
+    },
+    {
+      "path": "size.binder-gap",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Binder pocket internal gap (§17).",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "12px",
+        "ink": "12px"
+      }
+    },
+    {
+      "path": "size.binder-pocket",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Preferred binder pocket width at comfortable density (§17).",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "144px",
+        "ink": "144px"
+      }
+    },
+    {
+      "path": "size.content-max",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Standard content width cap.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "90rem",
+        "ink": "90rem"
+      }
+    },
+    {
+      "path": "size.focus-offset",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Focus boundary offset (§25).",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "3px",
+        "ink": "3px"
+      }
+    },
+    {
+      "path": "size.gutter-compact",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Page gutter in compact layouts.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "16px",
+        "ink": "16px"
+      }
+    },
+    {
+      "path": "size.gutter-intermediate",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Page gutter in intermediate layouts.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "24px",
+        "ink": "24px"
+      }
+    },
+    {
+      "path": "size.gutter-wide",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Page gutter in wide layouts.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "32px",
+        "ink": "32px"
+      }
+    },
+    {
+      "path": "size.row-comfortable",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Comfortable single-line interactive row height.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "56px",
+        "ink": "56px"
+      }
+    },
+    {
+      "path": "size.row-compact",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Compact single-line interactive row height.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "44px",
+        "ink": "44px"
+      }
+    },
+    {
+      "path": "size.target-min",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Minimum primary control and icon-button hit area, 44 x 44 CSS px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": null,
+      "values": {
+        "paper": "44px",
+        "ink": "44px"
+      }
+    },
+    {
+      "path": "space.0",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 0: 0 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-0",
+      "values": {
+        "paper": "0",
+        "ink": "0"
+      }
+    },
+    {
+      "path": "space.1",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 1: 4 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-1",
+      "values": {
+        "paper": "4px",
+        "ink": "4px"
+      }
+    },
+    {
+      "path": "space.12",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 12: 48 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-12",
+      "values": {
+        "paper": "48px",
+        "ink": "48px"
+      }
+    },
+    {
+      "path": "space.16",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 16: 64 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-16",
+      "values": {
+        "paper": "64px",
+        "ink": "64px"
+      }
+    },
+    {
+      "path": "space.2",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 2: 8 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-2",
+      "values": {
+        "paper": "8px",
+        "ink": "8px"
+      }
+    },
+    {
+      "path": "space.3",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 3: 12 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-3",
+      "values": {
+        "paper": "12px",
+        "ink": "12px"
+      }
+    },
+    {
+      "path": "space.4",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 4: 16 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-4",
+      "values": {
+        "paper": "16px",
+        "ink": "16px"
+      }
+    },
+    {
+      "path": "space.6",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 6: 24 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-6",
+      "values": {
+        "paper": "24px",
+        "ink": "24px"
+      }
+    },
+    {
+      "path": "space.8",
+      "layer": "primitive",
+      "type": "dimension",
+      "description": "Spacing step 8: 32 px.",
+      "file": "tokens/primitive/dimension.tokens.json",
+      "cssVariable": "--is-space-8",
+      "values": {
+        "paper": "32px",
+        "ink": "32px"
+      }
+    },
+    {
+      "path": "typography.annotation",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Small annotation: nonessential supplementary information.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-annotation",
+      "values": {
+        "paper": "400 0.75rem/1rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "400 0.75rem/1rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "typography.body",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Body and standard control text.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-body",
+      "values": {
+        "paper": "400 1rem/1.5rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "400 1rem/1.5rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "typography.body-strong",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Standard control or emphasised body text.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-body-strong",
+      "values": {
+        "paper": "600 1rem/1.5rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "600 1rem/1.5rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "typography.critical",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Critical match information: important prompts and decisions.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-critical",
+      "values": {
+        "paper": "600 1.125rem/1.5rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "600 1.125rem/1.5rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "typography.display",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Selected introductory or celebratory moments.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-display",
+      "values": {
+        "paper": "600 2.5rem/2.75rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "600 2.5rem/2.75rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "typography.metadata",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Metadata: set, printing, date and secondary details.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-metadata",
+      "values": {
+        "paper": "400 0.875rem/1.25rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "400 0.875rem/1.25rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "typography.room",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Room or page title.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-room",
+      "values": {
+        "paper": "600 2rem/2.25rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "600 2rem/2.25rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "typography.section",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Section heading.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-section",
+      "values": {
+        "paper": "600 1.5rem/2rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "600 1.5rem/2rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    },
+    {
+      "path": "typography.subsection",
+      "layer": "semantic",
+      "type": "typography",
+      "description": "Subsection heading.",
+      "file": "tokens/semantic/base.tokens.json",
+      "cssVariable": "--is-typography-subsection",
+      "values": {
+        "paper": "600 1.25rem/1.75rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif",
+        "ink": "600 1.25rem/1.75rem \"Source Sans 3\", \"Source Sans 3 Fallback\", \"Arial\", \"Liberation Sans\", sans-serif"
+      }
+    }
+  ]
+}

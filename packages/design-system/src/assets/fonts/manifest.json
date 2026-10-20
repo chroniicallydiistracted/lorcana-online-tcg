@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "description": "Font asset provenance (standard §6, §7, §29). Every imported font file records its source, rights basis and checksum. Families without a recorded usage basis are not imported.",
+  "families": [
+    {
+      "family": "Source Sans 3",
+      "role": "interface",
+      "status": "imported",
+      "license": "OFL-1.1",
+      "rights_basis": "SIL Open Font License 1.1 (Copyright 2010-2022 Adobe, Reserved Font Name 'Source')",
+      "source": {
+        "repository": "https://github.com/adobe-fonts/source-sans",
+        "release": "3.052R",
+        "published_at": "2023-04-04T10:15:13Z",
+        "archive": "https://github.com/adobe-fonts/source-sans/releases/download/3.052R/WOFF2-source-sans-3.052R.zip",
+        "archive_sha256": "d7f6724027fe5ca0bab44d6121284f1fa8f66dec5f2864aa969aed347041ac95",
+        "retrieved": "2026-10-20"
+      },
+      "license_file": {
+        "path": "src/assets/fonts/source-sans-3/LICENSE.md",
+        "source": "https://raw.githubusercontent.com/adobe-fonts/source-sans/3.052R/LICENSE.md",
+        "sha256": "89ad2c4f66dd29127527493e729c31e731f111cf10faf5774c3db9275ed0c22c"
+      },
+      "coverage": "Latin script including the launch languages (English, French, German, Italian, Spanish).",
+      "files": [
+        {
+          "path": "src/assets/fonts/source-sans-3/SourceSans3-Regular.woff2",
+          "weight": 400,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 109632,
+          "sha256": "53492fb3a0def77354f166a55d09b63a10855e91c206c7620a81cf56e97f8ec3",
+          "archive_member": "WOFF2/TTF/SourceSans3-Regular.ttf.woff2"
+        },
+        {
+          "path": "src/assets/fonts/source-sans-3/SourceSans3-Semibold.woff2",
+          "weight": 600,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 108900,
+          "sha256": "47b9b661b9f395fe7f0d0e119637fba5c8dad97bde3df60066fd24229c0792f4",
+          "archive_member": "WOFF2/TTF/SourceSans3-Semibold.ttf.woff2"
+        },
+        {
+          "path": "src/assets/fonts/source-sans-3/SourceSans3-Bold.woff2",
+          "weight": 700,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 108640,
+          "sha256": "8d35c6d40e750a4ee23bbbba2bd604ad098d172907369b43281507e16b8e2e7a",
+          "archive_member": "WOFF2/TTF/SourceSans3-Bold.ttf.woff2"
+        }
+      ]
+    },
+    {
+      "family": "The Bystander Collection Sans",
+      "role": "card-title",
+      "status": "not_imported",
+      "reason": "The legacy Inkspire files carry no license or provenance record. This repository is public, so the files are not redistributed until a usage basis is recorded. The card-title token falls back to Source Sans 3."
+    },
+    {
+      "family": "Brandon Text Cond",
+      "role": "card-text",
+      "status": "not_imported",
+      "reason": "The legacy Inkspire files are HvD Fonts trial builds (file prefix HvDTrial_) with no recorded usage basis. This repository is public, so the files are not redistributed until a usage basis is recorded. The card-text token falls back to Source Sans 3."
+    },
+    {
+      "family": "Century Gothic",
+      "role": "card-number",
+      "status": "not_imported",
+      "reason": "The legacy Inkspire files carry no license or provenance record. This repository is public, so the files are not redistributed until a usage basis is recorded. The card-number token falls back to Source Sans 3."
+    }
+  ],
+  "fallback": {
+    "family": "Source Sans 3 Fallback",
+    "local": [
+      "Arial",
+      "Liberation Sans"
+    ],
+    "method": "Measured by scripts/measure-font-metrics.mjs from the release TTFs (same builds as the shipped WOFF2) against Liberation Sans, which is metric-compatible with Arial. size-adjust matches the average advance weighted by the character frequencies of docs/vision/UX_UI_DESIGN_SYSTEM.md; vertical overrides use the web face's hhea metrics divided by size-adjust.",
+    "corpus_sha256": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
+    "faces": [
+      {
+        "weight": 400,
+        "local": [
+          "Arial",
+          "ArialMT",
+          "Liberation Sans",
+          "LiberationSans"
+        ],
+        "web_ttf_sha256": "4644c81b86ec9caaa76b634889968ed3c4f4f52f054855933acc7c2b21e53b0f",
+        "fallback_ttf": "LiberationSans-Regular.ttf",
+        "fallback_ttf_sha256": "f8ace1f892b2bd9dc1792ba7f097fa7588f84fed48321480e04de5390828221f",
+        "sizeAdjust": 94.32,
+        "ascentOverride": 106.02,
+        "descentOverride": 34.56,
+        "lineGapOverride": 0
+      },
+      {
+        "weight": 600,
+        "local": [
+          "Arial Bold",
+          "Arial-BoldMT",
+          "Liberation Sans Bold",
+          "LiberationSans-Bold"
+        ],
+        "web_ttf_sha256": "a3f4f8dcf343a8f24dc61951de93f3ba1558b15cd250ba24af8a40e957081b7d",
+        "fallback_ttf": "LiberationSans-Bold.ttf",
+        "fallback_ttf_sha256": "361c61b82d575c5c35fd9157fda8b0194bcfcd0d88ea8521a4fb5dd53d33dddc",
+        "sizeAdjust": 90.16,
+        "ascentOverride": 110.91,
+        "descentOverride": 36.16,
+        "lineGapOverride": 0
+      },
+      {
+        "weight": 700,
+        "local": [
+          "Arial Bold",
+          "Arial-BoldMT",
+          "Liberation Sans Bold",
+          "LiberationSans-Bold"
+        ],
+        "web_ttf_sha256": "9214b9d95e4231c609802815c2646c98174e2102d0d37f88978a7f8e71006e6a",
+        "fallback_ttf": "LiberationSans-Bold.ttf",
+        "fallback_ttf_sha256": "361c61b82d575c5c35fd9157fda8b0194bcfcd0d88ea8521a4fb5dd53d33dddc",
+        "sizeAdjust": 92.76,
+        "ascentOverride": 107.81,
+        "descentOverride": 35.15,
+        "lineGapOverride": 0
+      }
+    ]
+  }
+}

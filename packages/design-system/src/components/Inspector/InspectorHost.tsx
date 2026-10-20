@@ -1,0 +1,53 @@
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import { Dialog } from '../Dialog/Dialog.tsx';
+import { IconButton } from '../Button/Button.tsx';
+import { breakpoints } from '../../generated/tokens.ts';
+import { useMessages } from '../../foundation/DesignSystemProvider.tsx';
+import styles from './InspectorHost.module.css';
+
+function useWide(): boolean {
+  const query = `(width >= ${breakpoints.wide})`;
+  const [wide, setWide] = useState(() => typeof matchMedia === 'function' && matchMedia(query).matches);
+  useEffect(() => {
+    if (typeof matchMedia !== 'function') return;
+    const list = matchMedia(query), update = () => setWide(list.matches);
+    update(); list.addEventListener('change', update);
+    return () => list.removeEventListener('change', update);
+  }, [query]);
+  return wide;
+}
+export interface InspectorHostProps {
+  isOpen: boolean;
+  onOpenChange: (isOpen: boolean) => void;
+  title: ReactNode;
+  children: ReactNode;
+  /** Where focus goes if the originating card no longer exists when inspection closes. */
+  fallbackFocus?: () => HTMLElement | null;
+}
+/**
+ * Placement and lifecycle for inspection (§13, §15): a side panel beside the working context on wide
+ * layouts and a modal sheet on narrower ones. Closing returns focus to the originating card when it still exists.
+ */
+export function InspectorHost({ isOpen, onOpenChange, title, children, fallbackFocus }: InspectorHostProps) {
+  const t = useMessages(), wide = useWide(), origin = useRef<Element | null>(null), panel = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    if (isOpen) { origin.current = document.activeElement; if (wide) panel.current?.focus(); return; }
+    const target = origin.current;
+    origin.current = null;
+    if (target instanceof HTMLElement && target.isConnected) target.focus();
+    else fallbackFocus?.()?.focus();
+  }, [isOpen, wide, fallbackFocus]);
+  useEffect(() => {
+    if (!isOpen || !wide) return;
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape' && panel.current?.contains(document.activeElement)) onOpenChange(false); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isOpen, wide, onOpenChange]);
+  if (!isOpen) return null;
+  if (!wide) return <Dialog presentation="sheet" title={title} isOpen onOpenChange={onOpenChange}>{children}</Dialog>;
+  return <aside ref={panel} className={styles.panel} tabIndex={-1} aria-label={typeof title === 'string' ? title : undefined}>
+    <div className={styles.header}><h2 className={styles.title}>{title}</h2><IconButton icon="close" label={t('action.close')} onPress={() => onOpenChange(false)} tooltip={false} /></div>
+    <div className={styles.body}>{children}</div>
+  </aside>;
+}

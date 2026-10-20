@@ -1,6 +1,24 @@
-.page { width: min(100% - 2rem, 64rem); margin: 3rem auto; }
-.eyebrow { color: var(--accent); letter-spacing: .07em; font-size: .85rem; }
-.intro { max-width: 42rem; }
-.page section { border-top: 1px solid #365054; margin-top: 2rem; padding-top: 1rem; }
-.canvas { display: block; width: 100%; height: clamp(200px, 38vw, 420px); margin-top: var(--space); }
-.note { color: #b4c7ca; margin-top: 2rem; }
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--is-space-4);
+  inline-size: min(100% - var(--is-layout-gutter-compact) * 2, var(--is-layout-content-max));
+  margin: var(--is-space-12) auto;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--is-space-3);
+  margin-block-start: var(--is-space-4);
+  padding-block-start: var(--is-space-4);
+  border-block-start: var(--is-border-width-1) solid var(--is-color-border-decorative);
+}
+.list { margin: 0; padding-inline-start: var(--is-space-6); font: var(--is-typography-body); }
+.canvas {
+  display: block;
+  inline-size: 100%;
+  block-size: clamp(12.5rem, 38vw, 26.25rem); /* token-exception: diagnostic renderer viewport sizing */
+  border-radius: var(--is-component-surface-radius);
+}
+.footer { margin-block-start: var(--is-space-8); padding-block-start: var(--is-space-4); border-block-start: var(--is-border-width-1) solid var(--is-color-border-decorative); }

@@ -1,0 +1,11 @@
+.message { display: flex; gap: var(--is-space-3); align-items: flex-start; padding: var(--is-space-3) var(--is-space-4); border: var(--is-border-width-1) solid; border-radius: var(--is-component-surface-radius); }
+.message[data-tone="information"] { border-color: var(--is-color-feedback-information-border); background: var(--is-color-feedback-information-background); color: var(--is-color-feedback-information-foreground); }
+.message[data-tone="success"] { border-color: var(--is-color-feedback-success-border); background: var(--is-color-feedback-success-background); color: var(--is-color-feedback-success-foreground); }
+.message[data-tone="warning"] { border-color: var(--is-color-feedback-warning-border); background: var(--is-color-feedback-warning-background); color: var(--is-color-feedback-warning-foreground); }
+.message[data-tone="danger"] { border-color: var(--is-color-feedback-danger-border); background: var(--is-color-feedback-danger-background); color: var(--is-color-feedback-danger-foreground); }
+.body { display: flex; flex-direction: column; gap: var(--is-space-1); min-inline-size: 0; }
+.title { margin: 0; font: var(--is-typography-body-strong); overflow-wrap: anywhere; }
+.text { font: var(--is-typography-body); max-inline-size: var(--is-layout-reading-measure); overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; gap: var(--is-space-2); margin-block-start: var(--is-space-2); }
+.banner .message { border-radius: 0; border-inline-width: 0; }
+@media (forced-colors: active) { .message { border-color: CanvasText; } }

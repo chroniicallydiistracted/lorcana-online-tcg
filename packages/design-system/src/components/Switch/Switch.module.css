@@ -1,0 +1,35 @@
+.switch { display: inline-flex; align-items: center; gap: var(--is-space-3); min-block-size: var(--is-component-control-min-size); color: var(--is-color-text-primary); font: var(--is-typography-body); cursor: pointer; }
+.track {
+  position: relative;
+  flex: none;
+  inline-size: calc(var(--is-component-icon-size) * 2);
+  block-size: var(--is-component-icon-size);
+  border: var(--is-border-width-2) solid var(--is-color-border-essential);
+  border-radius: var(--is-radius-pill);
+  background: var(--is-color-surface);
+  transition: background-color var(--is-motion-hover) var(--is-motion-ease), border-color var(--is-motion-hover) var(--is-motion-ease);
+}
+.thumb {
+  position: absolute;
+  inset-block: var(--is-space-0);
+  inset-inline-start: var(--is-space-0);
+  margin: var(--is-border-width-2);
+  inline-size: calc(var(--is-component-icon-size) - var(--is-border-width-2) * 4);
+  border-radius: var(--is-radius-pill);
+  background: var(--is-color-border-strong);
+  transition: transform var(--is-motion-hover) var(--is-motion-ease);
+}
+.switch[data-selected] .track { border-color: var(--is-color-action-primary-background); background: var(--is-color-action-primary-background); }
+.switch[data-selected] .thumb { background: var(--is-color-action-primary-text); transform: translateX(var(--is-component-icon-size)); }
+.switch[data-selected] .thumb:dir(rtl) { transform: translateX(calc(var(--is-component-icon-size) * -1)); }
+.switch[data-focus-visible] .track { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.switch[data-disabled] { color: var(--is-color-disabled-foreground); cursor: not-allowed; }
+.switch[data-disabled] .track { border-color: var(--is-color-disabled-foreground); background: var(--is-color-disabled-surface); }
+.switch[data-disabled] .thumb { background: var(--is-color-disabled-foreground); }
+.label { overflow-wrap: anywhere; }
+@media (forced-colors: active) {
+  .track { border-color: ButtonText; }
+  .thumb { forced-color-adjust: none; background: ButtonText; }
+  .switch[data-selected] .track { forced-color-adjust: none; background: Highlight; border-color: Highlight; }
+  .switch[data-selected] .thumb { background: HighlightText; }
+}

@@ -1,0 +1,103 @@
+// Externalized interface strings (standard §28). Components never hardcode player-facing text.
+// English is the only sourced catalog; other launch locales need sourced translations before use.
+// 'en-XA' is a pseudolocale for long-string and diacritic testing.
+export const en = {
+  'action.close': 'Close',
+  'action.cancel': 'Cancel',
+  'action.retry': 'Retry connection',
+  'action.clearSearch': 'Clear search',
+  'action.increase': 'Increase',
+  'action.decrease': 'Decrease',
+  'action.inspect': 'Inspect {name}',
+  'action.dismiss': 'Dismiss',
+  'state.pending': 'Pending',
+  'search.results': '{count, plural, =0 {No results} one {# result} other {# results}}',
+  'notifications.label': 'Notifications',
+  'notifications.count': '{count, plural, =0 {No new notifications} one {# new notification} other {# new notifications}}',
+  'connection.connected': 'Connected',
+  'connection.reconnecting': 'Reconnecting',
+  'connection.resyncing': 'Resynchronizing',
+  'connection.offline': 'Offline',
+  'connection.versionMismatch': 'Update required',
+  'connection.actionsPaused': 'Actions are paused until the connection is restored.',
+  'connection.actionsAvailable': 'Actions are available.',
+  'connection.actionsResync': 'Actions resume after the latest state is confirmed.',
+  'connection.actionsUpdate': 'Update to continue. Your recoverable work is kept.',
+  'ownership.owned': 'Owned',
+  'ownership.unowned': 'Not owned',
+  'ownership.unknown': 'Ownership unknown',
+  'ownership.loading': 'Loading ownership',
+  'ownership.unavailable': 'Ownership unavailable',
+  'quantity.normal': 'Normal',
+  'quantity.foil': 'Foil',
+  'quantity.total': 'Total',
+  'finish.normal': 'Normal printing',
+  'finish.foil': 'Foil printing',
+  'image.unavailable': 'Image unavailable',
+  'job.queued': 'Queued',
+  'job.running': 'Running',
+  'job.failed': 'Failed',
+  'job.canceled': 'Canceled',
+  'job.complete': 'Complete',
+  'feedback.success': 'Success',
+  'feedback.warning': 'Warning',
+  'feedback.danger': 'Error',
+  'feedback.information': 'Information',
+  'inspector.printed': 'Printed text',
+  'inspector.flavor': 'Flavor text',
+  'inspector.modifiers': 'Current effects',
+  'inspector.printing': 'Printing',
+  'inspector.ownership': 'Ownership',
+  'inspector.legality': 'Legality',
+  'inspector.rulings': 'Rulings and sources',
+  'inspector.readingMode': 'Reading mode',
+  'inspector.set': 'Set',
+  'inspector.number': 'Collector number',
+  'inspector.rarity': 'Rarity',
+  'inspector.artist': 'Artist',
+  'inspector.language': 'Language',
+  'deck.quantity': 'Quantity of {name}',
+  'ink.multicolor': 'Inks: {list}',
+  'ink.amber': 'Amber',
+  'ink.amethyst': 'Amethyst',
+  'ink.emerald': 'Emerald',
+  'ink.ruby': 'Ruby',
+  'ink.sapphire': 'Sapphire',
+  'ink.steel': 'Steel',
+} as const;
+export type MessageKey = keyof typeof en;
+export type Catalog = Readonly<Record<MessageKey, string>>;
+
+const PSEUDO: Record<string, string> = { a: 'à', e: 'é', i: 'ï', o: 'ö', u: 'ü', c: 'ç', n: 'ñ', A: 'Å', E: 'É', I: 'Ï', O: 'Ö', U: 'Ü', C: 'Ç', N: 'Ñ', y: 'ý', s: 'š', z: 'ž' };
+/** Accented, about 40% longer text that keeps placeholders and plural syntax intact. */
+export function pseudolocalize(text: string): string {
+  let depth = 0, out = '';
+  for (const char of text) {
+    if (char === '{') depth++;
+    out += depth % 2 === 0 ? PSEUDO[char] ?? char : char; // text, including plural option bodies; never placeholder names
+    if (char === '}') depth--;
+  }
+  const pad = Math.ceil(text.replace(/\{[^}]*\}/g, '').length * 0.4);
+  return `[${out}${' ·'.repeat(Math.max(1, Math.round(pad / 2)))}]`;
+}
+export const catalogs: Readonly<Record<string, Catalog>> = Object.freeze({
+  en,
+  'en-XA': Object.fromEntries(Object.entries(en).map(([k, v]) => [k, pseudolocalize(v)])) as Catalog,
+});
+export function catalogFor(locale: string): Catalog { return catalogs[locale] ?? en; }
+
+/** Minimal ICU subset: {name} placeholders and {count, plural, =0 {...} one {...} other {...}} with # replacement. */
+export function formatMessage(template: string, values: Readonly<Record<string, string | number>>, locale: string): string {
+  const plural = /\{(\w+), plural, ((?:(?:=\d+|zero|one|two|few|many|other) \{[^{}]*\}\s*)+)\}/g;
+  const withPlurals = template.replace(plural, (_all, name: string, body: string) => {
+    const count = Number(values[name] ?? 0), options = new Map<string, string>();
+    for (const m of body.matchAll(/(=\d+|zero|one|two|few|many|other) \{([^{}]*)\}/g)) options.set(m[1]!, m[2]!);
+    const exact = options.get('=' + count), rule = new Intl.PluralRules(locale === 'en-XA' ? 'en' : locale).select(count);
+    const chosen = exact ?? options.get(rule) ?? options.get('other') ?? '';
+    return chosen.replace(/#/g, new Intl.NumberFormat(locale === 'en-XA' ? 'en' : locale).format(count));
+  });
+  return withPlurals.replace(/\{(\w+)\}/g, (_all, name: string) => {
+    const value = values[name];
+    return value === undefined ? '' : typeof value === 'number' ? new Intl.NumberFormat(locale === 'en-XA' ? 'en' : locale).format(value) : value;
+  });
+}

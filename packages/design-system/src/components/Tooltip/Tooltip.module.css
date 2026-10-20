@@ -1,0 +1,13 @@
+.tooltip {
+  max-inline-size: var(--is-component-tooltip-max-inline-size);
+  padding: var(--is-space-1) var(--is-space-2);
+  border: var(--is-border-width-1) solid var(--is-color-border-strong);
+  border-radius: var(--is-component-control-radius);
+  background: var(--is-color-surface-raised);
+  color: var(--is-color-text-primary);
+  font: var(--is-typography-metadata);
+  box-shadow: var(--is-elevation-popover);
+  transition: opacity var(--is-motion-menu) var(--is-motion-ease);
+}
+.tooltip[data-entering], .tooltip[data-exiting] { opacity: 0; }
+@media (forced-colors: active) { .tooltip { border-color: CanvasText; } }

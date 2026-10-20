@@ -1,0 +1,23 @@
+.stack { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.inline { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
+.stack[data-align="start"], .inline[data-align="start"] { align-items: flex-start; }
+.stack[data-align="center"], .inline[data-align="center"] { align-items: center; }
+.stack[data-align="end"], .inline[data-align="end"] { align-items: flex-end; }
+.stack[data-align="stretch"], .inline[data-align="stretch"] { align-items: stretch; }
+[data-gap="0"] { gap: var(--is-space-0); }
+[data-gap="1"] { gap: var(--is-space-1); }
+[data-gap="2"] { gap: var(--is-space-2); }
+[data-gap="3"] { gap: var(--is-space-3); }
+[data-gap="4"] { gap: var(--is-space-4); }
+[data-gap="6"] { gap: var(--is-space-6); }
+[data-gap="8"] { gap: var(--is-space-8); }
+[data-gap="12"] { gap: var(--is-space-12); }
+[data-gap="16"] { gap: var(--is-space-16); }
+
+.surface { border-radius: var(--is-component-surface-radius); color: var(--is-color-text-primary); }
+.surface[data-level="canvas"] { background: var(--is-color-canvas); }
+.surface[data-level="surface"] { background: var(--is-color-surface); }
+.surface[data-level="raised"] { background: var(--is-color-surface-raised); }
+.surface[data-bordered] { border: var(--is-border-width-1) solid var(--is-color-border-essential); }
+.surface[data-padded] { padding: var(--is-component-surface-padding); }
+@media (forced-colors: active) { .surface { border: var(--is-border-width-1) solid CanvasText; } }

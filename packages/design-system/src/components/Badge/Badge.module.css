@@ -1,0 +1,22 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  max-inline-size: 100%;
+  padding: 0 var(--is-component-badge-padding-inline);
+  border: var(--is-border-width-1) solid var(--is-color-border-essential);
+  border-radius: var(--is-component-badge-radius);
+  background: var(--is-color-surface-raised);
+  color: var(--is-color-text-primary);
+  font: var(--is-typography-metadata);
+  overflow-wrap: anywhere;
+}
+.badge[data-tone="information"] { border-color: var(--is-color-feedback-information-border); background: var(--is-color-feedback-information-background); color: var(--is-color-feedback-information-foreground); }
+.badge[data-tone="success"] { border-color: var(--is-color-feedback-success-border); background: var(--is-color-feedback-success-background); color: var(--is-color-feedback-success-foreground); }
+.badge[data-tone="warning"] { border-color: var(--is-color-feedback-warning-border); background: var(--is-color-feedback-warning-background); color: var(--is-color-feedback-warning-foreground); }
+.badge[data-tone="danger"] { border-color: var(--is-color-feedback-danger-border); background: var(--is-color-feedback-danger-background); color: var(--is-color-feedback-danger-foreground); }
+.status { display: inline-flex; align-items: center; gap: var(--is-space-1); font: var(--is-typography-metadata); color: var(--is-color-text-primary); }
+.status[data-tone="success"] svg { color: var(--is-color-feedback-success-border); }
+.status[data-tone="warning"] svg { color: var(--is-color-feedback-warning-border); }
+.status[data-tone="danger"] svg { color: var(--is-color-feedback-danger-border); }
+.status[data-tone="information"] svg { color: var(--is-color-feedback-information-border); }
+@media (forced-colors: active) { .badge { border-color: CanvasText; } .status svg { color: CanvasText; } }

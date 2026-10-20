@@ -1,0 +1,32 @@
+/* Global foundation (standard §6, §8, §25). Imported once by DesignSystemProvider. */
+@import "../generated/fonts.css";
+@import "../generated/tokens.css";
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  font: var(--is-typography-body);
+  font-synthesis: none;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--is-color-canvas);
+  color: var(--is-color-text-primary);
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd) { margin: 0; }
+:where(button, input, select, textarea) { font: inherit; color: inherit; }
+:where(img, svg, video, canvas) { display: block; max-inline-size: 100%; }
+
+/* Visible focus for native elements outside components: about 2 px with a 3 px offset. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: var(--is-focus-width) solid var(--is-color-focus-outer);
+  outline-offset: var(--is-focus-offset);
+}
+
+@media (forced-colors: active) {
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline-color: Highlight; }
+}

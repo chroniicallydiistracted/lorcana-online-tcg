@@ -1,0 +1,39 @@
+.trigger { display: flex; align-items: center; justify-content: space-between; gap: var(--is-space-2); text-align: start; cursor: pointer; }
+.trigger[data-pressed] { background: var(--is-color-surface-state-pressed); }
+.value { overflow-wrap: anywhere; }
+.value[data-placeholder] { color: var(--is-color-text-supporting); }
+.popover {
+  min-inline-size: var(--trigger-width);
+  max-block-size: min(24rem, var(--visual-viewport-height, 100vh)); /* token-exception: listbox height cap tied to the viewport */
+  overflow: auto;
+  padding: var(--is-component-popover-padding);
+  border: var(--is-border-width-1) solid var(--is-color-border-strong);
+  border-radius: var(--is-component-popover-radius);
+  background: var(--is-color-surface);
+  box-shadow: var(--is-elevation-popover);
+  transition: opacity var(--is-motion-menu) var(--is-motion-ease);
+}
+.popover[data-entering], .popover[data-exiting] { opacity: 0; }
+.list { display: flex; flex-direction: column; gap: var(--is-space-0); outline: none; }
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--is-space-2);
+  min-block-size: var(--is-row-height);
+  padding-inline: var(--is-space-3);
+  border-radius: var(--is-component-control-radius);
+  color: var(--is-color-text-primary);
+  font: var(--is-typography-body);
+  cursor: pointer;
+  outline: none;
+}
+.option[data-hovered], .option[data-focused] { background: var(--is-color-surface-state-hover); }
+.option[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: calc(var(--is-focus-width) * -1); }
+.option[data-pressed] { background: var(--is-color-surface-state-pressed); }
+.option[data-selected] { background: var(--is-color-surface-state-selected); font: var(--is-typography-body-strong); }
+.optionText { flex: 1; overflow-wrap: anywhere; }
+.option[data-disabled] { color: var(--is-color-disabled-foreground); cursor: not-allowed; }
+@media (forced-colors: active) {
+  .popover { border-color: CanvasText; }
+  .option[data-focused] { forced-color-adjust: none; background: Highlight; color: HighlightText; }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-022",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "d188387c5e6b19b4bc0ed73a492bb792cadcad76",
+  "source_fingerprint": "2255e8fb4a736378222f7b7341f768f31d0a96326bff0f7851c5bc12f9f6301e",
+  "started_at": "2026-10-20T16:19:18.713Z",
+  "finished_at": "2026-10-20T16:21:19.366Z",
+  "recorded_at": "2026-10-20T16:21:19.366Z",
+  "time_precision": "exact",
+  "elapsed_ms": 120657,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Design-system source: workspace typecheck, ESLint plus boundaries and the full workspace test suite (including the 30 design-system gates)",
+  "log_path": "docs/validation/logs/RUN-20261020-022.txt",
+  "log_sha256": "ad69942841b9c5c0043376e766bf02f45b69393776bc4383c1bd47e1f4bf92e9",
+  "redactions": 0
+}
