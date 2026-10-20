@@ -510,6 +510,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261006-070.json",
         "docs/validation/runs/RUN-20261007-028.json",
         "docs/validation/runs/RUN-20261007-051.json",
@@ -634,6 +636,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261006-070.json",
         "docs/validation/runs/RUN-20261007-028.json",
         "docs/validation/runs/RUN-20261007-051.json",
@@ -703,6 +707,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261006-070.json",
         "docs/validation/runs/RUN-20261007-028.json",
         "docs/validation/runs/RUN-20261007-051.json",
@@ -794,6 +800,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261006-070.json",
         "docs/validation/runs/RUN-20261006-071.json",
         "docs/validation/runs/RUN-20261007-001.json",
@@ -880,6 +888,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261007-028.json",
         "docs/validation/runs/RUN-20261007-029.json",
         "docs/validation/runs/RUN-20261007-051.json",
@@ -941,6 +951,8 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261007-051.json",
         "docs/validation/runs/RUN-20261010-040.json",
         "docs/validation/runs/RUN-20261011-002.json",
@@ -1007,6 +1019,8 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261007-051.json",
         "docs/validation/runs/RUN-20261007-052.json",
         "docs/validation/runs/RUN-20261010-040.json",
@@ -1182,6 +1196,8 @@
         "R32.011"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261011-037.json",
         "docs/validation/runs/RUN-20261011-038.json",
         "docs/validation/runs/RUN-20261011-043.json",
@@ -1348,6 +1364,8 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261013-078.json",
         "docs/validation/runs/RUN-20261013-081.json",
         "docs/validation/runs/RUN-20261013-102.json",
@@ -1431,6 +1449,8 @@
         "R17.009"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261014-033.json",
         "docs/validation/runs/RUN-20261014-035.json",
         "docs/validation/runs/RUN-20261014-047.json",
@@ -1498,6 +1518,8 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261015-002.json",
         "docs/validation/runs/RUN-20261015-003.json",
         "docs/validation/runs/RUN-20261015-004.json",
@@ -1553,6 +1575,8 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261015-002.json",
         "docs/validation/runs/RUN-20261015-003.json",
         "docs/validation/runs/RUN-20261015-004.json",
@@ -1582,7 +1606,7 @@
       "name": "Durable authoritative game clocks",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "D13 native whole-game timeoutCount policy2 (bounded1..10/default3); first opening expiry loses, main limit loses in one replayable logical transition; D14 native restore unchanged. Either player may concede in Setup via P060. Waiting concessions remain unreserved/optimistically fenced. Viewer2/endReason, clock2/count/limit and distinct live4 retain exact legacy codecs. Migration0006 only admits4. Current full-source local verification passed; independent Director audit pending; infrastructure pauses never count/choose winner; audit point4, real-card/auth/admission/device/load/production gates remain.",
+      "description": "D13 native whole-game timeoutCount policy2 (bounded1..10/default3); first opening expiry loses, main limit loses in one replayable logical transition; D14 native restore unchanged. Either player may concede in Setup via P060. Waiting concessions remain unreserved/optimistically fenced. Viewer2/endReason, clock2/count/limit and distinct live4 retain exact legacy codecs. Migration0006 only admits4. Current full-source local verification passed; independently audited in CHG-20261020-001 (lint repaired on the audit branch; concession during a clock pause awaits the Director; hosted CI pending); infrastructure pauses never count/choose winner; audit point4, real-card/auth/admission/device/load/production gates remain.",
       "sources": [
         "packages/contracts/src/clocks.ts",
         "packages/engine-adapter/src/clocks.ts",
@@ -1633,6 +1657,8 @@
         "R30.010"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261020-009.json",
+        "docs/validation/runs/RUN-20261020-008.json",
         "docs/validation/runs/RUN-20261015-029.json",
         "docs/validation/runs/RUN-20261015-032.json",
         "docs/validation/runs/RUN-20261015-033.json",

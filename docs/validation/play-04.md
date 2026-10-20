@@ -561,3 +561,90 @@ Every row links its immutable native JSON/log digest and source/timing. Counts a
 | [RUN-20261020-001](runs/RUN-20261020-001.json) | passed | 0 / 0 | documentation coverage, fingerprints, callables, links, changelog, evidence and whitespace checks | Final canonical documentation closure; exact timing, same final executable fingerprint |
 
 Documentation closure recorded 2026-10-20T01:14:07.039Z. The new receipt uses the actual October20 UTC date (still October19 in America/Phoenix); the existing CHG and earlier allocated run IDs retain their original identities. All34 task receipts are retained. The canonical change record covers every file in the cumulative diff from cda3b54, including the receipt/log artifacts, current inventory, and this final handoff. The completed synthetic implementation is handed back for independent Director audit; no main merge, push, hosted D13 run or real desktop observation is claimed.
+
+## Independent D13 audit — 2026-10-20 UTC
+
+Recorded 2026-10-20T02:26:14.784Z (CHG-20261020-001) by the Claude Code agent (architect/QA reviewer role) on Director request. Source: `codex/play-04-d13` at 3704b32, fingerprint `342f3801a578dcf4f469019a5020b83d682356ea3d6f4f0f351bcb4817ce6fd2`. The audit branch `claude/play-04-d13-audit` adds one ESLint rule override (finding 1), fingerprint `1b752a0b7c32f983b861d4d744c945fc44979a865638330ceb4bc7046a70ad02`. Main is unchanged at cda3b54.
+
+### Verdict
+
+The D13 implementation does what the brief asks:
+- P060 is correct and minimal.
+- Either player can concede at every opening step.
+- The engine's own whole-game timeout count drives the limit, and the first opening timeout loses.
+- D14's time restore is unchanged.
+- Pauses, outages and audits never count as timeouts and never choose a winner, and players cannot reach `forfeitGame`.
+- Simultaneous requests produce exactly one result.
+- Replay is exact and rejects tampering.
+- The contract changes are versioned, and the old formats still work.
+
+One Important defect was found: the handed-back commit fails lint, so hosted CI would fail. It is repaired on the audit branch. One Minor gap needs a Director decision: a concession is refused while the clock is paused.
+
+### Findings
+
+1. **Important, repaired on the audit branch: the handed-back commit fails `pnpm lint`.**
+   - `docs/validation/inputs/play04-d13-closure.mjs`, the input that RUN-20261019-038 executed, has three `no-useless-assignment` errors. The isolated pipeline on 3704b32 stops at the foundation stage (RUN-20261020-002), and hosted CI would stop at the same point.
+   - RUN-20261019-037 passed at the same fingerprint because the fingerprint covers only non-documentation files, while ESLint also lints scripts under `docs/validation/inputs/`. A passing run at a matching fingerprint therefore does not prove that the commit passes lint.
+   - Repair: an override in `eslint.config.mjs` turns that one rule off for that one file, so the executed input stays byte-identical. This changes the fingerprint, so this audit re-binds the verified features to its own runs at the new fingerprint.
+   - Recommended follow-up: make the lint scope and the fingerprint scope agree, either by fingerprinting evidence input scripts or by excluding them from lint.
+2. **Minor, Director decision: a concession is refused while the clock is paused.**
+   - The bridge refuses a concession with `CLOCK_PAUSED` (RUN-20261020-004 G), and the service refuses it with `UNAVAILABLE` (RUN-20261020-005/006 S3, in an outage pause). This applies to both the active and the waiting player and covers every pause reason (recovery, time_unreliable, no_legal_default).
+   - D13 and CR 2.3.3.4 say a player may concede at any point. Players in a paused game must wait for an operator's resume before they can concede.
+   - There is no escape from consequences: nothing counts during a pause, and after a resume the timeout limit applies as usual.
+   - Options: allow a concession in a paused game (it needs no thinking time; a small Codex follow-up), or record it as a known limit. The current documents do not mention it either way.
+
+### Confirmed
+
+- **P060.** The diff adds only `concede` to the two opening `validMoves` lists. The provenance file equals the original at cda3b54. Both cached rulebooks match their recorded SHA-256 hashes and contain rule 2.3.3.4 word for word: "A player who decides to concede the game at any point, including during the Setup or Cleanup stages, loses the game." The vendor integrity check passes with 60 patches.
+- **Rules parity (RUN-20261020-004 A).** 60 random games with 9,243 commands ran through the compiled bridge (timed, limit 10), a raw runtime built the same way, and the untimed bridge. Of 1,648 accepted commands, 1,645 left a full state equal to the raw runtime. The other 3 were late opening decisions that the bridge turned into timeout losses; there the game state, zones and engine time equal the raw result, and only the ending differs. Acceptance and rejection codes match, and rules state is identical timed and untimed. The run includes 20 opening concessions and 280 natural late passes. End reasons: 27 concession, 30 normal win, 3 timeout.
+- **D14 unchanged (B).** In 60 trials, a main-game timeout leaves exactly the same full state and published events as the engine's own late `passTurn` at the same instant. Lateness ranged from 0 ms to 999,999 ms. The restored reserve is 125,000 ms under the qualification values. A sweep 1 ms early is refused and changes nothing.
+- **Whole-game limit (C).** Limits 1–5 end the game on exactly the limit-th timeout, both consecutive and with ordinary passes between, with the winner the opponent and the reason `timeout`. The forfeit keeps the engine's own time state. At limit 10 the 12-card synthetic decks run out first, and the game ends normally.
+- **Opening (D, E).**
+  - A timeout at the first-player choice or either mulligan ends the game on the first timeout under limits 1, 3 and 10. The decider's count is 1 and their reserve is the 60 s reset.
+  - A late opening decision sent straight to the adapter also loses. The live service refuses such a decision earlier with `clock_expired`.
+  - Concessions were tested at all 3 steps, by the deciding and the waiting player, timed and untimed. Each one is accepted, the other player wins, and the timed state equals the raw runtime.
+  - A forged `playerId` in the concession input is ignored.
+- **Forfeit and winner choice unreachable.** Players sending `forfeitGame` get `SERVER_ONLY` from the bridge and `MOVE_FORBIDDEN` from the adapter (F). Through the service they get `rejected/forbidden` receipts and the game is unchanged (S4). The live4 command contract refuses a `forfeitGame` intent (RUN-20261020-007), and the move is absent from the player move list. Audit requests carrying a winner, a forfeit or a `timeout` reason are refused `INVALID_REQUEST` (S3). The Lab offers only player moves and has no timeout path.
+- **Pauses, outages and audits never count (G, S3).**
+  - Settle, pause, resume and reset leave both counts unchanged.
+  - A ten-minute outage past the active player's deadline produced a `recovery` pause. It charged nothing: remaining time stayed 50,000 ms and the count stayed 0. The audited resume left the count at 0, and the next real timeout counted exactly once.
+- **Service, real test database (RUN-20261020-005/006).**
+  - **Timeout endings (S1, S2).** An opening timeout at each step ends the game with one system receipt, the reason `timeout` and no pause. Three main-game timeouts, with ordinary passes between, end it at the third; the warnings showed counts 1 and 2 first.
+  - **Waiting opening concessions (S5).** They still take no reservation. While one was held for 400 ms, the active decision was accepted and the concession came back stale. An undelayed one then ended the game and wrote only its final clock event.
+- **Races (RUN-20261020-006 S6).** 24 trials: 12 in the opening and 12 in the main game at two prior timeouts. Each fired two processes' timeout sweeps, both players' concessions and the active player's move at the deadline. Every trial ended with exactly one final result:
+  - 15 by timeout and 9 by the active player's concession.
+  - Accepted receipts, journal rows and outbox rows were equal in number.
+  - The match had at most one timeout receipt per real timeout.
+  - The losing requests got `stale`, `clock_expired` or `BUSY`. RUN-20261020-005's race section was degenerate (a warm-up tick fired the timeout first). It is kept as recorded.
+- **Replay (I).** Replay of a main-game timeout loss and of an opening concession verifies. A pass plus forfeit is one logical revision. Eight tampered archives were all rejected: changed end reason, changed winner, timeout result, timeout timestamp, dropped timeout, a substituted player `forfeitGame`, and a changed concession reason.
+- **Contracts (RUN-20261020-007).**
+  - viewer2 refuses an end without a reason, a reason during play, a missing or outside winner, and unknown reasons.
+  - clock2 refuses a count at the limit during play, a count above the limit, and limits of 0 or 11.
+  - live4 requires a clock that may be null, and refuses a timeout ending without a clock.
+  - viewer1, clock1, live2 and live3 still encode, and none of them accepts the new fields.
+  - pending3 binds command4.
+  - The client warnings read "1 of 3 timeouts used", then "Next timeout loses the game", and the latter also appears for the opening and for limit 1.
+- **Documentation.** The D13 clarification is appended word for word. D14's "consecutive" sentence is corrected by a dated note rather than rewritten. ADR0016 and the runbook match the observed behaviour, apart from the paused-concession gap.
+
+### Observations
+
+- A command for a timed game that has already ended is refused with `UNAVAILABLE` rather than a receipt. This behaviour existed before D13; live clients see the ended snapshot.
+- A waiting concession gets `BUSY` while another request holds the short reservation. This also existed before D13. The client retries, and the active player is never blocked.
+- Limit values above about 5 cannot be reached in the main game with the 12-card synthetic decks. The bounds and the policy parse are tested, but the forfeit path at 10 is not; 60-card decks will make it reachable.
+- Unchanged: finding 3 (the real-card chooser), policy point 4 (single-host recovery) and the production timeout counts and durations.
+
+### Runs
+
+| Run | Category | Result |
+|---|---|---|
+|RUN-20261020-002|container|Isolated pipeline on 3704b32: failed at the foundation stage on the three ESLint errors (finding 1). Exact timing.|
+|RUN-20261020-003|container|Isolated pipeline with the ESLint override: failed at `docs:check` as expected, because the verified features had no receipt at the new fingerprint yet.|
+|RUN-20261020-004|container|Engine probe A–I (Bun, no database): all assertions passed.|
+|RUN-20261020-005|container|Service probe S1–S6 on the test database: all assertions passed; its race section was degenerate (see Confirmed).|
+|RUN-20261020-006|container|Service probe rerun with genuine races: all assertions passed; 24 races, 15 timeout and 9 concession endings.|
+|RUN-20261020-007|container|Public-contract probe: all assertions passed.|
+|RUN-20261020-008|container|Audit source: typecheck, ESLint plus boundaries and the full workspace tests passed: 369 Node, 24 Python, upstream 406 passed with 1 inherited skip, 2 injection.|
+|RUN-20261020-009|container|Isolated pipeline at the audit fingerprint: all 14 stages passed in 528 s with exact timing. Foundation 369 Node + 24 Python, upstream 406/1 skip, 2 injection; 85 database/storage/live (5 + 80); 13 Chromium; 2 general + 12 P060 Lab workers; secret scans and artifacts.|
+|RUN-20261020-010|static|`docs:check` over this audit.|
+
+Codex's counts from RUN-20261019-037 reproduce exactly. The probe sources are in this session's scratchpad. Each run record contains its probe's full command text. All test fixtures were removed: 0 audit matches remain, and the one release row the probes created was deleted.

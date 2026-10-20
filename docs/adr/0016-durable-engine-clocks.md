@@ -49,3 +49,7 @@ Policy2 requires timeoutLimit1..10 (qualification default3, production unselecte
 Compound pass/forfeit keeps native history/event/reveal revisions, while one logical adapter revision and private transcript3/checkpoint2 represent one atomic saved transition. Rollback restores the complete pre-attempt snapshot/history/time; replay recomputes it. The live4 public viewer2 exposes closed endReason; clock2 exposes count/limit. Legacy live2/viewer1 and live3/clock1 codecs stay exact; old executable/policy/checkpoint identities are refused, never rewritten. Migration0006 only appends protocol4 admission constraints.
 
 Audit policy points:1 stays native natural-result behavior;2 is settled by D14;3 (opening pause for player expiry) is replaced by first-expiry loss;4 (single-process health quarantine/operations) remains open. Recovery/time_unreliable/no-safe-default pauses, audited resets/resumes, outage and quarantine never increment a timeout or allow an operator-selected winner. See current validation and the D13 plan for proof and limits.
+
+## Independent D13 audit — 2026-10-20 UTC
+
+The independent audit (CHG-20261020-001) confirms the D13/D14 behaviour above against the unchanged engine, the real test database and the public contracts. The decision is unchanged. One question is open for the Director: a concession is refused while the clock is paused, for every pause reason. D13 and CR 2.3.3.4 allow a concession at any point. See [the audit](../validation/play-04.md#independent-d13-audit--2026-10-20-utc).

@@ -9,4 +9,6 @@ export default [
   { files: ['packages/engine-lab/src/worker.ts'], languageOptions: { globals: { addEventListener: 'readonly', postMessage: 'readonly' } } },
   { files: ['packages/engine-lab/tests/browser.mjs'], languageOptions: { globals: { Worker: 'readonly', navigator: 'readonly', Bun: 'readonly' } } },
   { files: ['scripts/engine/bun.mjs'], languageOptions: { globals: { AbortSignal: 'readonly' } } },
+  // Executed RUN-20261019-038 input; kept byte-identical to what ran (CHG-20261020-001).
+  { files: ['docs/validation/inputs/play04-d13-closure.mjs'], rules: { 'no-useless-assignment': 'off' } },
 ];

@@ -2,6 +2,77 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261020-001 — Independent audit of PLAY-04 D13 (lint repair on the audit branch; paused concession for Director decision)
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-20T02:26:14.784Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 3704b322804524aab0f8bb14e51112313ddd05d2
+- Tasks: PLAY-04, DOC-01, DOC-02
+- Features: F-DOCS, F-MATCH-CLOCKS, F-BOUNDARIES
+- Requirements: R29.006, R29.007
+
+### Changes
+
+- **review:** Independent audit of Codex commit 3704b32 (CHG-20261019-003) against the Director's D13 brief, the D13 clarification recorded 2026-10-19T17:45:54.053Z and D14. Reviewed the product diff from cda3b54: P060 (two opening validMoves additions, ledger and provenance); the bridge's timeout, forfeit and raised-count paths and its rollback; adapter logical revisions, transcript3/checkpoint2 replay and viewer endReason; clock-store concession admission at the deadline; the transition worker; contracts viewer2/clock2/live4 with retained legacy codecs; migration 0006; the match-client helpers; the Lab facade; and the decision register, ADR0016 and runbook updates. Verified rule 2.3.3.4 in both cached rulebooks against their recorded SHA-256 hashes.
+- **test:** RUN-20261020-004 engine probe: 60 random games (9,243 commands; 1,645 of 1,648 accepted states equal to the raw runtime, the other 3 late opening decisions turned into timeout losses with equal state apart from the ending); 60 main-game timeouts equal the engine's own late pass in full state and events; limits 1-5 end on the limit-th timeout, consecutive or not; opening timeouts at all 3 steps under limits 1/3/10; 13 opening concession cases; forfeitGame refused SERVER_ONLY/MOVE_FORBIDDEN; controls never count; concession refused CLOCK_PAUSED while paused; replay of both endings verifies and 8 tampered archives are rejected. RUN-20261020-005/006 service probe on the test database with simulated UTC: opening and main-game timeout endings with one system receipt; a ten-minute outage pauses without charge or count and an audited resume keeps count 0; forged audits refused; player forfeitGame rejected/forbidden; waiting opening concessions unreserved and fenced; RUN006's 24 genuine deadline races (two processes' sweeps, both concessions, the active move) each end with exactly one result (15 timeout, 9 concession). RUN005's race section was degenerate because a warm-up tick fired the timeout first; it is kept as recorded. RUN-20261020-007 contract probe: viewer2/clock2/live4 invariants, legacy codec separation, pending3, forfeit intent refusal and client warning text.
+- **fix:** Finding 1 (Important): 3704b32 fails pnpm lint with three no-useless-assignment errors in docs/validation/inputs/play04-d13-closure.mjs, the executed RUN-20261019-038 input added after RUN-20261019-037 (RUN-20261020-002). The source fingerprint excludes docs/ while ESLint lints that file, so RUN037's matching fingerprint did not cover it. Repaired with a one-file rule override in eslint.config.mjs, keeping the executed input byte-identical; every verified feature is re-bound to RUN-20261020-008 and RUN-20261020-009 at the new fingerprint.
+- **test:** RUN-20261020-008 typecheck, lint and full workspace tests passed (369 Node, 24 Python, upstream 406 with 1 inherited skip, 2 injection). RUN-20261020-009 isolated pipeline passed all 14 stages in 528 s with exact timing, reproducing every Codex count: 85 database/storage/live, 13 Chromium, 2 general + 12 P060 Lab workers. RUN-20261020-003 (pipeline with the override before evidence re-binding) failed docs:check as expected.
+- **documentation:** Recorded the audit in docs/validation/play-04.md with finding 2 (Minor, Director decision: a concession is refused while the clock is paused, for either player and every pause reason), confirmations, observations and runs; dated notes in ADR0016 and the game-clocks runbook; F-MATCH-CLOCKS entries; PLAY-04 backlog status; dated audit lines in AGENTS.md, README.md and docs/README.md; handoff.
+
+### Verification
+
+- **failed:** Isolated pipeline on 3704b32: foundation stage failed at ESLint (finding 1). ([evidence](docs/validation/runs/RUN-20261020-002.json))
+- **failed:** Isolated pipeline with the ESLint override before evidence re-binding: docs:check refused the new fingerprint as expected. ([evidence](docs/validation/runs/RUN-20261020-003.json))
+- **passed:** Engine probe sections A-I (Bun, no database). ([evidence](docs/validation/runs/RUN-20261020-004.json))
+- **passed:** Service probe S1-S6 on the test database; race section degenerate (timeout fired before the race). ([evidence](docs/validation/runs/RUN-20261020-005.json))
+- **passed:** Service probe rerun with 24 genuine deadline races. ([evidence](docs/validation/runs/RUN-20261020-006.json))
+- **passed:** Public-contract probe. ([evidence](docs/validation/runs/RUN-20261020-007.json))
+- **passed:** Audit-branch source: workspace typecheck, ESLint plus boundaries and the full workspace test suite. ([evidence](docs/validation/runs/RUN-20261020-008.json))
+- **passed:** Isolated 14-stage pipeline at the audit fingerprint with exact timing. ([evidence](docs/validation/runs/RUN-20261020-009.json))
+- **passed:** docs:check over this record and the updated documents (static). ([evidence](docs/validation/runs/RUN-20261020-010.json))
+
+### Documentation and files
+
+- **updated:** [docs/validation/play-04.md](docs/validation/play-04.md) — New dated section: independent D13 audit verdict, findings 1 (lint, repaired here) and 2 (paused concession, Director decision), confirmations, observations and runs.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature also cites RUN-20261020-008 and the audit-fingerprint isolated pipeline; F-MATCH-CLOCKS description records the audit result.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-MATCH-CLOCKS row records the independent D13 audit and the open paused-concession decision.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — PLAY-04 status records the audited D13 source with hosted CI pending; links this record.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the audit state, evidence and next actions.
+- **updated:** [AGENTS.md](AGENTS.md) — Dated audit line after the shared PLAY-04 D13 block; the block itself is Codex's and unchanged.
+- **updated:** [README.md](README.md) — Same audit line as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same audit line as AGENTS.md, with a relative link.
+- **updated:** [docs/adr/0016-durable-engine-clocks.md](docs/adr/0016-durable-engine-clocks.md) — Dated audit note; the decision is unchanged and the paused-concession question is recorded as open.
+- **updated:** [docs/runbooks/game-clocks.md](docs/runbooks/game-clocks.md) — Dated caution: a concession is refused while the clock is paused, pending the Director's decision.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs sync.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs sync.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Makes no statement about ESLint rule scope for evidence input scripts; unaffected by the one-file no-useless-assignment override.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — No new decision is recorded; the paused-concession question is open for the Director. D13/D14 rows were checked against the brief.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261020-001.json).
+
+### Limits and next actions
+
+- Probes use synthetic 12-card decks: a main-game limit above about 5 cannot be reached before the decks run out, so the forfeit path at limit 10 is untested beyond parsing and bounds.
+- Service probes use injected simulated UTC on the real test database; live-wire behaviour is covered by Codex's suites as rerun in RUN-20261020-009, not by a separate reviewer live probe.
+- Finding 2 (concession refused during a clock pause) is reported, not changed; it awaits the Director's decision.
+- Hosted CI on the audit branch has not run at this checkpoint; no hosted result is claimed.
+- Push the audit branch, open the pull request and check its hosted Foundation run.
+- Director decides whether a concession is allowed during a clock pause (Codex follow-up) or recorded as a known limit, and requests the main fast-forward once hosted CI passes.
+- Follow-up: make lint scope and source-fingerprint scope agree for evidence input scripts.
+
 ## CHG-20261019-003 — PLAY-04 D13 opening concessions and whole-game timeout losses
 
 - Status: finalized

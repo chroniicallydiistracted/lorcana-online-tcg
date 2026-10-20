@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-010",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "-s",
+    "docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3704b322804524aab0f8bb14e51112313ddd05d2",
+  "source_fingerprint": "1b752a0b7c32f983b861d4d744c945fc44979a865638330ceb4bc7046a70ad02",
+  "started_at": "2026-10-20T02:29:07.223Z",
+  "finished_at": "2026-10-20T02:29:32.715Z",
+  "recorded_at": "2026-10-20T02:29:32.715Z",
+  "time_precision": "exact",
+  "elapsed_ms": 25493,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "docs:check over the independent D13 audit record and updated documents",
+  "log_path": "docs/validation/logs/RUN-20261020-010.txt",
+  "log_sha256": "fdbf98f3174648e73d60ce4e707c651d184b338b27aa7fe37bdbe8a84cf08918",
+  "redactions": 0
+}

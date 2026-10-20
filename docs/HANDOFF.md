@@ -1,15 +1,46 @@
 # Developer handoff
 
-Recorded at 2026-10-20T01:14:07.039Z (UTC; America/Phoenix display). Codex developer/QA. Active change CHG-20261019-003, implementation and local qualification complete; canonical documentation closure RUN-20261020-001 passed. The local branch is prepared for independent audit. Branch codex/play-04-d13 from exact cda3b54. Main untouched (local main4dea392; origin/maincda3b54 at intake). Git supplies final handback commit. Do not merge or publish without the Director's audit/integration instruction.
+Observed at: 2026-10-20T02:26:14.784Z; display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active change: CHG-20261020-001 (independent D13 audit), finalized with this checkpoint.
 
-Implemented: P060 only adds concede to first-player-choice/mulligan validMoves; either participant can concede at all3 opening decisions, timed/untimed server and Lab. Waiting concessions never own the timed lease and commit only against unchanged state/clock. Policy2 requires native whole-game per-player timeoutCount limit1..10 (qualification3), never reset/streak. First opening expiry loses; main threshold, including an ordinary negative-time native handoff, uses derived-opponent judge-only forfeitGame timeout. Natural engine terminal results freeze first. D14 resetTimeOnSkipMs/bonuses remain; infrastructure pauses, audited reset/resume/outage/quarantine never count or choose a winner.
+- **Objective and authorized scope:** independently audit Codex's D13 implementation (CHG-20261019-003, commit 3704b32) against the Director's D13 brief, the D13 clarification (recorded 2026-10-19T17:45:54.053Z) and D14. Game and development work belongs to Codex. Admin, audit and evidence-tooling work belongs to this reviewer.
+- **Repository:** /home/andre/lorcana-online-tcg, branch `claude/play-04-d13-audit` from `codex/play-04-d13` at 3704b32. Main is unchanged at cda3b54. The branch changes:
+  - one rule override in `eslint.config.mjs` (finding 1);
+  - audit documents and evidence.
 
-Versions: viewer2 closed endReason, clock2/count/main-game limit, live4 required nullable clock and current offer3..4, pending3 binds4, private transcript3/checkpoint2 exact compound replay. Native event/reveal revisions remain native; public saved revision advances once. Exact legacy live2/viewer1/live3/clock1 codecs remain; unavailable old executable/policy/checkpoint identities refuse without rewriting data.0006 appends protocol constraints; applied0001..0005 unchanged. Current warning helper takes boolean opening context from authorized viewer turn0 to warn before first expiry despite main limit3. Product UI remains WEB-02.
-
-Final executable fingerprint 342f3801a578dcf4f469019a5020b83d682356ea3d6f4f0f351bcb4817ce6fd2. RUN035:13client unit,13Linux Chromium +14Lab-worker probes. RUN036: source-only frozen offline install and root typecheck, no app output before/after. RUN037: all14isolated stages,393project checks (369Node+24Python),406unchanged upstream/1inherited skip,2injection,85DB/storage/live,13Chromium and14Lab-worker probes, scans/artifacts and owned cleanup; exact timing526342ms, no clock_changed. RUN038: preservation/provenance/fixture/listener proof. All34 task receipts (RUN-20261019-006..038 and RUN-20261020-001), including every failed/partial attempt, remain immutable and fully listed in validation/play-04.md; no failed attempt is promoted. Current source-only review reports no remaining important finding; Director audit/hosted CI separate.
-
-Read docs/validation/play-04.md#d13-receipt-register--2026-10-19-utc, docs/reviews/2026-10-19-play-04-d13.md, ADR0016, runbooks/game-clocks.md and contracts/live.md/viewer.md/protocol.md. D13's exact2026-10-19T17:45:54.053Z clarification is appended in the decision register. Audit points1native,2D14settled,3opening pause replaced,4operations open. PLAY-04 backlog is d13_locally_qualified_independent_audit_pending; no full product requirement is accepted from this synthetic foundation.
-
-Execution: actual WSL source /home/andre/lorcana-online-tcg; Windows C:\home alias absent. Existing Compose lorcana-online-tcg_devcontainer: workspace01ccec184b44/PostgreSQLc7cd58258c19 remained running; rediscover before reuse. Node24.21.0/pnpm10.33.0. All app checks inside existing Dev Container or explicitly isolated CI containers, one heavyweight workload at a time. No host clock/memory/pagefile/service changes. Native038 verifies original .env.local/.local/database.json bytes0600/ignore unchanged, one exact interrupted015orphan and38unused task-owned synthetic releases removed; test matches0/quota0; dev ports5173/3001/3002free. Original database volume preserved; isolated project5616033546d04f539ae19b9b6fb92be6 cleaned completely. Ignored local preservation checkpoint and isolated artifacts remain available to the Director; no credentials are committed.
-
-Pending: independent audit and hosted D13 CI before merge; production clock counts/durations, single-process quarantine recovery operations, real-card chooser/default and event/replay-cost certification, AUTH/ordinary/official/reward admission, WEB-02 UI, device/load/production. No real Windows desktop browser observation is claimed. Sleep/wake clock checks remain separate; the inherited Director environment choice stays in force. Next: audit this branch, publish/run hosted CI under Director authorization, then integrate only when approved.
+  Git supplies the resulting commit and dirty state at intake. Codex's previous handoff is in Git history at 3704b32.
+- **Execution:** original Compose project lorcana-online-tcg_devcontainer (workspace 01ccec184b44, PostgreSQL c7cd58258c19, both observed running); Node 24.21.0, pnpm 10.33.0, Bun 1.4.2. Rediscover IDs before reuse.
+- **Implemented behavior:** no product change.
+  - **Lint repair:** the one-file override in `eslint.config.mjs` turns off `no-useless-assignment` for `docs/validation/inputs/play04-d13-closure.mjs`. That is the executed RUN-20261019-038 input, kept byte-identical. Without the override, 3704b32 fails `pnpm lint` and hosted CI.
+  - **Feature evidence:** the source fingerprint is now `1b752a0b7c32f983b861d4d744c945fc44979a865638330ceb4bc7046a70ad02`, and every verified feature also cites RUN-20261020-008 and RUN-20261020-009.
+- **Audit result:** the D13 behaviour meets the brief. See the [audit](validation/play-04.md#independent-d13-audit--2026-10-20-utc).
+  - Finding 1 (Important, lint) is repaired on this branch.
+  - Finding 2 (Minor) needs a Director decision: a concession is refused while the clock is paused, for either player and every pause reason.
+- **Documentation:**
+  - the PLAY-04 validation audit section;
+  - a dated ADR0016 note and a runbook caution;
+  - the F-MATCH-CLOCKS entries in features.json and FEATURES.md;
+  - the PLAY-04 backlog status `d13_independently_audited_lint_repaired_hosted_ci_pending`;
+  - dated audit lines in AGENTS.md, README.md and docs/README.md;
+  - this handoff;
+  - the changelog and current-state snapshot, regenerated by docs sync.
+- **Verification:** all receipts have exact timing and no clock discontinuity.
+  - **RUN-20261020-002, failed:** isolated pipeline on 3704b32 stopped at lint.
+  - **RUN-20261020-003, failed:** pipeline with the override stopped at `docs:check` before evidence re-binding (expected).
+  - **RUN-20261020-004..007, passed:** engine, service and contract probes. RUN005's race section was degenerate, and RUN006 repeats it with genuine races.
+  - **RUN-20261020-008, passed:** typecheck, lint and full tests: 369 Node, 24 Python, upstream 406 with 1 skip, 2 injection.
+  - **RUN-20261020-009, passed:** all 14 isolated stages in 528 s, reproducing every Codex count: 85 database/storage/live, 13 Chromium, 14 Lab workers.
+  - **RUN-20261020-010, passed:** static `docs:check`.
+- **Listeners/resources:** no owned processes or listeners remain. All audit matches were removed, along with the one release row the probes created. `.env.local`, `.local/database.json` and the database volume are untouched. No host setting changed.
+- **Pending gates:**
+  - the hosted Foundation run on this branch's pull request, then the fast-forward of main, which needs the Director's explicit push request;
+  - the Director's decision on concessions during a pause;
+  - a follow-up to make lint and fingerprint scopes agree;
+  - single-host recovery (policy point 4);
+  - finding 3 at real-card certification;
+  - production timeout counts and durations;
+  - AUTH-01, UX-01 and later tracks.
+- **Next actions:**
+  1. **Reviewer:** push the branch, open the pull request and check the hosted Foundation run.
+  2. **Director:**
+     - decide whether a concession is allowed during a clock pause (Codex follow-up) or recorded as a known limit;
+     - request the main fast-forward once hosted CI passes.

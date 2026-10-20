@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-008",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3704b322804524aab0f8bb14e51112313ddd05d2",
+  "source_fingerprint": "1b752a0b7c32f983b861d4d744c945fc44979a865638330ceb4bc7046a70ad02",
+  "started_at": "2026-10-20T02:11:45.340Z",
+  "finished_at": "2026-10-20T02:13:34.412Z",
+  "recorded_at": "2026-10-20T02:13:34.412Z",
+  "time_precision": "exact",
+  "elapsed_ms": 109078,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Audit-branch source (D13 head plus one-file ESLint override): workspace typecheck, ESLint plus boundaries and the full workspace test suite, before docs re-binding",
+  "log_path": "docs/validation/logs/RUN-20261020-008.txt",
+  "log_sha256": "48dcfe716933df0ba0a7279893f0fbb22afba52dbe3bbdbb0dc501ef9ebd076d",
+  "redactions": 0
+}
