@@ -1,6 +1,6 @@
 # Developer handoff
 
-Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active change: CHG-20261020-004 (UX-01 technical design system), finalized with this checkpoint.
+Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes: CHG-20261020-004 (UX-01 technical design system, committed in 17b7b8f) and CHG-20261020-005 (font license line-ending correction), finalized with this checkpoint.
 
 - **Objective and authorized scope:** the Director assigned UX-01 to this agent: build a full technical design system following `docs/vision/UX_UI_DESIGN_SYSTEM.md` and all repository requirements (decision D17). The Director also approved CC-BY-4.0 for Storybook's build-time data (D16).
 - **Repository:** /home/andre/lorcana-online-tcg, branch `claude/ux-design-system` from main 9081192. It holds d188387 (PLAY-04 closure, plus the draft committed byte-for-byte) and this checkpoint. Git supplies the resulting commit and dirty state.
@@ -29,11 +29,17 @@ Observed at: 2026-10-20T16:23:09.182Z (record time of CHG-20261020-004); display
   - the F-DESIGN-SYSTEM and F-WEB entries and the documentation map;
   - dated notes in the CI runbook, the fan-content policy and the web README;
   - status lines and this handoff.
-- **Verification (exact timing; final fingerprint `686eb1c854b0eafb2ce9e091185d0d4ee0bd287959ee5943354cf28a7eb75bc4`):**
-  - **RUN-20261020-024, passed:** Chromium 150/150.
-  - **RUN-20261020-025, passed:** configuration contract, typecheck, lint and full suite (399 Node, 24 Python, upstream 406/1 skip, 2 injection).
-  - **RUN-20261020-026, passed:** isolated pipeline, all 15 stages in 612 s.
-  - **RUN-20261020-027:** static docs check.
+- **Verification (exact timing):**
+  - **Final fingerprint `89f989ca1b7e4008084f0ecbf87e5628b3994725ed8b01e836d9893425c3c38c`:**
+    - RUN-20261020-028, passed: configuration contract, typecheck, lint and full suite.
+    - RUN-20261020-029, passed: Chromium 150/150.
+    - RUN-20261020-030: failed (abbreviated commit SHA in the record).
+    - RUN-20261020-031, passed: static docs check.
+  - **Previous fingerprint `686eb1c8`:**
+    - **RUN-20261020-024, passed:** Chromium 150/150.
+    - **RUN-20261020-025, passed:** configuration contract, typecheck, lint and full suite (399 Node, 24 Python, upstream 406/1 skip, 2 injection).
+    - **RUN-20261020-026, passed:** isolated pipeline, all 15 stages in 612 s.
+    - **RUN-20261020-027:** static docs check.
   - **Earlier receipts:** RUN-018 (superseded), RUN-019 (failed `source_changed`), RUN-020 to RUN-022 (passed at the earlier fingerprint) and RUN-023 (failed at the configuration contract). All are retained and explained in the validation record.
 - **Listeners/resources:** no owned processes or listeners remain. `.env.local`, `.local/database.json`, the database volume and the Director's root file `inkspire-interface-typography.png` are untouched. No host setting changed.
 - **Pending gates:**

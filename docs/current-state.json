@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-20T16:45:41.428Z",
+  "observed_at": "2026-10-20T16:54:12.612Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2291,7 +2291,8 @@
     "CHG-20261020-001",
     "CHG-20261020-002",
     "CHG-20261020-003",
-    "CHG-20261020-004"
+    "CHG-20261020-004",
+    "CHG-20261020-005"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2356,9 +2357,10 @@
     "CHG-20261020-001": "finalized",
     "CHG-20261020-002": "finalized",
     "CHG-20261020-003": "finalized",
-    "CHG-20261020-004": "finalized"
+    "CHG-20261020-004": "finalized",
+    "CHG-20261020-005": "finalized"
   },
-  "source_fingerprint": "686eb1c854b0eafb2ce9e091185d0d4ee0bd287959ee5943354cf28a7eb75bc4",
+  "source_fingerprint": "89f989ca1b7e4008084f0ecbf87e5628b3994725ed8b01e836d9893425c3c38c",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2366,7 +2368,7 @@
     ".dockerignore": "fd70e1831083fee4b88c9f2a9c93452200972571d02d879e5b3b96c66eeea3a8",
     ".editorconfig": "71589501b7a5dd84d122c08a34d94001034ec89843a90e2e790a65087c8a4fcc",
     ".env.example": "43e517338c01706991b278852fcdc5a3955ba9bf4fdabf8f10c06a5776e15bc2",
-    ".gitattributes": "da64f818dd6748cd5fa2efed9e87a48b8166206794681210aafaf9a6c29e0778",
+    ".gitattributes": "79fcb921efc6e3daf0044d669f3bc7a1a0be84ec0eca6694b50b349047bab26f",
     ".github/workflows/foundation.yml": "db39cc93063690120c5769bde03c9dec3e3e321d3d086e2a33df754db12c2088",
     ".gitignore": "f336f1e8b124a560cf59f5fb86b6efc4f2b087753833de66d462baade77764c7",
     ".node-version": "73fb1b615e2043a933be1c0895cde4358036acc28d785692509b822aa53c761f",
@@ -2437,7 +2439,7 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "2cc6d65a6a4b827a1adead3d5fe2e00280ea0de02788b8359b1c9624abe54779",
-    "docs/HANDOFF.md": "ebfd7c8c6953d81f16098054548d6c70d9f6b0668ca54c1e06270c00d6dbb5b4",
+    "docs/HANDOFF.md": "43bba5464cf602e3dc9e92de644a23f666b0ca110628587a7ac21f2e2c7f8357",
     "docs/README.md": "bd64678227b27f2614a2f906ed60d78c1d5323d5820ae0278b0466296cad7c94",
     "docs/WORKSPACE_QUALIFICATION.md": "706a87f555e7f3b13fada47137ca0a8acccb5ba39f308d89e2fb88b979e16364",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
@@ -2466,7 +2468,7 @@
     "docs/contracts/release.md": "b3f6451141a2a2ba0ce9b1d0b9411d4d08511501bfcec68179c246c7c4bd5dda",
     "docs/contracts/viewer.md": "8693ab93a002ac48425988fbde3ea902a50843627deba4cd466d456aaaabcd32",
     "docs/documentation-map.json": "9233c9f6910a781fe10d95397a9969a4336408b42f909b19481a30b3cc1e3c74",
-    "docs/features.json": "75216cd7e08f27658d2b6f6e81bfb5711a36d0ab1574877260ec762059a6e582",
+    "docs/features.json": "f768339738cc73992a1bf04efe5b5bd03f0993c46bb563446caf2b68c65708a0",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "7c2f9c48229b7127e379b323e166cc3bc5742145933b9b4fbdc6b64352de56c5",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2622,7 +2624,7 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "1ac8dc9fbeaf05122f86f7c53e2f4a4ea81d7ddf055917492dbfb4ea1bd91784",
+    "docs/validation/ux-design-system.md": "e747f7d411dea499b1c0fcfc4dd0c45400313eafa4670093e9b271ee75f2aacf",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",

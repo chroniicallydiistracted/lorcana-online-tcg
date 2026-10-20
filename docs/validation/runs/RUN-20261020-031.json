@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-031",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "-s",
+    "docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "17b7b8f22a51c1df1911092e9b2decb07854f0d2",
+  "source_fingerprint": "89f989ca1b7e4008084f0ecbf87e5628b3994725ed8b01e836d9893425c3c38c",
+  "started_at": "2026-10-20T16:53:16.480Z",
+  "finished_at": "2026-10-20T16:53:44.874Z",
+  "recorded_at": "2026-10-20T16:53:44.874Z",
+  "time_precision": "exact",
+  "elapsed_ms": 28394,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "docs:check over the font license line-ending correction (rerun after the source_commit fix)",
+  "log_path": "docs/validation/logs/RUN-20261020-031.txt",
+  "log_sha256": "eeae420091040655841ca2a8232a60778ab70892f02223c7cf3a24ba7b1e2f24",
+  "redactions": 0
+}

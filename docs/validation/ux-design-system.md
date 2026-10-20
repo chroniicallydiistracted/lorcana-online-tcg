@@ -55,3 +55,13 @@ The technical design system is implemented in `packages/design-system` and adopt
 - **Unstable toast API.** React Aria's toast API is `UNSTABLE_` in 1.21.1 and is isolated in one file.
 - **Open interpretations.** The standard is silent on some values, such as the Ink overlay shadow, the motion range defaults and the component token values. ADR 0017 lists them for Director review.
 - **Pending tasks.** UX-01 reference screens (crowded match, practical deckbuilder, Collection binder, pack presentation) and Director visual approval; UX-02 device and browser matrix; WEB-01/02/03.
+
+## License line-ending correction — 2026-10-20 UTC
+
+Recorded 2026-10-20T16:51:24.232Z (CHG-20261020-005).
+- **Problem:** the repository's `* text=auto eol=lf` rule committed an LF copy of the Source Sans 3 `LICENSE.md`. The font manifest records the upstream file exactly as published, with CRLF endings and sha256 `89ad2c…`. A fresh checkout, such as hosted CI's, would have failed the provenance test.
+- **Fix:** `.gitattributes` now marks that one file `-text`, so Git stores Adobe's bytes unchanged.
+- **Evidence at the final fingerprint `89f989ca1b7e4008084f0ecbf87e5628b3994725ed8b01e836d9893425c3c38c`:**
+  - **RUN-20261020-028, passed:** configuration contract, typecheck, lint and full suite (399 Node, 24 Python, upstream 406/1 skip, 2 injection).
+  - **RUN-20261020-029, passed:** Chromium suite, 150/150.
+- **Not re-run:** the local isolated pipeline (RUN-026 passed all 15 stages one fingerprint earlier, and the only source change is this attribute). The hosted run on a real checkout is the check that matters for this fix.
