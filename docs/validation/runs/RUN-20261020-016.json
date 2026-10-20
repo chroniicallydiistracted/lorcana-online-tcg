@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-016",
+  "category": "container",
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "// Read-only public GitHub metadata: PR #2 run 39363468169 and main run 39365372435 at 9081192. No log or artifact download.\nconst root = 'https://api.github.com/repos/chroniicallydiistracted/lorcana-online-tcg/actions/runs/';\nasync function get(path) {\n  const r = await fetch(root + path, { headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' }, signal: AbortSignal.timeout(15000) });\n  if (!r.ok) throw new Error('Public GitHub metadata unavailable: ' + r.status);\n  return r.json();\n}\nconst out = [];\nfor (const [id, attempt] of [[39363468169, 1], [39365372435, 1]]) {\n  const v = await get(id + '/attempts/' + attempt), j = await get(id + '/attempts/' + attempt + '/jobs?per_page=100');\n  if (v.id !== id || v.run_attempt !== attempt || v.head_sha !== '9081192dc77d5e8b3d4b10dfbfd975d910081811') throw new Error('Unexpected hosted metadata');\n  out.push({ id, attempt, event: v.event, head_branch: v.head_branch, head_sha: v.head_sha, status: v.status, conclusion: v.conclusion, run_started_at: v.run_started_at, updated_at: v.updated_at,\n    jobs: j.jobs.map(x => ({ name: x.name, conclusion: x.conclusion, started_at: x.started_at, completed_at: x.completed_at, steps: x.steps.map(s => s.name + ':' + s.conclusion) })) });\n}\nif (out.some(o => o.conclusion !== 'success' || o.jobs.some(j => j.conclusion !== 'success'))) throw new Error('Hosted results differ from the reviewer observation');\nconsole.log(JSON.stringify(out));"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "9081192dc77d5e8b3d4b10dfbfd975d910081811",
+  "source_fingerprint": "72167125aaf3eb39a6ea240ad5cf1b829612f41e4d77cee07040bc387d42c7ba",
+  "started_at": "2026-10-20T04:08:22.465Z",
+  "finished_at": "2026-10-20T04:08:24.488Z",
+  "recorded_at": "2026-10-20T04:08:24.488Z",
+  "time_precision": "exact",
+  "elapsed_ms": 2023,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Public GitHub metadata: PR #2 Foundation run 39363468169 (pull_request) and main run 39365372435 (push), both attempt-1 successes at 9081192",
+  "log_path": "docs/validation/logs/RUN-20261020-016.txt",
+  "log_sha256": "5e5f115b4ecfe9b28ef4ece439291e08e788f626922b5355bef49a433da53278",
+  "redactions": 0
+}

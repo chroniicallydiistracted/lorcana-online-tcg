@@ -681,3 +681,19 @@ The test fixture now gives p1 4 s instead of 1.8 s, with the same assertions. On
 |RUN-20261020-013|container|Public metadata: run 39359423680 attempts 1 and 2 failed in the pipeline step.|
 |RUN-20261020-014|container|Isolated pipeline at the new fingerprint: all 14 stages passed in 534 s with exact timing; 454 Node (369 foundation + 85 database/storage/live), 24 Python, upstream 406 with 1 skip, 2 injection, 13 Chromium and 14 Lab workers. The repaired test took 5.9 s.|
 |RUN-20261020-015|static|`docs:check` over this record.|
+
+## Hosted merge runs and decision D15 — 2026-10-20 UTC
+
+Recorded 2026-10-20T04:08:24.517Z (CHG-20261020-003) by the Claude Code agent (architect/QA reviewer role) on Director request.
+
+- **Hosted runs (RUN-20261020-016, public metadata):** Foundation run 39363468169 on pull request #2 (03:17:04–03:28:51Z) and main run 39365372435 (push, 03:38:43–03:53:40Z) are both attempt-1 successes at 9081192, with every step successful. Logs and artifacts were not downloaded.
+- **Merge:** the Director fast-forwarded main from cda3b54 to 9081192 at 03:38:38Z by the Director's own push. GitHub marked pull request #2 merged.
+- **Decision D15:** the Director decided to leave the paused-concession gap (audit finding 2) for now. A concession stays refused while the clock is paused, until an audited resume, and the decision is to be revisited later.
+
+PLAY-04's synthetic scope, including D13, is accepted and merged. Still open:
+- point 4 (single-host recovery);
+- finding 3 (real-card choices);
+- D15's revisit;
+- the lint and fingerprint scope follow-up;
+- production timeout counts and durations;
+- the AUTH, ordinary-play, card, device and production gates.

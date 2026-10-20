@@ -61,3 +61,5 @@ Public viewer2 endReason is null while live, otherwise normal_win/concession/tim
 Audit policy point1 stays native; point2 is kept by D14; point3 is replaced by D13; point4 operational quarantine stays open. Preserve all source-specific failure logs. The prior dated run results are not acceptance of current code. See validation for the current complete proof set and independent-audit status.
 
 Audit caution (CHG-20261020-001, 2026-10-20 UTC): a concession is refused while the clock is paused. The bridge returns `CLOCK_PAUSED`, and the service refuses it with `UNAVAILABLE`, for either player and every pause reason (recovery, time_unreliable, no_legal_default). Players in a paused game can concede only after an audited resume. Whether to allow a concession during a pause awaits the Director's decision. See [the audit](../validation/play-04.md#independent-d13-audit--2026-10-20-utc).
+
+Decision D15 (recorded 2026-10-20T04:08:24.517Z, CHG-20261020-003): the Director keeps this behaviour as a known limit for now and will revisit it.
