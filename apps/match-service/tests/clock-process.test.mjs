@@ -33,7 +33,8 @@ async function child(f,phase){
  return {c,rpc,exit,async join(){await rpc('tick');await sleep(120);await rpc('tick');},async close(){for(const r of waiting.values()){clearTimeout(r.timer);r.resolve(null);}waiting.clear();if(c.exitCode===null&&c.signalCode===null){c.kill('SIGKILL');await exit;}}};
 }
 test('actual runner continues with zero clients and a fresh process joins a healthy owner without pausing',async()=>{
- const f=await fixture({budget:1800});let other;try{
+ // The fresh process must join before p1's deadline; slow hosted runners need about 2 s.
+ const f=await fixture({budget:4000});let other;try{
   other=await child(f);await other.join();const current=await other.rpc('clock');assert.equal(current.status,'running');
   const row=await until(()=>counts(f.id),r=>r.stateVersion===4);assert.equal(row.ended,false);
   await other.rpc('tick');const next=await other.rpc('clock');assert.equal(next.activePlayerId,'p2');assert.equal(next.status,'running');

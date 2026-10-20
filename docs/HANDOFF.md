@@ -1,17 +1,22 @@
 # Developer handoff
 
-Observed at: 2026-10-20T02:26:14.784Z; display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active change: CHG-20261020-001 (independent D13 audit), finalized with this checkpoint.
+Observed at: 2026-10-20T03:02:31.472Z; display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes:
+
+- CHG-20261020-001 (independent D13 audit, finalized);
+- CHG-20261020-002 (hosted failure and test timing repair), finalized with this checkpoint.
 
 - **Objective and authorized scope:** independently audit Codex's D13 implementation (CHG-20261019-003, commit 3704b32) against the Director's D13 brief, the D13 clarification (recorded 2026-10-19T17:45:54.053Z) and D14. Game and development work belongs to Codex. Admin, audit and evidence-tooling work belongs to this reviewer.
 - **Repository:** /home/andre/lorcana-online-tcg, branch `claude/play-04-d13-audit` from `codex/play-04-d13` at 3704b32. Main is unchanged at cda3b54. The branch changes:
   - one rule override in `eslint.config.mjs` (finding 1);
+  - a 4 s turn in one real-process clock test (`apps/match-service/tests/clock-process.test.mjs`, CHG-20261020-002);
   - audit documents and evidence.
 
   Git supplies the resulting commit and dirty state at intake. Codex's previous handoff is in Git history at 3704b32.
 - **Execution:** original Compose project lorcana-online-tcg_devcontainer (workspace 01ccec184b44, PostgreSQL c7cd58258c19, both observed running); Node 24.21.0, pnpm 10.33.0, Bun 1.4.2. Rediscover IDs before reuse.
 - **Implemented behavior:** no product change.
   - **Lint repair:** the one-file override in `eslint.config.mjs` turns off `no-useless-assignment` for `docs/validation/inputs/play04-d13-closure.mjs`. That is the executed RUN-20261019-038 input, kept byte-identical. Without the override, 3704b32 fails `pnpm lint` and hosted CI.
-  - **Feature evidence:** the source fingerprint is now `1b752a0b7c32f983b861d4d744c945fc44979a865638330ceb4bc7046a70ad02`, and every verified feature also cites RUN-20261020-008 and RUN-20261020-009.
+  - **Clock test timing:** hosted run 39359423680 failed twice because the test's 1.8 s turn was too short for a slow runner to join a second process. The test now allows 4 s with the same assertions.
+  - **Feature evidence:** the source fingerprint is now `72167125aaf3eb39a6ea240ad5cf1b829612f41e4d77cee07040bc387d42c7ba`, and every verified feature also cites RUN-20261020-012 and RUN-20261020-014.
 - **Audit result:** the D13 behaviour meets the brief. See the [audit](validation/play-04.md#independent-d13-audit--2026-10-20-utc).
   - Finding 1 (Important, lint) is repaired on this branch.
   - Finding 2 (Minor) needs a Director decision: a concession is refused while the clock is paused, for either player and every pause reason.
@@ -30,6 +35,11 @@ Observed at: 2026-10-20T02:26:14.784Z; display timezone America/Phoenix. Actor: 
   - **RUN-20261020-008, passed:** typecheck, lint and full tests: 369 Node, 24 Python, upstream 406 with 1 skip, 2 injection.
   - **RUN-20261020-009, passed:** all 14 isolated stages in 528 s, reproducing every Codex count: 85 database/storage/live, 13 Chromium, 14 Lab workers.
   - **RUN-20261020-010, passed:** static `docs:check`.
+  - **RUN-20261020-011, passed:** the repaired clock-process file on one CPU, 14 of 14.
+  - **RUN-20261020-012, passed:** typecheck, lint and full tests at the new fingerprint.
+  - **RUN-20261020-013, passed:** public metadata for both failed hosted attempts.
+  - **RUN-20261020-014, passed:** all 14 isolated stages at the new fingerprint in 534 s, same counts as RUN009.
+  - **RUN-20261020-015, passed:** static `docs:check`.
 - **Listeners/resources:** no owned processes or listeners remain. All audit matches were removed, along with the one release row the probes created. `.env.local`, `.local/database.json` and the database volume are untouched. No host setting changed.
 - **Pending gates:**
   - the hosted Foundation run on this branch's pull request, then the fast-forward of main, which needs the Director's explicit push request;

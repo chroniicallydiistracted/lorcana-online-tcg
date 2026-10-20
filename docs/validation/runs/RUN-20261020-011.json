@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-011",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "cd apps/match-service && taskset -c 0 node --test --test-concurrency=1 tests/clock-process.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3f134ade9fc0a4a29621e7385a044fc969d56e8e",
+  "source_fingerprint": "72167125aaf3eb39a6ea240ad5cf1b829612f41e4d77cee07040bc387d42c7ba",
+  "started_at": "2026-10-20T02:59:13.234Z",
+  "finished_at": "2026-10-20T03:00:22.957Z",
+  "recorded_at": "2026-10-20T03:00:22.957Z",
+  "time_precision": "exact",
+  "elapsed_ms": 69726,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Repaired clock-process test file on a single CPU (taskset -c 0) against the test database: the fresh-process join keeps its strict running assertion with the 4 s budget",
+  "log_path": "docs/validation/logs/RUN-20261020-011.txt",
+  "log_sha256": "0f0932d574fd4d34071fb45b5a5859521ffad9a77b4703655b8a634d73678b61",
+  "redactions": 0
+}

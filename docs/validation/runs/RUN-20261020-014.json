@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-014",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "ci:verify"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "e111c49e4c92"
+  },
+  "source_commit": "3f134ade9fc0a4a29621e7385a044fc969d56e8e",
+  "source_fingerprint": "72167125aaf3eb39a6ea240ad5cf1b829612f41e4d77cee07040bc387d42c7ba",
+  "started_at": "2026-10-20T03:04:35.820Z",
+  "finished_at": "2026-10-20T03:13:29.463Z",
+  "recorded_at": "2026-10-20T03:13:29.463Z",
+  "time_precision": "exact",
+  "elapsed_ms": 533665,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts",
+  "log_path": "docs/validation/logs/RUN-20261020-014.txt",
+  "log_sha256": "5917ad3cd56f228357d74bf8f96859c6142c54cd45d59d6dbce79c0a15a22773",
+  "redactions": 0
+}

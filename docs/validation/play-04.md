@@ -648,3 +648,36 @@ One Important defect was found: the handed-back commit fails lint, so hosted CI 
 |RUN-20261020-010|static|`docs:check` over this audit.|
 
 Codex's counts from RUN-20261019-037 reproduce exactly. The probe sources are in this session's scratchpad. Each run record contains its probe's full command text. All test fixtures were removed: 0 audit matches remain, and the one release row the probes created was deleted.
+
+## Hosted run and clock-process test timing repair — 2026-10-20 UTC
+
+Recorded 2026-10-20T03:02:31.472Z (CHG-20261020-002) by the Claude Code agent (architect/QA reviewer role) on Director request.
+
+### Hosted run
+
+Foundation run 39359423680 on pull request #2 (`claude/play-04-d13-audit` at 3f134ad) failed on both attempts, at 02:32:00–02:43:18Z and 02:44:56–02:56:22Z (RUN-20261020-013, public metadata). Both stopped in the live-matches stage on the same test. That output was read with `gh run view --log-failed` but not saved to the repository, and no artifacts were downloaded. The 76 other integration tests passed, including every D13 test.
+
+- **Test:** `apps/match-service/tests/clock-process.test.mjs`, "actual runner continues with zero clients and a fresh process joins a healthy owner without pausing" (from 24d3990; D13 changed only its fixture settings).
+- **Failure:** the first clock read from the fresh process was `processing` where the test expects `running`. The test ran 4,032 ms and then 4,150 ms. Earlier local passes took up to 4,031 ms.
+
+### Diagnosis
+
+The test gives p1 a 1.8 s turn, forks a second server process, joins it and reads the clock. That read must land before p1's deadline. A timeline replica (not recorded) measured where it lands:
+- **Normal speed:** about 0.8 s into p1's turn.
+- **One CPU:** 1.2–1.9 s in. In one trial the read came 1,856 ms in, just after the owner had committed the timeout.
+
+A read that lands while the owner is committing the timeout sees `processing`. In every trial the runner committed the timeout, p2 became active and the clock never stuck. This is test timing on slower runners, not a D13 defect.
+
+### Repair
+
+The test fixture now gives p1 4 s instead of 1.8 s, with the same assertions. On one CPU the join then lands about 1.2 s in, leaving about 2.8 s of margin.
+
+### Runs
+
+| Run | Category | Result |
+|---|---|---|
+|RUN-20261020-011|container|Repaired `clock-process.test.mjs` on one CPU (`taskset -c 0`): 14 of 14 passed.|
+|RUN-20261020-012|container|Typecheck, ESLint plus boundaries and the full workspace tests at the new fingerprint passed: 369 Node, 24 Python, upstream 406 with 1 skip, 2 injection.|
+|RUN-20261020-013|container|Public metadata: run 39359423680 attempts 1 and 2 failed in the pipeline step.|
+|RUN-20261020-014|container|Isolated pipeline at the new fingerprint: all 14 stages passed in 534 s with exact timing; 454 Node (369 foundation + 85 database/storage/live), 24 Python, upstream 406 with 1 skip, 2 injection, 13 Chromium and 14 Lab workers. The repaired test took 5.9 s.|
+|RUN-20261020-015|static|`docs:check` over this record.|
