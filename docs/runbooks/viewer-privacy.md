@@ -21,3 +21,7 @@ Audit cautions (2026-10-14 UTC, CHG-20261014-005):
 - A participant's references include the opponent's anonymous backs. Keep any client-visible rejection outcome independent of the hidden card.
 - Each `view` restores in a fresh worker by full re-execution: about 0.2 s for a 16-version synthetic game, shared with command capacity (2 active/32 queued). Cache per committed version and rate-limit before clients poll.
 - A projection fails closed above 4,096 raw engine events (synthetic play ≈7.2 per move). Measure real-card matches before publication.
+
+## D13 current compatibility — 2026-10-19 UTC
+
+D13 supersedes earlier version assertions: new timed/untimed synthetic matches pin live4, viewer2/endReason and required nullable clock2 with native timeoutCount/limit. Exact legacy live2/viewer1 and live3/clock1 codecs remain; unavailable old executable/policy/checkpoint pins refuse without rewriting. Private replay is transcript3/checkpoint2, preserving native events and one logical saved transition. Append-only0006 admits4;0001..0005 remain unchanged. P060 is the only upstream repair (opening concede validMoves), now60 patches/361 files/37 unchanged tests. Either player's opening concession loses, main expiry loses at the whole-game limit, first opening expiry loses immediately, and D14 native restore remains. Waiting work never owns the timed lease; infrastructure pauses never count or award results. Admission/auth/rewards/cards/device/load/operations stay gated. See [clock ownership](game-clocks.md). Earlier dated evidence remains source-specific.

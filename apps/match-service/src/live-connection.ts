@@ -37,7 +37,7 @@ export function createLiveConnection(ws:WebSocket,options:{service:MatchService;
         if(!await authorized()||!grant)return;
         if(read.protocolVersion!==grant.protocolVersion||read.releaseId!==grant.releaseId||read.projection.stateVersion<version)throw new Error();
         if(grant.protocolVersion===3&&!read.clock)throw new Error();
-        if(force||read.projection.stateVersion>version||read.clock?.clockRevision!==clockRevision){version=read.projection.stateVersion;clockRevision=read.clock?.clockRevision;send({...envelope(correlationId),type:'snapshot',projectionType:'viewer',payload:read.projection,...(read.clock?{clock:read.clock}:{})});}
+        if(force||read.projection.stateVersion>version||read.clock?.clockRevision!==clockRevision){version=read.projection.stateVersion;clockRevision=read.clock?.clockRevision;send({...envelope(correlationId),type:'snapshot',projectionType:'viewer',payload:read.projection,...(grant.protocolVersion===4?{clock:read.clock??null}:read.clock?{clock:read.clock}:{})});}
       }catch{control('maintenance');stop(1012);}
     })();refreshing=owned;
     try{await owned;}finally{if(refreshing===owned)refreshing=undefined;}

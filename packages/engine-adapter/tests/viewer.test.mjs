@@ -7,7 +7,7 @@ const bytes=x=>JSON.stringify(x);
 const zones=(v,p,z)=>v.snapshot.players.find(x=>x.playerId===p).zones.find(x=>x.kind===z);
 
 test('authorized hand/public fronts and anonymous ink status use fresh closed DTOs',()=>{
- const v=project();assert.equal(v.snapshot.schemaVersion,1);
+ const v=project();assert.equal(v.snapshot.schemaVersion,2);
  assert.equal(zones(v,'p1','hand').cards[0].definitionId,'secret-amber');assert.equal(zones(v,'p2','hand').count,1);assert.deepEqual(zones(v,'p2','hand').cards,[]);
  assert.deepEqual(zones(v,'p1','deck').cards,[]);assert.equal(zones(v,'p1','play').cards[0].definitionId,'public-character');
  const ink=zones(v,'p1','inkwell').cards[0];assert.equal(ink.state,'exerted');assert.equal('definitionId'in ink,false);assert.equal('damage'in ink,false);

@@ -1,0 +1,40 @@
+
+> @lorcana/contracts@0.0.0 build /workspaces/lorcana-online-tcg/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> lorcana-online-tcg@0.0.0 db:migrate /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db... build && node packages/db/dist/cli.js migrate -- --target local
+
+Scope: 2 of 14 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+packages/contracts build: Done
+packages/db build$ tsc -p tsconfig.json
+packages/db build: Done
+{"target":"local","applied":1,"total":6}
+
+> lorcana-online-tcg@0.0.0 db:migrate /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/db... build && node packages/db/dist/cli.js migrate -- --target test
+
+Scope: 2 of 14 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+packages/contracts build: Done
+packages/db build$ tsc -p tsconfig.json
+packages/db build: Done
+{"target":"test","applied":1,"total":6}

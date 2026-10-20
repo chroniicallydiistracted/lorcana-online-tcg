@@ -19,21 +19,18 @@ async function fixture(open=true){
   return {...f,s,async close(){await s.close();await f.close();}};
  }catch(error){await s?.close();await f.close();throw error;}
 }
-test('repeated waiting opening concessions never reserve or revise the clock in any opening phase',async()=>{
- const f=await fixture(false);try{
-  for(let version=0;version<3;version++){
-   const view=await f.s.view('p1',{matchId:f.id}),actor=view.priorityId,waiting=f.players.find(p=>p!==actor),before=await f.a.load(f.id,actor);
-   const events=await f.using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1',[f.id])).rows[0].n);
-   for(let n=0;n<8;n++){
-    const result=await f.s.submitRefs(waiting,command(f.id,'opening-refusal-'+version+'-'+n,version,'concede'));
-    assert.equal(result.receipt.reason,'invalid_intent');assert.deepEqual((await f.a.load(f.id,actor)).clock,before.clock);
-   }
-   assert.equal(await f.using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1',[f.id])).rows[0].n),events);
-   const move=version===0?'chooseWhoGoesFirst':'alterHand',input=version===0?{playerId:'p1'}:{cardsToMulligan:[]};
-   assert.equal((await f.s.submitRefs(actor,command(f.id,'opening-progress-'+version,version,move,input))).receipt.outcome,'accepted');
-  }
-  assert.equal((await f.s.view('p1',{matchId:f.id})).stateVersion,3);
- }finally{await f.close();}
+test('waiting opening concessions finish once without ever reserving the timed clock in any opening phase',async()=>{
+ for(let phase=0;phase<3;phase++){
+  const f=await fixture(false);try{
+   for(let n=0;n<phase;n++){const v=await f.s.view('p1',{matchId:f.id});await f.s.submitRefs(v.priorityId,command(f.id,'advance-'+n,n,n===0?'chooseWhoGoesFirst':'alterHand',n===0?{playerId:'p1'}:{cardsToMulligan:[]}));}
+   const v=await f.s.view('p1',{matchId:f.id}),waiting=f.players.find(p=>p!==v.priorityId),events=await f.using('match',async c=>(await c.query('SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1',[f.id])).rows[0].n);
+   const c=command(f.id,'opening-concession',phase,'concede'),r=await f.s.submitRefs(waiting,c);assert.equal(r.receipt.outcome,'accepted');
+   const after=await f.a.load(f.id,waiting);assert.equal(after.clock.status,'ended');assert.equal(after.clock.status,'ended');
+   for(let n=0;n<8;n++){const duplicate=await f.s.submitRefs(waiting,c);assert.equal(duplicate.duplicate,true);assert.deepEqual(duplicate.receipt,r.receipt);assert.deepEqual((await f.a.load(f.id,waiting)).clock,after.clock);}
+   const view=await f.s.view(waiting,{matchId:f.id});assert.equal(view.endReason,'concession');assert.equal(view.winner,v.priorityId);
+   assert.equal(await f.using('match',async db=>(await db.query("SELECT count(*)::int AS n FROM match.clock_events WHERE match_id=$1 AND clock_revision>$2 AND kind='processing'",[f.id,events])).rows[0].n),0);
+  }finally{await f.close();}
+ }
 });
 test('a delayed waiting opening concession leaves the active decision unfenced and becomes stale after it',async()=>{
  const f=await clockFixture(),{createClockService}=await import('../dist/clock-service.js'),{createClockHealth}=await import('../dist/clock-health.js'),{createEngineExecutor}=await import('../dist/engine-executor.js'),executor=createEngineExecutor();let release,entered,pending;
@@ -41,7 +38,7 @@ test('a delayed waiting opening concession leaves the active decision unfenced a
  const clocks=createClockService({repository:f.a,pins:()=>{},health:createClockHealth({monotonicNow:f.now}),executor:{...executor,execute:async job=>{if(job.kind==='transition'&&job.command.move==='concede'){entered();await gate;}return executor.execute(job);}}});
  try{
   clocks.recordCreated(f.id);const actor=f.m.status().choosingFirstPlayer,waiting=f.players.find(p=>p!==actor),before=await f.a.load(f.id,actor);
-  pending=clocks.submit(f.command(waiting,'concede'),false).then(result=>({result}),error=>({error}));await started;
+  pending=clocks.submit(f.command(waiting,'concede'),false).then(result=>({result}),error=>({error}));await Promise.race([started,pending.then(r=>{throw r.error??Error('Waiting concession did not enter the transition executor');})]);
   assert.deepEqual((await f.a.load(f.id,actor)).clock,before.clock,'waiting work must never own the clock');
   assert.equal((await clocks.submit(f.command(actor,'chooseWhoGoesFirst',{playerId:'p1'}),false)).receipt.outcome,'accepted');
   const after=await f.a.load(f.id,actor);release();const r=await pending;assert.equal(r.error,undefined);assert.equal(r.result.receipt.outcome,'stale');assert.deepEqual((await f.a.load(f.id,actor)).clock,after.clock);
@@ -92,21 +89,53 @@ test('audited pause/resume excludes an outage, preserves card refs and rejects s
   const pause={matchId:f.id,expectedStateVersion:before.stateVersion,expectedClockRevision:clock.clockRevision,operationId:'audited-pause',auditId:'qualification-auditor',reason:'recovery'};
   await assert.rejects(f.s.pauseClock({...pause,auditId:'forged'}),e=>e.code==='FORBIDDEN');
   await f.s.pauseClock(pause);assert.deepEqual(await f.s.view('p1',{matchId:f.id}),before);
-  const frozen=await f.s.readClock('p1',{matchId:f.id});assert.equal(frozen.status,'paused');assert.equal(frozen.players.find(p=>p.playerId==='p1').remainingMs,600);
+  const frozen=await f.s.readClock('p1',{matchId:f.id});assert.equal(frozen.status,'paused');assert.ok(frozen.players.every(p=>p.timeoutCount===0));assert.equal(frozen.players.find(p=>p.playerId==='p1').remainingMs,600);
   f.advance(60000);const still=await f.s.readClock('p1',{matchId:f.id});assert.equal(still.players.find(p=>p.playerId==='p1').remainingMs,600);
   const resume={matchId:f.id,expectedStateVersion:3,expectedClockRevision:frozen.clockRevision,operationId:'audited-resume',auditId:'qualification-auditor'};
   await assert.rejects(f.s.resumeClock({...resume,expectedClockRevision:0}));
-  await f.s.resumeClock(resume);const running=await f.s.readClock('p1',{matchId:f.id});assert.equal(running.status,'running');assert.equal(running.players.find(p=>p.playerId==='p1').remainingMs,600);
+  await f.s.resumeClock(resume);const running=await f.s.readClock('p1',{matchId:f.id});assert.equal(running.status,'running');assert.ok(running.players.every(p=>p.timeoutCount===0));assert.equal(running.players.find(p=>p.playerId==='p1').remainingMs,600);
   const duplicate=await f.s.resumeClock(resume);assert.equal(duplicate.duplicate,true);
   await assert.rejects(f.s.resumeClock({...resume,reset:{playerId:'p1',remainingMs:1000}}),e=>e.code==='ID_CONFLICT');
  }finally{await f.close();}
 });
-test('unresolved opening timeout pauses for a legal decision and audited reset cannot choose the winner',async()=>{
- const f=await fixture(false);try{
-  f.advance(1000);await f.s.tickClocks();const c=await f.s.readClock('p1',{matchId:f.id});assert.equal(c.status,'paused');assert.equal(c.pauseReason,'no_legal_default');
-  const view=await f.s.view('p1',{matchId:f.id});assert.equal(view.stateVersion,0);assert.equal(view.ended,false);
-  await f.s.resumeClock({matchId:f.id,expectedStateVersion:0,expectedClockRevision:c.clockRevision,operationId:'opening-recovery',auditId:'qualification-auditor',reset:{playerId:c.activePlayerId,remainingMs:1000}});
-  const next=await f.s.readClock('p1',{matchId:f.id});assert.equal(next.status,'running');assert.equal(next.players.find(p=>p.playerId===c.activePlayerId).remainingMs,1000);assert.equal((await f.s.view('p1',{matchId:f.id})).winner,null);
+test('each opening decision times out once as a loss and audited reset cannot choose a winner',async()=>{
+ for(let phase=0;phase<3;phase++){
+  const f=await fixture(false);try{
+   for(let n=0;n<phase;n++){const v=await f.s.view('p1',{matchId:f.id});await f.s.submitRefs(v.priorityId,command(f.id,'advance-'+n,n,n===0?'chooseWhoGoesFirst':'alterHand',n===0?{playerId:'p1'}:{cardsToMulligan:[]}));}
+   const before=await f.s.readClock('p1',{matchId:f.id}),loser=before.activePlayerId;f.advance(1000);await Promise.all([f.s.tickClocks(),f.s.tickClocks()]);
+   const view=await f.s.view('p1',{matchId:f.id}),c=await f.s.readClock('p1',{matchId:f.id});assert.equal(view.stateVersion,phase+1);assert.equal(view.ended,true);assert.equal(view.endReason,'timeout');assert.equal(view.winner,f.players.find(p=>p!==loser));assert.equal(c.status,'ended');assert.equal(c.players.find(p=>p.playerId===loser).timeoutCount,1);
+   await assert.rejects(f.s.resumeClock({matchId:f.id,expectedStateVersion:view.stateVersion,expectedClockRevision:c.clockRevision,operationId:'opening-recovery',auditId:'qualification-auditor',reset:{playerId:loser,remainingMs:1000}}));
+  }finally{await f.close();}
+ }
+});
+test('native whole-game timeout count survives normal turns and the third timeout ends in one replayable commit',async()=>{
+ const f=await fixture();try{
+  let version=3;
+  for(let n=1;n<=3;n++){
+   f.advance(1000);await Promise.all([f.s.tickClocks(),f.s.tickClocks()]);version++;
+   const c=await f.s.readClock('p1',{matchId:f.id}),v=await f.s.view('p1',{matchId:f.id});assert.equal(c.timeoutLimit,3);assert.equal(c.players.find(p=>p.playerId==='p1').timeoutCount,n);assert.equal(c.players.find(p=>p.playerId==='p2').timeoutCount,0);assert.equal(v.ended,n===3);assert.equal(v.stateVersion,version);
+   if(n<3){assert.equal((await f.s.submitRefs('p2',command(f.id,'normal-'+n,version,'passTurn'))).receipt.outcome,'accepted');version++;}
+   else {assert.equal(v.endReason,'timeout');assert.equal(v.winner,'p2');assert.equal(c.status,'ended');}
+  }
+  const {restorePrivateMatch}=await import('../../../packages/engine-adapter/dist/index.js'),row=await f.a.load(f.id,'p1'),replayed=restorePrivateMatch(row.checkpoint,f.id);try{assert.equal(replayed.status().endReason,'timeout');assert.equal(replayed.status().winner,'p2');assert.equal(replayed.clock().players.find(p=>p.playerId==='p1').timeoutCount,3);}finally{replayed.dispose();}
+  const totals=await f.using('match',async c=>{const r=[];for(const table of ['journal','outbox','command_receipts'])r.push((await c.query('SELECT count(*)::int AS n FROM match.'+table+' WHERE match_id=$1 AND state_version=$2',[f.id,version])).rows[0].n);return r;});assert.deepEqual(totals,[1,1,1]);
+ }finally{await f.close();}
+});
+test('deadline sweeps, a player move and both concessions race to exactly one final result',async()=>{
+ const f=await fixture();try{
+  let version=3;
+  for(let n=0;n<2;n++){f.advance(1000);await f.s.tickClocks();version++;await f.s.submitRefs('p2',command(f.id,'normal-'+n,version,'passTurn'));version++;}
+  f.advance(1000);const requests=[['p1','passTurn'],['p1','concede'],['p2','concede']].map(([p,m],i)=>({p,c:command(f.id,'race-'+i,version,m)}));
+  await Promise.allSettled([f.s.tickClocks(),f.s.tickClocks(),...requests.map(({p,c})=>f.s.submitRefs(p,c))]);await f.s.tickClocks();
+  const v=await f.s.view('p1',{matchId:f.id});assert.equal(v.ended,true);assert.equal(v.stateVersion,version+1);assert.ok(['concession','timeout'].includes(v.endReason));
+  const counts=await f.using('match',async c=>{const r=[];for(const t of ['journal','outbox'])r.push((await c.query('SELECT count(*)::int AS n FROM match.'+t+' WHERE match_id=$1 AND state_version=$2',[f.id,version+1])).rows[0].n);return r;});assert.deepEqual(counts,[1,1]);
+  for(const {p,c}of requests){const first=await f.s.submitRefs(p,c),again=await f.s.submitRefs(p,c);assert.equal(again.duplicate,true);assert.deepEqual(first.receipt,again.receipt);}
+ }finally{await f.close();}
+});
+test('an active player can concede at the exact deadline and players cannot invoke server forfeits',async()=>{
+ const f=await fixture();try{
+  assert.equal((await f.s.submit('p1',command(f.id,'forged-forfeit',3,'forfeitGame',{winnerId:'p1',reason:'timeout'}))).receipt.reason,'forbidden');
+  f.advance(1000);assert.equal((await f.s.submitRefs('p1',command(f.id,'active-deadline-concede',3,'concede'))).receipt.outcome,'accepted');await f.s.tickClocks();assert.equal((await f.s.view('p1',{matchId:f.id})).endReason,'concession');
  }finally{await f.close();}
 });
 test('clock storage tampering cannot extend a deadline or alter a native remaining allowance',async()=>{

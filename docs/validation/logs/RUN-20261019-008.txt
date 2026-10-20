@@ -1,0 +1,57 @@
+✖ D13 live4 binds viewer2 result and clock2 counts while retaining exact earlier closed revisions (1.063859ms)
+✔ D13 closed end reasons reject contradictory completion and player forfeit/winner authority (7.248709ms)
+✖ D13 old-only offers cannot accept a4 ticket and pending intent3 preserves its exact4 identity (0.291843ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 196.999381
+
+✖ failing tests:
+
+test at packages/contracts/tests/d13.test.mjs:7:1
+✖ D13 live4 binds viewer2 result and clock2 counts while retaining exact earlier closed revisions (1.063859ms)
+  AssertionError [ERR_ASSERTION]: distinct live4 codec missing
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/contracts/tests/d13.test.mjs:8:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/contracts/tests/d13.test.mjs:19:1
+✖ D13 old-only offers cannot accept a4 ticket and pending intent3 preserves its exact4 identity (0.291843ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/contracts/tests/d13.test.mjs:20:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

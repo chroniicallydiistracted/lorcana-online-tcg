@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-013",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/match-service... build && pnpm --filter @lorcana/match-client build && pnpm --filter @lorcana/web typecheck && pnpm db:migrate -- --target local && pnpm db:migrate -- --target test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "fa3714f5764ef22d81da27fe935996e9e708fb8974a82cec66dfa621a6fd382d",
+  "started_at": "2026-10-19T20:21:17.682Z",
+  "finished_at": "2026-10-19T20:21:29.591Z",
+  "recorded_at": "2026-10-19T20:21:29.591Z",
+  "time_precision": "exact",
+  "elapsed_ms": 11909,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 2,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "D13 owning builds strict web types reviewed migration0006 local and test application",
+  "log_path": "docs/validation/logs/RUN-20261019-013.txt",
+  "log_sha256": "a4750a225c2dae21163ce8c10dec794c9730adbd5bdfa3addbe1b19741ded1cd",
+  "redactions": 0
+}

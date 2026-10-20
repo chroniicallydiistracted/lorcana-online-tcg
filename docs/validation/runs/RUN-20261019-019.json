@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-019",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/web typecheck && pnpm test:match-integration"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "b283ec49c68764b0c7735c1b7058d87c51334afc3592fba0bcc3641f08209ad8",
+  "started_at": "2026-10-19T20:31:07.384Z",
+  "finished_at": "2026-10-19T20:31:11.660Z",
+  "recorded_at": "2026-10-19T20:31:11.660Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4277,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 2,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "D13 full match database/live suite after current protocol migration",
+  "log_path": "docs/validation/logs/RUN-20261019-019.txt",
+  "log_sha256": "a6e2dd54b0915ec23c5e158b366e258399fa2ccb876f92c1f98368bb2b85da88",
+  "redactions": 0
+}

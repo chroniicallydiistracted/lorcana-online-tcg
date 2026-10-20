@@ -57,3 +57,7 @@ For brief clock reservation contention, internal BUSY produces the existing rate
 ## PLAY-04 opening repair — 2026-10-16 UTC
 
 Waiting opening concessions now undergo unreserved native validation; refused attempts write no clock events or revision and cannot fence the active decision. Same-socket BUSY retry and its existing8-attempt budget remain unchanged. Stock-client regressions repeat all three opening phases; this is synthetic qualification, not an opening-leave policy or production load proof.
+
+## D13 current compatibility — 2026-10-19 UTC
+
+D13 supersedes earlier version assertions: new timed/untimed synthetic matches pin live4, viewer2/endReason and required nullable clock2 with native timeoutCount/limit. Exact legacy live2/viewer1 and live3/clock1 codecs remain; unavailable old executable/policy/checkpoint pins refuse without rewriting. Private replay is transcript3/checkpoint2, preserving native events and one logical saved transition. Append-only0006 admits4;0001..0005 remain unchanged. P060 is the only upstream repair (opening concede validMoves), now60 patches/361 files/37 unchanged tests. Either player's opening concession loses, main expiry loses at the whole-game limit, first opening expiry loses immediately, and D14 native restore remains. Waiting work never owns the timed lease; infrastructure pauses never count or award results. Admission/auth/rewards/cards/device/load/operations stay gated. See [clock ownership](game-clocks.md). Earlier dated evidence remains source-specific.

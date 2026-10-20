@@ -1,0 +1,22 @@
+diff --git a/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/flow/runtime-flow-config.ts b/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/flow/runtime-flow-config.ts
+index 226bd50..a2b8c07 100644
+--- a/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/flow/runtime-flow-config.ts
++++ b/vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/flow/runtime-flow-config.ts
+@@ -39,7 +39,7 @@ export const lorcanaRuntimeFlow: RuntimeFlowDefinition = {
+             // forfeitGame is a server-only move used by timeout/drop handlers;
+             // it must remain legal in every phase, including pre-game setup,
+             // so a disconnect during mulligan still cleanly ends the game.
+-            validMoves: ["chooseWhoGoesFirst", "forfeitGame"],
++            validMoves: ["chooseWhoGoesFirst", "concede", "forfeitGame"],
+             nextPhase: "mulligan",
+             endIf: (state) => state.ctx.status.otp != null,
+           },
+@@ -58,7 +58,7 @@ export const lorcanaRuntimeFlow: RuntimeFlowDefinition = {
+                 });
+               }
+             },
+-            validMoves: ["alterHand", "forfeitGame"],
++            validMoves: ["alterHand", "concede", "forfeitGame"],
+             endIf: (state) => (state.ctx.status.pendingMulligan?.length ?? 0) === 0,
+             // No nextPhase: segment transition to mainGame
+           },

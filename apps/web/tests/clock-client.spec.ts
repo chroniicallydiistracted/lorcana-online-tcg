@@ -1,14 +1,14 @@
 import {fileURLToPath} from 'node:url';
 import {test,expect} from '@playwright/test';
 import type {Page} from '@playwright/test';
-import type {LiveIntent} from '@lorcana/contracts';
+import type {LiveIntent,PublicViewerProjection,PublicClockProjection} from '@lorcana/contracts';
 // This imports only into the Node test runner, never the browser application.
 // @ts-expect-error Test-only JavaScript fixture has no product declaration.
 import {qualification} from '../../match-service/tests/client-fixtures.mjs';
 declare global {interface Window {qualificationClockNotes:string[]}}
 
 const origin='http://127.0.0.1:5173';
-const clock={schemaVersion:1,id:'chromium-clock-proof',profile:'qualification',mode:'dynamic',initialReserveMs:30000,reserveCapMs:30000,perActionBonusMs:0,perTurnPassBonusMs:0,resetTimeOnSkipMs:30000,graceMs:0};
+const clock={schemaVersion:2,id:'chromium-clock-proof',profile:'qualification',mode:'dynamic',initialReserveMs:30000,reserveCapMs:30000,perActionBonusMs:0,perTurnPassBonusMs:0,resetTimeOnSkipMs:30000,graceMs:0,timeoutLimit:3};
 async function ready(pages:Page[],version:number){for(const page of pages)await expect.poll(()=>page.evaluate(()=>window.qualificationClient.status==='ready'&&window.qualificationClient.view?.stateVersion),{timeout:15000}).toBe(version);}
 test('Chromium preserves its live connection and pending ID through a busy clock reservation',async({browser})=>{
  test.setTimeout(90000);const f=await qualification(origin,{clock}),context=await browser.newContext(),page=await context.newPage();let releaseClock:(()=>Promise<void>)|undefined;
@@ -59,11 +59,6 @@ for(const choosingSeat of [0,1])test('Chromium clock estimates pause, clear on s
   const priority=await pages[0]!.evaluate(()=>window.qualificationClient.view!.priorityId),chooser=f.players.indexOf(priority);
   expect(chooser).toBe(choosingSeat);
   for(const [i,intent]of [[chooser,{kind:'chooseWhoGoesFirst',input:{playerId:f.players[0]}}],[0,{kind:'alterHand',input:{cardsToMulligan:[]}}],[1,{kind:'alterHand',input:{cardsToMulligan:[]}}]] as [number,LiveIntent][]){
-   const version=await pages[i]!.evaluate(()=>window.qualificationClient.view!.stateVersion),revision=await pages[i]!.evaluate(()=>window.qualificationClient.clock!.clockRevision);
-   for(let n=0;n<3;n++){
-    const refused=await pages[1-i]!.evaluate(()=>window.qualificationClient.submit({kind:'concede',input:{}}));if(refused.outcome!=='rejected')throw Error('Opening concession must be refused');expect(refused.reason).toBe('invalid_intent');await ready(pages,version);
-    expect(await pages[i]!.evaluate(()=>window.qualificationClient.clock!.clockRevision)).toBe(revision);
-   }
    const result=await pages[i]!.evaluate(async intent=>{try{return {receipt:await window.qualificationClient.submit(intent)};}catch{return {diagnostic:window.qualificationClockNotes.slice(-30)}}},intent);
    if(!result.receipt)throw Error('Clock opening '+intent.kind+': '+result.diagnostic?.join(','));
    expect(result.receipt.outcome).toBe('accepted');await ready(pages,result.receipt.stateVersion);
@@ -82,4 +77,44 @@ for(const choosingSeat of [0,1])test('Chromium clock estimates pause, clear on s
   await ready(pages,4);for(const page of pages)expect(await page.evaluate(()=>window.qualificationClient.clock?.activePlayerId)).toBe(f.players[1]);
   expect(errors).toEqual([]);
  }finally{for(const page of pages)await page.evaluate(()=>window.qualificationClient?.close()).catch(()=>{});for(const context of contexts)await context.close();await f.close();}
+});
+
+test('Chromium shows either player conceding at all opening steps in timed and untimed games',async({browser})=>{
+ test.setTimeout(180000);
+ const moduleUrl='/@fs'+fileURLToPath(new URL('../../../packages/match-client/src/index.ts',import.meta.url));
+ for(const timed of [false,true])for(const phase of [0,1,2])for(const deciding of [false,true]){
+  const f=await qualification(origin,timed?{clock}:{}),contexts=[],pages:Page[]=[];
+  try{
+   const host=await f.host();
+   for(let i=0;i<2;i++){
+    const context=await browser.newContext();contexts.push(context);await context.addCookies([{name:'qualification_session',value:f.sessions[i].cookie.split('=')[1],url:origin,httpOnly:true,sameSite:'Strict'}]);const page=await context.newPage();pages.push(page);await page.goto('/');
+    await page.evaluate(async({moduleUrl,matchId,endpoint})=>{
+     const {createMatchClient,matchResult,timeoutWarning}=await import(moduleUrl);const output=document.createElement('output');output.id='qualification-result';output.setAttribute('aria-live','polite');document.body.append(output);
+     const warning=document.createElement('output');warning.id='qualification-warning';document.body.append(warning);
+     window.qualificationClient=createMatchClient({matchId,endpoint,clientReleaseId:'chromium-d13',onView:(v:PublicViewerProjection|null)=>{output.textContent=v?.schemaVersion===2?matchResult(v)??'':'';},onClock:(c:PublicClockProjection|null)=>{warning.textContent=c?.schemaVersion===2?c.players.map((p:{playerId:string})=>timeoutWarning(c,p.playerId,window.qualificationClient.view?.turn===0)??'').join(' '):'';}});await window.qualificationClient.connect();
+    },{moduleUrl,matchId:f.id,endpoint:host.url});
+   }
+   await ready(pages,0);
+   for(let n=0;n<phase;n++){const actor=await pages[0]!.evaluate(()=>window.qualificationClient.view!.priorityId),i=f.players.indexOf(actor);const intent:LiveIntent=n===0?{kind:'chooseWhoGoesFirst',input:{playerId:f.players[0]}}:{kind:'alterHand',input:{cardsToMulligan:[]}};await pages[i]!.evaluate(intent=>window.qualificationClient.submit(intent),intent);await ready(pages,n+1);}
+   const actor=await pages[0]!.evaluate(()=>window.qualificationClient.view!.priorityId),active=f.players.indexOf(actor),loser=deciding?active:1-active;
+   expect((await pages[loser]!.evaluate(()=>window.qualificationClient.submit({kind:'concede',input:{}}))).outcome).toBe('accepted');await ready(pages,phase+1);
+   for(const page of pages){await expect(page.locator('#qualification-result')).toHaveText('Game ended by concession');expect(await page.evaluate(()=>window.qualificationClient.view!.winner)).toBe(f.players[1-loser]);}
+  }finally{for(const page of pages)await page.evaluate(()=>window.qualificationClient?.close()).catch(()=>{});for(const c of contexts)await c.close();await f.close();}
+ }
+});
+test('Chromium displays the last-timeout warning before the server publishes a timeout loss',async({browser})=>{
+ test.setTimeout(90000);const f=await qualification(origin,{clock}),context=await browser.newContext(),page=await context.newPage();
+ const moduleUrl='/@fs'+fileURLToPath(new URL('../../../packages/match-client/src/index.ts',import.meta.url));
+ try{
+  const host=await f.host();await context.addCookies([{name:'qualification_session',value:f.sessions[0].cookie.split('=')[1],url:origin,httpOnly:true,sameSite:'Strict'}]);await page.goto('/');
+  await page.evaluate(async({moduleUrl,matchId,endpoint})=>{
+   const {createMatchClient,timeoutWarning,matchResult}=await import(moduleUrl);const o=document.createElement('output');o.id='qualification-timeout';document.body.append(o);
+   const render=()=>{const v=window.qualificationClient.view,c=window.qualificationClient.clock;o.textContent=v?.schemaVersion===2&&v.ended?matchResult(v):c?.schemaVersion===2?c.players.map(p=>timeoutWarning(c,p.playerId,window.qualificationClient.view?.turn===0)??'').join(' '):'';};window.qualificationClient=createMatchClient({matchId,endpoint,clientReleaseId:'chromium-timeout-loss',onClock:render,onView:render});await window.qualificationClient.connect();
+  },{moduleUrl,matchId:f.id,endpoint:host.url});await ready([page],0);
+  await expect(page.locator('#qualification-timeout')).toContainText('Next timeout loses the game');
+  const c=await f.creator.readClock(f.players[0],{matchId:f.id});await f.creator.pauseClock({matchId:f.id,expectedStateVersion:0,expectedClockRevision:c.clockRevision,operationId:'d13-pause',auditId:'qualification-auditor'});const paused=await f.creator.readClock(f.players[0],{matchId:f.id});
+  await f.creator.resumeClock({matchId:f.id,expectedStateVersion:0,expectedClockRevision:paused.clockRevision,operationId:'d13-expire',auditId:'qualification-auditor',reset:{playerId:c.activePlayerId,remainingMs:1000}});
+  await ready([page],1);await expect.poll(()=>page.evaluate(()=>{const v=window.qualificationClient.view;return v?.schemaVersion===2?v.endReason:null;})).toBe('timeout');expect(await page.evaluate(()=>{const c=window.qualificationClient.clock;return c?.schemaVersion===2?c.timeoutLimit:null;})).toBe(3);
+  await expect(page.locator('#qualification-timeout')).toHaveText('Game ended by timeout');expect(await page.evaluate(()=>window.qualificationClient.clock?.players.some(p=>'timeoutCount'in p&&p.timeoutCount===1))).toBe(true);
+ }finally{await page.evaluate(()=>window.qualificationClient?.close()).catch(()=>{});await context.close();await f.close();}
 });

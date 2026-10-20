@@ -6,15 +6,15 @@ import {service,fixtureId,open,cleanup,using,releases} from './fixtures.mjs';
 function factory(){assert.equal(typeof db.createTransportStore,'function','shared ticket/quota storage is missing');return db.createTransportStore;}
 const origin='http://localhost:5173';
 
-test('PLAY-03 built release pins all three qualified decoders and new domain matches pin live2',async()=>{
- const registry=releases();assert.deepEqual(registry.active.protocol,{min:1,max:3});
- const id=fixtureId(),s=service();try{await s.create({matchId:id,players:['p1','p2']});assert.equal((await s.describe('p1',{matchId:id})).protocolVersion,2);}finally{await s.close();await cleanup(id);}
+test('D13 built live release retains three decoders and new domain matches pin live4',async()=>{
+ const registry=releases();assert.deepEqual(registry.active.protocol,{min:2,max:4});
+ const id=fixtureId(),s=service();try{await s.create({matchId:id,players:['p1','p2']});assert.equal((await s.describe('p1',{matchId:id})).protocolVersion,4);}finally{await s.close();await cleanup(id);}
 });
 
 test('PLAY-03 tickets are participant bound, hashed, single use across connections and expire before session authority',async()=>{
  const create=factory(),id=fixtureId(),s=service(),a=create('test'),b=create('test');
  try {
-  await open(s,id);const info=await s.describe('p1',{matchId:id}),grant={actorId:'p1',sessionId:'test-session',sessionExpiresAt:Date.now()+60000,matchId:id,releaseId:info.releaseId,protocolVersion:2,origin};
+  await open(s,id);const info=await s.describe('p1',{matchId:id}),grant={actorId:'p1',sessionId:'test-session',sessionExpiresAt:Date.now()+60000,matchId:id,releaseId:info.releaseId,protocolVersion:4,origin};
   await assert.rejects(a.issue({...grant,actorId:'outsider'}));
   const issued=await a.issue(grant);assert.equal(typeof issued.ticket,'string');assert.ok(issued.expiresAt<=grant.sessionExpiresAt);
   const rows=await using('match',async c=>(await c.query('SELECT * FROM match.socket_tickets WHERE match_id=$1',[id])).rows);

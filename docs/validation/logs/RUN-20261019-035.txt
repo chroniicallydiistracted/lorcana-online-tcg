@@ -1,0 +1,82 @@
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+✔ client waits for correlated authorized snapshot, copies views and rejects raw-ID or overlapping moves (149.612593ms)
+✔ pending bytes and IDs survive suspension/host hop and duplicate receipt, while stale results are final (13.377516ms)
+✔ server sequence gaps, incompatible pins and changed account never replay a pending intent (11.596814ms)
+✔ transient receipts preserve pending identity; expiry stops retries and retains explicit recovery data (4.753072ms)
+✔ unrelated snapshots do not resend a pending command or hide its acknowledgement deadline (50.438338ms)
+✔ application receipt callbacks cannot overwrite terminal transport state or undo an accepted result (4.484601ms)
+✔ replacing an incomplete connection rejects its waiter rather than leaking a pending promise (0.730314ms)
+✔ status callbacks that dispose transport cannot leave a subsequently scheduled retry timer (8.782956ms)
+✔ view clearing callbacks preserve disposal and settle connect and suspend callers (3.491933ms)
+✔ browser countdown is a clamped monotonic estimate and cannot submit a move or change a result (7.051912ms)
+✔ live3 clock-only revisions preserve views, defensive callbacks and monotonic estimates, then clear on suspension (32.467211ms)
+✔ live3 pending commands retain schema2 and exact bytes across reconnect; old schema1 offers only its original live2 pin (12.889587ms)
+✔ live4 result and pre-loss warnings use closed public data without choosing a winner (2.583232ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 521.163079
+
+> lorcana-online-tcg@0.0.0 test:e2e:smoke /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/web test:e2e
+
+
+> @lorcana/web@0.0.0 test:e2e /workspaces/lorcana-online-tcg/apps/web
+> playwright test
+
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 13 tests using 1 worker
+
+  ✓   1 tests/clock-client.spec.ts:13:1 › Chromium preserves its live connection and pending ID through a busy clock reservation (6.1s)
+  ✓   2 tests/clock-client.spec.ts:39:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 0 (11.1s)
+  ✓   3 tests/clock-client.spec.ts:39:33 › Chromium clock estimates pause, clear on suspension and recover a server timeout; chooser seat 1 (8.9s)
+  ✓   4 tests/clock-client.spec.ts:82:1 › Chromium shows either player conceding at all opening steps in timed and untimed games (42.6s)
+  ✓   5 tests/clock-client.spec.ts:105:1 › Chromium displays the last-timeout warning before the server publishes a timeout loss (4.0s)
+  ✓   6 tests/foundation.spec.ts:4:1 › real client reaches both services, mounts WebGL, resizes and releases repeated scenes (1.1s)
+  ✓   7 tests/foundation.spec.ts:35:1 › unavailable service and renderer disposal remain usable from keyboard (490ms)
+[WebServer] The request id "/workspaces/lorcana-online-tcg/packages/db/README.md" is outside of Vite serving allow list.
+[WebServer] 
+[WebServer] - /workspaces/lorcana-online-tcg/apps/web
+[WebServer] - /workspaces/lorcana-online-tcg/packages/contracts
+[WebServer] - /workspaces/lorcana-online-tcg/packages/match-client
+[WebServer] - /workspaces/lorcana-online-tcg/packages/design-system
+[WebServer] - /workspaces/lorcana-online-tcg/packages/presentation
+[WebServer] - /workspaces/lorcana-online-tcg/node_modules
+[WebServer] 
+[WebServer] Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+[WebServer] 
+  ✓   8 tests/foundation.spec.ts:48:1 › development file serving rejects server-owned files outside the browser roots (9ms)
+  ✓   9 tests/foundation.spec.ts:55:1 › unavailable WebGL leaves a semantic stop control usable (482ms)
+  ✓  10 tests/foundation.spec.ts:70:1 › protocol compatibility reaches the actual local negotiation diagnostic (254ms)
+  ✓  11 tests/foundation.spec.ts:75:1 › protocol compatibility shows update and rejects malformed or uncorrelated server responses (436ms)
+  ✓  12 tests/foundation.spec.ts:88:1 › browser executes the closed viewer codec and refuses private fields without evaluating accessors (266ms)
+  ✓  13 tests/live-client.spec.ts:23:1 › native browser cookies, WebSockets and reference-only clients reconnect across processes and finish a game (6.1s)
+
+  13 passed (1.7m)
+
+> lorcana-online-tcg@0.0.0 test:engine-browser /workspaces/lorcana-online-tcg
+> pnpm --filter @lorcana/engine-lab test:browser
+
+
+> @lorcana/engine-lab@0.0.0 test:browser /workspaces/lorcana-online-tcg/packages/engine-lab
+> node tests/browser.mjs
+
+PASS P060: 12 actual Chromium Lab worker opening concessions, both modes and players
+{"environment":{"userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36","node":"undefined","bun":"undefined"},"isolatedWorkers":2,"checks":["unqualified mode rejection","synthetic opening/mulligan/concession","debug/server/unknown moves refused before concession","terminal winner","bounded summaries","dispose and fresh worker","no Node/Bun/page errors"],"workerBytes":904685}
+PASS actual Linux Chromium Web Workers; no Windows, GPU, live multiplayer or determinism certification

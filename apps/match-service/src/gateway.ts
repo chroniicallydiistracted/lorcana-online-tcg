@@ -48,8 +48,8 @@ export async function createMatchGateway(options:{service:MatchService;store:Tra
       const quota=await store.quota('ticket',session.actorId,12,60000);
       if(!quota.allowed)return reply.code(429).send({code:'rate_limited',retryAfterMs:quota.retryAfterMs});
       const info=await service.describe(session.actorId,{matchId:body.matchId});
-      if(![2,3].includes(info.protocolVersion)||negotiateProtocol(body.supportedProtocol,{min:info.protocolVersion,max:info.protocolVersion})!==info.protocolVersion)return reply.code(409).send({code:'unsupported_version',supportedProtocol:TRANSPORT_PROTOCOL_RANGE});
-      const issued=await store.issue({actorId:session.actorId,sessionId:session.sessionId,sessionExpiresAt:session.expiresAt,matchId:body.matchId,releaseId:info.releaseId,protocolVersion:info.protocolVersion as 2|3,origin:originOf(request)!});
+      if(![2,3,4].includes(info.protocolVersion)||negotiateProtocol(body.supportedProtocol,{min:info.protocolVersion,max:info.protocolVersion})!==info.protocolVersion)return reply.code(409).send({code:'unsupported_version',supportedProtocol:TRANSPORT_PROTOCOL_RANGE});
+      const issued=await store.issue({actorId:session.actorId,sessionId:session.sessionId,sessionExpiresAt:session.expiresAt,matchId:body.matchId,releaseId:info.releaseId,protocolVersion:info.protocolVersion as 2|3|4,origin:originOf(request)!});
       return parseTransportTicketResponse({type:'ticket',protocolVersion:info.protocolVersion,requestId:body.requestId,matchId:body.matchId,playerId:session.actorId,releaseId:info.releaseId,ticket:issued.ticket,expiresAt:issued.expiresAt,sessionExpiresAt:session.expiresAt},body);
     }catch(error){
       const code=error&&typeof error==='object'&&'code'in error?error.code:null;

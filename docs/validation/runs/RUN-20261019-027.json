@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-027",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "packages/engine-adapter/tests/d13.test.mjs",
+    "packages/db/tests/policy.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "5b94471e71b4f90f4d622a39d6e0767241007db4d5752eb6de15d7efb8ce41c0",
+  "started_at": "2026-10-19T20:44:47.807Z",
+  "finished_at": "2026-10-19T20:44:48.525Z",
+  "recorded_at": "2026-10-19T20:44:48.525Z",
+  "time_precision": "exact",
+  "elapsed_ms": 718,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Review correction GREEN: native opening-count loss and natural terminal precedence",
+  "log_path": "docs/validation/logs/RUN-20261019-027.txt",
+  "log_sha256": "799efd8f8979e714cf646919873f6a89675b50037b5b27a71ce18b75f215f004",
+  "redactions": 0
+}

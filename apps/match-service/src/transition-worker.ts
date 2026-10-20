@@ -16,7 +16,7 @@ try {
       for(const control of job.controls)match.controlClock(control);
     }else if(job.kind==='timeout'){
       const clock=match.clock();if(!clock?.activePlayerId||!clock.running)throw new Error('Clock unavailable');
-      result=match.submit({actor:clock.activePlayerId,expectedRevision:match.status().revision,timestamp:job.timestamp,commandId:job.commandId,move:'passTurn',input:{}});
+      result=match.timeout({expectedRevision:match.status().revision,timestamp:job.timestamp,commandId:job.commandId});
       if(!result.accepted){match.controlClock({kind:'pause',timestamp:job.timestamp,reason:'SERVER_RECOVERY'});result={accepted:false,code:'NO_LEGAL_DEFAULT'};}
     }else if(job.kind==='transition') {
       if(job.references) {

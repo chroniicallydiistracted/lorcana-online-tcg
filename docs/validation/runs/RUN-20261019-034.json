@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-034",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-name-pattern",
+    "live4 result",
+    "packages/match-client/tests/clocks.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "22a2595cf485e874c6d8c589e378dd4b0e67c265aa84c094a5d9b117803f71cc",
+  "started_at": "2026-10-19T21:01:00.991Z",
+  "finished_at": "2026-10-19T21:01:01.225Z",
+  "recorded_at": "2026-10-19T21:01:01.225Z",
+  "time_precision": "exact",
+  "elapsed_ms": 234,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED qualification warning must precede the first opening timeout despite main limit three",
+  "log_path": "docs/validation/logs/RUN-20261019-034.txt",
+  "log_sha256": "7b490e54d320072d6f8c207d5db18dbe1ed6ab0b5e9ece725156e7fbee57a529",
+  "redactions": 0
+}

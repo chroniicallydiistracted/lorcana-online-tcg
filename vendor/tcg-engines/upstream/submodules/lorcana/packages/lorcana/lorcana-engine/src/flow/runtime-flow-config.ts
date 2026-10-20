@@ -39,7 +39,7 @@ export const lorcanaRuntimeFlow: RuntimeFlowDefinition = {
             // forfeitGame is a server-only move used by timeout/drop handlers;
             // it must remain legal in every phase, including pre-game setup,
             // so a disconnect during mulligan still cleanly ends the game.
-            validMoves: ["chooseWhoGoesFirst", "forfeitGame"],
+            validMoves: ["chooseWhoGoesFirst", "concede", "forfeitGame"],
             nextPhase: "mulligan",
             endIf: (state) => state.ctx.status.otp != null,
           },
@@ -58,7 +58,7 @@ export const lorcanaRuntimeFlow: RuntimeFlowDefinition = {
                 });
               }
             },
-            validMoves: ["alterHand", "forfeitGame"],
+            validMoves: ["alterHand", "concede", "forfeitGame"],
             endIf: (state) => (state.ctx.status.pendingMulligan?.length ?? 0) === 0,
             // No nextPhase: segment transition to mainGame
           },

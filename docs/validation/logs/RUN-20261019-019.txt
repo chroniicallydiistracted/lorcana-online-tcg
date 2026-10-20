@@ -1,0 +1,22 @@
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+tests/clock-client.spec.ts(98,167): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(pageFunction: PageFunction<{ kind: string; input: { playerId: any; cardsToMulligan?: never; }; } | { kind: string; input: { cardsToMulligan: never[]; playerId?: never; }; }, TransportReceipt>, arg: { ...; } | { ...; }, options?: { ...; } | undefined): Promise<...>', gave the following error.
+    Argument of type '(intent: LiveIntent) => Promise<TransportReceipt>' is not assignable to parameter of type 'PageFunction<{ kind: string; input: { playerId: any; cardsToMulligan?: never; }; } | { kind: string; input: { cardsToMulligan: never[]; playerId?: never; }; }, TransportReceipt>'.
+      Type '(intent: LiveIntent) => Promise<TransportReceipt>' is not assignable to type '(arg: { kind: string; input: { playerId: any; cardsToMulligan?: never; }; } | { kind: string; input: { cardsToMulligan: never[]; playerId?: never; }; }) => TransportReceipt | Promise<...>'.
+        Types of parameters 'intent' and 'arg' are incompatible.
+          Type '{ kind: string; input: { playerId: any; cardsToMulligan?: never; }; } | { kind: string; input: { cardsToMulligan: never[]; playerId?: never; }; }' is not assignable to type '{ kind: "chooseWhoGoesFirst"; input: { playerId: string; }; } | { kind: "alterHand"; input: { cardsToMulligan: string[]; }; } | { kind: "putCardIntoInkwell"; input: { cardId: string; }; } | { kind: "playCard"; input: { ...; }; } | ... 6 more ... | { ...; }'.
+            Type '{ kind: string; input: { playerId: any; cardsToMulligan?: never; }; }' is not assignable to type '{ kind: "chooseWhoGoesFirst"; input: { playerId: string; }; } | { kind: "alterHand"; input: { cardsToMulligan: string[]; }; } | { kind: "putCardIntoInkwell"; input: { cardId: string; }; } | { kind: "playCard"; input: { ...; }; } | ... 6 more ... | { ...; }'.
+              Type '{ kind: string; input: { playerId: any; cardsToMulligan?: never; }; }' is not assignable to type '{ kind: "concede"; input: object; }'.
+                Types of property 'kind' are incompatible.
+                  Type 'string' is not assignable to type '"concede"'.
+  Overload 2 of 2, '(pageFunction: PageFunction<void, TransportReceipt>, arg?: any, options?: { exposeFunctions?: boolean; } | undefined): Promise<TransportReceipt>', gave the following error.
+    Argument of type '(intent: LiveIntent) => Promise<TransportReceipt>' is not assignable to parameter of type 'PageFunction<void, TransportReceipt>'.
+      Type '(intent: LiveIntent) => Promise<TransportReceipt>' is not assignable to type '(arg: void) => TransportReceipt | Promise<TransportReceipt>'.
+        Types of parameters 'intent' and 'arg' are incompatible.
+          Type 'void' is not assignable to type '{ kind: "chooseWhoGoesFirst"; input: { playerId: string; }; } | { kind: "alterHand"; input: { cardsToMulligan: string[]; }; } | { kind: "putCardIntoInkwell"; input: { cardId: string; }; } | { kind: "playCard"; input: { ...; }; } | ... 6 more ... | { ...; }'.
+/workspaces/lorcana-online-tcg/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/web@0.0.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2

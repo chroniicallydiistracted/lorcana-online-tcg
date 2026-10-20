@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import * as adapter from '../dist/index.js';
 
-const policy={schemaVersion:1,id:'qualification-dynamic-v1',profile:'qualification',mode:'dynamic',initialReserveMs:150000,reserveCapMs:150000,perActionBonusMs:5000,perTurnPassBonusMs:60000,resetTimeOnSkipMs:60000,graceMs:0};
+const policy={schemaVersion:2,id:'qualification-dynamic-v1',profile:'qualification',mode:'dynamic',initialReserveMs:150000,reserveCapMs:150000,perActionBonusMs:5000,perTurnPassBonusMs:60000,resetTimeOnSkipMs:60000,graceMs:0,timeoutLimit:3};
 const setup={matchId:'clock-adapter',players:['p1','p2'],startTimestamp:100};
 function submit(m,actor,move,input={},timestamp=100){return m.submit({actor,move,input,timestamp,expectedRevision:m.status().revision,commandId:move+'-'+m.status().revision+'-'+timestamp});}
 function timed(){const m=adapter.createPrivateMatch({...setup,clock:policy});assert.equal(typeof m.clock,'function');return m;}

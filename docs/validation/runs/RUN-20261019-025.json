@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-025",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern",
+    "direct expired opening",
+    "packages/engine-adapter/tests/d13.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "a0c69ae2c2047d16d00de61792ca839caf9ed3f3156e6ea09a7282464f477115",
+  "started_at": "2026-10-19T20:43:53.718Z",
+  "finished_at": "2026-10-19T20:43:54.015Z",
+  "recorded_at": "2026-10-19T20:43:54.015Z",
+  "time_precision": "exact",
+  "elapsed_ms": 297,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Review RED: direct expired opening decisions must lose at the first native timeout count",
+  "log_path": "docs/validation/logs/RUN-20261019-025.txt",
+  "log_sha256": "8effb2e9fb704674595dbc1941ad7d81192153b5cc20a5da52c86d687ef5bce7",
+  "redactions": 0
+}

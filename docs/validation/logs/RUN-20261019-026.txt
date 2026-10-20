@@ -1,0 +1,93 @@
+
+> @lorcana/vendor-engine@0.0.0 build /workspaces/lorcana-online-tcg/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  901.44 kB │ gzip: 196.38 kB
+
+✓ built in 177ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/engine-adapter@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /workspaces/lorcana-online-tcg/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 14 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  904.68 kB │ gzip: 199.31 kB
+
+✓ built in 160ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (1.380174ms)
+✔ migration history must be an unchanged contiguous prefix (0.153126ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (1.590964ms)
+✔ P060 untimed concession phase 0 actor p1 (28.701802ms)
+✔ P060 untimed concession phase 0 actor p2 (8.842035ms)
+✔ P060 untimed concession phase 1 actor p1 (15.660142ms)
+✔ P060 untimed concession phase 1 actor p2 (15.176224ms)
+✔ P060 untimed concession phase 2 actor p1 (13.815436ms)
+✔ P060 untimed concession phase 2 actor p2 (12.733932ms)
+✔ P060 timed concession phase 0 actor p1 (6.415501ms)
+✔ P060 timed concession phase 0 actor p2 (7.153059ms)
+✔ P060 timed concession phase 1 actor p1 (11.808411ms)
+✔ P060 timed concession phase 1 actor p2 (11.632124ms)
+✔ P060 timed concession phase 2 actor p1 (12.735546ms)
+✔ P060 timed concession phase 2 actor p2 (13.260113ms)
+✔ P060 Lab qualification concession phase 0 actor p1 (2.318855ms)
+✔ P060 Lab qualification concession phase 0 actor p2 (0.830961ms)
+✔ P060 Lab qualification concession phase 1 actor p1 (1.750135ms)
+✔ P060 Lab qualification concession phase 1 actor p2 (1.768539ms)
+✔ P060 Lab qualification concession phase 2 actor p1 (1.723156ms)
+✔ P060 Lab qualification concession phase 2 actor p2 (1.872807ms)
+✔ P060 Lab advanced-sandbox concession phase 0 actor p1 (1.514445ms)
+✔ P060 Lab advanced-sandbox concession phase 0 actor p2 (0.829479ms)
+✔ P060 Lab advanced-sandbox concession phase 1 actor p1 (1.622574ms)
+✔ P060 Lab advanced-sandbox concession phase 1 actor p2 (1.521031ms)
+✔ P060 Lab advanced-sandbox concession phase 2 actor p1 (1.704088ms)
+✔ P060 Lab advanced-sandbox concession phase 2 actor p2 (2.324072ms)
+✔ D13 bounded policy2 requires the whole-game timeout limit and refuses policy1 (0.739307ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 0 (5.741859ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 1 (9.53837ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 2 (9.658933ms)
+✔ D13 main-game whole-game limit 1 counts exact zero and preserves native restore (13.348253ms)
+✔ D13 main-game whole-game limit 3 counts exact zero and preserves native restore (22.02082ms)
+✔ D13 an ordinary negative-time pass reaches the same timeout limit atomically (15.205062ms)
+✔ D13 pause reset resume and healthy settlement never increment timeoutCount or accept a chosen winner (7.629263ms)
+✔ D13 private replay refuses altered timeout operations limit reason and count with a refreshed checksum (36.443752ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 0 (7.251508ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 1 (7.907268ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 2 (9.974069ms)
+✖ D13 a native natural terminal on the timeout pass freezes before the timeout-limit loss (22.814745ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 39
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 605.633547
+
+✖ failing tests:
+
+test at packages/engine-adapter/tests/d13.test.mjs:69:1
+✖ D13 a native natural terminal on the timeout pass freezes before the timeout-limit loss (22.814745ms)
+  Error: Timeout unavailable
+      at Object.timeout (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/replay.js:140:19)
+      at timeout (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:17:173)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:72:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

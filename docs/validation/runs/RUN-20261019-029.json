@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-029",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm docs:sync --change CHG-20261019-003 && pnpm verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "d7583ef5aa81f073492221fd579a0369c8b5f8ca25e3a1f92ce8aed672f1dbe5",
+  "started_at": "2026-10-19T20:46:16.376Z",
+  "finished_at": "2026-10-19T20:48:41.800Z",
+  "recorded_at": "2026-10-19T20:48:41.800Z",
+  "time_precision": "exact",
+  "elapsed_ms": 145431,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "D13 full foundation on reviewed and corrected native opening policy",
+  "log_path": "docs/validation/logs/RUN-20261019-029.txt",
+  "log_sha256": "e9461f59dedfdde5152609fa88a44a4a4fa744bc88d2d32567ca3085c500e917",
+  "redactions": 0
+}

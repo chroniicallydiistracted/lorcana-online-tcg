@@ -14,7 +14,7 @@ const repository=createClockRepository('test',undefined,{leaseMs,maxHealthyGapMs
 const service=createMatchService({repository,releases:createReleaseRegistry([manifest],manifest.releaseId),clocks:{repository,health:createClockHealth({maxGapMs}),runner:{enabled:false},recoveryAuthority:async r=>r.auditId==='qualification-auditor'?r.auditId:null}});
 let chain=Promise.resolve();
 process.on('message',m=>{chain=chain.then(async()=>{
- try{let value;if(m.method==='close'){await service.close();process.send({request:m.request,value:true});process.disconnect();return;}if(m.method==='tick')value=await service.tickClocks();else if(m.method==='clock')value=await service.readClock('p1',{matchId:id});else if(m.method==='submit')value=await service.submit('p1',m.value);else throw Error();process.send({request:m.request,value:value??null});}
+ try{let value;if(m.method==='close'){await service.close();process.send({request:m.request,value:true});process.disconnect();return;}if(m.method==='tick')value=await service.tickClocks();else if(m.method==='clock')value=await service.readClock('p1',{matchId:id});else if(m.method==='submit')value=await service.submit('p1',m.value);else if(m.method==='submitAs')value=await service.submit(m.value.actor,m.value.command);else throw Error();process.send({request:m.request,value:value??null});}
  catch(e){process.send({request:m.request,error:e.code??'child_failed'});}
 });});
 process.send({ready:true});

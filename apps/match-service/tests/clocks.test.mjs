@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {existsSync} from 'node:fs';
 import {createEngineExecutor} from '../dist/engine-executor.js';
-const policy={schemaVersion:1,id:'qualification-dynamic-v1',profile:'qualification',mode:'dynamic',initialReserveMs:1000,reserveCapMs:1000,perActionBonusMs:0,perTurnPassBonusMs:0,resetTimeOnSkipMs:1000,graceMs:0};
+const policy={schemaVersion:2,id:'qualification-dynamic-v1',profile:'qualification',mode:'dynamic',initialReserveMs:1000,reserveCapMs:1000,perActionBonusMs:0,perTurnPassBonusMs:0,resetTimeOnSkipMs:1000,graceMs:0,timeoutLimit:3};
 async function healthFactory(){assert.ok(existsSync(new URL('../dist/clock-health.js',import.meta.url)),'bounded clock-health sampler is missing');return (await import('../dist/clock-health.js')).createClockHealth;}
 
 test('clock-health uses monotonic brackets, detects cumulative calendar divergence and requires an explicit reset',async()=>{
@@ -35,13 +35,12 @@ test('actual timed worker automatically uses a legal pass and exposes only inter
   const inspected=await e.execute({kind:'clock-inspect',matchId:'timed-worker',checkpoint:result.checkpoint});assert.deepEqual(inspected.clock,result.clock);
  }finally{await e.close();}
 });
-test('actual timeout worker pauses instead of inventing an opening choice or forcing a winner',async()=>{
+test('actual opening timeout worker records one derived loss and cannot audit-resume the terminal game',async()=>{
  const e=createEngineExecutor();try{
   const first=await e.execute({kind:'create',setup:{matchId:'choice-worker',players:['p1','p2'],startTimestamp:100,clock:policy}});
-  const result=await e.execute({kind:'timeout',matchId:'choice-worker',checkpoint:first.checkpoint,timestamp:1100,commandId:'opening-timeout'});
-  assert.equal(result.result.accepted,false);assert.equal(result.result.code,'NO_LEGAL_DEFAULT');assert.equal(result.status.revision,0);assert.equal(result.status.winner,null);assert.equal(result.clock.running,false);
-  const resumed=await e.execute({kind:'clock-control',matchId:'choice-worker',checkpoint:result.checkpoint,controls:[{kind:'reset',timestamp:1100,playerId:result.clock.activePlayerId,remainingMs:1000},{kind:'resume',timestamp:1100}]});
-  assert.equal(resumed.clock.running,true);assert.equal(resumed.status.revision,0);
+  const actor=first.clock.activePlayerId,result=await e.execute({kind:'timeout',matchId:'choice-worker',checkpoint:first.checkpoint,timestamp:1100,commandId:'opening-timeout'});
+  assert.equal(result.result.accepted,true);assert.equal(result.status.revision,1);assert.equal(result.status.ended,true);assert.equal(result.status.endReason,'timeout');assert.equal(result.status.winner,['p1','p2'].find(p=>p!==actor));assert.equal(result.clock.running,false);assert.equal(result.clock.players.find(p=>p.playerId===actor).timeoutCount,1);
+  await assert.rejects(e.execute({kind:'clock-control',matchId:'choice-worker',checkpoint:result.checkpoint,controls:[{kind:'reset',timestamp:1100,playerId:actor,remainingMs:1000},{kind:'resume',timestamp:1100}]}));
  }finally{await e.close();}
 });
 test('clock runner never overlaps owned sweeps and close waits for a pending sweep',async()=>{
@@ -72,7 +71,7 @@ test('simulated service shutdown stops a running sweep before it starts another 
 });
 
 // Simulated bookkeeping/capacity only: no engine or database acceptance inferred.
-async function capacityFixture(protocol={min:1,max:3}){
+async function capacityFixture(protocol={min:2,max:4}){
  const {createMatchService}=await import('../dist/service.js');const rows=new Map();let committed=0;
  const manifest={purpose:'foundation',releaseId:'capacity-fixture',components:{engine:{status:'built'}},protocol};
  const repository={sample:async()=>10000,scan:async()=>[],activeClockIds:async ids=>ids.filter(id=>{const m=rows.get(id);return m&&!m.ended&&['running','processing'].includes(m.clock.status);}),loadSystem:async id=>rows.get(id),create:async value=>{rows.set(value.matchId,value);committed++;return value;},createTimed:async value=>{const old=rows.get(value.matchId);if(old)return {match:old,created:false};rows.set(value.matchId,value);committed++;return {match:value,created:true};},close:async()=>{}};

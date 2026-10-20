@@ -27,7 +27,7 @@ test('PLAY-03 two sockets recover on another gateway and retry a committed refer
   let av=(await a.wait(r=>r.type==='snapshot')).payload;await b.wait(r=>r.type==='snapshot');
   const chooser=av.priorityId===f.players[0]?a:b;
   const send=async(client,revision,kind,input)=>{
-   const command={type:'command',protocolVersion:2,matchId:f.id,commandId:'command-'+randomUUID(),correlationId:'request-'+randomUUID(),expectedStateVersion:revision,intent:{kind,input}};
+   const command={type:'command',protocolVersion:4,matchId:f.id,commandId:'command-'+randomUUID(),correlationId:'request-'+randomUUID(),expectedStateVersion:revision,intent:{kind,input}};
    client.send(command);const receipt=await client.wait(r=>r.type==='receipt'&&r.commandId===command.commandId);assert.equal(receipt.outcome,'accepted');return {command,receipt};
   };
   await send(chooser,0,'chooseWhoGoesFirst',{playerId:f.players[0]});await send(a,1,'alterHand',{cardsToMulligan:[]});await send(b,2,'alterHand',{cardsToMulligan:[]});

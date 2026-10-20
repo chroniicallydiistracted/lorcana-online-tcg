@@ -45,3 +45,15 @@ test('live3 pending commands retain schema2 and exact bytes across reconnect; ol
  const restored=await fixture({restorePending:{schemaVersion:1,actorId:'p1',command:{...saved.command,protocolVersion:2}},fetcher:async(_url,init)=>{assert.deepEqual(JSON.parse(init.body).supportedProtocol,{min:2,max:2});return new globalThis.Response(JSON.stringify({code:'unsupported_version'}),{status:409});}});
  try{await assert.rejects(restored.c.connect());assert.equal(restored.c.status,'upgrade_required');assert.equal(restored.c.exportPending().command.protocolVersion,2);}finally{restored.c.close();}
 });
+
+test('live4 result and pre-loss warnings use closed public data without choosing a winner',()=>{
+ const current={...clock,schemaVersion:2,timeoutLimit:3,players:clock.players.map(p=>({...p,timeoutCount:0}))};
+ assert.equal(client.timeoutWarning(current,'p1'),null);assert.equal(client.timeoutWarning(current,'p1',true),'Next timeout loses the game');assert.throws(()=>client.timeoutWarning(current,'p1','opening'));
+ assert.equal(client.timeoutWarning({...current,players:current.players.map(p=>({...p,timeoutCount:p.playerId==='p1'?1:0}))},'p1'),'1 of 3 timeouts used');
+ assert.equal(client.timeoutWarning({...current,players:current.players.map(p=>({...p,timeoutCount:p.playerId==='p1'?2:0}))},'p1'),'Next timeout loses the game');
+ assert.equal(client.timeoutWarning({...current,timeoutLimit:1},'p1'),'Next timeout loses the game');
+ assert.equal(client.timeoutWarning({...current,status:'ended',activePlayerId:null,deadlineMs:null},'p1'),null);
+ const v={...view,schemaVersion:2,endReason:null};assert.equal(client.matchResult(v),null);
+ for(const endReason of ['normal_win','timeout','concession'])assert.match(client.matchResult({...v,ended:true,winner:'p2',endReason}),/Game ended by/);
+ assert.throws(()=>client.matchResult({...v,ended:true,winner:'p2',endReason:'operator'}));assert.throws(()=>client.timeoutWarning({...current,seed:'forbidden'},'p1'));
+});

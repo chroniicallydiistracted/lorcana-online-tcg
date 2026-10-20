@@ -39,7 +39,7 @@ export function createClockService(options:{repository:ClockRepository;executor:
     return created=>{if(released)return;released=true;pendingCreations--;if(created&&!stopped)remember(matchId);};
   }
   async function verify(match:StoredMatch):Promise<EngineClockState>{
-    options.pins(match);const c=match.clock;if(!c||match.protocolVersion!==3)throw new MatchServiceError('UNAVAILABLE');
+    options.pins(match);const c=match.clock;if(!c||match.protocolVersion!==4)throw new MatchServiceError('UNAVAILABLE');
     const key=createHash('sha256').update(canonical({matchId:match.matchId,checkpoint:match.checkpoint,releaseId:match.releaseId,engineIdentity:match.engineIdentity,rulesVersion:match.rulesVersion,catalogRevision:match.catalogRevision,formatRevision:match.formatRevision,stateVersion:match.stateVersion,ended:match.ended,winner:match.winner})).digest('hex');
     const raw=await proofs.get(key,async()=>{
       const result=await executor.execute({kind:'clock-inspect',matchId:match.matchId,checkpoint:match.checkpoint});
@@ -67,12 +67,12 @@ export function createClockService(options:{repository:ClockRepository;executor:
     return {stateVersion:result.status.revision,lastTimestamp:reservation.engineTimestamp,checkpoint:result.checkpoint,ended:result.status.ended,winner:result.status.winner};
   }
   async function project(match:StoredMatch):Promise<ClockProjection>{
-    await verify(match);const c=match.clock!,reading=await health.sample(()=>repository.sample());
+    const native=await verify(match);const c=match.clock!,reading=await health.sample(()=>repository.sample());
     if(!reading.healthy&&!['paused','ended'].includes(c.status))throw new MatchServiceError('UNAVAILABLE');
     const until=c.status==='running'?reading.utcMs:c.status==='processing'?match.clockChargeUntilMs!:c.status==='paused'?c.lastHealthyUtcMs:c.anchorUtcMs;
     const elapsed=Math.max(0,until-c.anchorUtcMs);
     if(c.status==='ended')known.delete(match.matchId);
-    return parseClockProjection({schemaVersion:1,policyId:c.policy.id,stateVersion:match.stateVersion,clockRevision:c.revision,status:c.status,serverNowMs:reading.utcMs,deadlineMs:c.status==='running'?c.deadlineUtcMs:null,activePlayerId:c.status==='ended'?null:c.activePlayerId,players:match.players.map(playerId=>({playerId,remainingMs:Math.max(0,Math.min(c.policy.reserveCapMs,c.remainingMs[playerId]!-(playerId===c.activePlayerId?elapsed:0)))})),pauseReason:c.status==='paused'?c.pauseReason:null});
+    return parseClockProjection({schemaVersion:2,policyId:c.policy.id,timeoutLimit:c.policy.timeoutLimit,stateVersion:match.stateVersion,clockRevision:c.revision,status:c.status,serverNowMs:reading.utcMs,deadlineMs:c.status==='running'?c.deadlineUtcMs:null,activePlayerId:c.status==='ended'?null:c.activePlayerId,players:match.players.map(playerId=>({playerId,timeoutCount:native.players.find(p=>p.playerId===playerId)!.timeoutCount,remainingMs:Math.max(0,Math.min(c.policy.reserveCapMs,c.remainingMs[playerId]!-(playerId===c.activePlayerId?elapsed:0)))})),pauseReason:c.status==='paused'?c.pauseReason:null});
   }
   async function submit(command:Submission,references:boolean):Promise<ReceiptResult>{
     available();let owned:ClockReservation|undefined;

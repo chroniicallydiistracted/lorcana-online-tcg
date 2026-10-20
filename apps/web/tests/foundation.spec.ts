@@ -90,7 +90,7 @@ test('browser executes the closed viewer codec and refuses private fields withou
  const url='/@fs'+fileURLToPath(new URL('../../../packages/contracts/src/viewer.ts',import.meta.url));
  const result=await page.evaluate(async moduleUrl=>{
   const contracts=await import(moduleUrl);
-  const view={schemaVersion:1,scope:'synthetic',matchId:'browser-view',stateVersion:4,viewer:{kind:'public'},ended:false,winner:null,turn:1,turnOwnerId:null,priorityId:null,players:['p1','p2'].map(playerId=>({playerId,lore:0,inkDrops:0,zones:['hand','deck','play','discard','inkwell'].map(kind=>({kind,count:0,cards:[]}))})),resources:[],commands:[],logs:[],animations:[]};
+  const view={schemaVersion:2,endReason:null,scope:'synthetic',matchId:'browser-view',stateVersion:4,viewer:{kind:'public'},ended:false,winner:null,turn:1,turnOwnerId:null,priorityId:null,players:['p1','p2'].map(playerId=>({playerId,lore:0,inkDrops:0,zones:['hand','deck','play','discard','inkwell'].map(kind=>({kind,count:0,cards:[]}))})),resources:[],commands:[],logs:[],animations:[]};
   let called=0,rejected=0;
   for(const bad of [{...view,seed:'synthetic-private'},{...view,get hidden(){called++;return 'private';}}])try{contracts.encodeViewerProjection(bad);}catch{rejected++;}
   const surfaces=['snapshot','resources','logs','animations','export'].map(surface=>contracts.decodeViewerSurface(contracts.encodeViewerSurface(view,surface)).surface);

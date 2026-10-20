@@ -1,0 +1,132 @@
+
+> lorcana-online-tcg@0.0.0 docs:sync /workspaces/lorcana-online-tcg
+> node scripts/check-documentation.mjs --sync --change CHG-20261019-003
+
+PASS documentation coverage, fingerprints, callables, links, changelog and evidence consistency {"files":2569,"documents":1901,"functions":10437,"changes":59,"runs":811}
+Scope: all 14 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +221
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 221, reused 221, downloaded 0, added 221, done
+
+devDependencies:
++ @eslint/js 10.0.1
++ ajv 8.20.0
++ eslint 10.12.0
++ parse5 8.0.0
++ pdfjs-dist 6.4.299
++ postcss-value-parser 4.2.0
++ typescript 6.0.3
++ typescript-eslint 8.71.1
+
+Done in 985ms using pnpm v10.33.0
+
+> lorcana-online-tcg@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd
+> pnpm -r --filter './packages/**' --filter @lorcana/vendor-engine --workspace-concurrency=1 build && pnpm -r --workspace-concurrency=1 typecheck
+
+Scope: 9 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @lorcana/design-system@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/packages/design-system
+> tsc -p tsconfig.json
+
+
+> @lorcana/presentation@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/packages/presentation
+> tsc -p tsconfig.json
+
+
+> @lorcana/vendor-engine@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/vendor/tcg-engines
+> node build.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 248 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/kernel.js  901.44 kB │ gzip: 196.38 kB
+
+✓ built in 185ms
+PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+
+> @lorcana/db@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/packages/db
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-adapter@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/packages/engine-adapter
+> tsc -p tsconfig.json
+
+
+> @lorcana/engine-lab@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/packages/engine-lab
+> tsc -p tsconfig.json && node build-worker.mjs
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 14 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/lab-worker.js  904.68 kB │ gzip: 199.31 kB
+
+✓ built in 159ms
+PASS synthetic trust-free worker without server/private/Bun runtime
+
+> @lorcana/match-client@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/packages/match-client
+> tsc -p tsconfig.json
+
+
+> @lorcana/service-runtime@0.0.0 build /tmp/lorcana-opening-clean-type-CMlLPd/packages/service-runtime
+> tsc -p tsconfig.json
+
+Scope: 13 of 14 workspace projects
+
+> @lorcana/contracts@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/packages/contracts
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/design-system@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/packages/design-system
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/presentation@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/packages/presentation
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/db@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/packages/db
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-adapter@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/packages/engine-adapter
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/engine-lab@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/packages/engine-lab
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-client@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/packages/match-client
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/service-runtime@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/packages/service-runtime
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/api@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/apps/api
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/match-service@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/apps/match-service
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/web@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/apps/web
+> tsc -p tsconfig.json --noEmit
+
+
+> @lorcana/worker@0.0.0 typecheck /tmp/lorcana-opening-clean-type-CMlLPd/apps/worker
+> tsc -p tsconfig.json --noEmit
+
+Source-only copy had no app build output before or after ordered package build/typecheck; copied no Git/credentials/dependencies; removed on exit.

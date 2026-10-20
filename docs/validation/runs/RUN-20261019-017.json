@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-017",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/db build && node --test --test-timeout=30000 --test-concurrency=1 apps/match-service/tests/clock-service.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "6be62d94a6f57eee35cd10a21735e5fb8c6afa95417ddfdd27ec13ed3ef5394e",
+  "started_at": "2026-10-19T20:28:52.855Z",
+  "finished_at": "2026-10-19T20:29:33.007Z",
+  "recorded_at": "2026-10-19T20:29:33.007Z",
+  "time_precision": "exact",
+  "elapsed_ms": 40153,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "D13 database version-fence repair and clock service regressions",
+  "log_path": "docs/validation/logs/RUN-20261019-017.txt",
+  "log_sha256": "e7ae64a6ae3a4aa58ec61fcd0639fecf448cebbc8279a4fd52f73e9bf08aadf8",
+  "redactions": 0
+}

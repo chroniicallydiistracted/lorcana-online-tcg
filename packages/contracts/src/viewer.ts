@@ -4,6 +4,8 @@ import { IdSchema, readContract } from './protocol.ts';
 
 // Independent DTO revision; not BOOT-05's transport protocol revision.
 export const MAX_VIEWER_BYTES = 262_144;
+export const EndReasonSchema=Type.Union([Type.Literal('normal_win'),Type.Literal('concession'),Type.Literal('timeout'),Type.Null()]);
+export type EndReason=Static<typeof EndReasonSchema>;
 const counter = Type.Integer({ minimum: 0, maximum: Number.MAX_SAFE_INTEGER });
 const ref = Type.String({ pattern: '^vr_[a-f0-9]{64}$' });
 const state = Type.Union([Type.Literal('ready'), Type.Literal('exerted')]);
@@ -15,16 +17,16 @@ const zone = Type.Object({ kind: Type.Union([Type.Literal('hand'),Type.Literal('
 const ordinaryNotice = Type.Object({ sequence: counter, kind: Type.Union([Type.Literal('action'),Type.Literal('draw'),Type.Literal('mill'),Type.Literal('mulligan'),Type.Literal('turn'),Type.Literal('end')]), actorId: Type.Union([IdSchema,Type.Null()]), count: counter, move: Type.Union([IdSchema,Type.Null()]) }, { additionalProperties: false });
 const notice=Type.Union([ordinaryNotice,Type.Object({sequence:counter,kind:Type.Literal('reveal'),actorId:Type.Union([IdSchema,Type.Null()]),definitionIds:Type.Array(IdSchema,{maxItems:1000})},{additionalProperties:false})]);
 export const ViewerProjectionSchema = Type.Object({
-  schemaVersion: Type.Literal(1), scope: Type.Literal('synthetic'), matchId: IdSchema, stateVersion: counter,
+  schemaVersion: Type.Literal(2), scope: Type.Literal('synthetic'), matchId: IdSchema, stateVersion: counter,
   viewer: Type.Union([Type.Object({kind:Type.Literal('participant'),playerId:IdSchema},{additionalProperties:false}),Type.Object({kind:Type.Literal('public')},{additionalProperties:false})]),
-  ended: Type.Boolean(), winner: Type.Union([IdSchema,Type.Null()]), turn: counter, turnOwnerId: Type.Union([IdSchema,Type.Null()]), priorityId: Type.Union([IdSchema,Type.Null()]),
+  ended: Type.Boolean(), endReason:EndReasonSchema, winner: Type.Union([IdSchema,Type.Null()]), turn: counter, turnOwnerId: Type.Union([IdSchema,Type.Null()]), priorityId: Type.Union([IdSchema,Type.Null()]),
   players: Type.Array(Type.Object({ playerId: IdSchema, lore: counter, inkDrops: counter, zones: Type.Array(zone, {minItems:5,maxItems:5}) }, {additionalProperties:false}),{minItems:2,maxItems:2}),
   resources: Type.Array(Type.Object({definitionId:IdSchema},{additionalProperties:false}),{maxItems:1000}),
   commands: Type.Array(IdSchema,{maxItems:13}), logs: Type.Array(notice,{maxItems:4096}), animations: Type.Array(notice,{maxItems:4096}),
 },{additionalProperties:false});
 export type ViewerProjection = Static<typeof ViewerProjectionSchema>;
 export type Viewer = ViewerProjection['viewer'];
-export function parseViewerProjection(value: unknown): ViewerProjection { return readContract(ViewerProjectionSchema,value,'viewer projection'); }
+export function parseViewerProjection(value: unknown): ViewerProjection { const view=readContract(ViewerProjectionSchema,value,'viewer projection');if(view.ended!==(view.endReason!==null)||view.ended&&(!view.winner||!view.players.some(p=>p.playerId===view.winner))||!view.ended&&view.winner!==null)throw new Error('Invalid viewer projection');return view; }
 /** One codec for transport, resource-containing snapshots and current-view exports. */
 export function encodeViewerProjection(value: unknown): string {
   const raw=JSON.stringify(parseViewerProjection(value));
@@ -38,7 +40,7 @@ export function decodeViewerProjection(raw: unknown): ViewerProjection {
   }catch{throw new Error('Invalid viewer projection');}
 }
 
-const surfaceBase={schemaVersion:Type.Literal(1),matchId:IdSchema,stateVersion:counter};
+const surfaceBase={schemaVersion:Type.Literal(2),matchId:IdSchema,stateVersion:counter};
 const surfaceSchema=Type.Union([
   Type.Object({...surfaceBase,surface:Type.Literal('snapshot'),payload:ViewerProjectionSchema},{additionalProperties:false}),
   Type.Object({...surfaceBase,surface:Type.Literal('export'),payload:ViewerProjectionSchema},{additionalProperties:false}),
@@ -50,7 +52,7 @@ export type ViewerSurface = 'snapshot'|'resources'|'logs'|'animations'|'export';
 export function encodeViewerSurface(value:unknown,surface:ViewerSurface):string {
   const view=decodeViewerProjection(encodeViewerProjection(value));
   const payload=surface==='snapshot'||surface==='export'?view:surface==='resources'?view.resources:surface==='logs'?view.logs:surface==='animations'?view.animations:undefined;
-  const raw=JSON.stringify(readContract(surfaceSchema,{schemaVersion:1,matchId:view.matchId,stateVersion:view.stateVersion,surface,payload},'viewer surface'));
+  const raw=JSON.stringify(readContract(surfaceSchema,{schemaVersion:2,matchId:view.matchId,stateVersion:view.stateVersion,surface,payload},'viewer surface'));
   if(new TextEncoder().encode(raw).byteLength>MAX_VIEWER_BYTES)throw new Error('Invalid viewer surface');
   return raw;
 }

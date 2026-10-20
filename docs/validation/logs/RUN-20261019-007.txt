@@ -1,0 +1,677 @@
+✖ P060 untimed concession phase 0 actor p1 (14.567884ms)
+✖ P060 untimed concession phase 0 actor p2 (3.178611ms)
+✖ P060 untimed concession phase 1 actor p1 (10.535767ms)
+✖ P060 untimed concession phase 1 actor p2 (5.829103ms)
+✖ P060 untimed concession phase 2 actor p1 (6.757636ms)
+✖ P060 untimed concession phase 2 actor p2 (11.658278ms)
+✖ P060 timed concession phase 0 actor p1 (1.906821ms)
+✖ P060 timed concession phase 0 actor p2 (0.226795ms)
+✖ P060 timed concession phase 1 actor p1 (0.254609ms)
+✖ P060 timed concession phase 1 actor p2 (0.28611ms)
+✖ P060 timed concession phase 2 actor p1 (0.183449ms)
+✖ P060 timed concession phase 2 actor p2 (0.131289ms)
+✖ P060 Lab qualification concession phase 0 actor p1 (3.67022ms)
+✖ P060 Lab qualification concession phase 0 actor p2 (1.498387ms)
+✖ P060 Lab qualification concession phase 1 actor p1 (3.511964ms)
+✖ P060 Lab qualification concession phase 1 actor p2 (2.451199ms)
+✖ P060 Lab qualification concession phase 2 actor p1 (2.559813ms)
+✖ P060 Lab qualification concession phase 2 actor p2 (2.797238ms)
+✖ P060 Lab advanced-sandbox concession phase 0 actor p1 (0.958309ms)
+✖ P060 Lab advanced-sandbox concession phase 0 actor p2 (0.911224ms)
+✖ P060 Lab advanced-sandbox concession phase 1 actor p1 (2.394962ms)
+✖ P060 Lab advanced-sandbox concession phase 1 actor p2 (2.187949ms)
+✖ P060 Lab advanced-sandbox concession phase 2 actor p1 (3.060188ms)
+✖ P060 Lab advanced-sandbox concession phase 2 actor p2 (4.011887ms)
+✖ D13 bounded policy2 requires the whole-game timeout limit and refuses policy1 (0.615021ms)
+✖ D13 first opening timeout loses for the actual deciding player phase 0 (0.332606ms)
+✖ D13 first opening timeout loses for the actual deciding player phase 1 (0.212005ms)
+✖ D13 first opening timeout loses for the actual deciding player phase 2 (0.259933ms)
+✖ D13 main-game whole-game limit 1 counts exact zero and preserves native restore (0.320148ms)
+✖ D13 main-game whole-game limit 3 counts exact zero and preserves native restore (0.126835ms)
+✖ D13 main-game whole-game limit 10 counts exact zero and preserves native restore (0.081231ms)
+✖ D13 an ordinary negative-time pass reaches the same timeout limit atomically (0.401213ms)
+✖ D13 pause reset resume and healthy settlement never increment timeoutCount or accept a chosen winner (0.261284ms)
+✖ D13 private replay refuses altered timeout operations limit reason and count with a refreshed checksum (0.352749ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 0
+ℹ fail 34
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 459.503098
+
+✖ failing tests:
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 untimed concession phase 0 actor p1 (14.567884ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:21:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 untimed concession phase 0 actor p2 (3.178611ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:21:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 untimed concession phase 1 actor p1 (10.535767ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:21:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 untimed concession phase 1 actor p2 (5.829103ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:21:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 untimed concession phase 2 actor p1 (6.757636ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:21:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 untimed concession phase 2 actor p2 (11.658278ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:21:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 timed concession phase 0 actor p1 (1.906821ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:20:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 timed concession phase 0 actor p2 (0.226795ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:20:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 timed concession phase 1 actor p1 (0.254609ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:20:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 timed concession phase 1 actor p2 (0.28611ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:20:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 timed concession phase 2 actor p1 (0.183449ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:20:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+
+test at packages/engine-adapter/tests/d13.test.mjs:19:89
+✖ P060 timed concession phase 2 actor p2 (0.131289ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:20:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab qualification concession phase 0 actor p1 (3.67022ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab qualification concession phase 0 actor p2 (1.498387ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab qualification concession phase 1 actor p1 (3.511964ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab qualification concession phase 1 actor p2 (2.451199ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab qualification concession phase 2 actor p1 (2.559813ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab qualification concession phase 2 actor p2 (2.797238ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab advanced-sandbox concession phase 0 actor p1 (0.958309ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab advanced-sandbox concession phase 0 actor p2 (0.911224ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab advanced-sandbox concession phase 1 actor p1 (2.394962ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab advanced-sandbox concession phase 1 actor p2 (2.187949ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab advanced-sandbox concession phase 2 actor p1 (3.060188ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:26:110
+✖ P060 Lab advanced-sandbox concession phase 2 actor p2 (4.011887ms)
+  AssertionError [ERR_ASSERTION]: concede: FLOW_DISALLOWED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:27:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:29:1
+✖ D13 bounded policy2 requires the whole-game timeout limit and refuses policy1 (0.615021ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "Invalid clock policy"
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:30:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: Error: Invalid clock policy
+        at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+        at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+        at file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:30:26
+        at getActual (node:assert:611:5)
+        at strict.doesNotThrow (node:assert:779:32)
+        at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:30:9)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19),
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }
+
+test at packages/engine-adapter/tests/d13.test.mjs:32:28
+✖ D13 first opening timeout loses for the actual deciding player phase 0 (0.332606ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:33:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+
+test at packages/engine-adapter/tests/d13.test.mjs:32:28
+✖ D13 first opening timeout loses for the actual deciding player phase 1 (0.212005ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:33:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+
+test at packages/engine-adapter/tests/d13.test.mjs:32:28
+✖ D13 first opening timeout loses for the actual deciding player phase 2 (0.259933ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:33:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+
+test at packages/engine-adapter/tests/d13.test.mjs:35:29
+✖ D13 main-game whole-game limit 1 counts exact zero and preserves native restore (0.320148ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:36:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+
+test at packages/engine-adapter/tests/d13.test.mjs:35:29
+✖ D13 main-game whole-game limit 3 counts exact zero and preserves native restore (0.126835ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:36:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+
+test at packages/engine-adapter/tests/d13.test.mjs:35:29
+✖ D13 main-game whole-game limit 10 counts exact zero and preserves native restore (0.081231ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:36:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+
+test at packages/engine-adapter/tests/d13.test.mjs:45:1
+✖ D13 an ordinary negative-time pass reaches the same timeout limit atomically (0.401213ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:46:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+
+test at packages/engine-adapter/tests/d13.test.mjs:48:1
+✖ D13 pause reset resume and healthy settlement never increment timeoutCount or accept a chosen winner (0.261284ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:49:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+
+test at packages/engine-adapter/tests/d13.test.mjs:55:1
+✖ D13 private replay refuses altered timeout operations limit reason and count with a refreshed checksum (0.352749ms)
+  Error: Invalid clock policy
+      at readContract (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/protocol.js:36:11)
+      at parseClockPolicy (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/clocks.js:11:15)
+      at validateSetup (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/validation.js:80:50)
+      at createPrivateMatch (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/dist/persistence.js:33:46)
+      at timed (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:15:32)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:56:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)

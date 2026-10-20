@@ -12,10 +12,10 @@ import {releases,using,cleanup,command,counts} from './fixtures.mjs';
 import {clockPolicy} from './clock-fixtures.mjs';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function until(read,predicate,timeout=10000){const end=performance.now()+timeout;while(performance.now()<end){const v=await read();if(predicate(v))return v;await sleep(40);}throw Error('Owned clock condition timed out');}
-async function fixture({budget=6000,runner=true,executor,leaseMs=15000,maxGapMs=15000}={}){
- const id='clock-process-'+randomUUID(),manifest=JSON.parse(JSON.stringify(releases().active));manifest.protocol={min:2,max:3};manifest.releaseId='clock-process-'+randomUUID();
+async function fixture({budget=6000,runner=true,executor,leaseMs=15000,maxGapMs=15000,timeoutLimit=3}={}){
+ const id='clock-process-'+randomUUID(),manifest=JSON.parse(JSON.stringify(releases().active));manifest.protocol={min:2,max:4};manifest.releaseId='clock-process-'+randomUUID();
  const registry=createReleaseRegistry([manifest],manifest.releaseId),repository=createClockRepository('test',undefined,{leaseMs,maxHealthyGapMs:maxGapMs});
- const policy={...clockPolicy,initialReserveMs:budget,reserveCapMs:budget,resetTimeOnSkipMs:budget};
+ const policy={...clockPolicy,timeoutLimit,initialReserveMs:budget,reserveCapMs:budget,resetTimeOnSkipMs:budget};
  const service=createMatchService({repository,releases:registry,...(executor?{executor}:{}),clocks:{repository,health:createClockHealth({maxGapMs}),runner:{enabled:runner,intervalMs:40},recoveryAuthority:async r=>r.auditId==='qualification-auditor'?r.auditId:null}});
  try{
  await service.create({matchId:id,players:['p1','p2'],clock:policy});
@@ -42,7 +42,7 @@ test('actual runner continues with zero clients and a fresh process joins a heal
 test('loss of all runners creates an audited recovery pause without charging the outage',async()=>{
  const f=await fixture({maxGapMs:2000});let other;try{
   await f.service.close();await sleep(2150);other=await child(f);await other.rpc('tick');
-  const c=await other.rpc('clock');assert.equal(c.status,'paused');assert.equal(c.pauseReason,'recovery');const remaining=c.players.find(p=>p.playerId==='p1').remainingMs;
+  const c=await other.rpc('clock');assert.equal(c.status,'paused');assert.equal(c.pauseReason,'recovery');assert.ok(c.players.every(p=>p.timeoutCount===0));const remaining=c.players.find(p=>p.playerId==='p1').remainingMs;
   await sleep(100);assert.equal((await other.rpc('clock')).players.find(p=>p.playerId==='p1').remainingMs,remaining);assert.equal((await counts(f.id)).ended,false);
  }finally{await other?.close();await f.close();}
 });
@@ -97,4 +97,15 @@ for(const table of ['matches','command_receipts','journal','outbox','clocks','cl
   assert.deepEqual(await counts(f.id),before);
   const row=await f.repository.loadSystem(f.id);assert.equal(row.clock.stateVersion,3);assert.equal(row.clock.checkpointDigest,row.checkpoint.digest);
  }finally{await using('migrator',c=>c.query('DROP TRIGGER IF EXISTS '+name+' ON match.'+table+'; DROP FUNCTION IF EXISTS match.'+name+'()'));await f.close();}
+});
+
+test('two independent timeout owners and both concessions race one terminal result at the configured limit',async()=>{
+ const f=await fixture({budget:6000,timeoutLimit:1,runner:false}),children=[];try{
+  for(let i=0;i<2;i++){const c=await child(f);children.push(c);await c.join();}
+  const deadline=(await f.repository.loadSystem(f.id)).clock.deadlineUtcMs;
+  await until(()=>f.repository.sample(),utc=>utc>=deadline,7000);
+  await Promise.allSettled([...children.map(c=>c.rpc('tick')),children[0].rpc('submit',command(f.id,'race-active-pass',3,'passTurn')),children[0].rpc('submit',command(f.id,'race-active-concede',3,'concede')),children[1].rpc('submitAs',{actor:'p2',command:command(f.id,'race-waiting-concede',3,'concede')})]);
+  await f.service.tickClocks();const r=await counts(f.id);assert.equal(r.ended,true);assert.equal(r.stateVersion,4);assert.equal(r.journal,4);assert.equal(r.outbox,4);
+  const v=await f.service.view('p1',{matchId:f.id});assert.ok(['timeout','concession'].includes(v.endReason));
+ }finally{for(const c of children)await c.close();await f.close();}
 });

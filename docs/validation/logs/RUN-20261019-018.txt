@@ -1,0 +1,18 @@
+
+> @lorcana/web@0.0.0 typecheck /workspaces/lorcana-online-tcg/apps/web
+> tsc -p tsconfig.json --noEmit
+
+tests/clock-client.spec.ts(94,107): error TS7006: Parameter 'v' implicitly has an 'any' type.
+tests/clock-client.spec.ts(94,183): error TS7006: Parameter 'c' implicitly has an 'any' type.
+tests/clock-client.spec.ts(98,209): error TS2345: Argument of type '{ kind: string; input: { playerId: any; cardsToMulligan?: never; }; } | { kind: string; input: { cardsToMulligan: never[]; playerId?: never; }; }' is not assignable to parameter of type '{ kind: "chooseWhoGoesFirst"; input: { playerId: string; }; } | { kind: "alterHand"; input: { cardsToMulligan: string[]; }; } | { kind: "putCardIntoInkwell"; input: { cardId: string; }; } | { kind: "playCard"; input: { ...; }; } | ... 6 more ... | { ...; }'.
+  Type '{ kind: string; input: { playerId: any; cardsToMulligan?: never; }; }' is not assignable to type '{ kind: "chooseWhoGoesFirst"; input: { playerId: string; }; } | { kind: "alterHand"; input: { cardsToMulligan: string[]; }; } | { kind: "putCardIntoInkwell"; input: { cardId: string; }; } | { kind: "playCard"; input: { ...; }; } | ... 6 more ... | { ...; }'.
+    Type '{ kind: string; input: { playerId: any; cardsToMulligan?: never; }; }' is not assignable to type '{ kind: "concede"; input: object; }'.
+      Types of property 'kind' are incompatible.
+        Type 'string' is not assignable to type '"concede"'.
+tests/clock-client.spec.ts(112,115): error TS7006: Parameter 'c' implicitly has an 'any' type.
+tests/clock-client.spec.ts(112,247): error TS7006: Parameter 'v' implicitly has an 'any' type.
+tests/clock-client.spec.ts(117,98): error TS2339: Property 'endReason' does not exist on type 'PublicViewerProjection'.
+  Property 'endReason' does not exist on type '{ matchId: string; viewer: { kind: "participant"; playerId: string; } | { kind: "public"; }; scope: "synthetic"; stateVersion: number; schemaVersion: 1; turn: number; ended: boolean; winner: string | null; ... 6 more ...; animations: ({ ...; } | { ...; })[]; }'.
+/workspaces/lorcana-online-tcg/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/web@0.0.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2

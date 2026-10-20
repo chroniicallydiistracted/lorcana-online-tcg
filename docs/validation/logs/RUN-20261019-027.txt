@@ -1,0 +1,72 @@
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (1.265054ms)
+✔ migration history must be an unchanged contiguous prefix (0.15208ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (1.669328ms)
+✔ P060 untimed concession phase 0 actor p1 (31.460351ms)
+✔ P060 untimed concession phase 0 actor p2 (9.116533ms)
+✔ P060 untimed concession phase 1 actor p1 (17.727733ms)
+✔ P060 untimed concession phase 1 actor p2 (15.197713ms)
+✔ P060 untimed concession phase 2 actor p1 (15.038586ms)
+✔ P060 untimed concession phase 2 actor p2 (13.531336ms)
+✔ P060 timed concession phase 0 actor p1 (7.089293ms)
+✔ P060 timed concession phase 0 actor p2 (6.364058ms)
+✔ P060 timed concession phase 1 actor p1 (12.271548ms)
+✔ P060 timed concession phase 1 actor p2 (12.596125ms)
+✔ P060 timed concession phase 2 actor p1 (13.279472ms)
+✔ P060 timed concession phase 2 actor p2 (13.062501ms)
+✔ P060 Lab qualification concession phase 0 actor p1 (2.366079ms)
+✔ P060 Lab qualification concession phase 0 actor p2 (0.887059ms)
+✔ P060 Lab qualification concession phase 1 actor p1 (1.92297ms)
+✔ P060 Lab qualification concession phase 1 actor p2 (1.6617ms)
+✔ P060 Lab qualification concession phase 2 actor p1 (2.337752ms)
+✔ P060 Lab qualification concession phase 2 actor p2 (1.76711ms)
+✔ P060 Lab advanced-sandbox concession phase 0 actor p1 (0.928987ms)
+✔ P060 Lab advanced-sandbox concession phase 0 actor p2 (0.767267ms)
+✔ P060 Lab advanced-sandbox concession phase 1 actor p1 (1.615676ms)
+✔ P060 Lab advanced-sandbox concession phase 1 actor p2 (2.399985ms)
+✔ P060 Lab advanced-sandbox concession phase 2 actor p1 (1.961804ms)
+✔ P060 Lab advanced-sandbox concession phase 2 actor p2 (1.577729ms)
+✔ D13 bounded policy2 requires the whole-game timeout limit and refuses policy1 (0.570303ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 0 (5.397916ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 1 (9.810506ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 2 (10.076083ms)
+✔ D13 main-game whole-game limit 1 counts exact zero and preserves native restore (12.639519ms)
+✔ D13 main-game whole-game limit 3 counts exact zero and preserves native restore (21.405247ms)
+✔ D13 an ordinary negative-time pass reaches the same timeout limit atomically (16.894558ms)
+✔ D13 pause reset resume and healthy settlement never increment timeoutCount or accept a chosen winner (7.182688ms)
+✔ D13 private replay refuses altered timeout operations limit reason and count with a refreshed checksum (34.761506ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 0 (7.50712ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 1 (8.496896ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 2 (9.82691ms)
+✖ D13 a native natural terminal on the timeout pass freezes before the timeout-limit loss (56.105873ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 39
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 633.035202
+
+✖ failing tests:
+
+test at packages/engine-adapter/tests/d13.test.mjs:69:1
+✖ D13 a native natural terminal on the timeout pass freezes before the timeout-limit loss (56.105873ms)
+  AssertionError [ERR_ASSERTION]: passTurn: MATCH_ENDED
+  
+  false !== true
+  
+      at submit (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:12:117)
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/engine-adapter/tests/d13.test.mjs:71:240)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

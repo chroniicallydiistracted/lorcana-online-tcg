@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-018",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/web typecheck && pnpm test:match-integration"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "40112cb8a7fd5e8cd3896ba99aeabdad5a47e22f99569d1ed05af59d58830df6",
+  "started_at": "2026-10-19T20:30:34.840Z",
+  "finished_at": "2026-10-19T20:30:38.916Z",
+  "recorded_at": "2026-10-19T20:30:38.916Z",
+  "time_precision": "exact",
+  "elapsed_ms": 4078,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 2,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "D13 full match database/live suite and current browser type check",
+  "log_path": "docs/validation/logs/RUN-20261019-018.txt",
+  "log_sha256": "91b7de23b81824eb98aba3d406d877feb74cbef607739ae587bfd71668356d59",
+  "redactions": 0
+}

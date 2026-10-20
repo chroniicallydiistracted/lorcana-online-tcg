@@ -3,7 +3,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import { connection, workspaceRoot, client } from './config.ts';
 import type { Target } from './policy.ts';
 
-export interface TicketGrant {actorId:string;sessionId:string;sessionExpiresAt:number;matchId:string;releaseId:string;protocolVersion:2|3;origin:string}
+export interface TicketGrant {actorId:string;sessionId:string;sessionExpiresAt:number;matchId:string;releaseId:string;protocolVersion:2|3|4;origin:string}
 export interface TransportStore {
   issue(grant:TicketGrant):Promise<{ticket:string;expiresAt:number}>;
   consume(ticket:string,origin:string):Promise<TicketGrant|null>;
@@ -20,7 +20,7 @@ export function createTransportStore(target:Target,root=workspaceRoot):Transport
   return {
     async issue(g) {
       available();
-      if(!g||!validId(g.actorId)||!validId(g.sessionId)||!validId(g.matchId)||!validId(g.releaseId)||![2,3].includes(g.protocolVersion)||!validOrigin(g.origin)||!Number.isSafeInteger(g.sessionExpiresAt)||g.sessionExpiresAt<0||g.sessionExpiresAt>8_640_000_000_000_000)throw new Error('transport forbidden');
+      if(!g||!validId(g.actorId)||!validId(g.sessionId)||!validId(g.matchId)||!validId(g.releaseId)||![2,3,4].includes(g.protocolVersion)||!validOrigin(g.origin)||!Number.isSafeInteger(g.sessionExpiresAt)||g.sessionExpiresAt<0||g.sessionExpiresAt>8_640_000_000_000_000)throw new Error('transport forbidden');
       const ticket=randomBytes(32).toString('base64url');
       await pool.query("DELETE FROM match.socket_tickets WHERE ticket_hash IN (SELECT ticket_hash FROM match.socket_tickets WHERE expires_at<clock_timestamp() LIMIT 128)");
       const row=await pool.query(`INSERT INTO match.socket_tickets(ticket_hash,match_id,actor_id,session_id,session_expires_at,release_id,protocol_version,origin,expires_at)
@@ -33,7 +33,7 @@ export function createTransportStore(target:Target,root=workspaceRoot):Transport
       available();if(typeof ticket!=='string'||!/^[A-Za-z0-9_-]{43}$/.test(ticket)||!validOrigin(origin))return null;
       const result=await pool.query(`DELETE FROM match.socket_tickets WHERE ticket_hash=$1 AND origin=$2 AND expires_at>clock_timestamp() AND session_expires_at>clock_timestamp()
         RETURNING actor_id,session_id,session_expires_at,match_id,release_id,protocol_version,origin`,[hash(ticket),origin]);
-      const row=result.rows[0];return row?{actorId:row.actor_id,sessionId:row.session_id,sessionExpiresAt:row.session_expires_at.getTime(),matchId:row.match_id,releaseId:row.release_id,protocolVersion:row.protocol_version as 2|3,origin:row.origin}:null;
+      const row=result.rows[0];return row?{actorId:row.actor_id,sessionId:row.session_id,sessionExpiresAt:row.session_expires_at.getTime(),matchId:row.match_id,releaseId:row.release_id,protocolVersion:row.protocol_version as 2|3|4,origin:row.origin}:null;
     },
     async quota(scope,subject,limit,windowMs) {
       available();if(!['ticket','command','view','match','principal'].includes(scope)||typeof subject!=='string'||subject.length<1||subject.length>256||!Number.isSafeInteger(limit)||limit<1||limit>1000||!Number.isSafeInteger(windowMs)||windowMs<1||windowMs>60000)throw new Error('transport unavailable');

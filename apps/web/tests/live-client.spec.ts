@@ -10,7 +10,7 @@ import {qualification} from '../../match-service/tests/client-fixtures.mjs';
 declare global {interface Window {qualificationClient:ReturnType<typeof createMatchClient>}}
 const origin='http://127.0.0.1:5173';
 async function view(page:Page):Promise<ViewerProjection> {
- return page.evaluate(()=>{const view=window.qualificationClient.view;if(!view)throw Error('No committed qualification view');return view;});
+ return page.evaluate(()=>{const view=window.qualificationClient.view;if(!view||view.schemaVersion!==2)throw Error('No current committed qualification view');return view;});
 }
 async function ready(pages:Page[],revision:number) {
  for(const page of pages)await expect.poll(()=>page.evaluate(()=>window.qualificationClient.status==='ready'&&window.qualificationClient.view?.stateVersion),{timeout:15000}).toBe(revision);

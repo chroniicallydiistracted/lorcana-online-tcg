@@ -1,0 +1,873 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261019-003",
+  "title": "PLAY-04 D13 opening concessions and whole-game timeout losses",
+  "actor": "Codex architect/developer/QA collaborator",
+  "status": "finalized",
+  "recorded_at": "2026-10-20T01:14:07.039Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "task_ids": [
+    "PLAY-04",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R02.030",
+    "R02.031",
+    "R29.006",
+    "R29.007",
+    "R30.010"
+  ],
+  "feature_ids": [
+    "F-MATCH-CLOCKS",
+    "F-ENGINE",
+    "F-MATCH-COMMANDS",
+    "F-VIEWER-PRIVACY",
+    "F-PROTOCOL",
+    "F-RELEASE",
+    "F-LIVE-TRANSPORT",
+    "F-MATCH-CLIENT",
+    "F-DB",
+    "F-DOCS",
+    "F-EVIDENCE",
+    "F-CI",
+    "F-BOUNDARIES"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Intake clean cda3b54 on admin branch, matching origin/main; local main remains4dea392. Create codex/play-04-d13 from exact requested cda3b54 without moving main. Existing workspace/healthy postgres/toolchain discovered from Windows through WSL; source stays Linux. Preserve private bytes/modes ignored0600. Director whole-game timeoutCount clarification supersedes old consecutive wording; D14 native restore retained."
+    },
+    {
+      "kind": "implementation",
+      "description": "P060 opening concession repair, native whole-game timeout loss with judge-only derived forfeit, private transcript3/checkpoint2 logical atomic replay, viewer2/clock2/live4 exact legacy compatibility, migration0006 and browser result/warnings."
+    },
+    {
+      "kind": "test",
+      "description": "Add RED matrices plus DB waiting/expiry/nonconsecutive-limit/replay/race, separate-process and Chromium/Lab proofs; retain intermediate failures."
+    },
+    {
+      "kind": "documentation",
+      "description": "Record exact D13/D14 clarification and audit points; update current contracts/ADR/runbooks with dated historical evidence preserved. Final isolated pipeline, preservation and native documentation closure pass; canonical file/callable inventory, full receipt register and handoff are current."
+    },
+    {
+      "kind": "fix",
+      "description": "Read-only review identified direct expired opening native-count handoffs below the main limit. RED025 reproduced all3; enforce first incident in startingAGame, preserve natural-terminal priority; GREEN028 validates. Update old migration/release/viewer fixture assertions; preserve every failure."
+    },
+    {
+      "kind": "fix",
+      "description": "Bound transport viewer version selection before JSON parsing and sanitize errors for either closed legacy/current codec; RED031 retains the prior malformed-input failure. No wire shape or authority change."
+    },
+    {
+      "kind": "feature",
+      "description": "Qualification timeoutWarning accepts validated boolean opening context from the authorized viewer turn0, warning before first opening expiry despite main limit3. RED034 and GREEN035 prove current client/Chromium/Lab behavior; product game UI remains WEB-02."
+    },
+    {
+      "kind": "review",
+      "description": "Final source review has no remaining important finding after P2 repair and decoder/warning deltas. Final-source isolated14-stage pipeline passes exact timing,393project/406upstream/2injection/85DB/13Chromium/14Lab-worker probes, scans/artifacts/cleanup; fresh-copy proof and original private preservation pass. Independently audit before merge."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "apps/match-service/README.md",
+    "apps/match-service/src/clock-service.ts",
+    "apps/match-service/src/gateway.ts",
+    "apps/match-service/src/live-connection.ts",
+    "apps/match-service/src/service.ts",
+    "apps/match-service/src/transition-worker.ts",
+    "apps/match-service/tests/clock-child.mjs",
+    "apps/match-service/tests/clock-fixtures.mjs",
+    "apps/match-service/tests/clock-live.test.mjs",
+    "apps/match-service/tests/clock-process.test.mjs",
+    "apps/match-service/tests/clock-service.test.mjs",
+    "apps/match-service/tests/clocks.test.mjs",
+    "apps/match-service/tests/gateway.test.mjs",
+    "apps/match-service/tests/live-fixtures.mjs",
+    "apps/match-service/tests/transport-store.test.mjs",
+    "apps/web/README.md",
+    "apps/web/tests/clock-client.spec.ts",
+    "apps/web/tests/foundation.spec.ts",
+    "apps/web/tests/live-client.spec.ts",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/WORKSPACE_QUALIFICATION.md",
+    "docs/adr/0010-secure-randomness-replay.md",
+    "docs/adr/0012-upstream-kernel-refresh.md",
+    "docs/adr/0013-durable-synthetic-match-commands.md",
+    "docs/adr/0014-viewer-projection-privacy.md",
+    "docs/adr/0015-live-synthetic-transport.md",
+    "docs/adr/0016-durable-engine-clocks.md",
+    "docs/changes/CHG-20261019-003.json",
+    "docs/contracts/live.md",
+    "docs/contracts/protocol.md",
+    "docs/contracts/release.md",
+    "docs/contracts/viewer.md",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-15-play-04-design.md",
+    "docs/plans/2026-10-19-play-04-d13.md",
+    "docs/reviews/2026-10-19-play-04-d13.md",
+    "docs/runbooks/database.md",
+    "docs/runbooks/engine.md",
+    "docs/runbooks/game-clocks.md",
+    "docs/runbooks/live-matches.md",
+    "docs/runbooks/match-commands.md",
+    "docs/runbooks/viewer-privacy.md",
+    "docs/validation/boot-02.md",
+    "docs/validation/inputs/play04-d13-closure.mjs",
+    "docs/validation/logs/RUN-20261019-006.txt",
+    "docs/validation/logs/RUN-20261019-007.txt",
+    "docs/validation/logs/RUN-20261019-008.txt",
+    "docs/validation/logs/RUN-20261019-009.txt",
+    "docs/validation/logs/RUN-20261019-010.txt",
+    "docs/validation/logs/RUN-20261019-011.txt",
+    "docs/validation/logs/RUN-20261019-012.txt",
+    "docs/validation/logs/RUN-20261019-013.txt",
+    "docs/validation/logs/RUN-20261019-014.txt",
+    "docs/validation/logs/RUN-20261019-015.txt",
+    "docs/validation/logs/RUN-20261019-016.txt",
+    "docs/validation/logs/RUN-20261019-017.txt",
+    "docs/validation/logs/RUN-20261019-018.txt",
+    "docs/validation/logs/RUN-20261019-019.txt",
+    "docs/validation/logs/RUN-20261019-020.txt",
+    "docs/validation/logs/RUN-20261019-021.txt",
+    "docs/validation/logs/RUN-20261019-022.txt",
+    "docs/validation/logs/RUN-20261019-023.txt",
+    "docs/validation/logs/RUN-20261019-024.txt",
+    "docs/validation/logs/RUN-20261019-025.txt",
+    "docs/validation/logs/RUN-20261019-026.txt",
+    "docs/validation/logs/RUN-20261019-027.txt",
+    "docs/validation/logs/RUN-20261019-028.txt",
+    "docs/validation/logs/RUN-20261019-029.txt",
+    "docs/validation/logs/RUN-20261019-030.txt",
+    "docs/validation/logs/RUN-20261019-031.txt",
+    "docs/validation/logs/RUN-20261019-032.txt",
+    "docs/validation/logs/RUN-20261019-033.txt",
+    "docs/validation/logs/RUN-20261019-034.txt",
+    "docs/validation/logs/RUN-20261019-035.txt",
+    "docs/validation/logs/RUN-20261019-036.txt",
+    "docs/validation/logs/RUN-20261019-037.txt",
+    "docs/validation/logs/RUN-20261019-038.txt",
+    "docs/validation/logs/RUN-20261020-001.txt",
+    "docs/validation/play-01.md",
+    "docs/validation/play-02.md",
+    "docs/validation/play-03.md",
+    "docs/validation/play-04-d13-p060.diff",
+    "docs/validation/play-04.md",
+    "docs/validation/rule-03.md",
+    "docs/validation/runs/RUN-20261019-006.json",
+    "docs/validation/runs/RUN-20261019-007.json",
+    "docs/validation/runs/RUN-20261019-008.json",
+    "docs/validation/runs/RUN-20261019-009.json",
+    "docs/validation/runs/RUN-20261019-010.json",
+    "docs/validation/runs/RUN-20261019-011.json",
+    "docs/validation/runs/RUN-20261019-012.json",
+    "docs/validation/runs/RUN-20261019-013.json",
+    "docs/validation/runs/RUN-20261019-014.json",
+    "docs/validation/runs/RUN-20261019-015.json",
+    "docs/validation/runs/RUN-20261019-016.json",
+    "docs/validation/runs/RUN-20261019-017.json",
+    "docs/validation/runs/RUN-20261019-018.json",
+    "docs/validation/runs/RUN-20261019-019.json",
+    "docs/validation/runs/RUN-20261019-020.json",
+    "docs/validation/runs/RUN-20261019-021.json",
+    "docs/validation/runs/RUN-20261019-022.json",
+    "docs/validation/runs/RUN-20261019-023.json",
+    "docs/validation/runs/RUN-20261019-024.json",
+    "docs/validation/runs/RUN-20261019-025.json",
+    "docs/validation/runs/RUN-20261019-026.json",
+    "docs/validation/runs/RUN-20261019-027.json",
+    "docs/validation/runs/RUN-20261019-028.json",
+    "docs/validation/runs/RUN-20261019-029.json",
+    "docs/validation/runs/RUN-20261019-030.json",
+    "docs/validation/runs/RUN-20261019-031.json",
+    "docs/validation/runs/RUN-20261019-032.json",
+    "docs/validation/runs/RUN-20261019-033.json",
+    "docs/validation/runs/RUN-20261019-034.json",
+    "docs/validation/runs/RUN-20261019-035.json",
+    "docs/validation/runs/RUN-20261019-036.json",
+    "docs/validation/runs/RUN-20261019-037.json",
+    "docs/validation/runs/RUN-20261019-038.json",
+    "docs/validation/runs/RUN-20261020-001.json",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv",
+    "packages/contracts/README.md",
+    "packages/contracts/src/clocks-v1.ts",
+    "packages/contracts/src/clocks.ts",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/src/live.ts",
+    "packages/contracts/src/viewer-v1.ts",
+    "packages/contracts/src/viewer.ts",
+    "packages/contracts/tests/clocks.test.mjs",
+    "packages/contracts/tests/d13.test.mjs",
+    "packages/contracts/tests/viewer.test.mjs",
+    "packages/db/README.md",
+    "packages/db/migrations/0006-d13-protocol.sql",
+    "packages/db/src/clock-store.ts",
+    "packages/db/src/match-store.ts",
+    "packages/db/src/transport-store.ts",
+    "packages/db/tests/policy.test.mjs",
+    "packages/engine-adapter/README.md",
+    "packages/engine-adapter/src/persistence.ts",
+    "packages/engine-adapter/src/replay.ts",
+    "packages/engine-adapter/src/viewer.ts",
+    "packages/engine-adapter/tests/clocks.test.mjs",
+    "packages/engine-adapter/tests/d13.test.mjs",
+    "packages/engine-adapter/tests/viewer.test.mjs",
+    "packages/engine-lab/README.md",
+    "packages/engine-lab/tests/browser.mjs",
+    "packages/match-client/README.md",
+    "packages/match-client/src/clocks.ts",
+    "packages/match-client/src/index.ts",
+    "packages/match-client/src/results.ts",
+    "packages/match-client/tests/client.test.mjs",
+    "packages/match-client/tests/clocks.test.mjs",
+    "scripts/engine/patches.json",
+    "vendor/tcg-engines/README.md",
+    "vendor/tcg-engines/provenance/P060.original.ts",
+    "vendor/tcg-engines/src/kernel.d.ts",
+    "vendor/tcg-engines/src/kernel.ts",
+    "vendor/tcg-engines/upstream.lock.json",
+    "vendor/tcg-engines/upstream/submodules/lorcana/packages/lorcana/lorcana-engine/src/flow/runtime-flow-config.ts"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "apps/api/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "apps/match-service/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "apps/web/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "apps/worker/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/CHANGELOG_FORMAT.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0003-documentation-evidence.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/templates/handoff.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "infra/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "packages/db/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "packages/presentation/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "packages/service-runtime/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-05-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/contracts/protocol.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/contracts/release.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/boot-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0006-protocol-release-contracts.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0007-hosting-provider-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/validation/boot-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/templates/card-certification.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0011-sourced-rule-scenarios.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/runbooks/rules-certification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/validation/rule-04.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0012-upstream-kernel-refresh.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/upstream-engine-review.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/plans/2026-10-13-upstream-engine-review.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/clock-investigation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed impact: no change to this document's owning bootstrap/provider/privacy/rules/governance contract or immutable source inventory; D13 outcomes/versions are defined by current clock/contract documents."
+    },
+    {
+      "path": "docs/adr/0014-viewer-projection-privacy.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/contracts/viewer.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/runbooks/viewer-privacy.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/play-02.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/adr/0015-live-synthetic-transport.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "packages/match-client/README.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/contracts/live.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/runbooks/live-matches.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/play-03.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/adr/0016-durable-engine-clocks.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/runbooks/game-clocks.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/validation/play-04.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/plans/2026-10-15-play-04-design.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/plans/2026-10-19-play-04-d13.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    },
+    {
+      "path": "docs/reviews/2026-10-19-play-04-d13.md",
+      "disposition": "updated",
+      "reason": "Updated current D13 behavior, versions, qualification and handoff; earlier dated evidence remains explicitly historical/source-specific."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-006.json",
+      "outcome": "passed",
+      "scope": "D13 unchanged cda3b54 intake doctor verify bootstrap database; Node 1 pass/0 fail; Python blocks ['4']; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-007.json",
+      "outcome": "failed",
+      "scope": "RED D13 opening concession whole-game timeout counter loss policy replay regressions; Node 0 pass/34 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-008.json",
+      "outcome": "failed",
+      "scope": "RED D13 explicit live4 closed viewer clock revisions legacy compatibility pending and player forfeit refusal; Node 1 pass/2 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-009.json",
+      "outcome": "failed",
+      "scope": "First D13 bridge adapter contract build and focused new regressions; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-010.json",
+      "outcome": "failed",
+      "scope": "D13 focused contract bridge adapter build after viewer narrowing correction; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-011.json",
+      "outcome": "passed",
+      "scope": "D13 focused native kernel declaration adapter contract and opening timeout replay regression qualification; Node 36 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-012.json",
+      "outcome": "failed",
+      "scope": "D13 complete owning package builds and strict application types after protocol4 integration; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-013.json",
+      "outcome": "failed",
+      "scope": "D13 owning builds strict web types reviewed migration0006 local and test application; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-014.json",
+      "outcome": "passed",
+      "scope": "D13 owning package builds, browser type check and append-only protocol migration; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-015.json",
+      "outcome": "failed",
+      "scope": "D13 current client and database clock orchestration regressions; Node 0 pass/1 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason interrupted. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-016.json",
+      "outcome": "failed",
+      "scope": "D13 corrected release admission and focused clock, client and live regressions; Node 13 pass/18 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-017.json",
+      "outcome": "passed",
+      "scope": "D13 database version-fence repair and clock service regressions; Node 15 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-018.json",
+      "outcome": "failed",
+      "scope": "D13 full match database/live suite and current browser type check; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-019.json",
+      "outcome": "failed",
+      "scope": "D13 full match database/live suite after current protocol migration; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-020.json",
+      "outcome": "failed",
+      "scope": "D13 full match database/live regressions, closed typed browser fixture; Node 79 pass/1 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-021.json",
+      "outcome": "failed",
+      "scope": "D13 Chromium opening concession matrix, warning/result and native Lab workers; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks ['12']; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-022.json",
+      "outcome": "passed",
+      "scope": "P060 exact vendor integrity, unchanged original upstream suites and injection checks; Node 36 pass/0 fail; Python blocks []; Bun pass blocks ['406', '2']; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-023.json",
+      "outcome": "failed",
+      "scope": "D13 draft governance synchronization and complete foundation qualification; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-024.json",
+      "outcome": "failed",
+      "scope": "D13 current complete foundation after draft documentation synchronization; Node 26 pass/1 fail; Python blocks ['4']; Bun pass blocks ['406', '2']; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-025.json",
+      "outcome": "failed",
+      "scope": "Review RED: direct expired opening decisions must lose at the first native timeout count; Node 0 pass/3 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-026.json",
+      "outcome": "failed",
+      "scope": "Review GREEN: expired opening incident, natural-terminal precedence and all D13 adapter regressions; Node 39 pass/1 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-027.json",
+      "outcome": "failed",
+      "scope": "Review correction GREEN: native opening-count loss and natural terminal precedence; Node 39 pass/1 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-028.json",
+      "outcome": "passed",
+      "scope": "Review GREEN: all opening native-count paths and existing own-empty-deck terminal precedence; Node 40 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-029.json",
+      "outcome": "failed",
+      "scope": "D13 full foundation on reviewed and corrected native opening policy; Node 147 pass/1 fail; Python blocks ['4']; Bun pass blocks ['406', '2']; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-030.json",
+      "outcome": "passed",
+      "scope": "D13 final-source foundation with all revised opening worker and protocol fixtures; Node 368 pass/0 fail; Python blocks ['4', '10', '10']; Bun pass blocks ['406', '2']; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-031.json",
+      "outcome": "failed",
+      "scope": "RED transport-viewer version selection must bound input and emit only generic errors; Node 0 pass/1 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-032.json",
+      "outcome": "passed",
+      "scope": "D13 final foundation with bounded current/legacy viewer dispatch; Node 369 pass/0 fail; Python blocks ['4', '10', '10']; Bun pass blocks ['406', '2']; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-033.json",
+      "outcome": "passed",
+      "scope": "D13 final doctor/bootstrap/database health and full real database/live/process regressions; Node 86 pass/0 fail; Python blocks ['4']; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-034.json",
+      "outcome": "failed",
+      "scope": "RED qualification warning must precede the first opening timeout despite main limit three; Node 0 pass/1 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-035.json",
+      "outcome": "passed",
+      "scope": "D13 final current client, Chromium results/opening warning matrix and Lab worker regressions; Node 13 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks ['13']; timing exact; failure_reason None. Source-specific; full native log is authoritative. Lab workers: 2 general + 12 P060 opening probes."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-036.json",
+      "outcome": "passed",
+      "scope": "D13 fresh source-only frozen offline install and root typecheck without app output, following RUN-20261016-008; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative. Frozen source-only copy has no match-service dist before or after typecheck."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-037.json",
+      "outcome": "passed",
+      "scope": "Actual isolated BOOT-03 pipeline: frozen foundation, live PostgreSQL, Linux browser, dependency/secret scans and artifacts; Node 454 pass/0 fail; Python blocks ['4', '10', '10']; Bun pass blocks ['406', '2']; Chromium pass blocks ['13']; timing exact; failure_reason None. Source-specific; full native log is authoritative. All 14 isolated stages passed at final fingerprint 342f3801a578dcf4f469019a5020b83d682356ea3d6f4f0f351bcb4817ce6fd2: 393 project checks (369 Node+24 Python), 406 unchanged upstream/1 inherited skip, 2 injection, 85 DB/storage/live, 13 Chromium and 14 Lab-worker probes; exact 526342 ms. Sanitized artifacts generated and owned isolated resources cleaned."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261019-038.json",
+      "outcome": "passed",
+      "scope": "D13 final private preservation, exact P060/SQL provenance and owned fixture/listener cleanup; Node 0 pass/0 fail; Python blocks []; Bun pass blocks []; Chromium pass blocks []; timing exact; failure_reason None. Source-specific; full native log is authoritative. Original private bytes/0600 modes/ignores and main unchanged; P060-only upstream and original provenance, SQL0001..0005 unchanged; 1 exact owned interrupted fixture and 38 unused owned releases reclaimed; test matches/quota0; ports free."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261020-001.json",
+      "outcome": "passed",
+      "scope": "Final canonical docs:sync/docs:check and cumulative whitespace validation; coverage/fingerprints/callables/links/changelog/evidence consistency passes at unchanged final executable fingerprint. Exact timing, no clock discontinuity. No test cases are counted for this documentation-only gate."
+    }
+  ],
+  "limitations": [
+    "Synthetic two-player qualification only; no ordinary/auth/official/card/reward/WEB-02/device/load/production acceptance or production timer values.",
+    "Audit policy point4(single-process quarantine operations), real-card chooser/default/replay-cost/event limits and quota retention remain separate. D14 restore and natural engine endings stay unchanged.",
+    "Exact legacy wire codecs retained; unavailable prior executable/policy/checkpoint identities refuse without rewriting saved data. Real retained-engine activation remains future work.",
+    "Headless Linux browser/worker evidence is separate from real Windows/device observation. No host clock/memory/pagefile/service change, deployment, purchase, visibility change, push or main merge.",
+    "Prior failed RED/build/type/test-authoring/interrupted receipts remain failed; all task receipts have exact timing. Internal source review does not replace Director audit."
+  ],
+  "next_actions": [
+    "Independent Director audit of codex/play-04-d13; publish and run hosted CI under Director authorization before any main integration."
+  ]
+}

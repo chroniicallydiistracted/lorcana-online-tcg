@@ -14,8 +14,8 @@ test('migration history must be an unchanged contiguous prefix',()=>{
  for(const rows of [[{id:'0001',sha256:'changed'}],[files[1]],[...files,{id:'0003',sha256:'c'}]]) assert.throws(()=>validateHistory(files,rows));
 });
 test('checked-in migrations are ordered and hashed from actual bytes',()=>{
- const names=['0001-foundation-probes.sql','0002-match-commands.sql','0003-match-receipt-invariants.sql','0004-live-transport.sql','0005-match-clocks.sql'];
- const files=migrationFiles(); assert.deepEqual(files.map(f=>f.id),['0001','0002','0003','0004','0005']);
+ const names=['0001-foundation-probes.sql','0002-match-commands.sql','0003-match-receipt-invariants.sql','0004-live-transport.sql','0005-match-clocks.sql','0006-d13-protocol.sql'];
+ const files=migrationFiles(); assert.deepEqual(files.map(f=>f.id),['0001','0002','0003','0004','0005','0006']);
  for(const [i,name] of names.entries()) {
   const bytes=readFileSync(new URL('../migrations/'+name,import.meta.url));
   assert.equal(files[i].sql,bytes.toString('utf8'));

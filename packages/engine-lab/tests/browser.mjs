@@ -64,6 +64,22 @@ try {
     assert.deepEqual(messages[12], { ok: false, code: 'LAB_REQUEST_REJECTED' });
     assert.deepEqual(Object.keys(messages[6].result).sort(), ['ended', 'mode', 'revision', 'rewardEligible', 'winner']);
   }
+  const openingConcessions=await page.evaluate(async()=>{
+    let checks=0;
+    for(const mode of ['qualification','advanced-sandbox'])for(const phase of [0,1,2])for(const actor of ['p1','p2']){
+      const worker=new Worker('/lab-worker.js',{type:'module'});
+      const send=message=>new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Opening worker timeout')),5000);worker.onmessage=e=>{clearTimeout(timer);resolve(e.data)};worker.onerror=()=>{clearTimeout(timer);reject(Error('Opening worker error'))};worker.postMessage(message)});
+      try{
+        let state=(await send({type:'init',options:{mode,fixture:'synthetic',seed:'d13',players:['p1','p2']}})).result;
+        const steps=[['p1','chooseWhoGoesFirst',{playerId:'p1'}],['p1','alterHand',{cardsToMulligan:[]}]];
+        for(let n=0;n<phase;n++){const [player,move,input]=steps[n];const r=await send({type:'submit',command:{actor:player,move,input,expectedRevision:state.revision,timestamp:0,commandId:'open-'+n}});if(!r.result.accepted)throw Error('Opening worker advance refused');state=(await send({type:'status'})).result;}
+        const r=await send({type:'submit',command:{actor,move:'concede',input:{},expectedRevision:state.revision,timestamp:0,commandId:'concede'}});state=(await send({type:'status'})).result;
+        if(!r.result.accepted||!state.ended||state.winner===actor||state.rewardEligible)throw Error('Opening worker concession failed');checks++;
+      }finally{worker.terminate();}
+    }
+    return checks;
+  });
+  assert.equal(openingConcessions,12);console.log('PASS P060: 12 actual Chromium Lab worker opening concessions, both modes and players');
   assert.equal(result.environment.node, 'undefined'); assert.equal(result.environment.bun, 'undefined'); assert.deepEqual(errors, []);
   console.log(JSON.stringify({ environment: result.environment, isolatedWorkers: 2, checks: ['unqualified mode rejection', 'synthetic opening/mulligan/concession', 'debug/server/unknown moves refused before concession', 'terminal winner', 'bounded summaries', 'dispose and fresh worker', 'no Node/Bun/page errors'], workerBytes: bytes.length }));
   console.log('PASS actual Linux Chromium Web Workers; no Windows, GPU, live multiplayer or determinism certification');

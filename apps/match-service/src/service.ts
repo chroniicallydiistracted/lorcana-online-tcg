@@ -23,7 +23,7 @@ export {MatchServiceError} from './errors.ts';
 export function createMatchService(options:{repository:MatchRepository;releases:ReleaseRegistry;executor?:EngineExecutor;now?:()=>number;clocks?:{repository:ClockRepository;health?:ClockHealth;recoveryAuthority?:RecoveryAuthority;runner?:{enabled?:boolean;intervalMs?:number;batchSize?:number}}}) {
   const repository=options.repository,releases=options.releases,executor=options.executor??createEngineExecutor(),now=options.now??Date.now;
   const active=releases.active;
-  if(active.purpose!=='foundation'||active.components.engine.status!=='built'||active.protocol.min<1||active.protocol.max>3)throw new Error('Unqualified match release');
+  if(active.purpose!=='foundation'||active.components.engine.status!=='built'||active.protocol.min<1||active.protocol.max>4)throw new Error('Unqualified match release');
   if(options.clocks&&options.clocks.repository!==repository)throw new Error('Clock and match storage must share authority');
   let stopped=false,closing:Promise<void>|undefined,reads=0;
   const projections=createProjectionCache();
@@ -31,7 +31,7 @@ export function createMatchService(options:{repository:MatchRepository;releases:
   function pins(match:StoredMatch) {
     try {
       const release=releases.resolvePinned(match.releaseId);
-      if(match.engineIdentity!==PERSISTENT_ENGINE_IDENTITY||match.rulesVersion!=='synthetic-fixture'||match.catalogRevision!=='synthetic-rule-03'||match.formatRevision!=='synthetic-two-player-v1'||![1,2,3].includes(match.protocolVersion)||match.protocolVersion<release.protocol.min||match.protocolVersion>release.protocol.max||canonical(release)!==canonical(match.releaseManifest)||match.protocolVersion===3&&(!match.clock||!clocks)||match.clock&&match.protocolVersion!==3)throw new Error();
+      if(match.engineIdentity!==PERSISTENT_ENGINE_IDENTITY||match.rulesVersion!=='synthetic-fixture'||match.catalogRevision!=='synthetic-rule-03'||match.formatRevision!=='synthetic-two-player-v1'||![1,2,3,4].includes(match.protocolVersion)||match.protocolVersion<release.protocol.min||match.protocolVersion>release.protocol.max||canonical(release)!==canonical(match.releaseManifest)||match.clock&&(!clocks||match.protocolVersion!==4))throw new Error();
     }catch{throw new MatchServiceError('PIN_UNAVAILABLE');}
   }
   const clocks=options.clocks?createClockService({repository:options.clocks.repository,executor,pins,...(options.clocks.health?{health:options.clocks.health}:{}),...(options.clocks.recoveryAuthority?{recoveryAuthority:options.clocks.recoveryAuthority}:{})}):undefined;
@@ -84,8 +84,8 @@ export function createMatchService(options:{repository:MatchRepository;releases:
       available();let id:string,players:[string,string],clock:ClockPolicy|undefined;
       try {
         const row=closed(value,['matchId','players','clock']);id=identifier(row.matchId);
-        if(row.clock!==undefined){clock=parseClockPolicy(row.clock);if(!clocks||active.protocol.max<3)throw new Error();}
-        else if(active.protocol.min>Math.min(2,active.protocol.max))throw new Error();
+        if(active.protocol.min>4||active.protocol.max<4)throw new Error();
+        if(row.clock!==undefined){clock=parseClockPolicy(row.clock);if(!clocks)throw new Error();}
         const copied=copyPlayerInput({players:row.players}).players;
         if(!Array.isArray(copied)||copied.length!==2)throw new Error();players=[identifier(copied[0]),identifier(copied[1])];if(players[0]===players[1])throw new Error();
       }catch{throw new MatchServiceError('INVALID_REQUEST');}
@@ -95,7 +95,7 @@ export function createMatchService(options:{repository:MatchRepository;releases:
         const startTimestamp=clock?await options.clocks!.repository.sample():unsigned(now());
         const result=await executor.execute({kind:'create',setup:{matchId:id,players,startTimestamp,...(clock?{clock}:{})}});
         if(result.status.revision!==0||result.status.ended||result.status.rewardEligible!==false)throw new Error();
-        const match:StoredMatch={matchId:id,players,releaseId:active.releaseId,releaseManifest:active,engineIdentity:PERSISTENT_ENGINE_IDENTITY,rulesVersion:'synthetic-fixture',catalogRevision:'synthetic-rule-03',formatRevision:'synthetic-two-player-v1',protocolVersion:clock?3:Math.min(2,active.protocol.max),
+        const match:StoredMatch={matchId:id,players,releaseId:active.releaseId,releaseManifest:active,engineIdentity:PERSISTENT_ENGINE_IDENTITY,rulesVersion:'synthetic-fixture',catalogRevision:'synthetic-rule-03',formatRevision:'synthetic-two-player-v1',protocolVersion:4,
           stateVersion:0,lastTimestamp:startTimestamp,checkpoint:result.checkpoint,ended:false,winner:null};
         let stored:StoredMatch;
         if(clock){

@@ -79,7 +79,7 @@ export function createMatchRepository(target:Target, root=workspaceRoot,clockSam
         if(inserted.rowCount===1&&value.clock){
           const at=await (clockSampleForTest??sampleDatabaseUtc)(c);
           const clock=decodeStoredClock(value.clock,value.players,value.stateVersion,value.checkpoint.digest);
-          if(value.protocolVersion!==3||clock.status!=='running'||clock.revision!==0||clock.engineTimestamp!==value.lastTimestamp)throw new MatchStoreError('UNAVAILABLE');
+          if(value.protocolVersion!==4||clock.status!=='running'||clock.revision!==0||clock.engineTimestamp!==value.lastTimestamp)throw new MatchStoreError('UNAVAILABLE');
           clock.anchorUtcMs=at;clock.lastHealthyUtcMs=at;clock.deadlineUtcMs=at+Math.max(0,clock.remainingMs[clock.activePlayerId!]!);
           await c.query('INSERT INTO match.clocks(match_id,state) VALUES($1,$2::jsonb)',[value.matchId,JSON.stringify(clock)]);
           await c.query("INSERT INTO match.clock_events(match_id,clock_revision,state_version,operation_id,kind,checkpoint_digest,authority_at_ms) VALUES($1,0,$2,'created','created',$3,$4)",[value.matchId,value.stateVersion,value.checkpoint.digest,at]);

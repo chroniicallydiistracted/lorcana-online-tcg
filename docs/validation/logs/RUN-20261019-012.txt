@@ -1,0 +1,30 @@
+Scope: 6 of 14 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+vendor/tcg-engines build$ node build.mjs
+vendor/tcg-engines build: vite v8.3.2 building client environment for production...
+vendor/tcg-engines build: transforming...
+vendor/tcg-engines build: ✓ 248 modules transformed.
+vendor/tcg-engines build: rendering chunks...
+vendor/tcg-engines build: computing gzip size...
+vendor/tcg-engines build: dist/kernel.js  901.39 kB │ gzip: 196.37 kB
+vendor/tcg-engines build: ✓ built in 208ms
+vendor/tcg-engines build: PASS precompiled synthetic kernel, no Bun runtime or private source dependency
+vendor/tcg-engines build: Done
+packages/contracts build: Done
+packages/db build$ tsc -p tsconfig.json
+packages/service-runtime build$ tsc -p tsconfig.json
+packages/engine-adapter build$ tsc -p tsconfig.json
+packages/engine-adapter build: Done
+packages/service-runtime build: Done
+packages/db build: Done
+apps/match-service build$ tsc -p tsconfig.json
+apps/match-service build: Done
+
+> @lorcana/match-client@0.0.0 build /workspaces/lorcana-online-tcg/packages/match-client
+> tsc -p tsconfig.json
+
+src/index.ts(82,89): error TS18047: 'frame.clock' is possibly 'null'.
+src/index.ts(82,177): error TS18047: 'frame.clock' is possibly 'null'.
+/workspaces/lorcana-online-tcg/packages/match-client:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @lorcana/match-client@0.0.0 build: `tsc -p tsconfig.json`
+Exit status 1

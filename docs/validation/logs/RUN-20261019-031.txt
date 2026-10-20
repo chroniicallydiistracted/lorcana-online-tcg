@@ -1,0 +1,36 @@
+✖ transport viewer selection bounds and sanitizes malformed input before delegating either revision (8.724247ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 187.50732
+
+✖ failing tests:
+
+test at packages/contracts/tests/d13.test.mjs:25:1
+✖ transport viewer selection bounds and sanitizes malformed input before delegating either revision (8.724247ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  SyntaxError: Unexpected token 'p', "private-fr"... is not valid JSON
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/contracts/tests/d13.test.mjs:27:127)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: SyntaxError: Unexpected token 'p', "private-fr"... is not valid JSON
+        at JSON.parse (<anonymous>)
+        at decodeTransportViewerProjection (file:///workspaces/lorcana-online-tcg/packages/contracts/dist/index.js:32:71)
+        at file:///workspaces/lorcana-online-tcg/packages/contracts/tests/d13.test.mjs:27:138
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/contracts/tests/d13.test.mjs:27:127)
+        at async Test.run (node:internal/test_runner/test:1409:7)
+        at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3),
+    operator: 'throws',
+    diff: 'simple'
+  }

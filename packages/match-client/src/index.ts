@@ -1,7 +1,7 @@
 import {estimateClock} from './clocks.ts';
 export {estimateClock} from './clocks.ts';
-import { decodeTransportServerFrame, decodeTransportClientFrame, parseTransportCommand, parseTicketRequest, parseTransportTicketResponse, parseTransportPending, parseClockProjection, encodeViewerProjection, decodeViewerProjection, MAX_FRAME_BYTES } from '@lorcana/contracts';
-import type { LiveIntent, TransportCommand, TransportReceipt, TransportTicket, TransportPending, ViewerProjection, ClockProjection } from '@lorcana/contracts';
+import { decodeTransportServerFrame, decodeTransportClientFrame, parseTransportCommand, parseTicketRequest, parseTransportTicketResponse, parseTransportPending, parseTransportClockProjection as parseClockProjection, encodeTransportViewerProjection as encodeViewerProjection, decodeTransportViewerProjection as decodeViewerProjection, MAX_FRAME_BYTES } from '@lorcana/contracts';
+import type { LiveIntent, TransportCommand, TransportReceipt, TransportTicket, TransportPending, PublicViewerProjection as ViewerProjection, PublicClockProjection as ClockProjection } from '@lorcana/contracts';
 export type ClientStatus='idle'|'connecting'|'ready'|'resyncing'|'reconnecting'|'rate_limited'|'suspended'|'auth_expired'|'forbidden'|'upgrade_required'|'closed';
 type MatchSocket=Pick<WebSocket,'readyState'|'bufferedAmount'|'send'|'close'|'addEventListener'>;
 export interface MatchClientOptions {
@@ -14,7 +14,7 @@ export class MatchClientError extends Error {constructor(readonly code:string){s
 interface Pending {sentOn?:number;actorId:string;command:TransportCommand;raw:string;attempts:number;resolve:(receipt:TransportReceipt)=>void;reject:(error:Error)=>void}
 /** Browser-safe transport only. Account login, local persistence and game UI are separate owners. */
 export function createMatchClient(options:MatchClientOptions) {
-  parseTicketRequest({requestId:'validation',matchId:options.matchId,clientReleaseId:options.clientReleaseId,supportedProtocol:{min:2,max:3}});
+  parseTicketRequest({requestId:'validation',matchId:options.matchId,clientReleaseId:options.clientReleaseId,supportedProtocol:{min:3,max:4}});
   const fetcher=options.fetcher??globalThis.fetch,socketFactory=options.socketFactory??(url=>new globalThis.WebSocket(url));
   const retryBaseMs=options.retryBaseMs??250,maxAttempts=options.maxAttempts??8,stableMs=options.stableMs??30000,timeoutMs=options.requestTimeoutMs??5000;
   for(const [v,min,max]of [[retryBaseMs,1,5000],[maxAttempts,1,8],[stableMs,1,300000],[timeoutMs,20,15000]] as const)if(!Number.isSafeInteger(v)||v<min||v>max)throw new MatchClientError('invalid_request');
@@ -79,7 +79,8 @@ export function createMatchClient(options:MatchClientOptions) {
       if(!gotReady)throw new Error();
       if(frame.type==='snapshot') {
         if(frame.payload.viewer.kind!=='participant'||frame.payload.viewer.playerId!==boundActor||frame.stateVersion<requiredVersion||pending&&frame.stateVersion<pending.command.expectedStateVersion)throw new Error();
-        if(frame.protocolVersion===3){if(frame.clock.clockRevision<requiredClockRevision)throw new Error();requiredClockRevision=frame.clock.clockRevision;clockRaw=JSON.stringify(parseClockProjection(frame.clock));clockReceivedAt=monotonicNow();if(!Number.isFinite(clockReceivedAt)||clockReceivedAt<0)throw new Error();}else if(clockRaw)throw new Error();
+        const incomingClock='clock'in frame?frame.clock:null;
+        if(incomingClock){if(incomingClock.clockRevision<requiredClockRevision)throw new Error();requiredClockRevision=incomingClock.clockRevision;clockRaw=JSON.stringify(parseClockProjection(incomingClock));clockReceivedAt=monotonicNow();if(!Number.isFinite(clockReceivedAt)||clockReceivedAt<0)throw new Error();}else if(clockRaw)throw new Error();
         const alreadySent=pending?.sentOn===generation;
         requiredVersion=frame.stateVersion;viewRaw=encodeViewerProjection(frame.payload);if(!alreadySent)clearDeadline();
         setStatus(pending?'resyncing':'ready');if(owned!==generation||!running)return;callback(options.onView,decodeViewerProjection(viewRaw));if(clockRaw)callback(options.onClock,parseClockProjection(JSON.parse(clockRaw)));
@@ -108,7 +109,7 @@ export function createMatchClient(options:MatchClientOptions) {
     if(!running||disposed)return;const owned=generation,ownedController=new AbortController();controller=ownedController;const signal=ownedController.signal;
     let httpTimer:ReturnType<typeof setTimeout>|undefined;
     try {
-      const endpoint=origin(),request=parseTicketRequest({requestId:globalThis.crypto.randomUUID(),matchId:options.matchId,clientReleaseId:options.clientReleaseId,supportedProtocol:pending?{min:pending.command.protocolVersion,max:pending.command.protocolVersion}:{min:2,max:3}});
+      const endpoint=origin(),request=parseTicketRequest({requestId:globalThis.crypto.randomUUID(),matchId:options.matchId,clientReleaseId:options.clientReleaseId,supportedProtocol:pending?{min:pending.command.protocolVersion,max:pending.command.protocolVersion}:{min:3,max:4}});
       const operation=(async()=>{const response=await fetcher(new URL('/play/ticket',endpoint).href,{method:'POST',credentials:'include',cache:'no-store',referrerPolicy:'no-referrer',headers:{'Content-Type':'application/json'},body:JSON.stringify(request),signal});return {response,value:await body(response)};})();
       const {response,value}=await Promise.race([operation,new Promise<never>((_resolve,reject)=>{httpTimer=setTimeout(()=>{ownedController.abort();reject(new MatchClientError('unavailable'));},timeoutMs);})]);
       if(httpTimer)clearTimeout(httpTimer);if(owned!==generation||!running)return;
@@ -145,8 +146,10 @@ export function createMatchClient(options:MatchClientOptions) {
       catch{throw new MatchClientError('invalid_request');}
       return new Promise<TransportReceipt>((resolve,reject)=>{pending={actorId:boundActor!,command,raw:JSON.stringify(command),attempts:0,resolve,reject};transmit();});
     },
-    exportPending():TransportPending|null{return pending?parseTransportPending({schemaVersion:pending.command.protocolVersion===3?2:1,actorId:pending.actorId,command:JSON.parse(pending.raw)}):null;},
+    exportPending():TransportPending|null{return pending?parseTransportPending({schemaVersion:pending.command.protocolVersion===4?3:pending.command.protocolVersion===3?2:1,actorId:pending.actorId,command:JSON.parse(pending.raw)}):null;},
     suspend(){running=false;clearNetwork();clearView();if(disposed)return;setStatus('suspended');readyReject?.(new MatchClientError('suspended'));readyResolve=undefined;readyReject=undefined;},
     close(){if(disposed)return;disposed=true;terminal('closed');},
   };
 }
+
+export {timeoutWarning,matchResult} from './results.ts';

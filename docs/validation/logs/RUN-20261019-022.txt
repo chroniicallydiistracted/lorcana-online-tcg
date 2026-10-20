@@ -1,0 +1,75 @@
+
+> lorcana-online-tcg@0.0.0 engine:check /workspaces/lorcana-online-tcg
+> node scripts/engine/vendor.mjs
+
+PASS pinned vendor integrity {"revision":"6de59de1c203827edc1bc6faa1bc6184cd126a5f","files":361,"patches":60}
+
+> lorcana-online-tcg@0.0.0 engine:test-upstream /workspaces/lorcana-online-tcg
+> node scripts/engine/test-upstream.mjs
+
+Selected 37 unchanged upstream test files; remaining RULE-01 inventory is not executed or certified by this command.
+bun test v1.4.2 (744846f84)
+
+ 406 pass
+ 1 skip
+ 0 fail
+ 1362 expect() calls
+Ran 407 tests across 37 files. [1359.00ms]
+
+> lorcana-online-tcg@0.0.0 engine:test-injection /workspaces/lorcana-online-tcg
+> node scripts/engine/test-injection.mjs
+
+bun test v1.4.2 (744846f84)
+
+src/injection.test.ts:
+(pass) injected initialization/first chooser and active clock resume ignore ambient wall time [3.64ms]
+(pass) invalid injected results cannot advance a committed random cursor [0.11ms]
+
+ 2 pass
+ 0 fail
+ 9 expect() calls
+Ran 2 tests across 1 file. [45.00ms]
+✔ D13 live4 binds viewer2 result and clock2 counts while retaining exact earlier closed revisions (13.111622ms)
+✔ D13 closed end reasons reject contradictory completion and player forfeit/winner authority (2.671109ms)
+✔ D13 old-only offers cannot accept a4 ticket and pending intent3 preserves its exact4 identity (1.038861ms)
+✔ P060 untimed concession phase 0 actor p1 (31.093508ms)
+✔ P060 untimed concession phase 0 actor p2 (9.69348ms)
+✔ P060 untimed concession phase 1 actor p1 (18.208563ms)
+✔ P060 untimed concession phase 1 actor p2 (15.345579ms)
+✔ P060 untimed concession phase 2 actor p1 (15.408276ms)
+✔ P060 untimed concession phase 2 actor p2 (13.898401ms)
+✔ P060 timed concession phase 0 actor p1 (7.156933ms)
+✔ P060 timed concession phase 0 actor p2 (6.48848ms)
+✔ P060 timed concession phase 1 actor p1 (12.061747ms)
+✔ P060 timed concession phase 1 actor p2 (12.620451ms)
+✔ P060 timed concession phase 2 actor p1 (12.559363ms)
+✔ P060 timed concession phase 2 actor p2 (12.604205ms)
+✔ P060 Lab qualification concession phase 0 actor p1 (3.014422ms)
+✔ P060 Lab qualification concession phase 0 actor p2 (1.207786ms)
+✔ P060 Lab qualification concession phase 1 actor p1 (1.82016ms)
+✔ P060 Lab qualification concession phase 1 actor p2 (1.777347ms)
+✔ P060 Lab qualification concession phase 2 actor p1 (2.514313ms)
+✔ P060 Lab qualification concession phase 2 actor p2 (2.052101ms)
+✔ P060 Lab advanced-sandbox concession phase 0 actor p1 (0.909842ms)
+✔ P060 Lab advanced-sandbox concession phase 0 actor p2 (0.814608ms)
+✔ P060 Lab advanced-sandbox concession phase 1 actor p1 (1.768784ms)
+✔ P060 Lab advanced-sandbox concession phase 1 actor p2 (2.612482ms)
+✔ P060 Lab advanced-sandbox concession phase 2 actor p1 (1.987878ms)
+✔ P060 Lab advanced-sandbox concession phase 2 actor p2 (1.503772ms)
+✔ D13 bounded policy2 requires the whole-game timeout limit and refuses policy1 (0.800782ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 0 (6.545981ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 1 (10.158411ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 2 (10.900758ms)
+✔ D13 main-game whole-game limit 1 counts exact zero and preserves native restore (13.213595ms)
+✔ D13 main-game whole-game limit 3 counts exact zero and preserves native restore (20.886893ms)
+✔ D13 an ordinary negative-time pass reaches the same timeout limit atomically (15.992174ms)
+✔ D13 pause reset resume and healthy settlement never increment timeoutCount or accept a chosen winner (7.756822ms)
+✔ D13 private replay refuses altered timeout operations limit reason and count with a refreshed checksum (39.342802ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 711.181225

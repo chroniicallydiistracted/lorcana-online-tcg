@@ -17,6 +17,7 @@ export interface PrivateMatch {
   checkpoint(): PrivateMatchCheckpoint;
   clock():EngineClockState|null;
   controlClock(control:unknown):void;
+  timeout(value:unknown):{accepted:boolean;code:string|null};
   dispose(): void;
 }
 function matchId(value: unknown): string {
@@ -28,11 +29,11 @@ function digest(archive: string): string { return createHash('sha256').update('p
 function wrap(core: RecordedCore, id: string): PrivateMatch {
   return Object.freeze({
     status: core.facade.status, submit: core.facade.submit, dispose: core.facade.dispose,
-    clock:core.clock,controlClock:core.controlClock,
+    clock:core.clock,controlClock:core.controlClock,timeout:core.timeout,
     project(viewer:unknown){return core.project(viewer,id);},
     resolveIntent(actor:string,move:unknown,input:unknown){return core.resolveIntent(actor,move,input,id);},
     checkpoint(): PrivateMatchCheckpoint {
-      const envelope = { version: 1, purpose: 'synthetic-play01', matchId: id, transcript: JSON.parse(core.privateArchive()) };
+      const envelope = { version: 2, purpose: 'synthetic-play01', matchId: id, transcript: JSON.parse(core.privateArchive()) };
       boundedTree(envelope);
       const archive = canonical(envelope);
       if (Buffer.byteLength(archive) > 2 * 1024 * 1024) throw new Error('Private checkpoint limit');
@@ -58,14 +59,15 @@ export function restorePrivateMatch(value: unknown, expectedMatchId: unknown): P
     const data: unknown = JSON.parse(checkpoint.archive); boundedTree(data);
     if (canonical(data) !== checkpoint.archive) throw new Error();
     const envelope = closedRecord(data, ['version', 'purpose', 'matchId', 'transcript']);
-    if (envelope.version !== 1 || envelope.purpose !== 'synthetic-play01' || envelope.matchId !== id) throw new Error();
+    if (envelope.version !== 2 || envelope.purpose !== 'synthetic-play01' || envelope.matchId !== id) throw new Error();
     const row = closedRecord(envelope.transcript, ['version', 'purpose', 'engineIdentity', 'rngVersion', 'setup', 'seed', 'seedCommitment', 'initial', 'commands', 'final']);
-    if (![1,2].includes(Number(row.version)) || row.purpose !== 'synthetic-rule03' || row.engineIdentity !== ENGINE_REPLAY_IDENTITY || row.rngVersion !== RANDOM_VERSION || typeof row.seed !== 'string' || !/^[a-f0-9]{64}$/.test(row.seed) || !Array.isArray(row.commands) || row.commands.length > 2048) throw new Error();
+    if (row.version!==3 || row.purpose !== 'synthetic-rule03' || row.engineIdentity !== ENGINE_REPLAY_IDENTITY || row.rngVersion !== RANDOM_VERSION || typeof row.seed !== 'string' || !/^[a-f0-9]{64}$/.test(row.seed) || !Array.isArray(row.commands) || row.commands.length > 2048) throw new Error();
     const seed = Buffer.from(row.seed, 'hex');
     try { core = createRecordedCore(validateSetup(row.setup), seed, context(id)); }
     finally { seed.fill(0); }
     for (const command of row.commands) {
-      if(row.version===2&&command&&typeof command==='object'&&Object.hasOwn(command,'control')){
+      if(command&&typeof command==='object'&&Object.hasOwn(command,'timeout')){const checkpointRow=closedRecord(command,['timeout','result','stateHash','randomOutcomes']);core.timeout(checkpointRow.timeout);}
+      else if(command&&typeof command==='object'&&Object.hasOwn(command,'control')){
         const checkpointRow=closedRecord(command,['control','stateHash','randomOutcomes']);core.controlClock(checkpointRow.control);
       }else {
         const checkpointRow = closedRecord(command, ['command', 'result', 'stateHash', 'randomOutcomes']);

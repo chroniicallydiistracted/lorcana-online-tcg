@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-021",
+  "category": "headless_browser",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/web typecheck && pnpm test:e2e:smoke && pnpm test:engine-browser"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "6c4db7874142452914a72914a5f273213ae715d6a0ef1dd4dbd3d514496c6b65",
+  "started_at": "2026-10-19T20:35:53.053Z",
+  "finished_at": "2026-10-19T20:37:42.930Z",
+  "recorded_at": "2026-10-19T20:37:42.930Z",
+  "time_precision": "exact",
+  "elapsed_ms": 109882,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "D13 Chromium opening concession matrix, warning/result and native Lab workers",
+  "log_path": "docs/validation/logs/RUN-20261019-021.txt",
+  "log_sha256": "a21373f6bd82a640eccf5b0a3bd1fcefc44e8198b9052daed0d0aa31c2031a99",
+  "redactions": 0
+}

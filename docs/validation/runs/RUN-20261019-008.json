@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-008",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "packages/contracts/tests/d13.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "3201d07436f98115b8925b7b4230a575d5bc078bd2f683ec3f71e134301be84f",
+  "started_at": "2026-10-19T20:16:33.077Z",
+  "finished_at": "2026-10-19T20:16:33.360Z",
+  "recorded_at": "2026-10-19T20:16:33.360Z",
+  "time_precision": "exact",
+  "elapsed_ms": 283,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED D13 explicit live4 closed viewer clock revisions legacy compatibility pending and player forfeit refusal",
+  "log_path": "docs/validation/logs/RUN-20261019-008.txt",
+  "log_sha256": "78e70f721c11a029e7bf0247b5880fa63e62eb957d0d7c4bc24a683a36b40070",
+  "redactions": 0
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-024",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm docs:sync --change CHG-20261019-003 && pnpm verify:foundation"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "662c2c8d96b23b4103b028c8daf3732f9a6d65c116a298aff703525b3c4cdc18",
+  "started_at": "2026-10-19T20:41:11.928Z",
+  "finished_at": "2026-10-19T20:43:27.207Z",
+  "recorded_at": "2026-10-19T20:43:27.207Z",
+  "time_precision": "exact",
+  "elapsed_ms": 135284,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "D13 current complete foundation after draft documentation synchronization",
+  "log_path": "docs/validation/logs/RUN-20261019-024.txt",
+  "log_sha256": "6c16f456fcaa332f4ce9757ab1212feb243104bcc187b28caa940775a3ee3d4b",
+  "redactions": 0
+}

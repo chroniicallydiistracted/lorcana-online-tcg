@@ -1,0 +1,304 @@
+
+> @lorcana/match-service@0.0.0 build /workspaces/lorcana-online-tcg/apps/match-service
+> tsc -p tsconfig.json
+
+✖ stock live clients concede at each opening decision in timed and untimed games without reconnecting (23764.793632ms)
+✖ live4 busy contention retries the same concession on the same socket without maintenance or duplicate effects (10465.734918ms)
+✖ live4 publishes clock-only pause, disconnect continues time and another host reconnects to the committed pass (11993.462495ms)
+✔ timed tickets cannot downgrade to live2 or exchange an authentication frame across versions (1089.756602ms)
+✖ waiting opening concessions finish once without ever reserving the timed clock in any opening phase (636.149661ms)
+✖ a delayed waiting opening concession leaves the active decision unfenced and becomes stale after it (73.298093ms)
+✖ a waiting move is refused before cold proof work and cannot delay the active player (77.556665ms)
+✖ busy reservations are transient and the identical waiting concession succeeds after release (578.802813ms)
+✖ waiting-player reference concession at the exact deadline ends once without a timeout pass (759.015113ms)
+✖ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (601.876329ms)
+✖ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (743.83472ms)
+✖ each opening decision times out once as a loss and audited reset cannot choose a winner (613.734344ms)
+✖ native whole-game timeout count survives normal turns and the third timeout ends in one replayable commit (604.480712ms)
+✖ deadline sweeps, a player move and both concessions race to exactly one final result (581.624398ms)
+✖ an active player can concede at the exact deadline and players cannot invoke server forfeits (739.033127ms)
+✖ clock storage tampering cannot extend a deadline or alter a native remaining allowance (573.764792ms)
+✖ an already-running owner that stalls cannot pause a second healthy owner through tick, submit or timeout (64.741064ms)
+✖ a cold proof reconstruction crossing the deadline happens after authoritative admission (67.890674ms)
+✖ an illegal service result returning after a short lease pauses before any competing sweep (67.532684ms)
+✔ client waits for correlated authorized snapshot, copies views and rejects raw-ID or overlapping moves (151.54893ms)
+✔ pending bytes and IDs survive suspension/host hop and duplicate receipt, while stale results are final (11.463733ms)
+✔ server sequence gaps, incompatible pins and changed account never replay a pending intent (9.618091ms)
+✔ transient receipts preserve pending identity; expiry stops retries and retains explicit recovery data (5.376179ms)
+✔ unrelated snapshots do not resend a pending command or hide its acknowledgement deadline (47.025326ms)
+✔ application receipt callbacks cannot overwrite terminal transport state or undo an accepted result (4.525532ms)
+✔ replacing an incomplete connection rejects its waiter rather than leaking a pending promise (0.690987ms)
+✔ status callbacks that dispose transport cannot leave a subsequently scheduled retry timer (9.150667ms)
+✔ view clearing callbacks preserve disposal and settle connect and suspend callers (4.073598ms)
+✔ browser countdown is a clamped monotonic estimate and cannot submit a move or change a result (6.327186ms)
+✔ live3 clock-only revisions preserve views, defensive callbacks and monotonic estimates, then clear on suspension (30.665694ms)
+✔ live3 pending commands retain schema2 and exact bytes across reconnect; old schema1 offers only its original live2 pin (12.453459ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 13
+ℹ fail 18
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55939.180721
+
+✖ failing tests:
+
+test at apps/match-service/tests/clock-live.test.mjs:11:1
+✖ stock live clients concede at each opening decision in timed and untimed games without reconnecting (23764.793632ms)
+  Error: Match client closed
+      at terminal (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:59:23)
+      at transmit (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:103:13)
+      at receive (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:200:21)
+      at WebSocket.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:296:53)
+      at callListener (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/event-target.js:290:14)
+      at WebSocket.onMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/event-target.js:209:9)
+      at WebSocket.emit (node:events:514:28)
+      at Receiver.receiverOnMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/websocket.js:1253:20)
+      at Receiver.emit (node:events:514:28)
+      at Receiver.dataMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/receiver.js:633:14) {
+    code: 'closed'
+  }
+
+test at apps/match-service/tests/clock-live.test.mjs:23:1
+✖ live4 busy contention retries the same concession on the same socket without maintenance or duplicate effects (10465.734918ms)
+  Error: Match client closed
+      at terminal (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:59:23)
+      at transmit (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:103:13)
+      at receive (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:200:21)
+      at WebSocket.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:296:53)
+      at callListener (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/event-target.js:290:14)
+      at WebSocket.onMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/event-target.js:209:9)
+      at WebSocket.emit (node:events:514:28)
+      at Receiver.receiverOnMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/websocket.js:1253:20)
+      at Receiver.emit (node:events:514:28)
+      at Receiver.dataMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/receiver.js:633:14) {
+    code: 'closed'
+  }
+
+test at apps/match-service/tests/clock-live.test.mjs:39:1
+✖ live4 publishes clock-only pause, disconnect continues time and another host reconnects to the committed pass (11993.462495ms)
+  Error: Match client closed
+      at terminal (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:59:23)
+      at transmit (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:103:13)
+      at receive (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:200:21)
+      at WebSocket.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/dist/index.js:296:53)
+      at callListener (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/event-target.js:290:14)
+      at WebSocket.onMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/event-target.js:209:9)
+      at WebSocket.emit (node:events:514:28)
+      at Receiver.receiverOnMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/websocket.js:1253:20)
+      at Receiver.emit (node:events:514:28)
+      at Receiver.dataMessage (/workspaces/lorcana-online-tcg/node_modules/.pnpm/ws@8.22.0/node_modules/ws/lib/receiver.js:633:14) {
+    code: 'closed'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:22:1
+✖ waiting opening concessions finish once without ever reserving the timed clock in any opening phase (636.149661ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:27:65)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:35:1
+✖ a delayed waiting opening concession leaves the active decision unfenced and becomes stale after it (73.298093ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:41:103)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:47:1
+✖ a waiting move is refused before cold proof work and cannot delay the active player (77.556665ms)
+  Error: Match storage UNAVAILABLE
+      at locked (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:45:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async reserve (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:64:40)
+      at async transaction (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:21:27)
+      at async Object.open (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-fixtures.mjs:26:40)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:51:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:57:1
+✖ busy reservations are transient and the identical waiting concession succeeds after release (578.802813ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:18:284)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:58:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:66:1
+✖ waiting-player reference concession at the exact deadline ends once without a timeout pass (759.015113ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:18:284)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:67:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:73:1
+✖ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (601.876329ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:18:284)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:74:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:86:1
+✖ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (743.83472ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:18:284)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:87:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:101:1
+✖ each opening decision times out once as a loss and audited reset cannot choose a winner (613.734344ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:106:101)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:111:1
+✖ native whole-game timeout count survives normal turns and the third timeout ends in one replayable commit (604.480712ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:18:284)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:112:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:124:1
+✖ deadline sweeps, a player move and both concessions race to exactly one final result (581.624398ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:18:284)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:125:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:135:1
+✖ an active player can concede at the exact deadline and players cannot invoke server forfeits (739.033127ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:18:284)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:136:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:141:1
+✖ clock storage tampering cannot extend a deadline or alter a native remaining allowance (573.764792ms)
+  Error: Match service UNAVAILABLE
+      at failure (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:16:15)
+      at Object.submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/clock-service.js:186:20)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async submit (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:113:24)
+      at async fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:18:284)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:142:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:152:1
+✖ an already-running owner that stalls cannot pause a second healthy owner through tick, submit or timeout (64.741064ms)
+  Error: Match storage UNAVAILABLE
+      at locked (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:45:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async reserve (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:64:40)
+      at async transaction (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:21:27)
+      at async Object.open (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-fixtures.mjs:26:40)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:156:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:165:1
+✖ a cold proof reconstruction crossing the deadline happens after authoritative admission (67.890674ms)
+  Error: Match storage UNAVAILABLE
+      at locked (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:45:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async reserve (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:64:40)
+      at async transaction (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:21:27)
+      at async Object.open (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-fixtures.mjs:26:40)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:169:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }
+
+test at apps/match-service/tests/clock-service.test.mjs:173:1
+✖ an illegal service result returning after a short lease pauses before any competing sweep (67.532684ms)
+  Error: Match storage UNAVAILABLE
+      at locked (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:45:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async reserve (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:64:40)
+      at async transaction (file:///workspaces/lorcana-online-tcg/packages/db/dist/clock-store.js:21:27)
+      at async Object.open (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-fixtures.mjs:26:40)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:177:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'UNAVAILABLE'
+  }

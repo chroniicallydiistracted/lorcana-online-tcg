@@ -1,0 +1,42 @@
+✖ waiting opening concessions finish once without ever reserving the timed clock in any opening phase (137.158281ms)
+
+Interrupted while running:
+
+⚠ apps/match-service/tests/clock-service.test.mjs (apps/match-service/tests/clock-service.test.mjs:1:1)
+✖ apps/match-service/tests/clock-service.test.mjs (73951.186096ms)
+✖ packages/match-client/tests/client.test.mjs
+✖ packages/match-client/tests/clocks.test.mjs
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 3
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73955.687113
+
+✖ failing tests:
+
+test at apps/match-service/tests/clock-service.test.mjs:22:1
+✖ waiting opening concessions finish once without ever reserving the timed clock in any opening phase (137.158281ms)
+  Error: Unqualified match release
+      at createMatchService (file:///workspaces/lorcana-online-tcg/apps/match-service/dist/service.js:19:15)
+      at fixture (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:16:5)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/apps/match-service/tests/clock-service.test.mjs:24:11)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at apps/match-service/tests/clock-service.test.mjs:1:1
+✖ apps/match-service/tests/clock-service.test.mjs (73951.186096ms)
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at packages/match-client/tests/client.test.mjs:1:1
+✖ packages/match-client/tests/client.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+test at packages/match-client/tests/clocks.test.mjs:1:1
+✖ packages/match-client/tests/clocks.test.mjs
+  'Promise resolution is still pending but the event loop has already resolved'
+
+[Recorder failure: interrupted]

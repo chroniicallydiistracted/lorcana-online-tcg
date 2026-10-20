@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-022",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm engine:check && pnpm engine:test-upstream && pnpm engine:test-injection && node --test --test-concurrency=1 packages/contracts/tests/d13.test.mjs packages/engine-adapter/tests/d13.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "72f5e321d4f60da107eb23f435f058e85df944f8f8f64ad362d0511377a5418a",
+  "started_at": "2026-10-19T20:38:33.678Z",
+  "finished_at": "2026-10-19T20:38:40.196Z",
+  "recorded_at": "2026-10-19T20:38:40.196Z",
+  "time_precision": "exact",
+  "elapsed_ms": 6520,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "P060 exact vendor integrity, unchanged original upstream suites and injection checks",
+  "log_path": "docs/validation/logs/RUN-20261019-022.txt",
+  "log_sha256": "81850234489b2e4fbbef021a9f55c99712a7d03ef89de48ae165bf6c98f66da2",
+  "redactions": 0
+}

@@ -1,0 +1,32 @@
+✖ live4 result and pre-loss warnings use closed public data without choosing a winner (4.089231ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 151.609769
+
+✖ failing tests:
+
+test at packages/match-client/tests/clocks.test.mjs:49:1
+✖ live4 result and pre-loss warnings use closed public data without choosing a winner (4.089231ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - 'Next timeout loses the game'
+  
+      at TestContext.<anonymous> (file:///workspaces/lorcana-online-tcg/packages/match-client/tests/clocks.test.mjs:51:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'Next timeout loses the game',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

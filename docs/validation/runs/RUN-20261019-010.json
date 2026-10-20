@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-010",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm --filter @lorcana/contracts build && pnpm --filter @lorcana/vendor-engine build && pnpm --filter @lorcana/engine-adapter build && pnpm --filter @lorcana/engine-lab build && node --test --test-concurrency=1 packages/contracts/tests/d13.test.mjs packages/engine-adapter/tests/d13.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "6373de308a670e52441380debe8e7bf8af3a0dfb5941d189a1590d37306ea714",
+  "started_at": "2026-10-19T20:17:34.400Z",
+  "finished_at": "2026-10-19T20:17:40.223Z",
+  "recorded_at": "2026-10-19T20:17:40.223Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5825,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "D13 focused contract bridge adapter build after viewer narrowing correction",
+  "log_path": "docs/validation/logs/RUN-20261019-010.txt",
+  "log_sha256": "8fe0bfc76bfa7a08438708e9bbc70dcb16d414572c797c0ac03cc412bcb4fc0c",
+  "redactions": 0
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-031",
+  "category": "container",
+  "command": [
+    "node",
+    "--test",
+    "--test-name-pattern",
+    "transport viewer selection",
+    "packages/contracts/tests/d13.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "b9627666ea11f609b75bc53be4ac9a68d6a839f4c02131044d6ebd3cb5991ce3",
+  "started_at": "2026-10-19T20:53:12.642Z",
+  "finished_at": "2026-10-19T20:53:12.914Z",
+  "recorded_at": "2026-10-19T20:53:12.914Z",
+  "time_precision": "exact",
+  "elapsed_ms": 272,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "RED transport-viewer version selection must bound input and emit only generic errors",
+  "log_path": "docs/validation/logs/RUN-20261019-031.txt",
+  "log_sha256": "34f5465c311039f920289f3f3e873a0a5c443816e7005795a67b65d6f2b580b0",
+  "redactions": 0
+}

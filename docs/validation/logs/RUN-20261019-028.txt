@@ -1,0 +1,48 @@
+✔ targets are explicit and distinct; unsupported names cannot reach SQL (1.470503ms)
+✔ migration history must be an unchanged contiguous prefix (0.158505ms)
+✔ checked-in migrations are ordered and hashed from actual bytes (2.427356ms)
+✔ P060 untimed concession phase 0 actor p1 (31.287357ms)
+✔ P060 untimed concession phase 0 actor p2 (8.816124ms)
+✔ P060 untimed concession phase 1 actor p1 (17.134277ms)
+✔ P060 untimed concession phase 1 actor p2 (14.451118ms)
+✔ P060 untimed concession phase 2 actor p1 (13.750781ms)
+✔ P060 untimed concession phase 2 actor p2 (13.752321ms)
+✔ P060 timed concession phase 0 actor p1 (6.39378ms)
+✔ P060 timed concession phase 0 actor p2 (6.536079ms)
+✔ P060 timed concession phase 1 actor p1 (11.912909ms)
+✔ P060 timed concession phase 1 actor p2 (12.581743ms)
+✔ P060 timed concession phase 2 actor p1 (13.340793ms)
+✔ P060 timed concession phase 2 actor p2 (13.794253ms)
+✔ P060 Lab qualification concession phase 0 actor p1 (2.660069ms)
+✔ P060 Lab qualification concession phase 0 actor p2 (0.973149ms)
+✔ P060 Lab qualification concession phase 1 actor p1 (1.931027ms)
+✔ P060 Lab qualification concession phase 1 actor p2 (1.719958ms)
+✔ P060 Lab qualification concession phase 2 actor p1 (1.792216ms)
+✔ P060 Lab qualification concession phase 2 actor p2 (1.804276ms)
+✔ P060 Lab advanced-sandbox concession phase 0 actor p1 (1.644909ms)
+✔ P060 Lab advanced-sandbox concession phase 0 actor p2 (0.853664ms)
+✔ P060 Lab advanced-sandbox concession phase 1 actor p1 (1.71379ms)
+✔ P060 Lab advanced-sandbox concession phase 1 actor p2 (1.610591ms)
+✔ P060 Lab advanced-sandbox concession phase 2 actor p1 (1.969464ms)
+✔ P060 Lab advanced-sandbox concession phase 2 actor p2 (2.51838ms)
+✔ D13 bounded policy2 requires the whole-game timeout limit and refuses policy1 (0.707643ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 0 (6.333001ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 1 (10.229048ms)
+✔ D13 first opening timeout loses for the actual deciding player phase 2 (9.02754ms)
+✔ D13 main-game whole-game limit 1 counts exact zero and preserves native restore (13.211183ms)
+✔ D13 main-game whole-game limit 3 counts exact zero and preserves native restore (23.263905ms)
+✔ D13 an ordinary negative-time pass reaches the same timeout limit atomically (15.015171ms)
+✔ D13 pause reset resume and healthy settlement never increment timeoutCount or accept a chosen winner (8.635017ms)
+✔ D13 private replay refuses altered timeout operations limit reason and count with a refreshed checksum (36.407064ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 0 (7.275723ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 1 (7.814267ms)
+✔ D13 direct expired opening decision loses at its first native incident phase 2 (10.209972ms)
+✔ D13 a native natural terminal on the timeout pass freezes before the timeout-limit loss (75.359128ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 692.789291

@@ -487,3 +487,77 @@ Every step of both jobs succeeded. These are metadata observations; logs and art
 2. **Timeout restore larger than a late pass:** kept by D14.
 3. **Opening timeouts pause:** replaced by D13. A timeout in the opening now counts toward the timeout concession.
 4. **Single-host recovery after a failed health check:** open; it belongs to operations and load qualification before real play.
+
+## D13 follow-up — 2026-10-19 UTC
+
+CHG-20261019-003 on codex/play-04-d13 starts at exact cda3b54 (origin/main at intake; local main pointer remained4dea392 and is untouched). Director's detailed task is the approved plan. The intake implementation scope added only upstream P060, opening concessions, whole-game timeout losses, closed public result/count contracts and append-only protocol migration0006. At that intake checkpoint qualification was in progress; the final local results below supersede it. Independent Director audit and hosted merge are not claimed. Original private credential bytes/modes are preserved separately in an ignored0600 preservation checkpoint. No host setting/service/clock/memory/pagefile change is made.
+
+D13 clarification recorded2026-10-19T17:45:54.053Z requires native per-player timeoutCount, not consecutive streaks. Policy2 limit1..10/default3, first opening expiry loses, D14 restore unchanged. Audit point3 is replaced; point1 native terminal priority stays; point2 D14 is settled; point4 operational quarantine stays open. P060 cites both cached CR2.2/2.3 rule2.3.3.4; existing concede validation requires no repair. No official cards/rules admission or player debug/forfeit interface is opened.
+
+Current contract revisions: viewer2 closed endReason, clock2 timeoutCount/timeoutLimit, live4 required nullable clock, pending3 binds command4, private transcript3/checkpoint2. Exact old live2/viewer1 and live3/clock1 codecs remain retained; old-only clients cannot join new4 games; unavailable prior executable/policy/checkpoint versions fail closed without rewriting saved bytes. Diagnostic1 remains its separate HTTP contract. The built live range2..4 is bounded to three; the active browser offer is3..4.
+
+Evidence checkpoint: RUN006 passes the unchanged intake. RUN007/008 are expected RED regressions; RUN009/010 record declaration/type corrections; RUN011 passes36 focused adapter/contract checks. RUN012/013 record typed client/browser wiring failures; RUN014 passes owning builds/web typecheck and both append-only migrations. RUN015 is retained interrupted after an obsolete release guard failure, with no acceptance. RUN016 records old storage version-fence failures; RUN017 passes15 actual DB clock-service checks after correction. RUN018/019 record strict browser fixture typing corrections before any integration stage. RUN020 was then the full integration attempt; its completed results are preserved below. All captured timing so far is exact, with no new clock_changed. No failed result is erased or promoted.
+
+At that checkpoint the remaining proof was: full foundation, complete DB/live/process races, Chromium and Lab, unchanged upstream406/one inherited skip plus injection/integrity and rules, fresh-copy frozen install/root typecheck and final isolated local pipeline. Real Windows/device/production/load acceptance remains separate.
+
+D13 checkpoint update: RUN020 completed3 storage checks and76/77 DB/live tests; the sole failure was the obsolete1..3/new2 release assertion, now updated for2..4/new4. RUN021 passed12/13Chromium including all new D13 cases; the old browser codec fixture still used viewer1 and is now current2. RUN022 passed exact vendor integrity,406 unchanged upstream/one skip,2injection and36D13 adapter/contract checks. RUN023 stopped at a draft changelog wildcard link, corrected without production changes. RUN024 passed synchronization/static/types/lint and early suites/upstream, then stopped at the migration-list assertion lacking0006; corrected. All remain failed receipts, not partial acceptance.
+
+Read-only final review found a direct adapter opening-count gap, despite correct live deadline admission. RED025 proves it; the bridge now forfeits on any raised native opening count, and GREEN028 passes40 checks (37D13 adapter +3migration). Failed026/027 were retained natural-ending test assumptions, corrected to the engine's existing own-empty-deck end-turn rule without upstream changes. No further important source finding reported. The final-source suites below supersede these checkpoints for local qualification, with their own native timing/fingerprint.
+
+RUN029 reached the app worker tests and found the remaining D12 opening-pause assertion; it is updated to first-expiry loss and terminal audit-resume refusal. RUN030 passes the full foundation (392project checks =368Node +24Python;406upstream/one skip;2injection). RED031 proves the new version-selection helper needed generic bounded parsing; that correction changes no wire shape. RUN032 passes the final foundation including the added dispatch regression (393project checks =369Node +24Python,406upstream/one skip and2injection), types/lint/build/rules/privacy/boundaries/docs. RUN033 subsequently completed full DB/health/live checks (result below). These are exact-timing native receipts; no clock_changed has occurred. At that checkpoint the final isolated pipeline was still required; RUN037 below completes it.
+
+[P060 exact diff](play-04-d13-p060.diff) contains only two validMoves additions. Existing concede validation/ignorePriority needed no repair. Runtime pin6de59de1 remains; current ledger60 patches,37original test files unchanged. Current policy limit means the main-game whole-game threshold; opening always loses at the first timeout and the qualification display must warn before that first expiry as well.
+
+## D13 final qualification — 2026-10-19 UTC
+
+Final executable fingerprint: `342f3801a578dcf4f469019a5020b83d682356ea3d6f4f0f351bcb4817ce6fd2`. RUN035 passes13client unit checks,13actual Linux Chromium cases (including12opening concession combinations and the first opening warning under main limit3), plus2general and12P060 opening Lab workers. RUN036 passes a credential/Git/dependency/output-free source copy's frozen offline install and ordered root typecheck, with no match-service app output before or after. The real Windows desktop/device browser was not observed; headless Linux software rendering is reported separately.
+
+RUN037 executes the requested host-launched isolated pipeline in fresh containers and passes all14 stages, dependency/secret gates and actual sanitized artifact generation. Foundation393 =369Node +24Python; unchanged upstream406 pass/one inherited skip;2injection. Separate real DB/storage/live group85 =5role/migration checks +3storage contracts +77match/live/process tests. Chromium13 and14Lab-worker probes pass there too. Receipt timing is exact:526342ms monotonic; no clock discontinuity. Its source fingerprint matches final035/036/038. RUN032/033 predate only the last browser-warning context; their passes remain source-specific checkpoints, not substituted for final-source qualification. All33task receipts006..038 retain exact timing; failed RED/build/type/harness attempts stay failed and are listed below.
+
+RUN038 proves unchanged original private bytes,0600 modes and ignores; unchanged main pointer; only P060 changes upstream; provenance equals the prior original file; applied SQL0001..0005 is byte-identical. It safely reclaims one unadvanced orphan belonging to interrupted RUN015 using exact source fingerprint/time/player/fixture identity and no journal, plus38unused year2000 task-owned synthetic release fixtures. No unrelated match/release is deleted. Remaining test matches0 and quota rows0. Development ports5173/3001/3002 are free. Original workspace/PostgreSQL remain running with the original workspace bind and PostgreSQL volume mount; the isolated project's containers/network/volume were removed by its ownership-aware launcher. No host service/clock/memory/pagefile setting changed. Read-only Windows memory samples during qualification were87–90% commit; they are samples, not a measured peak or new hardware qualification.
+
+No new Director decision was required: first opening loss, native whole-game count/default3/bounds and D14 restore follow the supplied brief. Engineering choices: logical saved revision wraps native compound commands; native reveal/event revisions stay untouched; distinct live4 preserves exact old codecs and refuses unavailable executable identities. Audit point1 remains natural engine behavior,2is settled byD14,3is replaced byD13,4operations stays open. Production thresholds/durations, real-card chooser/defaults, replay cost/event limits, AUTH/admission, quota retention operations, WEB-02 product UI, device/load/production and hosted D13 audit remain outside this synthetic task. No official catalog/reward/ordinary play gate opens. Do not merge before Director audit.
+
+## D13 receipt register — 2026-10-19 UTC
+
+Every row links its immutable native JSON/log digest and source/timing. Counts are actually executed test blocks, including partial failed runs; a build-only stop has no executed tests. Node totals do not include Python, Bun or Chromium. Parent/child grouping is explicit above; avoid adding the same rerun twice as coverage.
+
+| Receipt | Result | Node pass / fail | Other executed checks | Scope / disposition |
+|---|---|---:|---|---|
+| [RUN-20261019-006](runs/RUN-20261019-006.json) | passed | 1 / 0 | Python 4 | Unchanged intake doctor/verify/bootstrap/DB |
+| [RUN-20261019-007](runs/RUN-20261019-007.json) | failed | 0 / 34 | build/assertion scope; see log | Expected RED: missing D13 opening/policy behavior |
+| [RUN-20261019-008](runs/RUN-20261019-008.json) | failed | 1 / 2 | build/assertion scope; see log | Expected RED: missing live4 contracts |
+| [RUN-20261019-009](runs/RUN-20261019-009.json) | failed | 0 / 0 | build/assertion scope; see log | Owning contract type correction |
+| [RUN-20261019-010](runs/RUN-20261019-010.json) | failed | 0 / 0 | build/assertion scope; see log | Kernel declaration correction |
+| [RUN-20261019-011](runs/RUN-20261019-011.json) | passed | 36 / 0 | build/assertion scope; see log | Focused D13 GREEN checkpoint |
+| [RUN-20261019-012](runs/RUN-20261019-012.json) | failed | 0 / 0 | build/assertion scope; see log | Client nullable type correction |
+| [RUN-20261019-013](runs/RUN-20261019-013.json) | failed | 0 / 0 | build/assertion scope; see log | Current browser view narrowing correction |
+| [RUN-20261019-014](runs/RUN-20261019-014.json) | passed | 0 / 0 | build/assertion scope; see log | Build/types; append0006 local/test |
+| [RUN-20261019-015](runs/RUN-20261019-015.json) | failed | 0 / 1 | build/assertion scope; see log | Interrupted after obsolete release guard; owned orphan reclaimed038 |
+| [RUN-20261019-016](runs/RUN-20261019-016.json) | failed | 13 / 18 | build/assertion scope; see log | Old release/storage version guards exposed |
+| [RUN-20261019-017](runs/RUN-20261019-017.json) | passed | 15 / 0 | build/assertion scope; see log | Clock orchestration GREEN |
+| [RUN-20261019-018](runs/RUN-20261019-018.json) | failed | 0 / 0 | build/assertion scope; see log | Browser fixture strict typing |
+| [RUN-20261019-019](runs/RUN-20261019-019.json) | failed | 0 / 0 | build/assertion scope; see log | Browser fixture discriminant typing |
+| [RUN-20261019-020](runs/RUN-20261019-020.json) | failed | 79 / 1 | build/assertion scope; see log | 3storage +76/77integration; old release-range assertion fixed |
+| [RUN-20261019-021](runs/RUN-20261019-021.json) | failed | 0 / 0 | Chromium 12; Chromium1failed; Lab not reached | 12/13Chromium; legacy current-codec fixture corrected |
+| [RUN-20261019-022](runs/RUN-20261019-022.json) | passed | 36 / 0 | Bun 406+2; inherited upstream skip1 | Vendor integrity, unchanged upstream, injection and D13 |
+| [RUN-20261019-023](runs/RUN-20261019-023.json) | failed | 0 / 0 | build/assertion scope; see log | Draft changelog wildcard link corrected |
+| [RUN-20261019-024](runs/RUN-20261019-024.json) | failed | 26 / 1 | Python 4; Bun 406+2; inherited upstream skip1 | Partial foundation; migration list lacked0006 |
+| [RUN-20261019-025](runs/RUN-20261019-025.json) | failed | 0 / 3 | build/assertion scope; see log | Expected review RED: all3 expired opening handoffs |
+| [RUN-20261019-026](runs/RUN-20261019-026.json) | failed | 39 / 1 | build/assertion scope; see log | Natural-ending test authoring correction; engine unchanged |
+| [RUN-20261019-027](runs/RUN-20261019-027.json) | failed | 39 / 1 | build/assertion scope; see log | Natural-ending test authoring correction; engine unchanged |
+| [RUN-20261019-028](runs/RUN-20261019-028.json) | passed | 40 / 0 | build/assertion scope; see log | 37D13 adapter +3migration GREEN |
+| [RUN-20261019-029](runs/RUN-20261019-029.json) | failed | 147 / 1 | Python 4; Bun 406+2; inherited upstream skip1 | Partial foundation; old opening-pause worker assertion corrected |
+| [RUN-20261019-030](runs/RUN-20261019-030.json) | passed | 368 / 0 | Python 4+10+10; Bun 406+2; inherited upstream skip1 | Full foundation before generic dispatch hardening |
+| [RUN-20261019-031](runs/RUN-20261019-031.json) | failed | 0 / 1 | build/assertion scope; see log | Expected RED: malformed transport-viewer errors |
+| [RUN-20261019-032](runs/RUN-20261019-032.json) | passed | 369 / 0 | Python 4+10+10; Bun 406+2; inherited upstream skip1 | Full foundation before final opening display context |
+| [RUN-20261019-033](runs/RUN-20261019-033.json) | passed | 86 / 0 | Python 4 | Bootstrap5 plus85DB/storage/live before display-only delta |
+| [RUN-20261019-034](runs/RUN-20261019-034.json) | failed | 0 / 1 | build/assertion scope; see log | Expected RED: first opening warning under main limit3 |
+| [RUN-20261019-035](runs/RUN-20261019-035.json) | passed | 13 / 0 | Chromium 13; Lab2general +12opening workers | Final client/Chromium/Lab qualification |
+| [RUN-20261019-036](runs/RUN-20261019-036.json) | passed | 0 / 0 | build/assertion scope; see log | Final source-only frozen install/root typecheck |
+| [RUN-20261019-037](runs/RUN-20261019-037.json) | passed | 454 / 0 | Python 4+10+10; Bun 406+2; inherited upstream skip1; Chromium 13; Lab2general +12opening workers | Final isolated14-stage pipeline, scans/artifacts/cleanup |
+| [RUN-20261019-038](runs/RUN-20261019-038.json) | passed | 0 / 0 | build/assertion scope; see log | Final preservation/provenance/owned fixture/listener assertions |
+
+| [RUN-20261020-001](runs/RUN-20261020-001.json) | passed | 0 / 0 | documentation coverage, fingerprints, callables, links, changelog, evidence and whitespace checks | Final canonical documentation closure; exact timing, same final executable fingerprint |
+
+Documentation closure recorded 2026-10-20T01:14:07.039Z. The new receipt uses the actual October20 UTC date (still October19 in America/Phoenix); the existing CHG and earlier allocated run IDs retain their original identities. All34 task receipts are retained. The canonical change record covers every file in the cumulative diff from cda3b54, including the receipt/log artifacts, current inventory, and this final handoff. The completed synthetic implementation is handed back for independent Director audit; no main merge, push, hosted D13 run or real desktop observation is claimed.

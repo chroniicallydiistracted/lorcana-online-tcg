@@ -8,13 +8,13 @@ function row(value:unknown):Row { if(!value||typeof value!=='object'||Array.isAr
 function list(value:unknown):unknown[] {if(!Array.isArray(value)||value.length>4096)throw new Error('Viewer unavailable');return value;}
 function count(value:unknown):number {if(!Number.isSafeInteger(value)||Number(value)<0)throw new Error('Viewer unavailable');return Number(value);}
 function id(value:unknown):string {if(typeof value!=='string'||! /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$/.test(value))throw new Error('Viewer unavailable');return value;}
-export interface PrivateViewSource { state:unknown; instances:Record<string,string>; events:unknown[]; moves:string[] }
-export interface ViewerContext { matchId:string; viewer:Viewer; key:Uint8Array }
+export interface PrivateViewSource { state:unknown; instances:Record<string,string>; events:unknown[]; moves:string[];endReason?:ViewerProjection['endReason'] }
+export interface ViewerContext { matchId:string; viewer:Viewer; key:Uint8Array;stateVersion?:number }
 /** Server friend only. Never export authoritative source, reference map or key to a viewer. */
 export function createViewerProjection(source:PrivateViewSource,context:ViewerContext):{snapshot:ViewerProjection;resolve:(ref:unknown)=>string} {
   try {
     const state=row(source.state),ctx=row(state.ctx),G=row(state.G),status=row(ctx.status),zones=row(ctx.zones),privateZones=row(zones.private),zoneCards=row(privateZones.zoneCards),meta=row(privateZones.cardMeta),index=row(privateZones.cardIndex);
-    const playerIds=list(ctx.playerIds).map(id),version=count(ctx._stateID),matchId=id(context.matchId);
+    const playerIds=list(ctx.playerIds).map(id),nativeVersion=count(ctx._stateID),version=context.stateVersion===undefined?nativeVersion:count(context.stateVersion),matchId=id(context.matchId);
     if(playerIds.length!==2||playerIds[0]===playerIds[1]||context.key.byteLength!==32)throw new Error();
     const candidate=row(context.viewer);let viewer:Viewer;
     if(candidate.kind==='participant') {closedRecord(candidate,['kind','playerId']);const p=id(candidate.playerId);if(!playerIds.includes(p))throw new Error();viewer={kind:'participant',playerId:p};}
@@ -34,7 +34,7 @@ export function createViewerProjection(source:PrivateViewSource,context:ViewerCo
     }
     for(const value of list(row(zones.reveals).active)) {
       const reveal=row(value),expires=reveal.expiresAtStateID;
-      if(expires!==undefined&&count(expires)<=version)continue;
+      if(expires!==undefined&&count(expires)<=nativeVersion)continue;
       if(normalInkReveals.has(reveal.revealID))continue;
       if(reveal.visibleTo!=='all'&&(viewer.kind!=='participant'||!list(reveal.visibleTo).includes(viewer.playerId)))continue;
       for(const card of list(reveal.cardIDs))if(typeof card==='string')visibleReveals.add(card);
@@ -82,7 +82,7 @@ export function createViewerProjection(source:PrivateViewSource,context:ViewerCo
       if(kind)logs.push({sequence:logs.length,kind,actorId:actor,count:n,move});
     }
     const player=(value:unknown)=>typeof value==='string'&&playerIds.includes(value)?value:null;
-    const snapshot=decodeViewerProjection(encodeViewerProjection({schemaVersion:1,scope:'synthetic',matchId,stateVersion:version,viewer,ended:status.gameEnded===true,winner:player(status.winner),turn:count(status.turn),turnOwnerId:player(status.turnOwnerId),priorityId:player(row(ctx.priority).holder),players,resources:[...resources].sort().map(definitionId=>({definitionId})),commands:viewer.kind==='participant'?source.moves.filter(isPlayerMove):[],logs,animations:logs.map(x=>'definitionIds'in x?{...x,definitionIds:[...x.definitionIds]}:{...x})}));
+    const snapshot=decodeViewerProjection(encodeViewerProjection({schemaVersion:2,scope:'synthetic',matchId,stateVersion:version,viewer,ended:status.gameEnded===true,endReason:status.gameEnded===true?(source.endReason??(status.reason==='timeout'?'timeout':playerIds.some(id=>status.reason===`${id} conceded`)?'concession':'normal_win')):null,winner:player(status.winner),turn:count(status.turn),turnOwnerId:player(status.turnOwnerId),priorityId:player(row(ctx.priority).holder),players,resources:[...resources].sort().map(definitionId=>({definitionId})),commands:viewer.kind==='participant'?source.moves.filter(isPlayerMove):[],logs,animations:logs.map(x=>'definitionIds'in x?{...x,definitionIds:[...x.definitionIds]}:{...x})}));
     return {snapshot,resolve(reference:unknown):string {if(typeof reference!=='string'||!refs.has(reference))throw new Error('Reference rejected');return refs.get(reference)!;}};
   }catch{throw new Error('Viewer unavailable');}
 }

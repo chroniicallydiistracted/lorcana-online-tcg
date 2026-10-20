@@ -1,16 +1,20 @@
 import { Type } from 'typebox';
 import type { Static, TSchema } from 'typebox';
 import { IdSchema, ProtocolRangeSchema, MAX_FRAME_BYTES, readContract, parseProtocolRange, negotiateProtocol } from './protocol.ts';
-import { ViewerProjectionSchema, MAX_VIEWER_BYTES, encodeViewerProjection } from './viewer.ts';
-import {ClockProjectionSchema,parseClockProjection} from './clocks.ts';
-import type {ClockProjection} from './clocks.ts';
+import { LegacyViewerProjectionSchema as ViewerProjectionSchema, MAX_LEGACY_VIEWER_BYTES as MAX_VIEWER_BYTES, encodeLegacyViewerProjection as encodeViewerProjection } from './viewer-v1.ts';
+import {LegacyClockProjectionSchema as ClockProjectionSchema,parseLegacyClockProjection as parseClockProjection} from './clocks-v1.ts';
+import type {LegacyClockProjection as ClockProjection} from './clocks-v1.ts';
+import {ViewerProjectionSchema as Viewer2Schema,encodeViewerProjection as encodeViewer2} from './viewer.ts';
+import type {ViewerProjection as Viewer2} from './viewer.ts';
+import {ClockProjectionSchema as Clock2Schema,parseClockProjection as parseClock2} from './clocks.ts';
+import type {ClockProjection as Clock2} from './clocks.ts';
 
 export const LIVE_PROTOCOL=2 as const;
 export const LIVE_PROTOCOL_RANGE=Object.freeze({min:2,max:2});
 /** Both have distinct decoders/handlers; protocol1 remains diagnostic-only. */
-export const IMPLEMENTED_PROTOCOL_RANGE=Object.freeze({min:1,max:3});
+export const IMPLEMENTED_PROTOCOL_RANGE=Object.freeze({min:2,max:4});
 export const CLOCKED_PROTOCOL_RANGE=Object.freeze({min:3,max:3});
-export const TRANSPORT_PROTOCOL_RANGE=Object.freeze({min:2,max:3});
+export const TRANSPORT_PROTOCOL_RANGE=Object.freeze({min:2,max:4});
 export const MAX_LIVE_SERVER_BYTES=MAX_VIEWER_BYTES+4096;
 const counter=Type.Integer({minimum:0,maximum:Number.MAX_SAFE_INTEGER});
 const amount=Type.Integer({minimum:0,maximum:1000});
@@ -108,9 +112,15 @@ export type Live3Command=Version3<LiveCommand>;
 export type Live3ServerFrame=Exclude<Version3<LiveServerFrame>,{type:'snapshot'}>
   |(Version3<Extract<LiveServerFrame,{type:'snapshot'}>>&{clock:ClockProjection})
   |(Omit<Version3<Extract<LiveReceipt,{outcome:'rejected'}>>,'reason'>&{reason:'clock_expired'});
-export type TransportClientFrame=LiveClientFrame|Live3ClientFrame;
-export type TransportCommand=LiveCommand|Live3Command;
-export type TransportServerFrame=LiveServerFrame|Live3ServerFrame;
+type Version4<T>=T extends {protocolVersion:2}?Omit<T,'protocolVersion'>&{protocolVersion:4}:never;
+export type Live4ClientFrame=Version4<LiveClientFrame>;
+export type Live4Command=Version4<LiveCommand>;
+export type Live4ServerFrame=Exclude<Version4<LiveServerFrame>,{type:'snapshot'}>
+ |(Omit<Version4<Extract<LiveServerFrame,{type:'snapshot'}>>,'payload'>&{payload:Viewer2;clock:Clock2|null})
+ |(Omit<Version4<Extract<LiveReceipt,{outcome:'rejected'}>>,'reason'>&{reason:'clock_expired'});
+export type TransportClientFrame=LiveClientFrame|Live3ClientFrame|Live4ClientFrame;
+export type TransportCommand=LiveCommand|Live3Command|Live4Command;
+export type TransportServerFrame=LiveServerFrame|Live3ServerFrame|Live4ServerFrame;
 export type TransportReceipt=Extract<TransportServerFrame,{type:'receipt'}>;
 const command3=object({...LiveCommandSchema.properties,protocolVersion:Type.Literal(3)});
 /** Clone the exact closed v2 branches; only version and the v3 snapshot clock differ. */
@@ -141,19 +151,39 @@ export function parseLive3ServerFrame(value:unknown):Live3ServerFrame {
 }
 export function encodeLive3ServerFrame(value:unknown):string {try{const raw=JSON.stringify(parseLive3ServerFrame(value));if(new TextEncoder().encode(raw).byteLength>MAX_LIVE_SERVER_BYTES)throw new Error();return raw;}catch{throw new Error('Invalid live3 server frame');}}
 export function decodeLive3ServerFrame(raw:unknown):Live3ServerFrame {try{return parseLive3ServerFrame(parsed(raw,MAX_LIVE_SERVER_BYTES));}catch{throw new Error('Invalid live3 server frame');}}
+// Distinct live4 shapes: viewer2 and clock2 are never accepted by a v2/v3 codec.
+const command4=object({...LiveCommandSchema.properties,protocolVersion:Type.Literal(4)});
+function d13Schema(source:TSchema,server:boolean):TSchema {
+ const copy=JSON.parse(JSON.stringify(source)) as {anyOf:Array<{properties:Record<string,unknown>;required:string[]}>};
+ for(const branch of copy.anyOf){branch.properties.protocolVersion=Type.Literal(4);if(server&&(branch.properties.type as {const:string}).const==='snapshot'){branch.properties.payload=Viewer2Schema;branch.properties.clock=Type.Union([Clock2Schema,Type.Null()]);}}
+ return copy as unknown as TSchema;
+}
+const client4=d13Schema(client3,false),server4=d13Schema(server3,true);
+export function parseLive4Command(value:unknown):Live4Command{return readContract(command4,value,'live4 command');}
+export function decodeLive4ClientFrame(raw:unknown):Live4ClientFrame{try{return readContract(client4,parsed(raw,MAX_FRAME_BYTES),'live4 client frame') as Live4ClientFrame;}catch{throw new Error('Invalid live4 client frame');}}
+export function parseLive4ServerFrame(value:unknown):Live4ServerFrame{
+ const frame=readContract(server4,value,'live4 server frame') as Live4ServerFrame;
+ if(frame.type==='snapshot'){
+  if(frame.payload.matchId!==frame.matchId||frame.payload.stateVersion!==frame.stateVersion||frame.payload.viewer.kind!=='participant')throw new Error('Invalid live4 server frame');encodeViewer2(frame.payload);const viewerId=frame.payload.viewer.playerId;
+  if(frame.clock===null&&frame.payload.endReason==='timeout')throw new Error('Invalid live4 server frame');
+  if(frame.clock!==null){const clock=parseClock2(frame.clock);if(clock.stateVersion!==frame.stateVersion||(clock.status==='ended')!==frame.payload.ended||clock.players.some(p=>!frame.payload.players.some(v=>v.playerId===p.playerId))||!clock.players.some(p=>p.playerId===viewerId))throw new Error('Invalid live4 server frame');}
+ }
+ if(frame.type==='receipt'&&frame.outcome==='unsupported_version')parseProtocolRange(frame.supportedProtocol);return frame;
+}
+export function encodeLive4ServerFrame(value:unknown):string{try{const raw=JSON.stringify(parseLive4ServerFrame(value));if(new TextEncoder().encode(raw).byteLength>MAX_LIVE_SERVER_BYTES)throw new Error();return raw;}catch{throw new Error('Invalid live4 server frame');}}
+export function decodeLive4ServerFrame(raw:unknown):Live4ServerFrame{try{return parseLive4ServerFrame(parsed(raw,MAX_LIVE_SERVER_BYTES));}catch{throw new Error('Invalid live4 server frame');}}
 export function decodeTransportClientFrame(raw:unknown):TransportClientFrame {
-  const value=parsed(raw,MAX_FRAME_BYTES) as {protocolVersion?:number};return value?.protocolVersion===3?decodeLive3ClientFrame(raw):decodeLiveClientFrame(raw);
+ const value=parsed(raw,MAX_FRAME_BYTES) as {protocolVersion?:number};return value?.protocolVersion===4?decodeLive4ClientFrame(raw):value?.protocolVersion===3?decodeLive3ClientFrame(raw):decodeLiveClientFrame(raw);
 }
-export function parseTransportCommand(value:unknown):TransportCommand {const row=readContract(Type.Union([LiveCommandSchema,command3]),value,'transport command');return row.protocolVersion===3?parseLive3Command(row):parseLiveCommand(row);}
-export function encodeTransportServerFrame(value:unknown):string {const row=readContract(Type.Union([serverSchema,server3]),value,'transport server frame') as TransportServerFrame;return row.protocolVersion===3?encodeLive3ServerFrame(row):encodeLiveServerFrame(row);}
-export function decodeTransportServerFrame(raw:unknown):TransportServerFrame {const row=parsed(raw,MAX_LIVE_SERVER_BYTES) as {protocolVersion?:number};return row?.protocolVersion===3?decodeLive3ServerFrame(raw):decodeLiveServerFrame(raw);}
-const ticket3=object({...TicketResponseSchema.properties,protocolVersion:Type.Literal(3)});
-export type TransportTicket=TicketResponse|Static<typeof ticket3>;
-export function parseTransportTicketResponse(value:unknown,original:TicketRequest):TransportTicket {
-  const request=parseTicketRequest(original),reply=readContract(Type.Union([TicketResponseSchema,ticket3]),value,'transport ticket');
-  if(reply.protocolVersion===2)return parseTicketResponse(reply,original);
-  if(reply.requestId!==request.requestId||reply.matchId!==request.matchId||reply.expiresAt>reply.sessionExpiresAt||negotiateProtocol(request.supportedProtocol,CLOCKED_PROTOCOL_RANGE)!==3)throw new Error('Invalid transport ticket');return reply;
+export function parseTransportCommand(value:unknown):TransportCommand{const row=readContract(Type.Union([LiveCommandSchema,command3,command4]),value,'transport command');return row.protocolVersion===4?parseLive4Command(row):row.protocolVersion===3?parseLive3Command(row):parseLiveCommand(row);}
+export function encodeTransportServerFrame(value:unknown):string{const row=readContract(Type.Union([serverSchema,server3,server4]),value,'transport server frame') as TransportServerFrame;return row.protocolVersion===4?encodeLive4ServerFrame(row):row.protocolVersion===3?encodeLive3ServerFrame(row):encodeLiveServerFrame(row);}
+export function decodeTransportServerFrame(raw:unknown):TransportServerFrame{const row=parsed(raw,MAX_LIVE_SERVER_BYTES) as {protocolVersion?:number};return row?.protocolVersion===4?decodeLive4ServerFrame(raw):row?.protocolVersion===3?decodeLive3ServerFrame(raw):decodeLiveServerFrame(raw);}
+const ticket3=object({...TicketResponseSchema.properties,protocolVersion:Type.Literal(3)}),ticket4=object({...TicketResponseSchema.properties,protocolVersion:Type.Literal(4)});
+export type TransportTicket=TicketResponse|Static<typeof ticket3>|Static<typeof ticket4>;
+export function parseTransportTicketResponse(value:unknown,original:TicketRequest):TransportTicket{
+ const request=parseTicketRequest(original),reply=readContract(Type.Union([TicketResponseSchema,ticket3,ticket4]),value,'transport ticket');if(reply.protocolVersion===2)return parseTicketResponse(reply,original);
+ if(reply.requestId!==request.requestId||reply.matchId!==request.matchId||reply.expiresAt>reply.sessionExpiresAt||negotiateProtocol(request.supportedProtocol,{min:reply.protocolVersion,max:reply.protocolVersion})!==reply.protocolVersion)throw new Error('Invalid transport ticket');return reply;
 }
-const pending3=object({schemaVersion:Type.Literal(2),actorId:IdSchema,command:command3});
-export type TransportPending=ClientPending|Static<typeof pending3>;
-export function parseTransportPending(value:unknown):TransportPending{return readContract(Type.Union([pendingSchema,pending3]),value,'pending transport intent');}
+const pending3=object({schemaVersion:Type.Literal(2),actorId:IdSchema,command:command3}),pending4=object({schemaVersion:Type.Literal(3),actorId:IdSchema,command:command4});
+export type TransportPending=ClientPending|Static<typeof pending3>|Static<typeof pending4>;
+export function parseTransportPending(value:unknown):TransportPending{return readContract(Type.Union([pendingSchema,pending3,pending4]),value,'pending transport intent');}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261019-015",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "node --test --test-concurrency=1 packages/match-client/tests/*.test.mjs apps/match-service/tests/clock-service.test.mjs"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "cda3b549f0f9523475202011f52cc9091985ba9b",
+  "source_fingerprint": "d7d18b12329b6fbe7d9ca876d70b3f433203ea6b5b937034f775580f72a13876",
+  "started_at": "2026-10-19T20:25:36.854Z",
+  "finished_at": "2026-10-19T20:26:51.896Z",
+  "recorded_at": "2026-10-19T20:26:51.896Z",
+  "time_precision": "exact",
+  "elapsed_ms": 75044,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": null,
+  "signal": "SIGTERM",
+  "result": "failed",
+  "failure_reason": "interrupted",
+  "summary": "D13 current client and database clock orchestration regressions",
+  "log_path": "docs/validation/logs/RUN-20261019-015.txt",
+  "log_sha256": "04cd80cacc3c92105353b5f8893730974f68a4412dc9be5549b022c37d9bf290",
+  "redactions": 0
+}

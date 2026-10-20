@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as contracts from '../src/index.ts';
-const minimal={schemaVersion:1,scope:'synthetic',matchId:'m',stateVersion:0,viewer:{kind:'public'},ended:false,winner:null,turn:0,turnOwnerId:null,priorityId:null,players:['a','b'].map(playerId=>({playerId,lore:0,inkDrops:0,zones:['hand','deck','play','discard','inkwell'].map(kind=>({kind,count:0,cards:[]}))})),resources:[],commands:[],logs:[],animations:[]};
+const minimal={schemaVersion:2,scope:'synthetic',matchId:'m',stateVersion:0,viewer:{kind:'public'},ended:false,endReason:null,winner:null,turn:0,turnOwnerId:null,priorityId:null,players:['a','b'].map(playerId=>({playerId,lore:0,inkDrops:0,zones:['hand','deck','play','discard','inkwell'].map(kind=>({kind,count:0,cards:[]}))})),resources:[],commands:[],logs:[],animations:[]};
 
 test('viewer snapshot codec refuses private fields, malformed refs, accessors and oversize bytes',()=>{
  assert.deepEqual(contracts.decodeViewerProjection(contracts.encodeViewerProjection(minimal)),minimal);

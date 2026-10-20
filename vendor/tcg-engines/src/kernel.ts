@@ -12,7 +12,7 @@ export interface KernelRandomSource {
   integer(index: number, bound: number): number;
   identifier(domain: string, index: number): string;
 }
-export interface KernelClockPolicy {initialReserveMs:number;reserveCapMs:number;perActionBonusMs:number;perTurnPassBonusMs:number;resetTimeOnSkipMs:number;graceMs:0}
+export interface KernelClockPolicy {initialReserveMs:number;reserveCapMs:number;perActionBonusMs:number;perTurnPassBonusMs:number;resetTimeOnSkipMs:number;graceMs:0;timeoutLimit:number}
 export interface KernelClockControl {kind:'settle'|'pause'|'resume'|'reset';timestamp:number;reason?:'SERVER_RECOVERY'|'JUDGE_PAUSE';playerId?:string;remainingMs?:number}
 export function createSyntheticKernel(options: { randomSource: KernelRandomSource; players: [string, string]; startTimestamp: number; choosingFirstPlayer?: string; clock?:KernelClockPolicy }) {
   const playerIds = options.players, source = options.randomSource;
@@ -30,18 +30,44 @@ export function createSyntheticKernel(options: { randomSource: KernelRandomSourc
   const cardInstances = Object.fromEntries(playerIds.flatMap((id, index) => owners[id].map(instance => [instance, 'synthetic-' + index])));
   const config=options.clock;
   const runtime = new MatchRuntime({ ...lorcanaRuntimeConfig, ...(config?{timeControl:{mode:'dynamic',config:{initialReserveMs:config.initialReserveMs,reserveCapMs:config.reserveCapMs,perActionBonusMs:config.perActionBonusMs,perTurnPassBonusMs:config.perTurnPassBonusMs,resetTimeOnSkipMs:config.resetTimeOnSkipMs,graceMs:config.graceMs}}}:{}), randomSource: source, now: () => now, rulesetIdentity: KERNEL_IDENTITY }, { players: playerIds.map(id => ({ id: createPlayerId(id) })), seed: 'project-injected', matchID: identity('match', 0), gameID: identity('game', 0), choosingFirstPlayer: options.choosingFirstPlayer, cardCatalog: createRecordCardCatalog('synthetic-rule-03', definitions), cardsMaps: { owners, cardInstances }, capturePatches: false });
-  let undo=runtime.createRuntimeSnapshot();
+  let undo=runtime.createRuntimeSnapshot(),undoNow=now;
+  function publicStatus() {
+    const end=runtime.getGameEndResult(),ended=runtime.hasGameEnded();
+    const endReason:'normal_win'|'concession'|'timeout'|null=!ended?null:end?.reason==='timeout'?'timeout':playerIds.some(id=>end?.reason===`${id} conceded`)?'concession':'normal_win';
+    return {revision:runtime.getCurrentStateID(),ended,winner:end?.winner??null,endReason,choosingFirstPlayer:runtime.getState().ctx.status.choosingFirstPlayer??null};
+  }
+  function process(actor:string,timestamp:number,commandId:string,move:string,input:Record<string,unknown>,role:'player'|'judge'='player') {
+    const args=move==='chooseWhoGoesFirst'||move==='forfeitGame'?input:{...input,playerId:actor};
+    const command={commandID:commandId,move,input:{args}},revision=runtime.getCurrentStateID();
+    const validation=runtime.validateCommand(command,actor,revision,role,{logInvalid:false});
+    if(!validation.valid)return {accepted:false,code:validation.code??'REJECTED'};
+    const result=runtime.processCommand(command,actor,revision,timestamp,role);
+    return result.success?{accepted:true,code:null}:{accepted:false,code:result.errorCode??'REJECTED'};
+  }
+  function forfeitTimeout(actor:string,timestamp:number,commandId:string) {
+    const before=runtime.getState(),winnerId=playerIds.find(id=>id!==actor);
+    if(!options.clock||!winnerId||runtime.hasGameEnded())throw new Error('Timeout unavailable');
+    const result=process(actor,timestamp,commandId,'forfeitGame',{winnerId,reason:'timeout'},'judge');
+    if(!result.accepted)throw new Error('Timeout unavailable');
+    // A server forfeit is not another thinking-time action: retain the exact
+    // native count/reset/bonuses already computed for the timeout/pass.
+    const ended=runtime.getState(),final=runtime.createRuntimeSnapshot();
+    runtime.restoreState({...ended,ctx:{...ended.ctx,time:before.ctx.time}},final,{preserveHistory:true});
+  }
+  function enforceRaisedCounts(before:ReturnType<typeof runtime.getState>,timestamp:number,commandId:string) {
+    if(!options.clock||runtime.hasGameEnded())return;
+    const after=runtime.getState().ctx.time,prior=before.ctx.time;
+    if(after.mode!=='dynamic'||prior.mode!=='dynamic')throw new Error('Clock unavailable');
+    for(const actor of playerIds)if(after.players[actor].timeoutCount>prior.players[actor].timeoutCount&&(before.ctx.status.gameSegment==='startingAGame'||after.players[actor].timeoutCount>=options.clock.timeoutLimit)){forfeitTimeout(actor,timestamp,commandId+'.timeout');break;}
+  }
   return {
-    status() {
-      const end = runtime.getGameEndResult();
-      return { revision: runtime.getCurrentStateID(), ended: runtime.hasGameEnded(), winner: end?.winner ?? null, choosingFirstPlayer: runtime.getState().ctx.status.choosingFirstPlayer ?? null };
-    },
+    status:publicStatus,
     // Only the server facade uses this internal snapshot to hash reconstruction.
     // Browser Lab does not export it; this is never a live viewer projection.
     snapshot(): unknown { return JSON.parse(JSON.stringify(runtime.getState())); },
     // Server friend only; Lab's facade/RPC does not expose authoritative inspection.
-    inspect(viewerId?: string) { return { state: this.snapshot(), instances: { ...cardInstances }, events: JSON.parse(JSON.stringify(runtime.getPublishedGameEvents())), moves: viewerId ? [...runtime.enumerateMovesForPlayer(viewerId, 'player')] : [] }; },
-    restore(snapshot: unknown): void { runtime.restoreState(snapshot as ReturnType<typeof runtime.getState>,undo); },
+    inspect(viewerId?: string) { return { state: this.snapshot(), instances: { ...cardInstances }, events: JSON.parse(JSON.stringify(runtime.getPublishedGameEvents())), endReason:publicStatus().endReason, moves: viewerId ? [...runtime.enumerateMovesForPlayer(viewerId, 'player')] : [] }; },
+    restore(snapshot: unknown): void { runtime.restoreState(snapshot as ReturnType<typeof runtime.getState>,undo);now=undoNow; },
     clock() {
       const time=runtime.getState().ctx.time;
       if(time.mode==='none')return null;
@@ -60,22 +86,37 @@ export function createSyntheticKernel(options: { randomSource: KernelRandomSourc
         if(time.running||!control.playerId||!playerIds.includes(control.playerId)||typeof control.remainingMs!=='number'||!Number.isSafeInteger(control.remainingMs)||control.remainingMs<0||control.remainingMs>time.config.reserveCapMs)throw new Error('Clock control rejected');
         next=resetPlayerTimeAfterSkip(state,control.playerId,control.remainingMs,{incrementTimeoutCount:false});
       }
-      undo=runtime.createRuntimeSnapshot();runtime.restoreState(next,undo,{preserveHistory:true});now=control.timestamp;
+      undo=runtime.createRuntimeSnapshot();undoNow=now;runtime.restoreState(next,undo,{preserveHistory:true});now=control.timestamp;
+    },
+    timeout(timestamp:number,commandId:string) {
+      const before=runtime.getState(),time=before.ctx.time;
+      if(!options.clock||runtime.hasGameEnded()||time.mode!=='dynamic'||!time.running||!time.activePlayerID||timestamp<now)throw new Error('Timeout unavailable');
+      undo=runtime.createRuntimeSnapshot();undoNow=now;
+      try {
+        const settled=settleClocks(before,timestamp),clock=settled.ctx.time,actor=time.activePlayerID;
+        if(clock.mode!=='dynamic'||clock.players[actor].reserveMsRemaining>0)throw new Error('Timeout unavailable');
+        const counted=resetPlayerTimeAfterSkip(settled,actor,clock.config.resetTimeOnSkipMs,{incrementTimeoutCount:true});
+        runtime.restoreState(counted,undo,{preserveHistory:true});now=timestamp;
+        if(before.ctx.status.gameSegment==='startingAGame')forfeitTimeout(actor,timestamp,commandId);
+        else {
+          const result=process(actor,timestamp,commandId,'passTurn',{});
+          if(!result.accepted){runtime.restoreState(before,undo);now=undoNow;return {accepted:false,code:'NO_LEGAL_DEFAULT'};}
+          const after=runtime.getState().ctx.time;
+          if(!runtime.hasGameEnded()&&after.mode==='dynamic'&&after.players[actor].timeoutCount>=options.clock.timeoutLimit)forfeitTimeout(actor,timestamp,commandId+'.timeout');
+        }
+        return {accepted:true,code:null};
+      }catch(error){runtime.restoreState(before,undo);now=undoNow;throw error;}
     },
     submit(actor: string, revision: number, timestamp: number, commandId: string, move: string, input: Record<string, unknown>) {
-      // Upstream defaults to judge. Explicit player authority is mandatory.
-      const args = move === 'chooseWhoGoesFirst' ? input : { ...input, playerId: actor };
-      const command={ commandID: commandId, move, input: { args } };
-      undo=runtime.createRuntimeSnapshot();
-      const validation=runtime.validateCommand(command,actor,revision,'player',{logInvalid:false});
-      if(!validation.valid)return {accepted:false,code:validation.code??'REJECTED'};
-      const time=runtime.getState().ctx.time;
+      if(revision!==runtime.getCurrentStateID())return {accepted:false,code:'STALE_REVISION'};
+      const before=runtime.getState(),time=before.ctx.time;
       if(options.clock&&time.mode!=='none'&&!time.running)return {accepted:false,code:'CLOCK_PAUSED'};
-      now = timestamp;
-      const before=runtime.getState();
-      const result = runtime.processCommand(command, actor, revision, timestamp, 'player');
-      if(!result.success)runtime.restoreState(before,undo);
-      return result.success ? { accepted: true, code: null } : { accepted: false, code: result.errorCode ?? 'REJECTED' };
+      undo=runtime.createRuntimeSnapshot();undoNow=now;
+      try {
+        const result=process(actor,timestamp,commandId,move,input);now=timestamp;
+        if(!result.accepted){runtime.restoreState(before,undo);now=undoNow;return result;}
+        enforceRaisedCounts(before,timestamp,commandId);return result;
+      }catch(error){runtime.restoreState(before,undo);now=undoNow;throw error;}
     },
   };
 }

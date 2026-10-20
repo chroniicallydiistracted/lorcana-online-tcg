@@ -1,0 +1,27 @@
+
+> @lorcana/db@0.0.0 build /workspaces/lorcana-online-tcg/packages/db
+> tsc -p tsconfig.json
+
+✔ waiting opening concessions finish once without ever reserving the timed clock in any opening phase (5074.941067ms)
+✔ a delayed waiting opening concession leaves the active decision unfenced and becomes stale after it (603.529667ms)
+✔ a waiting move is refused before cold proof work and cannot delay the active player (510.233356ms)
+✔ busy reservations are transient and the identical waiting concession succeeds after release (2764.998414ms)
+✔ waiting-player reference concession at the exact deadline ends once without a timeout pass (2662.156029ms)
+✔ timed service expires once through native pass, keeps old rejected receipts and binds participant clock reads (2668.509464ms)
+✔ audited pause/resume excludes an outage, preserves card refs and rejects stale or changed recovery decisions (3186.039477ms)
+✔ each opening decision times out once as a loss and audited reset cannot choose a winner (4519.646683ms)
+✔ native whole-game timeout count survives normal turns and the third timeout ends in one replayable commit (4772.566419ms)
+✔ deadline sweeps, a player move and both concessions race to exactly one final result (4419.712397ms)
+✔ an active player can concede at the exact deadline and players cannot invoke server forfeits (2548.503467ms)
+✔ clock storage tampering cannot extend a deadline or alter a native remaining allowance (2191.061849ms)
+✔ an already-running owner that stalls cannot pause a second healthy owner through tick, submit or timeout (1075.814308ms)
+✔ a cold proof reconstruction crossing the deadline happens after authoritative admission (472.534627ms)
+✔ an illegal service result returning after a short lease pauses before any competing sweep (496.518694ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38646.300732

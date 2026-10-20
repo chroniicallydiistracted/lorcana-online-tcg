@@ -52,7 +52,7 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
     // Read a fresh snapshot with both locks held before making any decision.
     const current=await c.query(selectMatchSql+' WHERE m.match_id=$1',[matchId]);
     const match=decodeMatchRow(current.rows[0]);
-    if(!match.clock||match.protocolVersion!==3||!k.rows[0])throw new MatchStoreError('UNAVAILABLE');
+    if(!match.clock||match.protocolVersion!==4||!k.rows[0])throw new MatchStoreError('UNAVAILABLE');
     return {match,reservation:k.rows[0].reservation as ClockReservation|null};
   }
   async function event(c:pg.PoolClient,match:StoredMatch,clock:StoredClock,kind:string,id:string,now:number,auditId:string|null=null,reason:string|null=null){
@@ -95,7 +95,7 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
     if(now-clock.lastHealthyUtcMs>maxGap){await pauseUnsafe(c,match,now,'recovery');return {kind:'paused'};}
     const waitingConcession=command?.move==='concede'&&command.actorId!==clock.activePlayerId;
     if(waitingConcession)return {kind:'waiting',evaluation:{before:match,sampledAtMs:now,engineTimestamp:clockInteger(clock.engineTimestamp+now-clock.anchorUtcMs)}};
-    if(kind==='player'&&!waitingConcession&&now>=clock.deadlineUtcMs!){
+    if(kind==='player'&&command?.move!=='concede'&&now>=clock.deadlineUtcMs!){
       if(command)await commitMatchOnClient(c,command,match,null,{outcome:'rejected',reason:'clock_expired'});
       return {kind:'expired'};
     }
@@ -107,8 +107,8 @@ export function createClockRepository(target:Target,root=workspaceRoot,options:{
   }
   function timeoutCommand(reservation:ClockReservation,match:StoredMatch):DurableCommand {
     const actorId=systemClockActor(match.players),commandId='clock-timeout-'+reservation.expectedStateVersion+'-'+reservation.expectedClockRevision;
-    const intent=JSON.stringify({profile:'system-clock-timeout-v1',matchId:match.matchId,expectedVersion:reservation.expectedStateVersion,clockRevision:reservation.expectedClockRevision,policyId:match.clock!.policy.id});
-    return {matchId:match.matchId,actorId,commandId,expectedVersion:reservation.expectedStateVersion,intent,intentHash:createHash('sha256').update('system-clock-timeout-v1\0').update(intent).digest('hex')};
+    const intent=JSON.stringify({profile:'system-clock-timeout-v2',matchId:match.matchId,expectedVersion:reservation.expectedStateVersion,clockRevision:reservation.expectedClockRevision,policyId:match.clock!.policy.id});
+    return {matchId:match.matchId,actorId,commandId,expectedVersion:reservation.expectedStateVersion,intent,intentHash:createHash('sha256').update('system-clock-timeout-v2\0').update(intent).digest('hex')};
   }
   function auditCommand(request:ClockAuditRequest,match:StoredMatch):DurableCommand {
     const intent=JSON.stringify({profile:'system-clock-control-v1',kind:request.kind,matchId:request.matchId,expectedStateVersion:request.expectedStateVersion,expectedClockRevision:request.expectedClockRevision,operationId:request.operationId,auditId:request.auditId,reason:request.kind==='pause'?request.reason??'recovery':null,reset:request.kind==='resume'&&request.reset?{playerId:request.reset.playerId,remainingMs:request.reset.remainingMs}:null});
