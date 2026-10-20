@@ -92,3 +92,18 @@ Recorded 2026-10-20T20:42:22.503Z (CHG-20261020-007).
   - **RUN-20261020-040:** isolated foundation pipeline, all 14 stages in 545 s (484 Node, 26 Python, 406/1 skip, 2 injection, 13 web Chromium, Lab workers).
   - **RUN-20261020-041:** static `docs:check`, passed.
 - **Limit:** a local run cannot reproduce the hosted runner's speed, so the hosted run is the real check of this fix.
+
+## Hosted runs, merge and vite advisory — 2026-10-20 UTC
+
+Recorded 2026-10-20T22:59:51.995Z (CHG-20261020-008). These are public GitHub job and step metadata plus the failed step's log; no artifacts were downloaded.
+- **Pull request #3, run 39496608891 at 3793081, success:**
+  - `design-system`: about 3 minutes, 30 checks and 150/150;
+  - `foundation`: the pipeline step took 959 s, with 886 s of stages.
+- **Merge:** the Director fast-forwarded main from 9081192 to 3793081.
+- **Main, run 39509517284:** `design-system` succeeded. `foundation` passed all 14 stages, then failed the dependency advisory check. The cause is three vite 8.3.0–8.3.2 advisories in its bundled `launch-editor`: GHSA-587h-7wmj-h5pm (high) and GHSA-698v-4r3x-3vcv and GHSA-r825-w8mm-5pxw (moderate). They were published 18:30–19:51Z, before the pull request's run, but that run's audit did not report them.
+- **Fix:** branch `claude/vite-advisory` moves the four workspaces that pin vite to 8.3.3, the first fixed release. `pnpm audit` reports no advisories.
+- **Evidence at fingerprint `b75b051338aee1e236d39659659ea09ebff19c543ad75114302b6c6edfcbac93`, all passed:**
+  - **RUN-20261020-042:** configuration and workflow checks, `pnpm audit` with no advisories, typecheck, lint and full suite (399 Node, 26 Python, upstream 406/1 skip, 2 injection).
+  - **RUN-20261020-043:** isolated design-system suite in 107 s (30 gates, Chromium install, 150/150).
+  - **RUN-20261020-044:** isolated foundation pipeline, all 14 stages and the dependency advisory check, in 544 s (484 Node, 26 Python, 406/1 skip, 2 injection, 13 web Chromium, Lab workers).
+  - **RUN-20261020-045:** static `docs:check`, passed.

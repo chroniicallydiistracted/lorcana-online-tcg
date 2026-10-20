@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261020-042",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "python3 scripts/verify-config.py && python3 scripts/ci/check-config.py && pnpm audit && pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "3793081debadd4ed8ad4ff50b3cd72fd3e55d4fe",
+  "source_fingerprint": "b75b051338aee1e236d39659659ea09ebff19c543ad75114302b6c6edfcbac93",
+  "started_at": "2026-10-20T22:57:32.508Z",
+  "finished_at": "2026-10-20T22:59:30.667Z",
+  "recorded_at": "2026-10-20T22:59:30.667Z",
+  "time_precision": "exact",
+  "elapsed_ms": 118165,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "vite 8.3.3 security patch: configuration contract, workflow config check, pnpm audit, typecheck, ESLint plus boundaries and the full workspace suite",
+  "log_path": "docs/validation/logs/RUN-20261020-042.txt",
+  "log_sha256": "581b5f5051e85456f7a36c980bf5b597e64586ddacb9de03c4eddc135fe1f3d2",
+  "redactions": 0
+}

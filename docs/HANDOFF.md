@@ -1,14 +1,15 @@
 # Developer handoff
 
-Observed at: 2026-10-20T20:42:22.503Z (record time of CHG-20261020-007); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes:
+Observed at: 2026-10-20T22:59:51.995Z (record time of CHG-20261020-008); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes:
 
 - CHG-20261020-004 (UX-01 technical design system, 17b7b8f);
 - CHG-20261020-005 (font license line endings, 3997557);
 - CHG-20261020-006 (parallel design-system CI job, decision D18, b6a5b50);
-- CHG-20261020-007 (isolated pipeline command limit 1500 s, decision D19), finalized with this checkpoint.
+- CHG-20261020-007 (isolated pipeline command limit 1500 s, decision D19, 3793081, merged to main by the Director);
+- CHG-20261020-008 (hosted merge runs and vite 8.3.3 security patch, branch `claude/vite-advisory`), finalized with this checkpoint.
 
 - **Objective and authorized scope:** the Director assigned UX-01 to this agent: build a full technical design system following `docs/vision/UX_UI_DESIGN_SYSTEM.md` and all repository requirements (decision D17). The Director also approved CC-BY-4.0 for Storybook's build-time data (D16).
-- **Repository:** /home/andre/lorcana-online-tcg, branch `claude/ux-design-system` from main 9081192. It holds d188387 (PLAY-04 closure, plus the draft committed byte-for-byte) and this checkpoint. Git supplies the resulting commit and dirty state.
+- **Repository:** /home/andre/lorcana-online-tcg. Current branch `claude/vite-advisory` from main 3793081 (the merged UX-01 work). The UX-01 branch `claude/ux-design-system` started from main 9081192. It holds d188387 (PLAY-04 closure, plus the draft committed byte-for-byte) and this checkpoint. Git supplies the resulting commit and dirty state.
 - **Execution:** original Compose project lorcana-online-tcg_devcontainer (workspace 01ccec184b44, PostgreSQL c7cd58258c19, both observed running); Node 24.21.0, pnpm 10.33.0. Rediscover IDs before reuse.
 - **Implemented behavior:** F-DESIGN-SYSTEM. Details are in [ADR 0017](adr/0017-technical-design-system.md), the [runbook](runbooks/design-system.md) and the [validation record](validation/ux-design-system.md).
   - **Tokens:**
@@ -35,6 +36,8 @@ Observed at: 2026-10-20T20:42:22.503Z (record time of CHG-20261020-007); display
   - dated notes in the CI runbook, the fan-content policy and the web README;
   - status lines and this handoff.
 - **Verification (exact timing):**
+  - **vite 8.3.3, fingerprint `b75b051338aee1e236d39659659ea09ebff19c543ad75114302b6c6edfcbac93`:** RUN-20261020-042 passed (checks, `pnpm audit` clean, full suite), RUN-20261020-043 passed (isolated design-system suite, 107 s), RUN-20261020-044 passed (14-stage foundation pipeline with the advisory check, 544 s), RUN-20261020-045 docs check.
+  - **Hosted:** PR #3 run 39496608891 passed both jobs at 3793081. Main run 39509517284 passed `design-system` and all 14 foundation stages, then failed the advisory check (three vite advisories published that day).
   - **Final fingerprint `94cbd3d21520ad9c909b7de9245a216b6e666d3a8fa2be11b5daf3c16e309857`:**
     - RUN-20261020-038, passed: checks and full suite.
     - RUN-20261020-039, passed: isolated design-system suite, 107 s.
@@ -59,7 +62,7 @@ Observed at: 2026-10-20T20:42:22.503Z (record time of CHG-20261020-007); display
   - **Earlier receipts:** RUN-018 (superseded), RUN-019 (failed `source_changed`), RUN-020 to RUN-022 (passed at the earlier fingerprint) and RUN-023 (failed at the configuration contract). All are retained and explained in the validation record.
 - **Listeners/resources:** no owned processes or listeners remain. `.env.local`, `.local/database.json`, the database volume and the Director's root file `inkspire-interface-typography.png` are untouched. No host setting changed.
 - **Pending gates:**
-  - a passing hosted run of both jobs on this branch's pull request, then the main fast-forward, which needs the Director's explicit push request;
+  - a passing hosted run of the vite fix, then the main fast-forward, which needs the Director's explicit push request;
   - the Director's review of the ADR 0017 interpretations;
   - a usage basis for the card fonts;
   - UX-01 reference screens and visual approval;
@@ -70,6 +73,6 @@ Observed at: 2026-10-20T20:42:22.503Z (record time of CHG-20261020-007); display
   - PLAY-04 open items (point 4, finding 3, the D15 revisit, the lint and fingerprint scope follow-up);
   - AUTH-01.
 - **Next actions:**
-  1. **Agent:** push to PR #3 and check both hosted jobs (`foundation`, `design-system`). Earlier hosted runs: 39461681606 failed (900 s limit, in-pipeline stage); 39477270644 passed `design-system` but `foundation` hit 900 s (runner variance, D19).
+  1. **Agent:** open a pull request for `claude/vite-advisory` and check both hosted jobs. Main moves only at the Director's explicit push request.
   2. **Director:** review the interpretations and the card-font question; request the merge.
   3. **Then:** UX-01 reference screens (crowded match, practical deckbuilder, Collection binder, pack presentation).

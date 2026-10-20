@@ -61,3 +61,7 @@ Foundation diagnostics and ports remain unchanged. The sole engine owners remain
 ## Occupied-port regression note — 2026-10-16 UTC
 
 The occupied-port regression now also proves which failure it observed. It requires the API's own `api foundation startup failed` message, because a failed build also exits with code 1. It bounds supervisor cleanup to 15 s after that message, and its 120 s budget includes the supervisor's full workspace build (CHG-20261016-005). The decision is unchanged.
+
+## Amendment — 2026-10-20 UTC (vite security patch)
+
+vite is now pinned at 8.3.3, not 8.3.2, because three advisories published on 2026-10-20 affect 8.3.0–8.3.2. See [ADR 0008](0008-engine-placement-dependency-baseline.md#security-patch-vite-833--2026-10-20-utc) and CHG-20261020-008.

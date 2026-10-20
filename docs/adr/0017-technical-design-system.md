@@ -100,3 +100,7 @@ The browser evidence of decision item 8 now runs as a separate parallel CI job, 
 ## Amendment — 2026-10-20 UTC (decision D19)
 
 The previous amendment said the foundation pipeline keeps its 900 s budget. Hosted run 39477270644 then timed out without the design-system stage, so decision D19 raises the isolated pipeline command limit to 1500 s for both jobs. See CHG-20261020-007.
+
+## Amendment — 2026-10-20 UTC (vite security patch)
+
+vite is now pinned at 8.3.3, not 8.3.2, because three advisories published on 2026-10-20 affect 8.3.0–8.3.2. See [ADR 0008](0008-engine-placement-dependency-baseline.md#security-patch-vite-833--2026-10-20-utc) and CHG-20261020-008.

@@ -107,3 +107,7 @@ Local equivalent: `python3 scripts/ci-local.py --suite design-system [--evidence
 ## Pipeline time limit — 2026-10-20 UTC
 
 Decision D19 raises the limit on the one isolated pipeline command (`pnpm ci:verify` or `pnpm ci:design-system`) from 900 s to 1500 s (`PIPELINE_TIMEOUT` in `scripts/ci-local.py`). The Actions job limit stays at 30 minutes. Hosted run 39477270644 timed out in the foundation job after its 14 stages had taken 866 s. Earlier hosted runs on the same D13 source took 698 s and 888 s for the whole pipeline step, so runner variance alone exceeded the old margin. Other commands keep their existing limits. See CHG-20261020-007.
+
+## Advisory failure on main — 2026-10-20 UTC
+
+Main run 39509517284 at 3793081 passed every stage and failed only the advisory policy, because three vite advisories (one high) were published after the pull request's run. Once a high or critical advisory is published, the same source fails CI, so a red main can come from the registry alone: read the `Advisory policy rejected dependencies` line and run `pnpm audit` before suspecting the change. The fix moves the affected package to its first fixed release and is recorded in [ADR 0008](../adr/0008-engine-placement-dependency-baseline.md) (CHG-20261020-008).
