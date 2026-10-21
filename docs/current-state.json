@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-21T14:41:49.326Z",
+  "observed_at": "2026-10-21T21:59:21.800Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2298,7 +2298,8 @@
     "CHG-20261020-008",
     "CHG-20261021-001",
     "CHG-20261021-002",
-    "CHG-20261021-003"
+    "CHG-20261021-003",
+    "CHG-20261021-004"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2370,7 +2371,8 @@
     "CHG-20261020-008": "finalized",
     "CHG-20261021-001": "finalized",
     "CHG-20261021-002": "finalized",
-    "CHG-20261021-003": "finalized"
+    "CHG-20261021-003": "finalized",
+    "CHG-20261021-004": "finalized"
   },
   "source_fingerprint": "35834e4ba851b08dd699a0fdb783e365e01faaab65ffe57f91db0132358b244b",
   "files": {
@@ -2388,7 +2390,7 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "bd0c874452c3662891e50c55bd80a27c81b0d4f5a75cf6baf39171d805ed4db5",
+    "AGENTS.md": "b95e839754861080ec9ad2bc5274ebce71d18b539ac54af2a3ed88e89a14faee",
     "README.md": "c4fb9109cc0c6113a5c5d3979b950b5204a5c48af200c8e9819ddef58f01001e",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
@@ -2451,8 +2453,8 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "2cc6d65a6a4b827a1adead3d5fe2e00280ea0de02788b8359b1c9624abe54779",
-    "docs/HANDOFF.md": "7ecbcc5c26ee7a306258551c8b00682c99c7409b53022837b9ffe0f0a0e642fa",
-    "docs/README.md": "53c6b3f7f179601b7bd1a8ebf59680248920c61edc9f823948af1044627a697d",
+    "docs/HANDOFF.md": "9859a8ebcf906519ac900e686e6d90ddac72fa7319741deac3dc69e7b5e04d49",
+    "docs/README.md": "22be2add2e1e2c3c8a1e3c0da82466d0d9b21e2f79838a362eef27cd76face61",
     "docs/WORKSPACE_QUALIFICATION.md": "706a87f555e7f3b13fada47137ca0a8acccb5ba39f308d89e2fb88b979e16364",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "be8edbdb89fced50ac57ac687adf620b297f0b442471d095f2911e52cc1ffb7b",
@@ -2506,7 +2508,7 @@
     "docs/plans/boot-04-single-host-costs.json": "f3fb2b6de8b9bb07522dbf753fb60daede3c2f8df8ec00c865718ead438018a7",
     "docs/plans/boot-04-single-host-sources.json": "ba482ffd611d5dc06ed5d9d30f5c677a9945a48122c693d9e9938b7d2912b83a",
     "docs/plans/boot-04-sources.json": "ee0630f06c37cff799db4ca6dc08f92e120fed5db72be405e0a1765e96232c82",
-    "docs/policies/fan-content.md": "326421428cd696be7cf059827d3cc23d60454da7eac2827681cb7706c458714a",
+    "docs/policies/fan-content.md": "2b3c16f9c08cea537ab91bf6ebaf1f5a7d103e12c1a563dcb8f9476c4210492a",
     "docs/research/2026-10-08-duels-observations.json": "ffca50766215f37b56dd2e461dc698acfd14cb1d94f3cec3352e7e9efe91907f",
     "docs/reviews/2026-10-10-boot-04-final-decisions.md": "4901cc9ce59f2b87c66ffc2ca8d3b4b0d4fa40d2df3a0a749498c19c9527c081",
     "docs/reviews/2026-10-11-rule-02-closure.md": "bb134c147d7d715939b564c309113f1cc7674de8bd47530b17524cf37864924f",
@@ -2636,15 +2638,15 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "e35af23d2534fdf213b9ad2c1f5a31ca90af10bf30c0d77ec7afe018d5fb464d",
+    "docs/validation/ux-design-system.md": "39f44258071b020616a214423919141c91d1d0dd5fbe1945c68a5f4cdf523c1d",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "024c23c73605b46166a38f1bdff885d1a483b5b75b036110bdf488c309d8dfb5",
+    "docs/vision/decision_register.csv": "cc29b93e480186c5d2147f567152fa74799f2bae74c13554f2c39912c21a9b0c",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "a574c9755c692b0d29ef1ef7d7f4631ab1e974c0bb6dbf2124ccdf5862fd81ce",
+    "docs/vision/initial_backlog.csv": "4d43357fccfe608ebc06dd825fc6294d8e3d416fca5e9b0f4ee7e6abfaf415d0",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "1e922f7666f49150440de06c24f84d1b53358af295ae6a297c2db3eccb220780",

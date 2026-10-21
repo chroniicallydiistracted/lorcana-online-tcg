@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261021-004",
+  "title": "Record Director decisions D24–D26 (inspector from scratch, official card data, design review) and the owed hosted runs",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-21T21:56:10.244Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "7a9e7576e302d8243fd0481bb84fa5c82b3b0c50",
+  "task_ids": [
+    "UX-01",
+    "UX-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DESIGN-SYSTEM",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Hosted runs recorded from public GitHub job metadata (no artifacts downloaded); every run passed both jobs: 39514065746 (pull request #4, dc6757e), 39555849817, 39560354328 and 39619295311 (pull request #5 at 2c84769, a136841 and 7a9e757) and 39621867049 (main, 7a9e757). Main moved from 3793081 to 7a9e757, the commit run 39619295311 tested, pushed by the agent at the Director's instruction to push once CI finished. Main run 39621867049 closes the advisory failure of main run 39509517284."
+    },
+    {
+      "kind": "review",
+      "description": "The Director reviewed the UX backlog status and 100 screenshots of the current interface (every non-reference Storybook story in Paper and Ink, open states of dialogs, the sheet, the confirmation, the tooltip and the inspector at 1280 and 390 px, and the web app's foundation page), captured from main 7a9e757 in headless Chromium 153. The screenshots and capture script are review material in the ignored .local folder and are not committed. While capturing, the tile's inspect button was found to show 'Printing' while its accessible name is 'Inspect …' (WCAG 2.5.3); the D26 tile change removes it."
+    },
+    {
+      "kind": "edit",
+      "description": "Decision register: D24 (the enhanced card inspector is built from scratch in this project's design; the original Inkspire inspector is only a reference), D25 (all card data from Ravensburger's official v3 catalog, never made-up cards; scope confirmed: interface, Storybook and inspector work including its browser tests; neutral placeholders only as the takedown fallback; engine and rules tests keep synthetic fixtures) and D26 (design approved as shown at this time, with one change: a card tile shows the card itself and its details belong to the inspector)."
+    },
+    {
+      "kind": "edit",
+      "description": "Current documents brought in line: the AGENTS.md fixture rule now limits synthetic fixtures to engine and rules tests; status lines in AGENTS.md and docs/README.md; a dated validation section with the hosted runs, the review and the Ravensburger API check; a dated fan-content policy note on card data and fixtures; the UX-01 backlog evidence; and the handoff."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/changes/CHG-20261021-004.json",
+    "docs/current-state.json",
+    "docs/policies/fan-content.md",
+    "docs/validation/logs/RUN-20261021-011.txt",
+    "docs/validation/runs/RUN-20261021-011.json",
+    "docs/validation/ux-design-system.md",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "Decisions D24, D25 and D26 with their message-time bounds."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Dated section: five hosted runs, the Director's screenshot review, the WCAG 2.5.3 defect found, and the Ravensburger API check."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "updated",
+      "reason": "Dated note: D25 narrows the synthetic-fixture default to engine and rules tests; rule 3 provenance applies to catalog snapshots and card images."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "The fixture rule follows D25, and the UX-01 status line records D24–D26 and the merged runs."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Same status line as AGENTS.md."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "UX-01 evidence names D26's approval of the current component design and keeps reference screens pending; status unchanged."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Current branch, decisions, hosted evidence and next actions."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Generated from the change records."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Generated snapshot."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No architectural change; the card-data architecture gets its own ADR with the catalog change."
+    },
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No operational change yet; the tile and story fixtures change in a later record."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "No behavior change in this record."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Generated from features.json, which is unchanged."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "R25 statuses and evidence are unchanged; nothing is accepted by a screenshot review."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "RULE-01 inventories stay dated research; the Ravensburger catalog is acquired by the later catalog change."
+    },
+    {
+      "path": "packages/rules-data/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Still reserved until the catalog change activates it."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No package change in this record."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261021-011.json",
+      "outcome": "passed",
+      "scope": "docs:check over this record and the updated documents (static)."
+    }
+  ],
+  "limitations": [
+    "Documentation only: no source change, so the last full local receipts (RUN-20261021-008 to 010 at fingerprint 35834e4b) and the hosted runs stand.",
+    "The screenshot review approves the current component design at this time; it is not reference-screen approval, device qualification or an accessibility evaluation.",
+    "The Director's message times are bounded by the agent's own timestamps; exact receipt times were not recorded."
+  ],
+  "next_actions": [
+    "Acquire the Ravensburger v3 catalog with provenance and normalize it in packages/rules-data under a new ADR.",
+    "Replace every made-up card in stories and browser tests with real catalog cards, then reduce the card tile to the card itself (D26).",
+    "Design and build the enhanced card inspector from scratch (D24)."
+  ]
+}

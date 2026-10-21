@@ -64,3 +64,11 @@ Recorded 2026-10-21T14:32:09.557Z (CHG-20261021-003). This corrects the previous
 - **Manifest:** the symbol manifest records this as the source for rule 3; which symbols are which is not distinguished.
 - **Rights basis and takedown:** both kinds depict Disney Lorcana marks, so the rights basis stays D07 and the takedown switch covers both.
 - **Open item:** none for rule 3 beyond per-file attribution, if the Director wants it recorded.
+
+## Card data and fixtures — 2026-10-21 UTC
+
+Recorded 2026-10-21 (CHG-20261021-004; decision D25). This narrows the D07 note that synthetic fixtures remain the default for automated tests.
+- **Interface and presentation:** card data comes from Ravensburger's official catalog (`api.lorcana.ravensburger.com/v3/catalog/{lang}`), never made-up cards. This covers interface, Storybook and card-inspector work, including their automated browser tests.
+- **Engine and rules tests:** they keep their synthetic fixtures until engine qualification is recorded.
+- **Neutral placeholders:** they remain only as the takedown fallback of rule 4.
+- **Provenance:** rule 3 applies to every catalog snapshot and card image the project stores: source URL, retrieval date, checksum, dimensions and format, rendition and the rights basis `D07: Ravensburger fan-content terms`.

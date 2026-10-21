@@ -2,6 +2,59 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261021-004 — Record Director decisions D24–D26 (inspector from scratch, official card data, design review) and the owed hosted runs
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-21T21:56:10.244Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 7a9e7576e302d8243fd0481bb84fa5c82b3b0c50
+- Tasks: UX-01, UX-03, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: none
+
+### Changes
+
+- **review:** Hosted runs recorded from public GitHub job metadata (no artifacts downloaded); every run passed both jobs: 39514065746 (pull request #4, dc6757e), 39555849817, 39560354328 and 39619295311 (pull request #5 at 2c84769, a136841 and 7a9e757) and 39621867049 (main, 7a9e757). Main moved from 3793081 to 7a9e757, the commit run 39619295311 tested, pushed by the agent at the Director's instruction to push once CI finished. Main run 39621867049 closes the advisory failure of main run 39509517284.
+- **review:** The Director reviewed the UX backlog status and 100 screenshots of the current interface (every non-reference Storybook story in Paper and Ink, open states of dialogs, the sheet, the confirmation, the tooltip and the inspector at 1280 and 390 px, and the web app's foundation page), captured from main 7a9e757 in headless Chromium 153. The screenshots and capture script are review material in the ignored .local folder and are not committed. While capturing, the tile's inspect button was found to show 'Printing' while its accessible name is 'Inspect …' (WCAG 2.5.3); the D26 tile change removes it.
+- **edit:** Decision register: D24 (the enhanced card inspector is built from scratch in this project's design; the original Inkspire inspector is only a reference), D25 (all card data from Ravensburger's official v3 catalog, never made-up cards; scope confirmed: interface, Storybook and inspector work including its browser tests; neutral placeholders only as the takedown fallback; engine and rules tests keep synthetic fixtures) and D26 (design approved as shown at this time, with one change: a card tile shows the card itself and its details belong to the inspector).
+- **edit:** Current documents brought in line: the AGENTS.md fixture rule now limits synthetic fixtures to engine and rules tests; status lines in AGENTS.md and docs/README.md; a dated validation section with the hosted runs, the review and the Ravensburger API check; a dated fan-content policy note on card data and fixtures; the UX-01 backlog evidence; and the handoff.
+
+### Verification
+
+- **passed:** docs:check over this record and the updated documents (static). ([evidence](docs/validation/runs/RUN-20261021-011.json))
+
+### Documentation and files
+
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Decisions D24, D25 and D26 with their message-time bounds.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Dated section: five hosted runs, the Director's screenshot review, the WCAG 2.5.3 defect found, and the Ravensburger API check.
+- **updated:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Dated note: D25 narrows the synthetic-fixture default to engine and rules tests; rule 3 provenance applies to catalog snapshots and card images.
+- **updated:** [AGENTS.md](AGENTS.md) — The fixture rule follows D25, and the UX-01 status line records D24–D26 and the merged runs.
+- **updated:** [docs/README.md](docs/README.md) — Same status line as AGENTS.md.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 evidence names D26's approval of the current component design and keeps reference screens pending; status unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Current branch, decisions, hosted evidence and next actions.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Generated from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Generated snapshot.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — No architectural change; the card-data architecture gets its own ADR with the catalog change.
+- **reviewed_unchanged:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — No operational change yet; the tile and story fixtures change in a later record.
+- **reviewed_unchanged:** [docs/features.json](docs/features.json) — No behavior change in this record.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Generated from features.json, which is unchanged.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 statuses and evidence are unchanged; nothing is accepted by a screenshot review.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — RULE-01 inventories stay dated research; the Ravensburger catalog is acquired by the later catalog change.
+- **reviewed_unchanged:** [packages/rules-data/README.md](packages/rules-data/README.md) — Still reserved until the catalog change activates it.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — No package change in this record.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261021-004.json).
+
+### Limits and next actions
+
+- Documentation only: no source change, so the last full local receipts (RUN-20261021-008 to 010 at fingerprint 35834e4b) and the hosted runs stand.
+- The screenshot review approves the current component design at this time; it is not reference-screen approval, device qualification or an accessibility evaluation.
+- The Director's message times are bounded by the agent's own timestamps; exact receipt times were not recorded.
+- Acquire the Ravensburger v3 catalog with provenance and normalize it in packages/rules-data under a new ADR.
+- Replace every made-up card in stories and browser tests with real catalog cards, then reduce the card tile to the card itself (D26).
+- Design and build the enhanced card inspector from scratch (D24).
+
 ## CHG-20261021-003 — Correct the Lorcana symbol provenance: the Director's own drawings or Ravensburger public digital assets
 
 - Status: finalized

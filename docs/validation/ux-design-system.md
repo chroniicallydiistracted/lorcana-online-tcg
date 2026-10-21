@@ -187,3 +187,42 @@ Recorded 2026-10-21T14:32:09.557Z (CHG-20261021-003). The Director states that m
   - **RUN-20261021-008:** configuration and workflow checks, `pnpm audit` clean, typecheck, lint and full suite (403 Node, 26 Python, upstream 406/1 skip, 2 injection).
   - **RUN-20261021-009:** isolated design-system suite in 115 s (34 gates, 161/161).
   - **RUN-20261021-010:** static `docs:check`.
+
+## Hosted runs, Director review and card decisions — 2026-10-21 UTC
+
+Recorded 2026-10-21 (CHG-20261021-004; decisions D24, D25, D26).
+
+### Hosted runs
+
+Source: public GitHub job metadata; no artifacts downloaded. Every run passed both jobs.
+- **Pull request #4, run 39514065746 at dc6757e (vite 8.3.3):** `design-system` 23:17:54–23:21:07Z, `foundation` 23:17:54–23:29:12Z on 2026-10-20.
+- **Pull request #5, run 39555849817 at 2c84769 (fonts, icons, symbols):** `design-system` 06:30:41–06:33:13Z, `foundation` 06:30:42–06:44:26Z.
+- **Pull request #5, run 39560354328 at a136841 (ADR 0017 approval):** `design-system` 07:12:21–07:15:30Z, `foundation` 07:12:21–07:24:53Z.
+- **Pull request #5, run 39619295311 at 7a9e757 (provenance correction):** `design-system` 14:43:11–14:45:47Z, `foundation` 14:43:10–14:59:19Z.
+- **Merge:** main moved from 3793081 to 7a9e757, the exact commit run 39619295311 tested, which also carries pull request #4. The agent pushed it at the Director's instruction to push once CI finished.
+- **Main, run 39621867049 at 7a9e757:** `design-system` 15:00:26–15:03:56Z, `foundation` 15:00:26–15:16:56Z. This closes the advisory failure of main run 39509517284.
+
+### Director review (D26)
+
+- **What was reviewed:** the UX backlog status and 100 screenshots of the current interface, captured from main 7a9e757 in headless Chromium 153 at 2× pixel density:
+  - every Storybook story except the six text-only reference pages, in Paper and Ink;
+  - open states of dialogs, the sheet, the end-turn confirmation, the tooltip and the inspector, wide and at 390 px;
+  - the web app's foundation page.
+
+  The screenshots and the capture script are review material and are not committed.
+- **Decision:** the design is approved as shown at this time, with one change. Card tiles carry too much information under the card image; it belongs to the card inspector, so a tile shows the card itself.
+- **Defect found while capturing:** the tile's inspect button shows "Printing" while its accessible name is "Inspect …", which fails WCAG 2.5.3 (Label in Name). The tile change removes that button text.
+- **Still pending:** matched reference screens (UX-01), device and browser qualification (UX-02) and manual accessibility journeys. Components stay Experimental until those exist.
+
+### Card decisions (D24, D25)
+
+- **D24, inspector:** the enhanced card inspector is designed and built from scratch. The original Inkspire app's inspector is a reference for what it offered, never a source of code or design.
+- **D25, card data:** all card data comes from Ravensburger's official catalog, never made-up cards.
+  - **Applies to:** interface, Storybook and inspector work, including the design-system browser tests.
+  - **Exceptions:** neutral placeholders remain only as the takedown fallback, and engine and rules tests keep their synthetic fixtures.
+  - **Consequence:** the made-up cards in the current stories (for example "Synthetic Explorer") are replaced with real catalog cards by the catalog change that follows.
+- **Ravensburger API check, about 21:26Z:**
+  - `https://api.lorcana.ravensburger.com/v3/catalog/{lang}` is current and needs no login. English, German, French and Italian are served; Spanish, Japanese, Chinese and Portuguese return 403.
+  - v4 and v5 return 403. The older v2 route answers with an empty catalog.
+  - The English catalog (last modified 2026-10-16, app version 2026.5, catalog hash `ae38af81…`) lists 18 sets through Hyperia City, 3,558 cards and 6,438 printing variants.
+  - Card images, thumbnails and foil masks are public, at opaque URLs given by the catalog.
