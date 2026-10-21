@@ -199,3 +199,88 @@ test('the pseudolocale lengthens component strings without breaking layout', asy
   await open(page, 'status-collections-feedback-and-connection--connection', 'theme:paper;locale:en-XA');
   await expect(page.getByText(/Öfflïñé/).first()).toBeVisible();
 });
+test('interface icons are Phosphor Regular at 20 px standard and 24 px prominent; selected uses Fill', async ({ page }) => {
+  for (const theme of ['paper', 'ink']) {
+    await open(page, 'foundations-type-layout-and-identity--icon-sizes', `theme:${theme}`);
+    for (const [row, px] of [['standard', 20], ['prominent', 24]] as const) {
+      const sizes = await page.locator(`[data-icon-row="${row}"] svg, [data-symbol-row="${row}"] svg`).evaluateAll(els => els.map(el => { const r = el.getBoundingClientRect(); return [Math.round(r.width), Math.round(r.height)]; }));
+      expect(sizes.length).toBeGreaterThanOrEqual(18);
+      for (const size of sizes) expect(size).toEqual([px, px]);
+    }
+    // Visual check (decision D21): the same representative icons at both sizes, in each theme.
+    await page.locator('#storybook-root').screenshot({ path: test.info().outputPath(`icon-sizes-${theme}.png`) });
+  }
+  await open(page, 'foundations-type-layout-and-identity--icons');
+  const glyph = (example: string) => page.locator(`[data-example="${example}"] svg`).evaluate(el => el.innerHTML);
+  expect(await glyph('selected')).not.toEqual(await glyph('regular'));
+});
+test('card faces load Bystander, Brandon and Century Gothic; characters Brandon lacks come from the measured fallback', async ({ page }) => {
+  await open(page, 'cards-tiles-deck-entries-and-inspection--card-face');
+  await page.evaluate(() => document.fonts.load('16px "Century Gothic"'));
+  const loaded = await page.evaluate(() => ['"The Bystander Collection Sans"', '"Brandon Text Cond"', '"Century Gothic"'].map(f => document.fonts.check(`16px ${f}`)));
+  expect(loaded).toEqual([true, true, true]);
+  // Chromium reports which platform fonts actually drew each node's glyphs.
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send('DOM.enable'); await cdp.send('CSS.enable');
+  const { root } = await cdp.send('DOM.getDocument', { depth: -1, pierce: true });
+  const frame = root;
+  const fontsFor = async (selector: string) => {
+    const { nodeId } = await cdp.send('DOM.querySelector', { nodeId: frame.nodeId, selector });
+    const { fonts } = await cdp.send('CSS.getPlatformFontsForNode', { nodeId });
+    return Object.fromEntries(fonts.map(f => [f.familyName, f.glyphCount]));
+  };
+  const title = await fontsFor('#storybook-root p');
+  expect(Object.keys(title).join(' ')).toMatch(/Bystander/);
+  const keyword = await fontsFor('#storybook-root [data-kind="keyword"]');
+  test.info().annotations.push({ type: 'card-text-fonts', description: JSON.stringify({ title, keyword }) });
+  expect(Object.keys(keyword).some(name => /Brandon/.test(name))).toBe(true);
+  // The reminder text's parentheses are not in the trial build; Source Sans 3 (Card Text Fallback) draws them.
+  expect(Object.keys(keyword).some(name => /Source Sans 3/.test(name))).toBe(true);
+  for (const theme of ['paper', 'ink']) {
+    await open(page, 'cards-tiles-deck-entries-and-inspection--card-face', `theme:${theme}`);
+    await page.locator('#storybook-root').screenshot({ path: test.info().outputPath(`card-face-${theme}.png`) });
+  }
+});
+test('the reading presentation sets rules text in Brandon Text Cond at 20 / 28 px', async ({ page }) => {
+  await open(page, 'cards-tiles-deck-entries-and-inspection--inspector-reading-mode');
+  const style = await page.locator('[data-reading] [data-kind]').first().evaluate(el => { const s = getComputedStyle(el); return { family: s.fontFamily, size: s.fontSize, line: s.lineHeight }; });
+  expect(style.family.split(',')[0]).toMatch(/Brandon Text Cond/);
+  expect([style.size, style.line]).toEqual(['20px', '28px']);
+});
+test('official ink and gameplay symbols render with names; the takedown switch shows neutral placeholders', async ({ page }) => {
+  for (const theme of ['paper', 'ink']) {
+    await open(page, 'cards-tiles-deck-entries-and-inspection--inks', `theme:${theme}`);
+    const official = page.locator('#storybook-root > * > :not([data-assets])');
+    await expect(official.getByText('Amber').first()).toBeVisible();
+    expect(await official.locator('svg[aria-hidden="true"] polygon, svg[aria-hidden="true"] path').count()).toBeGreaterThan(10);
+    const neutral = page.locator('[data-assets="neutral"]');
+    await expect(neutral.locator('svg')).toHaveCount(0);
+    await expect(neutral.getByText('Sapphire')).toBeVisible();
+    await page.locator('#storybook-root').screenshot({ path: test.info().outputPath(`inks-${theme}.png`) });
+    await open(page, 'cards-tiles-deck-entries-and-inspection--game-symbols', `theme:${theme}`);
+    const symbol = page.getByRole('img', { name: 'Strength', exact: true });
+    await expect(symbol).toBeVisible();
+    const [fill, text] = await symbol.evaluate(el => [getComputedStyle(el).fill, getComputedStyle(el).color]);
+    expect(fill).toBe(text);
+    await expect(page.locator('[data-assets="neutral"] svg')).toHaveCount(0);
+    await expect(page.locator('[data-assets="neutral"]').getByRole('img', { name: 'strength placeholder', exact: true })).toHaveText('Str');
+    // Display crops contain the rendered geometry (no clipping) and stay tight, so symbols match the icons' optical size.
+    const fits = await page.locator('#storybook-root svg[viewBox]').evaluateAll(els => els.map(el => {
+      const svg = el as SVGSVGElement, box = svg.getBBox(), [x, y, w, h] = svg.getAttribute('viewBox')!.split(' ').map(Number) as [number, number, number, number];
+      return { inside: box.x >= x - 0.5 && box.y >= y - 0.5 && box.x + box.width <= x + w + 0.5 && box.y + box.height <= y + h + 0.5, fill: Math.max(box.width, box.height) / w };
+    }));
+    expect(fits.length).toBeGreaterThanOrEqual(8);
+    for (const f of fits) { expect(f.inside).toBe(true); expect(f.fill).toBeGreaterThan(0.8); }
+    await page.locator('#storybook-root').screenshot({ path: test.info().outputPath(`game-symbols-${theme}.png`) });
+  }
+});
+test('forced colours keep gameplay symbols in the system text colour and ink symbols in their own colours', async ({ page }) => {
+  await page.emulateMedia({ forcedColors: 'active' });
+  await open(page, 'cards-tiles-deck-entries-and-inspection--game-symbols');
+  // SVG defaults to preserve-parent-color, so currentColor resolves to the forced system text colour.
+  const lore = await page.getByRole('img', { name: 'Lore', exact: true }).evaluate(el => { const s = getComputedStyle(el); return { adjust: s.forcedColorAdjust, fill: s.fill, color: s.color }; });
+  expect(lore.adjust).not.toBe('none');
+  expect(lore.fill).toBe(lore.color);
+  await open(page, 'cards-tiles-deck-entries-and-inspection--inks');
+  expect(await page.locator('#storybook-root svg').first().evaluate(el => getComputedStyle(el).forcedColorAdjust)).toBe('none');
+});

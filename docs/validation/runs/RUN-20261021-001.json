@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261021-001",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "python3 scripts/verify-config.py && python3 scripts/ci/check-config.py && pnpm audit && pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "dc6757e704298b18042abae853df9b40e173ea48",
+  "source_fingerprint": "52f0e1403f9c6d6d9e2043bd6aa3827102d6ad34247f67f4f91b6c732f9ad0a6",
+  "started_at": "2026-10-21T06:08:47.921Z",
+  "finished_at": "2026-10-21T06:10:48.446Z",
+  "recorded_at": "2026-10-21T06:10:48.446Z",
+  "time_precision": "exact",
+  "elapsed_ms": 120529,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Card-face fonts, Phosphor icon registry and verified Lorcana symbols (D20-D22): configuration contract, workflow config check, pnpm audit, typecheck, ESLint plus boundaries and the full workspace suite",
+  "log_path": "docs/validation/logs/RUN-20261021-001.txt",
+  "log_sha256": "21061f8ff6fad3d23500e2538b890d6a4c1305e49ace4fd8000d844f1e9c3234",
+  "redactions": 0
+}

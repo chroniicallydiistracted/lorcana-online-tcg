@@ -107,3 +107,56 @@ Recorded 2026-10-20T22:59:51.995Z (CHG-20261020-008). These are public GitHub jo
   - **RUN-20261020-043:** isolated design-system suite in 107 s (30 gates, Chromium install, 150/150).
   - **RUN-20261020-044:** isolated foundation pipeline, all 14 stages and the dependency advisory check, in 544 s (484 Node, 26 Python, 406/1 skip, 2 injection, 13 web Chromium, Lab workers).
   - **RUN-20261020-045:** static `docs:check`, passed.
+
+## Card-face fonts, icons and gameplay symbols — 2026-10-21 UTC
+
+Recorded 2026-10-21T06:11:47.022Z (CHG-20261021-001; decisions D20, D21, D22).
+
+### Card-face fonts (D20)
+
+- **Imported:** the weights the legacy card face uses.
+  - **The Bystander Collection Sans Regular:** titles. 340 characters; no rights text embedded ("copyright missing", Uniontype).
+  - **HvD trial Brandon Text Cond** at 400, 400 italic, 500, 700 and 900 italic: version, classification, rules, ability, keyword and flavour text. The embedded rights text reads "trial purposes only, no commercial use"; fsType 4.
+  - **Century Gothic Regular:** numbers. 668 characters, with a Monotype licence notice.
+  - **Source:** the files are byte-identical to the LorcanaOnline originals.
+- **Brandon coverage:** each trial build has exactly 70 characters: space, `! , - . ?`, digits, A–Z, a–z, no-break space and soft hyphen.
+  - **Fallback:** `Card Text Fallback` draws every other character. It is Source Sans 3 at the matching weight and style, from the same 3.052R release; the Medium, Italic and Black Italic files are added for it.
+  - **Measurement:** size-adjust is 106.06%, matching Brandon's cap height (0.700 em against 0.660 em), so apostrophes, quotes and parentheses align with Brandon's capitals. Ascent, descent and line-gap overrides are Brandon's typo metrics divided by size-adjust (66%, 28.29%, 36.77%), so fallback characters never change the line box.
+  - **Verification:** the tests recompute these values from the files. In Chromium's per-node font report, Brandon draws the keyword line's letters and Source Sans 3 draws its parentheses.
+  - **Accepted limitation:** the Director accepted the visible difference in fallback punctuation and accented letters as permanent.
+- **Card-face sizing defect, now fixed:** `CardFaceText` (CHG-20261020-004) was its own size container, so its 6cqw padding resolved against the viewport (about 77 px). That shrank the content box and every printed size with it: the title rendered at about 5 px. An inner content box now holds the padding, and every cqw is a percentage of the card width.
+
+### Interface icons and gameplay symbols (D21)
+
+- **Icons:** `Icon` renders Phosphor Regular from a 21-entry registry, each entry with one meaning.
+  - **Sizes:** 20 px standard and 24 px prominent.
+  - **Selected:** Fill.
+  - **Banned:** Thin, Light, Bold and Duotone.
+  - **Selection controls:** checkbox, radio and switch keep 24 px through `selection.size`. The checkbox mark is now the registry's Check or Minus.
+- **Gameplay symbols:**
+  - **Pack variants:** lore, exert, inkable and uninkable, plus the rules-text ("buff") forms of strength and willpower.
+  - **Rejected variants:** the line-art and black-and-white strength and willpower blurred or muddied at 20 px. The old project's bolder `*_card_text` files are Inkscape working files with transforms and construction strokes and only an "official-style" description, so they were not used.
+  - **Colour:** the symbols take the text colour. The printed gold `#d2b984` would fail 3:1 graphics contrast on Paper.
+  - **Ink symbols:** the official unframed badges at 20 px beside the ink name, keeping their colours in forced colours.
+  - **Crop:** each display crop is computed from the shapes' bounds and squared with 1/12 padding, matching the icons' optical size. A browser check confirms nothing is clipped and the crop stays tight.
+- **Takedown switch:** `officialAssets={false}` shows neutral text placeholders.
+- **Open provenance:** the asset pack's original download location is not recorded (fan-content policy rule 3).
+- **Custom identity set:** no custom Inkspire identity icons were made; D21 allows them only where they add meaningful identity.
+
+### Visual check and browser fidelity
+
+- **Screenshots:** representative icons and symbols at 20 and 24 px, the card face, the inks and the symbols were captured in Paper and Ink and reviewed.
+- **Hinting artifact:**
+  - **Symptom:** at high resolution, ordinary Source Sans 3 text showed gaps after narrow letters ("Synt het ic", "Add t o deck").
+  - **Cause:** headless Linux FreeType snaps every glyph advance to a whole pixel (`t`: 8 px against 6.8 px). The gaps were identical with the new fallback faces removed.
+  - **Fix:** the browser suite now runs with `--font-render-hinting=none`, which gives fractional advances and correct spacing, as desktop browsers produce.
+
+### Receipts
+
+All at fingerprint `52f0e1403f9c6d6d9e2043bd6aa3827102d6ad34247f67f4f91b6c732f9ad0a6`, with exact timing:
+- **RUN-20261021-001, passed:** configuration and workflow checks, `pnpm audit` with no advisories, typecheck, lint and full suite (403 Node, 26 Python, upstream 406/1 skip, 2 injection).
+- **RUN-20261021-002, passed:** isolated design-system suite in 117 s (34 gates, Chromium install, 161/161).
+- **RUN-20261021-003, passed:** isolated foundation pipeline, all 14 stages in 571 s (488 Node, 26 Python, 406/1 skip, 2 injection, 13 web Chromium, Lab workers).
+- **RUN-20261021-004, passed:** static `docs:check`.
+
+**Limits:** Chromium automation only. Real Windows and macOS rendering of the card faces and the manual accessibility journeys remain UX-02.

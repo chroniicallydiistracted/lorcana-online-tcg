@@ -1,0 +1,19 @@
+.symbol {
+  flex: none;
+  inline-size: var(--is-component-icon-size);
+  block-size: var(--is-component-icon-size);
+}
+.symbol[data-size="prominent"] {
+  inline-size: var(--is-component-icon-size-prominent);
+  block-size: var(--is-component-icon-size-prominent);
+}
+.neutral {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--is-component-icon-size);
+  padding-inline: var(--is-space-1);
+  border: var(--is-border-width-1) solid var(--is-color-border-essential);
+  border-radius: var(--is-component-control-radius);
+  color: var(--is-color-text-primary);
+  font: var(--is-typography-metadata);
+}

@@ -104,3 +104,27 @@ The previous amendment said the foundation pipeline keeps its 900 s budget. Host
 ## Amendment — 2026-10-20 UTC (vite security patch)
 
 vite is now pinned at 8.3.3, not 8.3.2, because three advisories published on 2026-10-20 affect 8.3.0–8.3.2. See [ADR 0008](0008-engine-placement-dependency-baseline.md#security-patch-vite-833--2026-10-20-utc) and CHG-20261020-008.
+
+## Amendment — 2026-10-21 UTC (decisions D20, D21, D22)
+
+- **Card-face fonts (D20).** Decision item 9's card-font exclusion is superseded: the card-face fonts now have a usage basis and are integrated.
+  - **Imported:** The Bystander Collection Sans Regular; HvD trial Brandon Text Cond 400, 400 italic, 500, 700 and 900 italic; Century Gothic Regular. These are only the weights the legacy card face uses.
+  - **Records:** the manifest records each file's checksum, source and embedded rights text.
+  - **Brandon coverage:** the trial builds cover 70 characters. `Card Text Fallback` supplies every other character: Source Sans 3 at the matching weight and style, with size-adjust matched to Brandon's cap height (106.06%) and Brandon's vertical metrics. `scripts/measure-font-metrics.mjs --cap-height` measures these values from the files.
+  - **Accepted limitation:** the Director accepted the visible difference in fallback punctuation and accented letters as permanent.
+- **Card-face sizing fix.** `CardFaceText` was its own size container, so its 6cqw padding resolved against the viewport and every printed size shrank with the content box. An inner content box now holds the padding, so each cqw is a percentage of the card's width.
+- **Interface icons (D21).** This supersedes the authored icon family (decision item 5 and the "Icon family" interpretation).
+  - **Family:** `Icon` renders Phosphor Regular (`@phosphor-icons/react` 2.1.10, MIT) from a curated registry that gives each icon one meaning. The registry is the only module that imports Phosphor, one icon per import.
+  - **Sizes:** standard 20 px for controls and prominent 24 px for prominent navigation.
+  - **Weights:** Fill marks selected states. Thin, Light, Bold and Duotone are not used.
+  - **Tokens:** checkbox, radio and switch keep 24 px through a separate `selection.size` token, and the icon stroke token is removed.
+- **Gameplay symbols (D21, D07).**
+  - **Components:** `GameSymbol` (lore, exert, inkable, uninkable, strength, willpower) and `InkIdentity` render verified Lorcana symbols instead of generic shapes.
+  - **Sources:** the vendored SVGs are byte-identical to the Director's asset pack. A strict parser turns them into inline data, and anything outside a small vector subset fails the build.
+  - **Colour:** gameplay symbols take the text colour, which keeps 3:1 contrast in both themes and follows forced colours. Ink symbols keep their official colours beside the ink name.
+  - **Crop:** each display crop is computed from the shapes' bounds, so symbols match the icons' optical size.
+  - **Takedown switch:** `DesignSystemProvider officialAssets={false}` replaces every symbol with a neutral placeholder (fan-content policy rule 4).
+- **Interpretations (D22).** The interpretations above stand as long as they align with the standard's constraints. The Director will review them.
+- **Browser tests.** They run with font hinting off. Headless Linux FreeType otherwise snaps glyph advances to whole pixels, which desktop browsers do not.
+
+See CHG-20261021-001.

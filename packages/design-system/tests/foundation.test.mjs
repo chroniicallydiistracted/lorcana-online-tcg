@@ -9,6 +9,7 @@ import { catalogs, formatMessage, pseudolocalize } from '../src/foundation/messa
 import { FAN_CONTENT_NOTICE } from '../src/components/FanContentNotice/notice.ts';
 import { rendererColors } from '../src/generated/renderer.ts';
 import { themeValues, motionDurationsMs, breakpoints } from '../src/generated/tokens.ts';
+import { readFont, measureCapHeight } from '../scripts/measure-font-metrics.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url)), repository = join(root, '../..');
 test('preference defaults match the standard (§31)', () => {
@@ -65,16 +66,40 @@ test('the fan-content notice is the policy text word for word with only the subj
   const quoted = policy.match(/^> (\[This website, artwork, etc\.\].*)$/m)[1];
   assert.equal(FAN_CONTENT_NOTICE, quoted.replaceAll('[This website, artwork, etc.]', 'The Inkspire'));
 });
-test('font provenance: imported files match recorded checksums; unlicensed card faces are not imported', () => {
+test('font provenance: every imported file matches its recorded checksum, source and rights basis', () => {
   const manifest = JSON.parse(readFileSync(join(root, 'src/assets/fonts/manifest.json'), 'utf8'));
   const sha = path => createHash('sha256').update(readFileSync(join(root, path))).digest('hex');
   const iface = manifest.families.find(f => f.role === 'interface');
   assert.equal(iface.license, 'OFL-1.1');
-  for (const file of iface.files) assert.equal(sha(file.path), file.sha256, file.path);
-  assert.deepEqual(iface.files.map(f => f.weight), [400, 600, 700]);
   assert.equal(sha(iface.license_file.path), iface.license_file.sha256);
-  for (const role of ['card-title', 'card-text', 'card-number']) { const family = manifest.families.find(f => f.role === role); assert.equal(family.status, 'not_imported'); assert.ok(family.reason.length > 40); }
+  assert.deepEqual(iface.files.filter(f => !f.use).map(f => f.weight), [400, 600, 700]);
+  for (const role of ['card-title', 'card-text', 'card-number']) {
+    const family = manifest.families.find(f => f.role === role);
+    assert.equal(family.status, 'imported', role);
+    assert.match(family.rights_basis, /^Director decision D20/);
+    assert.ok(family.embedded_rights && family.source.commit && family.files.length, role);
+  }
+  for (const family of manifest.families) for (const file of family.files) assert.equal(sha(file.path), file.sha256, file.path);
+  assert.deepEqual(manifest.families.find(f => f.role === 'card-text').files.map(f => `${f.weight} ${f.style}`), ['400 normal', '400 italic', '500 normal', '700 normal', '900 italic']);
   assert.deepEqual(manifest.fallback.faces.map(f => f.weight), [400, 600, 700]);
+});
+test('card text: the recorded Brandon coverage and its measured cap-height fallback match the files', () => {
+  const manifest = JSON.parse(readFileSync(join(root, 'src/assets/fonts/manifest.json'), 'utf8'));
+  const brandon = manifest.families.find(f => f.role === 'card-text'), fallback = manifest.card_text_fallback;
+  assert.equal(fallback.for, brandon.family);
+  for (const file of brandon.files) {
+    const font = readFont(join(root, file.path));
+    assert.equal(String.fromCodePoint(...font.codePoints), brandon.coverage.characters, file.path);
+    assert.equal(font.codePoints.length, brandon.coverage.code_points);
+    for (const ch of '\u2019()—:') assert.ok(!font.codePoints.includes(ch.codePointAt(0)), `the trial build lacks ${ch}, so the fallback supplies it`);
+    const face = fallback.faces.find(f => f.weight === file.weight && f.style === file.style);
+    const measured = measureCapHeight(font, readFont(join(root, face.src)));
+    for (const key of ['sizeAdjust', 'ascentOverride', 'descentOverride', 'lineGapOverride']) assert.equal(face[key], measured[key], `${file.path} ${key}`);
+    assert.equal(face.web_sha256, file.sha256);
+  }
+  const css = readFileSync(join(root, 'src/generated/fonts.css'), 'utf8');
+  assert.ok(!/font-family: "Source Sans 3";\n {2}src: url\("[^"]*SourceSans3-(It|Medium|BlackIt)\.woff2/.test(css), 'fallback-only files never join the interface family');
+  assert.equal((css.match(/font-family: "Card Text Fallback"/g) ?? []).length, 5);
 });
 test('generated values: Paper and Ink canvases, motion roles, breakpoints and renderer colour spaces', () => {
   assert.equal(themeValues.paper['color.canvas'], '#f7f7f7');

@@ -6,5 +6,6 @@ declare const styles: {
   readonly name: string;
   readonly short: string;
   readonly swatch: string;
+  readonly symbol: string;
 };
 export default styles;

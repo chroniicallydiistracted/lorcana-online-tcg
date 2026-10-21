@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { Button, CardFaceText, CardInspector, CardTile, DeckEntry, InkIdentity, InspectorHost, Inline, Stack, Text } from '../src/index.ts';
+import { Button, CardFaceText, CardInspector, CardTile, DeckEntry, GameSymbol, InkIdentity, InspectorHost, Inline, Stack, Text, gameSymbolNames } from '../src/index.ts';
+import { gameSymbolDoc } from '../src/components/GameSymbol/GameSymbol.docs.ts';
+import { OfficialAssetsOff } from './support/OfficialAssetsOff.tsx';
 import { inkIdentityDoc } from '../src/components/Ink/InkIdentity.docs.ts';
 import { cardTileDoc } from '../src/components/CardTile/CardTile.docs.ts';
 import { deckEntryDoc } from '../src/components/DeckEntry/DeckEntry.docs.ts';
@@ -18,10 +20,23 @@ const printed = [
   { kind: 'ability' as const, heading: 'Quiet Charting', text: 'When you play this character, look at the top 2 cards of your deck. Put one on the top and the other on the bottom.' },
 ];
 
-export const Documentation: Story = { render: () => <DocPage docs={[inkIdentityDoc, cardTileDoc, deckEntryDoc, cardInspectorDoc, inspectorHostDoc, cardFaceTextDoc]} /> };
+export const Documentation: Story = { render: () => <DocPage docs={[inkIdentityDoc, gameSymbolDoc, cardTileDoc, deckEntryDoc, cardInspectorDoc, inspectorHostDoc, cardFaceTextDoc]} /> };
 export const Inks: Story = {
-  parameters: { designSystem: { coverage: { InkIdentity: ['single', 'multicolour', 'compact'] } } },
-  render: () => <Stack gap={3}><InkIdentity inks={['amber']} /><InkIdentity inks={['amethyst', 'emerald', 'ruby', 'sapphire', 'steel']} /><InkIdentity inks={['amber', 'steel']} compact /></Stack>,
+  parameters: { designSystem: { coverage: { InkIdentity: ['single', 'multicolour', 'compact', 'neutral'] } } },
+  render: () => <Stack gap={3}>
+    <InkIdentity inks={['amber']} />
+    <InkIdentity inks={['amethyst', 'emerald', 'ruby', 'sapphire', 'steel']} />
+    <InkIdentity inks={['amber', 'steel']} compact />
+    <div data-assets="neutral"><OfficialAssetsOff><InkIdentity inks={['amber', 'sapphire']} /></OfficialAssetsOff></div>
+  </Stack>,
+};
+export const GameSymbols: Story = {
+  parameters: { designSystem: { coverage: { GameSymbol: ['decorative', 'labelled', 'neutral'] } } },
+  render: () => <Stack gap={4}>
+    <Inline gap={4}>{gameSymbolNames.map(name => <Inline key={name} gap={1}><GameSymbol name={name} /><Text as="span" role="metadata">{name}</Text></Inline>)}</Inline>
+    <Inline gap={4}><Inline gap={1}><GameSymbol name="strength" label="Strength" /><Text as="span" numeric>3</Text></Inline><Inline gap={1}><GameSymbol name="willpower" label="Willpower" /><Text as="span" numeric>4</Text></Inline><Inline gap={1}><GameSymbol name="lore" label="Lore" /><Text as="span" numeric>2</Text></Inline></Inline>
+    <div data-assets="neutral"><OfficialAssetsOff><Inline gap={4}>{gameSymbolNames.map(name => <GameSymbol key={name} name={name} label={`${name} placeholder`} />)}</Inline></OfficialAssetsOff></div>
+  </Stack>,
 };
 export const Tiles: Story = {
   parameters: { designSystem: { coverage: { CardTile: ['owned', 'unowned', 'unknown ownership', 'loading ownership', 'unavailable ownership', 'missing image', 'long name'] } } },

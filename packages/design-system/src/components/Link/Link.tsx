@@ -13,6 +13,6 @@ export interface LinkProps extends Omit<AriaLinkProps, 'className' | 'style' | '
 /** Navigation with an identifiable destination. Underlined so it never relies on colour alone. */
 export function Link({ children, external = false, ...props }: LinkProps) {
   return <AriaLink {...props} className={styles.link} {...defined({ rel: external ? 'noreferrer' : props.rel })}>
-    {children}{external && <Icon name="external" size="small" />}
+    {children}{external && <Icon name="external" />}
   </AriaLink>;
 }

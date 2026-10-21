@@ -11,5 +11,5 @@ export function Badge({ children, tone = 'neutral' }: { children: ReactNode; ton
 }
 /** Status with an icon and text, for example a legality or connection state. */
 export function StatusIndicator({ children, tone }: { children: ReactNode; tone: Exclude<StatusTone, 'neutral'> }) {
-  return <span className={styles.status} data-tone={tone}><Icon name={toneIcon[tone]} size="small" /><span>{children}</span></span>;
+  return <span className={styles.status} data-tone={tone}><Icon name={toneIcon[tone]} /><span>{children}</span></span>;
 }

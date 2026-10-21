@@ -1,5 +1,5 @@
 // The Inkspire design system: tokens, foundations and shared components (standard docs/vision/UX_UI_DESIGN_SYSTEM.md).
-export { DesignSystemProvider, useDesignSystem, useMessages, useAnnouncer } from './foundation/DesignSystemProvider.tsx';
+export { DesignSystemProvider, useDesignSystem, useMessages, useAnnouncer, useOfficialAssets } from './foundation/DesignSystemProvider.tsx';
 export type { DesignSystemProviderProps, Announcement } from './foundation/DesignSystemProvider.tsx';
 export * from './foundation/preferences.ts';
 export { catalogs, catalogFor, formatMessage, pseudolocalize } from './foundation/messages.ts';
@@ -9,6 +9,9 @@ export type { DesignToken, Theme } from './generated/tokens.ts';
 export type { ComponentDoc, ComponentStatus } from './components/docs.ts';
 
 export { Icon, iconNames } from './components/Icon/Icon.tsx';
+export { iconRegistry } from './components/Icon/registry.ts';
+export { GameSymbol, gameSymbolNames } from './components/GameSymbol/GameSymbol.tsx';
+export type { GameSymbolName, GameSymbolProps } from './components/GameSymbol/GameSymbol.tsx';
 export type { IconName, IconProps } from './components/Icon/Icon.tsx';
 export { Text, Heading, VisuallyHidden } from './components/Text/Text.tsx';
 export type { TextProps, TextRole, HeadingProps, HeadingRole } from './components/Text/Text.tsx';

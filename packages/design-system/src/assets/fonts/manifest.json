@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "description": "Font asset provenance (standard §6, §7, §29). Every imported font file records its source, rights basis and checksum. Families without a recorded usage basis are not imported.",
+  "description": "Font asset provenance (standard §6, §7, §29). Every imported font file records its source, rights basis and checksum.",
   "families": [
     {
       "family": "Source Sans 3",
@@ -49,26 +49,180 @@
           "bytes": 108640,
           "sha256": "8d35c6d40e750a4ee23bbbba2bd604ad098d172907369b43281507e16b8e2e7a",
           "archive_member": "WOFF2/TTF/SourceSans3-Bold.ttf.woff2"
+        },
+        {
+          "path": "src/assets/fonts/source-sans-3/SourceSans3-Medium.woff2",
+          "weight": 500,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 108844,
+          "sha256": "437a67034cb2ce4cb20d7f808e748e08ac201e15077a075a69baf67d8376a0c3",
+          "archive_member": "WOFF2/TTF/SourceSans3-Medium.ttf.woff2",
+          "use": "Card Text Fallback only"
+        },
+        {
+          "path": "src/assets/fonts/source-sans-3/SourceSans3-It.woff2",
+          "weight": 400,
+          "style": "italic",
+          "format": "woff2",
+          "bytes": 86452,
+          "sha256": "4d80b3b801f4c457f1b4adbd3911d8501338e6d282141663770c38d3a2e97859",
+          "archive_member": "WOFF2/TTF/SourceSans3-It.ttf.woff2",
+          "use": "Card Text Fallback only"
+        },
+        {
+          "path": "src/assets/fonts/source-sans-3/SourceSans3-BlackIt.woff2",
+          "weight": 900,
+          "style": "italic",
+          "format": "woff2",
+          "bytes": 81732,
+          "sha256": "83327dde35da020a55e31c604eda8ea599771974b70250a6d373852d5d4b77d8",
+          "archive_member": "WOFF2/TTF/SourceSans3-BlackIt.ttf.woff2",
+          "use": "Card Text Fallback only"
         }
       ]
     },
     {
       "family": "The Bystander Collection Sans",
       "role": "card-title",
-      "status": "not_imported",
-      "reason": "The legacy Inkspire files carry no license or provenance record. This repository is public, so the files are not redistributed until a usage basis is recorded. The card-title token falls back to Source Sans 3."
+      "status": "imported",
+      "rights_basis": "Director decision D20 (2026-10-21 UTC): the card-face fonts have a usage basis, the card presentation and the interactive card summary pop-out, and are integrated as the standard requires (§7). The Director owns this rights decision; the embedded rights text below is recorded as found.",
+      "embedded_rights": {
+        "copyright": "copyright missing",
+        "manufacturer": "Uniontype",
+        "designer": "Roman Avdiushkin",
+        "vendor_url": "https://www.behance.net/Uniontype",
+        "license": null,
+        "fs_type": 0
+      },
+      "source": {
+        "project": "The Director's original Inkspire app, /home/andre/the-inkspire",
+        "commit": "b7b876ba",
+        "legacy_import": "Imported there with the owner's approval on 2026-07-02 (docs/migration-plan/CARD_INSPECTOR_TOKEN_ASSET_NEEDS.md)",
+        "origin": "Byte-identical to /home/andre/LorcanaOnline/public/assets/fonts/woff2/",
+        "retrieved": "2026-10-21",
+        "path": "layers/inkspire-design-system/app/assets/fonts/CardFace/TheBystanderCollection"
+      },
+      "coverage": "340 code points: Basic Latin, Latin-1 and the launch-language letters; no U+00A0.",
+      "files": [
+        {
+          "path": "src/assets/fonts/bystander-collection/BystanderSans-Regular.woff2",
+          "weight": 400,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 16788,
+          "sha256": "1525cca7c62a6be4324c0cb68f4096bd9e4ee16749ab699567dfeefb4def420f",
+          "source_file": "BystanderSans-Regular.woff2"
+        }
+      ]
     },
     {
       "family": "Brandon Text Cond",
       "role": "card-text",
-      "status": "not_imported",
-      "reason": "The legacy Inkspire files are HvD Fonts trial builds (file prefix HvDTrial_) with no recorded usage basis. This repository is public, so the files are not redistributed until a usage basis is recorded. The card-text token falls back to Source Sans 3."
+      "status": "imported",
+      "rights_basis": "Director decision D20 (2026-10-21 UTC): the card-face fonts have a usage basis, the card presentation and the interactive card summary pop-out, and are integrated as the standard requires (§7). The Director owns this rights decision; the embedded rights text below is recorded as found. The Director also decided (answer recorded 2026-10-21T05:39:21.363Z) that these trial builds are final, with the coverage fallback below as an accepted, permanent limitation.",
+      "embedded_rights": {
+        "copyright": "This font is for trial purposes only. No commercial use. Copyright (c) by Hannes von Doehren. All rights reserved.",
+        "trademark": "Brandon is a trademark of Hannes von Doehren.",
+        "manufacturer": "Hannes von Doehren",
+        "vendor_url": "http://www.hvdfonts.com",
+        "license": null,
+        "fs_type": 4
+      },
+      "source": {
+        "project": "The Director's original Inkspire app, /home/andre/the-inkspire",
+        "commit": "b7b876ba",
+        "legacy_import": "Imported there with the owner's approval on 2026-07-02 (docs/migration-plan/CARD_INSPECTOR_TOKEN_ASSET_NEEDS.md)",
+        "origin": "Byte-identical to /home/andre/LorcanaOnline/public/assets/fonts/woff2/",
+        "retrieved": "2026-10-21",
+        "path": "layers/inkspire-design-system/app/assets/fonts/CardFace/BrandonTextCond"
+      },
+      "coverage": {
+        "code_points": 70,
+        "characters": " !,-.0123456789?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ­",
+        "fallback": "Every other character (quotes, apostrophes, parentheses, colon, semicolon, slash, plus, dashes, ellipsis and accented letters) comes from Card Text Fallback."
+      },
+      "files": [
+        {
+          "path": "src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-Regular.woff2",
+          "weight": 400,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 8384,
+          "sha256": "68766d42010fee5b8435e5d72fbce605c83e1626ae9a4978dbcd9227c5260868",
+          "source_file": "HvDTrial_BrandonTextCond-Regular.woff2"
+        },
+        {
+          "path": "src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-RegularItalic.woff2",
+          "weight": 400,
+          "style": "italic",
+          "format": "woff2",
+          "bytes": 8628,
+          "sha256": "6d2373bd2e47a91f65eee75069905432ee187f45501d4f8d248db7242d85df68",
+          "source_file": "HvDTrial_BrandonTextCond-RegularItalic.woff2"
+        },
+        {
+          "path": "src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-Medium.woff2",
+          "weight": 500,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 8372,
+          "sha256": "d68dcab9f792305622cbcdbad30235c5053a1f161c874c6c5d42e6ad73a9741b",
+          "source_file": "HvDTrial_BrandonTextCond-Medium.woff2"
+        },
+        {
+          "path": "src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-Bold.woff2",
+          "weight": 700,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 8396,
+          "sha256": "b2593045ac5dbb27be992ce9c187eff03f944aba9b08a75887fab8ee514b1bfa",
+          "source_file": "HvDTrial_BrandonTextCond-Bold.woff2"
+        },
+        {
+          "path": "src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-BlackItalic.woff2",
+          "weight": 900,
+          "style": "italic",
+          "format": "woff2",
+          "bytes": 8576,
+          "sha256": "bc05591ce4bea9b9680725a22970e97179252a7902d0d47ff97a89f7303b1006",
+          "source_file": "HvDTrial_BrandonTextCond-BlackItalic.woff2"
+        }
+      ]
     },
     {
       "family": "Century Gothic",
       "role": "card-number",
-      "status": "not_imported",
-      "reason": "The legacy Inkspire files carry no license or provenance record. This repository is public, so the files are not redistributed until a usage basis is recorded. The card-number token falls back to Source Sans 3."
+      "status": "imported",
+      "rights_basis": "Director decision D20 (2026-10-21 UTC): the card-face fonts have a usage basis, the card presentation and the interactive card summary pop-out, and are integrated as the standard requires (§7). The Director owns this rights decision; the embedded rights text below is recorded as found.",
+      "embedded_rights": {
+        "copyright": "Typeface © The Monotype Corporation plc. Data © The Monotype Corporation plc / Type Solutions Inc. 1990-91 All Rights Reserved",
+        "trademark": "Century Gothic is a trademark of The Monotype Corporation plc.",
+        "manufacturer": "Monotype Typography, Inc.",
+        "license": "NOTIFICATION OF LICENSE AGREEMENT: use is covered by a Monotype license agreement (embedded name ID 13).",
+        "license_url": "http://www.monotype.com/html/type/license.html",
+        "fs_type": 0
+      },
+      "source": {
+        "project": "The Director's original Inkspire app, /home/andre/the-inkspire",
+        "commit": "b7b876ba",
+        "legacy_import": "Imported there with the owner's approval on 2026-07-02 (docs/migration-plan/CARD_INSPECTOR_TOKEN_ASSET_NEEDS.md)",
+        "origin": "Byte-identical to /home/andre/LorcanaOnline/public/assets/fonts/woff2/",
+        "retrieved": "2026-10-21",
+        "path": "layers/inkspire-design-system/app/assets/fonts/CardFace/CenturyGothic"
+      },
+      "coverage": "668 code points, including the launch-language letters.",
+      "files": [
+        {
+          "path": "src/assets/fonts/century-gothic/centurygothic.woff2",
+          "weight": 400,
+          "style": "normal",
+          "format": "woff2",
+          "bytes": 67636,
+          "sha256": "4ce200160ffe3b8bb66d944473143b8021d98b1767878b628f8aaf335d013380",
+          "source_file": "centurygothic.woff2"
+        }
+      ]
     }
   ],
   "fallback": {
@@ -127,6 +281,68 @@
         "ascentOverride": 107.81,
         "descentOverride": 35.15,
         "lineGapOverride": 0
+      }
+    ]
+  },
+  "card_text_fallback": {
+    "family": "Card Text Fallback",
+    "for": "Brandon Text Cond",
+    "method": "Measured by `node scripts/measure-font-metrics.mjs --cap-height` from the shipped WOFF2 files: size-adjust matches Source Sans 3's cap height to Brandon Text Cond's, so the punctuation Brandon lacks (apostrophes, quotes, parentheses) aligns with its capitals; vertical overrides are Brandon's OS/2 typo metrics divided by size-adjust, so fallback characters never change the line box. Weights and styles match one-to-one.",
+    "faces": [
+      {
+        "weight": 400,
+        "style": "normal",
+        "src": "src/assets/fonts/source-sans-3/SourceSans3-Regular.woff2",
+        "web_sha256": "68766d42010fee5b8435e5d72fbce605c83e1626ae9a4978dbcd9227c5260868",
+        "fallback_sha256": "53492fb3a0def77354f166a55d09b63a10855e91c206c7620a81cf56e97f8ec3",
+        "sizeAdjust": 106.06,
+        "ascentOverride": 66,
+        "descentOverride": 28.29,
+        "lineGapOverride": 36.77
+      },
+      {
+        "weight": 400,
+        "style": "italic",
+        "src": "src/assets/fonts/source-sans-3/SourceSans3-It.woff2",
+        "web_sha256": "6d2373bd2e47a91f65eee75069905432ee187f45501d4f8d248db7242d85df68",
+        "fallback_sha256": "4d80b3b801f4c457f1b4adbd3911d8501338e6d282141663770c38d3a2e97859",
+        "sizeAdjust": 106.06,
+        "ascentOverride": 66,
+        "descentOverride": 28.29,
+        "lineGapOverride": 36.77
+      },
+      {
+        "weight": 500,
+        "style": "normal",
+        "src": "src/assets/fonts/source-sans-3/SourceSans3-Medium.woff2",
+        "web_sha256": "d68dcab9f792305622cbcdbad30235c5053a1f161c874c6c5d42e6ad73a9741b",
+        "fallback_sha256": "437a67034cb2ce4cb20d7f808e748e08ac201e15077a075a69baf67d8376a0c3",
+        "sizeAdjust": 106.06,
+        "ascentOverride": 66,
+        "descentOverride": 28.29,
+        "lineGapOverride": 36.77
+      },
+      {
+        "weight": 700,
+        "style": "normal",
+        "src": "src/assets/fonts/source-sans-3/SourceSans3-Bold.woff2",
+        "web_sha256": "b2593045ac5dbb27be992ce9c187eff03f944aba9b08a75887fab8ee514b1bfa",
+        "fallback_sha256": "8d35c6d40e750a4ee23bbbba2bd604ad098d172907369b43281507e16b8e2e7a",
+        "sizeAdjust": 106.06,
+        "ascentOverride": 66,
+        "descentOverride": 28.29,
+        "lineGapOverride": 36.77
+      },
+      {
+        "weight": 900,
+        "style": "italic",
+        "src": "src/assets/fonts/source-sans-3/SourceSans3-BlackIt.woff2",
+        "web_sha256": "bc05591ce4bea9b9680725a22970e97179252a7902d0d47ff97a89f7303b1006",
+        "fallback_sha256": "83327dde35da020a55e31c604eda8ea599771974b70250a6d373852d5d4b77d8",
+        "sizeAdjust": 106.06,
+        "ascentOverride": 66,
+        "descentOverride": 28.29,
+        "lineGapOverride": 36.77
       }
     ]
   }

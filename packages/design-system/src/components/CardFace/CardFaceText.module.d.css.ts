@@ -2,6 +2,7 @@
 declare const styles: {
   readonly block: string;
   readonly classification: string;
+  readonly content: string;
   readonly face: string;
   readonly flavor: string;
   readonly heading: string;

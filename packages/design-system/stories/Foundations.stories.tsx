@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { FanContentNotice, Heading, Icon, Inline, Stack, Surface, Text, Wordmark, iconNames } from '../src/index.ts';
+import { FanContentNotice, GameSymbol, Heading, Icon, Inline, Stack, Surface, Text, Wordmark, gameSymbolNames, iconNames, iconRegistry } from '../src/index.ts';
+import type { IconName } from '../src/index.ts';
 import { iconDoc } from '../src/components/Icon/Icon.docs.ts';
 import { headingDoc, textDoc } from '../src/components/Text/Text.docs.ts';
 import { inlineDoc, stackDoc, surfaceDoc } from '../src/components/Layout/Layout.docs.ts';
@@ -40,10 +41,25 @@ export const Layout: Story = {
   </Stack>,
 };
 export const Icons: Story = {
-  parameters: { designSystem: { coverage: { Icon: ['decorative', 'labelled'] } } },
+  parameters: { designSystem: { coverage: { Icon: ['decorative', 'labelled', 'selected'] } } },
   render: () => <Stack gap={4}>
-    <Inline gap={4}>{iconNames.map(name => <span key={name} style={{ display: 'inline-flex', gap: 'var(--is-space-1)', alignItems: 'center' }}><Icon name={name} /><Text as="span" role="metadata">{name}</Text></span>)}</Inline>
-    <Inline gap={4}><Icon name="warning" label="Warning" /><Icon name="success" label="Success" size="small" /></Inline>
+    <dl style={{ display: 'grid', gridTemplateColumns: 'auto auto 1fr', gap: 'var(--is-space-2) var(--is-space-3)', alignItems: 'center', margin: 0 }}>
+      {iconNames.map(name => <div key={name} style={{ display: 'contents' }}><dt style={{ display: 'contents' }}><Icon name={name} /><Text as="span" role="metadata">{name}</Text></dt><dd style={{ margin: 0 }}><Text as="span" role="metadata" tone="supporting">{iconRegistry[name].meaning}</Text></dd></div>)}
+    </dl>
+    <Inline gap={4}><Icon name="warning" label="Warning" /><Icon name="success" label="Success" /></Inline>
+    <Inline gap={2}><span data-example="regular"><Icon name="check" /></span><span data-example="selected"><Icon name="check" selected /></span><Text as="span">Regular and selected (Fill)</Text></Inline>
+  </Stack>,
+};
+/** Visual check (decision D21): the same representative icons at 20 and 24 px; compare in Paper and Ink. */
+const representative: readonly IconName[] = ['search', 'close', 'chevron-down', 'check', 'plus', 'minus', 'warning', 'info', 'bell', 'refresh', 'more', 'inspect'];
+export const IconSizes: Story = {
+  parameters: { designSystem: { coverage: { Icon: ['decorative'], GameSymbol: ['decorative'] } } },
+  render: () => <Stack gap={4}>
+    {(['standard', 'prominent'] as const).map(size => <Stack key={size} gap={2}>
+      <Text role="body-strong">{size === 'standard' ? 'Standard, 20 px' : 'Prominent, 24 px'}</Text>
+      <div data-icon-row={size}><Inline gap={4}>{representative.map(name => <Icon key={name} name={name} size={size} />)}</Inline></div>
+      <div data-symbol-row={size}><Inline gap={4}>{gameSymbolNames.map(name => <GameSymbol key={name} name={name} size={size} />)}</Inline></div>
+    </Stack>)}
   </Stack>,
 };
 export const Identity: Story = {

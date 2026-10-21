@@ -1,17 +1,43 @@
-// Measures fallback @font-face metrics from actual TrueType files (standard §6: never guess size-adjust).
-// Usage: node scripts/measure-font-metrics.mjs <corpus.txt> <web.ttf> <fallback.ttf> [<web.ttf> <fallback.ttf> ...]
-// Prints JSON: per pair, the web font's vertical metrics and the size-adjust that makes the fallback's
-// average advance (weighted by the corpus's character frequencies) match the web font's.
+// Measures fallback @font-face metrics from actual font files (standard §6: never guess size-adjust).
+// Reads TrueType/OpenType and WOFF2 files.
+// Usage:
+//   node scripts/measure-font-metrics.mjs <corpus.txt> <web> <fallback> [<web> <fallback> ...]
+//     Metric fallback: size-adjust makes the fallback's average advance, weighted by the corpus's
+//     character frequencies, match the web font's.
+//   node scripts/measure-font-metrics.mjs --cap-height <web> <fallback> [<web> <fallback> ...]
+//     Coverage fallback: size-adjust makes the fallback's cap height match the web font's, so the
+//     characters the web font lacks align with its capitals (decision D20).
+// Both print JSON with the web font's vertical metrics divided by size-adjust.
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { brotliDecompressSync } from 'node:zlib';
 
+const WOFF2_TAGS = ['cmap', 'head', 'hhea', 'hmtx', 'maxp', 'name', 'OS/2', 'post', 'cvt ', 'fpgm', 'glyf', 'loca', 'prep', 'CFF ', 'VORG', 'EBDT', 'EBLC', 'gasp', 'hdmx', 'kern', 'LTSH', 'PCLT', 'VDMX', 'vhea', 'vmtx', 'BASE', 'GDEF', 'GPOS', 'GSUB', 'EBSC', 'JSTF', 'MATH', 'CBDT', 'CBLC', 'COLR', 'CPAL', 'SVG ', 'sbix', 'acnt', 'avar', 'bdat', 'bloc', 'bsln', 'cvar', 'fdsc', 'feat', 'fmtx', 'fvar', 'gvar', 'hsty', 'just', 'lcar', 'mort', 'morx', 'opbd', 'prop', 'trak', 'Zapf', 'Silf', 'Glat', 'Gloc', 'Feat', 'Sill'];
+// WOFF2 (W3C WOFF2 §5): a table directory with UIntBase128 lengths, then one Brotli stream.
+// head, hhea, OS/2 and cmap are never transformed; a transformed hmtx is reported so widths are refused.
+function woff2Tables(bytes) {
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength), count = view.getUint16(12), dir = [];
+  let at = 48;
+  const base128 = () => { let value = 0; for (let i = 0; i < 5; i++) { const b = bytes[at++]; value = value * 128 + (b & 0x7f); if (!(b & 0x80)) return value; } throw new Error('Invalid WOFF2 length'); };
+  for (let i = 0; i < count; i++) {
+    const flags = bytes[at++];
+    const tag = (flags & 0x3f) === 0x3f ? String.fromCharCode(...bytes.subarray(at, (at += 4))) : WOFF2_TAGS[flags & 0x3f];
+    const version = flags >> 6, original = base128();
+    const transformed = tag === 'glyf' || tag === 'loca' ? version === 0 : version !== 0;
+    dir.push({ tag, transformed, length: transformed ? base128() : original });
+  }
+  const data = brotliDecompressSync(bytes.subarray(at, at + view.getUint32(20))), out = {};
+  let offset = 0;
+  for (const { tag, transformed, length } of dir) { out[tag] = { offset, length, transformed }; offset += length; }
+  return { view: new DataView(data.buffer, data.byteOffset, data.byteLength), out };
+}
 function tables(bytes) {
+  if (String.fromCharCode(...bytes.subarray(0, 4)) === 'wOF2') return woff2Tables(bytes);
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength), count = view.getUint16(4), out = {};
   for (let i = 0; i < count; i++) {
     const at = 12 + i * 16, tag = String.fromCharCode(...bytes.subarray(at, at + 4));
     out[tag] = { offset: view.getUint32(at + 8), length: view.getUint32(at + 12) };
   }
-  for (const tag of ['head', 'hhea', 'hmtx', 'cmap', 'OS/2']) if (!out[tag]) throw new Error('Missing table ' + tag);
   return { view, out };
 }
 function cmap(view, base) {
@@ -46,7 +72,8 @@ function cmap(view, base) {
 }
 export function readFont(path) {
   const bytes = readFileSync(path), { view, out } = tables(bytes);
-  const head = out.head.offset, hhea = out.hhea.offset, os2 = out['OS/2'].offset, hmtx = out.hmtx.offset;
+  for (const tag of ['head', 'hhea', 'hmtx', 'cmap', 'OS/2']) if (!out[tag]) throw new Error('Missing table ' + tag);
+  const head = out.head.offset, hhea = out.hhea.offset, os2 = out['OS/2'].offset, hmtx = out.hmtx.offset, os2Version = view.getUint16(os2);
   const unitsPerEm = view.getUint16(head + 18), metrics = view.getUint16(hhea + 34), chars = cmap(view, out.cmap.offset);
   const advance = glyph => view.getUint16(hmtx + Math.min(glyph, metrics - 1) * 4);
   return {
@@ -54,7 +81,13 @@ export function readFont(path) {
     hhea: { ascender: view.getInt16(hhea + 4), descender: view.getInt16(hhea + 6), lineGap: view.getInt16(hhea + 8) },
     typo: { ascender: view.getInt16(os2 + 68), descender: view.getInt16(os2 + 70), lineGap: view.getInt16(os2 + 72), useTypoMetrics: (view.getUint16(os2 + 62) & 0x80) !== 0 },
     win: { ascent: view.getUint16(os2 + 74), descent: view.getUint16(os2 + 76) },
-    width(codePoint) { const glyph = chars.get(codePoint); return glyph === undefined ? undefined : advance(glyph) / unitsPerEm; },
+    xHeight: os2Version >= 2 ? view.getInt16(os2 + 86) : undefined,
+    capHeight: os2Version >= 2 ? view.getInt16(os2 + 88) : undefined,
+    codePoints: [...chars.keys()].sort((a, b) => a - b),
+    width(codePoint) {
+      if (out.hmtx.transformed) throw new Error('Transformed WOFF2 hmtx: widths unavailable');
+      const glyph = chars.get(codePoint); return glyph === undefined ? undefined : advance(glyph) / unitsPerEm;
+    },
   };
 }
 export function frequencies(text) {
@@ -73,8 +106,7 @@ export function averageWidth(font, counts, other) {
   return total / weight;
 }
 const round = (value, digits = 4) => Number(value.toFixed(digits));
-export function measurePair(web, fallback, counts) {
-  const sizeAdjust = averageWidth(web, counts, fallback) / averageWidth(fallback, counts, web);
+function overrides(web, sizeAdjust) {
   // Browsers lay out the web face with typo metrics when USE_TYPO_METRICS is set, otherwise hhea.
   const v = web.typo.useTypoMetrics ? { ascent: web.typo.ascender, descent: -web.typo.descender, lineGap: web.typo.lineGap } : { ascent: web.hhea.ascender, descent: -web.hhea.descender, lineGap: web.hhea.lineGap };
   return {
@@ -85,13 +117,21 @@ export function measurePair(web, fallback, counts) {
     verticalMetricsSource: web.typo.useTypoMetrics ? 'OS/2 typo (USE_TYPO_METRICS)' : 'hhea',
   };
 }
+export function measurePair(web, fallback, counts) {
+  return overrides(web, averageWidth(web, counts, fallback) / averageWidth(fallback, counts, web));
+}
+export function measureCapHeight(web, fallback) {
+  if (!web.capHeight || !fallback.capHeight) throw new Error('Cap height requires OS/2 version 2 or later');
+  return overrides(web, (web.capHeight / web.unitsPerEm) / (fallback.capHeight / fallback.unitsPerEm));
+}
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop())) {
-  const [corpus, ...fonts] = process.argv.slice(2);
-  if (!corpus || fonts.length < 2 || fonts.length % 2) throw new Error('Usage: corpus web.ttf fallback.ttf [...]');
-  const text = readFileSync(corpus, 'utf8'), counts = frequencies(text), results = [];
+  const [first, ...fonts] = process.argv.slice(2), capHeight = first === '--cap-height';
+  if (!first || fonts.length < 2 || fonts.length % 2) throw new Error('Usage: (corpus | --cap-height) web fallback [...]');
+  const text = capHeight ? '' : readFileSync(first, 'utf8'), counts = frequencies(text), results = [];
   for (let i = 0; i < fonts.length; i += 2) {
     const web = readFont(fonts[i]), fallback = readFont(fonts[i + 1]);
-    results.push({ web: { file: fonts[i].split('/').pop(), sha256: web.sha256 }, fallback: { file: fonts[i + 1].split('/').pop(), sha256: fallback.sha256 }, ...measurePair(web, fallback, counts) });
+    results.push({ web: { file: fonts[i].split('/').pop(), sha256: web.sha256, codePoints: web.codePoints.length }, fallback: { file: fonts[i + 1].split('/').pop(), sha256: fallback.sha256 }, ...(capHeight ? measureCapHeight(web, fallback) : measurePair(web, fallback, counts)) });
   }
-  console.log(JSON.stringify({ corpus: { file: corpus.split('/').pop(), sha256: createHash('sha256').update(text).digest('hex'), characters: [...counts.values()].reduce((a, b) => a + b, 0) }, results }, null, 2));
+  const basis = capHeight ? { method: 'cap-height' } : { corpus: { file: first.split('/').pop(), sha256: createHash('sha256').update(text).digest('hex'), characters: [...counts.values()].reduce((a, b) => a + b, 0) } };
+  console.log(JSON.stringify({ ...basis, results }, null, 2));
 }

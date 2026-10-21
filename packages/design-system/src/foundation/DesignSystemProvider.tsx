@@ -14,6 +14,7 @@ interface DesignSystemContextValue {
   locale: string;
   t: (key: MessageKey, values?: Readonly<Record<string, string | number>>) => string;
   announce: (message: string, priority?: Announcement) => void;
+  officialAssets: boolean;
 }
 const DesignSystemContext = createContext<DesignSystemContextValue | null>(null);
 
@@ -22,6 +23,11 @@ export interface DesignSystemProviderProps {
   preferences?: Preferences;
   /** BCP 47 locale for formatting and component strings. */
   locale?: string;
+  /**
+   * Official Lorcana symbols (D07). false replaces every one with a neutral placeholder: the takedown
+   * switch of the fan-content policy (rule 4). The application owns this configuration.
+   */
+  officialAssets?: boolean;
   children: ReactNode;
 }
 
@@ -30,7 +36,7 @@ export interface DesignSystemProviderProps {
  * component strings and the single announcer. Mount it once at the application root: a room or
  * component never switches the player's theme (§8).
  */
-export function DesignSystemProvider({ preferences = defaultPreferences, locale = 'en', children }: DesignSystemProviderProps) {
+export function DesignSystemProvider({ preferences = defaultPreferences, locale = 'en', officialAssets = true, children }: DesignSystemProviderProps) {
   useLayoutEffect(() => {
     const root = document.documentElement, previous = ['data-theme', 'data-density', 'data-motion'].map(name => [name, root.getAttribute(name)] as const);
     // System theme stays unset so the stylesheet follows prefers-color-scheme live; an explicit choice wins.
@@ -53,7 +59,7 @@ export function DesignSystemProvider({ preferences = defaultPreferences, locale 
     timers.current[priority] = setTimeout(() => setMessages(current => ({ ...current, [priority]: message })), 50);
   }, []);
   useEffect(() => () => { for (const timer of Object.values(timers.current)) clearTimeout(timer); }, []);
-  const value = useMemo(() => ({ preferences, locale, t, announce }), [preferences, locale, t, announce]);
+  const value = useMemo(() => ({ preferences, locale, t, announce, officialAssets }), [preferences, locale, t, announce, officialAssets]);
   return <I18nProvider locale={locale === 'en-XA' ? 'en' : locale}>
     <DesignSystemContext.Provider value={value}>
       {children}
@@ -70,5 +76,7 @@ export function useDesignSystem(): DesignSystemContextValue {
 }
 /** Component strings for the current locale. */
 export function useMessages(): DesignSystemContextValue['t'] { return useDesignSystem().t; }
+/** Whether official Lorcana symbols may render; false means neutral placeholders (takedown readiness). */
+export function useOfficialAssets(): boolean { return useDesignSystem().officialAssets; }
 /** Concise, prioritized live announcements (§25). Never announce frames, ticks or hover. */
 export function useAnnouncer(): DesignSystemContextValue['announce'] { return useDesignSystem().announce; }

@@ -46,3 +46,13 @@ Replace only the bracketed subject: use the product name once D01 settles it, or
 ## Implementation note — 2026-10-20 UTC
 
 The design system renders this notice word for word through `FanContentNotice`, with the subject replaced by the product name "The Inkspire" (decision D17). A test compares the component text against the quotation above. The diagnostic web page shows it in its footer. The required start/loading and every-screen placements remain acceptance gates for the UX and WEB tasks (CHG-20261020-004).
+
+## Implementation note — 2026-10-21 UTC
+
+Under decision D21 the design system renders verified Lorcana symbols: six ink identities plus lore, exert, inkable, uninkable, strength and willpower.
+- **Source:** the SVGs come from the Lorcana asset pack the Director collected, kept git-ignored in the original Inkspire app (files dated 2026-07-05). They are byte-identical copies.
+- **Manifest:** `packages/design-system/src/assets/symbols/manifest.json` records each file's source path, checksum, view box, rendition and rights basis (`D07: Ravensburger fan-content terms`).
+- **Missing provenance:** the pack's original download location is not recorded and is needed to complete rule 3.
+- **Takedown:** `DesignSystemProvider officialAssets={false}` replaces every symbol with a neutral placeholder without other changes, for rule 4.
+
+The card-face fonts (D20) are third-party typefaces, not Ravensburger assets. Their rights basis is the Director's decision D20 and is recorded in the font manifest (CHG-20261021-001).

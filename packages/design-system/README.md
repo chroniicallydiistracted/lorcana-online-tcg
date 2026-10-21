@@ -10,10 +10,14 @@ The Inkspire's technical design system, built from the adopted [UX/UI design sys
   - `DesignSystemProvider` (theme, density, motion, locale, announcer);
   - the versioned preference model;
   - externalized strings, with the `en-XA` pseudolocale;
-  - self-hosted Source Sans 3 with measured fallback metrics.
-- **Components:** 46 documented Experimental components on React Aria Components 1.21.1 with CSS Modules: actions, fields, overlays, collections, status, notifications, connection and card presentation. Every component has a §13 documentation contract and stories for every documented state.
+  - self-hosted Source Sans 3 with measured fallback metrics;
+  - the card-face fonts (decision D20): Bystander, Brandon Text Cond with a measured Source Sans 3 fallback for the characters its trial builds lack, and Century Gothic.
+- **Icons and symbols (decision D21):**
+  - interface icons are Phosphor Regular from a curated registry (`src/components/Icon/registry.ts`);
+  - printed gameplay and ink symbols come from verified Lorcana assets (`src/assets/symbols/`), with a takedown switch to neutral placeholders.
+- **Components:** 47 documented Experimental components on React Aria Components 1.21.1 with CSS Modules: actions, fields, overlays, collections, status, notifications, connection and card presentation. Every component has a §13 documentation contract and stories for every documented state.
 - **Checks:**
-  - `pnpm --filter @lorcana/design-system test`: tokens, style ownership, component contracts, fonts, preferences and notice wording;
+  - `pnpm --filter @lorcana/design-system test`: tokens, style ownership, component contracts, fonts, icon registry, symbol provenance, preferences and notice wording;
   - `test:browser`: Storybook plus Playwright and axe in Chromium;
   - `tokens:build` and `tokens:check`;
   - `storybook` and `build-storybook`.

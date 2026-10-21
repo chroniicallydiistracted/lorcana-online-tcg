@@ -29,7 +29,7 @@ export function Select<T extends object>({ label, description, errorMessage, ite
 /** An option in a Select or ComboBox list. Selection shows the check icon as well as weight. */
 export function Option({ children, ...props }: Omit<ListBoxItemProps, 'className' | 'children'> & { children: ReactNode }) {
   return <ListBoxItem {...props} className={styles.option}>
-    {({ isSelected }) => <><span className={styles.optionText}>{children}</span>{isSelected && <Icon name="check" size="small" />}</>}
+    {({ isSelected }) => <><span className={styles.optionText}>{children}</span>{isSelected && <Icon name="check" />}</>}
   </ListBoxItem>;
 }
 export { styles as listStyles };

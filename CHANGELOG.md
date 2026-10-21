@@ -2,6 +2,98 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261021-001 — Integrate the card-face fonts, adopt the Phosphor icon standard and render verified Lorcana symbols (D20–D22)
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-21T06:11:47.022Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: dc6757e704298b18042abae853df9b40e173ea48
+- Tasks: UX-01, UX-03, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003, R25.004, R25.005, R25.006, R25.007, R25.008, R25.009, R25.010, R25.011, R25.012, R25.013, R25.014, R25.015, R25.016
+
+### Changes
+
+- **feature:** Card-face fonts (D20): The Bystander Collection Sans Regular, HvD trial Brandon Text Cond 400/400i/500/700/900i and Century Gothic Regular, byte-identical to the legacy originals, with checksums, source and embedded rights text in the font manifest. The trial Brandon builds cover 70 characters; Card Text Fallback (Source Sans 3 400/400i/500/700/900i; Medium, Italic and Black Italic added from the same 3.052R release) supplies every other character, measured by the new --cap-height mode of measure-font-metrics.mjs (size-adjust 106.06%, Brandon's typo metrics as overrides). measure-font-metrics.mjs now also reads WOFF2.
+- **fix:** CardFaceText was its own size container, so its 6cqw padding resolved against the viewport and every printed cqw size shrank with the content box (title about 5 px in a 16rem card). An inner content box now carries the padding.
+- **feature:** Interface icons (D21): @phosphor-icons/react 2.1.10 (MIT) pinned in packages/design-system; a curated 21-entry registry is the only Phosphor importer (one icon per import); Icon sizes standard 20 px and prominent 24 px; selected uses Fill. Selection controls keep 24 px through a new selection.size token; the icon stroke and size-small tokens are removed; the checkbox mark uses the registry.
+- **feature:** Gameplay symbols (D21, D07): 12 official SVGs (6 inks unframed; lore, exert, inkable, uninkable, strength and willpower rules-text forms) vendored unchanged with a provenance manifest; scripts/symbol-lib.mjs parses a strict vector subset into src/generated/symbols.ts (drift-checked by tokens:check) with crops computed from shape bounds; GameSymbol component; InkIdentity shows the official ink symbol; DesignSystemProvider officialAssets={false} is the takedown switch to neutral placeholders.
+- **test:** Node: font provenance and rights basis for every file; Brandon coverage and fallback values recomputed from the files; icon-registry rule; symbol parser rejections; symbol provenance (34 design-system tests). Browser: icon and symbol sizes, Fill state, card fonts loaded with Chromium's per-node font report showing Brandon and the Source Sans 3 fallback, reading presentation in Brandon 20/28, official and neutral symbols, crop fit, forced colours, plus screenshots in both themes (161 tests). The browser suite now runs with font hinting off.
+- **test:** RUN-20261021-001 (configuration and workflow checks, pnpm audit clean, typecheck, lint, full suite: 403 Node, 26 Python, upstream 406/1 skip, 2 injection) passes at fingerprint 52f0e140.
+- **test:** RUN-20261021-002: isolated design-system suite passed in 117 s (34 gates, Chromium install, 161/161). RUN-20261021-003: isolated foundation pipeline passed all 14 stages in 571 s (488 Node, 26 Python, upstream 406/1 skip, 2 injection, 13 web Chromium, Lab workers).
+
+### Verification
+
+- **passed:** Configuration contract, workflow check, pnpm audit, typecheck, lint and full suite at fingerprint 52f0e140. ([evidence](docs/validation/runs/RUN-20261021-001.json))
+- **passed:** Isolated design-system suite at the final fingerprint: 34 gates, 161/161 Chromium. ([evidence](docs/validation/runs/RUN-20261021-002.json))
+- **passed:** Isolated foundation pipeline at the final fingerprint: all 14 stages in 571 s. ([evidence](docs/validation/runs/RUN-20261021-003.json))
+- **passed:** docs:check over this record and the updated documents (static). ([evidence](docs/validation/runs/RUN-20261021-004.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — UX-01 status line: card-face fonts, Phosphor icons and verified Lorcana symbols (D20–D22).
+- **updated:** [README.md](README.md) — Same status-line addition as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same status-line addition as AGENTS.md.
+- **updated:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — Dated amendment: card-face fonts and coverage fallback, card-face sizing fix, Phosphor icon registry superseding the authored family, verified gameplay symbols and takedown switch, interpretations (D22), browser hinting.
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Fonts section rewritten for the card faces and both measurement modes; new Icons and gameplay symbols section; browser suite runs with hinting off.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Dated section: font coverage and fallback measurement, sizing defect, icon and symbol choices, visual check, hinting artifact and receipts.
+- **updated:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Dated implementation note: symbol provenance manifest, missing original download location, takedown switch; fonts are not Ravensburger assets.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — New D20 (card-face fonts), D21 (icon standard and gameplay symbols), D22 (ADR 0017 interpretations and other changes).
+- **updated:** [docs/features.json](docs/features.json) — F-DESIGN-SYSTEM description updated (fonts, icons, symbols, 47 components); every verified feature cites the runs at the new fingerprint.
+- **updated:** [packages/design-system/README.md](packages/design-system/README.md) — Foundation, icons and symbols, component count and checks updated.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Updated for CHG-20261021-001, the branch and next actions.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs sync.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs sync.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — Regenerated by docs sync.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — Artifact contents grow by the font files and generated symbols; the qualification method is unchanged.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Engine placement and the dependency baseline are unchanged; the new icon dependency is UX-owned and recorded in ADR 0017.
+- **reviewed_unchanged:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/adr/0010-secure-randomness-replay.md](docs/adr/0010-secure-randomness-replay.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/adr/0013-durable-synthetic-match-commands.md](docs/adr/0013-durable-synthetic-match-commands.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning register; @phosphor-icons/react is a design-system dependency recorded in ADR 0017 and D21, not a BOOT-04 baseline row.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — CI jobs and limits are unchanged; the design-system job runs the extended suite as before.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — Schema/template unaffected: no record, artifact or evidence format changes.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Historical BOOT-01 evidence; not rewritten.
+- **reviewed_unchanged:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/validation/play-01.md](docs/validation/play-01.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+- **reviewed_unchanged:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261021-001.json).
+
+### Limits and next actions
+
+- Brandon's fallback punctuation and accented letters visibly differ from Brandon; accepted by the Director as permanent (D20).
+- The asset pack's original download location is not recorded (fan-content policy rule 3).
+- Chromium automation only; real Windows and macOS rendering of the card faces is not qualified (UX-02).
+- Push and open the pull request on top of PR #4; check both hosted jobs. The Director pushes PR #4 and then this branch to main.
+
 ## CHG-20261020-008 — Record the UX-01 merge runs and patch vite to 8.3.3 for new advisories
 
 - Status: finalized

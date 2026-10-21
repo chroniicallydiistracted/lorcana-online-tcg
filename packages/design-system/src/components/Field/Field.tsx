@@ -7,7 +7,7 @@ import styles from './Field.module.css';
 export function FieldHelp({ description, errorMessage }: { description?: ReactNode; errorMessage?: ReactNode }) {
   return <>
     {description && <Text slot="description" className={styles.description}>{description}</Text>}
-    <FieldError className={styles.error}>{errorMessage ? <><Icon name="danger" size="small" /><span>{errorMessage}</span></> : null}</FieldError>
+    <FieldError className={styles.error}>{errorMessage ? <><Icon name="danger" /><span>{errorMessage}</span></> : null}</FieldError>
   </>;
 }
 export { styles as fieldStyles };

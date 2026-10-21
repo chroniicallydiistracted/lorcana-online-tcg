@@ -2,7 +2,7 @@
 .entry { display: grid; grid-template-columns: 1fr; gap: var(--is-space-2); padding: var(--is-space-2) var(--is-space-3); border-block-end: var(--is-border-width-1) solid var(--is-color-border-decorative); color: var(--is-color-text-primary); }
 @media atLeastIntermediate { .entry { grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; } .messages { grid-column: 2 / 3; } }
 .identity { display: flex; align-items: center; gap: var(--is-space-2); min-inline-size: 0; }
-.cost { display: inline-flex; align-items: center; justify-content: center; min-inline-size: var(--is-component-icon-size); font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; }
+.cost { display: inline-flex; align-items: center; justify-content: center; min-inline-size: var(--is-space-6); font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; }
 .names { display: flex; flex-direction: column; min-inline-size: 0; }
 .name { font: var(--is-typography-body-strong); overflow-wrap: anywhere; }
 .version { font: var(--is-typography-metadata); color: var(--is-color-text-supporting); overflow-wrap: anywhere; }

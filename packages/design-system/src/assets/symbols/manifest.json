@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "description": "Verified Lorcana gameplay and ink symbols (standard §12, decision D21; fan-content policy rule 3). The SVG files are byte-identical to their source; src/generated/symbols.ts is generated from them by scripts/symbol-lib.mjs.",
+  "rights_basis": "D07: Ravensburger fan-content terms",
+  "source": {
+    "project": "The Director's original Inkspire app, /home/andre/the-inkspire (commit b7b876ba)",
+    "folder": "public/assets/all-lorcana-assets (git-ignored there; a Lorcana asset pack the Director collected, files dated 2026-07-05 local time)",
+    "original_url": null,
+    "original_url_note": "Not recorded in the source project; to be supplied by the Director.",
+    "retrieved": "2026-10-21"
+  },
+  "takedown": "DesignSystemProvider officialAssets={false} replaces every symbol with a neutral text placeholder (fan-content policy rule 4).",
+  "symbols": [
+    {
+      "name": "lore",
+      "kind": "gameplay",
+      "colour": "single",
+      "path": "src/assets/symbols/gameplay/Lore.svg",
+      "source_file": "public/assets/all-lorcana-assets/card-parts/Lore.svg",
+      "format": "svg",
+      "viewBox": "0 0 400 400",
+      "bytes": 802,
+      "sha256": "608db313ec86671172ed072d3dd013c4272612e61ecbbf61c014ad2295f12394",
+      "rendition": "Lore symbol, single colour"
+    },
+    {
+      "name": "exert",
+      "kind": "gameplay",
+      "colour": "single",
+      "path": "src/assets/symbols/gameplay/Exert.svg",
+      "source_file": "public/assets/all-lorcana-assets/card-parts/Exert.svg",
+      "format": "svg",
+      "viewBox": "0 0 400 400",
+      "bytes": 1489,
+      "sha256": "65862df8ed79bf8b7373d05c33c952df10816474dd642facd1f65451033aed40",
+      "rendition": "Exert symbol, single colour"
+    },
+    {
+      "name": "inkable",
+      "kind": "gameplay",
+      "colour": "single",
+      "path": "src/assets/symbols/gameplay/Inkable.svg",
+      "source_file": "public/assets/all-lorcana-assets/card-parts/inkability/Inkable.svg",
+      "format": "svg",
+      "viewBox": "0 0 400 400",
+      "bytes": 5031,
+      "sha256": "674002faf8ebb16e8a3bd5467f7529d5577bd8bfcfe2aed916ead0da5adbaacd",
+      "rendition": "Inkable cost frame; printed gold, rendered in currentColor for contrast"
+    },
+    {
+      "name": "uninkable",
+      "kind": "gameplay",
+      "colour": "single",
+      "path": "src/assets/symbols/gameplay/Uninkable.svg",
+      "source_file": "public/assets/all-lorcana-assets/card-parts/inkability/Uninkable.svg",
+      "format": "svg",
+      "viewBox": "0 0 400 400",
+      "bytes": 747,
+      "sha256": "d12b6593fb3786ac0669d599ee7ac40f0323cceab92a549faa10fe3abde19510",
+      "rendition": "Uninkable cost frame; printed gold, rendered in currentColor for contrast"
+    },
+    {
+      "name": "strength",
+      "kind": "gameplay",
+      "colour": "single",
+      "path": "src/assets/symbols/gameplay/StrengthBuff.svg",
+      "source_file": "public/assets/all-lorcana-assets/card-parts/strength/StrengthBuff.svg",
+      "format": "svg",
+      "viewBox": "0 0 400 400",
+      "bytes": 2218,
+      "sha256": "4646f69d2d4728e46502158f85aa976e0a5170b84e6dddc8afdba8dbb98fa1f6",
+      "rendition": "Strength rules-text (buff) symbol, single colour"
+    },
+    {
+      "name": "willpower",
+      "kind": "gameplay",
+      "colour": "single",
+      "path": "src/assets/symbols/gameplay/WillpowerBuff.svg",
+      "source_file": "public/assets/all-lorcana-assets/card-parts/willpower/WillpowerBuff.svg",
+      "format": "svg",
+      "viewBox": "0 0 400 400",
+      "bytes": 1659,
+      "sha256": "088c582c76ae2338b62cf86a3407f815c34fcb28673fbf4651c6469e5fcecb81",
+      "rendition": "Willpower rules-text (buff) symbol, single colour"
+    },
+    {
+      "name": "amber",
+      "kind": "ink",
+      "colour": "official",
+      "path": "src/assets/symbols/ink/Amber.svg",
+      "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/amber/Amber.svg",
+      "format": "svg",
+      "viewBox": "0 0 303.9834 345.9149",
+      "bytes": 4106,
+      "sha256": "3bac5958a79f33de5b76c4aa9b2fa500f489a47a1ea2767250466ff48abb6cc4",
+      "rendition": "Ink identity symbol, unframed, official colours"
+    },
+    {
+      "name": "amethyst",
+      "kind": "ink",
+      "colour": "official",
+      "path": "src/assets/symbols/ink/Amethyst.svg",
+      "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/amethyst/Amethyst.svg",
+      "format": "svg",
+      "viewBox": "0 0 303.9834 345.9149",
+      "bytes": 4157,
+      "sha256": "7a1667103788f7e29993ff364353636e92f7b9d0fcf39951fa0226026f3d347c",
+      "rendition": "Ink identity symbol, unframed, official colours"
+    },
+    {
+      "name": "emerald",
+      "kind": "ink",
+      "colour": "official",
+      "path": "src/assets/symbols/ink/Emerald.svg",
+      "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/emerald/Emerald.svg",
+      "format": "svg",
+      "viewBox": "0 0 303.9834 345.9149",
+      "bytes": 3829,
+      "sha256": "d22fce343d8a439df0119cbd165da1a8506a7679e5ccec89b39615006aa63452",
+      "rendition": "Ink identity symbol, unframed, official colours"
+    },
+    {
+      "name": "ruby",
+      "kind": "ink",
+      "colour": "official",
+      "path": "src/assets/symbols/ink/Ruby.svg",
+      "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/ruby/Ruby.svg",
+      "format": "svg",
+      "viewBox": "0 0 303.9834 345.9149",
+      "bytes": 2286,
+      "sha256": "23e2375a96161b231307b523b6fe709221bcbc2c5b4e45af9b79d21ae7f39f7a",
+      "rendition": "Ink identity symbol, unframed, official colours"
+    },
+    {
+      "name": "sapphire",
+      "kind": "ink",
+      "colour": "official",
+      "path": "src/assets/symbols/ink/Sapphire2.svg",
+      "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/sapphire/Sapphire2.svg",
+      "format": "svg",
+      "viewBox": "0 0 303.984 345.9168",
+      "bytes": 3339,
+      "sha256": "d02acfa9cdea972aad19fc0ac6c8cbb5429279eebac715f58530d276a799ad3a",
+      "rendition": "Ink identity symbol, unframed, official colours"
+    },
+    {
+      "name": "steel",
+      "kind": "ink",
+      "colour": "official",
+      "path": "src/assets/symbols/ink/Steel.svg",
+      "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/steel/Steel.svg",
+      "format": "svg",
+      "viewBox": "0 0 303.9834 345.9149",
+      "bytes": 2508,
+      "sha256": "37ae906dce4bd1ec996bcb87aeeff7b7f1a32fa67cdb7caa933f9e54654e6371",
+      "rendition": "Ink identity symbol, unframed, official colours"
+    }
+  ],
+  "display": "symbols.ts crops each symbol to its computed shape bounds, squared and centred with 1/12 padding per side, so symbols match the interface icons' optical size. The SVG files themselves are unchanged."
+}

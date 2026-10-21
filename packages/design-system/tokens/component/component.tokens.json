@@ -153,23 +153,38 @@
       "size": {
         "$type": "dimension",
         "$value": {
+          "value": 1.25,
+          "unit": "rem"
+        },
+        "$description": "Standard interface icon size for controls: 20 px at the default root (decision D21)."
+      },
+      "size-prominent": {
+        "$type": "dimension",
+        "$value": {
           "value": 1.5,
           "unit": "rem"
         },
-        "$description": "Standard interface icon optical size: 24 px at the default root on a 24 px grid."
-      },
-      "size-small": {
+        "$description": "Prominent navigation icon size: 24 px at the default root (decision D21)."
+      }
+    },
+    "selection": {
+      "size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "$description": "Checkbox and radio box size and switch track height: 24 px at the default root, inside the 44 px target."
+      }
+    },
+    "ink": {
+      "symbol-size": {
         "$type": "dimension",
         "$value": {
           "value": 1.25,
           "unit": "rem"
         },
-        "$description": "Small interface icon size: 20 px at the default root."
-      },
-      "stroke": {
-        "$type": "number",
-        "$value": 2,
-        "$description": "Interface icon stroke width in grid units; one consistent stroke for the family (§12)."
+        "$description": "Ink identity symbol inside the ink chip: 20 px at the default root, the standard icon size, so the official badge keeps its detail."
       }
     }
   }

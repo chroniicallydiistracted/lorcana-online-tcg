@@ -1,5 +1,6 @@
 .group { display: inline-flex; flex-wrap: wrap; gap: var(--is-space-1); }
 .ink { display: inline-flex; align-items: center; gap: var(--is-space-1); padding: 0 var(--is-space-2) 0 var(--is-space-1); border: var(--is-border-width-1) solid var(--is-color-border-decorative); border-radius: var(--is-radius-pill); background: var(--is-color-surface); color: var(--is-color-text-primary); font: var(--is-typography-metadata); }
+.symbol { flex: none; inline-size: var(--is-component-ink-symbol-size); block-size: var(--is-component-ink-symbol-size); }
 .swatch { inline-size: var(--is-space-3); block-size: var(--is-space-3); border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-radius-pill); }
 .ink[data-ink="amber"] .swatch { background: var(--is-color-identity-amber); }
 .ink[data-ink="amethyst"] .swatch { background: var(--is-color-identity-amethyst); }
@@ -10,4 +11,5 @@
 .name { overflow-wrap: anywhere; }
 .short { text-transform: uppercase; }
 .hidden { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-@media (forced-colors: active) { .swatch { forced-color-adjust: none; } }
+/* Official ink colours and the neutral swatch keep their identity colour in forced colours; the name carries the meaning. */
+@media (forced-colors: active) { .swatch, .symbol { forced-color-adjust: none; } }

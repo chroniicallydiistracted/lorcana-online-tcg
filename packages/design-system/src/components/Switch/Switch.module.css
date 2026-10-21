@@ -2,8 +2,8 @@
 .track {
   position: relative;
   flex: none;
-  inline-size: calc(var(--is-component-icon-size) * 2);
-  block-size: var(--is-component-icon-size);
+  inline-size: calc(var(--is-component-selection-size) * 2);
+  block-size: var(--is-component-selection-size);
   border: var(--is-border-width-2) solid var(--is-color-border-essential);
   border-radius: var(--is-radius-pill);
   background: var(--is-color-surface);
@@ -14,14 +14,14 @@
   inset-block: var(--is-space-0);
   inset-inline-start: var(--is-space-0);
   margin: var(--is-border-width-2);
-  inline-size: calc(var(--is-component-icon-size) - var(--is-border-width-2) * 4);
+  inline-size: calc(var(--is-component-selection-size) - var(--is-border-width-2) * 4);
   border-radius: var(--is-radius-pill);
   background: var(--is-color-border-strong);
   transition: transform var(--is-motion-hover) var(--is-motion-ease);
 }
 .switch[data-selected] .track { border-color: var(--is-color-action-primary-background); background: var(--is-color-action-primary-background); }
-.switch[data-selected] .thumb { background: var(--is-color-action-primary-text); transform: translateX(var(--is-component-icon-size)); }
-.switch[data-selected] .thumb:dir(rtl) { transform: translateX(calc(var(--is-component-icon-size) * -1)); }
+.switch[data-selected] .thumb { background: var(--is-color-action-primary-text); transform: translateX(var(--is-component-selection-size)); }
+.switch[data-selected] .thumb:dir(rtl) { transform: translateX(calc(var(--is-component-selection-size) * -1)); }
 .switch[data-focus-visible] .track { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
 .switch[data-disabled] { color: var(--is-color-disabled-foreground); cursor: not-allowed; }
 .switch[data-disabled] .track { border-color: var(--is-color-disabled-foreground); background: var(--is-color-disabled-surface); }

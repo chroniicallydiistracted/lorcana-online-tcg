@@ -1,0 +1,457 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261021-001",
+  "title": "Integrate the card-face fonts, adopt the Phosphor icon standard and render verified Lorcana symbols (D20–D22)",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-21T06:11:47.022Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "dc6757e704298b18042abae853df9b40e173ea48",
+  "task_ids": [
+    "UX-01",
+    "UX-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R25.001",
+    "R25.002",
+    "R25.003",
+    "R25.004",
+    "R25.005",
+    "R25.006",
+    "R25.007",
+    "R25.008",
+    "R25.009",
+    "R25.010",
+    "R25.011",
+    "R25.012",
+    "R25.013",
+    "R25.014",
+    "R25.015",
+    "R25.016"
+  ],
+  "feature_ids": [
+    "F-DESIGN-SYSTEM",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "feature",
+      "description": "Card-face fonts (D20): The Bystander Collection Sans Regular, HvD trial Brandon Text Cond 400/400i/500/700/900i and Century Gothic Regular, byte-identical to the legacy originals, with checksums, source and embedded rights text in the font manifest. The trial Brandon builds cover 70 characters; Card Text Fallback (Source Sans 3 400/400i/500/700/900i; Medium, Italic and Black Italic added from the same 3.052R release) supplies every other character, measured by the new --cap-height mode of measure-font-metrics.mjs (size-adjust 106.06%, Brandon's typo metrics as overrides). measure-font-metrics.mjs now also reads WOFF2."
+    },
+    {
+      "kind": "fix",
+      "description": "CardFaceText was its own size container, so its 6cqw padding resolved against the viewport and every printed cqw size shrank with the content box (title about 5 px in a 16rem card). An inner content box now carries the padding."
+    },
+    {
+      "kind": "feature",
+      "description": "Interface icons (D21): @phosphor-icons/react 2.1.10 (MIT) pinned in packages/design-system; a curated 21-entry registry is the only Phosphor importer (one icon per import); Icon sizes standard 20 px and prominent 24 px; selected uses Fill. Selection controls keep 24 px through a new selection.size token; the icon stroke and size-small tokens are removed; the checkbox mark uses the registry."
+    },
+    {
+      "kind": "feature",
+      "description": "Gameplay symbols (D21, D07): 12 official SVGs (6 inks unframed; lore, exert, inkable, uninkable, strength and willpower rules-text forms) vendored unchanged with a provenance manifest; scripts/symbol-lib.mjs parses a strict vector subset into src/generated/symbols.ts (drift-checked by tokens:check) with crops computed from shape bounds; GameSymbol component; InkIdentity shows the official ink symbol; DesignSystemProvider officialAssets={false} is the takedown switch to neutral placeholders."
+    },
+    {
+      "kind": "test",
+      "description": "Node: font provenance and rights basis for every file; Brandon coverage and fallback values recomputed from the files; icon-registry rule; symbol parser rejections; symbol provenance (34 design-system tests). Browser: icon and symbol sizes, Fill state, card fonts loaded with Chromium's per-node font report showing Brandon and the Source Sans 3 fallback, reading presentation in Brandon 20/28, official and neutral symbols, crop fit, forced colours, plus screenshots in both themes (161 tests). The browser suite now runs with font hinting off."
+    },
+    {
+      "kind": "test",
+      "description": "RUN-20261021-001 (configuration and workflow checks, pnpm audit clean, typecheck, lint, full suite: 403 Node, 26 Python, upstream 406/1 skip, 2 injection) passes at fingerprint 52f0e140."
+    },
+    {
+      "kind": "test",
+      "description": "RUN-20261021-002: isolated design-system suite passed in 117 s (34 gates, Chromium install, 161/161). RUN-20261021-003: isolated foundation pipeline passed all 14 stages in 571 s (488 Node, 26 Python, upstream 406/1 skip, 2 injection, 13 web Chromium, Lab workers)."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/adr/0017-technical-design-system.md",
+    "docs/changes/CHG-20261021-001.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/policies/fan-content.md",
+    "docs/runbooks/design-system.md",
+    "docs/validation/logs/RUN-20261021-001.txt",
+    "docs/validation/logs/RUN-20261021-002.txt",
+    "docs/validation/logs/RUN-20261021-003.txt",
+    "docs/validation/logs/RUN-20261021-004.txt",
+    "docs/validation/runs/RUN-20261021-001.json",
+    "docs/validation/runs/RUN-20261021-002.json",
+    "docs/validation/runs/RUN-20261021-003.json",
+    "docs/validation/runs/RUN-20261021-004.json",
+    "docs/validation/ux-design-system.md",
+    "docs/vision/decision_register.csv",
+    "packages/design-system/README.md",
+    "packages/design-system/package.json",
+    "packages/design-system/playwright.config.ts",
+    "packages/design-system/scripts/build-tokens.mjs",
+    "packages/design-system/scripts/measure-font-metrics.mjs",
+    "packages/design-system/scripts/symbol-lib.mjs",
+    "packages/design-system/src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-BlackItalic.woff2",
+    "packages/design-system/src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-Bold.woff2",
+    "packages/design-system/src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-Medium.woff2",
+    "packages/design-system/src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-Regular.woff2",
+    "packages/design-system/src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-RegularItalic.woff2",
+    "packages/design-system/src/assets/fonts/bystander-collection/BystanderSans-Regular.woff2",
+    "packages/design-system/src/assets/fonts/century-gothic/centurygothic.woff2",
+    "packages/design-system/src/assets/fonts/manifest.json",
+    "packages/design-system/src/assets/fonts/source-sans-3/SourceSans3-BlackIt.woff2",
+    "packages/design-system/src/assets/fonts/source-sans-3/SourceSans3-It.woff2",
+    "packages/design-system/src/assets/fonts/source-sans-3/SourceSans3-Medium.woff2",
+    "packages/design-system/src/assets/symbols/gameplay/Exert.svg",
+    "packages/design-system/src/assets/symbols/gameplay/Inkable.svg",
+    "packages/design-system/src/assets/symbols/gameplay/Lore.svg",
+    "packages/design-system/src/assets/symbols/gameplay/StrengthBuff.svg",
+    "packages/design-system/src/assets/symbols/gameplay/Uninkable.svg",
+    "packages/design-system/src/assets/symbols/gameplay/WillpowerBuff.svg",
+    "packages/design-system/src/assets/symbols/ink/Amber.svg",
+    "packages/design-system/src/assets/symbols/ink/Amethyst.svg",
+    "packages/design-system/src/assets/symbols/ink/Emerald.svg",
+    "packages/design-system/src/assets/symbols/ink/Ruby.svg",
+    "packages/design-system/src/assets/symbols/ink/Sapphire2.svg",
+    "packages/design-system/src/assets/symbols/ink/Steel.svg",
+    "packages/design-system/src/assets/symbols/manifest.json",
+    "packages/design-system/src/components/Badge/Badge.tsx",
+    "packages/design-system/src/components/CardFace/CardFaceText.module.css",
+    "packages/design-system/src/components/CardFace/CardFaceText.module.d.css.ts",
+    "packages/design-system/src/components/CardFace/CardFaceText.tsx",
+    "packages/design-system/src/components/Checkbox/Checkbox.module.css",
+    "packages/design-system/src/components/Checkbox/Checkbox.tsx",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.module.css",
+    "packages/design-system/src/components/Field/Field.tsx",
+    "packages/design-system/src/components/GameSymbol/GameSymbol.docs.ts",
+    "packages/design-system/src/components/GameSymbol/GameSymbol.module.css",
+    "packages/design-system/src/components/GameSymbol/GameSymbol.module.d.css.ts",
+    "packages/design-system/src/components/GameSymbol/GameSymbol.tsx",
+    "packages/design-system/src/components/GameSymbol/SymbolSvg.tsx",
+    "packages/design-system/src/components/Icon/Icon.docs.ts",
+    "packages/design-system/src/components/Icon/Icon.module.css",
+    "packages/design-system/src/components/Icon/Icon.tsx",
+    "packages/design-system/src/components/Icon/registry.ts",
+    "packages/design-system/src/components/Ink/InkIdentity.docs.ts",
+    "packages/design-system/src/components/Ink/InkIdentity.module.css",
+    "packages/design-system/src/components/Ink/InkIdentity.module.d.css.ts",
+    "packages/design-system/src/components/Ink/InkIdentity.tsx",
+    "packages/design-system/src/components/Link/Link.tsx",
+    "packages/design-system/src/components/Radio/Radio.module.css",
+    "packages/design-system/src/components/Select/Select.tsx",
+    "packages/design-system/src/components/Switch/Switch.module.css",
+    "packages/design-system/src/foundation/DesignSystemProvider.tsx",
+    "packages/design-system/src/foundation/messages.ts",
+    "packages/design-system/src/generated/fonts.css",
+    "packages/design-system/src/generated/manifest.json",
+    "packages/design-system/src/generated/symbols.ts",
+    "packages/design-system/src/generated/tokens.css",
+    "packages/design-system/src/generated/tokens.ts",
+    "packages/design-system/src/index.ts",
+    "packages/design-system/stories/Cards.stories.tsx",
+    "packages/design-system/stories/Foundations.stories.tsx",
+    "packages/design-system/stories/support/OfficialAssetsOff.tsx",
+    "packages/design-system/tests/browser/interactions.spec.ts",
+    "packages/design-system/tests/components.test.mjs",
+    "packages/design-system/tests/foundation.test.mjs",
+    "packages/design-system/tokens/component/component.tokens.json",
+    "packages/design-system/tokens/primitive/typography.tokens.json",
+    "pnpm-lock.yaml"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "UX-01 status line: card-face fonts, Phosphor icons and verified Lorcana symbols (D20–D22)."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Same status-line addition as AGENTS.md."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Same status-line addition as AGENTS.md."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "updated",
+      "reason": "Dated amendment: card-face fonts and coverage fallback, card-face sizing fix, Phosphor icon registry superseding the authored family, verified gameplay symbols and takedown switch, interpretations (D22), browser hinting."
+    },
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "updated",
+      "reason": "Fonts section rewritten for the card faces and both measurement modes; new Icons and gameplay symbols section; browser suite runs with hinting off."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Dated section: font coverage and fallback measurement, sizing defect, icon and symbol choices, visual check, hinting artifact and receipts."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "updated",
+      "reason": "Dated implementation note: symbol provenance manifest, missing original download location, takedown switch; fonts are not Ravensburger assets."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "New D20 (card-face fonts), D21 (icon standard and gameplay symbols), D22 (ADR 0017 interpretations and other changes)."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-DESIGN-SYSTEM description updated (fonts, icons, symbols, 47 components); every verified feature cites the runs at the new fingerprint."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "updated",
+      "reason": "Foundation, icons and symbols, component count and checks updated."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Updated for CHG-20261021-001, the branch and next actions."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Regenerated by docs sync."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Regenerated by docs sync."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "Regenerated by docs sync."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Artifact contents grow by the font files and generated symbols; the qualification method is unchanged."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Engine placement and the dependency baseline are unchanged; the new icon dependency is UX-owned and recorded in ADR 0017."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated planning register; @phosphor-icons/react is a design-system dependency recorded in ADR 0017 and D21, not a BOOT-04 baseline row."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "CI jobs and limits are unchanged; the design-system job runs the extended suite as before."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "Schema/template unaffected: no record, artifact or evidence format changes."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Historical BOOT-01 evidence; not rewritten."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Makes no statement about card-face fonts, interface icons or gameplay symbols that this change contradicts."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261021-001.json",
+      "outcome": "passed",
+      "scope": "Configuration contract, workflow check, pnpm audit, typecheck, lint and full suite at fingerprint 52f0e140."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261021-002.json",
+      "outcome": "passed",
+      "scope": "Isolated design-system suite at the final fingerprint: 34 gates, 161/161 Chromium."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261021-003.json",
+      "outcome": "passed",
+      "scope": "Isolated foundation pipeline at the final fingerprint: all 14 stages in 571 s."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261021-004.json",
+      "outcome": "passed",
+      "scope": "docs:check over this record and the updated documents (static)."
+    }
+  ],
+  "limitations": [
+    "Brandon's fallback punctuation and accented letters visibly differ from Brandon; accepted by the Director as permanent (D20).",
+    "The asset pack's original download location is not recorded (fan-content policy rule 3).",
+    "Chromium automation only; real Windows and macOS rendering of the card faces is not qualified (UX-02)."
+  ],
+  "next_actions": [
+    "Push and open the pull request on top of PR #4; check both hosted jobs. The Director pushes PR #4 and then this branch to main."
+  ]
+}

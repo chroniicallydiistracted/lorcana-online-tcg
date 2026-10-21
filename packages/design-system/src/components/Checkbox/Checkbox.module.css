@@ -4,14 +4,14 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  inline-size: var(--is-component-icon-size);
-  block-size: var(--is-component-icon-size);
+  inline-size: var(--is-component-selection-size);
+  block-size: var(--is-component-selection-size);
   border: var(--is-border-width-2) solid var(--is-color-border-essential);
   border-radius: var(--is-component-control-radius);
   background: var(--is-color-surface);
   color: transparent;
 }
-.box svg { inline-size: 100%; block-size: 100%; stroke-width: var(--is-component-icon-stroke); }
+.box svg { inline-size: 100%; block-size: 100%; }
 .checkbox[data-hovered] .box { border-color: var(--is-color-border-strong); }
 .checkbox[data-selected] .box, .checkbox[data-indeterminate] .box { border-color: var(--is-color-action-primary-background); background: var(--is-color-action-primary-background); color: var(--is-color-action-primary-text); }
 .checkbox[data-focus-visible] .box { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }

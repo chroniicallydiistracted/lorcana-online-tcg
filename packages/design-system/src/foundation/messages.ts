@@ -64,6 +64,18 @@ export const en = {
   'ink.ruby': 'Ruby',
   'ink.sapphire': 'Sapphire',
   'ink.steel': 'Steel',
+  'symbol.lore': 'Lore',
+  'symbol.exert': 'Exert',
+  'symbol.inkable': 'Inkable',
+  'symbol.uninkable': 'Uninkable',
+  'symbol.strength': 'Strength',
+  'symbol.willpower': 'Willpower',
+  'symbol.short.lore': 'Lore',
+  'symbol.short.exert': 'Exert',
+  'symbol.short.inkable': 'Ink',
+  'symbol.short.uninkable': 'No ink',
+  'symbol.short.strength': 'Str',
+  'symbol.short.willpower': 'Will',
 } as const;
 export type MessageKey = keyof typeof en;
 export type Catalog = Readonly<Record<MessageKey, string>>;
