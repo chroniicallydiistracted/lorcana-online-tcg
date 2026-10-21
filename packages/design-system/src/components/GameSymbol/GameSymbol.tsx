@@ -14,8 +14,8 @@ export interface GameSymbolProps {
   size?: 'standard' | 'prominent';
 }
 /**
- * A printed gameplay symbol from the verified Lorcana assets (decision D21), in the current text colour.
- * With official assets switched off it shows a neutral text placeholder instead (takedown readiness).
+ * A printed gameplay symbol from the project's Lorcana symbol set (decision D21), in the current text colour.
+ * With Lorcana assets switched off it shows a neutral text placeholder instead (takedown readiness).
  */
 export function GameSymbol({ name, label, size = 'standard' }: GameSymbolProps) {
   const t = useMessages();

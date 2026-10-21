@@ -6,8 +6,8 @@ import styles from './InkIdentity.module.css';
 export const inkNames = ['amber', 'amethyst', 'emerald', 'ruby', 'sapphire', 'steel'] as const;
 export type InkName = (typeof inkNames)[number];
 /**
- * Ink identity: the official ink symbol plus its name, so colour is never the only cue (§9, decision D21).
- * Multicolour lists every ink. With official assets switched off, a neutral swatch replaces the symbol.
+ * Ink identity: the Lorcana ink symbol plus its name, so colour is never the only cue (§9, decision D21).
+ * Multicolour lists every ink. With Lorcana assets switched off, a neutral swatch replaces the symbol.
  */
 export function InkIdentity({ inks, compact = false }: { inks: readonly InkName[]; compact?: boolean }) {
   const t = useMessages(), official = useOfficialAssets();

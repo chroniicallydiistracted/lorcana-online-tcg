@@ -1,4 +1,4 @@
-// Verified Lorcana symbols (decision D21) → typed inline-SVG data in src/generated/symbols.ts.
+// Lorcana symbols (decision D21; created by the Director or from Ravensburger's public digital assets) → typed inline-SVG data in src/generated/symbols.ts.
 // The vendored SVG files stay byte-identical to their source (src/assets/symbols/manifest.json records checksums).
 // The parser accepts only the simple vector subset these files use and refuses anything else, so no script,
 // link, image, transform or unknown construct can reach the rendered markup.
@@ -129,6 +129,6 @@ export function buildSymbolModule(root, header) {
     'export interface SymbolData { readonly viewBox: string; readonly sourceViewBox: string; readonly shapes: readonly SymbolShape[] }',
     '/** Printed gameplay symbols in one colour; they render in currentColor so they follow the theme. */',
     `export const gameplaySymbols = ${JSON.stringify(groups.gameplay, null, 2)} as const satisfies Record<string, SymbolData>;`,
-    '/** Ink identity symbols in their official colours; never recoloured by the theme. */',
+    '/** Ink identity symbols in their own fixed colours; never recoloured by the theme. */',
     `export const inkSymbols = ${JSON.stringify(groups.ink, null, 2)} as const satisfies Record<string, SymbolData>;`, ''].join('\n');
 }

@@ -53,12 +53,12 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **Banned weights:** Thin, Light, Bold and Duotone. A test enforces this.
 - **Printed gameplay symbols:** use `GameSymbol` (lore, exert, inkable, uninkable, strength, willpower) and `InkIdentity`, never a package icon.
 - **Adding a symbol:**
-  1. Copy the official SVG byte for byte into `src/assets/symbols/`.
-  2. Record its source, checksum and rendition in `src/assets/symbols/manifest.json` (rights basis D07).
+  1. Copy the source SVG byte for byte into `src/assets/symbols/`.
+  2. Record its origin (Ravensburger's public digital assets or the Director's own drawing), checksum and rendition in `src/assets/symbols/manifest.json` (rights basis D07).
   3. Run `tokens:build`.
 
   The parser refuses anything outside a small vector subset (paths, polygons, circles, plain groups, class fills). Single-colour symbols must have exactly one fill.
-- **Takedown switch:** `officialAssets={false}` on the provider swaps every symbol for a neutral placeholder.
+- **Takedown switch:** `officialAssets={false}` on the provider swaps every symbol for a neutral placeholder. It covers anything depicting Disney Lorcana marks, whoever drew it.
 
 ## Raw values
 

@@ -143,7 +143,7 @@ export const gameplaySymbols = {
     ]
   }
 } as const satisfies Record<string, SymbolData>;
-/** Ink identity symbols in their official colours; never recoloured by the theme. */
+/** Ink identity symbols in their own fixed colours; never recoloured by the theme. */
 export const inkSymbols = {
   "amber": {
     "viewBox": "-19.88 1.09 343.74 343.74",

@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "description": "Verified Lorcana gameplay and ink symbols (standard §12, decision D21; fan-content policy rule 3). The SVG files are byte-identical to their source; src/generated/symbols.ts is generated from them by scripts/symbol-lib.mjs.",
+  "description": "Lorcana gameplay and ink symbols (standard §12, decision D21; fan-content policy rule 3). The SVG files are byte-identical to their source; src/generated/symbols.ts is generated from them by scripts/symbol-lib.mjs.",
   "rights_basis": "D07: Ravensburger fan-content terms",
+  "rights_note": "The symbols depict Disney Lorcana marks, so D07 applies whether a file is Ravensburger's or the Director's own drawing.",
   "source": {
     "project": "The Director's original Inkspire app, /home/andre/the-inkspire (commit b7b876ba)",
-    "folder": "public/assets/all-lorcana-assets (git-ignored there; a Lorcana asset pack the Director collected, files dated 2026-07-05 local time)",
-    "original_url": null,
-    "original_url_note": "Not recorded in the source project; to be supplied by the Director.",
+    "folder": "public/assets/all-lorcana-assets (git-ignored there; files dated 2026-07-05 local time)",
+    "origin": "Per the Director (2026-10-21): most if not all files in the folder were created by the Director; the others come directly from Ravensburger's publicly available digital assets. Which of these symbols are which is not distinguished.",
     "retrieved": "2026-10-21"
   },
-  "takedown": "DesignSystemProvider officialAssets={false} replaces every symbol with a neutral text placeholder (fan-content policy rule 4).",
+  "takedown": "DesignSystemProvider officialAssets={false} replaces every symbol with a neutral text placeholder (fan-content policy rule 4). It covers every asset depicting Disney Lorcana marks, whoever drew it.",
   "symbols": [
     {
       "name": "lore",
@@ -86,74 +86,74 @@
     {
       "name": "amber",
       "kind": "ink",
-      "colour": "official",
+      "colour": "fixed",
       "path": "src/assets/symbols/ink/Amber.svg",
       "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/amber/Amber.svg",
       "format": "svg",
       "viewBox": "0 0 303.9834 345.9149",
       "bytes": 4106,
       "sha256": "3bac5958a79f33de5b76c4aa9b2fa500f489a47a1ea2767250466ff48abb6cc4",
-      "rendition": "Ink identity symbol, unframed, official colours"
+      "rendition": "Ink identity symbol, unframed, fixed colours, never recoloured by the theme"
     },
     {
       "name": "amethyst",
       "kind": "ink",
-      "colour": "official",
+      "colour": "fixed",
       "path": "src/assets/symbols/ink/Amethyst.svg",
       "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/amethyst/Amethyst.svg",
       "format": "svg",
       "viewBox": "0 0 303.9834 345.9149",
       "bytes": 4157,
       "sha256": "7a1667103788f7e29993ff364353636e92f7b9d0fcf39951fa0226026f3d347c",
-      "rendition": "Ink identity symbol, unframed, official colours"
+      "rendition": "Ink identity symbol, unframed, fixed colours, never recoloured by the theme"
     },
     {
       "name": "emerald",
       "kind": "ink",
-      "colour": "official",
+      "colour": "fixed",
       "path": "src/assets/symbols/ink/Emerald.svg",
       "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/emerald/Emerald.svg",
       "format": "svg",
       "viewBox": "0 0 303.9834 345.9149",
       "bytes": 3829,
       "sha256": "d22fce343d8a439df0119cbd165da1a8506a7679e5ccec89b39615006aa63452",
-      "rendition": "Ink identity symbol, unframed, official colours"
+      "rendition": "Ink identity symbol, unframed, fixed colours, never recoloured by the theme"
     },
     {
       "name": "ruby",
       "kind": "ink",
-      "colour": "official",
+      "colour": "fixed",
       "path": "src/assets/symbols/ink/Ruby.svg",
       "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/ruby/Ruby.svg",
       "format": "svg",
       "viewBox": "0 0 303.9834 345.9149",
       "bytes": 2286,
       "sha256": "23e2375a96161b231307b523b6fe709221bcbc2c5b4e45af9b79d21ae7f39f7a",
-      "rendition": "Ink identity symbol, unframed, official colours"
+      "rendition": "Ink identity symbol, unframed, fixed colours, never recoloured by the theme"
     },
     {
       "name": "sapphire",
       "kind": "ink",
-      "colour": "official",
+      "colour": "fixed",
       "path": "src/assets/symbols/ink/Sapphire2.svg",
       "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/sapphire/Sapphire2.svg",
       "format": "svg",
       "viewBox": "0 0 303.984 345.9168",
       "bytes": 3339,
       "sha256": "d02acfa9cdea972aad19fc0ac6c8cbb5429279eebac715f58530d276a799ad3a",
-      "rendition": "Ink identity symbol, unframed, official colours"
+      "rendition": "Ink identity symbol, unframed, fixed colours, never recoloured by the theme"
     },
     {
       "name": "steel",
       "kind": "ink",
-      "colour": "official",
+      "colour": "fixed",
       "path": "src/assets/symbols/ink/Steel.svg",
       "source_file": "public/assets/all-lorcana-assets/ink-icons/svg/unframed/steel/Steel.svg",
       "format": "svg",
       "viewBox": "0 0 303.9834 345.9149",
       "bytes": 2508,
       "sha256": "37ae906dce4bd1ec996bcb87aeeff7b7f1a32fa67cdb7caa933f9e54654e6371",
-      "rendition": "Ink identity symbol, unframed, official colours"
+      "rendition": "Ink identity symbol, unframed, fixed colours, never recoloured by the theme"
     }
   ],
   "display": "symbols.ts crops each symbol to its computed shape bounds, squared and centred with 1/12 padding per side, so symbols match the interface icons' optical size. The SVG files themselves are unchanged."

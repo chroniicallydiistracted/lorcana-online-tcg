@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261021-008",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "python3 scripts/verify-config.py && python3 scripts/ci/check-config.py && pnpm audit && pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "a136841322ec5a8cb54734b50a030e458bd6b712",
+  "source_fingerprint": "35834e4ba851b08dd699a0fdb783e365e01faaab65ffe57f91db0132358b244b",
+  "started_at": "2026-10-21T14:33:10.035Z",
+  "finished_at": "2026-10-21T14:35:10.260Z",
+  "recorded_at": "2026-10-21T14:35:10.260Z",
+  "time_precision": "exact",
+  "elapsed_ms": 120230,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Symbol provenance corrected (Director's drawings or Ravensburger public assets): configuration contract, workflow config check, pnpm audit, typecheck, ESLint plus boundaries and the full workspace suite",
+  "log_path": "docs/validation/logs/RUN-20261021-008.txt",
+  "log_sha256": "75a65478c7b0d3ca8c7828d64d00c19d60b59af60ea6f00f7adc7f6e553c9862",
+  "redactions": 0
+}

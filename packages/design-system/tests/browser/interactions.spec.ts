@@ -247,7 +247,7 @@ test('the reading presentation sets rules text in Brandon Text Cond at 20 / 28 p
   expect(style.family.split(',')[0]).toMatch(/Brandon Text Cond/);
   expect([style.size, style.line]).toEqual(['20px', '28px']);
 });
-test('official ink and gameplay symbols render with names; the takedown switch shows neutral placeholders', async ({ page }) => {
+test('Lorcana ink and gameplay symbols render with names; the takedown switch shows neutral placeholders', async ({ page }) => {
   for (const theme of ['paper', 'ink']) {
     await open(page, 'cards-tiles-deck-entries-and-inspection--inks', `theme:${theme}`);
     const official = page.locator('#storybook-root > * > :not([data-assets])');

@@ -56,3 +56,11 @@ Under decision D21 the design system renders verified Lorcana symbols: six ink i
 - **Takedown:** `DesignSystemProvider officialAssets={false}` replaces every symbol with a neutral placeholder without other changes, for rule 4.
 
 The card-face fonts (D20) are third-party typefaces, not Ravensburger assets. Their rights basis is the Director's decision D20 and is recorded in the font manifest (CHG-20261021-001).
+
+## Provenance correction — 2026-10-21 UTC
+
+Recorded 2026-10-21T14:32:09.557Z (CHG-20261021-003). This corrects the previous note: the source folder is not a collected asset pack of unknown origin.
+- **Origin:** per the Director, most, if not all, of its files are the Director's own drawings of Lorcana symbols. The rest come directly from Ravensburger's publicly available digital assets.
+- **Manifest:** the symbol manifest records this as the source for rule 3; which symbols are which is not distinguished.
+- **Rights basis and takedown:** both kinds depict Disney Lorcana marks, so the rights basis stays D07 and the takedown switch covers both.
+- **Open item:** none for rule 3 beyond per-file attribution, if the Director wants it recorded.

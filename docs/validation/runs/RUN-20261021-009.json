@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261021-009",
+  "category": "container",
+  "command": [
+    "pnpm",
+    "ci:design-system"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "303e89297aec"
+  },
+  "source_commit": "a136841322ec5a8cb54734b50a030e458bd6b712",
+  "source_fingerprint": "35834e4ba851b08dd699a0fdb783e365e01faaab65ffe57f91db0132358b244b",
+  "started_at": "2026-10-21T14:37:16.938Z",
+  "finished_at": "2026-10-21T14:39:11.965Z",
+  "recorded_at": "2026-10-21T14:39:11.965Z",
+  "time_precision": "exact",
+  "elapsed_ms": 115031,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Actual isolated design-system pipeline: frozen install, design-system gates, pinned Chromium and the Storybook/Playwright/axe suite",
+  "log_path": "docs/validation/logs/RUN-20261021-009.txt",
+  "log_sha256": "bfb8d5c08648e633ec8035740b9b567d7eea19dcc2c4d5ca4314306372175ec6",
+  "redactions": 0
+}

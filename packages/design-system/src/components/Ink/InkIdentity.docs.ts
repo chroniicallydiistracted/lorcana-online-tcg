@@ -2,8 +2,8 @@ import { defineDoc } from '../docs.ts';
 export const inkIdentityDoc = defineDoc({
   name: 'InkIdentity', status: 'experimental', foundation: 'Inline elements',
   purpose: 'Shows one or more ink identities with their names.',
-  anatomy: ['Official ink symbol in its own colours (a neutral swatch when official assets are off)', 'Ink name (or two-letter marker in compact form with the full name for assistive technology)'],
-  variants: ['single', 'multicolour', 'compact', 'neutral (official assets off)'],
+  anatomy: ['Lorcana ink symbol in its own fixed colours (a neutral swatch when Lorcana assets are switched off)', 'Ink name (or two-letter marker in compact form with the full name for assistive technology)'],
+  variants: ['single', 'multicolour', 'compact', 'neutral (Lorcana assets switched off)'],
   states: ['single', 'multicolour', 'compact', 'neutral'],
   inputs: ['inks', 'compact'],
   outputs: [],

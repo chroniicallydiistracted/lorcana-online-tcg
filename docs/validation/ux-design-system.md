@@ -175,3 +175,15 @@ Recorded 2026-10-21T07:01:59.323Z (CHG-20261021-002; decision D23).
   - **RUN-20261021-006:** isolated design-system suite in 117 s (34 gates, 161/161, including the 2% width bound).
   - **RUN-20261021-007:** static `docs:check`.
 - **Not re-run locally:** the foundation pipeline, since the only source change is a design-system browser test it does not execute. Hosted CI runs both jobs.
+
+## Provenance correction — 2026-10-21 UTC
+
+Recorded 2026-10-21T14:32:09.557Z (CHG-20261021-003). The Director states that most, if not all, files in the source folder (`all-lorcana-assets` in the original Inkspire app) were created by the Director. The rest come directly from Ravensburger's publicly available digital assets. The folder is not an official asset pack, as earlier records called it, and the symbols are not necessarily official files.
+- **Manifest:** `src/assets/symbols/manifest.json` now records this origin. Which symbols are which is not distinguished.
+- **Rights basis:** D07, because the symbols depict Disney Lorcana marks.
+- **Takedown switch:** it covers them either way.
+- **Symbol choice:** stands on its technical grounds: clean vector shapes, and legibility at 20 and 24 px. The contrast with the bolder `*_card_text` glyphs no longer turns on provenance, since both sets are the Director's. Those files were still unsuitable as working files with transforms and construction strokes.
+- **Evidence at fingerprint `35834e4ba851b08dd699a0fdb783e365e01faaab65ffe57f91db0132358b244b`, all passed:**
+  - **RUN-20261021-008:** configuration and workflow checks, `pnpm audit` clean, typecheck, lint and full suite (403 Node, 26 Python, upstream 406/1 skip, 2 injection).
+  - **RUN-20261021-009:** isolated design-system suite in 115 s (34 gates, 161/161).
+  - **RUN-20261021-010:** static `docs:check`.

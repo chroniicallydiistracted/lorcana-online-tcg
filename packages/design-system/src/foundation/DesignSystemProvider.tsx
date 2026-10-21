@@ -24,7 +24,8 @@ export interface DesignSystemProviderProps {
   /** BCP 47 locale for formatting and component strings. */
   locale?: string;
   /**
-   * Official Lorcana symbols (D07). false replaces every one with a neutral placeholder: the takedown
+   * Assets depicting Disney Lorcana marks, whether Ravensburger's or the Director's own drawings (D07).
+   * false replaces every one with a neutral placeholder: the takedown
    * switch of the fan-content policy (rule 4). The application owns this configuration.
    */
   officialAssets?: boolean;
@@ -76,7 +77,7 @@ export function useDesignSystem(): DesignSystemContextValue {
 }
 /** Component strings for the current locale. */
 export function useMessages(): DesignSystemContextValue['t'] { return useDesignSystem().t; }
-/** Whether official Lorcana symbols may render; false means neutral placeholders (takedown readiness). */
+/** Whether Lorcana symbols may render; false means neutral placeholders (takedown readiness). */
 export function useOfficialAssets(): boolean { return useDesignSystem().officialAssets; }
 /** Concise, prioritized live announcements (§25). Never announce frames, ticks or hover. */
 export function useAnnouncer(): DesignSystemContextValue['announce'] { return useDesignSystem().announce; }

@@ -151,3 +151,11 @@ The Director approved this ADR in its entirety and required it to be implemented
 **Font metrics, corrected.** The consequence above records a width difference of about 4.5% under Linux hinting. With hinting off, as the browser suite now runs, the measured fallback is within +1.2% of Source Sans 3 on the same sentence (622 px hinted against 651 px; 639.5 px unhinted against 631.9 px). The test bound is now 2%. Real Windows and macOS behaviour remains UX-02.
 
 **Boundary.** The standard says animation speed affects presentation only and never server clocks (§26). This ADR bounds it in the preference model. Applying it to match choreography belongs to `packages/presentation` (§32) once scenes exist.
+
+## Provenance correction — 2026-10-21 UTC
+
+Recorded 2026-10-21T14:32:09.557Z (CHG-20261021-003). The Director states that most, if not all, files in the source folder (`all-lorcana-assets` in the original Inkspire app) were created by the Director. The rest come directly from Ravensburger's publicly available digital assets. The folder is not an official asset pack, as earlier records called it, and the symbols are not necessarily official files.
+- **Manifest:** `src/assets/symbols/manifest.json` now records this origin. Which symbols are which is not distinguished.
+- **Rights basis:** D07, because the symbols depict Disney Lorcana marks.
+- **Takedown switch:** it covers them either way.
+- **Symbol choice:** stands on its technical grounds: clean vector shapes, and legibility at 20 and 24 px. The contrast with the bolder `*_card_text` glyphs no longer turns on provenance, since both sets are the Director's. Those files were still unsuitable as working files with transforms and construction strokes.
