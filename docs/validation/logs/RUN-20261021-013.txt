@@ -1,0 +1,18 @@
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ critical            │ Storybook: Missing origin validation in Storybook      │
+│                     │ preview allows code injection from malicious websites  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ storybook                                              │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=10.0.0 <10.6.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=10.6.2                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ packages__design-system>storybook                      │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-f2ph-cmg5-wxc8      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+1 vulnerabilities found
+Severity: 1 critical

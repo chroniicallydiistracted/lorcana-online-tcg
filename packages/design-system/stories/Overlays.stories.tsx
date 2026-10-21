@@ -65,7 +65,7 @@ export const Confirmations: Story = {
         <Button variant="danger" onPress={() => setOpen('delete')}>Delete deck</Button>
       </Inline>
       <Confirmation isOpen={open === 'end'} onOpenChange={v => setOpen(v ? 'end' : null)} title="End your turn?" consequence="Your turn ends and your opponent becomes the active player." context={<Text>You still have 2 ink available and 1 ready character that can quest. Taking these is optional.</Text>} confirmLabel="End turn" cancelLabel="Keep playing" onConfirm={() => {}} />
-      <Confirmation isOpen={open === 'quest'} onOpenChange={v => setOpen(v ? 'quest' : null)} title="Quest with all characters?" consequence="These characters will quest. Unresolved effects may still change the final lore gained." context={<ul style={{ margin: 0 }}><li>Synthetic Explorer – Charted the Quiet Coast</li><li>Synthetic Archivist – Keeper of Lost Pages</li></ul>} confirmLabel="Quest with all characters" cancelLabel="Keep playing" onConfirm={() => {}} />
+      <Confirmation isOpen={open === 'quest'} onOpenChange={v => setOpen(v ? 'quest' : null)} title="Quest with all characters?" consequence="These characters will quest. Unresolved effects may still change the final lore gained." context={<ul style={{ margin: 0 }}><li>Elsa – Spirit of Winter</li><li>Stitch – Rock Star</li></ul>} confirmLabel="Quest with all characters" cancelLabel="Keep playing" onConfirm={() => {}} />
       <Confirmation isOpen={open === 'delete'} onOpenChange={v => setOpen(v ? 'delete' : null)} tone="danger" title="Delete this deck?" consequence={`The deck and its notes are removed from your account. ${longText}`} confirmLabel="Delete deck" cancelLabel="Keep deck" onConfirm={() => {}} />
     </Stack>;
   },

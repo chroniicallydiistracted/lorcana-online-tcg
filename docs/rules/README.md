@@ -61,3 +61,7 @@ Constructed/Core/Infinity/Pack Rush/Coconut and cooperative content retain separ
 ## Current upstream refresh — 2026-10-13 UTC
 
 Additional dated inventories at6de59de1 cover the entire repository change range and current Lorcana catalog/test source. They do not replace or rewrite the October10 source acquisition/count snapshots. Set014 source presence207 definitions is not certification or release admission. See [refresh qualification](../validation/upstream-engine-review.md) for current evidence and limits.
+
+## Official card catalog — 2026-10-21 UTC
+
+Decision D25 makes Ravensburger's public v3 catalog the project's card data source. Its acquisition tooling and normalized catalog live in `packages/rules-data`, not in `scripts/rules` ([ADR 0018](../adr/0018-official-card-catalog.md), [runbook](../runbooks/card-catalog.md)). The dated acquisition record [2026-10-21-ravensburger-catalog.json](2026-10-21-ravensburger-catalog.json) follows this folder's conventions: append-only, with raw bytes in the ignored `.local/` and exact hashes here. The October 10 inventories above remain dated research. Card admission and certification gates are unchanged.

@@ -16,6 +16,7 @@ The Inkspire's technical design system, built from the adopted [UX/UI design sys
   - interface icons are Phosphor Regular from a curated registry (`src/components/Icon/registry.ts`);
   - printed gameplay and ink symbols come from verified Lorcana assets (`src/assets/symbols/`), with a takedown switch to neutral placeholders.
 - **Components:** 47 documented Experimental components on React Aria Components 1.21.1 with CSS Modules: actions, fields, overlays, collections, status, notifications, connection and card presentation. Every component has a §13 documentation contract and stories for every documented state.
+- **Card data in stories (decision D25):** every card, set and ability in the stories is real, from Ravensburger's catalog through `@lorcana/rules-data/fixtures`, a development dependency only. Components never import the catalog; they take the presentational `Printing` type. A card tile shows the card itself and opens the inspector (decision D26).
 - **Checks:**
   - `pnpm --filter @lorcana/design-system test`: tokens, style ownership, component contracts, fonts, icon registry, symbol provenance, preferences and notice wording;
   - `test:browser`: Storybook plus Playwright and axe in Chromium;

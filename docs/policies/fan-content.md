@@ -72,3 +72,10 @@ Recorded 2026-10-21 (CHG-20261021-004; decision D25). This narrows the D07 note 
 - **Engine and rules tests:** they keep their synthetic fixtures until engine qualification is recorded.
 - **Neutral placeholders:** they remain only as the takedown fallback of rule 4.
 - **Provenance:** rule 3 applies to every catalog snapshot and card image the project stores: source URL, retrieval date, checksum, dimensions and format, rendition and the rights basis `D07: Ravensburger fan-content terms`.
+
+## Card images in the repository — 2026-10-21 UTC
+
+Recorded with CHG-20261021-005 (decision D25, [ADR 0018](../adr/0018-official-card-catalog.md)).
+- **What is stored:** `packages/rules-data/fixtures/images/` holds 24 official card images (12 printings, thumbnail and full card) for Storybook and presentation tests.
+- **Provenance:** each file is byte-identical to its catalog URL, and `src/fixtures/images.json` records source URL, retrieval time, SHA-256, dimensions, format, rendition and the rights basis `D07: Ravensburger fan-content terms` (rule 3).
+- **Takedown:** the design system's `officialAssets={false}` switch now also replaces card images with neutral placeholders. A takedown request additionally means removing these committed files (rule 4).

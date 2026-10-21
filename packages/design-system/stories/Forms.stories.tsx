@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Checkbox, ComboBox, Option, QuantityField, Radio, RadioGroup, SearchField, Select, Stack, Switch, TextArea, TextField } from '../src/index.ts';
+import { presentationCatalog } from '@lorcana/rules-data/fixtures';
 import { textAreaDoc, textFieldDoc } from '../src/components/TextField/TextField.docs.ts';
 import { searchFieldDoc } from '../src/components/SearchField/SearchField.docs.ts';
 import { optionDoc, selectDoc } from '../src/components/Select/Select.docs.ts';
@@ -15,7 +16,8 @@ import { longText } from './support/fixtures.ts';
 const meta = { title: 'Forms/Fields and choices' } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;
-const sets = [{ id: 'syn1', name: 'Synthetic Set One' }, { id: 'syn2', name: 'Synthetic Set Two' }, { id: 'syn3', name: 'A Synthetic Set With A Long Name That Wraps Inside The List' }];
+// Real set names from the recorded Ravensburger catalog (decision D25); quest2 has the longest name among them.
+const sets = presentationCatalog.sets.filter(set => ['set1', 'set14', 'quest2'].includes(set.id)).map(set => ({ id: set.id, name: set.name }));
 
 export const Documentation: Story = { render: () => <DocPage docs={[textFieldDoc, textAreaDoc, searchFieldDoc, selectDoc, optionDoc, comboBoxDoc, checkboxDoc, radioGroupDoc, radioDoc, switchDoc, quantityFieldDoc]} /> };
 export const TextFields: Story = {
@@ -47,20 +49,20 @@ export const Selects: Story = {
   parameters: { designSystem: { coverage: { Select: ['closed', 'selected', 'invalid', 'disabled'], Option: ['default', 'selected', 'disabled'] } } },
   render: () => <Stack gap={6}>
     <Select label="Set" items={sets} placeholder="Choose a set">{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</Select>
-    <Select label="Format" defaultSelectedKey="syn2" items={sets}>{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</Select>
-    <Select label="Queue" isInvalid errorMessage="Choose a queue to continue." items={sets} disabledKeys={['syn3']}>{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</Select>
+    <Select label="Format" defaultSelectedKey="set14" items={sets}>{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</Select>
+    <Select label="Queue" isInvalid errorMessage="Choose a queue to continue." items={sets} disabledKeys={['quest2']}>{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</Select>
     <Select label="Region" isDisabled items={sets}>{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</Select>
   </Stack>,
 };
 export const SelectOpen: Story = {
   parameters: { designSystem: { coverage: { Select: ['open', 'long option'], Option: ['focused'] } } },
-  render: () => <div style={{ minBlockSize: '20rem' }}><Select label="Set" defaultOpen defaultSelectedKey="syn1" items={sets}>{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</Select></div>,
+  render: () => <div style={{ minBlockSize: '20rem' }}><Select label="Set" defaultOpen defaultSelectedKey="set1" items={sets}>{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</Select></div>,
 };
 export const ComboBoxes: Story = {
   parameters: { designSystem: { coverage: { ComboBox: ['closed', 'open filtered', 'no matches', 'selected', 'invalid', 'disabled'] } } },
   render: () => <Stack gap={6}>
     <ComboBox label="Card" defaultItems={sets} placeholder="Type to filter">{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</ComboBox>
-    <ComboBox label="Selected card" defaultItems={sets} defaultSelectedKey="syn1">{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</ComboBox>
+    <ComboBox label="Selected card" defaultItems={sets} defaultSelectedKey="set1">{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</ComboBox>
     <ComboBox label="Required card" defaultItems={sets} isInvalid errorMessage="Choose a card from the list.">{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</ComboBox>
     <ComboBox label="Locked card" defaultItems={sets} isDisabled>{item => <Option id={item.id} textValue={item.name}>{item.name}</Option>}</ComboBox>
   </Stack>,

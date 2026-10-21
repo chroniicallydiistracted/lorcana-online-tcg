@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { fixturePrinting, presentationCatalog } from '@lorcana/rules-data/fixtures';
 import { Button, CardFaceText, CardInspector, CardTile, DeckEntry, GameSymbol, InkIdentity, InspectorHost, Inline, Stack, Text, gameSymbolNames } from '../src/index.ts';
 import { gameSymbolDoc } from '../src/components/GameSymbol/GameSymbol.docs.ts';
 import { OfficialAssetsOff } from './support/OfficialAssetsOff.tsx';
@@ -9,16 +10,13 @@ import { deckEntryDoc } from '../src/components/DeckEntry/DeckEntry.docs.ts';
 import { cardInspectorDoc, inspectorHostDoc } from '../src/components/Inspector/Inspector.docs.ts';
 import { cardFaceTextDoc } from '../src/components/CardFace/CardFaceText.docs.ts';
 import { DocPage } from './support/DocPage.tsx';
-import { brokenImage, foilPrinting, longPrinting, longText, missingImage, printing } from './support/fixtures.ts';
+import { allPrintings, brokenImage, elsa, foilPrinting, fullName, missingImage, printedBlocks, printing, toPrinting } from './support/fixtures.ts';
 
 const meta = { title: 'Cards/Tiles, deck entries and inspection' } satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;
 const grid = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(11rem, 1fr))', gap: 'var(--is-space-4)' } as const;
-const printed = [
-  { kind: 'keyword' as const, heading: 'Evasive', text: '(Only characters with Evasive can challenge this character.)' },
-  { kind: 'ability' as const, heading: 'Quiet Charting', text: 'When you play this character, look at the top 2 cards of your deck. Put one on the top and the other on the bottom.' },
-];
+const godmother = fixturePrinting(2381), family = fixturePrinting(719), bolt = fixturePrinting(1693), henry = fixturePrinting(3134);
 
 export const Documentation: Story = { render: () => <DocPage docs={[inkIdentityDoc, gameSymbolDoc, cardTileDoc, deckEntryDoc, cardInspectorDoc, inspectorHostDoc, cardFaceTextDoc]} /> };
 export const Inks: Story = {
@@ -34,42 +32,42 @@ export const GameSymbols: Story = {
   parameters: { designSystem: { coverage: { GameSymbol: ['decorative', 'labelled', 'neutral'] } } },
   render: () => <Stack gap={4}>
     <Inline gap={4}>{gameSymbolNames.map(name => <Inline key={name} gap={1}><GameSymbol name={name} /><Text as="span" role="metadata">{name}</Text></Inline>)}</Inline>
-    <Inline gap={4}><Inline gap={1}><GameSymbol name="strength" label="Strength" /><Text as="span" numeric>3</Text></Inline><Inline gap={1}><GameSymbol name="willpower" label="Willpower" /><Text as="span" numeric>4</Text></Inline><Inline gap={1}><GameSymbol name="lore" label="Lore" /><Text as="span" numeric>2</Text></Inline></Inline>
+    <Inline gap={4}><Inline gap={1}><GameSymbol name="strength" label="Strength" /><Text as="span" numeric>{elsa.strength}</Text></Inline><Inline gap={1}><GameSymbol name="willpower" label="Willpower" /><Text as="span" numeric>{elsa.willpower}</Text></Inline><Inline gap={1}><GameSymbol name="lore" label="Lore" /><Text as="span" numeric>{elsa.lore}</Text></Inline></Inline>
     <div data-assets="neutral"><OfficialAssetsOff><Inline gap={4}>{gameSymbolNames.map(name => <GameSymbol key={name} name={name} label={`${name} placeholder`} />)}</Inline></OfficialAssetsOff></div>
   </Stack>,
 };
 export const Tiles: Story = {
-  parameters: { designSystem: { coverage: { CardTile: ['owned', 'unowned', 'unknown ownership', 'loading ownership', 'unavailable ownership', 'missing image', 'long name'] } } },
-  render: () => <div style={grid}>
-    <CardTile printing={printing} ownership={{ state: 'owned', normal: 3, foil: 1 }} onInspect={() => {}} actions={<Button>Add to deck</Button>} />
-    <CardTile printing={foilPrinting} ownership={{ state: 'unowned' }} onInspect={() => {}} />
-    <CardTile printing={printing} ownership={{ state: 'unknown' }} onInspect={() => {}} />
-    <CardTile printing={printing} ownership={{ state: 'loading' }} onInspect={() => {}} />
-    <CardTile printing={printing} ownership={{ state: 'unavailable' }} onInspect={() => {}} />
-    <CardTile printing={missingImage} ownership={{ state: 'owned', normal: 1, foil: 0 }} onInspect={() => {}} />
-    <CardTile printing={brokenImage} ownership={{ state: 'owned', normal: 0, foil: 2 }} onInspect={() => {}} />
-    <CardTile printing={longPrinting} ownership={{ state: 'owned', normal: 12, foil: 4 }} onInspect={() => {}} />
-  </div>,
+  parameters: { designSystem: { coverage: { CardTile: ['normal printing', 'foil printing', 'location', 'missing image', 'failed image', 'official assets off', 'long name', 'hovered', 'focused'] } } },
+  render: () => <Stack gap={6}>
+    <div style={grid}>
+      {allPrintings.map(p => <CardTile key={p.id} printing={p} onInspect={() => {}} />)}
+      <CardTile printing={foilPrinting} onInspect={() => {}} />
+      <CardTile printing={missingImage} onInspect={() => {}} />
+      <CardTile printing={brokenImage} onInspect={() => {}} />
+    </div>
+    <div data-assets="neutral" style={grid}><OfficialAssetsOff><CardTile printing={printing} onInspect={() => {}} /></OfficialAssetsOff></div>
+  </Stack>,
 };
 export const DeckEntries: Story = {
   parameters: { designSystem: { coverage: { DeckEntry: ['valid', 'illegal quantity', 'ownership limit', 'at maximum', 'long name'] } } },
   render: () => {
     const [q, setQ] = useState(2);
     return <Stack gap={0}>
-      <DeckEntry name={printing.name} version={printing.version} inks={printing.inks} cost={3} quantity={q} minQuantity={0} maxQuantity={4} onQuantityChange={setQ} onInspect={() => {}} />
-      <DeckEntry name="Synthetic Archivist" version="Keeper of Lost Pages" inks={['amethyst']} cost={5} quantity={4} minQuantity={0} maxQuantity={4} onQuantityChange={() => {}} legality={{ tone: 'danger', text: '5 copies exceed the Core format maximum of 4 (policy 2026-10).' }} onInspect={() => {}} />
-      <DeckEntry name="Synthetic Navigator" inks={['sapphire', 'steel']} cost={2} quantity={3} minQuantity={0} maxQuantity={4} onQuantityChange={() => {}} ownership={{ tone: 'warning', text: 'You own 2 copies. This is an ownership limit, not a rules restriction.' }} onInspect={() => {}} />
-      <DeckEntry name={longPrinting.name} version={longPrinting.version} inks={longPrinting.inks} cost={7} quantity={1} minQuantity={0} maxQuantity={4} onQuantityChange={() => {}} onInspect={() => {}} />
+      <DeckEntry name={elsa.name} {...(elsa.subtitle ? { version: elsa.subtitle } : {})} inks={elsa.inks} cost={elsa.cost ?? 0} quantity={q} minQuantity={0} maxQuantity={4} onQuantityChange={setQ} onInspect={() => {}} />
+      <DeckEntry name={family.name} inks={family.inks} cost={family.cost ?? 0} quantity={4} minQuantity={0} maxQuantity={4} onQuantityChange={() => {}} legality={{ tone: 'danger', text: '5 copies exceed the Core format maximum of 4 (policy 2026-10).' }} onInspect={() => {}} />
+      <DeckEntry name={bolt.name} {...(bolt.subtitle ? { version: bolt.subtitle } : {})} inks={bolt.inks} cost={bolt.cost ?? 0} quantity={3} minQuantity={0} maxQuantity={4} onQuantityChange={() => {}} ownership={{ tone: 'warning', text: 'You own 2 copies. This is an ownership limit, not a rules restriction.' }} onInspect={() => {}} />
+      <DeckEntry name={henry.name} {...(henry.subtitle ? { version: henry.subtitle } : {})} inks={henry.inks} cost={henry.cost ?? 0} quantity={1} minQuantity={0} maxQuantity={4} onQuantityChange={() => {}} onInspect={() => {}} />
     </Stack>;
   },
 };
+const ruling = elsa.rulings[0];
 function InspectorExample({ reading = false, effects = false, rulings = false, ownership = 'owned' as 'owned' | 'unavailable', long = false }) {
-  const [readingMode, setReading] = useState(reading);
-  return <div style={{ maxInlineSize: '40rem' }}><CardInspector printing={long ? longPrinting : printing} classifications={['Storyborn', 'Hero', 'Explorer']} printed={long ? [...printed, { kind: 'rules', text: longText }, { kind: 'rules', text: longText }] : printed} flavor="The coast was quiet, so she wrote it down."
-    modifiers={effects ? [{ label: '+2 strength', detail: 'until the end of this turn (Synthetic Song)' }, { label: 'Exerted' }] : []}
+  const [readingMode, setReading] = useState(reading), card = long ? godmother : elsa;
+  return <div style={{ maxInlineSize: '40rem' }}><CardInspector printing={toPrinting(card)} classifications={card.classifications} printed={printedBlocks(card)} {...(card.flavorText ? { flavor: card.flavorText } : {})}
+    modifiers={effects ? [{ label: '+1 lore', detail: 'this turn (Donald Duck – Musketeer Soldier, Wait For Me!)' }, { label: 'Exerted' }, { label: "Can't ready at the start of the next turn", detail: 'Elsa – Spirit of Winter, Deep Freeze' }] : []}
     ownership={ownership === 'owned' ? { state: 'owned', normal: 3, foil: 1 } : { state: 'unavailable' }}
-    legality={<Text>Legal in the synthetic qualification format.</Text>}
-    rulings={rulings ? [{ text: 'Looking at cards does not draw them.', source: 'Comprehensive Rules 2.3', version: '2026-10-16' }] : []}
+    legality={<Text>The catalog lists this printing for Core Constructed. Not yet certified for play here.</Text>}
+    rulings={rulings && ruling ? [{ text: ruling.body, source: `Ravensburger ${ruling.title}`, version: `catalog ${presentationCatalog.source.appVersion}` }] : []}
     readingMode={readingMode} onReadingModeChange={setReading} actions={<Button>Add to deck</Button>} /></div>;
 }
 export const Inspector: Story = {
@@ -84,16 +82,17 @@ export const Host: Story = {
   parameters: { designSystem: { coverage: { InspectorHost: ['closed', 'open wide', 'open narrow'] } } },
   render: () => {
     const [open, setOpen] = useState(false);
-    return <div style={{ display: 'flex', gap: 'var(--is-space-4)', minBlockSize: '30rem' }}>
-      <div style={{ flex: 1 }}><CardTile printing={printing} ownership={{ state: 'owned', normal: 3, foil: 1 }} onInspect={() => setOpen(true)} /></div>
-      <InspectorHost isOpen={open} onOpenChange={setOpen} title={printing.name}><InspectorExample /></InspectorHost>
+    return <div style={{ display: 'flex', gap: 'var(--is-space-4)', alignItems: 'start', minBlockSize: '30rem' }}>
+      <div style={{ inlineSize: '12rem', flex: 'none' }}><CardTile printing={printing} onInspect={() => setOpen(true)} /></div>
+      <InspectorHost isOpen={open} onOpenChange={setOpen} title={fullName(elsa)}><InspectorExample /></InspectorHost>
     </div>;
   },
 };
 export const CardFace: Story = {
   parameters: { designSystem: { coverage: { CardFaceText: ['standard', 'densest', 'without version'] } } },
   render: () => <Inline gap={4} align="start">
-    <div style={{ inlineSize: '16rem' }}><CardFaceText title="Synthetic Explorer" version="Charted the Quiet Coast" classification="Storyborn · Hero · Explorer" rules={printed} flavor="The coast was quiet, so she wrote it down." /></div>
-    <div style={{ inlineSize: '16rem' }}><CardFaceText title="Synthetic Archivist" classification="Storyborn · Ally" rules={[...printed, { kind: 'rules', text: 'Additional synthetic rules text that requires the densest treatment.' }]} density="densest" /></div>
+    <div style={{ inlineSize: '16rem' }}><CardFaceText title={elsa.name} {...(elsa.subtitle ? { version: elsa.subtitle } : {})} classification={elsa.classifications.join(' · ')} rules={printedBlocks(elsa)} {...(elsa.flavorText ? { flavor: elsa.flavorText } : {})} /></div>
+    <div style={{ inlineSize: '16rem' }}><CardFaceText title={godmother.name} {...(godmother.subtitle ? { version: godmother.subtitle } : {})} classification={godmother.classifications.join(' · ')} rules={printedBlocks(godmother)} density="densest" /></div>
+    <div style={{ inlineSize: '16rem' }}><CardFaceText title={family.name} classification={family.classifications.join(' · ')} rules={printedBlocks(family)} /></div>
   </Inline>,
 };

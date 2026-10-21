@@ -55,7 +55,7 @@ test('messages: plurals, placeholders, locale numbers and a pseudolocale with th
   assert.equal(formatMessage(catalogs.en['search.results'], { count: 0 }, 'en'), 'No results');
   assert.equal(formatMessage(catalogs.en['search.results'], { count: 1 }, 'en'), '1 result');
   assert.equal(formatMessage(catalogs.en['search.results'], { count: 1280 }, 'en'), '1,280 results');
-  assert.equal(formatMessage(catalogs.en['action.inspect'], { name: 'Synthetic Explorer' }, 'en'), 'Inspect Synthetic Explorer');
+  assert.equal(formatMessage(catalogs.en['action.inspect'], { name: 'Elsa – Spirit of Winter' }, 'en'), 'Inspect Elsa – Spirit of Winter');
   assert.deepEqual(Object.keys(catalogs['en-XA']), Object.keys(catalogs.en));
   const pseudo = pseudolocalize('Inspect {name}');
   assert.match(pseudo, /\{name\}/); assert.notEqual(pseudo, 'Inspect {name}');

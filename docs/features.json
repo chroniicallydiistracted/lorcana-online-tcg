@@ -430,7 +430,7 @@
       "name": "Technical design system",
       "implementation": "implemented",
       "verification": "verified",
-      "description": "DTCG 2025.10 subset tokens (primitive/semantic Paper and Ink/component/card) validated for references, cycles, types, units, descriptions, theme mappings, achromatic neutrals and 76 contrast pairs; Style Dictionary 5.6.0 resolution cross-checked; deterministic CSS/TS/renderer/@value/font/manifest outputs with drift check. Self-hosted Source Sans 3 with measured fallback metrics; card-face fonts (D20: Bystander, trial Brandon Text Cond with a cap-height-matched Source Sans 3 coverage fallback, Century Gothic). Phosphor Regular interface icons from a curated registry and verified Lorcana ink and gameplay symbols with a takedown switch (D21). DesignSystemProvider, versioned preferences, externalized strings with pseudolocale. 47 experimental React Aria components with section 13 contracts and full state coverage; style-ownership and component-contract gates; Storybook 10.6.1 with Playwright and axe Chromium evidence. Reference screens, Firefox/WebKit/real devices and manual accessibility journeys pending.",
+      "description": "DTCG 2025.10 subset tokens (primitive/semantic Paper and Ink/component/card) validated for references, cycles, types, units, descriptions, theme mappings, achromatic neutrals and 76 contrast pairs; Style Dictionary 5.6.0 resolution cross-checked; deterministic CSS/TS/renderer/@value/font/manifest outputs with drift check. Self-hosted Source Sans 3 with measured fallback metrics; card-face fonts (D20: Bystander, trial Brandon Text Cond with a cap-height-matched Source Sans 3 coverage fallback, Century Gothic). Phosphor Regular interface icons from a curated registry and verified Lorcana ink and gameplay symbols with a takedown switch (D21). DesignSystemProvider, versioned preferences, externalized strings with pseudolocale. 47 experimental React Aria components with section 13 contracts and full state coverage; card tiles show the card itself, named by card and printing (D26), and CardImage follows the takedown switch; stories and browser tests use real Ravensburger catalog cards (D25); style-ownership and component-contract gates; Storybook 10.6.2 with Playwright and axe Chromium evidence. Reference screens, Firefox/WebKit/real devices and manual accessibility journeys pending.",
       "sources": [
         "packages/design-system/**",
         "apps/web/src/**",
@@ -442,7 +442,8 @@
         "docs/runbooks/design-system.md",
         "docs/adr/0017-technical-design-system.md",
         "docs/validation/ux-design-system.md",
-        "packages/design-system/README.md"
+        "packages/design-system/README.md",
+        "docs/adr/0018-official-card-catalog.md"
       ],
       "task_ids": [
         "UX-01",
@@ -467,6 +468,9 @@
         "R25.016"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
+        "docs/validation/runs/RUN-20261021-016.json",
+        "docs/validation/runs/RUN-20261021-018.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-009.json",
         "docs/validation/runs/RUN-20261021-005.json",
@@ -578,6 +582,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -720,6 +725,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -807,6 +813,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -876,10 +883,9 @@
       "name": "Future shared domains and infrastructure",
       "implementation": "reserved",
       "verification": "pending",
-      "description": "Domain, rules-data, testkit and production infrastructure remain reserved.",
+      "description": "Domain, testkit and production infrastructure remain reserved.",
       "sources": [
         "packages/domain/**",
-        "packages/rules-data/**",
         "packages/testkit/**"
       ],
       "documents": [
@@ -916,6 +922,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1020,6 +1027,8 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
+        "docs/validation/runs/RUN-20261021-018.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1099,6 +1108,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1183,6 +1193,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1335,6 +1346,45 @@
       ]
     },
     {
+      "id": "F-CARD-CATALOG",
+      "name": "Official card catalog and real-card fixtures",
+      "implementation": "implemented",
+      "verification": "verified",
+      "description": "Ravensburger's public v3 catalog (decision D25): bounded sequential acquisition of en/de/fr/it (Spanish probed) into an ignored content-addressed cache with dated append-only records under docs/rules; strict validation of the fields normalization relies on, rejecting unreviewed categories, inks and rarities; a browser-safe normalized catalog keeping printings apart from the card in play, with variants, finishes and CardFX foil layers; display tokens for rules text with exact round trips and % break normalization; a reviewed, self-expiring markup-correction ledger; a real-card presentation fixture of 12 printings and 24 images with full provenance. No app delivery, legality, errata or play admission.",
+      "sources": [
+        "packages/rules-data/**"
+      ],
+      "documents": [
+        "docs/FEATURES.md",
+        "docs/adr/0018-official-card-catalog.md",
+        "docs/runbooks/card-catalog.md",
+        "docs/validation/card-catalog.md",
+        "packages/rules-data/README.md"
+      ],
+      "task_ids": [
+        "UX-01",
+        "UX-03",
+        "CONTENT-01"
+      ],
+      "requirement_ids": [
+        "R20.001",
+        "R20.002",
+        "R20.003",
+        "R20.004",
+        "R20.007",
+        "R20.008",
+        "R20.009",
+        "R20.010",
+        "R20.011"
+      ],
+      "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
+        "docs/validation/runs/RUN-20261021-019.json",
+        "docs/validation/runs/RUN-20261021-018.json",
+        "docs/validation/runs/RUN-20261021-012.json"
+      ]
+    },
+    {
       "id": "F-ENGINE",
       "name": "Pinned synthetic engine, secure server RNG and private deterministic verification",
       "implementation": "implemented",
@@ -1376,6 +1426,7 @@
         "R32.011"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1560,6 +1611,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1661,6 +1713,7 @@
         "R17.009"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1746,6 +1799,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1819,6 +1873,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",
@@ -1917,6 +1972,7 @@
         "R30.010"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261021-014.json",
         "docs/validation/runs/RUN-20261021-008.json",
         "docs/validation/runs/RUN-20261021-005.json",
         "docs/validation/runs/RUN-20261021-003.json",

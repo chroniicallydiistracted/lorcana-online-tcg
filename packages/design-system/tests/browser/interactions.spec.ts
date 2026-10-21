@@ -80,7 +80,7 @@ test('select is fully keyboard operable and shows the chosen value', async ({ pa
   const trigger = page.getByRole('button', { name: /Set/ }).first();
   await trigger.focus(); await page.keyboard.press('Enter');
   await page.keyboard.press('ArrowDown'); await page.keyboard.press('Enter');
-  await expect(trigger).toContainText('Synthetic Set Two');
+  await expect(trigger).toContainText('Palace Heist – Illumineer’s Quest');
 });
 test('tabs move with arrow keys and keep the panel relationship', async ({ page }) => {
   await open(page, 'overlays-tabs-menus-and-dialogs--tabs');
@@ -164,9 +164,9 @@ test('text enlarged to 200% keeps complete labels without clipping', async ({ pa
 });
 test('inspection opens beside the work on wide layouts and returns focus to the card on close', async ({ page }) => {
   await open(page, 'cards-tiles-deck-entries-and-inspection--host');
-  const inspect = page.getByRole('button', { name: /Inspect Synthetic Explorer/ });
+  const inspect = page.getByRole('button', { name: 'Inspect Elsa – Spirit of Winter' });
   await inspect.click();
-  const panel = page.getByRole('complementary', { name: 'Synthetic Explorer' });
+  const panel = page.getByRole('complementary', { name: 'Elsa – Spirit of Winter' });
   await expect(panel).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(panel).toHaveCount(0);
@@ -175,20 +175,41 @@ test('inspection opens beside the work on wide layouts and returns focus to the 
 test('inspection opens as a modal sheet on narrow layouts', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await open(page, 'cards-tiles-deck-entries-and-inspection--host');
-  const inspect = page.getByRole('button', { name: /Inspect Synthetic Explorer/ });
+  const inspect = page.getByRole('button', { name: 'Inspect Elsa – Spirit of Winter' });
   await inspect.click();
-  await expect(page.getByRole('dialog', { name: 'Synthetic Explorer' })).toBeVisible();
+  await expect(page.getByRole('dialog', { name: 'Elsa – Spirit of Winter' })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(inspect).toBeFocused();
 });
-test('a failed card image keeps the printing name and actions', async ({ page }) => {
+test('a missing or failed card image keeps the card name visible and the tile usable', async ({ page }) => {
   await open(page, 'cards-tiles-deck-entries-and-inspection--tiles');
-  await expect(page.getByRole('img', { name: /Synthetic Explorer.*Image unavailable/ }).first()).toBeVisible();
-  await expect(page.getByRole('button', { name: /Inspect Synthetic Archivist/ })).toBeVisible();
+  const missing = page.getByRole('button', { name: 'Inspect Henry J. Waternoose III – Chief Executive Officer' }).filter({ hasText: 'Image unavailable' });
+  await expect(missing).toBeVisible();
+  await expect(missing).toContainText('Chief Executive Officer');
+  await expect(page.getByRole('button', { name: 'Inspect Bolt – Down but Not Out' }).filter({ hasText: 'Image unavailable' })).toBeVisible();
 });
 test('unavailable ownership is never shown as zero', async ({ page }) => {
-  await open(page, 'cards-tiles-deck-entries-and-inspection--tiles');
+  await open(page, 'cards-tiles-deck-entries-and-inspection--inspector-reading-mode');
   await expect(page.getByText('Ownership unavailable').first()).toBeVisible();
+});
+test('a card tile is the card itself: one named button with no details under the card (D26)', async ({ page }) => {
+  await open(page, 'cards-tiles-deck-entries-and-inspection--tiles');
+  const tile = page.getByRole('button', { name: 'Inspect Elsa – Spirit of Winter, The First Chapter 42/204', exact: true }).first();
+  await expect(page.getByRole('button', { name: 'Inspect Elsa – Spirit of Winter, Fabled 43/204', exact: true }), 'a reprint has its own name').toHaveCount(1);
+  expect(await tile.evaluate(el => ({ text: el.textContent?.trim(), images: [...el.querySelectorAll('img')].map(img => img.getAttribute('alt')) }))).toEqual({ text: '', images: [''] });
+  const image = tile.locator('img');
+  await expect.poll(() => image.evaluate(img => (img as HTMLImageElement).naturalWidth)).toBe(367);
+  const foil = page.getByRole('button', { name: 'Inspect Elsa – Spirit of Winter, The First Chapter 42/204, Foil printing', exact: true });
+  await expect(foil).toHaveText('Foil');
+  const before = await tile.boundingBox();
+  await tile.hover();
+  expect(await tile.boundingBox()).toEqual(before);
+});
+test('card tiles follow the takedown switch with a neutral placeholder', async ({ page }) => {
+  await open(page, 'cards-tiles-deck-entries-and-inspection--tiles');
+  const neutral = page.locator('[data-assets="neutral"]').getByRole('button', { name: 'Inspect Elsa – Spirit of Winter' });
+  await expect(neutral).toContainText('Image unavailable');
+  await expect(neutral.locator('img')).toHaveCount(0);
 });
 test('the quiet notification count states its count only in its accessible name', async ({ page }) => {
   await open(page, 'status-collections-feedback-and-connection--notifications');

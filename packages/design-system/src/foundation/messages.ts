@@ -33,6 +33,7 @@ export const en = {
   'quantity.total': 'Total',
   'finish.normal': 'Normal printing',
   'finish.foil': 'Foil printing',
+  'finish.foilMark': 'Foil',
   'image.unavailable': 'Image unavailable',
   'job.queued': 'Queued',
   'job.running': 'Running',

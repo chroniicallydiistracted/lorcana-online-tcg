@@ -1,11 +1,10 @@
-.tile { display: flex; flex-direction: column; gap: var(--is-space-2); min-inline-size: 0; padding: var(--is-space-2); border: var(--is-border-width-1) solid var(--is-color-border-decorative); border-radius: var(--is-component-surface-radius); background: var(--is-color-surface); color: var(--is-color-text-primary); }
-.details { display: flex; flex-direction: column; gap: var(--is-space-1); min-inline-size: 0; }
-.name { display: flex; flex-direction: column; margin: 0; font: var(--is-typography-body-strong); overflow-wrap: anywhere; }
-.version { font: var(--is-typography-metadata); color: var(--is-color-text-supporting); }
-.meta { margin: 0; font: var(--is-typography-metadata); color: var(--is-color-text-supporting); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--is-space-1); }
+.tile { position: relative; display: block; inline-size: 100%; min-inline-size: 0; padding: 0; border: 0; border-radius: 5.5% / 4%; /* token-exception: physical card corner, 3.5 mm on a 63 x 88 mm card */ background: transparent; color: var(--is-color-text-primary); cursor: pointer; touch-action: manipulation; transition: box-shadow var(--is-motion-hover) var(--is-motion-ease); }
+.tile[data-hovered] { box-shadow: 0 0 0 var(--is-border-width-2) var(--is-color-border-strong); }
+.tile[data-pressed] { box-shadow: 0 0 0 var(--is-border-width-2) var(--is-color-border-essential); }
+.tile[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.finish { position: absolute; inset-block-start: var(--is-space-2); inset-inline-end: var(--is-space-2); padding-block: 0; padding-inline: var(--is-space-1); border: var(--is-border-width-1) solid var(--is-color-border-strong); border-radius: var(--is-component-control-radius); background: var(--is-color-surface); color: var(--is-color-text-primary); font: var(--is-typography-metadata); }
 .ownership { display: flex; flex-direction: column; font: var(--is-typography-metadata); }
 .ownership[data-state="unavailable"], .ownership[data-state="unknown"] { color: var(--is-color-feedback-warning-foreground); }
 .ownership[data-state="unowned"], .ownership[data-state="loading"] { color: var(--is-color-text-supporting); }
 .counts { font-variant-numeric: tabular-nums; color: var(--is-color-text-supporting); }
-.actions { display: flex; flex-wrap: wrap; gap: var(--is-space-1); margin-block-start: auto; }
+@media (forced-colors: active) { .tile[data-hovered], .tile[data-pressed] { outline: var(--is-border-width-2) solid CanvasText; } }

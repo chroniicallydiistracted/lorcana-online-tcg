@@ -2,6 +2,115 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261021-005 — Official Ravensburger card catalog in rules-data, real-card stories, the card tile (D25, D26) and Storybook 10.6.2
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-21T22:28:45.196Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 8ef329cbb6303a635bb61d3c9364657dc7617fa6
+- Tasks: UX-01, UX-03, CONTENT-01, DOC-01, DOC-02
+- Features: F-CARD-CATALOG, F-DESIGN-SYSTEM, F-RESERVED, F-BOUNDARIES, F-DOCS
+- Requirements: R20.001, R20.002, R20.003, R20.004, R20.007, R20.008, R20.009, R20.010, R20.011, R25.009
+
+### Changes
+
+- **implementation:** packages/rules-data activated as a browser-safe ('public') workspace under ADR 0018: observed Ravensburger v3 record types and validators (strict on the 15 always-present fields and typed optional ones, keeping unknown fields, rejecting unreviewed categories); a normalized catalog keeping printings (culture_invariant_id) apart from the card in play (deck_building_id), with variants, finishes (an Enchanted or promo Regular variant can be foil) and CardFX foil layers; unreviewed inks and rarities throw.
+- **implementation:** Rules-text display tokens: \Name\ abilities, <Keyword> keywords, {X} symbols (I ink, E exert, S strength, W willpower, L lore, C inkwell, the last confirmed on Madam Mim – Hummingbird's printed card) and parenthesized reminder text, keeping every printed character with an exact round trip. Older records' % breaks normalize to the line and paragraph breaks current records write. A reviewed correction ledger (src/corrections.ts) fixes nine records whose ability delimiter was lost, markup only, with evidence from the other languages; the full audit fails when a correction stops matching.
+- **implementation:** Node-only tooling in packages/rules-data/scripts: bounded sequential HTTPS acquisition (no redirects, 60 s, 40 MB) into the ignored content-addressed .local/catalog/ravensburger cache with an exclusively created dated record under docs/rules; a fixture builder copying 12 selected records exactly and storing 24 images byte for byte with source URL, retrieval time, SHA-256, dimensions, rendition and the D07 rights basis; and catalog:verify, which audits every acquired language in full and reproduces the fixture from the recorded snapshot.
+- **test:** RUN-20261021-012 acquired English, German, French and Italian (3,558 / 3,557 / 3,557 / 3,557 cards, app version 2026.5) with full validation and normalization; Spanish answered 403. Package tests use only real records: normalization of printed values, invalid records made by breaking one field of a real record, token sequences and round trips, the correction ledger, image checksums and dimensions, and acquisition against a local server serving a catalog assembled from the fixture records.
+- **feature:** Design system (decision D26): CardTile shows the card itself as one React Aria button named 'Inspect <name> – <version>, <set> <number>' (reprints stay distinguishable, the card name comes first per WCAG 2.5.3); the text under the image and the ownership and actions props are removed; foil printings keep a static Foil mark (§16); the card silhouette is the physical corner; hover and press change the outline only. CardImage follows the takedown switch (officialAssets={false}) and is decorative inside the tile. A new finish.foilMark message.
+- **edit:** Stories and browser tests (decision D25): every card, set and ability now comes from @lorcana/rules-data/fixtures (a development dependency of the design system; components still take only the presentational Printing type); Storybook serves the fixture images at /catalog-images. Replaced: Synthetic Explorer and friends, invented sets and abilities, the neutral fixture art; deck names lose their 'Synthetic' prefix. The current inspector stories render printed symbols as words until the D24 redesign.
+- **test:** Design-system browser suite 163 tests (new: tile identity and printing names, foil mark, real image loading, hover stability, takedown placeholder, image failure; the ownership check moves to the inspector). A visual check of the tile grid, the inspector opened from a tile, the card faces and the inspector in Paper and Ink was captured and reviewed (not committed).
+- **fix:** GHSA-f2ph-cmg5-wxc8 (critical: Storybook preview lacks origin validation, allowing code injection from malicious websites) was published 2026-10-21 17:23Z against 10.0.0–10.6.1 and failed this change's first full check (RUN-20261021-013, pnpm audit). storybook and @storybook/react-vite move to 10.6.2, the first fixed release (2026-10-12); only the five Storybook packages change in the lockfile. Main would fail the same audit on its next run.
+- **edit:** ESLint: a scoped globals entry for packages/rules-data scripts and tests (AbortSignal, structuredClone), following the existing per-file pattern.
+- **fix:** CHG-20261021-004 appended its status line to AGENTS.md and docs/README.md but not to the root README.md, which carries the same paragraph; the root README now has both that line and this change's.
+- **edit:** Documentation: ADR 0018 (new), ADR 0017 amendments (tile and takedown switch; Storybook patch), ADR 0008 security-patch section, card catalog runbook and validation (new), design-system runbook, README and validation, rules-data README (no longer reserved), docs/rules README note, fan-content policy note on committed card images, feature register (F-CARD-CATALOG new, F-DESIGN-SYSTEM, F-RESERVED), documentation map, status lines, UX-03 evidence and the handoff.
+
+### Verification
+
+- **passed:** Acquisition of Ravensburger's v3 catalog: English, German, French and Italian acquired with full validation and normalization; Spanish recorded unavailable (403). Raw bytes in the ignored cache, dated record in docs/rules. ([evidence](docs/validation/runs/RUN-20261021-012.json))
+- **failed:** Full bridging check: configuration and workflow checks passed, then pnpm audit failed on GHSA-f2ph-cmg5-wxc8 (critical, Storybook 10.0.0–10.6.1, published that afternoon). Fixed by Storybook 10.6.2. ([evidence](docs/validation/runs/RUN-20261021-013.json))
+- **passed:** Configuration contract, workflow check, pnpm audit (no advisories), typecheck, lint and the full workspace suite (412 Node, 26 Python, upstream 406/1 skip, 2 injection) at fingerprint 256dd89d. ([evidence](docs/validation/runs/RUN-20261021-014.json))
+- **failed:** pnpm ci:design-system invoked directly in the Dev Container instead of through the isolated host launcher; it refused to run without the isolation contract (.local/ci-isolation.json). No check executed. ([evidence](docs/validation/runs/RUN-20261021-015.json))
+- **passed:** Isolated design-system pipeline through the host launcher at fingerprint 256dd89d: 34 gates, pinned Chromium, 163/163 browser tests (118 s). ([evidence](docs/validation/runs/RUN-20261021-016.json))
+- **failed:** Isolated foundation pipeline: frozen install and doctor passed, then pnpm verify stopped because the verified features had not yet been re-bound to RUN-20261021-014 (documentation ordering, not a code failure). ([evidence](docs/validation/runs/RUN-20261021-017.json))
+- **passed:** Isolated foundation pipeline through the host launcher at fingerprint 256dd89d: all 14 stages in 562 s with exact timing (497 Node, 26 Python, upstream 406/1 skip, 2 injection, disposable PostgreSQL, live matches, web Chromium, Lab workers). ([evidence](docs/validation/runs/RUN-20261021-018.json))
+- **passed:** catalog:verify against the raw cache: en, de, fr and it validate, normalize and round-trip all rules text with no unknown symbol or stray markup; all nine corrections apply; the committed fixture equals the recorded snapshot's selection. ([evidence](docs/validation/runs/RUN-20261021-019.json))
+- **passed:** docs:check over this record and the updated documents (static). ([evidence](docs/validation/runs/RUN-20261021-020.json))
+
+### Documentation and files
+
+- **updated:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — New ADR: official v3 catalog source, acquisition, validation, normalized model, rules-text tokens, correction ledger, real-card fixture, design-system consequences and alternatives.
+- **updated:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — Amendments: card tile shows the card itself (D26), CardImage follows the takedown switch, stories on real cards (D25); Storybook 10.6.2 security patch.
+- **updated:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — Dated security-patch section for Storybook 10.6.2 (GHSA-f2ph-cmg5-wxc8), mirroring the vite 8.3.3 section.
+- **updated:** [docs/runbooks/card-catalog.md](docs/runbooks/card-catalog.md) — New runbook: use, acquisition, fixture rebuild, checks, corrections and limits.
+- **updated:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — New validation record: acquisition table, data findings, fixture, design-system effects, receipts and limits.
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Cards in components and stories: real cards only, the tile contract and the takedown switch covering card images.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Dated section: real-card stories, the card tile, the takedown switch, the Storybook patch and the visual check.
+- **updated:** [packages/design-system/README.md](packages/design-system/README.md) — Card data in stories now comes from the catalog fixture; the tile shows the card itself.
+- **updated:** [packages/rules-data/README.md](packages/rules-data/README.md) — No longer reserved: describes the catalog exports, fixtures, scripts and limits.
+- **updated:** [docs/rules/README.md](docs/rules/README.md) — Dated note: the official catalog lives in packages/rules-data with its dated record in this folder; RULE-01 inventories unchanged.
+- **updated:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Dated note: 24 committed card images with provenance; the takedown switch now covers card images and removal of the committed files.
+- **updated:** [docs/features.json](docs/features.json) — F-CARD-CATALOG added and verified on RUN-20261021-014; F-DESIGN-SYSTEM description and documents; F-RESERVED no longer lists rules-data; verified features re-bound to RUN-20261021-014 (and RUN-016 for the design system).
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-CARD-CATALOG row; F-DESIGN-SYSTEM and F-RESERVED rows.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — New ADR, runbook, validation and dated record classified; rules-data README current; docs/rules README gains the rules-data edge.
+- **updated:** [AGENTS.md](AGENTS.md) — Status line for CHG-20261021-005, and the implementation boundary no longer calls rules-data reserved.
+- **updated:** [README.md](README.md) — Status lines for CHG-20261021-004 (missed then) and CHG-20261021-005; rules-data no longer called reserved in two current statements.
+- **updated:** [docs/README.md](docs/README.md) — Status line and a card catalog row in the record table.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-03 evidence names the card tile, real-card stories and the card catalog validation; status unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Current branch, changes, receipts, pending gates and next actions.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R20 and R25.009 statuses stay planned_unverified: the catalog provides data foundations and a fixture, not accepted requirements.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D24–D26 already record the decisions this change implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — Mentions of reserved packages or earlier workspace counts here are dated checkpoint statements and are preserved. The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Mentions of reserved packages or earlier workspace counts here are dated checkpoint statements and are preserved.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — Its reserved-packages row describes the 2026-10-06 audit and is preserved as dated.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2. The nine-project count is BOOT-01 history.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2. The release closure is unchanged: rules-data is only a development dependency.
+- **reviewed_unchanged:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/adr/0010-secure-randomness-replay.md](docs/adr/0010-secure-randomness-replay.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/adr/0013-durable-synthetic-match-commands.md](docs/adr/0013-durable-synthetic-match-commands.md) — Its synthetic fixtures are engine and match fixtures, which D25 keeps.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Its register keeps Storybook 10.6.1 as the dated planning record, as it kept vite 8.3.2; ADR 0008 records the patch.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — RULE-01 retrieval specification; the catalog acquisition has its own tooling and record.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — RULE-01 retrieval specification; unaffected.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — The design-system job and license notes name Storybook without a version; the jobs and stages are unchanged.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — Engine fixtures stay synthetic under D25; No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — Match fixtures stay synthetic under D25; No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Mentions of reserved packages or earlier workspace counts here are dated checkpoint statements and are preserved.
+- **reviewed_unchanged:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Mentions of reserved packages or earlier workspace counts here are dated checkpoint statements and are preserved.
+- **reviewed_unchanged:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/validation/play-01.md](docs/validation/play-01.md) — Its synthetic match fixture is an engine fixture, which D25 keeps.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Dated RULE-01 evidence; the official catalog is recorded separately.
+- **reviewed_unchanged:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **reviewed_unchanged:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — No statement about rules-data, Storybook's version, the card tile, interface fixtures, ESLint globals or workspace counts is affected; the lockfile adds only the rules-data importer and Storybook 10.6.2.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Generated from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Generated snapshot.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261021-005.json).
+
+### Limits and next actions
+
+- Snapshot and fixture only: no catalog delivery to the running app, server cache, asset manifest or image route (CONTENT-01, WEB tasks).
+- Legality periods, errata and rulings beyond the catalog's FAQ entries are not imported; nothing is admitted or certified for play.
+- Ravensburger serves no Spanish catalog; the Italian, French and German catalogs carry 535, 92 and 95 English-text printings.
+- The current inspector stories render printed symbols as words until the card inspector redesign (D24).
+- Chromium automation only; no Firefox, WebKit, real-device or manual accessibility evidence.
+- Committed card images grow the repository by 4.4 MB; a takedown request also means removing them.
+- Push the branch, open the pull request and check both hosted jobs; main moves only when the Director asks.
+- Design and build the enhanced card inspector from scratch on real catalog cards (D24), including symbols in rules text, the printings rail, finishes and the Interactive Card Viewer.
+
 ## CHG-20261021-004 — Record Director decisions D24–D26 (inspector from scratch, official card data, design review) and the owed hosted runs
 
 - Status: finalized

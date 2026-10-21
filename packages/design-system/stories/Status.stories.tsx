@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useEffect, useMemo, useState } from 'react';
 import { UNSTABLE_ToastQueue as ToastQueue } from 'react-aria-components';
 import { Badge, Banner, Button, Cell, Column, ConnectionStatus, InlineMessage, Inline, JobStatus, List, ListItem, NotificationCount, ProgressBar, Row, Stack, StatusIndicator, Table, TableBody, TableHeader, Text, ToastRegion } from '../src/index.ts';
+import { fixturePrinting, presentationCatalog } from '@lorcana/rules-data/fixtures';
+import { fullName } from './support/fixtures.ts';
 import type { ToastContent } from '../src/index.ts';
 import { listDoc } from '../src/components/List/List.docs.ts';
 import { tableDoc } from '../src/components/Table/Table.docs.ts';
@@ -19,7 +21,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Documentation: Story = { render: () => <DocPage docs={[listDoc, tableDoc, badgeDoc, statusIndicatorDoc, progressBarDoc, jobStatusDoc, inlineMessageDoc, bannerDoc, toastDoc, notificationCountDoc, connectionStatusDoc]} /> };
-const decks = [{ id: 'd1', name: 'Synthetic Sapphire Tempo' }, { id: 'd2', name: 'Synthetic Amber Steel Midrange' }, { id: 'd3', name: 'Archived deck (read-only)' }];
+const decks = [{ id: 'd1', name: 'Sapphire Steel Tempo' }, { id: 'd2', name: 'Amber Amethyst Songs' }, { id: 'd3', name: 'Archived deck (read-only)' }];
 export const Lists: Story = {
   parameters: { designSystem: { coverage: { List: ['populated', 'empty', 'selected', 'focused', 'disabled item'] } } },
   render: () => <Stack gap={6}>
@@ -28,11 +30,13 @@ export const Lists: Story = {
     <List aria-label="Printings grid" layout="grid" items={decks.slice(0, 2)} emptyState="None">{item => <ListItem id={item.id} textValue={item.name}>{item.name}</ListItem>}</List>
   </Stack>,
 };
-const rows = [{ id: 'r1', name: 'Synthetic Explorer', set: 'SYN', count: 3 }, { id: 'r2', name: 'An Exceptionally Long Synthetic Name That Wraps In The Cell', set: 'SYN', count: 1 }, { id: 'r3', name: 'Synthetic Archivist', set: 'SYN', count: 0 }];
+// Real printings from the recorded Ravensburger catalog (decision D25); owned counts are example collection data.
+const setName = (id: string) => presentationCatalog.sets.find(set => set.id === id)?.name ?? id;
+const rows = [[42, 3], [3134, 1], [1939, 0]].map(([id, count]) => { const card = fixturePrinting(id ?? 0); return { id: `r${String(id)}`, name: fullName(card), set: setName(card.setIds[0] ?? ''), count: count ?? 0 }; });
 export const Tables: Story = {
   parameters: { designSystem: { coverage: { Table: ['populated', 'sorted', 'selected row', 'focused cell', 'long content', 'empty'] } } },
   render: () => <Stack gap={6}>
-    <Table aria-label="Owned printings" selectionMode="multiple" defaultSelectedKeys={['r1']} sortDescriptor={{ column: 'name', direction: 'ascending' }}>
+    <Table aria-label="Owned printings" selectionMode="multiple" defaultSelectedKeys={['r42']} sortDescriptor={{ column: 'name', direction: 'ascending' }}>
       <TableHeader><Column id="name" isRowHeader allowsSorting>Name</Column><Column id="set">Set</Column><Column id="count" numeric>Owned</Column></TableHeader>
       <TableBody items={rows} emptyState="No printings">{item => <Row id={item.id}><Cell>{item.name}</Cell><Cell>{item.set}</Cell><Cell numeric>{item.count}</Cell></Row>}</TableBody>
     </Table>
@@ -79,7 +83,7 @@ export const Toasts: Story = {
   render: () => {
     const queue = useMemo(() => new ToastQueue<ToastContent>({ maxVisibleToasts: 3 }), []);
     useEffect(() => {
-      const keys = [queue.add({ title: 'Friend request accepted', tone: 'success' }), queue.add({ title: 'Event registration closes soon', description: `Registration for the synthetic league closes at 18:00 UTC. ${longText}`, tone: 'information' })];
+      const keys = [queue.add({ title: 'Friend request accepted', tone: 'success' }), queue.add({ title: 'Event registration closes soon', description: `Registration for the Saturday league closes at 18:00 UTC. ${longText}`, tone: 'information' })];
       return () => keys.forEach(key => queue.close(key));
     }, [queue]);
     return <><Text>Toasts appear at the inline end of the screen. Press F6 to move focus to them.</Text><ToastRegion queue={queue} /></>;

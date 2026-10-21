@@ -159,3 +159,20 @@ Recorded 2026-10-21T14:32:09.557Z (CHG-20261021-003). The Director states that m
 - **Rights basis:** D07, because the symbols depict Disney Lorcana marks.
 - **Takedown switch:** it covers them either way.
 - **Symbol choice:** stands on its technical grounds: clean vector shapes, and legibility at 20 and 24 px. The contrast with the bolder `*_card_text` glyphs no longer turns on provenance, since both sets are the Director's. Those files were still unsuitable as working files with transforms and construction strokes.
+
+## Amendment — 2026-10-21 UTC (decisions D25, D26)
+
+Recorded with CHG-20261021-005.
+- **Card tile (D26):** `CardTile` now shows the card itself.
+  - **Control:** one React Aria button named "Inspect <name> – <version>", including the finish for foil printings.
+  - **Removed from under the image:** name, set, rarity, ink identities, ownership and actions. They belong to the Card Inspector.
+  - **Props:** the `ownership` and `actions` props are removed.
+  - **Foil printings:** they keep a static "Foil" mark on the card's corner. Thumbnails get no continuous finish effect, and §16 requires foil printings to stay identifiable.
+  - **Visual states:** hover and press change the outline only. The card silhouette is the physical corner (3.5 mm on 63 × 88 mm), a documented token exception, since corners as a percentage of the card cannot be a px or rem token.
+- **Takedown switch:** `CardImage` follows `officialAssets={false}` and shows the neutral placeholder, as symbols already did (fan-content rule 4). Inside a tile the image is decorative and the button carries the name.
+- **Stories (D25):** every card, set and ability in the stories now comes from Ravensburger's catalog through `@lorcana/rules-data/fixtures`, a development dependency. Components still take only the presentational `Printing` type. See [ADR 0018](0018-official-card-catalog.md).
+- **Defect fixed:** the old tile's inspect button showed "Printing" while its accessible name was "Inspect …" (WCAG 2.5.3, Label in Name). That button is gone.
+
+## Amendment — 2026-10-21 UTC (Storybook security patch)
+
+Storybook is now pinned at 10.6.2, not 10.6.1, because GHSA-f2ph-cmg5-wxc8 (critical, published 2026-10-21) affects 10.0.0–10.6.1. See [ADR 0008](0008-engine-placement-dependency-baseline.md#security-patch-storybook-1062--2026-10-21-utc) and CHG-20261021-005.

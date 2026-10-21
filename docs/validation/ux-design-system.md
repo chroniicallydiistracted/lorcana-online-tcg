@@ -226,3 +226,24 @@ Source: public GitHub job metadata; no artifacts downloaded. Every run passed bo
   - v4 and v5 return 403. The older v2 route answers with an empty catalog.
   - The English catalog (last modified 2026-10-16, app version 2026.5, catalog hash `ae38af81…`) lists 18 sets through Hyperia City, 3,558 cards and 6,438 printing variants.
   - Card images, thumbnails and foil masks are public, at opaque URLs given by the catalog.
+
+## Real-card stories, card tile and Storybook patch — 2026-10-21 UTC
+
+Recorded with CHG-20261021-005 (decisions D25, D26).
+- **Real cards (D25):** every card, set and ability in the stories and browser tests now comes from Ravensburger's catalog through `@lorcana/rules-data/fixtures`: 12 printings with their images, served by Storybook at `/catalog-images/` ([card catalog validation](card-catalog.md)).
+  - **What was replaced:** the made-up printings ("Synthetic Explorer", "Synthetic Set One"), the invented ability and the neutral placeholder art.
+  - **Interim inspector text:** the current inspector stories render printed symbols as words until the inspector redesign (D24).
+- **Card tile (D26):** `CardTile` shows the card itself.
+  - **Naming:** one button named "Inspect <name> – <version>, <set> <number>". The set and number keep reprints distinguishable, which the browser suite checks with Elsa – Spirit of Winter's two printings.
+  - **Removed:** the text under the image, and with it the `ownership` and `actions` props.
+  - **Foil printings:** they keep a "Foil" mark on the corner (§16).
+  - **Shape and states:** the card silhouette is the physical corner, and hover changes only the outline.
+  - **Ownership:** shown in the inspector.
+- **Takedown switch:** `CardImage` follows `officialAssets={false}`.
+- **Storybook 10.6.2:** GHSA-f2ph-cmg5-wxc8 (critical) was published on 2026-10-21 at 17:23Z against 10.0.0–10.6.1 and failed this change's first audit (RUN-20261021-013). `storybook` and `@storybook/react-vite` move to 10.6.2, the first fixed release; only the five Storybook packages change in the lockfile.
+- **Visual check:** the tile grid, the inspector opened from a tile, the card-face text and the inspector were captured in Paper and Ink and reviewed. These review screenshots are not committed.
+- **Receipts, all at fingerprint `256dd89d` with exact timing:**
+  - **RUN-20261021-014, passed:** checks and full suite (412 Node, 26 Python, upstream 406/1 skip, 2 injection).
+  - **RUN-20261021-016, passed:** isolated design-system suite, 34 gates and 163/163 in 118 s.
+  - **RUN-20261021-018, passed:** isolated foundation pipeline, 14 stages in 562 s.
+  - **Failed attempts:** RUN-20261021-013 (the Storybook advisory), RUN-20261021-015 (wrong invocation, nothing ran) and RUN-20261021-017 (features not yet re-bound). Each is explained in the [card catalog validation](card-catalog.md#receipts).

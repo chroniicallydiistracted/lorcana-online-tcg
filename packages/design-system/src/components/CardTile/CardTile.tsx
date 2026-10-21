@@ -1,7 +1,4 @@
-import type { ReactNode } from 'react';
-import { Button } from '../Button/Button.tsx';
-import { Badge } from '../Badge/Badge.tsx';
-import { InkIdentity } from '../Ink/InkIdentity.tsx';
+import { Button } from 'react-aria-components';
 import { useMessages } from '../../foundation/DesignSystemProvider.tsx';
 import { CardImage } from './CardImage.tsx';
 import type { Ownership, Printing } from './types.ts';
@@ -9,11 +6,8 @@ import styles from './CardTile.module.css';
 
 export interface CardTileProps {
   printing: Printing;
-  ownership: Ownership;
   /** Opens the Card Inspector; focus returns here when it closes. */
   onInspect: (printing: Printing) => void;
-  /** Further contextual actions, such as "Add to deck". */
-  actions?: ReactNode;
 }
 export function OwnershipSummary({ ownership }: { ownership: Ownership }) {
   const t = useMessages(), n = new Intl.NumberFormat();
@@ -23,20 +17,16 @@ export function OwnershipSummary({ ownership }: { ownership: Ownership }) {
     <span className={styles.counts}>{t('quantity.normal')} {n.format(ownership.normal)} · {t('quantity.foil')} {n.format(ownership.foil)} · {t('quantity.total')} {n.format(ownership.normal + ownership.foil)}</span>
   </span>;
 }
-/** A printing with identity, finish, ownership, inspection and actions (§13, §17). No continuous GPU loop per tile (§16). */
-export function CardTile({ printing, ownership, onInspect, actions }: CardTileProps) {
-  const t = useMessages();
-  return <article className={styles.tile} aria-labelledby={`card-${printing.id}`}>
-    <CardImage printing={printing} />
-    <div className={styles.details}>
-      <h3 id={`card-${printing.id}`} className={styles.name}>{printing.name}{printing.version && <span className={styles.version}>{printing.version}</span>}</h3>
-      <p className={styles.meta}>{printing.setName ?? printing.setCode} · {printing.collectorNumber} · {printing.rarity}</p>
-      <div className={styles.row}><InkIdentity inks={printing.inks} compact />{printing.finish === 'foil' && <Badge>{t('finish.foil')}</Badge>}</div>
-      <OwnershipSummary ownership={ownership} />
-    </div>
-    <div className={styles.actions}>
-      <Button variant="quiet" icon="inspect" onPress={() => onInspect(printing)} aria-label={t('action.inspect', { name: printing.name + (printing.version ? ' – ' + printing.version : '') })}>{t('inspector.printing')}</Button>
-      {actions}
-    </div>
-  </article>;
+/**
+ * A printing shown as the card itself (decision D26): every detail lives in the Card Inspector it opens (§15). A foil
+ * printing keeps a static finish mark, since thumbnails get no continuous finish effect (§16).
+ */
+export function CardTile({ printing, onInspect }: CardTileProps) {
+  const t = useMessages(), foil = printing.finish === 'foil';
+  // The set and number tell reprints apart; the name comes first, as printed on the card (WCAG 2.5.3).
+  const name = `${printing.name}${printing.version ? ` – ${printing.version}` : ''}, ${printing.setName ?? printing.setCode} ${printing.collectorNumber}${foil ? `, ${t('finish.foil')}` : ''}`;
+  return <Button className={styles.tile} onPress={() => onInspect(printing)} aria-label={t('action.inspect', { name })}>
+    <CardImage printing={printing} decorative />
+    {foil && <span className={styles.finish} aria-hidden>{t('finish.foilMark')}</span>}
+  </Button>;
 }

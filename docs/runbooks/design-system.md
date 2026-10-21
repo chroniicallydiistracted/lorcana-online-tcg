@@ -58,7 +58,18 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   3. Run `tokens:build`.
 
   The parser refuses anything outside a small vector subset (paths, polygons, circles, plain groups, class fills). Single-colour symbols must have exactly one fill.
-- **Takedown switch:** `officialAssets={false}` on the provider swaps every symbol for a neutral placeholder. It covers anything depicting Disney Lorcana marks, whoever drew it.
+- **Takedown switch:** `officialAssets={false}` on the provider swaps every symbol and card image for a neutral placeholder. It covers anything depicting Disney Lorcana marks, whoever drew it.
+
+## Cards in components and stories
+
+- **Real cards only (decision D25):** stories and browser tests use real catalog cards from `@lorcana/rules-data/fixtures` ([card catalog runbook](card-catalog.md)), never made-up cards.
+  - **Mapping:** `stories/support/fixtures.ts` maps a catalog printing to the presentational `Printing` (`toPrinting`).
+  - **Images:** Storybook serves the fixture images at `/catalog-images/`.
+- **Card tile (decision D26):** `CardTile` shows the card itself, as one button named "Inspect <name> – <version>".
+  - **Under the card:** nothing. Names, set, rarity, inks and ownership belong to the inspector.
+  - **Foil printings:** they keep a static "Foil" mark on the card's corner.
+  - **Hover and press:** they change the outline only, never the art.
+- **Takedown switch:** `CardImage` follows `officialAssets={false}` and shows the neutral placeholder, as symbols do.
 
 ## Raw values
 

@@ -1,7 +1,14 @@
 # packages/rules-data
 
-Source manifests, normalized card catalog, legality and ruling references.
+Browser-safe card catalog from Ravensburger's official v3 API (decision D25; [ADR 0018](../../docs/adr/0018-official-card-catalog.md)).
 
-Reserved directory: no application implementation or package manifest yet. Implement its scoped manifest and dependencies through the foundation backlog.
+- **`@lorcana/rules-data`** exports:
+  - the observed v3 record types and their validators;
+  - the normalized catalog: printings kept apart from the card in play, variants and finishes, foil layers for CardFX;
+  - display tokens for rules text;
+  - the reviewed markup corrections.
+- **`@lorcana/rules-data/fixtures`** exports a real-card presentation fixture: 12 printings and 24 images from one dated acquisition, each with its provenance.
+- **Not yet here:** legality periods, rulings beyond the catalog's FAQ entries, errata, and anything admitted or certified for play. All card identities remain uncertified.
+- **Scripts** (`scripts/`, Node only) acquire catalogs into the ignored `.local/catalog/ravensburger/`, write dated acquisition records under `docs/rules/`, build the fixture and verify it against the raw cache.
 
-RULE-01's dated research metadata lives under [docs/rules](../../docs/rules/README.md), with root-only acquisition/inventory tooling. Raw source bytes remain ignored; no catalog/rules/application export is implemented here. Product normalization, identity/admission policy and certified rules references retain their later gates.
+Operation: [card catalog runbook](../../docs/runbooks/card-catalog.md). Evidence and limits: [validation](../../docs/validation/card-catalog.md). Follow [the universal workflow](../../docs/DEVELOPMENT_WORKFLOW.md) for changes, documentation review and timestamped evidence.

@@ -1,4 +1,4 @@
-.image { inline-size: 100%; block-size: auto; border-radius: var(--is-component-control-radius); }
+.image { display: block; inline-size: 100%; block-size: auto; border-radius: 5.5% / 4%; /* token-exception: physical card corner, 3.5 mm on a 63 x 88 mm card */ }
 .placeholder {
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   aspect-ratio: 63 / 88; /* token-exception: physical card proportion (63 x 88 mm) */
   padding: var(--is-space-3);
   border: var(--is-border-width-1) dashed var(--is-color-border-essential);
-  border-radius: var(--is-component-control-radius);
+  border-radius: 5.5% / 4%; /* token-exception: physical card corner, 3.5 mm on a 63 x 88 mm card */
   background: var(--is-color-surface-raised);
   color: var(--is-color-text-primary);
   text-align: center;

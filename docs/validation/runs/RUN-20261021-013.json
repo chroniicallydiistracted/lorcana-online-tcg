@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261021-013",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "python3 scripts/verify-config.py && python3 scripts/ci/check-config.py && pnpm audit && pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "8ef329cbb6303a635bb61d3c9364657dc7617fa6",
+  "source_fingerprint": "8425bb55ec0cd0013f5b79038e4748656a1c05b98a45f8456eebd95eab6cb5d6",
+  "started_at": "2026-10-21T22:25:35.491Z",
+  "finished_at": "2026-10-21T22:25:36.444Z",
+  "recorded_at": "2026-10-21T22:25:36.444Z",
+  "time_precision": "exact",
+  "elapsed_ms": 952,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Official card catalog (rules-data), real-card stories and the card tile (D25, D26): configuration contract, workflow config check, pnpm audit, typecheck, ESLint plus boundaries and the full workspace suite",
+  "log_path": "docs/validation/logs/RUN-20261021-013.txt",
+  "log_sha256": "284fcc8d37c942f0dd64178aaa7bcc2b46441fb06faa61cbf85a32280c5ebb46",
+  "redactions": 0
+}

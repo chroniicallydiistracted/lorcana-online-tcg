@@ -1057,7 +1057,7 @@
     },
     {
       "path": "packages/rules-data/README.md",
-      "classification": "reserved",
+      "classification": "current",
       "sources": [
         "packages/rules-data/**"
       ]
@@ -1495,7 +1495,8 @@
         "vendor/tcg-engines/**",
         "packages/engine-adapter/**",
         "packages/engine-lab/**",
-        "tests/engine/**"
+        "tests/engine/**",
+        "packages/rules-data/**"
       ]
     },
     {
@@ -2223,6 +2224,37 @@
     },
     {
       "path": "packages/design-system/src/assets/fonts/source-sans-3/LICENSE.md",
+      "classification": "evidence",
+      "sources": []
+    },
+    {
+      "path": "docs/adr/0018-official-card-catalog.md",
+      "classification": "current",
+      "sources": [
+        "packages/rules-data/**",
+        "packages/design-system/stories/**",
+        "packages/design-system/src/components/CardTile/**",
+        "packages/design-system/.storybook/**"
+      ]
+    },
+    {
+      "path": "docs/runbooks/card-catalog.md",
+      "classification": "current",
+      "sources": [
+        "packages/rules-data/**"
+      ]
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "classification": "current",
+      "sources": [
+        "packages/rules-data/**",
+        "packages/design-system/stories/**",
+        "packages/design-system/tests/**"
+      ]
+    },
+    {
+      "path": "docs/rules/2026-10-21-ravensburger-catalog.json",
       "classification": "evidence",
       "sources": []
     }
