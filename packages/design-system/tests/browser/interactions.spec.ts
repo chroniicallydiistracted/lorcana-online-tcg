@@ -146,8 +146,8 @@ test('Source Sans 3 and the metric-adjusted fallback load; line heights match; w
   expect(m.fallbackLoaded).toBe(true);
   // Vertical overrides are portable: the fallback line box matches the web face.
   expect(Math.abs(m.web.lineBox - m.fallback.lineBox)).toBeLessThanOrEqual(1);
-  // Widths depend on platform hinting of the local fallback (Linux FreeType snaps Liberation Sans advances); record and bound loosely.
-  expect(Math.abs(m.fallback.width / m.web.width - 1)).toBeLessThan(0.05);
+  // With hinting off (playwright.config.ts) advances are unsnapped, so the measured size-adjust holds: about +1.2% on this sentence.
+  expect(Math.abs(m.fallback.width / m.web.width - 1)).toBeLessThan(0.02);
 });
 test('component stories reflow at 320 CSS px without horizontal page scrolling', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });

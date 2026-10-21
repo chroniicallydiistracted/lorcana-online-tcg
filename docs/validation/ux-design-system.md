@@ -160,3 +160,18 @@ All at fingerprint `52f0e1403f9c6d6d9e2043bd6aa3827102d6ad34247f67f4f91b6c732f9a
 - **RUN-20261021-004, passed:** static `docs:check`.
 
 **Limits:** Chromium automation only. Real Windows and macOS rendering of the card faces and the manual accessibility journeys remain UX-02.
+
+## ADR 0017 approved in full — 2026-10-21 UTC
+
+Recorded 2026-10-21T07:01:59.323Z (CHG-20261021-002; decision D23).
+- **Decision:** the Director approved ADR 0017 in its entirety, together with the icon and font guidelines (D20, D21), and required it implemented in full. This corrects D22, which had applied "other changes" only to the pasted icon standard.
+- **Audit:** every decision item, interpretation and consequence was checked against the code; the table is in the ADR. All are implemented. The authored icon family is superseded by D21. Animation speed is bounded in the preference model as the ADR states; applying it to choreography belongs to `packages/presentation` once scenes exist.
+- **Correction to the font-metrics finding:**
+  - With hinting off, the measured fallback is within +1.2% of Source Sans 3's width on the test sentence (639.5 px against 631.9 px).
+  - With hinting on it was −4.45% (622 px against 651 px), so the earlier 4.5% was a hinting artifact, not a measurement error.
+  - The browser test bound is now 2%.
+- **Evidence at fingerprint `52f4cc01ef8da570b8c3df089e9d473e637ece62069c7d416d071b7a13e53796`, all passed:**
+  - **RUN-20261021-005:** configuration and workflow checks, `pnpm audit` clean, typecheck, lint and full suite (403 Node, 26 Python, upstream 406/1 skip, 2 injection).
+  - **RUN-20261021-006:** isolated design-system suite in 117 s (34 gates, 161/161, including the 2% width bound).
+  - **RUN-20261021-007:** static `docs:check`.
+- **Not re-run locally:** the foundation pipeline, since the only source change is a design-system browser test it does not execute. Hosted CI runs both jobs.

@@ -1,6 +1,6 @@
 # ADR 0017: Technical design system
 
-Status: accepted for implementation by the Director's instruction to build the technical design system from the adopted standard (decision D17, CHG-20261020-004). Visual approval of full reference screens, real-device and manual accessibility qualification remain separate.
+Status: approved by the Director in full (decision D23, 2026-10-21), together with the icon and font guidelines of D20 and D21, which govern where they differ. Originally accepted for implementation by decision D17 (CHG-20261020-004). Visual approval of full reference screens, real-device and manual accessibility qualification remain separate.
 Tasks: UX-01, UX-03, DOC-01, DOC-02. Requirements: R25.001–R25.016 (foundation contracts only).
 Authority: [UX/UI design system standard](../vision/UX_UI_DESIGN_SYSTEM.md) (sha256 `000fd854…`), the Director's current instructions, AGENTS.md boundaries.
 
@@ -69,7 +69,7 @@ Authority: [UX/UI design system standard](../vision/UX_UI_DESIGN_SYSTEM.md) (sha
 
 ## Interpretations made where the standard is silent
 
-Recorded for the Director's review; none changes an established decision.
+Recorded for the Director's review and approved with the rest of this ADR (D23). None changes an established decision. D21 supersedes the icon-family interpretation.
 
 - **Motion ranges.** Where §26 gives a duration range, the semantic token uses the lower bound and both bounds are recorded as primitives. Under reduced motion, hover, menu, card, major-event and reward durations become 0 ms, and dialog and binder changes keep a 120 ms fade with no spatial travel.
 - **Ink overlay shadow.** §12 says only "restrained dark shadow plus a visible boundary". Ink overlays reuse the Paper shadow geometry and opacity, and the strong border carries the boundary.
@@ -128,3 +128,26 @@ vite is now pinned at 8.3.3, not 8.3.2, because three advisories published on 20
 - **Browser tests.** They run with font hinting off. Headless Linux FreeType otherwise snaps glyph advances to whole pixels, which desktop browsers do not.
 
 See CHG-20261021-001.
+
+## Approval and implementation audit — 2026-10-21 UTC (decision D23)
+
+The Director approved this ADR in its entirety and required it to be implemented in full. Recorded 2026-10-21T07:01:59.323Z; CHG-20261021-002. This audit compares each item with the code at branch `claude/ux-card-fonts-icons`:
+
+| Item | Implementation |
+|---|---|
+| 1 Tokens | `tokens/` (primitive, semantic base/Paper/Ink, component, card); only the documented subset types; `org.theinkspire.cssUnit` is the only extension; every token has an explicit `$type` and description. |
+| 2 Validation | `scripts/token-lib.mjs` with negative fixtures; 38 contrast pairs per theme (`tests/tokens.test.mjs`). |
+| 3 Build | Style Dictionary 5.6.0 cross-checked against the subset resolver. Outputs: tokens.css, layout.module.css, fonts.css, tokens.ts, renderer.ts, symbols.ts (D21) and manifest.json; `tokens:check` rebuilds and compares them. |
+| 4 Component tokens only | Primitive colour, type and motion values are not emitted, and the style gate rejects unknown or primitive variables. |
+| 5 Components | 47 Experimental components (46 plus `GameSymbol`, D21) on React Aria 1.21.1 with CSS Modules and generated class types. Each has a §13 contract. The toast API is isolated in one file, and the provider applies theme, density and motion. |
+| 6 Enforcement | `check-styles.mjs` (10 listed exceptions) and `check-components.mjs` (contracts, no Stable without evidence, story coverage for every state). |
+| 7 Storybook | 10.6.1 with theme, density, motion and locale globals, the `en-XA` pseudolocale, telemetry off and Documentation stories. |
+| 8 Browser evidence | Playwright 1.63.0 and axe 4.13.0 on every story in both themes, plus the listed interaction checks: 161 tests in the parallel `design-system` CI job (D18). |
+| 9 Fonts | Source Sans 3 3.052R with measured fallback faces and synthesis disabled. Card-face fonts integrated with a measured coverage fallback (D20). |
+| 10 Dependencies | Pinned in `packages/design-system`; esbuild postinstall denied; CC-BY-4.0 allowed (D16); `pnpm audit` clean. `@phosphor-icons/react` 2.1.10 (MIT) added under D21. |
+| Interpretations | Motion lower bounds with both bounds as primitives; reduced motion 0 ms except a 120 ms dialog and binder fade; Ink overlay shadow; component token values; 75ch reading measure; animation speed bounded to 0.5–2× in the preference model. The icon family interpretation is superseded by D21 (20/24 px Phosphor, no stroke token). |
+| Consequences | The web app uses the provider and shows the fan-content notice. The release `dist/` carries the fonts and stylesheets. A test enforces the no-Babylon/no-server rule. Renderer colours are at `@lorcana/design-system/renderer`. |
+
+**Font metrics, corrected.** The consequence above records a width difference of about 4.5% under Linux hinting. With hinting off, as the browser suite now runs, the measured fallback is within +1.2% of Source Sans 3 on the same sentence (622 px hinted against 651 px; 639.5 px unhinted against 631.9 px). The test bound is now 2%. Real Windows and macOS behaviour remains UX-02.
+
+**Boundary.** The standard says animation speed affects presentation only and never server clocks (§26). This ADR bounds it in the preference model. Applying it to match choreography belongs to `packages/presentation` (§32) once scenes exist.

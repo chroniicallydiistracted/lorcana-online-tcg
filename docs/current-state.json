@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-21T06:28:45.349Z",
+  "observed_at": "2026-10-21T07:11:00.111Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2296,7 +2296,8 @@
     "CHG-20261020-006",
     "CHG-20261020-007",
     "CHG-20261020-008",
-    "CHG-20261021-001"
+    "CHG-20261021-001",
+    "CHG-20261021-002"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2366,9 +2367,10 @@
     "CHG-20261020-006": "finalized",
     "CHG-20261020-007": "finalized",
     "CHG-20261020-008": "finalized",
-    "CHG-20261021-001": "finalized"
+    "CHG-20261021-001": "finalized",
+    "CHG-20261021-002": "finalized"
   },
-  "source_fingerprint": "52f0e1403f9c6d6d9e2043bd6aa3827102d6ad34247f67f4f91b6c732f9ad0a6",
+  "source_fingerprint": "52f4cc01ef8da570b8c3df089e9d473e637ece62069c7d416d071b7a13e53796",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2384,8 +2386,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "e36005c33cfc7b08326243e3a670b3d63697e782bbc4384dc8549226fa174ea3",
-    "README.md": "e23ae1fbdd76d0aa8c7fcf74345e0faae5e061ab4c04cf6e763269bde302f419",
+    "AGENTS.md": "bd0c874452c3662891e50c55bd80a27c81b0d4f5a75cf6baf39171d805ed4db5",
+    "README.md": "c4fb9109cc0c6113a5c5d3979b950b5204a5c48af200c8e9819ddef58f01001e",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2447,8 +2449,8 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "2cc6d65a6a4b827a1adead3d5fe2e00280ea0de02788b8359b1c9624abe54779",
-    "docs/HANDOFF.md": "79b6c65794f96ba225ea52eb746d2c1a5e0c9adefaef03dbd0b402f281c7f076",
-    "docs/README.md": "b1376786301b89ef60995c79adf7cb86bc4da7b269a557f286807fbc1d38805d",
+    "docs/HANDOFF.md": "603612af0bff0a9c4da406090839e4de9df03ad0cb59d0a0bfef3928bf9fea51",
+    "docs/README.md": "53c6b3f7f179601b7bd1a8ebf59680248920c61edc9f823948af1044627a697d",
     "docs/WORKSPACE_QUALIFICATION.md": "706a87f555e7f3b13fada47137ca0a8acccb5ba39f308d89e2fb88b979e16364",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "be8edbdb89fced50ac57ac687adf620b297f0b442471d095f2911e52cc1ffb7b",
@@ -2467,7 +2469,7 @@
     "docs/adr/0014-viewer-projection-privacy.md": "60748c6617aacf2559f56ffb309f29b67589b61a8977b2150a5ff6860d18d95e",
     "docs/adr/0015-live-synthetic-transport.md": "ed4928248d754453ecfa08d46ded80a933af787565043323080ecd74b9aa9fa9",
     "docs/adr/0016-durable-engine-clocks.md": "019cd83878df2bf058f64d6bc0f11a4cf005f0f8d63c1a80585b47dccd82123b",
-    "docs/adr/0017-technical-design-system.md": "426170736c595f15fcbfe04ad1e0d0d0b9114e9a5fa975a53082a6e0066aa3e4",
+    "docs/adr/0017-technical-design-system.md": "e26666648b3dac9db03f7fe9158c66f4bb7a08426b68cf0b9f84e6e8de44d8cd",
     "docs/archive/design-system-2026-10-12/README.md": "e17c45b91107e049dd5be5e0b13cfb17183a3ee16ad87184fdb678454dc8041f",
     "docs/archive/design-system-2026-10-12/the-inkspire-design-system.zip": "add42af27f65ab577cd0e33941699cd3afc05a3e1ceca5c91e4962b94dc8647e",
     "docs/audits/2026-10-06-project-audit.md": "4cfc7149345929122bb379ccfc338c3f0ecc98276e7d9b7ce2e55a5f5e3f17d9",
@@ -2476,7 +2478,7 @@
     "docs/contracts/release.md": "b3f6451141a2a2ba0ce9b1d0b9411d4d08511501bfcec68179c246c7c4bd5dda",
     "docs/contracts/viewer.md": "8693ab93a002ac48425988fbde3ea902a50843627deba4cd466d456aaaabcd32",
     "docs/documentation-map.json": "9233c9f6910a781fe10d95397a9969a4336408b42f909b19481a30b3cc1e3c74",
-    "docs/features.json": "8455a7cf5289219fe1d38c33672681f433697df268093f45d85bab2bd3b8d25c",
+    "docs/features.json": "bdf3e485bec32e40a09afdfdf90d609d759a24e1df0ee2021269b6ee92f4d1e6",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "7c2f9c48229b7127e379b323e166cc3bc5742145933b9b4fbdc6b64352de56c5",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2632,13 +2634,13 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "57ec4fe13dbf02f8ad72d6d8d2865a464e9214018d79bd54ca60f4d3b165215c",
+    "docs/validation/ux-design-system.md": "46ba132c3a36f6b7ddba105b381ed1a44c4e704a10edeea71652e72864390004",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "6ef08e5f0ae9e714d62b5c3e543cce7376e1bb3597505c69bf49e367a8e82070",
+    "docs/vision/decision_register.csv": "024c23c73605b46166a38f1bdff885d1a483b5b75b036110bdf488c309d8dfb5",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
     "docs/vision/initial_backlog.csv": "a574c9755c692b0d29ef1ef7d7f4631ab1e974c0bb6dbf2124ccdf5862fd81ce",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
@@ -2917,7 +2919,7 @@
     "packages/design-system/stories/support/DocPage.tsx": "75e363e2ba14e8f918adb15e45dcba47f2375a71888fa2c816b2c667089a9717",
     "packages/design-system/stories/support/OfficialAssetsOff.tsx": "bd5837b55faa5bf6a5b4930333dc86be004468059bf7b1813d69f22c9c546b6e",
     "packages/design-system/stories/support/fixtures.ts": "509d687d8f979306f1f9a7d23286e48010904709b41ff6d755399b5e7cd05dbb",
-    "packages/design-system/tests/browser/interactions.spec.ts": "829055bf1ffcfa555e63964121a339711302ebdf69430e0482d05de94581ff58",
+    "packages/design-system/tests/browser/interactions.spec.ts": "d7e8fe56b6c9868dd19ab70a00a92b1a6b9fc6b2e090879c13a3e0e3bf7df488",
     "packages/design-system/tests/browser/stories.spec.ts": "7e5d83d7a7a7ea946edbfb5fd397f6887e1e67d8b6490e989c1d4b04ccaf82a0",
     "packages/design-system/tests/components.test.mjs": "c87f7a8f6cb8fcca6d34c001cd3076ce675a85aeab762d04fb90e3f849bac388",
     "packages/design-system/tests/foundation.test.mjs": "5f5b33d9c31afa3b21078ee3ebc41c7ca29cf433e8edd20339d36fb559c80d2a",
@@ -18825,7 +18827,7 @@
       "column": 102,
       "kind": "ArrowFunction",
       "signature": "{ page }",
-      "sha256": "71c892f2b3fe4cde066b92465f51be674adfed7f4513bb8c921182809ee15f19"
+      "sha256": "ebaafe8d568536501c2b86bba37da15b8f2197989840f2e9600e1cc558c351e5"
     },
     {
       "file": "packages/design-system/tests/browser/interactions.spec.ts",

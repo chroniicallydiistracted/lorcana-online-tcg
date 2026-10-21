@@ -1,13 +1,14 @@
 # Developer handoff
 
-Observed at: 2026-10-21T06:11:47.022Z (record time of CHG-20261021-001); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes:
+Observed at: 2026-10-21T07:01:59.323Z (record time of CHG-20261021-002); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes:
 
 - CHG-20261020-004 (UX-01 technical design system, 17b7b8f);
 - CHG-20261020-005 (font license line endings, 3997557);
 - CHG-20261020-006 (parallel design-system CI job, decision D18, b6a5b50);
 - CHG-20261020-007 (isolated pipeline command limit 1500 s, decision D19, 3793081, merged to main by the Director);
 - CHG-20261020-008 (hosted merge runs and vite 8.3.3 security patch, branch `claude/vite-advisory`, PR #4, dc6757e);
-- CHG-20261021-001 (card-face fonts, Phosphor icon registry and verified Lorcana symbols, decisions D20–D22, branch `claude/ux-card-fonts-icons` from dc6757e), finalized with this checkpoint.
+- CHG-20261021-001 (card-face fonts, Phosphor icon registry and verified Lorcana symbols, decisions D20–D22, 2c84769, PR #5);
+- CHG-20261021-002 (ADR 0017 approved in full, decision D23; implementation audit; fallback-width test tightened), finalized with this checkpoint.
 
 - **Objective and authorized scope:** the Director assigned UX-01 to this agent: build a full technical design system following `docs/vision/UX_UI_DESIGN_SYSTEM.md` and all repository requirements (decision D17). The Director also approved CC-BY-4.0 for Storybook's build-time data (D16).
 - **Repository:** /home/andre/lorcana-online-tcg. Current branch `claude/ux-card-fonts-icons` from `claude/vite-advisory` (dc6757e, PR #4, not yet on main); main is 3793081 (the merged UX-01 work). The UX-01 branch `claude/ux-design-system` started from main 9081192. It holds d188387 (PLAY-04 closure, plus the draft committed byte-for-byte) and this checkpoint. Git supplies the resulting commit and dirty state.
@@ -38,6 +39,7 @@ Observed at: 2026-10-21T06:11:47.022Z (record time of CHG-20261021-001); display
   - dated notes in the CI runbook, the fan-content policy and the web README;
   - status lines and this handoff.
 - **Verification (exact timing):**
+  - **ADR 0017 approval and width bound, fingerprint `52f4cc01`:** RUN-20261021-005 passed (checks and full suite), RUN-20261021-006 passed (isolated design-system suite, 161/161), RUN-20261021-007 docs check.
   - **Card fonts, icons and symbols, fingerprint `52f0e140`:** RUN-20261021-001 passed (checks, `pnpm audit` clean, full suite: 403 Node, 26 Python, upstream 406/1 skip, 2 injection), RUN-20261021-002 passed (isolated design-system suite: 34 gates, 161/161), RUN-20261021-003 passed (14-stage foundation pipeline, 571 s), RUN-20261021-004 docs check.
   - **vite 8.3.3, fingerprint `b75b051338aee1e236d39659659ea09ebff19c543ad75114302b6c6edfcbac93`:** RUN-20261020-042 passed (checks, `pnpm audit` clean, full suite), RUN-20261020-043 passed (isolated design-system suite, 107 s), RUN-20261020-044 passed (14-stage foundation pipeline with the advisory check, 544 s), RUN-20261020-045 docs check.
   - **Hosted:** PR #3 run 39496608891 passed both jobs at 3793081. Main run 39509517284 passed `design-system` and all 14 foundation stages, then failed the advisory check (three vite advisories published that day).
@@ -66,7 +68,6 @@ Observed at: 2026-10-21T06:11:47.022Z (record time of CHG-20261021-001); display
 - **Listeners/resources:** no owned processes or listeners remain. `.env.local`, `.local/database.json`, the database volume and the Director's root file `inkspire-interface-typography.png` are untouched. No host setting changed.
 - **Pending gates:**
   - a passing hosted run of the vite fix, then the main fast-forward, which needs the Director's explicit push request;
-  - the Director's review of the ADR 0017 interpretations;
   - UX-01 reference screens and visual approval;
   - UX-02 device and browser qualification and manual accessibility journeys;
   - the Interactive Card Viewer and CardFX;
@@ -76,6 +77,6 @@ Observed at: 2026-10-21T06:11:47.022Z (record time of CHG-20261021-001); display
   - AUTH-01.
 - **Next actions:**
   1. **Agent:** push `claude/ux-card-fonts-icons`, open its pull request and check both hosted jobs. It builds on PR #4.
-  2. **Director:** push PR #4's dc6757e to main, then this branch once its hosted run passes.
-  3. **Director:** supply the asset pack's original download location (fan-content policy rule 3); review the ADR 0017 interpretations (D22).
+  2. **Director:** push this branch's tip to main once its hosted run passes (it includes PR #4's dc6757e).
+  3. **Director:** supply the asset pack's original download location (fan-content policy rule 3).
   4. **Then:** the interactive card summary pop-out (the D20 usage basis) and the UX-01 reference screens.
