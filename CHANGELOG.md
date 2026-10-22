@@ -2,6 +2,100 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-012 — UX-01 task 8: the Babylon table scene and its semantic overlay
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T19:11:58.353Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: c33732dc55be3126bf17a2c3eba1e9fe077f911f
+- Tasks: UX-01, WEB-01, DOC-01, DOC-02
+- Features: F-RENDERER, F-DESIGN-SYSTEM, F-BOUNDARIES, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 8 (decision D27, design 'Babylon table scene'): packages/presentation/src/table-scene.ts adds mountTableScene(canvas, input, options) returning update, cardRects, dispose and a frame count, with validateTableInput and layoutTable. Closed input is validated before anything is created; layout is deterministic; the camera is fixed about 22 degrees from top-down; zone surfaces, key light, soft fill and contact shadows; unlit card art from thumbnails; exerted cards and locations turned; Shift stacks offset; face-down inkwell, deck and opponent hand with the card back; outline frames in the focus colour for selection and targets. It renders on demand only (after mount and update once materials are ready, and after resize), takes no input or focus, and disposes everything on failure or dispose().
+- **feature:** Design system: SceneOverlay (Experimental) places one React Aria button per board object at the projected rectangle, at least 44 px, with text markers below, or above for the far side; describeBoardCard is extracted from BoardCard so the overlay and the Flat tier share names and markers; component token match.scene-min. packages/design-system gains the development-only workspace dependency @lorcana/presentation (pnpm-lock adds one importer link). stories/support/reference/scene.tsx lazily loads the scene, maps the position, renderer colours and card back into its input, recomputes rectangles on resize, falls back to the Flat tier with an explanation on engine, texture or context failure, and uses the Flat tier below 80 rem. Match stories add the table scene, scene with targets, renderer failure and scene takedown.
+- **test:** Six NullEngine tests in packages/presentation/tests/table-scene.test.mjs (validation refusals, layout, on-demand frames, projection, disposal, engine failure), written alongside the implementation rather than captured failing first; four scene browser tests in reference.spec.ts. RUN-20261022-035 failed 6 of 409 on axe aria-hidden-focus (Babylon's input handling set a tab index on the decorative canvas) and is preserved; after detaching input RUN-20261022-036 and RUN-20261022-037 pass (presentation and boundaries; gates and 409/409 Chromium tests).
+- **review:** Visual review found a blank first scene (on-demand frames before shaders compiled; now rendered after whenReadyAsync), colliding overlay markers (now card-width, hyphenated, above far-side cards, with wider row spacing) and illegible markers at 1180 px (Flat tier below 80 rem). Paper and Ink captures are in the ignored .local/ux-01-review/; the scene's look is a human review because Chromium renders WebGL in software.
+- **documentation:** Presentation README, F-RENDERER (features register and FEATURES.md), design-system runbook (table scene) and validation (task 8), handoff.
+
+### Verification
+
+- **passed:** Presentation typecheck, build, seven NullEngine tests and import boundaries (simulated). ([evidence](docs/validation/runs/RUN-20261022-034.json))
+- **failed:** Full design-system suite: 6 of 409 failed on axe aria-hidden-focus for the scene canvas; preserved. ([evidence](docs/validation/runs/RUN-20261022-035.json))
+- **passed:** Presentation and boundaries after detaching scene input (simulated). ([evidence](docs/validation/runs/RUN-20261022-036.json))
+- **passed:** Design-system gates, Storybook build and the full Playwright/axe Chromium suite with the scene tests, 409/409 (headless browser, software WebGL). ([evidence](docs/validation/runs/RUN-20261022-037.json))
+- **failed:** Checkpoint full suite stopped at pnpm audit: one low-severity advisory published after the previous checkpoint (GHSA-389g-gv7q-r4x8, fastify 5.12.5 in apps/match-service and packages/service-runtime, fixed in 5.12.6). Preserved. The documented CI policy stops only on high or critical advisories; the following full-suite receipt uses pnpm audit --audit-level high to match it. ([evidence](docs/validation/runs/RUN-20261022-038.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-040.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-041.json))
+
+### Documentation and files
+
+- **updated:** [packages/presentation/README.md](packages/presentation/README.md) — Documents mountTableScene, its input boundary, on-demand rendering, overlay projection and failure behaviour, and the WEB-01 boundary.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-RENDERER row lists the table scene callables and limits.
+- **updated:** [docs/features.json](docs/features.json) — F-RENDERER describes the table scene, gains UX-01 and WEB-01 task links, documents and receipts; verification stays pending (simulation and software WebGL only); every verified feature gains the checkpoint full-suite run.
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the table-scene wiring, overlay, fallbacks and build order.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 8, review findings, the failed receipt and its fix, and what is not claimed.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment covering the development-only presentation dependency and the reference components follows in task 9.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — No new external dependency: Babylon 9.29.0 was already pinned in packages/presentation; only a workspace link was added.
+- **reviewed_unchanged:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0010-secure-randomness-replay.md](docs/adr/0010-secure-randomness-replay.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0013-durable-synthetic-match-commands.md](docs/adr/0013-durable-synthetic-match-commands.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/play-01.md](docs/validation/play-01.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Rules-source tooling is unaffected.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Historical RULE-01 evidence; no rules inventory changed.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The checkpoint stays within the catalog decision.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Reviewed against this checkpoint.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-012.json).
+
+### Limits and next actions
+
+- No performance figure is recorded: Chromium renders WebGL in software here, and frame measurement belongs to WEB-01.
+- Lifecycle across routes and visibility, quality tiers and context restoration remain WEB-01; the reference handles context loss only by falling back to the Flat tier.
+- The scene is used from 80 rem; below it the reference shows the Flat tier.
+- A low-severity fastify advisory (GHSA-389g-gv7q-r4x8, fixed in 5.12.6) affects apps/match-service and packages/service-runtime. It is outside UX-01's scope and does not stop CI under the documented policy; it is left for the Director's decision.
+- Task 9 of the implementation plan: full validation, the ADR 0017 amendment, documents and the visual review captures.
+
 ## CHG-20261022-011 — UX-01 task 7: the crowded-match reference, Flat tier
 
 - Status: finalized

@@ -24,28 +24,41 @@ export interface BoardCardProps {
   facts?: string;
   onPress: () => void;
 }
+type Messages = ReturnType<typeof useMessages>;
+/**
+ * The accessible name and text markers of a board card, shared by BoardCard and the scene overlay so both read the
+ * same (§19: one structure for every presentation).
+ */
+export function describeBoardCard({ printing, kind, exerted = false, damage = 0, drying = false, stack, at, modifiers = [], highlight = 'none', facts }: Omit<BoardCardProps, 'onPress'>, t: Messages): { label: string; markers: { key: string; text: string; short: string; tone?: 'danger' }[] } {
+  const name = printing.version ? `${printing.name} – ${printing.version}` : printing.name;
+  // Each marker has a long form for the accessible name and a short form for the visible chip.
+  const markers: { key: string; text: string; short: string; tone?: 'danger' }[] = [];
+  const add = (key: string, text: string, short = text, tone?: 'danger') => markers.push({ key, text, short, ...(tone ? { tone } : {}) });
+  if (highlight === 'selected') add('selected', t('board.selected'));
+  if (highlight === 'target') add('target', t('board.target'));
+  if (exerted) add('exerted', t('board.exerted'));
+  if (damage > 0) add('damage', t('board.damage', { count: damage }), t('board.damage', { count: damage }), 'danger');
+  if (drying) add('drying', t('board.dryingLong'), t('board.drying'));
+  if (stack) add('stack', t('board.stackLong', { count: stack.count, on: stack.on }), t('board.stack', { count: stack.count }));
+  if (at) add('at', t('board.at', { place: at }));
+  for (const m of modifiers) add(m, m);
+  const state = exerted || kind === 'location' ? '' : kind === 'character' ? `${t('board.ready')}. ` : '';
+  return { label: `${name}. ${state}${markers.map(m => m.text).join('. ')}${markers.length ? '. ' : ''}${facts ?? ''}`.trim(), markers };
+}
 /**
  * A card on the battlefield (§19): the card art, upright or turned for exerted cards and locations, with every public
  * state also written as a marker, so state never depends on rotation or colour alone. Selection and valid targets are
  * outline rings with text, never a glow.
  */
-export function BoardCard({ printing, kind, exerted = false, damage = 0, drying = false, stack, at, modifiers = [], highlight = 'none', facts, onPress }: BoardCardProps) {
-  const t = useMessages(), name = printing.version ? `${printing.name} – ${printing.version}` : printing.name;
-  const markers: { key: string; node: ReactNode; text: string; tone?: 'danger' }[] = [];
-  if (highlight === 'selected') markers.push({ key: 'selected', node: t('board.selected'), text: t('board.selected') });
-  if (highlight === 'target') markers.push({ key: 'target', node: t('board.target'), text: t('board.target') });
-  if (exerted) markers.push({ key: 'exerted', node: <><GameSymbol name="exert" />{t('board.exerted')}</>, text: t('board.exerted') });
-  if (damage > 0) markers.push({ key: 'damage', node: t('board.damage', { count: damage }), text: t('board.damage', { count: damage }), tone: 'danger' });
-  if (drying) markers.push({ key: 'drying', node: t('board.drying'), text: t('board.dryingLong') });
-  if (stack) markers.push({ key: 'stack', node: t('board.stack', { count: stack.count }), text: t('board.stackLong', { count: stack.count, on: stack.on }) });
-  if (at) markers.push({ key: 'at', node: t('board.at', { place: at }), text: t('board.at', { place: at }) });
-  for (const m of modifiers) markers.push({ key: m, node: m, text: m });
-  const state = exerted || kind === 'location' ? '' : kind === 'character' ? `${t('board.ready')}. ` : '';
+export function BoardCard(props: BoardCardProps) {
+  const { printing, kind, exerted = false, highlight = 'none', onPress } = props;
+  const t = useMessages(), { label, markers } = describeBoardCard(props, t);
+  const visible = markers.map(m => ({ ...m, node: m.key === 'exerted' ? <><GameSymbol name="exert" />{m.short}</> : m.short }));
   return <div className={styles.card} data-kind={kind} data-exerted={exerted || undefined} data-highlight={highlight === 'none' ? undefined : highlight}>
-    <AriaButton className={styles.hit} onPress={onPress} aria-label={`${name}. ${state}${markers.map(m => m.text).join('. ')}${markers.length ? '. ' : ''}${facts ?? ''}`.trim()}>
+    <AriaButton className={styles.hit} onPress={onPress} aria-label={label}>
       <span className={styles.frame}><span className={styles.art}><CardImage printing={printing} decorative /></span></span>
     </AriaButton>
-    {markers.length > 0 && <ul className={styles.markers} aria-hidden="true">{markers.map(m => <li key={m.key} className={styles.marker} data-marker={m.key} data-tone={m.tone}>{m.node}</li>)}</ul>}
+    {visible.length > 0 && <ul className={styles.markers} aria-hidden="true">{visible.map(m => <li key={m.key} className={styles.marker} data-marker={m.key} data-tone={m.tone}>{m.node}</li>)}</ul>}
   </div>;
 }
 

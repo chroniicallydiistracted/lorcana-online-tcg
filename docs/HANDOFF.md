@@ -12,6 +12,7 @@ Observed at: 2026-10-22T06:31:38.935Z (record time of CHG-20261022-004); display
   - CHG-20261022-009: task 5, the Collection binder (with records for all 242 Hyperia City printings).
   - CHG-20261022-010: task 6, pack opening.
   - CHG-20261022-011: task 7, the crowded match (Flat tier).
+  - CHG-20261022-012: task 8, the Babylon table scene and its semantic overlay.
 
 Earlier changes through CHG-20261022-001 are finalized and on main.
 

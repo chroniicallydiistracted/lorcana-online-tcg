@@ -468,6 +468,8 @@
         "R25.016"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
+        "docs/validation/runs/RUN-20261022-037.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-030.json",
         "docs/validation/runs/RUN-20261022-027.json",
@@ -512,22 +514,29 @@
     },
     {
       "id": "F-RENDERER",
-      "name": "Synthetic Babylon lifecycle",
+      "name": "Babylon presentation lifecycle",
       "implementation": "implemented",
       "verification": "pending",
-      "description": "Synthetic scene resize/dispose; simulation/software WebGL evidence only.",
+      "description": "Synthetic sanity scene resize/dispose, and the UX-01 reference table scene (decision D27): validated closed input, deterministic layout, on-demand rendering after materials are ready, projected card rectangles for the semantic overlay, decorative canvas without input or focus, and full disposal on failure. Simulation and software WebGL evidence only; WEB-01 owns lifecycle, tiers, measurement and context restoration.",
       "sources": [
         "packages/presentation/**"
       ],
       "documents": [
+        "README.md",
         "docs/FEATURES.md",
-        "README.md"
+        "docs/runbooks/design-system.md",
+        "docs/validation/ux-design-system.md",
+        "packages/presentation/README.md"
       ],
       "task_ids": [
-        "BOOT-01"
+        "BOOT-01",
+        "UX-01",
+        "WEB-01"
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-037.json",
+        "docs/validation/runs/RUN-20261022-036.json",
         "docs/validation/runs/RUN-20261006-070.json",
         "docs/validation/runs/RUN-20261007-002.json",
         "docs/validation/runs/RUN-20261007-028.json",
@@ -595,6 +604,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -745,6 +755,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -840,6 +851,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -956,6 +968,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -1068,6 +1081,7 @@
       ],
       "requirement_ids": [],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -1156,6 +1170,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -1248,6 +1263,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -1440,6 +1456,7 @@
         "R20.011"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-029.json",
         "docs/validation/runs/RUN-20261022-027.json",
@@ -1498,6 +1515,7 @@
         "R32.011"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -1690,6 +1708,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -1799,6 +1818,7 @@
         "R17.009"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -1892,6 +1912,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -1973,6 +1994,7 @@
         "R30.015"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",
@@ -2079,6 +2101,7 @@
         "R30.010"
       ],
       "evidence": [
+        "docs/validation/runs/RUN-20261022-040.json",
         "docs/validation/runs/RUN-20261022-031.json",
         "docs/validation/runs/RUN-20261022-027.json",
         "docs/validation/runs/RUN-20261022-024.json",

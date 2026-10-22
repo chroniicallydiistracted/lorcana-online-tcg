@@ -30,7 +30,7 @@
     },
     {
       "file": "tokens/component/component.tokens.json",
-      "sha256": "da3e8c3875d2ee09eb6e3e0bcfa72052221d4467404130a13879da4fc7bc6a92"
+      "sha256": "b98ff4f02837622011487c70e8135fb81b76424997dfa3e2617b0ae848768da5"
     },
     {
       "file": "tokens/card/card.tokens.json",
@@ -1964,6 +1964,18 @@
       "values": {
         "paper": "400 1.25rem/1.75rem \"Brandon Text Cond\", \"Card Text Fallback\", \"Source Sans 3 Fallback\", sans-serif",
         "ink": "400 1.25rem/1.75rem \"Brandon Text Cond\", \"Card Text Fallback\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "component.match.scene-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum height of the table scene's stage, so the scene and its overlay never collapse.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-match-scene-min",
+      "values": {
+        "paper": "24rem",
+        "ink": "24rem"
       }
     },
     {

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261022-038",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "python3 scripts/verify-config.py && python3 scripts/ci/check-config.py && pnpm audit && pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "c33732dc55be3126bf17a2c3eba1e9fe077f911f",
+  "source_fingerprint": "8a92ec919eb7a93104d5f47db68b0987ab1d51e2ea3eb86f04368a159614c416",
+  "started_at": "2026-10-22T19:12:13.003Z",
+  "finished_at": "2026-10-22T19:12:13.868Z",
+  "recorded_at": "2026-10-22T19:12:13.868Z",
+  "time_precision": "exact",
+  "elapsed_ms": 865,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "UX-01 task 8 checkpoint full suite: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test",
+  "log_path": "docs/validation/logs/RUN-20261022-038.txt",
+  "log_sha256": "74dac13e8a266328421375d396475bcded50001c646cc4cf2fc8d2143b20b171",
+  "redactions": 0
+}

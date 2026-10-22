@@ -9,7 +9,7 @@ export const boardCardDoc = defineDoc({
   outputs: ['onPress'],
   accessibility: ['One button named with the card, every marker and its facts ("Kit Cloudkicker – Sure Shot. Ready. Shift stack of 2, on Kit Cloudkicker – Unpredictable Courier")', 'Selection and valid targets are outline rings with text markers, never colour or glow alone'],
   contentLimits: ['Markers wrap under the card; card text is read in the inspector'],
-  usage: ['Never reveals more than the viewer may know', 'The same object drives the scene and the semantic overlay'],
+  usage: ['Never reveals more than the viewer may know', 'The same object drives the scene and the semantic overlay; describeBoardCard gives the overlay the same name and markers'],
 });
 export const battlefieldDoc = defineDoc({
   name: 'Battlefield', status: 'experimental', foundation: 'Sections and labelled groups',
@@ -154,4 +154,16 @@ export const matchLayoutDoc = defineDoc({
   accessibility: ['Landmarks for the battlefield, the decision column and the player\'s area; the skip link reaches the decision'],
   contentLimits: ['The decision column is 22.5 rem from 80 rem and 20 rem from 64 rem'],
   usage: ['Uses the whole viewport, without room gutters'],
+});
+export const sceneOverlayDoc = defineDoc({
+  name: 'SceneOverlay', status: 'experimental', foundation: 'Positioned React Aria Buttons over an aria-hidden canvas',
+  purpose: 'The semantic layer over the table scene: real buttons at the rectangles the scene projects for each card, with the Flat-tier names and markers (§19, §30).',
+  anatomy: ['Scene canvas, hidden from assistive technology', 'One button per board object over its card, at least 44 px', 'Text markers under each card'],
+  variants: ['standard'],
+  states: ['standard', 'selected', 'valid target', 'resized'],
+  inputs: ['label', 'rects', 'objects (with marker placement)', 'canvas'],
+  outputs: ['each object\'s onPress'],
+  accessibility: ['Keyboard, pointer, touch and screen readers use the buttons; the scene needs no picking', 'Names and markers match the Flat-tier board exactly'],
+  contentLimits: ['Markers are no wider than their card and wrap, so they never cover a neighbouring card'],
+  usage: ['The caller recomputes rectangles after every render and resize', 'If the scene fails, the Flat-tier Battlefield takes over with an explanation'],
 });

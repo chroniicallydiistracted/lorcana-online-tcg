@@ -102,6 +102,12 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **Commands:** choices and reasons come from the real cards' rules text (`commands.ts`).
   - **Card size:** board cards are compact below 80 rem and standard from 80 rem; marker text never shrinks.
   - **Fan hit areas:** each card's hit area is its visible 52 px slice, and the raise preview moves only the image.
+- **Table scene (UX-01, D27):** the match story's table scene comes from `stories/support/reference/scene.tsx`.
+  - **Loading:** it imports `@lorcana/presentation` lazily through the design system's development-only dependency. Components never import it.
+  - **Input:** it maps the position object, the theme's renderer colours and `cardBackImageUrl` into `mountTableScene`.
+  - **Overlay:** `SceneOverlay` places the buttons, with names and markers from `describeBoardCard`, and rectangles are recomputed after each render and resize.
+  - **Fallbacks:** an engine, texture or context failure shows the Flat tier with an explanation. Below 80 rem the reference uses the Flat tier, because the scene's cards would be too small for legible markers.
+  - **Build order:** the design-system typecheck resolves `@lorcana/presentation` through its `dist/`, so build presentation first (the root build does).
 
 ## Raw values
 

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261022-036",
+  "category": "simulated",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm -s --filter @lorcana/presentation typecheck && pnpm -s --filter @lorcana/presentation build && pnpm -s --filter @lorcana/presentation test && pnpm -s boundaries"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "c33732dc55be3126bf17a2c3eba1e9fe077f911f",
+  "source_fingerprint": "8a92ec919eb7a93104d5f47db68b0987ab1d51e2ea3eb86f04368a159614c416",
+  "started_at": "2026-10-22T19:05:48.513Z",
+  "finished_at": "2026-10-22T19:05:53.697Z",
+  "recorded_at": "2026-10-22T19:05:53.697Z",
+  "time_precision": "exact",
+  "elapsed_ms": 5184,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "UX-01 task 8 after detaching scene input: presentation typecheck, build and NullEngine tests, plus import boundaries",
+  "log_path": "docs/validation/logs/RUN-20261022-036.txt",
+  "log_sha256": "6d52d851a2ac52e9630fc8da12e6ef57fa0cac6c168a50214106fe1876043b63",
+  "redactions": 0
+}

@@ -418,3 +418,45 @@ test.describe('crowded match', () => {
     await expect(page.getByRole('dialog', { name: 'Baymax – Qualified Physician' })).toBeVisible();
   });
 });
+
+test.describe('table scene', () => {
+  const overlay = (page: Page) => page.getByRole('group', { name: 'Battlefield cards' });
+  async function openScene(page: Page, id = 'reference-screens-crowded-match--table-scene') {
+    await open(page, id);
+    await expect(overlay(page).getByRole('button')).toHaveCount(16, { timeout: 20_000 });
+  }
+  test('the canvas is hidden from assistive technology and the overlay names match the Flat-tier board', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--idle');
+    const flat = await page.getByRole('region', { name: 'Battlefield' }).getByRole('button').evaluateAll(els => els.map(e => e.getAttribute('aria-label')));
+    await openScene(page);
+    await expect(page.locator('canvas')).toHaveCount(1);
+    expect(await page.locator('canvas').evaluate(el => el.closest('[aria-hidden="true"]') !== null)).toBe(true);
+    const scene = await overlay(page).getByRole('button').evaluateAll(els => els.map(e => e.getAttribute('aria-label')));
+    expect(scene).toEqual(flat);
+  });
+  test('every overlay button sits on the canvas over its card, at least 44 px, follows a resize, and adapts to the Flat tier below 80 rem', async ({ page }) => {
+    await openScene(page);
+    const inside = async () => page.evaluate(() => {
+      const c = document.querySelector('canvas')!.getBoundingClientRect();
+      return [...document.querySelectorAll('[aria-label="Battlefield cards"] button')].map(b => { const r = b.getBoundingClientRect(); return r.width >= 43.5 && r.height >= 43.5 && r.left >= c.left - 1 && r.right <= c.right + 1 && r.top >= c.top - 1 && r.bottom <= c.bottom + 1; });
+    });
+    expect((await inside()).every(Boolean)).toBe(true);
+    const before = await overlay(page).getByRole('button', { name: /^Kit Cloudkicker/ }).boundingBox();
+    await page.setViewportSize({ width: 1680, height: 1050 });
+    await expect.poll(async () => JSON.stringify(await overlay(page).getByRole('button', { name: /^Kit Cloudkicker/ }).boundingBox())).not.toBe(JSON.stringify(before));
+    expect((await inside()).every(Boolean)).toBe(true);
+    await page.setViewportSize({ width: 1180, height: 820 });
+    await expect(page.locator('canvas')).toHaveCount(0);
+    await expect(page.getByRole('region', { name: 'Battlefield' }).getByRole('region', { name: 'Your side' }).getByRole('button')).toHaveCount(8);
+  });
+  test('the overlay drives the same decisions as the Flat-tier board', async ({ page }) => {
+    await openScene(page);
+    await overlay(page).getByRole('button', { name: /^Kit Cloudkicker/ }).click();
+    await expect(page.getByRole('region', { name: 'Current decision' })).toContainText('Choose what it does.');
+  });
+  test('a renderer failure switches to the Flat tier with an explanation', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--renderer-failure');
+    await expect(page.getByText('The table scene could not start.')).toBeVisible();
+    await expect(page.getByRole('region', { name: 'Battlefield' }).getByRole('region', { name: 'Your side' }).getByRole('button')).toHaveCount(8);
+  });
+});

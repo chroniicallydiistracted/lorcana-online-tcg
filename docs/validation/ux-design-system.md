@@ -409,3 +409,34 @@ The Director approved the full UX-01 design for end-to-end completion. The build
   - **Receipts:**
     - RUN-20261022-029: fixture tests and `catalog:verify` after the reason corrections;
     - RUN-20261022-030: gates and the full Chromium suite, 393/393.
+- **Task 8, table scene (CHG-20261022-012):**
+  - **`mountTableScene` in `packages/presentation`:**
+    - validated closed input;
+    - a deterministic layout: locations with their residents, characters, items, the inkwell, deck and the opponent's hand;
+    - a tilted, fixed camera; zone surfaces; one key light and a soft fill; contact shadows;
+    - unlit card art, turned exerted cards and locations, offset Shift stacks, the official card back on face-down cards, and focus-coloured outline frames;
+    - on-demand rendering only, with `cardRects()` projection and full disposal.
+  - **NullEngine tests:** six new tests: validation refusals, layout, on-demand frames, projection, disposal and engine failure. They were written alongside the implementation rather than captured failing first.
+  - **Design system:**
+    - `SceneOverlay` (Experimental), with marker placement for the far side;
+    - `describeBoardCard`, so the overlay and the Flat-tier board share names and markers;
+    - a `match.scene-min` token;
+    - a development-only workspace dependency on `@lorcana/presentation` (lockfile: one importer link).
+  - **Visual review:**
+    - The first capture was blank: on-demand frames were drawn before Babylon finished compiling shaders. The scene now renders after `whenReadyAsync()`.
+    - Overlay markers collided. They are now no wider than their card, hyphenate, and sit above far-side cards; the rows were spaced further apart.
+    - At 1180 px the scene's cards were too small for legible markers, so the reference adapts to the Flat tier below 80 rem.
+    - Paper and Ink both read as an abstract ink-and-paper table.
+  - **Browser tests:** four scene tests:
+    - the canvas is hidden from assistive technology, and the overlay names equal the Flat-tier board's;
+    - overlay buttons sit on the canvas, are at least 44 px and follow a resize, with the Flat tier below 80 rem;
+    - the overlay drives the same decisions;
+    - a forced renderer failure falls back with an explanation.
+
+    The scene's appearance is a human review: Chromium renders WebGL in software here.
+  - **Receipts:**
+    - **RUN-20261022-034, passed:** presentation and boundaries.
+    - **RUN-20261022-035, failed (preserved):** 6 of 409. Babylon's default input handling gave the `aria-hidden` canvas a tab index (axe `aria-hidden-focus`). The scene now detaches input and removes the tab index.
+    - **RUN-20261022-036, passed:** presentation and boundaries after the fix.
+    - **RUN-20261022-037, passed:** gates and the full Chromium suite, 409/409.
+  - **Not claimed:** frame rates, devices, lifecycle across routes and visibility, quality tiers or context restoration (WEB-01).

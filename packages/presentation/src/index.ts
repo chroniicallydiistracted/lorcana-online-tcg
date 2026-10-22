@@ -53,3 +53,6 @@ export function mountSanityScene(canvas: HTMLCanvasElement, options: RenderOptio
     return { scene, dispose, get frames() { return frames; } };
   } catch (error) { dispose(); throw error; }
 }
+
+export { mountTableScene, validateTableInput, layoutTable } from './table-scene.ts';
+export type { TableCard, TableSceneInput, TableScene, CardRect, Rgb } from './table-scene.ts';

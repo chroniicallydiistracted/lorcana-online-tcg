@@ -2,9 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { ActionChoice, ActionPanel, Battlefield, BoardCard, Button, CardImage, CardInspector, Confirmation, ConnectionStatus, Counter, DemonstrationLabel, Dialog, EventLog, FanContentNotice, HandFan, HandList,
-  Menu, MenuItem, MenuTrigger, IconButton, MatchChrome, MatchLayout, NotificationCount, PlayerSummary, ProgressBar, Stack, Switch, Tab, TabList, TabPanel, Tabs, Text, TurnContext, ViewSwitch, ZoneCount, useAnnouncer, useAtLeast } from '../../src/index.ts';
+  Menu, MenuItem, MenuTrigger, IconButton, MatchChrome, MatchLayout, NotificationCount, PlayerSummary, ProgressBar, Stack, Switch, Tab, TabList, TabPanel, Tabs, Text, TurnContext, ViewSwitch, ZoneCount, describeBoardCard, useAnnouncer, useAtLeast, useMessages } from '../../src/index.ts';
+import type { BoardCardProps } from '../../src/index.ts';
 import type { ConnectionState } from '../../src/index.ts';
-import { actionChoiceDoc, actionPanelDoc, battlefieldDoc, boardCardDoc, counterDoc, eventLogDoc, handFanDoc, handListDoc, matchChromeDoc, matchLayoutDoc, playerSummaryDoc, turnContextDoc, zoneCountDoc } from '../../src/components/Match/Match.docs.ts';
+import { actionChoiceDoc, actionPanelDoc, battlefieldDoc, boardCardDoc, counterDoc, eventLogDoc, handFanDoc, handListDoc, matchChromeDoc, matchLayoutDoc, playerSummaryDoc, sceneOverlayDoc, turnContextDoc, zoneCountDoc } from '../../src/components/Match/Match.docs.ts';
+import { SceneBattlefield } from '../support/reference/scene.tsx';
 import { DocPage } from '../support/DocPage.tsx';
 import { OfficialAssetsOff } from '../support/OfficialAssetsOff.tsx';
 import { printedBlocks } from '../support/fixtures.ts';
@@ -23,10 +25,10 @@ type Stage =
   | { kind: 'idle' } | { kind: 'selected'; id: string } | { kind: 'targets'; id: string } | { kind: 'hand'; id: number }
   | { kind: 'song'; id: number } | { kind: 'song-target'; id: number; payment: string } | { kind: 'choose-one' } | { kind: 'damage-target' }
   | { kind: 'pending'; intent: string; then: () => void } | { kind: 'rejected' } | { kind: 'opponent' } | { kind: 'reconnecting' };
-interface Options { stage?: Stage; position?: MatchPosition; review?: 'quest' | 'end'; hand?: 'fan' | 'list'; connection?: ConnectionState; select?: string }
+interface Options { stage?: Stage; position?: MatchPosition; review?: 'quest' | 'end'; hand?: 'fan' | 'list'; connection?: ConnectionState; select?: string; tier?: 'flat' | 'scene'; failEngine?: boolean }
 
-function MatchReference({ stage: start = { kind: 'idle' }, position: startPosition = crowdedMatch, review: startReview, hand: startHand = 'fan', connection: startConnection = 'connected', select }: Options) {
-  const announce = useAnnouncer(), expanded = useAtLeast('expanded'), wide = useAtLeast('wide');
+function MatchReference({ stage: start = { kind: 'idle' }, position: startPosition = crowdedMatch, review: startReview, hand: startHand = 'fan', connection: startConnection = 'connected', select, tier = 'flat', failEngine = false }: Options) {
+  const t = useMessages(), announce = useAnnouncer(), expanded = useAtLeast('expanded'), wide = useAtLeast('wide');
   const [position, setPosition] = useState(startPosition), [stage, setStage] = useState<Stage>(start), [review, setReview] = useState<'quest' | 'end' | undefined>(startReview);
   const [handView, setHandView] = useState(startHand), [inspected, setInspected] = useState<number | null>(null), [tab, setTab] = useState<string>('log'), [reading, setReading] = useState(false);
   const [connection, setConnection] = useState<ConnectionState>(startConnection), [confirmQuest, setConfirmQuest] = useState(true), [confirmEnd, setConfirmEnd] = useState(true);
@@ -74,24 +76,32 @@ function MatchReference({ stage: start = { kind: 'idle' }, position: startPositi
   const challenge = (attackerId: string, targetId: string) => submit(`Challenge ${objectName(object(targetId))} with ${objectName(object(attackerId))}`, () => { setStage({ kind: 'rejected' }); announce('Your challenge was not accepted. The position changed; nothing was spent.', 'polite'); });
   const damage = (targetId: string) => submit(`Deal 1 damage to ${objectName(object(targetId))}`, () => { patch(targetId, { damage: object(targetId).damage + 1 }); setStage({ kind: 'idle' }); announce(`${objectName(object(targetId))} took 1 damage.`); });
 
-  const card_ = (x: BoardObject, size: 'character' | 'item' | 'location') => {
+  const isTarget = (id: string) => stage.kind === 'targets' && challengeTargets(position, object(stage.id)).some(target => target.id === id && !target.unavailable);
+  const highlightOf = (id: string): 'selected' | 'target' | 'none' => selectedId === id ? 'selected' : isTarget(id) ? 'target' : 'none';
+  /** One object's board props, shared by the Flat-tier card and the scene overlay so both say the same thing. */
+  const boardProps = (x: BoardObject): Omit<BoardCardProps, 'onPress'> => {
     const c = objectCard(x), location = x.at ? position.objects.find(l => l.id === x.at) : undefined;
-    const target = stage.kind === 'targets' && challengeTargets(position, object(stage.id)).some(t => t.id === x.id && !t.unavailable);
-    return <BoardCard key={x.id} printing={printing(c)} kind={size} exerted={x.exerted} damage={x.damage} drying={x.drying}
-      {...(x.under.length ? { stack: { count: x.under.length + 1, on: fullName(card(x.under[0]!)) } } : {})} {...(location ? { at: objectCard(location).name } : {})}
-      modifiers={x.modifiers.map(m => m.label)} highlight={selectedId === x.id ? 'selected' : target ? 'target' : 'none'}
-      facts={c.category === 'character' ? `Strength ${String(c.strength ?? 0)}, willpower ${String(c.willpower ?? 0)}, lore ${String(c.lore ?? 0)}.` : c.category === 'location' ? `Willpower ${String(c.willpower ?? 0)}, lore ${String(c.lore ?? 0)}, move cost ${String(c.moveCost ?? 0)}.` : ''}
-      onPress={() => onBoard(x)} />;
+    return {
+      printing: printing(c), kind: x.zone, exerted: x.exerted, damage: x.damage, drying: x.drying,
+      ...(x.under.length ? { stack: { count: x.under.length + 1, on: fullName(card(x.under[0]!)) } } : {}), ...(location ? { at: objectCard(location).name } : {}),
+      modifiers: x.modifiers.map(m => m.label), highlight: highlightOf(x.id),
+      facts: c.category === 'character' ? `Strength ${String(c.strength ?? 0)}, willpower ${String(c.willpower ?? 0)}, lore ${String(c.lore ?? 0)}.` : c.category === 'location' ? `Willpower ${String(c.willpower ?? 0)}, lore ${String(c.lore ?? 0)}, move cost ${String(c.moveCost ?? 0)}.` : '',
+    };
   };
+  const card_ = (x: BoardObject) => <BoardCard key={x.id} {...boardProps(x)} onPress={() => onBoard(x)} />;
+  /** Objects in the semantic order the Flat-tier board reads them: locations and their residents, characters, items. */
+  const ordered = (s: 'player' | 'opponent') => { const mine = position.objects.filter(x => x.side === s); return [...mine.filter(x => x.zone === 'location').flatMap(l => [l, ...mine.filter(x => x.at === l.id)]), ...mine.filter(x => x.zone === 'character' && !x.at), ...mine.filter(x => x.zone === 'item')]; };
   const side = (s: 'player' | 'opponent', label: string) => {
     const mine = position.objects.filter(x => x.side === s);
     return {
       label,
-      locations: mine.filter(x => x.zone === 'location').map(l => ({ label: `${objectCard(l).name} and the characters here`, card: card_(l, 'location'), residents: mine.filter(x => x.at === l.id).map(x => card_(x, 'character')) })),
-      characters: mine.filter(x => x.zone === 'character' && !x.at).map(x => card_(x, 'character')),
-      items: mine.filter(x => x.zone === 'item').map(x => card_(x, 'item')),
+      locations: mine.filter(x => x.zone === 'location').map(l => ({ label: `${objectCard(l).name} and the characters here`, card: card_(l), residents: mine.filter(x => x.at === l.id).map(card_) })),
+      characters: mine.filter(x => x.zone === 'character' && !x.at).map(card_),
+      items: mine.filter(x => x.zone === 'item').map(card_),
     };
   };
+  const flat = { labels: { characters: 'Characters', items: 'Items' }, opponent: side('opponent', `${o.name}'s side`), player: side('player', 'Your side') };
+  const overlayObjects = [...ordered('opponent'), ...ordered('player')].map(x => { const d = describeBoardCard(boardProps(x), t); return { id: x.id, label: d.label, markers: d.markers.map(m => m.short), highlight: highlightOf(x.id), markerPlacement: x.side === 'opponent' ? 'above' as const : 'below' as const, onPress: () => onBoard(x) }; });
 
   const decision: ReactNode = (() => {
     const choices = (list: readonly Choice[], onChoose: (c: Choice) => void) => list.map(c => <ActionChoice key={c.id} label={c.label} {...(c.detail ? { detail: c.detail } : {})} {...(c.unavailable ? { unavailable: c.unavailable } : {})} onPress={() => onChoose(c)} />);
@@ -144,7 +154,7 @@ function MatchReference({ stage: start = { kind: 'idle' }, position: startPositi
         opponent={<PlayerSummary name={o.name} active={yourTurn ? undefined : 'Their turn'}><Counter label="Lore" value={o.lore} max={position.loreToWin} symbol="lore" /><Counter label="Ink" value={o.readyInk} max={o.ink} detail="ready" /><Counter label="Ink drops" value={o.inkDrops} /><ZoneCount label="Hand" count={o.hand} /><ZoneCount label="Deck" count={o.deck} /><ZoneCount label="Discard" count={o.discard.length} onOpen={() => setDialog('discard')} /></PlayerSummary>}
         status={<><ConnectionStatus state={connection} compact />{!expanded && wide && <Button onPress={() => setDialog('log')}>Log</Button>}<NotificationCount count={2} onPress={() => {}} /></>}
         menu={<MenuTrigger><IconButton icon="more" label="Match menu" /><Menu onAction={key => setDialog(key as 'settings' | 'notice' | 'concede')}><MenuItem id="settings">Settings</MenuItem><MenuItem id="notice">Fan content notice</MenuItem><MenuItem id="concede" tone="danger">Concede</MenuItem></Menu></MenuTrigger>} />}
-      battlefield={<Battlefield labels={{ characters: 'Characters', items: 'Items' }} opponent={side('opponent', `${o.name}'s side`)} player={side('player', 'Your side')} />}
+      battlefield={tier === 'scene' ? <SceneBattlefield position={position} objects={overlayObjects} highlight={highlightOf} flat={flat} failEngine={failEngine} /> : <Battlefield {...flat} />}
       side={<>
         <TurnContext>{yourTurn ? `Your turn · Turn ${String(position.turn)} · ${position.phase}` : `${o.name}'s turn · Turn ${String(position.turn + 1)}`}</TurnContext>
         {decision}
@@ -190,7 +200,7 @@ const largeHand: MatchPosition = { ...crowdedMatch, hand: [3292, 3268, 3289, 343
 const smallHand: MatchPosition = { ...crowdedMatch, hand: [3292], player: { ...crowdedMatch.player, hand: 1 } };
 const longNames: MatchPosition = { ...crowdedMatch, player: { ...crowdedMatch.player, name: players.long }, objects: crowdedMatch.objects.map(x => x.id === 'o-gogo' ? { ...x, printingId: 3134 } : x) };
 
-export const Documentation: Story = { parameters: { designSystem: { bleed: false } }, render: () => <DocPage docs={[matchLayoutDoc, matchChromeDoc, playerSummaryDoc, counterDoc, zoneCountDoc, turnContextDoc, battlefieldDoc, boardCardDoc, actionPanelDoc, actionChoiceDoc, handFanDoc, handListDoc, eventLogDoc]} /> };
+export const Documentation: Story = { parameters: { designSystem: { bleed: false } }, render: () => <DocPage docs={[matchLayoutDoc, matchChromeDoc, playerSummaryDoc, counterDoc, zoneCountDoc, turnContextDoc, battlefieldDoc, boardCardDoc, sceneOverlayDoc, actionPanelDoc, actionChoiceDoc, handFanDoc, handListDoc, eventLogDoc]} /> };
 export const Idle: Story = {
   parameters: { designSystem: { coverage: { MatchLayout: ['wide', 'tablet landscape', 'tablet portrait'], MatchChrome: ['standard'], PlayerSummary: ['active', 'waiting'], Counter: ['standard'], ZoneCount: ['count only', 'openable'], TurnContext: ['your turn'], Battlefield: ['crowded'], BoardCard: ['ready', 'exerted', 'damaged', 'drying', 'shift stack', 'at a location', 'with current effects'], ActionPanel: ['idle'], HandFan: ['standard'], EventLog: ['standard'] } } },
   render: () => <MatchReference />,
@@ -211,3 +221,7 @@ export const HandAsList: Story = { render: () => <MatchReference hand="list" sta
 export const LongNames: Story = { globals: { locale: 'en-XA' }, parameters: { designSystem: { coverage: { PlayerSummary: ['long name'] } } }, render: () => <MatchReference position={longNames} /> };
 export const TakedownFallback: Story = { parameters: { designSystem: { coverage: { BoardCard: ['official assets off'], Counter: ['official assets off'] } } }, render: () => <OfficialAssetsOff><MatchReference /></OfficialAssetsOff> };
 export const EmptySide: Story = { parameters: { designSystem: { coverage: { Battlefield: ['empty side'] } } }, render: () => <MatchReference position={{ ...crowdedMatch, objects: crowdedMatch.objects.filter(x => x.side === 'player') }} /> };
+export const TableScene: Story = { parameters: { designSystem: { coverage: { SceneOverlay: ['standard', 'resized'] } } }, render: () => <MatchReference tier="scene" /> };
+export const TableSceneChoosingTargets: Story = { parameters: { designSystem: { coverage: { SceneOverlay: ['selected', 'valid target'] } } }, render: () => <MatchReference tier="scene" stage={{ kind: 'targets', id: 'p-kit' }} /> };
+export const RendererFailure: Story = { render: () => <MatchReference tier="scene" failEngine /> };
+export const TableSceneTakedown: Story = { render: () => <OfficialAssetsOff><MatchReference tier="scene" /></OfficialAssetsOff> };
