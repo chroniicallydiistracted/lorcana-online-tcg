@@ -2,6 +2,75 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-005 — UX-01 task 1: reference fixture of real Hyperia City printings
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T14:03:32.742Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 98357b0e5789760842529fdc5fcd7d1599a4af4f
+- Tasks: UX-01, CONTENT-01, DOC-01, DOC-02
+- Features: F-CARD-CATALOG, F-DOCS
+- Requirements: R20.001, R20.002, R25.009
+
+### Changes
+
+- **implementation:** The Director approved the full UX-01 design for end-to-end completion. Implementation-plan task 1: packages/rules-data/fixtures/reference-selection.json selects 69 real Hyperia City (set 14) printings from the 2026-10-21 acquisition, each with its own reason: the player's Amber/Steel deck and the opponent's Emerald/Sapphire deck (60 cards each) with every card's role in the crowded match, two binder spreads (Amber 1–18/204 and Sapphire 137–154/204), a 12-card demonstration pack drawn from the spreads, and four special printings. Six printings inspected in the stories are flagged for full-card images.
+- **implementation:** scripts/catalog-lib.mjs fixtureImageSources takes details 'all' (presentation fixture, unchanged) or 'flagged' (reference fixture); scripts/select-fixtures.mjs writes both fixtures and reuses an image either manifest already records when its checksum matches; scripts/verify-fixtures.mjs proves both committed fixtures equal what their selections derive from the recorded snapshot. src/fixtures.ts exports referenceCatalog, referenceSelection, referenceImages, referencePrinting and referenceImage through the same normalizer as the presentation fixture. The generated src/fixtures/reference.json and reference-images.json and 74 new image files (68 thumbnails and 6 full-card images; Port Authority's thumbnail was already recorded) were written by select-fixtures, which fetched them from Ravensburger's public image host at 2026-10-22T14:01Z. The presentation fixture and its manifests are byte-identical.
+- **test:** tests/catalog.test.mjs adds three tests, written first: the reference selection reproduced in order with no duplicate printing or reason; every reference printing's rotation state is CoreConstructed; a thumbnail for every printing, full-card images only where flagged, thumbnails within 4 MB and full-card images within 3 MB. The existing image test now covers both manifests and refuses any unrecorded file. RUN-20261022-006 records the expected failure before the exports existed; RUN-20261022-007 passes 12 tests.
+- **documentation:** Card-catalog runbook (fixture use and rebuild for both fixtures), card-catalog validation (dated reference-fixture section with counts, bytes, checks and receipts), the rules-data README, the F-CARD-CATALOG feature row and the handoff.
+
+### Verification
+
+- **failed:** Test-first: the new reference-fixture tests fail before the fixture exports exist (expected). ([evidence](docs/validation/runs/RUN-20261022-006.json))
+- **passed:** rules-data build and its 12 tests, including the three reference-fixture tests (container). ([evidence](docs/validation/runs/RUN-20261022-007.json))
+- **passed:** catalog:verify: every acquired language audits cleanly and both committed fixtures equal what their selections derive from the recorded snapshot (container, raw cache). ([evidence](docs/validation/runs/RUN-20261022-008.json))
+- **passed:** rules-data typecheck, import boundaries and repository lint (static). ([evidence](docs/validation/runs/RUN-20261022-009.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-010.json))
+- **passed:** docs:check over the finalized task 1 checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-011.json))
+
+### Documentation and files
+
+- **updated:** [docs/README.md](docs/README.md) — Same UX-01 status update as AGENTS.md, with document-relative links.
+- **updated:** [README.md](README.md) — Same UX-01 status update as AGENTS.md.
+- **updated:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph said the plan came before any build; it now says the tasks are being built in order under the Director's end-to-end instruction.
+- **updated:** [docs/runbooks/card-catalog.md](docs/runbooks/card-catalog.md) — Use and rebuild instructions now cover the reference fixture, its detail flag and shared images.
+- **updated:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Appended a dated section for the reference fixture with its selection, image totals, checks, receipts and limits.
+- **updated:** [packages/rules-data/README.md](packages/rules-data/README.md) — The fixtures export now names both fixtures and their sizes.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-CARD-CATALOG lists the reference fixture exports.
+- **updated:** [docs/features.json](docs/features.json) — F-CARD-CATALOG describes the reference fixture; every verified feature gains the checkpoint full-suite run at the new source fingerprint, and F-CARD-CATALOG its task receipts.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records the Director's end-to-end instruction, this checkpoint and the next actions.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The decision covers real-card fixtures from dated acquisitions with provenance; a second fixture from the same acquisition follows it without changing it.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — No dependency or engine placement change; the fixture adds data only.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Every new image records its source URL, retrieval time, checksum and the D07 rights basis, as the policy requires.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Rules-source tooling and inventories are unaffected; the reference fixture is presentation data, not rules certification.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Historical RULE-01 evidence; no rules inventory changed.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs:sync from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs:sync with the new source fingerprint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-005.json).
+
+### Limits and next actions
+
+- The decks, match position, ownership figures and pack contents that use these printings are demonstration data, written in later tasks; nothing here is admitted or certified for play.
+- Image retrieval is a public GET of Ravensburger's image host; no other network use.
+- Task 2 of the implementation plan: the official card back as a design-system asset and the CardBack component.
+
 ## CHG-20261022-004 — UX-01 design approval (decision D28) and implementation plan
 
 - Status: finalized

@@ -1,0 +1,28 @@
+✔ acquisition records acquired, unavailable and rejected languages with exact bytes and provenance (27.229892ms)
+✔ the presentation fixture is reproduced exactly from a served snapshot (2.105784ms)
+✔ transport and storage guards (10.359818ms)
+file:///workspaces/lorcana-online-tcg/packages/rules-data/tests/catalog.test.mjs:7
+import { fixtureImage, fixturePrinting, presentationCatalog, presentationImages, presentationSelection, referenceCatalog, referenceImage, referenceImages, referencePrinting, referenceSelection } from '../src/fixtures.ts';
+                                                                                                        ^^^^^^^^^^^^^^^^
+SyntaxError: The requested module '../src/fixtures.ts' does not provide an export named 'referenceCatalog'
+    at #asyncInstantiate (node:internal/modules/esm/module_job:455:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:553:5)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.21.0
+✖ tests/catalog.test.mjs (63.658076ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 199.713971
+
+✖ failing tests:
+
+test at tests/catalog.test.mjs:1:1
+✖ tests/catalog.test.mjs (63.658076ms)
+  'test failed'

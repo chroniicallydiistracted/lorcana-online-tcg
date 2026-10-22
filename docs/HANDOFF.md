@@ -3,7 +3,9 @@
 Observed at: 2026-10-22T06:31:38.935Z (record time of CHG-20261022-004); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Changes on branch `claude/ux-01-reference-screens`:
 - CHG-20261022-002: UX-01 intake, the Director's answers (decision D27) and the hosted merge runs of pull request #6; finalized and committed as cdfbe34.
 - CHG-20261022-003: the UX-01 written design, proposed for the Director's approval; finalized and committed as 4b90ab4.
-- CHG-20261022-004: the Director's approval of the design with answers to its three review points (decision D28), and the UX-01 implementation plan; finalized with this checkpoint.
+- CHG-20261022-004: the Director's approval of the design with answers to its three review points (decision D28), and the UX-01 implementation plan; finalized and committed as 98357b0.
+- The Director then approved the full design for end-to-end completion. Build checkpoints follow the implementation plan, one change record each:
+  - CHG-20261022-005: task 1, the reference fixture (69 Hyperia City printings with thumbnails, 6 full-card images).
 
 Earlier changes through CHG-20261022-001 are finalized and on main.
 
@@ -45,5 +47,5 @@ Earlier changes through CHG-20261022-001 are finalized and on main.
   - PLAY-04 open items;
   - AUTH-01.
 - **Next actions:**
-  1. **Director:** say when to start the build. The plan begins with task 1, the reference fixture.
-  2. **Agent:** build task by task with a checkpoint, change record and receipts after each, and keep the branch local until the Director asks for a push.
+  1. **Agent:** continue the implementation plan from the next unfinished task, with a checkpoint, change record and receipts after each; the latest finalized record above names the last completed task.
+  2. **Agent, task 10:** push the branch and open the pull request for hosted CI, as the plan's last step of the Director's end-to-end instruction; main changes only at the Director's request.

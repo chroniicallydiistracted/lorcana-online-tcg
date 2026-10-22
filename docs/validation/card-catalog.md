@@ -97,3 +97,25 @@ Recorded 2026-10-22T04:41:40.268Z (CHG-20261022-002) from public GitHub job meta
 - **Run 39705738273** (push to main at 4d9dfc7), both jobs successful:
   - `foundation`: 01:27:05–01:42:43Z;
   - `design-system`: 01:27:05–01:30:22Z.
+
+## UX-01 reference fixture — 2026-10-22 UTC
+
+Recorded by CHG-20261022-005 (UX-01 implementation-plan task 1).
+- **Selection:** `packages/rules-data/fixtures/reference-selection.json` lists 69 printings, all Hyperia City (set 14), in the same 2026-10-21 acquisition. Each printing records its own reason:
+  - the player's Amber/Steel deck and the opponent's Emerald/Sapphire deck, 60 cards each, 22 and 21 printings, with the match role of each card in the crowded position;
+  - two binder spreads: Amber pages 1–2 (1–18/204) and Sapphire pages 17–18 (137–154/204, including the "Go to card number 142" anchor);
+  - a 12-card demonstration pack (6 common, 3 uncommon, a rare, a Legendary and a foil slot), drawn from the spreads;
+  - four special printings (Epic, two Enchanted, Iconic).
+- **Images:** 69 thumbnails at 367 × 512 (2,688,370 bytes) and 6 full-card images at 1,468 × 2,048 (1,819,359 bytes), only for the printings the stories inspect. Port Authority's thumbnail is shared with the presentation fixture and was not fetched again; the other 74 were fetched from Ravensburger's image host at 2026-10-22T14:01Z.
+- **Checks:**
+  - the selection is reproduced in order, with no duplicate printing or reason;
+  - every reference printing's rotation state is `CoreConstructed`;
+  - each printing has its thumbnail, full-card images exist only where flagged, and the totals stay within 4 MB and 3 MB;
+  - every image file is recorded by a manifest, with matching bytes and dimensions;
+  - `catalog:verify` derives both fixtures exactly from the recorded snapshot.
+- **Receipts:**
+  - RUN-20261022-006: the new tests failing before the fixture existed (test-first, expected);
+  - RUN-20261022-007: build and 12 tests passing;
+  - RUN-20261022-008: `catalog:verify` passing;
+  - RUN-20261022-009: typecheck, boundaries and lint passing.
+- **Limits:** the decks, ownership figures and pack contents are demonstration data in the design-system stories, not catalog data, and nothing here is admitted or certified for play.

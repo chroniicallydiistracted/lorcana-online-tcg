@@ -4,7 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { correctRulesText, normalizeRavensburgerCard, normalizeRulesText, normalizeFlavorText, rulesTextCorrections, parseRavensburgerCard, parseRavensburgerCatalog, parseRulesText, printingsOfIdentity, rulesTextSource } from '../src/index.ts';
-import { fixtureImage, fixturePrinting, presentationCatalog, presentationImages, presentationSelection } from '../src/fixtures.ts';
+import { fixtureImage, fixturePrinting, presentationCatalog, presentationImages, presentationSelection, referenceCatalog, referenceImage, referenceImages, referencePrinting, referenceSelection } from '../src/fixtures.ts';
 import { jpegSize, sha256 } from '../scripts/catalog-lib.mjs';
 
 // Every case here uses real Ravensburger records (decision D25); invalid inputs are real records with one field broken.
@@ -110,8 +110,8 @@ test('validation rejects malformed records derived from real cards', () => {
 
 test('fixture images are the exact recorded bytes with full provenance', () => {
   const directory = join(root, 'fixtures/images');
-  assert.deepEqual(readdirSync(directory).sort(), presentationImages.map(i => i.file).sort(), 'no unrecorded or missing image files');
-  for (const image of presentationImages) {
+  assert.deepEqual(readdirSync(directory).sort(), [...new Set([...presentationImages, ...referenceImages].map(i => i.file))].sort(), 'no unrecorded or missing image files');
+  for (const image of [...presentationImages, ...referenceImages]) {
     const bytes = readFileSync(join(directory, image.file));
     assert.equal(sha256(bytes), image.sha256, image.file);
     assert.equal(bytes.length, image.bytes, image.file);
@@ -125,4 +125,31 @@ test('fixture images are the exact recorded bytes with full provenance', () => {
     for (const variant of printing.variants) assert.equal(fixtureImage(printing.printingId, 'detail', variant.id)?.sourceUrl, variant.detailImageUrl, `${printing.name} ${variant.id}`);
   }
   assert.throws(() => fixturePrinting(1), /not in the presentation fixture/);
+});
+
+test('the reference fixture is the reviewed UX-01 selection, in order, from the same acquisition', () => {
+  const selection = JSON.parse(readFileSync(join(root, 'fixtures/reference-selection.json'), 'utf8'));
+  assert.deepEqual(referenceSelection, selection);
+  assert.deepEqual(referenceCatalog.printings.map(p => p.printingId), selection.map(s => s.printingId));
+  assert.equal(new Set(selection.map(s => s.printingId)).size, selection.length, 'no printing selected twice');
+  assert.equal(new Set(selection.map(s => s.reason)).size, selection.length, 'every printing records its own reason');
+  assert.ok(selection.every(s => s.reason.length > 30 && (s.detail === undefined || s.detail === true)));
+  assert.deepEqual(referenceCatalog.source, presentationCatalog.source);
+  assert.equal(referencePrinting(3457).name, 'Kit Cloudkicker');
+  assert.throws(() => referencePrinting(42), /not in the reference fixture/);
+});
+
+test('reference printings are Core Constructed in the catalog, so the demonstration decks draw only on Core cards', () => {
+  for (const printing of referenceCatalog.printings) assert.equal(printing.rotation, 'CoreConstructed', `${printing.name} ${printing.identifier}`);
+});
+
+test('reference images: a thumbnail for every printing, detail images only where flagged, within the size budget', () => {
+  const flagged = new Set(referenceSelection.filter(s => s.detail).map(s => s.printingId));
+  for (const printing of referenceCatalog.printings) {
+    assert.equal(referenceImage(printing.printingId, 'thumbnail')?.sourceUrl, printing.thumbnailUrl, printing.name);
+    for (const variant of printing.variants) assert.equal(referenceImage(printing.printingId, 'detail', variant.id)?.sourceUrl, flagged.has(printing.printingId) ? variant.detailImageUrl : undefined, `${printing.name} ${variant.id}`);
+  }
+  const total = rendition => referenceImages.filter(i => i.rendition === rendition).reduce((n, i) => n + i.bytes, 0);
+  assert.ok(total('thumbnail') <= 4 * 1024 * 1024, `thumbnails ${total('thumbnail')} bytes`);
+  assert.ok(total('detail') <= 3 * 1024 * 1024, `detail images ${total('detail')} bytes`);
 });
