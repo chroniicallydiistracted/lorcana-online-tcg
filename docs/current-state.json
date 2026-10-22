@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-22T01:07:25.968Z",
+  "observed_at": "2026-10-22T05:03:13.179Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2177,6 +2177,11 @@
       "sources": []
     },
     {
+      "path": "docs/plans/2026-10-22-ux-01-intake.md",
+      "classification": "planning",
+      "sources": []
+    },
+    {
       "path": "docs/reviews/2026-10-19-play-04-d13.md",
       "classification": "evidence",
       "sources": []
@@ -2333,7 +2338,8 @@
     "CHG-20261021-003",
     "CHG-20261021-004",
     "CHG-20261021-005",
-    "CHG-20261022-001"
+    "CHG-20261022-001",
+    "CHG-20261022-002"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2408,7 +2414,8 @@
     "CHG-20261021-003": "finalized",
     "CHG-20261021-004": "finalized",
     "CHG-20261021-005": "finalized",
-    "CHG-20261022-001": "finalized"
+    "CHG-20261022-001": "finalized",
+    "CHG-20261022-002": "finalized"
   },
   "source_fingerprint": "256dd89d31eaa4d8a1594339dd40ec23c3f40a54b45af3d2fa2bb53197396e99",
   "files": {
@@ -2426,8 +2433,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "2f46ae0632a1771dab69513ce35fade5008be6f836c1d5188986dd1bb025f67a",
-    "README.md": "55aa44f9ea73f18ec59dd4d4657da011965c64639f4b5c4c3ead3766ca7a83d6",
+    "AGENTS.md": "98cc837864c4b5f1ac8694b353ebb076c7d3ba0ae620f811256d29eb512136ba",
+    "README.md": "003c2504702a378edcc0d15964791f4527125b672b7983c8e286ee7d9e4fe8df",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2489,8 +2496,8 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "60685e4285a848c98047cd02570df23eecef6452e2aaf5990b76d716c6efb64d",
-    "docs/HANDOFF.md": "103c03094a2ce25eb28587a940921b6c7c1385fc3b2399cca8d4449fe78462ff",
-    "docs/README.md": "86641935522fd2ba364cc68e0232373650eef49051b554d4976421639316fb0e",
+    "docs/HANDOFF.md": "c9627551f95c88cda80a17c9b28d3344bf04aaee75ea71ea116fab0e3b8558fc",
+    "docs/README.md": "bf5ec8860db630ed853e8019bd982419e520da8e2f2323dadf5a78e7e055fdff",
     "docs/WORKSPACE_QUALIFICATION.md": "1062a43ab8ab90446a9f2577996b7ce3bba66e0c7760033ae017fab4f882d44b",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "be8edbdb89fced50ac57ac687adf620b297f0b442471d095f2911e52cc1ffb7b",
@@ -2518,7 +2525,7 @@
     "docs/contracts/protocol.md": "9d98bba18ea510491ca56d4d78f4d6d72c192ccf5947415bacc4d60c16b77d2e",
     "docs/contracts/release.md": "e7f32ac1b56bb03ef8231e16f482f7e33fe7c4d5aee5b933926c9d99baa1a752",
     "docs/contracts/viewer.md": "93f10a76fb0069fbfb6e91a7825286de1fccdec2ff3413c03fc9cf39ea5c8e97",
-    "docs/documentation-map.json": "0c9037f30eeb1dc1a1056be7165d7875ba49d314501ac8adc76304d66e40fcc9",
+    "docs/documentation-map.json": "9fd0edf2877d7a419c9875bf25bdbbe8de9ebbb37de3a83a8346b3abd6108ae0",
     "docs/features.json": "22ebe1eaa0f0629e34e9864adfbe371f68170843ecb48c6638fd608ec90d4d25",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "739e9ebaef44a82acd3caf79b5f219d1f220e348c738e16effe0f6c6d91e075b",
@@ -2540,6 +2547,7 @@
     "docs/plans/2026-10-15-play-04-implementation.md": "096a5078bf8e4afc192e03950f0057ee3769b2baf2cff3a5e59a37f530b2630f",
     "docs/plans/2026-10-15-play-04-intake.md": "20969acc10c8b9e3367d4a18b1a401bb79e3aaf5599f0151b9ffd55b814c28a3",
     "docs/plans/2026-10-19-play-04-d13.md": "1f5ae7f4f0dee9533bbffecd9acb1ac1b265d78ce3521d41b912dbfef8bbe724",
+    "docs/plans/2026-10-22-ux-01-intake.md": "598995f12b69cfd8ab161462718c705c2857d6ed212e7e0f86e574b788f6c258",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
     "docs/plans/boot-04-costs.json": "db38b14c7d22fce7fbf18c88f29062beb9462732cc578e09b744d4170f2ebda5",
     "docs/plans/boot-04-single-host-costs.json": "f3fb2b6de8b9bb07522dbf753fb60daede3c2f8df8ec00c865718ead438018a7",
@@ -2647,7 +2655,7 @@
     "docs/validation/boot-03.md": "5b7f2abce42b5314c6718ef7a75247a9429d9d2fd0db1a1998b964f48f75fd44",
     "docs/validation/boot-04.md": "3b4b01e87581e52b50d20b02485082239b02535127c758de62f0cdd0eaa84b4f",
     "docs/validation/boot-05.md": "84e6b1db6d4025607d51844cf217ed66918b9ed73f51ea9b350c0c64338f4715",
-    "docs/validation/card-catalog.md": "63f01ade0d6abf2649b5ced3c7a91348bb66a18a116ad69b4a591396c2f107d2",
+    "docs/validation/card-catalog.md": "205e9adb4b78f418e247ad50cb4fc2bd1568a962e2b4a577a253c7d5e9f9bb35",
     "docs/validation/clock-investigation.md": "f84414e5c4cf0a987fd956b38a23d0e6e623734b33c1d6ec94b70ec24f7657ee",
     "docs/validation/documentation-review.md": "8196f96d889935ae110b82d23a5e0c3938362eefce69a610361bac8bf5a5da4d",
     "docs/validation/inputs/play03-package-metadata.mjs": "36fa50be4b7e73341b6c7033693a44985d217107c77512b1168eba8d5dd780cf",
@@ -2684,9 +2692,9 @@
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "cc29b93e480186c5d2147f567152fa74799f2bae74c13554f2c39912c21a9b0c",
+    "docs/vision/decision_register.csv": "26ff0d22ec91dea8c57eb755cdeae0f9948f14e2e40d7e13a47e71692c957a61",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "a16938101e0a2034dd724bedfc221a3156c483cf7d74510f21fe784d8427ceb3",
+    "docs/vision/initial_backlog.csv": "69df233e245436437c9abe293f9682fa24de552a207b6183285df7492b67711b",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "c92ead50ec949a5b8f0d014a4e9deb3e855c747ad1a40f7e1506d8b08abec0b2",

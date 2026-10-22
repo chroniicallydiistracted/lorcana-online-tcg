@@ -86,3 +86,14 @@ Recorded 2026-10-22T01:04:02.074Z (CHG-20261022-001) from public GitHub job meta
   - `foundation`: 22:52:16–23:02:39Z.
 - **Merge state:** main is 7a9e757 and does not yet contain this work. Main moves to the tested tip of this branch only when the Director asks.
 - **Advisory:** main still pins Storybook 10.6.1, so a new run on main fails the dependency advisory check (GHSA-f2ph-cmg5-wxc8) until this branch lands.
+
+## Hosted merge runs — 2026-10-22 UTC
+
+Recorded 2026-10-22T04:41:40.268Z (CHG-20261022-002) from public GitHub job metadata, re-observed with `gh run view` at about 04:44Z; logs and artifacts were not downloaded.
+- **Run 39703969780** (pull request #6, `claude/ux-card-catalog` at 4d9dfc7, the documentation alignment of CHG-20261022-001), both jobs successful:
+  - `design-system`: 01:08:50–01:11:15Z;
+  - `foundation`: 01:08:50–01:24:52Z.
+- **Merge:** at the Director's request, main was fast-forwarded from 7a9e757 to 4d9dfc7, the tested tip, so main now contains the catalog work and Storybook 10.6.2. The advisory note in the section above no longer applies to main.
+- **Run 39705738273** (push to main at 4d9dfc7), both jobs successful:
+  - `foundation`: 01:27:05–01:42:43Z;
+  - `design-system`: 01:27:05–01:30:22Z.
