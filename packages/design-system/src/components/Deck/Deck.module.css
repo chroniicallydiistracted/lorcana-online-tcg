@@ -1,0 +1,41 @@
+.hidden { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.empty { padding: var(--is-space-6) var(--is-space-3); }
+.list { display: flex; flex-direction: column; gap: var(--is-space-4); }
+.group { display: flex; flex-direction: column; }
+.groupTitle { display: flex; align-items: baseline; justify-content: space-between; gap: var(--is-space-2); margin: 0; padding-inline: var(--is-space-3); padding-block-end: var(--is-space-1); border-block-end: var(--is-border-width-1) solid var(--is-color-border-essential); color: var(--is-color-text-primary); font: var(--is-typography-body-strong); }
+.groupCount { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); font-variant-numeric: tabular-nums; }
+
+.header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--is-space-2) var(--is-space-4); }
+.format { flex: 1 1 100%; margin: 0; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.count { display: inline-flex; align-items: baseline; gap: var(--is-space-1); margin: 0; }
+.countValue { font: var(--is-typography-section); font-variant-numeric: tabular-nums; }
+.countSize { color: var(--is-color-text-supporting); font: var(--is-typography-critical); font-variant-numeric: tabular-nums; }
+
+.curve { margin: 0; }
+.caption { margin-block-end: var(--is-space-3); color: var(--is-color-text-primary); font: var(--is-typography-body-strong); }
+.columns { display: grid; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; gap: var(--is-space-1); }
+.column { display: flex; flex-direction: column; align-items: stretch; min-inline-size: 0; }
+.plot { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; block-size: var(--is-component-chart-plot-block-size); padding-block-start: var(--is-space-6); border-block-end: var(--is-border-width-1) solid var(--is-color-border-essential); }
+.bar { inline-size: 100%; max-inline-size: var(--is-component-chart-bar-max); min-block-size: var(--is-border-width-1); border-radius: var(--is-component-chart-bar-radius) var(--is-component-chart-bar-radius) 0 0; background: var(--is-color-text-supporting); }
+.value { padding-block-end: var(--is-space-1); color: var(--is-color-text-primary); font: var(--is-typography-metadata); font-variant-numeric: tabular-nums; }
+.columnLabel { padding-block-start: var(--is-space-1); color: var(--is-color-text-supporting); font: var(--is-typography-metadata); font-variant-numeric: tabular-nums; text-align: center; }
+.summary { display: flex; flex-direction: column; gap: var(--is-space-12); }
+.facts { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--is-space-2) var(--is-space-4); margin: 0; }
+.fact { display: contents; }
+.fact dt { color: var(--is-color-text-supporting); font: var(--is-typography-body); }
+.fact dd { margin: 0; color: var(--is-color-text-primary); font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; text-align: end; }
+
+.validation { display: flex; flex-direction: column; gap: var(--is-space-3); }
+.section { display: flex; flex-direction: column; gap: var(--is-space-1); }
+.sectionTitle { display: flex; align-items: center; gap: var(--is-space-2); margin: 0; color: var(--is-color-text-primary); font: var(--is-typography-body-strong); }
+.sectionCount { margin-inline-start: auto; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.policy { margin: 0; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.issues { display: flex; flex-direction: column; gap: var(--is-space-1); margin: 0; padding: 0; list-style: none; }
+.issue { display: flex; align-items: flex-start; gap: var(--is-space-2); font: var(--is-typography-metadata); }
+.issue svg { flex: none; margin-block-start: var(--is-border-width-2); }
+.issue[data-tone="danger"] { color: var(--is-color-feedback-danger-foreground); }
+.issue[data-tone="warning"] { color: var(--is-color-feedback-warning-foreground); }
+.issue[data-tone="information"] { color: var(--is-color-text-primary); }
+.save { display: inline-flex; align-items: center; gap: var(--is-space-2); color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.save[data-state="conflict"] { color: var(--is-color-feedback-warning-foreground); }
+@media (forced-colors: active) { .bar { background: CanvasText; } }

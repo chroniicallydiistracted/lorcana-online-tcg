@@ -1,0 +1,22 @@
+@value expanded from "../../generated/layout.module.css";
+
+.workspace { display: grid; grid-template-columns: minmax(0, 1fr) var(--is-component-deckbuilder-deck-narrow); align-items: start; gap: var(--is-space-6); }
+.catalog { min-inline-size: 0; }
+.deck { position: sticky; inset-block-start: var(--is-space-4); display: flex; max-block-size: calc(100dvh - var(--is-space-8)); /* token-exception: the deck region stays within the dynamic viewport */ }
+@media expanded { .workspace { grid-template-columns: minmax(0, 1fr) var(--is-component-deckbuilder-deck); } }
+.inspector { position: sticky; inset-block-start: var(--is-space-4); display: flex; max-block-size: calc(100dvh - var(--is-space-8)); /* token-exception: the inspector stays within the dynamic viewport */ border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-component-surface-radius); overflow: hidden; }
+.workspace:not([data-inspecting]) .inspector { display: none; }
+.workspace[data-inspecting] { grid-template-columns: var(--is-component-sheet-inline-size) var(--is-component-deckbuilder-deck-narrow); }
+.workspace[data-inspecting] .catalog { display: none; }
+@media expanded {
+  .workspace[data-inspecting] { grid-template-columns: minmax(0, 1fr) var(--is-component-sheet-inline-size) var(--is-component-deckbuilder-deck); }
+  .workspace[data-inspecting] .catalog { display: block; }
+}
+.single { display: flex; flex-direction: column; gap: var(--is-space-4); }
+.summaryBar { position: sticky; inset-block-end: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--is-space-3); margin-inline: calc(var(--is-space-2) * -1); padding: var(--is-space-3) var(--is-space-2); border-block-start: var(--is-border-width-1) solid var(--is-color-border-essential); background: var(--is-color-surface); }
+.panel { display: flex; flex-direction: column; inline-size: 100%; min-block-size: 0; border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-component-surface-radius); background: var(--is-color-surface); }
+.panelHeader { padding: var(--is-space-4); border-block-end: var(--is-border-width-1) solid var(--is-color-border-decorative); }
+.panelBody { flex: 1; min-block-size: 0; overflow: auto; padding: var(--is-space-4); }
+.panelFooter { display: flex; flex-direction: column; gap: var(--is-space-4); max-block-size: 45%; overflow: auto; padding: var(--is-space-4); border-block-start: var(--is-border-width-1) solid var(--is-color-border-essential); background: var(--is-color-surface-raised); }
+.panelFooter:focus-visible { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: calc(var(--is-focus-width) * -1); }
+@media (forced-colors: active) { .panel { border-color: CanvasText; } }

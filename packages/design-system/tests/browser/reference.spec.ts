@@ -79,3 +79,109 @@ test.describe('room frame', () => {
     await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Lab' })).toHaveAttribute('aria-current', 'page');
   });
 });
+
+test.describe('deckbuilder', () => {
+  const deck = (page: Page) => page.getByRole('region', { name: 'Deck' });
+  test('add and remove by pointer and keyboard update the quantity, count, save state and announcement; undo restores', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--working');
+    const results = page.getByRole('list', { name: 'Catalog results' });
+    await results.getByRole('button', { name: 'Add one Fru Fru – VIP Guest' }).click();
+    await expect(deck(page).getByText('53', { exact: true })).toBeVisible();
+    await expect(page.getByText('Unsaved changes').first()).toBeVisible();
+    await expect(page.locator('[aria-live="polite"]')).toHaveText('Added one Fru Fru – VIP Guest. 1 in deck.');
+    await results.getByRole('button', { name: 'Remove one Fru Fru – VIP Guest' }).focus();
+    await page.keyboard.press('Enter');
+    await expect(deck(page).getByText('52', { exact: true })).toBeVisible();
+    await page.getByRole('button', { name: 'Undo last change' }).click();
+    await expect(deck(page).getByText('53', { exact: true })).toBeVisible();
+  });
+  test('at the copy limit Add is unavailable and the row says why', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--working');
+    const add = page.getByRole('button', { name: 'Add one Judy Hopps – Helpful Officer' });
+    await expect(add).toBeDisabled();
+    await expect(add.locator('xpath=..')).toContainText('max');
+    await expect(add.locator('xpath=..')).toContainText('copy limit 4 reached');
+  });
+  test('filters never discard edits, and an empty result offers Reset filters', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--working');
+    await page.getByRole('button', { name: 'Add one Fru Fru – VIP Guest' }).click();
+    await page.getByRole('toolbar', { name: 'Ink' }).getByRole('button', { name: 'Emerald' }).click();
+    await page.getByRole('toolbar', { name: 'Cost' }).getByRole('button', { name: 'Cost 8 or more' }).click();
+    await page.getByRole('button', { name: /Type$/ }).click(); await page.getByRole('option', { name: 'Location' }).click();
+    await expect(page.getByText('No cards match these filters.')).toBeVisible();
+    await expect(deck(page).getByText('53', { exact: true })).toBeVisible();
+    await page.getByRole('button', { name: 'Reset filters' }).first().click();
+    await expect(page.getByText('80 results')).toBeVisible();
+    await expect(deck(page).getByText('53', { exact: true })).toBeVisible();
+  });
+  test('closing inspection returns focus to the originating tile with the search kept', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--working');
+    await page.getByRole('searchbox', { name: 'Search the catalog' }).fill('Kit Cloudkicker');
+    const tile = page.getByRole('list', { name: 'Catalog results' }).getByRole('button', { name: /^Inspect Kit Cloudkicker – Sure Shot/ });
+    await tile.click();
+    await expect(page.getByRole('heading', { level: 2, name: 'Kit Cloudkicker – Sure Shot' })).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(tile).toBeFocused();
+    await expect(page.getByRole('searchbox', { name: 'Search the catalog' })).toHaveValue('Kit Cloudkicker');
+  });
+  test('the printing preference changes the printing, never the card or its copies', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--inspection');
+    await page.getByRole('button', { name: /Printing used in this deck/ }).click();
+    await page.getByRole('option', { name: /^Epic/ }).click();
+    await expect(page.locator('[aria-live="polite"]')).toHaveText(/now uses the Epic printing; the deck still has 4/);
+    await expect(deck(page).getByText('52', { exact: true })).toBeVisible();
+  });
+  test('leaving with unsaved changes asks first; Keep editing stays', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--working');
+    await page.getByRole('button', { name: 'Add one Fru Fru – VIP Guest' }).click();
+    await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Collection' }).click();
+    const dialog = page.getByRole('alertdialog', { name: 'Leave with unsaved changes?' });
+    await expect(dialog.getByRole('button')).toHaveText(['Keep editing', 'Discard changes', 'Save and leave']);
+    await dialog.getByRole('button', { name: 'Keep editing' }).click();
+    await expect(page.getByRole('heading', { level: 1, name: 'Zootopia Patrol' })).toBeVisible();
+  });
+  test('validation names card, quantity, reason and policy, and keeps ownership apart from rules', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--invalid');
+    const rules = page.getByRole('region', { name: 'Rules' });
+    await expect(rules).toContainText('Judy Hopps – Helpful Officer: 5 copies; Core (demonstration policy) allows 4 (policy 2026-10).');
+    await expect(rules).toContainText('Bolt – Down but Not Out (Reign of Jafar, 29/204): not in Core');
+    await expect(rules).toContainText('The deck uses 3 inks');
+    await open(page, 'reference-screens-deckbuilder--ownership-limits');
+    await expect(page.getByRole('region', { name: 'Ownership' })).toContainText('This is an ownership limit, not a rules restriction.');
+    await expect(page.getByRole('region', { name: 'Rules' })).not.toContainText('own');
+  });
+  test('import reports unresolved names and counts before anything changes', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--import-with-unresolved-lines');
+    const dialog = page.getByRole('dialog', { name: 'Import a deck list' });
+    await expect(dialog).toContainText('2 lines need attention.');
+    await expect(dialog).toContainText('Kit Cloudkicker - Sure Shoot');
+    await expect(dialog.getByRole('button', { name: 'Replace deck with 24 cards' })).toBeVisible();
+    await dialog.getByRole('button', { name: 'Cancel' }).click();
+    await expect(deck(page).getByText('52', { exact: true })).toBeVisible();
+  });
+  test('export needs an explicit format and previews the exact text', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--export');
+    const dialog = page.getByRole('dialog', { name: 'Export Zootopia Patrol' });
+    await expect(dialog.getByRole('textbox', { name: 'Exported text' })).toHaveValue(/^4 Judy Hopps – Helpful Officer/);
+    await dialog.getByText('CSV with printings').click();
+    await expect(dialog.getByRole('textbox', { name: 'Exported text' })).toHaveValue(/^quantity,name,set,number/);
+  });
+  test('the cost curve reads as a table of the same values', async ({ page }) => {
+    await open(page, 'reference-screens-deckbuilder--working');
+    await deck(page).getByRole('tab', { name: 'Summary' }).click();
+    const table = deck(page).getByRole('table', { name: 'Cost curve' });
+    await expect(table.getByRole('row')).toHaveCount(9);
+    await expect(table.getByRole('row', { name: /^8\+/ })).toBeAttached();
+  });
+  test('tablet portrait uses one pane with Catalog and Deck tabs and a persistent summary bar', async ({ page }) => {
+    await page.setViewportSize({ width: 820, height: 1180 });
+    await open(page, 'reference-screens-deckbuilder--working');
+    await expect(page.getByRole('tab', { name: 'Catalog' })).toHaveAttribute('aria-selected', 'true');
+    await expect(page.getByRole('button', { name: 'Save deck' })).toBeVisible();
+    await page.getByRole('button', { name: 'Filters' }).click();
+    await expect(page.getByRole('dialog', { name: 'Filters' }).getByRole('toolbar', { name: 'Ink' })).toBeVisible();
+    await page.keyboard.press('Escape');
+    await page.getByRole('tab', { name: 'Deck' }).click();
+    await expect(page.getByRole('region', { name: 'Rules' })).toBeVisible();
+  });
+});

@@ -1,5 +1,6 @@
 .group { display: inline-flex; flex-wrap: wrap; gap: var(--is-space-1); }
 .ink { display: inline-flex; align-items: center; gap: var(--is-space-1); padding: 0 var(--is-space-2) 0 var(--is-space-1); border: var(--is-border-width-1) solid var(--is-color-border-decorative); border-radius: var(--is-radius-pill); background: var(--is-color-surface); color: var(--is-color-text-primary); font: var(--is-typography-metadata); }
+.group[data-appearance="plain"] .ink { padding: 0; border: 0; background: transparent; font: inherit; }
 .symbol { flex: none; inline-size: var(--is-component-ink-symbol-size); block-size: var(--is-component-ink-symbol-size); }
 .swatch { inline-size: var(--is-space-3); block-size: var(--is-space-3); border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-radius-pill); }
 .ink[data-ink="amber"] .swatch { background: var(--is-color-identity-amber); }

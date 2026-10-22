@@ -30,7 +30,7 @@
     },
     {
       "file": "tokens/component/component.tokens.json",
-      "sha256": "3dfe9df8504b315cfa0d1dceac743acb02551b4f6d7b61bbf56f7b39e0f7f1f7"
+      "sha256": "c3a19df572c0199c3fdf0181e91deb3426f3f6c8b9cd04b642a0e47045a09fcf"
     },
     {
       "file": "tokens/card/card.tokens.json",
@@ -1523,6 +1523,78 @@
       }
     },
     {
+      "path": "component.catalog.search-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum width of the catalog search field before its row wraps.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-catalog-search-min",
+      "values": {
+        "paper": "16rem",
+        "ink": "16rem"
+      }
+    },
+    {
+      "path": "component.catalog.select-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum width of each catalog filter select, so the five fit one row in the 824 px catalog column at 1440 px.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-catalog-select-min",
+      "values": {
+        "paper": "9.5rem",
+        "ink": "9.5rem"
+      }
+    },
+    {
+      "path": "component.catalog.tile-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum catalog card column in the deckbuilder grid: 152 px, about four columns beside the deck region at tablet landscape.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-catalog-tile-min",
+      "values": {
+        "paper": "9.5rem",
+        "ink": "9.5rem"
+      }
+    },
+    {
+      "path": "component.chart.bar-max",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Maximum column thickness: 24 px, so a column never fills its band.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-chart-bar-max",
+      "values": {
+        "paper": "1.5rem",
+        "ink": "1.5rem"
+      }
+    },
+    {
+      "path": "component.chart.bar-radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Rounded data end of a column; the baseline end stays square.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-chart-bar-radius",
+      "values": {
+        "paper": "4px",
+        "ink": "4px"
+      }
+    },
+    {
+      "path": "component.chart.plot-block-size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Plot height of compact in-panel charts such as the cost curve, value labels included.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-chart-plot-block-size",
+      "values": {
+        "paper": "8rem",
+        "ink": "8rem"
+      }
+    },
+    {
       "path": "component.control.border-width",
       "layer": "component",
       "type": "dimension",
@@ -1532,6 +1604,18 @@
       "values": {
         "paper": "1px",
         "ink": "1px"
+      }
+    },
+    {
+      "path": "component.control.compact-input",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Number input width of a compact stepper, such as a deck line's quantity.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-control-compact-input",
+      "values": {
+        "paper": "44px",
+        "ink": "44px"
       }
     },
     {
@@ -1580,6 +1664,30 @@
       "values": {
         "paper": "4px",
         "ink": "4px"
+      }
+    },
+    {
+      "path": "component.deckbuilder.deck",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Deck region width at expanded layouts (80 rem and above).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-deckbuilder-deck",
+      "values": {
+        "paper": "25rem",
+        "ink": "25rem"
+      }
+    },
+    {
+      "path": "component.deckbuilder.deck-narrow",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Deck region width from 64 to 80 rem, such as tablet landscape: wide enough that a deck line keeps whole words beside its stepper, leaving four catalog columns.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-deckbuilder-deck-narrow",
+      "values": {
+        "paper": "22.5rem",
+        "ink": "22.5rem"
       }
     },
     {

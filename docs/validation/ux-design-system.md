@@ -274,3 +274,52 @@ The Director approved the full UX-01 design for end-to-end completion. The build
     - the quiet count opening its list;
     - a non-reference destination leading to an honest page.
   - **Receipts:** RUN-20261022-015 passes the gates and the full Chromium suite, 193/193.
+- **Task 4, deckbuilder (CHG-20261022-008):**
+  - **New components (Experimental):**
+    - `DeckWorkspace` and `DeckPanel`;
+    - `FilterBar`, `ViewSwitch`, `CatalogResults` and `CatalogTileControls` (the D28 row);
+    - `DeckHeader`, `DeckList`, `DeckSummary`, `CostCurve`, `ValidationSummary` and `SaveState`;
+    - `ImportPreview` and `ExportDialog`.
+  - **Changed components:**
+    - `DeckEntry`'s card name now opens the inspector. This replaces a "Printing" button whose accessible name did not contain its visible text (WCAG 2.5.3), and the line now fits a narrow deck region.
+    - `QuantityField` gains a hidden-label option and a compact input.
+    - `InkIdentity` gains a plain appearance for use inside controls.
+    - `InspectorHost` and `FilterBar` share a new `useAtLeast` breakpoint hook.
+  - **Tokens and icons:**
+    - new component tokens for the catalog grid and selects, the deck region, the chart and the compact stepper;
+    - `filter` (Funnel) and `undo` (ArrowCounterClockwise) icons;
+    - 49 component strings.
+  - **Cost curve:** follows the data-visualization method:
+    - one neutral series;
+    - columns at most 24 px wide, square at the baseline with a rounded cap;
+    - the count on every cap and no gridlines;
+    - a hidden table of the same values for assistive technology.
+  - **Reference stories:** the 11 design states plus an empty deck, on real cards. They include:
+    - add, remove and undo, with announcements;
+    - filters that never discard edits;
+    - a printing preference separate from the card's identity (Nick Wilde's Epic printing);
+    - import parsing that reports unresolved names;
+    - export in two explicit formats;
+    - save, conflict and leave-guard flows.
+  - **Visual review:** captures at 1440 × 900, 1180 × 820 and 820 × 1180 found five problems, all fixed before the receipts:
+    - deck lines broken in the narrow deck region;
+    - chip-in-button ink filters;
+    - a duplicated save status;
+    - the inspector rendered outside the layout;
+    - a quest set shown instead of the printed set.
+  - **Design adjustment:** the 64–80 rem deck region is 22.5 rem, not the design's 20 rem. At 20 rem, deck lines broke words beside their steppers; 22.5 rem keeps whole words and four catalog columns.
+  - **Browser tests:** eleven new deckbuilder tests in `reference.spec.ts`:
+    - add and remove by pointer and keyboard, with undo;
+    - the copy limit and its reason;
+    - filters keeping edits, and Reset filters;
+    - focus returning to the tile after inspection;
+    - the printing preference;
+    - the leave guard;
+    - validation wording, with ownership kept apart from rules;
+    - import reporting;
+    - export formats;
+    - the cost-curve table;
+    - tablet portrait.
+  - **Receipts:**
+    - **RUN-20261022-018, failed (preserved):** 17 of 242. The view-switch options were 40 px tall inside their bordered group, and two scrolling regions (the pinned validation footer and the import list) could not take keyboard focus (axe `scrollable-region-focusable`). The options are now 44 px, the footer is a named focusable group, and the import list no longer scrolls on its own.
+    - **RUN-20261022-019, passed:** gates and the full Chromium suite, 242/242.

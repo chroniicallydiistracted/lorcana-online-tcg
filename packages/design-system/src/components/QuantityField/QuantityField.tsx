@@ -13,15 +13,19 @@ export interface QuantityFieldProps extends Omit<NumberFieldProps, 'className' |
   maxValue: number;
   description?: ReactNode;
   errorMessage?: ReactNode;
+  /** 'hidden' keeps the label for assistive technology when the row already shows what the quantity is of. */
+  labelVisibility?: 'visible' | 'hidden';
+  /** 'compact' narrows the number input for dense rows such as deck lines. */
+  size?: 'standard' | 'compact';
 }
 /** Exact integer quantity with increment/decrement and direct input. */
-export function QuantityField({ label, description, errorMessage, minValue, maxValue, ...props }: QuantityFieldProps) {
+export function QuantityField({ label, description, errorMessage, minValue, maxValue, labelVisibility = 'visible', size = 'standard', ...props }: QuantityFieldProps) {
   const t = useMessages();
   return <NumberField {...props} minValue={minValue} maxValue={maxValue} step={1} formatOptions={{ maximumFractionDigits: 0, useGrouping: false }} className={fieldStyles.field}>
-    <Label className={fieldStyles.label}>{label}</Label>
+    <Label className={labelVisibility === 'hidden' ? styles.hiddenLabel : fieldStyles.label}>{label}</Label>
     <Group className={styles.group}>
       <Button slot="decrement" className={styles.step} aria-label={t('action.decrease')}><Icon name="minus" /></Button>
-      <Input className={`${fieldStyles.control} ${styles.input}`} />
+      <Input className={`${fieldStyles.control} ${styles.input}`} data-size={size} />
       <Button slot="increment" className={styles.step} aria-label={t('action.increase')}><Icon name="plus" /></Button>
     </Group>
     <FieldHelp description={description} errorMessage={errorMessage} />

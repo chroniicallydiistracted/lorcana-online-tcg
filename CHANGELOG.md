@@ -2,6 +2,73 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-008 — UX-01 task 4: the deckbuilder reference
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T15:01:20.227Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: c7d5020226521fe424fa5873d62a959e9639c15c
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 4 (standard §18, design screen 2): DeckWorkspace (catalog and deck regions on wide layouts with an inspector slot; Catalog and Deck tabs with a persistent summary bar below 64 rem), DeckPanel (header, scrolling body, pinned footer that is a named focusable group), FilterBar (search with result count, ink and cost toggle groups, type, rarity, set, inkability and classification selects, Reset filters, and a filters sheet below the wide layout), ViewSwitch (single-choice toggle group), CatalogResults (card grid by default, dense list, loading placeholders, empty state) and CatalogTileControls (decision D28: Remove, quantity, Add; the card itself opens it), DeckHeader, DeckList (grouped by cost), DeckSummary, CostCurve (one neutral series, labelled caps, no gridlines, a hidden table for assistive technology), ValidationSummary (rules with the policy version, ownership and advice kept apart), SaveState, ImportPreview and ExportDialog. All Experimental with documentation contracts and stories for every documented state.
+- **edit:** DeckEntry: the card name is now the inspect button (accessible name 'Inspect <name>' contains the visible name), replacing a 'Printing' button whose accessible name did not contain its visible text (WCAG 2.5.3); the line uses a grid that fits a narrow deck region; the quantity keeps its label for assistive technology. QuantityField gains labelVisibility and a compact size; InkIdentity gains a plain appearance for use inside controls; InspectorHost and FilterBar share the new foundation hook useAtLeast.
+- **implementation:** Component tokens catalog.tile-min, catalog.search-min, catalog.select-min, deckbuilder.deck (25 rem), deckbuilder.deck-narrow (22.5 rem, widened from the design's 20 rem after the visual review), chart.plot-block-size, chart.bar-max, chart.bar-radius and control.compact-input; the filter and undo icons in the curated registry; 49 component strings.
+- **implementation:** Reference data and stories: stories/support/reference/cards.ts (reference and presentation fixtures as presentational printings, the printed set from the identifier), deck.ts (the Core demonstration format record, identity-based copy counts, rules, ownership and advice validation, summary figures, text and CSV export), decks.ts (the two 60-card decks, working, invalid and ownership states), catalog.ts (deterministic catalog order, filtering and an import parser that never substitutes). Deckbuilder.stories.tsx composes the room with real add, remove and undo, announcements, a printing preference separate from gameplay identity, a save and conflict flow, and a leave guard through React Aria's RouterProvider; stories cover the design's 11 states plus an empty deck.
+- **test:** Eleven deckbuilder browser tests in reference.spec.ts. RUN-20261022-018 failed 17 of 242 (view-switch options 40 px tall; two scrollable regions without keyboard focus) and is preserved; after the fixes RUN-20261022-019 passes 242/242 with gates.
+- **review:** Visual review at 1440 x 900, 1180 x 820 and 820 x 1180 found deck lines broken in the narrow region, chip-in-button ink filters, a duplicated save status (two status regions), the inspector rendered outside the layout and a quest set shown instead of the printed set; all were fixed before the passing receipt. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Design-system runbook (deckbuilder composition) and the UX-01 build section of the design-system validation.
+
+### Verification
+
+- **failed:** Full design-system suite: 17 of 242 failed (target size of view-switch options; scrollable regions without keyboard focus); preserved. ([evidence](docs/validation/runs/RUN-20261022-018.json))
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite after the fixes, 242/242 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-019.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-020.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-021.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the deckbuilder composition, narrow layout, inspection slot, format record and import/export behaviour.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 4, its component changes, the design adjustment, review findings and both receipts, including the failed one.
+- **reviewed_unchanged:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — The approved design stays as approved; the 22.5 rem deck region at 64–80 rem is recorded as an implementation adjustment in the validation and the token's description.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment is scheduled for task 9.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The stories use the fixtures through their documented exports.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Catalog evidence is unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-008.json).
+
+### Limits and next actions
+
+- Demonstration validation in the stories is not the rules or ownership services; format values come from a labelled demonstration record.
+- Clipboard copy depends on the browser's clipboard permission; failure is reported in the dialog.
+- Task 5 of the implementation plan: the Collection binder.
+
 ## CHG-20261022-007 — UX-01 task 3: the room frame
 
 - Status: finalized

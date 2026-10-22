@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-22T14:34:11.983Z",
+  "observed_at": "2026-10-22T15:05:32.883Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2354,7 +2354,8 @@
     "CHG-20261022-004",
     "CHG-20261022-005",
     "CHG-20261022-006",
-    "CHG-20261022-007"
+    "CHG-20261022-007",
+    "CHG-20261022-008"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2435,9 +2436,10 @@
     "CHG-20261022-004": "finalized",
     "CHG-20261022-005": "finalized",
     "CHG-20261022-006": "finalized",
-    "CHG-20261022-007": "finalized"
+    "CHG-20261022-007": "finalized",
+    "CHG-20261022-008": "finalized"
   },
-  "source_fingerprint": "05f26898b9686c1ec8aaa54f2298ec09ed1737747ccfd28003fa22629c6350aa",
+  "source_fingerprint": "43a8f365ef1413a3c01f5545e6855c0e3966fad7a28be00b9cf0b5f9c1db20e9",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2516,7 +2518,7 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "db1dc561195d25595eadc89938c6c4c5aafe6cddf72294122fb7a706baf9bd7e",
-    "docs/HANDOFF.md": "15a08310818c2e681c357edebd3ff1995f89df4dcd920c8a82980185d6fe9e6f",
+    "docs/HANDOFF.md": "6b936b20e468f4cda2c33b47f9e8c12b354bbafd8ba1f800373498879815086b",
     "docs/README.md": "9b3c231f484b7584b95abd576c50b01097f13f62b985cc9d5eb901c1073c182f",
     "docs/WORKSPACE_QUALIFICATION.md": "1062a43ab8ab90446a9f2577996b7ce3bba66e0c7760033ae017fab4f882d44b",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
@@ -2546,7 +2548,7 @@
     "docs/contracts/release.md": "e7f32ac1b56bb03ef8231e16f482f7e33fe7c4d5aee5b933926c9d99baa1a752",
     "docs/contracts/viewer.md": "93f10a76fb0069fbfb6e91a7825286de1fccdec2ff3413c03fc9cf39ea5c8e97",
     "docs/documentation-map.json": "ddd567e964245dc961d0edb76dd6fd024075a2a18f2f156e093086b3159fa948",
-    "docs/features.json": "a003feab88f6b95052e31f5aa4684729149b6b70904b4ad5444541ea0d84b9e1",
+    "docs/features.json": "1730ee3391d21f6206ab9294b753a039f0b751f42638c59a6533c8c0dea8a594",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "739e9ebaef44a82acd3caf79b5f219d1f220e348c738e16effe0f6c6d91e075b",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2603,7 +2605,7 @@
     "docs/runbooks/card-catalog.md": "a3cf9809028d703275f7d59503446e8471f3eb10af36bd90f4be8cea964e507a",
     "docs/runbooks/ci.md": "fc39ead494febc8c5eedf26202af5805649085c5405ff70393762a7121eb76ea",
     "docs/runbooks/database.md": "ad8f7dec52c796afad51958dcb5fecb97e8f902ab980ac7d0392a7b357d0405a",
-    "docs/runbooks/design-system.md": "ed80ed1324cac025716d2bcc3ba27b42ca374b9fe43a89eaf2bb654625484a19",
+    "docs/runbooks/design-system.md": "33c7b2d5ca7ba33aea925995be8cfb1ccfd687dda6ff80f0024c74b2d952fbe0",
     "docs/runbooks/engine.md": "4b622d50192cde4c6e7a24adcbeb2f8ce2814439c59b247945a18cf6381eb2c1",
     "docs/runbooks/game-clocks.md": "ccf0c0118c869330a034a81073822981dcc15cfc1061981e8eaaf45de8f7c9fc",
     "docs/runbooks/live-matches.md": "821226c33cf5b895b36701549db5eb4d2d0a9d755b6303912ddf8bd3c49af46c",
@@ -2708,7 +2710,7 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "d8b3ef8414c43321f7bf9e0ed395ad7ab049722539447ef3a836683fe73e904c",
+    "docs/validation/ux-design-system.md": "6e17fe4afe4d6bda7133b6730f72fa052e72ac6d85b1348eb4fa46232a6b6872",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
@@ -2841,6 +2843,10 @@
     "packages/design-system/src/components/CardTile/CardTile.module.d.css.ts": "b5461d2e0cced87d7825991b80aa281b34ab082bb9e3cd2cc46758793e3e0b2f",
     "packages/design-system/src/components/CardTile/CardTile.tsx": "8d04cd6a1ea01b9488f1ab73ee27803571d8e883f3f937875dda5df241247379",
     "packages/design-system/src/components/CardTile/types.ts": "fda0538d0fe06b4027aa45958b019380cdff4e34c534f361dd7ad07ff2d4ba0d",
+    "packages/design-system/src/components/Catalog/Catalog.docs.ts": "3c4042ec5fe5177e8dd160c37bfe8209ef8dacd29967f4a916a0537d2bc0af7b",
+    "packages/design-system/src/components/Catalog/Catalog.module.css": "4180fd0da29d773368fcb687a78edd55bd9c1d6f3184e3307ddf72912988d3ca",
+    "packages/design-system/src/components/Catalog/Catalog.module.d.css.ts": "f156e5f9a478c4f9e477b47ebff90234b63e81f1b233c9fb565d690ea78184fb",
+    "packages/design-system/src/components/Catalog/Catalog.tsx": "d3ba9c3449976dc783d4cfb4dc83285465ebd1ac565d22c28eac70a5ddd6ed4e",
     "packages/design-system/src/components/Checkbox/Checkbox.docs.ts": "810c352da4034e638c0ac21c93cbb9443bd384fc87b6078e7bf99603d7c0b3fc",
     "packages/design-system/src/components/Checkbox/Checkbox.module.css": "5dd286b124c09a6275ac366462eb59b61ccbac6383e0e8dcc42b8e389e7bdd0b",
     "packages/design-system/src/components/Checkbox/Checkbox.module.d.css.ts": "ce745a958ec2ebe91e73ecb11dad8d88142610805c69e09338bb8136974d4cc7",
@@ -2857,10 +2863,22 @@
     "packages/design-system/src/components/ConnectionStatus/ConnectionStatus.module.css": "01b90864b60b645b245367617413212a19819bacb14e98c8cfdce51f04c01655",
     "packages/design-system/src/components/ConnectionStatus/ConnectionStatus.module.d.css.ts": "8fd21e0f56420bc5ebb41ead4a78dd7833eae4b6336032bb67301c890d0e0113",
     "packages/design-system/src/components/ConnectionStatus/ConnectionStatus.tsx": "a1874bc8e13d3c3f2501fd01450abbac7478b113cbe8acf5d843c6dd3681a30b",
-    "packages/design-system/src/components/DeckEntry/DeckEntry.docs.ts": "4464bb61ada45468d587b8d697c89cbb8603f36d452349e09d03c727182d2786",
-    "packages/design-system/src/components/DeckEntry/DeckEntry.module.css": "2dfb6a12106cd1f37802e38d6869b0cdb6c4210d855fff5903414a6d94d342a9",
-    "packages/design-system/src/components/DeckEntry/DeckEntry.module.d.css.ts": "105714d9ee1131a5d6d9fe0c7344455b0589d3cc7f1ca4884fd3cfa3d9f72713",
-    "packages/design-system/src/components/DeckEntry/DeckEntry.tsx": "81682c8e4c9e085d31bc9233838a06fb4e75c836c1c4d2fc599ce55f12014323",
+    "packages/design-system/src/components/Deck/Deck.docs.ts": "58d061f7ac256270024e269baf6d37b56e86ea782d6079dba796b2c609424c94",
+    "packages/design-system/src/components/Deck/Deck.module.css": "ad84ac3d592e9f7a02bc337898c71ab15ccf15f39c378d619f844f7731b291ee",
+    "packages/design-system/src/components/Deck/Deck.module.d.css.ts": "8a8457ec2fbfc6cb6b0cf4d66ea4dfee70cb3851ab68a1d9e4506fe9e28a6498",
+    "packages/design-system/src/components/Deck/Deck.tsx": "fb3d9ed936cd7b613ebce892f2755c5640b5d29ea8c9980e5700900b4c4bd0d1",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.docs.ts": "fd8e54473fc6ffe1c45fe86fdae2a2b4bec41d1eeec038afa8a6e32749d1ff7b",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.module.css": "8a67169cef6146913cd4fbad6bc712c07ad460876409b56284bcd03a0e284124",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.module.d.css.ts": "d7228f3259f45f816aff738f505ce36fcede38ca5d77dcf8b29d599216c71a00",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.tsx": "3783eae83cdf41e85f21ee19d1ed835f829a31e8ee7bcf9078f1f9ad664ab8c2",
+    "packages/design-system/src/components/DeckTransfer/DeckTransfer.docs.ts": "2784f88ff442756f8f9bdffc335e5d1d91fe03cca7e21b963be45b01a6bbcab1",
+    "packages/design-system/src/components/DeckTransfer/DeckTransfer.module.css": "62ed0b57629cce5e976de7ba3b30fd53b3307c16b597464685f43138b5ab112e",
+    "packages/design-system/src/components/DeckTransfer/DeckTransfer.module.d.css.ts": "62509a3a42ae1b91278b53978eb8d5db2be1a573aa13f1b607f69aac71555f50",
+    "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx": "cd6b7b9e47e6ef45779896a7ecdecdb9231d3d2dc4506d3d5172837e1efd80fc",
+    "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.docs.ts": "ab096e33df15df44f953b959b7765ccf934e4c98e023e682e996bb9542c9899b",
+    "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.module.css": "8d010766b566f57bb1dd8cd2a13206e097e741fc3118fecfb655c124833b09d0",
+    "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.module.d.css.ts": "549335cb5c4e0f11a11d20019b3fe77d1de86ae649830b4f435315d831f40b82",
+    "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.tsx": "11f0af20b782c817c3dd6d94a9a3e1487f651a9799f370d7e5b0ab74713f26ac",
     "packages/design-system/src/components/Dialog/Dialog.docs.ts": "7fe61314f657c84f93ed9cef4a6c889c2cce548b3b42adf71935260ebdfd5837",
     "packages/design-system/src/components/Dialog/Dialog.module.css": "9f555998b481f4472cdf7c7241e658f04f32959363e27433affab3c21b5a1526",
     "packages/design-system/src/components/Dialog/Dialog.module.d.css.ts": "2feb538752694e217fce703707c63427709430a992da79e1e6777d7144127498",
@@ -2873,6 +2891,10 @@
     "packages/design-system/src/components/Field/Field.module.css": "8292009eb045daed2df2c2e77cb037d582125bc7cc473d1f46241397a5aad683",
     "packages/design-system/src/components/Field/Field.module.d.css.ts": "eec7306248c9a0df2997f1af546ad9ffc59e790f22367d13558d307d97db66d2",
     "packages/design-system/src/components/Field/Field.tsx": "82636914b9eb0e93db18bb21966128d79b871b4a3be52d233f09ae5d40ed3dda",
+    "packages/design-system/src/components/FilterBar/FilterBar.docs.ts": "9c939ad9999b0bc7f47b94c942d28f1a8e71da2b9264cec9825adc9b31e0415b",
+    "packages/design-system/src/components/FilterBar/FilterBar.module.css": "30d218dc4dbf362b814e410333d4f799019fecd5ca498dd9b1d4c4ebb8e46708",
+    "packages/design-system/src/components/FilterBar/FilterBar.module.d.css.ts": "90f5ad33fb5eb71a91d21c322fe13f3cc418825ac00b933791b147a248779d3d",
+    "packages/design-system/src/components/FilterBar/FilterBar.tsx": "1366e24d1abbede84f227f4fc2c8155e27e9f7500403407b5fb0ddd873333be3",
     "packages/design-system/src/components/GameSymbol/GameSymbol.docs.ts": "ba6235de765c9f6deea4c941a7a3563ee52fc8fa4652171ac74ef2f3cc06732c",
     "packages/design-system/src/components/GameSymbol/GameSymbol.module.css": "5f6c93c0d68b4bb3c1956b08ab1cae2057d798284aa352691334c76db919145f",
     "packages/design-system/src/components/GameSymbol/GameSymbol.module.d.css.ts": "d2eff88669508a68c7f652ed324932fdb19a171c474dc15da9adcac434fb4b35",
@@ -2882,18 +2904,18 @@
     "packages/design-system/src/components/Icon/Icon.module.css": "04e7c7fbed1c76e5e48f4a4c0c7c0110e8a862f9104b197e6a9855b88b43f7e2",
     "packages/design-system/src/components/Icon/Icon.module.d.css.ts": "44c48510e89da912b6eb975ba54f165439a2c9a6deb927a2bd9d5199cf4cff4d",
     "packages/design-system/src/components/Icon/Icon.tsx": "32cc0e40b5f4723a494d0a01dc21fb146adbb393fb057636279c9841b7c86cae",
-    "packages/design-system/src/components/Icon/registry.ts": "c7a944cb53c3083c4314d05a6f7a96662061132036da2cd2e543e5a582e37258",
-    "packages/design-system/src/components/Ink/InkIdentity.docs.ts": "652b5f2f29cee7aee0f59765adcc7c9c86ac10c3fa0efbb766a8c3f3475b190b",
-    "packages/design-system/src/components/Ink/InkIdentity.module.css": "30a4570a9fafeab153acb17965acd1d02a5b2486a13a790a085b5ff90d3d1a82",
+    "packages/design-system/src/components/Icon/registry.ts": "774f63190a547a0f6ed623f7c295e88e24ca92498b8ee813a70759edd60ebfc4",
+    "packages/design-system/src/components/Ink/InkIdentity.docs.ts": "16fc2205af419c22fa25a9439e3599f7854bf749bf7cc8a93dfb25e86ea50029",
+    "packages/design-system/src/components/Ink/InkIdentity.module.css": "1a34a62b10c86b8e268f2ef534e0174408a72743def96ab843693e91a46fa8d0",
     "packages/design-system/src/components/Ink/InkIdentity.module.d.css.ts": "ce9621bda0837726d1e9dd6241af61eecb77c2ddd70b4275bea99cb7bbd453bd",
-    "packages/design-system/src/components/Ink/InkIdentity.tsx": "d0f2de84ec34793fc704eac39060b07e4c5cd5c0d0c2899b603cadd6ba06a272",
+    "packages/design-system/src/components/Ink/InkIdentity.tsx": "9369a9a3dfcedae3c569481e4b22c05148221aa9c8dcd8a146df16e4fcd7c095",
     "packages/design-system/src/components/Inspector/CardInspector.module.css": "624f9c4df69540c5b10dc59ee3bdd1f0212efa22623e185c92d9ba8e2b1b6633",
     "packages/design-system/src/components/Inspector/CardInspector.module.d.css.ts": "24cda98ee5ceac99a47739c0eb7ddbe12076cb208506a16e230cf9886a7ce574",
     "packages/design-system/src/components/Inspector/CardInspector.tsx": "db148f4ad4c57d6c832387ae0ec2480c521632a5839e779aba09b4ff015bf6ba",
     "packages/design-system/src/components/Inspector/Inspector.docs.ts": "1db36d23107c2f1e66e628f1a534aa970f22c85f8ac87cc5a7bb22c825cc972c",
     "packages/design-system/src/components/Inspector/InspectorHost.module.css": "171b6e68810ac5819b75b57ad644341f6751621766369ac7bba3433555bbc9a1",
     "packages/design-system/src/components/Inspector/InspectorHost.module.d.css.ts": "a80f5e6b95d34b155d0917faaa9b8fc90affd151233e7e42772c3b5d5569daf1",
-    "packages/design-system/src/components/Inspector/InspectorHost.tsx": "68aceb60108de0c99aeb10ff609ae717364d9d0630441434eb2cf1c879b15c79",
+    "packages/design-system/src/components/Inspector/InspectorHost.tsx": "d2c65a9ed3082dae2e5c9b4569cd5511f7bacf7636ea0195e302cf251a1d89b7",
     "packages/design-system/src/components/Layout/Layout.docs.ts": "a720353321ee47f3c1e98e7fecdf76afbcc84e66782387f6dc320446438b91c5",
     "packages/design-system/src/components/Layout/Layout.module.css": "6b3ac2a0147848f55413ca2416d7eae03afded5320eebe100226bd504264c792",
     "packages/design-system/src/components/Layout/Layout.module.d.css.ts": "c51eeab591f680375cfa7cf5cf54f913caf8d141abfd875fa81a9f686fbba8d7",
@@ -2926,10 +2948,10 @@
     "packages/design-system/src/components/Progress/Progress.module.css": "fc42adf276ccaf0214e2783d667a5d00ffc2e39b0564c155261df8dca8326d7e",
     "packages/design-system/src/components/Progress/Progress.module.d.css.ts": "bc54525ceb846ecb620d7a703f5cd9763d8f8e687cb4e9f7c869f2a23dbf824f",
     "packages/design-system/src/components/Progress/Progress.tsx": "4af2acb351f9ee5e9f301f6038c9ad4000d178a4339e8ba65eda0c7dfebe8984",
-    "packages/design-system/src/components/QuantityField/QuantityField.docs.ts": "1dbddceaaab48f769f30a755d551ca4a5f7d0eff92273a6a160dfd08838942fb",
-    "packages/design-system/src/components/QuantityField/QuantityField.module.css": "7ec3fb60ead62513799e19254790d519f4b69aa74f9107ecf19759b0dd6b521d",
-    "packages/design-system/src/components/QuantityField/QuantityField.module.d.css.ts": "477760485ce92d4c4b59a46ac51e871bf1867bc15858fa8addaf93889ff12592",
-    "packages/design-system/src/components/QuantityField/QuantityField.tsx": "1056ad44783f5a849980d21357eda2d502aca1429ec32caf61ed1816cfae49fd",
+    "packages/design-system/src/components/QuantityField/QuantityField.docs.ts": "73f84d86802a40db91c371f929f176d9fc06a34e61fef374b506e0095582c86a",
+    "packages/design-system/src/components/QuantityField/QuantityField.module.css": "f4536a91978a05ae74660713bc656e019ff8a8009e9249570913429d13eca111",
+    "packages/design-system/src/components/QuantityField/QuantityField.module.d.css.ts": "175d963f0e38e59e886f6dcfbe784776fe923a6c67727990c9ea2f50d5b770ba",
+    "packages/design-system/src/components/QuantityField/QuantityField.tsx": "e6549603c1bfdba1fc119e6215d896eed147458aa119e7e99c4328e648a66564",
     "packages/design-system/src/components/Radio/Radio.docs.ts": "cc00f8d9f48f54c6f8a24f89b61cb7f45256d2d126cab517ab02a4bcda0bcd42",
     "packages/design-system/src/components/Radio/Radio.module.css": "473f0c39c0bdf4dd76056600698159c733857129cfdc65881a32d8d413cf6ed9",
     "packages/design-system/src/components/Radio/Radio.module.d.css.ts": "1e208b72ab869691d4514617676af09baef29d8ae3bad3b134913a5b9cf50f1c",
@@ -2976,6 +2998,10 @@
     "packages/design-system/src/components/Tooltip/Tooltip.module.css": "96b144a1dbca82b384a0078a4a96f4f754250f6cec879873a93a2023e24ad83b",
     "packages/design-system/src/components/Tooltip/Tooltip.module.d.css.ts": "cc9eed68292b98015ed70e948b64143ce9063c939a535e264fe9f2e1dd710f3f",
     "packages/design-system/src/components/Tooltip/Tooltip.tsx": "84c29afebcd547bcb98999581fa60f88d89fc6a3d87ec0b3753eb816ba936615",
+    "packages/design-system/src/components/ViewSwitch/ViewSwitch.docs.ts": "105bde71a9fdca197158c061e2d2bb6070d60b827bb26242bf420ea4180219e6",
+    "packages/design-system/src/components/ViewSwitch/ViewSwitch.module.css": "492c4fcd548e244023c28b57b9e8d28f22a9359667836bf7b5608f3bf097f789",
+    "packages/design-system/src/components/ViewSwitch/ViewSwitch.module.d.css.ts": "35fca9dd411b5ed8d5e189178f7d13a8d7c7bab4daea83ff79a1bf01f7419ce3",
+    "packages/design-system/src/components/ViewSwitch/ViewSwitch.tsx": "e5d26bb3848616fea5e8dd44f8debec3a798d4c7e3e11c0e0adb7b37a49b4ee1",
     "packages/design-system/src/components/Wordmark/Wordmark.docs.ts": "26ebaca288eb50abc6d0e7af1c11036ef82b458b2033197d9d2c0bde2a659a7c",
     "packages/design-system/src/components/Wordmark/Wordmark.module.css": "38fe3e819c30340f02be82ed74e19a9940a5142e73500e4920b3c63a7e3ca625",
     "packages/design-system/src/components/Wordmark/Wordmark.module.d.css.ts": "7c923e401c9fabde35c8f7b04c89509c110af3d1259852a5626ec22c70e1925d",
@@ -2986,17 +3012,18 @@
     "packages/design-system/src/foundation/DesignSystemProvider.module.d.css.ts": "7443c8d45526878fd3a1a4ebf95c7e6061584b9aa36dd3b57fde35723d563704",
     "packages/design-system/src/foundation/DesignSystemProvider.tsx": "7cc37713aa020f7330b091dd473d9989651c53486f43e1e1f771ed21cc5257db",
     "packages/design-system/src/foundation/identity.ts": "b7857f63957721cfe1c60f3b5c9f6fb2981c6ffe5994a8f9bb84ce9737b8e828",
-    "packages/design-system/src/foundation/messages.ts": "9dcc2d056a01d554c6068ecb5d57173fc7d2723aa74c6baffa099ebac7ad0248",
+    "packages/design-system/src/foundation/media.ts": "0ff791638e4d18e2809c8bfadd0e2a9cb6c82e6c8aa36f6897804458fe86f895",
+    "packages/design-system/src/foundation/messages.ts": "ae54c81007a8e4c088589203c6dfc44b80ce0d76d2b077a09ebd4b1108efb589",
     "packages/design-system/src/foundation/preferences.ts": "1023748e9c15d1ed1e1aac3e0e48cb4106ca71cfc67e10e0b81d6e2918da3b4b",
     "packages/design-system/src/foundation/props.ts": "5fea14197b2f0e57702750c85368f2e86af13bc3c1917326f50b5881592799a3",
     "packages/design-system/src/generated/fonts.css": "8331bd1e3de53bfc9de425531922860e5d5d1f0c33686e595fa44b00069e8401",
     "packages/design-system/src/generated/layout.module.css": "f0e0cd5c4dfc0b0de70ee65ba511cdb27e270da5b06dd98ecd4f11e716fa0ad2",
-    "packages/design-system/src/generated/manifest.json": "062e8bc94d731a24b152da568750ecb54c68002ecb809dd0c65c4cd0cb9093ae",
+    "packages/design-system/src/generated/manifest.json": "faa3857023d8f7c2e766dfba70fa744c2f8a055cb84604ffd9a6ba7a6d29864a",
     "packages/design-system/src/generated/renderer.ts": "6ecc15646acdf727efd9ed2f157d2a994afc6cf6d2d3b5cc7d4dd85c7c542a8a",
     "packages/design-system/src/generated/symbols.ts": "3d00786fbed5a582ad16994ddb71ef04cd4823f5aaa24e48789bef41f89dfae9",
-    "packages/design-system/src/generated/tokens.css": "77319e4b835ec6c39c71c01b24668f0106815de063d9edc126e34166ec677552",
-    "packages/design-system/src/generated/tokens.ts": "78c8039dfe50a1940731f7d018ba25d475f20928221dc8f47b947e9ca76d3ce3",
-    "packages/design-system/src/index.ts": "70855ef2b7fe15e07893bebc83005d6efcba91e52d3681fc0bc3c4938b71ba06",
+    "packages/design-system/src/generated/tokens.css": "d6beee3e69ab64c4892c3fdd1d950f0b08b1ba3871882fabef86f114774c2ff5",
+    "packages/design-system/src/generated/tokens.ts": "398d8761af03d10119bc0dc99e048a52a8c5927b026bd3979f41252b876414d5",
+    "packages/design-system/src/index.ts": "369bb2e0f8b88062cf28431ff1ca45adb57a0dcfdd3ff48bedb4dd807d17ad53",
     "packages/design-system/src/styles/global.css": "4ed112de8e82a779af10f96657d6f09ea31db47796b27cc75d6f6075e7a17f22",
     "packages/design-system/stories/Actions.stories.tsx": "2ba5ec369a803f5f749f6b29744cd1d7ebfb8ba11d5a70d88bbcef17b77bdc14",
     "packages/design-system/stories/Cards.stories.tsx": "e8bc5fc29eadaaf9f4e8f0205cf240227b9a7ce3e10dc01c0fd326ccb8ce80c0",
@@ -3004,22 +3031,27 @@
     "packages/design-system/stories/Foundations.stories.tsx": "59369c4cd30ee5140f8294d9a756a073c4409659050658befde2d4f8de163ae7",
     "packages/design-system/stories/Overlays.stories.tsx": "bccee2cd868b8c64d138acf33bd74b37ec65e56a0eac2f526620429bb1d1e759",
     "packages/design-system/stories/Status.stories.tsx": "1c50cc86f4a555e1ca7453a7b66a743e7b4aa01f33b542e99e0856d8ad1ecdd3",
+    "packages/design-system/stories/reference/Deckbuilder.stories.tsx": "8f03154e7359773b93c9e68f1cfc06f5810d17d04fa1dfc639647528cfca1176",
     "packages/design-system/stories/reference/RoomFrame.stories.tsx": "8b37338a46575ca83b440a7e7eea99117bf34e1d45bec1651c855d1e1d6d1105",
     "packages/design-system/stories/support/DocPage.tsx": "75e363e2ba14e8f918adb15e45dcba47f2375a71888fa2c816b2c667089a9717",
     "packages/design-system/stories/support/OfficialAssetsOff.tsx": "3678255666e4cb8de96d64270eaae1eac73e7314396c40aa03a420d0674dc292",
     "packages/design-system/stories/support/fixtures.ts": "192db8f34475dc422aeedd19cf044c8d0e691edb3259acdfa23d316bbdcc3790",
+    "packages/design-system/stories/support/reference/cards.ts": "472c68a08b85c2ba528e96b7d35d18da7f28fb80b894c848137760542669f6ef",
+    "packages/design-system/stories/support/reference/catalog.ts": "8fa676223dd8307338a3afe5d18c61a2c0d3d42c539000ba3a05da5f6f5a5b1a",
+    "packages/design-system/stories/support/reference/deck.ts": "2985482a003ff80834a30e169cff60c426ee5fe3b5edd14d6228df2c93571741",
+    "packages/design-system/stories/support/reference/decks.ts": "99958faaf0018b6ed6bbf6aa56181dc3b13b9744ebd9561b3248752bd9157b39",
     "packages/design-system/stories/support/reference/frame.tsx": "48e1febc7a831fe9f6ed0446d1e7ea4331d173e40be710613bdb9e15452c4f5d",
     "packages/design-system/stories/support/reference/links.ts": "806f871538405909d7cfb700ddfb44396156cb77a062e2706a17c65d163e6d0e",
     "packages/design-system/stories/support/reference/text.ts": "8d059c8bbfaf38965d15cc5f6bcdc286b9af41b1b5de813f0056fbee1eea3ae9",
     "packages/design-system/tests/browser/interactions.spec.ts": "d3eeac52a34b7c092d3247e354a63637f0b4731f9e8fe558834b7a6587a0d98e",
-    "packages/design-system/tests/browser/reference.spec.ts": "4fe1b9aa2d1f7e8d8df8609f02272782239f9622627cf6afddaa001dd2705caf",
+    "packages/design-system/tests/browser/reference.spec.ts": "8b301d12bb7491005b4d9658773be9647ff25f9f4b1366657868a6708ba19461",
     "packages/design-system/tests/browser/stories.spec.ts": "7e5d83d7a7a7ea946edbfb5fd397f6887e1e67d8b6490e989c1d4b04ccaf82a0",
     "packages/design-system/tests/components.test.mjs": "fce7150f6927e6211e68315c15169a5db63bdf81170de1f94a88bd9cb857ef16",
     "packages/design-system/tests/foundation.test.mjs": "9f9aa9d40e6a3b5894b669764f62fbf58036585523b065db0e944f2a10bae150",
     "packages/design-system/tests/styles.test.mjs": "30247f76b4709a7568c7da8166ed6dadbb0bc0e9a18f76d4a0ff86c5ffd05537",
     "packages/design-system/tests/tokens.test.mjs": "ea8a0ffe006aa7c75b93a0ceb8dafe544d87917fccaf47f61fc89869c1ffeb2f",
     "packages/design-system/tokens/card/card.tokens.json": "a45b480c3e9f22d833362c7d7152c60a06d6cf057a119c70c575bc334601d2b9",
-    "packages/design-system/tokens/component/component.tokens.json": "3dfe9df8504b315cfa0d1dceac743acb02551b4f6d7b61bbf56f7b39e0f7f1f7",
+    "packages/design-system/tokens/component/component.tokens.json": "c3a19df572c0199c3fdf0181e91deb3426f3f6c8b9cd04b642a0e47045a09fcf",
     "packages/design-system/tokens/contrast-pairs.json": "3df739acecd91fab576d405469240f87b2ac5f6f7c6772dde609b0de8447ab7e",
     "packages/design-system/tokens/primitive/color.tokens.json": "deac48f7c1994d616f7dcedd1916438ab06ddf552826d4857c373c26aaf3118d",
     "packages/design-system/tokens/primitive/dimension.tokens.json": "42037f37c68a10a7dc9711ea4d513856a52b0aa880d37f7ceb63857a7737a4bd",
@@ -16746,6 +16778,105 @@
       "sha256": "936cb7c1aaa9d81715713a15501d17d54a9e3437c1b39abfcbdccd9697b657ca"
     },
     {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "fullName",
+      "line": 9,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "p: Printing",
+      "sha256": "8d8f964fcf4bdca2a240e32f0fbdc557502ae2b52b11862954321e05a1203e1a"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "CatalogTileControls",
+      "line": 25,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ name, quantity, max, onAdd, onRemove }: CatalogTileControlsProps",
+      "sha256": "9a04f36883a088ed9b8a01c9a152bd1f3738c044fc34a2b0e3551052ac1c81ca"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "CatalogResults",
+      "line": 59,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ label, entries, view, loading = false, emptyState, onAdd, onRemove, onInspect }: CatalogResultsProps",
+      "sha256": "8402be7d7023c5a32380b1654f7842dc2e4921b1e86f2471e16fcacd7e1a2677"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "<callback>",
+      "line": 62,
+      "column": 33,
+      "kind": "ArrowFunction",
+      "signature": "_, i",
+      "sha256": "f5143a93216a723a94dce46e3eb3a1cdfa8da300c9b904a42a8c81cdaf3a02df"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "<callback>",
+      "line": 66,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "entry",
+      "sha256": "9ddb835094e3fdcfdad39a4272b3d72b1a7b5e8a987c629c7592df4be122f850"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "<callback>",
+      "line": 68,
+      "column": 65,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "3164399fff69c1438b897cec385861af7b4c57f509796bf7a3326400ea62f54a"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "<callback>",
+      "line": 73,
+      "column": 109,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c22a64266c285999defaa9d629d5a81f35e41bb528011f20982687d20a621356"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "<callback>",
+      "line": 73,
+      "column": 148,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b0238a6468415f6b4afeaa2022d1b0a93c6711d38f6349ea8c731b45122d92dd"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "<callback>",
+      "line": 77,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "entry",
+      "sha256": "2c6106c605230ab4eeb3c594b65dc395a6753f010fa5392093a2dbfe09501d64"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "<callback>",
+      "line": 79,
+      "column": 109,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c22a64266c285999defaa9d629d5a81f35e41bb528011f20982687d20a621356"
+    },
+    {
+      "file": "packages/design-system/src/components/Catalog/Catalog.tsx",
+      "name": "<callback>",
+      "line": 79,
+      "column": 148,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b0238a6468415f6b4afeaa2022d1b0a93c6711d38f6349ea8c731b45122d92dd"
+    },
+    {
       "file": "packages/design-system/src/components/Checkbox/Checkbox.tsx",
       "name": "Checkbox",
       "line": 9,
@@ -16809,22 +16940,373 @@
       "sha256": "45b7e0b6c9c4e311fc71c1efa9a46a1965cba74d324baf0138364c2e0d9882e7"
     },
     {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "DeckList",
+      "line": 31,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ entries, onQuantityChange, onInspect, emptyState }: DeckListProps",
+      "sha256": "96fc86123e8a458ac1f9442dabc92c2e3a7e9dc0d535a98da882221f3e1daad4"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 34,
+      "column": 41,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "8ed667627818508c7568176b39e610eac094dde0509e1620a38783516eb3208d"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 34,
+      "column": 61,
+      "kind": "ArrowFunction",
+      "signature": "a, b",
+      "sha256": "25d7aa65d7f7b3d5a68eb63b347661b65d825eab321a84a4b2ace656cfd61b96"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 35,
+      "column": 50,
+      "kind": "ArrowFunction",
+      "signature": "cost",
+      "sha256": "9aba5293898f5910c11f9701eeb7a007b232ed778a76b42f761428026041349b"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 36,
+      "column": 34,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "ba9e5ebd5fde75ddf21dbb87d347ad5217088fc0c9e5d62c5df324963bf29e9d"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 36,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "sum, e",
+      "sha256": "f4e0ce65a53a590077006d9f5524e47b40e57982fa636e974cde567eafa1f211"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 39,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "aeeed4e2c3b8c21bca5284cd106eba0866fa1fdb79c822e9431b2561d8827cc8"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 40,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "q",
+      "sha256": "6d3a8b54a9a369c631aeae4a9078d47e42d1f65ce00cab1a1140a55bf90d28bc"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 40,
+      "column": 70,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "518869bd54b6d637f013a2fba8c39780e67b311d76bdf6c21927ea1768a9f9d6"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "DeckHeader",
+      "line": 55,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ format, count, size, inks }: DeckHeaderProps",
+      "sha256": "c4657b7c8fc8f88e0af088efa1fdac5c30f7b8eea413eac4eb4de4f5009f8b68"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "CostCurve",
+      "line": 74,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ caption, data }: CostCurveProps",
+      "sha256": "9750339ebb1ec11df3fa526f68f7f159f39ebde4d91efa1535b2000675e60f24"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 75,
+      "column": 87,
+      "kind": "ArrowFunction",
+      "signature": "d",
+      "sha256": "dca1f15f9bd14abea8aedec3882ac039d77dacb420cceaf544d27f76fc3683c1"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 78,
+      "column": 66,
+      "kind": "ArrowFunction",
+      "signature": "d",
+      "sha256": "9f0896e1fa8ec8f667786508f0dd240426c13f0ded14a486bdffeee6643d43bb"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 85,
+      "column": 24,
+      "kind": "ArrowFunction",
+      "signature": "d",
+      "sha256": "9b562ce26b7f387d6a1e831a7babe6529b0fcbf2614655b7b09f904876bd5485"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "DeckSummary",
+      "line": 95,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ curve, facts }: DeckSummaryProps",
+      "sha256": "0b0364edb2a1bc35d816ca6282d1dcbc28ddf213c3b1536d6a3ee8e43c6a8251"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 98,
+      "column": 45,
+      "kind": "ArrowFunction",
+      "signature": "f",
+      "sha256": "fe652cf6b0201960d79d53ecf74419d5545322a91b9a2a7fc44b92cce71b2ff0"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "ValidationSummary",
+      "line": 115,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ rules, ownership, advice, policy }: ValidationSummaryProps",
+      "sha256": "7f0df37cef85b3675cb9af4405bb15419ecd1c5d5a0e969c30bff3c9b7ab7bdc"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "section",
+      "line": 117,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "key: 'rules' | 'ownership' | 'advice', issues: readonly ValidationIssue[]",
+      "sha256": "c1af432616f2fb187468e6cde1f8ab134f211e2ed37bd6203f7c6b3358a27881"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 118,
+      "column": 36,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "1bcbb1d7992b548833cb0e90941ae12abd70860586150b0d731a141a9af0939e"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 121,
+      "column": 64,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "61b5b692aa96a0fc0e39ee4fe3de478d0f1e7dbb90700a26087a5ba1b4f3201e"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "<callback>",
+      "line": 126,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "issue, i",
+      "sha256": "2d970a754a007518e91cbe83be2fabca4cd9a964fc2aeb58903ea0cb46f28ace"
+    },
+    {
+      "file": "packages/design-system/src/components/Deck/Deck.tsx",
+      "name": "SaveState",
+      "line": 135,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ state, revision }: { state: SaveStateValue; revision?: number }",
+      "sha256": "24dbbcd874684f2a9fcb842d526f004c0c00976827ae8b609493212edefc6576"
+    },
+    {
       "file": "packages/design-system/src/components/DeckEntry/DeckEntry.tsx",
       "name": "DeckEntry",
-      "line": 28,
+      "line": 30,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ name, version, inks, cost, quantity, minQuantity, maxQuantity, onQuantityChange, legality, ownership, onInspect }: DeckEntryProps",
-      "sha256": "ef401e1500eb58b492c51b26b3b4f5bef610353496c01ae5f28cab168351abd6"
+      "sha256": "fcac2149d67e7b95a9f7210f3877d5b5fe13bb375535ddf0ce1bfff30cafea8f"
     },
     {
       "file": "packages/design-system/src/components/DeckEntry/DeckEntry.tsx",
       "name": "<callback>",
-      "line": 31,
-      "column": 136,
+      "line": 41,
+      "column": 178,
       "kind": "ArrowFunction",
       "signature": "value",
       "sha256": "3de1eead90c4a076bedc0eeb1aba4c5973abbcc8c0b3997e06ee96a3a3552d42"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "ImportPreview",
+      "line": 24,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ lines }: { lines: readonly ImportLine[] }",
+      "sha256": "c3617103290880387f879d71fa00e49f22a993492f14937cf8065071765d912e"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 25,
+      "column": 52,
+      "kind": "ArrowFunction",
+      "signature": "l",
+      "sha256": "50f5758dd66c0681969bb0ae5e1ed1a95051b6e0f7b9a4267359149c770da198"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 25,
+      "column": 109,
+      "kind": "ArrowFunction",
+      "signature": "l",
+      "sha256": "c92264d6bf68dacc7b01b22ea7bc5a1302e541d0b9e43e066473e17c2bdf7f67"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "cards",
+      "line": 26,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "list: readonly ImportLine[]",
+      "sha256": "1a524372f24a62a2e82ba889bbf44999e03b4fb87270447a9a9f11a67029bcea"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 26,
+      "column": 62,
+      "kind": "ArrowFunction",
+      "signature": "n, l",
+      "sha256": "a2574ce0b7b1e90ff7cd396120f705100a56cf4ecb09061c62a63167ce2aff52"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 29,
+      "column": 45,
+      "kind": "ArrowFunction",
+      "signature": "line, i",
+      "sha256": "320da6ef64ad9318c6fcd81d39ddb35d6d3a3f6fe6491041c707be4b05eff83c"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "ExportDialog",
+      "line": 48,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ isOpen, onOpenChange, title, formats }: ExportDialogProps",
+      "sha256": "feb257d4809076e19a01c764fbd3dda7358bbe1fb841deb600b4a10248c54f4a"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 50,
+      "column": 31,
+      "kind": "ArrowFunction",
+      "signature": "f",
+      "sha256": "d18cfd0368aade5daf12afb4d7793b95da825f037c6e1cb7bc27c8abbc21fac7"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "onCopy",
+      "line": 51,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "07df12c6c3835fc5627553bd88073771d5f2ae55a0ea5b3b784b33d448c0ac31"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 53,
+      "column": 68,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "038a5cf688e1530a77cc780abbd3871dc07fc6d3be14b6b9ac1e21b23be8d6ec"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 53,
+      "column": 93,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5eba8c5f65a843bf9f767e57b4c841090a897910f7a73374c254f7f2708f275c"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 55,
+      "column": 62,
+      "kind": "ArrowFunction",
+      "signature": "open",
+      "sha256": "0a71e05b3a38e3488534efdf57b103e5bca5081bc882782ee43bfadd69a8ad3a"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 56,
+      "column": 174,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2e4f72572e8a72936b08769fe879a1419b8dacc1dc77c417136fe1cd3010469e"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 58,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "value",
+      "sha256": "bdfcb8605ca7e2614738ef0c218c3159f28da67530aefa15a274539692bb8044"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+      "name": "<callback>",
+      "line": 59,
+      "column": 22,
+      "kind": "ArrowFunction",
+      "signature": "f",
+      "sha256": "7b720b52108c7f34af8aff03412fffa9ff4bc247a6ec1505b9fbf13fb4d5f7b0"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.tsx",
+      "name": "DeckWorkspace",
+      "line": 26,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ catalog, deck, catalogLabel, deckLabel, summaryBar, inspector, inspecting = false }: DeckWorkspaceProps",
+      "sha256": "7565766542f49b394474a3f372bba5b92090a820530f201b314b0ca4279de7d2"
+    },
+    {
+      "file": "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.tsx",
+      "name": "DeckPanel",
+      "line": 53,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ header, children, footer, footerLabel }: DeckPanelProps",
+      "sha256": "527a209a4cf27987f23615d057349c17c1386b5fbfd0243bc8b66873866676d3"
     },
     {
       "file": "packages/design-system/src/components/Dialog/Dialog.tsx",
@@ -16872,6 +17354,186 @@
       "sha256": "290d965df4f3538c6c29837e4f39205e01feb11772e2919b39c4b4654cf6b482"
     },
     {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "activeFilterCount",
+      "line": 27,
+      "column": 34,
+      "kind": "ArrowFunction",
+      "signature": "f: CatalogFilters",
+      "sha256": "7e020b349bcdbbb71c11952a0b2f47db6644765a242b8113ea2f677fbd1d2f73"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 27,
+      "column": 149,
+      "kind": "ArrowFunction",
+      "signature": "key",
+      "sha256": "5b69e5f04cf36269a58df245c1a71486899ef71f54f5644153ed30f48b4fea35"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "FilterBar",
+      "line": 47,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ filters, onChange, resultCount, searchLabel, costs, types, rarities, sets, classifications }: FilterBarProps",
+      "sha256": "48825c357d8ff69ca96a0a4e6e2e351c32483ee4a7c1efbeebae66ea8479bc96"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "set",
+      "line": 49,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "key: K, value: CatalogFilters[K]",
+      "sha256": "413d9f03e700d354e3b18f1c9ffd0db44a76461acde82f954b1ab175e9ecdc4c"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "select",
+      "line": 50,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "key: 'type' | 'rarity' | 'set' | 'classification', label: string, choices: readonly Choice[]",
+      "sha256": "73f72944b2416191b1948374cf2fce078c44bd95c43b73346e614422da161edb"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 51,
+      "column": 73,
+      "kind": "ArrowFunction",
+      "signature": "value",
+      "sha256": "dd507633236c747f83558bdd3503517804811c9b9fda2485ffe801839a187490"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 53,
+      "column": 20,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "a1633f80b3ed41d3e10e5fe00ed010bcde87e15f207c8921a28b16d3a59bfd22"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 56,
+      "column": 152,
+      "kind": "ArrowFunction",
+      "signature": "keys",
+      "sha256": "9480435ab1beecf1806ab205db0ece82a9c941a2431522250b6aeb9326871988"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 56,
+      "column": 188,
+      "kind": "ArrowFunction",
+      "signature": "ink",
+      "sha256": "0d2a1237566c7b86a5fc1b965ed1a2e9d132ced507315425ea6a4aed14cc69cc"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 58,
+      "column": 21,
+      "kind": "ArrowFunction",
+      "signature": "ink",
+      "sha256": "0729dc3f5846431820f3b74c8f4a45d9c924a65f740a0615b1f6722f1d69d4df"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 58,
+      "column": 88,
+      "kind": "ArrowFunction",
+      "signature": "{ isSelected }",
+      "sha256": "f793250fee0b97aee494daef623ce68fe55498136e08efbc191ada5f5ee4a9f3"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 60,
+      "column": 166,
+      "kind": "ArrowFunction",
+      "signature": "keys",
+      "sha256": "0aae7d4d678a0fca7a9edc5d41718c1dbb02f3e29a9d4f933eab40d53882684d"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 60,
+      "column": 200,
+      "kind": "ArrowFunction",
+      "signature": "cost",
+      "sha256": "82d091b78b9bc41a23d676ae389c15e9ef8fb38fb76ab916e247ac8ccc31e335"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 62,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "cost, i",
+      "sha256": "a0342442ff05ef8f23db67392ac963f7c40555e076feb1a04b06eb0d57b4c456"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 62,
+      "column": 208,
+      "kind": "ArrowFunction",
+      "signature": "{ isSelected }",
+      "sha256": "89060f31ab2b362af01aeba6a996b8eae6ebc062fb5b398df9e88d6fbd2db8dd"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 68,
+      "column": 92,
+      "kind": "ArrowFunction",
+      "signature": "value",
+      "sha256": "e96e28580aae1dce65375652461932c68de1fda0da5a47e73c732d3a573ad973"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 76,
+      "column": 103,
+      "kind": "ArrowFunction",
+      "signature": "value",
+      "sha256": "a2305a5516d4641c16bccbc27fa7bd9de9c24df4ceee08cec92c13c736ebfb65"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 77,
+      "column": 48,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "65ec85736f0fb07c31c16edc668c6ed284323859693b59d01132526180b3a56e"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 78,
+      "column": 55,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "641d4e12b139fb29ee1cc2dd302eeb2d08ce3c57bc53257ce4e861feecc130b8"
+    },
+    {
+      "file": "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+      "name": "<callback>",
+      "line": 81,
+      "column": 51,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1592e63a54f39ab2bde11d11087c3548267e97ddaace365aee2a14aaf21dc9fe"
+    },
+    {
       "file": "packages/design-system/src/components/GameSymbol/GameSymbol.tsx",
       "name": "GameSymbol",
       "line": 20,
@@ -16910,16 +17572,16 @@
     {
       "file": "packages/design-system/src/components/Ink/InkIdentity.tsx",
       "name": "InkIdentity",
-      "line": 12,
+      "line": 13,
       "column": 1,
       "kind": "FunctionDeclaration",
-      "signature": "{ inks, compact = false }: { inks: readonly InkName[]; compact?: boolean }",
-      "sha256": "8332e1c714b5096bfb4148ccf5e939be11ed000885c7ac4b3cabcbf5a4b4c09e"
+      "signature": "{ inks, compact = false, appearance = 'chip' }: { inks: readonly InkName[]; compact?: boolean; appearance?: 'chip' | 'plain' }",
+      "sha256": "1ebdc3a5443e77e496fa08e7de5e6bf74fcfa2e08cce12afcb73c84bd05949b1"
     },
     {
       "file": "packages/design-system/src/components/Ink/InkIdentity.tsx",
       "name": "<callback>",
-      "line": 14,
+      "line": 15,
       "column": 26,
       "kind": "ArrowFunction",
       "signature": "ink",
@@ -16928,7 +17590,7 @@
     {
       "file": "packages/design-system/src/components/Ink/InkIdentity.tsx",
       "name": "<callback>",
-      "line": 16,
+      "line": 17,
       "column": 15,
       "kind": "ArrowFunction",
       "signature": "ink, i",
@@ -16972,62 +17634,17 @@
     },
     {
       "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
-      "name": "useWide",
-      "line": 9,
-      "column": 1,
-      "kind": "FunctionDeclaration",
-      "signature": "",
-      "sha256": "a180772838dc6b91d0d5f16f53d18c7fc51cd33a3a08ced575e23f6124f2c1db"
-    },
-    {
-      "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
-      "name": "<callback>",
-      "line": 11,
-      "column": 36,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "03b162a51950dda8c2bca712f3655f40a675d70b5c32073a96f701785c002f36"
-    },
-    {
-      "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
-      "name": "<callback>",
-      "line": 12,
-      "column": 13,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "2b0183e047730e01893a2c07dcb6b7f05c58f84080ce5a824e33947eac729c4b"
-    },
-    {
-      "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
-      "name": "update",
-      "line": 14,
-      "column": 46,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "5721fe333c668c34906471092a0fc787a0d4cf627b3f8af39db123937d2e9f8e"
-    },
-    {
-      "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
-      "name": "<callback>",
-      "line": 16,
-      "column": 12,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "70e003f3897da7c1b5f8ad03a011972a6921b6978498ba4bb88e90ad39fb8653"
-    },
-    {
-      "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
       "name": "InspectorHost",
-      "line": 32,
+      "line": 21,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ isOpen, onOpenChange, title, children, fallbackFocus }: InspectorHostProps",
-      "sha256": "6948c43e8bed8509e8bf9236f406e01c47f577e8496c65225fe5d6947e68bc36"
+      "sha256": "17b0b307153f2b61785dbe7138ba81a46291790140abccd45586afc2d2fd4be8"
     },
     {
       "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
       "name": "<callback>",
-      "line": 34,
+      "line": 23,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17036,7 +17653,7 @@
     {
       "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
       "name": "<callback>",
-      "line": 41,
+      "line": 30,
       "column": 13,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17045,7 +17662,7 @@
     {
       "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
       "name": "onKey",
-      "line": 43,
+      "line": 32,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "event: KeyboardEvent",
@@ -17054,7 +17671,7 @@
     {
       "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
       "name": "<callback>",
-      "line": 45,
+      "line": 34,
       "column": 12,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17063,7 +17680,7 @@
     {
       "file": "packages/design-system/src/components/Inspector/InspectorHost.tsx",
       "name": "<callback>",
-      "line": 50,
+      "line": 39,
       "column": 137,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17297,11 +17914,11 @@
     {
       "file": "packages/design-system/src/components/QuantityField/QuantityField.tsx",
       "name": "QuantityField",
-      "line": 18,
+      "line": 22,
       "column": 1,
       "kind": "FunctionDeclaration",
-      "signature": "{ label, description, errorMessage, minValue, maxValue, ...props }: QuantityFieldProps",
-      "sha256": "21be2424ad06b373d87544b51eabd5d370c514c0895b5b552fbd7f224d557a19"
+      "signature": "{ label, description, errorMessage, minValue, maxValue, labelVisibility = 'visible', size = 'standard', ...props }: QuantityFieldProps",
+      "sha256": "e77a9e5c80770e6b53b01e3957bb2d685be1666eb8f122625d6460d3ad44912b"
     },
     {
       "file": "packages/design-system/src/components/Radio/Radio.tsx",
@@ -17592,6 +18209,33 @@
       "sha256": "aa5171de35c438f3e0303ddcab81ae52fd805535c17afaee80c011e228ec3a44"
     },
     {
+      "file": "packages/design-system/src/components/ViewSwitch/ViewSwitch.tsx",
+      "name": "ViewSwitch",
+      "line": 15,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ label, options, value, onChange }: ViewSwitchProps<K>",
+      "sha256": "7b3e3deb605fb51a447d271bda34b575c8152afb21c146957f2797d8525f3d31"
+    },
+    {
+      "file": "packages/design-system/src/components/ViewSwitch/ViewSwitch.tsx",
+      "name": "<callback>",
+      "line": 17,
+      "column": 24,
+      "kind": "ArrowFunction",
+      "signature": "keys",
+      "sha256": "07e8e33d0fbdbeafd764fa6669e6b1f803a2a040b04503c3a337d6a2e15aab41"
+    },
+    {
+      "file": "packages/design-system/src/components/ViewSwitch/ViewSwitch.tsx",
+      "name": "<callback>",
+      "line": 18,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "option",
+      "sha256": "9137c743f5a948bbcd63234c17d00909f226300691c4cfd454a88260e417227f"
+    },
+    {
       "file": "packages/design-system/src/components/Wordmark/Wordmark.tsx",
       "name": "Wordmark",
       "line": 4,
@@ -17754,9 +18398,54 @@
       "sha256": "a8bc16baa132b8c71daa77f402936e887f5af1c2ca428ebef1a6e9cfd87d49a0"
     },
     {
+      "file": "packages/design-system/src/foundation/media.ts",
+      "name": "useAtLeast",
+      "line": 8,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "threshold: keyof typeof breakpoints",
+      "sha256": "c6b5edfcaf6ccee1c90f858926a6084fd67f3a39c9182168cd0c3dc303ac8b5f"
+    },
+    {
+      "file": "packages/design-system/src/foundation/media.ts",
+      "name": "<callback>",
+      "line": 10,
+      "column": 42,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "03b162a51950dda8c2bca712f3655f40a675d70b5c32073a96f701785c002f36"
+    },
+    {
+      "file": "packages/design-system/src/foundation/media.ts",
+      "name": "<callback>",
+      "line": 11,
+      "column": 13,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "cc192e76f0e8ef701a2202d5e6a5dcd0ee76abb68655ec4a9f945f8271f398d1"
+    },
+    {
+      "file": "packages/design-system/src/foundation/media.ts",
+      "name": "update",
+      "line": 13,
+      "column": 46,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "ff7c4bf69ad5e6197e42a5797c8440ace7cb6d41e2a2238fe5bb3fc22f9af32f"
+    },
+    {
+      "file": "packages/design-system/src/foundation/media.ts",
+      "name": "<callback>",
+      "line": 15,
+      "column": 12,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "70e003f3897da7c1b5f8ad03a011972a6921b6978498ba4bb88e90ad39fb8653"
+    },
+    {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "pseudolocalize",
-      "line": 93,
+      "line": 141,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "text: string",
@@ -17765,7 +18454,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 105,
+      "line": 153,
       "column": 54,
       "kind": "ArrowFunction",
       "signature": "[k, v]",
@@ -17774,7 +18463,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "catalogFor",
-      "line": 107,
+      "line": 155,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "locale: string",
@@ -17783,7 +18472,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "formatMessage",
-      "line": 110,
+      "line": 158,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "template: string, values: Readonly<Record<string, string | number>>, locale: string",
@@ -17792,7 +18481,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 112,
+      "line": 160,
       "column": 48,
       "kind": "ArrowFunction",
       "signature": "_all, name: string, body: string",
@@ -17801,7 +18490,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 119,
+      "line": 167,
       "column": 44,
       "kind": "ArrowFunction",
       "signature": "_all, name: string",
@@ -17882,7 +18571,7 @@
     {
       "file": "packages/design-system/src/generated/tokens.ts",
       "name": "cssVar",
-      "line": 141,
+      "line": 150,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "token: DesignToken",
@@ -18843,6 +19532,609 @@
       "sha256": "1952349f8c21e818690d13fcc99ecf281b1ed0a62bb0205c2e4ec052c37cb4a5"
     },
     {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "idOf",
+      "line": 27,
+      "column": 14,
+      "kind": "ArrowFunction",
+      "signature": "p: Printing",
+      "sha256": "179e065a51c005c5c4f219c836a2df59f6c63ee943e69d2e760aca69a28b3eed"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "DeckbuilderReference",
+      "line": 38,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ scenario }: { scenario: Scenario }",
+      "sha256": "c075d1475b57c74818938a01505d80509a54b85d0c87d6e4464b271e08bf01b1"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 51,
+      "column": 75,
+      "kind": "ArrowFunction",
+      "signature": "id",
+      "sha256": "0ad58fad6d2a5d04495c9e5505bf5b4781ac88393d281cff6f206be986287d99"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 53,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5660bbceb7ad16854b3fe6ca72720221190e40f988b31c84a890123f6980cb67"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "edit",
+      "line": 57,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "next: Deck, message: string",
+      "sha256": "d9895608811380a47afa2446c6de4ace5a5b85248f13b6a68488a26763e00e8f"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 57,
+      "column": 62,
+      "kind": "ArrowFunction",
+      "signature": "h",
+      "sha256": "13ca688ee0c3c625fcecd59c8d436dba0da78ccf813c5fd77ae3069a597129e7"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "change",
+      "line": 58,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "id: number, delta: number",
+      "sha256": "1ad599d03a50778e5de8131b0d26129ade938053196d9519597a1768d8be1160"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "setQuantity",
+      "line": 63,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "id: number, quantity: number",
+      "sha256": "1c24f556531b2d229e89c917299e0613cecf59cf370110fa77bf1695e5625618"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "undo",
+      "line": 64,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8a872733343da7c7fc4c183fd9005a9e8c232802cdb61bc9507acce3e13f81ae"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 64,
+      "column": 91,
+      "kind": "ArrowFunction",
+      "signature": "h",
+      "sha256": "9a9a924217d9480611c46534210810b2881acdef30a8532174ff3a45d5743fda"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "save",
+      "line": 65,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "then?: () => void",
+      "sha256": "8013d35691c45393b314ae20a2ac64c8af70223f5f842b65edb8d78319c38a8d"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 68,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "90696525ecfe107c8b8bdb065b481655d7604fa9bdf413cbbba7c0cf6dd6c520"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 68,
+      "column": 51,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "eda90184024807be00e584d2d5c132c4297b6ff060e38586d007a90aefdd50fe"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "navigate",
+      "line": 70,
+      "column": 20,
+      "kind": "ArrowFunction",
+      "signature": "href: string",
+      "sha256": "a478218e6d851853568f34549e5da469b5579da2c725c28b6def2ffd6c9f48be"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 72,
+      "column": 31,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "d9ec66a2b84e5c94e2769a6a6211cb90193457f5bf2a0075a557ff2e9e11bf26"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 73,
+      "column": 57,
+      "kind": "ArrowFunction",
+      "signature": "[, q]",
+      "sha256": "32f11a80b7580657ca79df8627ecaf094cbd5b9931554650ef3ba6d463f28324"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 73,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "[id, q]",
+      "sha256": "a02b23dd5f7a2173ed81bcd15e660e76464279b2845afb0b0a0b8fb9168f2cfa"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 77,
+      "column": 68,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "08ac55085677415be52be99981f6ce1f53300545c1596487b4eb40e7623d6ac2"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 84,
+      "column": 52,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "7ca13359cd9475a197c4a7022d2c2b2f851bdc4eea750925af16575e196df25a"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 85,
+      "column": 38,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "a0912c57bca75c18e43e618279c13e43a3cf81b647040e7dcd426126b8b3320a"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "choosePrinting",
+      "line": 86,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "key: number",
+      "sha256": "5df2272160383abe5d2be69b2a1b31f4b2f576c8384116eac16d6cdbb2ea031b"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 94,
+      "column": 120,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "06a6d6d761d30163859e6fcf9b0cca29a6ef652e9313cd6c74a67341f08f641d"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 99,
+      "column": 117,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "16ad714490cc19abbac2e3c3da01a40d8ecb049e172c3083b804c4510b8a7695"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 100,
+      "column": 14,
+      "kind": "ArrowFunction",
+      "signature": "p",
+      "sha256": "38e1d803dece68790251f948fb73d39f9c4ba12a55dc581da1ac06235be59036"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 100,
+      "column": 49,
+      "kind": "ArrowFunction",
+      "signature": "p",
+      "sha256": "dd042bc7e817a67b4abf98ef44b41d2eedc6b4580458bacedd4b7ce37b3d61f6"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 100,
+      "column": 111,
+      "kind": "ArrowFunction",
+      "signature": "x",
+      "sha256": "6bf17df0bc615c6d1c2821daa067f9589a6515ac218c38be9694cf3bb12da90b"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 100,
+      "column": 233,
+      "kind": "ArrowFunction",
+      "signature": "p",
+      "sha256": "d3d681f383201af46d6012d3c282931e3b98ed1d4590cd236d43106cca8836dc"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 106,
+      "column": 55,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "78a0a74496ab17ba4f68afc9f6bfdb21484e1a6d82d7c83d1843e3bd297f813c"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 106,
+      "column": 111,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7b761b6a3c5d1b75d5db899264edeae1d158e45a3a2f6d076bb7af944887438e"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 106,
+      "column": 265,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5637e23be9530ed3a25e0e9eb74cd8daf6e44ee63508afced29d60e9ccf54a5f"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 110,
+      "column": 83,
+      "kind": "ArrowFunction",
+      "signature": "id, q",
+      "sha256": "98da165cc7b07f0522d122090c9425f9993d32cf21003842237807335a560b34"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 110,
+      "column": 133,
+      "kind": "ArrowFunction",
+      "signature": "id",
+      "sha256": "486908eaa956e90d5ed8065fd2e10f11df98f81a3b9816ed517974fd5390c48d"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 115,
+      "column": 196,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "61b5b692aa96a0fc0e39ee4fe3de478d0f1e7dbb90700a26087a5ba1b4f3201e"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 115,
+      "column": 265,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "61b5b692aa96a0fc0e39ee4fe3de478d0f1e7dbb90700a26087a5ba1b4f3201e"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 117,
+      "column": 82,
+      "kind": "ArrowFunction",
+      "signature": "open",
+      "sha256": "796d770b5ce7eb4f6a2ebb17ef3f1f270c199a3534b7fa3896c6e546e5e67ba0"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 125,
+      "column": 43,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8580c68ba72c1e19b34732818d0298965215798e5b1c7cd99bdbbea00c4aeeb4"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 126,
+      "column": 60,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e43eaab250456ba2e9a9905c4f0dc812b37ffe155ff93e3de28d182e929945fa"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 128,
+      "column": 211,
+      "kind": "ArrowFunction",
+      "signature": "key",
+      "sha256": "3bb3e3ebbf44e628648f27a20c15f2c1c2fcf3412c0814cfa79ad0ac886f0a49"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 129,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "4c6e49b5f6a1f39f535f0fd3476c90a30f75a9e0ad38397b2e34231da4e26243"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 137,
+      "column": 152,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7eca6b578d7c1e30b78458a12a8ba6fef699b647df8aee833ce921b9ea5cb2d7"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 137,
+      "column": 210,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "30fc0f63c66b5821530db9f57b0865e1749ead6137544f5458a5118f19b923fa"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 140,
+      "column": 97,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2bb673970aa2e0ed45b6407d096883742e3e5cef10b8c5b4bcef97a97c53d5ca"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 140,
+      "column": 199,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "44d53d79153e9ee7911ab9932b6d9ed8fe5115ff01200d9f56befd250fd7780a"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 140,
+      "column": 292,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "992cdf32ae2bf573622496d14982f92b353ec61a511b4f64e981216537d1e8fd"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 150,
+      "column": 108,
+      "kind": "ArrowFunction",
+      "signature": "open",
+      "sha256": "2e485982d9bb6f13808d4841286de0190f0280ab314d1f09e139ef283e5f2aac"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 151,
+      "column": 35,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7e32cdb344a4a821a2485e44603fe512194e6c7628d94a147d5c62e78d166a32"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 151,
+      "column": 114,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5b698ca0ec6bf3f5ae175579b56f0c7ab7ae49f3fbf8c2470f5c4f884b098f94"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 151,
+      "column": 257,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b258097dcfc89d2160e729e47627077abdaf5d5ba9c7a14e005b8f5d567f8016"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 151,
+      "column": 292,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "ba45c9d826bf1e177059cd5660ffc7b5a9b36c27f155a0bb22f0bce5892898f2"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 155,
+      "column": 35,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "367c781db1405a0f683364aac19e026972a3cf49d38a8461e197c77f73b335a7"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 155,
+      "column": 123,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "55722237b6605ae0e351f67b28b930ae642525e99719322877f002a4b2083374"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 161,
+      "column": 95,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "711447f2d597b8d8164f0346373722196c8177f70f474738b154adb1bd68f18a"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 164,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "44befa6d0d313c1a3b9cbe88510ec1ae3bfb6bb699fe3f1943ec38e71458fcc4"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 166,
+      "column": 166,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "eded0d281c785cc3bd429186ff651b4f2a8dfa556bcfd05625915e843fd1cdfe"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 167,
+      "column": 175,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "760a67c0c3dae36da5711ba4fd88593e5e1781319daff2498538a3b51aa005be"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 168,
+      "column": 51,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8686a337a42193277a58eb88cd600f8fa026556e0ed8c9893f204416dcf138b8"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 169,
+      "column": 119,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2d9e9638a31d8e61a21605b059e83656026f443a2c4dd2c6550a0e9bdfc0785f"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 170,
+      "column": 165,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "a8bd8b52f163b9c834d392f8a3baddf8d0d87b18e394b0b30bab7561d69521b1"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 171,
+      "column": 146,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2ad948229719e71e3edd958b5406b8789ae508e25c20a66255c77c1e3858f586"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 172,
+      "column": 185,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "9616d5452f51028449b7d43f75f122f9ece201493a9755b7c16467bd92eddd15"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 173,
+      "column": 123,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "860d63b03d0b3adf39885104b65f4e1dccca306469bc3224bc9330a4b095da0b"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 174,
+      "column": 118,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "ef44995a50cb110a8685fabf85882c89e7fa46e2f1579e78137a61435898ada8"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 178,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "055d756c75dbebc39f8efeace8268b58212d80a473b3e2217d39cd93ec6f4cb9"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 180,
+      "column": 141,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "42a3e5e8384d28163ffcbfadb4b1034293341f27ffd0cfff32a7c48c87ddbaf5"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "DeckListEmpty",
+      "line": 181,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "7338a2cc2ad35630784d016343deac0b8bbc4ceaf884a993f849ad14ec3de175"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 184,
+      "column": 48,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 184,
+      "column": 69,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
+    },
+    {
       "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
       "name": "SampleRoom",
       "line": 14,
@@ -19048,6 +20340,690 @@
       "kind": "ArrowFunction",
       "signature": "{ tokens }",
       "sha256": "79b957055361cb1fc0d936603877f06341b6f43720ca43f35f13c17f086f06cd"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 8,
+      "column": 76,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "3b550ed93e0e52b48b89b264ee9b5da144887a10cebdd71bb40456dd965d84b2"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 8,
+      "column": 109,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "1acaa7340ebbe2b6ab1afe9ce8285faf8d005a1dc53f336e339c2302917c215e"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 9,
+      "column": 125,
+      "kind": "ArrowFunction",
+      "signature": "p",
+      "sha256": "45c873ae91a07d127636072314459109271b5534cb838deb24fe6c656ee1d8ba"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 9,
+      "column": 163,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "9b0f28d268f8423da0bc25a3ebfa900b8ca5763268c417ad8b914fc08978be83"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "card",
+      "line": 11,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "printingId: number",
+      "sha256": "e17105c18dbcaea87ecb53d29debdea13270f5e66fc5c0014ee1dbaab52eee4f"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 12,
+      "column": 31,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "f5ab1a769df71f101886e62e0c86daf2976924fe5015f877f948a876a33830b3"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "fullName",
+      "line": 16,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "6456306cc2183feb1c9b7f4ffc7dba2332fd03f2683a012b73190b0144cfd5ac"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "primarySet",
+      "line": 18,
+      "column": 20,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "45307dda3e69115369873123b1d19c5b86206dcc2dad960fc632eb6951ac1ba8"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 18,
+      "column": 113,
+      "kind": "ArrowFunction",
+      "signature": "id",
+      "sha256": "3c061b9a18f299d5b918407531c1880dddefa18d3d0ecce66e96bd9881a882ba"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "setName",
+      "line": 19,
+      "column": 24,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "59311ce58d934900ac46a14d7aca7ebceaffec681cbffefa0ccf3d532eed0709"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 19,
+      "column": 66,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "2b3ae54de8521ff7d1010ba78fc5d7dee535a42eaf5b7f8064c806d324a1ac65"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "setOrder",
+      "line": 20,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "c6b1e68071c62372c8cdc8e5d9d6a272015eb4f2aa8a53a99b58cdc6f7f5c04f"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 20,
+      "column": 67,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "2b3ae54de8521ff7d1010ba78fc5d7dee535a42eaf5b7f8064c806d324a1ac65"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "collectorOrder",
+      "line": 21,
+      "column": 31,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "3948d50a3a695470ab64b58f658d3ad9d43d3d583dd2aea1d7dab7180f8a18fa"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "image",
+      "line": 22,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting, rendition: 'thumbnail' | 'detail', variant = 'Regular'",
+      "sha256": "01ae4de4df812d4fd4c944027a8e27d029bda4408abff868dff0f5d8ecc1d117"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "hasDetail",
+      "line": 23,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "bf7148a3a85f0c9eb70aed93588dff92455883e884188ba07e21be44939f93ec"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "printing",
+      "line": 26,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "c: CatalogPrinting, { variant = 'Regular', detail = false }: { variant?: string; detail?: boolean } = {}",
+      "sha256": "0a47e47f9aa84397c23b66e84670514679cb9981af799c91454e5454149237b9"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/cards.ts",
+      "name": "<callback>",
+      "line": 27,
+      "column": 29,
+      "kind": "ArrowFunction",
+      "signature": "x",
+      "sha256": "1e6f4e3ef85edeb605f836a99e1a10646e3e3f8ffce12fcf17645116422dfd93"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 7,
+      "column": 78,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "cf111c384df1bc110e36b5895b76378e1f1b43a2dff04592ea90b281c7137db2"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 7,
+      "column": 113,
+      "kind": "ArrowFunction",
+      "signature": "a, b",
+      "sha256": "55f78a291bf1e83b6b2d10deeac7764a98a0b504d116741c89fa6c11e9d4f33e"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "unique",
+      "line": 8,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "values: readonly string[]",
+      "sha256": "9b69832bdfe4125f189942ae961fcc859a2fce404ac0756fa28d94b616181e06"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 8,
+      "column": 73,
+      "kind": "ArrowFunction",
+      "signature": "a, b",
+      "sha256": "c0f65db80f702bb26fc36da37e77603d54099a29ac25080d8795b0c180de45de"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 11,
+      "column": 69,
+      "kind": "ArrowFunction",
+      "signature": "id",
+      "sha256": "93850aa196b834818a8acc377f313c585aa556a60c35bdfb44a69b020d6b7c32"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 12,
+      "column": 37,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "6990df99bf9371d56e73c116cde88b5607a48bd1cff83f58739bce8a180adb84"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 12,
+      "column": 130,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "6321a32706df5f71bb6f83c43ed2258ba750a8ee477d9c5823ba09a9d00ee281"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 13,
+      "column": 47,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "0f34a2e91a9f4d3c88c6b1f40fd0304eb94ce8780b62be0a7dc3127ee0ece7c8"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 14,
+      "column": 48,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "fdb215b5ac7aace6eebad73bb7edb178c98016f18957bc1ab4beb3236d8c1d74"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 14,
+      "column": 77,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "d7a276da7149c87540ae2f26e8332625c866ff301136d0b36e602650d49afd92"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "fold",
+      "line": 16,
+      "column": 14,
+      "kind": "ArrowFunction",
+      "signature": "text: string",
+      "sha256": "1ca4edb38cd22ad7125ef2a18a6591b21318aa2eb92de132d4633900875aa905"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "filterCatalog",
+      "line": 18,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "filters: CatalogFilters",
+      "sha256": "0f61d62858ee0ef90219cb3e575d87754af3098b32d21180463e8eaf8e9b6a90"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 20,
+      "column": 30,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "f8dec83f28db25ffd58887d5acdd79c1ff02c351aa2b40e1a2b64347743c1fd8"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 22,
+      "column": 42,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "7d5ab797968141c67c1008da3321c59c501015ac502bba12afcb8dacffcfae5e"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 23,
+      "column": 50,
+      "kind": "ArrowFunction",
+      "signature": "cost",
+      "sha256": "fdcdee5f7c51fa265ef93ff8be292fc70b2574a08ef3a62a6b2bc3cd2f632179"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "parseImport",
+      "line": 32,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "text: string",
+      "sha256": "85d4c5be22e6ed2867d1bd8b7815f895418f1c1df4bc77b9cff63a93a1cc2852"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 34,
+      "column": 42,
+      "kind": "ArrowFunction",
+      "signature": "l",
+      "sha256": "002523de6fff5aaef26f00cb79c3c80a05ff7bd480b90d6b7f206ae269d43d6c"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/catalog.ts",
+      "name": "<callback>",
+      "line": 37,
+      "column": 87,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "04d9f3b0cc6062f111f65087ad850ab81d6d5fa5ad7c694db4418928f81f605e"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "policyLabel",
+      "line": 16,
+      "column": 28,
+      "kind": "ArrowFunction",
+      "signature": "p: FormatPolicy",
+      "sha256": "b5b265f4ba5b8f5b3330427f836494bd70f8e79be05b8dae859e05b0bd589842"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "identity",
+      "line": 20,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "0508e795f43384284c29b08d28b2394bc2b7cad8f92748211869c0323fc12b2e"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "deckCount",
+      "line": 21,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "deck: Deck",
+      "sha256": "0208b233a2577a2046aa24eddd03f22d015ec30c99432a7d1095816c5d11a22a"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 21,
+      "column": 76,
+      "kind": "ArrowFunction",
+      "signature": "n, q",
+      "sha256": "1e015d01c9bcc101123de98a34b31621a5053d281226154e8fa251137d0a7917"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "copiesOf",
+      "line": 22,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "deck: Deck, c: CatalogPrinting",
+      "sha256": "336732485cdaff0abec7cfda81bf31893ba569a54b454b2546ce80f1a84d8690"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 22,
+      "column": 86,
+      "kind": "ArrowFunction",
+      "signature": "[id]",
+      "sha256": "e396b4ef5b9056ba9e46542337842bb6d3d3cc4b47d275c2af7f68709b4d151a"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 22,
+      "column": 139,
+      "kind": "ArrowFunction",
+      "signature": "n, [, q]",
+      "sha256": "04757ee4c18e09a1a29527c2b1fbc3f52174ab5462f3c31c23b8541486add28a"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "deckInks",
+      "line": 23,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "deck: Deck",
+      "sha256": "dbe7e515bb8d46c2322af8b22e843b4b60553d5bbc1e092fa81f69949ce206c5"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "singerValue",
+      "line": 29,
+      "column": 21,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "cb0e89e630138a76e5f2ff77754e4b54b41881dfad3522cdbe20ff6384f3e3b0"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "songCost",
+      "line": 30,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "c: CatalogPrinting",
+      "sha256": "1f9493fae85937301539c792bb582f28040c086a9de71ac9d0a709c17065d4a5"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "validateDeck",
+      "line": 34,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "deck: Deck, policy: FormatPolicy, owned?: ReadonlyMap<string, number>",
+      "sha256": "fc58a2447f8826db6e0b4929e71546d4af93214801d8b62cbd43c701b72d2646"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 35,
+      "column": 127,
+      "kind": "ArrowFunction",
+      "signature": "[, q]",
+      "sha256": "32f11a80b7580657ca79df8627ecaf094cbd5b9931554650ef3ba6d463f28324"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 35,
+      "column": 149,
+      "kind": "ArrowFunction",
+      "signature": "[id]",
+      "sha256": "e5bc0594fff1f0b290fe4783414acabae5bd451cb588079c40fb34a800aa3af4"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 48,
+      "column": 68,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "c021442277f31c39a4d5140f814dacb90315b7df95acc583a44e9f606281f25e"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 48,
+      "column": 85,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "e5dcc942f9d0bd9fc60950980cf6e7fb14e42782188ff688ad0d5cd50e7b8803"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 49,
+      "column": 95,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "f10517b804662c963f548065870040e11eb9a2892d6e0e94d3dd9382aeca2a02"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 49,
+      "column": 189,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "f10517b804662c963f548065870040e11eb9a2892d6e0e94d3dd9382aeca2a02"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 53,
+      "column": 35,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "7a9f279fd10b3ff0a79a032f20caedde140b00d71d6be42283d3d60645040308"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 54,
+      "column": 62,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "5fbc15d7b27614c72006ae4cd7149f04ab30221a603d57cdc72c6b6ac4fb36c3"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 55,
+      "column": 113,
+      "kind": "ArrowFunction",
+      "signature": "n, c",
+      "sha256": "925b5326410a0cfa69f043a326277ba8459cd23d1eb16845fd4b6961f78db3a6"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "deckSummary",
+      "line": 60,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "deck: Deck",
+      "sha256": "546e6c647e1172b57d903c6492ac3099477ae867099890f82531dcde3b68c886"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 61,
+      "column": 34,
+      "kind": "ArrowFunction",
+      "signature": "[, q]",
+      "sha256": "32f11a80b7580657ca79df8627ecaf094cbd5b9931554650ef3ba6d463f28324"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 61,
+      "column": 56,
+      "kind": "ArrowFunction",
+      "signature": "[id, q]",
+      "sha256": "35002014a56f1fe4ee45b3f20115e545f86fd778413d6419f18637007d89a370"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 62,
+      "column": 46,
+      "kind": "ArrowFunction",
+      "signature": "cost",
+      "sha256": "ec125f9c9662f3187a160d07098d70bbf869f8bf77971ec42983f5408723812c"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 62,
+      "column": 118,
+      "kind": "ArrowFunction",
+      "signature": "{ c }",
+      "sha256": "be8184a44838a0f8644d3a66dd5b8829900e841682edcc3d95fa42f61da7ce5a"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 62,
+      "column": 187,
+      "kind": "ArrowFunction",
+      "signature": "s, { q }",
+      "sha256": "b0b98322ed19b9305b57afd8f2a4c4b4493d119d2f0e69fbc7378be149cf809c"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 63,
+      "column": 32,
+      "kind": "ArrowFunction",
+      "signature": "{ c }",
+      "sha256": "5a113c6a40c08a4c04c7913be7b452bc777bd9c80cddbfaef846ae41727d798f"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 63,
+      "column": 61,
+      "kind": "ArrowFunction",
+      "signature": "s, { q }",
+      "sha256": "b0b98322ed19b9305b57afd8f2a4c4b4493d119d2f0e69fbc7378be149cf809c"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 64,
+      "column": 76,
+      "kind": "ArrowFunction",
+      "signature": "k",
+      "sha256": "da12cbae20fbb8cab87d935580b6af7d113e7b1eb561c9839f341589d01b25ea"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 64,
+      "column": 145,
+      "kind": "ArrowFunction",
+      "signature": "{ c }",
+      "sha256": "3bd86077fa47467181c747f1f20194c8e46bd38e5744f8a50ec10006b5d6a6ff"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 64,
+      "column": 181,
+      "kind": "ArrowFunction",
+      "signature": "s, { q }",
+      "sha256": "b0b98322ed19b9305b57afd8f2a4c4b4493d119d2f0e69fbc7378be149cf809c"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "exportText",
+      "line": 68,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "deck: Deck",
+      "sha256": "a6bc5f4769d38f3d7102300f5d7a2603d51204182beebb1f9387da41f3517682"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 68,
+      "column": 68,
+      "kind": "ArrowFunction",
+      "signature": "[, q]",
+      "sha256": "32f11a80b7580657ca79df8627ecaf094cbd5b9931554650ef3ba6d463f28324"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 68,
+      "column": 90,
+      "kind": "ArrowFunction",
+      "signature": "[id, q]",
+      "sha256": "2e2c594e72d0d127a0e432eef565b698c70e6809babf10c8b7cb36f9f689bfbe"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "exportCsv",
+      "line": 69,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "deck: Deck",
+      "sha256": "d3bd9c9c21fe0634910942a157d1a0defdd6a014a4ba4086646389cd4ee5ada0"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 69,
+      "column": 99,
+      "kind": "ArrowFunction",
+      "signature": "[, q]",
+      "sha256": "32f11a80b7580657ca79df8627ecaf094cbd5b9931554650ef3ba6d463f28324"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/deck.ts",
+      "name": "<callback>",
+      "line": 69,
+      "column": 121,
+      "kind": "ArrowFunction",
+      "signature": "[id, q]",
+      "sha256": "94b2a6ecd9f548d95f2c6ad3c5f495afc9c0395fcdb151731a533ffeb7f5d168"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/decks.ts",
+      "name": "<callback>",
+      "line": 17,
+      "column": 62,
+      "kind": "ArrowFunction",
+      "signature": "[id, q]",
+      "sha256": "eb95e1758d7b82498a65838116cfa7d217e719f5243bb77f5daeffba3181e21b"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/decks.ts",
+      "name": "<callback>",
+      "line": 17,
+      "column": 144,
+      "kind": "ArrowFunction",
+      "signature": "[, q]",
+      "sha256": "32f11a80b7580657ca79df8627ecaf094cbd5b9931554650ef3ba6d463f28324"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/decks.ts",
+      "name": "<callback>",
+      "line": 21,
+      "column": 83,
+      "kind": "ArrowFunction",
+      "signature": "[id, q]",
+      "sha256": "48b5a9488964d11d70907d2e99acd9618020201e2668cb77fc98e129b25678e3"
     },
     {
       "file": "packages/design-system/stories/support/reference/frame.tsx",
@@ -20020,6 +21996,123 @@
       "kind": "ArrowFunction",
       "signature": "{ page }",
       "sha256": "ee7e282a6083b2ec6102f1147d7c98cf177dd7f0d4db8c0d49afc2580b5f344b"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 83,
+      "column": 30,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "69ad3192981a1e3319e4f0a4a90ab925b0ce52182d742a96ae1e18e2e7958ad6"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "deck",
+      "line": 84,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "page: Page",
+      "sha256": "bba12282429fd987320a7ca1f8127b51002ae17f4f2adca6326f98ff89066156"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 85,
+      "column": 121,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "f5837f25af2488f60e403ca2be53418c7f15550f8b0507003899e34959608e5e"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 98,
+      "column": 69,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "d37de3e4bc25ea68d4bc476650b4f4fd661772d379763d62834c311114748ffd"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 105,
+      "column": 81,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "c132b376ce80fc4691c1376f574be70cf0e58d3ddc61fc2433a373a1dbd5e813"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 117,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "4d7a061d97945851a04d0f4489af470a71c421c414f4776ec12f131886a020bf"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 127,
+      "column": 86,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "13bf1082c3cbb2ca2d7cdaa4057c047c0af371c9d2b30851ec8db2dfac4b53ea"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 134,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "79d63c2ba7459b468b01bc2a44174c8be11bc95649894335f19621b65c9ac1f9"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 143,
+      "column": 100,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "679fc5afd3d814f7887494a1a218804dcafad0517206460ee58c0ada2335d998"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 153,
+      "column": 78,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "317a31ab505adb1ee73b4bc625c0e1b774f62a03fe3c5779052a713993819115"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 162,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "f2fbfef8f5115085236ada203452f6da0f432d5f1084c02abd3eb92fa361b824"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 169,
+      "column": 62,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "5cb94bc055bea778b4c2c63d422e1c703c6b0efef5bdfd39e6c38759284a83e7"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 176,
+      "column": 97,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "a46cccffc0dc65f0e600118310396e2e739b5efcd0baf964611bfd1fa3eaf0e9"
     },
     {
       "file": "packages/design-system/tests/browser/stories.spec.ts",

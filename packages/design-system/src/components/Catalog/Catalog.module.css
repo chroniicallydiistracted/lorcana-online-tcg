@@ -1,0 +1,22 @@
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--is-component-catalog-tile-min), 1fr)); gap: var(--is-space-6) var(--is-space-4); margin: 0; padding: 0; list-style: none; }
+.tile { display: flex; flex-direction: column; gap: var(--is-space-2); min-inline-size: 0; }
+.controls { display: flex; align-items: center; justify-content: space-between; gap: var(--is-space-1); }
+.quantity { display: inline-flex; flex: 1; align-items: baseline; justify-content: center; gap: var(--is-space-1); color: var(--is-color-text-supporting); }
+.quantity[data-in-deck] { color: var(--is-color-text-primary); }
+.count { font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; }
+.limit { font: var(--is-typography-metadata); }
+.hidden { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skeleton { display: flex; flex-direction: column; gap: var(--is-space-2); }
+.skeletonCard { aspect-ratio: 63 / 88; /* token-exception: physical card proportion (63 x 88 mm) */ border-radius: 5.5% / 4%; /* token-exception: physical card corner */ background: var(--is-color-surface-raised); }
+.skeletonRow { block-size: var(--is-component-control-min-size); border-radius: var(--is-component-control-radius); background: var(--is-color-surface-raised); }
+.empty { padding-block: var(--is-space-8); }
+.list { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--is-space-1) var(--is-space-4); padding: var(--is-space-2) 0; border-block-end: var(--is-border-width-1) solid var(--is-color-border-decorative); }
+.rowMain { display: flex; flex-direction: column; gap: var(--is-space-1); min-inline-size: 0; }
+.row > .controls { min-inline-size: calc(var(--is-component-control-min-size) * 3); }
+.rowName { display: flex; flex-direction: column; align-items: flex-start; min-block-size: var(--is-component-control-min-size); justify-content: center; padding: 0; border: 0; background: transparent; color: var(--is-color-text-primary); text-align: start; cursor: pointer; }
+.rowName:hover .name { text-decoration: underline; }
+.name { font: var(--is-typography-body-strong); overflow-wrap: anywhere; }
+.version { font: var(--is-typography-metadata); color: var(--is-color-text-supporting); overflow-wrap: anywhere; }
+.summary { display: inline-flex; gap: var(--is-space-3); align-items: center; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+@media (forced-colors: active) { .skeletonCard, .skeletonRow { border: var(--is-border-width-1) solid CanvasText; } }

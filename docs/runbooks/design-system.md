@@ -82,6 +82,11 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
 - **Bleed:** reference stories set `parameters.designSystem.bleed` so the room reaches the viewport edge.
 - **No dead controls:** navigation between reference screens uses real story links. Rooms outside the reference set lead to an honest page saying so.
 - **Demonstration label:** every reference room shows `DemonstrationLabel` in its header or chrome, never over a card.
+- **Deckbuilder:** `DeckWorkspace` lays out the catalog (`FilterBar`, `ViewSwitch`, `CatalogResults` with `CatalogTileControls`) and the deck (`DeckPanel` with `DeckHeader`, `DeckList`, `DeckSummary` and `CostCurve`, and a footer for `ValidationSummary` and Save).
+  - **Narrow layouts:** below 64 rem it becomes one pane with Catalog and Deck tabs and a summary bar.
+  - **Inspection:** keep `InspectorHost` mounted in the workspace's inspector slot, so closing returns focus to the originating tile.
+  - **Format values:** the deck size, copy limit, ink limit and rotation come from the story's format record (`stories/support/reference/deck.ts`), never from components.
+  - **Import and export:** `ImportPreview` reports unresolved lines before anything changes, and `ExportDialog` requires an explicit format.
 
 ## Raw values
 

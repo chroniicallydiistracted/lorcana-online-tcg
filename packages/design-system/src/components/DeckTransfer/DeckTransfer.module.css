@@ -1,0 +1,13 @@
+.preview { display: flex; flex-direction: column; gap: var(--is-space-4); }
+.summary { margin: 0; font: var(--is-typography-body-strong); }
+.lines { display: flex; flex-direction: column; gap: var(--is-space-2); margin: 0; padding: 0; list-style: none; }
+.line { display: flex; align-items: flex-start; gap: var(--is-space-2); }
+.line svg { flex: none; margin-block-start: var(--is-border-width-2); }
+.line[data-status="unresolved"] { color: var(--is-color-feedback-warning-foreground); }
+.lineText { display: flex; flex-direction: column; min-inline-size: 0; }
+.source { font: var(--is-typography-body); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.outcome { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); overflow-wrap: anywhere; }
+.line[data-status="unresolved"] .outcome { color: inherit; }
+.export { display: flex; flex-direction: column; gap: var(--is-space-6); }
+.formatNote { display: block; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.copyState { margin-inline-end: auto; align-self: center; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
