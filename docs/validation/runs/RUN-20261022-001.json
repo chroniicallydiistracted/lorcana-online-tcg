@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261022-001",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "-s",
+    "docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "01dca8a569ececba514236abd698af0e4422079e",
+  "source_fingerprint": "256dd89d31eaa4d8a1594339dd40ec23c3f40a54b45af3d2fa2bb53197396e99",
+  "started_at": "2026-10-22T01:06:01.833Z",
+  "finished_at": "2026-10-22T01:06:38.275Z",
+  "recorded_at": "2026-10-22T01:06:38.275Z",
+  "time_precision": "exact",
+  "elapsed_ms": 36444,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "docs:check over the workspace documentation alignment (CHG-20261022-001)",
+  "log_path": "docs/validation/logs/RUN-20261022-001.txt",
+  "log_sha256": "23ce45ad626b81cc527e3b9eee14926f4501bffa90eafc45c27d73fe998b8d0b",
+  "redactions": 0
+}

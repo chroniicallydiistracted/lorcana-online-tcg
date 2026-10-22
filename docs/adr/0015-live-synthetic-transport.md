@@ -1,6 +1,6 @@
 # ADR0015 — Qualified live synthetic transport and reconnect
 
-Recorded 2026-10-14T23:03:55.758Z. Status: implemented, independently reviewed and locally qualified for synthetic/test-session technical acceptance; see docs/validation/play-03.md. Tasks PLAY-03/DOC-01/02. Requirements R02.001/029/031/032/034, R29.001/002/005, R30.007/009/010/011/015/016. Director retains AUTH-01 separately, using isolated authenticated test sessions; normal admission remains closed.
+Recorded 2026-10-14T23:03:55.758Z. Status: implemented, independently reviewed and locally qualified for synthetic/test-session technical acceptance, and merged to main at 775994a (hosted runs 38681078184 and 38682066872, observed in RUN-20261015-020); see docs/validation/play-03.md. Tasks PLAY-03/DOC-01/02. Requirements R02.001/029/031/032/034, R29.001/002/005, R30.007/009/010/011/015/016. Director retains AUTH-01 separately, using isolated authenticated test sessions; normal admission remains closed.
 
 ## Decision
 

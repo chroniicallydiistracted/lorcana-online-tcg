@@ -1,6 +1,6 @@
 # Foundation CI and artifact operation
 
-Current PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](../validation/play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
+Historical PLAY-03 checkpoint: optional injected-session protocol2 gateway, current-ref durable commands, exact-version participant cache and browser reconnect client are implemented; [qualification and current limits](../validation/play-03.md) govern acceptance. Director keeps AUTH-01 separate; normal startup stays diagnostics-only. Migration0004 is additive, release/artifact closure includes13 workspaces and distinct protocol1/2 handlers. Historical milestone statements/results below describe their dated sources. No ordinary/official/reward/observer/device/production or clock-repair acceptance is implied.
 
 BOOT-03 owns the checked Actions definition and the same local pipeline. Current execution evidence is in [BOOT-03 validation](../validation/boot-03.md); [ADR0005](../adr/0005-ci-artifact-qualification.md) records policies and limitations. No deployment credentials or production publishing are used.
 
@@ -11,6 +11,8 @@ Preserve the existing Dev Container and private data. From `/home/andre/lorcana-
 ```bash
 python3 scripts/ci-local.py --evidence-id RUN-YYYYMMDD-NNN
 ```
+
+For the parallel `design-system` job (decision D18), add `--suite design-system`.
 
 Choose an unused current UTC run ID following [the record format](../CHANGELOG_FORMAT.md). Omit the flag for a throwaway local/Actions execution. The launcher needs host Docker/Compose, Python3 and Git, not host Node, pnpm or Docker inside the workspace. Use a non-root Linux account; application commands run in the committed image. It copies only tracked/non-ignored regular public files plus full Git ancestry. Existing private values are read only for safe current-source and complete Git-blob known-secret comparisons and never copied. Shallow sources are refused. Generated credentials and dependency/browser caches live in the temporary copy. A Dockerfile-only build context excludes repository data.
 

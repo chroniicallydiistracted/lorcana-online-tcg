@@ -77,3 +77,12 @@ Every acquired catalog lists 18 sets through Hyperia City, 29 cards for the beta
 - **No Spanish:** Ravensburger serves no Spanish catalog.
 - **Interim inspector text:** the current inspector stories render printed symbols as words. The card inspector redesign (D24) renders the symbols.
 - **Chromium only:** no other browser or device evidence.
+
+## Hosted run on pull request #6 — 2026-10-22 UTC
+
+Recorded 2026-10-22T01:04:02.074Z (CHG-20261022-001) from public GitHub job metadata; logs and artifacts were not downloaded.
+- **Run 39689564415** (pull request #6, `claude/ux-card-catalog` at 01dca8a), attempt 1, both jobs successful:
+  - `design-system`: 22:52:16–22:55:24Z;
+  - `foundation`: 22:52:16–23:02:39Z.
+- **Merge state:** main is 7a9e757 and does not yet contain this work. Main moves to the tested tip of this branch only when the Director asks.
+- **Advisory:** main still pins Storybook 10.6.1, so a new run on main fails the dependency advisory check (GHSA-f2ph-cmg5-wxc8) until this branch lands.

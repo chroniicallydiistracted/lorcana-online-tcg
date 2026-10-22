@@ -1,8 +1,9 @@
 # Developer handoff
 
-Observed at: 2026-10-21T22:28:45.196Z (record time of CHG-20261021-005); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes on branch `claude/ux-card-catalog`:
+Observed at: 2026-10-22T01:04:02.074Z (record time of CHG-20261022-001); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes on branch `claude/ux-card-catalog`:
 - CHG-20261021-004: decisions D24–D26 and the owed hosted runs, committed as 8ef329c.
-- CHG-20261021-005: official card catalog, real-card stories, card tile and Storybook 10.6.2, finalized with this checkpoint.
+- CHG-20261021-005: official card catalog, real-card stories, card tile and Storybook 10.6.2, committed as 01dca8a.
+- CHG-20261022-001: workspace documentation aligned with the current state and the pull request #6 hosted run recorded, finalized with this checkpoint.
 
 Earlier UX-01 changes CHG-20261020-004 to CHG-20261021-003 are finalized and on main.
 
@@ -42,10 +43,12 @@ Earlier UX-01 changes CHG-20261020-004 to CHG-20261021-003 are finalized and on 
   - RUN-20261021-018, passed: isolated foundation pipeline, 14 stages in 562 s.
   - RUN-20261021-019, passed: full-catalog audit against the raw cache.
   - RUN-20261021-020: static `docs:check`.
+  - **Hosted:** run 39689564415 on pull request #6 passed both jobs at 01dca8a (public metadata).
+  - **Documentation alignment (CHG-20261022-001):** documentation only, so the fingerprint and the receipts above stand; RUN-20261022-001 is its static `docs:check`.
 - **Review material:** the UX review screenshots, the visual-check captures and their scripts are in the ignored `.local/ux-review-2026-10-21/`. The raw catalogs are in `.local/catalog/ravensburger/`. None is committed.
 - **Listeners/resources:** no owned processes or listeners remain. `.env.local`, `.local/database.json`, the database volume and the Director's root file `inkspire-interface-typography.png` are untouched. No host setting changed.
 - **Pending gates:**
-  - the hosted run of this branch, then a main push by or at the request of the Director;
+  - a main push of this branch's tested tip, by or at the request of the Director;
   - the card inspector (D24), the Interactive Card Viewer and CardFX;
   - UX-01 reference screens and their approval;
   - UX-02 device and browser qualification and manual accessibility journeys;
@@ -55,9 +58,8 @@ Earlier UX-01 changes CHG-20261020-004 to CHG-20261021-003 are finalized and on 
   - PLAY-04 open items;
   - AUTH-01.
 - **Next actions:**
-  1. **Agent:** push `claude/ux-card-catalog`, open its pull request and check both hosted jobs.
-  2. **Director:** push the tested tip to main, or ask the agent to. Main's next run would otherwise fail the Storybook advisory.
-  3. **Agent:** design and build the enhanced card inspector from scratch on real cards (D24):
+  1. **Director:** push the tested tip of `claude/ux-card-catalog` (pull request #6) to main, or ask the agent to. Main's next run would otherwise fail the Storybook advisory.
+  2. **Agent:** design and build the enhanced card inspector from scratch on real cards (D24):
      - rules text with printed symbols;
      - finishes and the printings rail;
      - official FAQ rulings;

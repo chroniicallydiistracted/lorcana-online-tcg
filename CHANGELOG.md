@@ -2,6 +2,80 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-001 — Align workspace documentation with the current state and record the pull request #6 hosted run
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T01:04:02.074Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 01dca8a569ececba514236abd698af0e4422079e
+- Tasks: DOC-01, DOC-02, UX-01, UX-03, PLAY-03, PLAY-04, CONTENT-01
+- Features: F-DOCS
+- Requirements: R20.001, R20.002, R20.003, R20.004, R20.007, R20.008, R20.009, R20.010, R20.011
+
+### Changes
+
+- **review:** Workspace documentation review against the current state: main 7a9e757; pull request #6 (claude/ux-card-catalog, 01dca8a) with CHG-20261021-004/005; decisions through D26. Found: a 'Current PLAY-04 D13' banner in 20 documents still saying main was untouched and the audit and hosted CI pending, although PLAY-04 was audited and merged at 9081192 (CHG-20261020-003); 'Current PLAY-03 checkpoint' banners in 12 documents; UX-01 status paragraphs opening with superseded facts (46 components, Storybook 10.6.1, card-face fonts not imported); a root README that still called the design system deferred, had no rules-data row and miscounted workspaces; ADR 0015 and 0016 status lines without their merges; a documentation index without the PLAY-03, PLAY-04 and design-system entries; CONTENT-01 and the R20 catalog requirements without the links ADR 0018 states; and an unrecorded hosted run.
+- **review:** Hosted run 39689564415 on pull request #6 at 01dca8a recorded from public job metadata: attempt 1, design-system 22:52:16–22:55:24Z and foundation 22:52:16–23:02:39Z, both successful. Main is 7a9e757 and does not yet contain this work.
+- **documentation:** Banners replaced with the current PLAY-04 state in 20 documents (each keeps its own link path) and the PLAY-03 banner relabelled historical in 12; UX-01 status paragraphs rewritten as the current state with a dated merge-state sentence; root README ownership, commands, workspace count, build-script and CI wording; ADR 0015 and 0016 statuses; three index rows; the CI runbook's design-system flag; CONTENT-01 precursor status and R20 links (statuses unchanged); the handoff.
+- **review:** Not changed, with reasons: ADR bodies keep their original decisions with dated amendments (ADR 0017 still reads 46 components and Storybook 10.6.1 in its decision text, superseded by its amendments); dated validation sections, change records and run logs are append-only; the Director's vision documents (blueprint, UX/UI standard) keep their planned versions; the diagnostic web page's synthetic Babylon cards carry no card data and belong to BOOT-01.
+
+### Verification
+
+- **passed:** docs:check over this record and every updated document (static); source fingerprint 256dd89d, unchanged from RUN-20261021-014. ([evidence](docs/validation/runs/RUN-20261022-001.json))
+
+### Documentation and files
+
+- **updated:** [AGENTS.md](AGENTS.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record. The UX-01 status paragraph is rewritten as the current state (47 components, card-face fonts integrated, Storybook 10.6.2, rules-data catalog, D24–D26) with a dated merge-state sentence; its superseded opening facts remain in the dated validation records.
+- **updated:** [README.md](README.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record. Same UX-01 paragraph as AGENTS.md. Ownership table: the design-system row (was "full design system deferred") and a new rules-data row. Commands: design-system and rules-data rows. The lockfile covers the root plus fourteen workspaces (was twelve). The build-script sentence reflects allowBuilds denying esbuild. The CI paragraph names both isolated suites.
+- **updated:** [apps/match-service/README.md](apps/match-service/README.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/README.md](docs/README.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record. Same UX-01 paragraph as AGENTS.md. The index gains rows for live matches (PLAY-03), game clocks (PLAY-04) and the design system, which it did not list.
+- **updated:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/contracts/release.md](docs/contracts/release.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/runbooks/database.md](docs/runbooks/database.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/validation/play-01.md](docs/validation/play-01.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/validation/play-02.md](docs/validation/play-02.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/validation/play-03.md](docs/validation/play-03.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [packages/contracts/README.md](packages/contracts/README.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [packages/db/README.md](packages/db/README.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — The stale "Current PLAY-04 D13" banner (main untouched, audit and hosted CI pending) is replaced with the current state: audited, accepted and merged at 9081192, D15, and the open items listed in the latest PLAY-04 record.
+- **updated:** [apps/web/README.md](apps/web/README.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/adr/0013-durable-synthetic-match-commands.md](docs/adr/0013-durable-synthetic-match-commands.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/adr/0014-viewer-projection-privacy.md](docs/adr/0014-viewer-projection-privacy.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/contracts/viewer.md](docs/contracts/viewer.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it. The run section adds the design-system suite flag (D18).
+- **updated:** [docs/runbooks/viewer-privacy.md](docs/runbooks/viewer-privacy.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — The stale "Current PLAY-03 checkpoint" banner is relabelled "Historical PLAY-03 checkpoint", as 16 other documents already label it.
+- **updated:** [docs/adr/0015-live-synthetic-transport.md](docs/adr/0015-live-synthetic-transport.md) — Status line records the PLAY-03 merge at 775994a (RUN-20261015-020).
+- **updated:** [docs/adr/0016-durable-engine-clocks.md](docs/adr/0016-durable-engine-clocks.md) — Status line: audited and accepted and merged with D13 (was "Director audit/publication separate").
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — CONTENT-01 records the catalog snapshot as precursor work with evidence links (was pending with none); editor and activation still pending.
+- **updated:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R20.001–004 and R20.007–011 link CONTENT-01 and the card catalog validation as a data foundation only, matching ADR 0018; statuses unchanged.
+- **updated:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Dated section: hosted run 39689564415 on pull request #6 and the merge state.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Updated for CHG-20261022-001: the pull request is open with a passing hosted run; the next action is the Director's main push, then the inspector.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs sync.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs sync.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-001.json).
+
+### Limits and next actions
+
+- Documentation only: no source file changes, so the source fingerprint and the CHG-20261021-005 receipts (RUN-20261021-014, 016, 018, 019 at 256dd89d) stand.
+- The pull request's new tip needs its own hosted run before main moves.
+- Push to pull request #6 and check both hosted jobs; the Director pushes the tested tip to main or asks the agent to.
+- Then the card inspector from scratch (D24).
+
 ## CHG-20261021-005 — Official Ravensburger card catalog in rules-data, real-card stories, the card tile (D25, D26) and Storybook 10.6.2
 
 - Status: finalized
