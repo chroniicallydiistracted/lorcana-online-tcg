@@ -30,7 +30,7 @@
     },
     {
       "file": "tokens/component/component.tokens.json",
-      "sha256": "75be6ac062520cb858230d50931c3282412a3f9b8dde1d30a96c89f04508d387"
+      "sha256": "d4f31717da06e253e9ed58b1d91a0bf59f4fb7ff3b3a45e4ce2addc32dbe03b9"
     },
     {
       "file": "tokens/card/card.tokens.json",
@@ -1820,6 +1820,66 @@
       "values": {
         "paper": "400 1.25rem/1.75rem \"Brandon Text Cond\", \"Card Text Fallback\", \"Source Sans 3 Fallback\", sans-serif",
         "ink": "400 1.25rem/1.75rem \"Brandon Text Cond\", \"Card Text Fallback\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "component.pack.perspective",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Perspective distance for the card turn during a reveal: shallow, so the turn reads as card stock rather than a spin.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-perspective",
+      "values": {
+        "paper": "60rem",
+        "ink": "60rem"
+      }
+    },
+    {
+      "path": "component.pack.product",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Width of a product to open, with its artwork slot.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-product",
+      "values": {
+        "paper": "20rem",
+        "ink": "20rem"
+      }
+    },
+    {
+      "path": "component.pack.reveal-max",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Maximum width of the reveal stage, so two rows of six cards and the controls fit a 900 px tall desktop viewport.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-reveal-max",
+      "values": {
+        "paper": "66rem",
+        "ink": "66rem"
+      }
+    },
+    {
+      "path": "component.pack.summary-card",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Card width in the opening summary.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-summary-card",
+      "values": {
+        "paper": "5rem",
+        "ink": "5rem"
+      }
+    },
+    {
+      "path": "component.pack.summary-item",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum column of the opening summary.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-summary-item",
+      "values": {
+        "paper": "18rem",
+        "ink": "18rem"
       }
     },
     {

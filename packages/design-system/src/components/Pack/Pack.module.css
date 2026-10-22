@@ -1,0 +1,36 @@
+@value wide from "../../generated/layout.module.css";
+
+.product { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--is-space-4); max-inline-size: var(--is-component-pack-product); padding: var(--is-space-4); border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-component-surface-radius); background: var(--is-color-surface); }
+.productArt { position: relative; aspect-ratio: 5 / 7; /* token-exception: booster wrapper proportion */ border: var(--is-border-width-1) solid var(--is-color-border-decorative); border-radius: var(--is-component-surface-radius); background: var(--is-color-surface-raised); }
+.productBody { display: flex; flex-direction: column; align-items: flex-start; gap: var(--is-space-2); }
+.productName { margin: 0; color: var(--is-color-text-primary); font: var(--is-typography-subsection); }
+.productMeta { margin: 0 0 var(--is-space-2); color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+
+.reveal { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--is-space-6) var(--is-space-4); inline-size: 100%; max-inline-size: var(--is-component-pack-reveal-max); margin: 0 auto; padding: 0; list-style: none; perspective: var(--is-component-pack-perspective); }
+@media wide { .reveal { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.slot { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: var(--is-space-2); }
+.card { border-radius: 5.5% / 4%; /* token-exception: physical card corner */ }
+.slot[data-revealed] .card { animation: turn var(--is-motion-major) var(--is-motion-ease); }
+@keyframes turn { from { transform: rotateY(calc(90deg * var(--is-motion-distance-scale))); opacity: 0; } }
+.slot[data-beat]::before { content: ""; position: absolute; inset: calc(var(--is-space-6) * -1); z-index: -1; /* token-exception: the light sits behind the card, never over it */ border-radius: var(--is-component-surface-radius); opacity: 0.75; animation: beat var(--is-motion-reward-beat-max) var(--is-motion-ease); }
+@keyframes beat { 0% { opacity: 0; } 60% { opacity: 1; } 100% { opacity: 0.75; } }
+.slot[data-beat][data-ink="amber"]::before { background: radial-gradient(closest-side, color-mix(in srgb, var(--is-color-identity-amber) 45%, transparent), transparent); /* token-exception: rarest-beat light from the card's ink identity (§23, effects may use ink accents) */ }
+.slot[data-beat][data-ink="amethyst"]::before { background: radial-gradient(closest-side, color-mix(in srgb, var(--is-color-identity-amethyst) 45%, transparent), transparent); /* token-exception: rarest-beat light from the card's ink identity (§23, effects may use ink accents) */ }
+.slot[data-beat][data-ink="emerald"]::before { background: radial-gradient(closest-side, color-mix(in srgb, var(--is-color-identity-emerald) 45%, transparent), transparent); /* token-exception: rarest-beat light from the card's ink identity (§23, effects may use ink accents) */ }
+.slot[data-beat][data-ink="ruby"]::before { background: radial-gradient(closest-side, color-mix(in srgb, var(--is-color-identity-ruby) 45%, transparent), transparent); /* token-exception: rarest-beat light from the card's ink identity (§23, effects may use ink accents) */ }
+.slot[data-beat][data-ink="sapphire"]::before { background: radial-gradient(closest-side, color-mix(in srgb, var(--is-color-identity-sapphire) 45%, transparent), transparent); /* token-exception: rarest-beat light from the card's ink identity (§23, effects may use ink accents) */ }
+.slot[data-beat][data-ink="steel"]::before { background: radial-gradient(closest-side, color-mix(in srgb, var(--is-color-identity-steel) 45%, transparent), transparent); /* token-exception: rarest-beat light from the card's ink identity (§23, effects may use ink accents) */ }
+.labels { display: flex; flex-wrap: wrap; align-items: center; gap: var(--is-space-1); min-block-size: var(--is-space-6); }
+.rarity { color: var(--is-color-text-primary); font: var(--is-typography-metadata); }
+.controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--is-space-3); inline-size: 100%; max-inline-size: var(--is-component-pack-reveal-max); margin-inline: auto; box-sizing: border-box; padding: var(--is-space-3) var(--is-space-4); border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-component-surface-radius); background: var(--is-color-surface); }
+.progress { margin: 0; color: var(--is-color-text-primary); font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; }
+.buttons { display: flex; flex-wrap: wrap; gap: var(--is-space-2); }
+.summary { display: flex; flex-direction: column; gap: var(--is-space-4); }
+.summaryLead { margin: 0; color: var(--is-color-text-primary); font: var(--is-typography-critical); }
+.summaryGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--is-component-pack-summary-item), 1fr)); gap: var(--is-space-4); margin: 0; padding: 0; list-style: none; }
+.summaryItem { display: grid; grid-template-columns: var(--is-component-pack-summary-card) minmax(0, 1fr); align-items: start; gap: var(--is-space-3); }
+.summaryCard { min-inline-size: 0; }
+.summaryText { display: flex; flex-direction: column; align-items: flex-start; gap: var(--is-space-1); min-inline-size: 0; }
+.summaryName { color: var(--is-color-text-primary); font: var(--is-typography-body-strong); overflow-wrap: break-word; }
+.summaryVersion { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); overflow-wrap: break-word; }
+@media (forced-colors: active) { .slot[data-beat]::before { background: none; outline: var(--is-border-width-2) solid Highlight; } .controls, .product { border-color: CanvasText; } }

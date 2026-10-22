@@ -78,9 +78,11 @@ function CollectionReference({ holdings: mode = 'partial', page: startPage = 1, 
 }
 
 export const Documentation: Story = { parameters: { designSystem: { bleed: false } }, render: () => <DocPage docs={[binderDoc, binderPocketDoc, pocketGridDoc, completionSummaryDoc, inspectorLayoutDoc]} /> };
-export const PartiallyOwned: Story = {
+/** Takes a page argument so "View in Collection" links from pack opening land on the card's page. */
+export const PartiallyOwned: StoryObj<{ page: number }> = {
+  args: { page: 1 },
   parameters: { designSystem: { coverage: { Binder: ['two faces', 'first page'], BinderPocket: ['owned', 'owned foil', 'missing', 'padding'], CompletionSummary: ['partial'], InspectorLayout: ['closed'] } } },
-  render: () => <CollectionReference />,
+  render: ({ page }) => <CollectionReference page={page} />,
 };
 export const NewPlayer: Story = { parameters: { designSystem: { coverage: { CompletionSummary: ['none owned'] } } }, render: () => <CollectionReference holdings="new" /> };
 export const OwnershipUnavailable: Story = { parameters: { designSystem: { coverage: { BinderPocket: ['unavailable'], CompletionSummary: ['unavailable'] } } }, render: () => <CollectionReference holdings="unavailable" /> };

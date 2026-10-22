@@ -102,3 +102,5 @@ export { ImportPreview, ExportDialog } from './components/DeckTransfer/DeckTrans
 export type { ImportLine, ExportFormat, ExportDialogProps } from './components/DeckTransfer/DeckTransfer.tsx';
 export { Binder, BinderPocket, PocketGrid, CompletionSummary } from './components/Binder/Binder.tsx';
 export type { BinderProps, BinderPage, BinderPocketProps, PocketState, PocketGridProps, CompletionSummaryProps } from './components/Binder/Binder.tsx';
+export { ProductChoice, RevealCard, PackReveal, RevealControls, OpeningSummary } from './components/Pack/Pack.tsx';
+export type { ProductChoiceProps, RevealSlot, RevealCardProps, PackRevealProps, RevealControlsProps, OpeningSummaryProps } from './components/Pack/Pack.tsx';

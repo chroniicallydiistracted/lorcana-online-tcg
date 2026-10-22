@@ -10,6 +10,7 @@ Observed at: 2026-10-22T06:31:38.935Z (record time of CHG-20261022-004); display
   - CHG-20261022-007: task 3, the room frame (navigation bar, account menu, room header, demonstration label, ink-form slots).
   - CHG-20261022-008: task 4, the deckbuilder.
   - CHG-20261022-009: task 5, the Collection binder (with records for all 242 Hyperia City printings).
+  - CHG-20261022-010: task 6, pack opening.
 
 Earlier changes through CHG-20261022-001 are finalized and on main.
 

@@ -351,3 +351,26 @@ The Director approved the full UX-01 design for end-to-end completion. The build
   - **Receipts:**
     - RUN-20261022-022: fixture tests and `catalog:verify`;
     - RUN-20261022-023: gates and the full Chromium suite, 290/290.
+- **Task 6, pack opening (CHG-20261022-010):**
+  - **Components (Experimental):** `ProductChoice`, `RevealCard`, `PackReveal`, `RevealControls` and `OpeningSummary`; the review reuses `Confirmation`.
+  - **Tokens and strings:** `pack.product`, `pack.perspective`, `pack.summary-item`, `pack.summary-card` and `pack.reveal-max`; 15 component strings.
+  - **Behaviour:**
+    - real face-down cards using the official back;
+    - a card turn in the major-motion duration, direct under reduced motion;
+    - a rarest beat of light from Powerline's Amber identity, behind the card, within 900 ms, and a Highlight outline in forced colours;
+    - announcements per revealed card;
+    - "New" derived from the same demonstration holdings as the binder (6 of 12).
+  - **Reference stories:** product choice and review, review, pending, mid-reveal (5 of 12), rarest beat, summary, interrupted and resumed, presentation failure, settlement pending, reduced motion and none held.
+  - **Visual review:**
+    - at 1440 × 900 the second row of cards fell below the fold; the reveal stage is now capped at 66 rem;
+    - the beat reads as restrained light in Ink and Paper.
+  - **Defect found by the new tests, fixed before the receipt:** the review dialog's close reset the flow to the product choice after confirming, so the pending state never showed.
+  - **Browser tests:** seven pack tests:
+    - the flow, with pending showing no percentage;
+    - keyboard reveal with focus kept and an announcement;
+    - skip reaching the summary, with page-anchored Collection links;
+    - resume in the same order;
+    - the beat behind the last card only, and reduced motion;
+    - failure and pending settlement;
+    - tablet portrait in three rows of four.
+  - **Receipt:** RUN-20261022-026 passes the gates and the full Chromium suite, 332/332.

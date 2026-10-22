@@ -2,6 +2,69 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-010 — UX-01 task 6: the pack-opening reference
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T15:40:38.796Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 7339c74b6548de66360c5fc03dfbd8b5437f2c5a
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 6 (standard §23, design screen 4): ProductChoice (held product with a quiet artwork slot; opening is free and never a purchase), RevealCard (face down with the official card back, then the card with rarity, Foil and New as text; a card turn in the major-motion duration; the rarest beat as light from the card's ink identity behind the card within the reward-beat token, with a forced-colours outline), PackReveal (ordered list, six columns from 64 rem and four below), RevealControls (Reveal next, Reveal all and Skip to summary, none waiting on decoration) and OpeningSummary (every card with labels, the new-card count and per-card View in Collection links, withheld with a reason while settlement is pending). Component tokens pack.product, pack.perspective, pack.summary-item, pack.summary-card and pack.reveal-max; 15 component strings.
+- **implementation:** stories/support/reference/pack.ts: the fixture's 12-card demonstration pack in reveal order (6 common, 3 uncommon, a Rare, the King Louie foil and Powerline – Megastar, Legendary, last), with New derived from the binder's demonstration holdings. Packs.stories.tsx composes the flow (choose, Confirmation review, indeterminate pending, reveal with announcements, summary) and stories for every design state plus none held; the Collection story takes a page argument so summary links land on each card's page.
+- **test:** Seven pack browser tests in reference.spec.ts. One defect they found was fixed before the receipt: the review dialog's close reset the flow after confirming, so pending never showed. RUN-20261022-026 passes the gates and 332/332 Chromium tests.
+- **review:** Visual review at 1440 x 900 (Paper and Ink) and 820 x 1180 found the second card row below the fold; the reveal stage is capped at 66 rem so both rows fit. The rarest beat reads as restrained light behind the card in both themes. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Design-system runbook (pack opening) and validation (task 6).
+
+### Verification
+
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 332/332 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-026.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-027.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-028.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the pack-opening flow, the beat's limits and the honest failure and settlement states.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 6, review findings, the test-found defect and the receipt.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment is scheduled for task 9.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The pack uses fixture printings through the documented exports.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Catalog evidence is unchanged.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — The flow never implies a purchase; the card back and card images keep their provenance and the takedown fallback.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-010.json).
+
+### Limits and next actions
+
+- Pack contents are a demonstration composition, not the official distribution; no economy or settlement service is involved (ECON-02, WEB-03).
+- Task 7 of the implementation plan: the crowded match, Flat tier.
+
 ## CHG-20261022-009 — UX-01 task 5: the Collection binder reference
 
 - Status: finalized

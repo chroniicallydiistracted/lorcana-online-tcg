@@ -262,3 +262,69 @@ test.describe('collection binder', () => {
     await expect(binder(page).getByRole('button', { name: /Max Goof – Music Lover/ })).toBeFocused();
   });
 });
+
+test.describe('pack opening', () => {
+  const live = (page: Page) => page.locator('[aria-live="polite"]').first();
+  test('choose, review, pending without a percentage, then twelve face-down cards', async ({ page }) => {
+    await open(page, 'reference-screens-pack-opening--product-choice-and-review');
+    await page.getByRole('button', { name: 'Open booster' }).click();
+    const review = page.getByRole('alertdialog', { name: 'Open 1 Hyperia City booster?' });
+    await expect(review).toContainText('The contents are decided when you open it and saved to your collection.');
+    await review.getByRole('button', { name: 'Open booster' }).click();
+    const progress = page.getByRole('progressbar', { name: 'Opening your booster' });
+    await expect(progress).toBeVisible();
+    await expect(progress).not.toHaveAttribute('aria-valuenow');
+    await expect(page.getByRole('img', { name: /face down$/ })).toHaveCount(12);
+  });
+  test('Reveal next works from the keyboard, keeps focus and announces the card; Reveal all never waits', async ({ page }) => {
+    await open(page, 'reference-screens-pack-opening--mid-reveal');
+    const next = page.getByRole('button', { name: 'Reveal next' });
+    await next.focus(); await page.keyboard.press('Enter');
+    await expect(next).toBeFocused();
+    await expect(live(page)).toHaveText('Card 6 of 12: Daisy Duck – Savvy Investor, Common, New.');
+    await page.keyboard.press('Space');
+    await expect(page.getByText('7 of 12 revealed')).toBeVisible();
+    await page.getByRole('button', { name: 'Reveal all' }).click();
+    await expect(page.getByText('12 of 12 revealed')).toBeVisible();
+  });
+  test('Skip to summary always reaches the summary with every card, its labels and Collection links', async ({ page }) => {
+    await open(page, 'reference-screens-pack-opening--mid-reveal');
+    await page.getByRole('button', { name: 'Skip to summary' }).click();
+    const summary = page.getByRole('region', { name: 'Opening summary' });
+    await expect(summary.getByRole('listitem')).toHaveCount(12);
+    await expect(summary).toContainText('6 new cards in this opening of 12');
+    await expect(summary.getByRole('link', { name: 'View in Collection: Powerline – Megastar' })).toHaveAttribute('href', /args=page:2/);
+  });
+  test('resume shows the same contents in the same order', async ({ page }) => {
+    await open(page, 'reference-screens-pack-opening--interrupted-and-resumed');
+    const revealed = await page.getByRole('list', { name: 'Cards in this opening' }).getByRole('group').evaluateAll(els => els.map(e => e.getAttribute('aria-label')));
+    expect(revealed).toEqual(['Card 1 of 12: Abuelita – Loving Grandmother, Common', 'Card 2 of 12: Priya Mangal – Immovable Fan, Common', 'Card 3 of 12: Mr. Manchas – Service with a Smile, Common, New', 'Card 4 of 12: Cinderella – Homespun Dressmaker, Common', 'Card 5 of 12: Abigail & Amelia – Gossiping Geese, Common, New']);
+    await page.getByRole('button', { name: 'Continue from card 6' }).click();
+    await page.getByRole('button', { name: 'Reveal next' }).click();
+    await expect(page.getByRole('group', { name: /^Card 6 of 12: Daisy Duck/ })).toBeVisible();
+  });
+  test('the rarest beat is light behind the last card only; reduced motion reveals directly', async ({ page }) => {
+    await open(page, 'reference-screens-pack-opening--rarest-beat');
+    const beat = page.locator('[data-beat]');
+    await expect(beat).toHaveCount(1);
+    await expect(beat).toHaveAttribute('aria-label', 'Card 12 of 12: Powerline – Megastar, Legendary');
+    expect(await beat.evaluate(el => getComputedStyle(el, '::before').zIndex)).toBe('-1');
+    await open(page, 'reference-screens-pack-opening--reduced-motion', 'theme:paper;motion:reduced');
+    expect(await page.locator('[data-revealed] > div').first().evaluate(el => getComputedStyle(el).animationDuration)).toBe('0s');
+  });
+  test('a presentation failure keeps the contents as text; pending settlement withholds Collection links and says why', async ({ page }) => {
+    await open(page, 'reference-screens-pack-opening--presentation-failure');
+    await expect(page.getByText('The reveal could not be shown.')).toBeVisible();
+    await expect(page.getByRole('main').locator('ol li')).toHaveCount(12);
+    await open(page, 'reference-screens-pack-opening--settlement-pending');
+    await expect(page.getByText('Updating your collection')).toBeVisible();
+    await expect(page.getByRole('link', { name: /View in Collection/ })).toHaveCount(0);
+  });
+  test('tablet portrait shows three rows of four with the controls in reach', async ({ page }) => {
+    await page.setViewportSize({ width: 820, height: 1180 });
+    await open(page, 'reference-screens-pack-opening--mid-reveal');
+    const columns = await page.getByRole('list', { name: 'Cards in this opening' }).evaluate(el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
+    expect(columns).toBe(4);
+    await expect(page.getByRole('button', { name: 'Reveal next' })).toBeInViewport();
+  });
+});

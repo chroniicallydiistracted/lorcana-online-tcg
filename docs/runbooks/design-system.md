@@ -93,6 +93,10 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **Completion:** `CompletionSummary` uses the standard printings as its denominator and keeps special printings and foils apart.
   - **Inspection:** place the inspector with `InspectorLayout`, keeping the host mounted.
   - **Data:** the binder pages come from `stories/support/reference/binder.ts`. Ownership there is demonstration data on printings with images only.
+- **Pack opening:** `ProductChoice` → `Confirmation` review → indeterminate `ProgressBar` while pending → `PackReveal` with `RevealControls` → `OpeningSummary`.
+  - **Reveal order:** builds to the rarest. The rarest card's light comes from its ink identity, sits behind the card and stays within the reward-beat token.
+  - **Nothing waits:** Skip to summary and Reveal all always work.
+  - **Text alternatives:** rarity, Foil and New are text. A presentation failure lists the contents as text, and pending settlement withholds Collection links and says why.
 
 ## Raw values
 

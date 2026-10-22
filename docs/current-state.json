@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-22T15:32:38.782Z",
+  "observed_at": "2026-10-22T15:44:58.822Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2356,7 +2356,8 @@
     "CHG-20261022-006",
     "CHG-20261022-007",
     "CHG-20261022-008",
-    "CHG-20261022-009"
+    "CHG-20261022-009",
+    "CHG-20261022-010"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2439,9 +2440,10 @@
     "CHG-20261022-006": "finalized",
     "CHG-20261022-007": "finalized",
     "CHG-20261022-008": "finalized",
-    "CHG-20261022-009": "finalized"
+    "CHG-20261022-009": "finalized",
+    "CHG-20261022-010": "finalized"
   },
-  "source_fingerprint": "b6a332194b1d481ef0f1582a0fcc8b293d7aa58b86d84cdab253eb07cf0c9be3",
+  "source_fingerprint": "bf61d3b5a8529d2cc313cdbc4012e6bfbc800fa3393e312ba07ea7dc21a8daff",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2520,7 +2522,7 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "db1dc561195d25595eadc89938c6c4c5aafe6cddf72294122fb7a706baf9bd7e",
-    "docs/HANDOFF.md": "8f7af5f08fc7dae467c90481b47c99b8a18485a48a0c7a795602405c735a83be",
+    "docs/HANDOFF.md": "74f97d5e8e7798091a4006e48037678222b895f8a4f24ba0617d1cabddb6ebfb",
     "docs/README.md": "9b3c231f484b7584b95abd576c50b01097f13f62b985cc9d5eb901c1073c182f",
     "docs/WORKSPACE_QUALIFICATION.md": "1062a43ab8ab90446a9f2577996b7ce3bba66e0c7760033ae017fab4f882d44b",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
@@ -2550,7 +2552,7 @@
     "docs/contracts/release.md": "e7f32ac1b56bb03ef8231e16f482f7e33fe7c4d5aee5b933926c9d99baa1a752",
     "docs/contracts/viewer.md": "93f10a76fb0069fbfb6e91a7825286de1fccdec2ff3413c03fc9cf39ea5c8e97",
     "docs/documentation-map.json": "ddd567e964245dc961d0edb76dd6fd024075a2a18f2f156e093086b3159fa948",
-    "docs/features.json": "6b7ac87a3e16bf1046566acc18cf49555eb16ddd55c6406b2446a34929906a3d",
+    "docs/features.json": "16add5c9691f2ea98a3548611415cb02dde84d00fbeaa7cbad740efb8f8403cd",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "739e9ebaef44a82acd3caf79b5f219d1f220e348c738e16effe0f6c6d91e075b",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2607,7 +2609,7 @@
     "docs/runbooks/card-catalog.md": "c09a003f280c4c66898129cdfc6df6887ad0be54110e54d4ad5aed3547b54f21",
     "docs/runbooks/ci.md": "fc39ead494febc8c5eedf26202af5805649085c5405ff70393762a7121eb76ea",
     "docs/runbooks/database.md": "ad8f7dec52c796afad51958dcb5fecb97e8f902ab980ac7d0392a7b357d0405a",
-    "docs/runbooks/design-system.md": "056db8f7a864b4867a914b60a28e2c17fda186dd58f774e7a97929f1d2a8b93b",
+    "docs/runbooks/design-system.md": "9064af5cc78427afcd82aa46f2c5900a57d98d36f2b2fc7598fb89ae735e013a",
     "docs/runbooks/engine.md": "4b622d50192cde4c6e7a24adcbeb2f8ce2814439c59b247945a18cf6381eb2c1",
     "docs/runbooks/game-clocks.md": "ccf0c0118c869330a034a81073822981dcc15cfc1061981e8eaaf45de8f7c9fc",
     "docs/runbooks/live-matches.md": "821226c33cf5b895b36701549db5eb4d2d0a9d755b6303912ddf8bd3c49af46c",
@@ -2712,7 +2714,7 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "31bcd14a2931022a0ee044b51e91db0e262775d11ddb324638a9c36beba31876",
+    "docs/validation/ux-design-system.md": "f5c96d48fc4e202d760d57c03a05ded6cd81594a8ea4b3393d64bbe45660de35",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
@@ -2946,6 +2948,10 @@
     "packages/design-system/src/components/NavigationBar/NavigationBar.module.css": "b0d9812fc4b9da8930c6dff6ceacb5e90d8cc5b808d057d384e3c65909bbbde0",
     "packages/design-system/src/components/NavigationBar/NavigationBar.module.d.css.ts": "57f78f2d08b19a5c860a9de04aa89b06b54f30d2f5c357388bdca554775ae1ca",
     "packages/design-system/src/components/NavigationBar/NavigationBar.tsx": "76344683b44f1145ff9f8b1d200b621b5c277825f558e4fbaf47556652bbcb77",
+    "packages/design-system/src/components/Pack/Pack.docs.ts": "e57cc45a69440f67feb827f3748618aef37fdfac696a1432fdf99cb9e37ee2ff",
+    "packages/design-system/src/components/Pack/Pack.module.css": "bfae4f9b6053215e187fe927a45f3388fc6478325114ce37539f45c5c754981e",
+    "packages/design-system/src/components/Pack/Pack.module.d.css.ts": "dfede23acd17411ea601c84fca09e8cfaa2d683d898c8cacc835b3f37995afbb",
+    "packages/design-system/src/components/Pack/Pack.tsx": "4ca6da7aa88dd91c30868ae7120e782e9d11ce85abc9fb2d93b5ae1e7272e770",
     "packages/design-system/src/components/Popover/Popover.docs.ts": "39e2e6712c345049e9d6834b018c1c3c8991fc1fb87bd320cbfb9a66605185f6",
     "packages/design-system/src/components/Popover/Popover.module.css": "79c646295a6a96f092b6f654927b67b58cc384df083a0da671fd02359deda559",
     "packages/design-system/src/components/Popover/Popover.module.d.css.ts": "645f325fe66432ea110c552e049ad5c308a8e41fb2cfd5e3c928c1a26f0a7748",
@@ -3019,17 +3025,17 @@
     "packages/design-system/src/foundation/DesignSystemProvider.tsx": "7cc37713aa020f7330b091dd473d9989651c53486f43e1e1f771ed21cc5257db",
     "packages/design-system/src/foundation/identity.ts": "b7857f63957721cfe1c60f3b5c9f6fb2981c6ffe5994a8f9bb84ce9737b8e828",
     "packages/design-system/src/foundation/media.ts": "0ff791638e4d18e2809c8bfadd0e2a9cb6c82e6c8aa36f6897804458fe86f895",
-    "packages/design-system/src/foundation/messages.ts": "e124fcc5fd1b3a0fbc49bba10dc65d5a211c32f972fe565f2a68634c2b51b074",
+    "packages/design-system/src/foundation/messages.ts": "11b69cfb489d919b99fea4b941892d7013eef35f8aaf93782507a08bcf57f0ae",
     "packages/design-system/src/foundation/preferences.ts": "1023748e9c15d1ed1e1aac3e0e48cb4106ca71cfc67e10e0b81d6e2918da3b4b",
     "packages/design-system/src/foundation/props.ts": "5fea14197b2f0e57702750c85368f2e86af13bc3c1917326f50b5881592799a3",
     "packages/design-system/src/generated/fonts.css": "8331bd1e3de53bfc9de425531922860e5d5d1f0c33686e595fa44b00069e8401",
     "packages/design-system/src/generated/layout.module.css": "f0e0cd5c4dfc0b0de70ee65ba511cdb27e270da5b06dd98ecd4f11e716fa0ad2",
-    "packages/design-system/src/generated/manifest.json": "11024b2beefb3a2a5397776c61f28921ab260cedac3e0e97b417b4e5eaa62c0e",
+    "packages/design-system/src/generated/manifest.json": "941decff497aa07a395c02a2f035b410f445cfd7b9fcb5285279f776181e10c8",
     "packages/design-system/src/generated/renderer.ts": "6ecc15646acdf727efd9ed2f157d2a994afc6cf6d2d3b5cc7d4dd85c7c542a8a",
     "packages/design-system/src/generated/symbols.ts": "3d00786fbed5a582ad16994ddb71ef04cd4823f5aaa24e48789bef41f89dfae9",
-    "packages/design-system/src/generated/tokens.css": "a78630401e791453e99d97d24c826482d75cd8ec21622ccd22ab9e2cf1677fc4",
-    "packages/design-system/src/generated/tokens.ts": "dfd3fac51bde0725dc4c3ea82505b3dcd136dad70ffa94e50ba5be6425143d9c",
-    "packages/design-system/src/index.ts": "a0b8f351fb74bc20fee50903b39bae04f1fbb0d3739f70a6e11d82902b107ed6",
+    "packages/design-system/src/generated/tokens.css": "16be1343cf809de0600a908f1306a667d68e0710c048a45e435d19920d39d473",
+    "packages/design-system/src/generated/tokens.ts": "5c98be76d30d6a44c48692b07227d9283590162ce3dc0e39a10178d8ac429fb1",
+    "packages/design-system/src/index.ts": "48793dedaecd772c89d3268019cc2c75c76f3cc44faed43aaa881b5851b8465c",
     "packages/design-system/src/styles/global.css": "4ed112de8e82a779af10f96657d6f09ea31db47796b27cc75d6f6075e7a17f22",
     "packages/design-system/stories/Actions.stories.tsx": "2ba5ec369a803f5f749f6b29744cd1d7ebfb8ba11d5a70d88bbcef17b77bdc14",
     "packages/design-system/stories/Cards.stories.tsx": "e8bc5fc29eadaaf9f4e8f0205cf240227b9a7ce3e10dc01c0fd326ccb8ce80c0",
@@ -3037,8 +3043,9 @@
     "packages/design-system/stories/Foundations.stories.tsx": "59369c4cd30ee5140f8294d9a756a073c4409659050658befde2d4f8de163ae7",
     "packages/design-system/stories/Overlays.stories.tsx": "bccee2cd868b8c64d138acf33bd74b37ec65e56a0eac2f526620429bb1d1e759",
     "packages/design-system/stories/Status.stories.tsx": "1c50cc86f4a555e1ca7453a7b66a743e7b4aa01f33b542e99e0856d8ad1ecdd3",
-    "packages/design-system/stories/reference/Collection.stories.tsx": "b34d550713aec77acc0731f54634c9a47352458936a204fc6fb1ede914016133",
+    "packages/design-system/stories/reference/Collection.stories.tsx": "c45e6b49eeadc48ed67843b1195e859beb158a6c62cecc863c32682ecc4fcb3a",
     "packages/design-system/stories/reference/Deckbuilder.stories.tsx": "8f03154e7359773b93c9e68f1cfc06f5810d17d04fa1dfc639647528cfca1176",
+    "packages/design-system/stories/reference/Packs.stories.tsx": "ff07a787132193c4eb4a4a45b07a431930ea6f139d6344ea40d556f3c78a1c23",
     "packages/design-system/stories/reference/RoomFrame.stories.tsx": "8b37338a46575ca83b440a7e7eea99117bf34e1d45bec1651c855d1e1d6d1105",
     "packages/design-system/stories/support/DocPage.tsx": "75e363e2ba14e8f918adb15e45dcba47f2375a71888fa2c816b2c667089a9717",
     "packages/design-system/stories/support/OfficialAssetsOff.tsx": "3678255666e4cb8de96d64270eaae1eac73e7314396c40aa03a420d0674dc292",
@@ -3050,16 +3057,17 @@
     "packages/design-system/stories/support/reference/decks.ts": "99958faaf0018b6ed6bbf6aa56181dc3b13b9744ebd9561b3248752bd9157b39",
     "packages/design-system/stories/support/reference/frame.tsx": "48e1febc7a831fe9f6ed0446d1e7ea4331d173e40be710613bdb9e15452c4f5d",
     "packages/design-system/stories/support/reference/links.ts": "806f871538405909d7cfb700ddfb44396156cb77a062e2706a17c65d163e6d0e",
+    "packages/design-system/stories/support/reference/pack.ts": "0750947404769dac0128d67c00c1d33b4d427ba263fad2c3e1c3dfc4dc73acab",
     "packages/design-system/stories/support/reference/text.ts": "8d059c8bbfaf38965d15cc5f6bcdc286b9af41b1b5de813f0056fbee1eea3ae9",
     "packages/design-system/tests/browser/interactions.spec.ts": "d3eeac52a34b7c092d3247e354a63637f0b4731f9e8fe558834b7a6587a0d98e",
-    "packages/design-system/tests/browser/reference.spec.ts": "15309b1942e8fb4f0dba6dd58fa67471915e114df574d813b29fade644e7c703",
+    "packages/design-system/tests/browser/reference.spec.ts": "6d3090bb6a4bc0a43e64b53271475b669c3d4ae76eb0b3a7fc0998d603d6ecde",
     "packages/design-system/tests/browser/stories.spec.ts": "7e5d83d7a7a7ea946edbfb5fd397f6887e1e67d8b6490e989c1d4b04ccaf82a0",
     "packages/design-system/tests/components.test.mjs": "fce7150f6927e6211e68315c15169a5db63bdf81170de1f94a88bd9cb857ef16",
     "packages/design-system/tests/foundation.test.mjs": "9f9aa9d40e6a3b5894b669764f62fbf58036585523b065db0e944f2a10bae150",
     "packages/design-system/tests/styles.test.mjs": "30247f76b4709a7568c7da8166ed6dadbb0bc0e9a18f76d4a0ff86c5ffd05537",
     "packages/design-system/tests/tokens.test.mjs": "ea8a0ffe006aa7c75b93a0ceb8dafe544d87917fccaf47f61fc89869c1ffeb2f",
     "packages/design-system/tokens/card/card.tokens.json": "a45b480c3e9f22d833362c7d7152c60a06d6cf057a119c70c575bc334601d2b9",
-    "packages/design-system/tokens/component/component.tokens.json": "75be6ac062520cb858230d50931c3282412a3f9b8dde1d30a96c89f04508d387",
+    "packages/design-system/tokens/component/component.tokens.json": "d4f31717da06e253e9ed58b1d91a0bf59f4fb7ff3b3a45e4ce2addc32dbe03b9",
     "packages/design-system/tokens/contrast-pairs.json": "3df739acecd91fab576d405469240f87b2ac5f6f7c6772dde609b0de8447ab7e",
     "packages/design-system/tokens/primitive/color.tokens.json": "deac48f7c1994d616f7dcedd1916438ab06ddf552826d4857c373c26aaf3118d",
     "packages/design-system/tokens/primitive/dimension.tokens.json": "42037f37c68a10a7dc9711ea4d513856a52b0aa880d37f7ceb63857a7737a4bd",
@@ -18109,6 +18117,87 @@
       "sha256": "d0b776ab3bc235917e4a637723867b09840b21bbbb193347282c128e26ea84f0"
     },
     {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "fullName",
+      "line": 12,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "p: Printing",
+      "sha256": "8d8f964fcf4bdca2a240e32f0fbdc557502ae2b52b11862954321e05a1203e1a"
+    },
+    {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "ProductChoice",
+      "line": 26,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ name, contents, available, artwork, onOpen }: ProductChoiceProps",
+      "sha256": "5760737bbc208cbb4210f67b29f70d4b5622c42dd86c1aabbb7ba3ef998f7436"
+    },
+    {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "RevealCard",
+      "line": 55,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ slot, position, total, revealed, beat = false }: RevealCardProps",
+      "sha256": "050c856178ca964e71b7813ef8c5e02582389b809d2247ad013f011693f6ead6"
+    },
+    {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "PackReveal",
+      "line": 76,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ slots, revealed, rarest }: PackRevealProps",
+      "sha256": "d513a6112d2aae7064f092a47ea116ac8cb6f51f214a4d0b4b2e941d0d96dca2"
+    },
+    {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "<callback>",
+      "line": 78,
+      "column": 80,
+      "kind": "ArrowFunction",
+      "signature": "slot, i",
+      "sha256": "a66e1b03657f1bf44b64a4dbcf818b88d203b576cc5861b6d0021c0aae53a782"
+    },
+    {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "RevealControls",
+      "line": 91,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ revealed, total, onRevealNext, onRevealAll, onSkip }: RevealControlsProps",
+      "sha256": "5cca96247aea60f1e67b40970335ec4dee39e45a62dacb09c68170ff3ce2aa98"
+    },
+    {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "OpeningSummary",
+      "line": 111,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ slots, collectionHref, pendingNote }: OpeningSummaryProps",
+      "sha256": "400b713d346fcc6a461ff00f238e9da3030f27ef444d7ba137d9a26370c133b3"
+    },
+    {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "<callback>",
+      "line": 112,
+      "column": 49,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "5b780c18fa248799e788aed8139e4437e250d60869bca246011e7285d9aabd0d"
+    },
+    {
+      "file": "packages/design-system/src/components/Pack/Pack.tsx",
+      "name": "<callback>",
+      "line": 116,
+      "column": 51,
+      "kind": "ArrowFunction",
+      "signature": "slot",
+      "sha256": "fb086cb05e24856a73105f3ecca2d6e026b545ff806dfdbcc4611701e2c8d24c"
+    },
+    {
       "file": "packages/design-system/src/components/Popover/Popover.tsx",
       "name": "PopoverTrigger",
       "line": 7,
@@ -18687,7 +18776,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "pseudolocalize",
-      "line": 159,
+      "line": 174,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "text: string",
@@ -18696,7 +18785,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 171,
+      "line": 186,
       "column": 54,
       "kind": "ArrowFunction",
       "signature": "[k, v]",
@@ -18705,7 +18794,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "catalogFor",
-      "line": 173,
+      "line": 188,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "locale: string",
@@ -18714,7 +18803,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "formatMessage",
-      "line": 176,
+      "line": 191,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "template: string, values: Readonly<Record<string, string | number>>, locale: string",
@@ -18723,7 +18812,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 178,
+      "line": 193,
       "column": 48,
       "kind": "ArrowFunction",
       "signature": "_all, name: string, body: string",
@@ -18732,7 +18821,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 185,
+      "line": 200,
       "column": 44,
       "kind": "ArrowFunction",
       "signature": "_all, name: string",
@@ -18813,7 +18902,7 @@
     {
       "file": "packages/design-system/src/generated/tokens.ts",
       "name": "cssVar",
-      "line": 152,
+      "line": 157,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "token: DesignToken",
@@ -20001,16 +20090,16 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 83,
+      "line": 85,
       "column": 11,
       "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "2d2a31e781c79925a037917f8b38ed262bc53d50243f6bfe4b16e4fd23fa9d79"
+      "signature": "{ page }",
+      "sha256": "ea64d7615ce7ddb42dfd474a2c997107453e17896133882c719d77df557ecbba"
     },
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 85,
+      "line": 87,
       "column": 126,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20019,7 +20108,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 86,
+      "line": 88,
       "column": 169,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20028,7 +20117,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 87,
+      "line": 89,
       "column": 116,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20037,7 +20126,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 88,
+      "line": 90,
       "column": 127,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20046,7 +20135,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 89,
+      "line": 91,
       "column": 161,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20055,7 +20144,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 90,
+      "line": 92,
       "column": 117,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20064,7 +20153,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 91,
+      "line": 93,
       "column": 134,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20073,7 +20162,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 92,
+      "line": 94,
       "column": 42,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20082,7 +20171,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 93,
+      "line": 95,
       "column": 155,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20091,7 +20180,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 94,
+      "line": 96,
       "column": 125,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20100,7 +20189,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 95,
+      "line": 97,
       "column": 150,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20109,7 +20198,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "TakedownCollection",
-      "line": 96,
+      "line": 98,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "",
@@ -20118,7 +20207,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 99,
+      "line": 101,
       "column": 125,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20127,7 +20216,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "UnknownPockets",
-      "line": 100,
+      "line": 102,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "",
@@ -20136,7 +20225,7 @@
     {
       "file": "packages/design-system/stories/reference/Collection.stories.tsx",
       "name": "<callback>",
-      "line": 102,
+      "line": 104,
       "column": 239,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20741,6 +20830,330 @@
       "name": "<callback>",
       "line": 184,
       "column": 69,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "PackReference",
+      "line": 16,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ stage: startStage = 'choice', revealed: startRevealed = 0 }: { stage?: Stage; revealed?: number }",
+      "sha256": "08c1cb4f0319a5219d0b4ce9521dc0331a23ad21526bd894052c81997116f805"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "reveal",
+      "line": 18,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "count: number",
+      "sha256": "e5de91807fd96adcda5d53662c7458672f9e91965eecace47ff1ada561ac6c6c"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "open",
+      "line": 19,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "259078eb8f80df0210d7d9cc9b33220c8f8278b832ccfe169567d2757ce147ae"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 19,
+      "column": 32,
+      "kind": "ArrowFunction",
+      "signature": "h",
+      "sha256": "d31b895f1b968bc6414eda3a0071ff7cdf59f712a297468cf451cca077e47a3d"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 19,
+      "column": 77,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "c1b20fc07b19d3cd3eae195943c358ad2bdeaa96d290ba5ed096868dd15ec20d"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "collectionHref",
+      "line": 20,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "p: { collectorNumber: string }",
+      "sha256": "293060239cebe220a3ce86fc5369fc78702b6399b1178de1115ed663dcf2dbfa"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 21,
+      "column": 112,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "bd04eac35cdb0723c3972ef2f69a35389426fea95da8d2f1125ddfea77f967fc"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 22,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "d60c881a27eb1dd36d4c97525d38c8bcc6410a01e5cf640513ed9898934b48fd"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 25,
+      "column": 97,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7ad2a6b5de74babf93250430fa6cae0745c8b738d7e8e2574f00abfc76aa8e27"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 26,
+      "column": 65,
+      "kind": "ArrowFunction",
+      "signature": "o",
+      "sha256": "7109390c6e3f39c76ce9bd052cfd9505511dabbe8e1d5fe99f2521f6dc0c811e"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 26,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "ab794e50dc2435ef5d57e989e5b7051fcc4b62013f3b59ea72845c5eb11bf248"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 30,
+      "column": 120,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "535b1c27ae2b0d5c816b7d3c9f0920936ab22c97d89a4d0c7ebe517ba9795502"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 30,
+      "column": 218,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1f3265ec2e7a70e59735200eac4ddacd1f01332b9e075235751c10c6c2e9efaf"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 34,
+      "column": 73,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "dc872a81d15bf078faead190ab92bb6bf99263c831d062a1cbb8e2bd3cc88d98"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 34,
+      "column": 131,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "58259e93e9fed78359121fd6346a0fffd3bc51c36034e88ae01033cec5be693e"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 34,
+      "column": 218,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "5b780c18fa248799e788aed8139e4437e250d60869bca246011e7285d9aabd0d"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 34,
+      "column": 264,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1f3265ec2e7a70e59735200eac4ddacd1f01332b9e075235751c10c6c2e9efaf"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 38,
+      "column": 103,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1f3265ec2e7a70e59735200eac4ddacd1f01332b9e075235751c10c6c2e9efaf"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 39,
+      "column": 91,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "c20ea88dce19bdbd5ccc7c1fe6793fa2fa2c080d1217ccea2ebe0db893c2ed50"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 43,
+      "column": 103,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "bd04eac35cdb0723c3972ef2f69a35389426fea95da8d2f1125ddfea77f967fc"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 43,
+      "column": 246,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2a8bb02a095189f385f6f4f2521b12652256745598c252f883c089632dcc77c3"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 47,
+      "column": 49,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2a8bb02a095189f385f6f4f2521b12652256745598c252f883c089632dcc77c3"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 54,
+      "column": 95,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1cec8e273b02c553db4f10f0be50144e683521eb8b297ebff9e04bb147bbe828"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 55,
+      "column": 134,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "17bf87c4fcffdd2035b492f56323c8dd55a94afc0899f5aa63de4f46d8d0f8e9"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 56,
+      "column": 40,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "2a3d3b106b21337012c6c5cab0fc818ed0c48ee12574e85083b990589264d6ee"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 57,
+      "column": 41,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "a4151c0f2b12b34d5a6b1e281e3ef8e3d01b8e377014788cdd1dbcfa26319977"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 58,
+      "column": 222,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "71ca12c917899d0da7538fbaece1055d99faaba6f5c51125a46858c5b153219e"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 59,
+      "column": 185,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7804c5ff3f9950bf7ba17ce7b8d116c262c35e5c53a926cf73ff0058b47b14f3"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 60,
+      "column": 132,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "515145246422251a923c75544862bfa4486d96a1a233249caf935338fd148c6a"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 61,
+      "column": 55,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "813f74e1a22cb1a6b8fb30b253b21fe1866c8728cc82c57c181fabf9db966d9a"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 62,
+      "column": 53,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "d2f75866fb706a29024dbe9a08c5de3c366c944b2612dc588e7844389fc34002"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 63,
+      "column": 139,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "fcd0db8f1fa9fa6fa7efb3f0dff4b66c3c3f25178af03f7b104e6105cd744e48"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 64,
+      "column": 159,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7804c5ff3f9950bf7ba17ce7b8d116c262c35e5c53a926cf73ff0058b47b14f3"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 65,
+      "column": 120,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "423c5ab52c299b1ca7eca551ee2e32a62a0e3193225ecd9c5baa488676ebe8c2"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "NoneHeldRoom",
+      "line": 66,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "2dc9fb2f5b74524f7417d5624d23d2b5a2984b42ebdd5fd0b58f0585141c602f"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Packs.stories.tsx",
+      "name": "<callback>",
+      "line": 68,
+      "column": 90,
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
@@ -21979,6 +22392,24 @@
       "sha256": "b9c2b56a3784b35a05aa5b02607ede0346b873d0532d755332ef25ffc9bbb789"
     },
     {
+      "file": "packages/design-system/stories/support/reference/pack.ts",
+      "name": "<callback>",
+      "line": 9,
+      "column": 59,
+      "kind": "ArrowFunction",
+      "signature": "[n, variant = 'Regular']",
+      "sha256": "a4a79c00dd4aad2a8637c6eb6cf17e9a1a565b8b5f1c59650a1de252493a7ed7"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/pack.ts",
+      "name": "slotName",
+      "line": 15,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "slot: RevealSlot",
+      "sha256": "94e6148a5bdeddf8cd7f1346053e9f524c30559a1771d7f33ec5ac9082353bb1"
+    },
+    {
       "file": "packages/design-system/stories/support/reference/text.ts",
       "name": "useReferenceText",
       "line": 26,
@@ -23138,6 +23569,132 @@
       "kind": "ArrowFunction",
       "signature": "{ page }",
       "sha256": "260a99d2d9a40d53c9fd8b710e467c46025659df9c72591a4410333b4380302f"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 266,
+      "column": 31,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e00e0cfa78227adc2faa09023b6414b46908fe6679a79db5a6d605b98a3ecba0"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "live",
+      "line": 267,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "page: Page",
+      "sha256": "e7cc3002896f98278065e25a0982edad798d0d0593ff760d62fbe70eda1ca167"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 268,
+      "column": 85,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "e86483b9dc18cb45293795f100ff3e1fa1f015e14ec4079b7a4e75cdf7b66434"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 279,
+      "column": 107,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "84ad559f6c1c6415d7d3d1236de8904754d908332a329be1fc80145c27f3896d"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 290,
+      "column": 103,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "e27db42023abcdb244b8ff4c44ee61514b7865abf3698d933a684a817daee8b4"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 298,
+      "column": 60,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "ed03d696df1dac8752f02b184fcab970c23f839865a19254254fce9d5031bc77"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 300,
+      "column": 117,
+      "kind": "ArrowFunction",
+      "signature": "els",
+      "sha256": "062a682ad493715347a6d66ced7f4fd600f3c7c3cbd766a46ae9fb58af45897b"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 300,
+      "column": 132,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "1071c2093b6f967a7fc92937f1c5ed0f089e2a1dd425128cac5539cc4cf30dfd"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 306,
+      "column": 95,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "b97e5e6c5a50771e31abbd7b9bfaa746bd99936c1abbf778350fd442affc42d0"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 311,
+      "column": 32,
+      "kind": "ArrowFunction",
+      "signature": "el",
+      "sha256": "9b5076ec2725142385d09bb1f26d47f1fcf09218c22abe2266f974b1a69c836d"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 313,
+      "column": 73,
+      "kind": "ArrowFunction",
+      "signature": "el",
+      "sha256": "1ceaa26fac7912e5d1ea96bab02828b530cda260e162d90a8b29d2ca90f5a273"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 315,
+      "column": 121,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "7ae300f7fea875fff87bc99b294ae98b58b51346f23b2ff59f49274646fa782e"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 323,
+      "column": 79,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "69e94c93bd7d354e42ac744070735aa432e74a3565f4693dd323c648b451e570"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 326,
+      "column": 94,
+      "kind": "ArrowFunction",
+      "signature": "el",
+      "sha256": "1cc53b45408f0cac7acd1f61363ef91403741f9a3b636dba98f163af303837fd"
     },
     {
       "file": "packages/design-system/tests/browser/stories.spec.ts",
