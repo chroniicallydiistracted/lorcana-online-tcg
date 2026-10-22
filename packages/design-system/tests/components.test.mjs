@@ -57,3 +57,17 @@ test('symbol provenance: vendored SVGs match the manifest and carry the D07 righ
   assert.deepEqual(manifest.symbols.filter(s => s.kind === 'ink').map(s => s.name), ['amber', 'amethyst', 'emerald', 'ruby', 'sapphire', 'steel']);
   for (const s of manifest.symbols) assert.equal(createHash('sha256').update(readFileSync(join(root, s.path))).digest('hex'), s.sha256, s.path);
 });
+test('card back provenance (D28): the official back matches its manifest, decodes at 1468 x 2048 and carries the D07 rights basis', () => {
+  const manifest = JSON.parse(readFileSync(join(root, 'src/assets/card-back/manifest.json'), 'utf8')), bytes = readFileSync(join(root, manifest.file.path));
+  assert.equal(manifest.rights_basis, 'D07: Ravensburger fan-content terms');
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), manifest.file.sha256);
+  assert.equal(bytes.length, manifest.file.bytes);
+  assert.deepEqual([bytes[0], bytes[1]], [0xff, 0xd8], 'JPEG start-of-image marker');
+  let offset = 2, size;
+  while (offset < bytes.length && !size) {
+    const marker = bytes[offset + 1], length = bytes.readUInt16BE(offset + 2);
+    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) size = { height: bytes.readUInt16BE(offset + 5), width: bytes.readUInt16BE(offset + 7) };
+    offset += 2 + length;
+  }
+  assert.deepEqual(size, { width: manifest.file.width, height: manifest.file.height });
+});

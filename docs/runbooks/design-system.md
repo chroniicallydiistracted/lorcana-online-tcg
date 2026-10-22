@@ -70,6 +70,8 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **Foil printings:** they keep a static "Foil" mark on the card's corner.
   - **Hover and press:** they change the outline only, never the art.
 - **Takedown switch:** `CardImage` follows `officialAssets={false}` and shows the neutral placeholder, as symbols do.
+- **Face-down cards (decision D28):** `CardBack` shows the official card back from `src/assets/card-back/` (provenance in its `manifest.json`), unchanged and scaled by the browser. It is decorative unless given a `label`, and it follows the takedown switch with a neutral back drawn from the tokens. Presentation code textures face-down cards from `cardBackImageUrl` rather than importing the component.
+- **Reference screens (UX-01):** use the reference fixture (`referenceCatalog`, `referencePrinting`, `referenceImage`) for the decks, binder spreads and pack; its images share `/catalog-images/`.
 
 ## Raw values
 

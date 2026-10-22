@@ -247,3 +247,14 @@ Recorded with CHG-20261021-005 (decisions D25, D26).
   - **RUN-20261021-016, passed:** isolated design-system suite, 34 gates and 163/163 in 118 s.
   - **RUN-20261021-018, passed:** isolated foundation pipeline, 14 stages in 562 s.
   - **Failed attempts:** RUN-20261021-013 (the Storybook advisory), RUN-20261021-015 (wrong invocation, nothing ran) and RUN-20261021-017 (features not yet re-bound). Each is explained in the [card catalog validation](card-catalog.md#receipts).
+
+## UX-01 reference screens build — 2026-10-22 UTC
+
+The Director approved the full UX-01 design for end-to-end completion. The build follows the [implementation plan](../plans/2026-10-22-ux-01-implementation.md), with a change record per task.
+- **Task 1, reference fixture (CHG-20261022-005):** 69 real Hyperia City printings for the decks, binder spreads, pack and special printings. See the [card catalog validation](card-catalog.md#ux-01-reference-fixture--2026-10-22-utc).
+- **Task 2, card back (CHG-20261022-006):**
+  - **Asset:** the official card back (D28) is stored byte for byte as `src/assets/card-back/lorcana_card_back.jpg` (1,468 × 2,048, 486,672 bytes, SHA-256 `0f022bc3…`). Its manifest records the source, the byte-identical LorcanaOnline original, the legacy catalog entry, colour space, rendition, accessibility use, fallback and the D07 rights basis.
+  - **Component:** `CardBack`, Experimental, with stories for the official back, the neutral back, a small size and a labelled card.
+  - **Takedown:** with official assets off, or if the image fails, a neutral back drawn from the tokens takes its place.
+  - **Tests:** a component test checks the manifest's checksum and size and decodes the JPEG's dimensions.
+  - **Build output:** `copy-static.mjs` copies the JPEG to `dist/`, and the browser-suite server serves it as `image/jpeg`.

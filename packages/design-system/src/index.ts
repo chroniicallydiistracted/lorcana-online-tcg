@@ -71,6 +71,8 @@ export { InkIdentity, inkNames } from './components/Ink/InkIdentity.tsx';
 export type { InkName } from './components/Ink/InkIdentity.tsx';
 export type { Printing, Ownership } from './components/CardTile/types.ts';
 export { CardImage } from './components/CardTile/CardImage.tsx';
+export { CardBack, cardBackImageUrl } from './components/CardBack/CardBack.tsx';
+export type { CardBackProps } from './components/CardBack/CardBack.tsx';
 export { CardTile, OwnershipSummary } from './components/CardTile/CardTile.tsx';
 export type { CardTileProps } from './components/CardTile/CardTile.tsx';
 export { DeckEntry } from './components/DeckEntry/DeckEntry.tsx';

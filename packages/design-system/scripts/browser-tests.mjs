@@ -12,7 +12,7 @@ if (process.env.SKIP_STORYBOOK_BUILD !== '1') {
   const build = spawnSync('pnpm', ['exec', 'storybook', 'build', '--output-dir', out, '--quiet'], { cwd: root, stdio: 'inherit' });
   if (build.status !== 0) process.exit(build.status ?? 1);
 }
-const types = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.ico': 'image/x-icon' };
+const types = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.jpg': 'image/jpeg', '.ico': 'image/x-icon' };
 const server = createServer((request, response) => {
   const path = decodeURIComponent(new URL(request.url ?? '/', 'http://127.0.0.1').pathname), file = normalize(join(out, path === '/' ? 'index.html' : path));
   if (!file.startsWith(out) || !existsSync(file) || !statSync(file).isFile()) { response.writeHead(404); response.end(); return; }

@@ -6,6 +6,7 @@ Observed at: 2026-10-22T06:31:38.935Z (record time of CHG-20261022-004); display
 - CHG-20261022-004: the Director's approval of the design with answers to its three review points (decision D28), and the UX-01 implementation plan; finalized and committed as 98357b0.
 - The Director then approved the full design for end-to-end completion. Build checkpoints follow the implementation plan, one change record each:
   - CHG-20261022-005: task 1, the reference fixture (69 Hyperia City printings with thumbnails, 6 full-card images).
+  - CHG-20261022-006: task 2, the official card back (D28) and `CardBack`.
 
 Earlier changes through CHG-20261022-001 are finalized and on main.
 

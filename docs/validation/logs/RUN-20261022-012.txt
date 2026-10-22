@@ -1,0 +1,43 @@
+✔ every component meets the documentation contract and every documented state has a story (80.011126ms)
+✔ CSS module class types are generated and current (3.275597ms)
+✔ no component is marked stable without approved visual treatment and evidence (2.190738ms)
+✔ the design system never imports Babylon or server-only code (2.232601ms)
+✔ icon registry (D21): only the registry imports Phosphor, one approved icon per import, no Thin, Light, Bold or Duotone (2.031587ms)
+✔ symbol parser refuses scripts, links, images, transforms, unknown styles and mixed fills in single-colour symbols (1.862478ms)
+✔ symbol provenance: vendored SVGs match the manifest and carry the D07 rights basis (0.776291ms)
+✔ card back provenance (D28): the official back matches its manifest, decodes at 1468 x 2048 and carries the D07 rights basis (0.599003ms)
+✔ preference defaults match the standard (§31) (0.98873ms)
+✔ preferences parse safely: wrong version, unknown fields and invalid values fall back to defaults (0.835466ms)
+✔ device preference storage is safe when storage fails and round-trips when it works (0.305132ms)
+✔ messages: plurals, placeholders, locale numbers and a pseudolocale with the same keys (8.69932ms)
+✔ the fan-content notice is the policy text word for word with only the subject replaced (0.283283ms)
+✔ font provenance: every imported file matches its recorded checksum, source and rights basis (1.494745ms)
+✔ card text: the recorded Brandon coverage and its measured cap-height fallback match the files (10.990772ms)
+✔ generated values: Paper and Ink canvases, motion roles, breakpoints and renderer colour spaces (0.166456ms)
+✔ design-system and web styling use tokens; every raw value is a documented exception (13.136784ms)
+✔ raw colours, fonts, sizes, shadows, radii, durations and !important are rejected (0.302941ms)
+✔ unknown and primitive-only tokens are rejected; components see only emitted tokens (0.166275ms)
+✔ system colours are allowed only inside forced-colors blocks (0.124866ms)
+✔ a same-line token-exception documents a deliberate raw value (0.202735ms)
+✔ source files cannot embed raw colours or inline font families (0.124019ms)
+✔ token sources are a valid documented DTCG subset, meet every contrast pair and match generated output (75.320817ms)
+✔ neutral foundation is genuinely achromatic and both themes map the same semantic tokens (3.702406ms)
+✔ contrast uses the WCAG relative-luminance formula (0.121879ms)
+✔ token validation rejects missing reference (4.155749ms)
+✔ token validation rejects circular reference (3.972765ms)
+✔ token validation rejects type mismatch (3.739398ms)
+✔ token validation rejects unsupported construct (4.120663ms)
+✔ token validation rejects unsupported type (3.31875ms)
+✔ token validation rejects missing theme mapping (3.085567ms)
+✔ token validation rejects invalid unit (2.72914ms)
+✔ token validation rejects missing description (3.116432ms)
+✔ token validation rejects contrast regression (2.721437ms)
+✔ token validation rejects non-achromatic neutral (2.800498ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 677.97277

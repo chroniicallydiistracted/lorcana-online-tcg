@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-22T14:13:58.540Z",
+  "observed_at": "2026-10-22T14:22:34.980Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2352,7 +2352,8 @@
     "CHG-20261022-002",
     "CHG-20261022-003",
     "CHG-20261022-004",
-    "CHG-20261022-005"
+    "CHG-20261022-005",
+    "CHG-20261022-006"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2431,9 +2432,10 @@
     "CHG-20261022-002": "finalized",
     "CHG-20261022-003": "finalized",
     "CHG-20261022-004": "finalized",
-    "CHG-20261022-005": "finalized"
+    "CHG-20261022-005": "finalized",
+    "CHG-20261022-006": "finalized"
   },
-  "source_fingerprint": "ea1c7f9fa50b9bc1e9e7590d79eee757caf09956466919b0a0308e577d8c4634",
+  "source_fingerprint": "6fcbc7a7bbb106b983ef516475719b54ffb6b0269d43e08bacacc39709323c02",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2512,7 +2514,7 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "db1dc561195d25595eadc89938c6c4c5aafe6cddf72294122fb7a706baf9bd7e",
-    "docs/HANDOFF.md": "c7bad76d13de05983ea211fff8202107c8aa8830a01bdf6854287d447f072573",
+    "docs/HANDOFF.md": "7e21310f413d4b4760bb716695ea8bbeebb3da59ff6f8e296bb03dd521df2157",
     "docs/README.md": "9b3c231f484b7584b95abd576c50b01097f13f62b985cc9d5eb901c1073c182f",
     "docs/WORKSPACE_QUALIFICATION.md": "1062a43ab8ab90446a9f2577996b7ce3bba66e0c7760033ae017fab4f882d44b",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
@@ -2542,7 +2544,7 @@
     "docs/contracts/release.md": "e7f32ac1b56bb03ef8231e16f482f7e33fe7c4d5aee5b933926c9d99baa1a752",
     "docs/contracts/viewer.md": "93f10a76fb0069fbfb6e91a7825286de1fccdec2ff3413c03fc9cf39ea5c8e97",
     "docs/documentation-map.json": "ddd567e964245dc961d0edb76dd6fd024075a2a18f2f156e093086b3159fa948",
-    "docs/features.json": "9a32df46b6b560c33c7ab86a21e5829dac88544ac44350b7e5f27efb4e3d25c7",
+    "docs/features.json": "bdf1dc1bc33a410125d67509223455e8599c194b25a26413ee7ec7740e271308",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "739e9ebaef44a82acd3caf79b5f219d1f220e348c738e16effe0f6c6d91e075b",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2599,7 +2601,7 @@
     "docs/runbooks/card-catalog.md": "a3cf9809028d703275f7d59503446e8471f3eb10af36bd90f4be8cea964e507a",
     "docs/runbooks/ci.md": "fc39ead494febc8c5eedf26202af5805649085c5405ff70393762a7121eb76ea",
     "docs/runbooks/database.md": "ad8f7dec52c796afad51958dcb5fecb97e8f902ab980ac7d0392a7b357d0405a",
-    "docs/runbooks/design-system.md": "4ffc7c2fa204b2721e8af9faaa0356ab32ee8af7abd0c43bee1c27b9cbc77bec",
+    "docs/runbooks/design-system.md": "6a9b9ecfa57f8d8d88cef3be1703d3c6bb98bd5af693db2ffabcb5b9c20ae149",
     "docs/runbooks/engine.md": "4b622d50192cde4c6e7a24adcbeb2f8ce2814439c59b247945a18cf6381eb2c1",
     "docs/runbooks/game-clocks.md": "ccf0c0118c869330a034a81073822981dcc15cfc1061981e8eaaf45de8f7c9fc",
     "docs/runbooks/live-matches.md": "821226c33cf5b895b36701549db5eb4d2d0a9d755b6303912ddf8bd3c49af46c",
@@ -2704,7 +2706,7 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "7e780d7428e51e2001d448806bf8aa0c268cb0a10e9a288633ca34caf22fd2dc",
+    "docs/validation/ux-design-system.md": "e1dce5926a5955430999c90b879bb355b32bbe21b3660c988dbb3b1adf9bd249",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
@@ -2773,16 +2775,18 @@
     "packages/design-system/README.md": "995d13ed4344e27a8d1036a17624dcdfbe624be9fcb129b723d36a9b31d9a428",
     "packages/design-system/package.json": "27faae1f165be5f6420410a36310d2b80f0b4cf5bb48192af8d47aad7732a679",
     "packages/design-system/playwright.config.ts": "f562d884362ee8c69dc1a99ed24f289003e1d30b2400409020329886c60800d9",
-    "packages/design-system/scripts/browser-tests.mjs": "d8b47d993186f6800bd5d373b7b6a7d69c8409b0d4ade737a60638ad11ffd192",
+    "packages/design-system/scripts/browser-tests.mjs": "eb395fb833b59234b5da28af7649d51650e18b8a21c75a9ba7072e254b01b095",
     "packages/design-system/scripts/build-tokens.mjs": "c47fc6b649de0fbe0328ad8bb81ab7cef54f5f9866da4e1daa093f6e839a7016",
     "packages/design-system/scripts/check-components.mjs": "b845aabefe2da1b306c4ba40262b3a4b5af906ab98b1967900082dcee3bd8e89",
     "packages/design-system/scripts/check-styles.mjs": "bf4abe98a2814678624847482dac5e76382a7b0c618510e47c52f47ad955ec9e",
     "packages/design-system/scripts/check-tokens.mjs": "b66179f8144b2231aee2676b2ac468666b59f7a8bd8f833a36a681fed93fad06",
-    "packages/design-system/scripts/copy-static.mjs": "5732c723c23b12dc32784f72e9341f36258bb6faf6e1e05964941e8145b80f2a",
+    "packages/design-system/scripts/copy-static.mjs": "0ea709122743465901d5e25f9c19a029c8d454a9e50388c0d17c6bfa59b0ee38",
     "packages/design-system/scripts/css-module-types.mjs": "5d1117b22bdedb47111fc0d57ee51359e30347406f74eaa1a7f409fcdf4a9a96",
     "packages/design-system/scripts/measure-font-metrics.mjs": "20ae4d7aeba6b11400db7de5bba7e05970a526361c7bd6f1f63c800cacd7f5f5",
     "packages/design-system/scripts/symbol-lib.mjs": "0d4b3506f38dd97204a35ad113fe57d1f34daf2681a5ff93137c9941662d2694",
     "packages/design-system/scripts/token-lib.mjs": "70e0da1dee11b2e107738a3ba0a3f08aaa39d87e196a909bdcc046b45b55e021",
+    "packages/design-system/src/assets/card-back/lorcana_card_back.jpg": "0f022bc3422c5c0c2adf6bc09ca8196d30e0c78842e0845be7d44b024f5b1dbf",
+    "packages/design-system/src/assets/card-back/manifest.json": "c3152721b95a14d3e18856b1c136ac9b340b6354016a77a736e3928a204b15ea",
     "packages/design-system/src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-BlackItalic.woff2": "bc05591ce4bea9b9680725a22970e97179252a7902d0d47ff97a89f7303b1006",
     "packages/design-system/src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-Bold.woff2": "b2593045ac5dbb27be992ce9c187eff03f944aba9b08a75887fab8ee514b1bfa",
     "packages/design-system/src/assets/fonts/brandon-text-cond/HvDTrial_BrandonTextCond-Medium.woff2": "d68dcab9f792305622cbcdbad30235c5053a1f161c874c6c5d42e6ad73a9741b",
@@ -2819,6 +2823,10 @@
     "packages/design-system/src/components/Button/Button.module.css": "daebae9ef82c144d55a53558035a305f0fbc71fc330a29d6c2173ce797f05bbe",
     "packages/design-system/src/components/Button/Button.module.d.css.ts": "7124e9d58296c42b3faa12a08e0def8fcf069a03b3ff70e848402b64e5ff911a",
     "packages/design-system/src/components/Button/Button.tsx": "b6b421a1c480814de7bed7b12ebd1da52aa8def778a7cd172cd1b2ee7aa8dc07",
+    "packages/design-system/src/components/CardBack/CardBack.docs.ts": "7c470ec92827b0b5b2dea06c105ee96bc35c403149e477b8663d074f36b2e86c",
+    "packages/design-system/src/components/CardBack/CardBack.module.css": "4bc5ec851774d460263fe22d2ea4ab8635a1c9b1c487c0a39393591db1b89efb",
+    "packages/design-system/src/components/CardBack/CardBack.module.d.css.ts": "a36f39828946562f45dadf7a5ce2a02120d0fa1218e8e699d652d1e528d3486a",
+    "packages/design-system/src/components/CardBack/CardBack.tsx": "49a1eafd53d6d43e7bc37945e50ba81cdb9b8d1cd881d26454abe101234b738d",
     "packages/design-system/src/components/CardFace/CardFaceText.docs.ts": "6c7c2388f254fe6c975fc898bc1d0860e7556a53ade39b49d063d938eee19875",
     "packages/design-system/src/components/CardFace/CardFaceText.module.css": "9cac67b5c9a167310901a844e203090cb0d798d9f1ca417adf59e06616e5596e",
     "packages/design-system/src/components/CardFace/CardFaceText.module.d.css.ts": "bee7cd8a97ded773c0cec088e4f60c21db37319b14e668a9c5b960b61195c919",
@@ -2978,10 +2986,10 @@
     "packages/design-system/src/generated/symbols.ts": "3d00786fbed5a582ad16994ddb71ef04cd4823f5aaa24e48789bef41f89dfae9",
     "packages/design-system/src/generated/tokens.css": "38be495a3e4dc307630a0a7d2d587bdbeb13b182e24c0ac87c2f58c11aa2901d",
     "packages/design-system/src/generated/tokens.ts": "55c73cb4352e49682caeb798588e67d45cd47d0a6a1dd3abb2eb44d01cb37ef2",
-    "packages/design-system/src/index.ts": "87383a1cd2e8fac060a25ae8a463e626e0d1ea6ff61130f835a1594c954d4a2c",
+    "packages/design-system/src/index.ts": "9d710e0ce0407bbeffa864fb2532b575c4954401c0496eacce96726c98bbfb56",
     "packages/design-system/src/styles/global.css": "4ed112de8e82a779af10f96657d6f09ea31db47796b27cc75d6f6075e7a17f22",
     "packages/design-system/stories/Actions.stories.tsx": "2ba5ec369a803f5f749f6b29744cd1d7ebfb8ba11d5a70d88bbcef17b77bdc14",
-    "packages/design-system/stories/Cards.stories.tsx": "96401ad0b161ac5cbd804e17ff2c274714dde10bd7cfdcd7e2e6901102d38002",
+    "packages/design-system/stories/Cards.stories.tsx": "e8bc5fc29eadaaf9f4e8f0205cf240227b9a7ce3e10dc01c0fd326ccb8ce80c0",
     "packages/design-system/stories/Forms.stories.tsx": "6b1a141d08df95382599a3b3b5d7c4ee182c6c2b96ae5c71ef73f97366544900",
     "packages/design-system/stories/Foundations.stories.tsx": "59369c4cd30ee5140f8294d9a756a073c4409659050658befde2d4f8de163ae7",
     "packages/design-system/stories/Overlays.stories.tsx": "bccee2cd868b8c64d138acf33bd74b37ec65e56a0eac2f526620429bb1d1e759",
@@ -2991,7 +2999,7 @@
     "packages/design-system/stories/support/fixtures.ts": "192db8f34475dc422aeedd19cf044c8d0e691edb3259acdfa23d316bbdcc3790",
     "packages/design-system/tests/browser/interactions.spec.ts": "d3eeac52a34b7c092d3247e354a63637f0b4731f9e8fe558834b7a6587a0d98e",
     "packages/design-system/tests/browser/stories.spec.ts": "7e5d83d7a7a7ea946edbfb5fd397f6887e1e67d8b6490e989c1d4b04ccaf82a0",
-    "packages/design-system/tests/components.test.mjs": "c87f7a8f6cb8fcca6d34c001cd3076ce675a85aeab762d04fb90e3f849bac388",
+    "packages/design-system/tests/components.test.mjs": "fce7150f6927e6211e68315c15169a5db63bdf81170de1f94a88bd9cb857ef16",
     "packages/design-system/tests/foundation.test.mjs": "9f9aa9d40e6a3b5894b669764f62fbf58036585523b065db0e944f2a10bae150",
     "packages/design-system/tests/styles.test.mjs": "30247f76b4709a7568c7da8166ed6dadbb0bc0e9a18f76d4a0ff86c5ffd05537",
     "packages/design-system/tests/tokens.test.mjs": "ea8a0ffe006aa7c75b93a0ceb8dafe544d87917fccaf47f61fc89869c1ffeb2f",
@@ -15712,7 +15720,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "folder",
-      "sha256": "7efd361c6ae62faadb6654d7f92d4bee45b7f793649dfa5e54c6a133e364b615"
+      "sha256": "323ff1be67fa9eacaaf83833d25f8aa100fe58b5f55e24c4fb79e6f576c6de33"
     },
     {
       "file": "packages/design-system/scripts/css-module-types.mjs",
@@ -16622,6 +16630,24 @@
       "kind": "FunctionDeclaration",
       "signature": "{ icon, label, variant = 'quiet', tooltip = true, isPending, ...props }: IconButtonProps",
       "sha256": "9fd3ca3d876aaa593cb062b70d393d4beac4d43e99a7924a1434fdef8193569a"
+    },
+    {
+      "file": "packages/design-system/src/components/CardBack/CardBack.tsx",
+      "name": "CardBack",
+      "line": 16,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ label }: CardBackProps",
+      "sha256": "f9e333bdc2cb1cac6ab7e0ec2028f5cc5b368656f0769d2a1d75776acd1ca1de"
+    },
+    {
+      "file": "packages/design-system/src/components/CardBack/CardBack.tsx",
+      "name": "<callback>",
+      "line": 19,
+      "column": 134,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "8b071e65f9157d6c9af126027eeda11bd45e537144d3c610ccce96ef3cfa4536"
     },
     {
       "file": "packages/design-system/src/components/CardFace/CardFaceText.tsx",
@@ -17778,16 +17804,16 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 21,
+      "line": 22,
       "column": 47,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "d880be026cd1ab668ff5cea1764188451ebb68fad9c49a07b266f3985df8cfd8"
+      "sha256": "8b514dfb496b773cf6094a0f6471504fec8c87bdf42b5c475e7f0f768b654e7e"
     },
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 24,
+      "line": 25,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17796,7 +17822,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 33,
+      "line": 34,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17805,7 +17831,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 34,
+      "line": 35,
       "column": 42,
       "kind": "ArrowFunction",
       "signature": "name",
@@ -17814,7 +17840,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 36,
+      "line": 37,
       "column": 88,
       "kind": "ArrowFunction",
       "signature": "name",
@@ -17823,7 +17849,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 41,
+      "line": 42,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17832,7 +17858,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 43,
+      "line": 44,
       "column": 25,
       "kind": "ArrowFunction",
       "signature": "p",
@@ -17841,17 +17867,8 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 43,
-      "column": 75,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
-    },
-    {
-      "file": "packages/design-system/stories/Cards.stories.tsx",
-      "name": "<callback>",
       "line": 44,
-      "column": 52,
+      "column": 75,
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
@@ -17869,6 +17886,15 @@
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
       "line": 46,
+      "column": 52,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
+    },
+    {
+      "file": "packages/design-system/stories/Cards.stories.tsx",
+      "name": "<callback>",
+      "line": 47,
       "column": 51,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17877,7 +17903,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 48,
+      "line": 49,
       "column": 105,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17886,7 +17912,16 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 53,
+      "line": 54,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "003c969406aafc05feedad44d972277365303f047bba4a976541f119b8769520"
+    },
+    {
+      "file": "packages/design-system/stories/Cards.stories.tsx",
+      "name": "<callback>",
+      "line": 63,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17895,7 +17930,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 56,
+      "line": 66,
       "column": 209,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17904,7 +17939,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 57,
+      "line": 67,
       "column": 143,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17913,7 +17948,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 57,
+      "line": 67,
       "column": 266,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17922,7 +17957,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 58,
+      "line": 68,
       "column": 192,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17931,7 +17966,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 58,
+      "line": 68,
       "column": 325,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17940,7 +17975,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 59,
+      "line": 69,
       "column": 197,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17949,7 +17984,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 59,
+      "line": 69,
       "column": 218,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17958,7 +17993,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "InspectorExample",
-      "line": 64,
+      "line": 74,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ reading = false, effects = false, rulings = false, ownership = 'owned' as 'owned' | 'unavailable', long = false }",
@@ -17967,7 +18002,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 75,
+      "line": 85,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17976,7 +18011,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 79,
+      "line": 89,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17985,7 +18020,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 83,
+      "line": 93,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17994,7 +18029,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 86,
+      "line": 96,
       "column": 99,
       "kind": "ArrowFunction",
       "signature": "",
@@ -18003,7 +18038,7 @@
     {
       "file": "packages/design-system/stories/Cards.stories.tsx",
       "name": "<callback>",
-      "line": 93,
+      "line": 103,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -19772,6 +19807,15 @@
       "kind": "ArrowFunction",
       "signature": "s",
       "sha256": "30bb4373a7638ecc71576c83d003a58acc0151c5264925e587b9912a1bf54e95"
+    },
+    {
+      "file": "packages/design-system/tests/components.test.mjs",
+      "name": "<callback>",
+      "line": 60,
+      "column": 133,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "3276043fb4e906132d8955cef7f3dcf18d9ef70d1093daa815b76bd5678c8914"
     },
     {
       "file": "packages/design-system/tests/foundation.test.mjs",

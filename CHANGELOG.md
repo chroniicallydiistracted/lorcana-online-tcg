@@ -2,6 +2,68 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-006 — UX-01 task 2: the official card back and the CardBack component
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T14:18:29.948Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: a4ee8788cd37313195bfe0607ac9f04f29b64b14
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.009
+
+### Changes
+
+- **implementation:** Implementation-plan task 2 (decision D28): the official card back is stored byte for byte as packages/design-system/src/assets/card-back/lorcana_card_back.jpg (JPEG 1468 x 2048, 486,672 bytes, SHA-256 0f022bc3422c5c0c2adf6bc09ca8196d30e0c78842e0845be7d44b024f5b1dbf), copied from the legacy app's public/assets/cards/ and byte-identical to the LorcanaOnline original. Its manifest.json records the source, the legacy catalog entry (material.card.back, official source, owner-approved 2026-07-02), format and colour space, dimensions and aspect ratio, rendition, language, accessibility use, the neutral fallback, the copies not used and the D07 rights basis (standard §29).
+- **feature:** CardBack (Experimental, src/components/CardBack): the official back at the card silhouette, decorative unless given a label; with officialAssets={false}, or if the image fails, a neutral back drawn from tokens (raised surface, essential border, inset decorative rule, forced-colors boundaries). cardBackImageUrl exports the asset URL for presentation code that textures face-down cards. Documentation contract and a story covering the official back, neutral back, small size and labelled card; the Cards documentation page lists it.
+- **edit:** copy-static.mjs copies .jpg files to dist/ so the compiled package keeps the asset path; the browser-suite server serves .jpg as image/jpeg; the CSS module type for CardBack is generated.
+- **test:** components.test.mjs checks the card back against its manifest: SHA-256, byte size, the JPEG start-of-image marker, the decoded frame dimensions and the rights basis. RUN-20261022-012 passes the design-system typecheck and all 35 gate tests, including CardBack's documentation and state coverage.
+- **documentation:** Design-system runbook (face-down cards and the reference fixture) and a new dated UX-01 build section in the design-system validation.
+
+### Verification
+
+- **passed:** Design-system typecheck and the 35 gate tests: tokens, styles, CSS module types, component contracts with CardBack's states, icon and symbol rules, symbol and card-back provenance (container). ([evidence](docs/validation/runs/RUN-20261022-012.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-013.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-014.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds face-down cards (CardBack, its manifest, takedown fallback and cardBackImageUrl) and points reference screens at the reference fixture.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Appends the dated UX-01 build section with tasks 1 and 2.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate; component lists live in the runbook and validation.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The plan schedules the ADR amendment for task 9, once the reference stories, new components and the development-only presentation dependency all exist.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The card back is an official asset under D07 and D28 with its own manifest; the catalog decision is unaffected.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Catalog evidence is unchanged; the new story uses no catalog card.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-006.json).
+
+### Limits and next actions
+
+- Browser rendering of the card back is exercised from task 3 onward, when the browser suite runs with the new stories.
+- Task 3 of the implementation plan: the room frame (navigation bar, room header, demonstration label, ink-form slots).
+
 ## CHG-20261022-005 — UX-01 task 1: reference fixture of real Hyperia City printings
 
 - Status: finalized
