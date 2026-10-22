@@ -2,6 +2,57 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-004 — UX-01 design approval (decision D28) and implementation plan
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T06:31:38.935Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 4b90ab4419411b29e311a13fa5d961ee564ab4f0
+- Tasks: UX-01, WEB-01, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **documentation:** Director's approval of the UX-01 written design with answers to its three review points, recorded as decision D28 in the decision register and as a Director's review section in docs/plans/2026-10-22-ux-01-design.md. 1. The official card back, which the Director located in the legacy app's asset folder: /home/andre/the-inkspire/public/assets/cards/lorcana_card_back.jpg, byte-identical to /home/andre/LorcanaOnline/public/assets/lorcana_card_back.jpg (JPEG 1468 x 2048, 486,672 bytes, SHA-256 0f022bc3422c5c0c2adf6bc09ca8196d30e0c78842e0845be7d44b024f5b1dbf), recorded in the legacy asset catalog (packages/assets/src/catalog.ts, key material.card.back) as an official source reused as-is and owner-approved 2026-07-02. The same folder's 734 x 1024 rounded copy, 3583 x 5000 upscale and recoloured variants are not used. It will be stored unchanged as a design-system asset with a manifest, and a neutral token-drawn back replaces it when official assets are off. 2. One simple control row under each deckbuilder catalog tile (Remove, quantity in the deck, Add), with pressing the card still opening it for reading (D26); the Director's alternative of click or tap to add was offered back as a choice and the Director chose the row. 3. A top navigation bar across Collection, Decks and Packs. The design's status line, the deckbuilder tile sentence, the scene's face-down card line, the fixture plan and the components table now reflect these answers; the original review-point text is kept.
+- **documentation:** UX-01 implementation plan (docs/plans/2026-10-22-ux-01-implementation.md): goal, architecture, pinned stack with no added dependency (only a development-only workspace dependency of the design system on @lorcana/presentation), global constraints, five review-focus risks, file ownership for every new component folder, fixture, asset, scene, story and test file, the closed TableSceneInput/CardRect/TableScene interfaces shared by the scene and the DOM overlay, and ten checkpointed tasks with test-first steps and exact commands: reference fixture, card back, room frame, deckbuilder, Collection binder, pack presentation, crowded match Flat tier, table scene, validation with documents and visual review, then hosted CI and the Director's visual approval. The fixture legality test uses the catalog's set_rotation_state value CoreConstructed, checked in the raw English catalog (1,770 CoreConstructed, 1,681 InfinityConstructed, 106 None, 1 Banned). No step is executed by this record.
+- **documentation:** Status lines in AGENTS.md, README.md and docs/README.md record the approved design (D28) and link the implementation plan; the docs/README.md design-system index row links the plan; the UX-01 backlog row moves to design_approved_implementation_plan_written with the plan and this record in its evidence; the documentation map classifies the plan as planning; the handoff is rewritten for this checkpoint.
+
+### Verification
+
+- **passed:** docs:check over the approval and plan checkpoint with decision D28 and every updated document (static); source fingerprint unchanged from RUN-20261021-014. ([evidence](docs/validation/runs/RUN-20261022-005.json))
+
+### Documentation and files
+
+- **updated:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — Marked approved under D28, with a Director's review section giving the card-back source and provenance, the deckbuilder row and the navigation answer; passages that named review points now state the answers, and the original review-point text is kept.
+- **updated:** [docs/plans/2026-10-22-ux-01-implementation.md](docs/plans/2026-10-22-ux-01-implementation.md) — New planning document: the UX-01 implementation plan written from the approved design, with file ownership, shared interfaces and ten checkpointed tasks.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Adds D28 with the Director's design approval and the three review-point answers; earlier decisions unchanged.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 status moves from design_proposed_awaiting_approval to design_approved_implementation_plan_written, with the plan and this record in its evidence. No other row changes.
+- **updated:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph said the written design awaited approval; it now records D28 and links the implementation plan.
+- **updated:** [README.md](README.md) — Same UX-01 status update as AGENTS.md, with the same link prefix.
+- **updated:** [docs/README.md](docs/README.md) — Same UX-01 status update with document-relative links, and the design-system index row now links the implementation plan.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classifies the implementation plan as planning, like the earlier task plans.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the approval and plan checkpoint: D28, the plan, the pending build and the next actions.
+- **reviewed_unchanged:** [docs/plans/2026-10-22-ux-01-intake.md](docs/plans/2026-10-22-ux-01-intake.md) — Closed intake stage; D27 and its consequences remain accurate, and D28 is recorded in the design it led to.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — The card back is an official asset under the existing D07 rules (provenance, notice, no charge, neutral fallback); the plan follows them and the policy needs no change.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The plan schedules its amendment (reference stories, the development-only presentation dependency, new components and the card back) for task 9, when those exist.
+- **reviewed_unchanged:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Still lists the UX-01 reference screens and their visual approval as pending, which remains accurate until the build.
+- **reviewed_unchanged:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Operational guidance for the package; the reference-screens section is added in task 9.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Describes implemented behavior; approval and planning change no feature.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs:sync from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs:sync; the source fingerprint is unchanged because only documentation changed.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-004.json).
+
+### Limits and next actions
+
+- Planning stage only: no component, fixture, asset, scene, dependency or workflow change, so the source fingerprint 256dd89d and its receipts (RUN-20261021-014, 016, 018, 019) stand.
+- The card back's origin before LorcanaOnline is not recorded beyond the legacy catalog's 'official source' note and the Director's identification; its provenance record will say so.
+- The Director's answers have no separately recorded event time; the record time stands for them.
+- On the Director's go-ahead, build task 1 of the implementation plan (reference fixture), with a checkpoint, change record and receipts after each task.
+- Push the branch for hosted CI only when the Director asks.
+
 ## CHG-20261022-003 — UX-01 written design for the matched reference screens
 
 - Status: finalized
