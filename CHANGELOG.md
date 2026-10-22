@@ -2,6 +2,53 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-003 — UX-01 written design for the matched reference screens
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T05:10:11.915Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: cdfbe34ae136775ece51f9f261f9f4b25480d81c
+- Tasks: UX-01, UX-03, WEB-01, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **documentation:** UX-01 written design (docs/plans/2026-10-22-ux-01-design.md), the stage after the intake and decision D27, proposed for the Director's approval. It gives one UX standard §33 brief per reference screen (crowded match, practical deckbuilder, Collection binder, pack presentation): player task, priority order, composition at desktop 1440 × 900 and tablet 1180 × 820 and 820 × 1180, representative real-card content, the required states as stories, and acceptance evidence. It adds the interaction specification (match command, bulk quest and end turn, hand, deck editing, binder paging, pack reveal, shortcuts, focus and announcements), the Babylon table scene boundary (mountTableScene in packages/presentation loaded lazily by the match story through a development-only dependency; on-demand rendering with no loop or animation; a DOM semantic layer of real buttons placed over the projected card rectangles for names, focus, hit areas and state text; Flat-tier fallback on failure; WEB-01 keeps lifecycle, tiers, measurement and context restoration), the fixture plan (about 80 Hyperia City-centred printings with thumbnails and about six detail images, all with provenance; story-only positions, ownership and contents), new Experimental components with ownership, the verification plan and the documentation impact. Three review points for the Director: card back source, deckbuilder tile controls against D26, and a top navigation bar.
+- **review:** Design claims checked against the code: InspectorHost switches between side panel and sheet at the 64rem wide breakpoint; mountSanityScene already takes an injectable engine and resize observer; the import-boundary check allows a browser-scope design-system story to import the browser-scope presentation package; the verified symbol set (D21) has gameplay and ink symbols but no rarity symbols, so rarity is shown as text; Hyperia City (set 14) is Core-legal with 204 standard and 38 special printings across six inks.
+- **documentation:** Status lines in AGENTS.md, README.md and docs/README.md link the design as awaiting approval; the docs index row links it; the UX-01 backlog status moves to reference_screens_design_proposed_awaiting_approval with the design and this record in its evidence; the documentation map classifies the design as planning; the handoff names the review points and the next stages.
+
+### Verification
+
+- **passed:** docs:check over the design checkpoint and every updated document (static); source fingerprint unchanged from RUN-20261021-014. ([evidence](docs/validation/runs/RUN-20261022-004.json))
+
+### Documentation and files
+
+- **updated:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — New planning document: the UX-01 written design, built from the intake, D27, the UX standard and the current design-system, presentation and rules-data packages.
+- **updated:** [AGENTS.md](AGENTS.md) — The UX-01 status sentence said the written design was next; it now links the design as awaiting the Director's approval.
+- **updated:** [README.md](README.md) — Same UX-01 status update as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same UX-01 status update, and the design-system index row links the design beside the intake.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 status moves to reference_screens_design_proposed_awaiting_approval, with the design and this record in its evidence; no other row changes.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classifies the design as planning.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the design checkpoint: both UX-01 records, the design's contents, its three review points and the next stages.
+- **reviewed_unchanged:** [docs/plans/2026-10-22-ux-01-intake.md](docs/plans/2026-10-22-ux-01-intake.md) — The intake stays as recorded; the design follows its answers and consequences without changing them.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — No decision is implemented yet; the design states that an ADR 0017 amendment records the reference stories, the development-only presentation dependency and the new components at implementation.
+- **reviewed_unchanged:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Still accurate: reference screens and their visual approval remain pending.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — No feature behavior changes at the design stage.
+- **reviewed_unchanged:** [docs/vision/UX_UI_DESIGN_SYSTEM.md](docs/vision/UX_UI_DESIGN_SYSTEM.md) — The Director's adopted standard is the authority the design cites; it is not edited.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs:sync from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs:sync; the source fingerprint is unchanged because only documentation changed.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-003.json).
+
+### Limits and next actions
+
+- Design stage only: no source, fixture or dependency change, so the source fingerprint 256dd89d and its receipts stand.
+- The Director's approval of the design and answers to its three review points are pending; the implementation plan follows approval.
+- Record the Director's approval and review-point answers.
+- Write the UX-01 implementation plan with file ownership, task order and test commands, then build stage by stage.
+
 ## CHG-20261022-002 — UX-01 intake for the matched reference screens, decision D27 and the pull request #6 merge runs
 
 - Status: finalized
