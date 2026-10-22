@@ -335,6 +335,124 @@
         },
         "$description": "Maximum width of the reveal stage, so two rows of six cards and the controls fit a 900 px tall desktop viewport."
       }
+    },
+    "board": {
+      "card": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5.25,
+          "unit": "rem"
+        },
+        "$description": "Card width on the battlefield (84 px): each side fits one row of locations, characters and items beside the decision column at 1440 px."
+      },
+      "slot": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6.25,
+          "unit": "rem"
+        },
+        "$description": "Column for an upright board card and its state markers."
+      },
+      "slot-turned": {
+        "$type": "dimension",
+        "$value": {
+          "value": 7.5,
+          "unit": "rem"
+        },
+        "$description": "Column for a turned board card (exerted character or location) and its markers."
+      },
+      "item-card": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4,
+          "unit": "rem"
+        },
+        "$description": "Item card width on the battlefield."
+      },
+      "item-slot": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5,
+          "unit": "rem"
+        },
+        "$description": "Column for an item and its markers."
+      },
+      "card-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.5,
+          "unit": "rem"
+        },
+        "$description": "Battlefield card width below 80 rem (72 px), so each side still fits one row beside the narrower decision column; marker text keeps its size."
+      },
+      "slot-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5.25,
+          "unit": "rem"
+        },
+        "$description": "Column for an upright board card and its markers below 80 rem."
+      },
+      "slot-turned-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6.25,
+          "unit": "rem"
+        },
+        "$description": "Column for a turned board card and its markers below 80 rem."
+      },
+      "item-card-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 3.5,
+          "unit": "rem"
+        },
+        "$description": "Item card width below 80 rem."
+      },
+      "item-slot-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.5,
+          "unit": "rem"
+        },
+        "$description": "Column for an item and its markers below 80 rem."
+      }
+    },
+    "hand": {
+      "card": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6.25,
+          "unit": "rem"
+        },
+        "$description": "Card width in the hand fan."
+      },
+      "step": {
+        "$type": "dimension",
+        "$value": {
+          "value": 3.25,
+          "unit": "rem"
+        },
+        "$description": "Visible slice of each fanned card: its hit area, 52 px wide, so hit areas never overlap."
+      }
+    },
+    "match": {
+      "side": {
+        "$type": "dimension",
+        "$value": {
+          "value": 22.5,
+          "unit": "rem"
+        },
+        "$description": "Decision column width from 80 rem."
+      },
+      "side-narrow": {
+        "$type": "dimension",
+        "$value": {
+          "value": 20,
+          "unit": "rem"
+        },
+        "$description": "Decision column width from 64 to 80 rem."
+      }
     }
   }
 }

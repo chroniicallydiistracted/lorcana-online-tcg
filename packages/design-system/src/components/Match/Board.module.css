@@ -1,0 +1,38 @@
+@value expanded from "../../generated/layout.module.css";
+
+/* Board cards: width from tokens, height from the physical card proportion (63 x 88 mm). */
+.card { display: flex; flex-direction: column; align-items: center; gap: var(--is-space-1); inline-size: var(--is-component-board-slot-compact); }
+.card[data-kind="item"] { inline-size: var(--is-component-board-item-slot-compact); }
+.card[data-exerted], .card[data-kind="location"] { inline-size: var(--is-component-board-slot-turned-compact); }
+.hit { display: block; padding: 0; border: 0; border-radius: var(--is-component-control-radius); background: transparent; cursor: pointer; }
+.hit[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.frame { position: relative; display: block; inline-size: var(--is-component-board-card-compact); aspect-ratio: 63 / 88; /* token-exception: physical card proportion */ }
+.card[data-kind="item"] .frame { inline-size: var(--is-component-board-item-card-compact); }
+.card[data-exerted] .frame, .card[data-kind="location"] .frame { inline-size: calc(var(--is-component-board-card-compact) * 88 / 63); aspect-ratio: 88 / 63; /* token-exception: a turned card's proportion */ }
+.art { position: absolute; inset-block-start: 50%; inset-inline-start: 50%; display: block; inline-size: var(--is-component-board-card-compact); transform: translate(-50%, -50%); transition: transform var(--is-motion-card) var(--is-motion-ease); }
+.card[data-kind="item"] .art { inline-size: var(--is-component-board-item-card-compact); }
+.card[data-exerted] .art, .card[data-kind="location"] .art { transform: translate(-50%, -50%) rotate(90deg); }
+.card[data-highlight="selected"] .frame { outline: var(--is-border-width-2) solid var(--is-color-text-primary); outline-offset: var(--is-border-width-2); border-radius: var(--is-component-control-radius); }
+.card[data-highlight="target"] .frame { outline: var(--is-border-width-2) dashed var(--is-color-text-primary); outline-offset: var(--is-border-width-2); border-radius: var(--is-component-control-radius); }
+.markers { display: flex; flex-direction: column; align-items: center; gap: var(--is-border-width-2); inline-size: 100%; margin: 0; padding: 0; list-style: none; }
+.marker { display: inline-flex; align-items: center; gap: var(--is-space-1); max-inline-size: 100%; padding: 0 var(--is-space-1); border: var(--is-border-width-1) solid var(--is-color-border-decorative); border-radius: var(--is-component-badge-radius); background: var(--is-color-surface); color: var(--is-color-text-primary); font: var(--is-typography-metadata); text-align: center; overflow-wrap: break-word; }
+.marker[data-tone="danger"] { border-color: var(--is-color-feedback-danger-border); background: var(--is-color-feedback-danger-background); color: var(--is-color-feedback-danger-foreground); }
+.marker[data-marker="selected"], .marker[data-marker="target"] { border-color: var(--is-color-text-primary); font: var(--is-typography-body-strong); font-size: var(--is-typography-metadata-font-size); }
+
+.battlefield { display: flex; flex-direction: column; justify-content: center; gap: var(--is-space-3); min-block-size: 100%; padding: var(--is-space-3); }
+.side { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: var(--is-space-3); }
+.location { display: flex; align-items: flex-start; gap: var(--is-space-1); padding: var(--is-space-1); border: var(--is-border-width-1) solid var(--is-color-border-decorative); border-radius: var(--is-component-surface-radius); }
+.zone { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: var(--is-space-2); }
+.items { display: flex; flex-wrap: wrap; gap: var(--is-space-2); padding-inline-start: var(--is-space-4); border-inline-start: var(--is-border-width-1) solid var(--is-color-border-decorative); }
+.divider { block-size: var(--is-border-width-1); margin-inline: var(--is-space-8); background: var(--is-color-border-decorative); }
+@media expanded {
+  .card { inline-size: var(--is-component-board-slot); }
+  .card[data-kind="item"] { inline-size: var(--is-component-board-item-slot); }
+  .card[data-exerted], .card[data-kind="location"] { inline-size: var(--is-component-board-slot-turned); }
+  .frame { inline-size: var(--is-component-board-card); }
+  .card[data-kind="item"] .frame { inline-size: var(--is-component-board-item-card); }
+  .card[data-exerted] .frame, .card[data-kind="location"] .frame { inline-size: calc(var(--is-component-board-card) * 88 / 63); }
+  .art { inline-size: var(--is-component-board-card); }
+  .card[data-kind="item"] .art { inline-size: var(--is-component-board-item-card); }
+}
+@media (forced-colors: active) { .card[data-highlight] .frame { outline-color: Highlight; } .marker { border-color: CanvasText; } }

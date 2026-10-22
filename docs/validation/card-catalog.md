@@ -128,3 +128,11 @@ Recorded by CHG-20261022-009 (UX-01 task 5). The reference selection gains 173 r
 - **Checks:** the tests require all 242 printings and no thumbnail for any records-only entry. `catalog:verify` matches the snapshot exactly.
 - **Receipt:** RUN-20261022-022 passes 12 tests and `catalog:verify`.
 - **Fixture size:** `src/fixtures/reference.json` is 515,562 bytes.
+
+### Selection reason corrections — 2026-10-22 UTC
+
+Recorded by CHG-20261022-011, as a correction appended to the sections above. Six reference selection reasons written in task 1 did not match the final match position:
+- **Lafayette – All Ears:** the reason claimed Evasive, but the card has Alert. A keyword scan had matched "Evasive" inside Alert's reminder text.
+- **Chief Bogo, Mr. Big, Judy Hopps – Helpful Officer, Hiro Hamada – Versatile Inventor and Baymax – Qualified Physician:** their stated match roles changed when the position was finalized.
+
+The reasons now describe the final position. The fixture was rebuilt from the same snapshot, with no image change; `catalog:verify` matches exactly (RUN-20261022-029).

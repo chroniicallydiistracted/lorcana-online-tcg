@@ -374,3 +374,38 @@ The Director approved the full UX-01 design for end-to-end completion. The build
     - failure and pending settlement;
     - tablet portrait in three rows of four.
   - **Receipt:** RUN-20261022-026 passes the gates and the full Chromium suite, 332/332.
+- **Task 7, crowded match, Flat tier (CHG-20261022-011):**
+  - **Components (Experimental):** `MatchLayout`, `MatchChrome`, `PlayerSummary`, `Counter`, `ZoneCount`, `TurnContext`, `Battlefield`, `BoardCard`, `ActionPanel`, `ActionChoice`, `HandFan`, `HandList` and `EventLog`.
+  - **Tokens:** board, hand and match tokens, with compact board sizes below 80 rem; 19 component strings.
+  - **Style gate:** allows `--hand-offset`, set inline by `HandFan` for the fan geometry.
+  - **The position:** turn 7 between the two reference decks. Every state comes from a real card or rule:
+    - Kit Cloudkicker – Sure Shot shifted onto Kit Cloudkicker – Unpredictable Courier;
+    - Chief Bogo exerted at Port Authority after questing (I Know These Streets);
+    - Port Authority's Welcome to Town trigger behind the 12 and 14 lore and the ink drops;
+    - Mr. Big drying;
+    - Clawhauser damaged by Go Go Tomago's Bodyguard-forced challenge;
+    - Baymax with Evasive from Hiro Hamada's Turbo Thrusters.
+  - **The command machine:**
+    - select, action, challenge targets with reasons (Evasive, ready characters), song payment (ink, an ink drop, or a singer, with reasons) and the required choose-one with a Ward-aware target;
+    - separate bulk-quest and end-turn reviews;
+    - pending that blocks duplicates;
+    - accepted results from fixture receipts, rejection with its reason, and reconnect reconciliation;
+    - Escape steps back only before submission.
+  - **Visual review:**
+    - At 1440 × 900 the items row and parts of the hand strip overflowed. Items moved into each side's row, and the board and hand cards were trimmed.
+    - At 1180 × 820 each side wrapped and markers hid behind the strip. Compact board sizes below 80 rem fix it.
+    - At 820 × 1180 the fan's rotation covered the view switch; the fan is now padded.
+    - The turn marker read "Taking a turn" for both players; it now reads "Your turn" and "Their turn".
+  - **Data corrections:** the review found that Lafayette – All Ears has Alert, not Evasive. My task 1 keyword scan had matched "Evasive" inside Alert's reminder text. The position now has an exerted Evasive Baymax, and six reference selection reasons were corrected to the final position. See the [card catalog validation](card-catalog.md).
+  - **Browser tests:** eight match tests:
+    - the semantic board names every object with its state;
+    - the quest, pending, accepted and choose-one journey, with limited announcements;
+    - challenge targets with reasons, and Escape stepping back;
+    - song payment;
+    - the two reviews;
+    - fan hit areas;
+    - pending, reconnect and rejection;
+    - the tablet log sheet, and portrait inspection in a sheet.
+  - **Receipts:**
+    - RUN-20261022-029: fixture tests and `catalog:verify` after the reason corrections;
+    - RUN-20261022-030: gates and the full Chromium suite, 393/393.

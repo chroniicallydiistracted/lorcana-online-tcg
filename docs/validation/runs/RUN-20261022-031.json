@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261022-031",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "python3 scripts/verify-config.py && python3 scripts/ci/check-config.py && pnpm audit && pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "84bf1e9d63b0c00d92f602226b01185e65e607d0",
+  "source_fingerprint": "b25d07a180f055effbb3428f896032b8f0e292de5b88bc875227acd2f2e42515",
+  "started_at": "2026-10-22T15:58:11.139Z",
+  "finished_at": "2026-10-22T16:00:26.006Z",
+  "recorded_at": "2026-10-22T16:00:26.006Z",
+  "time_precision": "exact",
+  "elapsed_ms": 134872,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "UX-01 task 7 checkpoint full suite: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test",
+  "log_path": "docs/validation/logs/RUN-20261022-031.txt",
+  "log_sha256": "3c940812d4ed5c87799570f983c92eab4e9201e0751bdbea71321d82fd466fa8",
+  "redactions": 0
+}

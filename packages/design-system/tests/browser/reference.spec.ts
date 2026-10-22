@@ -328,3 +328,93 @@ test.describe('pack opening', () => {
     await expect(page.getByRole('button', { name: 'Reveal next' })).toBeInViewport();
   });
 });
+
+test.describe('crowded match', () => {
+  const board = (page: Page) => page.getByRole('region', { name: 'Battlefield' });
+  const panel = (page: Page) => page.getByRole('region', { name: 'Current decision' });
+  test('the semantic board names every object with its public state', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--idle');
+    const names = await board(page).getByRole('button').evaluateAll(els => els.map(e => e.getAttribute('aria-label') ?? ''));
+    expect(names).toHaveLength(16);
+    expect(names.find(n => n.startsWith('Kit Cloudkicker – Sure Shot'))).toContain('Shift stack of 2, on Kit Cloudkicker – Unpredictable Courier');
+    expect(names.find(n => n.startsWith('Chief Bogo'))).toMatch(/Exerted\. At Port Authority/);
+    expect(names.find(n => n.startsWith('Clawhauser'))).toContain('2 damage');
+    expect(names.find(n => n.startsWith('Mr. Big'))).toContain('Drying: played this turn');
+    expect(names.find(n => n.startsWith('Baymax'))).toContain('Evasive (gained)');
+    expect(names.find(n => n.startsWith('Port Authority'))).toContain('+2 willpower');
+    for (const region of ['Your side', 'Imani Okafor\'s side']) await expect(board(page).getByRole('region', { name: region })).toBeVisible();
+  });
+  test('quest, pending, accepted, then the required choose-one; announcements stay to choices and results', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--idle');
+    await board(page).getByRole('button', { name: /^Kit Cloudkicker – Sure Shot/ }).click();
+    await expect(page.locator('[aria-live="polite"]')).toHaveText('');
+    await panel(page).getByRole('button', { name: /^Quest/ }).press('Enter');
+    await expect(panel(page)).toContainText('Waiting for the server');
+    await expect(page.getByRole('button', { name: 'End turn' })).toBeDisabled();
+    await expect(panel(page)).toContainText('Aerial Acrobatics: choose one');
+    await expect(page.locator('[aria-live="polite"]')).toHaveText('Aerial Acrobatics: choose one.');
+    await panel(page).getByRole('button', { name: /Get 1 ink drop/ }).click();
+    await expect(panel(page)).toContainText('Your main phase');
+    await expect(page.getByRole('region', { name: 'Rowan Ashby', exact: true })).toContainText('14/ 20');
+  });
+  test('challenge targets carry reasons; valid ones are ringed and labelled on the board', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--choosing-targets');
+    await expect(panel(page).getByRole('button', { name: /Baymax – Qualified Physician/ })).toBeDisabled();
+    await expect(panel(page)).toContainText('Evasive: only characters with Evasive can challenge Baymax.');
+    await expect(panel(page)).toContainText('Ready characters can\'t be challenged.');
+    await expect(panel(page).getByRole('button', { name: /Wasabi – Future Thinker/ })).toBeEnabled();
+    await expect(board(page).locator('[data-highlight="target"]')).toHaveCount(3);
+    await page.keyboard.press('Escape');
+    await expect(panel(page)).toContainText('Choose what it does.');
+    await page.keyboard.press('Escape');
+    await expect(panel(page)).toContainText('Your main phase');
+  });
+  test('song payment lists ink, an ink drop and each singer, with reasons for those who can\'t sing', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--song-payment');
+    await expect(panel(page).getByRole('button', { name: /^Pay 5 ink/ })).toBeEnabled();
+    await expect(panel(page).getByRole('button', { name: /^Sing with Kit Cloudkicker/ })).toBeEnabled();
+    await expect(panel(page)).toContainText('Exerted: it can\'t exert to sing.');
+    await expect(panel(page)).toContainText('Cost 3: this song needs cost 5 or Singer 5.');
+  });
+  test('bulk quest and end turn are separate reviews with concrete actions', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--bulk-quest-review');
+    const quest = page.getByRole('alertdialog', { name: 'Quest with all characters?' });
+    await expect(quest.getByRole('listitem')).toHaveCount(3);
+    await expect(quest.getByRole('button')).toHaveText(['Keep choosing', 'Quest with all characters']);
+    await open(page, 'reference-screens-crowded-match--end-turn-review');
+    await expect(page.getByRole('alertdialog', { name: 'End your turn?' }).getByRole('button')).toHaveText(['Keep playing', 'End turn']);
+  });
+  test('hand fan hit areas are at least 44 px, never overlap, follow arrow keys and stay still on hover', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--large-hand');
+    const cards = page.getByRole('list', { name: /Your hand/ }).getByRole('button');
+    await expect(cards).toHaveCount(12);
+    const boxes = await cards.evaluateAll(els => els.map(e => { const r = e.getBoundingClientRect(); return { left: r.left, right: r.right, width: r.width }; }));
+    for (const [i, b] of boxes.entries()) { expect(b.width).toBeGreaterThanOrEqual(44); if (i > 0) expect(b.left).toBeGreaterThanOrEqual(boxes[i - 1]!.right - 0.5); }
+    await cards.first().focus(); await page.keyboard.press('ArrowRight');
+    await expect(cards.nth(1)).toBeFocused();
+    const before = await cards.nth(3).boundingBox(); await cards.nth(3).hover(); await page.waitForTimeout(200);
+    expect(await cards.nth(3).boundingBox()).toEqual(before);
+  });
+  test('pending blocks duplicates and says why; reconnecting reconciles without sending twice; rejected explains', async ({ page }) => {
+    await open(page, 'reference-screens-crowded-match--pending');
+    await expect(page.getByRole('button', { name: 'Quest with all characters' })).toBeDisabled();
+    await expect(page.getByText('Waiting for the server to confirm your last command.').first()).toBeVisible();
+    await open(page, 'reference-screens-crowded-match--reconnecting');
+    await expect(page.getByRole('status').filter({ hasText: 'Resynchronizing' })).toBeVisible();
+    await expect(panel(page)).toContainText('it will not be sent twice');
+    await open(page, 'reference-screens-crowded-match--rejected');
+    await expect(panel(page)).toContainText('Nothing was spent.');
+  });
+  test('tablet landscape moves the log to a sheet; portrait stacks and inspects in a sheet', async ({ page }) => {
+    await page.setViewportSize({ width: 1180, height: 820 });
+    await open(page, 'reference-screens-crowded-match--idle');
+    await expect(page.getByRole('tab', { name: 'Log' })).toHaveCount(0);
+    await page.getByRole('button', { name: 'Log', exact: true }).click();
+    await expect(page.getByRole('dialog', { name: 'Match log' })).toBeVisible();
+    await page.keyboard.press('Escape');
+    await page.setViewportSize({ width: 820, height: 1180 });
+    await open(page, 'reference-screens-crowded-match--opponents-turn');
+    await board(page).getByRole('button', { name: /^Baymax/ }).click();
+    await expect(page.getByRole('dialog', { name: 'Baymax – Qualified Physician' })).toBeVisible();
+  });
+});

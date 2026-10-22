@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261022-032",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "-s",
+    "docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "84bf1e9d63b0c00d92f602226b01185e65e607d0",
+  "source_fingerprint": "b25d07a180f055effbb3428f896032b8f0e292de5b88bc875227acd2f2e42515",
+  "started_at": "2026-10-22T16:01:06.609Z",
+  "finished_at": "2026-10-22T16:01:26.240Z",
+  "recorded_at": "2026-10-22T16:01:26.240Z",
+  "time_precision": "exact",
+  "elapsed_ms": 19630,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "docs:check over the CHG-20261022-011 checkpoint",
+  "log_path": "docs/validation/logs/RUN-20261022-032.txt",
+  "log_sha256": "55a6c39db469033492b732a45cfbbce2f2b6b925576f97f2dca89bfd6f4babb4",
+  "redactions": 0
+}

@@ -2,6 +2,78 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-011 — UX-01 task 7: the crowded-match reference, Flat tier
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T15:57:59.299Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 84bf1e9d63b0c00d92f602226b01185e65e607d0
+- Tasks: UX-01, WEB-02, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-CARD-CATALOG, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 7 (standard §19–§21, design screen 1): MatchLayout (chrome, battlefield, decision column and player strip; stacked below 64 rem; whole viewport), MatchChrome, PlayerSummary (neutral initials and a turn marker in text), Counter (format thresholds, printed symbols with text labels), ZoneCount (openable public zones), TurnContext, Battlefield (Flat tier and semantic board: named sides and zones in one wrapping row each), BoardCard (state as text markers as well as rotation; selection and valid targets as outline rings with text), ActionPanel and ActionChoice (decision with prompt at the critical size, choices with reasons when unavailable), HandFan (non-overlapping 52 px hit slices, raise preview that moves only the image, arrow-key navigation), HandList and EventLog. Tokens for board, hand and match sizes, with compact board cards below 80 rem; 19 component strings; the style gate allows --hand-offset, set inline by HandFan.
+- **implementation:** stories/support/reference/match.ts authors turn 7 between the reference decks with every state traceable to a real card or rule; commands.ts derives actions, challenge targets (Evasive, ready), song payments (ink, ink drop, singers with reasons) and questers from the position and rules text. Match.stories.tsx runs the local command machine (select, action, targets, payment, required choose-one with a Ward-aware target, bulk-quest and end-turn reviews, pending, fixture-receipt acceptance, rejection, reconnect reconciliation, Escape stepping back only before submission), the match menu (confirmation settings, fan-content notice, concede review), discard lists, the tablet log sheet and portrait inspection sheet; stories cover the design's states plus hand as list and an empty side.
+- **fix:** Reference fixture: six selection reasons corrected to the final position (Lafayette – All Ears has Alert, not Evasive; Chief Bogo, Mr. Big, Judy Hopps, Hiro Hamada and Baymax roles updated); the fixture is rebuilt from the same snapshot with no image change.
+- **test:** Eight crowded-match browser tests. RUN-20261022-029 passes the fixture tests and catalog:verify; RUN-20261022-030 passes the gates and 393/393 Chromium tests.
+- **review:** Visual review at 1440 x 900, 1180 x 820 and 820 x 1180 found an overflowing items row and hand strip, two-row sides on tablet landscape hiding markers, the fan rotating over the view switch, and a turn marker that read the same for both players; all fixed before the receipts. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Design-system runbook (crowded match) and validation (task 7); card-catalog validation correction note; handoff.
+
+### Verification
+
+- **passed:** rules-data build, 12 tests and catalog:verify after the reason corrections (container, raw cache). ([evidence](docs/validation/runs/RUN-20261022-029.json))
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 393/393 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-030.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-031.json))
+- **failed:** docs:check over the first finalization attempt failed, because the card-catalog runbook review required by the rules-data change was missing; preserved. RUN-20261022-033 is the passing check after adding the review. ([evidence](docs/validation/runs/RUN-20261022-032.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-033.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the crowded-match composition, the single position object, command derivation, compact sizing and fan hit areas.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 7, review findings, the data correction and receipts.
+- **updated:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Appends the selection-reason correction with its cause and receipt.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate.
+- **reviewed_unchanged:** [packages/rules-data/README.md](packages/rules-data/README.md) — Fixture counts are unchanged.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment is scheduled for task 9.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — Reason text corrections stay within the decision.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — The match menu keeps the fan-content notice reachable.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — No dependency or engine placement change.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Rules-source tooling is unaffected.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Historical RULE-01 evidence; no rules inventory changed.
+- **reviewed_unchanged:** [docs/runbooks/card-catalog.md](docs/runbooks/card-catalog.md) — No operational change: the reason corrections follow the documented rebuild steps (edit the selection, run select-fixtures, check with catalog:verify).
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-011.json).
+
+### Limits and next actions
+
+- The position is authored, not engine-run; its reachability is not certified. Receipts are fixture outcomes, never engine results.
+- Live play, authorized viewer projections and server receipts belong to WEB-02 and PLAY tasks.
+- Task 8 of the implementation plan: the Babylon table scene with its semantic overlay.
+
 ## CHG-20261022-010 — UX-01 task 6: the pack-opening reference
 
 - Status: finalized

@@ -97,6 +97,11 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **Reveal order:** builds to the rarest. The rarest card's light comes from its ink identity, sits behind the card and stays within the reward-beat token.
   - **Nothing waits:** Skip to summary and Reveal all always work.
   - **Text alternatives:** rarity, Foil and New are text. A presentation failure lists the contents as text, and pending settlement withholds Collection links and says why.
+- **Crowded match (Flat tier):** `MatchLayout` holds `MatchChrome` (with the opponent's `PlayerSummary`), the `Battlefield` of `BoardCard`s, the decision column (`TurnContext`, `ActionPanel` with `ActionChoice`, and the Log and Inspector tabs) and the player's strip (`PlayerSummary`, `HandFan` or `HandList`, Quest with all characters, End turn).
+  - **One position object:** the position in `stories/support/reference/match.ts` drives every view.
+  - **Commands:** choices and reasons come from the real cards' rules text (`commands.ts`).
+  - **Card size:** board cards are compact below 80 rem and standard from 80 rem; marker text never shrinks.
+  - **Fan hit areas:** each card's hit area is its visible 52 px slice, and the raise preview moves only the image.
 
 ## Raw values
 

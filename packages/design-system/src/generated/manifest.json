@@ -30,7 +30,7 @@
     },
     {
       "file": "tokens/component/component.tokens.json",
-      "sha256": "d4f31717da06e253e9ed58b1d91a0bf59f4fb7ff3b3a45e4ce2addc32dbe03b9"
+      "sha256": "da3e8c3875d2ee09eb6e3e0bcfa72052221d4467404130a13879da4fc7bc6a92"
     },
     {
       "file": "tokens/card/card.tokens.json",
@@ -1547,6 +1547,126 @@
       }
     },
     {
+      "path": "component.board.card",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Card width on the battlefield (84 px): each side fits one row of locations, characters and items beside the decision column at 1440 px.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-card",
+      "values": {
+        "paper": "5.25rem",
+        "ink": "5.25rem"
+      }
+    },
+    {
+      "path": "component.board.card-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Battlefield card width below 80 rem (72 px), so each side still fits one row beside the narrower decision column; marker text keeps its size.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-card-compact",
+      "values": {
+        "paper": "4.5rem",
+        "ink": "4.5rem"
+      }
+    },
+    {
+      "path": "component.board.item-card",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Item card width on the battlefield.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-item-card",
+      "values": {
+        "paper": "4rem",
+        "ink": "4rem"
+      }
+    },
+    {
+      "path": "component.board.item-card-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Item card width below 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-item-card-compact",
+      "values": {
+        "paper": "3.5rem",
+        "ink": "3.5rem"
+      }
+    },
+    {
+      "path": "component.board.item-slot",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for an item and its markers.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-item-slot",
+      "values": {
+        "paper": "5rem",
+        "ink": "5rem"
+      }
+    },
+    {
+      "path": "component.board.item-slot-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for an item and its markers below 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-item-slot-compact",
+      "values": {
+        "paper": "4.5rem",
+        "ink": "4.5rem"
+      }
+    },
+    {
+      "path": "component.board.slot",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for an upright board card and its state markers.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-slot",
+      "values": {
+        "paper": "6.25rem",
+        "ink": "6.25rem"
+      }
+    },
+    {
+      "path": "component.board.slot-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for an upright board card and its markers below 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-slot-compact",
+      "values": {
+        "paper": "5.25rem",
+        "ink": "5.25rem"
+      }
+    },
+    {
+      "path": "component.board.slot-turned",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for a turned board card (exerted character or location) and its markers.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-slot-turned",
+      "values": {
+        "paper": "7.5rem",
+        "ink": "7.5rem"
+      }
+    },
+    {
+      "path": "component.board.slot-turned-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for a turned board card and its markers below 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-slot-turned-compact",
+      "values": {
+        "paper": "6.25rem",
+        "ink": "6.25rem"
+      }
+    },
+    {
       "path": "component.catalog.search-min",
       "layer": "component",
       "type": "dimension",
@@ -1763,6 +1883,30 @@
       }
     },
     {
+      "path": "component.hand.card",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Card width in the hand fan.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-hand-card",
+      "values": {
+        "paper": "6.25rem",
+        "ink": "6.25rem"
+      }
+    },
+    {
+      "path": "component.hand.step",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Visible slice of each fanned card: its hit area, 52 px wide, so hit areas never overlap.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-hand-step",
+      "values": {
+        "paper": "3.25rem",
+        "ink": "3.25rem"
+      }
+    },
+    {
       "path": "component.icon.size",
       "layer": "component",
       "type": "dimension",
@@ -1820,6 +1964,30 @@
       "values": {
         "paper": "400 1.25rem/1.75rem \"Brandon Text Cond\", \"Card Text Fallback\", \"Source Sans 3 Fallback\", sans-serif",
         "ink": "400 1.25rem/1.75rem \"Brandon Text Cond\", \"Card Text Fallback\", \"Source Sans 3 Fallback\", sans-serif"
+      }
+    },
+    {
+      "path": "component.match.side",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Decision column width from 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-match-side",
+      "values": {
+        "paper": "22.5rem",
+        "ink": "22.5rem"
+      }
+    },
+    {
+      "path": "component.match.side-narrow",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Decision column width from 64 to 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-match-side-narrow",
+      "values": {
+        "paper": "20rem",
+        "ink": "20rem"
       }
     },
     {

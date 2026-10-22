@@ -104,3 +104,11 @@ export { Binder, BinderPocket, PocketGrid, CompletionSummary } from './component
 export type { BinderProps, BinderPage, BinderPocketProps, PocketState, PocketGridProps, CompletionSummaryProps } from './components/Binder/Binder.tsx';
 export { ProductChoice, RevealCard, PackReveal, RevealControls, OpeningSummary } from './components/Pack/Pack.tsx';
 export type { ProductChoiceProps, RevealSlot, RevealCardProps, PackRevealProps, RevealControlsProps, OpeningSummaryProps } from './components/Pack/Pack.tsx';
+export { BoardCard, Battlefield } from './components/Match/Board.tsx';
+export type { BoardCardProps, BattlefieldSide, BattlefieldProps } from './components/Match/Board.tsx';
+export { HandFan, HandList } from './components/Match/Hand.tsx';
+export type { HandCard, HandProps } from './components/Match/Hand.tsx';
+export { Counter, ZoneCount, PlayerSummary, TurnContext, ActionChoice, ActionPanel, EventLog } from './components/Match/Panels.tsx';
+export type { CounterProps, ZoneCountProps, PlayerSummaryProps, ActionChoiceProps, ActionPanelProps, EventLogEntry } from './components/Match/Panels.tsx';
+export { MatchChrome, MatchLayout } from './components/Match/MatchLayout.tsx';
+export type { MatchChromeProps, MatchLayoutProps } from './components/Match/MatchLayout.tsx';
