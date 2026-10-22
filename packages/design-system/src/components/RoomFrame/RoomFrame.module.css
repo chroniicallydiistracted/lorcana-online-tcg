@@ -1,0 +1,49 @@
+@value intermediate, wide, expanded from "../../generated/layout.module.css";
+
+.frame { display: flex; flex-direction: column; min-block-size: 100dvh; /* token-exception: a room fills the dynamic viewport height */ background: var(--is-color-canvas); color: var(--is-color-text-primary); }
+.skip {
+  position: absolute;
+  inset-block-start: var(--is-space-2);
+  inset-inline-start: var(--is-space-2);
+  z-index: 10; /* token-exception: the skip link sits above the navigation bar while focused */
+  padding: var(--is-space-2) var(--is-space-4);
+  border: var(--is-border-width-1) solid var(--is-color-border-strong);
+  border-radius: var(--is-component-control-radius);
+  background: var(--is-color-surface);
+  color: var(--is-color-text-primary);
+  font: var(--is-typography-body-strong);
+  transform: translateY(calc(-100% - var(--is-space-4)));
+}
+.skip:focus-visible { transform: none; }
+.body { position: relative; display: grid; flex: 1; grid-template-columns: minmax(0, 1fr); }
+.main { min-inline-size: 0; inline-size: 100%; max-inline-size: var(--is-layout-content-max); margin-inline: auto; padding: var(--is-space-6) var(--is-layout-gutter-compact) var(--is-space-12); outline: none; }
+.slot { display: none; }
+@media intermediate { .main { padding-inline: var(--is-layout-gutter-intermediate); } }
+@media wide { .main { padding-inline: var(--is-layout-gutter-wide); } }
+@media expanded {
+  .body { grid-template-columns: var(--is-component-room-ink-gutter) minmax(0, 1fr) var(--is-component-room-ink-gutter); }
+  .slot { position: relative; display: block; }
+}
+.slotOutline { display: none; }
+:global(:root[data-artwork-slots="shown"]) .slotOutline {
+  position: absolute;
+  inset: var(--is-space-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--is-space-1);
+  padding: var(--is-space-1);
+  border: var(--is-border-width-1) dashed var(--is-color-border-essential);
+  border-radius: var(--is-component-surface-radius);
+  color: var(--is-color-text-supporting);
+  writing-mode: vertical-rl;
+}
+.slotLabel { font: var(--is-typography-metadata); }
+
+.header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--is-space-4) var(--is-space-6); margin-block-end: var(--is-space-6); }
+.titles { display: flex; flex-direction: column; gap: var(--is-space-1); min-inline-size: 0; }
+.meta { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--is-space-3); }
+.demonstration { display: flex; align-items: center; gap: var(--is-space-2); margin: 0; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.demonstration svg { flex: none; }
+@media (forced-colors: active) { :global(:root[data-artwork-slots="shown"]) .slotOutline { border-color: CanvasText; } }

@@ -73,6 +73,16 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
 - **Face-down cards (decision D28):** `CardBack` shows the official card back from `src/assets/card-back/` (provenance in its `manifest.json`), unchanged and scaled by the browser. It is decorative unless given a `label`, and it follows the takedown switch with a neutral back drawn from the tokens. Presentation code textures face-down cards from `cardBackImageUrl` rather than importing the component.
 - **Reference screens (UX-01):** use the reference fixture (`referenceCatalog`, `referencePrinting`, `referenceImage`) for the decks, binder spreads and pack; its images share `/catalog-images/`.
 
+## Reference screens (UX-01)
+
+- **Where:** `stories/reference/` holds the reference compositions; `stories/support/reference/` holds their demonstration data, room text (`useReferenceText`, which the en-XA toolbar locale lengthens) and links between screens (`storyHref`).
+- **Room frame:** every room outside the match uses `RoomFrame` with a `NavigationBar` (the primary destinations of blueprint §10.1; a secondary surface such as pack opening marks its parent), an `AccountMenu`, a `RoomHeader` and named `InkFormSlot`s on both perimeters (decision D27).
+- **Alignment:** the navigation bar's content edge follows the room's gutters and the perimeter reservation, so the wordmark lines up with the room content at every width.
+- **Artwork slots:** the Storybook toolbar's "Artwork slots" switch outlines each slot with its name and extent; a room never sets it itself.
+- **Bleed:** reference stories set `parameters.designSystem.bleed` so the room reaches the viewport edge.
+- **No dead controls:** navigation between reference screens uses real story links. Rooms outside the reference set lead to an honest page saying so.
+- **Demonstration label:** every reference room shows `DemonstrationLabel` in its header or chrome, never over a card.
+
 ## Raw values
 
 Only token variables are allowed. If a value genuinely cannot be a token (overlay stacking, physical card proportions, viewport-relative caps), put `/* token-exception: <reason> */` on the same line. `pnpm --filter @lorcana/design-system test` lists every exception; review the list in each change.

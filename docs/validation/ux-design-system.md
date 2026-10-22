@@ -258,3 +258,19 @@ The Director approved the full UX-01 design for end-to-end completion. The build
   - **Takedown:** with official assets off, or if the image fails, a neutral back drawn from the tokens takes its place.
   - **Tests:** a component test checks the manifest's checksum and size and decodes the JPEG's dimensions.
   - **Build output:** `copy-static.mjs` copies the JPEG to `dist/`, and the browser-suite server serves it as `image/jpeg`.
+- **Task 3, room frame (CHG-20261022-007):**
+  - **Components (Experimental):** `NavigationBar` and `AccountMenu`, plus `RoomFrame`, `RoomHeader`, `DemonstrationLabel` and `InkFormSlot`; the existing `NotificationCount` is reused.
+  - **Tokens and icons:** new component tokens `avatar.size`, `avatar.radius` and `room.ink-gutter`; a `menu` icon (Phosphor List) in the curated registry.
+  - **Strings:** seven new component strings in the message catalog.
+  - **Storybook:** an "Artwork slots" toolbar global, and a bleed parameter for room stories.
+  - **Stories:** room-frame reference stories, including the honest page for rooms outside the reference set.
+  - **Visual review:** captures at 1440 × 900 (Paper), 820 × 1180 (Ink) and 1920 × 1080 found the wordmark at 32 px while the room content started at 96 px, and a gutter mismatch at 820 px. The bar's content edge now follows the room gutters and perimeter reservation, and the recapture shows them aligned at all three widths. Captures stay in the ignored `.local/ux-01-review/`.
+  - **Browser tests:** seven new tests in `tests/browser/reference.spec.ts`:
+    - skip link;
+    - the current destination marked by more than colour;
+    - the collapsed menu, with focus restored;
+    - slots that take no focus and never overlap a control;
+    - the account menu and fan-content notice;
+    - the quiet count opening its list;
+    - a non-reference destination leading to an honest page.
+  - **Receipts:** RUN-20261022-015 passes the gates and the full Chromium suite, 193/193.

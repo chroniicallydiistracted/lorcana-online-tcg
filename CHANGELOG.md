@@ -2,6 +2,70 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261022-007 — UX-01 task 3: the room frame
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T14:30:17.101Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 3a3996c0e2d26bb582d116d0548eb198d14887e2
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 3: NavigationBar (wordmark, the primary destinations of blueprint §10.1 as links with aria-current and a weight-plus-underline current marker, a menu holding them below the wide layout, status and account slots; decision D28's top bar) and AccountMenu (neutral initials avatar and name opening Profile, Settings and the fan-content notice). RoomFrame (skip link, navigation slot, main landmark at the standard content width, perimeter gutters reserved for ink-form artwork at expanded widths), RoomHeader (level-1 room title, context line, demonstration notice, actions), DemonstrationLabel (the fixed demonstration sentence) and InkFormSlot (decorative reservation outlined with its name and extent only when the root data-artwork-slots attribute is set). All Experimental, with documentation contracts and stories for every documented state.
+- **implementation:** Component tokens avatar.size ({space.8}), avatar.radius ({radius.pill}) and room.ink-gutter ({space.16}), with regenerated token outputs; the menu icon (Phosphor List) added to the curated registry with its meaning; seven component strings. The navigation bar's content edge follows the room gutters and perimeter reservation so the wordmark aligns with the room content.
+- **implementation:** Storybook preview: an 'Artwork slots' toolbar global that sets the root attribute, and parameters.designSystem.bleed for room stories. stories/support/reference/: room text through useReferenceText (en-XA lengthens it), storyHref links between reference stories that keep the toolbar globals, and ReferenceNavigation/ReferenceRoom with invented demonstration player names, a working notifications list and the fan-content notice dialog. stories/reference/RoomFrame.stories.tsx: frame, artwork slots shown, secondary surface, long labels, title only and the honest page for rooms outside the reference set.
+- **test:** tests/browser/reference.spec.ts adds seven room-frame tests: skip link first and focusing main, the current destination marked beyond colour, the collapsed menu at 820 px with focus restored, ink-form slots unfocusable, aria-hidden and clear of every control, the account menu and fan-content notice, the quiet count opening its list on demand, and a non-reference destination leading to an honest page. RUN-20261022-015 passes the gates and 193/193 Chromium tests, including axe in both themes and 44 px targets for the new stories.
+- **review:** Visual review of captures (Paper 1440 x 900, Ink 820 x 1180, Paper 1920 x 1080 with slots shown) found the wordmark misaligned with the room content and a gutter mismatch at 820 px; both were fixed before the receipts above and the recapture confirmed alignment. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Design-system runbook gains a reference-screens section; the design-system validation's UX-01 build section records task 3.
+
+### Verification
+
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 193/193 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-015.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-016.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-017.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — New reference-screens section: where compositions and data live, the room frame, alignment, artwork slots, bleed, real links and the demonstration label.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 3, its visual-review finding and fix, tests and receipt.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate; component lists live in the runbook and validation.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The plan schedules the amendment for task 9; the registry addition follows D21's curated-registry rule.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — No catalog card appears in the room-frame stories.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Catalog evidence is unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-007.json).
+
+### Limits and next actions
+
+- Chromium automation only; manual accessibility journeys and real devices remain UX-02.
+- Story links navigate inside the Storybook preview iframe; the manager's address bar does not change.
+- Task 4 of the implementation plan: the deckbuilder.
+
 ## CHG-20261022-006 — UX-01 task 2: the official card back and the CardBack component
 
 - Status: finalized

@@ -30,7 +30,7 @@
     },
     {
       "file": "tokens/component/component.tokens.json",
-      "sha256": "70e8469b55b39cd2a13cffc48928a9ca937c3c17c25cba3e4c39e02021e4dc14"
+      "sha256": "3dfe9df8504b315cfa0d1dceac743acb02551b4f6d7b61bbf56f7b39e0f7f1f7"
     },
     {
       "file": "tokens/card/card.tokens.json",
@@ -1439,6 +1439,30 @@
       }
     },
     {
+      "path": "component.avatar.radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Avatar shape: a circle, the identity treatment the standard allows pills for (§12).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-avatar-radius",
+      "values": {
+        "paper": "9999px",
+        "ink": "9999px"
+      }
+    },
+    {
+      "path": "component.avatar.size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Neutral initials avatar diameter: 32 px at the default root (§24).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-avatar-size",
+      "values": {
+        "paper": "32px",
+        "ink": "32px"
+      }
+    },
+    {
       "path": "component.badge.padding-inline",
       "layer": "component",
       "type": "dimension",
@@ -1688,6 +1712,18 @@
       "values": {
         "paper": "8px",
         "ink": "8px"
+      }
+    },
+    {
+      "path": "component.room.ink-gutter",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Perimeter gutter reserved for ink-form artwork on each side of a room at expanded widths (§4, decision D27).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-room-ink-gutter",
+      "values": {
+        "paper": "64px",
+        "ink": "64px"
       }
     },
     {

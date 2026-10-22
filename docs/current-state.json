@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-22T14:22:34.980Z",
+  "observed_at": "2026-10-22T14:34:11.983Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2353,7 +2353,8 @@
     "CHG-20261022-003",
     "CHG-20261022-004",
     "CHG-20261022-005",
-    "CHG-20261022-006"
+    "CHG-20261022-006",
+    "CHG-20261022-007"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2433,9 +2434,10 @@
     "CHG-20261022-003": "finalized",
     "CHG-20261022-004": "finalized",
     "CHG-20261022-005": "finalized",
-    "CHG-20261022-006": "finalized"
+    "CHG-20261022-006": "finalized",
+    "CHG-20261022-007": "finalized"
   },
-  "source_fingerprint": "6fcbc7a7bbb106b983ef516475719b54ffb6b0269d43e08bacacc39709323c02",
+  "source_fingerprint": "05f26898b9686c1ec8aaa54f2298ec09ed1737747ccfd28003fa22629c6350aa",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2514,7 +2516,7 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "db1dc561195d25595eadc89938c6c4c5aafe6cddf72294122fb7a706baf9bd7e",
-    "docs/HANDOFF.md": "7e21310f413d4b4760bb716695ea8bbeebb3da59ff6f8e296bb03dd521df2157",
+    "docs/HANDOFF.md": "15a08310818c2e681c357edebd3ff1995f89df4dcd920c8a82980185d6fe9e6f",
     "docs/README.md": "9b3c231f484b7584b95abd576c50b01097f13f62b985cc9d5eb901c1073c182f",
     "docs/WORKSPACE_QUALIFICATION.md": "1062a43ab8ab90446a9f2577996b7ce3bba66e0c7760033ae017fab4f882d44b",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
@@ -2544,7 +2546,7 @@
     "docs/contracts/release.md": "e7f32ac1b56bb03ef8231e16f482f7e33fe7c4d5aee5b933926c9d99baa1a752",
     "docs/contracts/viewer.md": "93f10a76fb0069fbfb6e91a7825286de1fccdec2ff3413c03fc9cf39ea5c8e97",
     "docs/documentation-map.json": "ddd567e964245dc961d0edb76dd6fd024075a2a18f2f156e093086b3159fa948",
-    "docs/features.json": "bdf1dc1bc33a410125d67509223455e8599c194b25a26413ee7ec7740e271308",
+    "docs/features.json": "a003feab88f6b95052e31f5aa4684729149b6b70904b4ad5444541ea0d84b9e1",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "739e9ebaef44a82acd3caf79b5f219d1f220e348c738e16effe0f6c6d91e075b",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2601,7 +2603,7 @@
     "docs/runbooks/card-catalog.md": "a3cf9809028d703275f7d59503446e8471f3eb10af36bd90f4be8cea964e507a",
     "docs/runbooks/ci.md": "fc39ead494febc8c5eedf26202af5805649085c5405ff70393762a7121eb76ea",
     "docs/runbooks/database.md": "ad8f7dec52c796afad51958dcb5fecb97e8f902ab980ac7d0392a7b357d0405a",
-    "docs/runbooks/design-system.md": "6a9b9ecfa57f8d8d88cef3be1703d3c6bb98bd5af693db2ffabcb5b9c20ae149",
+    "docs/runbooks/design-system.md": "ed80ed1324cac025716d2bcc3ba27b42ca374b9fe43a89eaf2bb654625484a19",
     "docs/runbooks/engine.md": "4b622d50192cde4c6e7a24adcbeb2f8ce2814439c59b247945a18cf6381eb2c1",
     "docs/runbooks/game-clocks.md": "ccf0c0118c869330a034a81073822981dcc15cfc1061981e8eaaf45de8f7c9fc",
     "docs/runbooks/live-matches.md": "821226c33cf5b895b36701549db5eb4d2d0a9d755b6303912ddf8bd3c49af46c",
@@ -2706,7 +2708,7 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "e1dce5926a5955430999c90b879bb355b32bbe21b3660c988dbb3b1adf9bd249",
+    "docs/validation/ux-design-system.md": "d8b3ef8414c43321f7bf9e0ed395ad7ab049722539447ef3a836683fe73e904c",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
@@ -2771,7 +2773,7 @@
     "packages/db/tests/policy.test.mjs": "0348c4039a44fdd58f1e2d198551ce616ec0124272d9526562ee00c123f35abf",
     "packages/db/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "packages/design-system/.storybook/main.ts": "b51cdaa4b8f924d7b3286adb63e9b32a690506c2409d15e56dc5c688e9b5b750",
-    "packages/design-system/.storybook/preview.tsx": "c46914dbb9e1d3199df7e60fbf3bc18ad9e613169c680bba52424eb588a20dde",
+    "packages/design-system/.storybook/preview.tsx": "73734780db26120b33a86016a4395e69dd76d5c2aa387f0785ad5e42995f99f9",
     "packages/design-system/README.md": "995d13ed4344e27a8d1036a17624dcdfbe624be9fcb129b723d36a9b31d9a428",
     "packages/design-system/package.json": "27faae1f165be5f6420410a36310d2b80f0b4cf5bb48192af8d47aad7732a679",
     "packages/design-system/playwright.config.ts": "f562d884362ee8c69dc1a99ed24f289003e1d30b2400409020329886c60800d9",
@@ -2880,7 +2882,7 @@
     "packages/design-system/src/components/Icon/Icon.module.css": "04e7c7fbed1c76e5e48f4a4c0c7c0110e8a862f9104b197e6a9855b88b43f7e2",
     "packages/design-system/src/components/Icon/Icon.module.d.css.ts": "44c48510e89da912b6eb975ba54f165439a2c9a6deb927a2bd9d5199cf4cff4d",
     "packages/design-system/src/components/Icon/Icon.tsx": "32cc0e40b5f4723a494d0a01dc21fb146adbb393fb057636279c9841b7c86cae",
-    "packages/design-system/src/components/Icon/registry.ts": "9df0b3a8e1caeacdf51d45a3e12dfa5bb28499a465e8db1d8be43ed82a900897",
+    "packages/design-system/src/components/Icon/registry.ts": "c7a944cb53c3083c4314d05a6f7a96662061132036da2cd2e543e5a582e37258",
     "packages/design-system/src/components/Ink/InkIdentity.docs.ts": "652b5f2f29cee7aee0f59765adcc7c9c86ac10c3fa0efbb766a8c3f3475b190b",
     "packages/design-system/src/components/Ink/InkIdentity.module.css": "30a4570a9fafeab153acb17965acd1d02a5b2486a13a790a085b5ff90d3d1a82",
     "packages/design-system/src/components/Ink/InkIdentity.module.d.css.ts": "ce9621bda0837726d1e9dd6241af61eecb77c2ddd70b4275bea99cb7bbd453bd",
@@ -2912,6 +2914,10 @@
     "packages/design-system/src/components/Message/Message.module.css": "910196b44c4d8980d7cb40e8294633a0a7b1ff896130bd77a16cc1592d4549b3",
     "packages/design-system/src/components/Message/Message.module.d.css.ts": "26c87f59ab069036448af490701b6fac9b7eeba80962850de934658766360095",
     "packages/design-system/src/components/Message/Message.tsx": "8cfc103a3aa8c0ab8b905cd692661374836c07bcf1d1956526562d88c3a5ebb6",
+    "packages/design-system/src/components/NavigationBar/NavigationBar.docs.ts": "f379fe4022a61596fd52f5f0cf119ea8382db476fc0339fc568d56abb098af1b",
+    "packages/design-system/src/components/NavigationBar/NavigationBar.module.css": "b0d9812fc4b9da8930c6dff6ceacb5e90d8cc5b808d057d384e3c65909bbbde0",
+    "packages/design-system/src/components/NavigationBar/NavigationBar.module.d.css.ts": "57f78f2d08b19a5c860a9de04aa89b06b54f30d2f5c357388bdca554775ae1ca",
+    "packages/design-system/src/components/NavigationBar/NavigationBar.tsx": "76344683b44f1145ff9f8b1d200b621b5c277825f558e4fbaf47556652bbcb77",
     "packages/design-system/src/components/Popover/Popover.docs.ts": "39e2e6712c345049e9d6834b018c1c3c8991fc1fb87bd320cbfb9a66605185f6",
     "packages/design-system/src/components/Popover/Popover.module.css": "79c646295a6a96f092b6f654927b67b58cc384df083a0da671fd02359deda559",
     "packages/design-system/src/components/Popover/Popover.module.d.css.ts": "645f325fe66432ea110c552e049ad5c308a8e41fb2cfd5e3c928c1a26f0a7748",
@@ -2928,6 +2934,10 @@
     "packages/design-system/src/components/Radio/Radio.module.css": "473f0c39c0bdf4dd76056600698159c733857129cfdc65881a32d8d413cf6ed9",
     "packages/design-system/src/components/Radio/Radio.module.d.css.ts": "1e208b72ab869691d4514617676af09baef29d8ae3bad3b134913a5b9cf50f1c",
     "packages/design-system/src/components/Radio/Radio.tsx": "617bfc6fa9cf277bcf865e2ba62fcf35afab47d9193223016d88a820bbd26872",
+    "packages/design-system/src/components/RoomFrame/RoomFrame.docs.ts": "eacd7ae41a433a282550fa2058925ecb54cef9a048b38d93e0d402dec7c20cdc",
+    "packages/design-system/src/components/RoomFrame/RoomFrame.module.css": "a1d291e8fd8f47fd4b3ca10f4840c08bb38bdc0d7ff4ef5ecf506b9dbd541261",
+    "packages/design-system/src/components/RoomFrame/RoomFrame.module.d.css.ts": "8bf61885744e29388b2738b82d3b6f8130d6645e28a27c4da87bd2a9713252e2",
+    "packages/design-system/src/components/RoomFrame/RoomFrame.tsx": "5748d15cae86afb5cfd6608f1727f9d50567e374901df1084ceaaef1ae36bcb5",
     "packages/design-system/src/components/SearchField/SearchField.docs.ts": "5b121014e3f3b8917afe08abae43d03eafd09eefbf559b37566625badb07bae2",
     "packages/design-system/src/components/SearchField/SearchField.module.css": "74b877387b0003b4ecce319924f6e479b5b1bf9e580a23cd6a9e7aba1fe56d6c",
     "packages/design-system/src/components/SearchField/SearchField.module.d.css.ts": "bbdaf88c5f80fbae66912dbf310952a6d3cc676fb1aecc47cdaf02db9a9f2dfa",
@@ -2976,17 +2986,17 @@
     "packages/design-system/src/foundation/DesignSystemProvider.module.d.css.ts": "7443c8d45526878fd3a1a4ebf95c7e6061584b9aa36dd3b57fde35723d563704",
     "packages/design-system/src/foundation/DesignSystemProvider.tsx": "7cc37713aa020f7330b091dd473d9989651c53486f43e1e1f771ed21cc5257db",
     "packages/design-system/src/foundation/identity.ts": "b7857f63957721cfe1c60f3b5c9f6fb2981c6ffe5994a8f9bb84ce9737b8e828",
-    "packages/design-system/src/foundation/messages.ts": "8962fd61a464a2c05030595813bd44b48b5bec0317c52f90dd4139cdc4854b08",
+    "packages/design-system/src/foundation/messages.ts": "9dcc2d056a01d554c6068ecb5d57173fc7d2723aa74c6baffa099ebac7ad0248",
     "packages/design-system/src/foundation/preferences.ts": "1023748e9c15d1ed1e1aac3e0e48cb4106ca71cfc67e10e0b81d6e2918da3b4b",
     "packages/design-system/src/foundation/props.ts": "5fea14197b2f0e57702750c85368f2e86af13bc3c1917326f50b5881592799a3",
     "packages/design-system/src/generated/fonts.css": "8331bd1e3de53bfc9de425531922860e5d5d1f0c33686e595fa44b00069e8401",
     "packages/design-system/src/generated/layout.module.css": "f0e0cd5c4dfc0b0de70ee65ba511cdb27e270da5b06dd98ecd4f11e716fa0ad2",
-    "packages/design-system/src/generated/manifest.json": "cc0964e921ef5d4b627f2c241ed65554cf1ce2f1926340bed2cc41ae08b84a76",
+    "packages/design-system/src/generated/manifest.json": "062e8bc94d731a24b152da568750ecb54c68002ecb809dd0c65c4cd0cb9093ae",
     "packages/design-system/src/generated/renderer.ts": "6ecc15646acdf727efd9ed2f157d2a994afc6cf6d2d3b5cc7d4dd85c7c542a8a",
     "packages/design-system/src/generated/symbols.ts": "3d00786fbed5a582ad16994ddb71ef04cd4823f5aaa24e48789bef41f89dfae9",
-    "packages/design-system/src/generated/tokens.css": "38be495a3e4dc307630a0a7d2d587bdbeb13b182e24c0ac87c2f58c11aa2901d",
-    "packages/design-system/src/generated/tokens.ts": "55c73cb4352e49682caeb798588e67d45cd47d0a6a1dd3abb2eb44d01cb37ef2",
-    "packages/design-system/src/index.ts": "9d710e0ce0407bbeffa864fb2532b575c4954401c0496eacce96726c98bbfb56",
+    "packages/design-system/src/generated/tokens.css": "77319e4b835ec6c39c71c01b24668f0106815de063d9edc126e34166ec677552",
+    "packages/design-system/src/generated/tokens.ts": "78c8039dfe50a1940731f7d018ba25d475f20928221dc8f47b947e9ca76d3ce3",
+    "packages/design-system/src/index.ts": "70855ef2b7fe15e07893bebc83005d6efcba91e52d3681fc0bc3c4938b71ba06",
     "packages/design-system/src/styles/global.css": "4ed112de8e82a779af10f96657d6f09ea31db47796b27cc75d6f6075e7a17f22",
     "packages/design-system/stories/Actions.stories.tsx": "2ba5ec369a803f5f749f6b29744cd1d7ebfb8ba11d5a70d88bbcef17b77bdc14",
     "packages/design-system/stories/Cards.stories.tsx": "e8bc5fc29eadaaf9f4e8f0205cf240227b9a7ce3e10dc01c0fd326ccb8ce80c0",
@@ -2994,17 +3004,22 @@
     "packages/design-system/stories/Foundations.stories.tsx": "59369c4cd30ee5140f8294d9a756a073c4409659050658befde2d4f8de163ae7",
     "packages/design-system/stories/Overlays.stories.tsx": "bccee2cd868b8c64d138acf33bd74b37ec65e56a0eac2f526620429bb1d1e759",
     "packages/design-system/stories/Status.stories.tsx": "1c50cc86f4a555e1ca7453a7b66a743e7b4aa01f33b542e99e0856d8ad1ecdd3",
+    "packages/design-system/stories/reference/RoomFrame.stories.tsx": "8b37338a46575ca83b440a7e7eea99117bf34e1d45bec1651c855d1e1d6d1105",
     "packages/design-system/stories/support/DocPage.tsx": "75e363e2ba14e8f918adb15e45dcba47f2375a71888fa2c816b2c667089a9717",
     "packages/design-system/stories/support/OfficialAssetsOff.tsx": "3678255666e4cb8de96d64270eaae1eac73e7314396c40aa03a420d0674dc292",
     "packages/design-system/stories/support/fixtures.ts": "192db8f34475dc422aeedd19cf044c8d0e691edb3259acdfa23d316bbdcc3790",
+    "packages/design-system/stories/support/reference/frame.tsx": "48e1febc7a831fe9f6ed0446d1e7ea4331d173e40be710613bdb9e15452c4f5d",
+    "packages/design-system/stories/support/reference/links.ts": "806f871538405909d7cfb700ddfb44396156cb77a062e2706a17c65d163e6d0e",
+    "packages/design-system/stories/support/reference/text.ts": "8d059c8bbfaf38965d15cc5f6bcdc286b9af41b1b5de813f0056fbee1eea3ae9",
     "packages/design-system/tests/browser/interactions.spec.ts": "d3eeac52a34b7c092d3247e354a63637f0b4731f9e8fe558834b7a6587a0d98e",
+    "packages/design-system/tests/browser/reference.spec.ts": "4fe1b9aa2d1f7e8d8df8609f02272782239f9622627cf6afddaa001dd2705caf",
     "packages/design-system/tests/browser/stories.spec.ts": "7e5d83d7a7a7ea946edbfb5fd397f6887e1e67d8b6490e989c1d4b04ccaf82a0",
     "packages/design-system/tests/components.test.mjs": "fce7150f6927e6211e68315c15169a5db63bdf81170de1f94a88bd9cb857ef16",
     "packages/design-system/tests/foundation.test.mjs": "9f9aa9d40e6a3b5894b669764f62fbf58036585523b065db0e944f2a10bae150",
     "packages/design-system/tests/styles.test.mjs": "30247f76b4709a7568c7da8166ed6dadbb0bc0e9a18f76d4a0ff86c5ffd05537",
     "packages/design-system/tests/tokens.test.mjs": "ea8a0ffe006aa7c75b93a0ceb8dafe544d87917fccaf47f61fc89869c1ffeb2f",
     "packages/design-system/tokens/card/card.tokens.json": "a45b480c3e9f22d833362c7d7152c60a06d6cf057a119c70c575bc334601d2b9",
-    "packages/design-system/tokens/component/component.tokens.json": "70e8469b55b39cd2a13cffc48928a9ca937c3c17c25cba3e4c39e02021e4dc14",
+    "packages/design-system/tokens/component/component.tokens.json": "3dfe9df8504b315cfa0d1dceac743acb02551b4f6d7b61bbf56f7b39e0f7f1f7",
     "packages/design-system/tokens/contrast-pairs.json": "3df739acecd91fab576d405469240f87b2ac5f6f7c6772dde609b0de8447ab7e",
     "packages/design-system/tokens/primitive/color.tokens.json": "deac48f7c1994d616f7dcedd1916438ab06ddf552826d4857c373c26aaf3118d",
     "packages/design-system/tokens/primitive/dimension.tokens.json": "42037f37c68a10a7dc9711ea4d513856a52b0aa880d37f7ceb63857a7737a4bd",
@@ -14896,12 +14911,30 @@
     },
     {
       "file": "packages/design-system/.storybook/preview.tsx",
+      "name": "ArtworkSlots",
+      "line": 7,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ shown, children }: { shown: boolean; children: ReactNode }",
+      "sha256": "0bc16eb240d4154088831d5e7d27642a8a9e462b969b7576054549dc79d75659"
+    },
+    {
+      "file": "packages/design-system/.storybook/preview.tsx",
       "name": "<callback>",
-      "line": 12,
+      "line": 8,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "d67712e7ef1a01d3f6448e65721bd58604825d940a589ddd0601c80e50680109"
+    },
+    {
+      "file": "packages/design-system/.storybook/preview.tsx",
+      "name": "<callback>",
+      "line": 24,
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "Story, context",
-      "sha256": "bd542edb6ef8aa7554652494be6a3e02a5b5fd80b6c507b41a1bab61c8f01dcd"
+      "sha256": "e3e3170522277264e3661f5f2fb7ac2a72af6c7fb6d7c5777277262a3b8da409"
     },
     {
       "file": "packages/design-system/scripts/browser-tests.mjs",
@@ -17145,6 +17178,78 @@
       "sha256": "1c4853835bad3f4ca3fbd7a007d036f01171484eedf47661bd32a6fc6e461f64"
     },
     {
+      "file": "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+      "name": "NavigationBar",
+      "line": 25,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ destinations, current, status, account }: NavigationBarProps",
+      "sha256": "fbe25d58ef8d6fd8830e4383cd447f38f8bce2a4f9129cfa577b9d0c1f34fbeb"
+    },
+    {
+      "file": "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+      "name": "<callback>",
+      "line": 31,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "d",
+      "sha256": "d10166e6790d5a77a5e4c7a80f9266f7538d2d94fa0b4c50dc50b57b01611922"
+    },
+    {
+      "file": "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+      "name": "<callback>",
+      "line": 35,
+      "column": 70,
+      "kind": "ArrowFunction",
+      "signature": "d",
+      "sha256": "0aa49e0ee3dab12ecfecf6f793c3b90085bf6bacf5e0ad35f7d3a91a867caa87"
+    },
+    {
+      "file": "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+      "name": "AccountMenu",
+      "line": 49,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ name, items }: AccountMenuProps",
+      "sha256": "212bcf337597339a60b81115d3e990c7cf298d717f6060d19f1b0023aa3fbfe8"
+    },
+    {
+      "file": "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+      "name": "<callback>",
+      "line": 50,
+      "column": 89,
+      "kind": "ArrowFunction",
+      "signature": "part",
+      "sha256": "92d10349a206629bd8a33b2bc97d8fdd9e6f4cc7efc654b73d7097285e50661b"
+    },
+    {
+      "file": "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+      "name": "<callback>",
+      "line": 56,
+      "column": 68,
+      "kind": "ArrowFunction",
+      "signature": "key",
+      "sha256": "0c6e1f5ba9ac9d73d7d4765987885728aeb4efb9747ae75d3b51d7fc65999616"
+    },
+    {
+      "file": "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+      "name": "<callback>",
+      "line": 56,
+      "column": 86,
+      "kind": "ArrowFunction",
+      "signature": "item",
+      "sha256": "18f279886889e17a3dc7c3d0d37546b2b4f53ea068d7c6bbcbef3cf3c76f4205"
+    },
+    {
+      "file": "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+      "name": "<callback>",
+      "line": 57,
+      "column": 18,
+      "kind": "ArrowFunction",
+      "signature": "item",
+      "sha256": "d0b776ab3bc235917e4a637723867b09840b21bbbb193347282c128e26ea84f0"
+    },
+    {
       "file": "packages/design-system/src/components/Popover/Popover.tsx",
       "name": "PopoverTrigger",
       "line": 7,
@@ -17215,6 +17320,42 @@
       "kind": "FunctionDeclaration",
       "signature": "{ children, ...props }: Omit<AriaRadioProps, 'className' | 'style' | 'children'> & { children: ReactNode }",
       "sha256": "9db98ba01facc34ee9889db1c77cbffa9564bf226dbce68ab168356e3b1dbe2f"
+    },
+    {
+      "file": "packages/design-system/src/components/RoomFrame/RoomFrame.tsx",
+      "name": "InkFormSlot",
+      "line": 18,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ name, extent }: InkFormSlotProps",
+      "sha256": "1fb2a7db90522ee6f8c496b88b0c9ce607846e1178fde3b69fed3c057b4d3d6c"
+    },
+    {
+      "file": "packages/design-system/src/components/RoomFrame/RoomFrame.tsx",
+      "name": "DemonstrationLabel",
+      "line": 26,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "c0c80698b1f1d9e8c2d0117b6777295ef74321cea2bdb7097ef0c5908ef5730d"
+    },
+    {
+      "file": "packages/design-system/src/components/RoomFrame/RoomFrame.tsx",
+      "name": "RoomHeader",
+      "line": 41,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ title, meta, demonstration = false, actions }: RoomHeaderProps",
+      "sha256": "9d36ab5145df92357ea0325e239280c78a851a1bc34ca32357d5ef552c637e69"
+    },
+    {
+      "file": "packages/design-system/src/components/RoomFrame/RoomFrame.tsx",
+      "name": "RoomFrame",
+      "line": 63,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ navigation, children, inkForms }: RoomFrameProps",
+      "sha256": "0a39a97f936259c4892433f9897934e4f81f3406f44c0b78f84b0cbc88aaece1"
     },
     {
       "file": "packages/design-system/src/components/SearchField/SearchField.tsx",
@@ -17615,7 +17756,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "pseudolocalize",
-      "line": 86,
+      "line": 93,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "text: string",
@@ -17624,7 +17765,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 98,
+      "line": 105,
       "column": 54,
       "kind": "ArrowFunction",
       "signature": "[k, v]",
@@ -17633,7 +17774,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "catalogFor",
-      "line": 100,
+      "line": 107,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "locale: string",
@@ -17642,7 +17783,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "formatMessage",
-      "line": 103,
+      "line": 110,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "template: string, values: Readonly<Record<string, string | number>>, locale: string",
@@ -17651,7 +17792,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 105,
+      "line": 112,
       "column": 48,
       "kind": "ArrowFunction",
       "signature": "_all, name: string, body: string",
@@ -17660,7 +17801,7 @@
     {
       "file": "packages/design-system/src/foundation/messages.ts",
       "name": "<callback>",
-      "line": 112,
+      "line": 119,
       "column": 44,
       "kind": "ArrowFunction",
       "signature": "_all, name: string",
@@ -17741,7 +17882,7 @@
     {
       "file": "packages/design-system/src/generated/tokens.ts",
       "name": "cssVar",
-      "line": 138,
+      "line": 141,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "token: DesignToken",
@@ -18702,6 +18843,78 @@
       "sha256": "1952349f8c21e818690d13fcc99ecf281b1ed0a62bb0205c2e4ec052c37cb4a5"
     },
     {
+      "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+      "name": "SampleRoom",
+      "line": 14,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ title, current = 'collection' as const, long = false }: { title: string; current?: 'collection' | 'decks'; long?: boolean }",
+      "sha256": "54b3af0ec9bf90712b5e5a8634d5a620d2abf8bc0c06219acdffc0d5722f733d"
+    },
+    {
+      "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+      "name": "<callback>",
+      "line": 21,
+      "column": 95,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "99801ee3918f8d38c0ad011e3414dfc9114441af464a38c70664287cb32a4c48"
+    },
+    {
+      "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+      "name": "<callback>",
+      "line": 24,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "6c1e6724bdc597fe0c71bf88ebb9c3f65b9b5bff6077dc030f1fdf0e5bed480f"
+    },
+    {
+      "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+      "name": "<callback>",
+      "line": 29,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "6c1e6724bdc597fe0c71bf88ebb9c3f65b9b5bff6077dc030f1fdf0e5bed480f"
+    },
+    {
+      "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+      "name": "<callback>",
+      "line": 33,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "b73a31d56d24f75c5164457155961df361039a17601bd5cc35056101ad9ca4b9"
+    },
+    {
+      "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+      "name": "<callback>",
+      "line": 38,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "7406255cebd4bd47a39fa107dd4a20387573134e79b025a3888330b0ac58dfa6"
+    },
+    {
+      "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+      "name": "<callback>",
+      "line": 41,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "372d0fe79cfe69b960b21053b28ddf39fd024e2c7df61b75b685de77f5faa477"
+    },
+    {
+      "file": "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+      "name": "<callback>",
+      "line": 49,
+      "column": 11,
+      "kind": "ArrowFunction",
+      "signature": "{ room }",
+      "sha256": "c0af70fbaa2f985a32b63b23fd75ba1e79ee65ae196deb368997db9c32e35a30"
+    },
+    {
       "file": "packages/design-system/stories/support/DocPage.tsx",
       "name": "DocPage",
       "line": 6,
@@ -18835,6 +19048,87 @@
       "kind": "ArrowFunction",
       "signature": "{ tokens }",
       "sha256": "79b957055361cb1fc0d936603877f06341b6f43720ca43f35f13c17f086f06cd"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/frame.tsx",
+      "name": "ReferenceNavigation",
+      "line": 13,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ current, playerName = players.self }: { current?: ReferenceDestination; playerName?: string }",
+      "sha256": "f1aa5968b9e7c6b1ba963224dce4afcfc4bdf572cee73e5b70d5ff1c4a29a47f"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/frame.tsx",
+      "name": "other",
+      "line": 15,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "room: string",
+      "sha256": "4555418ce4bb1cc448dddb3f31eb588b2465c11414ac8dcb00c4a9233a90aae4"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/frame.tsx",
+      "name": "<callback>",
+      "line": 26,
+      "column": 53,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "f3ea0a0f17672f747312da2c74358415f676ae0aad8e9330eeeadc256e361a2d"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/frame.tsx",
+      "name": "<callback>",
+      "line": 30,
+      "column": 63,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "5b70dca2e799bd43d815446dbf8ebf391d4275d9b48f255198e7bf191324ef23"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/frame.tsx",
+      "name": "ReferenceRoom",
+      "line": 43,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "{ room, current, children, playerName }: { room: string; current?: ReferenceDestination; children: ReactNode; playerName?: string }",
+      "sha256": "775158db91cb0ca5e3494e3ae15b66f34c370bf78a5bfdf0baa24723752df33c"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/frame.tsx",
+      "name": "slot",
+      "line": 44,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "side: string",
+      "sha256": "e1ced3569f8a1ca24eef032c1ce5d219b0775744a2c1d79cdaffffb365100fea"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/links.ts",
+      "name": "storyHref",
+      "line": 5,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "id: string, args?: string",
+      "sha256": "b9c2b56a3784b35a05aa5b02607ede0346b873d0532d755332ef25ffc9bbb789"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/text.ts",
+      "name": "useReferenceText",
+      "line": 26,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "886553042d270414c55b8f37f7a8bdd697810c4695a871bd89b4ef737d828875"
+    },
+    {
+      "file": "packages/design-system/stories/support/reference/text.ts",
+      "name": "<callback>",
+      "line": 28,
+      "column": 10,
+      "kind": "ArrowFunction",
+      "signature": "key, values = {}",
+      "sha256": "25b455b044aded11f9b3a9612bb9166efeb9a802f478182760acfd46c33ebb9d"
     },
     {
       "file": "packages/design-system/tests/browser/interactions.spec.ts",
@@ -19555,6 +19849,177 @@
       "kind": "ArrowFunction",
       "signature": "el",
       "sha256": "74b3ea894643e2621ff82f163e647006e8aded325be2f51deb5ba0b6a9348ba8"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "story",
+      "line": 5,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "id: string, globals = 'theme:paper'",
+      "sha256": "8c5651ee889f492e6a8499b8c6b758150c16db13bbf051efc3bce1778171d66f"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "open",
+      "line": 6,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "page: Page, id: string, globals?: string",
+      "sha256": "73adbb73949c007c4b411bb2ea29b8513532edc626dcb473bb1620f2c4f92ceb"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 9,
+      "column": 23,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "79e340c33b9b1881e6ab6cb3dda441b97e9685df007019f46c7726acb0b1c820"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 13,
+      "column": 29,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "1c8e61715a548693826fa402a6449edc6accd2fa52c5d93df4cbd463a2d1afa3"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 14,
+      "column": 85,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "81bf88587f9452bf7d3ae4d88dd57c78bfe21f480991cf558d62aceae79c9953"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 23,
+      "column": 108,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "46b1d73e61ad731ce8df072e1e12a0eb03341b2965b8503c98dbf6a374886ba7"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 28,
+      "column": 61,
+      "kind": "ArrowFunction",
+      "signature": "links",
+      "sha256": "fd7421a7b56e81a4ac2c1df017fade835b772fd8492f3a69fd030095e21a35e0"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 28,
+      "column": 80,
+      "kind": "ArrowFunction",
+      "signature": "l",
+      "sha256": "861cae89f24d37b062cb3cf49d3681f5d41433af544f99ea4faa8979e8ee31f7"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 29,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "w",
+      "sha256": "bf9bc03254187dfd85e5fdba7650f92a375664df67ffa09d16d701d1f56632a8"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 31,
+      "column": 105,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "319c486cbd924960817690a0d879ba3cc57ec3b5801a49f502b3e2a9ea9203b0"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 44,
+      "column": 107,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "0f19d360ffb3d086d3ff079b2f3b0cd706af48cbf7b649884324443c44813d9b"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 52,
+      "column": 42,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "f3df4028e0af4f565274dcd110d2aa562f7162510ebe80531f1ea8a216e0354f"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 53,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "414c42f70d234114a184ca1dd6473988596db414474b0ef55da436ef5fc3919a"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 54,
+      "column": 65,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "8116f189dbbef84c9d3ef57a23ec2dbb2231aa429c58f31b213c6fdbf2c99ed2"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 54,
+      "column": 142,
+      "kind": "ArrowFunction",
+      "signature": "b",
+      "sha256": "6ec84f691ed71fe151820ca56de7bd087b8c13f2bd009ec15a67ec93c7cc679b"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 54,
+      "column": 233,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "73987c4e77d0487d320645b517a6002a93c46a492f5e5eadbc4d5a969536ecbc"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 60,
+      "column": 110,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "1611c433cb16f3aaee45244505dec0c92369f09289498eaa9378582cbe677d59"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 68,
+      "column": 90,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "0e2d37d4935e9541509781fd0f476e333e44b83e5e3fb09d0176bcec92f82451"
+    },
+    {
+      "file": "packages/design-system/tests/browser/reference.spec.ts",
+      "name": "<callback>",
+      "line": 74,
+      "column": 92,
+      "kind": "ArrowFunction",
+      "signature": "{ page }",
+      "sha256": "ee7e282a6083b2ec6102f1147d7c98cf177dd7f0d4db8c0d49afc2580b5f344b"
     },
     {
       "file": "packages/design-system/tests/browser/stories.spec.ts",

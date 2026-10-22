@@ -186,6 +186,25 @@
         },
         "$description": "Ink identity symbol inside the ink chip: 20 px at the default root, the standard icon size, so the official badge keeps its detail."
       }
+    },
+    "avatar": {
+      "size": {
+        "$type": "dimension",
+        "$value": "{space.8}",
+        "$description": "Neutral initials avatar diameter: 32 px at the default root (§24)."
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.pill}",
+        "$description": "Avatar shape: a circle, the identity treatment the standard allows pills for (§12)."
+      }
+    },
+    "room": {
+      "ink-gutter": {
+        "$type": "dimension",
+        "$value": "{space.16}",
+        "$description": "Perimeter gutter reserved for ink-form artwork on each side of a room at expanded widths (§4, decision D27)."
+      }
     }
   }
 }

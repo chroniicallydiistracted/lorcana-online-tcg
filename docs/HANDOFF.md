@@ -7,6 +7,7 @@ Observed at: 2026-10-22T06:31:38.935Z (record time of CHG-20261022-004); display
 - The Director then approved the full design for end-to-end completion. Build checkpoints follow the implementation plan, one change record each:
   - CHG-20261022-005: task 1, the reference fixture (69 Hyperia City printings with thumbnails, 6 full-card images).
   - CHG-20261022-006: task 2, the official card back (D28) and `CardBack`.
+  - CHG-20261022-007: task 3, the room frame (navigation bar, account menu, room header, demonstration label, ink-form slots).
 
 Earlier changes through CHG-20261022-001 are finalized and on main.
 

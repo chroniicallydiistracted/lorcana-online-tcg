@@ -83,3 +83,7 @@ export { InspectorHost } from './components/Inspector/InspectorHost.tsx';
 export type { InspectorHostProps } from './components/Inspector/InspectorHost.tsx';
 export { CardFaceText } from './components/CardFace/CardFaceText.tsx';
 export type { CardFaceTextProps, RulesDensity } from './components/CardFace/CardFaceText.tsx';
+export { NavigationBar, AccountMenu } from './components/NavigationBar/NavigationBar.tsx';
+export type { Destination, NavigationBarProps, AccountMenuProps } from './components/NavigationBar/NavigationBar.tsx';
+export { RoomFrame, RoomHeader, DemonstrationLabel, InkFormSlot } from './components/RoomFrame/RoomFrame.tsx';
+export type { RoomFrameProps, RoomHeaderProps, InkFormSlotProps } from './components/RoomFrame/RoomFrame.tsx';
