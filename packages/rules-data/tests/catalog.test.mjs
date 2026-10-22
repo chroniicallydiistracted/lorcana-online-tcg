@@ -133,7 +133,7 @@ test('the reference fixture is the reviewed UX-01 selection, in order, from the 
   assert.deepEqual(referenceCatalog.printings.map(p => p.printingId), selection.map(s => s.printingId));
   assert.equal(new Set(selection.map(s => s.printingId)).size, selection.length, 'no printing selected twice');
   assert.equal(new Set(selection.map(s => s.reason)).size, selection.length, 'every printing records its own reason');
-  assert.ok(selection.every(s => s.reason.length > 30 && (s.detail === undefined || s.detail === true)));
+  assert.ok(selection.every(s => s.reason.length > 30 && (s.detail === undefined || s.detail === true) && (s.image === undefined || s.image === false) && !(s.detail && s.image === false)));
   assert.deepEqual(referenceCatalog.source, presentationCatalog.source);
   assert.equal(referencePrinting(3457).name, 'Kit Cloudkicker');
   assert.throws(() => referencePrinting(42), /not in the reference fixture/);
@@ -143,10 +143,11 @@ test('reference printings are Core Constructed in the catalog, so the demonstrat
   for (const printing of referenceCatalog.printings) assert.equal(printing.rotation, 'CoreConstructed', `${printing.name} ${printing.identifier}`);
 });
 
-test('reference images: a thumbnail for every printing, detail images only where flagged, within the size budget', () => {
-  const flagged = new Set(referenceSelection.filter(s => s.detail).map(s => s.printingId));
+test('reference images: a thumbnail for every printing except records, detail images only where flagged, within the size budget', () => {
+  const flagged = new Set(referenceSelection.filter(s => s.detail).map(s => s.printingId)), records = new Set(referenceSelection.filter(s => s.image === false).map(s => s.printingId));
+  assert.equal(referenceCatalog.printings.filter(p => p.setIds.includes('set14') && /\/204 EN 14$/.test(p.identifier)).length, 242, 'every Hyperia City standard and special printing, for the binder');
   for (const printing of referenceCatalog.printings) {
-    assert.equal(referenceImage(printing.printingId, 'thumbnail')?.sourceUrl, printing.thumbnailUrl, printing.name);
+    assert.equal(referenceImage(printing.printingId, 'thumbnail')?.sourceUrl, records.has(printing.printingId) ? undefined : printing.thumbnailUrl, printing.name);
     for (const variant of printing.variants) assert.equal(referenceImage(printing.printingId, 'detail', variant.id)?.sourceUrl, flagged.has(printing.printingId) ? variant.detailImageUrl : undefined, `${printing.name} ${variant.id}`);
   }
   const total = rendition => referenceImages.filter(i => i.rendition === rendition).reduce((n, i) => n + i.bytes, 0);

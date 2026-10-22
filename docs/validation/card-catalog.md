@@ -119,3 +119,12 @@ Recorded by CHG-20261022-005 (UX-01 implementation-plan task 1).
   - RUN-20261022-008: `catalog:verify` passing;
   - RUN-20261022-009: typecheck, boundaries and lint passing.
 - **Limits:** the decks, ownership figures and pack contents are demonstration data in the design-system stories, not catalog data, and nothing here is admitted or certified for play.
+
+### Binder records — 2026-10-22 UTC
+
+Recorded by CHG-20261022-009 (UX-01 task 5). The reference selection gains 173 records-only entries (`"image": false`), so the fixture holds all 242 Hyperia City printings: standard 1–204 and specials 205–242.
+- **Why:** the binder can page through the whole set. Unowned pockets show the printing's name and number, which needs the record but no image. The demonstration owns only printings that have images.
+- **Images:** unchanged at 75 (4,507,729 bytes); `fixtureImageSources` skips records-only entries.
+- **Checks:** the tests require all 242 printings and no thumbnail for any records-only entry. `catalog:verify` matches the snapshot exactly.
+- **Receipt:** RUN-20261022-022 passes 12 tests and `catalog:verify`.
+- **Fixture size:** `src/fixtures/reference.json` is 515,562 bytes.

@@ -2,7 +2,10 @@
 declare const styles: {
   readonly body: string;
   readonly header: string;
+  readonly layout: string;
+  readonly main: string;
   readonly panel: string;
+  readonly side: string;
   readonly title: string;
 };
 export default styles;

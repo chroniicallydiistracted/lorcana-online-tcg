@@ -87,6 +87,12 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **Inspection:** keep `InspectorHost` mounted in the workspace's inspector slot, so closing returns focus to the originating tile.
   - **Format values:** the deck size, copy limit, ink limit and rotation come from the story's format record (`stories/support/reference/deck.ts`), never from components.
   - **Import and export:** `ImportPreview` reports unresolved lines before anything changes, and `ExportDialog` requires an explicit format.
+- **Collection binder:** `Binder` shows one or two faces by content fit (a hidden probe holds the two-face minimum from the binder tokens).
+  - **Anchoring:** it follows an anchor page, so Go to card number and resizes keep the printing in view.
+  - **Pockets:** each is a `BinderPocket` (owned, missing, unknown, unavailable, loading, padding, filtered). `PocketGrid` is the Grid view.
+  - **Completion:** `CompletionSummary` uses the standard printings as its denominator and keeps special printings and foils apart.
+  - **Inspection:** place the inspector with `InspectorLayout`, keeping the host mounted.
+  - **Data:** the binder pages come from `stories/support/reference/binder.ts`. Ownership there is demonstration data on printings with images only.
 
 ## Raw values
 

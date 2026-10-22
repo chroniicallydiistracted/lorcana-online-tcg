@@ -140,6 +140,22 @@
         "$type": "dimension",
         "$value": "{size.binder-face-padding}",
         "$description": "Face padding."
+      },
+      "pocket-min": {
+        "$type": "dimension",
+        "$value": {
+          "value": 7,
+          "unit": "rem"
+        },
+        "$description": "Minimum usable pocket width (112 px) before a spread drops to a single face (§17)."
+      },
+      "go-to": {
+        "$type": "dimension",
+        "$value": {
+          "value": 10,
+          "unit": "rem"
+        },
+        "$description": "Width of the Go to card number field."
       }
     },
     "badge": {

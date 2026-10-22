@@ -23,3 +23,15 @@ export const inspectorHostDoc = defineDoc({
   contentLimits: ['Body scrolls'],
   usage: ['Navigating to an inspector preserves unsaved deck edits and filters', 'Hosts a lazily loaded Interactive Card Viewer; the design system never imports Babylon'],
 });
+export const inspectorLayoutDoc = defineDoc({
+  name: 'InspectorLayout', status: 'experimental', foundation: 'CSS grid',
+  purpose: 'Places inspection beside the working content on wide layouts, keeping the host mounted so focus returns to the originating card.',
+  anatomy: ['Working content', 'Inspection column (wide layouts, while inspecting)'],
+  variants: ['standard'],
+  states: ['closed', 'inspecting'],
+  inputs: ['children', 'inspector', 'inspecting'],
+  outputs: [],
+  accessibility: ['Reading order is the working content, then the inspection panel'],
+  contentLimits: ['The inspection column is the sheet width; the content takes the rest'],
+  usage: ['Narrower layouts use the host\'s modal sheet; the column stays empty'],
+});

@@ -31,7 +31,7 @@ pnpm evidence:run --id RUN-YYYYMMDD-NNN --category container --summary "Acquire 
 
 ## Rebuild the fixtures
 
-1. Edit the selection: `packages/rules-data/fixtures/selection.json` for the presentation fixture, or `fixtures/reference-selection.json` for the UX-01 reference fixture. Each entry needs a printing ID and the state or screen role it exercises. A reference entry marked `"detail": true` also gets full-card images.
+1. Edit the selection: `packages/rules-data/fixtures/selection.json` for the presentation fixture, or `fixtures/reference-selection.json` for the UX-01 reference fixture. Each entry needs a printing ID and the state or screen role it exercises. A reference entry marked `"detail": true` also gets full-card images; one marked `"image": false` is a record only, with no images (the binder's unowned printings need names and numbers, not pictures).
 2. Run `node packages/rules-data/scripts/select-fixtures.mjs docs/rules/<record>.json`. It:
    - verifies the cached snapshot against the record;
    - copies the selected records exactly;

@@ -323,3 +323,31 @@ The Director approved the full UX-01 design for end-to-end completion. The build
   - **Receipts:**
     - **RUN-20261022-018, failed (preserved):** 17 of 242. The view-switch options were 40 px tall inside their bordered group, and two scrolling regions (the pinned validation footer and the import list) could not take keyboard focus (axe `scrollable-region-focusable`). The options are now 44 px, the footer is a named focusable group, and the import list no longer scrolls on its own.
     - **RUN-20261022-019, passed:** gates and the full Chromium suite, 242/242.
+- **Task 5, Collection binder (CHG-20261022-009):**
+  - **Components (Experimental):** `Binder`, `BinderPocket`, `PocketGrid` and `CompletionSummary`, plus a generic `InspectorLayout`. The design's `SetPicker` is the existing `Select`, so no new component was needed.
+  - **Tokens and strings:** `binder.pocket-min` (112 px) and `binder.go-to`; 18 component strings.
+  - **Behaviour:**
+    - two faces only when both fit with usable pockets; one face otherwise, or while inspecting;
+    - Page Up and Page Down scoped to the binder, with focus moving to the new spread's first pocket;
+    - only visible faces rendered, so offscreen pages are out of the focus order;
+    - Go to card number with an explained "not found";
+    - a fade with brief travel on page change, travel removed under reduced motion;
+    - page buttons that stay in view while a tall spread scrolls.
+  - **Reference stories:** partially owned, new player, ownership unavailable, loading, filtered to owned, printing navigation, single face, Grid, List, reduced motion, inspection, takedown fallback and unknown ownership, across all 29 pages of Hyperia City.
+  - **Visual review:**
+    - The binder started near y = 630 at 1440 px. The set picker moved into the header and the filters onto one row.
+    - The page buttons were far from a single face. They now flank the faces and stay in view.
+  - **Defects found by the new tests, fixed before the receipt:**
+    - a keyboard page turn lost focus, because the focused pocket unmounted;
+    - a declaration-order error that stopped the story from rendering.
+  - **Browser tests:** seven Collection tests:
+    - paging and scoped keys;
+    - the focus order across the spread, with padding unfocusable;
+    - go-to anchoring through a resize, and not-found;
+    - filters keeping completion and carrying over between views;
+    - unavailable ownership never shown as zero;
+    - reduced motion;
+    - inspection and focus return.
+  - **Receipts:**
+    - RUN-20261022-022: fixture tests and `catalog:verify`;
+    - RUN-20261022-023: gates and the full Chromium suite, 290/290.

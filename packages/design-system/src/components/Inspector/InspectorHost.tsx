@@ -40,3 +40,17 @@ export function InspectorHost({ isOpen, onOpenChange, title, children, fallbackF
     <div className={styles.body}>{children}</div>
   </aside>;
 }
+
+export interface InspectorLayoutProps {
+  children: ReactNode;
+  /** The InspectorHost, kept mounted so closing restores focus to the originating card. */
+  inspector: ReactNode;
+  inspecting: boolean;
+}
+/** Working content with a side column for inspection on wide layouts; narrower layouts get the host's modal sheet. */
+export function InspectorLayout({ children, inspector, inspecting }: InspectorLayoutProps) {
+  return <div className={styles.layout} data-inspecting={inspecting || undefined}>
+    <div className={styles.main}>{children}</div>
+    <div className={styles.side}>{inspector}</div>
+  </div>;
+}

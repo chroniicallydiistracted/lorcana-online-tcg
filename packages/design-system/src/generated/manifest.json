@@ -30,7 +30,7 @@
     },
     {
       "file": "tokens/component/component.tokens.json",
-      "sha256": "c3a19df572c0199c3fdf0181e91deb3426f3f6c8b9cd04b642a0e47045a09fcf"
+      "sha256": "75be6ac062520cb858230d50931c3282412a3f9b8dde1d30a96c89f04508d387"
     },
     {
       "file": "tokens/card/card.tokens.json",
@@ -1511,6 +1511,18 @@
       }
     },
     {
+      "path": "component.binder.go-to",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Width of the Go to card number field.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-binder-go-to",
+      "values": {
+        "paper": "10rem",
+        "ink": "10rem"
+      }
+    },
+    {
       "path": "component.binder.pocket",
       "layer": "component",
       "type": "dimension",
@@ -1520,6 +1532,18 @@
       "values": {
         "paper": "144px",
         "ink": "144px"
+      }
+    },
+    {
+      "path": "component.binder.pocket-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum usable pocket width (112 px) before a spread drops to a single face (§17).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-binder-pocket-min",
+      "values": {
+        "paper": "7rem",
+        "ink": "7rem"
       }
     },
     {

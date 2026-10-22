@@ -62,11 +62,14 @@ export function fixtureImage(printingId: number, rendition: FixtureImage['rendit
 }
 
 /**
- * The UX-01 reference screens' printings (match decks, binder spreads, pack and special printings), mostly Hyperia City,
- * from the same acquisition. Every printing has a thumbnail; only those marked `detail` have full-card images.
+ * The UX-01 reference screens' printings, all Hyperia City, from the same acquisition: the match decks, binder spreads,
+ * pack and special printings with thumbnails (full-card images only where marked `detail`), and records without images
+ * (`image: false`) for the rest of the set, so the binder can page through every printing.
  */
 export const referenceCatalog: NormalizedCatalog = normalizeFixture(reference);
-export const referenceSelection: readonly { readonly printingId: number; readonly reason: string; readonly detail?: true }[] = reference.selection.map(s => s.detail === true ? { printingId: s.printingId, reason: s.reason, detail: true } : { printingId: s.printingId, reason: s.reason });
+export const referenceSelection: readonly { readonly printingId: number; readonly reason: string; readonly detail?: true; readonly image?: false }[] = reference.selection.map(s => ({
+  printingId: s.printingId, reason: s.reason, ...('detail' in s && s.detail === true ? { detail: true as const } : {}), ...('image' in s && s.image === false ? { image: false as const } : {}),
+}));
 export const referenceImages: readonly FixtureImage[] = reviewImages(referenceImageManifest);
 
 export function referencePrinting(printingId: number): CatalogPrinting {

@@ -79,8 +79,8 @@ export { DeckEntry } from './components/DeckEntry/DeckEntry.tsx';
 export type { DeckEntryProps, DeckEntryMessage } from './components/DeckEntry/DeckEntry.tsx';
 export { CardInspector } from './components/Inspector/CardInspector.tsx';
 export type { CardInspectorProps, PrintedBlock } from './components/Inspector/CardInspector.tsx';
-export { InspectorHost } from './components/Inspector/InspectorHost.tsx';
-export type { InspectorHostProps } from './components/Inspector/InspectorHost.tsx';
+export { InspectorHost, InspectorLayout } from './components/Inspector/InspectorHost.tsx';
+export type { InspectorHostProps, InspectorLayoutProps } from './components/Inspector/InspectorHost.tsx';
 export { CardFaceText } from './components/CardFace/CardFaceText.tsx';
 export type { CardFaceTextProps, RulesDensity } from './components/CardFace/CardFaceText.tsx';
 export { NavigationBar, AccountMenu } from './components/NavigationBar/NavigationBar.tsx';
@@ -100,3 +100,5 @@ export { DeckWorkspace, DeckPanel } from './components/DeckWorkspace/DeckWorkspa
 export type { DeckWorkspaceProps, DeckPanelProps } from './components/DeckWorkspace/DeckWorkspace.tsx';
 export { ImportPreview, ExportDialog } from './components/DeckTransfer/DeckTransfer.tsx';
 export type { ImportLine, ExportFormat, ExportDialogProps } from './components/DeckTransfer/DeckTransfer.tsx';
+export { Binder, BinderPocket, PocketGrid, CompletionSummary } from './components/Binder/Binder.tsx';
+export type { BinderProps, BinderPage, BinderPocketProps, PocketState, PocketGridProps, CompletionSummaryProps } from './components/Binder/Binder.tsx';

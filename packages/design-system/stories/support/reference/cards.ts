@@ -21,6 +21,7 @@ export const setOrder = (c: CatalogPrinting): number => sets.find(s => s.id === 
 export const collectorOrder = (c: CatalogPrinting): number => Number.parseInt(c.collectorNumber ?? '', 10) || Number.MAX_SAFE_INTEGER;
 const image = (c: CatalogPrinting, rendition: 'thumbnail' | 'detail', variant = 'Regular') => referenceImage(c.printingId, rendition, variant) ?? fixtureImage(c.printingId, rendition, variant);
 export const hasDetail = (c: CatalogPrinting): boolean => image(c, 'detail') !== undefined;
+export const hasThumbnail = (c: CatalogPrinting): boolean => image(c, 'thumbnail') !== undefined;
 
 /** The design system's presentational printing; `detail` uses the full-card image where the fixture has one. */
 export function printing(c: CatalogPrinting, { variant = 'Regular', detail = false }: { variant?: string; detail?: boolean } = {}): Printing {

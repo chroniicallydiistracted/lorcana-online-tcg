@@ -185,3 +185,80 @@ test.describe('deckbuilder', () => {
     await expect(page.getByRole('region', { name: 'Rules' })).toBeVisible();
   });
 });
+
+test.describe('collection binder', () => {
+  const binder = (page: Page) => page.getByRole('region', { name: 'Hyperia City binder' });
+  const indicator = (page: Page) => binder(page).locator('p[aria-live]');
+  test('paging works by buttons and by Page Up and Page Down scoped to the binder', async ({ page }) => {
+    await open(page, 'reference-screens-collection-binder--partially-owned');
+    await expect(indicator(page)).toHaveText('Pages 1–2 of 29');
+    await binder(page).getByRole('button', { name: 'Next page' }).click();
+    await expect(indicator(page)).toHaveText('Pages 3–4 of 29');
+    await page.getByRole('searchbox', { name: 'Search this set' }).focus();
+    await page.keyboard.press('PageDown');
+    await expect(indicator(page)).toHaveText('Pages 3–4 of 29');
+    await binder(page).getByRole('button', { name: /^Inspect / }).first().focus();
+    await page.keyboard.press('PageDown');
+    await expect(indicator(page)).toHaveText('Pages 5–6 of 29');
+    await page.keyboard.press('PageUp');
+    await expect(indicator(page)).toHaveText('Pages 3–4 of 29');
+  });
+  test('only the visible faces are in the focus order, read across the spread, and padding takes no focus', async ({ page }) => {
+    await open(page, 'reference-screens-collection-binder--partially-owned');
+    const names = await binder(page).getByRole('button', { name: /^Inspect / }).evaluateAll(els => els.map(e => e.getAttribute('aria-label') ?? ''));
+    expect(names).toHaveLength(18);
+    expect(names.slice(0, 9).every(n => /Hyperia City ([1-9])\/204/.test(n))).toBe(true);
+    expect(names[9]).toMatch(/Hyperia City 10\/204/);
+    expect(names.find(n => n.includes('10/204'))).toMatch(/Not owned$/);
+    await page.goto('/iframe.html?id=reference-screens-collection-binder--partially-owned&viewMode=story&globals=theme:paper');
+    await binder(page).getByRole('button', { name: 'Next page' }).click(); await binder(page).getByRole('button', { name: 'Next page' }).click();
+    await expect(indicator(page)).toHaveText('Pages 5–6 of 29');
+    await expect(binder(page).locator('[data-kind="padding"]')).toHaveCount(0);
+    await binder(page).getByRole('button', { name: 'Next page' }).click();
+    await expect(binder(page).locator('[data-kind="padding"]')).toHaveCount(2);
+    await expect(binder(page).locator('[data-kind="padding"] button, [data-kind="padding"][tabindex]')).toHaveCount(0);
+  });
+  test('Go to card number anchors the printing and keeps it through a resize; an unknown number is explained', async ({ page }) => {
+    await open(page, 'reference-screens-collection-binder--partially-owned');
+    await binder(page).getByRole('textbox', { name: 'Go to card number' }).fill('999');
+    await binder(page).getByRole('button', { name: 'Go', exact: true }).click();
+    await expect(binder(page)).toContainText('No card number 999 in this set.');
+    await binder(page).getByRole('textbox', { name: 'Go to card number' }).fill('142');
+    await binder(page).getByRole('button', { name: 'Go', exact: true }).click();
+    await expect(indicator(page)).toHaveText('Pages 17–18 of 29');
+    await expect(binder(page).getByRole('button', { name: /Lafayette – All Ears/ })).toBeVisible();
+    await page.setViewportSize({ width: 820, height: 1180 });
+    await expect(indicator(page)).toHaveText('Page 17 of 29');
+    await expect(binder(page).getByRole('button', { name: /Lafayette – All Ears/ })).toBeVisible();
+  });
+  test('filters keep the completion figures and carry over between Binder, Grid and List', async ({ page }) => {
+    await open(page, 'reference-screens-collection-binder--partially-owned');
+    await page.getByRole('button', { name: /Ownership$/ }).click(); await page.getByRole('option', { name: 'Owned' }).click();
+    await expect(page.getByText('24 of 204 owned')).toBeVisible();
+    await expect(page.getByText('26 results')).toBeVisible();
+    await page.getByRole('radiogroup', { name: 'Collection view' }).getByRole('radio', { name: 'Grid' }).click();
+    await expect(page.getByRole('list', { name: 'Hyperia City printings' }).getByRole('listitem')).toHaveCount(26);
+    await page.getByRole('radiogroup', { name: 'Collection view' }).getByRole('radio', { name: 'List' }).click();
+    await expect(page.getByRole('grid', { name: 'Hyperia City printings' }).getByRole('row')).toHaveCount(27);
+    await expect(page.getByRole('button', { name: /Ownership$/ })).toContainText('Owned');
+  });
+  test('unavailable ownership is labelled everywhere and never shown as zero', async ({ page }) => {
+    await open(page, 'reference-screens-collection-binder--ownership-unavailable');
+    await expect(page.getByText('Hyperia City completion is unavailable while ownership cannot be loaded.')).toBeVisible();
+    await expect(binder(page).getByRole('button', { name: /Ownership unavailable$/ })).toHaveCount(18);
+    await expect(binder(page)).not.toContainText(/\b0 (normal|Normal)/);
+  });
+  test('reduced motion turns pages without travel', async ({ page }) => {
+    await open(page, 'reference-screens-collection-binder--reduced-motion', 'theme:paper;motion:reduced');
+    expect(await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--is-motion-distance-scale').trim())).toBe('0');
+  });
+  test('selecting a pocket opens inspection beside a single face; closing returns focus to the pocket', async ({ page }) => {
+    await open(page, 'reference-screens-collection-binder--partially-owned');
+    const pocket = binder(page).getByRole('button', { name: /Max Goof – Music Lover/ });
+    await pocket.click();
+    await expect(page.getByRole('complementary', { name: 'Max Goof – Music Lover' })).toBeVisible();
+    await expect(indicator(page)).toHaveText('Page 1 of 29');
+    await page.keyboard.press('Escape');
+    await expect(binder(page).getByRole('button', { name: /Max Goof – Music Lover/ })).toBeFocused();
+  });
+});

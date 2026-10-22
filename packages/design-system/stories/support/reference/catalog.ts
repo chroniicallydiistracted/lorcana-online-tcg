@@ -1,10 +1,13 @@
 import type { CatalogPrinting } from '@lorcana/rules-data';
 import type { CatalogFilters, ImportLine } from '../../../src/index.ts';
-import { allCards, categoryLabels, collectorOrder, fullName, rarityLabels, setName, setOrder } from './cards.ts';
+import { allCards, categoryLabels, collectorOrder, fullName, hasThumbnail, rarityLabels, setName, setOrder } from './cards.ts';
 import type { Deck } from './deck.ts';
 
-/** Catalog cards for the deckbuilder: newest set first, then collector number, then printing (§17: deterministic ordering). */
-export const catalogCards: readonly CatalogPrinting[] = [...allCards].filter(c => c.category !== 'supply').sort((a, b) => setOrder(b) - setOrder(a) || collectorOrder(a) - collectorOrder(b) || a.printingId - b.printingId);
+/**
+ * Catalog cards for the deckbuilder: the fixture printings that have images (binder-only records are excluded), newest set
+ * first, then collector number, then printing (§17: deterministic ordering).
+ */
+export const catalogCards: readonly CatalogPrinting[] = [...allCards].filter(c => c.category !== 'supply' && hasThumbnail(c)).sort((a, b) => setOrder(b) - setOrder(a) || collectorOrder(a) - collectorOrder(b) || a.printingId - b.printingId);
 const unique = (values: readonly string[]) => [...new Set(values)].sort((a, b) => a.localeCompare(b));
 export const filterChoices = {
   costs: [1, 2, 3, 4, 5, 6, 7, 8],
