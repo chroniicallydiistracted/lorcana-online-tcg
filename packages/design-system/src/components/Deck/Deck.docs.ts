@@ -57,7 +57,7 @@ export const validationSummaryDoc = defineDoc({
   outputs: [],
   accessibility: ['Each section is named; each message has an icon with a text name and the message itself'],
   contentLimits: ['Messages wrap; the footer region scrolls when many apply'],
-  usage: ['Messages name the card, quantity, reason and policy version', 'Advice is never required'],
+  usage: ['Messages name the card, quantity, reason and policy version', 'Advice is never required', 'A section shows the success mark only when it has no messages; information alone gets the information mark'],
 });
 export const saveStateDoc = defineDoc({
   name: 'SaveState', status: 'experimental', foundation: 'Icon and status text',

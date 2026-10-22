@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-22T19:17:09.160Z",
+  "observed_at": "2026-10-22T20:23:44.491Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -2213,7 +2213,8 @@
         "packages/design-system/**",
         "scripts/ci/pipeline.mjs",
         "scripts/ci/policy.json",
-        "pnpm-workspace.yaml"
+        "pnpm-workspace.yaml",
+        "packages/presentation/**"
       ]
     },
     {
@@ -2221,7 +2222,8 @@
       "classification": "current",
       "sources": [
         "packages/design-system/**",
-        "apps/web/src/**"
+        "apps/web/src/**",
+        "packages/presentation/**"
       ]
     },
     {
@@ -2230,7 +2232,8 @@
       "sources": [
         "packages/design-system/**",
         "apps/web/src/**",
-        "scripts/ci/pipeline.mjs"
+        "scripts/ci/pipeline.mjs",
+        "packages/presentation/**"
       ]
     },
     {
@@ -2359,7 +2362,8 @@
     "CHG-20261022-009",
     "CHG-20261022-010",
     "CHG-20261022-011",
-    "CHG-20261022-012"
+    "CHG-20261022-012",
+    "CHG-20261022-013"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2445,9 +2449,10 @@
     "CHG-20261022-009": "finalized",
     "CHG-20261022-010": "finalized",
     "CHG-20261022-011": "finalized",
-    "CHG-20261022-012": "finalized"
+    "CHG-20261022-012": "finalized",
+    "CHG-20261022-013": "finalized"
   },
-  "source_fingerprint": "8a92ec919eb7a93104d5f47db68b0987ab1d51e2ea3eb86f04368a159614c416",
+  "source_fingerprint": "daeba7d258ad94c240f04d3e495eaf510e6d85644d44eec82051f1dbc5c713c7",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2463,8 +2468,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "c3c70d0dc9aba26160a4fffef6fe1bd039d58dbc8f6c0b723c6341e8d4aef7db",
-    "README.md": "95b567f1be31ae37ed42b3d4e3a8ca548fcc704746b031e5cfe343f25ff56fc1",
+    "AGENTS.md": "704c4d2f4b604c34d3ced8a8d13ec2d0e963af7d0eb19d0d9c219b0fdd9fbb8a",
+    "README.md": "042075d04cb6480b6d8892a28d8b3608c1022e73956e7d0905ae5f49509c7b7b",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2525,9 +2530,9 @@
     "docs/ARCHIVE_PROVENANCE.md": "e77e3909b03bae735287e3176fcab76c5418ee87cde40b972beb9631cb6bedda",
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
-    "docs/FEATURES.md": "bbc5c780d9a84194a7a8cc59167de5b6f4c7ccfb2f146b013825bf6e13264a9f",
-    "docs/HANDOFF.md": "5f09508bd5d3dc19c3fd43d94321c1a1a55876da19d5ce43c15cffc16e99146a",
-    "docs/README.md": "9b3c231f484b7584b95abd576c50b01097f13f62b985cc9d5eb901c1073c182f",
+    "docs/FEATURES.md": "47592bbbe5fd01db0fbcd3b3a6397da052aef293af0d814b1be8edc97a8df52d",
+    "docs/HANDOFF.md": "7166d673d9025ba309e5578da8cc217199c682f022ba8cb4dbad4b831fbe0829",
+    "docs/README.md": "a8b1a593c1f65c9a5d2768f6cc2c85bb60968efef6de08071015c146619ce47e",
     "docs/WORKSPACE_QUALIFICATION.md": "1062a43ab8ab90446a9f2577996b7ce3bba66e0c7760033ae017fab4f882d44b",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "be8edbdb89fced50ac57ac687adf620b297f0b442471d095f2911e52cc1ffb7b",
@@ -2546,7 +2551,7 @@
     "docs/adr/0014-viewer-projection-privacy.md": "43604bb1f065b7bdedd0fe14b1af2533388db0582b4d243e1a4b51be6e6025fe",
     "docs/adr/0015-live-synthetic-transport.md": "74c58dae388ef90734c4061e4e17bc63c20155982a2c7a9072553428d0334f80",
     "docs/adr/0016-durable-engine-clocks.md": "e7b9655fd1c9ef2f91edf00684dfa0a00614d9350858a7045670b46c18571afb",
-    "docs/adr/0017-technical-design-system.md": "106da6779d65adf1854894bc7c6dc0274e034bcf3cfb1d35ce8de5e4c796e8fd",
+    "docs/adr/0017-technical-design-system.md": "957171621d2742ca54d5b68768fa672e9897c3b8202864af74f638823c5ad513",
     "docs/adr/0018-official-card-catalog.md": "857e07cff62e2a4ae8b0a047efc75f0c83981f7ebfeebe59f4e8b3d81b823b12",
     "docs/archive/design-system-2026-10-12/README.md": "e17c45b91107e049dd5be5e0b13cfb17183a3ee16ad87184fdb678454dc8041f",
     "docs/archive/design-system-2026-10-12/the-inkspire-design-system.zip": "add42af27f65ab577cd0e33941699cd3afc05a3e1ceca5c91e4962b94dc8647e",
@@ -2555,8 +2560,8 @@
     "docs/contracts/protocol.md": "9d98bba18ea510491ca56d4d78f4d6d72c192ccf5947415bacc4d60c16b77d2e",
     "docs/contracts/release.md": "e7f32ac1b56bb03ef8231e16f482f7e33fe7c4d5aee5b933926c9d99baa1a752",
     "docs/contracts/viewer.md": "93f10a76fb0069fbfb6e91a7825286de1fccdec2ff3413c03fc9cf39ea5c8e97",
-    "docs/documentation-map.json": "ddd567e964245dc961d0edb76dd6fd024075a2a18f2f156e093086b3159fa948",
-    "docs/features.json": "2bf743fd2675529060d7248b69d9dc0f7f8db2e50d730d6e9b49b6853dc71979",
+    "docs/documentation-map.json": "904fe917abb73a9d855dd61d4443375aa9a6a5e68e8dd01a49fb12a4b695ab2d",
+    "docs/features.json": "88471da71a7527c2e46c7c40d5d12dc6ef251dca981a1d8c8183d26139d93272",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "739e9ebaef44a82acd3caf79b5f219d1f220e348c738e16effe0f6c6d91e075b",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2577,8 +2582,8 @@
     "docs/plans/2026-10-15-play-04-implementation.md": "096a5078bf8e4afc192e03950f0057ee3769b2baf2cff3a5e59a37f530b2630f",
     "docs/plans/2026-10-15-play-04-intake.md": "20969acc10c8b9e3367d4a18b1a401bb79e3aaf5599f0151b9ffd55b814c28a3",
     "docs/plans/2026-10-19-play-04-d13.md": "1f5ae7f4f0dee9533bbffecd9acb1ac1b265d78ce3521d41b912dbfef8bbe724",
-    "docs/plans/2026-10-22-ux-01-design.md": "c0a52ae1c2908248b2c91e7e2ed25c85510e975c6ca04e3ae976e0f83170a76b",
-    "docs/plans/2026-10-22-ux-01-implementation.md": "a8dd8e1ad1ae29a8d77505c5ba6b7e1c3563cf90d9fc9405e81e133d61f2921e",
+    "docs/plans/2026-10-22-ux-01-design.md": "9cf5f6d48411dea95f105d3d65ec4200a16614a82bbefe446e740228abd26c88",
+    "docs/plans/2026-10-22-ux-01-implementation.md": "49e28db04a253798728dba6511976e0082dd72bc1a973a943baf6ff3a11bb57f",
     "docs/plans/2026-10-22-ux-01-intake.md": "598995f12b69cfd8ab161462718c705c2857d6ed212e7e0f86e574b788f6c258",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
     "docs/plans/boot-04-costs.json": "db38b14c7d22fce7fbf18c88f29062beb9462732cc578e09b744d4170f2ebda5",
@@ -2613,7 +2618,7 @@
     "docs/runbooks/card-catalog.md": "c09a003f280c4c66898129cdfc6df6887ad0be54110e54d4ad5aed3547b54f21",
     "docs/runbooks/ci.md": "fc39ead494febc8c5eedf26202af5805649085c5405ff70393762a7121eb76ea",
     "docs/runbooks/database.md": "ad8f7dec52c796afad51958dcb5fecb97e8f902ab980ac7d0392a7b357d0405a",
-    "docs/runbooks/design-system.md": "7b7e50ccb60a6ddcd47337289930c284eeed3288dbe8960a0233a3270a48366c",
+    "docs/runbooks/design-system.md": "15505cc4d13ee588159a80014e2d8e9020b17182d8d8c0eed1cb8b3c5aaff57f",
     "docs/runbooks/engine.md": "4b622d50192cde4c6e7a24adcbeb2f8ce2814439c59b247945a18cf6381eb2c1",
     "docs/runbooks/game-clocks.md": "ccf0c0118c869330a034a81073822981dcc15cfc1061981e8eaaf45de8f7c9fc",
     "docs/runbooks/live-matches.md": "821226c33cf5b895b36701549db5eb4d2d0a9d755b6303912ddf8bd3c49af46c",
@@ -2718,7 +2723,7 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "dac42adeef955d3fd5b3decea3c08749fd9013da69a91ee85c1b20b99cef6178",
+    "docs/validation/ux-design-system.md": "53f6703be856dc5cbd7508a4912f75ff9e134088b977f49f67c6c9e0fda9d641",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
@@ -2726,7 +2731,7 @@
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
     "docs/vision/decision_register.csv": "8023e8d1a0b2594d2403478843ae7c67fe1ef0c334c653bd980e74b66c8cd062",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "1b31cd70cb541ca61a9c2f583053e00feca77e7bedcd12d3cbda1a21a7c99363",
+    "docs/vision/initial_backlog.csv": "a735834d9b1cc229cc8fb0ccda3742f3e0aa93da84a1177af30a3b1c73ec5c9e",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "c92ead50ec949a5b8f0d014a4e9deb3e855c747ad1a40f7e1506d8b08abec0b2",
@@ -2784,13 +2789,13 @@
     "packages/db/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "packages/design-system/.storybook/main.ts": "b51cdaa4b8f924d7b3286adb63e9b32a690506c2409d15e56dc5c688e9b5b750",
     "packages/design-system/.storybook/preview.tsx": "73734780db26120b33a86016a4395e69dd76d5c2aa387f0785ad5e42995f99f9",
-    "packages/design-system/README.md": "995d13ed4344e27a8d1036a17624dcdfbe624be9fcb129b723d36a9b31d9a428",
+    "packages/design-system/README.md": "550073f3b03112356104f2b4518b02db3a60dc55a49828903aae8443f005bcf0",
     "packages/design-system/package.json": "f6359b9f73315cefc6464368b3dc8b10ed1840bc201eeffc9cef543a112eb8f8",
     "packages/design-system/playwright.config.ts": "f562d884362ee8c69dc1a99ed24f289003e1d30b2400409020329886c60800d9",
     "packages/design-system/scripts/browser-tests.mjs": "eb395fb833b59234b5da28af7649d51650e18b8a21c75a9ba7072e254b01b095",
     "packages/design-system/scripts/build-tokens.mjs": "c47fc6b649de0fbe0328ad8bb81ab7cef54f5f9866da4e1daa093f6e839a7016",
     "packages/design-system/scripts/check-components.mjs": "b845aabefe2da1b306c4ba40262b3a4b5af906ab98b1967900082dcee3bd8e89",
-    "packages/design-system/scripts/check-styles.mjs": "e27658f4dc4790492f9e935832ee8455ad2b54b84ed44a19337620eff09dc550",
+    "packages/design-system/scripts/check-styles.mjs": "351b0d57d58a4331eb7d9cab7ccadf611f0101af8fe76a462673891c0d7283e1",
     "packages/design-system/scripts/check-tokens.mjs": "b66179f8144b2231aee2676b2ac468666b59f7a8bd8f833a36a681fed93fad06",
     "packages/design-system/scripts/copy-static.mjs": "0ea709122743465901d5e25f9c19a029c8d454a9e50388c0d17c6bfa59b0ee38",
     "packages/design-system/scripts/css-module-types.mjs": "5d1117b22bdedb47111fc0d57ee51359e30347406f74eaa1a7f409fcdf4a9a96",
@@ -2847,9 +2852,9 @@
     "packages/design-system/src/components/CardFace/CardFaceText.module.css": "9cac67b5c9a167310901a844e203090cb0d798d9f1ca417adf59e06616e5596e",
     "packages/design-system/src/components/CardFace/CardFaceText.module.d.css.ts": "bee7cd8a97ded773c0cec088e4f60c21db37319b14e668a9c5b960b61195c919",
     "packages/design-system/src/components/CardFace/CardFaceText.tsx": "40f75854f1e2b09237e1f4136bb53727fa2ca6bc5e0305cc90a7db8b37b5515f",
-    "packages/design-system/src/components/CardTile/CardImage.module.css": "63349d1247bc896b723795da26f4c129503506e5a15205928c4307ca320d4c47",
+    "packages/design-system/src/components/CardTile/CardImage.module.css": "f934b16ba5bf990ae35e12955a610dbe79223aa087339dc77ec10fc3ab75b2cf",
     "packages/design-system/src/components/CardTile/CardImage.module.d.css.ts": "29469d21f585e3279483706d6e9c38dc4ab36016e9935ec1521e645273928550",
-    "packages/design-system/src/components/CardTile/CardImage.tsx": "3f003c29ac8c3c3e78d2d3dc794dcf5e24a72324dcaf84aa2e61ca71b1b78b22",
+    "packages/design-system/src/components/CardTile/CardImage.tsx": "1433fc2fc37477899404bb5d85ed719e191bf5d271abdc29ecb4788d5b394481",
     "packages/design-system/src/components/CardTile/CardTile.docs.ts": "2c4ab5b9312013c4c0ef24c2a7884e030e11124e01346ffddbba23b4cd771179",
     "packages/design-system/src/components/CardTile/CardTile.module.css": "247c0617cc454b41d561b781a57f406e902beb51aabb54207afc444d469691c6",
     "packages/design-system/src/components/CardTile/CardTile.module.d.css.ts": "b5461d2e0cced87d7825991b80aa281b34ab082bb9e3cd2cc46758793e3e0b2f",
@@ -2875,10 +2880,10 @@
     "packages/design-system/src/components/ConnectionStatus/ConnectionStatus.module.css": "01b90864b60b645b245367617413212a19819bacb14e98c8cfdce51f04c01655",
     "packages/design-system/src/components/ConnectionStatus/ConnectionStatus.module.d.css.ts": "8fd21e0f56420bc5ebb41ead4a78dd7833eae4b6336032bb67301c890d0e0113",
     "packages/design-system/src/components/ConnectionStatus/ConnectionStatus.tsx": "a1874bc8e13d3c3f2501fd01450abbac7478b113cbe8acf5d843c6dd3681a30b",
-    "packages/design-system/src/components/Deck/Deck.docs.ts": "58d061f7ac256270024e269baf6d37b56e86ea782d6079dba796b2c609424c94",
+    "packages/design-system/src/components/Deck/Deck.docs.ts": "054d069e706fdf7f7277dd0e8bdef8406eec67c16f320d6848dccb64527d4d0d",
     "packages/design-system/src/components/Deck/Deck.module.css": "ad84ac3d592e9f7a02bc337898c71ab15ccf15f39c378d619f844f7731b291ee",
     "packages/design-system/src/components/Deck/Deck.module.d.css.ts": "8a8457ec2fbfc6cb6b0cf4d66ea4dfee70cb3851ab68a1d9e4506fe9e28a6498",
-    "packages/design-system/src/components/Deck/Deck.tsx": "fb3d9ed936cd7b613ebce892f2755c5640b5d29ea8c9980e5700900b4c4bd0d1",
+    "packages/design-system/src/components/Deck/Deck.tsx": "87e5d65e6662ef7dd78cd943a23b207694eee3ea9bd296814bcff732e083c077",
     "packages/design-system/src/components/DeckEntry/DeckEntry.docs.ts": "fd8e54473fc6ffe1c45fe86fdae2a2b4bec41d1eeec038afa8a6e32749d1ff7b",
     "packages/design-system/src/components/DeckEntry/DeckEntry.module.css": "8a67169cef6146913cd4fbad6bc712c07ad460876409b56284bcd03a0e284124",
     "packages/design-system/src/components/DeckEntry/DeckEntry.module.d.css.ts": "d7228f3259f45f816aff738f505ce36fcede38ca5d77dcf8b29d599216c71a00",
@@ -2942,17 +2947,17 @@
     "packages/design-system/src/components/List/List.tsx": "0916cff4c1b7b684a54cd0814e7f8761d61f139512cf4105818dd5e6963b635c",
     "packages/design-system/src/components/Match/Board.module.css": "27cd821b924acf38b6b2ed3dcb78d8d0290216126226c32c1ad0184ce36c5617",
     "packages/design-system/src/components/Match/Board.module.d.css.ts": "12d1a9965276c75070592a8bd586e9a05be1c0848b689d67e5de7bd21c5f9637",
-    "packages/design-system/src/components/Match/Board.tsx": "39db32107169384a125ec5f1f3d55ccec155198a9763bfd3695d6d84423d2ab9",
-    "packages/design-system/src/components/Match/Hand.module.css": "f8960772628caead69cbd01e23a2b9d8af018a6e5099be1909dc791c6292781a",
+    "packages/design-system/src/components/Match/Board.tsx": "176db9e084d367e545814170a5ca1af810ecf6b98727686f22a1d3f5a8b92dc2",
+    "packages/design-system/src/components/Match/Hand.module.css": "e7ac06ac7fff0bb0d2b8508969c9bedf44ab90c918195383349658491a7a6d0e",
     "packages/design-system/src/components/Match/Hand.module.d.css.ts": "c6e7908a9ebd7cc50d5e746cc5e2b8365cda7132e82cf4bb25153cd8dc90a1ca",
-    "packages/design-system/src/components/Match/Hand.tsx": "90ac820eba1102c59e0fdc782a29ebed6d1e6c5e12ad2361a6a3c629149e1b3d",
-    "packages/design-system/src/components/Match/Match.docs.ts": "22ea0cef2f5859fc2331ead7db7cfe722911c4eb876192c5c92fc1ecb946dd46",
-    "packages/design-system/src/components/Match/MatchLayout.module.css": "f210f1c5e879483fbed212e8af5a0a3cd4d1509916011fd23921764ee011448e",
+    "packages/design-system/src/components/Match/Hand.tsx": "6b4e4de48fd9ffd8b05461403bf0e482629faa3ca90855f3bd5f871b3c48582d",
+    "packages/design-system/src/components/Match/Match.docs.ts": "4bb443dd9d0858fab649db45e194f115b36040bb9da704ff4d6cff7e32055b3d",
+    "packages/design-system/src/components/Match/MatchLayout.module.css": "20e7afc2d44f712890a3143c509707587d9ecdaad1f681539637fba8e7b86a0f",
     "packages/design-system/src/components/Match/MatchLayout.module.d.css.ts": "c4292c9f4c967b604226f6d608f56aef36be049f54fe6a424537debb2507eddf",
     "packages/design-system/src/components/Match/MatchLayout.tsx": "1b09c27d41077bdfac1225d2af1ee275e34598dc6be09ee76def6c30ed6b406c",
-    "packages/design-system/src/components/Match/Panels.module.css": "699c84b4d683ab166c100aeb81ebe335f4ff854e055e3e1e3f03f3a53c72168f",
+    "packages/design-system/src/components/Match/Panels.module.css": "9bd7a026751535b112e3c20eb4defd72a329cee368c715d902036dce11300452",
     "packages/design-system/src/components/Match/Panels.module.d.css.ts": "6293a31f0584548471db7a7b202da046518f60e859015c68e27f0ed6799ef55f",
-    "packages/design-system/src/components/Match/Panels.tsx": "21f5e0e6b3c3d237dd09e048bcbc49aab84813d7aadbad8d871dfdde9c4ddba0",
+    "packages/design-system/src/components/Match/Panels.tsx": "50dbae86591f20518d02ae6938ff61bb28ab42abb6e38360793d6f4ef773ceb0",
     "packages/design-system/src/components/Match/SceneOverlay.module.css": "1340e19a8c58178d8184a914677bd5409bd41cb3ba0623bd3df410c6586ff1cc",
     "packages/design-system/src/components/Match/SceneOverlay.module.d.css.ts": "5665d4cfb94b8507541315000a3cd7c8d1ccede6737031015b551723827c5939",
     "packages/design-system/src/components/Match/SceneOverlay.tsx": "49c9ab1331f1111ac5a6bcfbe64c800717573091525ca789adc6895b82ebffcb",
@@ -3064,9 +3069,9 @@
     "packages/design-system/stories/Overlays.stories.tsx": "bccee2cd868b8c64d138acf33bd74b37ec65e56a0eac2f526620429bb1d1e759",
     "packages/design-system/stories/Status.stories.tsx": "1c50cc86f4a555e1ca7453a7b66a743e7b4aa01f33b542e99e0856d8ad1ecdd3",
     "packages/design-system/stories/reference/Collection.stories.tsx": "c45e6b49eeadc48ed67843b1195e859beb158a6c62cecc863c32682ecc4fcb3a",
-    "packages/design-system/stories/reference/Deckbuilder.stories.tsx": "8f03154e7359773b93c9e68f1cfc06f5810d17d04fa1dfc639647528cfca1176",
-    "packages/design-system/stories/reference/Match.stories.tsx": "fa676c3847abb6b60df91c9372ae9c31aa0ec51c7ceb552bebec1bfdb1c99229",
-    "packages/design-system/stories/reference/Packs.stories.tsx": "ff07a787132193c4eb4a4a45b07a431930ea6f139d6344ea40d556f3c78a1c23",
+    "packages/design-system/stories/reference/Deckbuilder.stories.tsx": "27665cb488be3ac8e3bd40cfb0602fc36d5a2ce57581e5dd5eb656c6372ad22b",
+    "packages/design-system/stories/reference/Match.stories.tsx": "a8aaf92b51dd135d457467a23a8ffd3e6635fa37b292a095b48ec3d26a2a7d46",
+    "packages/design-system/stories/reference/Packs.stories.tsx": "55c2c52b2c257057edce89b4b10b2b73d00b40bc5febba6b5bdd8dd3b443c332",
     "packages/design-system/stories/reference/RoomFrame.stories.tsx": "8b37338a46575ca83b440a7e7eea99117bf34e1d45bec1651c855d1e1d6d1105",
     "packages/design-system/stories/support/DocPage.tsx": "75e363e2ba14e8f918adb15e45dcba47f2375a71888fa2c816b2c667089a9717",
     "packages/design-system/stories/support/OfficialAssetsOff.tsx": "3678255666e4cb8de96d64270eaae1eac73e7314396c40aa03a420d0674dc292",
@@ -3075,7 +3080,7 @@
     "packages/design-system/stories/support/reference/cards.ts": "fb06f547541a2b7ad6127df2060ec745621ff3c3944af4963a23e4033932be4d",
     "packages/design-system/stories/support/reference/catalog.ts": "e756c61ee3e3a6c5641f9a5e4f10a3758510110cff74b1b0dd8a130117e67978",
     "packages/design-system/stories/support/reference/commands.ts": "408f303961df1e890ff2fefe81cdec320056b805c22c5cffcd211d828140dca2",
-    "packages/design-system/stories/support/reference/deck.ts": "2985482a003ff80834a30e169cff60c426ee5fe3b5edd14d6228df2c93571741",
+    "packages/design-system/stories/support/reference/deck.ts": "04a57058102ef74edf243286743bf09e0aecd53172b1cba1ea2ec3f22815ba67",
     "packages/design-system/stories/support/reference/decks.ts": "99958faaf0018b6ed6bbf6aa56181dc3b13b9744ebd9561b3248752bd9157b39",
     "packages/design-system/stories/support/reference/frame.tsx": "48e1febc7a831fe9f6ed0446d1e7ea4331d173e40be710613bdb9e15452c4f5d",
     "packages/design-system/stories/support/reference/links.ts": "806f871538405909d7cfb700ddfb44396156cb77a062e2706a17c65d163e6d0e",
@@ -3084,7 +3089,7 @@
     "packages/design-system/stories/support/reference/scene.tsx": "9fa9fcb18ac9eff8839c01faa76de6c0231cae2628da35ea38a049189caa7d46",
     "packages/design-system/stories/support/reference/text.ts": "8d059c8bbfaf38965d15cc5f6bcdc286b9af41b1b5de813f0056fbee1eea3ae9",
     "packages/design-system/tests/browser/interactions.spec.ts": "d3eeac52a34b7c092d3247e354a63637f0b4731f9e8fe558834b7a6587a0d98e",
-    "packages/design-system/tests/browser/reference.spec.ts": "70839c403334f4914128ab18d3a6d3a4389acabc779054ec765b7d7bf7bed0ce",
+    "packages/design-system/tests/browser/reference.spec.ts": "0e85ea4efda7cfebd953bbd15910952c8162ed8d4931f054ecffc951796c06da",
     "packages/design-system/tests/browser/stories.spec.ts": "7e5d83d7a7a7ea946edbfb5fd397f6887e1e67d8b6490e989c1d4b04ccaf82a0",
     "packages/design-system/tests/components.test.mjs": "fce7150f6927e6211e68315c15169a5db63bdf81170de1f94a88bd9cb857ef16",
     "packages/design-system/tests/foundation.test.mjs": "9f9aa9d40e6a3b5894b669764f62fbf58036585523b065db0e944f2a10bae150",
@@ -17002,16 +17007,16 @@
     {
       "file": "packages/design-system/src/components/CardTile/CardImage.tsx",
       "name": "CardImage",
-      "line": 11,
+      "line": 13,
       "column": 1,
       "kind": "FunctionDeclaration",
-      "signature": "{ printing, eager = false, decorative = false }: { printing: Printing; eager?: boolean; decorative?: boolean }",
-      "sha256": "e3ec2190e8a7e3cf2a78aca75013e71465d5860cac5950557d40a7dfbd2338e4"
+      "signature": "{ printing, eager = false, decorative = false, placeholder = 'full' }: { printing: Printing; eager?: boolean; decorative?: boolean; placeholder?: 'full' | 'name' }",
+      "sha256": "4db19b70de1a8367882f941e971c506744c40ba2d03de0a82152b4bf06ac3f57"
     },
     {
       "file": "packages/design-system/src/components/CardTile/CardImage.tsx",
       "name": "<callback>",
-      "line": 18,
+      "line": 20,
       "column": 193,
       "kind": "ArrowFunction",
       "signature": "",
@@ -17357,7 +17362,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ rules, ownership, advice, policy }: ValidationSummaryProps",
-      "sha256": "7f0df37cef85b3675cb9af4405bb15419ecd1c5d5a0e969c30bff3c9b7ab7bdc"
+      "sha256": "6ff5d14c228b26a7f480e18574f14abb7ff36f3c3c56c03960d345d068fdadf5"
     },
     {
       "file": "packages/design-system/src/components/Deck/Deck.tsx",
@@ -17366,7 +17371,7 @@
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "key: 'rules' | 'ownership' | 'advice', issues: readonly ValidationIssue[]",
-      "sha256": "c1af432616f2fb187468e6cde1f8ab134f211e2ed37bd6203f7c6b3358a27881"
+      "sha256": "496b082082d2c25b8e66fbf3f8c7d5de1b9f23c09bc0b152fb78ea1ed0a9338c"
     },
     {
       "file": "packages/design-system/src/components/Deck/Deck.tsx",
@@ -18059,21 +18064,21 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "props: BoardCardProps",
-      "sha256": "2a98ba72ade4810459ff9b2ef61d6435a7667e66dfff9152c1e2f94a738bcc21"
+      "sha256": "1d97ec95e24e66ef0202abad93ab94b9f657084b9439715302e3ea40832c2288"
     },
     {
       "file": "packages/design-system/src/components/Match/Board.tsx",
       "name": "<callback>",
-      "line": 56,
+      "line": 57,
       "column": 31,
       "kind": "ArrowFunction",
       "signature": "m",
-      "sha256": "65b546d621b11f14b343ff59b2a22bd8fea61f3f7df7735528ca981f8ea50824"
+      "sha256": "42c488ec2d8d3206deb1375bfc131890a385af75cb6915e92c0f8e6fe2cdbb45"
     },
     {
       "file": "packages/design-system/src/components/Match/Board.tsx",
       "name": "<callback>",
-      "line": 61,
+      "line": 62,
       "column": 91,
       "kind": "ArrowFunction",
       "signature": "m",
@@ -18082,7 +18087,7 @@
     {
       "file": "packages/design-system/src/components/Match/Board.tsx",
       "name": "Battlefield",
-      "line": 78,
+      "line": 79,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ opponent, player, labels }: BattlefieldProps",
@@ -18091,7 +18096,7 @@
     {
       "file": "packages/design-system/src/components/Match/Board.tsx",
       "name": "side",
-      "line": 79,
+      "line": 80,
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "s: BattlefieldSide, which: 'opponent' | 'player'",
@@ -18100,7 +18105,7 @@
     {
       "file": "packages/design-system/src/components/Match/Board.tsx",
       "name": "<callback>",
-      "line": 80,
+      "line": 81,
       "column": 22,
       "kind": "ArrowFunction",
       "signature": "l, i",
@@ -18122,7 +18127,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ label, cards, selected, onSelect }: HandProps",
-      "sha256": "c5c7983946887a3300fd5b44610bbca879ae5b464379ef68c68422619045b487"
+      "sha256": "6a745a26c83e701e1ded8c5733e1c5a2080af58ed7f5249a4e86eb4d84ca6371"
     },
     {
       "file": "packages/design-system/src/components/Match/Hand.tsx",
@@ -18140,7 +18145,7 @@
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "c, i",
-      "sha256": "5637438e783f9dc9a93d4322bd85d0a53fd916026a6d57261fade17713952caf"
+      "sha256": "de7e6c9fb9cef658427ab9fc4035b42377503910a9787f27b6c1ef6269d2377b"
     },
     {
       "file": "packages/design-system/src/components/Match/Hand.tsx",
@@ -18212,7 +18217,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ label, value, max, symbol, detail }: CounterProps",
-      "sha256": "f23d6054eca617b1cb787c15b21a09200e0d8bfe466fe919b98f456cbd0c2f67"
+      "sha256": "0ae15b6c3444f905b1aaedb50747dc458e34fdb67df0380cbb9ee3607d5eadd2"
     },
     {
       "file": "packages/design-system/src/components/Match/Panels.tsx",
@@ -20597,12 +20602,12 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ scenario }: { scenario: Scenario }",
-      "sha256": "c075d1475b57c74818938a01505d80509a54b85d0c87d6e4464b271e08bf01b1"
+      "sha256": "fbbe33e86d6b13dce1e59cd1c795f1b16406afcb0461e2da012d72868f414914"
     },
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 51,
+      "line": 53,
       "column": 75,
       "kind": "ArrowFunction",
       "signature": "id",
@@ -20611,7 +20616,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 53,
+      "line": 55,
       "column": 27,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20620,7 +20625,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "edit",
-      "line": 57,
+      "line": 59,
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "next: Deck, message: string",
@@ -20629,7 +20634,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 57,
+      "line": 59,
       "column": 62,
       "kind": "ArrowFunction",
       "signature": "h",
@@ -20638,7 +20643,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "change",
-      "line": 58,
+      "line": 60,
       "column": 18,
       "kind": "ArrowFunction",
       "signature": "id: number, delta: number",
@@ -20647,7 +20652,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "setQuantity",
-      "line": 63,
+      "line": 65,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "id: number, quantity: number",
@@ -20656,7 +20661,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "undo",
-      "line": 64,
+      "line": 66,
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20665,7 +20670,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 64,
+      "line": 66,
       "column": 91,
       "kind": "ArrowFunction",
       "signature": "h",
@@ -20674,7 +20679,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "save",
-      "line": 65,
+      "line": 67,
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "then?: () => void",
@@ -20683,7 +20688,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 68,
+      "line": 70,
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20692,7 +20697,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 68,
+      "line": 70,
       "column": 51,
       "kind": "ArrowFunction",
       "signature": "s",
@@ -20701,7 +20706,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "navigate",
-      "line": 70,
+      "line": 72,
       "column": 20,
       "kind": "ArrowFunction",
       "signature": "href: string",
@@ -20710,7 +20715,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 72,
+      "line": 74,
       "column": 31,
       "kind": "ArrowFunction",
       "signature": "c",
@@ -20719,7 +20724,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 73,
+      "line": 75,
       "column": 57,
       "kind": "ArrowFunction",
       "signature": "[, q]",
@@ -20728,7 +20733,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 73,
+      "line": 75,
       "column": 79,
       "kind": "ArrowFunction",
       "signature": "[id, q]",
@@ -20737,7 +20742,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 77,
+      "line": 79,
       "column": 68,
       "kind": "ArrowFunction",
       "signature": "i",
@@ -20746,7 +20751,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 84,
+      "line": 86,
       "column": 52,
       "kind": "ArrowFunction",
       "signature": "c",
@@ -20755,7 +20760,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 85,
+      "line": 87,
       "column": 38,
       "kind": "ArrowFunction",
       "signature": "c",
@@ -20764,7 +20769,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "choosePrinting",
-      "line": 86,
+      "line": 88,
       "column": 26,
       "kind": "ArrowFunction",
       "signature": "key: number",
@@ -20773,7 +20778,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 94,
+      "line": 96,
       "column": 120,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20782,7 +20787,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 99,
+      "line": 101,
       "column": 117,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20791,7 +20796,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 100,
+      "line": 102,
       "column": 14,
       "kind": "ArrowFunction",
       "signature": "p",
@@ -20800,7 +20805,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 100,
+      "line": 102,
       "column": 49,
       "kind": "ArrowFunction",
       "signature": "p",
@@ -20809,7 +20814,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 100,
+      "line": 102,
       "column": 111,
       "kind": "ArrowFunction",
       "signature": "x",
@@ -20818,7 +20823,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 100,
+      "line": 102,
       "column": 233,
       "kind": "ArrowFunction",
       "signature": "p",
@@ -20827,7 +20832,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 106,
+      "line": 108,
       "column": 55,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20836,7 +20841,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 106,
+      "line": 108,
       "column": 111,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20845,7 +20850,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 106,
+      "line": 108,
       "column": 265,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20854,7 +20859,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 110,
+      "line": 112,
       "column": 83,
       "kind": "ArrowFunction",
       "signature": "id, q",
@@ -20863,7 +20868,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 110,
+      "line": 112,
       "column": 133,
       "kind": "ArrowFunction",
       "signature": "id",
@@ -20872,25 +20877,25 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 115,
-      "column": 196,
+      "line": 117,
+      "column": 173,
       "kind": "ArrowFunction",
-      "signature": "i",
-      "sha256": "61b5b692aa96a0fc0e39ee4fe3de478d0f1e7dbb90700a26087a5ba1b4f3201e"
-    },
-    {
-      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
-      "name": "<callback>",
-      "line": 115,
-      "column": 265,
-      "kind": "ArrowFunction",
-      "signature": "i",
-      "sha256": "61b5b692aa96a0fc0e39ee4fe3de478d0f1e7dbb90700a26087a5ba1b4f3201e"
+      "signature": "n",
+      "sha256": "506a212bc17b352f01f6fe5bb03c5bb5e681182d1529d49de1208121d4a0505c"
     },
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
       "line": 117,
+      "column": 270,
+      "kind": "ArrowFunction",
+      "signature": "i",
+      "sha256": "1bcbb1d7992b548833cb0e90941ae12abd70860586150b0d731a141a9af0939e"
+    },
+    {
+      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+      "name": "<callback>",
+      "line": 119,
       "column": 82,
       "kind": "ArrowFunction",
       "signature": "open",
@@ -20899,7 +20904,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 125,
+      "line": 127,
       "column": 43,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20908,7 +20913,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 126,
+      "line": 128,
       "column": 60,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20917,7 +20922,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 128,
+      "line": 130,
       "column": 211,
       "kind": "ArrowFunction",
       "signature": "key",
@@ -20926,7 +20931,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 129,
+      "line": 131,
       "column": 27,
       "kind": "ArrowFunction",
       "signature": "c",
@@ -20935,7 +20940,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 137,
+      "line": 139,
       "column": 152,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20944,7 +20949,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 137,
+      "line": 139,
       "column": 210,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20953,7 +20958,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 140,
+      "line": 142,
       "column": 97,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20962,7 +20967,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 140,
+      "line": 142,
       "column": 199,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20971,7 +20976,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 140,
+      "line": 142,
       "column": 292,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20980,7 +20985,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 150,
+      "line": 152,
       "column": 108,
       "kind": "ArrowFunction",
       "signature": "open",
@@ -20989,7 +20994,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 151,
+      "line": 153,
       "column": 35,
       "kind": "ArrowFunction",
       "signature": "",
@@ -20998,7 +21003,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 151,
+      "line": 153,
       "column": 114,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21007,7 +21012,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 151,
+      "line": 153,
       "column": 257,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21016,7 +21021,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 151,
+      "line": 153,
       "column": 292,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21025,7 +21030,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 155,
+      "line": 157,
       "column": 35,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21034,7 +21039,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 155,
+      "line": 157,
       "column": 123,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21043,7 +21048,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 161,
+      "line": 163,
       "column": 95,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21052,7 +21057,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 164,
+      "line": 166,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21061,7 +21066,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 166,
+      "line": 168,
       "column": 166,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21070,7 +21075,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 167,
+      "line": 169,
       "column": 175,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21079,7 +21084,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 168,
+      "line": 170,
       "column": 51,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21088,7 +21093,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 169,
+      "line": 171,
       "column": 119,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21097,7 +21102,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 170,
+      "line": 172,
       "column": 165,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21106,7 +21111,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 171,
+      "line": 173,
       "column": 146,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21115,7 +21120,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 172,
+      "line": 174,
       "column": 185,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21124,7 +21129,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 173,
+      "line": 175,
       "column": 123,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21133,7 +21138,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 174,
+      "line": 176,
       "column": 118,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21142,7 +21147,7 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 178,
+      "line": 180,
       "column": 11,
       "kind": "ArrowFunction",
       "signature": "",
@@ -21151,38 +21156,11 @@
     {
       "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
       "name": "<callback>",
-      "line": 180,
+      "line": 182,
       "column": 141,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "42a3e5e8384d28163ffcbfadb4b1034293341f27ffd0cfff32a7c48c87ddbaf5"
-    },
-    {
-      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
-      "name": "DeckListEmpty",
-      "line": 181,
-      "column": 1,
-      "kind": "FunctionDeclaration",
-      "signature": "",
-      "sha256": "7338a2cc2ad35630784d016343deac0b8bbc4ceaf884a993f849ad14ec3de175"
-    },
-    {
-      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
-      "name": "<callback>",
-      "line": 184,
-      "column": 48,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
-    },
-    {
-      "file": "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
-      "name": "<callback>",
-      "line": 184,
-      "column": 69,
-      "kind": "ArrowFunction",
-      "signature": "",
-      "sha256": "5fa8c711247d70f5c653bac436acb6b2959231e50344d054ff9cf6093cc71a2c"
+      "sha256": "d7ff08238322cd3f82552c43425b83d489a83fad57b1ed45c66982dcf80bb07a"
     },
     {
       "file": "packages/design-system/stories/reference/Match.stories.tsx",
@@ -21191,7 +21169,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ stage: start = { kind: 'idle' }, position: startPosition = crowdedMatch, review: startReview, hand: startHand = 'fan', connection: startConnection = 'connected', select, tier = 'flat', failEngine = false }: Options",
-      "sha256": "7ca67713bb968fdd3f2b307ac5a28ce905c9fb2241ad30605990c7a92eb35541"
+      "sha256": "432b4af4dca547ee72eec7118c44ada62ba9b80e4210cf5f3df0107173de66ce"
     },
     {
       "file": "packages/design-system/stories/reference/Match.stories.tsx",
@@ -21979,8 +21957,8 @@
     {
       "file": "packages/design-system/stories/reference/Match.stories.tsx",
       "name": "<callback>",
-      "line": 168,
-      "column": 378,
+      "line": 169,
+      "column": 380,
       "kind": "ArrowFunction",
       "signature": "",
       "sha256": "8bc83d5a8f94ab22e10b9f77b2d7bc76b38d9e4572eb420a183b4ba7c52c0219"
@@ -22402,16 +22380,16 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "PackReference",
-      "line": 16,
+      "line": 19,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "{ stage: startStage = 'choice', revealed: startRevealed = 0 }: { stage?: Stage; revealed?: number }",
-      "sha256": "08c1cb4f0319a5219d0b4ce9521dc0331a23ad21526bd894052c81997116f805"
+      "sha256": "3f2d3518570d3edefc791089313ed961a843b5c8f04dc98655b83a968be25334"
     },
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "reveal",
-      "line": 18,
+      "line": 21,
       "column": 18,
       "kind": "ArrowFunction",
       "signature": "count: number",
@@ -22420,7 +22398,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "open",
-      "line": 19,
+      "line": 22,
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22429,7 +22407,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 19,
+      "line": 22,
       "column": 32,
       "kind": "ArrowFunction",
       "signature": "h",
@@ -22438,7 +22416,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 19,
+      "line": 22,
       "column": 77,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22447,7 +22425,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "collectionHref",
-      "line": 20,
+      "line": 23,
       "column": 26,
       "kind": "ArrowFunction",
       "signature": "p: { collectorNumber: string }",
@@ -22456,7 +22434,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 21,
+      "line": 24,
       "column": 112,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22465,16 +22443,16 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 22,
+      "line": 25,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "d60c881a27eb1dd36d4c97525d38c8bcc6410a01e5cf640513ed9898934b48fd"
+      "sha256": "6c4a4811811c169f327106ebf3e9a621713e6eba5304b005fd7cf725fb370716"
     },
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 25,
+      "line": 28,
       "column": 97,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22483,7 +22461,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 26,
+      "line": 29,
       "column": 65,
       "kind": "ArrowFunction",
       "signature": "o",
@@ -22492,7 +22470,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 26,
+      "line": 29,
       "column": 89,
       "kind": "ArrowFunction",
       "signature": "s",
@@ -22501,7 +22479,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 30,
+      "line": 33,
       "column": 120,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22510,7 +22488,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 30,
+      "line": 33,
       "column": 218,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22519,7 +22497,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 34,
+      "line": 37,
       "column": 73,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22528,7 +22506,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 34,
+      "line": 37,
       "column": 131,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22537,7 +22515,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 34,
+      "line": 37,
       "column": 218,
       "kind": "ArrowFunction",
       "signature": "s",
@@ -22546,7 +22524,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 34,
+      "line": 37,
       "column": 264,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22555,7 +22533,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 38,
+      "line": 41,
       "column": 103,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22564,7 +22542,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 39,
+      "line": 42,
       "column": 91,
       "kind": "ArrowFunction",
       "signature": "s",
@@ -22573,7 +22551,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 43,
+      "line": 46,
       "column": 103,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22582,7 +22560,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 43,
+      "line": 46,
       "column": 246,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22591,7 +22569,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 47,
+      "line": 50,
       "column": 49,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22600,7 +22578,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 54,
+      "line": 57,
       "column": 95,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22609,7 +22587,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 55,
+      "line": 58,
       "column": 134,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22618,7 +22596,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 56,
+      "line": 59,
       "column": 40,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22627,7 +22605,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 57,
+      "line": 60,
       "column": 41,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22636,7 +22614,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 58,
+      "line": 61,
       "column": 222,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22645,7 +22623,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 59,
+      "line": 62,
       "column": 185,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22654,7 +22632,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 60,
+      "line": 63,
       "column": 132,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22663,7 +22641,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 61,
+      "line": 64,
       "column": 55,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22672,7 +22650,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 62,
+      "line": 65,
       "column": 53,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22681,7 +22659,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 63,
+      "line": 66,
       "column": 139,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22690,7 +22668,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 64,
+      "line": 67,
       "column": 159,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22699,7 +22677,7 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 65,
+      "line": 68,
       "column": 120,
       "kind": "ArrowFunction",
       "signature": "",
@@ -22708,16 +22686,16 @@
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "NoneHeldRoom",
-      "line": 66,
+      "line": 69,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "",
-      "sha256": "2dc9fb2f5b74524f7417d5624d23d2b5a2984b42ebdd5fd0b58f0585141c602f"
+      "sha256": "67ed5abb4a93c78815030358bdd4aa0e5f5b6eb8914a39b600a17ec6a75a3040"
     },
     {
       "file": "packages/design-system/stories/reference/Packs.stories.tsx",
       "name": "<callback>",
-      "line": 68,
+      "line": 71,
       "column": 90,
       "kind": "ArrowFunction",
       "signature": "",
@@ -23765,7 +23743,7 @@
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "deck: Deck, policy: FormatPolicy, owned?: ReadonlyMap<string, number>",
-      "sha256": "fc58a2447f8826db6e0b4929e71546d4af93214801d8b62cbd43c701b72d2646"
+      "sha256": "65f9bd2c23d61e94ce80f09d17336fbeef5da1f5a0d3ec35645411ad202768ce"
     },
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
@@ -23824,7 +23802,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 53,
+      "line": 54,
       "column": 35,
       "kind": "ArrowFunction",
       "signature": "c",
@@ -23833,7 +23811,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 54,
+      "line": 55,
       "column": 62,
       "kind": "ArrowFunction",
       "signature": "c",
@@ -23842,7 +23820,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 55,
+      "line": 56,
       "column": 113,
       "kind": "ArrowFunction",
       "signature": "n, c",
@@ -23851,7 +23829,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "deckSummary",
-      "line": 60,
+      "line": 61,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "deck: Deck",
@@ -23860,7 +23838,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 61,
+      "line": 62,
       "column": 34,
       "kind": "ArrowFunction",
       "signature": "[, q]",
@@ -23869,7 +23847,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 61,
+      "line": 62,
       "column": 56,
       "kind": "ArrowFunction",
       "signature": "[id, q]",
@@ -23878,7 +23856,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 62,
+      "line": 63,
       "column": 46,
       "kind": "ArrowFunction",
       "signature": "cost",
@@ -23887,7 +23865,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 62,
+      "line": 63,
       "column": 118,
       "kind": "ArrowFunction",
       "signature": "{ c }",
@@ -23896,7 +23874,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 62,
+      "line": 63,
       "column": 187,
       "kind": "ArrowFunction",
       "signature": "s, { q }",
@@ -23905,7 +23883,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 63,
+      "line": 64,
       "column": 32,
       "kind": "ArrowFunction",
       "signature": "{ c }",
@@ -23914,7 +23892,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 63,
+      "line": 64,
       "column": 61,
       "kind": "ArrowFunction",
       "signature": "s, { q }",
@@ -23923,7 +23901,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 64,
+      "line": 65,
       "column": 76,
       "kind": "ArrowFunction",
       "signature": "k",
@@ -23932,7 +23910,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 64,
+      "line": 65,
       "column": 145,
       "kind": "ArrowFunction",
       "signature": "{ c }",
@@ -23941,7 +23919,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 64,
+      "line": 65,
       "column": 181,
       "kind": "ArrowFunction",
       "signature": "s, { q }",
@@ -23950,7 +23928,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "exportText",
-      "line": 68,
+      "line": 69,
       "column": 27,
       "kind": "ArrowFunction",
       "signature": "deck: Deck",
@@ -23959,7 +23937,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 68,
+      "line": 69,
       "column": 68,
       "kind": "ArrowFunction",
       "signature": "[, q]",
@@ -23968,7 +23946,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 68,
+      "line": 69,
       "column": 90,
       "kind": "ArrowFunction",
       "signature": "[id, q]",
@@ -23977,7 +23955,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "exportCsv",
-      "line": 69,
+      "line": 70,
       "column": 26,
       "kind": "ArrowFunction",
       "signature": "deck: Deck",
@@ -23986,7 +23964,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 69,
+      "line": 70,
       "column": 99,
       "kind": "ArrowFunction",
       "signature": "[, q]",
@@ -23995,7 +23973,7 @@
     {
       "file": "packages/design-system/stories/support/reference/deck.ts",
       "name": "<callback>",
-      "line": 69,
+      "line": 70,
       "column": 121,
       "kind": "ArrowFunction",
       "signature": "[id, q]",
@@ -25205,7 +25183,7 @@
       "column": 30,
       "kind": "ArrowFunction",
       "signature": "",
-      "sha256": "69ad3192981a1e3319e4f0a4a90ab925b0ce52182d742a96ae1e18e2e7958ad6"
+      "sha256": "70765f66ae09853f1f468230776b7bfd672628ea9b0ddb1a9218e0a637c58bec"
     },
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
@@ -25277,12 +25255,12 @@
       "column": 100,
       "kind": "ArrowFunction",
       "signature": "{ page }",
-      "sha256": "679fc5afd3d814f7887494a1a218804dcafad0517206460ee58c0ada2335d998"
+      "sha256": "6fee6a9296f627e965b2e8857d986985a30da152dc8ab83e13003ca2f4b5963f"
     },
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 153,
+      "line": 156,
       "column": 78,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25291,7 +25269,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 162,
+      "line": 165,
       "column": 71,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25300,7 +25278,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 169,
+      "line": 172,
       "column": 62,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25309,7 +25287,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 176,
+      "line": 179,
       "column": 97,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25318,7 +25296,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 189,
+      "line": 192,
       "column": 36,
       "kind": "ArrowFunction",
       "signature": "",
@@ -25327,7 +25305,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "binder",
-      "line": 190,
+      "line": 193,
       "column": 18,
       "kind": "ArrowFunction",
       "signature": "page: Page",
@@ -25336,7 +25314,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "indicator",
-      "line": 191,
+      "line": 194,
       "column": 21,
       "kind": "ArrowFunction",
       "signature": "page: Page",
@@ -25345,7 +25323,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 192,
+      "line": 195,
       "column": 85,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25354,7 +25332,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 206,
+      "line": 209,
       "column": 109,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25363,7 +25341,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 208,
+      "line": 211,
       "column": 93,
       "kind": "ArrowFunction",
       "signature": "els",
@@ -25372,7 +25350,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 208,
+      "line": 211,
       "column": 108,
       "kind": "ArrowFunction",
       "signature": "e",
@@ -25381,7 +25359,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 210,
+      "line": 213,
       "column": 36,
       "kind": "ArrowFunction",
       "signature": "n",
@@ -25390,7 +25368,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 212,
+      "line": 215,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "n",
@@ -25399,7 +25377,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 221,
+      "line": 224,
       "column": 112,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25408,7 +25386,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 234,
+      "line": 237,
       "column": 92,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25417,7 +25395,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 245,
+      "line": 248,
       "column": 80,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25426,7 +25404,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 251,
+      "line": 254,
       "column": 53,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25435,7 +25413,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 253,
+      "line": 256,
       "column": 32,
       "kind": "ArrowFunction",
       "signature": "",
@@ -25444,7 +25422,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 255,
+      "line": 258,
       "column": 105,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25453,7 +25431,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 266,
+      "line": 269,
       "column": 31,
       "kind": "ArrowFunction",
       "signature": "",
@@ -25462,7 +25440,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "live",
-      "line": 267,
+      "line": 270,
       "column": 16,
       "kind": "ArrowFunction",
       "signature": "page: Page",
@@ -25471,7 +25449,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 268,
+      "line": 271,
       "column": 85,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25480,7 +25458,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 279,
+      "line": 282,
       "column": 107,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25489,7 +25467,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 290,
+      "line": 293,
       "column": 103,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25498,7 +25476,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 298,
+      "line": 301,
       "column": 60,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25507,7 +25485,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 300,
+      "line": 303,
       "column": 117,
       "kind": "ArrowFunction",
       "signature": "els",
@@ -25516,7 +25494,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 300,
+      "line": 303,
       "column": 132,
       "kind": "ArrowFunction",
       "signature": "e",
@@ -25525,7 +25503,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 306,
+      "line": 309,
       "column": 95,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25534,7 +25512,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 311,
+      "line": 314,
       "column": 32,
       "kind": "ArrowFunction",
       "signature": "el",
@@ -25543,7 +25521,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 313,
+      "line": 316,
       "column": 73,
       "kind": "ArrowFunction",
       "signature": "el",
@@ -25552,7 +25530,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 315,
+      "line": 318,
       "column": 121,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25561,7 +25539,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 323,
+      "line": 326,
       "column": 79,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25570,7 +25548,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 326,
+      "line": 329,
       "column": 94,
       "kind": "ArrowFunction",
       "signature": "el",
@@ -25579,7 +25557,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 332,
+      "line": 335,
       "column": 32,
       "kind": "ArrowFunction",
       "signature": "",
@@ -25588,7 +25566,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "board",
-      "line": 333,
+      "line": 336,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "page: Page",
@@ -25597,7 +25575,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "panel",
-      "line": 334,
+      "line": 337,
       "column": 17,
       "kind": "ArrowFunction",
       "signature": "page: Page",
@@ -25606,7 +25584,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 335,
+      "line": 338,
       "column": 71,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25615,7 +25593,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 337,
+      "line": 340,
       "column": 69,
       "kind": "ArrowFunction",
       "signature": "els",
@@ -25624,7 +25602,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 337,
+      "line": 340,
       "column": 84,
       "kind": "ArrowFunction",
       "signature": "e",
@@ -25633,7 +25611,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 339,
+      "line": 342,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "n",
@@ -25642,7 +25620,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 340,
+      "line": 343,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "n",
@@ -25651,7 +25629,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 341,
+      "line": 344,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "n",
@@ -25660,7 +25638,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 342,
+      "line": 345,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "n",
@@ -25669,7 +25647,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 343,
+      "line": 346,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "n",
@@ -25678,7 +25656,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 344,
+      "line": 347,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "n",
@@ -25687,7 +25665,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 347,
+      "line": 350,
       "column": 109,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25696,7 +25674,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 360,
+      "line": 363,
       "column": 92,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25705,7 +25683,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 372,
+      "line": 375,
       "column": 103,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25714,7 +25692,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 379,
+      "line": 382,
       "column": 78,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25723,7 +25701,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 387,
+      "line": 390,
       "column": 107,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25732,7 +25710,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 391,
+      "line": 394,
       "column": 43,
       "kind": "ArrowFunction",
       "signature": "els",
@@ -25741,7 +25719,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 391,
+      "line": 394,
       "column": 58,
       "kind": "ArrowFunction",
       "signature": "e",
@@ -25750,7 +25728,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 398,
+      "line": 401,
       "column": 116,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25759,7 +25737,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 408,
+      "line": 411,
       "column": 94,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25768,7 +25746,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 422,
+      "line": 425,
       "column": 30,
       "kind": "ArrowFunction",
       "signature": "",
@@ -25777,7 +25755,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "overlay",
-      "line": 423,
+      "line": 426,
       "column": 19,
       "kind": "ArrowFunction",
       "signature": "page: Page",
@@ -25786,7 +25764,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "openScene",
-      "line": 424,
+      "line": 427,
       "column": 3,
       "kind": "FunctionDeclaration",
       "signature": "page: Page, id = 'reference-screens-crowded-match--table-scene'",
@@ -25795,7 +25773,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 428,
+      "line": 431,
       "column": 106,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25804,7 +25782,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 430,
+      "line": 433,
       "column": 106,
       "kind": "ArrowFunction",
       "signature": "els",
@@ -25813,7 +25791,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 430,
+      "line": 433,
       "column": 121,
       "kind": "ArrowFunction",
       "signature": "e",
@@ -25822,7 +25800,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 433,
+      "line": 436,
       "column": 50,
       "kind": "ArrowFunction",
       "signature": "el",
@@ -25831,7 +25809,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 434,
+      "line": 437,
       "column": 71,
       "kind": "ArrowFunction",
       "signature": "els",
@@ -25840,7 +25818,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 434,
+      "line": 437,
       "column": 86,
       "kind": "ArrowFunction",
       "signature": "e",
@@ -25849,7 +25827,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 437,
+      "line": 440,
       "column": 141,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25858,7 +25836,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "inside",
-      "line": 439,
+      "line": 442,
       "column": 20,
       "kind": "ArrowFunction",
       "signature": "",
@@ -25867,7 +25845,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 439,
+      "line": 442,
       "column": 46,
       "kind": "ArrowFunction",
       "signature": "",
@@ -25876,7 +25854,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 441,
+      "line": 444,
       "column": 92,
       "kind": "ArrowFunction",
       "signature": "b",
@@ -25885,7 +25863,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 446,
+      "line": 449,
       "column": 23,
       "kind": "ArrowFunction",
       "signature": "",
@@ -25894,7 +25872,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 452,
+      "line": 455,
       "column": 72,
       "kind": "ArrowFunction",
       "signature": "{ page }",
@@ -25903,7 +25881,7 @@
     {
       "file": "packages/design-system/tests/browser/reference.spec.ts",
       "name": "<callback>",
-      "line": 457,
+      "line": 460,
       "column": 76,
       "kind": "ArrowFunction",
       "signature": "{ page }",

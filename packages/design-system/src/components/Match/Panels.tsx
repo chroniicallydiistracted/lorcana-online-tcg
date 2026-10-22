@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Button as AriaButton } from 'react-aria-components';
 import { GameSymbol } from '../GameSymbol/GameSymbol.tsx';
 import type { GameSymbolName } from '../GameSymbol/GameSymbol.tsx';
-import { useMessages } from '../../foundation/DesignSystemProvider.tsx';
+import { useMessages, useOfficialAssets } from '../../foundation/DesignSystemProvider.tsx';
 import styles from './Panels.module.css';
 
 export interface CounterProps {
@@ -14,12 +14,12 @@ export interface CounterProps {
   /** Supporting detail, such as "5 ready". */
   detail?: string;
 }
-/** A labelled count with tabular numerals, an optional threshold and an optional printed symbol. */
+/** A labelled count with tabular numerals, an optional threshold and an optional printed symbol. The symbol only decorates the label, so it is left out when Lorcana assets are switched off. */
 export function Counter({ label, value, max, symbol, detail }: CounterProps) {
-  const n = new Intl.NumberFormat();
+  const n = new Intl.NumberFormat(), official = useOfficialAssets();
   return <div className={styles.counter}>
     <dt className={styles.counterLabel}>{label}</dt>
-    <dd className={styles.counterValue}>{symbol && <GameSymbol name={symbol} />}<span className={styles.number}>{n.format(value)}</span>{max !== undefined && <span className={styles.max}>/ {n.format(max)}</span>}{detail && <span className={styles.detail}>{detail}</span>}</dd>
+    <dd className={styles.counterValue}>{symbol && official && <GameSymbol name={symbol} />}<span className={styles.number}>{n.format(value)}</span>{max !== undefined && <span className={styles.max}>/ {n.format(max)}</span>}{detail && <span className={styles.detail}>{detail}</span>}</dd>
   </div>;
 }
 

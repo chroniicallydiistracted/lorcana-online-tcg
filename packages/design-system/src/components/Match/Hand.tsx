@@ -41,7 +41,7 @@ export function HandFan({ label, cards, selected, onSelect }: HandProps) {
     {cards.map((c, i) => <li key={c.id} className={styles.slot} data-selected={c.id === selected || undefined} style={{ ['--hand-offset' as string]: i - mid }}>
       <button type="button" className={styles.hit} aria-pressed={c.id === selected} onClick={() => onSelect(c.id)} onKeyDown={event => onKeyDown(event, i)}
         aria-label={`${fullName(c.printing)}. ${c.summary}${c.unplayable ? `. ${t('hand.unplayable', { reason: c.unplayable })}` : ''}`}>
-        <span className={styles.lift}><CardImage printing={c.printing} decorative /></span>
+        <span className={styles.lift}><CardImage printing={c.printing} decorative placeholder="name" /></span>
       </button>
     </li>)}
   </ol>;

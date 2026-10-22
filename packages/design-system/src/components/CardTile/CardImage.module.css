@@ -5,6 +5,8 @@
   justify-content: center;
   gap: var(--is-space-1);
   aspect-ratio: 63 / 88; /* token-exception: physical card proportion (63 x 88 mm) */
+  min-block-size: 0;
+  overflow: hidden;
   padding: var(--is-space-3);
   border: var(--is-border-width-1) dashed var(--is-color-border-essential);
   border-radius: 5.5% / 4%; /* token-exception: physical card corner, 3.5 mm on a 63 x 88 mm card */
@@ -15,3 +17,14 @@
 .placeholderName { font: var(--is-typography-body-strong); overflow-wrap: anywhere; }
 .placeholderVersion { font: var(--is-typography-metadata); overflow-wrap: anywhere; }
 .placeholderNote { font: var(--is-typography-metadata); color: var(--is-color-text-supporting); }
+.placeholder[data-placeholder="name"] { justify-content: flex-start; padding: var(--is-space-1); text-align: start; }
+.placeholder[data-placeholder="name"] .placeholderName {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font: var(--is-typography-metadata);
+  font-weight: var(--is-typography-body-strong-font-weight);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}

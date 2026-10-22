@@ -165,12 +165,12 @@ function MatchReference({ stage: start = { kind: 'idle' }, position: startPositi
         </Tabs>}
       </>}
       bottom={<>
-        <PlayerSummary name={p.name} active={yourTurn ? 'Your turn' : undefined}><Counter label="Lore" value={p.lore} max={position.loreToWin} symbol="lore" /><Counter label="Ink" value={p.readyInk} max={p.ink} detail="ready" /><Counter label="Ink drops" value={p.inkDrops} /><ZoneCount label="Deck" count={p.deck} /><ZoneCount label="Discard" count={p.discard.length} onOpen={() => setDialog('discard')} /></PlayerSummary>
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 'var(--is-space-4)', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <Stack gap={3} align="start">
+          <PlayerSummary name={p.name} active={yourTurn ? 'Your turn' : undefined}><Counter label="Lore" value={p.lore} max={position.loreToWin} symbol="lore" /><Counter label="Ink" value={p.readyInk} max={p.ink} detail="ready" /><Counter label="Ink drops" value={p.inkDrops} /><ZoneCount label="Deck" count={p.deck} /><ZoneCount label="Discard" count={p.discard.length} onOpen={() => setDialog('discard')} /></PlayerSummary>
           <ViewSwitch label="Hand view" value={handView} onChange={setHandView} options={[{ id: 'fan', label: 'Fan' }, { id: 'list', label: 'List' }]} />
-          {handView === 'fan' ? <HandFan label={`Your hand, ${String(handCards.length)} cards`} cards={handCards} selected={stage.kind === 'hand' || stage.kind === 'song' ? String(stage.id) : undefined} onSelect={onHand} />
-            : <HandList label={`Your hand, ${String(handCards.length)} cards`} cards={handCards} selected={stage.kind === 'hand' || stage.kind === 'song' ? String(stage.id) : undefined} onSelect={onHand} />}
-        </div>
+        </Stack>
+        {handView === 'fan' ? <HandFan label={`Your hand, ${String(handCards.length)} cards`} cards={handCards} selected={stage.kind === 'hand' || stage.kind === 'song' ? String(stage.id) : undefined} onSelect={onHand} />
+          : <HandList label={`Your hand, ${String(handCards.length)} cards`} cards={handCards} selected={stage.kind === 'hand' || stage.kind === 'song' ? String(stage.id) : undefined} onSelect={onHand} />}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--is-space-2)', justifyContent: 'flex-end' }}>
           <Button onPress={() => confirmQuest ? setReview('quest') : questers(position).forEach(x => questWith(x.id))} isDisabled={pending || !yourTurn || !questers(position).length}>Quest with all characters</Button>
           <Button variant="primary" onPress={() => confirmEnd ? setReview('end') : setStage({ kind: 'opponent' })} isDisabled={pending || !yourTurn}>End turn</Button>

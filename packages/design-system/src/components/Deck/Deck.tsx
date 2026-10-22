@@ -118,7 +118,7 @@ export function ValidationSummary({ rules, ownership, advice, policy }: Validati
     const problems = issues.filter(i => i.tone !== 'information').length;
     return <section className={styles.section} aria-label={t(`validation.${key}`)}>
       <h3 className={styles.sectionTitle}>
-        <Icon name={problems ? (key === 'rules' && issues.some(i => i.tone === 'danger') ? 'danger' : 'warning') : 'success'} />
+        <Icon name={problems ? (key === 'rules' && issues.some(i => i.tone === 'danger') ? 'danger' : 'warning') : issues.length ? 'info' : 'success'} />
         <span>{t(`validation.${key}`)}</span>
         <span className={styles.sectionCount}>{problems ? t('validation.problems', { count: problems }) : t('validation.clear')}</span>
       </h3>

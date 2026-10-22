@@ -146,6 +146,9 @@ test.describe('deckbuilder', () => {
     await expect(rules).toContainText('Judy Hopps – Helpful Officer: 5 copies; Core (demonstration policy) allows 4 (policy 2026-10).');
     await expect(rules).toContainText('Bolt – Down but Not Out (Reign of Jafar, 29/204): not in Core');
     await expect(rules).toContainText('The deck uses 3 inks');
+    await open(page, 'reference-screens-deckbuilder--empty-deck');
+    await expect(page.getByRole('region', { name: 'Rules' })).toContainText('1 to resolve');
+    await expect(page.getByRole('region', { name: 'Rules' })).toContainText('60 more cards needed');
     await open(page, 'reference-screens-deckbuilder--ownership-limits');
     await expect(page.getByRole('region', { name: 'Ownership' })).toContainText('This is an ownership limit, not a rules restriction.');
     await expect(page.getByRole('region', { name: 'Rules' })).not.toContainText('own');

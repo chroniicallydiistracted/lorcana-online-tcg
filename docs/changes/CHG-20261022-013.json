@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-013",
+  "title": "UX-01 task 9: validation, visual review fixes and documents",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T20:01:58.920Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "2bac13dbac0b3e78b389336bd9073f5727776f76",
+  "task_ids": [
+    "UX-01",
+    "WEB-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R25.001",
+    "R25.002",
+    "R25.003"
+  ],
+  "feature_ids": [
+    "F-DESIGN-SYSTEM",
+    "F-RENDERER",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "review",
+      "description": "Implementation-plan task 9: all 63 reference stories captured at 1440 x 900, 1180 x 820 and 820 x 1180 in Paper and Ink (378 captures and contact sheets in the ignored .local/ux-01-review/final/, no page errors) and reviewed against the section 33 rejection criteria; the findings are recorded in docs/validation/ux-design-system.md."
+    },
+    {
+      "kind": "fix",
+      "description": "Takedown fallback on the match: board and hand placeholders grew past the card's size and covered neighbours, and decorative symbol placeholders repeated the adjacent word. CardImage gains placeholder=\"name\" for small renditions (name only, from the top edge, within the card's proportion; every placeholder now keeps the proportion); BoardCard and Counter leave decorative symbols out when Lorcana assets are switched off. HandFan and BoardCard pass the name-only placeholder."
+    },
+    {
+      "kind": "fix",
+      "description": "Deck validation: an incomplete deck showed Rules with the success mark and 'Nothing to resolve' beside '60 more cards needed'. The demonstration validator now makes the missing cards a rule to resolve (warning), the deckbuilder summary bar counts every non-information rule, and ValidationSummary shows the success mark only on a section without messages, the information mark for information alone."
+    },
+    {
+      "kind": "fix",
+      "description": "Stories: EmptyDeck is now the full deckbuilder with a new, never-saved deck (it showed a lone deck panel pointing to a catalog that was not on screen); the none-held product shares the quiet product slot that names the set instead of an empty slot."
+    },
+    {
+      "kind": "fix",
+      "description": "Match bottom row: at 1180 px a 12-card hand's intrinsic width squeezed the player summary until the name and turn marker broke. From 64 rem the outer columns match the decision column's content width; HandFan slices narrow to fit the region (container query) but never below the 44 px control minimum, scrolling only beyond that, with room for the outer cards' drop; the view switch sits under the summary; the turn marker never wraps. check-styles.mjs allows the runtime variable --hand-count, which HandFan already set inline."
+    },
+    {
+      "kind": "documentation",
+      "description": "ADR 0017 amendment (UX-01 reference screens, D27 and D28: reference stories, new and changed components, card back, tokens and icons, runtime variables, the development-only presentation dependency, the table scene and the interpretations made); design-system README; runbook (takedown placeholders, hand slices, bottom row); validation (task 9 review and receipts); F-DESIGN-SYSTEM and F-RENDERER; documentation-map edges from packages/presentation/** to the design-system runbook, validation and ADR 0017; UX-01 backlog row; plan and design status lines; status lines in AGENTS.md, README.md and docs/README.md; handoff."
+    },
+    {
+      "kind": "test",
+      "description": "The validation browser test also checks the empty deck's Rules section ('1 to resolve', '60 more cards needed'). Receipts: isolated design-system (RUN-20261022-042) and foundation (RUN-20261022-043) pipelines passed on the source before the review fixes; after the fixes the full design-system Chromium suite passed 409/409 (RUN-20261022-044). On the final source the isolated design-system (RUN-20261022-046) and foundation (RUN-20261022-047) pipelines passed."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/adr/0017-technical-design-system.md",
+    "docs/changes/CHG-20261022-013.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/features.json",
+    "docs/plans/2026-10-22-ux-01-design.md",
+    "docs/plans/2026-10-22-ux-01-implementation.md",
+    "docs/runbooks/design-system.md",
+    "docs/validation/logs/RUN-20261022-042.txt",
+    "docs/validation/logs/RUN-20261022-043.txt",
+    "docs/validation/logs/RUN-20261022-044.txt",
+    "docs/validation/logs/RUN-20261022-045.txt",
+    "docs/validation/logs/RUN-20261022-046.txt",
+    "docs/validation/logs/RUN-20261022-047.txt",
+    "docs/validation/logs/RUN-20261022-048.txt",
+    "docs/validation/runs/RUN-20261022-042.json",
+    "docs/validation/runs/RUN-20261022-043.json",
+    "docs/validation/runs/RUN-20261022-044.json",
+    "docs/validation/runs/RUN-20261022-045.json",
+    "docs/validation/runs/RUN-20261022-046.json",
+    "docs/validation/runs/RUN-20261022-047.json",
+    "docs/validation/runs/RUN-20261022-048.json",
+    "docs/validation/ux-design-system.md",
+    "docs/vision/initial_backlog.csv",
+    "packages/design-system/README.md",
+    "packages/design-system/scripts/check-styles.mjs",
+    "packages/design-system/src/components/CardTile/CardImage.module.css",
+    "packages/design-system/src/components/CardTile/CardImage.tsx",
+    "packages/design-system/src/components/Deck/Deck.docs.ts",
+    "packages/design-system/src/components/Deck/Deck.tsx",
+    "packages/design-system/src/components/Match/Board.tsx",
+    "packages/design-system/src/components/Match/Hand.module.css",
+    "packages/design-system/src/components/Match/Hand.tsx",
+    "packages/design-system/src/components/Match/Match.docs.ts",
+    "packages/design-system/src/components/Match/MatchLayout.module.css",
+    "packages/design-system/src/components/Match/Panels.module.css",
+    "packages/design-system/src/components/Match/Panels.tsx",
+    "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+    "packages/design-system/stories/reference/Match.stories.tsx",
+    "packages/design-system/stories/reference/Packs.stories.tsx",
+    "packages/design-system/stories/support/reference/deck.ts",
+    "packages/design-system/tests/browser/reference.spec.ts"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "updated",
+      "reason": "Amendment of 2026-10-22 records the UX-01 reference screens, components, card back, tokens, icons, runtime variables, the development-only presentation dependency, the table scene and the interpretations made; status line updated."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "updated",
+      "reason": "92 components and the reference screens; components, not the package, are free of Babylon."
+    },
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "updated",
+      "reason": "Takedown placeholders for small renditions, hand slices that narrow to fit and the match bottom row."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Task 9: captures, defects found and fixed, the section 33 review, limits and receipts."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "F-DESIGN-SYSTEM row lists 92 components and the reference screens."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-DESIGN-SYSTEM describes the reference screens and gains packages/presentation/** as a source; every verified feature gains the checkpoint full-suite run."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "packages/presentation/** now maps to the design-system runbook, validation and ADR 0017, which document the table scene."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "UX-01 row: reference screens built, awaiting the Director's visual approval."
+    },
+    {
+      "path": "docs/plans/2026-10-22-ux-01-implementation.md",
+      "disposition": "updated",
+      "reason": "Status: tasks 1-9 built with a checkpoint each; task 10 follows."
+    },
+    {
+      "path": "docs/plans/2026-10-22-ux-01-design.md",
+      "disposition": "updated",
+      "reason": "Status: the screens are built and await visual approval; adjustments are recorded in the validation and ADR 0017."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "UX-01 status: built through task 9; hosted CI and visual approval follow."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "UX-01 status: built through task 9; hosted CI and visual approval follow."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "UX-01 status: built through task 9; hosted CI and visual approval follow."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Rewritten for the completed build: state, receipts, review material, pending gates and next actions."
+    },
+    {
+      "path": "packages/presentation/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Already documents mountTableScene (CHG-20261022-012); no presentation code changed in task 9."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "No Director decision in task 9; the visual approval will be recorded as a new decision."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No local-environment, container or toolchain decision is affected."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Package ownership and the application foundation are unchanged; the work stays inside the existing packages."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The dated 2026-10-06 audit is preserved as written."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Documentation governance is unchanged; this checkpoint follows it."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Setup steps are unchanged."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The record format is unchanged."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-01 evidence, preserved."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The vision baselines are unchanged."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "No additional-scope item changes."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated planning record; no dependency in its register changes."
+    },
+    {
+      "path": "docs/adr/0018-official-card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The checkpoint stays within the catalog decision."
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against this checkpoint."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-042.json",
+      "outcome": "passed",
+      "scope": "Actual isolated design-system pipeline (frozen install, gates, pinned Chromium, Storybook/Playwright/axe) on the source before the visual-review fixes."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-043.json",
+      "outcome": "passed",
+      "scope": "Actual isolated BOOT-03 foundation pipeline (frozen foundation, live PostgreSQL, Linux browser, dependency and secret scans, artifacts) on the source before the visual-review fixes."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-044.json",
+      "outcome": "passed",
+      "scope": "After the fixes: design-system typecheck, node gates and the full Playwright/axe Chromium suite in both themes, 409/409 (headless browser)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-045.json",
+      "outcome": "passed",
+      "scope": "Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-046.json",
+      "outcome": "passed",
+      "scope": "Actual isolated design-system pipeline on the final source after the fixes: frozen install, gates, pinned Chromium and the Storybook/Playwright/axe suite (331 s)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-047.json",
+      "outcome": "passed",
+      "scope": "Actual isolated BOOT-03 foundation pipeline on the final source after the fixes: frozen foundation, live PostgreSQL, Linux browser, dependency and secret scans and artifacts (587 s)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-048.json",
+      "outcome": "passed",
+      "scope": "docs:check over the finalized checkpoint (static)."
+    }
+  ],
+  "limitations": [
+    "Chromium only, with software WebGL; no other browsers or devices (UX-02), no performance figures (WEB-01).",
+    "Playwright's Chromium lacks hyphenation dictionaries here, so narrow placeholder names and markers break without hyphens in the captures.",
+    "The low-severity fastify advisory GHSA-389g-gv7q-r4x8 recorded in CHG-20261022-012 remains, outside UX-01's scope.",
+    "The Director's visual approval of the reference screens is pending."
+  ],
+  "next_actions": [
+    "Task 10: push the branch, open the pull request and record both hosted jobs; main moves only at the Director's request.",
+    "The Director reviews the screens; the approval, with any changes, is recorded as a decision and closes UX-01's reference-direction acceptance."
+  ]
+}

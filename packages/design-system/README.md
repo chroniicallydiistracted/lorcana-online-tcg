@@ -1,6 +1,6 @@
 # packages/design-system
 
-The Inkspire's technical design system, built from the adopted [UX/UI design system standard](../../docs/vision/UX_UI_DESIGN_SYSTEM.md) under [ADR 0017](../../docs/adr/0017-technical-design-system.md). It is browser-only and imports neither Babylon nor server code.
+The Inkspire's technical design system, built from the adopted [UX/UI design system standard](../../docs/vision/UX_UI_DESIGN_SYSTEM.md) under [ADR 0017](../../docs/adr/0017-technical-design-system.md). It is browser-only, and its components import neither Babylon nor server code.
 
 - **Tokens:**
   - DTCG 2025.10 subset sources in `tokens/` (primitive, semantic with the Paper and Ink themes, component, card);
@@ -15,7 +15,10 @@ The Inkspire's technical design system, built from the adopted [UX/UI design sys
 - **Icons and symbols (decision D21):**
   - interface icons are Phosphor Regular from a curated registry (`src/components/Icon/registry.ts`);
   - printed gameplay and ink symbols come from verified Lorcana assets (`src/assets/symbols/`), with a takedown switch to neutral placeholders.
-- **Components:** 47 documented Experimental components on React Aria Components 1.21.1 with CSS Modules: actions, fields, overlays, collections, status, notifications, connection and card presentation. Every component has a §13 documentation contract and stories for every documented state.
+- **Components:** 92 documented Experimental components on React Aria Components 1.21.1 with CSS Modules. Every component has a §13 documentation contract and stories for every documented state. They cover:
+  - actions, fields, overlays, collections, status, notifications, connection and card presentation;
+  - the UX-01 room frame, deckbuilder, Collection binder, pack opening and crowded-match parts, including the card back (decision D28) and the table scene's semantic overlay.
+- **Reference screens (UX-01, decisions D27 and D28):** interactive compositions in `stories/reference/`, on real cards, labelled as demonstrations: room frame, deckbuilder, Collection binder, pack opening and the crowded match. The match story loads the table scene from `@lorcana/presentation`, a development dependency only.
 - **Card data in stories (decision D25):** every card, set and ability in the stories is real, from Ravensburger's catalog through `@lorcana/rules-data/fixtures`, a development dependency only. Components never import the catalog; they take the presentational `Printing` type. A card tile shows the card itself and opens the inspector (decision D26).
 - **Checks:**
   - `pnpm --filter @lorcana/design-system test`: tokens, style ownership, component contracts, fonts, icon registry, symbol provenance, preferences and notice wording;

@@ -6,8 +6,8 @@ import { fileURLToPath } from 'node:url';
 
 const packageRoot = fileURLToPath(new URL('../', import.meta.url)), repository = resolve(packageRoot, '../..');
 export const SCOPES = ['packages/design-system/src', 'apps/web/src'];
-// Runtime variables set by React Aria, and --hand-offset, set inline by HandFan for each card's fan geometry.
-const RUNTIME_VARS = new Set(['--trigger-width', '--visual-viewport-height', '--trigger-anchor-point', '--hand-offset']);
+// Runtime variables set by React Aria, and --hand-offset and --hand-count, set inline by HandFan for the fan geometry.
+const RUNTIME_VARS = new Set(['--trigger-width', '--visual-viewport-height', '--trigger-anchor-point', '--hand-offset', '--hand-count']);
 const SYSTEM_COLORS = ['canvas', 'canvastext', 'linktext', 'visitedtext', 'activetext', 'buttonface', 'buttontext', 'buttonborder', 'field', 'fieldtext', 'highlight', 'highlighttext', 'selecteditem', 'selecteditemtext', 'mark', 'marktext', 'graytext', 'accentcolor', 'accentcolortext'];
 const NAMED_COLORS = ['black', 'white', 'red', 'green', 'blue', 'gray', 'grey', 'silver', 'yellow', 'orange', 'purple', 'pink', 'brown', 'navy', 'teal', 'maroon', 'olive', 'aqua', 'fuchsia', 'lime', 'gold', 'indigo', 'violet', 'cyan', 'magenta', 'beige', 'ivory', 'tan', 'coral', 'salmon', 'crimson'];
 const COLOR_PROPS = /^(?:color|background(?:-color)?|border(?:-(?:block|inline)(?:-(?:start|end))?|-(?:top|right|bottom|left))?(?:-color)?|outline(?:-color)?|fill|stroke|box-shadow|text-decoration(?:-color)?|caret-color|accent-color|column-rule(?:-color)?)$/;

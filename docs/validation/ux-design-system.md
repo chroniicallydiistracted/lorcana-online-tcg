@@ -440,3 +440,61 @@ The Director approved the full UX-01 design for end-to-end completion. The build
     - **RUN-20261022-036, passed:** presentation and boundaries after the fix.
     - **RUN-20261022-037, passed:** gates and the full Chromium suite, 409/409.
   - **Not claimed:** frame rates, devices, lifecycle across routes and visibility, quality tiers or context restoration (WEB-01).
+- **Task 9, validation and visual review (CHG-20261022-013):**
+  - **Captures:** all 63 reference stories at 1440 × 900, 1180 × 820 and 820 × 1180 in Paper and Ink: 378 captures and per-screen contact sheets in the ignored `.local/ux-01-review/final/`, with no page errors.
+  - **Defects found in the captures and fixed before this checkpoint:**
+    - **Takedown fallback on the match.**
+      - **Found:** board and hand placeholders grew past the card's size and covered their neighbours. Decorative symbol placeholders repeated the word beside them ("Exert Exerted").
+      - **Fixed:** `CardImage` gains a name-only placeholder for small renditions. It keeps the card's proportion and reads from the top edge, so a fanned card's visible slice still names it. `BoardCard` and `Counter` leave decorative symbols out when Lorcana assets are switched off, because their text already says it.
+    - **Validation that contradicted itself.**
+      - **Found:** an incomplete deck showed Rules with the success mark and "Nothing to resolve" beside "60 more cards needed".
+      - **Fixed:** an incomplete deck can be saved but not played, so the missing cards are now a rule to resolve, and the summary bar counts it. `ValidationSummary` shows the success mark only on a section without messages; information alone gets the information mark.
+    - **Empty deck without a catalog.**
+      - **Found:** the story showed a lone deck panel saying "Add cards from the catalog" with no catalog on screen.
+      - **Fixed:** it is now the full deckbuilder with a new, never-saved deck.
+    - **Blank product art:** the none-held product had an empty artwork slot. It now shares the quiet slot that names the set.
+    - **Match bottom row at 1180 px with a 12-card hand.**
+      - **Found:** the fan's intrinsic width took the row, and the player summary was squeezed until the name and turn marker broke.
+      - **Fixed:**
+        - the outer columns now match the decision column's content width, so the actions sit under it and the hand is centred;
+        - the fan's slices narrow to fit but never below 44 px, and only a hand too large even for that scrolls;
+        - the view switch sits under the summary, and the turn marker never wraps.
+
+      At 1440 px the same hand now fits without scrolling.
+  - **Review against the §33 rejection criteria, after the fixes:**
+    - **Generic hero; uniform grid of unrelated cards:** none. Each room opens on its task, and the only grids are catalog and binder cards, grouped by set and page.
+    - **Oversized containers with little information:** the empty-deck panel was the one case, and it is fixed. The match fits 1180 × 820 without page scroll from 64 rem, with both sides populated.
+    - **Gradient text, brand washes, glass panels, glow:** none.
+      - Ink colour appears only in ink identities and in the restrained light of the pack's rarest beat (design §23).
+      - Selection and valid targets are outline rings with text.
+    - **Pills, arbitrary fonts or weights, raw colours, inconsistent geometry or icons:**
+      - controls and badges use their own radii, with no pill controls;
+      - the style and component gates pass;
+      - every token exception is a documented physical card proportion or fan geometry;
+      - icons come from the curated Phosphor registry.
+    - **Hover lift and perpetual animation:**
+      - Only the hand's card under the pointer rises, to preview it. Board cards and tiles change their outline only.
+      - Reveal motion runs per card on request, with reduced-motion states, and nothing animates continuously.
+    - **Invented statistics and vague copy:**
+      - every room carries the demonstration label;
+      - the pack composition is labelled "Not the official distribution";
+      - messages name the task, for example "The server is deciding the contents. Nothing is shown until they are saved."
+    - **Fake controls, incomplete journeys, success-only design:**
+      - every control acts within its story: deck edits with undo, save and conflict, import and export, binder pages and go-to, reveal and summary, and match decisions with review, pending, rejection and reconnection;
+      - loading, empty, unavailable, failure and takedown states each have a story.
+    - **Desktop squeezed onto touch:** at 820 px the regions stack, the deckbuilder uses Catalog and Deck tabs, and the match uses the Flat tier. Real touch and device qualification is UX-02.
+    - **Tiny printed text, ornaments over card information, a polished empty board:**
+      - board cards never stand in for reading; the inspector's reading mode does;
+      - markers sit under cards, and the only overlay on a card is the foil mark (D26);
+      - the match uses a dense real position on both sides.
+    - **Legacy composition copied:** none. The one legacy asset is the official card back, reused byte for byte (D28).
+  - **Receipts:**
+    - **Before the fixes:** RUN-20261022-042 (isolated design-system pipeline) and RUN-20261022-043 (isolated foundation pipeline) passed.
+    - **After the fixes:**
+      - RUN-20261022-044: design-system gates and the Playwright/axe Chromium suite in both themes, 409/409 (headless browser).
+      - RUN-20261022-045: full suite (container).
+    - **On the final source:** RUN-20261022-046 (isolated design-system pipeline, 331 s) and RUN-20261022-047 (isolated foundation pipeline with live PostgreSQL, Linux browser, scans and artifacts, 587 s) passed.
+  - **Limits:**
+    - Playwright's Chromium has no hyphenation dictionaries here, so narrow placeholder names and markers break without hyphens. Desktop browsers with dictionaries hyphenate them through the language the provider sets.
+    - Chromium only, software WebGL, no devices.
+    - The Director's visual approval is pending.

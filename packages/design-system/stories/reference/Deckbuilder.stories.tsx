@@ -23,7 +23,7 @@ const meta = { title: 'Reference screens/Deckbuilder', parameters: { designSyste
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-type Scenario = 'working' | 'invalid' | 'ownership' | 'leaving' | 'conflict' | 'import' | 'export' | 'filtered-empty' | 'inspection' | 'loading' | 'long-names';
+type Scenario = 'empty' | 'working' | 'invalid' | 'ownership' | 'leaving' | 'conflict' | 'import' | 'export' | 'filtered-empty' | 'inspection' | 'loading' | 'long-names';
 const idOf = (p: Printing) => Number.parseInt(p.id, 10);
 const sampleImport = `4 Judy Hopps – Helpful Officer
 4 Clawhauser - Safety Officer
@@ -37,10 +37,12 @@ const sampleImport = `4 Judy Hopps – Helpful Officer
 
 function DeckbuilderReference({ scenario }: { scenario: Scenario }) {
   const announce = useAnnouncer(), revision8: Deck = playerDeck;
-  const start = scenario === 'invalid' ? invalidDeck : scenario === 'long-names' ? new Map([...workingDeck, [3134, 1]]) : workingDeck;
+  const start: Deck = scenario === 'empty' ? new Map() : scenario === 'invalid' ? invalidDeck : scenario === 'long-names' ? new Map([...workingDeck, [3134, 1]]) : workingDeck;
   const dirtyStart = scenario === 'leaving' || scenario === 'conflict' || scenario === 'invalid';
   const [deck, setDeck] = useState<Deck>(dirtyStart ? new Map([...start, [3283, 2]]) : start);
-  const [saved, setSaved] = useState<{ revision: number; deck: Deck }>({ revision: 7, deck: start });
+  // A new deck has no saved revision until its first save.
+  const [saved, setSaved] = useState<{ revision: number; deck: Deck }>({ revision: scenario === 'empty' ? 0 : 7, deck: start });
+  const deckName = scenario === 'empty' ? 'New deck' : playerDeckName;
   const [history, setHistory] = useState<Deck[]>([]);
   const [saving, setSaving] = useState(false), [conflict, setConflict] = useState(scenario === 'conflict'), [loadRevision, setLoadRevision] = useState(false);
   const [filters, setFilters] = useState<CatalogFilters>(scenario === 'filtered-empty' ? { ...emptyFilters, inks: ['emerald'], costs: [8], type: 'location' } : emptyFilters);
@@ -49,7 +51,7 @@ function DeckbuilderReference({ scenario }: { scenario: Scenario }) {
   const [importing, setImporting] = useState(scenario === 'import'), [importText, setImportText] = useState(sampleImport), [exporting, setExporting] = useState(scenario === 'export');
   const [leaving, setLeaving] = useState<string | null>(scenario === 'leaving' ? 'iframe.html?id=reference-screens-collection-binder--partially-owned&viewMode=story' : null);
   const dirty = [...new Set([...deck.keys(), ...saved.deck.keys()])].some(id => (deck.get(id) ?? 0) !== (saved.deck.get(id) ?? 0));
-  const saveState: SaveStateValue = conflict ? 'conflict' : saving ? 'saving' : dirty ? 'unsaved' : 'saved';
+  const saveState: SaveStateValue = conflict ? 'conflict' : saving ? 'saving' : dirty || saved.revision === 0 ? 'unsaved' : 'saved';
   const results = useMemo(() => filterCatalog(filters), [filters]);
   const validation = validateDeck(deck, corePolicy, scenario === 'ownership' ? ownership : undefined);
   const summary = deckSummary(deck), count = deckCount(deck);
@@ -112,7 +114,7 @@ function DeckbuilderReference({ scenario }: { scenario: Scenario }) {
       </Tabs>
     </Stack>
   </DeckPanel>;
-  const summaryBar = <><span style={{ font: 'var(--is-typography-body-strong)' }}>{count} / {corePolicy.deckSize}</span><Text as="span" role="metadata" tone="supporting">{validation.rules.filter(i => i.tone === 'danger').length ? `${String(validation.rules.filter(i => i.tone === 'danger').length)} rules to resolve` : 'Rules: nothing to resolve'}</Text>{saveControls}</>;
+  const summaryBar = <><span style={{ font: 'var(--is-typography-body-strong)' }}>{count} / {corePolicy.deckSize}</span><Text as="span" role="metadata" tone="supporting">{(n => n ? `Rules: ${String(n)} to resolve` : 'Rules: nothing to resolve')(validation.rules.filter(i => i.tone !== 'information').length)}</Text>{saveControls}</>;
 
   const inspector = <InspectorHost isOpen={inspectedCard !== null} onOpenChange={open => { if (!open) setInspected(null); }} title={inspectedCard ? fullName(inspectedCard) : ''}>{inspectedCard && <>
       <CardInspector printing={printing(inspectedCard)} classifications={inspectedCard.classifications} printed={printedBlocks(inspectedCard)} {...(inspectedCard.flavorText ? { flavor: inspectedCard.flavorText } : {})}
@@ -133,7 +135,7 @@ function DeckbuilderReference({ scenario }: { scenario: Scenario }) {
 
   return <RouterProvider navigate={navigate}>
     <ReferenceRoom room="Deckbuilder" current="decks">
-      <RoomHeader title={playerDeckName} meta={<SaveState state={saveState} revision={saved.revision} />} demonstration
+      <RoomHeader title={deckName} meta={<SaveState state={saveState} revision={saved.revision} />} demonstration
         actions={<><IconButton icon="undo" label="Undo last change" variant="secondary" onPress={undo} isDisabled={!history.length} /><Button onPress={() => setImporting(true)}>Import</Button><Button onPress={() => setExporting(true)}>Export</Button></>} />
       <DeckWorkspace catalog={catalog} deck={deckRegion} catalogLabel="Catalog" deckLabel="Deck" summaryBar={summaryBar} inspector={inspector} inspecting={inspectedCard !== null} />
     </ReferenceRoom>
@@ -143,13 +145,13 @@ function DeckbuilderReference({ scenario }: { scenario: Scenario }) {
         <ImportPreview lines={parseImport(importText).lines} />
       </Stack>
     </Dialog>
-    <ExportDialog title={`Export ${playerDeckName}`} isOpen={exporting} onOpenChange={setExporting} formats={[
+    <ExportDialog title={`Export ${deckName}`} isOpen={exporting} onOpenChange={setExporting} formats={[
       { id: 'text', label: 'Text list', description: 'Quantity and full name, one card per line.', content: exportText(deck) },
       { id: 'csv', label: 'CSV with printings', description: 'Quantity, name, set and collector number.', content: exportCsv(deck) },
     ]} />
     <Dialog role="alertdialog" title="Leave with unsaved changes?" isOpen={leaving !== null} onOpenChange={open => { if (!open) setLeaving(null); }} isDismissable={false}
       actions={<><Button onPress={() => setLeaving(null)}>Keep editing</Button><Button variant="danger" onPress={() => { const href = leaving; setLeaving(null); if (href) location.assign(href); }}>Discard changes</Button><Button variant="primary" onPress={() => { const href = leaving; save(() => { if (href) location.assign(href); }); }}>Save and leave</Button></>}>
-      <Text>Your edits to {playerDeckName} since revision {saved.revision} are not saved.</Text>
+      <Text>Your edits to {deckName} since revision {saved.revision} are not saved.</Text>
     </Dialog>
     <Dialog role="alertdialog" title="Load revision 8?" isOpen={loadRevision} onOpenChange={setLoadRevision} isDismissable={false}
       actions={<><Button onPress={() => setLoadRevision(false)}>Keep my changes</Button><Button variant="danger" onPress={() => { setDeck(revision8); setSaved({ revision: 8, deck: revision8 }); setConflict(false); setLoadRevision(false); announce('Revision 8 loaded.'); }}>Discard mine and load revision 8</Button></>}>
@@ -177,11 +179,4 @@ export const LongNames: Story = {
   parameters: { designSystem: { coverage: { CatalogResults: ['list', 'long names'], FilterBar: ['long labels'], ViewSwitch: ['long labels'] } } },
   render: () => <DeckbuilderReference scenario="long-names" />,
 };
-export const EmptyDeck: Story = { parameters: { designSystem: { coverage: { DeckList: ['empty'], DeckHeader: ['no inks yet'] } } }, render: () => <DeckListEmpty /> };
-function DeckListEmpty() {
-  return <ReferenceRoom room="Deckbuilder" current="decks"><RoomHeader title="New deck" demonstration />
-    <div style={{ maxInlineSize: '25rem' }}><DeckPanel header={<DeckHeader format={policyLabel(corePolicy)} count={0} size={corePolicy.deckSize} inks={[]} />} footerLabel="Validation and save" footer={<SaveState state="unsaved" />}>
-      <DeckList entries={[]} onQuantityChange={() => {}} onInspect={() => {}} emptyState={<Text>Add cards from the catalog. The deck needs {corePolicy.deckSize}.</Text>} />
-    </DeckPanel></div>
-  </ReferenceRoom>;
-}
+export const EmptyDeck: Story = { parameters: { designSystem: { coverage: { DeckList: ['empty'], DeckHeader: ['no inks yet'] } } }, render: () => <DeckbuilderReference scenario="empty" /> };

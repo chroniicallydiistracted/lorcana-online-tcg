@@ -48,7 +48,8 @@ export function validateDeck(deck: Deck, policy: FormatPolicy, owned?: ReadonlyM
     const extra = inks.slice(policy.inkLimit), from = cards.filter(c => c.inks.some(i => extra.includes(i))).map(fullName);
     rules.push({ tone: 'danger', text: `The deck uses ${String(inks.length)} inks (${inks.map(i => inkNames[i]).join(', ')}); ${policy.name} allows ${String(policy.inkLimit)}. ${extra.map(i => inkNames[i]).join(', ')} comes from ${from.join(', ')}.` });
   }
-  if (count < policy.deckSize) rules.push({ tone: 'information', text: `${String(policy.deckSize - count)} more cards needed: ${policy.name} decks have exactly ${String(policy.deckSize)}.` });
+  // An incomplete deck can be saved but not played, so the missing cards are a rule still to resolve.
+  if (count < policy.deckSize) rules.push({ tone: 'warning', text: `${String(policy.deckSize - count)} more cards needed: ${policy.name} decks have exactly ${String(policy.deckSize)}.` });
   if (count > policy.deckSize) rules.push({ tone: 'danger', text: `${String(count)} cards: ${policy.name} decks have exactly ${String(policy.deckSize)}. Remove ${String(count - policy.deckSize)}.` });
   for (const song of cards.filter(c => songCost(c) !== null)) {
     const cost = songCost(song) ?? 0, singers = cards.filter(c => c.category === 'character' && ((c.cost ?? 0) >= cost || singerValue(c) >= cost));

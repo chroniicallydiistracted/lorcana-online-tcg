@@ -1,6 +1,6 @@
 # UX-01 implementation plan — matched reference screens
 
-Status: plan written after the Director approved the [written design](2026-10-22-ux-01-design.md) (decision D28). Recorded 2026-10-22T06:31:38.935Z (CHG-20261022-004). Base: main 4d9dfc7; branch `claude/ux-01-reference-screens`. Publishing this plan executes none of its steps. Building starts at task 1, and each task ends at a checkpoint with its own evidence.
+Status: plan written after the Director approved the [written design](2026-10-22-ux-01-design.md) (decision D28), recorded 2026-10-22T06:31:38.935Z (CHG-20261022-004). The Director then approved the full design for end-to-end completion, and tasks 1–9 were built with a checkpoint each (CHG-20261022-005 to CHG-20261022-013). Task 10 (hosted CI and the Director's visual approval) follows. Base: main 4d9dfc7; branch `claude/ux-01-reference-screens`. The design-system validation records where the build departed from the plan and why.
 
 **Goal.** Build the four approved reference screens (crowded match, practical deckbuilder, Collection binder, pack presentation) as interactive Storybook compositions on real cards, with the first static Babylon table scene under the match, ready for the Director's visual approval.
 

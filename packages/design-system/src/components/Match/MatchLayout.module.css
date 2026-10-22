@@ -16,6 +16,10 @@
   .layout { block-size: 100dvh; /* token-exception: the match fits the viewport so the hand and actions stay visible */ }
   .main { grid-template-columns: minmax(0, 1fr) var(--is-component-match-side-narrow); grid-template-rows: minmax(0, 1fr) auto; grid-template-areas: "battlefield side" "bottom bottom"; }
   .side { padding-inline: var(--is-space-3) var(--is-layout-gutter-wide); overflow: auto; border-inline-start: var(--is-border-width-1) solid var(--is-color-border-decorative); background: var(--is-color-surface); }
-  .bottom { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: end; padding-inline: var(--is-layout-gutter-wide); }
+  /* The outer columns match the decision column's content width, so the actions sit under it and the hand is centred. */
+  .bottom { grid-template-columns: calc(var(--is-component-match-side-narrow) - var(--is-space-3) - var(--is-layout-gutter-wide)) minmax(0, 1fr) calc(var(--is-component-match-side-narrow) - var(--is-space-3) - var(--is-layout-gutter-wide)); align-items: end; padding-inline: var(--is-layout-gutter-wide); }
 }
-@media expanded { .main { grid-template-columns: minmax(0, 1fr) var(--is-component-match-side); } }
+@media expanded {
+  .main { grid-template-columns: minmax(0, 1fr) var(--is-component-match-side); }
+  .bottom { grid-template-columns: calc(var(--is-component-match-side) - var(--is-space-3) - var(--is-layout-gutter-wide)) minmax(0, 1fr) calc(var(--is-component-match-side) - var(--is-space-3) - var(--is-layout-gutter-wide)); }
+}

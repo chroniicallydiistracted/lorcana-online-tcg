@@ -1,6 +1,8 @@
 /* The fan: slots of the step width; each card image extends beyond its slot under the next card. Hit areas are the slots. */
-.fan { display: flex; align-items: flex-end; justify-content: center; margin: 0; padding: var(--is-space-6) var(--is-space-6) 0; list-style: none; }
-.slot { position: relative; flex: none; inline-size: var(--is-component-hand-step); block-size: calc(var(--is-component-hand-card) * 88 / 63); }
+/* Slots narrow to fit the region, never below the 44 px target; only a hand too large even for that scrolls. The block-end
+   padding holds the outer cards' drop, so the scroll region never clips them. */
+.fan { display: flex; align-items: flex-end; justify-content: safe center; margin: 0; padding: var(--is-space-6) var(--is-space-6) calc((var(--hand-count) - 1) * (var(--hand-count) - 1) * 0.25px + var(--is-space-3)); /* token-exception: room for the fan's outer drop, from the card count */ overflow-x: auto; list-style: none; container-type: inline-size; }
+.slot { position: relative; flex: none; inline-size: clamp(var(--is-component-control-min-size), calc((100cqi - var(--is-component-hand-card)) / max(var(--hand-count) - 1, 1)), var(--is-component-hand-step)); /* token-exception: the step shares the region's width (100cqi) among the cards */ block-size: calc(var(--is-component-hand-card) * 88 / 63); }
 .slot:last-child { inline-size: var(--is-component-hand-card); }
 .hit { position: absolute; inset: 0; padding: 0; border: 0; background: transparent; cursor: pointer; }
 .hit:focus-visible { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); border-radius: var(--is-component-control-radius); }

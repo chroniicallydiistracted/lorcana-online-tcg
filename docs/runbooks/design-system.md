@@ -69,7 +69,7 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **Under the card:** nothing. Names, set, rarity, inks and ownership belong to the inspector.
   - **Foil printings:** they keep a static "Foil" mark on the card's corner.
   - **Hover and press:** they change the outline only, never the art.
-- **Takedown switch:** `CardImage` follows `officialAssets={false}` and shows the neutral placeholder, as symbols do.
+- **Takedown switch:** `CardImage` follows `officialAssets={false}` and shows the neutral placeholder, as symbols do. Small renditions (board and hand cards) pass `placeholder="name"`: only the name, from the top edge, within the card's proportion. Where a symbol only decorates a visible word (the Exerted marker, counter labels), the component leaves it out under the takedown switch instead of showing the word twice.
 - **Face-down cards (decision D28):** `CardBack` shows the official card back from `src/assets/card-back/` (provenance in its `manifest.json`), unchanged and scaled by the browser. It is decorative unless given a `label`, and it follows the takedown switch with a neutral back drawn from the tokens. Presentation code textures face-down cards from `cardBackImageUrl` rather than importing the component.
 - **Reference screens (UX-01):** use the reference fixture (`referenceCatalog`, `referencePrinting`, `referenceImage`) for the decks, binder spreads and pack; its images share `/catalog-images/`.
 
@@ -101,7 +101,8 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **One position object:** the position in `stories/support/reference/match.ts` drives every view.
   - **Commands:** choices and reasons come from the real cards' rules text (`commands.ts`).
   - **Card size:** board cards are compact below 80 rem and standard from 80 rem; marker text never shrinks.
-  - **Fan hit areas:** each card's hit area is its visible 52 px slice, and the raise preview moves only the image.
+  - **Fan hit areas:** each card's hit area is its visible slice, 52 px when there is room. The slices narrow to fit the region but never below 44 px, and only a hand too large even for that scrolls. The raise preview moves only the image.
+  - **Bottom row:** from 64 rem the outer columns match the decision column's content width, so the actions sit under it and the hand is centred. The view switch sits under the player summary.
 - **Table scene (UX-01, D27):** the match story's table scene comes from `stories/support/reference/scene.tsx`.
   - **Loading:** it imports `@lorcana/presentation` lazily through the design system's development-only dependency. Components never import it.
   - **Input:** it maps the position object, the theme's renderer colours and `cardBackImageUrl` into `mountTableScene`.

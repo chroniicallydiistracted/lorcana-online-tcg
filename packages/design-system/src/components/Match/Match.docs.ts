@@ -8,7 +8,7 @@ export const boardCardDoc = defineDoc({
   inputs: ['printing', 'kind', 'exerted', 'damage', 'drying', 'stack', 'at', 'modifiers', 'highlight', 'facts'],
   outputs: ['onPress'],
   accessibility: ['One button named with the card, every marker and its facts ("Kit Cloudkicker – Sure Shot. Ready. Shift stack of 2, on Kit Cloudkicker – Unpredictable Courier")', 'Selection and valid targets are outline rings with text markers, never colour or glow alone'],
-  contentLimits: ['Markers wrap under the card; card text is read in the inspector'],
+  contentLimits: ['Markers wrap under the card; card text is read in the inspector', 'With official assets off the card shows a name-only placeholder that keeps the card\'s size, and the Exerted marker is text only'],
   usage: ['Never reveals more than the viewer may know', 'The same object drives the scene and the semantic overlay; describeBoardCard gives the overlay the same name and markers'],
 });
 export const battlefieldDoc = defineDoc({
@@ -32,7 +32,7 @@ export const handFanDoc = defineDoc({
   inputs: ['label', 'cards', 'selected'],
   outputs: ['onSelect'],
   accessibility: ['Arrow keys, Home and End move between cards; Enter or Space selects', 'Each card is named with its cost, type and any reason it can\'t be played', 'Hit areas are at least 44 px wide and never overlap'],
-  contentLimits: ['A very large hand keeps 44 px slices; the list view is always available'],
+  contentLimits: ['Slices narrow to fit the region but never below 44 px; a hand too large even for that scrolls, and the list view is always available', 'With official assets off each card shows its name from the top edge, so the visible slice still names it'],
   usage: ['Pair with HandList through a ViewSwitch'],
 });
 export const handListDoc = defineDoc({
@@ -55,7 +55,7 @@ export const counterDoc = defineDoc({
   states: ['standard', 'official assets off'],
   inputs: ['label', 'value', 'max', 'symbol', 'detail'],
   outputs: [],
-  accessibility: ['The label is text, so the symbol is never the only cue'],
+  accessibility: ['The label is text, so the symbol is never the only cue; with official assets off the symbol is left out rather than repeated as a word'],
   contentLimits: ['Short labels'],
   usage: ['Thresholds come from the format, never constants (§19)'],
 });

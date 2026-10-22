@@ -13,6 +13,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 type Stage = 'choice' | 'review' | 'pending' | 'reveal' | 'interrupted' | 'failed' | 'summary' | 'settlement';
+/** The product's quiet slot until ink-form artwork exists (D27); it names the set. */
+const productArtwork = <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', font: 'var(--is-typography-subsection)', color: 'var(--is-color-text-supporting)' }}>Hyperia City</span>;
+
 function PackReference({ stage: startStage = 'choice', revealed: startRevealed = 0 }: { stage?: Stage; revealed?: number }) {
   const announce = useAnnouncer(), [stage, setStage] = useState<Stage>(startStage), [revealed, setRevealed] = useState(startRevealed), [held, setHeld] = useState(3), total = packSlots.length;
   const reveal = (count: number) => { setRevealed(count); const slot = packSlots[count - 1]; if (slot) announce(`Card ${String(count)} of ${String(total)}: ${slotName(slot)}.`); };
@@ -22,7 +25,7 @@ function PackReference({ stage: startStage = 'choice', revealed: startRevealed =
   const body = (() => {
     switch (stage) {
       case 'choice': case 'review': return <>
-        <ProductChoice name="Hyperia City booster" contents="12 cards" available={held} onOpen={() => setStage('review')} artwork={<span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', font: 'var(--is-typography-subsection)', color: 'var(--is-color-text-supporting)' }}>Hyperia City</span>} />
+        <ProductChoice name="Hyperia City booster" contents="12 cards" available={held} onOpen={() => setStage('review')} artwork={productArtwork} />
         <Confirmation isOpen={stage === 'review'} onOpenChange={o => { if (!o) setStage(s => s === 'review' ? 'choice' : s); }} title="Open 1 Hyperia City booster?" consequence="The contents are decided when you open it and saved to your collection." confirmLabel="Open booster" cancelLabel="Keep it for later" onConfirm={open} />
       </>;
       case 'pending': return <div style={{ maxInlineSize: '32rem' }}><Stack gap={3}><ProgressBar label="Opening your booster" /><Text tone="supporting">The server is deciding the contents. Nothing is shown until they are saved.</Text></Stack></div>;
@@ -65,7 +68,7 @@ export const ReducedMotion: Story = { globals: { motion: 'reduced' }, parameters
 export const NoneHeld: Story = { parameters: { designSystem: { coverage: { ProductChoice: ['none held'] } } }, render: () => <NoneHeldRoom /> };
 function NoneHeldRoom() {
   return <ReferenceRoom room="Pack opening" current="collection"><Stack gap={6}><RoomHeader title="Open packs" demonstration />
-    <ProductChoice name="Hyperia City booster" contents="12 cards" available={0} onOpen={() => {}} artwork={null} />
+    <ProductChoice name="Hyperia City booster" contents="12 cards" available={0} onOpen={() => {}} artwork={productArtwork} />
     <Text tone="supporting">You have no Hyperia City boosters to open.</Text>
   </Stack></ReferenceRoom>;
 }

@@ -3,7 +3,7 @@ import { Button as AriaButton } from 'react-aria-components';
 import { CardImage } from '../CardTile/CardImage.tsx';
 import type { Printing } from '../CardTile/types.ts';
 import { GameSymbol } from '../GameSymbol/GameSymbol.tsx';
-import { useMessages } from '../../foundation/DesignSystemProvider.tsx';
+import { useMessages, useOfficialAssets } from '../../foundation/DesignSystemProvider.tsx';
 import styles from './Board.module.css';
 
 export interface BoardCardProps {
@@ -52,11 +52,12 @@ export function describeBoardCard({ printing, kind, exerted = false, damage = 0,
  */
 export function BoardCard(props: BoardCardProps) {
   const { printing, kind, exerted = false, highlight = 'none', onPress } = props;
-  const t = useMessages(), { label, markers } = describeBoardCard(props, t);
-  const visible = markers.map(m => ({ ...m, node: m.key === 'exerted' ? <><GameSymbol name="exert" />{m.short}</> : m.short }));
+  const t = useMessages(), official = useOfficialAssets(), { label, markers } = describeBoardCard(props, t);
+  // The exert symbol only decorates the visible word, so with Lorcana assets switched off the word stands alone.
+  const visible = markers.map(m => ({ ...m, node: m.key === 'exerted' && official ? <><GameSymbol name="exert" />{m.short}</> : m.short }));
   return <div className={styles.card} data-kind={kind} data-exerted={exerted || undefined} data-highlight={highlight === 'none' ? undefined : highlight}>
     <AriaButton className={styles.hit} onPress={onPress} aria-label={label}>
-      <span className={styles.frame}><span className={styles.art}><CardImage printing={printing} decorative /></span></span>
+      <span className={styles.frame}><span className={styles.art}><CardImage printing={printing} decorative placeholder="name" /></span></span>
     </AriaButton>
     {visible.length > 0 && <ul className={styles.markers} aria-hidden="true">{visible.map(m => <li key={m.key} className={styles.marker} data-marker={m.key} data-tone={m.tone}>{m.node}</li>)}</ul>}
   </div>;
