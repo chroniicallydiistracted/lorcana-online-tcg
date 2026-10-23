@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261023-006",
+  "category": "container",
+  "command": [
+    "sh",
+    "-c",
+    "python3 scripts/verify-config.py && python3 scripts/ci/check-config.py && pnpm audit --audit-level high && pnpm typecheck && pnpm lint && pnpm test"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "f62237d15520d98e1fa60ba395a68c05904eb894",
+  "source_fingerprint": "c5a003f39b8603efb11d085a6bd3f1dda054cda4bd5dfcbbd3760768f73d1be2",
+  "started_at": "2026-10-23T03:20:14.993Z",
+  "finished_at": "2026-10-23T03:22:27.802Z",
+  "recorded_at": "2026-10-23T03:22:27.802Z",
+  "time_precision": "exact",
+  "elapsed_ms": 132813,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "Checkpoint full suite for CHG-20261023-002 (design review gate): configuration contract, CI configuration, dependency audit (high), typecheck, lint and every workspace test",
+  "log_path": "docs/validation/logs/RUN-20261023-006.txt",
+  "log_sha256": "6d2a91deee11d7754490fa9aac6befa26924c450603ffaaddbf7efa749e9f0ca",
+  "redactions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261023-004",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "--filter",
+    "@lorcana/design-system",
+    "check:design-reviews"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "f62237d15520d98e1fa60ba395a68c05904eb894",
+  "source_fingerprint": "c5a003f39b8603efb11d085a6bd3f1dda054cda4bd5dfcbbd3760768f73d1be2",
+  "started_at": "2026-10-23T03:09:33.252Z",
+  "finished_at": "2026-10-23T03:09:33.637Z",
+  "recorded_at": "2026-10-23T03:09:33.637Z",
+  "time_precision": "exact",
+  "elapsed_ms": 385,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "Design review gate (D30), independent-review record stage on the current reference screens (expected to decline them: no records exist)",
+  "log_path": "docs/validation/logs/RUN-20261023-004.txt",
+  "log_sha256": "affe2b18f73335f91bf33ad1624418a4465aa44ce8bc1a2601c99cba91df5962",
+  "redactions": 0
+}

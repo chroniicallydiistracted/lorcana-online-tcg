@@ -128,6 +128,23 @@ Only token variables are allowed. If a value genuinely cannot be a token (overla
 - `pnpm --filter @lorcana/design-system test:browser` builds Storybook and serves it on 127.0.0.1:6007. It then runs the Playwright and axe Chromium suite with font hinting off, so glyph spacing matches desktop browsers. In CI, the parallel `design-system` job runs the gates and this suite in the isolated container (`python3 scripts/ci-local.py --suite design-system`, decision D18).
 - `pnpm --filter @lorcana/design-system storybook` starts the development server on port 6006 with telemetry disabled.
 
+## Design review gate
+
+Decision D30 declines any reference screen that is not proven. Both checks below block the design-system CI job, after the browser suite.
+
+- **Detector:** `pnpm --filter @lorcana/design-system design-review` builds Storybook, or reuses it with `SKIP_STORYBOOK_BUILD=1`.
+  - **Engine:** it fetches and verifies the pinned Impeccable engine into `.local/tools/impeccable/` and serves the build on 127.0.0.1:6008.
+  - **Scope:** it scans every reference story at four viewport and theme combinations.
+  - **Output:** findings print grouped by rule and story; the full JSON goes to `.local/design-review/detector.json`.
+  - **Exceptions:** only the Director can waive a rule, by a decision number in `design-review/exceptions.json`.
+- **Independent reviews:** `pnpm --filter @lorcana/design-system check:design-reviews` declines every screen without a passing record at the current design-source fingerprint.
+  - **When:** run the reviews at each checkpoint that changes a reference screen, and always before showing a screen to the Director.
+  - **Reviewers:** spawn two fresh sub-agents with self-contained prompts. Never fork the building agent's context, because a fork inherits its judgement. Give both the target stories, the UX standard (§4, §5, §17–§23, §33), blueprint §11.1, the Director's creative brief and decisions, and the legacy app's comparison captures.
+    - **Design reviewer:** follows Impeccable's critique Assessment A (specificity, heuristics, cognitive load, emotional journey, personas) and the D29 audit's identity and legacy-composition criteria. It writes its review before it sees any detector output.
+    - **Evidence reviewer:** follows Assessment B. It runs the detector gate and the browser suite, drives every story the way a player would, and checks every claim in the design and validation records against observable evidence. Anything it cannot reproduce is unproven.
+  - **Verdicts:** a reviewer passes a screen only with no P0 or P1 issue, a design that is specific to this product, and every claim proven.
+  - **Records:** write `design-review/reviews/<screen>.json` with each reviewer's identifier, verdict and full report, verbatim, and the fingerprint they reviewed (`node -e "import('./scripts/design-review-lib.mjs').then(m => console.log(m.designFingerprint()))"` from the package). The building agent never edits a report or a verdict. A declined screen is fixed, and both reviews run again.
+
 ## Fonts
 
 - **Interface:** Source Sans 3 3.052R (OFL-1.1), weights 400, 600 and 700, in `src/assets/fonts/` with checksums and provenance in `manifest.json`.

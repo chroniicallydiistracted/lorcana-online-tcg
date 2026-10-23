@@ -10,6 +10,9 @@ export const designSystemStages = [
   ['design-system-gates', ['pnpm', '--filter', '@lorcana/design-system', 'test']],
   ['pinned-chromium', ['pnpm', '--filter', '@lorcana/design-system', 'exec', 'playwright', 'install', 'chromium']],
   ['design-system-browser', ['pnpm', '--filter', '@lorcana/design-system', 'test:browser']],
+  // Design review gate (decision D30): the Impeccable detector on the build above, then the independent-review records.
+  ['design-review-detector', ['env', 'SKIP_STORYBOOK_BUILD=1', 'pnpm', '--filter', '@lorcana/design-system', 'design-review']],
+  ['design-review-records', ['pnpm', '--filter', '@lorcana/design-system', 'check:design-reviews']],
 ];
 export function designSystemPipeline(root, env = process.env) {
   assertIsolation(env, JSON.parse(readFileSync(join(root, '.local/ci-isolation.json'))));

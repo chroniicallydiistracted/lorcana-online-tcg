@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-23T02:23:22.017Z",
+  "observed_at": "2026-10-23T03:28:18.204Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -1019,6 +1019,16 @@
       "classification": "current",
       "sources": [
         "packages/design-system/**"
+      ]
+    },
+    {
+      "path": "packages/design-system/design-review/README.md",
+      "classification": "current",
+      "sources": [
+        "packages/design-system/scripts/design-review-lib.mjs",
+        "packages/design-system/scripts/design-review.mjs",
+        "packages/design-system/scripts/check-design-reviews.mjs",
+        "packages/design-system/design-review/**"
       ]
     },
     {
@@ -2197,6 +2207,11 @@
       "sources": []
     },
     {
+      "path": "docs/plans/2026-10-23-ux-01-rework-design.md",
+      "classification": "planning",
+      "sources": []
+    },
+    {
       "path": "docs/reviews/2026-10-19-play-04-d13.md",
       "classification": "evidence",
       "sources": []
@@ -2369,7 +2384,8 @@
     "CHG-20261022-011",
     "CHG-20261022-012",
     "CHG-20261022-013",
-    "CHG-20261023-001"
+    "CHG-20261023-001",
+    "CHG-20261023-002"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2457,9 +2473,10 @@
     "CHG-20261022-011": "finalized",
     "CHG-20261022-012": "finalized",
     "CHG-20261022-013": "finalized",
-    "CHG-20261023-001": "finalized"
+    "CHG-20261023-001": "finalized",
+    "CHG-20261023-002": "finalized"
   },
-  "source_fingerprint": "daeba7d258ad94c240f04d3e495eaf510e6d85644d44eec82051f1dbc5c713c7",
+  "source_fingerprint": "c5a003f39b8603efb11d085a6bd3f1dda054cda4bd5dfcbbd3760768f73d1be2",
   "files": {
     ".devcontainer/Dockerfile": "5141d60b9d0e7e8d3caa0487334ca5e909ac3c5a2713e5f8a3d057a4b0c1a631",
     ".devcontainer/compose.yaml": "cff21189650ee9a33b01a0aaf1fb114466794130d1e2744e199771f8afa97880",
@@ -2475,8 +2492,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "c05f7557141c3b9c5dc119fd2c90efff6a86e36584cf9387ba5d1cd006191c3b",
-    "README.md": "0ef3adf40519e3f46d0224eab8c1b338e0a7111d095fe24830ea4574162533e8",
+    "AGENTS.md": "4fee81502c11f121ce47d1aa9749ec728b85a8fc9c77b7febe2ce64e02a1ef78",
+    "README.md": "6e2eb6c287129569fee90c85db7658e05635652b32a6f39d9a90eba4d9f7353d",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2538,8 +2555,8 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "47592bbbe5fd01db0fbcd3b3a6397da052aef293af0d814b1be8edc97a8df52d",
-    "docs/HANDOFF.md": "23a4d54b2ce31919e084adb8bf7737eea68dc7859ebb48535b4093f066253ade",
-    "docs/README.md": "818f39109b6dc58ef63484496408e5c96fdce9e2a4dc34914673866e48c8713c",
+    "docs/HANDOFF.md": "d3cdbf41931fa1fca09e2fea6e676bc289c6d010076398eef93a213a9b7cb402",
+    "docs/README.md": "24eff84a866c7f368d68cb533e08ad44026bbecfdc0b48676edcb1eceef0f705",
     "docs/WORKSPACE_QUALIFICATION.md": "1062a43ab8ab90446a9f2577996b7ce3bba66e0c7760033ae017fab4f882d44b",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "be8edbdb89fced50ac57ac687adf620b297f0b442471d095f2911e52cc1ffb7b",
@@ -2558,7 +2575,7 @@
     "docs/adr/0014-viewer-projection-privacy.md": "43604bb1f065b7bdedd0fe14b1af2533388db0582b4d243e1a4b51be6e6025fe",
     "docs/adr/0015-live-synthetic-transport.md": "74c58dae388ef90734c4061e4e17bc63c20155982a2c7a9072553428d0334f80",
     "docs/adr/0016-durable-engine-clocks.md": "e7b9655fd1c9ef2f91edf00684dfa0a00614d9350858a7045670b46c18571afb",
-    "docs/adr/0017-technical-design-system.md": "957171621d2742ca54d5b68768fa672e9897c3b8202864af74f638823c5ad513",
+    "docs/adr/0017-technical-design-system.md": "a5e18f78cfcc50ca218ec50df97cedd8dee888df7f3b3f12995dc234fb584e47",
     "docs/adr/0018-official-card-catalog.md": "857e07cff62e2a4ae8b0a047efc75f0c83981f7ebfeebe59f4e8b3d81b823b12",
     "docs/archive/design-system-2026-10-12/README.md": "e17c45b91107e049dd5be5e0b13cfb17183a3ee16ad87184fdb678454dc8041f",
     "docs/archive/design-system-2026-10-12/the-inkspire-design-system.zip": "add42af27f65ab577cd0e33941699cd3afc05a3e1ceca5c91e4962b94dc8647e",
@@ -2568,8 +2585,8 @@
     "docs/contracts/protocol.md": "9d98bba18ea510491ca56d4d78f4d6d72c192ccf5947415bacc4d60c16b77d2e",
     "docs/contracts/release.md": "e7f32ac1b56bb03ef8231e16f482f7e33fe7c4d5aee5b933926c9d99baa1a752",
     "docs/contracts/viewer.md": "93f10a76fb0069fbfb6e91a7825286de1fccdec2ff3413c03fc9cf39ea5c8e97",
-    "docs/documentation-map.json": "c8e524e7b64b76606516978d8c01b06c80fa6a342614950b6cf04bde44707304",
-    "docs/features.json": "88471da71a7527c2e46c7c40d5d12dc6ef251dca981a1d8c8183d26139d93272",
+    "docs/documentation-map.json": "685e1f38e37696de012d24d6c1a810d2bb0cd3cc5ead2c7c2064d859eec4a554",
+    "docs/features.json": "6b2eb39964f3833c79259410c042b21c9254ffb1377c2ab94e1c6843801deb91",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "739e9ebaef44a82acd3caf79b5f219d1f220e348c738e16effe0f6c6d91e075b",
     "docs/plans/2026-10-07-boot-03-ci.md": "5cb426bf88ac4998ea09fc45edb923bbc6c07e3c40a578f74091539c4130b119",
@@ -2590,9 +2607,10 @@
     "docs/plans/2026-10-15-play-04-implementation.md": "096a5078bf8e4afc192e03950f0057ee3769b2baf2cff3a5e59a37f530b2630f",
     "docs/plans/2026-10-15-play-04-intake.md": "20969acc10c8b9e3367d4a18b1a401bb79e3aaf5599f0151b9ffd55b814c28a3",
     "docs/plans/2026-10-19-play-04-d13.md": "1f5ae7f4f0dee9533bbffecd9acb1ac1b265d78ce3521d41b912dbfef8bbe724",
-    "docs/plans/2026-10-22-ux-01-design.md": "c3dcd95f4d4744bef3b8736093d1d567d535b0d4a18a376398ee2098b2439677",
-    "docs/plans/2026-10-22-ux-01-implementation.md": "65c8e8e94e9be730d92e64c2650521c0a315dfd7ff785a0ad2b22de2cefe993b",
+    "docs/plans/2026-10-22-ux-01-design.md": "6187ddde7d6d29c90d0f73d5f7ca458c435b82aff092cb7bb5996724e4bee923",
+    "docs/plans/2026-10-22-ux-01-implementation.md": "b04ecf9ca8c8ddfc9bbc8fa3e8d6f3f5d10c23e9cad02038efaa1a41a85c3644",
     "docs/plans/2026-10-22-ux-01-intake.md": "598995f12b69cfd8ab161462718c705c2857d6ed212e7e0f86e574b788f6c258",
+    "docs/plans/2026-10-23-ux-01-rework-design.md": "991394b5c3c053b68cef012f5a5f9426accd193ceca7a6eb21f9bb1366b71314",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
     "docs/plans/boot-04-costs.json": "db38b14c7d22fce7fbf18c88f29062beb9462732cc578e09b744d4170f2ebda5",
     "docs/plans/boot-04-single-host-costs.json": "f3fb2b6de8b9bb07522dbf753fb60daede3c2f8df8ec00c865718ead438018a7",
@@ -2624,9 +2642,9 @@
     "docs/rules/source-specs-supplement.json": "0efe5f0d481ed436bfb196005dc3d7fad574b2f1040e7d4eaba95b9f39939e0a",
     "docs/rules/source-specs.json": "03207c3e5692ba63735df07e7cb2333ffa38b4146382fb987f2cc46c5b220a0e",
     "docs/runbooks/card-catalog.md": "c09a003f280c4c66898129cdfc6df6887ad0be54110e54d4ad5aed3547b54f21",
-    "docs/runbooks/ci.md": "fc39ead494febc8c5eedf26202af5805649085c5405ff70393762a7121eb76ea",
+    "docs/runbooks/ci.md": "6a883a69a5fd53ab686822e2047270aeb41eff4961ef27c2f677e086f9cd69a6",
     "docs/runbooks/database.md": "ad8f7dec52c796afad51958dcb5fecb97e8f902ab980ac7d0392a7b357d0405a",
-    "docs/runbooks/design-system.md": "15505cc4d13ee588159a80014e2d8e9020b17182d8d8c0eed1cb8b3c5aaff57f",
+    "docs/runbooks/design-system.md": "b2aba64e8fefa9baa8f42b9cd2f68a3a06cc0281ec85e9fd87469d7ce6d92a28",
     "docs/runbooks/engine.md": "4b622d50192cde4c6e7a24adcbeb2f8ce2814439c59b247945a18cf6381eb2c1",
     "docs/runbooks/game-clocks.md": "ccf0c0118c869330a034a81073822981dcc15cfc1061981e8eaaf45de8f7c9fc",
     "docs/runbooks/live-matches.md": "821226c33cf5b895b36701549db5eb4d2d0a9d755b6303912ddf8bd3c49af46c",
@@ -2731,15 +2749,15 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "207f2f2474dcb7a6812d72269e6605e8564064e0c334448eb24d6e07fc882c57",
+    "docs/validation/ux-design-system.md": "19b9e30c6d602a38ea52f0c268ab30d00aa47132867563f241925eeea28f5dd1",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "41ecedbca20da9d40bc4fda8c8953c49f3090a9e520e5eabdc505775bec36333",
+    "docs/vision/decision_register.csv": "b412f957361227f389b429c11cb92fb651e71d1e8b4c5dd15880be6c90c66625",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "2419920fe3467c947a5b38f8d741b7d21d7d60c237492be7a45df7b2afa75565",
+    "docs/vision/initial_backlog.csv": "3ad0211cb61756392f657938460c02f8af004b0a4abea188adc07ea1140a3b7e",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "c92ead50ec949a5b8f0d014a4e9deb3e855c747ad1a40f7e1506d8b08abec0b2",
@@ -2797,16 +2815,21 @@
     "packages/db/tsconfig.json": "4bef6a8d8bfc70912d6ecaf9a92617e6f621d3d12fa168b5619891d33fcb1763",
     "packages/design-system/.storybook/main.ts": "b51cdaa4b8f924d7b3286adb63e9b32a690506c2409d15e56dc5c688e9b5b750",
     "packages/design-system/.storybook/preview.tsx": "73734780db26120b33a86016a4395e69dd76d5c2aa387f0785ad5e42995f99f9",
-    "packages/design-system/README.md": "550073f3b03112356104f2b4518b02db3a60dc55a49828903aae8443f005bcf0",
-    "packages/design-system/package.json": "f6359b9f73315cefc6464368b3dc8b10ed1840bc201eeffc9cef543a112eb8f8",
+    "packages/design-system/README.md": "5be2fe6be1765ef80ad13c59cc46e051ce56f2f0c78102f848c2bd41b399077c",
+    "packages/design-system/design-review/README.md": "d7dcae58dd2bd0e40cb1f98e8ce9f900ead78f2d59137d874ca11b65fee0d744",
+    "packages/design-system/design-review/exceptions.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "packages/design-system/package.json": "121eaac00948a183d6e0e4fa36f8206dbcdcc0e4f630efb55f74cf99314dca43",
     "packages/design-system/playwright.config.ts": "f562d884362ee8c69dc1a99ed24f289003e1d30b2400409020329886c60800d9",
     "packages/design-system/scripts/browser-tests.mjs": "eb395fb833b59234b5da28af7649d51650e18b8a21c75a9ba7072e254b01b095",
     "packages/design-system/scripts/build-tokens.mjs": "c47fc6b649de0fbe0328ad8bb81ab7cef54f5f9866da4e1daa093f6e839a7016",
     "packages/design-system/scripts/check-components.mjs": "b845aabefe2da1b306c4ba40262b3a4b5af906ab98b1967900082dcee3bd8e89",
+    "packages/design-system/scripts/check-design-reviews.mjs": "7dbfd39799ad5a6a985c933677e1420a3da14bb9532359934ed6d460e076c8d8",
     "packages/design-system/scripts/check-styles.mjs": "351b0d57d58a4331eb7d9cab7ccadf611f0101af8fe76a462673891c0d7283e1",
     "packages/design-system/scripts/check-tokens.mjs": "b66179f8144b2231aee2676b2ac468666b59f7a8bd8f833a36a681fed93fad06",
     "packages/design-system/scripts/copy-static.mjs": "0ea709122743465901d5e25f9c19a029c8d454a9e50388c0d17c6bfa59b0ee38",
     "packages/design-system/scripts/css-module-types.mjs": "5d1117b22bdedb47111fc0d57ee51359e30347406f74eaa1a7f409fcdf4a9a96",
+    "packages/design-system/scripts/design-review-lib.mjs": "cce99944c1fa9382a1f9f3862270e67c9413593585fa90abc55939890af6b6ed",
+    "packages/design-system/scripts/design-review.mjs": "c6ea5d6820e0c825039b7526677ed82c2250280f10f13481b05d8ef62e717627",
     "packages/design-system/scripts/measure-font-metrics.mjs": "20ae4d7aeba6b11400db7de5bba7e05970a526361c7bd6f1f63c800cacd7f5f5",
     "packages/design-system/scripts/symbol-lib.mjs": "0d4b3506f38dd97204a35ad113fe57d1f34daf2681a5ff93137c9941662d2694",
     "packages/design-system/scripts/token-lib.mjs": "70e0da1dee11b2e107738a3ba0a3f08aaa39d87e196a909bdcc046b45b55e021",
@@ -3100,6 +3123,7 @@
     "packages/design-system/tests/browser/reference.spec.ts": "0e85ea4efda7cfebd953bbd15910952c8162ed8d4931f054ecffc951796c06da",
     "packages/design-system/tests/browser/stories.spec.ts": "7e5d83d7a7a7ea946edbfb5fd397f6887e1e67d8b6490e989c1d4b04ccaf82a0",
     "packages/design-system/tests/components.test.mjs": "fce7150f6927e6211e68315c15169a5db63bdf81170de1f94a88bd9cb857ef16",
+    "packages/design-system/tests/design-review.test.mjs": "1cb4d5c0f14bd659caac356edcd7077c75cab42c9626f6c90cbaecf2a5e5c9c6",
     "packages/design-system/tests/foundation.test.mjs": "9f9aa9d40e6a3b5894b669764f62fbf58036585523b065db0e944f2a10bae150",
     "packages/design-system/tests/styles.test.mjs": "30247f76b4709a7568c7da8166ed6dadbb0bc0e9a18f76d4a0ff86c5ffd05537",
     "packages/design-system/tests/tokens.test.mjs": "ea8a0ffe006aa7c75b93a0ceb8dafe544d87917fccaf47f61fc89869c1ffeb2f",
@@ -3302,7 +3326,7 @@
     "scripts/ci-local.py": "40c3940c40cabd9276a7a9730d43ef3e6937b9e2768cf9f9525910437478caf3",
     "scripts/ci/artifacts.mjs": "d5b0eae7ef8f94eb424900f378e05f23a49ee24638e5fec5a079e51286785b8c",
     "scripts/ci/check-config.py": "e451b612b824bc937e66d9ffad0dc8b75f35530eacc44041849cbabb212f06f3",
-    "scripts/ci/design-system.mjs": "e4fd151c5a02c76cdfb0c0a0a430774cf62f0c39314f715bea2303ea2a3f93ea",
+    "scripts/ci/design-system.mjs": "35fbe1bcdca16a0cd48ab0d6373acecce1fec3d1c93b574c31194646a93c2be0",
     "scripts/ci/pipeline.mjs": "4772ff6ec757b4cfef2581dde7460fbda3ab7d23949f466dde9d2d4b5b56b2ea",
     "scripts/ci/policy.json": "e27aba66cf4c0592914080e51471091a34363722ba9eba97674075639f60ed13",
     "scripts/ci/security.mjs": "eac8795c0a1034509298fef0a04f1626935501fbad23305be54ddd4a9a9bc3b5",
@@ -15672,6 +15696,24 @@
       "sha256": "663282ddea57614703b13354fd1e7de42eb676042eb57bccc6f93a916c989ea3"
     },
     {
+      "file": "packages/design-system/scripts/check-design-reviews.mjs",
+      "name": "checkDesignReviews",
+      "line": 8,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "bbb7eeaa007e49a66bde4f882fb87e94b1f8bc859f19de45320bd76ba726fbef"
+    },
+    {
+      "file": "packages/design-system/scripts/check-design-reviews.mjs",
+      "name": "<callback>",
+      "line": 10,
+      "column": 36,
+      "kind": "ArrowFunction",
+      "signature": "screen",
+      "sha256": "214f62240ac90d0259c8ce0008270ac5d75d0235ae9ccd261c39210eb84df73e"
+    },
+    {
       "file": "packages/design-system/scripts/check-styles.mjs",
       "name": "files",
       "line": 15,
@@ -15895,6 +15937,321 @@
       "kind": "FunctionDeclaration",
       "signature": "{ check = false } = {}",
       "sha256": "5b29589690b84ef19275a0d04cca12abc79e4a0cb19f7d25ecce1431a9596c61"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "walk",
+      "line": 30,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "folder",
+      "sha256": "13fd5757806654c3b0a805ccc505ba16ced9d9470cd04b676a87d6d8df76ab54"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 32,
+      "column": 38,
+      "kind": "ArrowFunction",
+      "signature": "name",
+      "sha256": "8fa5eb5765ba6bb8bb806cb2de0558fac6abb9347e0eb98b2df53d4c2c7fdebf"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "designFingerprint",
+      "line": 39,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root = repository",
+      "sha256": "971dd587427b2110de8e628402662b27dc5396d5de33c8ea20879b9c6b79aa60"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "referenceStories",
+      "line": 48,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "index",
+      "sha256": "39548c95c6624c1b9e3714729187d97c8b8795c01b8d9fa64d1dee41dd221659"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 50,
+      "column": 46,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "e1af0e78e5921299c881f1e2afc5cb13494fa933715cb4b9fd61254d605ed669"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 51,
+      "column": 10,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "9ae474c7d48f251cd1ca0736d6e60996c987b6ec3744e359d5e79359b7572636"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "storyUrl",
+      "line": 54,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "base, story, theme",
+      "sha256": "42aa05f8f990f42d7c17de133773bb6e2666fe038f6d8d93a58fcce5c0450ac9"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "validateExceptions",
+      "line": 57,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "list",
+      "sha256": "efb15ef7e73302e0603b7d8e1efe029f29ec30b3cabc011541bbf998b0930b13"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 60,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "e, i",
+      "sha256": "11cf163637717dfdc82f333f2ac873bb64e467a9336738b5ea94f6f75db5ebc8"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "storyOf",
+      "line": 68,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "finding",
+      "sha256": "ad28083a95443da899f6abd1426d1de4143a1a0c7f24e5f76581446340c03764"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "unwaived",
+      "line": 69,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "findings, exceptions",
+      "sha256": "1f21c2b48e119a461243b15bfe9fe488d5d4435d1d7a01b024e01204e9a573d6"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 70,
+      "column": 26,
+      "kind": "ArrowFunction",
+      "signature": "f",
+      "sha256": "bbf364dc37b1400fff49d940476d47ed5cc4a54f711fe657397bfdccc9eca55a"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 70,
+      "column": 48,
+      "kind": "ArrowFunction",
+      "signature": "e",
+      "sha256": "b131dce543c483967543bf6756df5154ac6f6305e34d7a5fff25bef22cd21bd2"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "summarize",
+      "line": 73,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "results",
+      "sha256": "ed500128eba7c9a2d6ce8b3c3809ef268490c0cd82053e59f7c9e4aeab3dc152"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 79,
+      "column": 25,
+      "kind": "ArrowFunction",
+      "signature": "[a], [b]",
+      "sha256": "f349c49f82fe23c4d4d9cbef320da33a28651870ab64bfa76957754906349def"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 79,
+      "column": 63,
+      "kind": "ArrowFunction",
+      "signature": "[key, r]",
+      "sha256": "9535bb0c1e27cda42c386f47387a0727f4c99ff56eb3c3a94f41babb9253e2bb"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "checkReviewRecord",
+      "line": 85,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "record, screen, fingerprint",
+      "sha256": "dae4dd5d825ab92f767f8f7fc6d403da56575a0c99938805b15ec85b1773ea0e"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 91,
+      "column": 41,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "67793538e7c00fdb5bb23f49d16df6b99b3ef6a9935cfbabb99c58bebbe952a8"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 97,
+      "column": 56,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "b20fb2fad26007221bcc65a1e0ba5009f38615e43108938b9d054839cb47aaba"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "referenceScreens",
+      "line": 102,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "root = repository",
+      "sha256": "ae7a2d2f08acc9df7b30c8f612843d473f4b2c6c1e8eed59343bbfe0aca85d1b"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 103,
+      "column": 85,
+      "kind": "ArrowFunction",
+      "signature": "f",
+      "sha256": "e129d2e23d8e09512fc81dcc1bb98665650f098dc5756a4a844f163be2a7a11c"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "<callback>",
+      "line": 104,
+      "column": 10,
+      "kind": "ArrowFunction",
+      "signature": "f",
+      "sha256": "0d049b9d2e41ec3dbf02f29dfdd5e7fc46e8c520dcbad5dd3ae2c0229712197a"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review-lib.mjs",
+      "name": "recordPath",
+      "line": 106,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "screen",
+      "sha256": "188d12e11c303a3e68a3c28d57588b44f0d67376cca1f4ff350aabc89f37040c"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "fetchEngine",
+      "line": 15,
+      "column": 1,
+      "kind": "FunctionDeclaration",
+      "signature": "",
+      "sha256": "7651ea458f452186b692eac56a015ff6ae1664d0b1046f6c9d2f2051e0774fd3"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "sha",
+      "line": 16,
+      "column": 15,
+      "kind": "ArrowFunction",
+      "signature": "file",
+      "sha256": "ea153046f221e50977b5a743f9caa9db8de8f8c1683712ac7713fa43140760b1"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 35,
+      "column": 29,
+      "kind": "ArrowFunction",
+      "signature": "request, response",
+      "sha256": "6682017467af41955c4c71ae3ad25683f14c860320e8093b1e4f1f8bb585fef5"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 41,
+      "column": 19,
+      "kind": "ArrowFunction",
+      "signature": "r",
+      "sha256": "d916bb58a4f1c3ab7e2e3f536e8a431591b838b9a0fe9e9cffb390c6009f1b94"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "detect",
+      "line": 46,
+      "column": 16,
+      "kind": "ArrowFunction",
+      "signature": "args",
+      "sha256": "901759889545c306d46730b57a690971a39136546bc76a9795e22f8a979cce7e"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 46,
+      "column": 36,
+      "kind": "ArrowFunction",
+      "signature": "done",
+      "sha256": "cfbd968ed42b61dce63cd50b7f58dab950c1f0130970be070d1931e61c9e11e2"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 48,
+      "column": 27,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "05da5ea5dc6209604538e4b35e9f1d6c81679b41b61a20d8b1723c87ec7fa90f"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 48,
+      "column": 73,
+      "kind": "ArrowFunction",
+      "signature": "c",
+      "sha256": "2c9955455450f1fa8507b995b07c981ad86320510a3f859638e2089ff83ab593"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 49,
+      "column": 21,
+      "kind": "ArrowFunction",
+      "signature": "status",
+      "sha256": "6ca395ec57b3faa95862a7909e398929a88aa1c7861d2bf03191057bf715871d"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 55,
+      "column": 51,
+      "kind": "ArrowFunction",
+      "signature": "viewport",
+      "sha256": "28711bfa51eea41dacddd528324635442c9ebb6a005d6460a18ffa758c57278f"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 56,
+      "column": 30,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "961712eb252ff241b41d7b306727ef7a5f16105ede21ecfde9f17f85c3e7607f"
+    },
+    {
+      "file": "packages/design-system/scripts/design-review.mjs",
+      "name": "<callback>",
+      "line": 66,
+      "column": 30,
+      "kind": "ArrowFunction",
+      "signature": "n, r",
+      "sha256": "44bce15bbac8488c081393556683937e4c6eecc71209204a5f2e5e442f13ffdc"
     },
     {
       "file": "packages/design-system/scripts/measure-font-metrics.mjs",
@@ -26157,6 +26514,69 @@
       "sha256": "3276043fb4e906132d8955cef7f3dcf18d9ef70d1093daa815b76bd5678c8914"
     },
     {
+      "file": "packages/design-system/tests/design-review.test.mjs",
+      "name": "passing",
+      "line": 7,
+      "column": 17,
+      "kind": "ArrowFunction",
+      "signature": "fingerprint",
+      "sha256": "534c6dc13d558bb5bbb017c041201b3b28b88455b8577b4176e6e00e55686876"
+    },
+    {
+      "file": "packages/design-system/tests/design-review.test.mjs",
+      "name": "<callback>",
+      "line": 10,
+      "column": 71,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "ab474c72cd75a91252781054d6ca9dd86fec7805332c2feef05711a3ba7662ac"
+    },
+    {
+      "file": "packages/design-system/tests/design-review.test.mjs",
+      "name": "<callback>",
+      "line": 14,
+      "column": 83,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "f1094885cdf61cf46b1e8d5757c6cfdf15038fbe60a662d22d5b5f84ddd5874e"
+    },
+    {
+      "file": "packages/design-system/tests/design-review.test.mjs",
+      "name": "<callback>",
+      "line": 20,
+      "column": 52,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "e25f627da3b42817d8a8c472133f3bad9af6fe19053c95cbc6f72b39f750026c"
+    },
+    {
+      "file": "packages/design-system/tests/design-review.test.mjs",
+      "name": "<callback>",
+      "line": 27,
+      "column": 65,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "fecfc6142f3830abcb1d2df936c4316eea279b9e890a5f066891151e993e3edb"
+    },
+    {
+      "file": "packages/design-system/tests/design-review.test.mjs",
+      "name": "<callback>",
+      "line": 33,
+      "column": 32,
+      "kind": "ArrowFunction",
+      "signature": "s",
+      "sha256": "820d72dd21d3e7e43c1260a7f2a7b433b28b9bc0cc193fbb6e3ad7b6a3b064eb"
+    },
+    {
+      "file": "packages/design-system/tests/design-review.test.mjs",
+      "name": "<callback>",
+      "line": 36,
+      "column": 95,
+      "kind": "ArrowFunction",
+      "signature": "",
+      "sha256": "eceb2e8d222dd81952453e14df2d4387162b6a44b3df5246ddcfc3d30faac71c"
+    },
+    {
       "file": "packages/design-system/tests/foundation.test.mjs",
       "name": "<callback>",
       "line": 15,
@@ -34430,7 +34850,7 @@
     {
       "file": "scripts/ci/design-system.mjs",
       "name": "designSystemPipeline",
-      "line": 14,
+      "line": 17,
       "column": 1,
       "kind": "FunctionDeclaration",
       "signature": "root, env = process.env",
@@ -34439,7 +34859,7 @@
     {
       "file": "scripts/ci/design-system.mjs",
       "name": "<callback>",
-      "line": 16,
+      "line": 19,
       "column": 49,
       "kind": "ArrowFunction",
       "signature": "command, name",
@@ -34448,7 +34868,7 @@
     {
       "file": "scripts/ci/design-system.mjs",
       "name": "<callback>",
-      "line": 21,
+      "line": 24,
       "column": 61,
       "kind": "ArrowFunction",
       "signature": "r",

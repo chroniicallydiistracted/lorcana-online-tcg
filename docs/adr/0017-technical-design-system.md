@@ -223,3 +223,18 @@ Recorded with CHG-20261022-013, closing the UX-01 build of the [implementation p
   - **Scene below 80 rem:** the reference uses the Flat tier, because the scene's cards would be too small for legible markers.
   - **Cost curve:** follows the data-visualization method: one neutral series, labelled caps, no gridlines, and a table for assistive technology.
 - **Not decided here:** the Director's visual approval of the reference screens, which closes UX-01's reference-direction acceptance, and every evidence category §34 keeps separate (UX-02 devices and manual journeys, WEB-01 performance).
+
+## Amendment — 2026-10-23 UTC (design review gate, decision D30)
+
+After the audit of the UX-01 reference screens (D29), the Director decided that every design is gated. A screen is declined wherever the agent cannot directly prove its work. Two blocking stages now follow the browser suite in the design-system CI job:
+
+- **Impeccable detector (`design-review`):**
+  - **Engine:** the Impeccable engine (github.com/pbakaus/impeccable, Apache-2.0), pinned at engine v0.1.16 with the release's published SHA-256. It is fetched into the ignored `.local/tools/` and verified before use, with telemetry and update checks off.
+  - **Scope:** every story under "Reference screens", at 1440 × 900 Ink and Paper, 820 × 1180 Ink and 390 × 844 Paper.
+  - **Pass condition:** zero findings. Only a Director decision, recorded in `packages/design-system/design-review/exceptions.json`, can waive a rule.
+- **Independent review records (`check:design-reviews`):**
+  - **Reviewers:** each reference screen needs a passing record from two isolated reviewers. The design reviewer covers specificity, composition, identity and the standard; the evidence reviewer covers the detector, functional proof and claims.
+  - **Validity:** a record is valid only at the design-source fingerprint it reviewed: the design system's source, stories, tokens and Storybook configuration, plus the presentation package's source. Any later change declines the screen until it is reviewed again.
+  - **Procedure:** the reviewers are fresh sub-agents with self-contained instructions, never forks of the building agent's context. The Director authorized them in D30, and the procedure is in the [runbook](../runbooks/design-system.md#design-review-gate).
+
+The detector is a floor. It catches mechanical and generated-design tells, but it cannot judge identity: the D29 screens passed most of its rules while failing specificity. The independent design review exists for that judgement. Neither stage replaces the Director's approval of a reference direction. See CHG-20261023-002.

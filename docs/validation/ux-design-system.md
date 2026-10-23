@@ -524,3 +524,38 @@ The Director approved the full UX-01 design for end-to-end completion. The build
 
   The audit supersedes that review against the §33 criteria. The receipts above still stand for what they test: gates, axe and the pipelines. None of them judges identity or composition.
 - **Status:** UX-01's reference direction is not accepted, and remediation awaits the Director's decisions. The audit's screenshots, walk logs and detector output stay in the ignored `.local/ux-01-audit/`.
+
+## Design review gate and rework design — 2026-10-23 UTC
+
+- **Director's decision (D30, CHG-20261023-002):**
+  - **Gate:** Impeccable becomes a blocking check, and independent sub-agent reviews are authorized. Every design is declined where the agent cannot directly prove its work.
+  - **Rework:** a complete rework with an original design, a 3D interactive pack opening, a binder whose pages flip at a fixed size, and an interactive board with its own identity.
+  - **Ink artwork:** procedural.
+- **Gate:** two new stages after the browser suite in `pnpm ci:design-system`. The [runbook](../runbooks/design-system.md#design-review-gate) and the [ADR 0017 amendment](../adr/0017-technical-design-system.md) have the details.
+  - **`design-review`:**
+    - **Engine:** fetches the Impeccable engine v0.1.16 into `.local/tools/` and checks it against the pinned SHA-256, with telemetry and update checks off.
+    - **Scope:** scans every reference story, leaving out each screen's text-only documentation page, at 1440 × 900 Ink and Paper, 820 × 1180 Ink and 390 × 844 Paper. The four viewports run in parallel.
+    - **Pass condition:** any finding declines the screens unless a Director decision waives it.
+  - **`check:design-reviews`:** requires, for each reference screen, a passing record from a design reviewer and an evidence reviewer, two separate agents, at the current design-source fingerprint.
+  - **Unit tests:** `tests/design-review.test.mjs` covers:
+    - the engine pin;
+    - that exceptions need a Director decision;
+    - waiver matching;
+    - story selection;
+    - that records are rejected when missing, stale, declined, written by the same reviewer twice or missing a full report.
+- **Defect found while building it, fixed before the receipts:**
+  - **Symptom:** in the container, every scan timed out before the page loaded.
+  - **Cause:** the gate served Storybook from its own Node process and then waited on the engine synchronously, so no request was ever answered. My host audit had worked only because it used a separate server.
+  - **Fix:** the engine now runs as an asynchronous child process.
+  - **Sandbox:** the engine launches Chromium without its sandbox (`CI=1`), as Playwright does in this container. It loads only the local build.
+- **Receipts at source fingerprint c5a003f3, both expected failures:**
+  - **RUN-20261023-003 (headless browser, failed: declined):** 385 findings across 63 reference stories (1440 Ink 154, 1440 Paper 154, 820 Ink 25, 390 Paper 52). The counts are identical to the host audit. The stage took 129 s including the Storybook build.
+  - **RUN-20261023-004 (static, failed: declined):** none of the five screens has an independent review record.
+- **RUN-20261023-005 (isolated design-system pipeline, container, failed: declined):** the gates (40/40) and the browser suite (409/409) pass, then the detector stage declines the screens and stops the job, in 518 s.
+- **Consequence:** the hosted design-system job fails at the gate until reworked screens pass it. The foundation job is unaffected.
+- **Rework design:** [direction study design](../plans/2026-10-23-ux-01-rework-design.md), proposed:
+  - the world of ink, paper and light;
+  - room compositions taken from each task: the Illuminary, the Lorebook, the Inkfield and the Scriptorium;
+  - the interactions, and the proof each claim needs.
+
+  It awaits the Director's approval together with its prototypes.
