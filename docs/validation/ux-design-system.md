@@ -498,3 +498,29 @@ The Director approved the full UX-01 design for end-to-end completion. The build
     - Playwright's Chromium has no hyphenation dictionaries here, so narrow placeholder names and markers break without hyphens. Desktop browsers with dictionaries hyphenate them through the language the provider sets.
     - Chromium only, software WebGL, no devices.
     - The Director's visual approval is pending.
+
+## Hosted run, Director review declined and design audit — 2026-10-23 UTC
+
+- **Hosted run (CHG-20261023-001):** run 39848720360 on pull request #7 (pull_request event) at 26b8f4e8b3495ace0b0d2ef63ee2b1aa611a061c concluded success.
+  - **Jobs:**
+    - design-system, 2026-10-22T20:25:30Z to 20:34:33Z;
+    - foundation, 2026-10-22T20:25:30Z to 20:36:22Z.
+  - **What this record covers:** public job metadata; the hosted logs and artifacts were not downloaded.
+- **Director review (D29):** the Director declined visual approval of the reference screens:
+  - several functional errors;
+  - a clear lack of quality and uniqueness;
+  - generic stylization, and requirements not followed;
+  - plain layouts in some areas, and structure copied from the legacy app in others.
+
+  The Director asked for a tool that holds the agent accountable for UX design, similar to Impeccable, and for an audit of the design and of the agent's own work. Main stays at 4d9dfc7, and pull request #7 is not merged.
+- **Audit:** [UX-01 design audit](../audits/2026-10-23-ux-01-design-audit.md).
+  - **Method:** Impeccable's detector and critique (engine v0.1.16, run on the host, single context because sub-agents are not authorized), Hallmark's static gates, and two scripted functional walks.
+  - **Verdict:** the screens fail design specificity, and their compositions follow the legacy app.
+  - **Functional defects:** four at P1: the match hand list, the match commands, Collection filtering and the deckbuilder's Undo focus.
+  - **Heuristics:** 23/40.
+- **Corrections to the task 9 review above:**
+  - "Legacy composition copied: none" is wrong;
+  - "Every control acts within its story" is wrong for the match.
+
+  The audit supersedes that review against the §33 criteria. The receipts above still stand for what they test: gates, axe and the pipelines. None of them judges identity or composition.
+- **Status:** UX-01's reference direction is not accepted, and remediation awaits the Director's decisions. The audit's screenshots, walk logs and detector output stay in the ignored `.local/ux-01-audit/`.

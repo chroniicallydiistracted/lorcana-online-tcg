@@ -2,6 +2,60 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261023-001 — UX-01: hosted run, Director review declined (D29) and design audit with Impeccable
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-23T02:11:00.726Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 26b8f4e8b3495ace0b0d2ef63ee2b1aa611a061c
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **review:** Hosted run 39848720360 on pull request #7 (pull_request event) at 26b8f4e8b3495ace0b0d2ef63ee2b1aa611a061c concluded success: design-system job 2026-10-22T20:25:30Z to 20:34:33Z, foundation job 2026-10-22T20:25:30Z to 20:36:22Z. Public job metadata only; logs and artifacts were not downloaded.
+- **documentation:** Decision D29: the Director declined visual approval of the UX-01 reference screens (functional errors; lack of quality and uniqueness; generic stylization and requirements not followed; plain layouts in places and structure copied from the legacy app elsewhere) and instructed the agent to locate a tool that can hold it accountable for UX design, similar to Impeccable, and to audit the design and its own work. Recorded in docs/vision/decision_register.csv.
+- **review:** Design audit of 26b8f4e (docs/audits/2026-10-23-ux-01-design-audit.md): Impeccable engine v0.1.16 (Apache-2.0; linux-x64 binary SHA-256 a890a5b4b7d9d79ec54aa74612b5e924e5f5b422600a25fde8bcbda11b031787, matching the published checksum; run on the host with telemetry off) detector over 63 reference stories at four viewport and theme combinations, and its critique procedure run in a single context because sub-agents are not authorized; Hallmark static gates (MIT, 7ec8682); two Playwright functional walks in the dev container. Verdict: design specificity fails; compositions follow the legacy app; twelve functional defects (four P1); heuristics 23/40. Outputs stay in the ignored .local/ux-01-audit/.
+- **revision:** Two statements in the task 9 review against the section 33 criteria (CHG-20261022-013, docs/validation/ux-design-system.md) are wrong and are corrected by appended text: 'Legacy composition copied: none' (the deckbuilder, top bar, Collection and match compositions follow the legacy app) and 'every control acts within its story' (match Play only announces, every Challenge is rejected, inkwell placement is never available). The audit supersedes that review.
+- **documentation:** Status lines in AGENTS.md, README.md and docs/README.md, the UX-01 backlog status, the design and implementation plan status lines, the design-system validation and HANDOFF.md record the hosted run, D29 and the audit; the audit is classified as evidence in docs/documentation-map.json.
+
+### Verification
+
+- **passed:** docs:check over the finalized documentation-only checkpoint (static); no source changed, so the source fingerprint and feature evidence are unchanged. Taken before HANDOFF.md's record time was filled in; RUN-20261023-002 covers the final documents. ([evidence](docs/validation/runs/RUN-20261023-001.json))
+- **passed:** docs:check over the final documents of this documentation-only checkpoint (static), after HANDOFF.md's record time was filled in. ([evidence](docs/validation/runs/RUN-20261023-002.json))
+
+### Documentation and files
+
+- **updated:** [docs/audits/2026-10-23-ux-01-design-audit.md](docs/audits/2026-10-23-ux-01-design-audit.md) — New dated audit of the UX-01 reference screens at 26b8f4e, classified as evidence.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Appended section: hosted run 39848720360, the Director's review (D29), the audit summary and corrections to the task 9 review.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Adds D29, the Director's review declining visual approval and the accountability-tool and audit instruction.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 status becomes reference screens declined by the Director, audit recorded, remediation pending; links the audit and this record.
+- **updated:** [docs/plans/2026-10-22-ux-01-implementation.md](docs/plans/2026-10-22-ux-01-implementation.md) — Status line records task 10's hosted run and D29.
+- **updated:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — Status line records D29 and the audit's finding that the design specified components and states but no visual world.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classifies the new audit as evidence with no source edges.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for this checkpoint: audit result, the accountability tool, pending Director decisions and next actions.
+- **updated:** [AGENTS.md](AGENTS.md) — UX-01 status paragraph records the hosted run, D29 and the audit.
+- **updated:** [README.md](README.md) — UX-01 status paragraph records the hosted run, D29 and the audit.
+- **updated:** [docs/README.md](docs/README.md) — UX-01 status paragraph records the hosted run, D29 and the audit.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment records what was built; adopting Impeccable as a gate would amend it, and that awaits the Director.
+- **reviewed_unchanged:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — No operational procedure changes until the Director decides on the accountability tool.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — F-DESIGN-SYSTEM's implemented scope and evidence are unchanged; no source changed.
+- **reviewed_unchanged:** [docs/features.json](docs/features.json) — No source changed, so feature evidence stays bound to the current fingerprint.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261023-001.json).
+
+### Limits and next actions
+
+- The Impeccable critique ran in a single context (degraded by its own definition) because sub-agents are not authorized in this session; its design review was written before the detector output was read, except one trial scan of the deckbuilder.
+- Impeccable and Hallmark ran on the WSL host from the session scratchpad, not inside the Dev Container, so their outputs are host review evidence and not evidence:run receipts; the functional walks ran in the container but are review scripts, not committed tests.
+- Screenshots, walk logs and detector JSON stay in the ignored .local/ux-01-audit/ and are not committed.
+- Hosted run 39848720360 is recorded from public job metadata; logs and artifacts were not downloaded.
+- The Director decides whether Impeccable becomes a project gate (ADR 0017 amendment) and whether sub-agents may run independent design critiques.
+- The Director chooses the UX-01 remediation path and the source of the ink-form artwork; the agent records the decisions and follows the documented stages.
+- Main stays at 4d9dfc7; pull request #7 is not merged as it stands.
+
 ## CHG-20261022-013 — UX-01 task 9: validation, visual review fixes and documents
 
 - Status: finalized

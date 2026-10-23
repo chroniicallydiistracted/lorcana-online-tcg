@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-10-22T20:23:44.491Z",
+  "observed_at": "2026-10-23T02:23:22.017Z",
   "documentation_map": [
     {
       "path": "AGENTS.md",
@@ -458,6 +458,11 @@
         "scripts/rules/**",
         "tests/rules/**"
       ]
+    },
+    {
+      "path": "docs/audits/2026-10-23-ux-01-design-audit.md",
+      "classification": "evidence",
+      "sources": []
     },
     {
       "path": "docs/changes/**",
@@ -2363,7 +2368,8 @@
     "CHG-20261022-010",
     "CHG-20261022-011",
     "CHG-20261022-012",
-    "CHG-20261022-013"
+    "CHG-20261022-013",
+    "CHG-20261023-001"
   ],
   "change_statuses": {
     "CHG-20261006-001": "finalized",
@@ -2450,7 +2456,8 @@
     "CHG-20261022-010": "finalized",
     "CHG-20261022-011": "finalized",
     "CHG-20261022-012": "finalized",
-    "CHG-20261022-013": "finalized"
+    "CHG-20261022-013": "finalized",
+    "CHG-20261023-001": "finalized"
   },
   "source_fingerprint": "daeba7d258ad94c240f04d3e495eaf510e6d85644d44eec82051f1dbc5c713c7",
   "files": {
@@ -2468,8 +2475,8 @@
     ".vscode/launch.json": "89736d8ffaf51b574902f58b795361bf95d45c4dfc2a53307f03ecb5c928f83d",
     ".vscode/settings.json": "de036a543a47694794f473462fb535c12ab27cd5098c52064c94cd21f97f8e26",
     ".vscode/tasks.json": "d2176c5537bc433fcb1661b18df106d416189404dd6a4a73a17bafb9ade38710",
-    "AGENTS.md": "704c4d2f4b604c34d3ced8a8d13ec2d0e963af7d0eb19d0d9c219b0fdd9fbb8a",
-    "README.md": "042075d04cb6480b6d8892a28d8b3608c1022e73956e7d0905ae5f49509c7b7b",
+    "AGENTS.md": "c05f7557141c3b9c5dc119fd2c90efff6a86e36584cf9387ba5d1cd006191c3b",
+    "README.md": "0ef3adf40519e3f46d0224eab8c1b338e0a7111d095fe24830ea4574162533e8",
     "SHA256SUMS.txt": "19cf942c46234b04074447f134082173a0b6330654fbe4690d526ad068e17031",
     "VALIDATION_RESULTS.json": "0b0c35da0a537ef42daffec3ebd97b40dc2ddc0ce1457abe89da0a02ad1dd4cd",
     "apps/api/README.md": "666fc2f22df038f8d6873cc408cb8ce518689f9b39f5229efa7c699e990d866f",
@@ -2531,8 +2538,8 @@
     "docs/CHANGELOG_FORMAT.md": "f976e501a72d2c4f8ebe4ab64542b5c0a66e0a0fbbc6e4df8ba06e0544eeecf5",
     "docs/DEVELOPMENT_WORKFLOW.md": "02f76e69b7ac4d6aa36a098f91e8319d3737bdc9d5d03bbe14f9432436cb21f9",
     "docs/FEATURES.md": "47592bbbe5fd01db0fbcd3b3a6397da052aef293af0d814b1be8edc97a8df52d",
-    "docs/HANDOFF.md": "7166d673d9025ba309e5578da8cc217199c682f022ba8cb4dbad4b831fbe0829",
-    "docs/README.md": "a8b1a593c1f65c9a5d2768f6cc2c85bb60968efef6de08071015c146619ce47e",
+    "docs/HANDOFF.md": "23a4d54b2ce31919e084adb8bf7737eea68dc7859ebb48535b4093f066253ade",
+    "docs/README.md": "818f39109b6dc58ef63484496408e5c96fdce9e2a4dc34914673866e48c8713c",
     "docs/WORKSPACE_QUALIFICATION.md": "1062a43ab8ab90446a9f2577996b7ce3bba66e0c7760033ae017fab4f882d44b",
     "docs/adr/0001-local-development-environment.md": "d8cd0fc6cca3d2575a9b6013a3ee852596d8069381e00b2f8f45fc2f1cc8a23e",
     "docs/adr/0002-application-foundation.md": "be8edbdb89fced50ac57ac687adf620b297f0b442471d095f2911e52cc1ffb7b",
@@ -2556,11 +2563,12 @@
     "docs/archive/design-system-2026-10-12/README.md": "e17c45b91107e049dd5be5e0b13cfb17183a3ee16ad87184fdb678454dc8041f",
     "docs/archive/design-system-2026-10-12/the-inkspire-design-system.zip": "add42af27f65ab577cd0e33941699cd3afc05a3e1ceca5c91e4962b94dc8647e",
     "docs/audits/2026-10-06-project-audit.md": "ec1c7faefb3a334a8a40f17bc737ac1b68ff2294ebf42ecc00eab40b8204314c",
+    "docs/audits/2026-10-23-ux-01-design-audit.md": "04366276f9f65f8c8208306a922700b81c81dcb31128d59bbb62264ce4ce2000",
     "docs/contracts/live.md": "658c2def695f5174aef957fa85929f21f6e40656c7cc8e5d918f3d6f336ff262",
     "docs/contracts/protocol.md": "9d98bba18ea510491ca56d4d78f4d6d72c192ccf5947415bacc4d60c16b77d2e",
     "docs/contracts/release.md": "e7f32ac1b56bb03ef8231e16f482f7e33fe7c4d5aee5b933926c9d99baa1a752",
     "docs/contracts/viewer.md": "93f10a76fb0069fbfb6e91a7825286de1fccdec2ff3413c03fc9cf39ea5c8e97",
-    "docs/documentation-map.json": "904fe917abb73a9d855dd61d4443375aa9a6a5e68e8dd01a49fb12a4b695ab2d",
+    "docs/documentation-map.json": "c8e524e7b64b76606516978d8c01b06c80fa6a342614950b6cf04bde44707304",
     "docs/features.json": "88471da71a7527c2e46c7c40d5d12dc6ef251dca981a1d8c8183d26139d93272",
     "docs/plans/2026-10-06-boot-02-database.md": "18a301cd8575dbd9dcbf12a546e0fd56860ae567d93afefba369b8824b16468c",
     "docs/plans/2026-10-06-documentation-governance.md": "739e9ebaef44a82acd3caf79b5f219d1f220e348c738e16effe0f6c6d91e075b",
@@ -2582,8 +2590,8 @@
     "docs/plans/2026-10-15-play-04-implementation.md": "096a5078bf8e4afc192e03950f0057ee3769b2baf2cff3a5e59a37f530b2630f",
     "docs/plans/2026-10-15-play-04-intake.md": "20969acc10c8b9e3367d4a18b1a401bb79e3aaf5599f0151b9ffd55b814c28a3",
     "docs/plans/2026-10-19-play-04-d13.md": "1f5ae7f4f0dee9533bbffecd9acb1ac1b265d78ce3521d41b912dbfef8bbe724",
-    "docs/plans/2026-10-22-ux-01-design.md": "9cf5f6d48411dea95f105d3d65ec4200a16614a82bbefe446e740228abd26c88",
-    "docs/plans/2026-10-22-ux-01-implementation.md": "49e28db04a253798728dba6511976e0082dd72bc1a973a943baf6ff3a11bb57f",
+    "docs/plans/2026-10-22-ux-01-design.md": "c3dcd95f4d4744bef3b8736093d1d567d535b0d4a18a376398ee2098b2439677",
+    "docs/plans/2026-10-22-ux-01-implementation.md": "65c8e8e94e9be730d92e64c2650521c0a315dfd7ff785a0ad2b22de2cefe993b",
     "docs/plans/2026-10-22-ux-01-intake.md": "598995f12b69cfd8ab161462718c705c2857d6ed212e7e0f86e574b788f6c258",
     "docs/plans/boot-01-foundation.md": "997d9db9bf024bb79c8d4e7b690b4676019e709d4dcb3bb55ed7f1b338d37c68",
     "docs/plans/boot-04-costs.json": "db38b14c7d22fce7fbf18c88f29062beb9462732cc578e09b744d4170f2ebda5",
@@ -2723,15 +2731,15 @@
     "docs/validation/upstream-engine-review-host-preservation.json": "22e0394ecd397666b1fdb369d50d5b928e0707b44f974e40c97566bb88202dc0",
     "docs/validation/upstream-engine-review-source-audit.mjs.txt": "acdc2abea3b92cd2bd877e7c2921feefbf1148690d63abf3b66773d5304b7242",
     "docs/validation/upstream-engine-review.md": "b9e0abcb9d245546f489d8b6fe820f92ed7b54de71ae3b8e7a0c0058093c8cc7",
-    "docs/validation/ux-design-system.md": "53f6703be856dc5cbd7508a4912f75ff9e134088b977f49f67c6c9e0fda9d641",
+    "docs/validation/ux-design-system.md": "207f2f2474dcb7a6812d72269e6605e8564064e0c334448eb24d6e07fc882c57",
     "docs/vision/Development_Blueprint_2026-10-05.md": "7ca8535b0b08ef1d08001833814339a592d2a36af9038e0f872bd387ff8cfabe",
     "docs/vision/README.md": "12451e43941dfe63f5e1564106b9d24dc7c8b3f7c6dbe0982036c383d9a95d00",
     "docs/vision/UX_UI_DESIGN_SYSTEM.md": "000fd854d1f3b0dd8ba49ff0d3d5e9e4ff11c890ef7efee87aab05229f8eb6a8",
     "docs/vision/additional_scope.csv": "04eb1ac62e64a657039f5d0ec5b2331a3f009ab377a45df6733e813e52e1b286",
     "docs/vision/container-manifests.json": "7a343f333462ae02d3619892521ef8850f62c1e4434285692838dac94db7e880",
-    "docs/vision/decision_register.csv": "8023e8d1a0b2594d2403478843ae7c67fe1ef0c334c653bd980e74b66c8cd062",
+    "docs/vision/decision_register.csv": "41ecedbca20da9d40bc4fda8c8953c49f3090a9e520e5eabdc505775bec36333",
     "docs/vision/dependencies.json": "91b6875cd193c1a78552283baa5eaaa8dceb5ace3d37fc98cb2708f4d4e86b2b",
-    "docs/vision/initial_backlog.csv": "a735834d9b1cc229cc8fb0ccda3742f3e0aa93da84a1177af30a3b1c73ec5c9e",
+    "docs/vision/initial_backlog.csv": "2419920fe3467c947a5b38f8d741b7d21d7d60c237492be7a45df7b2afa75565",
     "docs/vision/original_action_items.md": "7df88432a0e3a3661aa304cd1e926897871a781fbe0de5c4fafec64297106141",
     "docs/vision/requirement_groups.json": "1f0f0ce671afea3c44abc7a474134ae38d78d20e334c04485f0229ece8d25574",
     "docs/vision/requirements.csv": "c92ead50ec949a5b8f0d014a4e9deb3e855c747ad1a40f7e1506d8b08abec0b2",
