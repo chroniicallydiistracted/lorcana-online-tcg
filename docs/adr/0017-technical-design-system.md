@@ -1,6 +1,6 @@
 # ADR 0017: Technical design system
 
-Status: approved by the Director in full (decision D23, 2026-10-21), together with the icon and font guidelines of D20 and D21, which govern where they differ. Originally accepted for implementation by decision D17 (CHG-20261020-004). Visual approval of full reference screens, real-device and manual accessibility qualification remain separate.
+Status: approved by the Director in full (decision D23, 2026-10-21), together with the icon and font guidelines of D20 and D21, which govern where they differ. Originally accepted for implementation by decision D17 (CHG-20261020-004). The UX-01 reference screens are built (amendment of 2026-10-22, decisions D27 and D28); the Director's visual approval of them, real-device and manual accessibility qualification remain separate.
 Tasks: UX-01, UX-03, DOC-01, DOC-02. Requirements: R25.001–R25.016 (foundation contracts only).
 Authority: [UX/UI design system standard](../vision/UX_UI_DESIGN_SYSTEM.md) (sha256 `000fd854…`), the Director's current instructions, AGENTS.md boundaries.
 
@@ -176,3 +176,65 @@ Recorded with CHG-20261021-005.
 ## Amendment — 2026-10-21 UTC (Storybook security patch)
 
 Storybook is now pinned at 10.6.2, not 10.6.1, because GHSA-f2ph-cmg5-wxc8 (critical, published 2026-10-21) affects 10.0.0–10.6.1. See [ADR 0008](0008-engine-placement-dependency-baseline.md#security-patch-storybook-1062--2026-10-21-utc) and CHG-20261021-005.
+
+## Amendment — 2026-10-22 UTC (UX-01 reference screens, decisions D27 and D28)
+
+Recorded with CHG-20261022-013, closing the UX-01 build of the [implementation plan](../plans/2026-10-22-ux-01-implementation.md) (CHG-20261022-005 to CHG-20261022-012).
+- **Reference screens:** compositions in `packages/design-system/stories/reference/`, with their demonstration data in `stories/support/reference/`. They are stories, not exported components:
+  - room frame;
+  - deckbuilder;
+  - Collection binder;
+  - pack opening;
+  - crowded match, in the Flat tier and with the table scene.
+
+  `apps/web` receives no demonstration data.
+- **New Experimental components:**
+  - **Room frame:** `NavigationBar`, `AccountMenu`, `RoomFrame`, `RoomHeader`, `DemonstrationLabel`, `InkFormSlot`.
+  - **Cards:** `CardBack`.
+  - **Deckbuilder:** `ViewSwitch`, `FilterBar`, `CatalogResults`, `CatalogTileControls`, `DeckWorkspace`, `DeckPanel`, `DeckHeader`, `DeckList`, `DeckSummary`, `CostCurve`, `ValidationSummary`, `SaveState`, `ImportPreview`, `ExportDialog`.
+  - **Collection:** `Binder`, `BinderPocket`, `PocketGrid`, `CompletionSummary`, `InspectorLayout`.
+  - **Packs:** `ProductChoice`, `RevealCard`, `PackReveal`, `RevealControls`, `OpeningSummary`.
+  - **Match:** `MatchLayout`, `MatchChrome`, `PlayerSummary`, `Counter`, `ZoneCount`, `TurnContext`, `Battlefield`, `BoardCard`, `ActionPanel`, `ActionChoice`, `HandFan`, `HandList`, `EventLog`, `SceneOverlay`.
+
+  Each has a §13 contract and a story for every documented state. The design's `SetPicker` is the existing `Select`, and its separate `RoomHeader`, `DemonstrationLabel` and `InkFormSlot` folders became one `RoomFrame` folder.
+- **Changed components:**
+  - `DeckEntry`: the card name opens the inspector, replacing a visible "Printing" button whose accessible name differed (WCAG 2.5.3). The line fits a narrow deck region.
+  - `QuantityField`: an optional hidden label and a compact input.
+  - `InkIdentity`: a plain appearance for use inside controls.
+  - `InspectorHost`: uses the new `useAtLeast` breakpoint hook.
+- **Card back (D28):** the official card back is stored byte for byte in `src/assets/card-back/`, with a manifest under D07. `CardBack` falls back to a neutral token-drawn back, and `cardBackImageUrl` lets presentation code texture face-down cards.
+- **Tokens and icons:**
+  - component tokens for the avatar, room perimeter, catalog, deckbuilder, chart, binder, pack, board, hand and match;
+  - the `menu`, `filter` and `undo` icons, added to the curated registry under D21's rule.
+- **Style gate:** `check-styles.mjs` allows two more runtime variables, `--hand-offset` and `--hand-count`, which `HandFan` sets inline for its fan geometry.
+- **Development-only dependency (D27):**
+  - **What:** `packages/design-system` gains `@lorcana/presentation` (`workspace:*`) as a development dependency, so the crowded-match story can load the table scene with a dynamic import.
+  - **What stays the same:** components never import it, and the package's runtime dependencies do not change. Both packages are browser scope, so the import-boundary check allows it.
+  - **Build order:** the design-system typecheck resolves the presentation build, as it already did for `@lorcana/rules-data`.
+- **Table scene:**
+  - **API:** `mountTableScene` in `packages/presentation` takes theme colours and image URLs as input, so presentation does not import the design system either.
+  - **Rendering:** on demand after its materials are ready. The canvas takes no input or focus.
+  - **Semantics:** `SceneOverlay` and the shared `describeBoardCard` keep the overlay's names and markers identical to the Flat tier.
+  - **Boundary:** WEB-01 still owns scene lifecycle across routes and visibility, quality tiers, frame measurement and context restoration (§30).
+- **Interpretations recorded for review:**
+  - **Room perimeters:** every room reserves 4 rem perimeter gutters at 80 rem and above, and the navigation bar's content edge follows them.
+  - **Match board cards:** a compact size below 80 rem, the standard size from 80 rem; marker text never shrinks.
+  - **Deck region:** 22.5 rem from 64 to 80 rem, where the design said 20 rem; at 20 rem deck lines broke words beside their steppers.
+  - **Scene below 80 rem:** the reference uses the Flat tier, because the scene's cards would be too small for legible markers.
+  - **Cost curve:** follows the data-visualization method: one neutral series, labelled caps, no gridlines, and a table for assistive technology.
+- **Not decided here:** the Director's visual approval of the reference screens, which closes UX-01's reference-direction acceptance, and every evidence category §34 keeps separate (UX-02 devices and manual journeys, WEB-01 performance).
+
+## Amendment — 2026-10-23 UTC (design review gate, decision D30)
+
+After the audit of the UX-01 reference screens (D29), the Director decided that every design is gated. A screen is declined wherever the agent cannot directly prove its work. Two blocking stages now follow the browser suite in the design-system CI job:
+
+- **Impeccable detector (`design-review`):**
+  - **Engine:** the Impeccable engine (github.com/pbakaus/impeccable, Apache-2.0), pinned at engine v0.1.16 with the release's published SHA-256. It is fetched into the ignored `.local/tools/` and verified before use, with telemetry and update checks off.
+  - **Scope:** every story under "Reference screens", at 1440 × 900 Ink and Paper, 820 × 1180 Ink and 390 × 844 Paper.
+  - **Pass condition:** zero findings. Only a Director decision, recorded in `packages/design-system/design-review/exceptions.json`, can waive a rule.
+- **Independent review records (`check:design-reviews`):**
+  - **Reviewers:** each reference screen needs a passing record from two isolated reviewers. The design reviewer covers specificity, composition, identity and the standard; the evidence reviewer covers the detector, functional proof and claims.
+  - **Validity:** a record is valid only at the design-source fingerprint it reviewed: the design system's source, stories, tokens and Storybook configuration, plus the presentation package's source. Any later change declines the screen until it is reviewed again.
+  - **Procedure:** the reviewers are fresh sub-agents with self-contained instructions, never forks of the building agent's context. The Director authorized them in D30, and the procedure is in the [runbook](../runbooks/design-system.md#design-review-gate).
+
+The detector is a floor. It catches mechanical and generated-design tells, but it cannot judge identity: the D29 screens passed most of its rules while failing specificity. The independent design review exists for that judgement. Neither stage replaces the Director's approval of a reference direction. See CHG-20261023-002.

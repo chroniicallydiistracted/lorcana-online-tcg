@@ -1,22 +1,11 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { Dialog } from '../Dialog/Dialog.tsx';
 import { IconButton } from '../Button/Button.tsx';
-import { breakpoints } from '../../generated/tokens.ts';
+import { useAtLeast } from '../../foundation/media.ts';
 import { useMessages } from '../../foundation/DesignSystemProvider.tsx';
 import styles from './InspectorHost.module.css';
 
-function useWide(): boolean {
-  const query = `(width >= ${breakpoints.wide})`;
-  const [wide, setWide] = useState(() => typeof matchMedia === 'function' && matchMedia(query).matches);
-  useEffect(() => {
-    if (typeof matchMedia !== 'function') return;
-    const list = matchMedia(query), update = () => setWide(list.matches);
-    update(); list.addEventListener('change', update);
-    return () => list.removeEventListener('change', update);
-  }, [query]);
-  return wide;
-}
 export interface InspectorHostProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
@@ -30,7 +19,7 @@ export interface InspectorHostProps {
  * layouts and a modal sheet on narrower ones. Closing returns focus to the originating card when it still exists.
  */
 export function InspectorHost({ isOpen, onOpenChange, title, children, fallbackFocus }: InspectorHostProps) {
-  const t = useMessages(), wide = useWide(), origin = useRef<Element | null>(null), panel = useRef<HTMLElement>(null);
+  const t = useMessages(), wide = useAtLeast('wide'), origin = useRef<Element | null>(null), panel = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
     if (isOpen) { origin.current = document.activeElement; if (wide) panel.current?.focus(); return; }
     const target = origin.current;
@@ -50,4 +39,18 @@ export function InspectorHost({ isOpen, onOpenChange, title, children, fallbackF
     <div className={styles.header}><h2 className={styles.title}>{title}</h2><IconButton icon="close" label={t('action.close')} onPress={() => onOpenChange(false)} tooltip={false} /></div>
     <div className={styles.body}>{children}</div>
   </aside>;
+}
+
+export interface InspectorLayoutProps {
+  children: ReactNode;
+  /** The InspectorHost, kept mounted so closing restores focus to the originating card. */
+  inspector: ReactNode;
+  inspecting: boolean;
+}
+/** Working content with a side column for inspection on wide layouts; narrower layouts get the host's modal sheet. */
+export function InspectorLayout({ children, inspector, inspecting }: InspectorLayoutProps) {
+  return <div className={styles.layout} data-inspecting={inspecting || undefined}>
+    <div className={styles.main}>{children}</div>
+    <div className={styles.side}>{inspector}</div>
+  </div>;
 }

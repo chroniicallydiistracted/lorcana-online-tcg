@@ -1,0 +1,20 @@
+/* The fan: slots of the step width; each card image extends beyond its slot under the next card. Hit areas are the slots. */
+/* Slots narrow to fit the region, never below the 44 px target; only a hand too large even for that scrolls. The block-end
+   padding holds the outer cards' drop, so the scroll region never clips them. */
+.fan { display: flex; align-items: flex-end; justify-content: safe center; margin: 0; padding: var(--is-space-6) var(--is-space-6) calc((var(--hand-count) - 1) * (var(--hand-count) - 1) * 0.25px + var(--is-space-3)); /* token-exception: room for the fan's outer drop, from the card count */ overflow-x: auto; list-style: none; container-type: inline-size; }
+.slot { position: relative; flex: none; inline-size: clamp(var(--is-component-control-min-size), calc((100cqi - var(--is-component-hand-card)) / max(var(--hand-count) - 1, 1)), var(--is-component-hand-step)); /* token-exception: the step shares the region's width (100cqi) among the cards */ block-size: calc(var(--is-component-hand-card) * 88 / 63); }
+.slot:last-child { inline-size: var(--is-component-hand-card); }
+.hit { position: absolute; inset: 0; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.hit:focus-visible { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); border-radius: var(--is-component-control-radius); }
+.lift { position: absolute; inset-block-end: 0; inset-inline-start: 0; display: block; inline-size: var(--is-component-hand-card); pointer-events: none; transform: rotate(calc(var(--hand-offset) * 2deg)) translateY(calc(var(--hand-offset) * var(--hand-offset) * 1px)); /* token-exception: fan geometry from each card's distance to the centre */ transform-origin: 50% 100%; transition: transform var(--is-motion-hover) var(--is-motion-ease); }
+.hit:hover .lift, .hit:focus-visible .lift, .slot[data-selected] .lift { transform: translateY(calc(var(--is-space-6) * -1)); z-index: 1; /* token-exception: the raised preview sits above the neighbouring cards */ }
+.slot[data-selected] .lift { outline: var(--is-border-width-2) solid var(--is-color-text-primary); outline-offset: var(--is-border-width-2); border-radius: var(--is-component-control-radius); }
+.list { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: var(--is-space-3); padding: var(--is-space-2) 0; border-block-end: var(--is-border-width-1) solid var(--is-color-border-decorative); }
+.row[data-selected] { background: var(--is-color-surface-state-selected); }
+.rowText { display: flex; flex-direction: column; min-inline-size: 0; }
+.name { color: var(--is-color-text-primary); font: var(--is-typography-body-strong); overflow-wrap: break-word; }
+.version { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.summary { display: inline-flex; flex-wrap: wrap; gap: var(--is-space-2); align-items: center; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.reason { color: var(--is-color-text-primary); font: var(--is-typography-metadata); }
+@media (forced-colors: active) { .slot[data-selected] .lift { outline-color: Highlight; } }

@@ -1,0 +1,401 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-012",
+  "title": "UX-01 task 8: the Babylon table scene and its semantic overlay",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T19:11:58.353Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "c33732dc55be3126bf17a2c3eba1e9fe077f911f",
+  "task_ids": [
+    "UX-01",
+    "WEB-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R25.001",
+    "R25.002",
+    "R25.003"
+  ],
+  "feature_ids": [
+    "F-RENDERER",
+    "F-DESIGN-SYSTEM",
+    "F-BOUNDARIES",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "feature",
+      "description": "Implementation-plan task 8 (decision D27, design 'Babylon table scene'): packages/presentation/src/table-scene.ts adds mountTableScene(canvas, input, options) returning update, cardRects, dispose and a frame count, with validateTableInput and layoutTable. Closed input is validated before anything is created; layout is deterministic; the camera is fixed about 22 degrees from top-down; zone surfaces, key light, soft fill and contact shadows; unlit card art from thumbnails; exerted cards and locations turned; Shift stacks offset; face-down inkwell, deck and opponent hand with the card back; outline frames in the focus colour for selection and targets. It renders on demand only (after mount and update once materials are ready, and after resize), takes no input or focus, and disposes everything on failure or dispose()."
+    },
+    {
+      "kind": "feature",
+      "description": "Design system: SceneOverlay (Experimental) places one React Aria button per board object at the projected rectangle, at least 44 px, with text markers below, or above for the far side; describeBoardCard is extracted from BoardCard so the overlay and the Flat tier share names and markers; component token match.scene-min. packages/design-system gains the development-only workspace dependency @lorcana/presentation (pnpm-lock adds one importer link). stories/support/reference/scene.tsx lazily loads the scene, maps the position, renderer colours and card back into its input, recomputes rectangles on resize, falls back to the Flat tier with an explanation on engine, texture or context failure, and uses the Flat tier below 80 rem. Match stories add the table scene, scene with targets, renderer failure and scene takedown."
+    },
+    {
+      "kind": "test",
+      "description": "Six NullEngine tests in packages/presentation/tests/table-scene.test.mjs (validation refusals, layout, on-demand frames, projection, disposal, engine failure), written alongside the implementation rather than captured failing first; four scene browser tests in reference.spec.ts. RUN-20261022-035 failed 6 of 409 on axe aria-hidden-focus (Babylon's input handling set a tab index on the decorative canvas) and is preserved; after detaching input RUN-20261022-036 and RUN-20261022-037 pass (presentation and boundaries; gates and 409/409 Chromium tests)."
+    },
+    {
+      "kind": "review",
+      "description": "Visual review found a blank first scene (on-demand frames before shaders compiled; now rendered after whenReadyAsync), colliding overlay markers (now card-width, hyphenated, above far-side cards, with wider row spacing) and illegible markers at 1180 px (Flat tier below 80 rem). Paper and Ink captures are in the ignored .local/ux-01-review/; the scene's look is a human review because Chromium renders WebGL in software."
+    },
+    {
+      "kind": "documentation",
+      "description": "Presentation README, F-RENDERER (features register and FEATURES.md), design-system runbook (table scene) and validation (task 8), handoff."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261022-012.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/design-system.md",
+    "docs/validation/logs/RUN-20261022-034.txt",
+    "docs/validation/logs/RUN-20261022-035.txt",
+    "docs/validation/logs/RUN-20261022-036.txt",
+    "docs/validation/logs/RUN-20261022-037.txt",
+    "docs/validation/logs/RUN-20261022-038.txt",
+    "docs/validation/logs/RUN-20261022-040.txt",
+    "docs/validation/logs/RUN-20261022-041.txt",
+    "docs/validation/runs/RUN-20261022-034.json",
+    "docs/validation/runs/RUN-20261022-035.json",
+    "docs/validation/runs/RUN-20261022-036.json",
+    "docs/validation/runs/RUN-20261022-037.json",
+    "docs/validation/runs/RUN-20261022-038.json",
+    "docs/validation/runs/RUN-20261022-040.json",
+    "docs/validation/runs/RUN-20261022-041.json",
+    "docs/validation/ux-design-system.md",
+    "packages/design-system/package.json",
+    "packages/design-system/src/components/Match/Board.tsx",
+    "packages/design-system/src/components/Match/Match.docs.ts",
+    "packages/design-system/src/components/Match/SceneOverlay.module.css",
+    "packages/design-system/src/components/Match/SceneOverlay.module.d.css.ts",
+    "packages/design-system/src/components/Match/SceneOverlay.tsx",
+    "packages/design-system/src/generated/manifest.json",
+    "packages/design-system/src/generated/tokens.css",
+    "packages/design-system/src/generated/tokens.ts",
+    "packages/design-system/src/index.ts",
+    "packages/design-system/stories/reference/Match.stories.tsx",
+    "packages/design-system/stories/support/reference/scene.tsx",
+    "packages/design-system/tests/browser/reference.spec.ts",
+    "packages/design-system/tokens/component/component.tokens.json",
+    "packages/presentation/README.md",
+    "packages/presentation/src/index.ts",
+    "packages/presentation/src/table-scene.ts",
+    "packages/presentation/tests/table-scene.test.mjs",
+    "pnpm-lock.yaml"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "packages/presentation/README.md",
+      "disposition": "updated",
+      "reason": "Documents mountTableScene, its input boundary, on-demand rendering, overlay projection and failure behaviour, and the WEB-01 boundary."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "F-RENDERER row lists the table scene callables and limits."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-RENDERER describes the table scene, gains UX-01 and WEB-01 task links, documents and receipts; verification stays pending (simulation and software WebGL only); every verified feature gains the checkpoint full-suite run."
+    },
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "updated",
+      "reason": "Adds the table-scene wiring, overlay, fallbacks and build order."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Records task 8, review findings, the failed receipt and its fix, and what is not claimed."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Records this checkpoint."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The amendment covering the development-only presentation dependency and the reference components follows in task 9."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No new external dependency: Babylon 9.29.0 was already pinned in packages/presentation; only a workspace link was added."
+    },
+    {
+      "path": "packages/engine-adapter/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "vendor/tcg-engines/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/plans/2026-10-06-boot-02-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/adr/0004-restricted-local-database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/runbooks/database.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/validation/boot-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/plans/2026-10-07-boot-03-ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/adr/0005-ci-artifact-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/runbooks/ci.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/validation/boot-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/rules/source-specs-supplement.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/rules/source-specs.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "packages/engine-lab/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/runbooks/engine.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/validation/rule-02.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/adr/0009-pinned-engine-qualification.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/adr/0010-secure-randomness-replay.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/validation/rule-03.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/adr/0013-durable-synthetic-match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/runbooks/match-commands.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "docs/validation/play-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph and index remain accurate for this checkpoint."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No local-environment, container or toolchain decision is affected."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Package ownership and the application foundation are unchanged; the work stays inside the existing packages."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The dated 2026-10-06 audit is preserved as written."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "No new document needs classification and no source-impact edge changes at this checkpoint."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Documentation governance is unchanged; this checkpoint follows it."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Setup steps are unchanged."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The record format is unchanged."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-01 evidence, preserved."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The vision baselines are unchanged."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "No additional-scope item changes."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D27 and D28 already record the decisions this checkpoint implements; no new Director decision."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "UX-01 stays in its build stage until the last task; no other task changes."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against this checkpoint."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated planning record; no dependency in its register changes."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Rules-source tooling is unaffected."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Historical RULE-01 evidence; no rules inventory changed."
+    },
+    {
+      "path": "docs/adr/0018-official-card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The checkpoint stays within the catalog decision."
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against this checkpoint."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-034.json",
+      "outcome": "passed",
+      "scope": "Presentation typecheck, build, seven NullEngine tests and import boundaries (simulated)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-035.json",
+      "outcome": "failed",
+      "scope": "Full design-system suite: 6 of 409 failed on axe aria-hidden-focus for the scene canvas; preserved."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-036.json",
+      "outcome": "passed",
+      "scope": "Presentation and boundaries after detaching scene input (simulated)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-037.json",
+      "outcome": "passed",
+      "scope": "Design-system gates, Storybook build and the full Playwright/axe Chromium suite with the scene tests, 409/409 (headless browser, software WebGL)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-038.json",
+      "outcome": "failed",
+      "scope": "Checkpoint full suite stopped at pnpm audit: one low-severity advisory published after the previous checkpoint (GHSA-389g-gv7q-r4x8, fastify 5.12.5 in apps/match-service and packages/service-runtime, fixed in 5.12.6). Preserved. The documented CI policy stops only on high or critical advisories; the following full-suite receipt uses pnpm audit --audit-level high to match it."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-040.json",
+      "outcome": "passed",
+      "scope": "Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-041.json",
+      "outcome": "passed",
+      "scope": "docs:check over the finalized checkpoint (static)."
+    }
+  ],
+  "limitations": [
+    "No performance figure is recorded: Chromium renders WebGL in software here, and frame measurement belongs to WEB-01.",
+    "Lifecycle across routes and visibility, quality tiers and context restoration remain WEB-01; the reference handles context loss only by falling back to the Flat tier.",
+    "The scene is used from 80 rem; below it the reference shows the Flat tier.",
+    "A low-severity fastify advisory (GHSA-389g-gv7q-r4x8, fixed in 5.12.6) affects apps/match-service and packages/service-runtime. It is outside UX-01's scope and does not stop CI under the documented policy; it is left for the Director's decision."
+  ],
+  "next_actions": [
+    "Task 9 of the implementation plan: full validation, the ADR 0017 amendment, documents and the visual review captures."
+  ]
+}

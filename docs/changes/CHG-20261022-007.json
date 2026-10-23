@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-007",
+  "title": "UX-01 task 3: the room frame",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T14:30:17.101Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "3a3996c0e2d26bb582d116d0548eb198d14887e2",
+  "task_ids": [
+    "UX-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R25.001",
+    "R25.002",
+    "R25.003"
+  ],
+  "feature_ids": [
+    "F-DESIGN-SYSTEM",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "feature",
+      "description": "Implementation-plan task 3: NavigationBar (wordmark, the primary destinations of blueprint §10.1 as links with aria-current and a weight-plus-underline current marker, a menu holding them below the wide layout, status and account slots; decision D28's top bar) and AccountMenu (neutral initials avatar and name opening Profile, Settings and the fan-content notice). RoomFrame (skip link, navigation slot, main landmark at the standard content width, perimeter gutters reserved for ink-form artwork at expanded widths), RoomHeader (level-1 room title, context line, demonstration notice, actions), DemonstrationLabel (the fixed demonstration sentence) and InkFormSlot (decorative reservation outlined with its name and extent only when the root data-artwork-slots attribute is set). All Experimental, with documentation contracts and stories for every documented state."
+    },
+    {
+      "kind": "implementation",
+      "description": "Component tokens avatar.size ({space.8}), avatar.radius ({radius.pill}) and room.ink-gutter ({space.16}), with regenerated token outputs; the menu icon (Phosphor List) added to the curated registry with its meaning; seven component strings. The navigation bar's content edge follows the room gutters and perimeter reservation so the wordmark aligns with the room content."
+    },
+    {
+      "kind": "implementation",
+      "description": "Storybook preview: an 'Artwork slots' toolbar global that sets the root attribute, and parameters.designSystem.bleed for room stories. stories/support/reference/: room text through useReferenceText (en-XA lengthens it), storyHref links between reference stories that keep the toolbar globals, and ReferenceNavigation/ReferenceRoom with invented demonstration player names, a working notifications list and the fan-content notice dialog. stories/reference/RoomFrame.stories.tsx: frame, artwork slots shown, secondary surface, long labels, title only and the honest page for rooms outside the reference set."
+    },
+    {
+      "kind": "test",
+      "description": "tests/browser/reference.spec.ts adds seven room-frame tests: skip link first and focusing main, the current destination marked beyond colour, the collapsed menu at 820 px with focus restored, ink-form slots unfocusable, aria-hidden and clear of every control, the account menu and fan-content notice, the quiet count opening its list on demand, and a non-reference destination leading to an honest page. RUN-20261022-015 passes the gates and 193/193 Chromium tests, including axe in both themes and 44 px targets for the new stories."
+    },
+    {
+      "kind": "review",
+      "description": "Visual review of captures (Paper 1440 x 900, Ink 820 x 1180, Paper 1920 x 1080 with slots shown) found the wordmark misaligned with the room content and a gutter mismatch at 820 px; both were fixed before the receipts above and the recapture confirmed alignment. Captures are in the ignored .local/ux-01-review/."
+    },
+    {
+      "kind": "documentation",
+      "description": "Design-system runbook gains a reference-screens section; the design-system validation's UX-01 build section records task 3."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261022-007.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/design-system.md",
+    "docs/validation/logs/RUN-20261022-015.txt",
+    "docs/validation/logs/RUN-20261022-016.txt",
+    "docs/validation/logs/RUN-20261022-017.txt",
+    "docs/validation/runs/RUN-20261022-015.json",
+    "docs/validation/runs/RUN-20261022-016.json",
+    "docs/validation/runs/RUN-20261022-017.json",
+    "docs/validation/ux-design-system.md",
+    "packages/design-system/.storybook/preview.tsx",
+    "packages/design-system/src/components/Icon/registry.ts",
+    "packages/design-system/src/components/NavigationBar/NavigationBar.docs.ts",
+    "packages/design-system/src/components/NavigationBar/NavigationBar.module.css",
+    "packages/design-system/src/components/NavigationBar/NavigationBar.module.d.css.ts",
+    "packages/design-system/src/components/NavigationBar/NavigationBar.tsx",
+    "packages/design-system/src/components/RoomFrame/RoomFrame.docs.ts",
+    "packages/design-system/src/components/RoomFrame/RoomFrame.module.css",
+    "packages/design-system/src/components/RoomFrame/RoomFrame.module.d.css.ts",
+    "packages/design-system/src/components/RoomFrame/RoomFrame.tsx",
+    "packages/design-system/src/foundation/messages.ts",
+    "packages/design-system/src/generated/manifest.json",
+    "packages/design-system/src/generated/tokens.css",
+    "packages/design-system/src/generated/tokens.ts",
+    "packages/design-system/src/index.ts",
+    "packages/design-system/stories/reference/RoomFrame.stories.tsx",
+    "packages/design-system/stories/support/reference/frame.tsx",
+    "packages/design-system/stories/support/reference/links.ts",
+    "packages/design-system/stories/support/reference/text.ts",
+    "packages/design-system/tests/browser/reference.spec.ts",
+    "packages/design-system/tokens/component/component.tokens.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "updated",
+      "reason": "New reference-screens section: where compositions and data live, the room frame, alignment, artwork slots, bleed, real links and the demonstration label."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Records task 3, its visual-review finding and fix, tests and receipt."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Its package summary stays accurate; component lists live in the runbook and validation."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The plan schedules the amendment for task 9; the registry addition follows D21's curated-registry rule."
+    },
+    {
+      "path": "docs/adr/0018-official-card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No catalog card appears in the room-frame stories."
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Catalog evidence is unchanged."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Records this checkpoint."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Every verified feature gains the checkpoint full-suite run at the new source fingerprint."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against this checkpoint."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph and index remain accurate for this checkpoint."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No local-environment, container or toolchain decision is affected."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Package ownership and the application foundation are unchanged; the work stays inside the existing packages."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The dated 2026-10-06 audit is preserved as written."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "No new document needs classification and no source-impact edge changes at this checkpoint."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Documentation governance is unchanged; this checkpoint follows it."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Setup steps are unchanged."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The record format is unchanged."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-01 evidence, preserved."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The vision baselines are unchanged."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "No additional-scope item changes."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D27 and D28 already record the decisions this checkpoint implements; no new Director decision."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "UX-01 stays in its build stage until the last task; no other task changes."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated planning record; no dependency in its register changes."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-015.json",
+      "outcome": "passed",
+      "scope": "Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 193/193 (headless browser)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-016.json",
+      "outcome": "passed",
+      "scope": "Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-017.json",
+      "outcome": "passed",
+      "scope": "docs:check over the finalized checkpoint (static)."
+    }
+  ],
+  "limitations": [
+    "Chromium automation only; manual accessibility journeys and real devices remain UX-02.",
+    "Story links navigate inside the Storybook preview iframe; the manager's address bar does not change."
+  ],
+  "next_actions": [
+    "Task 4 of the implementation plan: the deckbuilder."
+  ]
+}

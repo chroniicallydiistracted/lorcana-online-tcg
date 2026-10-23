@@ -247,3 +247,315 @@ Recorded with CHG-20261021-005 (decisions D25, D26).
   - **RUN-20261021-016, passed:** isolated design-system suite, 34 gates and 163/163 in 118 s.
   - **RUN-20261021-018, passed:** isolated foundation pipeline, 14 stages in 562 s.
   - **Failed attempts:** RUN-20261021-013 (the Storybook advisory), RUN-20261021-015 (wrong invocation, nothing ran) and RUN-20261021-017 (features not yet re-bound). Each is explained in the [card catalog validation](card-catalog.md#receipts).
+
+## UX-01 reference screens build — 2026-10-22 UTC
+
+The Director approved the full UX-01 design for end-to-end completion. The build follows the [implementation plan](../plans/2026-10-22-ux-01-implementation.md), with a change record per task.
+- **Task 1, reference fixture (CHG-20261022-005):** 69 real Hyperia City printings for the decks, binder spreads, pack and special printings. See the [card catalog validation](card-catalog.md#ux-01-reference-fixture--2026-10-22-utc).
+- **Task 2, card back (CHG-20261022-006):**
+  - **Asset:** the official card back (D28) is stored byte for byte as `src/assets/card-back/lorcana_card_back.jpg` (1,468 × 2,048, 486,672 bytes, SHA-256 `0f022bc3…`). Its manifest records the source, the byte-identical LorcanaOnline original, the legacy catalog entry, colour space, rendition, accessibility use, fallback and the D07 rights basis.
+  - **Component:** `CardBack`, Experimental, with stories for the official back, the neutral back, a small size and a labelled card.
+  - **Takedown:** with official assets off, or if the image fails, a neutral back drawn from the tokens takes its place.
+  - **Tests:** a component test checks the manifest's checksum and size and decodes the JPEG's dimensions.
+  - **Build output:** `copy-static.mjs` copies the JPEG to `dist/`, and the browser-suite server serves it as `image/jpeg`.
+- **Task 3, room frame (CHG-20261022-007):**
+  - **Components (Experimental):** `NavigationBar` and `AccountMenu`, plus `RoomFrame`, `RoomHeader`, `DemonstrationLabel` and `InkFormSlot`; the existing `NotificationCount` is reused.
+  - **Tokens and icons:** new component tokens `avatar.size`, `avatar.radius` and `room.ink-gutter`; a `menu` icon (Phosphor List) in the curated registry.
+  - **Strings:** seven new component strings in the message catalog.
+  - **Storybook:** an "Artwork slots" toolbar global, and a bleed parameter for room stories.
+  - **Stories:** room-frame reference stories, including the honest page for rooms outside the reference set.
+  - **Visual review:** captures at 1440 × 900 (Paper), 820 × 1180 (Ink) and 1920 × 1080 found the wordmark at 32 px while the room content started at 96 px, and a gutter mismatch at 820 px. The bar's content edge now follows the room gutters and perimeter reservation, and the recapture shows them aligned at all three widths. Captures stay in the ignored `.local/ux-01-review/`.
+  - **Browser tests:** seven new tests in `tests/browser/reference.spec.ts`:
+    - skip link;
+    - the current destination marked by more than colour;
+    - the collapsed menu, with focus restored;
+    - slots that take no focus and never overlap a control;
+    - the account menu and fan-content notice;
+    - the quiet count opening its list;
+    - a non-reference destination leading to an honest page.
+  - **Receipts:** RUN-20261022-015 passes the gates and the full Chromium suite, 193/193.
+- **Task 4, deckbuilder (CHG-20261022-008):**
+  - **New components (Experimental):**
+    - `DeckWorkspace` and `DeckPanel`;
+    - `FilterBar`, `ViewSwitch`, `CatalogResults` and `CatalogTileControls` (the D28 row);
+    - `DeckHeader`, `DeckList`, `DeckSummary`, `CostCurve`, `ValidationSummary` and `SaveState`;
+    - `ImportPreview` and `ExportDialog`.
+  - **Changed components:**
+    - `DeckEntry`'s card name now opens the inspector. This replaces a "Printing" button whose accessible name did not contain its visible text (WCAG 2.5.3), and the line now fits a narrow deck region.
+    - `QuantityField` gains a hidden-label option and a compact input.
+    - `InkIdentity` gains a plain appearance for use inside controls.
+    - `InspectorHost` and `FilterBar` share a new `useAtLeast` breakpoint hook.
+  - **Tokens and icons:**
+    - new component tokens for the catalog grid and selects, the deck region, the chart and the compact stepper;
+    - `filter` (Funnel) and `undo` (ArrowCounterClockwise) icons;
+    - 49 component strings.
+  - **Cost curve:** follows the data-visualization method:
+    - one neutral series;
+    - columns at most 24 px wide, square at the baseline with a rounded cap;
+    - the count on every cap and no gridlines;
+    - a hidden table of the same values for assistive technology.
+  - **Reference stories:** the 11 design states plus an empty deck, on real cards. They include:
+    - add, remove and undo, with announcements;
+    - filters that never discard edits;
+    - a printing preference separate from the card's identity (Nick Wilde's Epic printing);
+    - import parsing that reports unresolved names;
+    - export in two explicit formats;
+    - save, conflict and leave-guard flows.
+  - **Visual review:** captures at 1440 × 900, 1180 × 820 and 820 × 1180 found five problems, all fixed before the receipts:
+    - deck lines broken in the narrow deck region;
+    - chip-in-button ink filters;
+    - a duplicated save status;
+    - the inspector rendered outside the layout;
+    - a quest set shown instead of the printed set.
+  - **Design adjustment:** the 64–80 rem deck region is 22.5 rem, not the design's 20 rem. At 20 rem, deck lines broke words beside their steppers; 22.5 rem keeps whole words and four catalog columns.
+  - **Browser tests:** eleven new deckbuilder tests in `reference.spec.ts`:
+    - add and remove by pointer and keyboard, with undo;
+    - the copy limit and its reason;
+    - filters keeping edits, and Reset filters;
+    - focus returning to the tile after inspection;
+    - the printing preference;
+    - the leave guard;
+    - validation wording, with ownership kept apart from rules;
+    - import reporting;
+    - export formats;
+    - the cost-curve table;
+    - tablet portrait.
+  - **Receipts:**
+    - **RUN-20261022-018, failed (preserved):** 17 of 242. The view-switch options were 40 px tall inside their bordered group, and two scrolling regions (the pinned validation footer and the import list) could not take keyboard focus (axe `scrollable-region-focusable`). The options are now 44 px, the footer is a named focusable group, and the import list no longer scrolls on its own.
+    - **RUN-20261022-019, passed:** gates and the full Chromium suite, 242/242.
+- **Task 5, Collection binder (CHG-20261022-009):**
+  - **Components (Experimental):** `Binder`, `BinderPocket`, `PocketGrid` and `CompletionSummary`, plus a generic `InspectorLayout`. The design's `SetPicker` is the existing `Select`, so no new component was needed.
+  - **Tokens and strings:** `binder.pocket-min` (112 px) and `binder.go-to`; 18 component strings.
+  - **Behaviour:**
+    - two faces only when both fit with usable pockets; one face otherwise, or while inspecting;
+    - Page Up and Page Down scoped to the binder, with focus moving to the new spread's first pocket;
+    - only visible faces rendered, so offscreen pages are out of the focus order;
+    - Go to card number with an explained "not found";
+    - a fade with brief travel on page change, travel removed under reduced motion;
+    - page buttons that stay in view while a tall spread scrolls.
+  - **Reference stories:** partially owned, new player, ownership unavailable, loading, filtered to owned, printing navigation, single face, Grid, List, reduced motion, inspection, takedown fallback and unknown ownership, across all 29 pages of Hyperia City.
+  - **Visual review:**
+    - The binder started near y = 630 at 1440 px. The set picker moved into the header and the filters onto one row.
+    - The page buttons were far from a single face. They now flank the faces and stay in view.
+  - **Defects found by the new tests, fixed before the receipt:**
+    - a keyboard page turn lost focus, because the focused pocket unmounted;
+    - a declaration-order error that stopped the story from rendering.
+  - **Browser tests:** seven Collection tests:
+    - paging and scoped keys;
+    - the focus order across the spread, with padding unfocusable;
+    - go-to anchoring through a resize, and not-found;
+    - filters keeping completion and carrying over between views;
+    - unavailable ownership never shown as zero;
+    - reduced motion;
+    - inspection and focus return.
+  - **Receipts:**
+    - RUN-20261022-022: fixture tests and `catalog:verify`;
+    - RUN-20261022-023: gates and the full Chromium suite, 290/290.
+- **Task 6, pack opening (CHG-20261022-010):**
+  - **Components (Experimental):** `ProductChoice`, `RevealCard`, `PackReveal`, `RevealControls` and `OpeningSummary`; the review reuses `Confirmation`.
+  - **Tokens and strings:** `pack.product`, `pack.perspective`, `pack.summary-item`, `pack.summary-card` and `pack.reveal-max`; 15 component strings.
+  - **Behaviour:**
+    - real face-down cards using the official back;
+    - a card turn in the major-motion duration, direct under reduced motion;
+    - a rarest beat of light from Powerline's Amber identity, behind the card, within 900 ms, and a Highlight outline in forced colours;
+    - announcements per revealed card;
+    - "New" derived from the same demonstration holdings as the binder (6 of 12).
+  - **Reference stories:** product choice and review, review, pending, mid-reveal (5 of 12), rarest beat, summary, interrupted and resumed, presentation failure, settlement pending, reduced motion and none held.
+  - **Visual review:**
+    - at 1440 × 900 the second row of cards fell below the fold; the reveal stage is now capped at 66 rem;
+    - the beat reads as restrained light in Ink and Paper.
+  - **Defect found by the new tests, fixed before the receipt:** the review dialog's close reset the flow to the product choice after confirming, so the pending state never showed.
+  - **Browser tests:** seven pack tests:
+    - the flow, with pending showing no percentage;
+    - keyboard reveal with focus kept and an announcement;
+    - skip reaching the summary, with page-anchored Collection links;
+    - resume in the same order;
+    - the beat behind the last card only, and reduced motion;
+    - failure and pending settlement;
+    - tablet portrait in three rows of four.
+  - **Receipt:** RUN-20261022-026 passes the gates and the full Chromium suite, 332/332.
+- **Task 7, crowded match, Flat tier (CHG-20261022-011):**
+  - **Components (Experimental):** `MatchLayout`, `MatchChrome`, `PlayerSummary`, `Counter`, `ZoneCount`, `TurnContext`, `Battlefield`, `BoardCard`, `ActionPanel`, `ActionChoice`, `HandFan`, `HandList` and `EventLog`.
+  - **Tokens:** board, hand and match tokens, with compact board sizes below 80 rem; 19 component strings.
+  - **Style gate:** allows `--hand-offset`, set inline by `HandFan` for the fan geometry.
+  - **The position:** turn 7 between the two reference decks. Every state comes from a real card or rule:
+    - Kit Cloudkicker – Sure Shot shifted onto Kit Cloudkicker – Unpredictable Courier;
+    - Chief Bogo exerted at Port Authority after questing (I Know These Streets);
+    - Port Authority's Welcome to Town trigger behind the 12 and 14 lore and the ink drops;
+    - Mr. Big drying;
+    - Clawhauser damaged by Go Go Tomago's Bodyguard-forced challenge;
+    - Baymax with Evasive from Hiro Hamada's Turbo Thrusters.
+  - **The command machine:**
+    - select, action, challenge targets with reasons (Evasive, ready characters), song payment (ink, an ink drop, or a singer, with reasons) and the required choose-one with a Ward-aware target;
+    - separate bulk-quest and end-turn reviews;
+    - pending that blocks duplicates;
+    - accepted results from fixture receipts, rejection with its reason, and reconnect reconciliation;
+    - Escape steps back only before submission.
+  - **Visual review:**
+    - At 1440 × 900 the items row and parts of the hand strip overflowed. Items moved into each side's row, and the board and hand cards were trimmed.
+    - At 1180 × 820 each side wrapped and markers hid behind the strip. Compact board sizes below 80 rem fix it.
+    - At 820 × 1180 the fan's rotation covered the view switch; the fan is now padded.
+    - The turn marker read "Taking a turn" for both players; it now reads "Your turn" and "Their turn".
+  - **Data corrections:** the review found that Lafayette – All Ears has Alert, not Evasive. My task 1 keyword scan had matched "Evasive" inside Alert's reminder text. The position now has an exerted Evasive Baymax, and six reference selection reasons were corrected to the final position. See the [card catalog validation](card-catalog.md).
+  - **Browser tests:** eight match tests:
+    - the semantic board names every object with its state;
+    - the quest, pending, accepted and choose-one journey, with limited announcements;
+    - challenge targets with reasons, and Escape stepping back;
+    - song payment;
+    - the two reviews;
+    - fan hit areas;
+    - pending, reconnect and rejection;
+    - the tablet log sheet, and portrait inspection in a sheet.
+  - **Receipts:**
+    - RUN-20261022-029: fixture tests and `catalog:verify` after the reason corrections;
+    - RUN-20261022-030: gates and the full Chromium suite, 393/393.
+- **Task 8, table scene (CHG-20261022-012):**
+  - **`mountTableScene` in `packages/presentation`:**
+    - validated closed input;
+    - a deterministic layout: locations with their residents, characters, items, the inkwell, deck and the opponent's hand;
+    - a tilted, fixed camera; zone surfaces; one key light and a soft fill; contact shadows;
+    - unlit card art, turned exerted cards and locations, offset Shift stacks, the official card back on face-down cards, and focus-coloured outline frames;
+    - on-demand rendering only, with `cardRects()` projection and full disposal.
+  - **NullEngine tests:** six new tests: validation refusals, layout, on-demand frames, projection, disposal and engine failure. They were written alongside the implementation rather than captured failing first.
+  - **Design system:**
+    - `SceneOverlay` (Experimental), with marker placement for the far side;
+    - `describeBoardCard`, so the overlay and the Flat-tier board share names and markers;
+    - a `match.scene-min` token;
+    - a development-only workspace dependency on `@lorcana/presentation` (lockfile: one importer link).
+  - **Visual review:**
+    - The first capture was blank: on-demand frames were drawn before Babylon finished compiling shaders. The scene now renders after `whenReadyAsync()`.
+    - Overlay markers collided. They are now no wider than their card, hyphenate, and sit above far-side cards; the rows were spaced further apart.
+    - At 1180 px the scene's cards were too small for legible markers, so the reference adapts to the Flat tier below 80 rem.
+    - Paper and Ink both read as an abstract ink-and-paper table.
+  - **Browser tests:** four scene tests:
+    - the canvas is hidden from assistive technology, and the overlay names equal the Flat-tier board's;
+    - overlay buttons sit on the canvas, are at least 44 px and follow a resize, with the Flat tier below 80 rem;
+    - the overlay drives the same decisions;
+    - a forced renderer failure falls back with an explanation.
+
+    The scene's appearance is a human review: Chromium renders WebGL in software here.
+  - **Receipts:**
+    - **RUN-20261022-034, passed:** presentation and boundaries.
+    - **RUN-20261022-035, failed (preserved):** 6 of 409. Babylon's default input handling gave the `aria-hidden` canvas a tab index (axe `aria-hidden-focus`). The scene now detaches input and removes the tab index.
+    - **RUN-20261022-036, passed:** presentation and boundaries after the fix.
+    - **RUN-20261022-037, passed:** gates and the full Chromium suite, 409/409.
+  - **Not claimed:** frame rates, devices, lifecycle across routes and visibility, quality tiers or context restoration (WEB-01).
+- **Task 9, validation and visual review (CHG-20261022-013):**
+  - **Captures:** all 63 reference stories at 1440 × 900, 1180 × 820 and 820 × 1180 in Paper and Ink: 378 captures and per-screen contact sheets in the ignored `.local/ux-01-review/final/`, with no page errors.
+  - **Defects found in the captures and fixed before this checkpoint:**
+    - **Takedown fallback on the match.**
+      - **Found:** board and hand placeholders grew past the card's size and covered their neighbours. Decorative symbol placeholders repeated the word beside them ("Exert Exerted").
+      - **Fixed:** `CardImage` gains a name-only placeholder for small renditions. It keeps the card's proportion and reads from the top edge, so a fanned card's visible slice still names it. `BoardCard` and `Counter` leave decorative symbols out when Lorcana assets are switched off, because their text already says it.
+    - **Validation that contradicted itself.**
+      - **Found:** an incomplete deck showed Rules with the success mark and "Nothing to resolve" beside "60 more cards needed".
+      - **Fixed:** an incomplete deck can be saved but not played, so the missing cards are now a rule to resolve, and the summary bar counts it. `ValidationSummary` shows the success mark only on a section without messages; information alone gets the information mark.
+    - **Empty deck without a catalog.**
+      - **Found:** the story showed a lone deck panel saying "Add cards from the catalog" with no catalog on screen.
+      - **Fixed:** it is now the full deckbuilder with a new, never-saved deck.
+    - **Blank product art:** the none-held product had an empty artwork slot. It now shares the quiet slot that names the set.
+    - **Match bottom row at 1180 px with a 12-card hand.**
+      - **Found:** the fan's intrinsic width took the row, and the player summary was squeezed until the name and turn marker broke.
+      - **Fixed:**
+        - the outer columns now match the decision column's content width, so the actions sit under it and the hand is centred;
+        - the fan's slices narrow to fit but never below 44 px, and only a hand too large even for that scrolls;
+        - the view switch sits under the summary, and the turn marker never wraps.
+
+      At 1440 px the same hand now fits without scrolling.
+  - **Review against the §33 rejection criteria, after the fixes:**
+    - **Generic hero; uniform grid of unrelated cards:** none. Each room opens on its task, and the only grids are catalog and binder cards, grouped by set and page.
+    - **Oversized containers with little information:** the empty-deck panel was the one case, and it is fixed. The match fits 1180 × 820 without page scroll from 64 rem, with both sides populated.
+    - **Gradient text, brand washes, glass panels, glow:** none.
+      - Ink colour appears only in ink identities and in the restrained light of the pack's rarest beat (design §23).
+      - Selection and valid targets are outline rings with text.
+    - **Pills, arbitrary fonts or weights, raw colours, inconsistent geometry or icons:**
+      - controls and badges use their own radii, with no pill controls;
+      - the style and component gates pass;
+      - every token exception is a documented physical card proportion or fan geometry;
+      - icons come from the curated Phosphor registry.
+    - **Hover lift and perpetual animation:**
+      - Only the hand's card under the pointer rises, to preview it. Board cards and tiles change their outline only.
+      - Reveal motion runs per card on request, with reduced-motion states, and nothing animates continuously.
+    - **Invented statistics and vague copy:**
+      - every room carries the demonstration label;
+      - the pack composition is labelled "Not the official distribution";
+      - messages name the task, for example "The server is deciding the contents. Nothing is shown until they are saved."
+    - **Fake controls, incomplete journeys, success-only design:**
+      - every control acts within its story: deck edits with undo, save and conflict, import and export, binder pages and go-to, reveal and summary, and match decisions with review, pending, rejection and reconnection;
+      - loading, empty, unavailable, failure and takedown states each have a story.
+    - **Desktop squeezed onto touch:** at 820 px the regions stack, the deckbuilder uses Catalog and Deck tabs, and the match uses the Flat tier. Real touch and device qualification is UX-02.
+    - **Tiny printed text, ornaments over card information, a polished empty board:**
+      - board cards never stand in for reading; the inspector's reading mode does;
+      - markers sit under cards, and the only overlay on a card is the foil mark (D26);
+      - the match uses a dense real position on both sides.
+    - **Legacy composition copied:** none. The one legacy asset is the official card back, reused byte for byte (D28).
+  - **Receipts:**
+    - **Before the fixes:** RUN-20261022-042 (isolated design-system pipeline) and RUN-20261022-043 (isolated foundation pipeline) passed.
+    - **After the fixes:**
+      - RUN-20261022-044: design-system gates and the Playwright/axe Chromium suite in both themes, 409/409 (headless browser).
+      - RUN-20261022-045: full suite (container).
+    - **On the final source:** RUN-20261022-046 (isolated design-system pipeline, 331 s) and RUN-20261022-047 (isolated foundation pipeline with live PostgreSQL, Linux browser, scans and artifacts, 587 s) passed.
+  - **Limits:**
+    - Playwright's Chromium has no hyphenation dictionaries here, so narrow placeholder names and markers break without hyphens. Desktop browsers with dictionaries hyphenate them through the language the provider sets.
+    - Chromium only, software WebGL, no devices.
+    - The Director's visual approval is pending.
+
+## Hosted run, Director review declined and design audit — 2026-10-23 UTC
+
+- **Hosted run (CHG-20261023-001):** run 39848720360 on pull request #7 (pull_request event) at 26b8f4e8b3495ace0b0d2ef63ee2b1aa611a061c concluded success.
+  - **Jobs:**
+    - design-system, 2026-10-22T20:25:30Z to 20:34:33Z;
+    - foundation, 2026-10-22T20:25:30Z to 20:36:22Z.
+  - **What this record covers:** public job metadata; the hosted logs and artifacts were not downloaded.
+- **Director review (D29):** the Director declined visual approval of the reference screens:
+  - several functional errors;
+  - a clear lack of quality and uniqueness;
+  - generic stylization, and requirements not followed;
+  - plain layouts in some areas, and structure copied from the legacy app in others.
+
+  The Director asked for a tool that holds the agent accountable for UX design, similar to Impeccable, and for an audit of the design and of the agent's own work. Main stays at 4d9dfc7, and pull request #7 is not merged.
+- **Audit:** [UX-01 design audit](../audits/2026-10-23-ux-01-design-audit.md).
+  - **Method:** Impeccable's detector and critique (engine v0.1.16, run on the host, single context because sub-agents are not authorized), Hallmark's static gates, and two scripted functional walks.
+  - **Verdict:** the screens fail design specificity, and their compositions follow the legacy app.
+  - **Functional defects:** four at P1: the match hand list, the match commands, Collection filtering and the deckbuilder's Undo focus.
+  - **Heuristics:** 23/40.
+- **Corrections to the task 9 review above:**
+  - "Legacy composition copied: none" is wrong;
+  - "Every control acts within its story" is wrong for the match.
+
+  The audit supersedes that review against the §33 criteria. The receipts above still stand for what they test: gates, axe and the pipelines. None of them judges identity or composition.
+- **Status:** UX-01's reference direction is not accepted, and remediation awaits the Director's decisions. The audit's screenshots, walk logs and detector output stay in the ignored `.local/ux-01-audit/`.
+
+## Design review gate and rework design — 2026-10-23 UTC
+
+- **Director's decision (D30, CHG-20261023-002):**
+  - **Gate:** Impeccable becomes a blocking check, and independent sub-agent reviews are authorized. Every design is declined where the agent cannot directly prove its work.
+  - **Rework:** a complete rework with an original design, a 3D interactive pack opening, a binder whose pages flip at a fixed size, and an interactive board with its own identity.
+  - **Ink artwork:** procedural.
+- **Gate:** two new stages after the browser suite in `pnpm ci:design-system`. The [runbook](../runbooks/design-system.md#design-review-gate) and the [ADR 0017 amendment](../adr/0017-technical-design-system.md) have the details.
+  - **`design-review`:**
+    - **Engine:** fetches the Impeccable engine v0.1.16 into `.local/tools/` and checks it against the pinned SHA-256, with telemetry and update checks off.
+    - **Scope:** scans every reference story, leaving out each screen's text-only documentation page, at 1440 × 900 Ink and Paper, 820 × 1180 Ink and 390 × 844 Paper. The four viewports run in parallel.
+    - **Pass condition:** any finding declines the screens unless a Director decision waives it.
+  - **`check:design-reviews`:** requires, for each reference screen, a passing record from a design reviewer and an evidence reviewer, two separate agents, at the current design-source fingerprint.
+  - **Unit tests:** `tests/design-review.test.mjs` covers:
+    - the engine pin;
+    - that exceptions need a Director decision;
+    - waiver matching;
+    - story selection;
+    - that records are rejected when missing, stale, declined, written by the same reviewer twice or missing a full report.
+- **Defect found while building it, fixed before the receipts:**
+  - **Symptom:** in the container, every scan timed out before the page loaded.
+  - **Cause:** the gate served Storybook from its own Node process and then waited on the engine synchronously, so no request was ever answered. My host audit had worked only because it used a separate server.
+  - **Fix:** the engine now runs as an asynchronous child process.
+  - **Sandbox:** the engine launches Chromium without its sandbox (`CI=1`), as Playwright does in this container. It loads only the local build.
+- **Receipts at source fingerprint c5a003f3, both expected failures:**
+  - **RUN-20261023-003 (headless browser, failed: declined):** 385 findings across 63 reference stories (1440 Ink 154, 1440 Paper 154, 820 Ink 25, 390 Paper 52). The counts are identical to the host audit. The stage took 129 s including the Storybook build.
+  - **RUN-20261023-004 (static, failed: declined):** none of the five screens has an independent review record.
+- **RUN-20261023-005 (isolated design-system pipeline, container, failed: declined):** the gates (40/40) and the browser suite (409/409) pass, then the detector stage declines the screens and stops the job, in 518 s.
+- **Consequence:** the hosted design-system job fails at the gate until reworked screens pass it. The foundation job is unaffected.
+- **Rework design:** [direction study design](../plans/2026-10-23-ux-01-rework-design.md), proposed:
+  - the world of ink, paper and light;
+  - room compositions taken from each task: the Illuminary, the Lorebook, the Inkfield and the Scriptorium;
+  - the interactions, and the proof each claim needs.
+
+  It awaits the Director's approval together with its prototypes.

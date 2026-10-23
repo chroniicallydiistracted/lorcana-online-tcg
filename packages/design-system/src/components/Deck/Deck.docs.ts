@@ -1,0 +1,73 @@
+import { defineDoc } from '../docs.ts';
+export const deckListDoc = defineDoc({
+  name: 'DeckList', status: 'experimental', foundation: 'DeckEntry',
+  purpose: 'The deck\'s contents grouped by cost, each line with an exact quantity and separate legality and ownership messages.',
+  anatomy: ['Cost group heading with the group\'s copies', 'Deck entries'],
+  variants: ['standard'],
+  states: ['working', 'with legality problems', 'with ownership limits', 'empty'],
+  inputs: ['entries', 'emptyState'],
+  outputs: ['onQuantityChange', 'onInspect'],
+  accessibility: ['Each cost group is a named section', 'Quantity fields are add/remove alternatives to dragging'],
+  contentLimits: ['Long names wrap'],
+  usage: ['Messages name the card, quantity, reason and policy version', 'An ownership limit never reads as a rules restriction'],
+});
+export const deckHeaderDoc = defineDoc({
+  name: 'DeckHeader', status: 'experimental', foundation: 'Text and InkIdentity',
+  purpose: 'The deck\'s format and policy, its count against the format\'s required size, and its ink identities.',
+  anatomy: ['Format and policy', 'Count against size', 'Ink identities'],
+  variants: ['standard'],
+  states: ['incomplete', 'complete', 'no inks yet'],
+  inputs: ['format', 'count', 'size', 'inks'],
+  outputs: [],
+  accessibility: ['The count reads as "52 of 60 cards"'],
+  contentLimits: ['Long format names wrap'],
+  usage: ['The size comes from the format, never a constant (§19)'],
+});
+export const costCurveDoc = defineDoc({
+  name: 'CostCurve', status: 'experimental', foundation: 'Figure with a table for assistive technology',
+  purpose: 'The deck\'s cost curve with every count labelled, to support decisions about the curve (§18).',
+  anatomy: ['Caption', 'One neutral column per cost, square at the baseline with a rounded cap', 'Count on each cap', 'Cost labels under the baseline', 'Table of the same values for assistive technology'],
+  variants: ['standard'],
+  states: ['standard', 'with empty costs'],
+  inputs: ['caption', 'data'],
+  outputs: [],
+  accessibility: ['Visual columns are hidden from assistive technology, which reads the table', 'Values are text, never colour'],
+  contentLimits: ['Up to about ten costs; the last may read "8+"'],
+  usage: ['One series, one neutral colour; no gridlines because every value is labelled', 'Instrument-precise: real counts only'],
+});
+export const deckSummaryDoc = defineDoc({
+  name: 'DeckSummary', status: 'experimental', foundation: 'CostCurve and a description list',
+  purpose: 'Figures that support deck decisions: the cost curve, inkable count and type split.',
+  anatomy: ['Cost curve', 'Facts as label and value pairs'],
+  variants: ['standard'],
+  states: ['standard'],
+  inputs: ['curve', 'facts'],
+  outputs: [],
+  accessibility: ['Facts are a description list'],
+  contentLimits: ['Labels wrap'],
+  usage: ['Every figure supports a deck decision; no decorative statistics'],
+});
+export const validationSummaryDoc = defineDoc({
+  name: 'ValidationSummary', status: 'experimental', foundation: 'Sections with icon-and-text messages',
+  purpose: 'Validation next to Save in three labelled sections, rules, ownership and advice, so an ownership limit never reads as a rules error (§18).',
+  anatomy: ['Rules section with the policy version', 'Ownership section', 'Advice section', 'Each with a status icon and a problem count'],
+  variants: ['standard'],
+  states: ['clear', 'rules problems', 'ownership limits', 'advice only'],
+  inputs: ['rules', 'ownership', 'advice', 'policy'],
+  outputs: [],
+  accessibility: ['Each section is named; each message has an icon with a text name and the message itself'],
+  contentLimits: ['Messages wrap; the footer region scrolls when many apply'],
+  usage: ['Messages name the card, quantity, reason and policy version', 'Advice is never required', 'A section shows the success mark only when it has no messages; information alone gets the information mark'],
+});
+export const saveStateDoc = defineDoc({
+  name: 'SaveState', status: 'experimental', foundation: 'Icon and status text',
+  purpose: 'Revision-aware save state (§18): unsaved, saving, saved at a revision, or a conflict.',
+  anatomy: ['Icon', 'State text'],
+  variants: ['standard'],
+  states: ['unsaved', 'saving', 'saved', 'conflict'],
+  inputs: ['state', 'revision'],
+  outputs: [],
+  accessibility: ['A status region, so a change is announced politely'],
+  contentLimits: ['Short text'],
+  usage: ['A conflict keeps the local draft and leads to an explicit choice'],
+});

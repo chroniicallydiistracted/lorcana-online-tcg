@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261022-018",
+  "category": "headless_browser",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm -s --filter @lorcana/design-system typecheck && pnpm -s --filter @lorcana/design-system test && pnpm -s --filter @lorcana/design-system test:browser"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "c7d5020226521fe424fa5873d62a959e9639c15c",
+  "source_fingerprint": "02eb485bc1d41de47b0bc5a3e1ad1efb3c78d4e8f8ead625d5db4f641ab9687c",
+  "started_at": "2026-10-22T14:53:36.084Z",
+  "finished_at": "2026-10-22T14:56:47.728Z",
+  "recorded_at": "2026-10-22T14:56:47.728Z",
+  "time_precision": "exact",
+  "elapsed_ms": 191651,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 1,
+  "signal": null,
+  "result": "failed",
+  "failure_reason": null,
+  "summary": "UX-01 task 4: design-system gates, then Storybook build and the full Playwright/axe Chromium suite with the deckbuilder tests",
+  "log_path": "docs/validation/logs/RUN-20261022-018.txt",
+  "log_sha256": "208a653dba2438333c707bd4858929548bc018f537666977b8a51d188fcde6e4",
+  "redactions": 0
+}

@@ -1,10 +1,11 @@
-@value atLeastIntermediate from "../../generated/layout.module.css";
-.entry { display: grid; grid-template-columns: 1fr; gap: var(--is-space-2); padding: var(--is-space-2) var(--is-space-3); border-block-end: var(--is-border-width-1) solid var(--is-color-border-decorative); color: var(--is-color-text-primary); }
-@media atLeastIntermediate { .entry { grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; } .messages { grid-column: 2 / 3; } }
-.identity { display: flex; align-items: center; gap: var(--is-space-2); min-inline-size: 0; }
-.cost { display: inline-flex; align-items: center; justify-content: center; min-inline-size: var(--is-space-6); font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; }
-.names { display: flex; flex-direction: column; min-inline-size: 0; }
-.name { font: var(--is-typography-body-strong); overflow-wrap: anywhere; }
-.version { font: var(--is-typography-metadata); color: var(--is-color-text-supporting); overflow-wrap: anywhere; }
-.messages { display: flex; flex-direction: column; gap: var(--is-space-1); }
-.messages:empty { display: none; }
+.entry { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "cost identity quantity" ". messages messages"; align-items: center; gap: var(--is-space-1) var(--is-space-2); padding: var(--is-space-2) var(--is-space-3); border-block-end: var(--is-border-width-1) solid var(--is-color-border-decorative); color: var(--is-color-text-primary); }
+.cost { grid-area: cost; display: inline-flex; align-items: center; justify-content: center; min-inline-size: var(--is-space-6); font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; }
+.identity { grid-area: identity; display: flex; flex-wrap: wrap; align-items: center; gap: var(--is-space-1) var(--is-space-2); min-inline-size: 0; }
+.names { display: flex; flex-direction: column; align-items: flex-start; min-inline-size: 0; min-block-size: var(--is-component-control-min-size); justify-content: center; padding: 0; border: 0; border-radius: var(--is-component-control-radius); background: transparent; color: var(--is-color-text-primary); text-align: start; cursor: pointer; }
+.names:hover .name { text-decoration: underline; text-underline-offset: var(--is-space-1); }
+.names:focus-visible { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.name { font: var(--is-typography-body-strong); overflow-wrap: break-word; }
+.version { font: var(--is-typography-metadata); color: var(--is-color-text-supporting); overflow-wrap: break-word; }
+.quantity { grid-area: quantity; }
+.messages { grid-area: messages; display: flex; flex-direction: column; gap: var(--is-space-1); }
+.hidden { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-005",
+  "title": "UX-01 task 1: reference fixture of real Hyperia City printings",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T14:03:32.742Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "98357b0e5789760842529fdc5fcd7d1599a4af4f",
+  "task_ids": [
+    "UX-01",
+    "CONTENT-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R20.001",
+    "R20.002",
+    "R25.009"
+  ],
+  "feature_ids": [
+    "F-CARD-CATALOG",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "The Director approved the full UX-01 design for end-to-end completion. Implementation-plan task 1: packages/rules-data/fixtures/reference-selection.json selects 69 real Hyperia City (set 14) printings from the 2026-10-21 acquisition, each with its own reason: the player's Amber/Steel deck and the opponent's Emerald/Sapphire deck (60 cards each) with every card's role in the crowded match, two binder spreads (Amber 1–18/204 and Sapphire 137–154/204), a 12-card demonstration pack drawn from the spreads, and four special printings. Six printings inspected in the stories are flagged for full-card images."
+    },
+    {
+      "kind": "implementation",
+      "description": "scripts/catalog-lib.mjs fixtureImageSources takes details 'all' (presentation fixture, unchanged) or 'flagged' (reference fixture); scripts/select-fixtures.mjs writes both fixtures and reuses an image either manifest already records when its checksum matches; scripts/verify-fixtures.mjs proves both committed fixtures equal what their selections derive from the recorded snapshot. src/fixtures.ts exports referenceCatalog, referenceSelection, referenceImages, referencePrinting and referenceImage through the same normalizer as the presentation fixture. The generated src/fixtures/reference.json and reference-images.json and 74 new image files (68 thumbnails and 6 full-card images; Port Authority's thumbnail was already recorded) were written by select-fixtures, which fetched them from Ravensburger's public image host at 2026-10-22T14:01Z. The presentation fixture and its manifests are byte-identical."
+    },
+    {
+      "kind": "test",
+      "description": "tests/catalog.test.mjs adds three tests, written first: the reference selection reproduced in order with no duplicate printing or reason; every reference printing's rotation state is CoreConstructed; a thumbnail for every printing, full-card images only where flagged, thumbnails within 4 MB and full-card images within 3 MB. The existing image test now covers both manifests and refuses any unrecorded file. RUN-20261022-006 records the expected failure before the exports existed; RUN-20261022-007 passes 12 tests."
+    },
+    {
+      "kind": "documentation",
+      "description": "Card-catalog runbook (fixture use and rebuild for both fixtures), card-catalog validation (dated reference-fixture section with counts, bytes, checks and receipts), the rules-data README, the F-CARD-CATALOG feature row and the handoff."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/FEATURES.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/changes/CHG-20261022-005.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/card-catalog.md",
+    "docs/validation/card-catalog.md",
+    "docs/validation/logs/RUN-20261022-006.txt",
+    "docs/validation/logs/RUN-20261022-007.txt",
+    "docs/validation/logs/RUN-20261022-008.txt",
+    "docs/validation/logs/RUN-20261022-009.txt",
+    "docs/validation/logs/RUN-20261022-010.txt",
+    "docs/validation/logs/RUN-20261022-011.txt",
+    "docs/validation/runs/RUN-20261022-006.json",
+    "docs/validation/runs/RUN-20261022-007.json",
+    "docs/validation/runs/RUN-20261022-008.json",
+    "docs/validation/runs/RUN-20261022-009.json",
+    "docs/validation/runs/RUN-20261022-010.json",
+    "docs/validation/runs/RUN-20261022-011.json",
+    "packages/rules-data/README.md",
+    "packages/rules-data/fixtures/images/3266-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3267-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3268-detail.jpg",
+    "packages/rules-data/fixtures/images/3268-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3269-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3270-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3271-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3272-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3273-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3274-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3275-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3276-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3277-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3278-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3279-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3280-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3281-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3282-detail.jpg",
+    "packages/rules-data/fixtures/images/3282-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3283-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3289-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3290-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3292-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3297-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3336-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3337-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3343-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3344-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3349-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3350-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3351-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3356-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3358-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3364-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3365-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3402-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3403-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3404-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3405-detail.jpg",
+    "packages/rules-data/fixtures/images/3405-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3406-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3407-detail.jpg",
+    "packages/rules-data/fixtures/images/3407-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3408-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3409-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3410-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3411-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3412-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3413-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3414-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3415-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3416-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3417-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3418-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3419-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3432-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3433-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3435-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3436-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3439-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3448-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3449-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3454-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3456-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3457-detail.jpg",
+    "packages/rules-data/fixtures/images/3457-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3459-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3466-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3469-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3470-detail.jpg",
+    "packages/rules-data/fixtures/images/3470-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3488-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3502-thumbnail.jpg",
+    "packages/rules-data/fixtures/images/3506-thumbnail.jpg",
+    "packages/rules-data/fixtures/reference-selection.json",
+    "packages/rules-data/scripts/catalog-lib.mjs",
+    "packages/rules-data/scripts/select-fixtures.mjs",
+    "packages/rules-data/scripts/verify-fixtures.mjs",
+    "packages/rules-data/src/fixtures.ts",
+    "packages/rules-data/src/fixtures/reference-images.json",
+    "packages/rules-data/src/fixtures/reference.json",
+    "packages/rules-data/tests/catalog.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Same UX-01 status update as AGENTS.md, with document-relative links."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Same UX-01 status update as AGENTS.md."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "The UX-01 status paragraph said the plan came before any build; it now says the tasks are being built in order under the Director's end-to-end instruction."
+    },
+    {
+      "path": "docs/runbooks/card-catalog.md",
+      "disposition": "updated",
+      "reason": "Use and rebuild instructions now cover the reference fixture, its detail flag and shared images."
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "disposition": "updated",
+      "reason": "Appended a dated section for the reference fixture with its selection, image totals, checks, receipts and limits."
+    },
+    {
+      "path": "packages/rules-data/README.md",
+      "disposition": "updated",
+      "reason": "The fixtures export now names both fixtures and their sizes."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "updated",
+      "reason": "F-CARD-CATALOG lists the reference fixture exports."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-CARD-CATALOG describes the reference fixture; every verified feature gains the checkpoint full-suite run at the new source fingerprint, and F-CARD-CATALOG its task receipts."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Records the Director's end-to-end instruction, this checkpoint and the next actions."
+    },
+    {
+      "path": "docs/adr/0018-official-card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The decision covers real-card fixtures from dated acquisitions with provenance; a second fixture from the same acquisition follows it without changing it."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No dependency or engine placement change; the fixture adds data only."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Every new image records its source URL, retrieval time, checksum and the D07 rights basis, as the policy requires."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Rules-source tooling and inventories are unaffected; the reference fixture is presentation data, not rules certification."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Historical RULE-01 evidence; no rules inventory changed."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Regenerated by docs:sync from the change records."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Regenerated by docs:sync with the new source fingerprint."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No local-environment, container or toolchain decision is affected."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Package ownership and the application foundation are unchanged; the work stays inside the existing packages."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The dated 2026-10-06 audit is preserved as written."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "No new document needs classification and no source-impact edge changes at this checkpoint."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Documentation governance is unchanged; this checkpoint follows it."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Setup steps are unchanged."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The record format is unchanged."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-01 evidence, preserved."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The vision baselines are unchanged."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "No additional-scope item changes."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D27 and D28 already record the decisions this checkpoint implements; no new Director decision."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "UX-01 stays in its build stage until the last task; no other task changes."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated planning record; no dependency in its register changes."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-006.json",
+      "outcome": "failed",
+      "scope": "Test-first: the new reference-fixture tests fail before the fixture exports exist (expected)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-007.json",
+      "outcome": "passed",
+      "scope": "rules-data build and its 12 tests, including the three reference-fixture tests (container)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-008.json",
+      "outcome": "passed",
+      "scope": "catalog:verify: every acquired language audits cleanly and both committed fixtures equal what their selections derive from the recorded snapshot (container, raw cache)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-009.json",
+      "outcome": "passed",
+      "scope": "rules-data typecheck, import boundaries and repository lint (static)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-010.json",
+      "outcome": "passed",
+      "scope": "Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-011.json",
+      "outcome": "passed",
+      "scope": "docs:check over the finalized task 1 checkpoint (static)."
+    }
+  ],
+  "limitations": [
+    "The decks, match position, ownership figures and pack contents that use these printings are demonstration data, written in later tasks; nothing here is admitted or certified for play.",
+    "Image retrieval is a public GET of Ravensburger's image host; no other network use."
+  ],
+  "next_actions": [
+    "Task 2 of the implementation plan: the official card back as a design-system asset and the CardBack component."
+  ]
+}

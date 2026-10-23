@@ -86,3 +86,53 @@ Recorded 2026-10-22T01:04:02.074Z (CHG-20261022-001) from public GitHub job meta
   - `foundation`: 22:52:16–23:02:39Z.
 - **Merge state:** main is 7a9e757 and does not yet contain this work. Main moves to the tested tip of this branch only when the Director asks.
 - **Advisory:** main still pins Storybook 10.6.1, so a new run on main fails the dependency advisory check (GHSA-f2ph-cmg5-wxc8) until this branch lands.
+
+## Hosted merge runs — 2026-10-22 UTC
+
+Recorded 2026-10-22T04:41:40.268Z (CHG-20261022-002) from public GitHub job metadata, re-observed with `gh run view` at about 04:44Z; logs and artifacts were not downloaded.
+- **Run 39703969780** (pull request #6, `claude/ux-card-catalog` at 4d9dfc7, the documentation alignment of CHG-20261022-001), both jobs successful:
+  - `design-system`: 01:08:50–01:11:15Z;
+  - `foundation`: 01:08:50–01:24:52Z.
+- **Merge:** at the Director's request, main was fast-forwarded from 7a9e757 to 4d9dfc7, the tested tip, so main now contains the catalog work and Storybook 10.6.2. The advisory note in the section above no longer applies to main.
+- **Run 39705738273** (push to main at 4d9dfc7), both jobs successful:
+  - `foundation`: 01:27:05–01:42:43Z;
+  - `design-system`: 01:27:05–01:30:22Z.
+
+## UX-01 reference fixture — 2026-10-22 UTC
+
+Recorded by CHG-20261022-005 (UX-01 implementation-plan task 1).
+- **Selection:** `packages/rules-data/fixtures/reference-selection.json` lists 69 printings, all Hyperia City (set 14), in the same 2026-10-21 acquisition. Each printing records its own reason:
+  - the player's Amber/Steel deck and the opponent's Emerald/Sapphire deck, 60 cards each, 22 and 21 printings, with the match role of each card in the crowded position;
+  - two binder spreads: Amber pages 1–2 (1–18/204) and Sapphire pages 17–18 (137–154/204, including the "Go to card number 142" anchor);
+  - a 12-card demonstration pack (6 common, 3 uncommon, a rare, a Legendary and a foil slot), drawn from the spreads;
+  - four special printings (Epic, two Enchanted, Iconic).
+- **Images:** 69 thumbnails at 367 × 512 (2,688,370 bytes) and 6 full-card images at 1,468 × 2,048 (1,819,359 bytes), only for the printings the stories inspect. Port Authority's thumbnail is shared with the presentation fixture and was not fetched again; the other 74 were fetched from Ravensburger's image host at 2026-10-22T14:01Z.
+- **Checks:**
+  - the selection is reproduced in order, with no duplicate printing or reason;
+  - every reference printing's rotation state is `CoreConstructed`;
+  - each printing has its thumbnail, full-card images exist only where flagged, and the totals stay within 4 MB and 3 MB;
+  - every image file is recorded by a manifest, with matching bytes and dimensions;
+  - `catalog:verify` derives both fixtures exactly from the recorded snapshot.
+- **Receipts:**
+  - RUN-20261022-006: the new tests failing before the fixture existed (test-first, expected);
+  - RUN-20261022-007: build and 12 tests passing;
+  - RUN-20261022-008: `catalog:verify` passing;
+  - RUN-20261022-009: typecheck, boundaries and lint passing.
+- **Limits:** the decks, ownership figures and pack contents are demonstration data in the design-system stories, not catalog data, and nothing here is admitted or certified for play.
+
+### Binder records — 2026-10-22 UTC
+
+Recorded by CHG-20261022-009 (UX-01 task 5). The reference selection gains 173 records-only entries (`"image": false`), so the fixture holds all 242 Hyperia City printings: standard 1–204 and specials 205–242.
+- **Why:** the binder can page through the whole set. Unowned pockets show the printing's name and number, which needs the record but no image. The demonstration owns only printings that have images.
+- **Images:** unchanged at 75 (4,507,729 bytes); `fixtureImageSources` skips records-only entries.
+- **Checks:** the tests require all 242 printings and no thumbnail for any records-only entry. `catalog:verify` matches the snapshot exactly.
+- **Receipt:** RUN-20261022-022 passes 12 tests and `catalog:verify`.
+- **Fixture size:** `src/fixtures/reference.json` is 515,562 bytes.
+
+### Selection reason corrections — 2026-10-22 UTC
+
+Recorded by CHG-20261022-011, as a correction appended to the sections above. Six reference selection reasons written in task 1 did not match the final match position:
+- **Lafayette – All Ears:** the reason claimed Evasive, but the card has Alert. A keyword scan had matched "Evasive" inside Alert's reminder text.
+- **Chief Bogo, Mr. Big, Judy Hopps – Helpful Officer, Hiro Hamada – Versatile Inventor and Baymax – Qualified Physician:** their stated match roles changed when the position was finalized.
+
+The reasons now describe the final position. The fixture was rebuilt from the same snapshot, with no image change; `catalog:verify` matches exactly (RUN-20261022-029).

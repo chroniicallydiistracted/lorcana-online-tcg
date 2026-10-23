@@ -7,7 +7,9 @@ Browser-safe card catalog from Ravensburger's official v3 API (decision D25; [AD
   - the normalized catalog: printings kept apart from the card in play, variants and finishes, foil layers for CardFX;
   - display tokens for rules text;
   - the reviewed markup corrections.
-- **`@lorcana/rules-data/fixtures`** exports a real-card presentation fixture: 12 printings and 24 images from one dated acquisition, each with its provenance.
+- **`@lorcana/rules-data/fixtures`** exports two real-card fixtures from one dated acquisition, each image with its provenance:
+  - the presentation fixture: 12 printings and 24 images;
+  - the UX-01 reference fixture: all 242 Hyperia City printings, 69 of them with thumbnails (the reference screens' decks, binder spreads, pack and special printings) and 6 with full-card images; the rest are records only, so the binder can page through the set.
 - **Not yet here:** legality periods, rulings beyond the catalog's FAQ entries, errata, and anything admitted or certified for play. All card identities remain uncertified.
 - **Scripts** (`scripts/`, Node only) acquire catalogs into the ignored `.local/catalog/ravensburger/`, write dated acquisition records under `docs/rules/`, build the fixture and verify it against the raw cache.
 

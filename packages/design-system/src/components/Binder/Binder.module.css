@@ -1,0 +1,43 @@
+.binder { display: flex; flex-direction: column; gap: var(--is-space-4); }
+.navigation { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--is-space-3) var(--is-space-6); }
+.indicator { margin: 0; color: var(--is-color-text-primary); font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; }
+.goTo { display: flex; align-items: flex-end; gap: var(--is-space-2); }
+.goTo > :first-child { inline-size: var(--is-component-binder-go-to); }
+.fit { position: relative; min-inline-size: 0; }
+.probe { position: absolute; inline-size: calc((var(--is-component-binder-pocket-min) * 3 + var(--is-component-binder-gap) * 2 + var(--is-component-binder-face-padding) * 2) * 2 + var(--is-space-6) + (var(--is-component-control-min-size) + var(--is-space-3)) * 2); block-size: 0; visibility: hidden; }
+.spread { display: flex; align-items: flex-start; justify-content: center; gap: var(--is-space-3); }
+.spread > button { position: sticky; inset-block-start: calc(50dvh - var(--is-component-control-min-size) / 2); /* token-exception: page buttons stay at the viewport's middle while a tall spread scrolls */ flex: none; margin-block-start: var(--is-space-16); }
+.faces { display: flex; flex: 0 1 auto; justify-content: center; gap: var(--is-space-6); min-inline-size: 0; }
+.faces[data-turn="forward"] { animation: turn-forward var(--is-motion-binder-page) var(--is-motion-ease); }
+.faces[data-turn="back"] { animation: turn-back var(--is-motion-binder-page) var(--is-motion-ease); }
+@keyframes turn-forward { from { opacity: 0; transform: translateX(calc(var(--is-space-6) * var(--is-motion-distance-scale))); } }
+@keyframes turn-back { from { opacity: 0; transform: translateX(calc(var(--is-space-6) * var(--is-motion-distance-scale) * -1)); } }
+.face { display: flex; flex-direction: column; gap: var(--is-space-3); flex: 0 1 calc(var(--is-component-binder-pocket) * 3 + var(--is-component-binder-gap) * 2 + var(--is-component-binder-face-padding) * 2); min-inline-size: 0; padding: var(--is-component-binder-face-padding); border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-component-surface-radius); background: var(--is-color-surface); }
+.faceHeader { display: flex; align-items: center; justify-content: space-between; gap: var(--is-space-2); min-block-size: var(--is-space-6); color: var(--is-color-text-primary); font: var(--is-typography-metadata); }
+.section { font: var(--is-typography-body-strong); }
+.pageNumber { color: var(--is-color-text-supporting); font-variant-numeric: tabular-nums; }
+.pockets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--is-component-binder-gap); }
+.pocket { display: flex; flex-direction: column; gap: var(--is-space-1); min-inline-size: 0; }
+.pocketButton { display: block; inline-size: 100%; padding: 0; border: 0; border-radius: 5.5% / 4%; /* token-exception: physical card corner */ background: transparent; color: var(--is-color-text-primary); cursor: pointer; transition: box-shadow var(--is-motion-hover) var(--is-motion-ease); }
+.pocketButton[data-hovered] { box-shadow: 0 0 0 var(--is-border-width-2) var(--is-color-border-strong); }
+.pocketButton[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+.silhouette, .missing { display: flex; flex-direction: column; justify-content: flex-end; gap: var(--is-space-1); aspect-ratio: 63 / 88; /* token-exception: physical card proportion (63 x 88 mm) */ padding: var(--is-space-2); border: var(--is-border-width-1) dashed var(--is-color-border-essential); border-radius: 5.5% / 4%; /* token-exception: physical card corner */ background: var(--is-color-canvas); text-align: start; }
+.pocket[data-kind="loading"] .silhouette, .pocket[data-kind="filtered"] .silhouette { border-style: solid; border-color: var(--is-color-border-decorative); background: var(--is-color-surface-raised); }
+.missingName { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); overflow-wrap: break-word; }
+.missingVersion { color: var(--is-color-text-supporting); font: var(--is-typography-annotation); overflow-wrap: break-word; }
+.missingNumber { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); font-variant-numeric: tabular-nums; }
+.status { min-block-size: var(--is-space-6); color: var(--is-color-text-supporting); font: var(--is-typography-metadata); font-variant-numeric: tabular-nums; }
+.pocket[data-kind="owned"] .status { color: var(--is-color-text-primary); }
+.pocket[data-kind="unknown"] .status, .pocket[data-kind="unavailable"] .status { color: var(--is-color-feedback-warning-foreground); }
+.statusSkeleton { block-size: var(--is-space-4); inline-size: 60%; border-radius: var(--is-radius-4); background: var(--is-color-surface-raised); }
+.count { font-weight: var(--is-typography-body-strong-font-weight); }
+.dot { color: var(--is-color-text-supporting); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--is-component-binder-pocket-min), 1fr)); gap: var(--is-space-4) var(--is-component-binder-gap); margin: 0; padding: 0; list-style: none; }
+.keys { margin: 0; color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.completion { display: flex; flex-direction: column; gap: var(--is-space-3); }
+.unavailable { margin: 0; color: var(--is-color-feedback-warning-foreground); font: var(--is-typography-body-strong); }
+.figures { display: flex; flex-wrap: wrap; gap: var(--is-space-2) var(--is-space-8); margin: 0; }
+.figures div { display: flex; gap: var(--is-space-2); align-items: baseline; }
+.figures dt { color: var(--is-color-text-supporting); font: var(--is-typography-metadata); }
+.figures dd { margin: 0; color: var(--is-color-text-primary); font: var(--is-typography-body-strong); font-variant-numeric: tabular-nums; }
+@media (forced-colors: active) { .face { border-color: CanvasText; } .silhouette, .missing { border-color: CanvasText; } }

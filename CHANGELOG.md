@@ -2,6 +2,950 @@
 
 Generated from versioned records in docs/changes. Use docs/CHANGELOG_FORMAT.md; edit records, then run pnpm docs:sync. UTC is canonical; project display timezone is America/Phoenix. Historical imports do not invent test times.
 
+## CHG-20261023-002 — UX-01: Director's rework decision (D30), design review gate and proposed rework design
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-23T03:11:17.967Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: f62237d15520d98e1fa60ba395a68c05904eb894
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **documentation:** Decision D30 recorded: the Director's answers to the audit's questions. Gate plus independent review (Impeccable detector as a blocking check; sub-agents authorized for independent reviews; every design declined where the agent cannot directly prove its work); a complete, original rework (legacy stylization as inspiration only; 3D animated interactive pack opening; binder pages that flip at a stable aspect ratio; an interactive board with its own identity); procedural ink artwork.
+- **feature:** Design review gate (D30) in packages/design-system: scripts/design-review-lib.mjs (engine pin, viewports, story selection, exception validation requiring a Director decision, design-source fingerprint, review-record checks), scripts/design-review.mjs (fetches and verifies the pinned Impeccable engine v0.1.16, serves the Storybook build on 127.0.0.1:6008, scans every reference story except documentation pages at 1440x900 Ink and Paper, 820x1180 Ink and 390x844 Paper, the four viewports in parallel; any unwaived finding declines), scripts/check-design-reviews.mjs (a passing design and evidence record from separate reviewers at the current design source for every reference screen), design-review/exceptions.json (empty) and design-review/README.md; package scripts design-review and check:design-reviews.
+- **implementation:** scripts/ci/design-system.mjs gains stages design-review-detector (reusing the browser stage's Storybook build) and design-review-records after the browser suite.
+- **test:** tests/design-review.test.mjs: engine pin, exceptions need a Director decision and a reason, waiver matching, reference-story selection and globals, documentation pages left out, and review records rejected when missing, stale, declined, written by one reviewer twice or without a full report.
+- **fix:** Found while building the gate, fixed before the receipts: the gate served Storybook from its own Node process and waited on the engine synchronously, so no request was ever answered and every scan in the container timed out; the engine now runs as an asynchronous child process. The engine launches Chromium without its sandbox (CI=1), as Playwright does in this container, against the local build only.
+- **test:** RUN-20261023-003 (headless browser, expected failure: declined): 385 Impeccable findings across 63 reference stories (1440 Ink 154, 1440 Paper 154, 820 Ink 25, 390 Paper 52), identical to the host audit, in 129 s including the Storybook build. RUN-20261023-004 (static, expected failure: declined): no screen has an independent review record.
+- **documentation:** Proposed rework design (docs/plans/2026-10-23-ux-01-rework-design.md): a world of ink, paper and light (procedural InkField, paper sheets, room key lights, ink accents, brush and ink-ring shape language, motion budgets), room compositions from each task (the Illuminary 3D pack opening, the Lorebook binder with 3D page turns at a fixed size, the Inkfield match with the Lore Stream and interactive play, quest and challenge, the Scriptorium deckbuilder where the deck is its curve), the room frame, four boundary choices for the Director and the proof each claim needs.
+- **documentation:** ADR 0017 amendment (design review gate), design-system and CI runbooks, design-system README, validation section, status lines in AGENTS.md, README.md and docs/README.md, UX-01 backlog status, plan status lines, documentation map (design-review README current; rework design planning) and HANDOFF.md.
+- **test:** RUN-20261023-005 (isolated design-system pipeline, expected failure): gates 40/40, browser suite 409/409, then the design review detector declined the screens (385 findings) and stopped the job, in 518 s.
+
+### Verification
+
+- **failed:** Design review gate, detector stage, on the current reference screens: an expected failure. 385 Impeccable findings across 63 reference stories at four viewport and theme combinations decline them; the stage works end to end in the container (headless browser). ([evidence](docs/validation/runs/RUN-20261023-003.json))
+- **failed:** Design review gate, record stage: an expected failure. No reference screen has an independent review record, so all five are declined (static). ([evidence](docs/validation/runs/RUN-20261023-004.json))
+- **failed:** Actual isolated design-system pipeline with the new stages (container): design-system gates 40/40, pinned Chromium, the Playwright/axe suite 409/409, then the design-review-detector stage declined the reference screens with 385 Impeccable findings, so the pipeline stopped there (518 s). An expected failure: it proves the gate blocks the job until reworked screens pass. ([evidence](docs/validation/runs/RUN-20261023-005.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261023-006.json))
+- **failed:** docs:check run before this record's documentation review was complete (static): it failed with 'Missing documentation review: docs/schemas/card-certification.schema.json'. Preserved; the review was added and RUN-20261023-008 rechecks. ([evidence](docs/validation/runs/RUN-20261023-007.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261023-008.json))
+
+### Documentation and files
+
+- **updated:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — Amendment of 2026-10-23 records the design review gate (D30): the pinned engine, the two blocking stages, exceptions only by Director decision, review records at the design-source fingerprint and fresh sub-agent reviewers.
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — New section on running the design review gate and the independent-review procedure.
+- **updated:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — The design-system suite now runs five stages, including the design review gate.
+- **updated:** [packages/design-system/README.md](packages/design-system/README.md) — Lists the design review commands and notes D29 and D30 for the reference screens.
+- **updated:** [packages/design-system/design-review/README.md](packages/design-system/design-review/README.md) — New: what the two checks are, how exceptions work and when records are valid.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Appended section: D30, the gate, the defect found while building it, the receipts and the proposed rework design.
+- **updated:** [docs/plans/2026-10-23-ux-01-rework-design.md](docs/plans/2026-10-23-ux-01-rework-design.md) — New proposed rework design (planning), awaiting the Director's approval with its prototypes.
+- **updated:** [docs/plans/2026-10-22-ux-01-implementation.md](docs/plans/2026-10-22-ux-01-implementation.md) — Status line records D30 and points to the rework design.
+- **updated:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — Status line records that the rework design supersedes its visual and composition parts.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Adds D30.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 status: rework ordered, design gate active, direction study pending; links the rework design and this record.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classifies the design-review README as current with its script sources and the rework design as planning.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for this checkpoint: D30, the gate, its receipts and next actions.
+- **updated:** [AGENTS.md](AGENTS.md) — UX-01 status paragraph records D30, the gate and the rework design.
+- **updated:** [README.md](README.md) — UX-01 status paragraph records D30, the gate and the rework design.
+- **updated:** [docs/README.md](docs/README.md) — UX-01 status paragraph records D30, the gate and the rework design.
+- **reviewed_unchanged:** [docs/audits/2026-10-23-ux-01-design-audit.md](docs/audits/2026-10-23-ux-01-design-audit.md) — Dated audit evidence of 26b8f4e, preserved as written; D30 follows from it.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — F-DESIGN-SYSTEM's description of implemented scope remains accurate; the gate is recorded in the validation and ADR.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [docs/CHANGELOG_FORMAT.md](docs/CHANGELOG_FORMAT.md) — The change-record format is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/DEVELOPMENT_WORKFLOW.md](docs/DEVELOPMENT_WORKFLOW.md) — The workflow is unchanged; the design review gate is a design-system CI stage documented in its runbook and ADR 0017.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/adr/0003-documentation-evidence.md](docs/adr/0003-documentation-evidence.md) — Documentation and evidence rules are unchanged.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/templates/handoff.md](docs/templates/handoff.md) — The handoff template is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [infra/README.md](infra/README.md) — No infrastructure or Compose change; the gate runs inside the existing isolated design-system pipeline.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — Dated BOOT-02 plan; no database change.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — No database role or migration change.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — No database procedure changes.
+- **reviewed_unchanged:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — Dated BOOT-02 evidence, preserved.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — Dated BOOT-03 plan; the foundation pipeline is unchanged and the design-system job keeps its isolation contract.
+- **reviewed_unchanged:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — Artifact qualification is unchanged; the design-system job uploads no artifacts.
+- **reviewed_unchanged:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — Dated BOOT-03 evidence, preserved; the CI runbook records the new design-system stages.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-05-contracts.md](docs/plans/2026-10-07-boot-05-contracts.md) — Dated BOOT-05 plan; no protocol or release contract change.
+- **reviewed_unchanged:** [docs/contracts/protocol.md](docs/contracts/protocol.md) — No protocol change.
+- **reviewed_unchanged:** [docs/contracts/release.md](docs/contracts/release.md) — No release identity change.
+- **reviewed_unchanged:** [docs/validation/boot-05.md](docs/validation/boot-05.md) — Dated BOOT-05 evidence, preserved.
+- **reviewed_unchanged:** [docs/adr/0006-protocol-release-contracts.md](docs/adr/0006-protocol-release-contracts.md) — No protocol or release decision is affected.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+- **reviewed_unchanged:** [docs/validation/clock-investigation.md](docs/validation/clock-investigation.md) — No clock or environment change.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/schemas/card-certification.schema.json](docs/schemas/card-certification.schema.json) — No card-certification schema or rule changes; the design review gate is design-system tooling only.
+- **reviewed_unchanged:** [docs/schemas/change.schema.json](docs/schemas/change.schema.json) — The record and evidence schemas are unchanged; this checkpoint adds design-system tooling only.
+- **reviewed_unchanged:** [docs/schemas/documentation-map.schema.json](docs/schemas/documentation-map.schema.json) — The record and evidence schemas are unchanged; this checkpoint adds design-system tooling only.
+- **reviewed_unchanged:** [docs/schemas/features.schema.json](docs/schemas/features.schema.json) — The record and evidence schemas are unchanged; this checkpoint adds design-system tooling only.
+- **reviewed_unchanged:** [docs/schemas/run.schema.json](docs/schemas/run.schema.json) — The record and evidence schemas are unchanged; this checkpoint adds design-system tooling only.
+- **reviewed_unchanged:** [docs/schemas/state.schema.json](docs/schemas/state.schema.json) — The record and evidence schemas are unchanged; this checkpoint adds design-system tooling only.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261023-002.json).
+
+### Limits and next actions
+
+- The Impeccable detector is a floor: it catches mechanical and generated-design tells but cannot judge identity, which the independent design review exists for.
+- The hosted design-system job fails at the gate until reworked screens pass it; this is the intended effect of D30.
+- The rework design is a proposal; no direction-study prototype exists yet.
+- Build the direction-study prototypes in the rework design's order, each passing the detector and two independent reviews before the Director sees it.
+- The Director approves or changes the direction study and the four boundary choices; then the implementation plan and full build.
+
+## CHG-20261023-001 — UX-01: hosted run, Director review declined (D29) and design audit with Impeccable
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-23T02:11:00.726Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 26b8f4e8b3495ace0b0d2ef63ee2b1aa611a061c
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **review:** Hosted run 39848720360 on pull request #7 (pull_request event) at 26b8f4e8b3495ace0b0d2ef63ee2b1aa611a061c concluded success: design-system job 2026-10-22T20:25:30Z to 20:34:33Z, foundation job 2026-10-22T20:25:30Z to 20:36:22Z. Public job metadata only; logs and artifacts were not downloaded.
+- **documentation:** Decision D29: the Director declined visual approval of the UX-01 reference screens (functional errors; lack of quality and uniqueness; generic stylization and requirements not followed; plain layouts in places and structure copied from the legacy app elsewhere) and instructed the agent to locate a tool that can hold it accountable for UX design, similar to Impeccable, and to audit the design and its own work. Recorded in docs/vision/decision_register.csv.
+- **review:** Design audit of 26b8f4e (docs/audits/2026-10-23-ux-01-design-audit.md): Impeccable engine v0.1.16 (Apache-2.0; linux-x64 binary SHA-256 a890a5b4b7d9d79ec54aa74612b5e924e5f5b422600a25fde8bcbda11b031787, matching the published checksum; run on the host with telemetry off) detector over 63 reference stories at four viewport and theme combinations, and its critique procedure run in a single context because sub-agents are not authorized; Hallmark static gates (MIT, 7ec8682); two Playwright functional walks in the dev container. Verdict: design specificity fails; compositions follow the legacy app; twelve functional defects (four P1); heuristics 23/40. Outputs stay in the ignored .local/ux-01-audit/.
+- **revision:** Two statements in the task 9 review against the section 33 criteria (CHG-20261022-013, docs/validation/ux-design-system.md) are wrong and are corrected by appended text: 'Legacy composition copied: none' (the deckbuilder, top bar, Collection and match compositions follow the legacy app) and 'every control acts within its story' (match Play only announces, every Challenge is rejected, inkwell placement is never available). The audit supersedes that review.
+- **documentation:** Status lines in AGENTS.md, README.md and docs/README.md, the UX-01 backlog status, the design and implementation plan status lines, the design-system validation and HANDOFF.md record the hosted run, D29 and the audit; the audit is classified as evidence in docs/documentation-map.json.
+
+### Verification
+
+- **passed:** docs:check over the finalized documentation-only checkpoint (static); no source changed, so the source fingerprint and feature evidence are unchanged. Taken before HANDOFF.md's record time was filled in; RUN-20261023-002 covers the final documents. ([evidence](docs/validation/runs/RUN-20261023-001.json))
+- **passed:** docs:check over the final documents of this documentation-only checkpoint (static), after HANDOFF.md's record time was filled in. ([evidence](docs/validation/runs/RUN-20261023-002.json))
+
+### Documentation and files
+
+- **updated:** [docs/audits/2026-10-23-ux-01-design-audit.md](docs/audits/2026-10-23-ux-01-design-audit.md) — New dated audit of the UX-01 reference screens at 26b8f4e, classified as evidence.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Appended section: hosted run 39848720360, the Director's review (D29), the audit summary and corrections to the task 9 review.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Adds D29, the Director's review declining visual approval and the accountability-tool and audit instruction.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 status becomes reference screens declined by the Director, audit recorded, remediation pending; links the audit and this record.
+- **updated:** [docs/plans/2026-10-22-ux-01-implementation.md](docs/plans/2026-10-22-ux-01-implementation.md) — Status line records task 10's hosted run and D29.
+- **updated:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — Status line records D29 and the audit's finding that the design specified components and states but no visual world.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classifies the new audit as evidence with no source edges.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for this checkpoint: audit result, the accountability tool, pending Director decisions and next actions.
+- **updated:** [AGENTS.md](AGENTS.md) — UX-01 status paragraph records the hosted run, D29 and the audit.
+- **updated:** [README.md](README.md) — UX-01 status paragraph records the hosted run, D29 and the audit.
+- **updated:** [docs/README.md](docs/README.md) — UX-01 status paragraph records the hosted run, D29 and the audit.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment records what was built; adopting Impeccable as a gate would amend it, and that awaits the Director.
+- **reviewed_unchanged:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — No operational procedure changes until the Director decides on the accountability tool.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — F-DESIGN-SYSTEM's implemented scope and evidence are unchanged; no source changed.
+- **reviewed_unchanged:** [docs/features.json](docs/features.json) — No source changed, so feature evidence stays bound to the current fingerprint.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261023-001.json).
+
+### Limits and next actions
+
+- The Impeccable critique ran in a single context (degraded by its own definition) because sub-agents are not authorized in this session; its design review was written before the detector output was read, except one trial scan of the deckbuilder.
+- Impeccable and Hallmark ran on the WSL host from the session scratchpad, not inside the Dev Container, so their outputs are host review evidence and not evidence:run receipts; the functional walks ran in the container but are review scripts, not committed tests.
+- Screenshots, walk logs and detector JSON stay in the ignored .local/ux-01-audit/ and are not committed.
+- Hosted run 39848720360 is recorded from public job metadata; logs and artifacts were not downloaded.
+- The Director decides whether Impeccable becomes a project gate (ADR 0017 amendment) and whether sub-agents may run independent design critiques.
+- The Director chooses the UX-01 remediation path and the source of the ink-form artwork; the agent records the decisions and follows the documented stages.
+- Main stays at 4d9dfc7; pull request #7 is not merged as it stands.
+
+## CHG-20261022-013 — UX-01 task 9: validation, visual review fixes and documents
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T20:01:58.920Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 2bac13dbac0b3e78b389336bd9073f5727776f76
+- Tasks: UX-01, WEB-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-RENDERER, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **review:** Implementation-plan task 9: all 63 reference stories captured at 1440 x 900, 1180 x 820 and 820 x 1180 in Paper and Ink (378 captures and contact sheets in the ignored .local/ux-01-review/final/, no page errors) and reviewed against the section 33 rejection criteria; the findings are recorded in docs/validation/ux-design-system.md.
+- **fix:** Takedown fallback on the match: board and hand placeholders grew past the card's size and covered neighbours, and decorative symbol placeholders repeated the adjacent word. CardImage gains placeholder="name" for small renditions (name only, from the top edge, within the card's proportion; every placeholder now keeps the proportion); BoardCard and Counter leave decorative symbols out when Lorcana assets are switched off. HandFan and BoardCard pass the name-only placeholder.
+- **fix:** Deck validation: an incomplete deck showed Rules with the success mark and 'Nothing to resolve' beside '60 more cards needed'. The demonstration validator now makes the missing cards a rule to resolve (warning), the deckbuilder summary bar counts every non-information rule, and ValidationSummary shows the success mark only on a section without messages, the information mark for information alone.
+- **fix:** Stories: EmptyDeck is now the full deckbuilder with a new, never-saved deck (it showed a lone deck panel pointing to a catalog that was not on screen); the none-held product shares the quiet product slot that names the set instead of an empty slot.
+- **fix:** Match bottom row: at 1180 px a 12-card hand's intrinsic width squeezed the player summary until the name and turn marker broke. From 64 rem the outer columns match the decision column's content width; HandFan slices narrow to fit the region (container query) but never below the 44 px control minimum, scrolling only beyond that, with room for the outer cards' drop; the view switch sits under the summary; the turn marker never wraps. check-styles.mjs allows the runtime variable --hand-count, which HandFan already set inline.
+- **documentation:** ADR 0017 amendment (UX-01 reference screens, D27 and D28: reference stories, new and changed components, card back, tokens and icons, runtime variables, the development-only presentation dependency, the table scene and the interpretations made); design-system README; runbook (takedown placeholders, hand slices, bottom row); validation (task 9 review and receipts); F-DESIGN-SYSTEM and F-RENDERER; documentation-map edges from packages/presentation/** to the design-system runbook, validation and ADR 0017; UX-01 backlog row; plan and design status lines; status lines in AGENTS.md, README.md and docs/README.md; handoff.
+- **test:** The validation browser test also checks the empty deck's Rules section ('1 to resolve', '60 more cards needed'). Receipts: isolated design-system (RUN-20261022-042) and foundation (RUN-20261022-043) pipelines passed on the source before the review fixes; after the fixes the full design-system Chromium suite passed 409/409 (RUN-20261022-044). On the final source the isolated design-system (RUN-20261022-046) and foundation (RUN-20261022-047) pipelines passed.
+
+### Verification
+
+- **passed:** Actual isolated design-system pipeline (frozen install, gates, pinned Chromium, Storybook/Playwright/axe) on the source before the visual-review fixes. ([evidence](docs/validation/runs/RUN-20261022-042.json))
+- **passed:** Actual isolated BOOT-03 foundation pipeline (frozen foundation, live PostgreSQL, Linux browser, dependency and secret scans, artifacts) on the source before the visual-review fixes. ([evidence](docs/validation/runs/RUN-20261022-043.json))
+- **passed:** After the fixes: design-system typecheck, node gates and the full Playwright/axe Chromium suite in both themes, 409/409 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-044.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-045.json))
+- **passed:** Actual isolated design-system pipeline on the final source after the fixes: frozen install, gates, pinned Chromium and the Storybook/Playwright/axe suite (331 s). ([evidence](docs/validation/runs/RUN-20261022-046.json))
+- **passed:** Actual isolated BOOT-03 foundation pipeline on the final source after the fixes: frozen foundation, live PostgreSQL, Linux browser, dependency and secret scans and artifacts (587 s). ([evidence](docs/validation/runs/RUN-20261022-047.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-048.json))
+
+### Documentation and files
+
+- **updated:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — Amendment of 2026-10-22 records the UX-01 reference screens, components, card back, tokens, icons, runtime variables, the development-only presentation dependency, the table scene and the interpretations made; status line updated.
+- **updated:** [packages/design-system/README.md](packages/design-system/README.md) — 92 components and the reference screens; components, not the package, are free of Babylon.
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Takedown placeholders for small renditions, hand slices that narrow to fit and the match bottom row.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Task 9: captures, defects found and fixed, the section 33 review, limits and receipts.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-DESIGN-SYSTEM row lists 92 components and the reference screens.
+- **updated:** [docs/features.json](docs/features.json) — F-DESIGN-SYSTEM describes the reference screens and gains packages/presentation/** as a source; every verified feature gains the checkpoint full-suite run.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — packages/presentation/** now maps to the design-system runbook, validation and ADR 0017, which document the table scene.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 row: reference screens built, awaiting the Director's visual approval.
+- **updated:** [docs/plans/2026-10-22-ux-01-implementation.md](docs/plans/2026-10-22-ux-01-implementation.md) — Status: tasks 1-9 built with a checkpoint each; task 10 follows.
+- **updated:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — Status: the screens are built and await visual approval; adjustments are recorded in the validation and ADR 0017.
+- **updated:** [AGENTS.md](AGENTS.md) — UX-01 status: built through task 9; hosted CI and visual approval follow.
+- **updated:** [README.md](README.md) — UX-01 status: built through task 9; hosted CI and visual approval follow.
+- **updated:** [docs/README.md](docs/README.md) — UX-01 status: built through task 9; hosted CI and visual approval follow.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the completed build: state, receipts, review material, pending gates and next actions.
+- **reviewed_unchanged:** [packages/presentation/README.md](packages/presentation/README.md) — Already documents mountTableScene (CHG-20261022-012); no presentation code changed in task 9.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — No Director decision in task 9; the visual approval will be recorded as a new decision.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The checkpoint stays within the catalog decision.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Reviewed against this checkpoint.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-013.json).
+
+### Limits and next actions
+
+- Chromium only, with software WebGL; no other browsers or devices (UX-02), no performance figures (WEB-01).
+- Playwright's Chromium lacks hyphenation dictionaries here, so narrow placeholder names and markers break without hyphens in the captures.
+- The low-severity fastify advisory GHSA-389g-gv7q-r4x8 recorded in CHG-20261022-012 remains, outside UX-01's scope.
+- The Director's visual approval of the reference screens is pending.
+- Task 10: push the branch, open the pull request and record both hosted jobs; main moves only at the Director's request.
+- The Director reviews the screens; the approval, with any changes, is recorded as a decision and closes UX-01's reference-direction acceptance.
+
+## CHG-20261022-012 — UX-01 task 8: the Babylon table scene and its semantic overlay
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T19:11:58.353Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: c33732dc55be3126bf17a2c3eba1e9fe077f911f
+- Tasks: UX-01, WEB-01, DOC-01, DOC-02
+- Features: F-RENDERER, F-DESIGN-SYSTEM, F-BOUNDARIES, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 8 (decision D27, design 'Babylon table scene'): packages/presentation/src/table-scene.ts adds mountTableScene(canvas, input, options) returning update, cardRects, dispose and a frame count, with validateTableInput and layoutTable. Closed input is validated before anything is created; layout is deterministic; the camera is fixed about 22 degrees from top-down; zone surfaces, key light, soft fill and contact shadows; unlit card art from thumbnails; exerted cards and locations turned; Shift stacks offset; face-down inkwell, deck and opponent hand with the card back; outline frames in the focus colour for selection and targets. It renders on demand only (after mount and update once materials are ready, and after resize), takes no input or focus, and disposes everything on failure or dispose().
+- **feature:** Design system: SceneOverlay (Experimental) places one React Aria button per board object at the projected rectangle, at least 44 px, with text markers below, or above for the far side; describeBoardCard is extracted from BoardCard so the overlay and the Flat tier share names and markers; component token match.scene-min. packages/design-system gains the development-only workspace dependency @lorcana/presentation (pnpm-lock adds one importer link). stories/support/reference/scene.tsx lazily loads the scene, maps the position, renderer colours and card back into its input, recomputes rectangles on resize, falls back to the Flat tier with an explanation on engine, texture or context failure, and uses the Flat tier below 80 rem. Match stories add the table scene, scene with targets, renderer failure and scene takedown.
+- **test:** Six NullEngine tests in packages/presentation/tests/table-scene.test.mjs (validation refusals, layout, on-demand frames, projection, disposal, engine failure), written alongside the implementation rather than captured failing first; four scene browser tests in reference.spec.ts. RUN-20261022-035 failed 6 of 409 on axe aria-hidden-focus (Babylon's input handling set a tab index on the decorative canvas) and is preserved; after detaching input RUN-20261022-036 and RUN-20261022-037 pass (presentation and boundaries; gates and 409/409 Chromium tests).
+- **review:** Visual review found a blank first scene (on-demand frames before shaders compiled; now rendered after whenReadyAsync), colliding overlay markers (now card-width, hyphenated, above far-side cards, with wider row spacing) and illegible markers at 1180 px (Flat tier below 80 rem). Paper and Ink captures are in the ignored .local/ux-01-review/; the scene's look is a human review because Chromium renders WebGL in software.
+- **documentation:** Presentation README, F-RENDERER (features register and FEATURES.md), design-system runbook (table scene) and validation (task 8), handoff.
+
+### Verification
+
+- **passed:** Presentation typecheck, build, seven NullEngine tests and import boundaries (simulated). ([evidence](docs/validation/runs/RUN-20261022-034.json))
+- **failed:** Full design-system suite: 6 of 409 failed on axe aria-hidden-focus for the scene canvas; preserved. ([evidence](docs/validation/runs/RUN-20261022-035.json))
+- **passed:** Presentation and boundaries after detaching scene input (simulated). ([evidence](docs/validation/runs/RUN-20261022-036.json))
+- **passed:** Design-system gates, Storybook build and the full Playwright/axe Chromium suite with the scene tests, 409/409 (headless browser, software WebGL). ([evidence](docs/validation/runs/RUN-20261022-037.json))
+- **failed:** Checkpoint full suite stopped at pnpm audit: one low-severity advisory published after the previous checkpoint (GHSA-389g-gv7q-r4x8, fastify 5.12.5 in apps/match-service and packages/service-runtime, fixed in 5.12.6). Preserved. The documented CI policy stops only on high or critical advisories; the following full-suite receipt uses pnpm audit --audit-level high to match it. ([evidence](docs/validation/runs/RUN-20261022-038.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-040.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-041.json))
+
+### Documentation and files
+
+- **updated:** [packages/presentation/README.md](packages/presentation/README.md) — Documents mountTableScene, its input boundary, on-demand rendering, overlay projection and failure behaviour, and the WEB-01 boundary.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-RENDERER row lists the table scene callables and limits.
+- **updated:** [docs/features.json](docs/features.json) — F-RENDERER describes the table scene, gains UX-01 and WEB-01 task links, documents and receipts; verification stays pending (simulation and software WebGL only); every verified feature gains the checkpoint full-suite run.
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the table-scene wiring, overlay, fallbacks and build order.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 8, review findings, the failed receipt and its fix, and what is not claimed.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment covering the development-only presentation dependency and the reference components follows in task 9.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — No new external dependency: Babylon 9.29.0 was already pinned in packages/presentation; only a workspace link was added.
+- **reviewed_unchanged:** [packages/engine-adapter/README.md](packages/engine-adapter/README.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [vendor/tcg-engines/README.md](vendor/tcg-engines/README.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-boot-02-database.md](docs/plans/2026-10-06-boot-02-database.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0004-restricted-local-database.md](docs/adr/0004-restricted-local-database.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/runbooks/database.md](docs/runbooks/database.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/boot-02.md](docs/validation/boot-02.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/plans/2026-10-07-boot-03-ci.md](docs/plans/2026-10-07-boot-03-ci.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0005-ci-artifact-qualification.md](docs/adr/0005-ci-artifact-qualification.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/runbooks/ci.md](docs/runbooks/ci.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/boot-03.md](docs/validation/boot-03.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/rules/source-specs-supplement.json](docs/rules/source-specs-supplement.json) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/rules/source-specs.json](docs/rules/source-specs.json) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [packages/engine-lab/README.md](packages/engine-lab/README.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/runbooks/engine.md](docs/runbooks/engine.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/rule-02.md](docs/validation/rule-02.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0009-pinned-engine-qualification.md](docs/adr/0009-pinned-engine-qualification.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0010-secure-randomness-replay.md](docs/adr/0010-secure-randomness-replay.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/rule-03.md](docs/validation/rule-03.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/adr/0013-durable-synthetic-match-commands.md](docs/adr/0013-durable-synthetic-match-commands.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/runbooks/match-commands.md](docs/runbooks/match-commands.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [docs/validation/play-01.md](docs/validation/play-01.md) — The lockfile change adds only the design system's development-only workspace link to @lorcana/presentation; no external package, version or build script changes, and nothing this document states is affected.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Rules-source tooling is unaffected.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Historical RULE-01 evidence; no rules inventory changed.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The checkpoint stays within the catalog decision.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Reviewed against this checkpoint.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-012.json).
+
+### Limits and next actions
+
+- No performance figure is recorded: Chromium renders WebGL in software here, and frame measurement belongs to WEB-01.
+- Lifecycle across routes and visibility, quality tiers and context restoration remain WEB-01; the reference handles context loss only by falling back to the Flat tier.
+- The scene is used from 80 rem; below it the reference shows the Flat tier.
+- A low-severity fastify advisory (GHSA-389g-gv7q-r4x8, fixed in 5.12.6) affects apps/match-service and packages/service-runtime. It is outside UX-01's scope and does not stop CI under the documented policy; it is left for the Director's decision.
+- Task 9 of the implementation plan: full validation, the ADR 0017 amendment, documents and the visual review captures.
+
+## CHG-20261022-011 — UX-01 task 7: the crowded-match reference, Flat tier
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T15:57:59.299Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 84bf1e9d63b0c00d92f602226b01185e65e607d0
+- Tasks: UX-01, WEB-02, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-CARD-CATALOG, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 7 (standard §19–§21, design screen 1): MatchLayout (chrome, battlefield, decision column and player strip; stacked below 64 rem; whole viewport), MatchChrome, PlayerSummary (neutral initials and a turn marker in text), Counter (format thresholds, printed symbols with text labels), ZoneCount (openable public zones), TurnContext, Battlefield (Flat tier and semantic board: named sides and zones in one wrapping row each), BoardCard (state as text markers as well as rotation; selection and valid targets as outline rings with text), ActionPanel and ActionChoice (decision with prompt at the critical size, choices with reasons when unavailable), HandFan (non-overlapping 52 px hit slices, raise preview that moves only the image, arrow-key navigation), HandList and EventLog. Tokens for board, hand and match sizes, with compact board cards below 80 rem; 19 component strings; the style gate allows --hand-offset, set inline by HandFan.
+- **implementation:** stories/support/reference/match.ts authors turn 7 between the reference decks with every state traceable to a real card or rule; commands.ts derives actions, challenge targets (Evasive, ready), song payments (ink, ink drop, singers with reasons) and questers from the position and rules text. Match.stories.tsx runs the local command machine (select, action, targets, payment, required choose-one with a Ward-aware target, bulk-quest and end-turn reviews, pending, fixture-receipt acceptance, rejection, reconnect reconciliation, Escape stepping back only before submission), the match menu (confirmation settings, fan-content notice, concede review), discard lists, the tablet log sheet and portrait inspection sheet; stories cover the design's states plus hand as list and an empty side.
+- **fix:** Reference fixture: six selection reasons corrected to the final position (Lafayette – All Ears has Alert, not Evasive; Chief Bogo, Mr. Big, Judy Hopps, Hiro Hamada and Baymax roles updated); the fixture is rebuilt from the same snapshot with no image change.
+- **test:** Eight crowded-match browser tests. RUN-20261022-029 passes the fixture tests and catalog:verify; RUN-20261022-030 passes the gates and 393/393 Chromium tests.
+- **review:** Visual review at 1440 x 900, 1180 x 820 and 820 x 1180 found an overflowing items row and hand strip, two-row sides on tablet landscape hiding markers, the fan rotating over the view switch, and a turn marker that read the same for both players; all fixed before the receipts. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Design-system runbook (crowded match) and validation (task 7); card-catalog validation correction note; handoff.
+
+### Verification
+
+- **passed:** rules-data build, 12 tests and catalog:verify after the reason corrections (container, raw cache). ([evidence](docs/validation/runs/RUN-20261022-029.json))
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 393/393 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-030.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-031.json))
+- **failed:** docs:check over the first finalization attempt failed, because the card-catalog runbook review required by the rules-data change was missing; preserved. RUN-20261022-033 is the passing check after adding the review. ([evidence](docs/validation/runs/RUN-20261022-032.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-033.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the crowded-match composition, the single position object, command derivation, compact sizing and fan hit areas.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 7, review findings, the data correction and receipts.
+- **updated:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Appends the selection-reason correction with its cause and receipt.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate.
+- **reviewed_unchanged:** [packages/rules-data/README.md](packages/rules-data/README.md) — Fixture counts are unchanged.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment is scheduled for task 9.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — Reason text corrections stay within the decision.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — The match menu keeps the fan-content notice reachable.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — No dependency or engine placement change.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Rules-source tooling is unaffected.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Historical RULE-01 evidence; no rules inventory changed.
+- **reviewed_unchanged:** [docs/runbooks/card-catalog.md](docs/runbooks/card-catalog.md) — No operational change: the reason corrections follow the documented rebuild steps (edit the selection, run select-fixtures, check with catalog:verify).
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-011.json).
+
+### Limits and next actions
+
+- The position is authored, not engine-run; its reachability is not certified. Receipts are fixture outcomes, never engine results.
+- Live play, authorized viewer projections and server receipts belong to WEB-02 and PLAY tasks.
+- Task 8 of the implementation plan: the Babylon table scene with its semantic overlay.
+
+## CHG-20261022-010 — UX-01 task 6: the pack-opening reference
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T15:40:38.796Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 7339c74b6548de66360c5fc03dfbd8b5437f2c5a
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 6 (standard §23, design screen 4): ProductChoice (held product with a quiet artwork slot; opening is free and never a purchase), RevealCard (face down with the official card back, then the card with rarity, Foil and New as text; a card turn in the major-motion duration; the rarest beat as light from the card's ink identity behind the card within the reward-beat token, with a forced-colours outline), PackReveal (ordered list, six columns from 64 rem and four below), RevealControls (Reveal next, Reveal all and Skip to summary, none waiting on decoration) and OpeningSummary (every card with labels, the new-card count and per-card View in Collection links, withheld with a reason while settlement is pending). Component tokens pack.product, pack.perspective, pack.summary-item, pack.summary-card and pack.reveal-max; 15 component strings.
+- **implementation:** stories/support/reference/pack.ts: the fixture's 12-card demonstration pack in reveal order (6 common, 3 uncommon, a Rare, the King Louie foil and Powerline – Megastar, Legendary, last), with New derived from the binder's demonstration holdings. Packs.stories.tsx composes the flow (choose, Confirmation review, indeterminate pending, reveal with announcements, summary) and stories for every design state plus none held; the Collection story takes a page argument so summary links land on each card's page.
+- **test:** Seven pack browser tests in reference.spec.ts. One defect they found was fixed before the receipt: the review dialog's close reset the flow after confirming, so pending never showed. RUN-20261022-026 passes the gates and 332/332 Chromium tests.
+- **review:** Visual review at 1440 x 900 (Paper and Ink) and 820 x 1180 found the second card row below the fold; the reveal stage is capped at 66 rem so both rows fit. The rarest beat reads as restrained light behind the card in both themes. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Design-system runbook (pack opening) and validation (task 6).
+
+### Verification
+
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 332/332 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-026.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-027.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-028.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the pack-opening flow, the beat's limits and the honest failure and settlement states.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 6, review findings, the test-found defect and the receipt.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment is scheduled for task 9.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The pack uses fixture printings through the documented exports.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Catalog evidence is unchanged.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — The flow never implies a purchase; the card back and card images keep their provenance and the takedown fallback.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-010.json).
+
+### Limits and next actions
+
+- Pack contents are a demonstration composition, not the official distribution; no economy or settlement service is involved (ECON-02, WEB-03).
+- Task 7 of the implementation plan: the crowded match, Flat tier.
+
+## CHG-20261022-009 — UX-01 task 5: the Collection binder reference
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T15:24:57.086Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 4e529f4db1587b911f5def15fe6db38eb51d4dcb
+- Tasks: UX-01, CONTENT-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-CARD-CATALOG, F-DOCS
+- Requirements: R25.001, R25.002, R25.003, R20.001
+
+### Changes
+
+- **implementation:** Reference fixture: 173 records-only selection entries (image: false) bring the fixture to all 242 Hyperia City printings (standard 1–204, specials 205–242) so the binder can page through the set; fixtureImageSources skips records-only entries, fixtures.ts exposes the flag, and the tests require the 242 printings and no thumbnail for any record. Images stay at 75; catalog:verify matches the snapshot exactly.
+- **feature:** Implementation-plan task 5 (standard §17, design screen 3): Binder (one or two faces of 3 x 3 pockets by content fit through a hidden probe sized from tokens, sticky previous and next buttons flanking the faces, a polite page indicator, Go to card number with an explained not-found, Page Up and Page Down scoped to the binder with focus moved to the new spread, only visible faces rendered, a fade with brief travel that reduced motion removes), BinderPocket (owned with normal and foil quantities, missing with silhouette, name and number, unknown and unavailable labelled and never zero, loading, padding and filtered without focus), PocketGrid (Grid view), CompletionSummary (standard denominator, special printings and foils as separate figures) and InspectorLayout (inspection column beside working content). Component tokens binder.pocket-min and binder.go-to; 18 component strings.
+- **implementation:** stories/support/reference/binder.ts builds the 29 pages (six ink sections and the special printings, each starting on a new page), demonstration holdings on printings with images (24 of 204 standard, 2 of 38 special, 7 foils), filters, pocket states and completion; cards.ts adds hasThumbnail and the deckbuilder catalog now shows only printings with images. Collection.stories.tsx composes the room (set picker in the header, filters and the view switch on one row, completion, binder, Grid and List views, inspection) with stories for every design state plus takedown and unknown ownership.
+- **test:** Seven Collection browser tests in reference.spec.ts. Two defects they found were fixed before the receipt: a keyboard page turn lost focus when the focused pocket unmounted, and an effect declared before its dependency stopped the story rendering. RUN-20261022-023 passes the gates and 290/290 Chromium tests; RUN-20261022-022 passes the fixture tests and catalog:verify.
+- **review:** Visual review at 1440 x 900 and 820 x 1180 found the binder pushed far below the fold and page buttons distant from a single face; the toolbar was compacted, the set picker moved into the header and the buttons now flank the faces and stay in view. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Card-catalog runbook and validation (records-only entries), design-system runbook (Collection binder) and validation (task 5).
+
+### Verification
+
+- **passed:** rules-data build, 12 tests and catalog:verify with the binder records (container, raw cache). ([evidence](docs/validation/runs/RUN-20261022-022.json))
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 290/290 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-023.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-024.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-025.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/card-catalog.md](docs/runbooks/card-catalog.md) — Documents the image: false flag for records-only reference entries.
+- **updated:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Appends the binder-records addition with its reason, unchanged images, checks and receipt.
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the Collection binder composition, content fit, anchoring, pockets, completion and inspection.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 5, review findings, test-found defects and receipts.
+- **updated:** [docs/features.json](docs/features.json) — F-CARD-CATALOG describes the reference fixture's 242 printings; every verified feature gains the checkpoint full-suite run at the new source fingerprint, and F-DESIGN-SYSTEM the task's browser receipt. The fixture receipt RUN-20261022-022 is listed in this record's verification.
+- **updated:** [packages/rules-data/README.md](packages/rules-data/README.md) — The reference fixture now holds 242 printings, 69 with images.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — Records-only fixture entries from the same acquisition follow the decision.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment is scheduled for task 9.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — No new images; records come from the recorded acquisition.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — No dependency or engine placement change.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Rules-source tooling is unaffected.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Historical RULE-01 evidence; no rules inventory changed.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-009.json).
+
+### Limits and next actions
+
+- Ownership is demonstration data on the printings that have images; other pockets are unowned by construction.
+- Only Hyperia City has a full card list in the fixture; choosing another set shows an honest message.
+- Task 6 of the implementation plan: pack presentation.
+
+## CHG-20261022-008 — UX-01 task 4: the deckbuilder reference
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T15:01:20.227Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: c7d5020226521fe424fa5873d62a959e9639c15c
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 4 (standard §18, design screen 2): DeckWorkspace (catalog and deck regions on wide layouts with an inspector slot; Catalog and Deck tabs with a persistent summary bar below 64 rem), DeckPanel (header, scrolling body, pinned footer that is a named focusable group), FilterBar (search with result count, ink and cost toggle groups, type, rarity, set, inkability and classification selects, Reset filters, and a filters sheet below the wide layout), ViewSwitch (single-choice toggle group), CatalogResults (card grid by default, dense list, loading placeholders, empty state) and CatalogTileControls (decision D28: Remove, quantity, Add; the card itself opens it), DeckHeader, DeckList (grouped by cost), DeckSummary, CostCurve (one neutral series, labelled caps, no gridlines, a hidden table for assistive technology), ValidationSummary (rules with the policy version, ownership and advice kept apart), SaveState, ImportPreview and ExportDialog. All Experimental with documentation contracts and stories for every documented state.
+- **edit:** DeckEntry: the card name is now the inspect button (accessible name 'Inspect <name>' contains the visible name), replacing a 'Printing' button whose accessible name did not contain its visible text (WCAG 2.5.3); the line uses a grid that fits a narrow deck region; the quantity keeps its label for assistive technology. QuantityField gains labelVisibility and a compact size; InkIdentity gains a plain appearance for use inside controls; InspectorHost and FilterBar share the new foundation hook useAtLeast.
+- **implementation:** Component tokens catalog.tile-min, catalog.search-min, catalog.select-min, deckbuilder.deck (25 rem), deckbuilder.deck-narrow (22.5 rem, widened from the design's 20 rem after the visual review), chart.plot-block-size, chart.bar-max, chart.bar-radius and control.compact-input; the filter and undo icons in the curated registry; 49 component strings.
+- **implementation:** Reference data and stories: stories/support/reference/cards.ts (reference and presentation fixtures as presentational printings, the printed set from the identifier), deck.ts (the Core demonstration format record, identity-based copy counts, rules, ownership and advice validation, summary figures, text and CSV export), decks.ts (the two 60-card decks, working, invalid and ownership states), catalog.ts (deterministic catalog order, filtering and an import parser that never substitutes). Deckbuilder.stories.tsx composes the room with real add, remove and undo, announcements, a printing preference separate from gameplay identity, a save and conflict flow, and a leave guard through React Aria's RouterProvider; stories cover the design's 11 states plus an empty deck.
+- **test:** Eleven deckbuilder browser tests in reference.spec.ts. RUN-20261022-018 failed 17 of 242 (view-switch options 40 px tall; two scrollable regions without keyboard focus) and is preserved; after the fixes RUN-20261022-019 passes 242/242 with gates.
+- **review:** Visual review at 1440 x 900, 1180 x 820 and 820 x 1180 found deck lines broken in the narrow region, chip-in-button ink filters, a duplicated save status (two status regions), the inspector rendered outside the layout and a quest set shown instead of the printed set; all were fixed before the passing receipt. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Design-system runbook (deckbuilder composition) and the UX-01 build section of the design-system validation.
+
+### Verification
+
+- **failed:** Full design-system suite: 17 of 242 failed (target size of view-switch options; scrollable regions without keyboard focus); preserved. ([evidence](docs/validation/runs/RUN-20261022-018.json))
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite after the fixes, 242/242 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-019.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-020.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-021.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds the deckbuilder composition, narrow layout, inspection slot, format record and import/export behaviour.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 4, its component changes, the design adjustment, review findings and both receipts, including the failed one.
+- **reviewed_unchanged:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — The approved design stays as approved; the 22.5 rem deck region at 64–80 rem is recorded as an implementation adjustment in the validation and the token's description.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The amendment is scheduled for task 9.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The stories use the fixtures through their documented exports.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Catalog evidence is unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-008.json).
+
+### Limits and next actions
+
+- Demonstration validation in the stories is not the rules or ownership services; format values come from a labelled demonstration record.
+- Clipboard copy depends on the browser's clipboard permission; failure is reported in the dialog.
+- Task 5 of the implementation plan: the Collection binder.
+
+## CHG-20261022-007 — UX-01 task 3: the room frame
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T14:30:17.101Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 3a3996c0e2d26bb582d116d0548eb198d14887e2
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.001, R25.002, R25.003
+
+### Changes
+
+- **feature:** Implementation-plan task 3: NavigationBar (wordmark, the primary destinations of blueprint §10.1 as links with aria-current and a weight-plus-underline current marker, a menu holding them below the wide layout, status and account slots; decision D28's top bar) and AccountMenu (neutral initials avatar and name opening Profile, Settings and the fan-content notice). RoomFrame (skip link, navigation slot, main landmark at the standard content width, perimeter gutters reserved for ink-form artwork at expanded widths), RoomHeader (level-1 room title, context line, demonstration notice, actions), DemonstrationLabel (the fixed demonstration sentence) and InkFormSlot (decorative reservation outlined with its name and extent only when the root data-artwork-slots attribute is set). All Experimental, with documentation contracts and stories for every documented state.
+- **implementation:** Component tokens avatar.size ({space.8}), avatar.radius ({radius.pill}) and room.ink-gutter ({space.16}), with regenerated token outputs; the menu icon (Phosphor List) added to the curated registry with its meaning; seven component strings. The navigation bar's content edge follows the room gutters and perimeter reservation so the wordmark aligns with the room content.
+- **implementation:** Storybook preview: an 'Artwork slots' toolbar global that sets the root attribute, and parameters.designSystem.bleed for room stories. stories/support/reference/: room text through useReferenceText (en-XA lengthens it), storyHref links between reference stories that keep the toolbar globals, and ReferenceNavigation/ReferenceRoom with invented demonstration player names, a working notifications list and the fan-content notice dialog. stories/reference/RoomFrame.stories.tsx: frame, artwork slots shown, secondary surface, long labels, title only and the honest page for rooms outside the reference set.
+- **test:** tests/browser/reference.spec.ts adds seven room-frame tests: skip link first and focusing main, the current destination marked beyond colour, the collapsed menu at 820 px with focus restored, ink-form slots unfocusable, aria-hidden and clear of every control, the account menu and fan-content notice, the quiet count opening its list on demand, and a non-reference destination leading to an honest page. RUN-20261022-015 passes the gates and 193/193 Chromium tests, including axe in both themes and 44 px targets for the new stories.
+- **review:** Visual review of captures (Paper 1440 x 900, Ink 820 x 1180, Paper 1920 x 1080 with slots shown) found the wordmark misaligned with the room content and a gutter mismatch at 820 px; both were fixed before the receipts above and the recapture confirmed alignment. Captures are in the ignored .local/ux-01-review/.
+- **documentation:** Design-system runbook gains a reference-screens section; the design-system validation's UX-01 build section records task 3.
+
+### Verification
+
+- **passed:** Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 193/193 (headless browser). ([evidence](docs/validation/runs/RUN-20261022-015.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-016.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-017.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — New reference-screens section: where compositions and data live, the room frame, alignment, artwork slots, bleed, real links and the demonstration label.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Records task 3, its visual-review finding and fix, tests and receipt.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate; component lists live in the runbook and validation.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The plan schedules the amendment for task 9; the registry addition follows D21's curated-registry rule.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — No catalog card appears in the room-frame stories.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Catalog evidence is unchanged.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-007.json).
+
+### Limits and next actions
+
+- Chromium automation only; manual accessibility journeys and real devices remain UX-02.
+- Story links navigate inside the Storybook preview iframe; the manager's address bar does not change.
+- Task 4 of the implementation plan: the deckbuilder.
+
+## CHG-20261022-006 — UX-01 task 2: the official card back and the CardBack component
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T14:18:29.948Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: a4ee8788cd37313195bfe0607ac9f04f29b64b14
+- Tasks: UX-01, DOC-01, DOC-02
+- Features: F-DESIGN-SYSTEM, F-DOCS
+- Requirements: R25.009
+
+### Changes
+
+- **implementation:** Implementation-plan task 2 (decision D28): the official card back is stored byte for byte as packages/design-system/src/assets/card-back/lorcana_card_back.jpg (JPEG 1468 x 2048, 486,672 bytes, SHA-256 0f022bc3422c5c0c2adf6bc09ca8196d30e0c78842e0845be7d44b024f5b1dbf), copied from the legacy app's public/assets/cards/ and byte-identical to the LorcanaOnline original. Its manifest.json records the source, the legacy catalog entry (material.card.back, official source, owner-approved 2026-07-02), format and colour space, dimensions and aspect ratio, rendition, language, accessibility use, the neutral fallback, the copies not used and the D07 rights basis (standard §29).
+- **feature:** CardBack (Experimental, src/components/CardBack): the official back at the card silhouette, decorative unless given a label; with officialAssets={false}, or if the image fails, a neutral back drawn from tokens (raised surface, essential border, inset decorative rule, forced-colors boundaries). cardBackImageUrl exports the asset URL for presentation code that textures face-down cards. Documentation contract and a story covering the official back, neutral back, small size and labelled card; the Cards documentation page lists it.
+- **edit:** copy-static.mjs copies .jpg files to dist/ so the compiled package keeps the asset path; the browser-suite server serves .jpg as image/jpeg; the CSS module type for CardBack is generated.
+- **test:** components.test.mjs checks the card back against its manifest: SHA-256, byte size, the JPEG start-of-image marker, the decoded frame dimensions and the rights basis. RUN-20261022-012 passes the design-system typecheck and all 35 gate tests, including CardBack's documentation and state coverage.
+- **documentation:** Design-system runbook (face-down cards and the reference fixture) and a new dated UX-01 build section in the design-system validation.
+
+### Verification
+
+- **passed:** Design-system typecheck and the 35 gate tests: tokens, styles, CSS module types, component contracts with CardBack's states, icon and symbol rules, symbol and card-back provenance (container). ([evidence](docs/validation/runs/RUN-20261022-012.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-013.json))
+- **passed:** docs:check over the finalized checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-014.json))
+
+### Documentation and files
+
+- **updated:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Adds face-down cards (CardBack, its manifest, takedown fallback and cardBackImageUrl) and points reference screens at the reference fixture.
+- **updated:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Appends the dated UX-01 build section with tasks 1 and 2.
+- **reviewed_unchanged:** [packages/design-system/README.md](packages/design-system/README.md) — Its package summary stays accurate; component lists live in the runbook and validation.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The plan schedules the ADR amendment for task 9, once the reference stories, new components and the development-only presentation dependency all exist.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The card back is an official asset under D07 and D28 with its own manifest; the catalog decision is unaffected.
+- **reviewed_unchanged:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Catalog evidence is unchanged; the new story uses no catalog card.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records this checkpoint.
+- **updated:** [docs/features.json](docs/features.json) — Every verified feature gains the checkpoint full-suite run at the new source fingerprint.
+- **reviewed_unchanged:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [README.md](README.md) — The UX-01 status paragraph remains accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Reviewed against this checkpoint.
+- **reviewed_unchanged:** [docs/README.md](docs/README.md) — The UX-01 status paragraph and index remain accurate for this checkpoint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-006.json).
+
+### Limits and next actions
+
+- Browser rendering of the card back is exercised from task 3 onward, when the browser suite runs with the new stories.
+- Task 3 of the implementation plan: the room frame (navigation bar, room header, demonstration label, ink-form slots).
+
+## CHG-20261022-005 — UX-01 task 1: reference fixture of real Hyperia City printings
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T14:03:32.742Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 98357b0e5789760842529fdc5fcd7d1599a4af4f
+- Tasks: UX-01, CONTENT-01, DOC-01, DOC-02
+- Features: F-CARD-CATALOG, F-DOCS
+- Requirements: R20.001, R20.002, R25.009
+
+### Changes
+
+- **implementation:** The Director approved the full UX-01 design for end-to-end completion. Implementation-plan task 1: packages/rules-data/fixtures/reference-selection.json selects 69 real Hyperia City (set 14) printings from the 2026-10-21 acquisition, each with its own reason: the player's Amber/Steel deck and the opponent's Emerald/Sapphire deck (60 cards each) with every card's role in the crowded match, two binder spreads (Amber 1–18/204 and Sapphire 137–154/204), a 12-card demonstration pack drawn from the spreads, and four special printings. Six printings inspected in the stories are flagged for full-card images.
+- **implementation:** scripts/catalog-lib.mjs fixtureImageSources takes details 'all' (presentation fixture, unchanged) or 'flagged' (reference fixture); scripts/select-fixtures.mjs writes both fixtures and reuses an image either manifest already records when its checksum matches; scripts/verify-fixtures.mjs proves both committed fixtures equal what their selections derive from the recorded snapshot. src/fixtures.ts exports referenceCatalog, referenceSelection, referenceImages, referencePrinting and referenceImage through the same normalizer as the presentation fixture. The generated src/fixtures/reference.json and reference-images.json and 74 new image files (68 thumbnails and 6 full-card images; Port Authority's thumbnail was already recorded) were written by select-fixtures, which fetched them from Ravensburger's public image host at 2026-10-22T14:01Z. The presentation fixture and its manifests are byte-identical.
+- **test:** tests/catalog.test.mjs adds three tests, written first: the reference selection reproduced in order with no duplicate printing or reason; every reference printing's rotation state is CoreConstructed; a thumbnail for every printing, full-card images only where flagged, thumbnails within 4 MB and full-card images within 3 MB. The existing image test now covers both manifests and refuses any unrecorded file. RUN-20261022-006 records the expected failure before the exports existed; RUN-20261022-007 passes 12 tests.
+- **documentation:** Card-catalog runbook (fixture use and rebuild for both fixtures), card-catalog validation (dated reference-fixture section with counts, bytes, checks and receipts), the rules-data README, the F-CARD-CATALOG feature row and the handoff.
+
+### Verification
+
+- **failed:** Test-first: the new reference-fixture tests fail before the fixture exports exist (expected). ([evidence](docs/validation/runs/RUN-20261022-006.json))
+- **passed:** rules-data build and its 12 tests, including the three reference-fixture tests (container). ([evidence](docs/validation/runs/RUN-20261022-007.json))
+- **passed:** catalog:verify: every acquired language audits cleanly and both committed fixtures equal what their selections derive from the recorded snapshot (container, raw cache). ([evidence](docs/validation/runs/RUN-20261022-008.json))
+- **passed:** rules-data typecheck, import boundaries and repository lint (static). ([evidence](docs/validation/runs/RUN-20261022-009.json))
+- **passed:** Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container). ([evidence](docs/validation/runs/RUN-20261022-010.json))
+- **passed:** docs:check over the finalized task 1 checkpoint (static). ([evidence](docs/validation/runs/RUN-20261022-011.json))
+
+### Documentation and files
+
+- **updated:** [docs/README.md](docs/README.md) — Same UX-01 status update as AGENTS.md, with document-relative links.
+- **updated:** [README.md](README.md) — Same UX-01 status update as AGENTS.md.
+- **updated:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph said the plan came before any build; it now says the tasks are being built in order under the Director's end-to-end instruction.
+- **updated:** [docs/runbooks/card-catalog.md](docs/runbooks/card-catalog.md) — Use and rebuild instructions now cover the reference fixture, its detail flag and shared images.
+- **updated:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Appended a dated section for the reference fixture with its selection, image totals, checks, receipts and limits.
+- **updated:** [packages/rules-data/README.md](packages/rules-data/README.md) — The fixtures export now names both fixtures and their sizes.
+- **updated:** [docs/FEATURES.md](docs/FEATURES.md) — F-CARD-CATALOG lists the reference fixture exports.
+- **updated:** [docs/features.json](docs/features.json) — F-CARD-CATALOG describes the reference fixture; every verified feature gains the checkpoint full-suite run at the new source fingerprint, and F-CARD-CATALOG its task receipts.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Records the Director's end-to-end instruction, this checkpoint and the next actions.
+- **reviewed_unchanged:** [docs/adr/0018-official-card-catalog.md](docs/adr/0018-official-card-catalog.md) — The decision covers real-card fixtures from dated acquisitions with provenance; a second fixture from the same acquisition follows it without changing it.
+- **reviewed_unchanged:** [docs/adr/0008-engine-placement-dependency-baseline.md](docs/adr/0008-engine-placement-dependency-baseline.md) — No dependency or engine placement change; the fixture adds data only.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — Every new image records its source URL, retrieval time, checksum and the D07 rights basis, as the policy requires.
+- **reviewed_unchanged:** [docs/rules/README.md](docs/rules/README.md) — Rules-source tooling and inventories are unaffected; the reference fixture is presentation data, not rules certification.
+- **reviewed_unchanged:** [docs/validation/rule-01.md](docs/validation/rule-01.md) — Historical RULE-01 evidence; no rules inventory changed.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs:sync from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs:sync with the new source fingerprint.
+- **reviewed_unchanged:** [docs/WORKSPACE_QUALIFICATION.md](docs/WORKSPACE_QUALIFICATION.md) — Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting.
+- **reviewed_unchanged:** [docs/adr/0001-local-development-environment.md](docs/adr/0001-local-development-environment.md) — No local-environment, container or toolchain decision is affected.
+- **reviewed_unchanged:** [docs/adr/0002-application-foundation.md](docs/adr/0002-application-foundation.md) — Package ownership and the application foundation are unchanged; the work stays inside the existing packages.
+- **reviewed_unchanged:** [docs/audits/2026-10-06-project-audit.md](docs/audits/2026-10-06-project-audit.md) — The dated 2026-10-06 audit is preserved as written.
+- **reviewed_unchanged:** [docs/documentation-map.json](docs/documentation-map.json) — No new document needs classification and no source-impact edge changes at this checkpoint.
+- **reviewed_unchanged:** [docs/plans/2026-10-06-documentation-governance.md](docs/plans/2026-10-06-documentation-governance.md) — Documentation governance is unchanged; this checkpoint follows it.
+- **reviewed_unchanged:** [docs/runbooks/workspace-setup.md](docs/runbooks/workspace-setup.md) — Setup steps are unchanged.
+- **reviewed_unchanged:** [docs/templates/change.json](docs/templates/change.json) — The record format is unchanged.
+- **reviewed_unchanged:** [docs/validation/boot-01.md](docs/validation/boot-01.md) — Dated BOOT-01 evidence, preserved.
+- **reviewed_unchanged:** [docs/vision/README.md](docs/vision/README.md) — The vision baselines are unchanged.
+- **reviewed_unchanged:** [docs/vision/additional_scope.csv](docs/vision/additional_scope.csv) — No additional-scope item changes.
+- **reviewed_unchanged:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — D27 and D28 already record the decisions this checkpoint implements; no new Director decision.
+- **reviewed_unchanged:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 stays in its build stage until the last task; no other task changes.
+- **reviewed_unchanged:** [docs/vision/requirements.csv](docs/vision/requirements.csv) — R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance.
+- **reviewed_unchanged:** [docs/plans/2026-10-10-boot-04-decision-worksheet.md](docs/plans/2026-10-10-boot-04-decision-worksheet.md) — Dated planning record; no dependency in its register changes.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-005.json).
+
+### Limits and next actions
+
+- The decks, match position, ownership figures and pack contents that use these printings are demonstration data, written in later tasks; nothing here is admitted or certified for play.
+- Image retrieval is a public GET of Ravensburger's image host; no other network use.
+- Task 2 of the implementation plan: the official card back as a design-system asset and the CardBack component.
+
+## CHG-20261022-004 — UX-01 design approval (decision D28) and implementation plan
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T06:31:38.935Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 4b90ab4419411b29e311a13fa5d961ee564ab4f0
+- Tasks: UX-01, WEB-01, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **documentation:** Director's approval of the UX-01 written design with answers to its three review points, recorded as decision D28 in the decision register and as a Director's review section in docs/plans/2026-10-22-ux-01-design.md. 1. The official card back, which the Director located in the legacy app's asset folder: /home/andre/the-inkspire/public/assets/cards/lorcana_card_back.jpg, byte-identical to /home/andre/LorcanaOnline/public/assets/lorcana_card_back.jpg (JPEG 1468 x 2048, 486,672 bytes, SHA-256 0f022bc3422c5c0c2adf6bc09ca8196d30e0c78842e0845be7d44b024f5b1dbf), recorded in the legacy asset catalog (packages/assets/src/catalog.ts, key material.card.back) as an official source reused as-is and owner-approved 2026-07-02. The same folder's 734 x 1024 rounded copy, 3583 x 5000 upscale and recoloured variants are not used. It will be stored unchanged as a design-system asset with a manifest, and a neutral token-drawn back replaces it when official assets are off. 2. One simple control row under each deckbuilder catalog tile (Remove, quantity in the deck, Add), with pressing the card still opening it for reading (D26); the Director's alternative of click or tap to add was offered back as a choice and the Director chose the row. 3. A top navigation bar across Collection, Decks and Packs. The design's status line, the deckbuilder tile sentence, the scene's face-down card line, the fixture plan and the components table now reflect these answers; the original review-point text is kept.
+- **documentation:** UX-01 implementation plan (docs/plans/2026-10-22-ux-01-implementation.md): goal, architecture, pinned stack with no added dependency (only a development-only workspace dependency of the design system on @lorcana/presentation), global constraints, five review-focus risks, file ownership for every new component folder, fixture, asset, scene, story and test file, the closed TableSceneInput/CardRect/TableScene interfaces shared by the scene and the DOM overlay, and ten checkpointed tasks with test-first steps and exact commands: reference fixture, card back, room frame, deckbuilder, Collection binder, pack presentation, crowded match Flat tier, table scene, validation with documents and visual review, then hosted CI and the Director's visual approval. The fixture legality test uses the catalog's set_rotation_state value CoreConstructed, checked in the raw English catalog (1,770 CoreConstructed, 1,681 InfinityConstructed, 106 None, 1 Banned). No step is executed by this record.
+- **documentation:** Status lines in AGENTS.md, README.md and docs/README.md record the approved design (D28) and link the implementation plan; the docs/README.md design-system index row links the plan; the UX-01 backlog row moves to design_approved_implementation_plan_written with the plan and this record in its evidence; the documentation map classifies the plan as planning; the handoff is rewritten for this checkpoint.
+
+### Verification
+
+- **passed:** docs:check over the approval and plan checkpoint with decision D28 and every updated document (static); source fingerprint unchanged from RUN-20261021-014. ([evidence](docs/validation/runs/RUN-20261022-005.json))
+
+### Documentation and files
+
+- **updated:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — Marked approved under D28, with a Director's review section giving the card-back source and provenance, the deckbuilder row and the navigation answer; passages that named review points now state the answers, and the original review-point text is kept.
+- **updated:** [docs/plans/2026-10-22-ux-01-implementation.md](docs/plans/2026-10-22-ux-01-implementation.md) — New planning document: the UX-01 implementation plan written from the approved design, with file ownership, shared interfaces and ten checkpointed tasks.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Adds D28 with the Director's design approval and the three review-point answers; earlier decisions unchanged.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 status moves from design_proposed_awaiting_approval to design_approved_implementation_plan_written, with the plan and this record in its evidence. No other row changes.
+- **updated:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph said the written design awaited approval; it now records D28 and links the implementation plan.
+- **updated:** [README.md](README.md) — Same UX-01 status update as AGENTS.md, with the same link prefix.
+- **updated:** [docs/README.md](docs/README.md) — Same UX-01 status update with document-relative links, and the design-system index row now links the implementation plan.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classifies the implementation plan as planning, like the earlier task plans.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the approval and plan checkpoint: D28, the plan, the pending build and the next actions.
+- **reviewed_unchanged:** [docs/plans/2026-10-22-ux-01-intake.md](docs/plans/2026-10-22-ux-01-intake.md) — Closed intake stage; D27 and its consequences remain accurate, and D28 is recorded in the design it led to.
+- **reviewed_unchanged:** [docs/policies/fan-content.md](docs/policies/fan-content.md) — The card back is an official asset under the existing D07 rules (provenance, notice, no charge, neutral fallback); the plan follows them and the policy needs no change.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — The plan schedules its amendment (reference stories, the development-only presentation dependency, new components and the card back) for task 9, when those exist.
+- **reviewed_unchanged:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Still lists the UX-01 reference screens and their visual approval as pending, which remains accurate until the build.
+- **reviewed_unchanged:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Operational guidance for the package; the reference-screens section is added in task 9.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Describes implemented behavior; approval and planning change no feature.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs:sync from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs:sync; the source fingerprint is unchanged because only documentation changed.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-004.json).
+
+### Limits and next actions
+
+- Planning stage only: no component, fixture, asset, scene, dependency or workflow change, so the source fingerprint 256dd89d and its receipts (RUN-20261021-014, 016, 018, 019) stand.
+- The card back's origin before LorcanaOnline is not recorded beyond the legacy catalog's 'official source' note and the Director's identification; its provenance record will say so.
+- The Director's answers have no separately recorded event time; the record time stands for them.
+- On the Director's go-ahead, build task 1 of the implementation plan (reference fixture), with a checkpoint, change record and receipts after each task.
+- Push the branch for hosted CI only when the Director asks.
+
+## CHG-20261022-003 — UX-01 written design for the matched reference screens
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T05:10:11.915Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: cdfbe34ae136775ece51f9f261f9f4b25480d81c
+- Tasks: UX-01, UX-03, WEB-01, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **documentation:** UX-01 written design (docs/plans/2026-10-22-ux-01-design.md), the stage after the intake and decision D27, proposed for the Director's approval. It gives one UX standard §33 brief per reference screen (crowded match, practical deckbuilder, Collection binder, pack presentation): player task, priority order, composition at desktop 1440 × 900 and tablet 1180 × 820 and 820 × 1180, representative real-card content, the required states as stories, and acceptance evidence. It adds the interaction specification (match command, bulk quest and end turn, hand, deck editing, binder paging, pack reveal, shortcuts, focus and announcements), the Babylon table scene boundary (mountTableScene in packages/presentation loaded lazily by the match story through a development-only dependency; on-demand rendering with no loop or animation; a DOM semantic layer of real buttons placed over the projected card rectangles for names, focus, hit areas and state text; Flat-tier fallback on failure; WEB-01 keeps lifecycle, tiers, measurement and context restoration), the fixture plan (about 80 Hyperia City-centred printings with thumbnails and about six detail images, all with provenance; story-only positions, ownership and contents), new Experimental components with ownership, the verification plan and the documentation impact. Three review points for the Director: card back source, deckbuilder tile controls against D26, and a top navigation bar.
+- **review:** Design claims checked against the code: InspectorHost switches between side panel and sheet at the 64rem wide breakpoint; mountSanityScene already takes an injectable engine and resize observer; the import-boundary check allows a browser-scope design-system story to import the browser-scope presentation package; the verified symbol set (D21) has gameplay and ink symbols but no rarity symbols, so rarity is shown as text; Hyperia City (set 14) is Core-legal with 204 standard and 38 special printings across six inks.
+- **documentation:** Status lines in AGENTS.md, README.md and docs/README.md link the design as awaiting approval; the docs index row links it; the UX-01 backlog status moves to reference_screens_design_proposed_awaiting_approval with the design and this record in its evidence; the documentation map classifies the design as planning; the handoff names the review points and the next stages.
+
+### Verification
+
+- **passed:** docs:check over the design checkpoint and every updated document (static); source fingerprint unchanged from RUN-20261021-014. ([evidence](docs/validation/runs/RUN-20261022-004.json))
+
+### Documentation and files
+
+- **updated:** [docs/plans/2026-10-22-ux-01-design.md](docs/plans/2026-10-22-ux-01-design.md) — New planning document: the UX-01 written design, built from the intake, D27, the UX standard and the current design-system, presentation and rules-data packages.
+- **updated:** [AGENTS.md](AGENTS.md) — The UX-01 status sentence said the written design was next; it now links the design as awaiting the Director's approval.
+- **updated:** [README.md](README.md) — Same UX-01 status update as AGENTS.md.
+- **updated:** [docs/README.md](docs/README.md) — Same UX-01 status update, and the design-system index row links the design beside the intake.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 status moves to reference_screens_design_proposed_awaiting_approval, with the design and this record in its evidence; no other row changes.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classifies the design as planning.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the design checkpoint: both UX-01 records, the design's contents, its three review points and the next stages.
+- **reviewed_unchanged:** [docs/plans/2026-10-22-ux-01-intake.md](docs/plans/2026-10-22-ux-01-intake.md) — The intake stays as recorded; the design follows its answers and consequences without changing them.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — No decision is implemented yet; the design states that an ADR 0017 amendment records the reference stories, the development-only presentation dependency and the new components at implementation.
+- **reviewed_unchanged:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Still accurate: reference screens and their visual approval remain pending.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — No feature behavior changes at the design stage.
+- **reviewed_unchanged:** [docs/vision/UX_UI_DESIGN_SYSTEM.md](docs/vision/UX_UI_DESIGN_SYSTEM.md) — The Director's adopted standard is the authority the design cites; it is not edited.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs:sync from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs:sync; the source fingerprint is unchanged because only documentation changed.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-003.json).
+
+### Limits and next actions
+
+- Design stage only: no source, fixture or dependency change, so the source fingerprint 256dd89d and its receipts stand.
+- The Director's approval of the design and answers to its three review points are pending; the implementation plan follows approval.
+- Record the Director's approval and review-point answers.
+- Write the UX-01 implementation plan with file ownership, task order and test commands, then build stage by stage.
+
+## CHG-20261022-002 — UX-01 intake for the matched reference screens, decision D27 and the pull request #6 merge runs
+
+- Status: finalized
+- Actor: Claude Code agent (architect/QA reviewer role) on Director request, local WSL session
+- Recorded (UTC): 2026-10-22T04:41:40.268Z
+- Event: unknown; recorded retrospectively (recorded_only)
+- Source: 4d9dfc7170ea35280a4c75dfd447faca7ca369cf
+- Tasks: UX-01, UX-03, DOC-01, DOC-02
+- Features: F-DOCS
+- Requirements: none
+
+### Changes
+
+- **documentation:** UX-01 intake (docs/plans/2026-10-22-ux-01-intake.md), the first documented stage of the task, after the Director's instructions to follow the documented tasks and stages and to begin UX-01 from the built design system. It records the authority (backlog UX-01, blueprint §10.1, §11.1, §16.1 and §18.3, UX standard §33–§36, decisions D17, D20, D21, D23–D26), what the design system already provides, the pieces each of the four reference screens still needs (crowded match, practical deckbuilder, Collection binder, pack presentation), the real-card fixture growth required by D25, boundaries, four questions for the Director with recommendations (direction studies, medium, match table tier, ink forms), default viewports and states, and the qualification design. No screen, component, fixture, dependency or workflow change.
+- **documentation:** Director answers to the intake questions recorded as decision D27 (decision register and the intake's answers section): one matched set of reference screens replaces the three alternative studies of blueprint §11.1; interactive Storybook screens built from the existing components and real catalog cards, labeled as demonstrations; a first static authored Babylon table scene in the crowded-match reference, against the agent's Flat-tier-only recommendation, with WEB-01 keeping lifecycle, quality tiers, measurement and context restoration and the Flat tier still required; quiet documented slots for ink-form artwork. The intake lists the consequences for the written design: scene code in packages/presentation, a lazy development-only boundary for the story, the semantic board and DOM presentation reading the same fixture, and software WebGL limiting automated scene checks.
+- **review:** Hosted runs re-observed from public GitHub job metadata with gh run view at about 04:44Z: run 39703969780 (pull_request, claude/ux-card-catalog at 4d9dfc7) design-system 01:08:50–01:11:15Z and foundation 01:08:50–01:24:52Z, both successful; the Director's fast-forward of main from 7a9e757 to 4d9dfc7; run 39705738273 (push to main at 4d9dfc7) foundation 01:27:05–01:42:43Z and design-system 01:27:05–01:30:22Z, both successful. Logs and artifacts were not downloaded.
+- **documentation:** Status lines in AGENTS.md, README.md and docs/README.md now name the UX-01 reference screens as next, with the inspector (D24) following in UX-03, and record main at 4d9dfc7 with both merge runs; docs/README.md links the intake from the design-system index row; the UX-01 backlog row records the intake stage and its evidence (statuses of other tasks unchanged); the card catalog validation gains a dated merge-runs section; the documentation map classifies the intake as planning; the handoff is rewritten for this checkpoint.
+- **review:** The CardTile label finding noted during the 2026-10-21 capture (visible 'Printing' text against an 'Inspect …' accessible name, WCAG 2.5.3) was re-checked in packages/design-system/src/components/CardTile/CardTile.tsx: under D26 the tile renders only the card image inside a button named by action.inspect, with no visible text label, so the finding no longer applies. No source change.
+
+### Verification
+
+- **passed:** docs:check over the intake before the Director's answers (static); source fingerprint unchanged from RUN-20261021-014. ([evidence](docs/validation/runs/RUN-20261022-002.json))
+- **passed:** docs:check over the final checkpoint with decision D27 and every updated document (static); source fingerprint unchanged from RUN-20261021-014. ([evidence](docs/validation/runs/RUN-20261022-003.json))
+
+### Documentation and files
+
+- **updated:** [docs/plans/2026-10-22-ux-01-intake.md](docs/plans/2026-10-22-ux-01-intake.md) — New planning document: the UX-01 intake stage, written against the backlog, blueprint, UX standard, ADR 0017, ADR 0018 and the current design-system package, with the Director's answers (D27) and their consequences for the design.
+- **updated:** [AGENTS.md](AGENTS.md) — The UX-01 status paragraph said the card inspector was next and main was 7a9e757 before the catalog work. It now follows the documented order (reference screens next, inspector in UX-03), links the intake and records main at 4d9dfc7 with runs 39703969780 and 39705738273.
+- **updated:** [README.md](README.md) — Same UX-01 status correction as AGENTS.md, with the same link prefix.
+- **updated:** [docs/README.md](docs/README.md) — Same UX-01 status correction with document-relative links, and the design-system index row now links the UX-01 intake.
+- **updated:** [docs/vision/initial_backlog.csv](docs/vision/initial_backlog.csv) — UX-01 status moves from reference_screens_pending to reference_screens_intake_answered_design_pending, with the intake, this record and D27 in its evidence. The acceptance wording stays as planned; D27 records that one matched set replaces the three studies. No other row changes.
+- **updated:** [docs/validation/card-catalog.md](docs/validation/card-catalog.md) — Appended dated section for the two hosted merge runs and the main fast-forward; the earlier sections, including the advisory note written before the merge, stay as recorded.
+- **updated:** [docs/documentation-map.json](docs/documentation-map.json) — Classifies the new intake as planning, like the earlier task intakes.
+- **updated:** [docs/HANDOFF.md](docs/HANDOFF.md) — Rewritten for the UX-01 intake checkpoint: branch, main 4d9dfc7, the hosted merge runs, the pending Director answers and the next stages.
+- **reviewed_unchanged:** [docs/FEATURES.md](docs/FEATURES.md) — Describes implemented behavior; the intake changes no feature. It does not name the inspector as the next task.
+- **reviewed_unchanged:** [docs/validation/ux-design-system.md](docs/validation/ux-design-system.md) — Already lists the UX-01 reference screens (crowded match, practical deckbuilder, Collection binder, pack presentation) and Director visual approval as pending, which remains accurate.
+- **reviewed_unchanged:** [docs/runbooks/design-system.md](docs/runbooks/design-system.md) — Operational guidance for the package; it already records full reference screens as pending UX-01 and needs no change until screens exist.
+- **reviewed_unchanged:** [docs/adr/0017-technical-design-system.md](docs/adr/0017-technical-design-system.md) — Decision record; UX-01 work so far makes no architectural decision. Its status line already keeps visual approval of full reference screens separate.
+- **reviewed_unchanged:** [docs/vision/UX_UI_DESIGN_SYSTEM.md](docs/vision/UX_UI_DESIGN_SYSTEM.md) — The Director's adopted standard is the authority the intake cites; it is not edited.
+- **reviewed_unchanged:** [docs/vision/Development_Blueprint_2026-10-05.md](docs/vision/Development_Blueprint_2026-10-05.md) — The Director's baseline plan is not edited; D27 records that one matched set replaces §11.1's three studies.
+- **updated:** [CHANGELOG.md](CHANGELOG.md) — Regenerated by docs:sync from the change records.
+- **updated:** [docs/current-state.json](docs/current-state.json) — Regenerated by docs:sync; the source fingerprint is unchanged because only documentation changed.
+- **updated:** [docs/vision/decision_register.csv](docs/vision/decision_register.csv) — Adds D27 with the Director's four intake answers and their limits; earlier decisions unchanged.
+
+Full changed-file inventory: [record](docs/changes/CHG-20261022-002.json).
+
+### Limits and next actions
+
+- The Babylon scene answer moves scene work forward from WEB-01; the written design must keep WEB-01's lifecycle, tier, measurement and context-restoration scope separate and decide whether ADR 0017 needs an amendment for the story's development-only dependency on packages/presentation.
+- Intake stage only: no reference screen, component, fixture, dependency or workflow change, so the source fingerprint 256dd89d and its receipts (RUN-20261021-014, 016, 018, 019) stand.
+- Hosted runs are public job metadata; logs and artifacts were not downloaded.
+- Write the UX-01 design (one brief per screen per UX standard §33, the interaction specification and the Babylon scene boundary) for the Director's approval.
+- Push the branch with the design for hosted CI when the Director asks.
+
 ## CHG-20261022-001 — Align workspace documentation with the current state and record the pull request #6 hosted run
 
 - Status: finalized

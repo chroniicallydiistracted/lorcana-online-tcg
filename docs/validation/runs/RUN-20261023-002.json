@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261023-002",
+  "category": "static",
+  "command": [
+    "pnpm",
+    "-s",
+    "docs:check"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "26b8f4e8b3495ace0b0d2ef63ee2b1aa611a061c",
+  "source_fingerprint": "daeba7d258ad94c240f04d3e495eaf510e6d85644d44eec82051f1dbc5c713c7",
+  "started_at": "2026-10-23T02:22:21.133Z",
+  "finished_at": "2026-10-23T02:22:45.914Z",
+  "recorded_at": "2026-10-23T02:22:45.914Z",
+  "time_precision": "exact",
+  "elapsed_ms": 24782,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "docs:check over the CHG-20261023-001 checkpoint after the handoff's record time was filled in",
+  "log_path": "docs/validation/logs/RUN-20261023-002.txt",
+  "log_sha256": "a09acc7396393e78bf5de348d9b12c2256e6d73b3530d305634786cf34705eb9",
+  "redactions": 0
+}

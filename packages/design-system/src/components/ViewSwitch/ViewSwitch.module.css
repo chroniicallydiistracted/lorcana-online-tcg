@@ -1,0 +1,21 @@
+.group { display: inline-flex; flex-wrap: wrap; border: var(--is-border-width-1) solid var(--is-color-border-essential); border-radius: var(--is-component-control-radius); background: var(--is-color-surface); }
+.option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--is-component-control-min-size);
+  min-inline-size: var(--is-component-control-min-size);
+  padding-inline: var(--is-space-3);
+  border: 0;
+  border-radius: var(--is-component-control-radius);
+  background: transparent;
+  color: var(--is-color-text-supporting);
+  font: var(--is-typography-body);
+  cursor: pointer;
+  transition: background-color var(--is-motion-hover) var(--is-motion-ease);
+}
+.option[data-hovered] { background: var(--is-color-surface-state-hover); color: var(--is-color-text-primary); }
+.option[data-pressed] { background: var(--is-color-surface-state-pressed); }
+.option[data-selected] { background: var(--is-color-action-primary-background); color: var(--is-color-action-primary-text); font: var(--is-typography-body-strong); }
+.option[data-focus-visible] { outline: var(--is-focus-width) solid var(--is-color-focus-outer); outline-offset: var(--is-focus-offset); }
+@media (forced-colors: active) { .group { border-color: ButtonText; } .option[data-selected] { background: Highlight; color: HighlightText; } }

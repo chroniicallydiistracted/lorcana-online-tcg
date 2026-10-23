@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-002",
+  "title": "UX-01 intake for the matched reference screens, decision D27 and the pull request #6 merge runs",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T04:41:40.268Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "4d9dfc7170ea35280a4c75dfd447faca7ca369cf",
+  "task_ids": [
+    "UX-01",
+    "UX-03",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "documentation",
+      "description": "UX-01 intake (docs/plans/2026-10-22-ux-01-intake.md), the first documented stage of the task, after the Director's instructions to follow the documented tasks and stages and to begin UX-01 from the built design system. It records the authority (backlog UX-01, blueprint §10.1, §11.1, §16.1 and §18.3, UX standard §33–§36, decisions D17, D20, D21, D23–D26), what the design system already provides, the pieces each of the four reference screens still needs (crowded match, practical deckbuilder, Collection binder, pack presentation), the real-card fixture growth required by D25, boundaries, four questions for the Director with recommendations (direction studies, medium, match table tier, ink forms), default viewports and states, and the qualification design. No screen, component, fixture, dependency or workflow change."
+    },
+    {
+      "kind": "documentation",
+      "description": "Director answers to the intake questions recorded as decision D27 (decision register and the intake's answers section): one matched set of reference screens replaces the three alternative studies of blueprint §11.1; interactive Storybook screens built from the existing components and real catalog cards, labeled as demonstrations; a first static authored Babylon table scene in the crowded-match reference, against the agent's Flat-tier-only recommendation, with WEB-01 keeping lifecycle, quality tiers, measurement and context restoration and the Flat tier still required; quiet documented slots for ink-form artwork. The intake lists the consequences for the written design: scene code in packages/presentation, a lazy development-only boundary for the story, the semantic board and DOM presentation reading the same fixture, and software WebGL limiting automated scene checks."
+    },
+    {
+      "kind": "review",
+      "description": "Hosted runs re-observed from public GitHub job metadata with gh run view at about 04:44Z: run 39703969780 (pull_request, claude/ux-card-catalog at 4d9dfc7) design-system 01:08:50–01:11:15Z and foundation 01:08:50–01:24:52Z, both successful; the Director's fast-forward of main from 7a9e757 to 4d9dfc7; run 39705738273 (push to main at 4d9dfc7) foundation 01:27:05–01:42:43Z and design-system 01:27:05–01:30:22Z, both successful. Logs and artifacts were not downloaded."
+    },
+    {
+      "kind": "documentation",
+      "description": "Status lines in AGENTS.md, README.md and docs/README.md now name the UX-01 reference screens as next, with the inspector (D24) following in UX-03, and record main at 4d9dfc7 with both merge runs; docs/README.md links the intake from the design-system index row; the UX-01 backlog row records the intake stage and its evidence (statuses of other tasks unchanged); the card catalog validation gains a dated merge-runs section; the documentation map classifies the intake as planning; the handoff is rewritten for this checkpoint."
+    },
+    {
+      "kind": "review",
+      "description": "The CardTile label finding noted during the 2026-10-21 capture (visible 'Printing' text against an 'Inspect …' accessible name, WCAG 2.5.3) was re-checked in packages/design-system/src/components/CardTile/CardTile.tsx: under D26 the tile renders only the card image inside a button named by action.inspect, with no visible text label, so the finding no longer applies. No source change."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/changes/CHG-20261022-002.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/plans/2026-10-22-ux-01-intake.md",
+    "docs/validation/card-catalog.md",
+    "docs/validation/logs/RUN-20261022-002.txt",
+    "docs/validation/logs/RUN-20261022-003.txt",
+    "docs/validation/runs/RUN-20261022-002.json",
+    "docs/validation/runs/RUN-20261022-003.json",
+    "docs/vision/decision_register.csv",
+    "docs/vision/initial_backlog.csv"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/plans/2026-10-22-ux-01-intake.md",
+      "disposition": "updated",
+      "reason": "New planning document: the UX-01 intake stage, written against the backlog, blueprint, UX standard, ADR 0017, ADR 0018 and the current design-system package, with the Director's answers (D27) and their consequences for the design."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "The UX-01 status paragraph said the card inspector was next and main was 7a9e757 before the catalog work. It now follows the documented order (reference screens next, inspector in UX-03), links the intake and records main at 4d9dfc7 with runs 39703969780 and 39705738273."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Same UX-01 status correction as AGENTS.md, with the same link prefix."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Same UX-01 status correction with document-relative links, and the design-system index row now links the UX-01 intake."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "UX-01 status moves from reference_screens_pending to reference_screens_intake_answered_design_pending, with the intake, this record and D27 in its evidence. The acceptance wording stays as planned; D27 records that one matched set replaces the three studies. No other row changes."
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "disposition": "updated",
+      "reason": "Appended dated section for the two hosted merge runs and the main fast-forward; the earlier sections, including the advisory note written before the merge, stay as recorded."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Classifies the new intake as planning, like the earlier task intakes."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Rewritten for the UX-01 intake checkpoint: branch, main 4d9dfc7, the hosted merge runs, the pending Director answers and the next stages."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Describes implemented behavior; the intake changes no feature. It does not name the inspector as the next task."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Already lists the UX-01 reference screens (crowded match, practical deckbuilder, Collection binder, pack presentation) and Director visual approval as pending, which remains accurate."
+    },
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Operational guidance for the package; it already records full reference screens as pending UX-01 and needs no change until screens exist."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Decision record; UX-01 work so far makes no architectural decision. Its status line already keeps visual approval of full reference screens separate."
+    },
+    {
+      "path": "docs/vision/UX_UI_DESIGN_SYSTEM.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The Director's adopted standard is the authority the intake cites; it is not edited."
+    },
+    {
+      "path": "docs/vision/Development_Blueprint_2026-10-05.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The Director's baseline plan is not edited; D27 records that one matched set replaces §11.1's three studies."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Regenerated by docs:sync from the change records."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Regenerated by docs:sync; the source fingerprint is unchanged because only documentation changed."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "updated",
+      "reason": "Adds D27 with the Director's four intake answers and their limits; earlier decisions unchanged."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-002.json",
+      "outcome": "passed",
+      "scope": "docs:check over the intake before the Director's answers (static); source fingerprint unchanged from RUN-20261021-014."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-003.json",
+      "outcome": "passed",
+      "scope": "docs:check over the final checkpoint with decision D27 and every updated document (static); source fingerprint unchanged from RUN-20261021-014."
+    }
+  ],
+  "limitations": [
+    "The Babylon scene answer moves scene work forward from WEB-01; the written design must keep WEB-01's lifecycle, tier, measurement and context-restoration scope separate and decide whether ADR 0017 needs an amendment for the story's development-only dependency on packages/presentation.",
+    "Intake stage only: no reference screen, component, fixture, dependency or workflow change, so the source fingerprint 256dd89d and its receipts (RUN-20261021-014, 016, 018, 019) stand.",
+    "Hosted runs are public job metadata; logs and artifacts were not downloaded."
+  ],
+  "next_actions": [
+    "Write the UX-01 design (one brief per screen per UX standard §33, the interaction specification and the Babylon scene boundary) for the Director's approval.",
+    "Push the branch with the design for hosted CI when the Director asks."
+  ]
+}

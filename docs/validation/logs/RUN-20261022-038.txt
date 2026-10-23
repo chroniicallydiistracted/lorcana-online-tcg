@@ -1,0 +1,18 @@
+PASS workspace configuration contract (static validation)
+PASS reviewed workflow identities/permissions/triggers and isolated Compose policy (static only)
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ low                 │ fastify is vulnerable to header validation bypass via  │
+│                     │ case-sensitive propertyNames                           │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ fastify                                                │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=5.12.2 <5.12.6                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=5.12.6                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ apps__match-service>fastify                            │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-389g-gv7q-r4x8      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+1 vulnerabilities found
+Severity: 1 low

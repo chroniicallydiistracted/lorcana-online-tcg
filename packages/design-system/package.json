@@ -14,7 +14,9 @@
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
     "storybook": "storybook dev --port 6006 --host 0.0.0.0 --no-open --ci",
     "build-storybook": "storybook build --output-dir ../../.local/design-system-storybook --quiet",
-    "test:browser": "node scripts/browser-tests.mjs"
+    "test:browser": "node scripts/browser-tests.mjs",
+    "design-review": "node scripts/design-review.mjs",
+    "check:design-reviews": "node scripts/check-design-reviews.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "2.1.10",
@@ -22,6 +24,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
+    "@lorcana/presentation": "workspace:*",
     "@lorcana/rules-data": "workspace:*",
     "@playwright/test": "1.63.0",
     "@storybook/react-vite": "10.6.2",

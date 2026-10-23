@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "description": "The official Disney Lorcana card back (decision D28) for face-down cards: the pack reveal, the match scene, the opponent's hand, decks and the inkwell. The file is byte-identical to its source and is shown unchanged; the browser scales it.",
+  "rights_basis": "D07: Ravensburger fan-content terms",
+  "source": {
+    "project": "The Director's original Inkspire app, /home/andre/the-inkspire (commit b7b876ba)",
+    "path": "public/assets/cards/lorcana_card_back.jpg (untracked there)",
+    "original": "/home/andre/LorcanaOnline/public/assets/lorcana_card_back.jpg, byte-identical",
+    "legacy_record": "The Inkspire's asset catalog (packages/assets/src/catalog.ts), key material.card.back: type official-source, note 'Official card back reused as-is.', approval owner-approved-2026-07-02",
+    "identified_by": "The Director (decision D28, recorded 2026-10-22T06:31:38.935Z)",
+    "origin_note": "Where the file came from before LorcanaOnline is not recorded beyond the legacy catalog's official-source note.",
+    "retrieved": "2026-10-22"
+  },
+  "file": {
+    "path": "src/assets/card-back/lorcana_card_back.jpg",
+    "format": "image/jpeg (JFIF 1.01, progressive, 8-bit YCbCr)",
+    "colour_space": "sRGB assumed: no embedded ICC profile",
+    "width": 1468,
+    "height": 2048,
+    "aspect_ratio": "367:512, the catalog's card-image proportion",
+    "bytes": 486672,
+    "sha256": "0f022bc3422c5c0c2adf6bc09ca8196d30e0c78842e0845be7d44b024f5b1dbf",
+    "rendition": "Card back, full size; corners rounded by the card silhouette rule in CSS",
+    "language": "None: the back carries no text"
+  },
+  "accessibility": "Decorative where the surrounding context names the face-down cards (for example \"Opponent's hand, 7 cards\"); otherwise CardBack takes a label such as \"Face-down card\".",
+  "fallback": "With DesignSystemProvider officialAssets={false}, CardBack draws a neutral back from the tokens (paper surface, ink rule, no product marks) in the same silhouette (fan-content policy rule 4).",
+  "not_used": "The same legacy folder holds a 734 x 1024 copy with rounded corners baked into transparency, a 3583 x 5000 upscale and recoloured variants (cosmos, white, yellow); none is used."
+}

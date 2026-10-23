@@ -8,6 +8,7 @@ Owner: `packages/rules-data`. Architecture: [ADR 0018](../adr/0018-official-card
   - `presentationCatalog` holds the normalized catalog.
   - `fixturePrinting(id)` returns one printing.
   - `fixtureImage(id, 'thumbnail' | 'detail', variantId)` returns an image with its provenance.
+  - The UX-01 reference screens use the reference fixture the same way: `referenceCatalog`, `referenceSelection`, `referencePrinting(id)` and `referenceImage(id, rendition, variantId)`. Every reference printing has a thumbnail; only the printings marked `detail` have full-card images.
 
   Storybook serves the images at `/catalog-images/<file>`. Never invent a card, set or ability for interface work (D25). Engine and rules tests keep their synthetic fixtures.
 - **Catalog code:** import types, validators and the normalizer from `@lorcana/rules-data`.
@@ -28,16 +29,16 @@ pnpm evidence:run --id RUN-YYYYMMDD-NNN --category container --summary "Acquire 
 - **The record:** written with exclusive creation, so an existing record is never overwritten.
 - **Failure:** the command exits unsuccessfully when a required language is unavailable, malformed, or contains an unreviewed category, ink or rarity. Inspect every row. Review the new value before admitting it in `src/ravensburger.ts` or `src/catalog.ts`.
 
-## Rebuild the presentation fixture
+## Rebuild the fixtures
 
-1. Edit `packages/rules-data/fixtures/selection.json`: each entry needs a printing ID and the presentation state it exercises.
+1. Edit the selection: `packages/rules-data/fixtures/selection.json` for the presentation fixture, or `fixtures/reference-selection.json` for the UX-01 reference fixture. Each entry needs a printing ID and the state or screen role it exercises. A reference entry marked `"detail": true` also gets full-card images; one marked `"image": false` is a record only, with no images (the binder's unowned printings need names and numbers, not pictures).
 2. Run `node packages/rules-data/scripts/select-fixtures.mjs docs/rules/<record>.json`. It:
    - verifies the cached snapshot against the record;
    - copies the selected records exactly;
    - downloads any new images, checking that each is a JPEG and recording its dimensions;
-   - rewrites `src/fixtures/presentation.json` and `src/fixtures/images.json`.
+   - rewrites `src/fixtures/presentation.json` and `src/fixtures/images.json`, then `src/fixtures/reference.json` and `src/fixtures/reference-images.json`.
 
-   Unchanged images are reused only when their checksum still matches.
+   Unchanged images are reused only when their checksum still matches. Both fixtures share `fixtures/images/`, so an image either manifest already records is not fetched again.
 3. **When the record changes:** point the package's `catalog:verify` script at the new record.
 4. **Review:** check the image diff and run the checks below.
 
@@ -47,7 +48,7 @@ pnpm evidence:run --id RUN-YYYYMMDD-NNN --category container --summary "Acquire 
 - **`pnpm --filter @lorcana/rules-data catalog:verify`:** needs the raw cache.
   - Every acquired language validates, normalizes and round-trips its rules text, with no unknown symbol code or stray markup.
   - Every correction still matches a record.
-  - The committed fixture equals what the selection derives from the snapshot.
+  - Each committed fixture equals what its selection derives from the snapshot.
 
 ## Corrections
 

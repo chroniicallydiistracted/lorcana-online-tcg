@@ -26,6 +26,11 @@
         "$type": "dimension",
         "$value": "{border-width.1}",
         "$description": "Control border width."
+      },
+      "compact-input": {
+        "$type": "dimension",
+        "$value": "{size.target-min}",
+        "$description": "Number input width of a compact stepper, such as a deck line's quantity."
       }
     },
     "surface": {
@@ -135,6 +140,22 @@
         "$type": "dimension",
         "$value": "{size.binder-face-padding}",
         "$description": "Face padding."
+      },
+      "pocket-min": {
+        "$type": "dimension",
+        "$value": {
+          "value": 7,
+          "unit": "rem"
+        },
+        "$description": "Minimum usable pocket width (112 px) before a spread drops to a single face (§17)."
+      },
+      "go-to": {
+        "$type": "dimension",
+        "$value": {
+          "value": 10,
+          "unit": "rem"
+        },
+        "$description": "Width of the Go to card number field."
       }
     },
     "badge": {
@@ -185,6 +206,260 @@
           "unit": "rem"
         },
         "$description": "Ink identity symbol inside the ink chip: 20 px at the default root, the standard icon size, so the official badge keeps its detail."
+      }
+    },
+    "avatar": {
+      "size": {
+        "$type": "dimension",
+        "$value": "{space.8}",
+        "$description": "Neutral initials avatar diameter: 32 px at the default root (§24)."
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{radius.pill}",
+        "$description": "Avatar shape: a circle, the identity treatment the standard allows pills for (§12)."
+      }
+    },
+    "room": {
+      "ink-gutter": {
+        "$type": "dimension",
+        "$value": "{space.16}",
+        "$description": "Perimeter gutter reserved for ink-form artwork on each side of a room at expanded widths (§4, decision D27)."
+      }
+    },
+    "catalog": {
+      "tile-min": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9.5,
+          "unit": "rem"
+        },
+        "$description": "Minimum catalog card column in the deckbuilder grid: 152 px, about four columns beside the deck region at tablet landscape."
+      },
+      "search-min": {
+        "$type": "dimension",
+        "$value": {
+          "value": 16,
+          "unit": "rem"
+        },
+        "$description": "Minimum width of the catalog search field before its row wraps."
+      },
+      "select-min": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9.5,
+          "unit": "rem"
+        },
+        "$description": "Minimum width of each catalog filter select, so the five fit one row in the 824 px catalog column at 1440 px."
+      }
+    },
+    "deckbuilder": {
+      "deck": {
+        "$type": "dimension",
+        "$value": {
+          "value": 25,
+          "unit": "rem"
+        },
+        "$description": "Deck region width at expanded layouts (80 rem and above)."
+      },
+      "deck-narrow": {
+        "$type": "dimension",
+        "$value": {
+          "value": 22.5,
+          "unit": "rem"
+        },
+        "$description": "Deck region width from 64 to 80 rem, such as tablet landscape: wide enough that a deck line keeps whole words beside its stepper, leaving four catalog columns."
+      }
+    },
+    "chart": {
+      "plot-block-size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 8,
+          "unit": "rem"
+        },
+        "$description": "Plot height of compact in-panel charts such as the cost curve, value labels included."
+      },
+      "bar-max": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "$description": "Maximum column thickness: 24 px, so a column never fills its band."
+      },
+      "bar-radius": {
+        "$type": "dimension",
+        "$value": "{radius.4}",
+        "$description": "Rounded data end of a column; the baseline end stays square."
+      }
+    },
+    "pack": {
+      "product": {
+        "$type": "dimension",
+        "$value": {
+          "value": 20,
+          "unit": "rem"
+        },
+        "$description": "Width of a product to open, with its artwork slot."
+      },
+      "perspective": {
+        "$type": "dimension",
+        "$value": {
+          "value": 60,
+          "unit": "rem"
+        },
+        "$description": "Perspective distance for the card turn during a reveal: shallow, so the turn reads as card stock rather than a spin."
+      },
+      "summary-item": {
+        "$type": "dimension",
+        "$value": {
+          "value": 18,
+          "unit": "rem"
+        },
+        "$description": "Minimum column of the opening summary."
+      },
+      "summary-card": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5,
+          "unit": "rem"
+        },
+        "$description": "Card width in the opening summary."
+      },
+      "reveal-max": {
+        "$type": "dimension",
+        "$value": {
+          "value": 66,
+          "unit": "rem"
+        },
+        "$description": "Maximum width of the reveal stage, so two rows of six cards and the controls fit a 900 px tall desktop viewport."
+      }
+    },
+    "board": {
+      "card": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5.25,
+          "unit": "rem"
+        },
+        "$description": "Card width on the battlefield (84 px): each side fits one row of locations, characters and items beside the decision column at 1440 px."
+      },
+      "slot": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6.25,
+          "unit": "rem"
+        },
+        "$description": "Column for an upright board card and its state markers."
+      },
+      "slot-turned": {
+        "$type": "dimension",
+        "$value": {
+          "value": 7.5,
+          "unit": "rem"
+        },
+        "$description": "Column for a turned board card (exerted character or location) and its markers."
+      },
+      "item-card": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4,
+          "unit": "rem"
+        },
+        "$description": "Item card width on the battlefield."
+      },
+      "item-slot": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5,
+          "unit": "rem"
+        },
+        "$description": "Column for an item and its markers."
+      },
+      "card-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.5,
+          "unit": "rem"
+        },
+        "$description": "Battlefield card width below 80 rem (72 px), so each side still fits one row beside the narrower decision column; marker text keeps its size."
+      },
+      "slot-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5.25,
+          "unit": "rem"
+        },
+        "$description": "Column for an upright board card and its markers below 80 rem."
+      },
+      "slot-turned-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6.25,
+          "unit": "rem"
+        },
+        "$description": "Column for a turned board card and its markers below 80 rem."
+      },
+      "item-card-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 3.5,
+          "unit": "rem"
+        },
+        "$description": "Item card width below 80 rem."
+      },
+      "item-slot-compact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.5,
+          "unit": "rem"
+        },
+        "$description": "Column for an item and its markers below 80 rem."
+      }
+    },
+    "hand": {
+      "card": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6.25,
+          "unit": "rem"
+        },
+        "$description": "Card width in the hand fan."
+      },
+      "step": {
+        "$type": "dimension",
+        "$value": {
+          "value": 3.25,
+          "unit": "rem"
+        },
+        "$description": "Visible slice of each fanned card: its hit area, 52 px wide, so hit areas never overlap."
+      }
+    },
+    "match": {
+      "side": {
+        "$type": "dimension",
+        "$value": {
+          "value": 22.5,
+          "unit": "rem"
+        },
+        "$description": "Decision column width from 80 rem."
+      },
+      "side-narrow": {
+        "$type": "dimension",
+        "$value": {
+          "value": 20,
+          "unit": "rem"
+        },
+        "$description": "Decision column width from 64 to 80 rem."
+      },
+      "scene-min": {
+        "$type": "dimension",
+        "$value": {
+          "value": 24,
+          "unit": "rem"
+        },
+        "$description": "Minimum height of the table scene's stage, so the scene and its overlay never collapse."
       }
     }
   }

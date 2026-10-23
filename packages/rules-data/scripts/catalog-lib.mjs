@@ -129,11 +129,17 @@ export function buildPresentation({ catalog, entry, recordPath, selection }) {
   };
 }
 
-/** Every image a fixture printing needs: its thumbnail and each distinct full-card image, with the variants that use it. */
-export function fixtureImageSources(presentation) {
-  const sources = [];
+/**
+ * Every image a fixture printing needs: its thumbnail and each distinct full-card image, with the variants that use it.
+ * `details: 'flagged'` limits full-card images to selection entries marked `detail: true` (the reference fixture). An entry
+ * marked `image: false` is a record only: it gets no images at all.
+ */
+export function fixtureImageSources(presentation, { details: which = 'all' } = {}) {
+  const sources = [], flagged = new Set(presentation.selection.filter(s => s.detail === true).map(s => s.printingId)), recordOnly = new Set(presentation.selection.filter(s => s.image === false).map(s => s.printingId));
   for (const { record } of presentation.cards) {
+    if (recordOnly.has(record.culture_invariant_id)) continue;
     sources.push({ printingId: record.culture_invariant_id, rendition: 'thumbnail', variantIds: [], sourceUrl: record.thumbnail_url });
+    if (which === 'flagged' && !flagged.has(record.culture_invariant_id)) continue;
     const details = new Map();
     for (const variant of record.variants) details.set(variant.detail_image_url, [...(details.get(variant.detail_image_url) ?? []), variant.variant_id]);
     let index = 0;

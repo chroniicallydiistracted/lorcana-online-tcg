@@ -101,7 +101,7 @@ Decision D18 supersedes the in-pipeline `design-system-browser` stage described 
 - **Workflow:** `.github/workflows/foundation.yml` now has two parallel jobs.
   - `foundation`: unchanged, with 14 stages and the artifact upload.
   - `design-system`: runs `python3 scripts/ci-local.py --suite design-system`.
-- **Design-system suite:** it reuses the launcher's isolated source copy, workspace image, disposable Compose project, credential checks and cleanup. Inside the container, `pnpm ci:design-system` (`scripts/ci/design-system.mjs`) asserts isolation and runs three stages: the design-system gates, the pinned Chromium install and the Storybook/Playwright/axe suite. It uploads no artifacts and refuses the foundation upload directory.
+- **Design-system suite:** it reuses the launcher's isolated source copy, workspace image, disposable Compose project, credential checks and cleanup. Inside the container, `pnpm ci:design-system` (`scripts/ci/design-system.mjs`) asserts isolation and runs five stages: the design-system gates, the pinned Chromium install, the Storybook/Playwright/axe suite, and the design review gate of decision D30 (the pinned Impeccable detector over every reference story, then the independent-review records). It uploads no artifacts and refuses the foundation upload directory.
 - **Config checks:** `scripts/ci/check-config.py` validates both jobs, and `tests/ci/launcher.test.py` covers the new suite and the workflow mutations.
 
 Local equivalent: `python3 scripts/ci-local.py --suite design-system [--evidence-id RUN-…]`. See CHG-20261020-006.

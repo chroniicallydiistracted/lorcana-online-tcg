@@ -30,7 +30,7 @@
     },
     {
       "file": "tokens/component/component.tokens.json",
-      "sha256": "70e8469b55b39cd2a13cffc48928a9ca937c3c17c25cba3e4c39e02021e4dc14"
+      "sha256": "b98ff4f02837622011487c70e8135fb81b76424997dfa3e2617b0ae848768da5"
     },
     {
       "file": "tokens/card/card.tokens.json",
@@ -1439,6 +1439,30 @@
       }
     },
     {
+      "path": "component.avatar.radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Avatar shape: a circle, the identity treatment the standard allows pills for (§12).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-avatar-radius",
+      "values": {
+        "paper": "9999px",
+        "ink": "9999px"
+      }
+    },
+    {
+      "path": "component.avatar.size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Neutral initials avatar diameter: 32 px at the default root (§24).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-avatar-size",
+      "values": {
+        "paper": "32px",
+        "ink": "32px"
+      }
+    },
+    {
       "path": "component.badge.padding-inline",
       "layer": "component",
       "type": "dimension",
@@ -1487,6 +1511,18 @@
       }
     },
     {
+      "path": "component.binder.go-to",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Width of the Go to card number field.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-binder-go-to",
+      "values": {
+        "paper": "10rem",
+        "ink": "10rem"
+      }
+    },
+    {
       "path": "component.binder.pocket",
       "layer": "component",
       "type": "dimension",
@@ -1499,6 +1535,210 @@
       }
     },
     {
+      "path": "component.binder.pocket-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum usable pocket width (112 px) before a spread drops to a single face (§17).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-binder-pocket-min",
+      "values": {
+        "paper": "7rem",
+        "ink": "7rem"
+      }
+    },
+    {
+      "path": "component.board.card",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Card width on the battlefield (84 px): each side fits one row of locations, characters and items beside the decision column at 1440 px.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-card",
+      "values": {
+        "paper": "5.25rem",
+        "ink": "5.25rem"
+      }
+    },
+    {
+      "path": "component.board.card-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Battlefield card width below 80 rem (72 px), so each side still fits one row beside the narrower decision column; marker text keeps its size.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-card-compact",
+      "values": {
+        "paper": "4.5rem",
+        "ink": "4.5rem"
+      }
+    },
+    {
+      "path": "component.board.item-card",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Item card width on the battlefield.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-item-card",
+      "values": {
+        "paper": "4rem",
+        "ink": "4rem"
+      }
+    },
+    {
+      "path": "component.board.item-card-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Item card width below 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-item-card-compact",
+      "values": {
+        "paper": "3.5rem",
+        "ink": "3.5rem"
+      }
+    },
+    {
+      "path": "component.board.item-slot",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for an item and its markers.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-item-slot",
+      "values": {
+        "paper": "5rem",
+        "ink": "5rem"
+      }
+    },
+    {
+      "path": "component.board.item-slot-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for an item and its markers below 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-item-slot-compact",
+      "values": {
+        "paper": "4.5rem",
+        "ink": "4.5rem"
+      }
+    },
+    {
+      "path": "component.board.slot",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for an upright board card and its state markers.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-slot",
+      "values": {
+        "paper": "6.25rem",
+        "ink": "6.25rem"
+      }
+    },
+    {
+      "path": "component.board.slot-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for an upright board card and its markers below 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-slot-compact",
+      "values": {
+        "paper": "5.25rem",
+        "ink": "5.25rem"
+      }
+    },
+    {
+      "path": "component.board.slot-turned",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for a turned board card (exerted character or location) and its markers.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-slot-turned",
+      "values": {
+        "paper": "7.5rem",
+        "ink": "7.5rem"
+      }
+    },
+    {
+      "path": "component.board.slot-turned-compact",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Column for a turned board card and its markers below 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-board-slot-turned-compact",
+      "values": {
+        "paper": "6.25rem",
+        "ink": "6.25rem"
+      }
+    },
+    {
+      "path": "component.catalog.search-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum width of the catalog search field before its row wraps.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-catalog-search-min",
+      "values": {
+        "paper": "16rem",
+        "ink": "16rem"
+      }
+    },
+    {
+      "path": "component.catalog.select-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum width of each catalog filter select, so the five fit one row in the 824 px catalog column at 1440 px.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-catalog-select-min",
+      "values": {
+        "paper": "9.5rem",
+        "ink": "9.5rem"
+      }
+    },
+    {
+      "path": "component.catalog.tile-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum catalog card column in the deckbuilder grid: 152 px, about four columns beside the deck region at tablet landscape.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-catalog-tile-min",
+      "values": {
+        "paper": "9.5rem",
+        "ink": "9.5rem"
+      }
+    },
+    {
+      "path": "component.chart.bar-max",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Maximum column thickness: 24 px, so a column never fills its band.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-chart-bar-max",
+      "values": {
+        "paper": "1.5rem",
+        "ink": "1.5rem"
+      }
+    },
+    {
+      "path": "component.chart.bar-radius",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Rounded data end of a column; the baseline end stays square.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-chart-bar-radius",
+      "values": {
+        "paper": "4px",
+        "ink": "4px"
+      }
+    },
+    {
+      "path": "component.chart.plot-block-size",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Plot height of compact in-panel charts such as the cost curve, value labels included.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-chart-plot-block-size",
+      "values": {
+        "paper": "8rem",
+        "ink": "8rem"
+      }
+    },
+    {
       "path": "component.control.border-width",
       "layer": "component",
       "type": "dimension",
@@ -1508,6 +1748,18 @@
       "values": {
         "paper": "1px",
         "ink": "1px"
+      }
+    },
+    {
+      "path": "component.control.compact-input",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Number input width of a compact stepper, such as a deck line's quantity.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-control-compact-input",
+      "values": {
+        "paper": "44px",
+        "ink": "44px"
       }
     },
     {
@@ -1559,6 +1811,30 @@
       }
     },
     {
+      "path": "component.deckbuilder.deck",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Deck region width at expanded layouts (80 rem and above).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-deckbuilder-deck",
+      "values": {
+        "paper": "25rem",
+        "ink": "25rem"
+      }
+    },
+    {
+      "path": "component.deckbuilder.deck-narrow",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Deck region width from 64 to 80 rem, such as tablet landscape: wide enough that a deck line keeps whole words beside its stepper, leaving four catalog columns.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-deckbuilder-deck-narrow",
+      "values": {
+        "paper": "22.5rem",
+        "ink": "22.5rem"
+      }
+    },
+    {
       "path": "component.dialog.inline-size",
       "layer": "component",
       "type": "dimension",
@@ -1604,6 +1880,30 @@
       "values": {
         "paper": "8px",
         "ink": "8px"
+      }
+    },
+    {
+      "path": "component.hand.card",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Card width in the hand fan.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-hand-card",
+      "values": {
+        "paper": "6.25rem",
+        "ink": "6.25rem"
+      }
+    },
+    {
+      "path": "component.hand.step",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Visible slice of each fanned card: its hit area, 52 px wide, so hit areas never overlap.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-hand-step",
+      "values": {
+        "paper": "3.25rem",
+        "ink": "3.25rem"
       }
     },
     {
@@ -1667,6 +1967,102 @@
       }
     },
     {
+      "path": "component.match.scene-min",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum height of the table scene's stage, so the scene and its overlay never collapse.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-match-scene-min",
+      "values": {
+        "paper": "24rem",
+        "ink": "24rem"
+      }
+    },
+    {
+      "path": "component.match.side",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Decision column width from 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-match-side",
+      "values": {
+        "paper": "22.5rem",
+        "ink": "22.5rem"
+      }
+    },
+    {
+      "path": "component.match.side-narrow",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Decision column width from 64 to 80 rem.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-match-side-narrow",
+      "values": {
+        "paper": "20rem",
+        "ink": "20rem"
+      }
+    },
+    {
+      "path": "component.pack.perspective",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Perspective distance for the card turn during a reveal: shallow, so the turn reads as card stock rather than a spin.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-perspective",
+      "values": {
+        "paper": "60rem",
+        "ink": "60rem"
+      }
+    },
+    {
+      "path": "component.pack.product",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Width of a product to open, with its artwork slot.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-product",
+      "values": {
+        "paper": "20rem",
+        "ink": "20rem"
+      }
+    },
+    {
+      "path": "component.pack.reveal-max",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Maximum width of the reveal stage, so two rows of six cards and the controls fit a 900 px tall desktop viewport.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-reveal-max",
+      "values": {
+        "paper": "66rem",
+        "ink": "66rem"
+      }
+    },
+    {
+      "path": "component.pack.summary-card",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Card width in the opening summary.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-summary-card",
+      "values": {
+        "paper": "5rem",
+        "ink": "5rem"
+      }
+    },
+    {
+      "path": "component.pack.summary-item",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Minimum column of the opening summary.",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-pack-summary-item",
+      "values": {
+        "paper": "18rem",
+        "ink": "18rem"
+      }
+    },
+    {
       "path": "component.popover.padding",
       "layer": "component",
       "type": "dimension",
@@ -1688,6 +2084,18 @@
       "values": {
         "paper": "8px",
         "ink": "8px"
+      }
+    },
+    {
+      "path": "component.room.ink-gutter",
+      "layer": "component",
+      "type": "dimension",
+      "description": "Perimeter gutter reserved for ink-form artwork on each side of a room at expanded widths (§4, decision D27).",
+      "file": "tokens/component/component.tokens.json",
+      "cssVariable": "--is-component-room-ink-gutter",
+      "values": {
+        "paper": "64px",
+        "ink": "64px"
       }
     },
     {

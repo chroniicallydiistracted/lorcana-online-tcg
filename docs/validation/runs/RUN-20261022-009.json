@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "RUN-20261022-009",
+  "category": "static",
+  "command": [
+    "sh",
+    "-c",
+    "pnpm -s --filter @lorcana/rules-data typecheck && pnpm -s boundaries && pnpm -s lint"
+  ],
+  "cwd": "/workspaces/lorcana-online-tcg/",
+  "environment": {
+    "node": "24.21.0",
+    "pnpm": "10.33.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "user_id": 1000,
+    "hostname": "01ccec184b44"
+  },
+  "source_commit": "98357b0e5789760842529fdc5fcd7d1599a4af4f",
+  "source_fingerprint": "ea1c7f9fa50b9bc1e9e7590d79eee757caf09956466919b0a0308e577d8c4634",
+  "started_at": "2026-10-22T14:02:47.562Z",
+  "finished_at": "2026-10-22T14:02:56.236Z",
+  "recorded_at": "2026-10-22T14:02:56.236Z",
+  "time_precision": "exact",
+  "elapsed_ms": 8676,
+  "clock_discontinuity": false,
+  "expected_exit_code": 0,
+  "exit_code": 0,
+  "signal": null,
+  "result": "passed",
+  "failure_reason": null,
+  "summary": "UX-01 task 1: rules-data typecheck, import boundaries and lint",
+  "log_path": "docs/validation/logs/RUN-20261022-009.txt",
+  "log_sha256": "b9b6f302c4534eab2e30db053de58e971a4b33b5a7f9fd3d7f2beabb66d52a2e",
+  "redactions": 0
+}

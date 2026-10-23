@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-011",
+  "title": "UX-01 task 7: the crowded-match reference, Flat tier",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T15:57:59.299Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "84bf1e9d63b0c00d92f602226b01185e65e607d0",
+  "task_ids": [
+    "UX-01",
+    "WEB-02",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R25.001",
+    "R25.002",
+    "R25.003"
+  ],
+  "feature_ids": [
+    "F-DESIGN-SYSTEM",
+    "F-CARD-CATALOG",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "feature",
+      "description": "Implementation-plan task 7 (standard §19–§21, design screen 1): MatchLayout (chrome, battlefield, decision column and player strip; stacked below 64 rem; whole viewport), MatchChrome, PlayerSummary (neutral initials and a turn marker in text), Counter (format thresholds, printed symbols with text labels), ZoneCount (openable public zones), TurnContext, Battlefield (Flat tier and semantic board: named sides and zones in one wrapping row each), BoardCard (state as text markers as well as rotation; selection and valid targets as outline rings with text), ActionPanel and ActionChoice (decision with prompt at the critical size, choices with reasons when unavailable), HandFan (non-overlapping 52 px hit slices, raise preview that moves only the image, arrow-key navigation), HandList and EventLog. Tokens for board, hand and match sizes, with compact board cards below 80 rem; 19 component strings; the style gate allows --hand-offset, set inline by HandFan."
+    },
+    {
+      "kind": "implementation",
+      "description": "stories/support/reference/match.ts authors turn 7 between the reference decks with every state traceable to a real card or rule; commands.ts derives actions, challenge targets (Evasive, ready), song payments (ink, ink drop, singers with reasons) and questers from the position and rules text. Match.stories.tsx runs the local command machine (select, action, targets, payment, required choose-one with a Ward-aware target, bulk-quest and end-turn reviews, pending, fixture-receipt acceptance, rejection, reconnect reconciliation, Escape stepping back only before submission), the match menu (confirmation settings, fan-content notice, concede review), discard lists, the tablet log sheet and portrait inspection sheet; stories cover the design's states plus hand as list and an empty side."
+    },
+    {
+      "kind": "fix",
+      "description": "Reference fixture: six selection reasons corrected to the final position (Lafayette – All Ears has Alert, not Evasive; Chief Bogo, Mr. Big, Judy Hopps, Hiro Hamada and Baymax roles updated); the fixture is rebuilt from the same snapshot with no image change."
+    },
+    {
+      "kind": "test",
+      "description": "Eight crowded-match browser tests. RUN-20261022-029 passes the fixture tests and catalog:verify; RUN-20261022-030 passes the gates and 393/393 Chromium tests."
+    },
+    {
+      "kind": "review",
+      "description": "Visual review at 1440 x 900, 1180 x 820 and 820 x 1180 found an overflowing items row and hand strip, two-row sides on tablet landscape hiding markers, the fan rotating over the view switch, and a turn marker that read the same for both players; all fixed before the receipts. Captures are in the ignored .local/ux-01-review/."
+    },
+    {
+      "kind": "documentation",
+      "description": "Design-system runbook (crowded match) and validation (task 7); card-catalog validation correction note; handoff."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261022-011.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/design-system.md",
+    "docs/validation/card-catalog.md",
+    "docs/validation/logs/RUN-20261022-029.txt",
+    "docs/validation/logs/RUN-20261022-030.txt",
+    "docs/validation/logs/RUN-20261022-031.txt",
+    "docs/validation/logs/RUN-20261022-032.txt",
+    "docs/validation/logs/RUN-20261022-033.txt",
+    "docs/validation/runs/RUN-20261022-029.json",
+    "docs/validation/runs/RUN-20261022-030.json",
+    "docs/validation/runs/RUN-20261022-031.json",
+    "docs/validation/runs/RUN-20261022-032.json",
+    "docs/validation/runs/RUN-20261022-033.json",
+    "docs/validation/ux-design-system.md",
+    "packages/design-system/scripts/check-styles.mjs",
+    "packages/design-system/src/components/Match/Board.module.css",
+    "packages/design-system/src/components/Match/Board.module.d.css.ts",
+    "packages/design-system/src/components/Match/Board.tsx",
+    "packages/design-system/src/components/Match/Hand.module.css",
+    "packages/design-system/src/components/Match/Hand.module.d.css.ts",
+    "packages/design-system/src/components/Match/Hand.tsx",
+    "packages/design-system/src/components/Match/Match.docs.ts",
+    "packages/design-system/src/components/Match/MatchLayout.module.css",
+    "packages/design-system/src/components/Match/MatchLayout.module.d.css.ts",
+    "packages/design-system/src/components/Match/MatchLayout.tsx",
+    "packages/design-system/src/components/Match/Panels.module.css",
+    "packages/design-system/src/components/Match/Panels.module.d.css.ts",
+    "packages/design-system/src/components/Match/Panels.tsx",
+    "packages/design-system/src/foundation/messages.ts",
+    "packages/design-system/src/generated/manifest.json",
+    "packages/design-system/src/generated/tokens.css",
+    "packages/design-system/src/generated/tokens.ts",
+    "packages/design-system/src/index.ts",
+    "packages/design-system/stories/reference/Match.stories.tsx",
+    "packages/design-system/stories/support/reference/commands.ts",
+    "packages/design-system/stories/support/reference/match.ts",
+    "packages/design-system/tests/browser/reference.spec.ts",
+    "packages/design-system/tokens/component/component.tokens.json",
+    "packages/rules-data/fixtures/reference-selection.json",
+    "packages/rules-data/src/fixtures/reference.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "updated",
+      "reason": "Adds the crowded-match composition, the single position object, command derivation, compact sizing and fan hit areas."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Records task 7, review findings, the data correction and receipts."
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "disposition": "updated",
+      "reason": "Appends the selection-reason correction with its cause and receipt."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Records this checkpoint."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Its package summary stays accurate."
+    },
+    {
+      "path": "packages/rules-data/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Fixture counts are unchanged."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The amendment is scheduled for task 9."
+    },
+    {
+      "path": "docs/adr/0018-official-card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reason text corrections stay within the decision."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The match menu keeps the fan-content notice reachable."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Every verified feature gains the checkpoint full-suite run at the new source fingerprint."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against this checkpoint."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph and index remain accurate for this checkpoint."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No local-environment, container or toolchain decision is affected."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Package ownership and the application foundation are unchanged; the work stays inside the existing packages."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The dated 2026-10-06 audit is preserved as written."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "No new document needs classification and no source-impact edge changes at this checkpoint."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Documentation governance is unchanged; this checkpoint follows it."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Setup steps are unchanged."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The record format is unchanged."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-01 evidence, preserved."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The vision baselines are unchanged."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "No additional-scope item changes."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D27 and D28 already record the decisions this checkpoint implements; no new Director decision."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "UX-01 stays in its build stage until the last task; no other task changes."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No dependency or engine placement change."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated planning record; no dependency in its register changes."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Rules-source tooling is unaffected."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Historical RULE-01 evidence; no rules inventory changed."
+    },
+    {
+      "path": "docs/runbooks/card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No operational change: the reason corrections follow the documented rebuild steps (edit the selection, run select-fixtures, check with catalog:verify)."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-029.json",
+      "outcome": "passed",
+      "scope": "rules-data build, 12 tests and catalog:verify after the reason corrections (container, raw cache)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-030.json",
+      "outcome": "passed",
+      "scope": "Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 393/393 (headless browser)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-031.json",
+      "outcome": "passed",
+      "scope": "Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-032.json",
+      "outcome": "failed",
+      "scope": "docs:check over the first finalization attempt failed, because the card-catalog runbook review required by the rules-data change was missing; preserved. RUN-20261022-033 is the passing check after adding the review."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-033.json",
+      "outcome": "passed",
+      "scope": "docs:check over the finalized checkpoint (static)."
+    }
+  ],
+  "limitations": [
+    "The position is authored, not engine-run; its reachability is not certified. Receipts are fixture outcomes, never engine results.",
+    "Live play, authorized viewer projections and server receipts belong to WEB-02 and PLAY tasks."
+  ],
+  "next_actions": [
+    "Task 8 of the implementation plan: the Babylon table scene with its semantic overlay."
+  ]
+}

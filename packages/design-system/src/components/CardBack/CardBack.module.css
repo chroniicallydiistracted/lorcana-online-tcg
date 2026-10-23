@@ -1,0 +1,11 @@
+.image { display: block; inline-size: 100%; block-size: auto; border-radius: 5.5% / 4%; /* token-exception: physical card corner, 3.5 mm on a 63 x 88 mm card */ }
+.neutral {
+  display: flex;
+  aspect-ratio: 63 / 88; /* token-exception: physical card proportion (63 x 88 mm) */
+  padding: 7%; /* proportional inset, so the rule stays inside small cards */
+  border: var(--is-border-width-1) solid var(--is-color-border-essential);
+  border-radius: 5.5% / 4%; /* token-exception: physical card corner, 3.5 mm on a 63 x 88 mm card */
+  background: var(--is-color-surface-raised);
+}
+.rule { flex: 1; border: var(--is-border-width-1) solid var(--is-color-border-decorative); border-radius: var(--is-radius-4); }
+@media (forced-colors: active) { .neutral { border-color: CanvasText; } .rule { border-color: CanvasText; } }

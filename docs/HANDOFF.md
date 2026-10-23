@@ -1,68 +1,61 @@
 # Developer handoff
 
-Observed at: 2026-10-22T01:04:02.074Z (record time of CHG-20261022-001); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active changes on branch `claude/ux-card-catalog`:
-- CHG-20261021-004: decisions D24–D26 and the owed hosted runs, committed as 8ef329c.
-- CHG-20261021-005: official card catalog, real-card stories, card tile and Storybook 10.6.2, committed as 01dca8a.
-- CHG-20261022-001: workspace documentation aligned with the current state and the pull request #6 hosted run recorded, finalized with this checkpoint.
+Observed at: 2026-10-23T03:11:17.967Z (record time of CHG-20261023-002); display timezone America/Phoenix. Actor: Claude Code agent (architect/QA reviewer role) on Director request. Active change: CHG-20261023-002, finalized with this handoff. Changes on branch `claude/ux-01-reference-screens`, each finalized and committed:
+- CHG-20261022-002: UX-01 intake, the Director's answers (decision D27) and the hosted merge runs of pull request #6 (cdfbe34).
+- CHG-20261022-003: the UX-01 written design (4b90ab4).
+- CHG-20261022-004: the Director's approval of the design (decision D28) and the implementation plan (98357b0).
+- CHG-20261022-005 to CHG-20261022-013: implementation-plan tasks 1–9, one record each (a4ee878, 3a3996c, c7d5020, 4e529f4, 7339c74, 84bf1e9, c33732d, 2bac13d, 26b8f4e).
+- CHG-20261023-001: hosted run 39848720360, the Director's review declining visual approval (decision D29) and the design audit (f62237d; documentation only).
+- CHG-20261023-002: the Director's answers (decision D30), the design review gate and the proposed rework design (this commit).
 
-Earlier UX-01 changes CHG-20261020-004 to CHG-20261021-003 are finalized and on main.
+Earlier changes through CHG-20261022-001 are finalized and on main.
 
 - **Objective and authorized scope:**
-  - UX-01 is assigned to this agent (D17; ADR 0017 approved in full, D23).
-  - The next deliverable is the enhanced card inspector of D20, built from scratch in this project's design (D24).
-  - All card data comes from Ravensburger's official catalog, never made-up cards (D25). Engine and rules tests keep their synthetic fixtures, and neutral placeholders remain only as the takedown fallback.
-  - The Director approved the current design as shown, with the card tile change (D26).
-- **Repository:** /home/andre/lorcana-online-tcg. Main is 7a9e757. The branch `claude/ux-card-catalog` comes from main. Git supplies the resulting commit and dirty state.
+  - **D30:** a complete, original UX-01 rework, built under a gate that declines every design without proof:
+    - the Impeccable detector;
+    - independent sub-agent reviews, which the Director authorized for this purpose.
+  - **Done:** the gate and the [rework design](plans/2026-10-23-ux-01-rework-design.md), which is proposed.
+  - **Next:** the direction-study prototypes the design describes, which must pass the gate before the Director sees them.
+  - **Main:** moves only at the Director's explicit request, and pull request #7 is not to be merged as it stands.
+- **Repository:** /home/andre/lorcana-online-tcg, branch `claude/ux-01-reference-screens`, fourteen commits ahead of main 4d9dfc7 with this checkpoint (the local `main` ref is stale; compare with 4d9dfc7). Remote `origin`; pull request #7 is open. Git supplies the resulting commit and dirty state.
 - **Execution:** original Compose project lorcana-online-tcg_devcontainer (workspace 01ccec184b44, PostgreSQL c7cd58258c19, both observed running); Node 24.21.0, pnpm 10.33.0. Rediscover IDs before reuse.
-- **Implemented behavior:**
-  - **F-CARD-CATALOG** ([ADR 0018](adr/0018-official-card-catalog.md), [runbook](runbooks/card-catalog.md), [validation](validation/card-catalog.md)):
-    - `packages/rules-data` acquires the v3 catalog (English, German, French and Italian; Spanish is not served) into the ignored `.local/catalog/ravensburger/`, with a dated record in `docs/rules/`;
-    - it validates and normalizes the catalog, tokenizes rules text with a reviewed correction ledger, and provides 12 real printings with 24 provenance-recorded images.
-  - **F-DESIGN-SYSTEM:**
-    - card tiles show the card itself, named by card and printing (D26);
-    - `CardImage` follows the takedown switch;
-    - every story and browser test uses real catalog cards (D25);
-    - Storybook is at 10.6.2 for GHSA-f2ph-cmg5-wxc8.
-- **Documentation:**
-  - ADR 0018;
-  - ADR 0017 and 0008 amendments;
-  - the card catalog runbook and validation;
-  - the design-system runbook, README and validation;
-  - the rules-data and rules READMEs;
-  - the fan-content policy note;
-  - the feature register and documentation map;
-  - status lines in AGENTS.md, README.md and docs/README.md (the root README also gets the line CHG-004 missed);
-  - the UX-03 evidence and this handoff.
+- **Audit result (D29):** [design audit](audits/2026-10-23-ux-01-design-audit.md):
+  - design specificity fails;
+  - the compositions follow the legacy app;
+  - twelve functional defects, four of them P1;
+  - heuristics 23/40.
+- **Design review gate (D30):**
+  - **Commands:** `pnpm --filter @lorcana/design-system design-review` and `check:design-reviews`.
+  - **In CI:** both run as stages 4 and 5 of `pnpm ci:design-system`.
+  - **Where to read more:** the [runbook](runbooks/design-system.md#design-review-gate) has the procedure for the independent reviewers; ADR 0017's amendment records the decision.
+  - **Engine:** Impeccable v0.1.16 is fetched into `.local/tools/impeccable/` and checked against its pinned SHA-256, with telemetry and update checks off.
+  - **Current state:** the reference screens are declined: 385 detector findings and no review records. The hosted design-system job therefore fails at the gate until the rework passes.
 - **Verification (exact timing):**
-  - RUN-20261021-012, passed: catalog acquisition.
-  - RUN-20261021-013, failed: `pnpm audit` found the new critical Storybook advisory.
-  - RUN-20261021-014, passed at fingerprint `256dd89d`: configuration and workflow checks, `pnpm audit` clean, typecheck, lint and full suite (412 Node, 26 Python, upstream 406/1 skip, 2 injection).
-  - RUN-20261021-015, failed: wrong invocation, so nothing ran.
-  - RUN-20261021-016, passed: isolated design-system suite, 34 gates and 163/163 in 118 s.
-  - RUN-20261021-017, failed: features not yet re-bound.
-  - RUN-20261021-018, passed: isolated foundation pipeline, 14 stages in 562 s.
-  - RUN-20261021-019, passed: full-catalog audit against the raw cache.
-  - RUN-20261021-020: static `docs:check`.
-  - **Hosted:** run 39689564415 on pull request #6 passed both jobs at 01dca8a (public metadata).
-  - **Documentation alignment (CHG-20261022-001):** documentation only, so the fingerprint and the receipts above stand; RUN-20261022-001 is its static `docs:check`.
-- **Review material:** the UX review screenshots, the visual-check captures and their scripts are in the ignored `.local/ux-review-2026-10-21/`. The raw catalogs are in `.local/catalog/ravensburger/`. None is committed.
-- **Listeners/resources:** no owned processes or listeners remain. `.env.local`, `.local/database.json`, the database volume and the Director's root file `inkspire-interface-typography.png` are untouched. No host setting changed.
+  - **Both gates, expected failures:**
+    - RUN-20261023-003 (headless browser, declined: 385 findings across 63 stories, 129 s);
+    - RUN-20261023-004 (static, declined: no review records).
+  - **Isolated design-system pipeline:** RUN-20261023-005, an expected failure. The gates (40/40) and the browser suite (409/409) pass, then the detector stage declines the screens and stops the job (518 s).
+  - **Full suite and docs check:** listed in CHG-20261023-002.
+  - **Audit runs:** the D29 audit's host and container runs are listed in the audit.
+- **Listeners/resources:**
+  - **Owned processes:** none remain. The audit's static servers and the hung trial scan were stopped.
+  - **Untouched:** `.env.local`, `.local/database.json`, the database volume, `docs/vision/UX_UI_DESIGN_SYSTEM.md` and the root `inkspire-interface-typography.png`.
+  - **Host setting changed:** `~/.impeccable/config.json` has telemetry off.
 - **Pending gates:**
-  - a main push of this branch's tested tip, by or at the request of the Director;
-  - the card inspector (D24), the Interactive Card Viewer and CardFX;
-  - UX-01 reference screens and their approval;
-  - UX-02 device and browser qualification and manual accessibility journeys;
-  - catalog delivery to the running app (CONTENT-01, WEB tasks);
-  - WEB-01/02/03;
-  - translated catalogs;
-  - PLAY-04 open items;
-  - AUTH-01.
+  - **UX-01:** an accepted reference direction, after remediation the Director chooses.
+  - **UX-02:** device and browser qualification and manual accessibility journeys.
+  - **UX-03:** the card inspector (D24), the Interactive Card Viewer and CardFX.
+  - **WEB and catalog delivery:** WEB-01 scene lifecycle, tiers, measurement and context restoration; catalog delivery to the running app (CONTENT-01, WEB tasks); WEB-02/03; translated catalogs.
+  - **Other:**
+    - PLAY-04 open items and AUTH-01;
+    - the low-severity fastify advisory GHSA-389g-gv7q-r4x8 (fastify 5.12.5 → 5.12.6, outside UX-01) awaits the Director's decision.
 - **Next actions:**
-  1. **Director:** push the tested tip of `claude/ux-card-catalog` (pull request #6) to main, or ask the agent to. Main's next run would otherwise fail the Storybook advisory.
-  2. **Agent:** design and build the enhanced card inspector from scratch on real cards (D24):
-     - rules text with printed symbols;
-     - finishes and the printings rail;
-     - official FAQ rulings;
-     - the takedown placeholder;
-     - location rotation;
-     - the Interactive Card Viewer slot with zoom, reset and orientation controls (§15).
+  1. **Agent:** build the direction-study prototypes in the order the rework design gives:
+     - the ink, paper and light world;
+     - the 3D pack opening;
+     - the Lorebook;
+     - the Inkfield match;
+     - the Scriptorium deckbuilder.
+
+     Each passes the detector, then two independent reviews, before the Director sees it.
+  2. **Director:** approve or change the direction study and the four boundary choices in the rework design. The implementation plan and the full build follow.

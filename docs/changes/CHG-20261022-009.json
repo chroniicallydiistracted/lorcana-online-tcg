@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-009",
+  "title": "UX-01 task 5: the Collection binder reference",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T15:24:57.086Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "4e529f4db1587b911f5def15fe6db38eb51d4dcb",
+  "task_ids": [
+    "UX-01",
+    "CONTENT-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R25.001",
+    "R25.002",
+    "R25.003",
+    "R20.001"
+  ],
+  "feature_ids": [
+    "F-DESIGN-SYSTEM",
+    "F-CARD-CATALOG",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "implementation",
+      "description": "Reference fixture: 173 records-only selection entries (image: false) bring the fixture to all 242 Hyperia City printings (standard 1–204, specials 205–242) so the binder can page through the set; fixtureImageSources skips records-only entries, fixtures.ts exposes the flag, and the tests require the 242 printings and no thumbnail for any record. Images stay at 75; catalog:verify matches the snapshot exactly."
+    },
+    {
+      "kind": "feature",
+      "description": "Implementation-plan task 5 (standard §17, design screen 3): Binder (one or two faces of 3 x 3 pockets by content fit through a hidden probe sized from tokens, sticky previous and next buttons flanking the faces, a polite page indicator, Go to card number with an explained not-found, Page Up and Page Down scoped to the binder with focus moved to the new spread, only visible faces rendered, a fade with brief travel that reduced motion removes), BinderPocket (owned with normal and foil quantities, missing with silhouette, name and number, unknown and unavailable labelled and never zero, loading, padding and filtered without focus), PocketGrid (Grid view), CompletionSummary (standard denominator, special printings and foils as separate figures) and InspectorLayout (inspection column beside working content). Component tokens binder.pocket-min and binder.go-to; 18 component strings."
+    },
+    {
+      "kind": "implementation",
+      "description": "stories/support/reference/binder.ts builds the 29 pages (six ink sections and the special printings, each starting on a new page), demonstration holdings on printings with images (24 of 204 standard, 2 of 38 special, 7 foils), filters, pocket states and completion; cards.ts adds hasThumbnail and the deckbuilder catalog now shows only printings with images. Collection.stories.tsx composes the room (set picker in the header, filters and the view switch on one row, completion, binder, Grid and List views, inspection) with stories for every design state plus takedown and unknown ownership."
+    },
+    {
+      "kind": "test",
+      "description": "Seven Collection browser tests in reference.spec.ts. Two defects they found were fixed before the receipt: a keyboard page turn lost focus when the focused pocket unmounted, and an effect declared before its dependency stopped the story rendering. RUN-20261022-023 passes the gates and 290/290 Chromium tests; RUN-20261022-022 passes the fixture tests and catalog:verify."
+    },
+    {
+      "kind": "review",
+      "description": "Visual review at 1440 x 900 and 820 x 1180 found the binder pushed far below the fold and page buttons distant from a single face; the toolbar was compacted, the set picker moved into the header and the buttons now flank the faces and stay in view. Captures are in the ignored .local/ux-01-review/."
+    },
+    {
+      "kind": "documentation",
+      "description": "Card-catalog runbook and validation (records-only entries), design-system runbook (Collection binder) and validation (task 5)."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261022-009.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/card-catalog.md",
+    "docs/runbooks/design-system.md",
+    "docs/validation/card-catalog.md",
+    "docs/validation/logs/RUN-20261022-022.txt",
+    "docs/validation/logs/RUN-20261022-023.txt",
+    "docs/validation/logs/RUN-20261022-024.txt",
+    "docs/validation/logs/RUN-20261022-025.txt",
+    "docs/validation/runs/RUN-20261022-022.json",
+    "docs/validation/runs/RUN-20261022-023.json",
+    "docs/validation/runs/RUN-20261022-024.json",
+    "docs/validation/runs/RUN-20261022-025.json",
+    "docs/validation/ux-design-system.md",
+    "packages/design-system/src/components/Binder/Binder.docs.ts",
+    "packages/design-system/src/components/Binder/Binder.module.css",
+    "packages/design-system/src/components/Binder/Binder.module.d.css.ts",
+    "packages/design-system/src/components/Binder/Binder.tsx",
+    "packages/design-system/src/components/Inspector/Inspector.docs.ts",
+    "packages/design-system/src/components/Inspector/InspectorHost.module.css",
+    "packages/design-system/src/components/Inspector/InspectorHost.module.d.css.ts",
+    "packages/design-system/src/components/Inspector/InspectorHost.tsx",
+    "packages/design-system/src/foundation/messages.ts",
+    "packages/design-system/src/generated/manifest.json",
+    "packages/design-system/src/generated/tokens.css",
+    "packages/design-system/src/generated/tokens.ts",
+    "packages/design-system/src/index.ts",
+    "packages/design-system/stories/reference/Collection.stories.tsx",
+    "packages/design-system/stories/support/reference/binder.ts",
+    "packages/design-system/stories/support/reference/cards.ts",
+    "packages/design-system/stories/support/reference/catalog.ts",
+    "packages/design-system/tests/browser/reference.spec.ts",
+    "packages/design-system/tokens/component/component.tokens.json",
+    "packages/rules-data/README.md",
+    "packages/rules-data/fixtures/reference-selection.json",
+    "packages/rules-data/scripts/catalog-lib.mjs",
+    "packages/rules-data/src/fixtures.ts",
+    "packages/rules-data/src/fixtures/reference.json",
+    "packages/rules-data/tests/catalog.test.mjs"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/runbooks/card-catalog.md",
+      "disposition": "updated",
+      "reason": "Documents the image: false flag for records-only reference entries."
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "disposition": "updated",
+      "reason": "Appends the binder-records addition with its reason, unchanged images, checks and receipt."
+    },
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "updated",
+      "reason": "Adds the Collection binder composition, content fit, anchoring, pockets, completion and inspection."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Records task 5, review findings, test-found defects and receipts."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "F-CARD-CATALOG describes the reference fixture's 242 printings; every verified feature gains the checkpoint full-suite run at the new source fingerprint, and F-DESIGN-SYSTEM the task's browser receipt. The fixture receipt RUN-20261022-022 is listed in this record's verification."
+    },
+    {
+      "path": "packages/rules-data/README.md",
+      "disposition": "updated",
+      "reason": "The reference fixture now holds 242 printings, 69 with images."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Records this checkpoint."
+    },
+    {
+      "path": "docs/adr/0018-official-card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Records-only fixture entries from the same acquisition follow the decision."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The amendment is scheduled for task 9."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Its package summary stays accurate."
+    },
+    {
+      "path": "docs/policies/fan-content.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No new images; records come from the recorded acquisition."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against this checkpoint."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph and index remain accurate for this checkpoint."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No local-environment, container or toolchain decision is affected."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Package ownership and the application foundation are unchanged; the work stays inside the existing packages."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The dated 2026-10-06 audit is preserved as written."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "No new document needs classification and no source-impact edge changes at this checkpoint."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Documentation governance is unchanged; this checkpoint follows it."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Setup steps are unchanged."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The record format is unchanged."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-01 evidence, preserved."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The vision baselines are unchanged."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "No additional-scope item changes."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D27 and D28 already record the decisions this checkpoint implements; no new Director decision."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "UX-01 stays in its build stage until the last task; no other task changes."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance."
+    },
+    {
+      "path": "docs/adr/0008-engine-placement-dependency-baseline.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No dependency or engine placement change."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated planning record; no dependency in its register changes."
+    },
+    {
+      "path": "docs/rules/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Rules-source tooling is unaffected."
+    },
+    {
+      "path": "docs/validation/rule-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Historical RULE-01 evidence; no rules inventory changed."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-022.json",
+      "outcome": "passed",
+      "scope": "rules-data build, 12 tests and catalog:verify with the binder records (container, raw cache)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-023.json",
+      "outcome": "passed",
+      "scope": "Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite, 290/290 (headless browser)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-024.json",
+      "outcome": "passed",
+      "scope": "Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-025.json",
+      "outcome": "passed",
+      "scope": "docs:check over the finalized checkpoint (static)."
+    }
+  ],
+  "limitations": [
+    "Ownership is demonstration data on the printings that have images; other pockets are unowned by construction.",
+    "Only Hyperia City has a full card list in the fixture; choosing another set shows an honest message."
+  ],
+  "next_actions": [
+    "Task 6 of the implementation plan: pack presentation."
+  ]
+}

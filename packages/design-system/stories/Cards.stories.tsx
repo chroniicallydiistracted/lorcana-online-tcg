@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { fixturePrinting, presentationCatalog } from '@lorcana/rules-data/fixtures';
-import { Button, CardFaceText, CardInspector, CardTile, DeckEntry, GameSymbol, InkIdentity, InspectorHost, Inline, Stack, Text, gameSymbolNames } from '../src/index.ts';
+import { Button, CardBack, CardFaceText, CardInspector, CardTile, DeckEntry, GameSymbol, InkIdentity, InspectorHost, Inline, Stack, Text, gameSymbolNames } from '../src/index.ts';
 import { gameSymbolDoc } from '../src/components/GameSymbol/GameSymbol.docs.ts';
 import { OfficialAssetsOff } from './support/OfficialAssetsOff.tsx';
 import { inkIdentityDoc } from '../src/components/Ink/InkIdentity.docs.ts';
 import { cardTileDoc } from '../src/components/CardTile/CardTile.docs.ts';
+import { cardBackDoc } from '../src/components/CardBack/CardBack.docs.ts';
 import { deckEntryDoc } from '../src/components/DeckEntry/DeckEntry.docs.ts';
 import { cardInspectorDoc, inspectorHostDoc } from '../src/components/Inspector/Inspector.docs.ts';
 import { cardFaceTextDoc } from '../src/components/CardFace/CardFaceText.docs.ts';
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 const grid = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(11rem, 1fr))', gap: 'var(--is-space-4)' } as const;
 const godmother = fixturePrinting(2381), family = fixturePrinting(719), bolt = fixturePrinting(1693), henry = fixturePrinting(3134);
 
-export const Documentation: Story = { render: () => <DocPage docs={[inkIdentityDoc, gameSymbolDoc, cardTileDoc, deckEntryDoc, cardInspectorDoc, inspectorHostDoc, cardFaceTextDoc]} /> };
+export const Documentation: Story = { render: () => <DocPage docs={[inkIdentityDoc, gameSymbolDoc, cardTileDoc, cardBackDoc, deckEntryDoc, cardInspectorDoc, inspectorHostDoc, cardFaceTextDoc]} /> };
 export const Inks: Story = {
   parameters: { designSystem: { coverage: { InkIdentity: ['single', 'multicolour', 'compact', 'neutral'] } } },
   render: () => <Stack gap={3}>
@@ -47,6 +48,15 @@ export const Tiles: Story = {
     </div>
     <div data-assets="neutral" style={grid}><OfficialAssetsOff><CardTile printing={printing} onInspect={() => {}} /></OfficialAssetsOff></div>
   </Stack>,
+};
+export const CardBacks: Story = {
+  parameters: { designSystem: { coverage: { CardBack: ['official back', 'neutral back', 'small', 'labelled'] } } },
+  render: () => <Inline gap={6} align="end">
+    <div style={{ inlineSize: '12rem' }}><CardBack label="Face-down card" /></div>
+    <div style={{ inlineSize: '3rem' }}><CardBack /></div>
+    <div data-assets="neutral" style={{ inlineSize: '12rem' }}><OfficialAssetsOff><CardBack label="Face-down card" /></OfficialAssetsOff></div>
+    <div data-assets="neutral" style={{ inlineSize: '3rem' }}><OfficialAssetsOff><CardBack /></OfficialAssetsOff></div>
+  </Inline>,
 };
 export const DeckEntries: Story = {
   parameters: { designSystem: { coverage: { DeckEntry: ['valid', 'illegal quantity', 'ownership limit', 'at maximum', 'long name'] } } },

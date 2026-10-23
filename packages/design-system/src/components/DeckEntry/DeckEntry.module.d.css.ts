@@ -2,10 +2,12 @@
 declare const styles: {
   readonly cost: string;
   readonly entry: string;
+  readonly hidden: string;
   readonly identity: string;
   readonly messages: string;
   readonly name: string;
   readonly names: string;
+  readonly quantity: string;
   readonly version: string;
 };
 export default styles;

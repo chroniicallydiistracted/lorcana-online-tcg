@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-003",
+  "title": "UX-01 written design for the matched reference screens",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T05:10:11.915Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "cdfbe34ae136775ece51f9f261f9f4b25480d81c",
+  "task_ids": [
+    "UX-01",
+    "UX-03",
+    "WEB-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [],
+  "feature_ids": [
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "documentation",
+      "description": "UX-01 written design (docs/plans/2026-10-22-ux-01-design.md), the stage after the intake and decision D27, proposed for the Director's approval. It gives one UX standard §33 brief per reference screen (crowded match, practical deckbuilder, Collection binder, pack presentation): player task, priority order, composition at desktop 1440 × 900 and tablet 1180 × 820 and 820 × 1180, representative real-card content, the required states as stories, and acceptance evidence. It adds the interaction specification (match command, bulk quest and end turn, hand, deck editing, binder paging, pack reveal, shortcuts, focus and announcements), the Babylon table scene boundary (mountTableScene in packages/presentation loaded lazily by the match story through a development-only dependency; on-demand rendering with no loop or animation; a DOM semantic layer of real buttons placed over the projected card rectangles for names, focus, hit areas and state text; Flat-tier fallback on failure; WEB-01 keeps lifecycle, tiers, measurement and context restoration), the fixture plan (about 80 Hyperia City-centred printings with thumbnails and about six detail images, all with provenance; story-only positions, ownership and contents), new Experimental components with ownership, the verification plan and the documentation impact. Three review points for the Director: card back source, deckbuilder tile controls against D26, and a top navigation bar."
+    },
+    {
+      "kind": "review",
+      "description": "Design claims checked against the code: InspectorHost switches between side panel and sheet at the 64rem wide breakpoint; mountSanityScene already takes an injectable engine and resize observer; the import-boundary check allows a browser-scope design-system story to import the browser-scope presentation package; the verified symbol set (D21) has gameplay and ink symbols but no rarity symbols, so rarity is shown as text; Hyperia City (set 14) is Core-legal with 204 standard and 38 special printings across six inks."
+    },
+    {
+      "kind": "documentation",
+      "description": "Status lines in AGENTS.md, README.md and docs/README.md link the design as awaiting approval; the docs index row links it; the UX-01 backlog status moves to reference_screens_design_proposed_awaiting_approval with the design and this record in its evidence; the documentation map classifies the design as planning; the handoff names the review points and the next stages."
+    }
+  ],
+  "files": [
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "README.md",
+    "docs/HANDOFF.md",
+    "docs/README.md",
+    "docs/changes/CHG-20261022-003.json",
+    "docs/current-state.json",
+    "docs/documentation-map.json",
+    "docs/plans/2026-10-22-ux-01-design.md",
+    "docs/validation/logs/RUN-20261022-004.txt",
+    "docs/validation/runs/RUN-20261022-004.json",
+    "docs/vision/initial_backlog.csv"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/plans/2026-10-22-ux-01-design.md",
+      "disposition": "updated",
+      "reason": "New planning document: the UX-01 written design, built from the intake, D27, the UX standard and the current design-system, presentation and rules-data packages."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "updated",
+      "reason": "The UX-01 status sentence said the written design was next; it now links the design as awaiting the Director's approval."
+    },
+    {
+      "path": "README.md",
+      "disposition": "updated",
+      "reason": "Same UX-01 status update as AGENTS.md."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "updated",
+      "reason": "Same UX-01 status update, and the design-system index row links the design beside the intake."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "updated",
+      "reason": "UX-01 status moves to reference_screens_design_proposed_awaiting_approval, with the design and this record in its evidence; no other row changes."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "updated",
+      "reason": "Classifies the design as planning."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Rewritten for the design checkpoint: both UX-01 records, the design's contents, its three review points and the next stages."
+    },
+    {
+      "path": "docs/plans/2026-10-22-ux-01-intake.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The intake stays as recorded; the design follows its answers and consequences without changing them."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No decision is implemented yet; the design states that an ADR 0017 amendment records the reference stories, the development-only presentation dependency and the new components at implementation."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Still accurate: reference screens and their visual approval remain pending."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No feature behavior changes at the design stage."
+    },
+    {
+      "path": "docs/vision/UX_UI_DESIGN_SYSTEM.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The Director's adopted standard is the authority the design cites; it is not edited."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "disposition": "updated",
+      "reason": "Regenerated by docs:sync from the change records."
+    },
+    {
+      "path": "docs/current-state.json",
+      "disposition": "updated",
+      "reason": "Regenerated by docs:sync; the source fingerprint is unchanged because only documentation changed."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-004.json",
+      "outcome": "passed",
+      "scope": "docs:check over the design checkpoint and every updated document (static); source fingerprint unchanged from RUN-20261021-014."
+    }
+  ],
+  "limitations": [
+    "Design stage only: no source, fixture or dependency change, so the source fingerprint 256dd89d and its receipts stand.",
+    "The Director's approval of the design and answers to its three review points are pending; the implementation plan follows approval."
+  ],
+  "next_actions": [
+    "Record the Director's approval and review-point answers.",
+    "Write the UX-01 implementation plan with file ownership, task order and test commands, then build stage by stage."
+  ]
+}

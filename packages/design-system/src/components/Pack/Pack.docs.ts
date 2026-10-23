@@ -1,0 +1,61 @@
+import { defineDoc } from '../docs.ts';
+export const productChoiceDoc = defineDoc({
+  name: 'ProductChoice', status: 'experimental', foundation: 'Article with a primary Button',
+  purpose: 'A product the player holds, with what it contains and how many are held, ready to open (§23).',
+  anatomy: ['Quiet artwork slot', 'Product name', 'Contents and quantity held', 'Open action'],
+  variants: ['standard'],
+  states: ['available', 'none held'],
+  inputs: ['name', 'contents', 'available', 'artwork'],
+  outputs: ['onOpen'],
+  accessibility: ['A named article; the action names what it does ("Open booster")'],
+  contentLimits: ['Long product names wrap'],
+  usage: ['Opening is free: no price, purchase or access-unlocking pattern (§23)', 'Opening leads to a proportionate review first'],
+});
+export const revealCardDoc = defineDoc({
+  name: 'RevealCard', status: 'experimental', foundation: 'CardBack and CardImage',
+  purpose: 'One card of a committed opening: face down until revealed, then the card with its rarity, Foil and New as text.',
+  anatomy: ['Card back (face down)', 'Card image (revealed)', 'Rarity, Foil and New labels', 'Restrained light behind the rarest card'],
+  variants: ['face down', 'revealed'],
+  states: ['face down', 'revealed', 'foil', 'new', 'rarest beat', 'reduced motion'],
+  inputs: ['slot', 'position', 'total', 'revealed', 'beat'],
+  outputs: [],
+  accessibility: ['Named with its position ("Card 6 of 12, face down"; once revealed, the card, rarity, Foil and New)', 'The rarity is text, never only an effect'],
+  contentLimits: ['Labels wrap under the card'],
+  usage: ['The turn takes the major-motion duration; the rarest beat stays within the reward-beat budget and never covers the card', 'Reduced motion reveals directly with the same content'],
+});
+export const packRevealDoc = defineDoc({
+  name: 'PackReveal', status: 'experimental', foundation: 'Ordered list of RevealCard',
+  purpose: 'The opening\'s cards in order, building to the rarest: two rows of six on wide layouts, three rows of four on narrow ones.',
+  anatomy: ['Ordered list of reveal cards'],
+  variants: ['standard'],
+  states: ['face down', 'partly revealed', 'all revealed'],
+  inputs: ['slots', 'revealed', 'rarest'],
+  outputs: [],
+  accessibility: ['An ordered, named list, so the reading order is the reveal order'],
+  contentLimits: ['Twelve cards for a booster; the grid adapts to other counts'],
+  usage: ['Presents committed contents only: the animation never decides rarity or ownership (§23)'],
+});
+export const revealControlsDoc = defineDoc({
+  name: 'RevealControls', status: 'experimental', foundation: 'Toolbar of Buttons',
+  purpose: 'Reveal next, Reveal all and Skip to summary, with the revealed count.',
+  anatomy: ['Revealed count', 'Skip to summary', 'Reveal all', 'Reveal next (primary), which becomes View summary when every card is revealed'],
+  variants: ['standard'],
+  states: ['revealing', 'all revealed'],
+  inputs: ['revealed', 'total'],
+  outputs: ['onRevealNext', 'onRevealAll', 'onSkip'],
+  accessibility: ['A named toolbar; Reveal next works with Enter or Space and keeps focus between reveals'],
+  contentLimits: ['Buttons wrap on narrow layouts'],
+  usage: ['No control waits on decoration; Skip and Reveal all always work (§23)'],
+});
+export const openingSummaryDoc = defineDoc({
+  name: 'OpeningSummary', status: 'experimental', foundation: 'List of cards with labels and links',
+  purpose: 'All cards of the opening with their labels, the number of new cards and a way into Collection for each (§23).',
+  anatomy: ['New-card count', 'Pending note when the collection update is not finished', 'Each card with name, rarity, Foil, New and View in Collection'],
+  variants: ['standard'],
+  states: ['with Collection links', 'settlement pending'],
+  inputs: ['slots', 'collectionHref', 'pendingNote'],
+  outputs: [],
+  accessibility: ['Each View in Collection link is named with its card'],
+  contentLimits: ['Names wrap'],
+  usage: ['While settlement is pending, links are withheld and the reason is shown; contents never change'],
+});

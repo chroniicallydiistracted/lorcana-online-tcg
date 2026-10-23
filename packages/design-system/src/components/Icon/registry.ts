@@ -3,6 +3,7 @@
 // Printed gameplay symbols (inks, lore, strength, willpower, inkability) are not interface icons:
 // they come from the verified Lorcana assets in GameSymbol and InkIdentity.
 import { ArrowClockwise } from '@phosphor-icons/react/dist/ssr/ArrowClockwise';
+import { ArrowCounterClockwise } from '@phosphor-icons/react/dist/ssr/ArrowCounterClockwise';
 import { ArrowSquareOut } from '@phosphor-icons/react/dist/ssr/ArrowSquareOut';
 import { Bell } from '@phosphor-icons/react/dist/ssr/Bell';
 import { CaretDown } from '@phosphor-icons/react/dist/ssr/CaretDown';
@@ -13,7 +14,9 @@ import { Check } from '@phosphor-icons/react/dist/ssr/Check';
 import { CheckCircle } from '@phosphor-icons/react/dist/ssr/CheckCircle';
 import { Clock } from '@phosphor-icons/react/dist/ssr/Clock';
 import { DotsThree } from '@phosphor-icons/react/dist/ssr/DotsThree';
+import { Funnel } from '@phosphor-icons/react/dist/ssr/Funnel';
 import { Info } from '@phosphor-icons/react/dist/ssr/Info';
+import { List } from '@phosphor-icons/react/dist/ssr/List';
 import { MagnifyingGlass } from '@phosphor-icons/react/dist/ssr/MagnifyingGlass';
 import { MagnifyingGlassPlus } from '@phosphor-icons/react/dist/ssr/MagnifyingGlassPlus';
 import { Minus } from '@phosphor-icons/react/dist/ssr/Minus';
@@ -46,5 +49,8 @@ export const iconRegistry = {
   more: { icon: DotsThree, meaning: 'More actions.' },
   external: { icon: ArrowSquareOut, meaning: 'Opens outside the current surface.' },
   bell: { icon: Bell, meaning: 'Notifications.' },
+  menu: { icon: List, meaning: 'Open the navigation menu on narrower layouts.' },
+  filter: { icon: Funnel, meaning: 'Open or apply filters.' },
+  undo: { icon: ArrowCounterClockwise, meaning: 'Undo the last local edit.' },
   inspect: { icon: MagnifyingGlassPlus, meaning: 'Inspect or zoom into detail.' },
 } as const;

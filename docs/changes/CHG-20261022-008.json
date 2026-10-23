@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "id": "CHG-20261022-008",
+  "title": "UX-01 task 4: the deckbuilder reference",
+  "actor": "Claude Code agent (architect/QA reviewer role) on Director request, local WSL session",
+  "status": "finalized",
+  "recorded_at": "2026-10-22T15:01:20.227Z",
+  "occurred_at": null,
+  "event_time_basis": "recorded_only",
+  "source_commit": "c7d5020226521fe424fa5873d62a959e9639c15c",
+  "task_ids": [
+    "UX-01",
+    "DOC-01",
+    "DOC-02"
+  ],
+  "requirement_ids": [
+    "R25.001",
+    "R25.002",
+    "R25.003"
+  ],
+  "feature_ids": [
+    "F-DESIGN-SYSTEM",
+    "F-DOCS"
+  ],
+  "changes": [
+    {
+      "kind": "feature",
+      "description": "Implementation-plan task 4 (standard §18, design screen 2): DeckWorkspace (catalog and deck regions on wide layouts with an inspector slot; Catalog and Deck tabs with a persistent summary bar below 64 rem), DeckPanel (header, scrolling body, pinned footer that is a named focusable group), FilterBar (search with result count, ink and cost toggle groups, type, rarity, set, inkability and classification selects, Reset filters, and a filters sheet below the wide layout), ViewSwitch (single-choice toggle group), CatalogResults (card grid by default, dense list, loading placeholders, empty state) and CatalogTileControls (decision D28: Remove, quantity, Add; the card itself opens it), DeckHeader, DeckList (grouped by cost), DeckSummary, CostCurve (one neutral series, labelled caps, no gridlines, a hidden table for assistive technology), ValidationSummary (rules with the policy version, ownership and advice kept apart), SaveState, ImportPreview and ExportDialog. All Experimental with documentation contracts and stories for every documented state."
+    },
+    {
+      "kind": "edit",
+      "description": "DeckEntry: the card name is now the inspect button (accessible name 'Inspect <name>' contains the visible name), replacing a 'Printing' button whose accessible name did not contain its visible text (WCAG 2.5.3); the line uses a grid that fits a narrow deck region; the quantity keeps its label for assistive technology. QuantityField gains labelVisibility and a compact size; InkIdentity gains a plain appearance for use inside controls; InspectorHost and FilterBar share the new foundation hook useAtLeast."
+    },
+    {
+      "kind": "implementation",
+      "description": "Component tokens catalog.tile-min, catalog.search-min, catalog.select-min, deckbuilder.deck (25 rem), deckbuilder.deck-narrow (22.5 rem, widened from the design's 20 rem after the visual review), chart.plot-block-size, chart.bar-max, chart.bar-radius and control.compact-input; the filter and undo icons in the curated registry; 49 component strings."
+    },
+    {
+      "kind": "implementation",
+      "description": "Reference data and stories: stories/support/reference/cards.ts (reference and presentation fixtures as presentational printings, the printed set from the identifier), deck.ts (the Core demonstration format record, identity-based copy counts, rules, ownership and advice validation, summary figures, text and CSV export), decks.ts (the two 60-card decks, working, invalid and ownership states), catalog.ts (deterministic catalog order, filtering and an import parser that never substitutes). Deckbuilder.stories.tsx composes the room with real add, remove and undo, announcements, a printing preference separate from gameplay identity, a save and conflict flow, and a leave guard through React Aria's RouterProvider; stories cover the design's 11 states plus an empty deck."
+    },
+    {
+      "kind": "test",
+      "description": "Eleven deckbuilder browser tests in reference.spec.ts. RUN-20261022-018 failed 17 of 242 (view-switch options 40 px tall; two scrollable regions without keyboard focus) and is preserved; after the fixes RUN-20261022-019 passes 242/242 with gates."
+    },
+    {
+      "kind": "review",
+      "description": "Visual review at 1440 x 900, 1180 x 820 and 820 x 1180 found deck lines broken in the narrow region, chip-in-button ink filters, a duplicated save status (two status regions), the inspector rendered outside the layout and a quest set shown instead of the printed set; all were fixed before the passing receipt. Captures are in the ignored .local/ux-01-review/."
+    },
+    {
+      "kind": "documentation",
+      "description": "Design-system runbook (deckbuilder composition) and the UX-01 build section of the design-system validation."
+    }
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "docs/HANDOFF.md",
+    "docs/changes/CHG-20261022-008.json",
+    "docs/current-state.json",
+    "docs/features.json",
+    "docs/runbooks/design-system.md",
+    "docs/validation/logs/RUN-20261022-018.txt",
+    "docs/validation/logs/RUN-20261022-019.txt",
+    "docs/validation/logs/RUN-20261022-020.txt",
+    "docs/validation/logs/RUN-20261022-021.txt",
+    "docs/validation/runs/RUN-20261022-018.json",
+    "docs/validation/runs/RUN-20261022-019.json",
+    "docs/validation/runs/RUN-20261022-020.json",
+    "docs/validation/runs/RUN-20261022-021.json",
+    "docs/validation/ux-design-system.md",
+    "packages/design-system/src/components/Catalog/Catalog.docs.ts",
+    "packages/design-system/src/components/Catalog/Catalog.module.css",
+    "packages/design-system/src/components/Catalog/Catalog.module.d.css.ts",
+    "packages/design-system/src/components/Catalog/Catalog.tsx",
+    "packages/design-system/src/components/Deck/Deck.docs.ts",
+    "packages/design-system/src/components/Deck/Deck.module.css",
+    "packages/design-system/src/components/Deck/Deck.module.d.css.ts",
+    "packages/design-system/src/components/Deck/Deck.tsx",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.docs.ts",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.module.css",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.module.d.css.ts",
+    "packages/design-system/src/components/DeckEntry/DeckEntry.tsx",
+    "packages/design-system/src/components/DeckTransfer/DeckTransfer.docs.ts",
+    "packages/design-system/src/components/DeckTransfer/DeckTransfer.module.css",
+    "packages/design-system/src/components/DeckTransfer/DeckTransfer.module.d.css.ts",
+    "packages/design-system/src/components/DeckTransfer/DeckTransfer.tsx",
+    "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.docs.ts",
+    "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.module.css",
+    "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.module.d.css.ts",
+    "packages/design-system/src/components/DeckWorkspace/DeckWorkspace.tsx",
+    "packages/design-system/src/components/FilterBar/FilterBar.docs.ts",
+    "packages/design-system/src/components/FilterBar/FilterBar.module.css",
+    "packages/design-system/src/components/FilterBar/FilterBar.module.d.css.ts",
+    "packages/design-system/src/components/FilterBar/FilterBar.tsx",
+    "packages/design-system/src/components/Icon/registry.ts",
+    "packages/design-system/src/components/Ink/InkIdentity.docs.ts",
+    "packages/design-system/src/components/Ink/InkIdentity.module.css",
+    "packages/design-system/src/components/Ink/InkIdentity.tsx",
+    "packages/design-system/src/components/Inspector/InspectorHost.tsx",
+    "packages/design-system/src/components/QuantityField/QuantityField.docs.ts",
+    "packages/design-system/src/components/QuantityField/QuantityField.module.css",
+    "packages/design-system/src/components/QuantityField/QuantityField.module.d.css.ts",
+    "packages/design-system/src/components/QuantityField/QuantityField.tsx",
+    "packages/design-system/src/components/ViewSwitch/ViewSwitch.docs.ts",
+    "packages/design-system/src/components/ViewSwitch/ViewSwitch.module.css",
+    "packages/design-system/src/components/ViewSwitch/ViewSwitch.module.d.css.ts",
+    "packages/design-system/src/components/ViewSwitch/ViewSwitch.tsx",
+    "packages/design-system/src/foundation/media.ts",
+    "packages/design-system/src/foundation/messages.ts",
+    "packages/design-system/src/generated/manifest.json",
+    "packages/design-system/src/generated/tokens.css",
+    "packages/design-system/src/generated/tokens.ts",
+    "packages/design-system/src/index.ts",
+    "packages/design-system/stories/reference/Deckbuilder.stories.tsx",
+    "packages/design-system/stories/support/reference/cards.ts",
+    "packages/design-system/stories/support/reference/catalog.ts",
+    "packages/design-system/stories/support/reference/deck.ts",
+    "packages/design-system/stories/support/reference/decks.ts",
+    "packages/design-system/tests/browser/reference.spec.ts",
+    "packages/design-system/tokens/component/component.tokens.json"
+  ],
+  "documentation_reviews": [
+    {
+      "path": "docs/runbooks/design-system.md",
+      "disposition": "updated",
+      "reason": "Adds the deckbuilder composition, narrow layout, inspection slot, format record and import/export behaviour."
+    },
+    {
+      "path": "docs/validation/ux-design-system.md",
+      "disposition": "updated",
+      "reason": "Records task 4, its component changes, the design adjustment, review findings and both receipts, including the failed one."
+    },
+    {
+      "path": "docs/plans/2026-10-22-ux-01-design.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The approved design stays as approved; the 22.5 rem deck region at 64–80 rem is recorded as an implementation adjustment in the validation and the token's description."
+    },
+    {
+      "path": "packages/design-system/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Its package summary stays accurate."
+    },
+    {
+      "path": "docs/adr/0017-technical-design-system.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The amendment is scheduled for task 9."
+    },
+    {
+      "path": "docs/adr/0018-official-card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The stories use the fixtures through their documented exports."
+    },
+    {
+      "path": "docs/validation/card-catalog.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Catalog evidence is unchanged."
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "disposition": "updated",
+      "reason": "Records this checkpoint."
+    },
+    {
+      "path": "docs/features.json",
+      "disposition": "updated",
+      "reason": "Every verified feature gains the checkpoint full-suite run at the new source fingerprint."
+    },
+    {
+      "path": "AGENTS.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph remains accurate for this checkpoint."
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Reviewed against this checkpoint."
+    },
+    {
+      "path": "docs/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The UX-01 status paragraph and index remain accurate for this checkpoint."
+    },
+    {
+      "path": "docs/WORKSPACE_QUALIFICATION.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Workspace qualification statements are dated checkpoints; this UX-01 checkpoint changes no workspace, toolchain or container setting."
+    },
+    {
+      "path": "docs/adr/0001-local-development-environment.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "No local-environment, container or toolchain decision is affected."
+    },
+    {
+      "path": "docs/adr/0002-application-foundation.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Package ownership and the application foundation are unchanged; the work stays inside the existing packages."
+    },
+    {
+      "path": "docs/audits/2026-10-06-project-audit.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The dated 2026-10-06 audit is preserved as written."
+    },
+    {
+      "path": "docs/documentation-map.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "No new document needs classification and no source-impact edge changes at this checkpoint."
+    },
+    {
+      "path": "docs/plans/2026-10-06-documentation-governance.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Documentation governance is unchanged; this checkpoint follows it."
+    },
+    {
+      "path": "docs/runbooks/workspace-setup.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Setup steps are unchanged."
+    },
+    {
+      "path": "docs/templates/change.json",
+      "disposition": "reviewed_unchanged",
+      "reason": "The record format is unchanged."
+    },
+    {
+      "path": "docs/validation/boot-01.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated BOOT-01 evidence, preserved."
+    },
+    {
+      "path": "docs/vision/README.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "The vision baselines are unchanged."
+    },
+    {
+      "path": "docs/vision/additional_scope.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "No additional-scope item changes."
+    },
+    {
+      "path": "docs/vision/decision_register.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "D27 and D28 already record the decisions this checkpoint implements; no new Director decision."
+    },
+    {
+      "path": "docs/vision/initial_backlog.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "UX-01 stays in its build stage until the last task; no other task changes."
+    },
+    {
+      "path": "docs/vision/requirements.csv",
+      "disposition": "reviewed_unchanged",
+      "reason": "R25 and R20 statuses stay planned_unverified: reference screens are not requirement acceptance."
+    },
+    {
+      "path": "docs/plans/2026-10-10-boot-04-decision-worksheet.md",
+      "disposition": "reviewed_unchanged",
+      "reason": "Dated planning record; no dependency in its register changes."
+    }
+  ],
+  "verification": [
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-018.json",
+      "outcome": "failed",
+      "scope": "Full design-system suite: 17 of 242 failed (target size of view-switch options; scrollable regions without keyboard focus); preserved."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-019.json",
+      "outcome": "passed",
+      "scope": "Design-system typecheck and gates, Storybook build and the full Playwright/axe Chromium suite after the fixes, 242/242 (headless browser)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-020.json",
+      "outcome": "passed",
+      "scope": "Checkpoint full suite at the new source fingerprint: configuration contract, CI configuration, dependency audit, typecheck, lint and every workspace test (container)."
+    },
+    {
+      "evidence": "docs/validation/runs/RUN-20261022-021.json",
+      "outcome": "passed",
+      "scope": "docs:check over the finalized checkpoint (static)."
+    }
+  ],
+  "limitations": [
+    "Demonstration validation in the stories is not the rules or ownership services; format values come from a labelled demonstration record.",
+    "Clipboard copy depends on the browser's clipboard permission; failure is reported in the dialog."
+  ],
+  "next_actions": [
+    "Task 5 of the implementation plan: the Collection binder."
+  ]
+}

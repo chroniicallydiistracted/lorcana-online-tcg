@@ -69,7 +69,46 @@ The documented subset: color (sRGB objects with optional hex), dimension (px, re
   - **Under the card:** nothing. Names, set, rarity, inks and ownership belong to the inspector.
   - **Foil printings:** they keep a static "Foil" mark on the card's corner.
   - **Hover and press:** they change the outline only, never the art.
-- **Takedown switch:** `CardImage` follows `officialAssets={false}` and shows the neutral placeholder, as symbols do.
+- **Takedown switch:** `CardImage` follows `officialAssets={false}` and shows the neutral placeholder, as symbols do. Small renditions (board and hand cards) pass `placeholder="name"`: only the name, from the top edge, within the card's proportion. Where a symbol only decorates a visible word (the Exerted marker, counter labels), the component leaves it out under the takedown switch instead of showing the word twice.
+- **Face-down cards (decision D28):** `CardBack` shows the official card back from `src/assets/card-back/` (provenance in its `manifest.json`), unchanged and scaled by the browser. It is decorative unless given a `label`, and it follows the takedown switch with a neutral back drawn from the tokens. Presentation code textures face-down cards from `cardBackImageUrl` rather than importing the component.
+- **Reference screens (UX-01):** use the reference fixture (`referenceCatalog`, `referencePrinting`, `referenceImage`) for the decks, binder spreads and pack; its images share `/catalog-images/`.
+
+## Reference screens (UX-01)
+
+- **Where:** `stories/reference/` holds the reference compositions; `stories/support/reference/` holds their demonstration data, room text (`useReferenceText`, which the en-XA toolbar locale lengthens) and links between screens (`storyHref`).
+- **Room frame:** every room outside the match uses `RoomFrame` with a `NavigationBar` (the primary destinations of blueprint §10.1; a secondary surface such as pack opening marks its parent), an `AccountMenu`, a `RoomHeader` and named `InkFormSlot`s on both perimeters (decision D27).
+- **Alignment:** the navigation bar's content edge follows the room's gutters and the perimeter reservation, so the wordmark lines up with the room content at every width.
+- **Artwork slots:** the Storybook toolbar's "Artwork slots" switch outlines each slot with its name and extent; a room never sets it itself.
+- **Bleed:** reference stories set `parameters.designSystem.bleed` so the room reaches the viewport edge.
+- **No dead controls:** navigation between reference screens uses real story links. Rooms outside the reference set lead to an honest page saying so.
+- **Demonstration label:** every reference room shows `DemonstrationLabel` in its header or chrome, never over a card.
+- **Deckbuilder:** `DeckWorkspace` lays out the catalog (`FilterBar`, `ViewSwitch`, `CatalogResults` with `CatalogTileControls`) and the deck (`DeckPanel` with `DeckHeader`, `DeckList`, `DeckSummary` and `CostCurve`, and a footer for `ValidationSummary` and Save).
+  - **Narrow layouts:** below 64 rem it becomes one pane with Catalog and Deck tabs and a summary bar.
+  - **Inspection:** keep `InspectorHost` mounted in the workspace's inspector slot, so closing returns focus to the originating tile.
+  - **Format values:** the deck size, copy limit, ink limit and rotation come from the story's format record (`stories/support/reference/deck.ts`), never from components.
+  - **Import and export:** `ImportPreview` reports unresolved lines before anything changes, and `ExportDialog` requires an explicit format.
+- **Collection binder:** `Binder` shows one or two faces by content fit (a hidden probe holds the two-face minimum from the binder tokens).
+  - **Anchoring:** it follows an anchor page, so Go to card number and resizes keep the printing in view.
+  - **Pockets:** each is a `BinderPocket` (owned, missing, unknown, unavailable, loading, padding, filtered). `PocketGrid` is the Grid view.
+  - **Completion:** `CompletionSummary` uses the standard printings as its denominator and keeps special printings and foils apart.
+  - **Inspection:** place the inspector with `InspectorLayout`, keeping the host mounted.
+  - **Data:** the binder pages come from `stories/support/reference/binder.ts`. Ownership there is demonstration data on printings with images only.
+- **Pack opening:** `ProductChoice` → `Confirmation` review → indeterminate `ProgressBar` while pending → `PackReveal` with `RevealControls` → `OpeningSummary`.
+  - **Reveal order:** builds to the rarest. The rarest card's light comes from its ink identity, sits behind the card and stays within the reward-beat token.
+  - **Nothing waits:** Skip to summary and Reveal all always work.
+  - **Text alternatives:** rarity, Foil and New are text. A presentation failure lists the contents as text, and pending settlement withholds Collection links and says why.
+- **Crowded match (Flat tier):** `MatchLayout` holds `MatchChrome` (with the opponent's `PlayerSummary`), the `Battlefield` of `BoardCard`s, the decision column (`TurnContext`, `ActionPanel` with `ActionChoice`, and the Log and Inspector tabs) and the player's strip (`PlayerSummary`, `HandFan` or `HandList`, Quest with all characters, End turn).
+  - **One position object:** the position in `stories/support/reference/match.ts` drives every view.
+  - **Commands:** choices and reasons come from the real cards' rules text (`commands.ts`).
+  - **Card size:** board cards are compact below 80 rem and standard from 80 rem; marker text never shrinks.
+  - **Fan hit areas:** each card's hit area is its visible slice, 52 px when there is room. The slices narrow to fit the region but never below 44 px, and only a hand too large even for that scrolls. The raise preview moves only the image.
+  - **Bottom row:** from 64 rem the outer columns match the decision column's content width, so the actions sit under it and the hand is centred. The view switch sits under the player summary.
+- **Table scene (UX-01, D27):** the match story's table scene comes from `stories/support/reference/scene.tsx`.
+  - **Loading:** it imports `@lorcana/presentation` lazily through the design system's development-only dependency. Components never import it.
+  - **Input:** it maps the position object, the theme's renderer colours and `cardBackImageUrl` into `mountTableScene`.
+  - **Overlay:** `SceneOverlay` places the buttons, with names and markers from `describeBoardCard`, and rectangles are recomputed after each render and resize.
+  - **Fallbacks:** an engine, texture or context failure shows the Flat tier with an explanation. Below 80 rem the reference uses the Flat tier, because the scene's cards would be too small for legible markers.
+  - **Build order:** the design-system typecheck resolves `@lorcana/presentation` through its `dist/`, so build presentation first (the root build does).
 
 ## Raw values
 
@@ -88,6 +127,23 @@ Only token variables are allowed. If a value genuinely cannot be a token (overla
   - the no-Babylon/no-server import rule.
 - `pnpm --filter @lorcana/design-system test:browser` builds Storybook and serves it on 127.0.0.1:6007. It then runs the Playwright and axe Chromium suite with font hinting off, so glyph spacing matches desktop browsers. In CI, the parallel `design-system` job runs the gates and this suite in the isolated container (`python3 scripts/ci-local.py --suite design-system`, decision D18).
 - `pnpm --filter @lorcana/design-system storybook` starts the development server on port 6006 with telemetry disabled.
+
+## Design review gate
+
+Decision D30 declines any reference screen that is not proven. Both checks below block the design-system CI job, after the browser suite.
+
+- **Detector:** `pnpm --filter @lorcana/design-system design-review` builds Storybook, or reuses it with `SKIP_STORYBOOK_BUILD=1`.
+  - **Engine:** it fetches and verifies the pinned Impeccable engine into `.local/tools/impeccable/` and serves the build on 127.0.0.1:6008.
+  - **Scope:** it scans every reference story at four viewport and theme combinations.
+  - **Output:** findings print grouped by rule and story; the full JSON goes to `.local/design-review/detector.json`.
+  - **Exceptions:** only the Director can waive a rule, by a decision number in `design-review/exceptions.json`.
+- **Independent reviews:** `pnpm --filter @lorcana/design-system check:design-reviews` declines every screen without a passing record at the current design-source fingerprint.
+  - **When:** run the reviews at each checkpoint that changes a reference screen, and always before showing a screen to the Director.
+  - **Reviewers:** spawn two fresh sub-agents with self-contained prompts. Never fork the building agent's context, because a fork inherits its judgement. Give both the target stories, the UX standard (§4, §5, §17–§23, §33), blueprint §11.1, the Director's creative brief and decisions, and the legacy app's comparison captures.
+    - **Design reviewer:** follows Impeccable's critique Assessment A (specificity, heuristics, cognitive load, emotional journey, personas) and the D29 audit's identity and legacy-composition criteria. It writes its review before it sees any detector output.
+    - **Evidence reviewer:** follows Assessment B. It runs the detector gate and the browser suite, drives every story the way a player would, and checks every claim in the design and validation records against observable evidence. Anything it cannot reproduce is unproven.
+  - **Verdicts:** a reviewer passes a screen only with no P0 or P1 issue, a design that is specific to this product, and every claim proven.
+  - **Records:** write `design-review/reviews/<screen>.json` with each reviewer's identifier, verdict and full report, verbatim, and the fingerprint they reviewed (`node -e "import('./scripts/design-review-lib.mjs').then(m => console.log(m.designFingerprint()))"` from the package). The building agent never edits a report or a verdict. A declined screen is fixed, and both reviews run again.
 
 ## Fonts
 

@@ -1,5 +1,5 @@
 // Checks that need the ignored raw cache: every acquired language validates, normalizes and round-trips its rules
-// text, and the committed fixture is exactly what the selection derives from the recorded snapshot.
+// text, and each committed fixture is exactly what its selection derives from the recorded snapshot.
 // Usage: node scripts/verify-fixtures.mjs <acquisition record, e.g. docs/rules/2026-10-21-ravensburger-catalog.json>
 import { isDeepStrictEqual } from 'node:util';
 import { readFileSync } from 'node:fs';
@@ -22,7 +22,9 @@ for (const acquisition of record.acquisitions.filter(a => a.outcome === 'acquire
 const unused = rulesTextCorrections.filter(c => !applied.has(c.id)).map(c => c.id);
 if (unused.length) throw new Error(`Corrections no longer match any record: ${unused.join(', ')}`);
 const { catalog, entry } = readAcquired(repoRoot, recordPath, 'en');
-const selection = JSON.parse(readFileSync(join(packageRoot, 'fixtures/selection.json'), 'utf8'));
-const committed = JSON.parse(readFileSync(join(packageRoot, 'src/fixtures/presentation.json'), 'utf8'));
-if (!isDeepStrictEqual(buildPresentation({ catalog, entry, recordPath: recordPath, selection }), committed)) throw new Error('The committed presentation fixture differs from the recorded snapshot');
-console.log(`fixture: ${committed.cards.length} printings match the recorded snapshot exactly`);
+for (const [selectionFile, fixtureFile] of [['selection.json', 'presentation.json'], ['reference-selection.json', 'reference.json']]) {
+  const selection = JSON.parse(readFileSync(join(packageRoot, 'fixtures', selectionFile), 'utf8'));
+  const committed = JSON.parse(readFileSync(join(packageRoot, 'src/fixtures', fixtureFile), 'utf8'));
+  if (!isDeepStrictEqual(buildPresentation({ catalog, entry, recordPath: recordPath, selection }), committed)) throw new Error(`The committed fixture ${fixtureFile} differs from the recorded snapshot`);
+  console.log(`${fixtureFile}: ${committed.cards.length} printings match the recorded snapshot exactly`);
+}

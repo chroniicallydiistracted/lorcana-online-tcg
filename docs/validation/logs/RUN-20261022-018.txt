@@ -1,0 +1,814 @@
+✔ every component meets the documentation contract and every documented state has a story (98.060457ms)
+✔ CSS module class types are generated and current (3.72088ms)
+✔ no component is marked stable without approved visual treatment and evidence (2.278516ms)
+✔ the design system never imports Babylon or server-only code (2.361402ms)
+✔ icon registry (D21): only the registry imports Phosphor, one approved icon per import, no Thin, Light, Bold or Duotone (2.830998ms)
+✔ symbol parser refuses scripts, links, images, transforms, unknown styles and mixed fills in single-colour symbols (1.995145ms)
+✔ symbol provenance: vendored SVGs match the manifest and carry the D07 rights basis (0.726291ms)
+✔ card back provenance (D28): the official back matches its manifest, decodes at 1468 x 2048 and carries the D07 rights basis (0.545475ms)
+✔ preference defaults match the standard (§31) (0.596287ms)
+✔ preferences parse safely: wrong version, unknown fields and invalid values fall back to defaults (0.648915ms)
+✔ device preference storage is safe when storage fails and round-trips when it works (0.273565ms)
+✔ messages: plurals, placeholders, locale numbers and a pseudolocale with the same keys (9.588746ms)
+✔ the fan-content notice is the policy text word for word with only the subject replaced (0.292055ms)
+✔ font provenance: every imported file matches its recorded checksum, source and rights basis (1.581161ms)
+✔ card text: the recorded Brandon coverage and its measured cap-height fallback match the files (12.678336ms)
+✔ generated values: Paper and Ink canvases, motion roles, breakpoints and renderer colour spaces (0.267312ms)
+✔ design-system and web styling use tokens; every raw value is a documented exception (15.15998ms)
+✔ raw colours, fonts, sizes, shadows, radii, durations and !important are rejected (0.326763ms)
+✔ unknown and primitive-only tokens are rejected; components see only emitted tokens (0.11291ms)
+✔ system colours are allowed only inside forced-colors blocks (0.096643ms)
+✔ a same-line token-exception documents a deliberate raw value (0.195925ms)
+✔ source files cannot embed raw colours or inline font families (0.100955ms)
+✔ token sources are a valid documented DTCG subset, meet every contrast pair and match generated output (87.969851ms)
+✔ neutral foundation is genuinely achromatic and both themes map the same semantic tokens (3.048339ms)
+✔ contrast uses the WCAG relative-luminance formula (0.122795ms)
+✔ token validation rejects missing reference (3.933427ms)
+✔ token validation rejects circular reference (3.587409ms)
+✔ token validation rejects type mismatch (4.022355ms)
+✔ token validation rejects unsupported construct (4.23759ms)
+✔ token validation rejects unsupported type (3.548672ms)
+✔ token validation rejects missing theme mapping (3.350359ms)
+✔ token validation rejects invalid unit (3.95995ms)
+✔ token validation rejects missing description (3.536393ms)
+✔ token validation rejects contrast regression (3.749435ms)
+✔ token validation rejects non-achromatic neutral (4.163023ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 747.726356
+
+┌  Building storybook v10.6.2
+│
+◇  Cleaning outputDir: ../../.local/design-system-storybook
+│
+◇  Loading presets
+│
+◇  Building manager..
+│
+●  Building open services..
+│
+●  Building preview..
+│  Vite vite v8.3.3 building client environment for production...
+transforming...
+│
+●  Copying static files: ../rules-data/fixtures/images at
+│  ../../.local/design-system-storybook/catalog-images
+✓ 1578 modules transformed.
+rendering chunks...
+computing gzip size...
+│  Vite
+│  ../../.local/design-system-storybook/assets/HvDTrial_BrandonTextCond-Medium-Ckd293ML.woff2
+│  8.37 kB
+│  ../../.local/design-system-storybook/assets/HvDTrial_BrandonTextCond-Regular-CUhw9DEb.woff2
+│  8.38 kB
+│  ../../.local/design-system-storybook/assets/HvDTrial_BrandonTextCond-Bold-Du0_ywo-.woff2
+│  8.39 kB
+│  ../../.local/design-system-storybook/assets/HvDTrial_BrandonTextCond-BlackItalic-Bynqv7aA.woff2
+│  8.57 kB
+│  ../../.local/design-system-storybook/assets/HvDTrial_BrandonTextCond-RegularItalic-Bg5mi2N8.woff2
+│  8.62 kB
+│  ../../.local/design-system-storybook/assets/BystanderSans-Regular-w9XQSh1j.woff2
+│  16.78 kB
+│  ../../.local/design-system-storybook/iframe.html
+│  18.67 kB │ gzip:   5.27 kB
+│  ../../.local/design-system-storybook/assets/centurygothic-B26Mp9CK.woff2
+│  67.63 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-BlackIt-DnR8Qaj6.woff2
+│  81.73 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-It-CKnmOrYX.woff2
+│  86.45 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-Bold-gn7Db9ke.woff2
+│  108.64 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-Medium-CU24uLKq.woff2
+│  108.84 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-Semibold-BQV5CVwD.woff2
+│  108.90 kB
+│  ../../.local/design-system-storybook/assets/SourceSans3-Regular-BqTI-3mA.woff2
+│  109.63 kB
+│  ../../.local/design-system-storybook/assets/lorcana_card_back-Bn8UEPlO.jpg
+│  486.67 kB
+│  ../../.local/design-system-storybook/assets/iframe-CWNtkvwW.css
+│  89.56 kB │ gzip:  12.18 kB
+│  ../../.local/design-system-storybook/assets/iframe-BVOnYuxE.js
+│  0.04 kB │ gzip:   0.06 kB
+│  ../../.local/design-system-storybook/assets/rolldown-runtime-DkW27tQK.js
+│  1.19 kB │ gzip:   0.67 kB
+│  ../../.local/design-system-storybook/assets/DocPage-DeqfsKcB.js
+│  1.46 kB │ gzip:   0.76 kB
+│  ../../.local/design-system-storybook/assets/preload-helper-BVscJdOD.js
+│  1.50 kB │ gzip:   0.82 kB
+│  ../../.local/design-system-storybook/assets/frame-YT3AhTd0.js
+│  4.64 kB │ gzip:   1.83 kB
+│  ../../.local/design-system-storybook/assets/Actions.stories-Cf5iQ8Bh.js
+│  6.07 kB │ gzip:   2.19 kB
+│  ../../.local/design-system-storybook/assets/RoomFrame.stories-D8fYvmuG.js
+│  7.93 kB │ gzip:   3.08 kB
+│  ../../.local/design-system-storybook/assets/Foundations.stories-uyfH3fF_.js
+│  9.92 kB │ gzip:   3.56 kB
+│  ../../.local/design-system-storybook/assets/Overlays.stories-BHdgqqWC.js
+│  10.49 kB │ gzip:   3.66 kB
+│  ../../.local/design-system-storybook/assets/Forms.stories-oCP8FURe.js
+│  14.33 kB │ gzip:   4.16 kB
+│  ../../.local/design-system-storybook/assets/Status.stories-DiJxjJv7.js
+│  15.44 kB │ gzip:   5.22 kB
+│  ../../.local/design-system-storybook/assets/Cards.stories-B5L3IrOx.js
+│  16.22 kB │ gzip:   5.64 kB
+│  ../../.local/design-system-storybook/vite-inject-mocker-entry.js
+│  27.84 kB │ gzip:   9.66 kB
+│  ../../.local/design-system-storybook/assets/Deckbuilder.stories-DZF8h1KF.js
+│  31.90 kB │ gzip:  11.29 kB
+│  ../../.local/design-system-storybook/assets/fixtures-COX68sDb.js
+│  173.61 kB │ gzip:  39.06 kB
+│  ../../.local/design-system-storybook/assets/react-18-CiYIwbec.js
+│  207.58 kB │ gzip:  65.11 kB
+│  ../../.local/design-system-storybook/assets/iframe-BfwCGGUb.js
+│  1,805.20 kB │ gzip: 521.63 kB
+
+│
+▲  Vite [plugin builtin:vite-reporter]
+│  (!) Some chunks are larger than 500 kB after minification. Consider:
+│  - Using dynamic import() to code-split the application
+│  - Use build.rolldownOptions.output.codeSplitting to improve chunking:
+│  ]8;;https://rolldown.rs/reference/OutputOptions.codeSplittinghttps://rolldown.rs/reference/OutputOptions.codeSplitting]8;;
+│  - Adjust chunk size limit for this warning via
+│  build.chunkSizeWarningLimit.
+│  Vite ✓ built in 1.92s
+│
+◇  Output directory:
+│  /workspaces/lorcana-online-tcg/.local/design-system-storybook
+│
+└  Storybook build completed successfully
+
+
+Running 242 tests using 1 worker
+
+  ✓    1 tests/browser/interactions.spec.ts:15:1 › keyboard focus shows a 2 px boundary with a 3 px offset and at least 3:1 contrast in both themes (485ms)
+  ✓    2 tests/browser/interactions.spec.ts:26:1 › hovering a control never moves or resizes its hit area (697ms)
+  ✓    3 tests/browser/interactions.spec.ts:32:1 › a pending button keeps its label, announces pending and ignores presses (264ms)
+  ✓    4 tests/browser/interactions.spec.ts:38:1 › dialogs contain focus, make the background inert and restore focus on Escape (556ms)
+  ✓    5 tests/browser/interactions.spec.ts:49:1 › a non-dismissable dialog ignores Escape and outside presses (509ms)
+  ✓    6 tests/browser/interactions.spec.ts:56:1 › end-turn confirmation uses concrete actions and cancelling returns focus to the trigger (837ms)
+  ✓    7 tests/browser/interactions.spec.ts:67:1 › menus open from the keyboard, move with arrows and return focus on Escape (517ms)
+  ✓    8 tests/browser/interactions.spec.ts:78:1 › select is fully keyboard operable and shows the chosen value (394ms)
+  ✓    9 tests/browser/interactions.spec.ts:85:1 › tabs move with arrow keys and keep the panel relationship (315ms)
+  ✓   10 tests/browser/interactions.spec.ts:92:1 › quantity fields keep exact integers within their bounds (315ms)
+  ✓   11 tests/browser/interactions.spec.ts:100:1 › reduced motion removes durations and spatial travel while keeping a brief dialog fade (303ms)
+  ✓   12 tests/browser/interactions.spec.ts:106:1 › the reduced-motion preference applies even when the system does not request it (259ms)
+  ✓   13 tests/browser/interactions.spec.ts:110:1 › forced colours keep control boundaries and focus visible (272ms)
+  ✓   14 tests/browser/interactions.spec.ts:118:1 › Ink and Paper resolve from preference; System follows the colour-scheme setting (518ms)
+  ✓   15 tests/browser/interactions.spec.ts:128:1 › Source Sans 3 and the metric-adjusted fallback load; line heights match; widths are recorded (269ms)
+  ✓   16 tests/browser/interactions.spec.ts:152:1 › component stories reflow at 320 CSS px without horizontal page scrolling (880ms)
+  ✓   17 tests/browser/interactions.spec.ts:159:1 › text enlarged to 200% keeps complete labels without clipping (425ms)
+  ✓   18 tests/browser/interactions.spec.ts:165:1 › inspection opens beside the work on wide layouts and returns focus to the card on close (307ms)
+  ✓   19 tests/browser/interactions.spec.ts:175:1 › inspection opens as a modal sheet on narrow layouts (404ms)
+  ✓   20 tests/browser/interactions.spec.ts:184:1 › a missing or failed card image keeps the card name visible and the tile usable (371ms)
+  ✓   21 tests/browser/interactions.spec.ts:191:1 › unavailable ownership is never shown as zero (317ms)
+  ✓   22 tests/browser/interactions.spec.ts:195:1 › a card tile is the card itself: one named button with no details under the card (D26) (352ms)
+  ✓   23 tests/browser/interactions.spec.ts:208:1 › card tiles follow the takedown switch with a neutral placeholder (407ms)
+  ✓   24 tests/browser/interactions.spec.ts:214:1 › the quiet notification count states its count only in its accessible name (277ms)
+  ✓   25 tests/browser/interactions.spec.ts:219:1 › the pseudolocale lengthens component strings without breaking layout (243ms)
+  ✓   26 tests/browser/interactions.spec.ts:223:1 › interface icons are Phosphor Regular at 20 px standard and 24 px prominent; selected uses Fill (832ms)
+  ✓   27 tests/browser/interactions.spec.ts:238:1 › card faces load Bystander, Brandon and Century Gothic; characters Brandon lacks come from the measured fallback (786ms)
+  ✓   28 tests/browser/interactions.spec.ts:265:1 › the reading presentation sets rules text in Brandon Text Cond at 20 / 28 px (267ms)
+  ✓   29 tests/browser/interactions.spec.ts:271:1 › Lorcana ink and gameplay symbols render with names; the takedown switch shows neutral placeholders (1.1s)
+  ✓   30 tests/browser/interactions.spec.ts:298:1 › forced colours keep gameplay symbols in the system text colour and ink symbols in their own colours (401ms)
+  ✓   31 tests/browser/reference.spec.ts:14:3 › room frame › the skip link is the first focus stop and moves focus to the room content (340ms)
+  ✓   32 tests/browser/reference.spec.ts:23:3 › room frame › the current destination is marked by aria-current, weight and an underline bar, not colour alone (299ms)
+  ✓   33 tests/browser/reference.spec.ts:31:3 › room frame › below the wide layout the destinations move into a keyboard-operable menu that restores focus (347ms)
+  ✓   34 tests/browser/reference.spec.ts:44:3 › room frame › ink-form slots take no focus, stay hidden from assistive technology and never overlap a control (415ms)
+  ✓   35 tests/browser/reference.spec.ts:60:3 › room frame › the account menu opens Profile, settings and the fan-content notice; the notice is the policy text (571ms)
+  ✓   36 tests/browser/reference.spec.ts:68:3 › room frame › the quiet notification count opens the deferred notifications only when chosen (344ms)
+  ✓   37 tests/browser/reference.spec.ts:74:3 › room frame › a destination outside the reference set leads to an honest page, not a dead link (430ms)
+  ✓   38 tests/browser/reference.spec.ts:85:3 › deckbuilder › add and remove by pointer and keyboard update the quantity, count, save state and announcement; undo restores (852ms)
+  ✓   39 tests/browser/reference.spec.ts:98:3 › deckbuilder › at the copy limit Add is unavailable and the row says why (681ms)
+  ✓   40 tests/browser/reference.spec.ts:105:3 › deckbuilder › filters never discard edits, and an empty result offers Reset filters (1.3s)
+  ✓   41 tests/browser/reference.spec.ts:117:3 › deckbuilder › closing inspection returns focus to the originating tile with the search kept (639ms)
+  ✓   42 tests/browser/reference.spec.ts:127:3 › deckbuilder › the printing preference changes the printing, never the card or its copies (852ms)
+  ✓   43 tests/browser/reference.spec.ts:134:3 › deckbuilder › leaving with unsaved changes asks first; Keep editing stays (1.1s)
+  ✓   44 tests/browser/reference.spec.ts:143:3 › deckbuilder › validation names card, quantity, reason and policy, and keeps ownership apart from rules (877ms)
+  ✓   45 tests/browser/reference.spec.ts:153:3 › deckbuilder › import reports unresolved names and counts before anything changes (921ms)
+  ✓   46 tests/browser/reference.spec.ts:162:3 › deckbuilder › export needs an explicit format and previews the exact text (1.0s)
+  ✓   47 tests/browser/reference.spec.ts:169:3 › deckbuilder › the cost curve reads as a table of the same values (694ms)
+  ✓   48 tests/browser/reference.spec.ts:176:3 › deckbuilder › tablet portrait uses one pane with Catalog and Deck tabs and a persistent summary bar (921ms)
+  ✓   49 tests/browser/stories.spec.ts:17:1 › the static Storybook build contains every story (0ms)
+  ✓   50 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Documentation (paper) (753ms)
+  ✓   51 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Buttons (paper) (536ms)
+  ✓   52 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / States (paper) (532ms)
+  ✓   53 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Icon Buttons (paper) (513ms)
+  ✓   54 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Links (paper) (546ms)
+  ✓   55 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Tooltips (paper) (544ms)
+  ✓   56 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Documentation (paper) (971ms)
+  ✓   57 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inks (paper) (598ms)
+  ✓   58 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Game Symbols (paper) (629ms)
+  ✓   59 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Tiles (paper) (737ms)
+  ✓   60 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Card Backs (paper) (504ms)
+  ✓   61 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Deck Entries (paper) (725ms)
+  ✓   62 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inspector (paper) (611ms)
+  ✓   63 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inspector Reading Mode (paper) (604ms)
+  ✓   64 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Host (paper) (522ms)
+  ✓   65 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Card Face (paper) (568ms)
+  ✓   66 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Documentation (paper) (1.1s)
+  ✓   67 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Text Fields (paper) (621ms)
+  ✓   68 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Search (paper) (586ms)
+  ✓   69 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Selects (paper) (596ms)
+  ✓   70 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Select Open (paper) (636ms)
+  ✓   71 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Combo Boxes (paper) (588ms)
+  ✓   72 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Choices (paper) (630ms)
+  ✓   73 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Quantities (paper) (651ms)
+  ✓   74 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Documentation (paper) (874ms)
+  ✓   75 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Type Roles (paper) (527ms)
+  ✓   76 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Long Content (paper) (520ms)
+  ✓   77 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Layout (paper) (568ms)
+  ✓   78 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Icons (paper) (675ms)
+  ✓   79 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Icon Sizes (paper) (612ms)
+  ✓   80 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Identity (paper) (538ms)
+  ✓   81 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Documentation (paper) (847ms)
+  ✓   82 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Tabs (paper) (579ms)
+  ✓   83 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Menus (paper) (516ms)
+  ✓   84 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Menu Open (paper) (566ms)
+  ✓   85 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Popovers (paper) (554ms)
+  ✓   86 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Dialogs (paper) (522ms)
+  ✓   87 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Confirmations (paper) (547ms)
+  ✓   88 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Documentation (paper) (1.0s)
+  ✓   89 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Lists (paper) (619ms)
+  ✓   90 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Tables (paper) (663ms)
+  ✓   91 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Badges And Status (paper) (550ms)
+  ✓   92 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Progress (paper) (639ms)
+  ✓   93 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Messages (paper) (625ms)
+  ✓   94 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Toasts (paper) (586ms)
+  ✓   95 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Notifications (paper) (531ms)
+  ✓   96 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Connection (paper) (610ms)
+  ✓   97 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Documentation (paper) (1.2s)
+  ✓   98 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Working (paper) (2.6s)
+  ✓   99 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Invalid (paper) (2.8s)
+  ✘  100 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Ownership Limits (paper) (2.8s)
+  ✓  101 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Unsaved And Leaving (paper) (1.6s)
+  ✓  102 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Save Conflict (paper) (2.7s)
+  ✘  103 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Import With Unresolved Lines (paper) (1.3s)
+  ✓  104 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Export (paper) (1.8s)
+  ✓  105 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Filtered Empty (paper) (1.5s)
+  ✓  106 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Inspection (paper) (2.6s)
+  ✓  107 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Loading (paper) (1.6s)
+  ✘  108 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Long Names (paper) (3.2s)
+  ✓  109 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Empty Deck (paper) (836ms)
+  ✓  110 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Documentation (paper) (838ms)
+  ✓  111 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Frame (paper) (593ms)
+  ✓  112 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Artwork Slots Shown (paper) (741ms)
+  ✓  113 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Secondary Surface (paper) (608ms)
+  ✓  114 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Long Labels (paper) (591ms)
+  ✓  115 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Title Only (paper) (572ms)
+  ✓  116 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Other Room (paper) (597ms)
+  ✓  117 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Documentation (ink) (762ms)
+  ✓  118 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Buttons (ink) (534ms)
+  ✓  119 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / States (ink) (563ms)
+  ✓  120 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Icon Buttons (ink) (518ms)
+  ✓  121 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Links (ink) (536ms)
+  ✓  122 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Actions/Button, link and tooltip / Tooltips (ink) (613ms)
+  ✓  123 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Documentation (ink) (973ms)
+  ✓  124 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inks (ink) (646ms)
+  ✓  125 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Game Symbols (ink) (613ms)
+  ✓  126 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Tiles (ink) (804ms)
+  ✓  127 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Card Backs (ink) (569ms)
+  ✓  128 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Deck Entries (ink) (725ms)
+  ✓  129 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inspector (ink) (625ms)
+  ✓  130 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Inspector Reading Mode (ink) (603ms)
+  ✓  131 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Host (ink) (511ms)
+  ✓  132 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Cards/Tiles, deck entries and inspection / Card Face (ink) (572ms)
+  ✓  133 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Documentation (ink) (1.1s)
+  ✓  134 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Text Fields (ink) (627ms)
+  ✓  135 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Search (ink) (601ms)
+  ✓  136 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Selects (ink) (600ms)
+  ✓  137 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Select Open (ink) (696ms)
+  ✓  138 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Combo Boxes (ink) (605ms)
+  ✓  139 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Choices (ink) (655ms)
+  ✓  140 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Forms/Fields and choices / Quantities (ink) (657ms)
+  ✓  141 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Documentation (ink) (886ms)
+  ✓  142 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Type Roles (ink) (533ms)
+  ✓  143 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Long Content (ink) (531ms)
+  ✓  144 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Layout (ink) (548ms)
+  ✓  145 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Icons (ink) (665ms)
+  ✓  146 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Icon Sizes (ink) (607ms)
+  ✓  147 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Foundations/Type, layout and identity / Identity (ink) (568ms)
+  ✓  148 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Documentation (ink) (852ms)
+  ✓  149 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Tabs (ink) (587ms)
+  ✓  150 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Menus (ink) (524ms)
+  ✓  151 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Menu Open (ink) (582ms)
+  ✓  152 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Popovers (ink) (571ms)
+  ✓  153 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Dialogs (ink) (536ms)
+  ✓  154 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Overlays/Tabs, menus and dialogs / Confirmations (ink) (520ms)
+  ✓  155 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Documentation (ink) (1.1s)
+  ✓  156 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Lists (ink) (631ms)
+  ✓  157 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Tables (ink) (675ms)
+  ✓  158 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Badges And Status (ink) (534ms)
+  ✓  159 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Progress (ink) (694ms)
+  ✓  160 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Messages (ink) (610ms)
+  ✓  161 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Toasts (ink) (583ms)
+  ✓  162 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Notifications (ink) (542ms)
+  ✓  163 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Status/Collections, feedback and connection / Connection (ink) (570ms)
+  ✓  164 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Documentation (ink) (1.2s)
+  ✓  165 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Working (ink) (2.8s)
+  ✓  166 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Invalid (ink) (2.9s)
+  ✘  167 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Ownership Limits (ink) (2.8s)
+  ✓  168 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Unsaved And Leaving (ink) (1.5s)
+  ✓  169 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Save Conflict (ink) (2.9s)
+  ✘  170 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Import With Unresolved Lines (ink) (1.5s)
+  ✓  171 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Export (ink) (1.7s)
+  ✓  172 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Filtered Empty (ink) (1.6s)
+  ✓  173 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Inspection (ink) (2.9s)
+  ✓  174 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Loading (ink) (1.5s)
+  ✘  175 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Long Names (ink) (3.4s)
+  ✓  176 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Empty Deck (ink) (823ms)
+  ✓  177 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Documentation (ink) (863ms)
+  ✓  178 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Frame (ink) (606ms)
+  ✓  179 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Artwork Slots Shown (ink) (770ms)
+  ✓  180 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Secondary Surface (ink) (591ms)
+  ✓  181 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Long Labels (ink) (592ms)
+  ✓  182 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Title Only (ink) (573ms)
+  ✓  183 tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Room frame / Other Room (ink) (606ms)
+  ✓  184 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / Buttons (236ms)
+  ✓  185 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / States (239ms)
+  ✓  186 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / Icon Buttons (233ms)
+  ✓  187 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / Links (244ms)
+  ✓  188 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Actions/Button, link and tooltip / Tooltips (248ms)
+  ✓  189 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Inks (291ms)
+  ✓  190 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Game Symbols (306ms)
+  ✓  191 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Tiles (286ms)
+  ✓  192 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Card Backs (231ms)
+  ✓  193 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Deck Entries (292ms)
+  ✓  194 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Inspector (305ms)
+  ✓  195 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Inspector Reading Mode (278ms)
+  ✓  196 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Host (240ms)
+  ✓  197 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Cards/Tiles, deck entries and inspection / Card Face (254ms)
+  ✓  198 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Text Fields (264ms)
+  ✓  199 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Search (302ms)
+  ✓  200 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Selects (273ms)
+  ✓  201 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Select Open (280ms)
+  ✓  202 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Combo Boxes (300ms)
+  ✓  203 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Choices (271ms)
+  ✓  204 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Forms/Fields and choices / Quantities (272ms)
+  ✓  205 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Type Roles (248ms)
+  ✓  206 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Long Content (240ms)
+  ✓  207 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Layout (241ms)
+  ✓  208 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Icons (247ms)
+  ✓  209 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Icon Sizes (252ms)
+  ✓  210 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Foundations/Type, layout and identity / Identity (273ms)
+  ✓  211 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Tabs (263ms)
+  ✓  212 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Menus (292ms)
+  ✓  213 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Menu Open (268ms)
+  ✓  214 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Popovers (260ms)
+  ✓  215 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Dialogs (244ms)
+  ✓  216 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Overlays/Tabs, menus and dialogs / Confirmations (252ms)
+  ✓  217 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Lists (263ms)
+  ✓  218 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Tables (314ms)
+  ✓  219 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Badges And Status (277ms)
+  ✓  220 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Progress (249ms)
+  ✓  221 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Messages (293ms)
+  ✓  222 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Toasts (266ms)
+  ✓  223 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Notifications (251ms)
+  ✓  224 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Status/Collections, feedback and connection / Connection (244ms)
+  ✘  225 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Working (542ms)
+  ✘  226 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Invalid (568ms)
+  ✘  227 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Ownership Limits (549ms)
+  ✘  228 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Unsaved And Leaving (593ms)
+  ✘  229 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Save Conflict (562ms)
+  ✘  230 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Import With Unresolved Lines (584ms)
+  ✘  231 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Export (572ms)
+  ✘  232 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Filtered Empty (455ms)
+  ✘  233 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Inspection (553ms)
+  ✘  234 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Loading (449ms)
+  ✘  235 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Long Names (571ms)
+  ✓  236 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Empty Deck (286ms)
+  ✓  237 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Room frame / Frame (403ms)
+  ✓  238 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Room frame / Artwork Slots Shown (266ms)
+  ✓  239 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Room frame / Secondary Surface (338ms)
+  ✓  240 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Room frame / Long Labels (259ms)
+  ✓  241 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Room frame / Title Only (247ms)
+  ✓  242 tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Room frame / Other Room (259ms)
+
+
+  1) tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Ownership Limits (paper) 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "scrollable-region-focusable: ._panelFooter_8kowf_20",
+    + ]
+
+      22 |       await open(page, story.id, `theme:${theme}`);
+      23 |       const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).exclude('#storybook-docs').analyze();
+    > 24 |       expect(result.violations.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(' ')).join(', ')}`)).toEqual([]);
+         |                                                                                                         ^
+      25 |     });
+      26 |   }
+      27 | }
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:24:105
+
+    Error Context: test-results/stories-axe-WCAG-2-2-A-AA--b4dc6-der-Ownership-Limits-paper-/error-context.md
+
+  2) tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Import With Unresolved Lines (paper) 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "scrollable-region-focusable: ._lines_1s5km_3",
+    + ]
+
+      22 |       await open(page, story.id, `theme:${theme}`);
+      23 |       const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).exclude('#storybook-docs').analyze();
+    > 24 |       expect(result.violations.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(' ')).join(', ')}`)).toEqual([]);
+         |                                                                                                         ^
+      25 |     });
+      26 |   }
+      27 | }
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:24:105
+
+    Error Context: test-results/stories-axe-WCAG-2-2-A-AA--d1c7a-ith-Unresolved-Lines-paper-/error-context.md
+
+  3) tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Long Names (paper) 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "scrollable-region-focusable: ._panelFooter_8kowf_20",
+    + ]
+
+      22 |       await open(page, story.id, `theme:${theme}`);
+      23 |       const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).exclude('#storybook-docs').analyze();
+    > 24 |       expect(result.violations.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(' ')).join(', ')}`)).toEqual([]);
+         |                                                                                                         ^
+      25 |     });
+      26 |   }
+      27 | }
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:24:105
+
+    Error Context: test-results/stories-axe-WCAG-2-2-A-AA--b6646-ckbuilder-Long-Names-paper-/error-context.md
+
+  4) tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Ownership Limits (ink) 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "scrollable-region-focusable: ._panelFooter_8kowf_20",
+    + ]
+
+      22 |       await open(page, story.id, `theme:${theme}`);
+      23 |       const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).exclude('#storybook-docs').analyze();
+    > 24 |       expect(result.violations.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(' ')).join(', ')}`)).toEqual([]);
+         |                                                                                                         ^
+      25 |     });
+      26 |   }
+      27 | }
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:24:105
+
+    Error Context: test-results/stories-axe-WCAG-2-2-A-AA--9e5e9-ilder-Ownership-Limits-ink-/error-context.md
+
+  5) tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Import With Unresolved Lines (ink) 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "scrollable-region-focusable: ._lines_1s5km_3",
+    + ]
+
+      22 |       await open(page, story.id, `theme:${theme}`);
+      23 |       const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).exclude('#storybook-docs').analyze();
+    > 24 |       expect(result.violations.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(' ')).join(', ')}`)).toEqual([]);
+         |                                                                                                         ^
+      25 |     });
+      26 |   }
+      27 | }
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:24:105
+
+    Error Context: test-results/stories-axe-WCAG-2-2-A-AA--d691f--With-Unresolved-Lines-ink-/error-context.md
+
+  6) tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Long Names (ink) 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "scrollable-region-focusable: ._panelFooter_8kowf_20",
+    + ]
+
+      22 |       await open(page, story.id, `theme:${theme}`);
+      23 |       const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).exclude('#storybook-docs').analyze();
+    > 24 |       expect(result.violations.map(v => `${v.id}: ${v.nodes.map(n => n.target.join(' ')).join(', ')}`)).toEqual([]);
+         |                                                                                                         ^
+      25 |     });
+      26 |   }
+      27 | }
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:24:105
+
+    Error Context: test-results/stories-axe-WCAG-2-2-A-AA--f1350-Deckbuilder-Long-Names-ink-/error-context.md
+
+  7) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Working 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-2b207-screens-Deckbuilder-Working/error-context.md
+
+  8) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Invalid 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-ba2e8-screens-Deckbuilder-Invalid/error-context.md
+
+  9) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Ownership Limits 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-24a42-eckbuilder-Ownership-Limits/error-context.md
+
+  10) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Unsaved And Leaving 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-dab57-builder-Unsaved-And-Leaving/error-context.md
+
+  11) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Save Conflict 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-83802-s-Deckbuilder-Save-Conflict/error-context.md
+
+  12) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Import With Unresolved Lines 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-0d2e9-mport-With-Unresolved-Lines/error-context.md
+
+  13) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Export 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-4b757--screens-Deckbuilder-Export/error-context.md
+
+  14) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Filtered Empty 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-eb77e--Deckbuilder-Filtered-Empty/error-context.md
+
+  15) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Inspection 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-65d75-eens-Deckbuilder-Inspection/error-context.md
+
+  16) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Loading 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 53x40",
+    +   "button 48x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-62952-screens-Deckbuilder-Loading/error-context.md
+
+  17) tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Long Names 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "button 52x40",
+    +   "button 49x40",
+    + ]
+
+      35 |         .map(el => `${el.tagName.toLowerCase()}${el.getAttribute('aria-label') ? '[' + el.getAttribute('aria-label') + ']' : ''} ${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`);
+      36 |     });
+    > 37 |     expect(small).toEqual([]);
+         |                   ^
+      38 |   });
+      39 | }
+      40 |
+        at /workspaces/lorcana-online-tcg/packages/design-system/tests/browser/stories.spec.ts:37:19
+
+    Error Context: test-results/stories-primary-targets-ar-d4c47-eens-Deckbuilder-Long-Names/error-context.md
+
+  17 failed
+    tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Ownership Limits (paper) 
+    tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Import With Unresolved Lines (paper) 
+    tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Long Names (paper) 
+    tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Ownership Limits (ink) 
+    tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Import With Unresolved Lines (ink) 
+    tests/browser/stories.spec.ts:21:5 › axe WCAG 2.2 A/AA: Reference screens/Deckbuilder / Long Names (ink) 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Working 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Invalid 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Ownership Limits 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Unsaved And Leaving 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Save Conflict 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Import With Unresolved Lines 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Export 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Filtered Empty 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Inspection 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Loading 
+    tests/browser/stories.spec.ts:30:3 › primary targets are at least 44 x 44 px: Reference screens/Deckbuilder / Long Names 
+  225 passed (3.0m)
